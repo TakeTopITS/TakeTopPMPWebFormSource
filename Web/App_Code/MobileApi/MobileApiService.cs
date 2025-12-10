@@ -137,7 +137,7 @@ public class MobileApiService
             else
             {
                 //如果存在升级语句，那么升级数据库
-                CoreShareClass.UpgradeDataBase();
+              DatabaseUpdateHandle .UpgradeDataBase();
 
                 //---判断用户能用来登录的设备类型----------------------
                 if (strAllowDevice != "ALL")
