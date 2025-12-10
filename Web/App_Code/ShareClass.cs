@@ -35,7 +35,9 @@ using System.Net;
 using System.Net.Mail;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Web;
+using System.Web.Caching;
 using System.Web.Security;
 using System.Web.Services.Description;
 using System.Web.UI;
@@ -45,6 +47,8 @@ using System.Xml;
 using TakeTopCore;
 
 using TakeTopGantt;
+
+using TakeTopWF;
 
 using ZXing;
 using ZXing.QrCode;
@@ -61,7 +65,7 @@ public static class ShareClass
         //
     }
 
-    public static string SystemVersionID = "V2025.12.1";
+    public static string SystemVersionID = "V2025.12.10";
 
     public static string SystemLatestLoginUser = "";
     public static string SystemDBer = "";
@@ -96,11 +100,27 @@ public static class ShareClass
                         RTRIM(B.ModuleName) || RTRIM(B.ModuleType) || RTRIM(B.UserType)
                     WHERE (LENGTH(B.ModuleDefinition) > 0 OR LENGTH(A.ModuleDefinition) > 0) 
                         AND B.ID = {0}", strModuleFlowID, HttpContext.Current.Session["LangCode"].ToString());
-            HttpContext.Current.Session["iframeModuleFlowDataSet"] = ShareClass.GetDataSetFromSql(strHQL, "T_ProModuleLevel");
+
+            DataSet ds = ShareClass.GetDataSetFromSql(strHQL, "T_ProModuleLevel");
+
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                string strID = ds.Tables[0].Rows[0]["ID"].ToString().Trim();
+
+                HttpContext.Current.Session["WFModuleFlowChartXML"] = WFMFFlowDefinitionHandle.GetModuleFlowDefinition(strID, "UserModule", ds);
+                HttpContext.Current.Session["iframeModuleFlowDataSet"] = ds;
+            }
+            else
+            {
+                HttpContext.Current.Session["WFModuleFlowChartXML"] = null;
+                HttpContext.Current.Session["iframeModuleFlowDataSet"] = null;
+            }
         }
-        catch(Exception err)
+        catch (Exception err)
         {
             HttpContext.Current.Session["iframeModuleFlowDataSet"] = null;
+            HttpContext.Current.Session["WFModuleFlowChartXML"] = null;
+
             LogClass.WriteLogFile("Error in PreLoadAnalystAndModuleFlowChart: " + err.Message.ToString() + "\n" + err.StackTrace);
         }
     }
@@ -277,6 +297,7 @@ public static class ShareClass
         }
     }
 
+
     //执行定时器页
     public static void ExecuteTakeTopTimer()
     {
@@ -308,6 +329,39 @@ public static class ShareClass
             ShareClass.SystemLatestLoginUser = "";
         }
     }
+
+    //执行数据库升级页
+    public static void ExecuteTakeTopDBUpgrade()
+    {
+        try
+        {
+            string strUrl = ShareClass.GetCurrentSiteRootPath() + "TakeTopDBUpgrade.aspx";
+
+            // 只使用HttpWebRequest方式，避免Server.Execute导致的线程冲突
+            System.Net.HttpWebRequest _HttpWebRequest = (System.Net.HttpWebRequest)System.Net.WebRequest.Create(strUrl);
+            _HttpWebRequest.Timeout = 300000; // 5分钟超时
+            _HttpWebRequest.ReadWriteTimeout = 300000;
+
+            using (System.Net.HttpWebResponse _HttpWebResponse = (System.Net.HttpWebResponse)_HttpWebRequest.GetResponse())
+            {
+                // 读取响应确保请求完成
+                using (System.IO.StreamReader reader = new System.IO.StreamReader(_HttpWebResponse.GetResponseStream()))
+                {
+                    string responseText = reader.ReadToEnd();
+                }
+            }
+        }
+        catch (ThreadAbortException)
+        {
+            // 忽略线程中止异常
+            Thread.ResetAbort();
+        }
+        catch (Exception err)
+        {
+            LogClass.WriteLogFile("ExecuteTakeTopDBUpgrade Error: " + err.Message.ToString());
+        }
+    }
+
 
     //初始化用户模组
     public static void InitialUserModules(string strSampleUserCode, string strCurrentUserCode)
@@ -4633,6 +4687,7 @@ public static class ShareClass
         catch (Exception err)
         {
             LogClass.WriteLogFile("Error page: " + err.Message.ToString() + "\n" + err.StackTrace);
+
             return 0;
         }
     }
@@ -15268,7 +15323,7 @@ public static class ShareClass
             DataSet ds = ShareClass.GetDataSetFromSql(strHQL, "T_DocType");
             if (ds.Tables[0].Rows.Count == 0)
             {
-                strHQL = string.Format(@"Insert Into T_DocType (type, sortnumber, parentid, usercode, savetype) Values ('{0}',10,0,'{1}','Group')", strType, HttpContext.Current. Session["UserCode"].ToString());
+                strHQL = string.Format(@"Insert Into T_DocType (type, sortnumber, parentid, usercode, savetype) Values ('{0}',10,0,'{1}','Group')", strType, HttpContext.Current.Session["UserCode"].ToString());
                 ShareClass.RunSqlCommand(strHQL);
             }
         }
@@ -17114,6 +17169,30 @@ public static class ShareClass
         }
     }
 
+
+    //运行SQL语句,执行操作日志不存入日志表
+    public static void RunSqlCommandForNOOperateLogCommon(string strCmdText)
+    {
+        NpgsqlConnection myConnection = new NpgsqlConnection(
+               ConfigurationManager.ConnectionStrings["SQLCONNECTIONSTRING"].ConnectionString);
+
+        ///创建Command
+        NpgsqlCommand myCommand = new NpgsqlCommand(strCmdText, myConnection);
+        myCommand.CommandTimeout = 600;
+
+        ///打开链接
+        myConnection.Open();
+
+        myCommand.ExecuteNonQuery();
+
+        myConnection.Close();
+
+        if (myCommand != null)
+        {
+            myCommand.Dispose();
+        }
+    }
+
     // 创建数据库连接
     private static NpgsqlConnection CreateConnection()
     {
@@ -18329,47 +18408,79 @@ public static class ShareClass
     public static string GetCurrentSiteRootPath()
     {
         var context = HttpContext.Current;
-        if (context == null) return string.Empty;
 
-        var request = context.Request;
-
-        // 常见的反向代理头信息
-        string[] headerKeys = {
-        "X-Forwarded-Host",
-        "X-Original-Host",
-        "X-Forwarded-Proto",
-        "X-Original-Proto",
-        "X-Forwarded-Port"
-    };
-
-        string host = request.Headers["X-Forwarded-Host"] ??
-                      request.Headers["X-Original-Host"] ??
-                      request.Headers["Host"] ??
-                      request.Url.Host;
-
-        string protocol = request.Headers["X-Forwarded-Proto"] ??
-                          request.Headers["X-Original-Proto"] ??
-                          request.Url.Scheme;
-
-        string port = request.Headers["X-Forwarded-Port"];
-
-        // 构建URL
-        string url = $"{protocol}://{host}";
-
-        // 只有在非标准端口时才添加端口号
-        if (!string.IsNullOrEmpty(port) &&
-            !((protocol == "http" && port == "80") || (protocol == "https" && port == "443")))
+        if (context != null)
         {
-            url += $":{port}";
+            // 有HTTP上下文的情况
+            var request = context.Request;
+            string url = request.Url.GetLeftPart(UriPartial.Authority) + request.ApplicationPath;
+            if (!url.EndsWith("/"))
+                url += "/";
+            return url;
         }
-
-        url += request.ApplicationPath;
-
-        if (!url.EndsWith("/"))
-            url += "/";
-
-        return url;
+        else
+        {
+            // 定时器线程的情况
+            return GetSiteUrlForTimerSimple();
+        }
     }
+
+    private static string GetSiteUrlForTimerSimple()
+    {
+        try
+        {
+            // 方法1：从缓存中获取（首次请求时设置）
+            if (HttpRuntime.Cache["SiteBaseUrl"] != null)
+            {
+                return HttpRuntime.Cache["SiteBaseUrl"].ToString();
+            }
+
+            // 方法2：从web.config读取
+            string siteUrl = ConfigurationManager.AppSettings["SiteBaseUrl"];
+            if (!string.IsNullOrEmpty(siteUrl))
+            {
+                if (!siteUrl.EndsWith("/"))
+                    siteUrl += "/";
+
+                // 缓存起来
+                HttpRuntime.Cache.Insert("SiteBaseUrl", siteUrl, null,
+                    DateTime.Now.AddHours(24), Cache.NoSlidingExpiration);
+
+                return siteUrl;
+            }
+
+            // 方法3：动态构建（适用于大多数场景）
+            string appVirtualPath = HttpRuntime.AppDomainAppVirtualPath ?? "";
+            string machineName = Environment.MachineName.ToLower();
+
+            // 如果是本地环境
+            if (machineName.Contains("localhost") ||
+                machineName.Contains("dev") ||
+                machineName.Contains("test") ||
+                HttpRuntime.AppDomainAppPath.Contains("IIS Express"))
+            {
+                string port = ConfigurationManager.AppSettings["LocalPort"] ?? "80";
+                string url = $"http://localhost:{port}{appVirtualPath}";
+                if (!url.EndsWith("/"))
+                    url += "/";
+                return url;
+            }
+            else
+            {
+                // 生产环境
+                string url = $"http://{machineName}{appVirtualPath}";
+                if (!url.EndsWith("/"))
+                    url += "/";
+                return url;
+            }
+        }
+        catch (Exception ex)
+        {
+            LogClass.WriteLogFile($"获取定时器站点URL错误: {ex.Message}");
+            return "http://localhost/"; // 默认值
+        }
+    }
+
 
     //得到当前网站的根地址,不包含站点名,
     public static string GetCurrentSiteRootPathNoSiteName()

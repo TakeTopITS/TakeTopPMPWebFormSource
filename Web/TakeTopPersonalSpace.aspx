@@ -494,7 +494,7 @@
                     </ul>
                 </div>
             </div>
-            <div style="position: absolute; left: 50%; top: 50%;">
+            <div style="position: fixed; display: none; z-index: 9999;" id="progressContainer">
                 <asp:UpdateProgress ID="TakeTopUp" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
                     <ProgressTemplate>
                         <img src="Images/Processing3 .gif" alt="Loading,please wait..." />

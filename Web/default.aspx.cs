@@ -35,29 +35,6 @@ public partial class _default : System.Web.UI.Page
 
             if (Page.IsPostBack != true)
             {
-                try
-                {
-                    ShareClass.LoadLanguageForDropList(ddlLangSwitcher);
-
-                    if (Request.Cookies["LangCode"] != null)
-                    {
-                        ddlLangSwitcher.SelectedValue = Request.Cookies["LangCode"].Value;
-                    }
-
-                    if (Session["LangCode"] != null)
-                    {
-                        ddlLangSwitcher.SelectedValue = Session["LangCode"].ToString();
-                    }
-
-                    InitializeCulture();
-                }
-                catch (Exception err)
-                {
-                    Session["LangCode"] = System.Configuration.ConfigurationManager.AppSettings["DefaultLang"];
-                    LogClass.WriteLogFile("Error page: " + "\n" + err.Message.ToString() + "\n" + err.StackTrace);
-                }
-
-
                 if (ShareClass.SystemDBer == "")
                 {
                     //if (DatabaseUpdateHandle.CheckIsExistedUpgratedRecordUpgradeXMLFile())
@@ -154,7 +131,28 @@ public partial class _default : System.Web.UI.Page
                 {
                 }
 
-              
+                try
+                {
+                    ShareClass.LoadLanguageForDropList(ddlLangSwitcher);
+
+                    if (Request.Cookies["LangCode"] != null)
+                    {
+                        ddlLangSwitcher.SelectedValue = Request.Cookies["LangCode"].Value;
+                    }
+
+                    if (Session["LangCode"] != null)
+                    {
+                        ddlLangSwitcher.SelectedValue = Session["LangCode"].ToString();
+                    }
+
+                    InitializeCulture();
+                }
+                catch (Exception err)
+                {
+                    Session["LangCode"] = System.Configuration.ConfigurationManager.AppSettings["DefaultLang"];
+                    LogClass.WriteLogFile("Error page: " + "\n" + err.Message.ToString() + "\n" + err.StackTrace);
+                }
+
 
                 try
                 {

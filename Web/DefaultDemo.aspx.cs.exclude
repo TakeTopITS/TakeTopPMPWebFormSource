@@ -25,8 +25,6 @@ using TakeTopCore;
 
 public partial class DefaultDemo : System.Web.UI.Page
 {
-    string strTargetLagCode;
-
     protected void Page_Load(object sender, EventArgs e)
     {
         //钟礼月作品(jack.erp@gmail.com)
@@ -35,6 +33,11 @@ public partial class DefaultDemo : System.Web.UI.Page
         string strVerificationCode, strSMSVerification;
         string strUserCode, strPassword;
         string strUserHostAddress, strSystemName;
+
+        if (ShareClass.IsMobileDeviceCheckAgent())
+        {
+            Response.Redirect("DefaultMobileDemo.aspx");
+        }
 
         strUserCode = Request.QueryString["UserCode"];
         strPassword = Request.QueryString["Password"];
@@ -54,20 +57,6 @@ public partial class DefaultDemo : System.Web.UI.Page
 
         TB_PasswordBackup.Text = "********";
 
-        //-------------Begin:给页面指定登录语言，可根据传入参数改变系统界面语言：DefaultDemo.aspx?TargetLangcode=zh-CN
-        strTargetLagCode = Request.QueryString["TargetLangCode"];
-        Session["TargetLangCode"] = strTargetLagCode;
-        if (Session["TargetLangCode"] == null)
-        {
-            Session["LangCode"] = System.Configuration.ConfigurationManager.AppSettings["DefaultLang"];
-        }
-        else
-        {
-            Session["LangCode"] = Session["TargetLangCode"];
-        }
-        //--------------End----------------
-
-
         strUserHostAddress = Request.UserHostAddress;
 
         strSystemName = System.Configuration.ConfigurationManager.AppSettings["SystemName"];
@@ -84,7 +73,9 @@ public partial class DefaultDemo : System.Web.UI.Page
             strVerificationCode = System.Configuration.ConfigurationManager.AppSettings["VerificationCode"].Trim().ToUpper();
             if (strVerificationCode == "NO")
             {
-                TB_CheckCode.Enabled = false;
+                pCheckCode.Visible = false;
+                LB_Verification.Visible = false;
+                TB_CheckCode.Visible = false;
                 TB_CheckCode.Text = "*********";
                 IM_CheckCode.Visible = false;
             }
@@ -100,7 +91,7 @@ public partial class DefaultDemo : System.Web.UI.Page
                 {
                     if (ShareClass.IsMobileDeviceCheckAgent())
                     {
-                        TB_CheckCode.Enabled = false;
+                        TB_CheckCode.Visible = false;
                         TB_CheckCode.Text = "********";
                     }
                 }
@@ -136,8 +127,6 @@ public partial class DefaultDemo : System.Web.UI.Page
             catch (Exception ex)
             {
                 Session["LangCode"] = System.Configuration.ConfigurationManager.AppSettings["DefaultLang"];
-
-
             }
 
             ClientScript.RegisterStartupScript(this.GetType(), "", "<script>clickLoginButton();</script>");
@@ -148,7 +137,6 @@ public partial class DefaultDemo : System.Web.UI.Page
     {
         string strUserCode, strUserName, strPassword;
         string strUserType, strMDIStyle, strMDIPageName, strMDIMobilePageName, strThirdPartPageNme, strThirdPartMobilePageName;
-        string strVerificationCode, strSMSVerification, strSMSCode, strCheckCode;
         string strUserHostAddress, strAllowDevice;
 
         string strHQL;
@@ -159,66 +147,22 @@ public partial class DefaultDemo : System.Web.UI.Page
         strPassword = TB_Password.Text.Trim();
         if (strUserCode == "" | strPassword == "")
         {
-            ClientScript.RegisterStartupScript(this.GetType(), "", "<script>showAlertAtMouse('" + Resources.lang.ZZYHMHMMDBNWKJC + "');</script>");
+            ClientScript.RegisterStartupScript(this.GetType(), "", "<script>showAlertAtMouse('" + LanguageHandle.GetWord("ZZYHMHMMDBNWKJC") + "');</script>");
             return;
         }
 
         if (ShareClass.SqlFilter(strUserCode) | ShareClass.SqlFilter(strPassword))
         {
-            ClientScript.RegisterStartupScript(this.GetType(), "", "<script>showAlertAtMouse('" + Resources.lang.ZZZHHYFFZHDLSB + "');</script>");
+            ClientScript.RegisterStartupScript(this.GetType(), "", "<script>showAlertAtMouse('" + LanguageHandle.GetWord("ZZZHHYFFZHDLSB") + "');</script>");
             return;
         }
 
-        strSMSVerification = System.Configuration.ConfigurationManager.AppSettings["SMSVerification"].Trim().ToUpper();
-        strVerificationCode = System.Configuration.ConfigurationManager.AppSettings["VerificationCode"].Trim().ToUpper();
-        if (strVerificationCode == "YES")
-        {
-            if (!ShareClass.IsMobileDeviceCheckAgent())
-            {
-                if (Session["CheckCode"] == null)
-                {
-                    ClientScript.RegisterStartupScript(this.GetType(), "", "<script>showAlertAtMouse('" + Resources.lang.ZZNDLSZYBJYCOOKIESNBXSZLYXSYCOOKIESXHCNSYBXT + "');</script>");
-                    TB_CheckCode.Text = "";
-                    return;
-                }
 
-                if (String.Compare(Session["CheckCode"].ToString(), TB_CheckCode.Text, true) != 0)
-                {
-                    ClientScript.RegisterStartupScript(this.GetType(), "", "<script>showAlertAtMouse('" + Resources.lang.ZZYZMCWSRZDYZM + "');</script>");
-                    TB_CheckCode.Text = "";
-                    return;
-                }
-            }
-
-            //if (strSMSVerification == "YES")
-            //{
-            //    strSMSCode = ShareClass.GetUserSMSCode(strUserCode);
-
-            //    strCheckCode = TB_CheckCode.Text.Trim();
-
-            //    if (strSMSCode == "")
-            //    {
-            //        ClientScript.RegisterStartupScript(this.GetType(), "", "<script>showAlertAtMouse('" + Resources.lang.ZZJGYSJDXMYZXDDXM + "');</script>");
-            //        return;
-            //    }
-            //    else
-            //    {
-            //        if (strSMSCode != strCheckCode)
-            //        {
-            //            ClientScript.RegisterStartupScript(this.GetType(), "", "<script>showAlertAtMouse('" + Resources.lang.ZZJGDXYZMCWJC + "');</script>");
-            //            return;
-            //        }
-            //    }
-            //}
-            //else
-            //{
-            //}
-        }
 
         try
         {
-            strPassword = EncryptPassword(strPassword, "MD5");
-            strHQL = "Select * from T_ProjectMember where UserCode = " + "'" + strUserCode + "'" + " and Password = " + "'" + strPassword + "'" + " and " + " rtrim(ltrim(Status)) not in ( '终止','离职')";
+            strPassword = ShareClass.EncryptPassword(strPassword, "MD5");
+            strHQL = "Select * from T_ProjectMember where UserCode = " + "'" + strUserCode + "'" + " and Password = " + "'" + strPassword + "'" + " and " + " rtrim(ltrim(Status)) not in ( 'Stop','Resign')";
             strHQL += " And UserCode in (Select UserCode From T_SystemActiveUser Where WebUser = 'YES')";
             DataSet ds = ShareClass.GetDataSetFromSql(strHQL, "T_ProjectMember");
             if (ds.Tables[0].Rows.Count > 0)
@@ -277,57 +221,39 @@ public partial class DefaultDemo : System.Web.UI.Page
                 //    }
                 //}
 
-                if (Session["LangCode"] == null)
+                Session["SkinFlag"] = ds.Tables[0].Rows[0]["CssDirectory"].ToString().Trim() + ds.Tables[0].Rows[0]["LangCode"].ToString().Trim();
+
+                try
                 {
+
+                    //初始化界面语言
                     try
                     {
-                        //初始化界面语言
-                        try
-                        {
-                            Session["LangCode"] = ds.Tables[0].Rows[0]["LangCode"].ToString().Trim();
-                        }
-                        catch
-                        {
-                        }
-
-                        if (Session["LangCode"] == null)
-                        {
-                            try
-                            {
-                                Session["LangCode"] = System.Configuration.ConfigurationManager.AppSettings["DefaultLang"];
-                            }
-                            catch
-                            {
-                                Session["LangCode"] = "zh-CN";
-                            }
-                        }
-
-                        Session["SkinFlag"] = ds.Tables[0].Rows[0]["CssDirectory"].ToString().Trim() + Session["LangCode"].ToString();
+                        Session["LangCode"] = ds.Tables[0].Rows[0]["LangCode"].ToString().Trim();
                     }
                     catch
                     {
                     }
-                }
-                else
-                {
+
+                    if (Session["LangCode"] == null)
+                    {
+                        try
+                        {
+                            Session["LangCode"] = System.Configuration.ConfigurationManager.AppSettings["DefaultLang"];
+                        }
+                        catch
+                        {
+                            Session["LangCode"] = "zh-CN";
+                        }
+                    }
+
                     Session["SkinFlag"] = ds.Tables[0].Rows[0]["CssDirectory"].ToString().Trim() + Session["LangCode"].ToString();
-                }
 
-                if (Session["TargetLangCode"] != null)
+                    InitializeCulture();
+                }
+                catch
                 {
-                    Session["SkinFlag"] = ds.Tables[0].Rows[0]["CssDirectory"].ToString().Trim() + Session["TargetLangCode"].ToString();
-                    Session["LangCode"] = Session["TargetLangCode"];
-
-                    LogClass.WriteLogFile(Session["SkinFlag"].ToString());
                 }
-                else
-                {
-                    Session["SkinFlag"] = ds.Tables[0].Rows[0]["CssDirectory"].ToString().Trim() + System.Configuration.ConfigurationManager.AppSettings["DefaultLang"];
-                    Session["LangCode"] = System.Configuration.ConfigurationManager.AppSettings["DefaultLang"];
-                }
-
-                InitializeCulture();
-
 
                 //YES时页面必须在框架内打开，否则关闭
                 try
@@ -390,11 +316,11 @@ public partial class DefaultDemo : System.Web.UI.Page
                 {
                 }
 
-                //---运行登录用特殊代码----------------------
+                //运行一些特殊的代码
                 ShareClass.RunSpecificalCodeForLogin();
 
                 //预加载模组流程图数据集
-                ShareClass.PreLoadModuleFlowChartDataSet();
+                ShareClass.PreLoadModuleFlowChartDataSet(); ;
 
                 if (Session["SystemVersionType"].ToString() == "SAAS")
                 {
@@ -415,7 +341,7 @@ public partial class DefaultDemo : System.Web.UI.Page
             }
             else
             {
-                ClientScript.RegisterStartupScript(GetType(), "", "<script>showAlertAtMouse('" + Resources.lang.ZZJGYHDMHMMCWHYBZZSY + "');</script>");
+                ClientScript.RegisterStartupScript(GetType(), "", "<script>showAlertAtMouse('" + LanguageHandle.GetWord("ZZJGYHDMHMMCWHYBZZSY") + "');</script>");
             }
         }
         catch (Exception err)
@@ -425,6 +351,7 @@ public partial class DefaultDemo : System.Web.UI.Page
         }
 
     }
+
 
     protected void LB_Register_Click(object sender, EventArgs e)
     {
@@ -439,7 +366,7 @@ public partial class DefaultDemo : System.Web.UI.Page
         strUserCode = TB_UserCode.Text.Trim();
         strPassword = TB_Password.Text.Trim();
 
-        strPassword = EncryptPassword(strPassword, "MD5");
+        strPassword = ShareClass.EncryptPassword(strPassword, "MD5");
 
         intCount = GetUserCount(strUserCode, strPassword);
 
@@ -449,22 +376,22 @@ public partial class DefaultDemo : System.Web.UI.Page
         {
             strSMSCode = msg.CreateRandomCode(5);
 
-            strMsg = "短信验证码：" + strSMSCode + "，当天有效！";
+            strMsg = LanguageHandle.GetWord("DuanXinYanZhengMa") + ":" + strSMSCode + "," + LanguageHandle.GetWord("DangTianYouXiao");
 
             if (msg.SendMSM("Message", strUserCode, strMsg, strUserCode))
             {
                 InsertOrUpdateSMSCode(strUserCode, strSMSCode);
 
-                ClientScript.RegisterStartupScript(this.GetType(), "", "<script>showAlertAtMouse('" + Resources.lang.ZZDXYZMYFSCS + "');</script>");
+                ClientScript.RegisterStartupScript(this.GetType(), "", "<script>showAlertAtMouse('" + LanguageHandle.GetWord("ZZDXYZMYFSCS") + "');</script>");
             }
             else
             {
-                ClientScript.RegisterStartupScript(this.GetType(), "", "<script>showAlertAtMouse('" + Resources.lang.ZZJGDXYZMFSSBJCDXJKHWLLJ + "');</script>");
+                ClientScript.RegisterStartupScript(this.GetType(), "", "<script>showAlertAtMouse('" + LanguageHandle.GetWord("ZZJGDXYZMFSSBJCDXJKHWLLJ") + "');</script>");
             }
         }
         else
         {
-            ClientScript.RegisterStartupScript(this.GetType(), "", "<script>showAlertAtMouse('" + Resources.lang.ZZJGYHDMHMMCWBNDDXMJC + "');</script>");
+            ClientScript.RegisterStartupScript(this.GetType(), "", "<script>showAlertAtMouse('" + LanguageHandle.GetWord("ZZJGYHDMHMMCWBNDDXMJC") + "');</script>");
         }
     }
 
@@ -478,7 +405,6 @@ public partial class DefaultDemo : System.Web.UI.Page
         {
             Session["LangCode"] = null;
         }
-
 
         InitializeCulture();
 
@@ -498,11 +424,6 @@ public partial class DefaultDemo : System.Web.UI.Page
     protected override void InitializeCulture()
     {
         string strLangCode;
-
-        if (Session["TargetLangCode"] != null)
-        {
-            Session["LangCode"] = Session["TargetLangCode"];
-        }
 
         if (Session["LangCode"] == null)
         {
@@ -578,22 +499,6 @@ public partial class DefaultDemo : System.Web.UI.Page
             {
             }
         }
-    }
-
-    protected string EncryptPassword(string strPassword, string strFormat)
-    {
-        string strNewPassword;
-
-        if (strFormat == "SHA1")
-        {
-            strNewPassword = FormsAuthentication.HashPasswordForStoringInConfigFile(strPassword, "SHA1");
-        }
-        else
-        {
-            strNewPassword = FormsAuthentication.HashPasswordForStoringInConfigFile(strPassword, "MD5");
-        }
-
-        return strNewPassword;
     }
 
     protected SystemMDIStyle GetSystemMDIStyle(string strMDIStyle)

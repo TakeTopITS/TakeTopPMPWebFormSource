@@ -507,7 +507,7 @@
 
                 <div class="layui-layer-shade" id="popwindow_shade" style="z-index: 9998; background-color: #000; opacity: 0.3; filter: alpha(opacity=30); display: none;"></div>
 
-                <div style="position: absolute; left: 50%; top: 50%;">
+                <div style="position: fixed; display: none; z-index: 9999;" id="progressContainer">
                     <asp:UpdateProgress ID="TakeTopUp" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
                         <ProgressTemplate>
                             <img src="Images/Processing3 .gif" alt="Loading,please wait..." />

@@ -257,7 +257,7 @@
                         </td>
                     </tr>
                     <tr id="trCheckCode" runat="server">
-                        <td colspan="2" class="formItemBgStyleForAlignLeft">
+                        <td class="formItemBgStyleForAlignLeft">
                             <br />
                             <table>
                                 <tr>

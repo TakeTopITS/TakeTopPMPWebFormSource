@@ -35,6 +35,86 @@ public partial class TakeTopMainSkinSelect : System.Web.UI.Page
         }
     }
 
+    protected void RP_Language_ItemCommand(object source, RepeaterCommandEventArgs e)
+    {
+        if (e.CommandName != "Page")
+        {
+            string strHQL;
+            string strLangCode;
+
+            DataSet ds;
+
+            string strUserCode = Session["UserCode"].ToString();
+            strLangCode = ((Button)e.Item.FindControl("BT_Language")).ToolTip.Trim();
+
+            try
+            {
+                strHQL = string.Format(@"SELECT Count(*) FROM T_ProModuleLevel Where LangCode = '{0}'", strLangCode);
+                ds = ShareClass.GetDataSetFromSql(strHQL, "T_ProModuleLevel");
+                if (Convert.ToInt32(ds.Tables[0].Rows[0][0].ToString()) == 0)
+                {
+                    CopyAllLeftModuleForHomeLanguage(strLangCode);
+                    UpdateLeftBarModules(strLangCode);
+
+                    CopyBaseDataInnerFromHomeLanguage(strLangCode);
+                    CopyNewTypeFromHomeLanguage(strLangCode);
+                    CopyAlActorGroupForHomeLanguage(strLangCode);
+                    CopyCommonWorkflowRelatedPageForHomeLanguage(strLangCode);
+                }
+            }
+            catch (System.Exception err)
+            {
+                LogClass.WriteLogFile("Error page: " + err.Message.ToString() + "\n" + err.StackTrace);
+            }
+
+            try
+            {
+                strHQL = string.Format(@"SELECT Count(*) FROM T_ProModuleLevelForPage Where LangCode = '{0}'", strLangCode);
+                ds = ShareClass.GetDataSetFromSql(strHQL, "T_ProModuleLevel");
+                if (Convert.ToInt32(ds.Tables[0].Rows[0][0].ToString()) == 0)
+                {
+                    CopyAllPageModuleForHomeLanguage(strLangCode);
+                    UpdatePageBarModules(strLangCode);
+                }
+            }
+            catch (System.Exception err)
+            {
+                LogClass.WriteLogFile("Error page: " + err.Message.ToString() + "\n" + err.StackTrace);
+            }
+
+
+            ((Button)e.Item.FindControl("BT_Language")).ForeColor = System.Drawing.Color.Black;
+
+            strHQL = "from ProjectMember as projectMember where projectMember.UserCode = " + "'" + strUserCode + "'";
+            ProjectMemberBLL projectMemberBLL = new ProjectMemberBLL();
+            IList lst = projectMemberBLL.GetAllProjectMembers(strHQL);
+
+            ProjectMember projectMember = (ProjectMember)lst[0];
+
+            projectMember.LangCode = strLangCode;
+            try
+            {
+                projectMemberBLL.UpdateProjectMember(projectMember, strUserCode);
+
+                Session["CssDirectory"] = projectMember.CssDirectory.Trim();
+                Session["LangCode"] = strLangCode;
+                Response.SetCookie(new HttpCookie("LangCode", strLangCode));
+
+                //预加载模组流程图数据集
+                ShareClass.PreLoadModuleFlowChartDataSet();
+
+                //设置缓存更改标志
+                ChangePageCache("Language");
+
+                //重新打开相应的主页，以刷新页面
+                OpenTopMDIPage(strUserType, projectMember.CssDirectory.Trim() + projectMember.LangCode.Trim());
+            }
+            catch
+            {
+            }
+        }
+    }
+
     protected void BT_Blue_Click(object sender, EventArgs e)
     {
         string strUserCode = Session["UserCode"].ToString();
@@ -206,83 +286,6 @@ public partial class TakeTopMainSkinSelect : System.Web.UI.Page
         }
         catch
         {
-        }
-    }
-
-    protected void RP_Language_ItemCommand(object source, RepeaterCommandEventArgs e)
-    {
-        if (e.CommandName != "Page")
-        {
-            string strHQL;
-            string strLangCode;
-
-            DataSet ds;
-
-            string strUserCode = Session["UserCode"].ToString();
-            strLangCode = ((Button)e.Item.FindControl("BT_Language")).ToolTip.Trim();
-
-            try
-            {
-                strHQL = string.Format(@"SELECT Count(*) FROM T_ProModuleLevel Where LangCode = '{0}'", strLangCode);
-                ds = ShareClass.GetDataSetFromSql(strHQL, "T_ProModuleLevel");
-                if (Convert.ToInt32(ds.Tables[0].Rows[0][0].ToString()) == 0)
-                {
-                    CopyAllLeftModuleForHomeLanguage(strLangCode);
-                    UpdateLeftBarModules(strLangCode);
-
-                    CopyBaseDataInnerFromHomeLanguage(strLangCode);
-                    CopyNewTypeFromHomeLanguage(strLangCode);
-                    CopyAlActorGroupForHomeLanguage(strLangCode);
-                    CopyCommonWorkflowRelatedPageForHomeLanguage(strLangCode);
-                }
-            }
-            catch (System.Exception err)
-            {
-                LogClass.WriteLogFile("Error page: " + err.Message.ToString() + "\n" + err.StackTrace);
-            }
-
-            try
-            {
-                strHQL = string.Format(@"SELECT Count(*) FROM T_ProModuleLevelForPage Where LangCode = '{0}'", strLangCode);
-                ds = ShareClass.GetDataSetFromSql(strHQL, "T_ProModuleLevel");
-                if (Convert.ToInt32(ds.Tables[0].Rows[0][0].ToString()) == 0)
-                {
-                    CopyAllPageModuleForHomeLanguage(strLangCode);
-                    UpdatePageBarModules(strLangCode);
-                }
-            }
-            catch (System.Exception err)
-            {
-                LogClass.WriteLogFile("Error page: " + err.Message.ToString() + "\n" + err.StackTrace);
-            }
-
-
-            ((Button)e.Item.FindControl("BT_Language")).ForeColor = System.Drawing.Color.Black;
-
-            strHQL = "from ProjectMember as projectMember where projectMember.UserCode = " + "'" + strUserCode + "'";
-            ProjectMemberBLL projectMemberBLL = new ProjectMemberBLL();
-            IList lst = projectMemberBLL.GetAllProjectMembers(strHQL);
-
-            ProjectMember projectMember = (ProjectMember)lst[0];
-
-            projectMember.LangCode = strLangCode;
-            try
-            {
-                projectMemberBLL.UpdateProjectMember(projectMember, strUserCode);
-
-                Session["CssDirectory"] = projectMember.CssDirectory.Trim();
-                Session["LangCode"] = strLangCode;
-                Response.SetCookie(new HttpCookie("LangCode", strLangCode));
-
-                //设置缓存更改标志
-                ChangePageCache("Language");
-
-                //重新打开相应的主页，以刷新页面
-                OpenTopMDIPage(strUserType, projectMember.CssDirectory.Trim() + projectMember.LangCode.Trim());
-            }
-            catch
-            {
-            }
         }
     }
 
