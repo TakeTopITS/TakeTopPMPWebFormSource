@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="泰顶,拓鼎,泰顶拓鼎,项目管理,项目管理软件,项目管理系统,项目管理平台,系统集成,研发管理,工程管理,项目型ERP,政府项目,项目制造,软件实施,管理咨询" />
+    <meta name="description" content="泰顶,拓鼎,泰顶拓鼎,项目管理,项目管理软件,项目管理系统,项目管理平台,系统集成,研发管理,工程管理,项目型ERP,政府项目,项目制造,软件实施,管理咨询" />
+    <!--<meta http-equiv="refresh" content="0.1;url=https://www.taketopits.com/TDSite/TakeTopSiteDefaultLeftRight_TakeTopSoft.aspx" />-->
+    <title>Project Management Software & Consulting Services Provider - TakeTop</title>
+    <style type="text/css">
+        html, body {
+            height: 100%;
+            overflow: auto;
+        }
+
+        body {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+    <script type="text/javascript">
+
+        //取得链接传入参数的值
+        function getUrlParam(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+
+            if (r != null)
+                return unescape(r[2]);
+            return null;
+        }
+
+        function redirectHomePage() {
+
+            var url = window.location.host;
+
+            if (url.toLowerCase() == "www.ourpm.net") {
+
+                window.location.href = "http://www.ourpm.net/error.html";
+
+            }
+            else {
+
+                var targetProduct = getUrlParam("TargetProduct");
+
+                var targetLangCode = getUrlParam("TargetLangCode");
+                if (targetLangCode == null || targetLangCode == '') {
+                    if (isChineseSystemLanguage()) {
+                        targetLangCode = 'zh-CN';
+
+                    } else {
+                        targetLangCode = 'en';
+
+                    }
+                }
+
+                if (targetProduct == null || targetProduct == '') {
+                    var varSrc = 'https://www.taketopits.com/TDSite/Logo/WebSite/Page/TakeTopSiteDefaultLeftRight_TakeTopSoft.aspx?TargetLangCode=' + targetLangCode;
+
+                }
+                else {
+                    var varSrc = 'https://www.taketopits.com/TDSite/Logo/WebSite/Page/TakeTopSiteDefaultLeftRight_TakeTopSoft.aspx?TargetLangCode=' + targetLangCode + '&TargetProduct=' + targetProduct;
+                }
+
+
+                this.document.getElementById("iFrameSite").src = varSrc;
+
+                if (targetLangCode === 'zh-CN') {
+                    // 直接设置文档标题
+                    document.title = "项目管理软件和咨询服务提供商-泰顶拓鼎首页";
+                } else {
+                    // 直接设置文档标题
+                    document.title = "Project Management Software & Consulting Services Provider - TakeTop";
+                }
+            }
+
+        }
+
+        // 检查用户系统语言是否为中文
+        function isChineseSystemLanguage() {
+            // 获取浏览器语言设置
+            const userLanguage = navigator.language || navigator.userLanguage;
+
+            // 检查是否为中文变体
+            const chineseVariants = [
+                'zh', 'zh-CN', 'zh-HK', 'zh-MO', 'zh-SG', 'zh-TW', 'zh-Hans', 'zh-Hant'
+            ];
+
+            // 检查语言是否以中文变体开头
+            return chineseVariants.some(lang => userLanguage.toLowerCase().startsWith(lang.toLowerCase()));
+        }
+
+        // 根据系统语言设置网站语言
+        function setLanguageBySystem() {
+            if (isChineseSystemLanguage()) {
+
+                setLanguage('zh-CN');
+            } else {
+
+                setLanguage('en');
+            }
+        }
+    </script>
+
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?59b6149c7d08132d9262552e18205ae6";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+</head>
+<frameset rows="*,0" id="TopFrame" name="TopFrame" frameborder="no" border="0" framespacing="0" onload="redirectHomePage()">
+    <frame id="iFrameSite" name="MainFrame" frameborder="no" scrolling="no" marginwidth="0" marginheight="0" marginbottom="0" />
+    <frame></frame>
+</frameset>
+<noframes>
+    <body>
+        你的浏览器不支持框架！
+    </body>
+</noframes>
+</html>

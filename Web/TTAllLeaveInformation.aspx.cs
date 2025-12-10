@@ -1,0 +1,319 @@
+using System;
+using System.Resources;
+using System.Drawing;
+using System.Data;
+using System.Configuration;
+using System.Collections;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Web.UI.HtmlControls;
+
+using ProjectMgt.Model;
+using ProjectMgt.DAL;
+using ProjectMgt.BLL;
+
+public partial class TTAllLeaveInformation : System.Web.UI.Page
+{
+    string strUserCode;
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        strUserCode = Session["UserCode"].ToString();
+        string strHQL;
+        IList lst;
+
+        ProjectMemberBLL projectMemberBLL = new ProjectMemberBLL();
+        Label1.Text = ShareClass.GetPageTitle(this.GetType().BaseType.Name + ".aspx"); bool blVisible = TakeTopSecurity.TakeTopLicense.GetAuthobility(this.GetType().BaseType.Name + ".aspx", strUserCode);  //Label1.Text = ShareClass.GetPageTitle(this.GetType().BaseType.Name + ".aspx"); bool blVisible = TakeTopSecurity.TakeTopLicense.GetAuthobility(this.GetType().BaseType.Name + ".aspx", "查看所有成员请假信息", strUserCode.Trim());
+        if (blVisible == false)
+        {
+            Response.Redirect("TTDisplayErrors.aspx");
+            return;
+        }
+
+        LB_UserCode.Text = strUserCode.Trim();
+        LB_UserName.Text = ShareClass.GetUserName(strUserCode).Trim();
+
+        ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "clickA", "aHandler();", true); if (Page.IsPostBack != true)
+        {
+            LoadLeaveType();
+            string strDepartString = TakeTopCore.CoreShareClass.InitialDepartmentTreeByAuthoritySuperUser(LanguageHandle.GetWord("ZZJGT"),TreeView1, strUserCode.Trim());
+            LB_DepartString.Text = strDepartString;
+
+            LB_ProjectMemberOwner.Text = LanguageHandle.GetWord("SuoYouQingJiaXinXiLieBiao");
+
+            strHQL = "from LeaveApplyForm as leaveApplyForm ";
+            strHQL += " Where leaveApplyForm.DepartCode in " + strDepartString;
+            strHQL += " Order by leaveApplyForm.ID DESC";
+            lst = projectMemberBLL.GetAllProjectMembers(strHQL);
+            DataGrid1.DataSource = lst;
+            DataGrid1.DataBind();
+
+            decimal strHourNum = 0;
+            decimal strDayNum = 0;
+            if (lst != null && lst.Count > 0)
+            {
+                for (int i = 0; i < lst.Count; i++)
+                {
+                    LeaveApplyForm leaveApplyForm = (LeaveApplyForm)lst[i];
+                    strHourNum += leaveApplyForm.HourNum;
+                    strDayNum += leaveApplyForm.DayNum;
+                }
+            }
+
+            LB_LeaveInfoNumber.Text = LanguageHandle.GetWord("GCXD") + lst.Count.ToString() + LanguageHandle.GetWord("Tiao");
+            //lbl_DayHourTotal.Text = LanguageHandle.GetWord("GongQingJia") + strHourNum + ""+LanguageHandle.GetWord("XiaoShi")+"；合计:" + strDayNum + "Days";
+            lbl_DayHourTotal.Text = LanguageHandle.GetWord("GongQingJia") + strHourNum + LanguageHandle.GetWord("XiaoShi");
+
+            LB_Sql.Text = strHQL;
+        }
+    }
+
+    protected void LoadLeaveType()
+    {
+        string strHQL = "From LeaveType as leaveType Order By leaveType.SortNumber ASC ";
+        LeaveTypeBLL leaveTypeBLL = new LeaveTypeBLL();
+        IList lst = leaveTypeBLL.GetAllLeaveTypes(strHQL);
+        DL_LeaveType.DataSource = lst;
+        DL_LeaveType.DataBind();
+        DL_LeaveType.Items.Insert(0, new ListItem("--Select--", ""));
+    }
+
+    protected void TreeView1_SelectedNodeChanged(object sender, EventArgs e)
+    {
+        string strDepartCode, strDepartName;
+        int intCount;
+
+        TreeNode treeNode = new TreeNode();
+        treeNode = TreeView1.SelectedNode;
+
+        if (treeNode.Target != "0")
+        {
+            strDepartCode = treeNode.Target.Trim();
+            strDepartName = ShareClass.GetDepartName(strDepartCode);
+
+            intCount = LoadUserByDepartCodeForDataGrid(strDepartCode, DataGrid1);
+
+            LB_ProjectMemberOwner.Text = strDepartName + LanguageHandle.GetWord("DeQingJiaXinXi");
+            LB_LeaveInfoNumber.Text = LanguageHandle.GetWord("GCXD") + intCount.ToString() + LanguageHandle.GetWord("Tiao");
+
+            LB_DepartCode.Text = strDepartCode;
+        }
+
+        
+    }
+
+    protected int LoadUserByDepartCodeForDataGrid(string strDepartCode, DataGrid dataGrid)
+    {
+        string strHQL;
+        IList lst;
+
+        strHQL = "from LeaveApplyForm as leaveApplyForm where leaveApplyForm.DepartCode= '" + strDepartCode.Trim() + "' Order By leaveApplyForm.ID DESC";
+        LeaveApplyFormBLL leaveApplyFormBLL = new LeaveApplyFormBLL();
+        lst = leaveApplyFormBLL.GetAllLeaveApplyForms(strHQL);
+        dataGrid.DataSource = lst;
+        dataGrid.DataBind();
+
+        return lst.Count;
+    }
+
+    protected void BT_Find_Click(object sender, EventArgs e)
+    {
+        string strHQL;
+        IList lst;
+
+        LB_ProjectMemberOwner.Text = LanguageHandle.GetWord("SuoYouQingJiaXinXiLieBiao");
+
+        string strDepartString = LB_DepartString.Text.Trim();
+
+        string strStatus = "%" + DL_Status.SelectedValue + "%";
+        string strUserCode = "%" + TB_UserCode.Text.Trim() + "%";
+        string strUserName = "%" + TB_UserName.Text.Trim() + "%";
+        string strLeaveType = "%" + DL_LeaveType.SelectedValue.Trim() + "%";
+        string strStartTime = DLC_StartTime.Text.Trim();
+        string strEndTime = DLC_EndTime.Text.Trim();
+
+        strHQL = "from LeaveApplyForm as leaveApplyForm where ";
+        strHQL += " leaveApplyForm.Creator Like " + "'" + strUserCode + "'";
+        strHQL += " and leaveApplyForm.UserName Like " + "'" + strUserName + "'";
+        strHQL += " and leaveApplyForm.Status Like " + "'" + strStatus + "'";
+        strHQL += " and leaveApplyForm.LeaveType Like " + "'" + strLeaveType + "'";
+        strHQL += " and leaveApplyForm.DepartCode in " + strDepartString;
+        if (strStartTime != "")
+        {
+            strHQL += " and '" + strStartTime + "'::date-leaveApplyForm.EndTime::date<=0";
+        }
+        if (strEndTime != "")
+        {
+            strHQL += " and '" + strEndTime + "':date-leaveApplyForm.StartTime::date>=0";
+        }
+        strHQL += " Order by leaveApplyForm.ID DESC";
+        LeaveApplyFormBLL leaveApplyFormBLL = new LeaveApplyFormBLL();
+        lst = leaveApplyFormBLL.GetAllLeaveApplyForms(strHQL);
+        DataGrid1.DataSource = lst;
+        DataGrid1.DataBind();
+
+        decimal strHourNum = 0;
+        decimal strDayNum = 0;
+        if (lst != null && lst.Count > 0)
+        {
+            for (int i = 0; i < lst.Count; i++)
+            {
+                LeaveApplyForm leaveApplyForm = (LeaveApplyForm)lst[i];
+                strHourNum += leaveApplyForm.HourNum;
+                strDayNum += leaveApplyForm.DayNum;
+            }
+        }
+
+        LB_LeaveInfoNumber.Text = LanguageHandle.GetWord("GCXD") + lst.Count.ToString() + LanguageHandle.GetWord("Tiao");
+        lbl_DayHourTotal.Text = LanguageHandle.GetWord("GongQingJia") + strHourNum + LanguageHandle.GetWord("XiaoShi");
+
+        LB_Sql.Text = strHQL;
+
+        LB_DepartCode.Text = "";
+    }
+
+
+    protected void DataGrid1_PageIndexChanged(object sender, DataGridPageChangedEventArgs e)
+    {
+        DataGrid1.CurrentPageIndex = e.NewPageIndex;
+
+        string strHQL = LB_Sql.Text;
+
+        LeaveApplyFormBLL leaveApplyFormBLL = new LeaveApplyFormBLL();
+        IList lst = leaveApplyFormBLL.GetAllLeaveApplyForms(strHQL);
+        DataGrid1.DataSource = lst;
+        DataGrid1.DataBind();
+    }
+
+    protected void BT_ExportToExcel_Click(object sender, EventArgs e)
+    {
+        if (Page.IsValid)
+        {
+            try
+            {
+                Random a = new Random();
+                string fileName = LanguageHandle.GetWord("QingJiaXinXi") + DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss") + "-" + a.Next(100, 999) + ".xls";
+                CreateExcel(getUserList(), fileName);
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZJGDCDSJYWJC") + "')", true);
+            }
+        }
+    }
+
+    private void CreateExcel(DataTable dt, string fileName)
+    {
+        DataGrid dg = new DataGrid();
+        dg.DataSource = dt;
+        dg.DataBind();
+
+        Response.Clear();
+        Response.Buffer = true;
+        Response.AppendHeader("Content-Disposition", "attachment;filename=" + fileName);
+        Response.ContentEncoding = System.Text.Encoding.GetEncoding("GB2312");
+        Response.ContentType = "application/vnd.ms-excel";
+        Response.Charset = "GB2312";
+        EnableViewState = false;
+        System.Globalization.CultureInfo mycitrad = new System.Globalization.CultureInfo("ZH-CN", true);
+        System.IO.StringWriter ostrwrite = new System.IO.StringWriter(mycitrad);
+        System.Web.UI.HtmlTextWriter ohtmt = new HtmlTextWriter(ostrwrite);
+        dg.RenderControl(ohtmt);
+        Response.Clear();
+        Response.Write("<meta http-equiv=\"content-type\" content=\"application/ms-excel; charset=gb2312\"/>" + ostrwrite.ToString());
+        Response.End();
+    }
+
+    protected DataTable getUserList()
+    {
+        string strHQL;
+        string strDepartCode = LB_DepartCode.Text.Trim();
+
+        if (strDepartCode == "")//所有请假信息
+        {
+            string strDepartString = LB_DepartString.Text.Trim();
+
+            strHQL = "Select ID 'Number',UserName 'LeaveApplicant',DepartCode 'DepartmentCode',DepartName 'DepartmentName',Duty 'Position',LeaveType 'LeaveType',StartTime 'StartTime'," +   
+                "EndTime 'EndTime',ApplyBecause 'ReasonForLeave',CreateTime 'LeaveDate',Status 'Status' from T_LeaveApplyForm Where DepartCode in" + strDepartString + " ";   
+
+            if (!string.IsNullOrEmpty(DL_Status.SelectedValue.Trim()))
+            {
+                strHQL += " and Status like '%" + DL_Status.SelectedValue.Trim() + "%' ";
+            }
+            if (!string.IsNullOrEmpty(TB_UserCode.Text.Trim()))
+            {
+                strHQL += " and Creator like '%" + TB_UserCode.Text.Trim() + "%' ";
+            }
+            if (!string.IsNullOrEmpty(TB_UserName.Text.Trim()))
+            {
+                strHQL += " and UserName like '%" + TB_UserName.Text.Trim() + "%' ";
+            }
+            if (DL_LeaveType.SelectedValue.Trim() != "")
+            {
+                strHQL += " and LeaveType Like '%" + DL_LeaveType.SelectedValue.Trim() + "%' ";
+            }
+            if (DLC_StartTime.Text.Trim() != "")
+            {
+                strHQL += " and '" + DLC_StartTime.Text.Trim() + "'::date-EndTime::date<=0";
+            }
+            if (DLC_EndTime.Text.Trim() != "")
+            {
+                strHQL += " and '" + DLC_EndTime.Text.Trim() + "'::date-StartTime::date>=0";
+            }
+            strHQL += " Order by ID DESC";
+        }
+        else//按组织架构查询的
+        {
+            strHQL = "Select ID 'Number',UserName 'LeaveApplicant',DepartCode 'DepartmentCode',DepartName 'DepartmentName',Duty 'Position',LeaveType 'LeaveType',StartTime 'StartTime'," +   
+                "EndTime 'EndTime',ApplyBecause 'ReasonForLeave',CreateTime 'LeaveDate',Status 'Status' from T_LeaveApplyForm Where DepartCode = '" + strDepartCode + "' Order by ID DESC ";   
+
+        }
+        DataSet ds = ShareClass.GetDataSetFromSql(strHQL, "T_LeaveApplyForm");
+        return ds.Tables[0];
+    }
+
+
+    //取得此员工当年的此类型的请假天数
+    protected string GetTotalLeaveDayNumberInCurrentYear(string strLeaveType, string strApplicantCode, string strLeaveTime)
+    {
+        string strHQL;
+
+        strHQL = "Select COALESCE(sum(DayNum),0) From T_LeaveApplyForm Where SUBSTRING(to_char( StartTime, 'yyyymmdd'), 1, 4) = '" + strLeaveTime.Substring(0, 4) + "'";
+        strHQL += " And LeaveType = '" + strLeaveType + "'";
+        strHQL += " And Creator = '" + strApplicantCode + "'";
+        DataSet ds = ShareClass.GetDataSetFromSql(strHQL, "T_LeaveApplyForm");
+
+        if (ds.Tables[0].Rows.Count > 0)
+        {
+            return ds.Tables[0].Rows[0][0].ToString();
+        }
+        else
+        {
+            return "0";
+        }
+    }
+
+    //取得此员工当月的此类型的请假天数
+    protected string GetTotalLeaveDayNumberInCurrentMonth(string strLeaveType, string strApplicantCode, string strLeaveTime)
+    {
+        string strHQL;
+
+        strHQL = "Select COALESCE(sum(DayNum),0) From T_LeaveApplyForm Where SUBSTRING (to_char( StartTime, 'yyyymmdd'), 1, 6)= '" + strLeaveTime.Substring(0, 6) + "'";
+        strHQL += " And LeaveType = '" + strLeaveType + "'";
+        strHQL += " And Creator = '" + strApplicantCode + "'";
+        DataSet ds = ShareClass.GetDataSetFromSql(strHQL, "T_LeaveApplyForm");
+
+        if (ds.Tables[0].Rows.Count > 0)
+        {
+            return ds.Tables[0].Rows[0][0].ToString();
+        }
+        else
+        {
+            return "0";
+        }
+    }
+
+
+}

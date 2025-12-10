@@ -1,0 +1,362 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="keywords" content="泰鼎,拓鼎,泰顶,云服务,SAAS,云平台,项目进度,进度管理,项目管理,项目管理软件,项目管理系统,项目管理平台,项目型ERP,工程项目,项目制造,研发项目" />
+    <meta name="description" content="泰鼎、拓鼎、泰顶、云服务、SAAS、云平台、项目协作、进度管理、项目进度、项目管理、项目软件、项目系统、ERP、CRM、OA、协同平台、云办公、拓鼎最新产品、技术、解决方案价值及成功案例" />
+    <title>TakeTop XMB(MiniPMP) - Online Project Collaboration and Progress Management Platform</title>
+
+    <!-- 样式文件 -->
+    <link href="website/css/neat.css" rel="stylesheet" type="text/css" />
+    <link href="website/css/xmb.css" rel="stylesheet" type="text/css" />
+    <link href="website/css/xmbUI.css" rel="stylesheet" type="text/css" />
+
+    <!-- 只保留一个jQuery版本 -->
+    <!--<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>-->
+
+    <script type="text/javascript" src="../js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="website/js/jquery.flexslider-min.js"></script>
+    <script type="text/javascript" src="../js/layer/layer/layer.js"></script>
+    <script type="text/javascript" src="../js/popwindow.js"></script>
+    <script type="text/javascript" src="../js/allAHandler.js"></script>
+
+    <style>
+        a {
+            color: white;
+        }
+
+        /* 添加FlexSlider备用样式，防止JS失效 */
+        .flexslider {
+            background: #fff;
+            position: relative;
+            zoom: 1;
+        }
+
+            .flexslider .slides {
+                zoom: 1;
+            }
+
+                .flexslider .slides > li {
+                    display: none;
+                    -webkit-backface-visibility: hidden;
+                }
+
+                .flexslider .slides img {
+                    width: 100%;
+                    display: block;
+                }
+
+        .flex-viewport {
+            max-height: 2000px;
+            -webkit-transition: all 1s ease;
+            -moz-transition: all 1s ease;
+            -o-transition: all 1s ease;
+            transition: all 1s ease;
+        }
+
+        .no-js .flexslider .slides > li:first-child {
+            display: block;
+        }
+    </style>
+
+    <script type="text/javascript" language="javascript">
+        // 确保DOM完全加载后执行
+        $(document).ready(function () {
+
+            redirectToTarget();
+
+            console.log("Document ready, initializing FlexSlider...");
+
+            // 初始化FlexSlider
+            try {
+                $('.flexslider').flexslider({
+                    animation: "slide",
+                    directionNav: true,
+                    pauseOnAction: false,
+                    pauseOnHover: true,
+                    slideshowSpeed: 4000,
+                    start: function (slider) {
+                        console.log("FlexSlider initialized successfully");
+                    }
+                });
+            } catch (e) {
+                console.error("FlexSlider initialization error: ", e);
+                // 如果FlexSlider初始化失败，显示第一张幻灯片
+                $('.flexslider .slides li:first-child').show();
+            }
+
+          
+
+            aHandlerForCurentWindow();
+        });
+
+        //Device Detection
+        function detectmob() {
+            if (navigator.userAgent.match(/Android/i)
+                || navigator.userAgent.match(/webOS/i)
+                || navigator.userAgent.match(/iPhone/i)
+                || navigator.userAgent.match(/iPad/i)
+                || navigator.userAgent.match(/iPod/i)
+                || navigator.userAgent.match(/BlackBerry/i)
+                || navigator.userAgent.match(/Windows Phone/i)
+            ) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+        function redirectToTarget() {
+            if (detectmob()) {
+                window.location.href = "../DefaultAPP.aspx";
+            }
+            else {
+                popShow('popLoginWindow', 'true');
+            }
+        }
+
+        function displayDivByPCMobile() {
+            if (detectmob()) {
+                document.getElementById('div_PCOperationVideo').style.display = 'none';
+                document.getElementById('div_PCFunctionVideo').style.display = 'none';
+                document.getElementById('div_MobileFunctionVideo').style.display = 'block';
+            }
+            else {
+                document.getElementById('div_MobileFunctionVideo').style.display = 'none';
+                document.getElementById('div_PCOperationVideo').style.display = 'none';
+                document.getElementById('div_PCFunctionVideo').style.display = 'none';
+            }
+        }
+
+        function displayXMBVideo() {
+            if (document.getElementById('DIV_TakeTopXMBVideo').style.display == 'none') {
+                document.getElementById('DIV_TakeTopXMBVideo').style.display = 'block';
+                $('#movie').get(0).play();
+            }
+            else {
+                $('#movie').get(0).pause();
+                document.getElementById('DIV_TakeTopXMBVideo').style.display = 'none';
+            }
+        }
+
+        function OpenGroupWebSite() {
+
+            window.open("https://www.taketopits.com/?TargetLangCode=en", "_blank");
+        }
+
+    </script>
+</head>
+<body onload="displayDivByPCMobile()">
+    <!-- 页面内容保持不变 -->
+    <!--<div id="TMBG" style="width: 100%;height: 100%;overflow: hidden;background: white;z-index: 99;background-size: 100% 100%; display: none;"></div>-->
+    <!--header-->
+    <div id="header" style="overflow:hidden;">
+        <div class="header_inner fix">
+            <div class="logo" style="padding-left:100px"><img src="SiteLogoPC.png"></div>
+            <div id="mima" class="mima" style="padding-right:20px"><a onclick="OpenGroupWebSite()" ></a></div>
+            <div id="mima" class="mima"><a href="tel:02151085119" class="call"></a></div>
+
+            <div id="mima" class="mima1" style="padding-right:10px"><a onclick="OpenGroupWebSite()"></a></div>
+            <div id="mima" class="mima1"><a href="tel:02151085119" class="call"></a></div>
+
+            <div class="denglu" style="padding-right:100px;"><a id="a_Login" onclick="redirectToTarget()">Login</a></div>
+        </div>
+    </div>
+    <!--header end-->
+    <!--banner-->
+    <div class="banner">
+        <div class="flexslider">
+            <ul class="slides">
+                <li style="background:url(website/images/img2.jpg) 50% 0 no-repeat;">
+                    <div class="banner_inner fix">
+                        <h2 class="fix">TakeTop XMB(MiniPMP)</h2>
+                        <h4 class="fix">Suitable for small and medium teams</h4>
+                        <h4 class="fix">Seamlessly upgradeable to Enterprise and Group editions!</h4>
+                        <!--<a href="">Learn More</a>-->
+                    </div>
+                </li>
+                <li style="background:url(website/images/img1.jpg) 50% 0 no-repeat;">
+                    <div class="banner_inner fix">
+                        <h2 class="fix tuandui">Industry Agnostic</h2>
+                        <h4 class="fix h4">Team, Collaboration, Efficiency</h4>
+                        <h4 class="fix h4">Easy-to-use project management software!</h4>
+                        <!--<a href="">Learn More</a>-->
+                    </div>
+                </li>
+                <li style="background:url(website/images/img3.jpg) 50% 0 no-repeat;">
+                    <div class="banner_inner fix">
+                        <h2 class="fix">Anytime, Anywhere</h2>
+                        <h4 class="fix h4">Manage projects on the go</h4>
+                        <h4 class="fix h4">Comes with WeChat APP, making mobile office easier!</h4>
+                        <!--<a href="">Learn More</a>-->
+                    </div>
+                </li>
+                <li style="background:url(website/images/img5.jpg) 50% 0 no-repeat; position:relative;">
+                    <div class="banner_inner fix">
+                        <h2 class="fix ms">Extremely Easy to Use</h2>
+                        <h4 class="fix ms">Plan-centric, task-oriented collaboration</h4>
+                        <h4 class="fix ms">Task progress automatically updates plan and project progress!</h4>
+                        <!--<a href="">Learn More</a>-->
+                    </div>
+                </li>
+                <li style="background: url(website/images/img7.jpg) 50% 0 no-repeat; position: relative;">
+                    <div class="banner_inner fix">
+                        <h2 class="fix ms" style="color:grey;">
+                            Large User Base
+                        </h2>
+                        <h4 class="fix">
+                            High efficiency, super stable
+                        </h4>
+                        <h4 class="fix">
+                            Time-tested, Mature and Easy to Use
+                        </h4>
+                        <a href="">Learn More</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!--banner end-->
+    <div id="DIV_TakeTopXMBVideo" name="DIV_TakeTopXMBVideo" style="display:none;">
+        <div>
+            <div style="text-align: center;">
+                <video id="movie" controls="controls" height="640" src="website/video/TakeTopXMBLocalVideo.mp4" width="95%">Your browser does not support the video tag. It is recommended to download the browser <a href='https://www.taketopits.com/download/tools/chromesetup.exe'><span style="color:green;"> Chrome</span></a> for installation and use!</video>
+            </div>
+        </div>
+    </div>
+    <!--Register-->
+    <div id="zhuce">
+        <div class="zhuce_inner fix">
+            <div class="zhuce_txt">
+                <h3>Project Management Enters a New Era</h3>
+                <p>One-click installation, simple and easy to use, learn in 10 minutes</p>
+            </div>
+
+            <div id="div_MobileFunctionVideo" class="mima" style="text-align:center;width:100%;display:none;">
+                <a href="#DIV_TakeTopXMBVideo" onclick="javascript:displayXMBVideo();">
+                    Video Explanation
+                </a>
+            </div>
+
+            <!--<div id="zhuce_btn" class="zhuce_btn"><a onclick="popShow('popDetailWindow','true')">Free Registration</a></div>-->
+            <a id="div_PCFunctionVideo" href="#DIV_TakeTopXMBVideo" onclick="javascript:displayXMBVideo();" style="display:none;">
+                <div class="weixin">
+                    <p style="color:white;">
+                        Feature Introduction Video
+                    </p>
+                </div>
+            </a>
+
+            <!--<div id="zhuce_btn" class="zhuce_btn1"><a href="../TTUserRegisteredSAAS.aspx">Free Registration</a></div>-->
+            <div id="div_PCOperationVideo" class="shouce" style="display:none;">
+                <div class="chengyuan"><a href="website/video/TakeTopXMBOperationVideo.mp4" target="_blank">Operation Tutorial Video</a></div>
+            </div>
+        </div>
+    </div>
+    <!--Register end-->
+    <!--Project Module-->
+
+    <div class="fix neirong">
+        <div class="xiangmubao">
+            <!--<div class="buzhou" style="color:white;">Selected Modules, Extremely Easy to Use</div>-->
+            <div style="width:100%;text-align:center;">
+                <img src="website/images/XMBen.JPG" width="640" height="344" />
+            </div>
+        </div>
+    </div>
+
+
+    <!--Project Steps-->
+
+    <div id="lianxi" style="height:120px; vertical-align:middle;">
+        <div class="buzhou" style="color:white;padding-top:40px;">Improve project collaboration and progress management efficiency in just 4 steps:</div>
+    </div>
+
+    <div class="fix neirong">
+        <div class="xiangmubao">
+
+            <div class="jieshao">
+                <ul class="buzhou">
+                    <li class="no1"><img src="website/images/NO1.png" /><p>01 Member Registration</p></li>
+                    <li class="no2"><img src="website/images/NO2.png" /><p>02 Create Project</p></li>
+                    <li class="no3"><img src="website/images/NO3.png" /><p>03 Build Team</p></li>
+                    <li class="no4"><img src="website/images/NO4.png" /><p>04 Assign Tasks</p></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <!--Project Steps end-->
+    <!--Footer-->
+    <div class="footer">
+        <div class="footer1">Take action now, use 【TakeTop XMB(MiniPMP)】 to manage your projects!</div>
+        <div style="width:100%;text-align:center;color:white;">
+
+           Contact Consultant: service@taketopits.com
+
+        </div>
+    </div>
+    <!--Footer end-->
+    <!--Contact Us-->
+    <div id="lianxi">
+        <div class="lianxi_inner">
+            <div class="lianxi_left">
+                <h4>Contact Us</h4>
+                <p>Address: Block A, Global Plaza, No. 18 Taolin Road, Lujiazui, Pudong New Area, Shanghai</p>
+                <p>Tel: <a href="tel:02151085119" class="call">(+86) 021-51085119</a></p>
+                <p>Website: <a href="https://www.taketopits.com?TargetProduct=XMB&TargetLangCode=en" target="_blank">www.taketopits.com</a></p>
+                <p>Email: service@taketopits.com</p>
+            </div>
+        </div>
+    </div>
+    <!--Contact Us end-->
+
+    <div class="layui-layer layui-layer-iframe" id="popLoginWindow" name="fixedDiv"
+         style="z-index: 9999; width: 330px; height: 450px; position: absolute; overflow: hidden; display: none; border-radius:10px; ">
+        <div class="layui-layer-title" style="background:#e7e7e8;" id="popwindow_title">
+            <asp:Label ID="Label27" runat="server" Text="&lt;div&gt;&lt;img src=ImagesSkin/Update.png border=0 width=30px height=30px alt='BusinessForm' /&gt;&lt;/div&gt;"></asp:Label>
+        </div>
+        <div id="popwindow_content" class="layui-layer-content" style="overflow:hidden; padding :0px 5px 0px 5px;">
+
+            <iframe src="../DefaultSAAS.aspx" style="width:100%;height :480px; border :none;"></iframe>
+
+        </div>
+
+        <span class="layui-layer-setwin"><a onclick="return popCloseNoPromt();" class="layui-layer-ico layui-layer-close layui-layer-close1 notTab" href="javascript:;"></a></span>
+    </div>
+
+    <div class="layui-layer layui-layer-iframe" id="popUserPWDFindWindow" name="fixedDiv"
+         style="z-index: 9999; width: 530px; height: 630px; position: absolute; overflow: hidden; display: none; border-radius:10px; ">
+        <div class="layui-layer-title" style="background:#e7e7e8;" id="popwindow_title">
+            <asp:Label ID="Label27" runat="server" Text="&lt;div&gt;&lt;img src=ImagesSkin/Update.png border=0 width=30px height=30px alt='BusinessForm' /&gt;&lt;/div&gt;"></asp:Label>
+        </div>
+        <div id="popwindow_content" class="layui-layer-content" style="overflow: auto; padding :0px 5px 0px 5px;">
+
+            <iframe src="../TTUserPWDFindSAAS.aspx" style="width:520px;height :540px; border :none;"></iframe>
+
+        </div>
+
+        <span class="layui-layer-setwin"><a onclick="return popCloseNoPromt();" class="layui-layer-ico layui-layer-close layui-layer-close1 notTab" href="javascript:;"></a></span>
+    </div>
+
+    <div class="layui-layer layui-layer-iframe" id="popUserRegisteredWindow" name="fixedDiv"
+         style="z-index: 9999; width: 530px; height: 630px; position: absolute; overflow: hidden; display: none; border-radius:10px;">
+        <div class="layui-layer-title" style="background:#e7e7e8;" id="popwindow_title">
+            <asp:Label ID="Label27" runat="server" Text="&lt;div&gt;&lt;img src=ImagesSkin/Update.png border=0 width=30px height=30px alt='BusinessForm' /&gt;&lt;/div&gt;"></asp:Label>
+        </div>
+        <div id="popwindow_content" class="layui-layer-content" style="overflow: auto; padding :0px 5px 0px 5px;">
+
+            <iframe src="../TTUserRegisteredSAAS.aspx" style="width:520px;height :540px; border :none;"></iframe>
+
+        </div>
+
+        <span class="layui-layer-setwin"><a onclick="return popCloseNoPromt();" class="layui-layer-ico layui-layer-close layui-layer-close1 notTab" href="javascript:;"></a></span>
+    </div>
+
+    <div class="layui-layer-shade" id="popwindow_shade" style="z-index: 9998; background-color: #000; opacity: 0.3; filter: alpha(opacity=30); display: none;"></div>
+
+</body>
+</html>
