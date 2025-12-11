@@ -32642,4 +32642,13 @@
   <data name="XYHDKHHSYY" xml:space="preserve">
     <value>Scorri verso destra per tornare indietro</value>
   </data>
+  <data name="GXXTYYSJ" xml:space="preserve">
+    <value>Aggiornamento dei dati linguistici del sistema</value>
+  </data>
+  <data name="GXMZYYSJ" xml:space="preserve">
+    <value>Aggiornamento dei dati linguistici del modulo</value>
+  </data>
+  <data name="GXUiYYSJ" xml:space="preserve">
+    <value>Aggiornamento dei dati linguistici dell’interfaccia utente</value>
+  </data>
 </root>

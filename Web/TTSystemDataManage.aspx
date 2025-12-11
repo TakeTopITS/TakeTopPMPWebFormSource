@@ -27,6 +27,12 @@
 
         });
 
+
+        function displayWaitingIcon(varDisplay) {
+
+            document.getElementById('IMG_Waiting').style.display = varDisplay;
+        }
+
     </script>
 
 </head>
@@ -89,6 +95,7 @@
                                                                     </td>
                                                                     <td>
                                                                         <asp:Label ID="Label9" runat="server" Text="<%$ Resources:lang,LiRu%>"></asp:Label>:D:\BackupDB，
+                                                                       
                                                                         <asp:Label ID="Label30" runat="server" Text="<%$ Resources:lang,ZWJJYSYUSERYHSYQXDSXXAQSZ%>"></asp:Label>
                                                                     </td>
                                                                 </tr>
@@ -111,7 +118,7 @@
                                                                 <tr>
                                                                     <td>
                                                                         <asp:Label ID="Label11" runat="server" Text="<%$ Resources:lang,ShuJuKu%>"></asp:Label>:</td>
-                                                                    <td style="text-align:left;">
+                                                                    <td style="text-align: left;">
                                                                         <table>
                                                                             <tr>
                                                                                 <td>
@@ -143,7 +150,9 @@
                                                          
                                                             ，<asp:Label ID="Label35" runat="server" Text="<%$ Resources:lang,QianCiBeiFengShiJIan%>"></asp:Label>:<asp:Label ID="LB_LastestBackupDocTime" runat="server"></asp:Label>，
                                                            （
+                                                           
                                                             <asp:Label ID="Label39" runat="server" Text="<%$ Resources:lang,XTYHZMZESLDWSLDZZDBF%>"></asp:Label>）
+                                                           
                                                             <br />
                                                             <asp:Label ID="Label37" runat="server" Text="<%$ Resources:lang,DYDYCBFHTSBSYWDSJBF%>"></asp:Label>:
                                                         </td>
@@ -159,6 +168,7 @@
                                                                     </td>
                                                                     <td>
                                                                         <asp:Label ID="Label27" runat="server" Text="<%$ Resources:lang,LiRu%>"></asp:Label>:D:\BackupDoc，                            
+                                                                       
                                                                         <asp:Label ID="Label31" runat="server" Text="<%$ Resources:lang,ZWJJYSYUSERYHSYQXDSXXAQSZ%>"></asp:Label>
                                                                     </td>
                                                                 </tr>
@@ -197,6 +207,8 @@
                                                         <td colspan="2" style="padding: 5px 0px 0px 5px" class="formItemBgStyleForAlignLeft" valign="top">
                                                             <asp:Label ID="Label40" runat="server" Text="只读数据库用户ID"></asp:Label>:
                                                          
+                                                           
+
                                                             <asp:Label ID="LB_DBUserID" runat="server"></asp:Label>
                                                         </td>
                                                     </tr>
@@ -204,6 +216,7 @@
                                                         <td style="height: 25px;" class="formItemBgStyleForAlignLeft">
                                                             <asp:Label ID="Label42" runat="server" Text="<%$ Resources:lang,MiMa%>"></asp:Label>
                                                             :
+                                                           
                                                             <asp:TextBox ID="TB_ReadOnlyUserPassword" runat="server"></asp:TextBox>
                                                             <br />
                                                             <span style="font-size: x-small; color: red;">(<asp:Label ID="Label41" runat="server" Text="<%$ Resources:lang,MiMaYBHDSZMBDHKJSZ%>"></asp:Label>)</span>
@@ -238,6 +251,7 @@
                                                         <td style="height: 25px;" class="formItemBgStyleForAlignLeft">
                                                             <asp:Label ID="Label21" runat="server" Text="<%$ Resources:lang,QueZiShiJian%>"></asp:Label>
                                                             :
+                                                           
                                                             <asp:TextBox ID="DLC_WorkflowStart" ReadOnly="false" runat="server"></asp:TextBox>
                                                             <ajaxToolkit:CalendarExtender Format="yyyy-MM-dd" ID="CalendarExtender3" runat="server" TargetControlID="DLC_WorkflowStart">
                                                             </ajaxToolkit:CalendarExtender>
@@ -299,6 +313,7 @@
                                                         <td style="height: 25px;" class="formItemBgStyleForAlignLeft">
                                                             <asp:Label ID="Label18" runat="server" Text="<%$ Resources:lang,QueZiShiJian%>"></asp:Label>
                                                             :
+                                                           
                                                             <asp:TextBox ID="DLC_PlanStart" ReadOnly="false" runat="server"></asp:TextBox>
                                                             <ajaxToolkit:CalendarExtender Format="yyyy-MM-dd" ID="CalendarExtender1" runat="server" TargetControlID="DLC_PlanStart">
                                                             </ajaxToolkit:CalendarExtender>
@@ -326,6 +341,7 @@
                                                         <td style="height: 25px;" class="formItemBgStyleForAlignLeft">
                                                             <asp:Label ID="Label34" runat="server" Text="<%$ Resources:lang,QueZiShiJian%>"></asp:Label>
                                                             :
+                                                           
                                                             <asp:TextBox ID="DLC_CollaborationStart" ReadOnly="false" runat="server"></asp:TextBox>
                                                             <ajaxToolkit:CalendarExtender Format="yyyy-MM-dd" ID="CalendarExtender4" runat="server" TargetControlID="DLC_PlanStart">
                                                             </ajaxToolkit:CalendarExtender>
@@ -353,6 +369,7 @@
                                                     </tr>
                                                     <tr>
                                                         <td style="height: 25px;" class="formItemBgStyleForAlignLeft">&nbsp;&nbsp;&nbsp;
+                                                           
                                                             <asp:HyperLink ID="HL_ErrorLog" NavigateUrl="Doc/Log/LogFile.txt" runat="server" Text="<%$ Resources:lang,XiaZai%>">
                                                             </asp:HyperLink>
                                                         </td>
@@ -375,6 +392,7 @@
                                                         <td style="height: 25px;" class="formItemBgStyleForAlignLeft">
                                                             <asp:Button ID="BT_ExportLoginLog" runat="server" CssClass="inpuLong" Text="<%$ Resources:lang,DaoChuRiZhiWeiEXCEL%>" OnClick="BT_ExportLoginLog_Click" />
                                                             &nbsp;&nbsp;
+                                                           
                                                             <asp:Button ID="BT_ClearLogoLog" runat="server" CssClass="inpuLong" Text="<%$ Resources:lang,QingKongRiZhiBiao%>" OnClick="BT_ClearLogoLog_Click" />
                                                         </td>
                                                         <td style="text-align: left; width: 60%; height: 25px;" class="formItemBgStyleForAlignLeft">
@@ -398,6 +416,7 @@
                                                     <tr>
                                                         <td style="height: 25px;" class="formItemBgStyleForAlignLeft">
                                                             <asp:Button ID="BT_ClearLeftBar" runat="server" CssClass="inpuLong" Text="<%$ Resources:lang,QingChuZuBianLanHanCheng%>" OnClick="BT_ClearLeftBar_Click" />&nbsp;&nbsp;
+                                                           
                                                             <asp:Button ID="BT_ClearSystemCache" runat="server" CssClass="inpuLong" Text="<%$ Resources:lang,QingChuXiTongHanCheng%>" OnClick="BT_ClearSystemCache_Click" />
                                                             &nbsp;&nbsp;
                                                         </td>
@@ -413,6 +432,46 @@
                                                 <table style="width: 98%;" cellpadding="3" cellspacing="0" class="formBgStyle">
                                                     <tr>
                                                         <td style="padding: 5px 0px 0px 5px" class="formItemBgStyleForAlignLeft" valign="top">
+                                                            <asp:Label ID="Label46" runat="server" Text="<%$ Resources:lang,GXXTYYSJ%>"></asp:Label>: 
+                                                           
+                                                            <asp:DropDownList ID="ddlLangSwitcher" runat="server" DataValueField="LangCode" DataTextField="Language" AutoPostBack="true" Style="height: 22px;">
+                                                            </asp:DropDownList>
+                                                            <img id="IMG_Waiting" src="Images/Processing.gif" alt="Loading,please wait..." style="text-align: center; display: none;" />
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="formItemBgStyleForAlignLeft" style="padding-top: 4px;">
+                                                            <asp:Label ID="Label47" runat="server" Text="<%$ Resources:lang,GXMZYYSJ%>"></asp:Label>
+                                                            <br />
+                                                            <asp:Button ID="BT_CopyAllModuleForHomeLanguage" runat="server" CssClass="inpu" Width="450px" OnClick="BT_CopyAllModuleForHomeLanguage_Click" Text="<%$ Resources:lang,CBYMZFZSCQTYYMZ%>" OnClientClick="javascript:displayWaitingIcon('block');" />
+
+                                                            <asp:Button ID="BT_SynchronizeModuleDataFromExcel" runat="server" CssClass="inpuLong" Width="250px" Text="<%$ Resources:lang,DBMZYYSJ%>" OnClick="BT_SynchronizeModuleDataFromExcel_Click" OnClientClick="javascript:displayWaitingIcon('block');" />
+
+                                                            <asp:Button ID="BT_ExportToExcelForLeftModules" CssClass="inpuLong" Width="250px" runat="server" Text="<%$ Resources:lang,DaoChuZhuBianLanMuZuo%>" OnClick="BT_ExportToExcelForLeftModules_Click" OnClientClick="javascript:displayWaitingIcon('block');setTimeout(function(){ displayWaitingIcon('none'); }, 5000);" />
+                                                            <asp:Button ID="BT_ExportToExcelForPageModules" runat="server" CssClass="inpuLong" Width="250px" Text="<%$ Resources:lang,DaoChuYeMianLanMuZuo%>" OnClick="BT_ExportToExcelForPageModules_Click" OnClientClick="javascript:displayWaitingIcon('block');setTimeout(function(){ displayWaitingIcon('none'); }, 5000);" />
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="formItemBgStyleForAlignLeft" style="padding-top: 4px;">
+                                                            <asp:Label ID="Label48" runat="server" Text="<%$ Resources:lang,GXUiYYSJ%>"></asp:Label>
+                                                            <br />
+                                                            <asp:Button ID="BT_CompareByHomeLanguage" runat="server" CssClass="inpuLong" Text="<%$ Resources:lang,YiBenYuDuiBi%>" OnClick="BT_CompareByHomeLanguage_Click" OnClientClick="javascript:displayWaitingIcon('block');setTimeout(function(){ displayWaitingIcon('none'); }, 15000);" />
+
+
+                                                            <asp:Button ID="BT_ImportLanguageData" runat="server" CssClass="inpuLong" Text="<%$ Resources:lang,DaoRuYiNianShuJi%>" OnClick="BT_ImportLanguageData_Click" OnClientClick="javascript:displayWaitingIcon('block');" />
+
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                                <br />
+                                            </td>
+                                        </tr>
+                                        <tr style="display: none;">
+                                            <td style="border-right: solid 1px #D8D8D8; padding: 5px 5px 5px 5px;" class="ItemAlignLeft"
+                                                valign="top">
+                                                <table style="width: 98%;" cellpadding="3" cellspacing="0" class="formBgStyle">
+                                                    <tr>
+                                                        <td style="padding: 5px 0px 0px 5px" class="formItemBgStyleForAlignLeft" valign="top">
                                                             <asp:Label ID="Label2" runat="server" Text="<%$ Resources:lang,ShengChengRTXZhangHuWenJian%>"></asp:Label>:
                                                         </td>
                                                     </tr>
@@ -423,13 +482,15 @@
                                                             &nbsp;<asp:Button ID="BT_CreateRTXDataToTXT" runat="server" CssClass="inpuLong" OnClick="BT_CreateRTXDataToTXT_Click"
                                                                 Text="<%$ Resources:lang,ShengChengZhangHuWenJian%>" />
                                                             &nbsp;
-                                                        <asp:HyperLink ID="HL_RTXAccountDataFile" runat="server">
-                                                            <asp:Label ID="Label3" runat="server" Text="<%$ Resources:lang,XZRTXZHSJWJAYJLC%>"></asp:Label>
-                                                        </asp:HyperLink>
+                                                       
+                                                            <asp:HyperLink ID="HL_RTXAccountDataFile" runat="server">
+                                                                <asp:Label ID="Label3" runat="server" Text="<%$ Resources:lang,XZRTXZHSJWJAYJLC%>"></asp:Label>
+                                                            </asp:HyperLink>
                                                             &nbsp;&nbsp;&nbsp;
-                                                        <asp:HyperLink ID="HL_RTXTest" NavigateUrl="TTRTXTest.aspx" runat="server">
-                                                            <asp:Label ID="Label4" runat="server" Text="<%$ Resources:lang,RTXFuWuLianJieCeShi%>"></asp:Label>
-                                                        </asp:HyperLink>
+                                                       
+                                                            <asp:HyperLink ID="HL_RTXTest" NavigateUrl="TTRTXTest.aspx" runat="server">
+                                                                <asp:Label ID="Label4" runat="server" Text="<%$ Resources:lang,RTXFuWuLianJieCeShi%>"></asp:Label>
+                                                            </asp:HyperLink>
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -444,6 +505,9 @@
                 </ContentTemplate>
                 <Triggers>
                     <asp:PostBackTrigger ControlID="BT_ExportLoginLog" />
+                    <asp:PostBackTrigger ControlID="BT_ExportToExcelForLeftModules" />
+                    <asp:PostBackTrigger ControlID="BT_ExportToExcelForPageModules" />
+                    <asp:PostBackTrigger ControlID="BT_CompareByHomeLanguage" />
                 </Triggers>
             </asp:UpdatePanel>
             <div style="position: fixed; display: none; z-index: 9999;" id="progressContainer">

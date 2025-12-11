@@ -22834,14 +22834,746 @@
   <data name="ZZXTYHSYJDYNDSLICENSEGDDSMBNZXZXDYHL" xml:space="preserve">
     <value>Jumlah pengguna sistem sudah sama dengan jumlah yang ditetapkan oleh Lisensi otorisasi Anda, tidak dapat menambah pengguna baru lagi!</value>
   </data>
+  <data name="ZZXXFSCG" xml:space="preserve">
+    <value>Informasi berhasil dikirim!</value>
+  </data>
+  <data name="ZZXXFSSBJC" xml:space="preserve">
+    <value>Informasi gagal dikirim, harap periksa!</value>
+  </data>
+  <data name="ZZXXMJLDDMBNWKJC" xml:space="preserve">
+    <value>Kode manajer proyek baru tidak boleh kosong, harap periksa!</value>
+  </data>
+  <data name="ZZXXSD1BNXYKSSJJC" xml:space="preserve">
+    <value>Waktu istirahat 1 tidak boleh kurang dari waktu mulai, harap periksa!</value>
+  </data>
+  <data name="ZZXXSD1YXYXXSD2JC" xml:space="preserve">
+    <value>Waktu istirahat 1 harus kurang dari waktu istirahat 2, harap periksa!</value>
+  </data>
+  <data name="ZZXXSD2BNDYJSSJJC" xml:space="preserve">
+    <value>Waktu istirahat 2 tidak boleh lebih besar dari waktu berakhir, harap periksa!</value>
+  </data>
+  <data name="ZZXYBYXWKBC" xml:space="preserve">
+    <value>Industri tidak boleh kosong, harap lengkapi!</value>
+  </data>
+  <data name="ZZXYDRRZDJH" xml:space="preserve">
+    <value>---Harap pilih rencana untuk mengimpor log terlebih dahulu!!</value>
+  </data>
+  <data name="ZZXYGG" xml:space="preserve">
+    <value>Izin telah diubah!</value>
+  </data>
+  <data name="ZZXZBB" xml:space="preserve">
+    <value>Harap pilih versi terlebih dahulu!</value>
+  </data>
+  <data name="ZZXZBBCNZJKSRY" xml:space="preserve">
+    <value>Harap pilih laporan terlebih dahulu untuk menambah personel yang dapat dilihat!</value>
+  </data>
+  <data name="ZZXZBJDYJDMX" xml:space="preserve">
+    <value>Harap pilih detail lembar serah terima yang akan diedit!</value>
+  </data>
+  <data name="ZZXZCCJC" xml:space="preserve">
+    <value>Penambahan gagal, harap periksa!</value>
+  </data>
+  <data name="ZZXZCCKNMCZD100GHZHBZZSZD200GHZGDJC" xml:space="preserve">
+    <value>Penambahan gagal, kemungkinan nama (maksimal 100 karakter Hanzi) dan catatan (maksimal 200 karakter Hanzi) terlalu panjang, harap periksa!</value>
+  </data>
+  <data name="ZZXZCG" xml:space="preserve">
+    <value>Penambahan berhasil!</value>
+  </data>
+  <data name="ZZXZCGD" xml:space="preserve">
+    <value>Harap pilih daftar pembelian!</value>
+  </data>
+  <data name="ZZXZCGJDSGADMINHSAMPLEYH" xml:space="preserve">
+    <value>Penambahan berhasil, jangan lupa berikan otorisasi kepada pengguna ADMIN dan SAMPLE!</value>
+  </data>
+  <data name="ZZXZCGWJ" xml:space="preserve">
+    <value>Harap pilih dokumen pembelian!</value>
+  </data>
+  <data name="ZZXZCGXMCYYJZWCJSZCY" xml:space="preserve">
+    <value>Penambahan berhasil, anggota proyek telah diubah menjadi anggota grup peran!</value>
+  </data>
+  <data name="ZZXZCPX" xml:space="preserve">
+    <value>Harap pilih lini produk!</value>
+  </data>
+  <data name="ZZXZD" xml:space="preserve">
+    <value>Harap pilih wilayah besar!</value>
+  </data>
+  <data name="ZZXZDLLB" xml:space="preserve">
+    <value>Harap pilih daftar kategori besar!</value>
+  </data>
+  <data name="ZZXZDLZLHXLDM" xml:space="preserve">
+    <value>Harap pilih kode kategori besar, menengah, atau kecil!</value>
+  </data>
+  <data name="ZZXZDWMC" xml:space="preserve">
+    <value>Harap pilih nama unit!</value>
+  </data>
+  <data name="ZZXZFKJH" xml:space="preserve">
+    <value>Harap pilih rencana pembayaran!</value>
+  </data>
+  <data name="ZZXZFLD" xml:space="preserve">
+    <value>Harap pilih lembar pengeluaran bahan!</value>
+  </data>
+  <data name="ZZXZGYSCNZJCY" xml:space="preserve">
+    <value>Harap pilih pemasok untuk menambah anggota!</value>
+  </data>
+  <data name="ZZXZHT" xml:space="preserve">
+    <value>Harap pilih kontrak!</value>
+  </data>
+  <data name="ZZXZHTCNZJCY" xml:space="preserve">
+    <value>Harap pilih kontrak untuk menambah anggota!</value>
+  </data>
+  <data name="ZZXZJH" xml:space="preserve">
+    <value>Harap pilih rencana!</value>
+  </data>
+  <data name="ZZXZJHMX" xml:space="preserve">
+    <value>Harap pilih detail rencana!</value>
+  </data>
+  <data name="ZZXZKHCNZJCY" xml:space="preserve">
+    <value>Harap pilih pelanggan untuk menambah anggota!</value>
+  </data>
+  <data name="ZZXZLLJH" xml:space="preserve">
+    <value>Harap pilih rencana pengambilan bahan!</value>
+  </data>
+  <data name="ZZXZLXXM" xml:space="preserve">
+    <value>Harap pilih proyek yang telah disetujui!</value>
+  </data>
+  <data name="ZZXZSB" xml:space="preserve">
+    <value>Penambahan gagal!</value>
+  </data>
+  <data name="ZZXZSBBNZFZJXTKMJC" xml:space="preserve">
+    <value>Penambahan gagal, tidak dapat menambah mata pelajaran yang sama berulang kali, harap periksa!</value>
+  </data>
+  <data name="ZZXZSBCCYKNYCZBNZFTJJC" xml:space="preserve">
+    <value>Penambahan gagal, anggota ini mungkin sudah ada, tidak dapat ditambahkan lagi, harap periksa!</value>
+  </data>
+  <data name="ZZXZSBCXMZKNCZCBBHJC" xml:space="preserve">
+    <value>Penambahan gagal, kemungkinan sudah ada nomor versi ini dalam proyek ini, harap periksa!</value>
+  </data>
+  <data name="ZZXZSBCYHBCZJC" xml:space="preserve">
+    <value>Penambahan gagal, pengguna ini tidak?存在，请检查? (Catatan: bagian ini rusak dalam teks asli, kemungkinan maksudnya "pengguna ini tidak ada, harap periksa!")</value>
+  </data>
+  <data name="ZZXZSBCYSZKNCZCBBHJC" xml:space="preserve">
+    <value>Penambahan gagal, kemungkinan sudah ada nomor versi ini dalam elemen ini, harap periksa!</value>
+  </data>
+  <data name="ZZXZSBCZXTDBGHJC" xml:space="preserve">
+    <value>Penambahan gagal, ada nomor bea cukai yang sama, harap periksa!</value>
+  </data>
+  <data name="ZZXZSBCZXTKMJC" xml:space="preserve">
+    <value>Penambahan gagal, ada mata pelajaran yang sama, harap periksa!</value>
+  </data>
+  <data name="ZZXZSBDJRYDMCWCWCRJC" xml:space="preserve">
+    <value>Penambangan gagal, kode petugas pendaftaran salah, tidak ditemukan, harap periksa!</value>
+  </data>
+  <data name="ZZXZSBDMBNZFW0W1YSSYXBNWKJC" xml:space="preserve">
+    <value>Penambahan gagal, kode tidak boleh berulang, 0, 1, semua item di atas tidak boleh kosong, harap periksa!</value>
+  </data>
+  <data name="ZZXZSBDMHFDMBNWK" xml:space="preserve">
+    <value>Penambahan gagal, kode dan kode induk tidak boleh kosong!</value>
+  </data>
+  <data name="ZZXZSBDMZFJC" xml:space="preserve">
+    <value>Penambahan gagal, kode duplikat, harap periksa!</value>
+  </data>
+  <data name="ZZXZSBHTHZFJC" xml:space="preserve">
+    <value>Penambahan gagal, nomor kontrak duplikat, harap periksa!</value>
+  </data>
+  <data name="ZZXZSBJC" xml:space="preserve">
+    <value>Penambahan gagal, harap periksa!</value>
+  </data>
+  <data name="ZZXZSBJCDMZFHMXWK" xml:space="preserve">
+    <value>Penambahan gagal, harap periksa (kode duplikat atau ada item yang kosong)!</value>
+  </data>
+  <data name="ZZXZSBJCZFHMXWK" xml:space="preserve">
+    <value>Penambahan gagal, harap periksa (duplikat atau ada item yang kosong)!</value>
+  </data>
+  <data name="ZZXZSBJSZZMBNWKJC" xml:space="preserve">
+    <value>Penambahan gagal, nama grup peran tidak boleh kosong, harap periksa!</value>
+  </data>
+  <data name="ZZXZSBKNCXTMCMBJC" xml:space="preserve">
+    <value>Penambahan gagal, kemungkinan ada template dengan nama yang sama, harap periksa!</value>
+  </data>
+  <data name="ZZXZSBMMCDBXDYHDY8WJC" xml:space="preserve">
+    <value>Penambahan gagal, panjang kata sandi harus lebih dari atau sama dengan 8 karakter, harap periksa!</value>
+  </data>
+  <data name="ZZXZSBXZGZLMBLXJC" xml:space="preserve">
+    <value>Penambahan gagal, harap pilih jenis template alur kerja terlebih dahulu!</value>
+  </data>
+  <data name="ZZXZSBYHDMBNWK" xml:space="preserve">
+    <value>Penambahan gagal, kode pengguna tidak boleh kosong!</value>
+  </data>
+  <data name="ZZXZSBYSJEBNW0JC" xml:space="preserve">
+    <value>Penambahan gagal, jumlah anggaran tidak boleh 0, harap periksa!</value>
+  </data>
+  <data name="ZZXZSJLD" xml:space="preserve">
+    <value>Harap pilih atasan langsung!</value>
+  </data>
+  <data name="ZZXZSMBNCG10GZF" xml:space="preserve">
+    <value>Deskripsi sifat tidak boleh lebih dari 10 karakter!</value>
+  </data>
+  <data name="ZZXZSMHBNWFFZF" xml:space="preserve">
+    <value>Nomor deskripsi sifat tidak boleh berupa karakter ilegal!</value>
+  </data>
+  <data name="ZZXZTBCNZJCY" xml:space="preserve">
+    <value>Harap pilih tender untuk menambah anggota!</value>
+  </data>
+  <data name="ZZXZTBLB" xml:space="preserve">
+    <value>Harap pilih daftar tender!</value>
+  </data>
+  <data name="ZZXZTZFSWB" xml:space="preserve">
+    <value>Notifikasi kolaborasi telah dikirim!</value>
+  </data>
+  <data name="ZZXZWDLXJD" xml:space="preserve">
+    <value>Harap pilih simpul jenis dokumen!</value>
+  </data>
+  <data name="ZZXZWYNOCODEDYJDMX" xml:space="preserve">
+    <value>Harap pilih detail lembar serah terima yang belum memiliki NoCode!</value>
+  </data>
+  <data name="ZZXZWZDM" xml:space="preserve">
+    <value>Harap pilih kode material!</value>
+  </data>
+  <data name="ZZXZWZDMHJHMX" xml:space="preserve">
+    <value>Harap pilih kode material dan detail rencana!</value>
+  </data>
+  <data name="ZZXZXM" xml:space="preserve">
+    <value>Harap pilih proyek!</value>
+  </data>
+  <data name="ZZXZYBJDYJDMX" xml:space="preserve">
+    <value>Harap pilih detail lembar serah terima yang akan diedit!</value>
+  </data>
+  <data name="ZZXZYDYDSLD" xml:space="preserve">
+    <value>Harap pilih lembar penerimaan bahan yang akan dicetak!</value>
+  </data>
+  <data name="ZZXZYFK" xml:space="preserve">
+    <value>Harap pilih pembayaran di muka!</value>
+  </data>
+  <data name="ZZXZYJDH" xml:space="preserve">
+    <value>Harap pilih nomor lembar serah terima!</value>
+  </data>
+  <data name="ZZXZYSCDCBSLB" xml:space="preserve">
+    <value>Harap pilih daftar kontraktor yang akan dihapus!</value>
+  </data>
+  <data name="ZZXZYSCDLXRLB" xml:space="preserve">
+    <value>Harap pilih daftar kontak yang akan dihapus!</value>
+  </data>
+  <data name="ZZXZYXGDBJLB" xml:space="preserve">
+    <value>Harap pilih daftar kelas yang akan dimodifikasi!</value>
+  </data>
+  <data name="ZZXZYXGDFKSPD" xml:space="preserve">
+    <value>Harap pilih formulir persetujuan pembayaran yang akan dimodifikasi!</value>
+  </data>
+  <data name="ZZXZYXGDFPLB" xml:space="preserve">
+    <value>Harap pilih daftar faktur yang akan dimodifikasi!</value>
+  </data>
+  <data name="ZZXZYXGDHTMX" xml:space="preserve">
+    <value>Harap pilih detail kontrak yang akan dimodifikasi!</value>
+  </data>
+  <data name="ZZXZYXGDKB" xml:space="preserve">
+    <value>Harap pilih gudang yang akan dimodifikasi!</value>
+  </data>
+  <data name="ZZXZYXGDNJLB" xml:space="preserve">
+    <value>Harap pilih daftar tingkat kelas yang akan dimodifikasi!</value>
+  </data>
+  <data name="ZZXZYXGDSDALB" xml:space="preserve">
+    <value>Harap pilih daftar arsip siswa yang akan dimodifikasi!</value>
+  </data>
+  <data name="ZZXZYXGDSLD" xml:space="preserve">
+    <value>Harap pilih lembar penerimaan bahan yang akan dimodifikasi!</value>
+  </data>
+  <data name="ZZXZYXGDSSLX" xml:space="preserve">
+    <value>Harap pilih rute implementasi yang akan dimodifikasi!</value>
+  </data>
+  <data name="ZZXZYXGDTBLB" xml:space="preserve">
+    <value>Harap pilih daftar tender yang akan dimodifikasi!</value>
+  </data>
+  <data name="ZZXZYXGDYLJGLB" xml:space="preserve">
+    <value>Harap pilih daftar harga bahan baku yang akan dimodifikasi!</value>
+  </data>
+  <data name="ZZXZZXM" xml:space="preserve">
+    <value>Harap pilih proyek utama!</value>
+  </data>
+  <data name="ZZYBBNWFFZF" xml:space="preserve">
+    <value>Kode pos tidak boleh berupa karakter ilegal!</value>
+  </data>
+  <data name="ZZYBCDBNCG6GZFC" xml:space="preserve">
+    <value>Panjang kode pos tidak boleh lebih dari 6 karakter string!</value>
+  </data>
+  <data name="ZZYBNWFFZF" xml:space="preserve">
+    <value>Wilayah tidak boleh berupa karakter ilegal!</value>
+  </data>
+  <data name="ZZYBNWKZ" xml:space="preserve">
+    <value>Wilayah tidak boleh kosong, harap pilih!</value>
+  </data>
+  <data name="ZZYBZDKTX" xml:space="preserve">
+    <value>Kolom kode pos kosong, harap isi!</value>
+  </data>
+  <data name="ZZYCGZCXM" xml:space="preserve">
+    <value>Berhasil diubah menjadi proyek!</value>
+  </data>
+  <data name="ZZYCYCYYSEXMESSAGE" xml:space="preserve">
+    <value>Pengecualian, penyebabnya adalah: " + ex.Message + "!</value>
+  </data>
   <data name="ZZYCZBNZFTJJC" xml:space="preserve">
     <value>Sudah ada, tidak dapat menambahkan duplikat, harap periksa!</value>
+  </data>
+  <data name="ZZYCZSPJLBNSCLJC" xml:space="preserve">
+    <value>Sudah ada catatan persetujuan, tidak dapat dihapus, harap periksa!</value>
+  </data>
+  <data name="ZZYCZSPJLBNXGLJC" xml:space="preserve">
+    <value>Sudah ada catatan persetujuan, tidak dapat dimodifikasi, harap periksa!</value>
+  </data>
+  <data name="ZZYFKBNWKBC" xml:space="preserve">
+    <value>Pembayaran di muka tidak boleh kosong, harap lengkapi!</value>
+  </data>
+  <data name="ZZYFZDBBHBFZDBBBNXTJC" xml:space="preserve">
+    <value>Versi yang akan disalin dan versi yang disalin tidak boleh sama, harap periksa!</value>
+  </data>
+  <data name="ZZYGB" xml:space="preserve">
+    <value>Telah ditutup!</value>
+  </data>
+  <data name="ZZYHBNWKJC" xml:space="preserve">
+    <value>Pengguna tidak boleh kosong, harap periksa!</value>
+  </data>
+  <data name="ZZYHD" xml:space="preserve">
+    <value>Sudah aktif!</value>
+  </data>
+  <data name="ZZYHDMBNWKFZSB" xml:space="preserve">
+    <value>Kode pengguna tidak boleh kosong, penyalinan gagal!</value>
+  </data>
+  <data name="ZZYHDMHMMCWHYBZZSY" xml:space="preserve">
+    <value>Kode pengguna atau kata sandi salah, atau telah dinonaktifkan!</value>
+  </data>
+  <data name="ZZYHDMYHMCMMZWEMAILDBNWKJC" xml:space="preserve">
+    <value>Semua yang bertanda * tidak boleh kosong, harap periksa!</value>
+  </data>
+  <data name="ZZYHDMYHMCZWEMAILDBNWKJC" xml:space="preserve">
+    <value>Kode pengguna, nama pengguna, jabatan, EMail tidak boleh kosong, harap periksa!</value>
+  </data>
+  <data name="ZZYHGHSJCG" xml:space="preserve">
+    <value>Pengguna berhasil mengembalikan buku!</value>
+  </data>
+  <data name="ZZYHJYSJCG" xml:space="preserve">
+    <value>Pengguna berhasil meminjam buku!</value>
+  </data>
+  <data name="ZZYHMHMMDBNWKJC" xml:space="preserve">
+    <value>Nama pengguna dan kata sandi tidak boleh kosong, harap periksa!</value>
+  </data>
+  <data name="ZZYHTJDBSSXHCJXCL" xml:space="preserve">
+    <value>Ada kontrak &lt; kemajuan bukan efektif atau pemeriksaan material, harap tangani terlebih dahulu!</value>
+  </data>
+  <data name="ZZYJCZBYZFZ" xml:space="preserve">
+    <value>Sudah ada, jangan dipilih berulang!</value>
+  </data>
+  <data name="ZZYJFYBNW0HZKXG" xml:space="preserve">
+    <value>Biaya perkiraan tidak boleh 0 atau kosong, harap ubah!</value>
+  </data>
+  <data name="ZZYJFYBXDY0KYGGGSZ" xml:space="preserve">
+    <value>Biaya perkiraan harus lebih besar dari 0, dapat diberikan nilai perkiraan!</value>
+  </data>
+  <data name="ZZYJFYBXWXSHZZS" xml:space="preserve">
+    <value>Biaya perkiraan harus berupa desimal atau bilangan bulat!</value>
+  </data>
+  <data name="ZZYJH" xml:space="preserve">
+    <value>Sudah diaktifkan!</value>
+  </data>
+  <data name="ZZYJJ" xml:space="preserve">
+    <value>Sudah ditolak!</value>
+  </data>
+  <data name="ZZYJSFWC" xml:space="preserve">
+    <value>---Pengiriman dan penerimaan email selesai!</value>
+  </data>
+  <data name="ZZYJXXBTSWC" xml:space="preserve">
+    <value>Semua pesan peringatan telah didorong!</value>
+  </data>
+  <data name="ZZYJYAYLDZYDYGYJYABZDWFSC" xml:space="preserve">
+    <value>Lembar latihan rencana darurat telah memanggil lembar penyusunan rencana darurat ini, tidak dapat dihapus!</value>
+  </data>
+  <data name="ZZYJZLDGYSBXYZFDJ" xml:space="preserve">
+    <value>Sudah memilih pemasok saat ini, tidak perlu diklik lagi!</value>
+  </data>
+  <data name="ZZYKDJDBSBXXCL" xml:space="preserve">
+    <value>Ada permintaan pembayaran &lt; kemajuan bukan penggantian, harap tangani terlebih dahulu!</value>
+  </data>
+  <data name="ZZYKRZB" xml:space="preserve">
+    <value>Tabel log telah dikosongkan!</value>
+  </data>
+  <data name="ZZYKXXFSB" xml:space="preserve">
+    <value>Tabel pengiriman informasi telah dikosongkan!</value>
+  </data>
+  <data name="ZZYLJGBXWXSHZZS" xml:space="preserve">
+    <value>Harga bahan baku harus berupa desimal atau bilangan bulat!</value>
+  </data>
+  <data name="ZZYLJGBYXWKBC" xml:space="preserve">
+    <value>Harga bahan baku tidak boleh kosong, harap lengkapi!</value>
+  </data>
+  <data name="ZZYLLXBNBHFFZF" xml:space="preserve">
+    <value>Jenis bahan baku tidak boleh mengandung karakter ilegal!</value>
+  </data>
+  <data name="ZZYLLXBYXWKBC" xml:space="preserve">
+    <value>Jenis bahan baku tidak boleh kosong, harap lengkapi!</value>
+  </data>
+  <data name="ZZYLMCBNSFFZF" xml:space="preserve">
+    <value>Nama bahan baku tidak boleh berupa karakter ilegal!</value>
+  </data>
+  <data name="ZZYLMCBYXWKBC" xml:space="preserve">
+    <value>Nama bahan baku tidak boleh kosong, harap lengkapi!</value>
+  </data>
+  <data name="ZZYLMCYJCZGG" xml:space="preserve">
+    <value>Nama bahan baku sudah ada, harap ubah!</value>
+  </data>
+  <data name="ZZYLMSBNBHFFZF" xml:space="preserve">
+    <value>Deskripsi bahan baku tidak boleh mengandung karakter ilegal!</value>
+  </data>
+  <data name="ZZYLSYBNWFFZF" xml:space="preserve">
+    <value>Uji tekanan tidak boleh berupa karakter ilegal!</value>
+  </data>
+  <data name="ZZYMSBNWFFZF" xml:space="preserve">
+    <value>Deskripsi wilayah tidak boleh berupa karakter ilegal!</value>
+  </data>
+  <data name="ZZYSFYYJCWEXMESSAGE" xml:space="preserve">
+    <value>Biaya transportasi penyelesaian bulanan, kesalahan: " + ex.Message + "!</value>
+  </data>
+  <data name="ZZYSHDGRXXWFCZSCLXRXXSB" xml:space="preserve">
+    <value>Informasi pribadi yang telah disetujui tidak dapat dioperasikan, penghapusan informasi kontak gagal</value>
+  </data>
+  <data name="ZZYSHDGRXXWFCZSCZZZSXXSB" xml:space="preserve">
+    <value>Informasi pribadi yang telah disetujui tidak dapat dioperasikan, penghapusan informasi sertifikat kualifikasi gagal</value>
+  </data>
+  <data name="ZZYSHDGRXXWFCZXGLXRXXSB" xml:space="preserve">
+    <value>Informasi pribadi yang telah disetujui tidak dapat dioperasikan, modifikasi informasi kontak gagal</value>
+  </data>
+  <data name="ZZYSHDGRXXWFCZXGZZZSXXSB" xml:space="preserve">
+    <value>Informasi pribadi yang telah disetujui tidak dapat dioperasikan, modifikasi informasi sertifikat kualifikasi gagal</value>
+  </data>
+  <data name="ZZYSHDGRXXWFCZXZLXRXXSB" xml:space="preserve">
+    <value>Informasi pribadi yang telah disetujui tidak dapat dioperasikan, penambahan informasi kontak gagal</value>
+  </data>
+  <data name="ZZYSHDGRXXWFCZXZZZZSXXSB" xml:space="preserve">
+    <value>Informasi pribadi yang telah disetujui tidak dapat dioperasikan, penambahan informasi sertifikat kualifikasi gagal</value>
+  </data>
+  <data name="ZZYSJEBNWK0BC" xml:space="preserve">
+    <value>Jumlah anggaran tidak boleh kosong (0), harap lengkapi!</value>
+  </data>
+  <data name="ZZYSJEBXWXSHZZS" xml:space="preserve">
+    <value>Jumlah anggaran harus berupa desimal atau bilangan bulat!</value>
+  </data>
+  <data name="ZZYSL" xml:space="preserve">
+    <value>Sudah diterima!</value>
+  </data>
+  <data name="ZZYSRHYXDBNWKJC" xml:space="preserve">
+    <value>Semua item di atas tidak boleh kosong, harap periksa!</value>
+  </data>
+  <data name="ZZYSZSTRAGENCYNAMEWNDGZLSPDLRXZXSWNZJJK" xml:space="preserve">
+    <value>Sudah mengatur agen persetujuan alur kerja Anda, batalkan dengan mengaturnya sebagai diri sendiri!</value>
+  </data>
+  <data name="ZZYTBNWFFZF" xml:space="preserve">
+    <value>Penggunaan tidak boleh berupa karakter ilegal!</value>
+  </data>
+  <data name="ZZYTBNWKBC" xml:space="preserve">
+    <value>Penggunaan tidak boleh kosong, harap lengkapi!</value>
+  </data>
+  <data name="ZZYWCCYZR" xml:space="preserve">
+    <value>Pemindahan anggota telah selesai!</value>
+  </data>
+  <data name="ZZYXGZLSPDL" xml:space="preserve">
+    <value>Agen persetujuan alur kerja telah dibatalkan!</value>
+  </data>
+  <data name="ZZYYHDMLXDMJJBRDMZRHYXDBNWKJC" xml:space="preserve">
+    <value>Kode pengguna asli, jenis, kode, dan kode petugas, salah satu tidak boleh kosong, harap periksa!</value>
+  </data>
+  <data name="ZZYYJLBNXZ" xml:space="preserve">
+    <value>Sudah ada catatan, tidak dapat ditambahkan!</value>
+  </data>
+  <data name="ZZYZFWSBMCWJCCWYYKNSEXMESSAGE" xml:space="preserve">
+    <value>Kode identifikasi layanan verifikasi salah, harap periksa! Penyebab kesalahan mungkin: " + ex.Message + "</value>
+  </data>
+  <data name="ZZYZMCWSRZDYZM" xml:space="preserve">
+    <value>Kode verifikasi salah, harap masukkan kode verifikasi yang benar.</value>
+  </data>
+  <data name="ZZZBBHDBNWKJC" xml:space="preserve">
+    <value>Nomor tender tidak boleh kosong, harap periksa!</value>
+  </data>
+  <data name="ZZZBBHYJCZBNZF" xml:space="preserve">
+    <value>Nomor tender sudah ada, tidak boleh diulang!</value>
+  </data>
+  <data name="ZZZBDCGWJLXGLY" xml:space="preserve">
+    <value>Tidak menemukan dokumen pembelian, harap hubungi administrator!</value>
+  </data>
+  <data name="ZZZBDXYDHTLB" xml:space="preserve">
+    <value>Tidak menemukan daftar kontrak yang sesuai!</value>
+  </data>
+  <data name="ZZZBDXYDKDJL" xml:space="preserve">
+    <value>Tidak menemukan catatan permintaan pembayaran yang sesuai!</value>
+  </data>
+  <data name="ZZZBDXYDKDLB" xml:space="preserve">
+    <value>Tidak menemukan daftar permintaan pembayaran yang sesuai!</value>
+  </data>
+  <data name="ZZZBFASCCG" xml:space="preserve">
+    <value>Rencana tender berhasil dibuat!</value>
+  </data>
+  <data name="ZZZBFASCSBJC" xml:space="preserve">
+    <value>Pembuatan rencana tender gagal, harap periksa!</value>
+  </data>
+  <data name="ZZZBHBNWFFZF" xml:space="preserve">
+    <value>Nomor sendiri tidak boleh berupa karakter ilegal!</value>
+  </data>
+  <data name="ZZZBHYJCZGG" xml:space="preserve">
+    <value>Nomor sendiri sudah ada, harap ubah!</value>
+  </data>
+  <data name="ZZZBJ" xml:space="preserve">
+    <value>Harap pilih kelas!</value>
+  </data>
+  <data name="ZZZBJLBCZJC" xml:space="preserve">
+    <value>Catatan tender tidak ditemukan, harap periksa!</value>
+  </data>
+  <data name="ZZZBTJSCCG" xml:space="preserve">
+    <value>Rekomendasi pemenang tender berhasil dibuat!</value>
+  </data>
+  <data name="ZZZBTJSCSBJC" xml:space="preserve">
+    <value>Pembuatan rekomendasi pemenang tender gagal, harap periksa!</value>
+  </data>
+  <data name="ZZZCBHZCDMZCMCZCGGCFWZLYWZZRHYXDBNWKJC" xml:space="preserve">
+    <value>Nomor aset, kode aset, nama aset, spesifikasi aset, lokasi penyimpanan, lokasi sumber, salah satu tidak boleh kosong, harap periksa!</value>
+  </data>
+  <data name="ZZZCBNWFFZF" xml:space="preserve">
+    <value>Jabatan tidak boleh berupa karakter ilegal!</value>
+  </data>
+  <data name="ZZZCBNWKBC" xml:space="preserve">
+    <value>Jabatan tidak boleh kosong, harap lengkapi!</value>
+  </data>
+  <data name="ZZZCBSXXXZLXRXXSB" xml:space="preserve">
+    <value>Harap pilih informasi kontraktor, penambahan informasi kontak gagal</value>
+  </data>
+  <data name="ZZZCCG" xml:space="preserve">
+    <value>Pendaftaran berhasil!</value>
+  </data>
+  <data name="ZZZCCGSSBKNGZLMCGCZD25GHZJC" xml:space="preserve">
+    <value>Permintaan pembelian aset gagal, kemungkinan nama pekerjaan terlalu panjang (maksimal 25 karakter Hanzi), harap periksa!</value>
+  </data>
+  <data name="ZZZCCGSSCCG" xml:space="preserve">
+    <value>Permintaan pembelian aset berhasil dibuat!</value>
+  </data>
+  <data name="ZZZCCGSSCSB" xml:space="preserve">
+    <value>Pembuatan permintaan pembelian aset gagal!</value>
+  </data>
+  <data name="ZZZCCJC" xml:space="preserve">
+    <value>Pemilihan gagal, harap periksa!</value>
+  </data>
+  <data name="ZZZCG" xml:space="preserve">
+    <value>Pemilihan berhasil!</value>
+  </data>
+  <data name="ZZZCGWJ" xml:space="preserve">
+    <value>Harap pilih dokumen pembelian!</value>
+  </data>
+  <data name="ZZZCHYCG" xml:space="preserve">
+    <value>Pemulihan aset berhasil!</value>
+  </data>
+  <data name="ZZZCHYSBJC" xml:space="preserve">
+    <value>Pemulihan aset gagal, harap periksa!</value>
+  </data>
+  <data name="ZZZCLYGZLSCCG" xml:space="preserve">
+    <value>Permintaan penggunaan aset berhasil dibuat!</value>
+  </data>
+  <data name="ZZZCLYGZLSSCSB" xml:space="preserve">
+    <value>Pembuatan permintaan penggunaan aset gagal!</value>
+  </data>
+  <data name="ZZZCSBJC" xml:space="preserve">
+    <value>Pendaftaran gagal, harap periksa!</value>
+  </data>
+  <data name="ZZZCSBZCMBNWKJC" xml:space="preserve">
+    <value>Pendaftaran gagal, kode pendaftaran tidak boleh kosong, harap periksa!</value>
+  </data>
+  <data name="ZZZCSBZCMBNXRHTJCGXLJCS" xml:space="preserve">
+    <value>Pendaftaran gagal, kode pendaftaran tidak dapat ditulis ke backend, harap periksa parameter koneksi</value>
   </data>
   <data name="ZZZCWPZ" xml:space="preserve">
     <value>Harap pilih voucher keuangan!</value>
   </data>
   <data name="ZZZCZX" xml:space="preserve">
     <value>Silakan pilih item pembukuan!</value>
+  </data>
+  <data name="ZZZDCG" xml:space="preserve">
+    <value>Penetapan berhasil!</value>
+  </data>
+  <data name="ZZZDFYCLFBXRYTODODDCWEXMESSAGE" xml:space="preserve">
+    <value>Biaya perjamuan, biaya perjalanan, personel penggantian TODO ditentukan, kesalahan: " + ex.Message + "!</value>
+  </data>
+  <data name="ZZZDSBJC" xml:space="preserve">
+    <value>Penetapan gagal, harap periksa!</value>
+  </data>
+  <data name="ZZZGBNWFFZF" xml:space="preserve">
+    <value>Kualifikasi tidak boleh berupa karakter ilegal!</value>
+  </data>
+  <data name="ZZZGCXM" xml:space="preserve">
+    <value>Harap pilih proyek rekayasa!</value>
+  </data>
+  <data name="ZZZGDXM" xml:space="preserve">
+    <value>Harap pilih proyek pipa!</value>
+  </data>
+  <data name="ZZZGGSBXWXSHZZS" xml:space="preserve">
+    <value>Anggaran perkiraan beli sendiri harus berupa desimal atau bilangan bulat!</value>
+  </data>
+  <data name="ZZZGGSBYXWKBC" xml:space="preserve">
+    <value>Anggaran perkiraan beli sendiri tidak boleh kosong, harap lengkapi!</value>
+  </data>
+  <data name="ZZZGLDBNWKBC" xml:space="preserve">
+    <value>Pimpinan langsung tidak boleh kosong, harap lengkapi!</value>
+  </data>
+  <data name="ZZZGWJLXBSNCJDHCZCLXWJNBNSC" xml:space="preserve">
+    <value>Jenis file ini bukan buatan Anda atau sudah ada file jenis ini, Anda tidak dapat menghapusnya!</value>
+  </data>
+  <data name="ZZZGWJLXBSNCJDNBNGG" xml:space="preserve">
+    <value>Jenis file ini bukan buatan Anda, Anda tidak dapat mengubahnya!</value>
+  </data>
+  <data name="ZZZGYSBXWXSHZZS" xml:space="preserve">
+    <value>Anggaran beli sendiri harus berupa desimal atau bilangan bulat!</value>
+  </data>
+  <data name="ZZZGYSBYXWKBC" xml:space="preserve">
+    <value>Anggaran beli sendiri tidak boleh kosong, harap lengkapi!</value>
+  </data>
+  <data name="ZZZGYSCG" xml:space="preserve">
+    <value>Pemilihan pemasok berhasil!</value>
+  </data>
+  <data name="ZZZGYSXXXZLXRXXSB" xml:space="preserve">
+    <value>Harap pilih informasi pemasok, penambahan informasi kontak gagal</value>
+  </data>
+  <data name="ZZZGYSXXXZZZZSXXSB" xml:space="preserve">
+    <value>Harap pilih informasi pemasok, penambahan informasi sertifikat kualifikasi gagal</value>
+  </data>
+  <data name="ZZZHBNWFFZF" xml:space="preserve">
+    <value>Akun tidak boleh berupa karakter ilegal!</value>
+  </data>
+  <data name="ZZZHCDBNCG40GZFC" xml:space="preserve">
+    <value>Panjang akun tidak boleh lebih dari 40 karakter string!</value>
+  </data>
+  <data name="ZZZHJHCG" xml:space="preserve">
+    <value>Aktivasi akun berhasil!</value>
+  </data>
+  <data name="ZZZHJHSBCYHBCZJC" xml:space="preserve">
+    <value>Aktivasi akun gagal, pengguna ini tidak ada, harap periksa!</value>
+  </data>
+  <data name="ZZZHJHSBCYHKNYCZBNZFTJJC" xml:space="preserve">
+    <value>Aktivasi akun gagal, pengguna ini mungkin sudah ada, tidak dapat ditambahkan lagi, harap periksa!</value>
+  </data>
+  <data name="ZZZHJHSBYHDMBNWK" xml:space="preserve">
+    <value>Aktivasi akun gagal, kode pengguna tidak boleh kosong!</value>
+  </data>
+  <data name="ZZZHKTCG" xml:space="preserve">
+    <value>Pembukaan akun berhasil!</value>
+  </data>
+  <data name="ZZZHKTSB" xml:space="preserve">
+    <value>Pembukaan akun gagal!</value>
+  </data>
+  <data name="ZZZHKTSBJCDMZFHMXWK" xml:space="preserve">
+    <value>Pembukaan akun gagal, harap periksa (kode duplikat atau ada item yang kosong)!</value>
+  </data>
+  <data name="ZZZHKTSBMMCDBXDYHDY8WJC" xml:space="preserve">
+    <value>Pembukaan akun gagal, panjang kata sandi harus lebih dari atau sama dengan 8 karakter, harap periksa!</value>
+  </data>
+  <data name="ZZZHT" xml:space="preserve">
+    <value>Harap pilih kontrak!</value>
+  </data>
+  <data name="ZZZHTOKENZWBTSJJC" xml:space="preserve">
+    <value>Akun dan nilai Token adalah data wajib, harap periksa!</value>
+  </data>
+  <data name="ZZZHZDKTX" xml:space="preserve">
+    <value>Kolom akun kosong, harap isi!</value>
+  </data>
+  <data name="ZZZJCG" xml:space="preserve">
+    <value>Penambahan berhasil!</value>
+  </data>
+  <data name="ZZZJGXCG" xml:space="preserve">
+    <value>Penyimpanan ahli berhasil!</value>
+  </data>
+  <data name="ZZZJGXSB" xml:space="preserve">
+    <value>Penyimpanan ahli gagal!</value>
+  </data>
+  <data name="ZZZJHCG" xml:space="preserve">
+    <value>Perubahan ke rencana berhasil!</value>
+  </data>
+  <data name="ZZZJJHCYSB" xml:space="preserve">
+    <value>Penambahan anggota rencana gagal!</value>
+  </data>
+  <data name="ZZZJMCBNWKBC" xml:space="preserve">
+    <value>Nama ahli tidak boleh kosong, harap lengkapi!</value>
+  </data>
+  <data name="ZZZJNRBNWKJC" xml:space="preserve">
+    <value>Isi ringkasan tidak boleh kosong, harap periksa!</value>
+  </data>
+  <data name="ZZZJSBDDHCWWCDDSC" xml:space="preserve">
+    <value>Penambahan gagal, kesalahan nomor pesanan, tidak ada pesanan ini, harap periksa!</value>
+  </data>
+  <data name="ZZZJSBXMHCWWCXMSC" xml:space="preserve">
+    <value>Penambahan gagal, kesalahan nomor proyek, tidak ada proyek ini, harap periksa!</value>
+  </data>
+  <data name="ZZZJXZCG" xml:space="preserve">
+    <value>Penambahan ahli berhasil!</value>
+  </data>
+  <data name="ZZZJXZSB" xml:space="preserve">
+    <value>Penambahan ahli gagal!</value>
+  </data>
+  <data name="ZZZJYCYCYYEXMESSAGE" xml:space="preserve">
+    <value>Penambahan pengecualian, penyebab: " + ex.Message + "!</value>
+  </data>
+  <data name="ZZZJYJCZBYXZFTJ" xml:space="preserve">
+    <value>Ahli sudah ada, tidak boleh ditambahkan lagi!</value>
+  </data>
+  <data name="ZZZJZCCKDCG" xml:space="preserve">
+    <value>Langsung diubah menjadi lembar pengeluaran berhasil!</value>
+  </data>
+  <data name="ZZZJZCTHDCG" xml:space="preserve">
+    <value>Langsung diubah menjadi lembar pengembalian berhasil!</value>
+  </data>
+  <data name="ZZZKB" xml:space="preserve">
+    <value>Harap pilih gudang!</value>
+  </data>
+  <data name="ZZZKD" xml:space="preserve">
+    <value>Harap pilih permintaan pembayaran!</value>
+  </data>
+  <data name="ZZZLCBBCWEXMESSAGE" xml:space="preserve">
+    <value>Tabel biaya kualitas, kesalahan: " + ex.Message + "!</value>
+  </data>
+  <data name="ZZZLSSCWEXMESSAGE" xml:space="preserve">
+    <value>Kerugian kualitas, kesalahan: " + ex.Message + "!</value>
+  </data>
+  <data name="ZZZLXMCJC" xml:space="preserve">
+    <value>Harap pilih nama jenis, harap periksa!</value>
+  </data>
+  <data name="ZZZNJ" xml:space="preserve">
+    <value>Harap pilih tingkat kelas!</value>
+  </data>
+  <data name="ZZZRSBJC" xml:space="preserve">
+    <value>Pemindahan gagal, harap periksa!</value>
+  </data>
+  <data name="ZZZSBXSRYHDMHMCZYCNC" xml:space="preserve">
+    <value>Harus memasukkan setidaknya kode pengguna atau nama untuk pencarian!</value>
+  </data>
+  <data name="ZZZSBXSRYHDMHXMCNC" xml:space="preserve">
+    <value>Harus memasukkan setidaknya kode pengguna dan nama untuk pencarian!</value>
+  </data>
+  <data name="ZZZSCG" xml:space="preserve">
+    <value>Pengalihan berhasil!</value>
+  </data>
+  <data name="ZZZSMYJDZKGDXMSHYKGXMSZZZSYBJ" xml:space="preserve">
+    <value>Sementara tidak ada proyek dengan kemajuan dalam pembangunan, harap tandai penggunaan lagi nanti setelah ada proyek yang dimulai!</value>
+  </data>
+  <data name="ZZZSMYKCLB" xml:space="preserve">
+    <value>Sementara tidak ada daftar persediaan!</value>
+  </data>
+  <data name="ZZZSMYXMSHYXMSZZXMTJ" xml:space="preserve">
+    <value>Sementara tidak ada proyek, harap lakukan statistik proyek nanti setelah ada proyek!</value>
+  </data>
+  <data name="ZZZSSBJC" xml:space="preserve">
+    <value>Pengalihan gagal, harap periksa!</value>
+  </data>
+  <data name="ZZZSXZCG" xml:space="preserve">
+    <value>Penambahan sertifikat berhasil!</value>
+  </data>
+  <data name="ZZZSXZSB" xml:space="preserve">
+    <value>Penambahan sertifikat gagal!</value>
+  </data>
+  <data name="ZZZSYBH" xml:space="preserve">
+    <value>Harap pilih nomor paket uji tekan!</value>
+  </data>
+  <data name="ZZZSZKRYKREKJLKEJKBYXSC" xml:space="preserve">
+    <value>Gudang utama, gudang wadah 1, gudang wadah 2, gudang metrologi, gudang sekunder tidak boleh dihapus!</value>
   </data>
   <data name="ZZZTBGWSPZSBJC" xml:space="preserve">
     <value>Gagal mengubah status menjadi 'Sedang Diproses', harap periksa!</value>
@@ -22912,8 +23644,59 @@
   <data name="ZZZXJHSBJC" xml:space="preserve">
     <value>Gagal mengaktifkan ulang, harap periksa!</value>
   </data>
+  <data name="ZZZXM" xml:space="preserve">
+    <value>Harap pilih proyek!</value>
+  </data>
+  <data name="ZZZXMBM" xml:space="preserve">
+    <value>Harap pilih kode proyek!</value>
+  </data>
+  <data name="ZZZXMMCBNWKBC" xml:space="preserve">
+    <value>Nama proyek utama tidak boleh kosong, harap lengkapi!</value>
+  </data>
+  <data name="ZZZXMSBJC" xml:space="preserve">
+    <value>Perubahan proyek gagal, harap periksa!</value>
+  </data>
+  <data name="ZZZXRWKBNZCXMJC" xml:space="preserve">
+    <value>Pelaksana kosong, tidak dapat diubah menjadi proyek, harap periksa!</value>
+  </data>
+  <data name="ZZZXSBJC" xml:space="preserve">
+    <value>Perubahan item gagal, harap periksa!</value>
+  </data>
+  <data name="ZZZYBHBNWFFZF" xml:space="preserve">
+    <value>Nomor utama tidak boleh berupa karakter ilegal!</value>
+  </data>
   <data name="ZZZYBNWFFZF" xml:space="preserve">
     <value>Area tidak boleh berupa karakter tidak valid!</value>
+  </data>
+  <data name="ZZZYCZDGYSLB" xml:space="preserve">
+    <value>Harap pilih daftar pemasok yang akan dioperasikan!</value>
+  </data>
+  <data name="ZZZYCZDZJLB" xml:space="preserve">
+    <value>Harap pilih daftar ahli yang akan dioperasikan!</value>
+  </data>
+  <data name="ZZZYFWBNWKBC" xml:space="preserve">
+    <value>Ruang lingkup keahlian tidak boleh kosong, harap lengkapi!</value>
+  </data>
+  <data name="ZZZYJHMXLB" xml:space="preserve">
+    <value>Harap pilih daftar detail rencana!</value>
+  </data>
+  <data name="ZZZYLBBNWKBC" xml:space="preserve">
+    <value>Kategori keahlian tidak boleh kosong, harap lengkapi!</value>
+  </data>
+  <data name="ZZZYLBYCZWZF" xml:space="preserve">
+    <value>Kategori keahlian sudah ada, jangan diulang!</value>
+  </data>
+  <data name="ZZZYLLX" xml:space="preserve">
+    <value>Harap pilih jenis bahan baku!</value>
+  </data>
+  <data name="ZZZYSCDMSPROJECTJHWJ" xml:space="preserve">
+    <value>Harap pilih file rencana MS Project yang akan diunggah!</value>
+  </data>
+  <data name="ZZZYSCDTP" xml:space="preserve">
+    <value>Harap pilih gambar yang akan diunggah!</value>
+  </data>
+  <data name="ZZZYSCDWJ" xml:space="preserve">
+    <value>Harap pilih file yang akan diunggah!</value>
   </data>
   <data name="ZZZZBNWFFZF" xml:space="preserve">
     <value>Perakitan tidak boleh berupa karakter tidak valid!</value>
@@ -25018,6 +25801,9 @@
   <data name="ZZZWLDMBCZQJC" xml:space="preserve">
     <value>Kode material ini tidak ada, harap periksa!</value>
   </data>
+  <data name="ZZZXHBNWK" xml:space="preserve">
+    <value>Nomor urut tidak boleh kosong!</value>
+  </data>
   <data name="ZZZYSZLDJZEYWSZ" xml:space="preserve">
     <value>Total anggaran, harga satuan, jumlah total harus numerik!</value>
   </data>
@@ -25083,6 +25869,9 @@
   </data>
   <data name="ZZZBHLNDGZLSQ" xml:space="preserve">
     <value>Menghentikan aplikasi Anda</value>
+  </data>
+  <data name="ZZZBNDGZLSQ" xml:space="preserve">
+    <value>Permohonan Anda</value>
   </data>
   <data name="ZZZCXLNDGZLSQ" xml:space="preserve">
     <value>Membatalkan aplikasi Anda</value>
@@ -31855,6 +32644,9 @@
   <data name="XYHDKHHSYY" xml:space="preserve">
     <value>Gesek ke kanan untuk kembali</value>
   </data>
+  <data name="ZZSJSJKSHSFZQXH" xml:space="preserve">
+    <value>Sedang mengupgrade database. Proses ini membutuhkan waktu sekitar 10 detik. Harap tunggu...</value>
+  </data>
   <data name="BeiFenWenJianLuJian" xml:space="preserve">
     <value>Path penyimpanan file cadangan</value>
   </data>
@@ -32716,7 +33508,13 @@
   <data name="ZZZZYSCDWJ" xml:space="preserve">
     <value>Harap pilih file yang akan diunggah!</value>
   </data>
-  <data name="ZZSJSJKSHSFZQXH" xml:space="preserve">
-    <value>Sedang mengupgrade database. Proses ini membutuhkan waktu sekitar 10 detik. Harap tunggu...</value>
+  <data name="GXXTYYSJ" xml:space="preserve">
+    <value>Memperbarui data bahasa sistem</value>
+  </data>
+  <data name="GXMZYYSJ" xml:space="preserve">
+    <value>Memperbarui data bahasa mod</value>
+  </data>
+  <data name="GXUiYYSJ" xml:space="preserve">
+    <value>Memperbarui data bahasa antarmuka</value>
   </data>
 </root>

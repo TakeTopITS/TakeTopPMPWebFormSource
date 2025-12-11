@@ -15351,4 +15351,10 @@ GRANT ALL ON TABLE public.v_projectmember_workload TO postgres;</SQLText>
     <ID>3898</ID>
     <SQLText>Delete From public.t_relateduser Where UserCode Not in (Select UserCode From T_ProjectMember);</SQLText>
   </DataBaseUpgradeFile>
+  <DataBaseUpgradeFile>
+    <ID>3899</ID>
+    <SQLText>INSERT INTO public.t_systemlanguage(
+	langcode, language, sortnumber)
+	VALUES ('th', 'แปลเป็นภาษาไทย', 4);</SQLText>
+  </DataBaseUpgradeFile>
 </DataBaseUpgradeFiles>

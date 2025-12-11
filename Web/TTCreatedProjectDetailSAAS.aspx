@@ -69,12 +69,14 @@
                                         <td class="ItemAlignLeft" style="padding: 5px 5px 5px 5px;" valign="top">
                                             <table width="100%" cellpadding="0" cellspacing="0">
                                                 <tr>
-                                                    <td class="formItemBgStyleForAlignLeft"></td>
+                                                    <td style="width: 10%;" class="formItemBgStyleForAlignLeft"></td>
                                                     <td colspan="3" style="text-align: Right; padding-right: 20px; height: 1px;" class="formItemBgStyleForAlignLeft">
+
                                                         <asp:Button ID="BT_Upate" runat="server" Text="<%$ Resources:lang,BaoCun%>" CssClass="inpu"
                                                             OnClick="BT_Update_Click" Enabled="False" />&nbsp;&nbsp;
-                                                         <asp:Button ID="BT_Delete" runat="server" CssClass="inpu" Enabled="False" OnClick="BT_Delete_Click" OnClientClick="return confirmContinue(getDeleteMsgByLangCode(), this, event)"
-                                                             Text="<%$ Resources:lang,Delete%>" />
+                                                        
+                                                        <asp:Button ID="BT_Delete" runat="server" CssClass="inpu" Enabled="False" OnClick="BT_Delete_Click" OnClientClick="return confirmContinue(getDeleteMsgByLangCode(), this, event)"
+                                                            Text="<%$ Resources:lang,Delete%>" />
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -134,7 +136,7 @@
                                                         <asp:Label ID="LB_PMCode" runat="server"></asp:Label>&nbsp;&nbsp;<asp:Label ID="LB_PMName"
                                                             runat="server"></asp:Label>
                                                     </td>
-                                                    <td style="width: 8%;" class="formItemBgStyleForAlignLeft">
+                                                    <td style="width: 10%;" class="formItemBgStyleForAlignLeft">
                                                         <asp:Label ID="LB_CustomerPM" runat="server" Text="<%$ Resources:lang,CustomerPM%>" />:
                                                     </td>
                                                     <td class="formItemBgStyleForAlignLeft">
@@ -211,6 +213,8 @@
                                                         </asp:DropDownList>
                                                         &nbsp;&nbsp;
                                                               
+                                                       
+
                                                         <asp:DropDownList ID="DL_StatusValue" OnSelectedIndexChanged=" DL_StatusValue_SelectedIndexChanged"
                                                             AutoPostBack="true" runat="server" Visible="false">
                                                             <asp:ListItem Value="InProgress" Text="<%$ Resources:lang,JinXingZhong%>" />
@@ -237,15 +241,35 @@
                                                         <CKEditor:CKEditorControl runat="server" ID="HT_AcceptStandard" Width="99%" Height="100px" Visible="false" />
                                                     </td>
                                                 </tr>
-                                                <tr style="display: none;">
-                                                    <td class="formItemBgStyleForAlignLeft">
+                                                <tr>
+                                                    <td colspan="4" class="formItemBgStyleForAlignLeft">
+                                                        <asp:Label ID="Label14" runat="server" Text="<%$ Resources:lang,YINGXXMJLGXMZT%>"></asp:Label>:
 
-                                                        <asp:Label ID="Label13" runat="server" Text="<%$ Resources:lang,SDYJDDJH%>"></asp:Label>:
-                            
+                                                
+                                                        <asp:DropDownList ID="DL_AllowPMChangeStatus" runat="server">
+                                                            <asp:ListItem Value="NO">NO</asp:ListItem>
+                                                            <asp:ListItem Value="YES">YES</asp:ListItem>
+                                                        </asp:DropDownList>
+
+                                                        <asp:Label ID="Label15" runat="server" Text="<%$ Resources:lang,JDHGQSHDBDXMJHYH%>"></asp:Label>:
+
+                                                  
+                                                        <asp:DropDownList ID="DL_ProgressByDetailImpact" runat="server">
+                                                            <asp:ListItem Value="YES">YES</asp:ListItem>
+                                                            <asp:ListItem Value="NO">NO</asp:ListItem>
+                                                        </asp:DropDownList>
                                                     </td>
-                                                    <td colspan="3" class="formItemBgStyleForAlignLeft">
+                                                </tr>
+
+                                                <tr style="display: none;">
+                                                    <td colspan="4" class="formItemBgStyleForAlignLeft">
                                                         <table>
                                                             <tr>
+                                                                <td class="formItemBgStyleForAlignLeft">
+
+                                                                    <asp:Label ID="Label13" runat="server" Text="<%$ Resources:lang,SDYJDDJH%>"></asp:Label>:
+                                                                </td>
+
                                                                 <td>
                                                                     <asp:DropDownList ID="DL_LockStartupedPlan" runat="server">
                                                                         <asp:ListItem Value="NO">NO</asp:ListItem>
@@ -253,26 +277,8 @@
                                                                     </asp:DropDownList>
 
                                                                 </td>
-                                                                <td>
-                                                                    <asp:Label ID="Label14" runat="server" Text="<%$ Resources:lang,YINGXXMJLGXMZT%>"></asp:Label>:
-                                                                </td>
-                                                                <td>
-                                                                    <asp:DropDownList ID="DL_AllowPMChangeStatus" runat="server">
-                                                                        <asp:ListItem Value="NO">NO</asp:ListItem>
-                                                                        <asp:ListItem Value="YES">YES</asp:ListItem>
-                                                                    </asp:DropDownList>
-                                                                </td>
 
 
-                                                                <td style="text-align: right">
-                                                                    <asp:Label ID="Label15" runat="server" Text="<%$ Resources:lang,JDHGQSHDBDXMJHYH%>"></asp:Label>:
-                                                                </td>
-                                                                <td>
-                                                                    <asp:DropDownList ID="DL_ProgressByDetailImpact" runat="server">
-                                                                        <asp:ListItem Value="YES">YES</asp:ListItem>
-                                                                        <asp:ListItem Value="NO">NO</asp:ListItem>
-                                                                    </asp:DropDownList>
-                                                                </td>
 
                                                                 <td style="text-align: right">
                                                                     <asp:Label ID="Label16" runat="server" Text="<%$ Resources:lang,RWJDYHJHJDYQR%>"></asp:Label>:
@@ -285,99 +291,106 @@
                                                                 </td>
 
                                                             </tr>
-                                                        </table>
-                                                    </td>
-                                                </tr>
-                                                <tr style="display: none;">
-                                                    <td class="formItemBgStyleForAlignLeft">
-                                                        <asp:Label ID="Label17" runat="server" Text="<%$ Resources:lang,RXZDFQLC%>"></asp:Label>:
-                                                    </td>
-                                                    <td colspan="3" class="formItemBgStyleForAlignLeft">
-                                                        <table>
-                                                            <tr>
-                                                                <td>
-                                                                    <asp:DropDownList ID="DL_AutoRunWFAfterMakeProject" runat="server">
-                                                                        <asp:ListItem Value="NO">NO</asp:ListItem>
-                                                                        <asp:ListItem Value="YES">YES</asp:ListItem>
-                                                                    </asp:DropDownList>
-                                                                </td>
-                                                                <td>
-                                                                    <asp:Label ID="Label18" runat="server" Text="<%$ Resources:lang,XMQDXYZJYHQR%>"></asp:Label>:
-                                                                </td>
-                                                                <td>
-                                                                    <asp:DropDownList ID="DL_ProjectStartupNeedSupperConfirm" runat="server">
-                                                                        <asp:ListItem Value="NO">NO</asp:ListItem>
-                                                                        <asp:ListItem Value="YES">YES</asp:ListItem>
-                                                                    </asp:DropDownList>
-                                                                </td>
-                                                                <td>
-                                                                    <asp:Label ID="Label19" runat="server" Text="<%$ Resources:lang,XMJHYQD%>"></asp:Label>:
-                                                                </td>
-                                                                <td>
-                                                                    <asp:DropDownList ID="DL_ProjectPlanStartupSatus" runat="server">
-                                                                        <asp:ListItem Value="NO">NO</asp:ListItem>
-                                                                        <asp:ListItem Value="YES">YES</asp:ListItem>
-                                                                    </asp:DropDownList>
-                                                                </td>
-                                                                <td>
-                                                                    <asp:Label ID="Label52" runat="server" Text="<%$ Resources:lang,XMJHTGGLGZLMB%>"></asp:Label>:
-                                                                </td>
-                                                                <td>
-                                                                    <asp:DropDownList ID="DL_PlanStartupRelatedWorkflowTemplate" runat="server" DataTextField="TemName" DataValueField="TemName" Width="150px">
-                                                                    </asp:DropDownList>
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="formItemBgStyleForAlignLeft"></td>
-                                                    <td colspan="3" style="height: 1px;" class="formItemBgStyleForAlignLeft">
-                                                        <asp:Repeater ID="Repeater1" runat="server">
-                                                            <ItemTemplate>
-
-                                                                <a href='<%# DataBinder.Eval(Container.DataItem,"ModulePage") %>' target="iframe">
-                                                                    <%# DataBinder.Eval(Container.DataItem,"HomeModuleName") %> &nbsp;
-                                                                </a>
-                                                            </ItemTemplate>
-                                                        </asp:Repeater>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="formItemBgStyleForAlignLeft"></td>
-                                                    <td colspan="3" style="height: 1px;" class="formItemBgStyleForAlignLeft">
-                                                        <div id="divProject2" runat="server">
-
-                                                            <asp:Repeater ID="Repeater2" runat="server">
-                                                                <ItemTemplate>
-
-                                                                    <a href='<%# DataBinder.Eval(Container.DataItem,"ModulePage") %>' target="iframe">
-                                                                        <%# DataBinder.Eval(Container.DataItem,"HomeModuleName") %> &nbsp;
-                                                                    </a>
-                                                                </ItemTemplate>
-                                                            </asp:Repeater>
-
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="formItemBgStyleForAlignLeft"></td>
-                                                    <td colspan="3" style="height: 1px;" class="formItemBgStyleForAlignLeft">
-                                                        <asp:Label ID="LB_TBNoticeProjectTeamMember" runat="server" Text="<%$ Resources:lang,NoticeProjectTeamMember%>" />:
-                                                                <asp:CheckBox ID="CB_SMS" runat="server" Text="<%$ Resources:lang,SendSMS%>" />
-                                                        <asp:CheckBox ID="CB_Mail" runat="server" Text="<%$ Resources:lang,SendEMail%>" />
-                                                        <asp:TextBox ID="TB_Message" runat="server" Width="300px"></asp:TextBox>
-                                                        <asp:Button ID="BT_Send" runat="server" Enabled="False" CssClass="inpu" OnClick="BT_Send_Click"
-                                                            Text="<%$ Resources:lang,Send%>" />
-                                                    </td>
-                                                </tr>
-
-
+                                                            </table>
+                                                        </td>
+                                                    </tr>
                                             </table>
                                         </td>
                                     </tr>
+                                    <tr style="display: none;">
+                                        <td class="formItemBgStyleForAlignLeft">
+                                            <asp:Label ID="Label17" runat="server" Text="<%$ Resources:lang,RXZDFQLC%>"></asp:Label>:
+                                        </td>
+                                        <td colspan="3" class="formItemBgStyleForAlignLeft">
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <asp:DropDownList ID="DL_AutoRunWFAfterMakeProject" runat="server">
+                                                            <asp:ListItem Value="NO">NO</asp:ListItem>
+                                                            <asp:ListItem Value="YES">YES</asp:ListItem>
+                                                        </asp:DropDownList>
+                                                    </td>
+                                                    <td>
+                                                        <asp:Label ID="Label18" runat="server" Text="<%$ Resources:lang,XMQDXYZJYHQR%>"></asp:Label>:
+                                                    </td>
+                                                    <td>
+                                                        <asp:DropDownList ID="DL_ProjectStartupNeedSupperConfirm" runat="server">
+                                                            <asp:ListItem Value="NO">NO</asp:ListItem>
+                                                            <asp:ListItem Value="YES">YES</asp:ListItem>
+                                                        </asp:DropDownList>
+                                                    </td>
+                                                    <td>
+                                                        <asp:Label ID="Label19" runat="server" Text="<%$ Resources:lang,XMJHYQD%>"></asp:Label>:
+                                                    </td>
+                                                    <td>
+                                                        <asp:DropDownList ID="DL_ProjectPlanStartupSatus" runat="server">
+                                                            <asp:ListItem Value="NO">NO</asp:ListItem>
+                                                            <asp:ListItem Value="YES">YES</asp:ListItem>
+                                                        </asp:DropDownList>
+                                                    </td>
+                                                    <td>
+                                                        <asp:Label ID="Label52" runat="server" Text="<%$ Resources:lang,XMJHTGGLGZLMB%>"></asp:Label>:
+                                                    </td>
+                                                    <td>
+                                                        <asp:DropDownList ID="DL_PlanStartupRelatedWorkflowTemplate" runat="server" DataTextField="TemName" DataValueField="TemName" Width="150px">
+                                                        </asp:DropDownList>
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        
+                                        <td colspan="4" style="height: 1px;" class="formItemBgStyleForAlignLeft">
+                                            <br />
+                                         
+                                            <asp:Repeater ID="Repeater1" runat="server">
+                                                <ItemTemplate>
+
+                                                    <a href='<%# DataBinder.Eval(Container.DataItem,"ModulePage") %>' target="iframe">
+                                                        <%# DataBinder.Eval(Container.DataItem,"HomeModuleName") %> &nbsp;
+                                                    </a>
+                                                </ItemTemplate>
+                                            </asp:Repeater>
+                                        </td>
+                                    </tr>
+                                    <tr>
+
+                                        <td colspan="4" style="height: 1px;" class="formItemBgStyleForAlignLeft">
+                                            <div id="divProject2" runat="server">
+
+                                                <asp:Repeater ID="Repeater2" runat="server">
+                                                    <ItemTemplate>
+
+                                                        <a href='<%# DataBinder.Eval(Container.DataItem,"ModulePage") %>' target="iframe">
+                                                            <%# DataBinder.Eval(Container.DataItem,"HomeModuleName") %> &nbsp;
+                                                        </a>
+                                                    </ItemTemplate>
+                                                </asp:Repeater>
+
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr style="display: none;">
+                                        <td class="formItemBgStyleForAlignLeft"></td>
+                                        <td colspan="3" style="height: 1px;" class="formItemBgStyleForAlignLeft">
+                                            <asp:Label ID="LB_TBNoticeProjectTeamMember" runat="server" Text="<%$ Resources:lang,NoticeProjectTeamMember%>" />:
+                                                               
+                                                        <asp:CheckBox ID="CB_SMS" runat="server" Text="<%$ Resources:lang,SendSMS%>" />
+                                            <asp:CheckBox ID="CB_Mail" runat="server" Text="<%$ Resources:lang,SendEMail%>" />
+                                            <asp:TextBox ID="TB_Message" runat="server" Width="300px"></asp:TextBox>
+                                            <asp:Button ID="BT_Send" runat="server" Enabled="False" CssClass="inpu" OnClick="BT_Send_Click"
+                                                Text="<%$ Resources:lang,Send%>" />
+                                        </td>
+                                    </tr>
+
+
                                 </table>
                             </td>
+                        </tr>
+                    </table>
+                    </td>
                         </tr>
                     </table>
 

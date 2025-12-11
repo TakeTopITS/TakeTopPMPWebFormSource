@@ -35,27 +35,11 @@
 
     <script language="javascript" type="text/javascript">
 
+        function displayWaitingIcon(varDisplay) {
 
-        function displayWaitingIcon() {
-
-            if (document.getElementById('IMG_Waiting').style.display === 'none') {
-
-                document.getElementById('IMG_Waiting').style.display = 'block';
-            }
-            else {
-                document.getElementById('IMG_Waiting').style.display = 'none';
-            }
+            document.getElementById('IMG_Waiting').style.display = varDisplay;
         }
 
-
-
-        function displayWaitingIcon() {
-            if (document.getElementById('IMG_Waiting').style.display === 'none') {
-                document.getElementById('IMG_Waiting').style.display = 'block';
-            } else {
-                document.getElementById('IMG_Waiting').style.display = 'none';
-            }
-        }
     </script>
 </head>
 <body>
@@ -87,28 +71,7 @@
                                                 </table>
                                             </td>
                                             <td>
-                                                <table>
-                                                    <tr>
-                                                        <td>
-                                                            <asp:Label ID="Label14" runat="server" Text="<%$ Resources:lang,YuYanZiYuanWenJianChaYi%>"></asp:Label>: 
-                                                        </td>
-                                                        <td>
-                                                            <asp:Label ID="Label15" runat="server" Text="<%$ Resources:lang,YuYan%>"></asp:Label>: </td>
-                                                        <td>
-                                                            <asp:DropDownList ID="ddlLangSwitcher" runat="server" AutoPostBack="true" DataTextField="Language" DataValueField="LangCode">
-                                                            </asp:DropDownList>
-                                                        </td>
-                                                        <td>
-                                                            <asp:Button ID="BT_CompareByHomeLanguage" runat="server" CssClass="inpuLong" Text="<%$ Resources:lang,YiBenYuDuiBi%>" OnClick="BT_CompareByHomeLanguage_Click" OnClientClick="javascript:document.getElementById('IMG_Waiting').style.display = 'block';" />
-                                                            <img id="IMG_Waiting" src="../Images/Processing.gif" alt="Loading,please wait..." style="text-align: center; display: none;" />
-                                                        </td>
-
-                                                        <td>
-                                                            <asp:Button ID="BT_ImportLanguageData" runat="server" CssClass="inpuLong" Text="<%$ Resources:lang,DaoRuYiNianShuJi%>" OnClick="BT_ImportLanguageData_Click" OnClientClick="javascript:document.getElementById('IMG_Waiting').style.display = 'block';" />
-
-                                                        </td>
-                                                    </tr>
-                                                </table>
+                                               
                                             </td>
 
                                         </tr>
@@ -225,9 +188,7 @@
                         </table>
                     </div>
                 </ContentTemplate>
-                <Triggers>
-                    <asp:PostBackTrigger ControlID="BT_CompareByHomeLanguage" />
-                </Triggers>
+              
             </asp:UpdatePanel>
             <div style="position: fixed; display: none; z-index: 9999;" id="progressContainer">
                 <asp:UpdateProgress ID="UpdateProgress1" runat="server" AssociatedUpdatePanelID="UpdatePanel1">

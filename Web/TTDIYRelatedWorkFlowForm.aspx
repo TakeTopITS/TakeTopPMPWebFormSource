@@ -345,7 +345,7 @@
         //隐藏或显示工作流标题�?
         function hideOrDisplayWFMain() {
 
-            if (document.getElementById('td_WFMain').style.display == 'none') {
+            if (document.getElementById('td_WFMain').style.display.toLowerCase() == 'none') {
                 document.getElementById('td_WFMain').style.display = 'block';
             }
             else {

@@ -588,10 +588,10 @@ if (typeof(DayPilot) === 'undefined') {
             if (!This.div) {
                 return;
             }
-            if (This.hideDiv.style.display === 'none') {
+            if (This.hideDiv.style.display.toLowerCase() === 'none') {
                 return;
             }
-            if (This.div.style.display === 'none') {
+            if (This.div.style.display.toLowerCase() === 'none') {
                 return;
             }
 

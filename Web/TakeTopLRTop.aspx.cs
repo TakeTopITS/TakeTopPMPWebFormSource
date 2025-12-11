@@ -1,22 +1,22 @@
 using System;
-using System.Resources;
-using System.Drawing;
-using System.Data;
-using System.Configuration;
 using System.Collections;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
+using System.Drawing;
+using System.Globalization;
+using System.IO;
+using System.Resources;
+using System.Security.Cryptography;
+using System.Security.Permissions;
+using System.Text;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
-using System.Web.UI.HtmlControls;
-using System.IO;
-using System.Text;
-
-using System.Security.Cryptography;
-using System.Security.Permissions;
-using System.Data.SqlClient;
 
 using TakeTopSecurity;
 
@@ -95,7 +95,7 @@ public partial class TakeTopLRTop : System.Web.UI.Page
             string strServerName = System.Configuration.ConfigurationManager.AppSettings["ServerName"];
 
             TakeTopLicense license = new TakeTopLicense();
-            strDeadline = license.GetLicenseDeadline(strServerName);
+            strDeadline = DateTime.ParseExact(license.GetLicenseDeadline(strServerName), "yyyyMMdd", CultureInfo.InvariantCulture).ToString("yyyyMMdd");
 
             strCurrentDate = DateTime.Now.ToString("yyyyMMdd");
             strNoticeDate = DateTime.Now.AddDays(5).ToString("yyyyMMdd");
@@ -105,12 +105,13 @@ public partial class TakeTopLRTop : System.Web.UI.Page
             if (string.Compare(strNoticeDate, strDeadline) > 0 & string.Compare(strDeadline, strCurrentDate) >= 0)
             {
                 strMessage = LanguageHandle.GetWord("QingZhuYiJiTongShouQuanJiangYu") + strDeadlineDate + LanguageHandle.GetWord("DaoJiQingJinKuaiXuFeiHeBeiFenS");
+       
             }
             else
             {
                 if (string.Compare(strCurrentDate, strDeadline) > 0)
                 {
-                    strMessage = LanguageHandle.GetWord("QingZhuYiJiTongShouQuanYiYu") + strDeadline + LanguageHandle.GetWord("GuoJiQingXuFeiZaiShiYong");
+                    strMessage = LanguageHandle.GetWord("QingZhuYiJiTongShouQuanYiYu") + strDeadlineDate + LanguageHandle.GetWord("GuoJiQingXuFeiZaiShiYong");
                 }
                 else
                 {
@@ -126,7 +127,7 @@ public partial class TakeTopLRTop : System.Web.UI.Page
         }
         catch (Exception err)
         {
-            //LogClass.WriteLogFile("Error page: " + Request.Url.ToString() + "\n" + err.Message.ToString() + "\n" + err.StackTrace);
+            LogClass.WriteLogFile("Error page: " + Request.Url.ToString() + "\n" + err.Message.ToString() + "\n" + err.StackTrace);
         }
 
     }

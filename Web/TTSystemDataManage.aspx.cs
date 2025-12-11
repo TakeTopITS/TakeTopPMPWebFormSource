@@ -1,21 +1,29 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.Diagnostics;
 using System.IO;
 using System.Net.Http;
+using System.Resources;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
-using System.Diagnostics;
-using System.Text.RegularExpressions;
+
+using NPOI.HSSF.UserModel;
+using NPOI.SS.UserModel;
+using NPOI.XSSF.UserModel;
 
 public partial class TTSystemDataManage : System.Web.UI.Page
 {
-    string strUserCode, strUserName;
+    string strUserCode, strUserName, strLangCode;
 
     protected void Page_Load(object sender, EventArgs e)
     {
         strUserCode = Session["UserCode"].ToString();
         strUserName = ShareClass.GetUserName(strUserCode);
+        strLangCode = Session["LangCode"].ToString();
 
         Label1.Text = ShareClass.GetPageTitle(this.GetType().BaseType.Name + ".aspx"); bool blVisible = TakeTopSecurity.TakeTopLicense.GetAuthobility(this.GetType().BaseType.Name + ".aspx", strUserCode);  //Label1.Text = ShareClass.GetPageTitle(this.GetType().BaseType.Name + ".aspx"); bool blVisible = TakeTopSecurity.TakeTopLicense.GetAuthobility(this.GetType().BaseType.Name + ".aspx", "系统数据管理", strUserCode);
         if (blVisible == false)
@@ -47,48 +55,13 @@ public partial class TTSystemDataManage : System.Web.UI.Page
             //取得前次备份数据时间
             LB_LastestBackupDBTime.Text = ShareClass.GetAllreadyBackupDBLastestTime();
             LB_LastestBackupDocTime.Text = ShareClass.GetAllreadyBackupDocLastestTime();
+
+
+            ShareClass.LoadLanguageForDropList(ddlLangSwitcher);
+            ddlLangSwitcher.SelectedValue = strLangCode;
         }
     }
 
-    protected void BT_CreateRTXAccountData_Click(object sender, EventArgs e)
-    {
-        try
-        {
-            ShareClass.RunSqlCommand("Exec Pr_CreateRTXAccountData");
-            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZSJCCG") + "')", true);
-        }
-        catch
-        {
-            //ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('"+LanguageHandle.GetWord("ZZSJCSBKNYGRSTDYSCSZSJKLZJZXPR")+"')", true);
-        }
-    }
-
-    protected void BT_CreateRTXDataToTXT_Click(object sender, EventArgs e)
-    {
-        string strExtName, strFileName, strDocURL, strDocSavePath;
-
-        strExtName = ".txt";
-
-        strFileName = "RTXAccountData" + DateTime.Now.ToString("yyyyMMddHHMMssff") + strExtName;
-
-        strDocURL = "Doc\\" + "RTXAccount\\" + strFileName;
-
-        strDocSavePath = Server.MapPath("Doc") + "\\RTXAccount\\" + strFileName;
-
-        try
-        {
-            CreateRTXAccountDataToTXT(strDocSavePath);
-
-            HL_RTXAccountDataFile.NavigateUrl = strDocURL;
-            HL_RTXAccountDataFile.Target = "_blank";
-
-            //ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('"+LanguageHandle.GetWord("ZZSCWJCG")+"')", true);
-        }
-        catch
-        {
-            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZSCWJSBKNYHSTDYSCSJC") + "')", true);
-        }
-    }
 
     protected void BT_ExportLoginLog_Click(object sender, EventArgs e)
     {
@@ -161,7 +134,6 @@ public partial class TTSystemDataManage : System.Web.UI.Page
         }
     }
 
-
     protected void BT_ClearLeftBar_Click(object sender, EventArgs e)
     {
         try
@@ -179,8 +151,8 @@ public partial class TTSystemDataManage : System.Web.UI.Page
         {
             ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZQingChuShiBaiQJC") + "')", true);
         }
-
     }
+
     protected void BT_ClearSystemCache_Click(object sender, EventArgs e)
     {
         try
@@ -637,7 +609,7 @@ public partial class TTSystemDataManage : System.Web.UI.Page
                 }
 
                 //备份数据库
-                ShareClass.BackupCurrentSiteDB(ShareClass.GetSystemDBName(), ShareClass.GetSystemDBBackupSaveDir(), strUserName,"SELF");
+                ShareClass.BackupCurrentSiteDB(ShareClass.GetSystemDBName(), ShareClass.GetSystemDBBackupSaveDir(), strUserName, "SELF");
 
                 ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click444", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZSJKBFWC") + "')", true);
             }
@@ -653,7 +625,6 @@ public partial class TTSystemDataManage : System.Web.UI.Page
             //ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("BFSBCZTMWJJC") + "')", true);
         }
     }
-
 
     protected void BT_CopyDirectory_Click(object sender, EventArgs e)
     {
@@ -845,4 +816,658 @@ public partial class TTSystemDataManage : System.Web.UI.Page
     {
         LB_DBUserID.Text = ShareClass.getDBReadOnlyUserID();
     }
+
+    protected void BT_CopyAllModuleForHomeLanguage_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            CopyAllPageModuleForHomeLanguage();
+            CopyAllLeftModuleForHomeLanguage();
+
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZFZCG") + "')", true);
+        }
+        catch (System.Exception err)
+        {
+            LogClass.WriteLogFile("Error page: " + err.Message.ToString() + "\n" + err.StackTrace);
+
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZFZSBJC") + "')", true);
+        }
+
+        ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click1", "displayWaitingIcon('none');", true);
+
+        return;
+    }
+
+    protected void BT_SynchronizeModuleDataFromExcel_Click(object sender, EventArgs e)
+    {
+        string strToLangCode;
+
+        try
+        {
+            strToLangCode = ddlLangSwitcher.SelectedValue.Trim();
+
+            UpdateLeftBarModules(strToLangCode);
+            UpdatePageBarModules(strToLangCode);
+
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click11", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZTBMZYYSJCG") + "')", true);
+        }
+
+        catch (System.Exception err)
+        {
+            LogClass.WriteLogFile("Error page: " + err.Message.ToString() + "\n" + err.StackTrace);
+
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click22", "showAlertAtMouse('" + LanguageHandle.GetWord("SBKNWJGSBDHLCDBGQJC") + "')", true);
+        }
+
+        ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click1", "displayWaitingIcon('none');", true);
+
+        return;
+    }
+
+    protected void BT_ExportToExcelForLeftModules_Click(object sender, EventArgs e)
+    {
+        if (Page.IsValid)
+        {
+            Random a = new Random();
+
+            // 立即清除可能残留的脚本
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "clearWaiting", "setTimeout(function(){ displayWaitingIcon('none'); }, 100);", true);
+
+         
+            try
+            {
+
+                CreateLeftBarModuleExcel("LeftModules.xls");
+
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZJGDCDSJYWJC") + "')", true);
+            }
+
+
+            try
+            {
+                CreatePageBarModuleExcel("PageModules.xls");
+
+            }
+            catch (System.Exception err)
+            {
+                LogClass.WriteLogFile("Error page: " + err.Message.ToString() + "\n" + err.StackTrace);
+
+                ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZJGDCDSJYWJC") + "')", true);
+            }
+
+
+            return;
+
+        }
+    }
+
+    protected void BT_ExportToExcelForPageModules_Click(object sender, EventArgs e)
+    {
+        if (Page.IsValid)
+        {
+            Random a = new Random();
+
+
+            try
+            {
+                CreatePageBarModuleExcel("PageModules.xls");
+            }
+            catch (System.Exception err)
+            {
+                LogClass.WriteLogFile("Error page: " + err.Message.ToString() + "\n" + err.StackTrace);
+
+                ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZJGDCDSJYWJC") + "')", true);
+            }
+
+
+            return;
+        }
+    }
+
+
+    //更新左边样模组
+    protected void UpdateLeftBarModules(string strToLangCode)
+    {
+        string strHQL1 = "";
+        string strModuleName, strParentModule, strLangCode, strHomeModuleName, strPageName, strModuleType, strUserType, strVisible, strIsDeleted, strSortNUmber, strIconURL;
+
+        DataSet ds1;
+        DataTable dt1;
+
+        dt1 = new DataTable();
+
+        string strpath = Server.MapPath("UpdateCode\\Language\\Module\\LeftModules.xls");
+        dt1 = MSExcelHandler.ReadExcelToDataTable(strpath, "");
+
+        DataRow[] dr = dt1.Select();  //定义一个DataRow数组
+        int rowsnum = dt1.Rows.Count;
+        if (rowsnum == 0)
+        {
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZJGEXCELBWKBWSJ") + "')", true);
+        }
+        else
+        {
+            for (int i = 0; i < dr.Length; i++)
+            {
+                try
+                {
+                    strModuleName = dr[i]["ModuleName"].ToString().Trim();
+                    strParentModule = dr[i]["ParentModule"].ToString().Trim();
+                    strLangCode = dr[i]["LangCode"].ToString().Trim();
+                    strHomeModuleName = dr[i]["HomeModuleName"].ToString().Trim();
+                    strPageName = dr[i]["PageName"].ToString().Trim();
+                    strModuleType = dr[i]["ModuleType"].ToString().Trim();
+                    strUserType = dr[i]["UserType"].ToString().Trim();
+                    strVisible = dr[i]["Visible"].ToString().Trim();
+                    strIsDeleted = dr[i]["IsDeleted"].ToString().Trim();
+                    strSortNUmber = dr[i]["SortNumber"].ToString().Trim();
+                    strIconURL = dr[i]["IconURL"].ToString().Trim();
+                    strIconURL = strIconURL.Replace("//", "/");
+                    strIconURL = strIconURL.Replace("\\", "/");
+
+                    if (strLangCode == strToLangCode)
+                    {
+                        strHQL1 = "Select * From T_ProModuleLevel Where ParentModule = '" + strParentModule + "' and ModuleName = '" + strModuleName + "' and ModuleType = '" + strModuleType + "' and LangCode='" + strLangCode + "' and UserType = '" + strUserType + "'";
+                        ds1 = ShareClass.GetDataSetFromSql(strHQL1, "T_ProModuleLevel");
+                        if (ds1.Tables[0].Rows.Count > 0)
+                        {
+                            strHQL1 = "Update T_ProModuleLevel Set HomeModuleName = '" + strHomeModuleName.Replace("'", "").Replace("\"", "").Replace("\\", "") + "'" + ",IconURL = " + "'" + strIconURL + "'";
+                            strHQL1 += " Where ParentModule = '" + strParentModule + "' and ModuleName = '" + strModuleName + "' and LangCode='" + strLangCode + "' and ModuleType = '" + strModuleType + "' and UserType = '" + strUserType + "'";
+                         
+                            ShareClass.RunSqlCommand(strHQL1);
+                        }
+                    }
+                }
+                catch (Exception err)
+                {
+                    LogClass.WriteLogFile("Error page: " + err.Message.ToString() + "\n" + err.StackTrace + " :" + strHQL1);
+                }
+            }
+
+            string strDefaultLangCode = System.Configuration.ConfigurationManager.AppSettings["DefaultLang"];
+            strHQL1 = string.Format(@"UPDATE T_ProModuleLevel B
+                        SET SortNumber = A.SortNumber
+                        FROM T_ProModuleLevel A
+                        WHERE A.ModuleName = B.ModuleName 
+                        AND A.ModuleType = B.ModuleType 
+                        AND A.UserType = B.UserType 
+                        AND A.LangCode <> B.LangCode 
+                        AND A.LangCode = '{0}'", strDefaultLangCode);
+            ShareClass.RunSqlCommand(strHQL1);
+        }
+    }
+
+    //更新页面模组
+    protected void UpdatePageBarModules(string strToLangCode)
+    {
+        string strHQL1 = "";
+        string strModuleName, strParentModule, strLangCode, strHomeModuleName, strPageName, strModuleType, strUserType, strVisible, strIsDeleted, strSortNUmber, strIconURL;
+
+        DataSet ds1;
+
+        string strpath = Server.MapPath("UpdateCode\\Language\\Module\\PageModules.xls");
+
+        DataTable dt1;
+        dt1 = new DataTable();
+        dt1 = MSExcelHandler.ReadExcelToDataTable(strpath, "");
+        DataRow[] dr = dt1.Select();  //定义一个DataRow数组
+        int rowsnum = dt1.Rows.Count;
+
+        if (rowsnum == 0)
+        {
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZJGEXCELBWKBWSJ") + "')", true);
+        }
+        else
+        {
+            for (int i = 0; i < dr.Length; i++)
+            {
+                try
+                {
+                    strModuleName = dr[i]["ModuleName"].ToString().Trim();
+                    strParentModule = dr[i]["ParentModule"].ToString().Trim();
+                    strLangCode = dr[i]["LangCode"].ToString().Trim();
+                    strHomeModuleName = dr[i]["HomeModuleName"].ToString().Trim();
+                    strPageName = dr[i]["PageName"].ToString().Trim();
+                    strModuleType = dr[i]["ModuleType"].ToString().Trim();
+                    strUserType = dr[i]["UserType"].ToString().Trim();
+                    strVisible = dr[i]["Visible"].ToString().Trim();
+                    strIsDeleted = dr[i]["IsDeleted"].ToString().Trim();
+                    strSortNUmber = dr[i]["SortNumber"].ToString().Trim();
+                    strIconURL = dr[i]["IconURL"].ToString().Trim();
+                    strIconURL = strIconURL.Replace("//", "/");
+                    strIconURL = strIconURL.Replace("\\", "/");
+
+                    if (strLangCode == strToLangCode)
+                    {
+                        strHQL1 = "Select * From T_ProModuleLevelForPage  Where ParentModule = '" + strParentModule + "' and ModuleName = '" + strModuleName + "' and ModuleType = '" + strModuleType + "' and LangCode='" + strLangCode + "' and UserType = '" + strUserType + "'";
+                        ds1 = ShareClass.GetDataSetFromSql(strHQL1, "T_ProModuleLevel");
+                        if (ds1.Tables[0].Rows.Count > 0)
+                        {
+                            strHQL1 = "Update T_ProModuleLevelForPage Set HomeModuleName = '" + strHomeModuleName.Replace("'", "").Replace("\"", "").Replace("\\", "") + "'" + ",IconURL = " + "'" + strIconURL + "'";
+                            strHQL1 += " Where ParentModule = '" + strParentModule + "' and ModuleName = '" + strModuleName + "' and LangCode='" + strLangCode + "' and ModuleType = '" + strModuleType + "' and UserType = " + "'" + strUserType + "'";
+
+                            ShareClass.RunSqlCommand(strHQL1);
+                        }
+                    }
+                }
+                catch (Exception err)
+                {
+                    LogClass.WriteLogFile("Error page: " + err.Message.ToString() + "\n" + err.StackTrace + " :" + strHQL1);
+                }
+            }
+
+            string strDefaultLangCode = System.Configuration.ConfigurationManager.AppSettings["DefaultLang"];
+            strHQL1 = string.Format(@"UPDATE T_ProModuleLevelForPage B
+                        SET SortNumber = A.SortNumber
+                        FROM T_ProModuleLevelForPage A
+                        WHERE A.ModuleName = B.ModuleName 
+                        AND A.ModuleType = B.ModuleType 
+                        AND A.UserType = B.UserType 
+                        AND A.LangCode <> B.LangCode 
+                        AND A.LangCode = '{0}'", strDefaultLangCode);
+            ShareClass.RunSqlCommand(strHQL1);
+        }
+    }
+
+
+    //复制所有左边栏模组
+    protected void CopyAllLeftModuleForHomeLanguage()
+    {
+        string strHQL, strLangHQL;
+
+        string strModuleName, strModuleType;
+        string strFromLangCode = System.Configuration.ConfigurationManager.AppSettings["DefaultLang"];
+
+        //strUserType = DL_ForUserType.SelectedValue.Trim();
+        strModuleType = GetLeftModuleType("0");
+        strModuleName = GetLeftModuleName("0");
+
+        strLangHQL = "Select LangCode From T_SystemLanguage Where LangCode <> " + "'" + strFromLangCode + "'";
+        strLangHQL += " Order By SortNumber ASC";
+        DataSet ds = ShareClass.GetDataSetFromSql(strLangHQL, "T_SystemLanguage");
+
+
+        for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+        {
+            strLangCode = ds.Tables[0].Rows[i][0].ToString().Trim();
+
+            strHQL = "Insert Into T_ProModuleLevel(ModuleName,ParentModule,SortNumber,PageName ,ModuleType ,UserType ,Visible,LangCode,HomeModuleName,IsDeleted,IconURL,ModuleDefinition)";
+            strHQL += " SELECT ModuleName,ParentModule,SortNumber,PageName ,ModuleType ,UserType ,Visible," + "'" + strLangCode + "'" + ",HomeModuleName,IsDeleted,IconURL,ModuleDefinition FROM T_ProModuleLevel";
+            strHQL += " Where LangCode = '" + strFromLangCode + "' and trim(ModuleName) || trim(ParentModule) || trim(ModuleType) || trim(UserType)  Not in (Select rtrim(ModuleName) || trim(ParentModule) || trim(ModuleType) || trim(UserType) From T_ProModuleLevel Where LangCode = " + "'" + strLangCode + "'" + ")";
+            ShareClass.RunSqlCommand(strHQL);
+
+            strHQL = "Update T_ProModuleLevel B Set SortNumber = A.SortNumber From T_ProModuleLevel A Where A.ModuleName = B.ModuleName and A.LangCode = '" + strFromLangCode + "' AND B.LangCode =" + "'" + strLangCode + "'";
+            ShareClass.RunSqlCommand(strHQL);
+
+            strHQL = "Delete From T_ProModuleLevel Where LangCode = " + "'" + strLangCode + "'" + " and ModuleType in ('SYSTEM','APP')";
+            strHQL += " and trim(ModuleName) || trim(ParentModule) || trim(ModuleType) || trim(UserType)  Not in (Select trim(ModuleName) || trim(ParentModule) || trim(ModuleType) || trim(UserType) From T_ProModuleLevel Where LangCode = '" + strFromLangCode + "')";
+            ShareClass.RunSqlCommand(strHQL);
+        }
+    }
+
+
+    //复制所有页面模组
+    protected void CopyAllPageModuleForHomeLanguage()
+    {
+        string strHQL, strLangHQL;
+
+        string strModuleName, strModuleType;
+        string strFromLangCode = System.Configuration.ConfigurationManager.AppSettings["DefaultLang"];
+
+
+        strModuleType = GetPageModuleType("0");
+        strModuleName = GetPageModuleName("0");
+
+        strLangHQL = "Select LangCode From T_SystemLanguage Where LangCode <> " + "'" + strFromLangCode + "'";
+        strLangHQL += " Order By SortNumber ASC";
+        DataSet ds = ShareClass.GetDataSetFromSql(strLangHQL, "T_SystemLanguage");
+
+        try
+        {
+            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+            {
+                strLangCode = ds.Tables[0].Rows[i][0].ToString().Trim();
+
+                strHQL = "Insert Into T_ProModuleLevelForPage(ModuleName,ParentModule,SortNumber,PageName ,ModuleType ,UserType ,Visible,LangCode,HomeModuleName,IsDeleted,IconURL)";
+                strHQL += " SELECT ModuleName,ParentModule,SortNumber,PageName ,ModuleType ,UserType ,Visible," + "'" + strLangCode + "'" + ",HomeModuleName,IsDeleted,IconURL FROM T_ProModuleLevelForPage";
+                strHQL += " Where LangCode = '" + strFromLangCode + "' and ltrim(rtrim(ModuleName)) || ltrim(rtrim(ParentModule)) || ltrim(rtrim(ModuleType)) || ltrim(rtrim(UserType))  Not in (Select ltrim(rtrim(ModuleName)) || ltrim(rtrim(ParentModule)) || ltrim(rtrim(ModuleType)) || ltrim(rtrim(UserType)) From T_ProModuleLevelForPage Where LangCode = " + "'" + strLangCode + "'" + ")";
+                ShareClass.RunSqlCommand(strHQL);
+
+                strHQL = "Update T_ProModuleLevelForPage B Set SortNumber = A.SortNumber,Visible = A.Visible,IsDeleted = A.IsDeleted From T_ProModuleLevelForPage A Where A.ModuleName = B.ModuleName and A.ParentModule = B.ParentModule and A.LangCode = '" + strFromLangCode + "' AND B.LangCode =" + "'" + strLangCode + "'";
+                ShareClass.RunSqlCommand(strHQL);
+
+                strHQL = "Delete From T_ProModuleLevelForPage Where LangCode = " + "'" + strLangCode + "'" + " and ModuleType in ('SYSTEM','APP')";
+                strHQL += " and ltrim(rtrim(ModuleName)) || ltrim(rtrim(ParentModule)) || ltrim(rtrim(ModuleType)) || ltrim(rtrim(UserType))  Not in (Select ltrim(rtrim(ModuleName)) || ltrim(rtrim(ParentModule)) || ltrim(rtrim(ModuleType)) || ltrim(rtrim(UserType)) From T_ProModuleLevelForPage Where LangCode = '" + strFromLangCode + "')";
+                ShareClass.RunSqlCommand(strHQL);
+            }
+        }
+        catch (Exception ex)
+        {
+            LogClass.WriteLogFile(ex.Message.ToString());
+        }
+    }
+
+    private void CreateLeftBarModuleExcel(string fileName)
+    {
+        string strHQL;
+
+        strHQL = "Select ModuleName,ParentModule,PageName,ModuleType,LangCode,cast(HomeModuleName as varchar(2000)) as HomeModuleName,UserType,Visible,IsDeleted,SortNumber,IconURL,ModuleDefinition From T_ProModuleLevel";
+        strHQL += " Order By LangCode ASC,HomeModuleName ASC";
+
+        MSExcelHandler.DataTableToExcel(strHQL, fileName);
+    }
+
+    private void CreatePageBarModuleExcel(string fileName)
+    {
+        string strHQL;
+
+        strHQL = "Select ModuleName,ParentModule,PageName,ModuleType,LangCode,cast(HomeModuleName as varchar(2000)) as HomeModuleName,UserType,Visible,IsDeleted,SortNumber,IconURL From T_ProModuleLevelForPage";
+        strHQL += " Order By LangCode ASC,HomeModuleName ASC";
+
+        MSExcelHandler.DataTableToExcel(strHQL, fileName);
+    }
+
+    protected string GetLeftModuleType(string strModuleID)
+    {
+        string strHQL = "Select ModuleType From T_ProModuleLevel Where ID = " + strModuleID;
+        DataSet ds = ShareClass.GetDataSetFromSql(strHQL, "T_ProModuleLevel");
+
+        if (ds.Tables[0].Rows.Count > 0)
+        {
+            return ds.Tables[0].Rows[0][0].ToString();
+        }
+        else
+        {
+            return "";
+        }
+    }
+
+    protected string GetLeftModuleUserType(string strModuleID)
+    {
+        string strHQL = "Select UserType From T_ProModuleLevel Where ID = " + strModuleID;
+        DataSet ds = ShareClass.GetDataSetFromSql(strHQL, "T_ProModuleLevel");
+
+        if (ds.Tables[0].Rows.Count > 0)
+        {
+            return ds.Tables[0].Rows[0][0].ToString();
+        }
+        else
+        {
+            return "";
+        }
+    }
+
+    protected string GetLeftModulePageName(string strModuleID)
+    {
+        string strHQL;
+
+        strHQL = "Select PageName From T_ProModuleLevel Where ID = " + strModuleID;
+        DataSet ds = ShareClass.GetDataSetFromSql(strHQL, "T_ProModuleLevel");
+
+        if (ds.Tables[0].Rows.Count > 0)
+        {
+            return ds.Tables[0].Rows[0][0].ToString();
+        }
+        else
+        {
+            return "";
+        }
+    }
+
+    protected string GetLeftModuleName(string strModuleID)
+    {
+        string strHQL = "Select ModuleName From T_ProModuleLevel Where ID = " + strModuleID;
+        DataSet ds = ShareClass.GetDataSetFromSql(strHQL, "T_ProModuleLevel");
+
+        if (ds.Tables[0].Rows.Count > 0)
+        {
+            return ds.Tables[0].Rows[0][0].ToString().Trim();
+        }
+        else
+        {
+            return "";
+        }
+    }
+
+    protected string GetPageModuleType(string strModuleID)
+    {
+        string strHQL = "Select ModuleType From T_ProModuleLevelForPage Where ID = " + strModuleID;
+        DataSet ds = ShareClass.GetDataSetFromSql(strHQL, "T_ProModuleLevelForPage");
+
+        if (ds.Tables[0].Rows.Count > 0)
+        {
+            return ds.Tables[0].Rows[0][0].ToString().Trim();
+        }
+        else
+        {
+            return "";
+        }
+    }
+
+    protected string GetPageModuleName(string strModuleID)
+    {
+        string strHQL = "Select ModuleName From T_ProModuleLevelForPage Where ID = " + strModuleID;
+        DataSet ds = ShareClass.GetDataSetFromSql(strHQL, "T_ProModuleLevelForPage");
+
+        if (ds.Tables[0].Rows.Count > 0)
+        {
+            return ds.Tables[0].Rows[0][0].ToString().Trim();
+        }
+        else
+        {
+            return "";
+        }
+    }
+
+
+    protected void BT_CompareByHomeLanguage_Click(object sender, EventArgs e)
+    {
+        if (Page.IsValid)
+        {
+            string strHQL;
+            string strHomeLangCode;
+
+            strHomeLangCode = System.Configuration.ConfigurationManager.AppSettings["DefaultLang"];
+
+            strLangCode = ddlLangSwitcher.SelectedValue.Trim();
+
+            strHQL = "Truncate Table T_LanguageResourceHome";
+            ShareClass.RunSqlCommand(strHQL);
+            strHQL = "Truncate Table T_LanguageResourceOther";
+            ShareClass.RunSqlCommand(strHQL);
+
+            string strOtherLangResxFile = Server.MapPath("App_GlobalResources\\lang." + strLangCode + ".resx");
+            ResXResourceReader rrOther = new ResXResourceReader(strOtherLangResxFile);
+            IDictionaryEnumerator ideOther = rrOther.GetEnumerator();
+            while (ideOther.MoveNext())
+            {
+                try
+                {
+                    strHQL = "Insert Into T_LanguageResourceOther(KeyName,KeyValue) Values('" + ideOther.Key + "','" + ideOther.Value.ToString().Replace("'", "") + "')";
+                    ShareClass.RunSqlCommand(strHQL);
+                }
+                catch (Exception err)
+                {
+                    LogClass.WriteLogFile("Error page: Key:" + ideOther.Key + " ," + err.Message.ToString() + "\n" + err.StackTrace);
+                }
+            }
+            rrOther.Close();
+
+            string strHomeLangResxFile = Server.MapPath("App_GlobalResources\\lang.resx");
+            ResXResourceReader rrHome = new ResXResourceReader(strHomeLangResxFile);
+            IDictionaryEnumerator ideHome = rrHome.GetEnumerator();
+            while (ideHome.MoveNext())
+            {
+                if (ideHome.Value.ToString().Trim() == "")
+                {
+                    strHQL = "Delete From T_LanguageResourceHome Where KeyName = '" + ideHome.Key + "'";
+                    continue;
+                }
+                strHQL = "Insert Into T_LanguageResourceHome(KeyName,KeyValue) Values('" + ideHome.Key + "','" + ideHome.Value.ToString().Replace("'", "") + "')";
+                ShareClass.RunSqlCommand(strHQL);
+            }
+            rrHome.Close();
+
+            strHQL = "Select KeyName,KeyValue From T_LanguageResourceHome Where KeyName Not In (Select KeyName From T_LanguageResourceOther)";
+
+            MSExcelHandler.DataTableToExcel(strHQL, "lang." + strLangCode + ".xls");
+
+
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click2", "showAlertAtMouse('OK！');", true);
+
+            return;
+        }
+    }
+
+    protected void BT_ImportLanguageData_Click(object sender, EventArgs e)
+    {
+        if (Page.IsValid)
+        {
+            string directoryPath = Server.MapPath("UpdateCode\\Language\\Skin\\");
+
+            // 调用方法遍历目录并导入Excel数据到对应的.resx文件
+            ImportExcelFilesInDirectory(directoryPath);
+
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('OK！')", true);
+        }
+    }
+
+    public static void ImportExcelFilesInDirectory(string directoryPath)
+    {
+        // 获取目录下所有的Excel文件（.xls 和 .xlsx）
+        var excelFiles = Directory.GetFiles(directoryPath, "*.xls*");
+
+        foreach (var excelFilePath in excelFiles)
+        {
+            // 获取Excel文件名（不带扩展名）
+            string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(excelFilePath);
+
+            // 构建对应的.resx文件路径
+            string resxFilePath = Path.Combine(directoryPath, $"{fileNameWithoutExtension}.resx");
+
+            // 调用方法将Excel数据导入到.resx文件
+            ImportExcelToResx(excelFilePath, resxFilePath);
+
+            LogClass.WriteLogFile($"Handle file: {excelFilePath} -> {resxFilePath}");
+        }
+    }
+
+    public static void ImportExcelToResx(string excelFilePath, string resxFilePath)
+    {
+        // 打开Excel文件
+        IWorkbook workbook;
+        using (var fileStream = new FileStream(excelFilePath, FileMode.Open, FileAccess.Read))
+        {
+            if (excelFilePath.EndsWith(".xlsx"))
+            {
+                workbook = new XSSFWorkbook(fileStream); // 读取 .xlsx 文件
+            }
+            else
+            {
+                workbook = new HSSFWorkbook(fileStream); // 读取 .xls 文件
+            }
+        }
+
+        // 获取第一个工作表
+        ISheet worksheet = workbook.GetSheetAt(0);
+
+        // 创建一个字典来存储Excel中的KeyName和KeyValue
+        var keyValuePairs = new Dictionary<string, string>();
+
+        // 遍历Excel表中的每一行（从第二行开始，假设第一行是标题）
+        for (int row = 1; row <= worksheet.LastRowNum; row++)
+        {
+            IRow currentRow = worksheet.GetRow(row);
+            if (currentRow == null) continue; // 跳过空行
+
+            string keyName = currentRow.GetCell(0)?.ToString(); // KeyName列（第一列）
+            string keyValue = currentRow.GetCell(1)?.ToString(); // KeyValue列（第二列）
+
+            if (!string.IsNullOrEmpty(keyName))
+            {
+                keyValuePairs[keyName] = keyValue;
+            }
+        }
+
+        // 如果.resx文件已存在，读取现有资源
+        var existingResources = new Dictionary<string, string>();
+        if (File.Exists(resxFilePath))
+        {
+            using (ResXResourceReader resxReader = new ResXResourceReader(resxFilePath))
+            {
+                foreach (System.Collections.DictionaryEntry entry in resxReader)
+                {
+                    existingResources[entry.Key.ToString()] = entry.Value?.ToString();
+                }
+            }
+        }
+
+        // 将数据写入.resx文件（新增时跳过已存在的KeyName）
+        using (ResXResourceWriter resxWriter = new ResXResourceWriter(resxFilePath))
+        {
+            // 先写入现有资源
+            foreach (var kvp in existingResources)
+            {
+                resxWriter.AddResource(kvp.Key, kvp.Value);
+            }
+
+            // 再写入Excel中的新资源（跳过已存在的KeyName）
+            foreach (var kvp in keyValuePairs)
+            {
+                if (!existingResources.ContainsKey(kvp.Key))
+                {
+                    resxWriter.AddResource(kvp.Key, kvp.Value);
+                }
+                else
+                {
+                    Console.WriteLine($"Passed be existed KeyName: {kvp.Key}");
+                }
+            }
+        }
+    }
+
+
+    protected void BT_CreateRTXAccountData_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            ShareClass.RunSqlCommand("Exec Pr_CreateRTXAccountData");
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZSJCCG") + "')", true);
+        }
+        catch
+        {
+            //ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('"+LanguageHandle.GetWord("ZZSJCSBKNYGRSTDYSCSZSJKLZJZXPR")+"')", true);
+        }
+    }
+
+    protected void BT_CreateRTXDataToTXT_Click(object sender, EventArgs e)
+    {
+        string strExtName, strFileName, strDocURL, strDocSavePath;
+
+        strExtName = ".txt";
+
+        strFileName = "RTXAccountData" + DateTime.Now.ToString("yyyyMMddHHMMssff") + strExtName;
+
+        strDocURL = "Doc\\" + "RTXAccount\\" + strFileName;
+
+        strDocSavePath = Server.MapPath("Doc") + "\\RTXAccount\\" + strFileName;
+
+        try
+        {
+            CreateRTXAccountDataToTXT(strDocSavePath);
+
+            HL_RTXAccountDataFile.NavigateUrl = strDocURL;
+            HL_RTXAccountDataFile.Target = "_blank";
+
+            //ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('"+LanguageHandle.GetWord("ZZSCWJCG")+"')", true);
+        }
+        catch
+        {
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZSCWJSBKNYHSTDYSCSJC") + "')", true);
+        }
+    }
+
 }

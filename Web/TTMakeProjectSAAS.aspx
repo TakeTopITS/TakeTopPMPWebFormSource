@@ -168,7 +168,10 @@
                                                         </asp:ButtonColumn>
                                                         <asp:TemplateColumn HeaderText="Delete">
                                                             <ItemTemplate>
-                                                                <div onclick="return showSimpleDeleteModal(this, event);" style="cursor: pointer; display: inline-block;"  class="custom-delete-icon"  title="Delete">  <img src="ImagesSkin/Delete.png" border="0" alt='Delete' /></div><asp:LinkButton ID="LBT_Delete" CommandName="Delete" runat="server" Style="display: none;"></asp:LinkButton>
+                                                                <div onclick="return showSimpleDeleteModal(this, event);" style="cursor: pointer; display: inline-block;" class="custom-delete-icon" title="Delete">
+                                                                    <img src="ImagesSkin/Delete.png" border="0" alt='Delete' />
+                                                                </div>
+                                                                <asp:LinkButton ID="LBT_Delete" CommandName="Delete" runat="server" Style="display: none;"></asp:LinkButton>
                                                             </ItemTemplate>
                                                             <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="5%" />
                                                         </asp:TemplateColumn>
@@ -444,44 +447,37 @@
                                                 </td>
                                             </tr>
 
-                                            <tr style="display: none;">
-                                                <td class="formItemBgStyleForAlignLeft">
+                                            <tr>
+                                                <td colspan="4" class="formItemBgStyleForAlignLeft">
 
                                                     <asp:Label ID="Label8" runat="server" Text="<%$ Resources:lang,YINGXXMJLGXMZT%>"></asp:Label>:
-                            
-                                                </td>
-                                                <td colspan="3" class="formItemBgStyleForAlignLeft">
-                                                    <table>
-                                                        <tr>
-                                                            <td>
-                                                                <asp:DropDownList ID="DL_AllowPMChangeStatus" runat="server">
-                                                                    <asp:ListItem Value="NO">NO</asp:ListItem>
-                                                                    <asp:ListItem Value="YES">YES</asp:ListItem>
-                                                                </asp:DropDownList>
-                                                            </td>
-                                                            <td style="text-align: right">
-                                                                <asp:Label ID="Label10" runat="server" Text="<%$ Resources:lang,JDHGQSHDBDXMJHYH%>"></asp:Label>:
-                                                            </td>
-                                                            <td>
-                                                                <asp:DropDownList ID="DL_ProgressByDetailImpact" runat="server">
-                                                                    <asp:ListItem Value="YES">YES</asp:ListItem>
-                                                                    <asp:ListItem Value="NO">NO</asp:ListItem>
-                                                                </asp:DropDownList>
-                                                            </td>
-
-                                                            <td style="text-align: right">
-                                                                <asp:Label ID="Label12" runat="server" Text="<%$ Resources:lang,RWJDYHJHJDYQR%>"></asp:Label>:
-                                                            </td>
-                                                            <td>
-                                                                <asp:DropDownList ID="DL_PlanProgressNeedPlanerConfirm" runat="server">
-                                                                    <asp:ListItem Value="NO">NO</asp:ListItem>
-                                                                    <asp:ListItem Value="YES">YES</asp:ListItem>
-                                                                </asp:DropDownList>
-                                                            </td>
-                                                        </tr>
-                                                    </table>
+                                                    <asp:DropDownList ID="DL_AllowPMChangeStatus" runat="server">
+                                                        <asp:ListItem Value="NO">NO</asp:ListItem>
+                                                        <asp:ListItem Value="YES">YES</asp:ListItem>
+                                                    </asp:DropDownList>
+                                                 
+                                                    <asp:Label ID="Label10" runat="server" Text="<%$ Resources:lang,JDHGQSHDBDXMJHYH%>"></asp:Label>:
+                                                    <asp:DropDownList ID="DL_ProgressByDetailImpact" runat="server">
+                                                        <asp:ListItem Value="YES">YES</asp:ListItem>
+                                                        <asp:ListItem Value="NO">NO</asp:ListItem>
+                                                    </asp:DropDownList>
+                                                
                                                 </td>
                                             </tr>
+                                            <tr style="display:none;">
+
+                                             <td class="formItemBgStyleForAlignLeft">
+                                                    <asp:Label ID="Label12" runat="server" Text="<%$ Resources:lang,RWJDYHJHJDYQR%>"></asp:Label>:
+                                                            </td>
+                                                <td colspan="3" class="formItemBgStyleForAlignLeft">
+                                                    <asp:DropDownList ID="DL_PlanProgressNeedPlanerConfirm" runat="server">
+                                                        <asp:ListItem Value="NO">NO</asp:ListItem>
+                                                        <asp:ListItem Value="YES">YES</asp:ListItem>
+                                                    </asp:DropDownList>
+                                                </td>
+
+                                            </tr>
+
                                             <tr style="display: none;">
                                                 <td class="formItemBgStyleForAlignLeft">
                                                     <asp:Label ID="Label13" runat="server" Text="<%$ Resources:lang,RXZDFQLC%>"></asp:Label>:
@@ -529,8 +525,9 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td colspan="4" style="width: 100%; text-align: left; padding-left: 10px" class="formItemBgStyleForAlignLeft">
+                                                <td colspan="4" style="width: 100%; text-align: left; padding-left: 10px;display:none;" class="formItemBgStyleForAlignLeft">
                                                     <asp:Label ID="LB_TBNoticeProjectTeamMember" runat="server" Text="<%$ Resources:lang,NoticeProjectTeamMember%>" />:
+                                                   
                                                     <asp:CheckBox ID="CB_SMS" runat="server" Text="<%$ Resources:lang,SendSMS%>" />
                                                     <asp:CheckBox ID="CB_Mail" runat="server" Text="<%$ Resources:lang,SendEMail%>" />
                                                     <asp:TextBox ID="TB_Message" runat="server" Width="300px"></asp:TextBox>

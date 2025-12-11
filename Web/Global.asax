@@ -94,17 +94,65 @@
 
     void Application_BeginRequest(Object sender, EventArgs e)
     {
+        string strLangCode = System.Configuration.ConfigurationManager.AppSettings["DefaultLang"];
+
         try
         {
             if (Request.Cookies["LangCode"] != null)
             {
-                System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.CreateSpecificCulture(Request.Cookies["LangCode"].Value.ToString());
-                System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(Request.Cookies["LangCode"].Value.ToString());
+                string cultureCode = Request.Cookies["LangCode"].Value.ToString();
+
+                // 只设置界面文化为用户选择的文化
+                System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(cultureCode);
+
+                //// 关键修改：数据处理使用固定文化（避免佛教历等问题）
+                //// 使用英文（美国）文化，确保公历和标准时间格式
+                //System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.CreateSpecificCulture("en");
+
+                // 或者使用不变文化（更推荐，完全不受区域设置影响）
+                // System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
+
+                if ("th,km,lo,my".IndexOf(cultureCode) == -1)
+                {
+                    //如果需要支持多种公历文化，可以根据语言代码映射
+                    System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.CreateSpecificCulture(cultureCode);
+                }
+                else
+                {
+                    //如果需要支持多种公历文化，可以根据语言代码映射
+                    System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.CreateSpecificCulture("en");
+                }
+            }
+            else
+            {
+                // 只设置界面文化为用户选择的文化
+                System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(strLangCode);
+                if ("th,km,lo,my".IndexOf(strLangCode) == -1)
+                {
+                    //如果需要支持多种公历文化，可以根据语言代码映射
+                    System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.CreateSpecificCulture(strLangCode);
+                }
+                else
+                {
+                    //如果需要支持多种公历文化，可以根据语言代码映射
+                    System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.CreateSpecificCulture("en");
+                }
             }
         }
         catch (Exception err)
         {
-            //LogClass.WriteLogFile(err.Message.ToString());
+            // 出错时也确保使用安全的文化设置
+            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(strLangCode);
+            if ("th,km,lo,my".IndexOf(strLangCode) == -1)
+            {
+                //如果需要支持多种公历文化，可以根据语言代码映射
+                System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.CreateSpecificCulture(strLangCode);
+            }
+            else
+            {
+                //如果需要支持多种公历文化，可以根据语言代码映射
+                System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.CreateSpecificCulture("en");
+            }
         }
     }
 

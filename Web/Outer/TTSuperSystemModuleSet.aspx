@@ -81,38 +81,12 @@
                                                 <asp:DropDownList ID="ddlLangSwitcher" runat="server" DataValueField="LangCode" DataTextField="Language" AutoPostBack="true" OnSelectedIndexChanged="ddlLangSwitcher_SelectedIndexChanged" Style="height: 22px;">
                                                 </asp:DropDownList>
                                             </td>
-
-                                            <td class="ItemAlignLeft" style="padding-top: 4px;">
-                                                <asp:Button ID="BT_CopyAllModuleForHomeLanguage" runat="server" CssClass="inpu" Width="200px" OnClick="BT_CopyAllModuleForHomeLanguage_Click" Text="<%$ Resources:lang,CBYMZFZSCQTYYMZ%>" />
-                                            </td>
-                                            <td style="text-align: left; padding-right: 5px; padding-top: 4px;">
-                                                <asp:Button ID="BT_SynchronizeModuleDataFromExcel" runat="server" CssClass="inpu" Width="150px" Text="<%$ Resources:lang,DBMZYYSJ%>" OnClick="BT_SynchronizeModuleDataFromExcel_Click" />
-                                            </td>
-                                            <td class="ItemAlignLeft" style="padding-right: 5px; padding-top: 4px;">
-                                                <asp:Button ID="BT_ExportToExcelForLeftModules" CssClass="inpu" Width="150px" runat="server" Text="<%$ Resources:lang,DaoChuZhuBianLanMuZuo%>" OnClick="BT_ExportToExcelForLeftModules_Click" /></td>
-                                            <td class="ItemAlignLeft" style="padding-right: 5px; padding-top: 4px;">
-                                                <asp:Button ID="BT_ExportToExcelForPageModules" runat="server" CssClass="inpu" Width="150px" Text="<%$ Resources:lang,DaoChuYeMianLanMuZuo%>" OnClick="BT_ExportToExcelForPageModules_Click" />
-                                            </td>
-                                            <td width="100px" class="ItemAlignLeft" style="padding-right: 5px; padding-top: 4px;"></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="ItemAlignLeft" width="445px">&nbsp;</td>
-                                            <td style="width: 100px; text-align: right;">&nbsp;</td>
-                                            <td style="width: 200px; text-align: left; padding-top: 3px;">&nbsp;</td>
-                                            <td style="width: 80px; text-align: left; padding-top: 4px;">&nbsp;</td>
-                                            <td style="width: 80px; text-align: right;">&nbsp;</td>
-                                            <td class="ItemAlignLeft" style="width: 80px; padding-top: 3px;">&nbsp;</td>
-
-                                            <td class="ItemAlignLeft" style="padding-right: 5px;" width="200px">&nbsp;</td>
                                             <td style="text-align: left; padding-right: 5px; padding-top: 4px;">
                                                 <asp:Button ID="BT_DeleteUnVisibleModule" runat="server" CssClass="inpu" Width="150px" OnClick="BT_DeleteUnVisibleModule_Click" Text="<%$ Resources:lang,YinCangSuoYouBuKeShiMoZu%>" />
                                             </td>
                                             <td class="ItemAlignLeft" style="padding-right: 5px; padding-top: 4px;">
                                                 <asp:Button ID="BT_ClearSystemBeginnerData" runat="server" CssClass="inpu" Width="150px" Text="<%$ Resources:lang,ShiShiChuShiShuJuQingChu%>" OnClick="BT_ClearSystemBeginnerData_Click" />
                                             </td>
-                                            <td class="ItemAlignLeft" style="padding-right: 5px; padding-top: 4px;"></td>
-
-                                            <td class="ItemAlignLeft" style="padding-right: 5px; padding-top: 4px;">&nbsp;</td>
                                         </tr>
 
                                     </table>
@@ -198,6 +172,7 @@
                                                                                                 <strong>
                                                                                                     <asp:Label ID="Label19" runat="server" Text="<%$ Resources:lang,GuanLianYeMian%>"></asp:Label>
                                                                                                     &nbsp;&amp;
+                                                                                                   
                                                                                                     <asp:Label ID="Label21" runat="server" Text="<%$ Resources:lang,LeiXing%>"></asp:Label>
 
                                                                                                 </strong>
@@ -253,15 +228,15 @@
                                                                             Width="95%" CellPadding="4" ForeColor="#333333" GridLines="None">
                                                                             <Columns>
                                                                                 <asp:BoundColumn DataField="ID" HeaderText="编号">
-                                                                                    <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="5%" />
+                                                                                    <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="5%" />
                                                                                 </asp:BoundColumn>
 
                                                                                 <asp:BoundColumn DataField="ModuleName" HeaderText="模块名称">
-                                                                                    <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="8%" />
+                                                                                    <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="8%" />
                                                                                 </asp:BoundColumn>
 
                                                                                 <asp:BoundColumn DataField="HomeModuleName" HeaderText="模块名称（本语）">
-                                                                                    <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="8%" />
+                                                                                    <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="8%" />
                                                                                 </asp:BoundColumn>
 
                                                                                 <asp:TemplateColumn HeaderText="关联页面">
@@ -287,43 +262,43 @@
                                                                                             </tr>
                                                                                         </table>
                                                                                     </ItemTemplate>
-                                                                                    <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="20%" />
+                                                                                    <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="20%" />
                                                                                 </asp:TemplateColumn>
 
                                                                                 <asp:BoundColumn DataField="ParentModule" HeaderText="父模块">
-                                                                                    <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="10%" />
+                                                                                    <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="10%" />
                                                                                 </asp:BoundColumn>
 
                                                                                 <asp:BoundColumn DataField="SortNumber" HeaderText="顺序">
-                                                                                    <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="5%" />
+                                                                                    <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="5%" />
 
                                                                                 </asp:BoundColumn>
 
                                                                                 <asp:BoundColumn DataField="Visible" HeaderText="可用">
-                                                                                    <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="5%" />
+                                                                                    <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="5%" />
 
                                                                                 </asp:BoundColumn>
 
                                                                                 <asp:BoundColumn DataField="LangCode" HeaderText="语言">
-                                                                                    <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="5%" />
+                                                                                    <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="5%" />
 
                                                                                 </asp:BoundColumn>
                                                                                 <asp:BoundColumn DataField="IsDeleted" HeaderText="删除">
-                                                                                    <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="5%" />
+                                                                                    <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="5%" />
 
                                                                                 </asp:BoundColumn>
                                                                                 <asp:BoundColumn DataField="UserType" HeaderText="用户类型">
-                                                                                    <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="8%" />
+                                                                                    <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="8%" />
 
                                                                                 </asp:BoundColumn>
                                                                                 <asp:TemplateColumn HeaderText="">
-                                                                                    <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="5%" />
+                                                                                    <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="5%" />
                                                                                     <ItemTemplate>
                                                                                         <asp:Button ID="BT_DeleteModule" runat="server" CommandName="DELETE" CssClass="inpu" Text="<%$ Resources:lang,ShanChu%>" />
                                                                                     </ItemTemplate>
                                                                                 </asp:TemplateColumn>
                                                                                 <asp:TemplateColumn HeaderText="">
-                                                                                    <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="5%" />
+                                                                                    <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="5%" />
                                                                                     <ItemTemplate>
                                                                                         <asp:Button ID="BT_CancelDeleteModule" runat="server" CommandName="CancelDelete" CssClass="inpu" Text="<%$ Resources:lang,HuiFu%>" />
                                                                                     </ItemTemplate>
@@ -331,7 +306,7 @@
 
 
                                                                                 <asp:TemplateColumn HeaderText="">
-                                                                                    <ItemStyle CssClass="itemBorder" Horizontalalign="left" />
+                                                                                    <ItemStyle CssClass="itemBorder" HorizontalAlign="left" />
                                                                                     <ItemTemplate>
                                                                                         <div style="background-color: grey;">
                                                                                             <asp:Image ID="IM_ModuleIcon" runat="server" ImageUrl='<%#  "../" + Eval("IconURL").ToString() %>' />
@@ -344,7 +319,7 @@
                                                                             <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                                                                             <EditItemStyle BackColor="#2461BF" />
                                                                             <SelectedItemStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-                                                                            <PagerStyle Horizontalalign="center" Mode="NumericPages" NextPageText="" PrevPageText="" CssClass="notTab" />
+                                                                            <PagerStyle HorizontalAlign="center" Mode="NumericPages" NextPageText="" PrevPageText="" CssClass="notTab" />
 
                                                                             <ItemStyle CssClass="itemStyle" />
                                                                         </asp:DataGrid>
@@ -371,12 +346,9 @@
                     </div>
 
                 </ContentTemplate>
-                <Triggers>
-                    <asp:PostBackTrigger ControlID="BT_ExportToExcelForLeftModules" />
-                    <asp:PostBackTrigger ControlID="BT_ExportToExcelForPageModules" />
-                </Triggers>
+
             </asp:UpdatePanel>
-           <div style="position: fixed; display: none; z-index: 9999;" id="progressContainer">
+            <div style="position: fixed; display: none; z-index: 9999;" id="progressContainer">
                 <asp:UpdateProgress ID="TakeTopUp" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
                     <ProgressTemplate>
                         <img src="../Images/Processing.gif" alt="Loading,please wait..." />
@@ -386,5 +358,5 @@
         </form>
     </center>
 </body>
-<script type="text/javascript" language="javascript">var cssDirectory = '<%=Session["CssDirectory"] %>'; var oLink = document.getElementById('mainCss'); oLink.href ='../' + 'css/' + cssDirectory + '/' + 'bluelightmain.css';</script>
+<script type="text/javascript" language="javascript">var cssDirectory = '<%=Session["CssDirectory"] %>'; var oLink = document.getElementById('mainCss'); oLink.href = '../' + 'css/' + cssDirectory + '/' + 'bluelightmain.css';</script>
 </html>

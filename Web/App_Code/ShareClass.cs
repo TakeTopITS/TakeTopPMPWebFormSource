@@ -65,7 +65,7 @@ public static class ShareClass
         //
     }
 
-    public static string SystemVersionID = "V2025.12.10";
+    public static string SystemVersionID = "V2025.12.11";
 
     public static string SystemLatestLoginUser = "";
     public static string SystemDBer = "";

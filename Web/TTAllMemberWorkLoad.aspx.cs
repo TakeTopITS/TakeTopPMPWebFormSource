@@ -45,7 +45,15 @@ public partial class TTAllMemberWorkLoad : System.Web.UI.Page
         strLangCode = Session["LangCode"].ToString();
 
         System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(Session["LangCode"].ToString());
-        System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(Session["LangCode"].ToString());
+        if ("th,km,lo,my".IndexOf(Session["LangCode"].ToString()) == -1)
+        {
+            //如果需要支持多种公历文化，可以根据语言代码映射
+            System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.CreateSpecificCulture(Session["LangCode"].ToString());
+        }
+        else
+        {
+            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en");
+        }
 
         ArrayList year;
         int i, intYear;

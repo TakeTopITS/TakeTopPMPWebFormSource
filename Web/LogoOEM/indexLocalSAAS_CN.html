@@ -127,7 +127,7 @@
         }
 
         function displayXMBVideo() {
-            if (document.getElementById('DIV_TakeTopXMBVideo').style.display == 'none') {
+            if (document.getElementById('DIV_TakeTopXMBVideo').style.display.toLowerCase() == 'none') {
                 document.getElementById('DIV_TakeTopXMBVideo').style.display = 'block';
                 $('#movie').get(0).play();
             }

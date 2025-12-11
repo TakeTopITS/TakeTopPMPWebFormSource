@@ -32643,4 +32643,13 @@
   <data name="ZZSJSJKSHSFZQXH" xml:space="preserve">
     <value>Mise à niveau de la base de données en cours. Cela prendra environ 10 secondes. Veuillez patienter...</value>
   </data>
+  <data name="GXXTYYSJ" xml:space="preserve">
+    <value>Mise à jour des données linguistiques du système</value>
+  </data>
+  <data name="GXMZYYSJ" xml:space="preserve">
+    <value>Mise à jour des données linguistiques du module</value>
+  </data>
+  <data name="GXUiYYSJ" xml:space="preserve">
+    <value>Mise à jour des données linguistiques de l’interface</value>
+  </data>
 </root>

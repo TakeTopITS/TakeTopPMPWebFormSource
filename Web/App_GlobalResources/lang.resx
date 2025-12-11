@@ -32788,4 +32788,16 @@
     <value>正在升级数据库，大概需要10秒钟，请稍候...</value>
     <comment>正在升级数据库，大概需要10秒钟，请稍候...</comment>
   </data>
+  <data name="GXXTYYSJ" xml:space="preserve">
+    <value>更新系统语言数据</value>
+    <comment>更新系统语言数据</comment>
+  </data>
+  <data name="GXMZYYSJ" xml:space="preserve">
+    <value>更新模组语言数据</value>
+    <comment>更新模组语言数据</comment>
+  </data>
+  <data name="GXUiYYSJ" xml:space="preserve">
+    <value>更新UI语言数据</value>
+    <comment>更新UI语言数据</comment>
+  </data>
 </root>

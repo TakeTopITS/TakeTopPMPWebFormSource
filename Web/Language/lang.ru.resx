@@ -32645,4 +32645,13 @@
   <data name="ZZSJSJKSHSFZQXH" xml:space="preserve">
     <value>Идёт обновление базы данных. Это займёт примерно 10 секунд. Пожалуйста, подождите...</value>
   </data>
+  <data name="GXXTYYSJ" xml:space="preserve">
+    <value>Обновление языковых данных системы</value>
+  </data>
+  <data name="GXMZYYSJ" xml:space="preserve">
+    <value>Обновление языковых данных мода</value>
+  </data>
+  <data name="GXUiYYSJ" xml:space="preserve">
+    <value>Обновление языковых данных интерфейса</value>
+  </data>
 </root>

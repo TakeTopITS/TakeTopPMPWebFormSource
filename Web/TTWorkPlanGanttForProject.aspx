@@ -147,6 +147,8 @@
     <script src="ext-min/TakeTopExtAllDebug.js" type="text/javascript"></script>
     <script src="ext-gantt/TakeTopGntAllDebug.js" type="text/javascript" charset="gbk"></script>
 
+   <%-- <script src="ext-min/local/ext-lang-th.js" type="text/javascript"></script>--%>
+
     <script type='text/javascript'>
         //为了支持多个项目，pid为某个项目的项目编号
         var pid = 1;

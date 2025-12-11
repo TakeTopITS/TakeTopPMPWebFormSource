@@ -55,12 +55,12 @@ public partial class TakeTopMainSkinSelect : System.Web.UI.Page
                 {
                     CopyAllLeftModuleForHomeLanguage(strLangCode);
                     UpdateLeftBarModules(strLangCode);
-
-                    CopyBaseDataInnerFromHomeLanguage(strLangCode);
-                    CopyNewTypeFromHomeLanguage(strLangCode);
-                    CopyAlActorGroupForHomeLanguage(strLangCode);
-                    CopyCommonWorkflowRelatedPageForHomeLanguage(strLangCode);
                 }
+
+                CopyBaseDataInnerFromHomeLanguage(strLangCode);
+                CopyNewTypeFromHomeLanguage(strLangCode);
+                CopyAlActorGroupForHomeLanguage(strLangCode);
+                CopyCommonWorkflowRelatedPageForHomeLanguage(strLangCode);
             }
             catch (System.Exception err)
             {
@@ -340,7 +340,7 @@ public partial class TakeTopMainSkinSelect : System.Web.UI.Page
 
         dt1 = new DataTable();
 
-        string strpath = Server.MapPath("UpdateCode\\Modules.xls");
+        string strpath = Server.MapPath("UpdateCode\\Language\\Module\\LeftModules.xls");
         dt1 = MSExcelHandler.ReadExcelToDataTable(strpath, "");
 
         DataRow[] dr = dt1.Select();  //定义一个DataRow数组
@@ -409,7 +409,7 @@ public partial class TakeTopMainSkinSelect : System.Web.UI.Page
 
         DataSet ds1;
 
-        string strpath = Server.MapPath("UpdateCode\\PageModules.xls");
+        string strpath = Server.MapPath("UpdateCode\\Language\\Module\\PageModules.xls");
 
         DataTable dt1;
         dt1 = new DataTable();
@@ -532,17 +532,17 @@ public partial class TakeTopMainSkinSelect : System.Web.UI.Page
 
             strHQL = string.Format(@"INSERT INTO T_RentProductType(Type, ENType, HomeTypeName, DemoURL, SortNumber,LangCode) 
                 SELECT Type ,ENType ,HomeTypeName,DemoURL,SortNumber,'{1}' From T_RentProductType
-                   Where LangCode = '{0}'", strFromLangCode, strLangCode);
+                   Where LangCode = '{0}' and Type Not In (Select Type From T_RentProductType Where LangCode = '{1}')", strFromLangCode, strLangCode);
             ShareClass.RunSqlCommand(strHQL);
 
             strHQL = string.Format(@"INSERT INTO t_rentproductvertype(Type, HomeTypeName, SortNumber,LangCode) 
                 SELECT Type ,HomeTypeName,SortNumber,'{1}' From t_rentproductvertype
-                   Where LangCode = '{0}'", strFromLangCode, strLangCode);
+                   Where LangCode = '{0}' and Type Not In (Select Type From t_rentproductvertype Where LangCode = '{1}')", strFromLangCode, strLangCode);
             ShareClass.RunSqlCommand(strHQL);
 
             strHQL = string.Format(@"INSERT INTO T_TryProductResontype(Type, HomeTypeName,  SortNumber,LangCode) 
                 SELECT Type ,HomeTypeName,SortNumber,'{1}' From T_TryProductResontype
-                   Where LangCode = '{0}'", strFromLangCode, strLangCode);
+                   Where LangCode = '{0}' and Type Not In (Select Type From T_TryProductResontype Where LangCode = '{1}')", strFromLangCode, strLangCode);
             ShareClass.RunSqlCommand(strHQL);
         }
         catch (System.Exception err)
@@ -561,7 +561,6 @@ public partial class TakeTopMainSkinSelect : System.Web.UI.Page
             strHQL += " SELECT Type,SortNumber ,PageName," + "'" + strLangCode + "'" + ",HomeName,Visible,NewsScope FROM T_NewsType";
             strHQL += " Where LangCode = '" + strFromLangCode + "' and ltrim(rtrim(Type)) || " + "'" + strLangCode + "'" + " Not in (Select ltrim(rtrim(Type)) || ltrim(rtrim(LangCode))  From T_NewsType Where LangCode = " + "'" + strLangCode + "'" + ")";
             ShareClass.RunSqlCommand(strHQL);
-
         }
         catch (Exception err)
         {

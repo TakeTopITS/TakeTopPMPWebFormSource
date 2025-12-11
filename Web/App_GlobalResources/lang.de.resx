@@ -32643,4 +32643,13 @@
   <data name="ZZSJSJKSHSFZQXH" xml:space="preserve">
     <value>Die Datenbank wird aktualisiert. Dies wird etwa 10 Sekunden dauern. Bitte warten Sie...</value>
   </data>
+  <data name="GXXTYYSJ" xml:space="preserve">
+    <value>Systemsprachdaten werden aktualisiert</value>
+  </data>
+  <data name="GXMZYYSJ" xml:space="preserve">
+    <value>Modul-Sprachdaten werden aktualisiert</value>
+  </data>
+  <data name="GXUiYYSJ" xml:space="preserve">
+    <value>UI-Sprachdaten werden aktualisiert</value>
+  </data>
 </root>
