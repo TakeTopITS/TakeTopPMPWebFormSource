@@ -2968,7 +2968,7 @@
     <value> Salin data hak akses departemen ke kode  </value>
   </data>
   <data name="DBMZYYSJ" xml:space="preserve">
-    <value>Sinkronkan data bahasa modul  </value>
+    <value>Memperbarui data bahasa modul ini</value>
   </data>
   <data name="DCaoZuoXingXuQiu" xml:space="preserve">
     <value>Kebutuhan operasional tipe-D  </value>
@@ -32647,6 +32647,15 @@
   <data name="ZZSJSJKSHSFZQXH" xml:space="preserve">
     <value>Sedang mengupgrade database. Proses ini membutuhkan waktu sekitar 10 detik. Harap tunggu...</value>
   </data>
+  <data name="GXXTYYSJ" xml:space="preserve">
+    <value>Memperbarui data bahasa sistem</value>
+  </data>
+  <data name="GXMZYYSJ" xml:space="preserve">
+    <value>Memperbarui data bahasa mod</value>
+  </data>
+  <data name="GXUiYYSJ" xml:space="preserve">
+    <value>Memperbarui data bahasa antarmuka</value>
+  </data>
   <data name="BeiFenWenJianLuJian" xml:space="preserve">
     <value>Path penyimpanan file cadangan</value>
   </data>
@@ -33507,14 +33516,5 @@
   </data>
   <data name="ZZZZYSCDWJ" xml:space="preserve">
     <value>Harap pilih file yang akan diunggah!</value>
-  </data>
-  <data name="GXXTYYSJ" xml:space="preserve">
-    <value>Memperbarui data bahasa sistem</value>
-  </data>
-  <data name="GXMZYYSJ" xml:space="preserve">
-    <value>Memperbarui data bahasa mod</value>
-  </data>
-  <data name="GXUiYYSJ" xml:space="preserve">
-    <value>Memperbarui data bahasa antarmuka</value>
   </data>
 </root>

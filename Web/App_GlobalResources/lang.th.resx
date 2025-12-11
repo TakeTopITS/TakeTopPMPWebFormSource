@@ -2965,7 +2965,7 @@
     <value>คัดลอกข้อมูลสิทธิ์ของแผนกที่มีรหัสเป็น</value>
   </data>
   <data name="DBMZYYSJ" xml:space="preserve">
-    <value>ซิงค์ข้อมูลภาษาโมดูล</value>
+    <value>กำลังอัปเดตข้อมูลภาษาของม็อดนี้</value>
   </data>
   <data name="DCaoZuoXingXuQiu" xml:space="preserve">
     <value>D ความต้องการด้านการปฏิบัติงาน</value>
@@ -32646,6 +32646,9 @@
   <data name="GXMZYYSJ" xml:space="preserve">
     <value>อัปเดตข้อมูลภาษาของม็อด</value>
   </data>
+  <data name="GXUiYYSJ" xml:space="preserve">
+    <value>กำลังอัปเดตข้อมูลภาษาของ UI</value>
+  </data>
   <data name="DGMBSTDTB" xml:space="preserve">
     <value>การยื่นเสนอราคาที่รอซื้อเอกสารประกวดราคา</value>
   </data>
@@ -41961,8 +41964,5 @@
   </data>
   <data name="QiYeJiKuaZhanRuanJian" xml:space="preserve">
     <value>ซอฟต์แวร์ขยายขนาดระดับองค์กร</value>
-  </data>
-  <data name="GXUiYYSJ" xml:space="preserve">
-    <value>กำลังอัปเดตข้อมูลภาษาของ UI</value>
   </data>
 </root>

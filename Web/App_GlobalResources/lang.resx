@@ -2968,7 +2968,8 @@
     <value>的部门的权限数据复制到代码为</value>
   </data>
   <data name="DBMZYYSJ" xml:space="preserve">
-    <value>同步模组语言数据</value>
+    <value>更新该模组语言数据</value>
+    <comment>更新该模组语言数据</comment>
   </data>
   <data name="DCaoZuoXingXuQiu" xml:space="preserve">
     <value>D操作性需求</value>
