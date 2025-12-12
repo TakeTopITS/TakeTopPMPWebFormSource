@@ -2968,7 +2968,7 @@
     <value>的部门的权限数据复制到代码为</value>
   </data>
   <data name="DBMZYYSJ" xml:space="preserve">
-    <value>同步模组语言数据</value>
+    <value>更新该模组语言数据</value>
   </data>
   <data name="DCaoZuoXingXuQiu" xml:space="preserve">
     <value>D操作性需求</value>
@@ -32686,5 +32686,14 @@
   </data>
   <data name="GXUiYYSJ" xml:space="preserve">
     <value>更新UI语言数据</value>
+  </data>
+  <data name="DCCYYUISJ" xml:space="preserve">
+    <value>倒出此语言数据</value>
+  </data>
+  <data name="DRMZYYSJSM" xml:space="preserve">
+    <value>在开发环境下，把上面导出的语言Excel文件放到UpdateCode\Language\Module文件夹中，再点击“更新此模组语言数据”按钮进行导入。</value>
+  </data>
+  <data name="DRZYYUISJ" xml:space="preserve">
+    <value>在开发环境下，把上面导出的语言Excel文件放到UpdateCode\Language\skin文件夹中，同时把在App_GlobalResources目录下对应语言的resx文件也复制到UpdateCode\Language\skin目录下。再点击 “导入此语言数据” 按钮进行导入。</value>
   </data>
 </root>

@@ -434,32 +434,39 @@
                                                         <td style="padding: 5px 0px 0px 5px" class="formItemBgStyleForAlignLeft" valign="top">
                                                             <asp:Label ID="Label46" runat="server" Text="<%$ Resources:lang,GXXTYYSJ%>"></asp:Label>: 
                                                            
-                                                            <asp:DropDownList ID="ddlLangSwitcher" runat="server" DataValueField="LangCode" DataTextField="Language" AutoPostBack="true" Style="height: 22px;">
+                                                            <asp:DropDownList ID="ddlLangSwitcher" runat="server" DataValueField="LangCode" DataTextField="Language" AutoPostBack="true" Style="height: 22px;" OnSelectedIndexChanged="ddlLangSwitcher_SelectedIndexChanged">
                                                             </asp:DropDownList>
                                                             <img id="IMG_Waiting" src="Images/Processing.gif" alt="Loading,please wait..." style="text-align: center; display: none;" />
                                                         </td>
                                                     </tr>
-                                                    <tr>
+                                                    <tr id="trModuleLanguage" runat="server" >
                                                         <td class="formItemBgStyleForAlignLeft" style="padding-top: 4px;">
                                                             <asp:Label ID="Label47" runat="server" Text="<%$ Resources:lang,GXMZYYSJ%>"></asp:Label>
                                                             <br />
-                                                            <asp:Button ID="BT_CopyAllModuleForHomeLanguage" runat="server" CssClass="inpu" Width="450px" OnClick="BT_CopyAllModuleForHomeLanguage_Click" Text="<%$ Resources:lang,CBYMZFZSCQTYYMZ%>" OnClientClick="javascript:displayWaitingIcon('block');" />
+                                                            <asp:Button ID="BT_CopyAllModuleForHomeLanguage" runat="server" CssClass="inpu" Enabled="false" Width="450px" OnClick="BT_CopyAllModuleForHomeLanguage_Click" Text="<%$ Resources:lang,CBYMZFZSCQTYYMZ%>" OnClientClick="javascript:displayWaitingIcon('block');" />
 
-                                                            <asp:Button ID="BT_SynchronizeModuleDataFromExcel" runat="server" CssClass="inpuLong" Width="250px" Text="<%$ Resources:lang,DBMZYYSJ%>" OnClick="BT_SynchronizeModuleDataFromExcel_Click" OnClientClick="javascript:displayWaitingIcon('block');" />
+                                                            <asp:Button ID="BT_SynchronizeModuleDataFromExcel" runat="server" CssClass="inpuLong" Enabled="false" Width="250px" Text="<%$ Resources:lang,DBMZYYSJ%>" OnClick="BT_SynchronizeModuleDataFromExcel_Click" OnClientClick="javascript:displayWaitingIcon('block');" />
 
-                                                            <asp:Button ID="BT_ExportToExcelForLeftModules" CssClass="inpuLong" Width="250px" runat="server" Text="<%$ Resources:lang,DaoChuZhuBianLanMuZuo%>" OnClick="BT_ExportToExcelForLeftModules_Click" OnClientClick="javascript:displayWaitingIcon('block');setTimeout(function(){ displayWaitingIcon('none'); }, 5000);" />
-                                                            <asp:Button ID="BT_ExportToExcelForPageModules" runat="server" CssClass="inpuLong" Width="250px" Text="<%$ Resources:lang,DaoChuYeMianLanMuZuo%>" OnClick="BT_ExportToExcelForPageModules_Click" OnClientClick="javascript:displayWaitingIcon('block');setTimeout(function(){ displayWaitingIcon('none'); }, 5000);" />
+                                                            <asp:Button ID="BT_ExportToExcelForLeftModules" CssClass="inpuLong" Width="250px" Enabled="false" runat="server" Text="<%$ Resources:lang,DaoChuZhuBianLanMuZuo%>" OnClick="BT_ExportToExcelForLeftModules_Click" OnClientClick="javascript:displayWaitingIcon('block');setTimeout(function(){ displayWaitingIcon('none'); }, 10000);" />
+                                                            <asp:Button ID="BT_ExportToExcelForPageModules" runat="server" CssClass="inpuLong" Enabled="false" Width="250px" Text="<%$ Resources:lang,DaoChuYeMianLanMuZuo%>" OnClick="BT_ExportToExcelForPageModules_Click" OnClientClick="javascript:displayWaitingIcon('block');setTimeout(function(){ displayWaitingIcon('none'); }, 10000);" />
+
+                                                            <br />
+
+                                                            <asp:Label ID="Label50" runat="server" Text="<%$ Resources:lang,DRMZYYSJSM%>"></asp:Label>
+
                                                         </td>
                                                     </tr>
-                                                    <tr>
+                                                    <tr id="trUILanguage" runat="server">
                                                         <td class="formItemBgStyleForAlignLeft" style="padding-top: 4px;">
                                                             <asp:Label ID="Label48" runat="server" Text="<%$ Resources:lang,GXUiYYSJ%>"></asp:Label>
                                                             <br />
-                                                            <asp:Button ID="BT_CompareByHomeLanguage" runat="server" CssClass="inpuLong" Text="<%$ Resources:lang,YiBenYuDuiBi%>" OnClick="BT_CompareByHomeLanguage_Click" OnClientClick="javascript:displayWaitingIcon('block');setTimeout(function(){ displayWaitingIcon('none'); }, 15000);" />
+                                                            <asp:Button ID="BT_CompareByHomeLanguage" runat="server" CssClass="inpuLong" Enabled="false"  Text="<%$ Resources:lang,YiBenYuDuiBi%>" OnClick="BT_CompareByHomeLanguage_Click" OnClientClick="javascript:displayWaitingIcon('block');setTimeout(function(){ displayWaitingIcon('none'); }, 15000);" />
 
+                                                            <asp:Button ID="BT_ExportThisLanguageData" runat="server" CssClass="inpuLong" Enabled="false" Text="<%$ Resources:lang,DCCYYUISJ%>" OnClick="BT_ExportThisLanguageData_Click" OnClientClick="javascript:displayWaitingIcon('block');setTimeout(function(){ displayWaitingIcon('none'); }, 20000);" />
 
-                                                            <asp:Button ID="BT_ImportLanguageData" runat="server" CssClass="inpuLong" Text="<%$ Resources:lang,DaoRuYiNianShuJi%>" OnClick="BT_ImportLanguageData_Click" OnClientClick="javascript:displayWaitingIcon('block');" />
-
+                                                            <asp:Button ID="BT_ImportLanguageData" runat="server" CssClass="inpuLong" Enabled="false" Text="<%$ Resources:lang,DaoRuYiNianShuJi%>" OnClick="BT_ImportLanguageData_Click" OnClientClick="javascript:displayWaitingIcon('block');" />
+                                                            <br />
+                                                            <asp:Label ID="Label49" runat="server" Text="<%$ Resources:lang,DRZYYUISJ%>"></asp:Label>
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -508,6 +515,7 @@
                     <asp:PostBackTrigger ControlID="BT_ExportToExcelForLeftModules" />
                     <asp:PostBackTrigger ControlID="BT_ExportToExcelForPageModules" />
                     <asp:PostBackTrigger ControlID="BT_CompareByHomeLanguage" />
+                    <asp:PostBackTrigger ControlID="BT_ExportThisLanguageData" />
                 </Triggers>
             </asp:UpdatePanel>
             <div style="position: fixed; display: none; z-index: 9999;" id="progressContainer">

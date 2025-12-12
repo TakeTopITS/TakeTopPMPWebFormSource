@@ -32652,4 +32652,13 @@
   <data name="GXUiYYSJ" xml:space="preserve">
     <value>Mise à jour des données linguistiques de l’interface</value>
   </data>
+  <data name="DCCYYUISJ" xml:space="preserve">
+    <value>Exportation des données de cette langue</value>
+  </data>
+  <data name="DRMZYYSJSM" xml:space="preserve">
+    <value>En environnement de développement : Placez le fichier Excel de langue exporté dans le dossier UpdateCode\Language\Module, puis cliquez sur le bouton « Mettre à jour les données linguistiques de ce module » pour effectuer l'importation.</value>
+  </data>
+  <data name="DRZYYUISJ" xml:space="preserve">
+    <value>En environnement de développement : Placez le fichier Excel de langue exporté dans le dossier UpdateCode\Language\skin, et copiez également le fichier resx de la langue correspondante du répertoire App_GlobalResources vers le répertoire UpdateCode\Language\skin. Cliquez ensuite sur le bouton « Importer les données de cette langue » pour effectuer l’importation.</value>
+  </data>
 </root>

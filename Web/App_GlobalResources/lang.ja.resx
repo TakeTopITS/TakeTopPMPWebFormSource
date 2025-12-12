@@ -32652,4 +32652,13 @@
   <data name="GXUiYYSJ" xml:space="preserve">
     <value>UIの言語データを更新中</value>
   </data>
+  <data name="DCCYYUISJ" xml:space="preserve">
+    <value>この言語のデータをエクスポート中</value>
+  </data>
+  <data name="DRMZYYSJSM" xml:space="preserve">
+    <value>開発環境において：エクスポートした言語Excelファイルを UpdateCode\Language\Module フォルダに配置し、その後 「このMODの言語データを更新」 ボタンをクリックしてインポートを行います。</value>
+  </data>
+  <data name="DRZYYUISJ" xml:space="preserve">
+    <value>開発環境において：エクスポートした言語Excelファイルを UpdateCode\Language\skin フォルダに配置し、さらに App_GlobalResources ディレクトリにある対応言語のresxファイルも UpdateCode\Language\skin ディレクトリにコピーします。その後、 「この言語のデータをインポート」 ボタンをクリックしてインポートを行います。</value>
+  </data>
 </root>

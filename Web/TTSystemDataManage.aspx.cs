@@ -62,6 +62,17 @@ public partial class TTSystemDataManage : System.Web.UI.Page
         }
     }
 
+    protected void ddlLangSwitcher_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        BT_CopyAllModuleForHomeLanguage.Enabled = true;
+        BT_SynchronizeModuleDataFromExcel.Enabled = true;
+        BT_ExportToExcelForLeftModules.Enabled = true;
+        BT_ExportToExcelForPageModules.Enabled = true;
+
+        BT_CompareByHomeLanguage.Enabled = true;
+        BT_ExportThisLanguageData.Enabled = true;
+        BT_ImportLanguageData.Enabled = true;
+    }
 
     protected void BT_ExportLoginLog_Click(object sender, EventArgs e)
     {
@@ -1321,6 +1332,65 @@ public partial class TTSystemDataManage : System.Web.UI.Page
             return;
         }
     }
+
+    protected void BT_ExportThisLanguageData_Click(object sender, EventArgs e)
+    {
+        if (Page.IsValid)
+        {
+            string strHQL;
+            string strHomeLangCode;
+
+            strHomeLangCode = System.Configuration.ConfigurationManager.AppSettings["DefaultLang"];
+
+            strLangCode = ddlLangSwitcher.SelectedValue.Trim();
+
+            strHQL = "Truncate Table T_LanguageResourceHome";
+            ShareClass.RunSqlCommand(strHQL);
+            strHQL = "Truncate Table T_LanguageResourceOther";
+            ShareClass.RunSqlCommand(strHQL);
+
+            string strOtherLangResxFile = Server.MapPath("App_GlobalResources\\lang." + strLangCode + ".resx");
+            ResXResourceReader rrOther = new ResXResourceReader(strOtherLangResxFile);
+            IDictionaryEnumerator ideOther = rrOther.GetEnumerator();
+            while (ideOther.MoveNext())
+            {
+                try
+                {
+                    strHQL = "Insert Into T_LanguageResourceOther(KeyName,KeyValue) Values('" + ideOther.Key + "','" + ideOther.Value.ToString().Replace("'", "") + "')";
+                    ShareClass.RunSqlCommand(strHQL);
+                }
+                catch (Exception err)
+                {
+                    LogClass.WriteLogFile("Error page: Key:" + ideOther.Key + " ," + err.Message.ToString() + "\n" + err.StackTrace);
+                }
+            }
+            rrOther.Close();
+
+            string strHomeLangResxFile = Server.MapPath("App_GlobalResources\\lang.resx");
+            ResXResourceReader rrHome = new ResXResourceReader(strHomeLangResxFile);
+            IDictionaryEnumerator ideHome = rrHome.GetEnumerator();
+            while (ideHome.MoveNext())
+            {
+                if (ideHome.Value.ToString().Trim() == "")
+                {
+                    strHQL = "Delete From T_LanguageResourceHome Where KeyName = '" + ideHome.Key + "'";
+                    continue;
+                }
+                strHQL = "Insert Into T_LanguageResourceHome(KeyName,KeyValue) Values('" + ideHome.Key + "','" + ideHome.Value.ToString().Replace("'", "") + "')";
+                ShareClass.RunSqlCommand(strHQL);
+            }
+            rrHome.Close();
+
+            strHQL = "SELECT  h.KeyName,COALESCE(o.KeyValue, '') AS ThisKeyValue, h.KeyValue as HomeKeyValue FROM T_LanguageResourceHome h  LEFT JOIN T_LanguageResourceOther o  ON h.KeyName = o.KeyName";
+            MSExcelHandler.DataTableToExcel(strHQL, "lang." + strLangCode + ".xls");
+
+
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click2", "showAlertAtMouse('OK£¡');", true);
+
+            return;
+        }
+    }
+
 
     protected void BT_ImportLanguageData_Click(object sender, EventArgs e)
     {

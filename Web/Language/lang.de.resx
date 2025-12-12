@@ -2968,7 +2968,7 @@
     <value>Urheberrechte Datensektoren, um Code</value>
   </data>
   <data name="DBMZYYSJ" xml:space="preserve">
-    <value>Sprachdatensynchronisationsmodul</value>
+    <value>Sprachdaten dieses Moduls werden aktualisiert</value>
   </data>
   <data name="DCaoZuoXingXuQiu" xml:space="preserve">
     <value>D betrieblichen Anforderungen</value>
@@ -32651,5 +32651,14 @@
   </data>
   <data name="GXUiYYSJ" xml:space="preserve">
     <value>UI-Sprachdaten werden aktualisiert</value>
+  </data>
+  <data name="DCCYYUISJ" xml:space="preserve">
+    <value>Daten dieser Sprache werden exportiert</value>
+  </data>
+  <data name="DRMZYYSJSM" xml:space="preserve">
+    <value>n der Entwicklungsumgebung: Legen Sie die exportierte Sprach-Excel-Datei im Ordner UpdateCode\Language\Module ab und klicken Sie dann auf die Schaltfläche „Sprachdaten dieses Moduls aktualisieren“, um den Import durchzuführen.</value>
+  </data>
+  <data name="DRZYYUISJ" xml:space="preserve">
+    <value>In der Entwicklungsumgebung: Legen Sie die exportierte Sprach-Excel-Datei im Ordner UpdateCode\Language\skin ab und kopieren Sie außerdem die entsprechende Sprach-resx-Datei aus dem Verzeichnis App_GlobalResources in das Verzeichnis UpdateCode\Language\skin. Klicken Sie dann auf die Schaltfläche „Daten dieser Sprache importieren“, um den Import durchzuführen.</value>
   </data>
 </root>

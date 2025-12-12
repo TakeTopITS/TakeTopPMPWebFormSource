@@ -32652,4 +32652,13 @@
   <data name="GXUiYYSJ" xml:space="preserve">
     <value>UI 언어 데이터 업데이트 중</value>
   </data>
+  <data name="DCCYYUISJ" xml:space="preserve">
+    <value>이 언어 데이터 내보내는 중</value>
+  </data>
+  <data name="DRMZYYSJSM" xml:space="preserve">
+    <value>개발 환경에서: 내보낸 언어 Excel 파일을 UpdateCode\Language\Module 폴더에 넣고, “이 모드의 언어 데이터 업데이트” 버튼을 클릭하여 가져옵니다.</value>
+  </data>
+  <data name="DRZYYUISJ" xml:space="preserve">
+    <value>개발 환경에서: 내보낸 언어 Excel 파일을 UpdateCode\Language\skin 폴더에 넣고, App_GlobalResources 디렉토리에 있는 해당 언어의 resx 파일도 UpdateCode\Language\skin 디렉토리로 복사하세요. 그런 다음 “이 언어 데이터 가져오기” 버튼을 클릭하여 가져옵니다.</value>
+  </data>
 </root>

@@ -2968,7 +2968,7 @@
     <value>Settori copiare i dati di diritti al codice</value>
   </data>
   <data name="DBMZYYSJ" xml:space="preserve">
-    <value>Modulo di sincronizzazione dei dati Lingua</value>
+    <value>Aggiornamento dei dati linguistici di questo modulo</value>
   </data>
   <data name="DCaoZuoXingXuQiu" xml:space="preserve">
     <value>Esigenze operative D</value>
@@ -32650,5 +32650,14 @@
   </data>
   <data name="GXUiYYSJ" xml:space="preserve">
     <value>Aggiornamento dei dati linguistici dell’interfaccia utente</value>
+  </data>
+  <data name="DCCYYUISJ" xml:space="preserve">
+    <value>Esportazione dei dati di questa lingua</value>
+  </data>
+  <data name="DRMZYYSJSM" xml:space="preserve">
+    <value>Nell'ambiente di sviluppo: Posizionare il file Excel della lingua esportato nella cartella UpdateCode\Language\Module, quindi fare clic sul pulsante “Aggiorna i dati linguistici di questo modulo” per importare.</value>
+  </data>
+  <data name="DRZYYUISJ" xml:space="preserve">
+    <value>Nell’ambiente di sviluppo: Posizionare il file Excel della lingua esportato nella cartella UpdateCode\Language\skin e copiare anche il file resx della lingua corrispondente dalla directory App_GlobalResources nella directory UpdateCode\Language\skin. Quindi fare clic sul pulsante “Importa i dati di questa lingua” per importare.</value>
   </data>
 </root>

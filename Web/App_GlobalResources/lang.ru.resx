@@ -32654,4 +32654,13 @@
   <data name="GXUiYYSJ" xml:space="preserve">
     <value>Обновление языковых данных интерфейса</value>
   </data>
+  <data name="DCCYYUISJ" xml:space="preserve">
+    <value>Экспорт данных этого языка</value>
+  </data>
+  <data name="DRMZYYSJSM" xml:space="preserve">
+    <value>В среде разработки: поместите экспортированный языковой файл Excel в папку UpdateCode\Language\Module, затем нажмите кнопку «Обновить языковые данные этого мода» для импорта.</value>
+  </data>
+  <data name="DRZYYUISJ" xml:space="preserve">
+    <value>В среде разработки: поместите экспортированный языковой файл Excel в папку UpdateCode\Language\skin, а также скопируйте соответствующий языковой файл resx из каталога App_GlobalResources в каталог UpdateCode\Language\skin. Затем нажмите кнопку «Импортировать данные этого языка» для импорта.</value>
+  </data>
 </root>

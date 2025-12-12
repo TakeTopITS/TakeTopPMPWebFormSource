@@ -2968,7 +2968,7 @@
     <value>Copy right data to the code division</value>
   </data>
   <data name="DBMZYYSJ" xml:space="preserve">
-    <value>Language data synchronization module</value>
+    <value>Updating this mod's language data</value>
   </data>
   <data name="DCaoZuoXingXuQiu" xml:space="preserve">
     <value>D operational needs</value>
@@ -32652,5 +32652,14 @@ The progress of the task affects the schedule to be confirmed</value>
   </data>
   <data name="GXUiYYSJ" xml:space="preserve">
     <value>Updating UI language data</value>
+  </data>
+  <data name="DCCYYUISJ" xml:space="preserve">
+    <value>Exporting this language's data</value>
+  </data>
+  <data name="DRMZYYSJSM" xml:space="preserve">
+    <value>In the development environment: Place the exported language Excel file into the UpdateCode\Language\Module folder, then click the “Update this mod's language data” button to import.</value>
+  </data>
+  <data name="DRZYYUISJ" xml:space="preserve">
+    <value>In the development environment: Place the exported language Excel file into the UpdateCode\Language\skin folder, and also copy the corresponding language’s resx file from the App_GlobalResources directory to the UpdateCode\Language\skin directory. Then click the “Import this language’s data” button to import.</value>
   </data>
 </root>

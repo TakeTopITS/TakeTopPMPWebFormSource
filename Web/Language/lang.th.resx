@@ -2499,6 +2499,9 @@
   <data name="CSYCKHFZJXZBHDSFPHRY" xml:space="preserve">
     <value>คัดลอกตัวชี้วัดผลการปฏิบัติงานและผู้ประเมินบุคคลที่สามจากการประเมินครั้งที่แล้ว</value>
   </data>
+  <data name="CTeJi" xml:space="preserve">
+    <value>C รถด่วน</value>
+  </data>
   <data name="CTQRCZDR" xml:space="preserve">
     <value>นำเข้าจากตารางงานในช่วงเวลาเดียวกัน</value>
   </data>
@@ -2965,7 +2968,7 @@
     <value>คัดลอกข้อมูลสิทธิ์ของแผนกที่มีรหัสเป็น</value>
   </data>
   <data name="DBMZYYSJ" xml:space="preserve">
-    <value>ซิงค์ข้อมูลภาษาโมดูล</value>
+    <value>กำลังอัปเดตข้อมูลภาษาของม็อดนี้</value>
   </data>
   <data name="DCaoZuoXingXuQiu" xml:space="preserve">
     <value>D ความต้องการด้านการปฏิบัติงาน</value>
@@ -32646,6 +32649,12 @@
   <data name="GXMZYYSJ" xml:space="preserve">
     <value>อัปเดตข้อมูลภาษาของม็อด</value>
   </data>
+  <data name="GXUiYYSJ" xml:space="preserve">
+    <value>กำลังอัปเดตข้อมูลภาษาของ UI</value>
+  </data>
+  <data name="DCCYYUISJ" xml:space="preserve">
+    <value>กำลังส่งออกข้อมูลภาษานี้</value>
+  </data>
   <data name="DGMBSTDTB" xml:space="preserve">
     <value>การยื่นเสนอราคาที่รอซื้อเอกสารประกวดราคา</value>
   </data>
@@ -41962,7 +41971,10 @@
   <data name="QiYeJiKuaZhanRuanJian" xml:space="preserve">
     <value>ซอฟต์แวร์ขยายขนาดระดับองค์กร</value>
   </data>
-  <data name="GXUiYYSJ" xml:space="preserve">
-    <value>กำลังอัปเดตข้อมูลภาษาของ UI</value>
+  <data name="DRMZYYSJSM" xml:space="preserve">
+    <value>ในสภาพแวดล้อมการพัฒนา: นำไฟล์ Excel ภาษาที่ส่งออกมาวางไว้ในโฟลเดอร์ UpdateCode\Language\Module จากนั้นคลิกปุ่ม “อัปเดตข้อมูลภาษาของม็อดนี้” เพื่อทำการนำเข้า</value>
+  </data>
+  <data name="DRZYYUISJ" xml:space="preserve">
+    <value>ในสภาพแวดล้อมการพัฒนา: นำไฟล์ Excel ภาษาที่ส่งออกมาวางไว้ในโฟลเดอร์ UpdateCode\Language\skin พร้อมทั้งคัดลอกไฟล์ resx ของภาษาที่เกี่ยวข้องจากไดเรกทอรี App_GlobalResources ไปไว้ในไดเรกทอรี UpdateCode\Language\skin ด้วย จากนั้นคลิกปุ่ม “นำเข้าข้อมูลภาษานี้” เพื่อทำการนำเข้า</value>
   </data>
 </root>

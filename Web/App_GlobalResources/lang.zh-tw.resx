@@ -32653,4 +32653,13 @@
   <data name="GXUiYYSJ" xml:space="preserve">
     <value>正在更新UI語言資料</value>
   </data>
+  <data name="DCCYYUISJ" xml:space="preserve">
+    <value>正在匯出此語言資料</value>
+  </data>
+  <data name="DRMZYYSJSM" xml:space="preserve">
+    <value>在開發環境下：將上面匯出的語言Excel檔案放到 UpdateCode\Language\Module 資料夾中，再點擊 「更新此模組語言資料」 按鈕進行匯入。</value>
+  </data>
+  <data name="DRZYYUISJ" xml:space="preserve">
+    <value>在開發環境下：將上面匯出的語言Excel檔案放到 UpdateCode\Language\skin 資料夾中，同時把在 App_GlobalResources 目錄下對應語言的resx檔案也複製到 UpdateCode\Language\skin 目錄下。再點擊 「匯入此語言資料」 按鈕進行匯入。</value>
+  </data>
 </root>
