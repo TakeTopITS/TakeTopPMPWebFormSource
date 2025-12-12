@@ -260,6 +260,19 @@
             cursor: pointer;
             background: url(ImagesSkin/exit.png) no-repeat 0 center;
         }
+
+        .tNlogo-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        #IMG_Waiting {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 100%;
+            margin-top: 5px;
+        }
     </style>
 
 
