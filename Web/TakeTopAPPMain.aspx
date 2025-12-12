@@ -274,7 +274,23 @@
             margin-top: 5px;
         }
     </style>
+    <script type="text/javascript">
 
+        // 显示等待图标的函数
+        function showWaiting() {
+            var waitingImg = document.getElementById('IMG_Waiting');
+            if (waitingImg) {
+                // 显示图标
+                waitingImg.style.display = 'block';
+
+                // 10秒后自动隐藏
+                setTimeout(function () {
+                    waitingImg.style.display = 'none';
+                }, 10000); // 10000毫秒 = 10秒
+            }
+        }
+
+    </script>
 
 </head>
 

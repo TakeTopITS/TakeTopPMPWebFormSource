@@ -164,7 +164,7 @@ public partial class TakeTopAPPMain : System.Web.UI.Page
 
                 //需要给父节点加一个类
                 classTemp = "box boxes";
-                strHtml += "<a href=" + strPageName + "><span name=\"parent1\" class=\"boxs\" onmouseover=\"OnMouseOverEvent(this)\" onmouseout=\"OnMouseOutEvent(this)\"><span onclick=\"OnPlusEvent(this)\" class=\"plusSpan\"> </span><span onclick=\"OnMinusEvent(this)\" class=\"minusSpan\"><img src=\'" + strIconURL + "' /></span><span class=\"titleSpan\" onclick=\"javascript:document.getElementById('IMG_Waiting').style.display = 'block';location.href='" + strPageName + "'\" ondblclick=\"javascript:document.getElementById('IMG_Waiting').style.display = 'block';OnDoubleClickModule(this)\"><img src=\'" + strIconURL + "' />" + strHomeModuleName + "</span></span><a>";
+                strHtml += "<a href=" + strPageName + "><span name=\"parent1\" class=\"boxs\" onmouseover=\"OnMouseOverEvent(this)\" onmouseout=\"OnMouseOutEvent(this)\"><span onclick=\"OnPlusEvent(this)\" class=\"plusSpan\"> </span><span onclick=\"OnMinusEvent(this)\" class=\"minusSpan\"><img src=\'" + strIconURL + "' /></span><span class=\"titleSpan\" onclick=\"javascript:showWaiting();location.href='" + strPageName + "'\" ondblclick=\"javascript:showWaiting();OnDoubleClickModule(this)\"><img src=\'" + strIconURL + "' />" + strHomeModuleName + "</span></span><a>";
 
                 strHtml += "<div class=\"text\"> ";
                 strHtml += "<ul class=\"content\">";
@@ -194,7 +194,7 @@ public partial class TakeTopAPPMain : System.Web.UI.Page
                         }
                     }
 
-                    strHtml += "<li><a href=" + strChildPageName + "><span class=\"titleSpan\" onmouseover=\"OnMouseOverEvent(this)\" onmouseout=\"OnMouseOutEvent(this)\"><span onclick=\"OnMinusEvent(this)\" class=\"minusSpan\"><img src=\'" + strIconURL + "' /></span><span class=\"titleSpan\" onclick=\"javascript:document.getElementById('IMG_Waiting').style.display = 'block';location.href='" + strChildPageName + "'\" ondblclick=\"javascript:document.getElementById('IMG_Waiting').style.display = 'block';OnDoubleClickModule(this)\">" + strChildHomeModuleName + "</span></span></a></li>";
+                    strHtml += "<li><a href=" + strChildPageName + "><span class=\"titleSpan\" onmouseover=\"OnMouseOverEvent(this)\" onmouseout=\"OnMouseOutEvent(this)\"><span onclick=\"OnMinusEvent(this)\" class=\"minusSpan\"><img src=\'" + strIconURL + "' /></span><span class=\"titleSpan\" onclick=\"javascript:showWaiting();location.href='" + strChildPageName + "'\" ondblclick=\"javascript:showWaiting();OnDoubleClickModule(this)\">" + strChildHomeModuleName + "</span></span></a></li>";
                 }
 
                 strHtml += "</ul>";
@@ -205,7 +205,7 @@ public partial class TakeTopAPPMain : System.Web.UI.Page
             }
             else
             {
-                strHtml += "<a href=" + strPageName + "><span name=\"parent1\" class=\"boxs\" onmouseover=\"OnMouseOverEvent(this)\" onmouseout=\"OnMouseOutEvent(this)\"><span onclick=\"OnPlusEvent(this)\" class=\"plusSpan\"> </span><span onclick=\"OnMinusEvent(this)\" class=\"minusSpan\"><img src=\'" + strIconURL + "' /></span><span class=\"titleSpan\" onclick=\"javascript:document.getElementById('IMG_Waiting').style.display = 'block';location.href='" + strPageName + "'\" ondblclick=\"javascript:document.getElementById('IMG_Waiting').style.display = 'block';OnDoubleClickModule(this)\">" + strHomeModuleName + "</span></span></a>";
+                strHtml += "<a href=" + strPageName + "><span name=\"parent1\" class=\"boxs\" onmouseover=\"OnMouseOverEvent(this)\" onmouseout=\"OnMouseOutEvent(this)\"><span onclick=\"OnPlusEvent(this)\" class=\"plusSpan\"> </span><span onclick=\"OnMinusEvent(this)\" class=\"minusSpan\"><img src=\'" + strIconURL + "' /></span><span class=\"titleSpan\" onclick=\"javascript:showWaiting();location.href='" + strPageName + "'\" ondblclick=\"javascript:showWaiting();OnDoubleClickModule(this)\">" + strHomeModuleName + "</span></span></a>";
             }
 
 
