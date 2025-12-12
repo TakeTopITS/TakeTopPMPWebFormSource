@@ -118,6 +118,8 @@ public partial class TTAppCustomerManagement : System.Web.UI.Page
         string strType = DL_IndustryTypeFind.SelectedValue.Trim();
 
         TB_IndustryTypeFind.Text = strType;
+
+        ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "setDivToolBarHeight('310px');", true);
     }
 
     protected void DataGrid2_PageIndexChanged(object sender, DataGridPageChangedEventArgs e)
@@ -165,12 +167,5 @@ public partial class TTAppCustomerManagement : System.Web.UI.Page
         DataSet ds = ShareClass.GetDataSetFromSql(strHQL, "T_Customer");
 
         return ds.Tables[0].Rows[0][0].ToString();
-    }
-
-
-
-    protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
-    {
-       
     }
 }

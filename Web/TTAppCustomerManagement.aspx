@@ -67,11 +67,34 @@
 
         }
 
+        function ExpendDivToolBar() {
+
+            var divToolBar = document.getElementById("divToolBar");
+
+            if (!divToolBar) {
+                console.error("divToolBar element not found");
+                return;
+            }
+
+            if (divToolBar.style.height === '410px') {
+                divToolBar.style.height = '30px';
+            } else {
+                divToolBar.style.height = '410px';
+            }
+        }
+
+
+        function setDivToolBarHeight(varHeight) {
+
+            document.getElementById("divToolBar").style.height = varHeight;
+        }
+
     </script>
 </head>
 <body>
     <div id="swipeFeedback" class="swipe-feedback">
-        <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" /></div>
+        <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" />
+    </div>
     <!-- »¬¶¯·´À¡²ã -->
     <center>
         <form id="form1" runat="server">
@@ -191,19 +214,18 @@
                         </tr>
                     </table>
 
-                    <div id="divToolBar" name="divTooBar" class="ToolBar" style="width: 100%; text-align: left; padding-top: 10px; padding-bottom: 10px; background-color: aliceblue;"
-                        onclick="if(this.style.height=='310px'){this.style.height='20px'}else{this.style.height='310px'}">
+                    <div id="divToolBar" name="divTooBar" class="ToolBar" style="width: 100%; text-align: left; padding-top: 10px; padding-bottom: 10px; background-color: aliceblue;">
                         <table width="100%">
                             <tr>
-                                <td colspan="2" style="text-align: right; padding-right: 10px;">
+                                <td colspan="2" style="text-align: right; padding-right: 10px;" >
                                     <table width="100%">
                                         <tr>
                                             <td style="width: 70%;">&nbsp;
                                             </td>
-                                            <td style="width: 20%; text-align: left;">
+                                            <td style="width: 20%; text-align: left;" onclick="ExpendDivToolBar();">
                                                 <img src="ImagesSkin/up.png" />
                                             </td>
-                                            <td style="width: 10%; text-align: center;">
+                                            <td style="padding-top:7px; width: 10%; text-align: center;"  onclick="ExpendDivToolBar();">
                                                 <img src="ImagesSkin/down.png" />
                                             </td>
                                         </tr>
@@ -279,7 +301,7 @@
                                     <td>&nbsp;</td>
                                 </tr>
                                 <tr>
-                                    <td class="ItemAlignLeft" colspan="2" style="padding-top: 10px;">
+                                    <td  colspan="2" style="padding-top: 10px;text-align:center;">
                                         <asp:Button ID="BT_Find" runat="server" CssClass="inpu" OnClick="BT_Find_Click" Text="<%$ Resources:lang,ChaXun%>" />
                                     </td>
                                 </tr>
