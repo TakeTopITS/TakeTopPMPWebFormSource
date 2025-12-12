@@ -884,7 +884,7 @@ public partial class TTSystemDataManage : System.Web.UI.Page
             // 立即清除可能残留的脚本
             ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "clearWaiting", "setTimeout(function(){ displayWaitingIcon('none'); }, 100);", true);
 
-         
+
             try
             {
 
@@ -987,7 +987,7 @@ public partial class TTSystemDataManage : System.Web.UI.Page
                         {
                             strHQL1 = "Update T_ProModuleLevel Set HomeModuleName = '" + strHomeModuleName.Replace("'", "").Replace("\"", "").Replace("\\", "") + "'" + ",IconURL = " + "'" + strIconURL + "'";
                             strHQL1 += " Where ParentModule = '" + strParentModule + "' and ModuleName = '" + strModuleName + "' and LangCode='" + strLangCode + "' and ModuleType = '" + strModuleType + "' and UserType = '" + strUserType + "'";
-                         
+
                             ShareClass.RunSqlCommand(strHQL1);
                         }
                     }
@@ -1405,7 +1405,7 @@ public partial class TTSystemDataManage : System.Web.UI.Page
         }
     }
 
-    public static void ImportExcelFilesInDirectory(string directoryPath)
+    public  void ImportExcelFilesInDirectory(string directoryPath)
     {
         // 获取目录下所有的Excel文件（.xls 和 .xlsx）
         var excelFiles = Directory.GetFiles(directoryPath, "*.xls*");
@@ -1425,7 +1425,7 @@ public partial class TTSystemDataManage : System.Web.UI.Page
         }
     }
 
-    public static void ImportExcelToResx(string excelFilePath, string resxFilePath)
+    public  void ImportExcelToResx(string excelFilePath, string resxFilePath)
     {
         // 打开Excel文件
         IWorkbook workbook;
@@ -1445,7 +1445,7 @@ public partial class TTSystemDataManage : System.Web.UI.Page
         ISheet worksheet = workbook.GetSheetAt(0);
 
         // 创建一个字典来存储Excel中的KeyName和KeyValue
-        var keyValuePairs = new Dictionary<string, string>();
+        var excelKeyValuePairs = new Dictionary<string, string>();
 
         // 遍历Excel表中的每一行（从第二行开始，假设第一行是标题）
         for (int row = 1; row <= worksheet.LastRowNum; row++)
@@ -1458,7 +1458,7 @@ public partial class TTSystemDataManage : System.Web.UI.Page
 
             if (!string.IsNullOrEmpty(keyName))
             {
-                keyValuePairs[keyName] = keyValue;
+                excelKeyValuePairs[keyName] = keyValue;
             }
         }
 
@@ -1474,31 +1474,36 @@ public partial class TTSystemDataManage : System.Web.UI.Page
                 }
             }
         }
+        else
+        {
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('"+ LanguageHandle.GetWord("TiShi") + "," + resxFilePath.Replace("\\", "\\\\") + LanguageHandle.GetWord("IsNotExist") +"," + LanguageHandle.GetWord("QingJianCha") + "')", true);
+            return;
+        }
 
-        // 将数据写入.resx文件（新增时跳过已存在的KeyName）
+        // 更新现有资源：如果Excel中有相同的key，则更新value
+        foreach (var kvp in excelKeyValuePairs)
+        {
+            if (existingResources.ContainsKey(kvp.Key))
+            {
+                // 更新已存在的资源值
+                existingResources[kvp.Key] = kvp.Value;
+            }
+            else
+            {
+                // 添加新的资源
+                existingResources[kvp.Key] = kvp.Value;
+            }
+        }
+
+        // 将所有资源写入.resx文件
         using (ResXResourceWriter resxWriter = new ResXResourceWriter(resxFilePath))
         {
-            // 先写入现有资源
             foreach (var kvp in existingResources)
             {
                 resxWriter.AddResource(kvp.Key, kvp.Value);
             }
-
-            // 再写入Excel中的新资源（跳过已存在的KeyName）
-            foreach (var kvp in keyValuePairs)
-            {
-                if (!existingResources.ContainsKey(kvp.Key))
-                {
-                    resxWriter.AddResource(kvp.Key, kvp.Value);
-                }
-                else
-                {
-                    Console.WriteLine($"Passed be existed KeyName: {kvp.Key}");
-                }
-            }
         }
     }
-
 
     protected void BT_CreateRTXAccountData_Click(object sender, EventArgs e)
     {

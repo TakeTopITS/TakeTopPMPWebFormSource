@@ -447,8 +447,8 @@
 
                                                             <asp:Button ID="BT_SynchronizeModuleDataFromExcel" runat="server" CssClass="inpuLong" Enabled="false" Width="250px" Text="<%$ Resources:lang,DBMZYYSJ%>" OnClick="BT_SynchronizeModuleDataFromExcel_Click" OnClientClick="javascript:displayWaitingIcon('block');" />
 
-                                                            <asp:Button ID="BT_ExportToExcelForLeftModules" CssClass="inpuLong" Width="250px" Enabled="false" runat="server" Text="<%$ Resources:lang,DaoChuZhuBianLanMuZuo%>" OnClick="BT_ExportToExcelForLeftModules_Click" OnClientClick="javascript:displayWaitingIcon('block');setTimeout(function(){ displayWaitingIcon('none'); }, 10000);" />
-                                                            <asp:Button ID="BT_ExportToExcelForPageModules" runat="server" CssClass="inpuLong" Enabled="false" Width="250px" Text="<%$ Resources:lang,DaoChuYeMianLanMuZuo%>" OnClick="BT_ExportToExcelForPageModules_Click" OnClientClick="javascript:displayWaitingIcon('block');setTimeout(function(){ displayWaitingIcon('none'); }, 10000);" />
+                                                            <asp:Button ID="BT_ExportToExcelForLeftModules" CssClass="inpuLong" Width="250px" Enabled="false" runat="server" Text="<%$ Resources:lang,DaoChuZhuBianLanMuZuo%>" OnClick="BT_ExportToExcelForLeftModules_Click" OnClientClick="javascript:displayWaitingIcon('block');setTimeout(function(){ displayWaitingIcon('none'); }, 5000);" />
+                                                            <asp:Button ID="BT_ExportToExcelForPageModules" runat="server" CssClass="inpuLong" Enabled="false" Width="250px" Text="<%$ Resources:lang,DaoChuYeMianLanMuZuo%>" OnClick="BT_ExportToExcelForPageModules_Click" OnClientClick="javascript:displayWaitingIcon('block');setTimeout(function(){ displayWaitingIcon('none'); }, 5000);" />
 
                                                             <br />
 

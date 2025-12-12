@@ -47,7 +47,8 @@
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="js/allAHandler.js"></script>
     <script type="text/javascript" language="javascript">
-        $(function () { initSwipeBack();// 初始化滑动返回功能 
+        $(function () {
+            initSwipeBack();// 初始化滑动返回功能 
 
             // SetDataGridTrClickLink();
 
@@ -68,7 +69,10 @@
 
     </script>
 </head>
-<body><div id="swipeFeedback" class="swipe-feedback"><asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" /></div> <!-- 滑动反馈层 -->
+<body>
+    <div id="swipeFeedback" class="swipe-feedback">
+        <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" /></div>
+    <!-- 滑动反馈层 -->
     <center>
         <form id="form1" runat="server">
             <%--  <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">--%>
@@ -172,7 +176,7 @@
                                                 <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                                                 <EditItemStyle BackColor="#2461BF" />
                                                 <SelectedItemStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-                                                <PagerStyle Horizontalalign="center" Mode="NumericPages" NextPageText="" PrevPageText="" CssClass="notTab" />
+                                                <PagerStyle HorizontalAlign="center" Mode="NumericPages" NextPageText="" PrevPageText="" CssClass="notTab" />
                                             </asp:DataGrid>
                                         </td>
                                     </tr>
@@ -188,20 +192,19 @@
                     </table>
 
                     <div id="divToolBar" name="divTooBar" class="ToolBar" style="width: 100%; text-align: left; padding-top: 10px; padding-bottom: 10px; background-color: aliceblue;"
-                        onclick="javascript:this.style.height=310;">
+                        onclick="if(this.style.height=='310px'){this.style.height='20px'}else{this.style.height='310px'}">
                         <table width="100%">
                             <tr>
                                 <td colspan="2" style="text-align: right; padding-right: 10px;">
-                                      <table width="100%">
+                                    <table width="100%">
                                         <tr>
-                                            <td style="width:70%;">
-                                              &nbsp;
+                                            <td style="width: 70%;">&nbsp;
                                             </td>
-                                              <td style="width:20%; text-align:left;">
+                                            <td style="width: 20%; text-align: left;">
                                                 <img src="ImagesSkin/up.png" />
                                             </td>
-                                            <td style="padding-top: 5px; width: 10%; text-align: center;">
-                                                <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/ImagesSkin/down.png"/>
+                                            <td style="width: 10%; text-align: center;">
+                                                <img src="ImagesSkin/down.png" />
                                             </td>
                                         </tr>
                                     </table>
