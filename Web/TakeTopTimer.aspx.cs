@@ -18,6 +18,13 @@ public partial class TakeTopTimer : System.Web.UI.Page
 
             TimeSpan ts = dtLastPushTime.Subtract(DateTime.Now).Duration();
 
+
+            if (ShareClass.SystemDBer != "")
+            {
+                ShareClass.SystemDBer = "DBer";
+            }
+
+
             try
             {
                 //初始化实体类，以加快后续的操作速度
