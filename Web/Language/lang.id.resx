@@ -32645,7 +32645,7 @@
     <value>Gesek ke kanan untuk kembali</value>
   </data>
   <data name="ZZSJSJKSHSFZQXH" xml:space="preserve">
-    <value>Sedang mengupgrade database. Proses ini membutuhkan waktu sekitar 10 detik. Harap tunggu...</value>
+    <value>Sedang mengupgrade database. Proses ini membutuhkan waktu sekitar 15 detik. Harap tunggu...</value>
   </data>
   <data name="GXXTYYSJ" xml:space="preserve">
     <value>Memperbarui data bahasa sistem</value>
@@ -32658,6 +32658,12 @@
   </data>
   <data name="DCCYYUISJ" xml:space="preserve">
     <value>Mengekspor data bahasa ini</value>
+  </data>
+  <data name="DRMZYYSJSM" xml:space="preserve">
+    <value>Dalam lingkungan pengembangan: Tempatkan file Excel bahasa yang diekspor ke folder UpdateCode\Language\Module, lalu klik tombol “Perbarui data bahasa modul ini” untuk mengimpor.</value>
+  </data>
+  <data name="DRZYYUISJ" xml:space="preserve">
+    <value>Dalam lingkungan pengembangan: Tempatkan file Excel bahasa yang diekspor ke folder UpdateCode\Language\skin, dan juga salin file resx bahasa yang sesuai dari direktori App_GlobalResources ke direktori UpdateCode\Language\skin. Lalu klik tombol “Impor data bahasa ini” untuk mengimpor.</value>
   </data>
   <data name="BeiFenWenJianLuJian" xml:space="preserve">
     <value>Path penyimpanan file cadangan</value>
@@ -33519,11 +33525,5 @@
   </data>
   <data name="ZZZZYSCDWJ" xml:space="preserve">
     <value>Harap pilih file yang akan diunggah!</value>
-  </data>
-  <data name="DRMZYYSJSM" xml:space="preserve">
-    <value>Dalam lingkungan pengembangan: Tempatkan file Excel bahasa yang diekspor ke folder UpdateCode\Language\Module, lalu klik tombol “Perbarui data bahasa modul ini” untuk mengimpor.</value>
-  </data>
-  <data name="DRZYYUISJ" xml:space="preserve">
-    <value>Dalam lingkungan pengembangan: Tempatkan file Excel bahasa yang diekspor ke folder UpdateCode\Language\skin, dan juga salin file resx bahasa yang sesuai dari direktori App_GlobalResources ke direktori UpdateCode\Language\skin. Lalu klik tombol “Impor data bahasa ini” untuk mengimpor.</value>
   </data>
 </root>

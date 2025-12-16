@@ -37,16 +37,13 @@ public partial class _default : System.Web.UI.Page
             {
                 if (ShareClass.SystemDBer == "")
                 {
-                    //if (DatabaseUpdateHandle.CheckIsExistedUpgratedRecordUpgradeXMLFile())
-                    //{
                     ClientScript.RegisterStartupScript(this.GetType(), "1", "<script>displayBTLogin('NONE');</script>");
                     ClientScript.RegisterStartupScript(this.GetType(), "2", "<script>displayLBMessage('BLOCK');</script>");
 
-                    //µÈ´ý10000ºÁÃë
-                    System.Threading.Thread.Sleep(10000);
+                    //µÈ´ý15000ºÁÃë
+                    System.Threading.Thread.Sleep(15000);
 
                     ClientScript.RegisterStartupScript(this.GetType(), "3", "<script>location.reload();</script>");
-                    //}
                 }
 
                 HL_UserID.Visible = true;

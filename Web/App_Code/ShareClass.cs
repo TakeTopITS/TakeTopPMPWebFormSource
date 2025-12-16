@@ -1,21 +1,3 @@
-
-using LumiSoft.Net.Mail;
-using LumiSoft.Net.MIME;
-using LumiSoft.Net.POP3.Client;
-
-using Microsoft.CSharp;
-
-using MSXML2;
-
-using Npgsql;
-
-using ProjectMgt.BLL;
-using ProjectMgt.Model;
-
-using RTXSAPILib;
-
-using RTXServerApi;
-
 using System;
 using System.CodeDom;
 using System.CodeDom.Compiler;
@@ -44,14 +26,26 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Xml;
 
-using TakeTopCore;
-
-using TakeTopGantt;
-
-using TakeTopWF;
-
 using ZXing;
 using ZXing.QrCode;
+
+using LumiSoft.Net.Mail;
+using LumiSoft.Net.MIME;
+using LumiSoft.Net.POP3.Client;
+
+using RTXSAPILib;
+using RTXServerApi;
+
+using Microsoft.CSharp;
+using MSXML2;
+using Npgsql;
+
+using ProjectMgt.BLL;
+using ProjectMgt.Model;
+
+using TakeTopCore;
+using TakeTopGantt;
+using TakeTopWF;
 
 /// <summary>
 /// Summary description for ShareClass
@@ -65,7 +59,7 @@ public static class ShareClass
         //
     }
 
-    public static string SystemVersionID = "V2025.12.14";
+    public static string SystemVersionID = "V2025.12.16";
 
     public static string SystemLatestLoginUser = "";
     public static string SystemDBer = "";

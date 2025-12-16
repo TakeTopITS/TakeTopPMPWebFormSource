@@ -20,17 +20,14 @@ public partial class TakeTopDBUpgrade : System.Web.UI.Page
                 {
                     if (DatabaseUpdateHandle.UpgradeDataBase())
                     {
-
-                        LogClass.WriteLogFile("Database upgraded successfully on application start");
+                        //LogClass.WriteLogFile("Database upgraded successfully on application start");
+                        ShareClass.SystemDBer = "DBer";
                     }
-
-                    ShareClass.SystemDBer = "DBer";
                 }
             }
             catch (Exception err)
             {
-                LogClass.WriteLogFile("Database upgrade ThreadAbortException" + err.Message.ToString());
-
+                LogClass.WriteLogFile("Database upgrade ThreadAbortException:  " + err.Message.ToString());
                 ClientScript.RegisterStartupScript(this.GetType(), "3", "<script>location.reload();</script>");
             }
         }

@@ -32642,7 +32642,7 @@ The progress of the task affects the schedule to be confirmed</value>
     <value>Swipe right to go back</value>
   </data>
   <data name="ZZSJSJKSHSFZQXH" xml:space="preserve">
-    <value>The database is being upgraded. This will take about 10 seconds. Please wait...</value>
+    <value>The database is being upgraded. This will take about 15 seconds. Please wait...</value>
   </data>
   <data name="GXXTYYSJ" xml:space="preserve">
     <value>Updating system language data</value>
