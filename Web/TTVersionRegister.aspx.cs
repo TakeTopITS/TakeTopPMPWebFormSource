@@ -61,7 +61,7 @@ public partial class TTVersionRegister : System.Web.UI.Page
             else
             {
                 LB_Copyright.Visible = true;
-                LB_Copyright.Text = "<a href=TTVersionRegister.aspx>Copyright 2006-2026 all rights is reserved to the copyright owner</a>";
+                LB_Copyright.Text = "<a href=TTVersionRegister.aspx>Copyright 2006-2036 all rights is reserved to the copyright owner</a>";
             }
 
             string strSystemType;

@@ -88,7 +88,7 @@ public partial class DefaultWeiXinQYH : System.Web.UI.Page
                 else
                 {
                     LB_Copyright.Visible = true;
-                    LB_Copyright.Text = "Copyright 2006-2026";
+                    LB_Copyright.Text = "Copyright 2006-2036";
                 }
             }
             catch (Exception err)

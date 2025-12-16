@@ -56,7 +56,7 @@ public partial class DefaultMobile : System.Web.UI.Page
             else
             {
                 LB_Copyright.Visible = true;
-                LB_Copyright.Text = "Copyright 2006-2026";
+                LB_Copyright.Text = "Copyright 2006-2036";
             }
 
             try

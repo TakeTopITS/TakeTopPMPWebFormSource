@@ -83,7 +83,7 @@ public partial class _default : System.Web.UI.Page
                     }
                 }
 
-                LB_Copyright.Text = "<a href=TTVersionRegister.aspx>Copyright TakeTopITS Group</a> 2006-2026 " + "<a href=https://www.taketopits.com>www.taketopits.com</a>";
+                LB_Copyright.Text = "<a href=TTVersionRegister.aspx>Copyright TakeTopITS Group</a> 2006-2036 " + "<a href=https://www.taketopits.com>www.taketopits.com</a>";
 
                 try
                 {
@@ -112,7 +112,7 @@ public partial class _default : System.Web.UI.Page
                     if (strIsOEMVersion == "YES")
                     {
                         LB_Copyright.Visible = true;
-                        LB_Copyright.Text = "<a href=TTVersionRegister.aspx>Copyright 2006-2026 all rights is reserved to the copyright owner</a>";
+                        LB_Copyright.Text = "<a href=TTVersionRegister.aspx>Copyright 2006-2036 all rights is reserved to the copyright owner</a>";
                     }
                     else
                     {

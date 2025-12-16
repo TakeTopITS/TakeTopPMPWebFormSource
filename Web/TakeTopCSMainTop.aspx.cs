@@ -73,11 +73,11 @@ public partial class TakeTopCSMainTop : System.Web.UI.Page
 
         if (strLangCode == "zh-CN")
         {
-            LB_Copyright.Text = "Copyright ? 2006-2026 " + " <a href=https://www.taketopits.com  target=_blank style='text-decoration:none;'>&nbsp;Ì©¶¥ÍØ¶¦</a>";
+            LB_Copyright.Text = "Copyright ? 2006-2036 " + " <a href=https://www.taketopits.com  target=_blank style='text-decoration:none;'>&nbsp;Ì©¶¥ÍØ¶¦</a>";
         }
         else
         {
-            LB_Copyright.Text = "Copyright ? 2006-2026 " + " <a href=https://www.taketopits.com  target=_blank style='text-decoration:none;'>&nbsp;TakeTopITS</a>";
+            LB_Copyright.Text = "Copyright ? 2006-2036 " + " <a href=https://www.taketopits.com  target=_blank style='text-decoration:none;'>&nbsp;TakeTopITS</a>";
         }
 
         strIsOEMVersion = System.Configuration.ConfigurationManager.AppSettings["IsOEMVersion"];
@@ -88,7 +88,7 @@ public partial class TakeTopCSMainTop : System.Web.UI.Page
         else
         {
             LB_Copyright.Visible = true;
-            LB_Copyright.Text = "Copyright 2006-2026";
+            LB_Copyright.Text = "Copyright 2006-2036";
         }
 
         LB_CurrentUserCode.Text = strUserCode;

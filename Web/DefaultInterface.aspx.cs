@@ -129,7 +129,7 @@ public partial class DefaultInterface : System.Web.UI.Page
         else
         {
             strIsOEMVersion = System.Configuration.ConfigurationManager.AppSettings["IsOEMVersion"];
-            LB_Copyright.Text = "<a href=TTVersionRegister.aspx>Copyright TakeTop Software</a> 2006-2026 " + "<a href=https://www.taketopits.com>www.taketopits.com</a>";
+            LB_Copyright.Text = "<a href=TTVersionRegister.aspx>Copyright TakeTop Software</a> 2006-2036 " + "<a href=https://www.taketopits.com>www.taketopits.com</a>";
 
             if (strIsOEMVersion == "NO")
             {

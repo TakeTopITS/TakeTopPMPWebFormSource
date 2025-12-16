@@ -278,7 +278,7 @@
                                     <table width="100%">
                                         <tr>
                                             <td align="center">
-                                                <asp:Label ID="LB_Copyright" runat="server" Text="Copyright TakeTop Software 2006-2026 "></asp:Label>
+                                                <asp:Label ID="LB_Copyright" runat="server" Text="Copyright TakeTop Software 2006-2036 "></asp:Label>
                                             </td>
                                         </tr>
                                         <tr style="display: none;">
