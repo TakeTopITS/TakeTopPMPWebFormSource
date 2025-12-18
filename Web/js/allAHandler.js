@@ -1016,6 +1016,467 @@ function triggerBackLink() {
 }
 //------------------APP端右滑返回主页功能结束--------------------------
 
+//------------------APP端下拉刷新功能开始--------------------------
+function initPullToRefresh() {
+    var startY = 0;
+    var currentY = 0;
+    var distance = 0;
+    var threshold = 80; // 下拉阈值（像素）
+    var isRefreshing = false;
+    var pullStart = 0;
+    var maxPull = 120; // 最大下拉距离
+
+    // 存储原始URL（页面首次加载时的URL，包含所有查询参数）
+    var originalUrl = window.location.href;
+    var originalTitle = document.title;
+
+    console.log('原始URL:', originalUrl);
+    console.log('原始标题:', originalTitle);
+
+    // 创建下拉刷新指示器
+    var refreshIndicator = document.createElement('div');
+    refreshIndicator.id = 'pullToRefreshIndicator';
+    refreshIndicator.className = 'pull-refresh-indicator';
+    refreshIndicator.innerHTML = '<div class="refresh-icon">↓</div><div class="refresh-text"><asp:Label ID="LabelRefreshHint" runat="server" Text="<%$ Resources:lang,XLSXH %>" /></div>';
+    document.body.insertBefore(refreshIndicator, document.body.firstChild);
+
+    // 添加样式
+    var style = document.createElement('style');
+    style.textContent = `
+        .pull-refresh-indicator {
+            position: fixed;
+            top: -60px;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: linear-gradient(to bottom, #f8f8f8, #ffffff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            z-index: 9998;
+            transition: top 0.3s ease;
+            border-bottom: 1px solid #ddd;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .pull-refresh-indicator.active {
+            top: 0 !important;
+        }
+        
+        .pull-refresh-indicator.refreshing {
+            background: linear-gradient(to bottom, #e8f4ff, #ffffff);
+        }
+        
+        .refresh-icon {
+            font-size: 20px;
+            margin-bottom: 5px;
+            transition: transform 0.3s ease;
+        }
+        
+        .pull-refresh-indicator.active .refresh-icon {
+            transform: rotate(180deg);
+        }
+        
+        .pull-refresh-indicator.refreshing .refresh-icon {
+            animation: spin 1s linear infinite;
+        }
+        
+        .refresh-text {
+            font-size: 14px;
+            color: #666;
+            text-align: center;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    `;
+    document.head.appendChild(style);
+
+    // 触摸开始事件
+    document.addEventListener('touchstart', function (e) {
+        // 如果页面正在刷新，则不处理
+        if (isRefreshing) return;
+
+        // 只有在页面顶部且没有水平滚动时才允许下拉刷新
+        if (window.scrollY <= 0 && !isHorizontalScroll(e)) {
+            startY = e.touches[0].pageY;
+            currentY = startY;
+            pullStart = Date.now();
+
+            // 初始化指示器位置
+            refreshIndicator.style.top = '-60px';
+            refreshIndicator.classList.remove('active', 'refreshing');
+        }
+    });
+
+    // 触摸移动事件
+    document.addEventListener('touchmove', function (e) {
+        // 如果页面正在刷新，则不处理
+        if (isRefreshing) return;
+
+        if (startY > 0 && window.scrollY <= 0) {
+            currentY = e.touches[0].pageY;
+            distance = currentY - startY;
+
+            // 只有下拉才处理
+            if (distance > 0) {
+                e.preventDefault(); // 阻止默认滚动
+
+                // 限制最大下拉距离
+                var pullDistance = Math.min(distance, maxPull);
+
+                // 移动指示器
+                var indicatorTop = Math.min(pullDistance - 60, 0);
+                refreshIndicator.style.top = indicatorTop + 'px';
+                refreshIndicator.style.transition = 'none';
+
+                // 超过阈值时显示激活状态
+                if (pullDistance >= threshold) {
+                    refreshIndicator.classList.add('active');
+                } else {
+                    refreshIndicator.classList.remove('active');
+                }
+            }
+        }
+    });
+
+    // 触摸结束事件
+    document.addEventListener('touchend', function (e) {
+        // 如果页面正在刷新，则不处理
+        if (isRefreshing) return;
+
+        if (startY > 0 && distance > 0) {
+            var pullDistance = Math.min(distance, maxPull);
+            var pullDuration = Date.now() - pullStart;
+
+            // 如果下拉距离超过阈值，触发刷新
+            if (pullDistance >= threshold) {
+                triggerRefresh();
+            } else {
+                // 回弹效果
+                refreshIndicator.style.transition = 'top 0.3s ease';
+                refreshIndicator.style.top = '-60px';
+                refreshIndicator.classList.remove('active');
+            }
+        }
+
+        // 重置变量
+        startY = 0;
+        currentY = 0;
+        distance = 0;
+    });
+
+    // 检查是否为水平滚动
+    function isHorizontalScroll(e) {
+        var startX = e.touches[0].pageX;
+        var startY = e.touches[0].pageY;
+
+        // 临时监听移动来判断滚动方向
+        var isHorizontal = false;
+        var checkDirection = function (moveEvent) {
+            var deltaX = Math.abs(moveEvent.touches[0].pageX - startX);
+            var deltaY = Math.abs(moveEvent.touches[0].pageY - startY);
+
+            if (deltaX > deltaY + 10) { // 水平滚动更明显
+                isHorizontal = true;
+            }
+
+            document.removeEventListener('touchmove', checkDirection);
+        };
+
+        document.addEventListener('touchmove', checkDirection, { once: true });
+        return isHorizontal;
+    }
+
+    // 触发刷新
+    function triggerRefresh() {
+        if (isRefreshing) return;
+
+        isRefreshing = true;
+        refreshIndicator.classList.add('refreshing');
+        refreshIndicator.style.transition = 'top 0.3s ease';
+        refreshIndicator.style.top = '0';
+
+        // 显示刷新文本
+        var refreshText = refreshIndicator.querySelector('.refresh-text');
+        var originalText = refreshText.innerHTML;
+        refreshText.innerHTML = '<asp:Label ID="LabelRefreshing" runat="server" Text="<%$ Resources:lang,SZXZ %>" />';
+
+        // 执行刷新操作
+        performRefresh();
+    }
+
+    // 执行刷新 - 使用原始URL重新加载页面
+    function performRefresh() {
+        console.log('执行刷新，使用原始URL:', originalUrl);
+
+        // 显示等待指示器
+        var waitingImg = document.getElementById('IMG_Waiting');
+        if (waitingImg) {
+            waitingImg.style.display = 'block';
+        }
+
+        // 方法1：使用原始URL重新加载（确保获取最新数据）
+        // 使用replace=true确保从服务器获取而不是缓存
+        try {
+            // 先尝试ASP.NET UpdatePanel刷新（如果可用）
+            var updatePanel = document.querySelector('[id*="UpdatePanel"]');
+            var scriptManager = document.querySelector('[id*="ScriptManager"]');
+
+            if (updatePanel && scriptManager && typeof __doPostBack === 'function') {
+                console.log('尝试UpdatePanel刷新');
+                __doPostBack(updatePanel.id, '');
+
+                // UpdatePanel刷新后结束刷新状态
+                setTimeout(function () {
+                    endRefreshing();
+                }, 1500);
+            } else {
+                // 回退到完整页面刷新
+                console.log('执行完整页面刷新');
+
+                // 保存当前的滚动位置（如果需要的话）
+                var scrollPosition = {
+                    x: window.scrollX,
+                    y: window.scrollY
+                };
+
+                // 使用location.replace确保获取最新数据
+                // 添加时间戳避免缓存
+                var refreshUrl = originalUrl;
+                if (refreshUrl.indexOf('?') === -1) {
+                    refreshUrl += '?_refresh=' + Date.now();
+                } else {
+                    refreshUrl += '&_refresh=' + Date.now();
+                }
+
+                // 显示加载中
+                refreshIndicator.querySelector('.refresh-text').innerHTML =
+                    '<asp:Label ID="LabelLoading" runat="server" Text="<%$ Resources:lang,JZZZ %>" />';
+
+                // 延迟一点让用户看到反馈
+                setTimeout(function () {
+                    window.location.href = refreshUrl;
+                }, 800);
+            }
+        } catch (e) {
+            console.error('刷新出错:', e);
+            // 出错时回退到简单刷新
+            setTimeout(function () {
+                window.location.href = originalUrl +
+                    (originalUrl.indexOf('?') === -1 ? '?' : '&') +
+                    '_refresh=' + Date.now();
+            }, 800);
+        }
+    }
+
+    // 结束刷新
+    function endRefreshing() {
+        isRefreshing = false;
+
+        // 恢复指示器状态
+        refreshIndicator.style.transition = 'top 0.3s ease';
+        refreshIndicator.style.top = '-60px';
+        refreshIndicator.classList.remove('active', 'refreshing');
+
+        // 恢复原始文本
+        var refreshText = refreshIndicator.querySelector('.refresh-text');
+        refreshText.innerHTML = '<asp:Label ID="LabelRefreshHint" runat="server" Text="<%$ Resources:lang,XLSXH %>" />';
+
+        // 隐藏等待指示器
+        var waitingImg = document.getElementById('IMG_Waiting');
+        if (waitingImg) {
+            waitingImg.style.display = 'none';
+        }
+    }
+
+    // 监听页面加载完成事件
+    document.addEventListener('DOMContentLoaded', function () {
+        // 检查URL中是否有刷新标记，如果有则滚动到顶部
+        if (window.location.href.indexOf('_refresh=') !== -1) {
+            window.scrollTo(0, 0);
+
+            // 移除刷新参数（避免刷新循环）
+            setTimeout(function () {
+                var cleanUrl = window.location.href.replace(/[?&]_refresh=\d+/, '');
+                cleanUrl = cleanUrl.replace(/\?$/, ''); // 移除末尾的?
+                window.history.replaceState({}, document.title, cleanUrl);
+            }, 100);
+        }
+    });
+
+    // 公共API
+    window.PullToRefresh = {
+        trigger: triggerRefresh,
+        end: endRefreshing,
+        isRefreshing: function () { return isRefreshing; },
+        getOriginalUrl: function () { return originalUrl; }
+    };
+}
+
+// 修改后的右滑返回功能（提示层在底部）
+function initSwipeBack() {
+    var startX = 0;
+    var startY = 0;
+    var threshold = 100;
+    var restraint = 100;
+    var feedbackShown = false;
+
+    // 修改滑动反馈层的位置到页面底部
+    function moveFeedbackToBottom() {
+        var feedback = document.getElementById('swipeFeedback');
+        if (feedback) {
+            // 移除原有样式
+            feedback.style.top = 'auto';
+            feedback.style.bottom = '0';
+            feedback.style.transform = 'translateY(100%)';
+
+            // 修改动画
+            var style = document.createElement('style');
+            style.textContent = `
+                #swipeFeedback {
+                    position: fixed;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 40px;
+                    background: rgba(0, 150, 255, 0.9);
+                    color: white;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    z-index: 9999;
+                    animation: fadeInOutBottom 3s ease-in-out forwards;
+                    font-size: 14px;
+                }
+                
+                @keyframes fadeInOutBottom {
+                    0% { opacity: 0; transform: translateY(100%); }
+                    10% { opacity: 1; transform: translateY(0); }
+                    90% { opacity: 1; transform: translateY(0); }
+                    100% { opacity: 0; transform: translateY(100%); }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+    }
+
+    // 页面加载完成后移动提示层到底部
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', moveFeedbackToBottom);
+    } else {
+        moveFeedbackToBottom();
+    }
+
+    // 显示滑动反馈（在底部）
+    function showSwipeFeedback() {
+        var feedback = document.getElementById('swipeFeedback');
+        if (feedback) {
+            feedback.style.display = 'flex';
+            feedback.style.animation = 'fadeInOutBottom 3s ease-in-out forwards';
+        }
+    }
+
+    // 隐藏滑动反馈
+    function hideSwipeFeedback() {
+        var feedback = document.getElementById('swipeFeedback');
+        if (feedback) {
+            feedback.style.display = 'none';
+            feedback.style.animation = 'none';
+        }
+    }
+
+    // 显示滑动反馈提示
+    showSwipeFeedback();
+
+    // 触摸开始事件
+    document.addEventListener('touchstart', function (e) {
+        startX = e.touches[0].pageX;
+        startY = e.touches[0].pageY;
+        hideSwipeFeedback();
+        feedbackShown = true;
+    });
+
+    // 触摸移动事件 - 检测右滑动作
+    document.addEventListener('touchmove', function (e) {
+        if (!startX) return;
+
+        var currentX = e.touches[0].pageX;
+        var currentY = e.touches[0].pageY;
+        var distX = currentX - startX;
+        var distY = Math.abs(currentY - startY);
+
+        // 如果已经开始右滑且垂直偏移不大，显示提示
+        if (distX > 30 && distY < restraint && !feedbackShown) {
+            showSwipeFeedback();
+        }
+    });
+
+    // 触摸结束事件
+    document.addEventListener('touchend', function (e) {
+        if (!startX) return;
+
+        var endX = e.changedTouches[0].pageX;
+        var endY = e.changedTouches[0].pageY;
+        var distX = endX - startX;
+        var distY = Math.abs(endY - startY);
+
+        // 检查是否为有效的右滑
+        if (distX >= threshold && distY <= restraint) {
+            triggerBackLink();
+        }
+
+        startX = 0;
+        startY = 0;
+        feedbackShown = false;
+    });
+
+    // 点击页面任何地方也隐藏提示
+    document.addEventListener('click', function () {
+        hideSwipeFeedback();
+        feedbackShown = true;
+    });
+
+    // 新增：初始化下拉刷新
+    setTimeout(function () {
+        initPullToRefresh();
+    }, 500);
+}
+
+// 触发返回链接
+function triggerBackLink() {
+    console.log('执行返回主页');
+    var waitingImg = document.getElementById('IMG_Waiting');
+    if (waitingImg) {
+        waitingImg.style.display = 'block';
+    }
+    setTimeout(function () {
+        var backLink = document.getElementById("aAPPBackPriorPage");
+        if (backLink) {
+            backLink.click();
+        } else {
+            console.error('返回链接未找到');
+        }
+    }, 300);
+}
+
+// 手动触发刷新的函数（可以从其他地方调用）
+function manualRefresh() {
+    if (window.PullToRefresh && !window.PullToRefresh.isRefreshing()) {
+        window.PullToRefresh.trigger();
+    } else {
+        // 直接重新加载
+        window.location.href = window.location.href +
+            (window.location.href.indexOf('?') === -1 ? '?' : '&') +
+            '_refresh=' + Date.now();
+    }
+}
+//------------------APP端下拉刷新功能结束--------------------------
+
+
 
 //------------------在鼠标位置加载等待图标处理开始--------------------------
 (function () {
