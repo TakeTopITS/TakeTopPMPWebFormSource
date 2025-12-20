@@ -92,7 +92,7 @@
                                                             </th>
                                                         </tr>
                                                         <tr>
-                                                            <th  class="formItemBgStyleForAlignLeft" colspan="9">£¨CNPC-SCC£©   Total:<asp:Literal ID="LT_Count" runat="server"></asp:Literal></th>
+                                                            <th  class="formItemBgStyleForAlignLeft" colspan="9">(CNPC-SCC)   Total:<asp:Literal ID="LT_Count" runat="server"></asp:Literal></th>
                                                         </tr>
                                                         <asp:Repeater ID="rptList" runat="server">
                                                             <ItemTemplate>

@@ -153,8 +153,8 @@
                                 <asp:Label ID="Label19" runat="server" Text="<%$ Resources:lang,XianJinYuEZongE%>"></asp:Label>:<asp:Label ID="LB_BalanceAmount" runat="server"></asp:Label>
 
                                 &nbsp;
-                               £¨
-                                <asp:Label ID="LB_CurrencyType" runat="server"></asp:Label>£©
+                               (
+                                <asp:Label ID="LB_CurrencyType" runat="server"></asp:Label>)
                             
                             </td>
                             <td style="width: 200px; text-align: right;">

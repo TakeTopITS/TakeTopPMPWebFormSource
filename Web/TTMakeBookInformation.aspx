@@ -453,7 +453,7 @@
                                                 <asp:FileUpload ID="FUP_File" runat="server" Width="100px" />&nbsp;<asp:Button ID="BT_UploadPhoto"
                                                     runat="server" Text="<%$ Resources:lang,ShangChuan%>" OnClick="BT_UploadPhoto_Click" CssClass="inpu" />
                                                 <br />
-                                                £¨<asp:Label ID="Label20" runat="server" Text="<%$ Resources:lang,TuPianKuan220Gao200%>"></asp:Label>£©
+                                                (<asp:Label ID="Label20" runat="server" Text="<%$ Resources:lang,TuPianKuan220Gao200%>"></asp:Label>)
                                             </ContentTemplate>
                                             <Triggers>
                                                 <asp:PostBackTrigger ControlID="BT_UploadPhoto"></asp:PostBackTrigger>

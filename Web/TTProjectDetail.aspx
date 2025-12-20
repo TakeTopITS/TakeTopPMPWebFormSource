@@ -301,7 +301,7 @@
                                                                         <asp:Label ID="LB_TodaySummary" runat="server" Text="<%$ Resources:lang,TodaySummary%>" />
 
                                                                         <asp:Label ID="LB_WorkID" runat="server" Text="-1" Visible="False"></asp:Label>
-                                                                        <%--   £¨<asp:Label ID="LB_CurrentDayTaskTotal" runat="server"></asp:Label>£©--%>
+                                                                        <%--   (<asp:Label ID="LB_CurrentDayTaskTotal" runat="server"></asp:Label>)--%>
 
                                                                     </td>
                                                                 </tr>

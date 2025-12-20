@@ -322,7 +322,7 @@
                                     </td>
                                     <tr>
                                         <td class="formItemBgStyleForAlignLeft" style="width: 100px; height: 27px"></td>
-                                        <td class="formItemBgStyleForAlignLeft" style="width: 650px; height: 27px"><span style="font-size: 10pt">ги 
+                                        <td class="formItemBgStyleForAlignLeft" style="width: 650px; height: 27px"><span style="font-size: 10pt">( 
                                         <asp:Label ID="LB_tbRequestFeedback" runat="server" Text="<%$ Resources:lang,RequestFeedback%>"></asp:Label>
                                             :</span><asp:CheckBox ID="CB_SMS" runat="server" Text="<%$ Resources:lang,SendSMS%>" />
                                             <asp:CheckBox ID="CB_Mail" runat="server" Text="<%$ Resources:lang,SendEMail%>" />

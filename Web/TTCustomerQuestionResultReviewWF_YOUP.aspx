@@ -202,9 +202,9 @@
                                                 </tr>
                                                 <tr style="font-size: 10pt">
                                                     <td style="width: 100%;" class="formItemBgStyleForAlignLeft">
-                                                        <span style="font-size: 10pt">£¨<asp:Label ID="Label7" runat="server" Text="<%$ Resources:lang,YaoQiuShouDaoXinXi%>"></asp:Label>:<asp:CheckBox ID="CB_Mail" runat="server"
+                                                        <span style="font-size: 10pt">(<asp:Label ID="Label7" runat="server" Text="<%$ Resources:lang,YaoQiuShouDaoXinXi%>"></asp:Label>:<asp:CheckBox ID="CB_Mail" runat="server"
                                                             Text="<%$ Resources:lang,YouJian%>" />
-                                                            <asp:CheckBox ID="CB_SMS" runat="server" Text="<%$ Resources:lang,DuanXin%>" />£© </span>
+                                                            <asp:CheckBox ID="CB_SMS" runat="server" Text="<%$ Resources:lang,DuanXin%>" />) </span>
                                                         <asp:Button ID="BT_SubmitApply" runat="server" OnClick="BT_SubmitApply_Click" Text="<%$ Resources:lang,TiJiaoShenQing%>"
                                                             CssClass="inpu" />
                                                     </td>

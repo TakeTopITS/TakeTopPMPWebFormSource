@@ -656,7 +656,7 @@
 
                                     <td style="width: 80px;" class="formItemBgStyleForAlignLeft"></td>
 
-                                    <td class="formItemBgStyleForAlignLeft"><span style="font-size: 10pt">ги
+                                    <td class="formItemBgStyleForAlignLeft"><span style="font-size: 10pt">(
 
                                         <asp:Label ID="LB_tbProgressFeedback" runat="server" Text="<%$ Resources:lang,ProgressFeedback %>"></asp:Label>:
 

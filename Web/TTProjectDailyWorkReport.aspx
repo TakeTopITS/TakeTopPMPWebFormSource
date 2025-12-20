@@ -53,7 +53,7 @@
                                         <td>
                                             <asp:Label ID="Label40" runat="server" Text="<%$ Resources:lang,GongZuoZongJieHuiZong%>"></asp:Label>
                                         </td>
-                                        <td>£¨<asp:Button ID="BT_AllMember" runat="server" CssClass="inpuLong" OnClick="BT_AllMember_Click"
+                                        <td>(<asp:Button ID="BT_AllMember" runat="server" CssClass="inpuLong" OnClick="BT_AllMember_Click"
                                             Text="<%$ Resources:lang,ChaSuoYouGongZuoHuiZong%>" />
                                         </td>
                                         <td>
@@ -78,7 +78,7 @@
                                                 Text="<%$ Resources:lang,ChaXun%>" />
                                             &nbsp;&nbsp;  <a href="#" onclick="preview()">
                                                 <img src="ImagesSkin/print.gif" alt="´òÓ¡" border="0" />
-                                            </a>£©
+                                            </a>)
                                         </td>
                                     </tr>
 

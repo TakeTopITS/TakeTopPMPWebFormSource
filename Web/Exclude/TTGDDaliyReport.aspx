@@ -72,7 +72,7 @@
                                                         <td  class="formItemBgStyleForAlignLeft">
                                                             <asp:Label ID="Label4" runat="server" Text="<%$ Resources:lang,BaoGaoHao%>"></asp:Label>.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
                                                         </td>
-                                                        <td  class="formItemBgStyleForAlignLeft">£¨1 / 1£©
+                                                        <td  class="formItemBgStyleForAlignLeft">(1 / 1)
                                                         </td>
                                                     </tr>
                                                     <tr>

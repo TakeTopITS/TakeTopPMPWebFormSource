@@ -130,7 +130,7 @@
                                             </td>
                                             <td background="ImagesSkin/main_top_bj.jpg" class="titlezi">
                                                 <asp:Label ID="Label1" runat="server" Text="<%$ Resources:lang,LiuChengBiaoDanJSDaiMa%>"></asp:Label>
-                                                £¨<asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="Template\CodeTemplate\JS\JSCodeTemplate.pdf" Text="<%$ Resources:lang,ChaKanShiLiDaiMa%>" Target="_blank" />£©
+                                                (<asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="Template\CodeTemplate\JS\JSCodeTemplate.pdf" Text="<%$ Resources:lang,ChaKanShiLiDaiMa%>" Target="_blank" />)
                                             </td>
                                             <td width="5">
                                                 <%-- <img src="ImagesSkin/main_top_r.jpg" width="5" height="31" />--%>

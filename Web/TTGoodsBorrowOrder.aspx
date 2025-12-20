@@ -848,7 +848,7 @@
 
                                             <tr>
 
-                                                <td class="ItemAlignLeft" style="width: 550px; height: 27px"><span style="font-size: 10pt">ги<asp:Label ID="Label70" runat="server" Text="<%$ Resources:lang,YaoQiuShouDaoXingXi %>"></asp:Label>:</span><asp:CheckBox ID="CB_SMS" runat="server"
+                                                <td class="ItemAlignLeft" style="width: 550px; height: 27px"><span style="font-size: 10pt">(<asp:Label ID="Label70" runat="server" Text="<%$ Resources:lang,YaoQiuShouDaoXingXi %>"></asp:Label>:</span><asp:CheckBox ID="CB_SMS" runat="server"
                                                     Font-Size="10pt" Text="<%$ Resources:lang,DuanXin%>" /><asp:CheckBox ID="CB_Mail" runat="server" Text="<%$ Resources:lang,YouJian %>" /><span style="font-size: 10pt">) </span>
 
                                                     <asp:Button ID="BT_SubmitApply" runat="server" Enabled="False" Text="<%$ Resources:lang,TiJiaoShenQing %>" CssClass="inpu" />

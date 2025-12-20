@@ -248,8 +248,8 @@
                                                         <ContentTemplate>
                                                             <br />
                                                             &nbsp;&nbsp;<asp:Label ID="Label44" runat="server" Text="<%$ Resources:lang,YingFuJinE%>"></asp:Label>:<asp:Label ID="LB_PayableAccount" runat="server"></asp:Label>&#160;<asp:Label ID="Label43" runat="server" Text="<%$ Resources:lang,ShiFuJinE%>"></asp:Label>:<asp:Label ID="LB_OutOfPocketAccount" runat="server"></asp:Label>&#160;<asp:Label ID="Label45" runat="server" Text="<%$ Resources:lang,KaiPiaoJinE%>"></asp:Label>:<asp:Label ID="LB_PayerInvoiceAccount" runat="server"></asp:Label>&#160;<asp:Label ID="Label46" runat="server" Text="<%$ Resources:lang,WeiFuJinE%>"></asp:Label>:<asp:Label ID="LB_UNPayAmount" runat="server"></asp:Label>
-                                                            £¨<asp:Label ID="LB_ConstractPayableCurrencyType" runat="server"></asp:Label>
-                                                            £©
+                                                            (<asp:Label ID="LB_ConstractPayableCurrencyType" runat="server"></asp:Label>
+                                                            )
                                                             <table width="100%" border="0" cellpadding="0" cellspacing="0" background="ImagesSkin/main_n_bj.jpg">
                                                                 <caption>
                                                                     <tr>

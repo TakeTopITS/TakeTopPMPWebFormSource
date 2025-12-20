@@ -123,7 +123,7 @@
                                                         <td width="60%" class="ItemAlignLeft">
                                                             <table>
                                                                 <tr>
-                                                                    <td class="ItemAlignLeft">£¨ 
+                                                                    <td class="ItemAlignLeft">( 
                                                                     </td>
                                                                     <td class="ItemAlignLeft">
                                                                         <asp:Label ID="Label211" runat="server" Text="<%$ Resources:lang,CangKu %>"></asp:Label>:
@@ -138,7 +138,7 @@
                                                                         <asp:TextBox ID="TB_FindVendorName" runat="server" Width="120px"></asp:TextBox>
                                                                     </td>
                                                                     <td>
-                                                                        <asp:Button ID="BT_FindAll" runat="server" CssClass="inpu" Text="<%$ Resources:lang,ChaXun %>" OnClick="BT_FindAll_Click" />£©
+                                                                        <asp:Button ID="BT_FindAll" runat="server" CssClass="inpu" Text="<%$ Resources:lang,ChaXun %>" OnClick="BT_FindAll_Click" />)
                                                                     </td>
                                                                 </tr>
                                                             </table>
@@ -526,7 +526,7 @@
                                                                 <asp:FileUpload ID="FUP_File" runat="server" Width="50px" /><asp:Button ID="BT_UploadPhoto"
                                                                     runat="server" Text="<%$ Resources:lang,ShangChuan%>" OnClick="BT_UploadPhoto_Click" CssClass="inpu" />
                                                                 <br />
-                                                                £¨<asp:Label ID="Label79" runat="server" Text="<%$ Resources:lang,Kuan200Gao200%>"></asp:Label>£©
+                                                                (<asp:Label ID="Label79" runat="server" Text="<%$ Resources:lang,Kuan200Gao200%>"></asp:Label>)
                                                             </ContentTemplate>
                                                             <Triggers>
                                                                 <asp:PostBackTrigger ControlID="BT_UploadPhoto"></asp:PostBackTrigger>

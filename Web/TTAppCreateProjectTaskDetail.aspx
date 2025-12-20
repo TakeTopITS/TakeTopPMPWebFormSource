@@ -445,7 +445,7 @@
 
                         <tr style="display: none;">
                             <td>
-                                <asp:HyperLink ID="HL_RunTaskByWF" runat="server" Enabled="False">---&gt;<asp:Label ID="Label24" runat="server" Text="<%$ Resources:lang,RenWuChuLiLiuChengMoShi%>"></asp:Label>£©</asp:HyperLink>
+                                <asp:HyperLink ID="HL_RunTaskByWF" runat="server" Enabled="False">---&gt;<asp:Label ID="Label24" runat="server" Text="<%$ Resources:lang,RenWuChuLiLiuChengMoShi%>"></asp:Label>)</asp:HyperLink>
                                 &nbsp;
                                                                     <asp:HyperLink ID="HL_TaskReview" runat="server" Enabled="False">---&gt;<asp:Label ID="Label25" runat="server" Text="<%$ Resources:lang,RenWuPingShen%>"></asp:Label></asp:HyperLink>
                                 &nbsp;&nbsp;<asp:HyperLink ID="HL_RelatedWorkFlowTemplate" runat="server" NavigateUrl="TTProRelatedWFTemplate.aspx"

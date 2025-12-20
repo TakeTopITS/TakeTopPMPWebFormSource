@@ -182,7 +182,7 @@
             var modalWidth = modalElement.offsetWidth;
             var modalHeight = modalElement.offsetHeight;
 
-            // 计算在按钮上方的位置（视口相对位置）
+            // 计算在按钮上方的位置(视口相对位置)
             var topPosition = buttonRect.top - modalHeight - 10; // 按钮上方10px
             var leftPosition = buttonRect.left;
 
@@ -212,7 +212,7 @@
                 topPosition = Math.max(10, viewportHeight - modalHeight - 10);
             }
 
-            // 设置模态框位置（相对于视口）
+            // 设置模态框位置(相对于视口)
             $(modalElement).css({
                 'top': topPosition + 'px',
                 'left': leftPosition + 'px'

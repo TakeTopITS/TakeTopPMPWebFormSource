@@ -86,7 +86,7 @@
                                                         </table>
                                                         <table style="display: none;">
                                                             <tr>
-                                                                <td>£¨BOM:
+                                                                <td>(BOM:
                                                                 </td>
                                                                 <td>
                                                                     <asp:Label ID="LB_tiAddVersion" runat="server" Text="<%$ Resources:lang,AddVersion%>"></asp:Label>:
@@ -103,7 +103,7 @@
                                                                 <asp:Button ID="BT_DeleteVersion" runat="server" CssClass="inpu" OnClick="BT_DeleteVersion_Click" OnClientClick="return confirmContinue(getDeleteMsgByLangCode(), this, event)"
                                                                     Text="<%$ Resources:lang,Delete%>" />
                                                                 </td>
-                                                                <td>£©
+                                                                <td>)
                                                                 </td>
                                                                 <td>(<asp:Label ID="LB_tiBomCopyVersion" runat="server" Text="<%$ Resources:lang,CopyVersion%>"></asp:Label>:
                                                                 <asp:Label ID="LB_tiFromVersion" runat="server" Text="<%$ Resources:lang,From%>"></asp:Label>
@@ -124,7 +124,7 @@
                                                                 <td>&nbsp;<asp:Button ID="BT_CopyVersion" runat="server" CssClass="inpu" OnClick="BT_CopyVersion_Click" 
                                                                     Text="<%$ Resources:lang,Copy%>" />
                                                                 </td>
-                                                                <td>£©
+                                                                <td>)
                                                                 <asp:HyperLink ID="HL_CopyFromOtherProjectItemBom" runat="server" Target="_blank"
                                                                     Text="<%$ Resources:lang,CMBXMFZJGWBSGH%>"></asp:HyperLink>
                                                                 </td>

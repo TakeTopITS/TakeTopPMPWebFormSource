@@ -171,8 +171,8 @@
                                 <asp:Label ID="Label22" runat="server" Text="<%$ Resources:lang,DaiFuZongE%>"></asp:Label>:<asp:Label ID="LB_UNPayAmount" runat="server"></asp:Label>
 
                                 &nbsp;
-                               £¨
-                                <asp:Label ID="LB_CurrencyType" runat="server"></asp:Label>£©
+                               (
+                                <asp:Label ID="LB_CurrencyType" runat="server"></asp:Label>)
 
 
                                 <asp:Label ID="LB_UserCode" runat="server"

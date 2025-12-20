@@ -37,7 +37,7 @@
                                     <td class="ItemAlignLeft" background="ImagesSkin/main_top_bj.jpg">
                                         <table>
                                             <tr>
-                                                <td>£¨
+                                                <td>(
                                                 </td>
                                                 <td>
                                                     <asp:Label ID="Label1" runat="server" Text="<%$ Resources:lang,ZhiDingJiHuaBanBenHao%>"></asp:Label>:
@@ -62,7 +62,7 @@
                                                     <asp:Button ID="BT_DeleteVersion" runat="server" CssClass="inpu"
                                                         OnClick="BT_DeleteVersion_Click" OnClientClick="return confirmContinue(getDeleteMsgByLangCode(), this, event)" Text="<%$ Resources:lang,ShanChu%>" />
                                                 </td>
-                                                <td>£©</td>
+                                                <td>)</td>
                                                 <td></td>
                                                 <td>(
                                                 </td>
@@ -108,7 +108,7 @@
                                                 <td>
                                                     <asp:Button ID="BT_CopyVersion" runat="server" CssClass="inpu" OnClientClick="return confirmContinue(getCopyProjectPlanMsgByLangCode(), this, event)"
                                                         OnClick="BT_CopyVersion_Click" Text="<%$ Resources:lang,FuZhi%>" Enabled="False" /></td>
-                                                <td>£©
+                                                <td>)
                                                 </td>
                                             </tr>
                                         </table>

@@ -403,7 +403,7 @@
                                                                                                             <tr>
                                                                                                                 <td class="formItemBgStyleForAlignLeft">
                                                                                                                     <strong>
-                                                                                                                        <asp:Label ID="Label32" runat="server" Text="<%$ Resources:lang,CFPJLDZJL %>"></asp:Label>£¨<span style="font-size: 9pt"><asp:Label ID="Label31" runat="server" Text="<%$ Resources:lang,XuanZeKeZaiShangMianXiuGai %>"></asp:Label>£©:</span></strong>
+                                                                                                                        <asp:Label ID="Label32" runat="server" Text="<%$ Resources:lang,CFPJLDZJL %>"></asp:Label>(<span style="font-size: 9pt"><asp:Label ID="Label31" runat="server" Text="<%$ Resources:lang,XuanZeKeZaiShangMianXiuGai %>"></asp:Label>):</span></strong>
                                                                                                                 </td>
                                                                                                             </tr>
                                                                                                             <tr>

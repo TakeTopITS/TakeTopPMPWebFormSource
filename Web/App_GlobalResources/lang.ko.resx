@@ -32638,7 +32638,7 @@
     <value>예산 할당</value>
   </data>
   <data name="XYHDKHHSYY" xml:space="preserve">
-    <value>오른쪽으로 스와이프하여 뒤로 가기</value>
+    <value>오른쪽으로 스와이프하여 뒤로 가기. 아래로 스와이프하여 이 페이지 새로 고침</value>
   </data>
   <data name="ZZSJSJKSHSFZQXH" xml:space="preserve">
     <value>데이터베이스 업그레이드 중입니다. 약 15초 정도 소요될 예정이오니, 잠시만 기다려 주세요...</value>

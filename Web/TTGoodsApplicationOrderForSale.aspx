@@ -906,7 +906,7 @@
                                     <td class="ItemAlignLeft" colspan="2" style="height: 6px; text-align: right;">
                                         <table width="100%">
                                             <tr>
-                                                <td class="ItemAlignLeft" style="width: 550px; height: 27px"><span style="font-size: 10pt">ги<asp:Label ID="Label38" runat="server" Text="<%$ Resources:lang,YaoQiuShouDaoXingXi%>"></asp:Label>
+                                                <td class="ItemAlignLeft" style="width: 550px; height: 27px"><span style="font-size: 10pt">(<asp:Label ID="Label38" runat="server" Text="<%$ Resources:lang,YaoQiuShouDaoXingXi%>"></asp:Label>
                                                     :</span><asp:CheckBox ID="CB_SMS" runat="server" Text="<%$ Resources:lang,DuanXin%>" />
                                                     <asp:CheckBox ID="CB_Mail" runat="server" Text="<%$ Resources:lang,YouJian%>" />
                                                     <span style="font-size: 10pt">) </span>

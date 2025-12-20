@@ -223,7 +223,7 @@
                     // 将链接的href属性设置为提供的URL
                     link.href = url;
 
-                    //// 指定下载文件名（可选）
+                    //// 指定下载文件名(可选)
                     //link.download = 'file-name.txt'; // 根据实际需要替换
 
                     // 将链接添加到文档中
@@ -677,14 +677,14 @@
                                                                         </tr>
                                                                         <tr style="font-size: 10pt">
                                                                             <td style="text-align: left; width: 100%;" class="formItemBgStyleForAlignLeft">
-                                                                                <span style="font-size: 10pt">（
+                                                                                <span style="font-size: 10pt">(
                                                                                 <asp:Label ID="LB_tbRequestFeedback" runat="server" Text="<%$ Resources:lang,RequestFeedback %>"></asp:Label>
 
                                                                                     :<asp:CheckBox ID="CB_RequiredMail" runat="server"
                                                                                         Text="<%$ Resources:lang,SendEMail %>" />
 
                                                                                     <asp:CheckBox ID="CB_RequiredSMS" runat="server" Text="<%$ Resources:lang,SendSMS %>" />
-                                                                                    ）  
+                                                                                    )  
                                                                                 </span>
 
                                                                                 <asp:UpdatePanel ID="UpdatePanel7" runat="server" UpdateMode="Conditional">

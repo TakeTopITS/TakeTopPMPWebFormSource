@@ -49,7 +49,7 @@
                                                                 <asp:ListItem Value="Deleted" Text="<%$ Resources:lang,YiShanChu%>" />
                                                                 <asp:ListItem Value="All" Text="<%$ Resources:lang,SuoYou%>" />
                                                             </asp:DropDownList>
-                                                            £©
+                                                            )
                                                         </td>
                                                         <td width="5">
                                                             <%--<img src="ImagesSkin/main_top_r.jpg" width="5" height="31" alt="" />--%></td>

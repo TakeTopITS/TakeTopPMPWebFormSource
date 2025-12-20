@@ -226,10 +226,10 @@
                                                                 </tr>
                                                             </table>
                                                             <br />
-                                                            £¨<asp:Label ID="Label11" runat="server" Text="<%$ Resources:lang,YGZKPIKSSJKPIJSSJBKPIZDM%>"></asp:Label>)<br />
+                                                            (<asp:Label ID="Label11" runat="server" Text="<%$ Resources:lang,YGZKPIKSSJKPIJSSJBKPIZDM%>"></asp:Label>)<br />
                                                             <asp:Label ID="Label14" runat="server" Text="<%$ Resources:lang,DaiMaShiLi%>"></asp:Label>:Select Count(*) * -5 From T_Project Where Status = &#39;<asp:Label ID="Label13" runat="server" Text="<%$ Resources:lang,JieAn%>"></asp:Label>&#39; and PMCode = &#39;[TAKETOPKPIUSERCODE]&#39; and to_char(BeginDate,'yyyymmdd') &gt;= &#39;[TAKETOPKPISTARTTIME]&#39; and to_char(EndDate,'yyyymmdd') &lt;= &#39;[TAKETOPKPIENDTIME]&#39;
                                                                         <br />
-                                                            <asp:Label ID="Label12" runat="server" Text="<%$ Resources:lang,ZWDBDWFZKYSJYQTSZQD%>"></asp:Label>£©</td>
+                                                            <asp:Label ID="Label12" runat="server" Text="<%$ Resources:lang,ZWDBDWFZKYSJYQTSZQD%>"></asp:Label>)</td>
                                                     </tr>
                                                     <tr>
                                                         <td class="formItemBgStyleForAlignLeft">
@@ -333,10 +333,10 @@
                                             </tr>
                                         </table>
                                         <br />
-                                        £¨<asp:Label ID="Label23" runat="server" Text="<%$ Resources:lang,YGZKPIKSSJKPIJSSJBKPIZDM%>"></asp:Label>)<br />
+                                        (<asp:Label ID="Label23" runat="server" Text="<%$ Resources:lang,YGZKPIKSSJKPIJSSJBKPIZDM%>"></asp:Label>)<br />
                                         <asp:Label ID="Label24" runat="server" Text="<%$ Resources:lang,DaiMaShiLi%>"></asp:Label>:Select Count(*) * 5 From T_Project Where Status = &#39;<asp:Label ID="Label25" runat="server" Text="<%$ Resources:lang,JieAn%>"></asp:Label>&#39; and PMCode = &#39;[TAKETOPKPIUSERCODE]&#39; and to_char(BeginDate,'yyyymmdd') &gt;= &#39;[TAKETOPKPISTARTTIME]&#39; and to_char(EndDate,'yyyymmdd') &lt;= &#39;[TAKETOPKPIENDTIME]&#39;
                                                                         <br />
-                                        <asp:Label ID="Label26" runat="server" Text="<%$ Resources:lang,ZWDBDWFZKYSJYQTSZQD%>"></asp:Label>£©</td>
+                                        <asp:Label ID="Label26" runat="server" Text="<%$ Resources:lang,ZWDBDWFZKYSJYQTSZQD%>"></asp:Label>)</td>
                                 </tr>
                                 <tr>
                                     <td class="formItemBgStyleForAlignLeft">

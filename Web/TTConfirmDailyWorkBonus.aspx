@@ -49,10 +49,10 @@
                                                             <asp:Label ID="Label1" runat="server" Text="<%$ Resources:lang,XiangMu%>"></asp:Label>:
                                                         <asp:Label ID="LB_ProjectID" runat="server"></asp:Label>
                                                             &nbsp;<asp:Label ID="Label2" runat="server" Text="<%$ Resources:lang,GongZuoRiZhiJiangJinQueRen%>"></asp:Label>
-                                                            £¨<asp:HyperLink ID="HL_ProjectDailyWorkBonusReport" runat="server" Target="_blank">
+                                                            (<asp:HyperLink ID="HL_ProjectDailyWorkBonusReport" runat="server" Target="_blank">
                                                                 <asp:Label ID="Label3" runat="server" Text="<%$ Resources:lang,GongZuoRiZhiJiangJinBaoBiao%>"></asp:Label>¹¤
                                                             </asp:HyperLink>
-                                                            £©
+                                                            )
                                                         </td>
                                                         <td width="5">
                                                             <%-- <img src="ImagesSkin/main_top_r.jpg" width="5" height="31" />--%>

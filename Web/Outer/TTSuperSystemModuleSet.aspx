@@ -235,7 +235,7 @@
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="8%" />
                                                                                 </asp:BoundColumn>
 
-                                                                                <asp:BoundColumn DataField="HomeModuleName" HeaderText="模块名称（本语）">
+                                                                                <asp:BoundColumn DataField="HomeModuleName" HeaderText="模块名称(本语)">
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="8%" />
                                                                                 </asp:BoundColumn>
 

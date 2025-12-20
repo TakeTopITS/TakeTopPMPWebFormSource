@@ -235,10 +235,10 @@
                                                 </tr>
                                                 <tr style="font-size: 10pt">
                                                     <td style="width: 100%;" class="formItemBgStyleForAlignLeft">
-                                                        <span style="font-size: 10pt">£¨
+                                                        <span style="font-size: 10pt">(
                                                         <asp:Label ID="LB_tbRequestFeedback" runat="server" Text="<%$ Resources:lang,RequestFeedback%>"></asp:Label>:<asp:CheckBox
                                                             ID="CB_Mail" runat="server" Font-Size="10pt" Text="<%$ Resources:lang,SendEMail%>" />
-                                                            <asp:CheckBox ID="CB_SMS" runat="server" Text="<%$ Resources:lang,SendSMS%>" />£©
+                                                            <asp:CheckBox ID="CB_SMS" runat="server" Text="<%$ Resources:lang,SendSMS%>" />)
                                                         </span>
                                                         <asp:Button ID="BT_SubmitApply" runat="server" Text="<%$ Resources:lang,TiJiaoShenQing%>"
                                                             CssClass="inpu" />

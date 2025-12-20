@@ -55,7 +55,7 @@
                                                         <td>
                                                             <table>
                                                                 <tr>
-                                                                    <td class="ItemAlignLeft">£¨<asp:Label ID="Label2" runat="server" Text="<%$ Resources:lang,DanHao%>"></asp:Label>:
+                                                                    <td class="ItemAlignLeft">(<asp:Label ID="Label2" runat="server" Text="<%$ Resources:lang,DanHao%>"></asp:Label>:
                                                                     </td>
                                                                     <td>
                                                                         <asp:TextBox ID="TB_PDID" runat="server" Width="60px"></asp:TextBox>
@@ -70,7 +70,7 @@
                                                                     <td>&nbsp;</td>
 
                                                                     <td>
-                                                                        <asp:Button ID="BT_Find" runat="server" CssClass="inpu" Text="<%$ Resources:lang,ChaXun%>" OnClick="BT_Find_Click" />£©
+                                                                        <asp:Button ID="BT_Find" runat="server" CssClass="inpu" Text="<%$ Resources:lang,ChaXun%>" OnClick="BT_Find_Click" />)
                                                                     </td>
                                                                 </tr>
                                                             </table>

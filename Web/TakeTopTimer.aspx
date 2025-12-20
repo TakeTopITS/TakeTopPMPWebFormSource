@@ -9,7 +9,7 @@
 <body>
     <form id="form1" runat="server">
         <div style="color: red; padding-top: 50px; text-align: center;">
-            正在运行（RUNING)
+            正在运行(RUNING)
             <br />
             <asp:Label ID="LB_RefresTime" runat="server"></asp:Label>
             <br />

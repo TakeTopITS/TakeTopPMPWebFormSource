@@ -575,7 +575,7 @@
                                                                                             <td class="formItemBgStyleForAlignLeft">
 
                                                                                                 <strong>
-                                                                                                    <asp:Label ID="Label36" runat="server" Text="<%$ Resources:lang,CiRenWuFenPaiJiLuZiJiLu %>"></asp:Label>£¨<span style="font-size: 9pt"><asp:Label ID="Label37" runat="server" Text="<%$ Resources:lang,XuanZeKeZaiShangMianXiuGai %>"></asp:Label>£©:</span></strong>
+                                                                                                    <asp:Label ID="Label36" runat="server" Text="<%$ Resources:lang,CiRenWuFenPaiJiLuZiJiLu %>"></asp:Label>(<span style="font-size: 9pt"><asp:Label ID="Label37" runat="server" Text="<%$ Resources:lang,XuanZeKeZaiShangMianXiuGai %>"></asp:Label>):</span></strong>
                                                                                             </td>
                                                                                         </tr>
 

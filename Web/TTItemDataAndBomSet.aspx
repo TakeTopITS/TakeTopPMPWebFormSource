@@ -117,7 +117,7 @@
                                                     <td width="29">
                                                         <%--<img src="Logo/main_top_l.jpg" alt="" width="29" height="31" />--%>
                                                     </td>
-                                                    <td class="ItemAlignLeft" background="ImagesSkin/main_top_bj.jpg">£¨<asp:Label ID="Label1" runat="server" Text="<%$ Resources:lang,ZJXBBBBH%>"></asp:Label>:<NickLee:NumberBox MaxAmount="1000000000000" ID="NB_NewVerID" runat="server" MinAmount="1" Precision="0"
+                                                    <td class="ItemAlignLeft" background="ImagesSkin/main_top_bj.jpg">(<asp:Label ID="Label1" runat="server" Text="<%$ Resources:lang,ZJXBBBBH%>"></asp:Label>:<NickLee:NumberBox MaxAmount="1000000000000" ID="NB_NewVerID" runat="server" MinAmount="1" Precision="0"
                                                         Width="30px" Amount="1">
                                                 1</NickLee:NumberBox>
                                                         &nbsp;<asp:Label ID="Label2" runat="server" Text="<%$ Resources:lang,LeiXing%>"></asp:Label>:
@@ -129,7 +129,7 @@
                                                             Enabled="False" />
                                                         &nbsp;<asp:Button ID="BT_DeleteVersion" runat="server" OnClick="BT_DeleteVersion_Click" OnClientClick="return confirmContinue(getDeleteMsgByLangCode(), this, event)"
                                                             Text="<%$ Resources:lang,ShanChu%>" Enabled="False" />
-                                                        £©(<asp:Label ID="Label3" runat="server" Text="<%$ Resources:lang,XTYSJGWBSFZCBB%>"></asp:Label><asp:DropDownList ID="DL_OldVersionID" runat="server" DataTextField="VerID"
+                                                        )(<asp:Label ID="Label3" runat="server" Text="<%$ Resources:lang,XTYSJGWBSFZCBB%>"></asp:Label><asp:DropDownList ID="DL_OldVersionID" runat="server" DataTextField="VerID"
                                                             DataValueField="ID" Width="40px" AutoPostBack="True" OnSelectedIndexChanged="DL_OldVersionID_SelectedIndexChanged">
                                                         </asp:DropDownList>
                                                         <asp:Label ID="Label4" runat="server" Text="<%$ Resources:lang,FuZhiDaoBanBen%>"></asp:Label><asp:DropDownList ID="DL_NewVersionID" runat="server" DataTextField="VerID"
@@ -137,7 +137,7 @@
                                                         </asp:DropDownList>
                                                         &nbsp;<asp:Button ID="BT_CopyVersion" runat="server" CssClass="inpu" O="" OnClick="BT_CopyVersion_Click"
                                                             Text="<%$ Resources:lang,FuZhi%>" />
-                                                        £©£¨<asp:Label ID="Label5" runat="server" Text="<%$ Resources:lang,BTYSJGWBSFZC%>"></asp:Label>:<asp:Label ID="LB_FromItemCode" runat="server"></asp:Label>
+                                                        )(<asp:Label ID="Label5" runat="server" Text="<%$ Resources:lang,BTYSJGWBSFZC%>"></asp:Label>:<asp:Label ID="LB_FromItemCode" runat="server"></asp:Label>
                                                         &nbsp;<asp:Label ID="Label54" runat="server" Text="<%$ Resources:lang,DeBanBen%>"></asp:Label>:
                                                         <asp:DropDownList ID="DL_FromVersionID" runat="server" AutoPostBack="True" DataTextField="VerID" DataValueField="ID" OnSelectedIndexChanged="DL_FromVersionID_SelectedIndexChanged">
                                                         </asp:DropDownList>
@@ -149,7 +149,7 @@
                                                         </asp:DropDownList>
                                                         &nbsp;&nbsp;<asp:Button ID="BT_CopyVersionAB" runat="server" CssClass="inpu" O=""
                                                             OnClick="BT_CopyVersionAB_Click" Text="<%$ Resources:lang,FuZhi%>" Enabled="False" />
-                                                        £©
+                                                        )
                                                     </td>
                                                     <td width="5">
                                                         <%-- <img src="ImagesSkin/main_top_r.jpg" width="5" height="31" />--%>
@@ -432,7 +432,7 @@
                                                                 </td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="ItemAlignLeft">£¨<asp:Label ID="Label19" runat="server" Text="<%$ Resources:lang,Kuan200Gao200%>"></asp:Label>£©</td>
+                                                                <td class="ItemAlignLeft">(<asp:Label ID="Label19" runat="server" Text="<%$ Resources:lang,Kuan200Gao200%>"></asp:Label>)</td>
                                                                 <td></td>
                                                             </tr>
                                                         </table>

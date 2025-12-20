@@ -210,7 +210,7 @@
                                                         <td class="formItemBgStyleForAlignLeft" style="height: 30px" colspan="3">
                                                             <asp:TextBox ID="TB_SQLCode" runat="server" CssClass="shuru" Height="150px" TextMode="MultiLine" Width="95%"></asp:TextBox>
                                                             <br />
-                                                            ги<asp:Label ID="Label13" runat="server" Text="<%$ Resources:lang,YGZYGDMCYAQKLBNSYDeleteUpdateDropInsertAlterYuJu%>"></asp:Label>
+                                                            (<asp:Label ID="Label13" runat="server" Text="<%$ Resources:lang,YGZYGDMCYAQKLBNSYDeleteUpdateDropInsertAlterYuJu%>"></asp:Label>
                                                             ,<asp:Label ID="Label18" runat="server" Text="<%$ Resources:lang,RSDYDSFSJNMKYYSQLDYWEBFWFS%>"></asp:Label><asp:HyperLink ID="HyperLink1" NavigateUrl="Template/CodeTemplate/SQL/SQLRunWebService.pdf" runat="server" Text="[-->SQL Run Webservice]"></asp:HyperLink>
                                                             <br />
                                                             <asp:Button ID="BT_TestCode" runat="server" CssClass="inpu" OnClick="BT_TestCode_Click" Text="<%$ Resources:lang,DaiMaYanZheng%>" />

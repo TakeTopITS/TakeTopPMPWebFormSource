@@ -497,7 +497,7 @@
                                                                                 <asp:BoundField DataField="ItemPriceMachineActual" HeaderText="机械执行合价" DataFormatString="{0:N2}" HtmlEncode="False" />
                                                                                 <asp:BoundField DataField="ItemComprehensiveFeeActual" HeaderText="实际费率措施费合价" DataFormatString="{0:N2}" HtmlEncode="False" />
                                                                                 <asp:BoundField DataField="ItemTaxesActual" HeaderText="实际税金合价" DataFormatString="{0:N2}" HtmlEncode="False" />
-                                                                                <asp:BoundField DataField="ItemPriceTotalActual" HeaderText="执行合计合价（BCWP）" DataFormatString="{0:N2}" HtmlEncode="False" />
+                                                                                <asp:BoundField DataField="ItemPriceTotalActual" HeaderText="执行合计合价(BCWP)" DataFormatString="{0:N2}" HtmlEncode="False" />
                                                                                 <asp:BoundField DataField="ProjectPlanCompleteBalance" HeaderText="计划完成差额(SV)" DataFormatString="{0:N2}" HtmlEncode="False" />
                                                                                 <asp:BoundField DataField="ProjectBCRWP" HeaderText="应收款额(BCRWP)" DataFormatString="{0:N2}" HtmlEncode="False" />
                                                                                 <asp:BoundField DataField="ProjectAI" HeaderText="结算绩效指数(AI)" DataFormatString="{0:p}" />

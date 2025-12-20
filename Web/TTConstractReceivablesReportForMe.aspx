@@ -153,7 +153,7 @@
                                 &nbsp;
                                 <asp:Label ID="Label18" runat="server" Text="<%$ Resources:lang,WeiShouZongE%>"></asp:Label>:<asp:Label ID="LB_UNReceiveAmount" runat="server"></asp:Label>
                                  &nbsp;
-                               £¨ <asp:Label ID="LB_CurrencyType" runat="server" ></asp:Label>£©
+                               ( <asp:Label ID="LB_CurrencyType" runat="server" ></asp:Label>)
                                 
                                 <asp:Label ID="LB_UserCode" runat="server"
                                     Visible="False"></asp:Label>

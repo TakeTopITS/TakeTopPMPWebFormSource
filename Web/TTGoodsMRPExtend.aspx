@@ -226,14 +226,14 @@
                                                         <td>&nbsp;</td>
                                                         <td>&nbsp;</td>
 
-                                                        <td>£¨<asp:Label ID="Label10" runat="server" Text="<%$ Resources:lang,ZengJiaMRPJiHuaBanBen%>"></asp:Label>:</td>
+                                                        <td>(<asp:Label ID="Label10" runat="server" Text="<%$ Resources:lang,ZengJiaMRPJiHuaBanBen%>"></asp:Label>:</td>
                                                         <td>
                                                             <NickLee:NumberBox ID="NB_NewVerID" runat="server" Amount="1" MaxAmount="1000000000000" MinAmount="1" Precision="0" Width="30px" OnBlur="" OnFocus="" OnKeyPress="" PositiveColor="">1</NickLee:NumberBox>
                                                         </td>
                                                         <td>
                                                             <asp:Button ID="BT_Add" runat="server" CssClass="inpu" Text="<%$ Resources:lang,XinZeng%>" OnClick="BT_Add_Click" /></td>
                                                         <td style="padding-left: 5px;">
-                                                            <asp:Button ID="BT_Delete" runat="server" CssClass="inpu" Text="<%$ Resources:lang,ShanChu%>" OnClick="BT_Delete_Click" OnClientClick="return confirmContinue(getDeleteMsgByLangCode(), this, event)" />£©
+                                                            <asp:Button ID="BT_Delete" runat="server" CssClass="inpu" Text="<%$ Resources:lang,ShanChu%>" OnClick="BT_Delete_Click" OnClientClick="return confirmContinue(getDeleteMsgByLangCode(), this, event)" />)
 
                                                         </td>
                                                         <td>&nbsp;</td>
@@ -904,7 +904,7 @@
                                                                 </tr>
                                                                 <tr style="font-size: 10pt">
                                                                     <td class="formItemBgStyleForAlignLeft"></td>
-                                                                    <td class="formItemBgStyleForAlignLeft" style="height: 19px;">£¨<asp:Label ID="Label56" runat="server" Text="<%$ Resources:lang,YaoQiuShouDaoChuLiXinXi%>"></asp:Label>:<asp:CheckBox ID="CB_SMS" runat="server" Text="<%$ Resources:lang,DuanXin%>" /><asp:CheckBox
+                                                                    <td class="formItemBgStyleForAlignLeft" style="height: 19px;">(<asp:Label ID="Label56" runat="server" Text="<%$ Resources:lang,YaoQiuShouDaoChuLiXinXi%>"></asp:Label>:<asp:CheckBox ID="CB_SMS" runat="server" Text="<%$ Resources:lang,DuanXin%>" /><asp:CheckBox
                                                                         ID="CB_Mail" runat="server" Font-Size="10pt" Text="<%$ Resources:lang,YouJian%>" /><span style="font-size: 10pt">) </span>
                                                                         <asp:Button ID="BT_SubmitApply" runat="server" Enabled="False" Text="<%$ Resources:lang,TiJiaoShenQing%>" CssClass="inpu" /><cc1:ModalPopupExtender ID="BT_SubmitApply_ModalPopupExtender" runat="server" Enabled="True"
                                                                             TargetControlID="BT_SubmitApply" PopupControlID="Panel1" BackgroundCssClass="modalBackground" Y="150"

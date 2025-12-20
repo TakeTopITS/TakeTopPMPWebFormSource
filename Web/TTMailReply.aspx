@@ -198,7 +198,7 @@
                                                     <Upload:InputFile ID="AttachFile" runat="server" Width="300px" />
                                                     &nbsp;<asp:Button ID="BtnUP" runat="server" OnClick="BtnUP_Click" Text="<%$ Resources:lang,ShangChuan%>" />
                                                     <br />
-                                                    <span style="font-size: xx-small; color: #FF3300;">£¨<asp:Label ID="Label14" runat="server" Text="<%$ Resources:lang,ZWBJMBNCG10GHZ%>"></asp:Label>£©<br />
+                                                    <span style="font-size: xx-small; color: #FF3300;">(<asp:Label ID="Label14" runat="server" Text="<%$ Resources:lang,ZWBJMBNCG10GHZ%>"></asp:Label>)<br />
                                                     </span>
                                                     <br />
                                                     <div id="ProgressBar">
@@ -214,9 +214,9 @@
                                         <asp:Panel ID="Panel_BigAttachment" runat="server" Style="width: 90%;" Visible="true">
                                             <div>
                                                 <asp:CheckBox ID="CB_BigAttachment" Text="<%$ Resources:lang,DaFuJianMoShi%>" runat="server"></asp:CheckBox>
-                                                <span style="font-size: xx-small; color: #FF3300;">£¨<asp:Label ID="Label12" runat="server" Text="<%$ Resources:lang,DaFuJian%>"></asp:Label>[</span><span
+                                                <span style="font-size: xx-small; color: #FF3300;">(<asp:Label ID="Label12" runat="server" Text="<%$ Resources:lang,DaFuJian%>"></asp:Label>[</span><span
                                                     style="font-size: xx-small; color: #3333CC;"><asp:Label ID="Label11" runat="server" Text="<%$ Resources:lang,YBDY2M%>"></asp:Label></span>]<span
-                                                        style="font-size: xx-small; color: #FF3300;"><asp:Label ID="Label10" runat="server" Text="<%$ Resources:lang,XTHZDZYJZWDBZJLJGSJFXZ%>"></asp:Label>£© </span>
+                                                        style="font-size: xx-small; color: #FF3300;"><asp:Label ID="Label10" runat="server" Text="<%$ Resources:lang,XTHZDZYJZWDBZJLJGSJFXZ%>"></asp:Label>) </span>
                                             </div>
                                         </asp:Panel>
                                     </td>

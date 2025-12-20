@@ -32639,7 +32639,7 @@ The progress of the task affects the schedule to be confirmed</value>
     <value>Allocate Budget</value>
   </data>
   <data name="XYHDKHHSYY" xml:space="preserve">
-    <value>Swipe right to go back</value>
+    <value>Swipe right to go back. Swipe down to refresh this page</value>
   </data>
   <data name="ZZSJSJKSHSFZQXH" xml:space="preserve">
     <value>The database is being upgraded. This will take about 15 seconds. Please wait...</value>

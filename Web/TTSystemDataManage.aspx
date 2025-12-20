@@ -81,7 +81,7 @@
                                                         <td style="padding: 5px 0px 0px 5px" class="formItemBgStyleForAlignLeft" valign="top">
                                                             <asp:Label ID="Label7" runat="server" Text="<%$ Resources:lang,BeiFenShuJuKu%>"></asp:Label>
                                                             £¬<asp:Label ID="Label36" runat="server" Text="<%$ Resources:lang,QianCiBeiFenShiJian%>"></asp:Label>:<asp:Label ID="LB_LastestBackupDBTime" runat="server"></asp:Label>:
-                                                            £¨<asp:Label ID="Label38" runat="server" Text="<%$ Resources:lang,XTYHZMZESLDWSLDZZDBF%>"></asp:Label>£©                                                        
+                                                            (<asp:Label ID="Label38" runat="server" Text="<%$ Resources:lang,XTYHZMZESLDWSLDZZDBF%>"></asp:Label>)                                                        
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -149,9 +149,9 @@
                                                             <asp:Label ID="Label25" runat="server" Text="<%$ Resources:lang,BeiFenWenJian%>"></asp:Label>(Doc,WorkflowTemplate,XML,UserPhoto,Bar,RTXAccount,Log)
                                                          
                                                             £¬<asp:Label ID="Label35" runat="server" Text="<%$ Resources:lang,QianCiBeiFengShiJIan%>"></asp:Label>:<asp:Label ID="LB_LastestBackupDocTime" runat="server"></asp:Label>£¬
-                                                           £¨
+                                                           (
                                                            
-                                                            <asp:Label ID="Label39" runat="server" Text="<%$ Resources:lang,XTYHZMZESLDWSLDZZDBF%>"></asp:Label>£©
+                                                            <asp:Label ID="Label39" runat="server" Text="<%$ Resources:lang,XTYHZMZESLDWSLDZZDBF%>"></asp:Label>)
                                                            
                                                             <br />
                                                             <asp:Label ID="Label37" runat="server" Text="<%$ Resources:lang,DYDYCBFHTSBSYWDSJBF%>"></asp:Label>:
@@ -243,8 +243,8 @@
                                                 <table style="width: 98%;" cellpadding="3" cellspacing="0" class="formBgStyle">
                                                     <tr>
                                                         <td colspan="2" style="padding: 5px 0px 0px 5px" class="formItemBgStyleForAlignLeft" valign="top">
-                                                            <asp:Label ID="Label19" runat="server" Text="<%$ Resources:lang,LiuChengShuJiZhuanYu%>"></asp:Label>£¨<span style="color: red;">
-                                                                <asp:Label ID="Label20" runat="server" Text="<%$ Resources:lang,QZKXSJJXYXCZ%>"></asp:Label></span> £©:
+                                                            <asp:Label ID="Label19" runat="server" Text="<%$ Resources:lang,LiuChengShuJiZhuanYu%>"></asp:Label>(<span style="color: red;">
+                                                                <asp:Label ID="Label20" runat="server" Text="<%$ Resources:lang,QZKXSJJXYXCZ%>"></asp:Label></span> ):
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -280,8 +280,8 @@
                                                 <table style="width: 98%;" cellpadding="3" cellspacing="0" class="formBgStyle">
                                                     <tr>
                                                         <td colspan="4" style="padding: 5px 0px 0px 5px" class="formItemBgStyleForAlignLeft" valign="top">
-                                                            <asp:Label ID="Label13" runat="server" Text="<%$ Resources:lang,RiChengShuJiZhuanYu%>"></asp:Label>£¨<span style="color: red;">
-                                                                <asp:Label ID="Label14" runat="server" Text="<%$ Resources:lang,QZKXSJJXYXCZ%>"></asp:Label></span> £©:
+                                                            <asp:Label ID="Label13" runat="server" Text="<%$ Resources:lang,RiChengShuJiZhuanYu%>"></asp:Label>(<span style="color: red;">
+                                                                <asp:Label ID="Label14" runat="server" Text="<%$ Resources:lang,QZKXSJJXYXCZ%>"></asp:Label></span> ):
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -305,8 +305,8 @@
                                                 <table style="width: 98%;" cellpadding="3" cellspacing="0" class="formBgStyle">
                                                     <tr>
                                                         <td colspan="4" style="padding: 5px 0px 0px 5px" class="formItemBgStyleForAlignLeft" valign="top">
-                                                            <asp:Label ID="Label15" runat="server" Text="<%$ Resources:lang,JiHuaShuJiZhuanYu%>"></asp:Label>£¨<span style="color: red;">
-                                                                <asp:Label ID="Label16" runat="server" Text="<%$ Resources:lang,QZKXSJJXYXCZ%>"></asp:Label></span> £©:
+                                                            <asp:Label ID="Label15" runat="server" Text="<%$ Resources:lang,JiHuaShuJiZhuanYu%>"></asp:Label>(<span style="color: red;">
+                                                                <asp:Label ID="Label16" runat="server" Text="<%$ Resources:lang,QZKXSJJXYXCZ%>"></asp:Label></span> ):
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -333,8 +333,8 @@
                                                 <table style="width: 98%;" cellpadding="3" cellspacing="0" class="formBgStyle">
                                                     <tr>
                                                         <td colspan="4" style="padding: 5px 0px 0px 5px" class="formItemBgStyleForAlignLeft" valign="top">
-                                                            <asp:Label ID="Label32" runat="server" Text="<%$ Resources:lang,XieZuoShuJiZhuanYu%>"></asp:Label>£¨<span style="color: red;">
-                                                                <asp:Label ID="Label33" runat="server" Text="<%$ Resources:lang,QZKXSJJXYXCZ%>"></asp:Label></span> £©:
+                                                            <asp:Label ID="Label32" runat="server" Text="<%$ Resources:lang,XieZuoShuJiZhuanYu%>"></asp:Label>(<span style="color: red;">
+                                                                <asp:Label ID="Label33" runat="server" Text="<%$ Resources:lang,QZKXSJJXYXCZ%>"></asp:Label></span> ):
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -384,8 +384,8 @@
                                                 <table style="width: 98%;" cellpadding="3" cellspacing="0" class="formBgStyle">
                                                     <tr>
                                                         <td colspan="4" style="padding: 5px 0px 0px 5px" class="formItemBgStyleForAlignLeft" valign="top">
-                                                            <asp:Label ID="Label5" runat="server" Text="<%$ Resources:lang,ShuJuQingKong%>"></asp:Label>£¨<span style="color: red;">
-                                                                <asp:Label ID="Label6" runat="server" Text="<%$ Resources:lang,QZKXSJJXYXCZ%>"></asp:Label></span> £©:
+                                                            <asp:Label ID="Label5" runat="server" Text="<%$ Resources:lang,ShuJuQingKong%>"></asp:Label>(<span style="color: red;">
+                                                                <asp:Label ID="Label6" runat="server" Text="<%$ Resources:lang,QZKXSJJXYXCZ%>"></asp:Label></span> ):
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -409,8 +409,8 @@
                                                 <table style="width: 98%;" cellpadding="3" cellspacing="0" class="formBgStyle">
                                                     <tr>
                                                         <td colspan="4" style="padding: 5px 0px 0px 5px" class="formItemBgStyleForAlignLeft" valign="top">
-                                                            <asp:Label ID="Label44" runat="server" Text="<%$ Resources:lang,QingChuXiTongHanCheng%>"></asp:Label>£¨<span style="color: red;">
-                                                                <asp:Label ID="Label45" runat="server" Text="<%$ Resources:lang,QZKXSJJXYXCZ%>"></asp:Label></span> £©:
+                                                            <asp:Label ID="Label44" runat="server" Text="<%$ Resources:lang,QingChuXiTongHanCheng%>"></asp:Label>(<span style="color: red;">
+                                                                <asp:Label ID="Label45" runat="server" Text="<%$ Resources:lang,QZKXSJJXYXCZ%>"></asp:Label></span> ):
                                                         </td>
                                                     </tr>
                                                     <tr>

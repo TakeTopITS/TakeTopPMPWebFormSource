@@ -65,7 +65,7 @@
                                                         </td>
                                                         <td>
                                                             <asp:Button ID="BT_CreateAttendanceRecord" runat="server" Text="<%$ Resources:lang,ShengChengKaoQinShuJu%>"
-                                                                OnClick="BT_CreateAttendanceRecord_Click" />£©
+                                                                OnClick="BT_CreateAttendanceRecord_Click" />)
                                                         </td>
                                                     </tr>
                                                 </table>

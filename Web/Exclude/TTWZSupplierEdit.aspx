@@ -185,7 +185,7 @@
                                                                     <td  class="formItemBgStyleForAlignLeft" colspan="3">
                                                                         <asp:TextBox ID="TXT_PushUnit" runat="server" Width="150px"></asp:TextBox>
                                                                         <br />
-                                                                        (当填为:上级部门  ，可以直接推荐）
+                                                                        (当填为:上级部门  ，可以直接推荐)
                                                                     </td>
                                                                     <td  class="formItemBgStyleForAlignLeft">
                                                                         <asp:Label ID="Label17" runat="server" Text="<%$ Resources:lang,TuiJianRen%>"></asp:Label>:</td>

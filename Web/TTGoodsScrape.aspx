@@ -241,7 +241,7 @@
                                                                                             <td class="ItemAlignLeft">
                                                                                                 <table>
                                                                                                     <tr>
-                                                                                                        <td class="ItemAlignLeft">£¨ 
+                                                                                                        <td class="ItemAlignLeft">( 
                                                                                                         </td>
                                                                                                         <td class="ItemAlignLeft">
                                                                                                             <asp:Label ID="Label170" runat="server" Text="<%$ Resources:lang,MingCheng %>"></asp:Label>:
@@ -257,7 +257,7 @@
                                                                                                             <asp:TextBox ID="TB_FindWareHouse" runat="server" Width="120px"></asp:TextBox>
                                                                                                         </td>
                                                                                                         <td>
-                                                                                                            <asp:Button ID="BT_FindAll" runat="server" CssClass="inpu" Text="<%$ Resources:lang,ChaXun %>" OnClick="BT_FindAll_Click" />£©
+                                                                                                            <asp:Button ID="BT_FindAll" runat="server" CssClass="inpu" Text="<%$ Resources:lang,ChaXun %>" OnClick="BT_FindAll_Click" />)
                                                                                                         </td>
                                                                                                     </tr>
                                                                                                 </table>

@@ -136,7 +136,7 @@
                                                     <asp:BoundColumn DataField="DepartDay" HeaderText="出车日期">
                                                         <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="50%" />
                                                     </asp:BoundColumn>
-                                                    <asp:BoundColumn DataField="TotalMileage" HeaderText="里程（公里）">
+                                                    <asp:BoundColumn DataField="TotalMileage" HeaderText="里程(公里)">
                                                         <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="25%" />
                                                     </asp:BoundColumn>
                                                 </Columns>

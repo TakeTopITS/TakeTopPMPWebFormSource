@@ -49,7 +49,7 @@
                                                         <td>
                                                             <table>
                                                                 <tr>
-                                                                    <td class="ItemAlignLeft">ги<asp:Label ID="Label2" runat="server" Text="<%$ Resources:lang,DaiMa%>"></asp:Label>:
+                                                                    <td class="ItemAlignLeft">(<asp:Label ID="Label2" runat="server" Text="<%$ Resources:lang,DaiMa%>"></asp:Label>:
                                                                     </td>
                                                                     <td>
                                                                         <asp:TextBox ID="TB_CustCode" runat="server" Width="120px"></asp:TextBox>

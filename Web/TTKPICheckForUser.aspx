@@ -225,8 +225,8 @@
                                                                 &nbsp;<asp:Label ID="LB_UserName" runat="server"></asp:Label>
                                                                 &nbsp;<asp:Label ID="Label19" runat="server" Text="<%$ Resources:lang,KPILieBiao%>"></asp:Label>:</b>&nbsp;
                                                         </td>
-                                                        <td class="formItemBgStyleForAlignLeft" style="height: 26px;">£¨<asp:Label ID="Label66" runat="server" Text="<%$ Resources:lang,quanzhong%>"></asp:Label>:<b>
-                                                            <asp:Label ID="LB_Weight" runat="server" Text="0"></asp:Label></b>£©
+                                                        <td class="formItemBgStyleForAlignLeft" style="height: 26px;">(<asp:Label ID="Label66" runat="server" Text="<%$ Resources:lang,quanzhong%>"></asp:Label>:<b>
+                                                            <asp:Label ID="LB_Weight" runat="server" Text="0"></asp:Label></b>)
                                                         </td>
                                                         <td style="width: 30%; padding-bottom: 5px;" class="formItemBgStyleForAlignRight">
                                                             <asp:Button ID="BT_Create" runat="server" Text="<%$ Resources:lang,New%>" CssClass="inpuYello" OnClick="BT_Create_Click" />
@@ -453,10 +453,10 @@
                                                         </tr>
                                                     </table>
                                                     <br />
-                                                    £¨<asp:Label ID="Label39" runat="server" Text="<%$ Resources:lang,YGZKPIKSSJKPIJSSJBKPIZDM%>"></asp:Label><br />
+                                                    (<asp:Label ID="Label39" runat="server" Text="<%$ Resources:lang,YGZKPIKSSJKPIJSSJBKPIZDM%>"></asp:Label><br />
                                                     <asp:Label ID="Label42" runat="server" Text="<%$ Resources:lang,DaiMaShiLi%>"></asp:Label>:Select Count(*) * 5 From T_Project Where Status = &#39;<asp:Label ID="Label40" runat="server" Text="<%$ Resources:lang,JieAn%>"></asp:Label>&#39; and PMCode = &#39;[TAKETOPKPIUSERCODE]&#39; and to_char(BeginDate,'yyyymmdd') &gt;= &#39;[TAKETOPKPISTARTTIME]&#39; and to_char(EndDate,'yyyymmdd') &lt;= &#39;[TAKETOPKPIENDTIME]&#39;
                                                                         <br />
-                                                    <asp:Label ID="Label41" runat="server" Text="<%$ Resources:lang,ZWDBDWFZKYSJYQTSZQD%>"></asp:Label>£©</td>
+                                                    <asp:Label ID="Label41" runat="server" Text="<%$ Resources:lang,ZWDBDWFZKYSJYQTSZQD%>"></asp:Label>)</td>
                                             </tr>
 
 

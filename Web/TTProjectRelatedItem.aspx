@@ -544,8 +544,8 @@
                                                                         <tr>
                                                                             <td colspan="6" class="ItemAlignLeft">
                                                                                 <asp:Label ID="Label6" runat="server" Text="<%$ Resources:lang,XiangMuGuanLianLiaoPing%>"></asp:Label>
-                                                                                £¨<asp:Label ID="Label45" runat="server" Text="<%$ Resources:lang,JinE%>"></asp:Label>:
-                                                                                <asp:Label ID="LB_ProjectItemAmount" runat="server"></asp:Label>£©
+                                                                                (<asp:Label ID="Label45" runat="server" Text="<%$ Resources:lang,JinE%>"></asp:Label>:
+                                                                                <asp:Label ID="LB_ProjectItemAmount" runat="server"></asp:Label>)
 
                                                                             </td>
                                                                             <td colspan="5" class="ItemAlignLeft" style="padding-right: 5px;">

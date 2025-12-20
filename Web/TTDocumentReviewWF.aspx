@@ -285,9 +285,9 @@
                                                             </tr>
                                                             <tr style="font-size: 10pt">
                                                                 <td style="text-align: left; width: 100%;" class="formItemBgStyleForAlignLeft">
-                                                                    <span style="font-size: 10pt">£¨<asp:Label ID="Label21" runat="server" Text="<%$ Resources:lang,YaoQiuShouDaoXinXi%>"></asp:Label>:<asp:CheckBox ID="CB_RequiredMail" runat="server"
+                                                                    <span style="font-size: 10pt">(<asp:Label ID="Label21" runat="server" Text="<%$ Resources:lang,YaoQiuShouDaoXinXi%>"></asp:Label>:<asp:CheckBox ID="CB_RequiredMail" runat="server"
                                                                         Font-Size="10pt" Text="<%$ Resources:lang,YouJian%>" />
-                                                                        <asp:CheckBox ID="CB_RequiredSMS" runat="server" Font-Size="10pt" Text="<%$ Resources:lang,DuanXin%>" />£©
+                                                                        <asp:CheckBox ID="CB_RequiredSMS" runat="server" Font-Size="10pt" Text="<%$ Resources:lang,DuanXin%>" />)
                                                                     </span>
                                                                     <asp:Button ID="BT_SubmitApply" runat="server" Text="<%$ Resources:lang,TiJiaoShenQing%>" CssClass="inpu" />
                                                                     <cc1:ModalPopupExtender ID="BT_SubmitApply_ModalPopupExtender" runat="server" Enabled="True"

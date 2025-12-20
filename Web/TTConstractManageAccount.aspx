@@ -140,11 +140,11 @@
                             <asp:BoundField DataField="monthpaypercent" HeaderText="合同约定月进度支付比例" />
                             <asp:BoundField DataField="finishpaypercent" HeaderText="合同约定竣工支付比例" />
                             <asp:BoundField DataField="settlepaypercent" HeaderText="合同约定结算支付比例" />
-                            <asp:BoundField DataField="realprogress" HeaderText="实时形象进度（%）" />
-                            <asp:BoundField DataField="realpvalue" HeaderText="实时产值（元）" />
-                            <asp:BoundField DataField="sumrecieve" HeaderText="累计收款（元）" />
-                            <asp:BoundField DataField="sumpayment" HeaderText="累计付款（元）" />
-                            <asp:BoundField DataField="settleaccount" HeaderText="结算金额（元）" />
+                            <asp:BoundField DataField="realprogress" HeaderText="实时形象进度(%)" />
+                            <asp:BoundField DataField="realpvalue" HeaderText="实时产值(元)" />
+                            <asp:BoundField DataField="sumrecieve" HeaderText="累计收款(元)" />
+                            <asp:BoundField DataField="sumpayment" HeaderText="累计付款(元)" />
+                            <asp:BoundField DataField="settleaccount" HeaderText="结算金额(元)" />
                             <asp:BoundField DataField="departname" HeaderText="主管部门" />
                             <asp:BoundField DataField="operator" HeaderText="经办人" />
                             <asp:BoundField DataField="pmname" HeaderText="项目经理" />

@@ -147,8 +147,8 @@
                                     <asp:Label ID="Label21" runat="server" Text="<%$ Resources:lang,ZengZhiShuiZongE%>"></asp:Label>:<asp:Label ID="LB_TotalAddedTaxAmount" runat="server"></asp:Label>
 
                                     &nbsp;
-                               £¨
-                                    <asp:Label ID="LB_CurrencyType" runat="server"></asp:Label>£©
+                               (
+                                    <asp:Label ID="LB_CurrencyType" runat="server"></asp:Label>)
 
                                     &nbsp;
                                     <asp:Label ID="Label22" runat="server" Text="<%$ Resources:lang,GeTongShuLiang%>"></asp:Label>:

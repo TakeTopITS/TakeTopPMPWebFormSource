@@ -35,16 +35,16 @@ public partial class _default : System.Web.UI.Page
 
             if (Page.IsPostBack != true)
             {
-                if (ShareClass.SystemDBer == "")
-                {
-                    ClientScript.RegisterStartupScript(this.GetType(), "1", "<script>displayBTLogin('NONE');</script>");
-                    ClientScript.RegisterStartupScript(this.GetType(), "2", "<script>displayLBMessage('BLOCK');</script>");
+                //if (ShareClass.SystemDBer == "")
+                //{
+                //    ClientScript.RegisterStartupScript(this.GetType(), "1", "<script>displayBTLogin('NONE');</script>");
+                //    ClientScript.RegisterStartupScript(this.GetType(), "2", "<script>displayLBMessage('BLOCK');</script>");
 
-                    //µÈ´ý15000ºÁÃë
-                    System.Threading.Thread.Sleep(15000);
+                //    //µÈ´ý15000ºÁÃë
+                //    System.Threading.Thread.Sleep(15000);
 
-                    ClientScript.RegisterStartupScript(this.GetType(), "3", "<script>location.reload();</script>");
-                }
+                //    ClientScript.RegisterStartupScript(this.GetType(), "3", "<script>location.reload();</script>");
+                //}
 
                 HL_UserID.Visible = true;
                 HL_UserID.NavigateUrl = System.Configuration.ConfigurationManager.AppSettings["WebSiteValue"];

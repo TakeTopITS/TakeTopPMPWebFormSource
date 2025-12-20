@@ -20,9 +20,14 @@ public partial class TakeTopDBUpgrade : System.Web.UI.Page
                 {
                     if (DatabaseUpdateHandle.UpgradeDataBase())
                     {
-                        //LogClass.WriteLogFile("Database upgraded successfully on application start");
+                        LogClass.WriteLogFile("Database upgraded successfully on application start");
                         ShareClass.SystemDBer = "DBer";
                     }
+                }
+                else
+                {
+                    //LogClass.WriteLogFile("Database upgraded successfully on application End");
+                    Response.Redirect("Outer/TakeTopSystemOtherCodeRunPage.aspx");
                 }
             }
             catch (Exception err)

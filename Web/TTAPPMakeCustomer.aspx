@@ -1611,7 +1611,7 @@
                                                                                         <asp:Label ID="LB_tbActorGroupList" runat="server" Text="<%$ Resources:lang,ActorGroupList %>" />: </td>
 
 
-                                                                                    <td>ги</td>
+                                                                                    <td>(</td>
 
 
                                                                                     <td>

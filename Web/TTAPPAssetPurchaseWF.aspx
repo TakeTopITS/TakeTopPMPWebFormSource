@@ -1061,7 +1061,7 @@
 
                                     <td class="formItemBgStyleForAlignLeft"></td>
 
-                                    <td class="formItemBgStyleForAlignLeft" style="height: 19px;">ги<asp:Label ID="Label53" runat="server" Text="<%$ Resources:lang,YaoQiuShouDaoChuLiXinXi%>"></asp:Label>:<asp:CheckBox ID="CB_SMS" runat="server" Text="<%$ Resources:lang,DuanXin%>" />
+                                    <td class="formItemBgStyleForAlignLeft" style="height: 19px;">(<asp:Label ID="Label53" runat="server" Text="<%$ Resources:lang,YaoQiuShouDaoChuLiXinXi%>"></asp:Label>:<asp:CheckBox ID="CB_SMS" runat="server" Text="<%$ Resources:lang,DuanXin%>" />
 
                                         <asp:CheckBox ID="CB_Mail" runat="server" Text="<%$ Resources:lang,YouJian%>" />
 

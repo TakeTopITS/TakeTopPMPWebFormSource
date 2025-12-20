@@ -98,7 +98,7 @@
         $load(function () {
             if (top.location != self.location) { } else { CloseWebPage(); }
 
-            // 改进的拖拽功能 - 悬浮跟随鼠标（只应用于第一个TabPanel）
+            // 改进的拖拽功能 - 悬浮跟随鼠标(只应用于第一个TabPanel)
             $(".bian").draggable({
                 revert: "invalid",
                 cursor: "move",

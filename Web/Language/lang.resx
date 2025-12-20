@@ -32782,8 +32782,8 @@
     <comment>分配预算</comment>
   </data>
   <data name="XYHDKHHSYY" xml:space="preserve">
-    <value>向右滑动返回上一页</value>
-    <comment>向右滑动返回上一页</comment>
+    <value>向右滑动返回上一页，向下滑动刷新本页面</value>
+    <comment>向右滑动返回上一页，向下滑动刷新本页面</comment>
   </data>
   <data name="ZZSJSJKSHSFZQXH" xml:space="preserve">
     <value>正在升级数据库，大概需要15秒钟，请稍候...</value>

@@ -59,7 +59,7 @@
                                                                 <asp:ListItem Value="Deleted" Text="<%$ Resources:lang,YiShanChu%>" />
                                                                 <asp:ListItem Value="All" Text="<%$ Resources:lang,SuoYou%>" />
                                                             </asp:DropDownList>
-                                                            £©
+                                                            )
 
                                                         </td>
                                                         <td>

@@ -943,7 +943,7 @@
                                                                     <tr>
                                                                         <td>
                                                                             <asp:Label ID="LB_tbActorGroupList" runat="server" Text="<%$ Resources:lang,ActorGroupList %>" />: </td>
-                                                                        <td>（</td>
+                                                                        <td>(</td>
                                                                         <td>
                                                                             <asp:Label ID="Label75" runat="server" Text="<%$ Resources:lang,JueSeZuMingCheng%>"></asp:Label>:</td>
                                                                         <td>
@@ -1206,7 +1206,7 @@
                                                                         <asp:BoundColumn DataField="Amount" HeaderText="Amount">
                                                                             <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="7%" />
                                                                         </asp:BoundColumn>
-                                                                        <asp:BoundColumn DataField="SaleOrderNumber" HeaderText="在单量（销售单）">
+                                                                        <asp:BoundColumn DataField="SaleOrderNumber" HeaderText="在单量(销售单)">
                                                                             <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="7%" />
                                                                         </asp:BoundColumn>
                                                                         <asp:BoundColumn DataField="PurchaseOrderNumber" HeaderText="在订单 ">

@@ -508,10 +508,10 @@
                                                 </td>
                                                 <td class="formItemBgStyleAlignLeft">
                                                     <asp:Label ID="LBL_LimitedOperator" runat="server"></asp:Label>
-                                                    <span class="color: #FF0066;">（<span class="font-size: small;">
+                                                    <span class="color: #FF0066;">(<span class="font-size: small;">
                                                         <asp:Label ID="Label26" runat="server" Text="<%$ Resources:lang,XYHDYCYCBZDRSZH %>"></asp:Label>
 
-                                                    </span>）</span> </td>
+                                                    </span>)</span> </td>
                                                 <td class="formItemBgStyleAlignLeft">
                                                     <asp:Label ID="Label25" runat="server" Text="<%$ Resources:lang,ZuiChiShiJian %>"></asp:Label>
                                                 </td>

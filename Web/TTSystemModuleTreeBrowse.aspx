@@ -126,7 +126,7 @@
                                                 <br />
                                                 <b>
                                                     <span style="font-size: 16px;">
-                                                        （共:<asp:Label ID="LB_ModuleNumber" runat="server"></asp:Label> 个）
+                                                        (共:<asp:Label ID="LB_ModuleNumber" runat="server"></asp:Label> 个)
                                                     </span>
                                                 </b>
                                             </td>

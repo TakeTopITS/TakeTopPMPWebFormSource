@@ -64,7 +64,7 @@
                                         <br />
                                         <br />
                                         <div style="font-size: medium;">
-                                            （<asp:Label ID="LB_ReportYearMonth" runat="server"></asp:Label>
+                                            (<asp:Label ID="LB_ReportYearMonth" runat="server"></asp:Label>
                                             )
                                            
                                         </div>
@@ -93,16 +93,16 @@
                                     <td class="xl275" colspan="4" style="width: 489px" width="652">&nbsp;</td>
                                 </tr>
                                 <tr height="45" style="height: 34.25px">
-                                    <td class="auto-style500" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="213">合同预算价（一次）</td>
+                                    <td class="auto-style500" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="213">合同预算价(一次)</td>
                                     <td class="auto-style501" style="border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="197">税率</td>
                                     <td class="auto-style502" style="border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="169">税金</td>
-                                    <td class="auto-style502" style="border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="169">合同预算价（税后）</td>
-                                    <td class="auto-style502" style="border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="169">审减率（一次）</td>
-                                    <td class="auto-style503" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="216">合同预算价（二次）</td>
+                                    <td class="auto-style502" style="border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="169">合同预算价(税后)</td>
+                                    <td class="auto-style502" style="border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="169">审减率(一次)</td>
+                                    <td class="auto-style503" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="216">合同预算价(二次)</td>
                                     <td class="auto-style504" style="border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="186">税率</td>
                                     <td class="auto-style505" style="border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="199">税金</td>
-                                    <td class="auto-style506" style="border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="190">合同预算价（税后）</td>
-                                    <td class="auto-style507" style="border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="344">审减率（二次）</td>
+                                    <td class="auto-style506" style="border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="190">合同预算价(税后)</td>
+                                    <td class="auto-style507" style="border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="344">审减率(二次)</td>
                                     <td class="auto-style508" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="279">变化金额</td>
                                     <td class="auto-style509" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="211">税率</td>
                                     <td class="auto-style509" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="211">税金</td>
@@ -189,7 +189,7 @@
                                     </td>
                                     <td class="auto-style55" style="border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="169">
                                         <asp:Label ID="LB_SupplementConstractAfterTaxAmount" runat="server"></asp:Label></td>
-                                    <td class="auto-style55" width="169">（本格无数据）</td>
+                                    <td class="auto-style55" width="169">(本格无数据)</td>
                                     <td class="auto-style48" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="216">
                                         <asp:Label ID="LB_ConstractSecondSupplementAmount" runat="server"></asp:Label>
                                     </td>
@@ -202,7 +202,7 @@
                                     <td class="auto-style51" style="border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="190">
                                         <asp:Label ID="LB_ConstractSecondSupplementAfterTaxAmount" runat="server"></asp:Label>
                                     </td>
-                                    <td class="auto-style52" width="344">（本格无数据）</td>
+                                    <td class="auto-style52" width="344">(本格无数据)</td>
                                     <td class="auto-style53" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="279">
                                         <asp:Label ID="LB_XiangMuHeTongBenYueBianGenJianQiShangYueHeTongAmount" runat="server"></asp:Label>
                                     </td>
@@ -349,7 +349,7 @@
                                     <td class="auto-style97" style="border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="169">
                                         <asp:Label ID="LB_YiJiHeTongYiShuanJiaAfterTaxZongShouRuHeJi" runat="server"></asp:Label>
                                     </td>
-                                    <td class="auto-style97" width="169">（本格无数据）</td>
+                                    <td class="auto-style97" width="169">(本格无数据)</td>
                                     <td class="auto-style98" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="216">
                                         <asp:Label ID="LB_SecondYiJiHeTongYiShuanJiaZongShouRuHeJi" runat="server"></asp:Label>
                                     </td>
@@ -362,7 +362,7 @@
                                     <td class="auto-style101" style="border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="190">
                                         <asp:Label ID="LB_SecondYiJiHeTongYiShuanJiaZongShouRuHeJiAfterTaxAmount" runat="server"></asp:Label>
                                     </td>
-                                    <td class="auto-style102" width="344">（本格无数据）</td>
+                                    <td class="auto-style102" width="344">(本格无数据)</td>
                                     <td class="auto-style103" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="279">
                                         <asp:Label ID="LB_XiangMuHeTongBenYueYiJiZongShouRuQianQiShangYueZongShouRuAmount" runat="server"></asp:Label>
                                     </td>
@@ -376,21 +376,21 @@
                                 <tr class="xl116">
                                     <td class="auto-style485">二、</td>
                                     <td class="auto-style70" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="192">总成本</td>
-                                    <td class="auto-style71" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="213">目标成本（一次）</td>
+                                    <td class="auto-style71" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="213">目标成本(一次)</td>
                                     <td class="auto-style72" style="border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="197">税率</td>
                                     <td class="auto-style73" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="169">税金</td>
-                                    <td class="auto-style73" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="169">税后目标值（一次）</td>
+                                    <td class="auto-style73" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="169">税后目标值(一次)</td>
                                     <td class="auto-style110" colspan="2" width="385">总成本</td>
-                                    <td class="auto-style75" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="186">目标成本（二次）</td>
+                                    <td class="auto-style75" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="186">目标成本(二次)</td>
                                     <td class="auto-style76" style="border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="199">税率</td>
                                     <td class="auto-style77" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="190">税金</td>
-                                    <td class="auto-style78" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="344">税后目标值（二次）</td>
-                                    <td class="auto-style79" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="279"><font class="font47">当月实际发生成本（税前）</font><font class="font48">（每个数据上做链接到这个数据来源的所有表单）</font> </td>
-                                    <td class="auto-style80" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="211"><font class="font47">累计实际发生成本（税前 ）</font><font class="font48">（每个数据上做链接到这个数据来源的所有表单））</font> </td>
-                                    <td class="auto-style80" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="211">实际税金（当月） </td>
+                                    <td class="auto-style78" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="344">税后目标值(二次)</td>
+                                    <td class="auto-style79" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="279"><font class="font47">当月实际发生成本(税前)</font><font class="font48">(每个数据上做链接到这个数据来源的所有表单)</font> </td>
+                                    <td class="auto-style80" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="211"><font class="font47">累计实际发生成本(税前 )</font><font class="font48">(每个数据上做链接到这个数据来源的所有表单))</font> </td>
+                                    <td class="auto-style80" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="211">实际税金(当月) </td>
                                     <td class="auto-style117" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="209">实际税金累计</td>
-                                    <td class="auto-style118" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="155">当月实际成本（税后）</td>
-                                    <td class="auto-style118" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="155">当月实际成本（税后）累计 </td>
+                                    <td class="auto-style118" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="155">当月实际成本(税后)</td>
+                                    <td class="auto-style118" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="155">当月实际成本(税后)累计 </td>
                                     <td class="auto-style118" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="155">当月实际成本税率</td>
                                 </tr>
                                 <tr class="xl116">
@@ -409,7 +409,7 @@
                                         <asp:Label ID="LB_XiangMuFirstCiFengLiBiaoRenGongFeiAfterTaxAmount" runat="server"></asp:Label>
                                     </td>
                                     <td class="auto-style120" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="169">1</td>
-                                    <td class="auto-style6" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="216">直接人工费当月（）</td>
+                                    <td class="auto-style6" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="216">直接人工费当月()</td>
                                     <td class="auto-style7" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="186">
                                         <asp:Label ID="LB_XiangMuErChiBiaoJiaFenLiBiaoZiJieRenGongFeiYongAmount" runat="server"></asp:Label>
                                         &nbsp;</td>
@@ -665,7 +665,7 @@
                                         <asp:Label ID="LB_XiangMuFirstCiFengLiBiaoJianZuoGongChengFeiAfterTaxAmount" runat="server"></asp:Label>
                                     </td>
                                     <td class="auto-style182" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="169">2</td>
-                                    <td class="auto-style183" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="216">分包工程费（）</td>
+                                    <td class="auto-style183" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="216">分包工程费()</td>
                                     <td class="auto-style184" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="186">
                                         <asp:Label ID="LB_XiangMuErChiBiaoJiaFenLiBiaoZiJieGongZhiJiFenBaoGongZhengAmount" runat="server"></asp:Label>
                                     </td>
@@ -729,7 +729,7 @@
                                     <td class="auto-style159" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="344">
                                         <asp:Label ID="LB_XiangMuErChiBiaoJiaFenLiBiaoZiJieGongZhiJiLaoWuFenBaoAfterTaxAmount" runat="server"></asp:Label>
                                     </td>
-                                    <td class="auto-style160" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="279">分包用费表-分包1（税前）-分包2（税前）<br />
+                                    <td class="auto-style160" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="279">分包用费表-分包1(税前)-分包2(税前)<br />
                                         <asp:Label ID="LB_XiangMuCurrentMonthShiJiFaShengChengBenlaowufenbao1sqlaowufenbao2sqAmount" runat="server"></asp:Label>
                                     </td>
                                     <td class="auto-style161" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="211">
@@ -780,7 +780,7 @@
                                     <td class="auto-style102" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="344">
                                         <asp:Label ID="LB_XiangMuErChiBiaoJiaFenLiBiaoZiJieGongZhiJiLaoWuFenBao1AfterTaxAmount" runat="server"></asp:Label>
                                     </td>
-                                    <td class="auto-style103" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="279">分包用费表-分包1（税前）<br />
+                                    <td class="auto-style103" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="279">分包用费表-分包1(税前)<br />
                                         <asp:Label ID="LB_XiangMuCurrentMonthShiJiFaShengChengBenlaowufenbao1sqAmount" runat="server"></asp:Label>
                                     </td>
                                     <td class="auto-style104" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="211">
@@ -825,7 +825,7 @@
                                     <td class="auto-style187" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="344">
                                         <asp:Label ID="LB_XiangMuErChiBiaoJiaFenLiBiaoZiJieGongZhiJiLaoWuFenBao2AfterTaxAmount" runat="server"></asp:Label>
                                     </td>
-                                    <td class="auto-style188" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="279">分包用费表-分包2（税前）<br />
+                                    <td class="auto-style188" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="279">分包用费表-分包2(税前)<br />
                                         <asp:Label ID="LB_XiangMuCurrentMonthShiJiFaShengChengBenlaowufenbao2sqAmount" runat="server"></asp:Label>
                                     </td>
                                     <td class="auto-style189" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="211">
@@ -868,7 +868,7 @@
                                     <td class="auto-style206" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="344">
                                         <asp:Label ID="LB_XiangMuErChiBiaoJiaFenLiBiaoZiJieGongZhiJiZhuanYeFenBaoAfterTaxAmount" runat="server"></asp:Label>
                                     </td>
-                                    <td class="auto-style207" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="279">分包用费表-专业分包（税前）<br />
+                                    <td class="auto-style207" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="279">分包用费表-专业分包(税前)<br />
                                         <asp:Label ID="LB_XiangMuCurrentMonthShiJiFaShengChengBenzhuanyefenbaosqAmount" runat="server"></asp:Label>
                                     </td>
                                     <td class="auto-style208" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="211">
@@ -912,7 +912,7 @@
                                     <td class="auto-style221" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="344">
                                         <asp:Label ID="LB_XiangMuErChiBiaoJiaFenLiBiaoZiJieGongZhiJiFenGongShiZiWanAfterTaxAmount" runat="server"></asp:Label>
                                     </td>
-                                    <td class="auto-style222" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="279">分包用费表-分公司自完（税前）<br />
+                                    <td class="auto-style222" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="279">分包用费表-分公司自完(税前)<br />
                                         <asp:Label ID="LB_XiangMuCurrentMonthShiJiFaShengChengBenfbfengongsiziwansqAmount" runat="server"></asp:Label>
                                     </td>
                                     <td class="auto-style223" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="211">
@@ -955,7 +955,7 @@
                                     <td class="auto-style236" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="344">
                                         <asp:Label ID="LB_XiangMuErChiBiaoJiaFenLiBiaoZiJieGongZhiJiDianYuAfterTaxAmount" runat="server"></asp:Label>
                                     </td>
-                                    <td class="auto-style237" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="279">分包用费表-电仪（税前）
+                                    <td class="auto-style237" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="279">分包用费表-电仪(税前)
                                         <br />
                                         <asp:Label ID="LB_XiangMuCurrentMonthShiJiFaShengChengBendianyisqAmount" runat="server"></asp:Label>
                                     </td>
@@ -998,7 +998,7 @@
                                     </td>
                                     <td class="auto-style206" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="344">
                                         <asp:Label ID="LB_XiangMuErChiBiaoJiaFenLiBiaoZiJieDiaoZhuangAfterTaxAmount" runat="server"></asp:Label>
-                                        <td class="auto-style207" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="279">分包用费表-吊装（税前）
+                                        <td class="auto-style207" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="279">分包用费表-吊装(税前)
                                             <br />
                                             <asp:Label ID="LB_XiangMuCurrentMonthShiJiFaShengChengBendiaozhuangsqAmount" runat="server"></asp:Label>
                                         </td>
@@ -1043,7 +1043,7 @@
                                     <td class="auto-style90" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="344">
                                         <asp:Label ID="LB_XiangMuErChiBiaoJiaFenLiBiaoZhiJieZhiJieLiaoFeiAfterTaxAmount" runat="server"></asp:Label>
                                     </td>
-                                    <td class="auto-style91" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="279">材料费表-材料费（税前）<br />
+                                    <td class="auto-style91" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="279">材料费表-材料费(税前)<br />
                                         <asp:Label ID="LB_XiangMuCurrentMonthShiJiFaShengChengBencailiaofeisqAmount" runat="server"></asp:Label>
 
                                     </td>
@@ -1089,7 +1089,7 @@
                                     <td class="xl85" style="border-left: none; width: 258px" width="344">
                                         <asp:Label ID="LB_XiangMuErChiBiaoJiaFenLiBiaoZhiJieZhuCaiAfterTaxAmount" runat="server"></asp:Label>
                                     </td>
-                                    <td class="xl121" style="border-top: none; border-left: none; width: 209px" width="279">材料费表-主材费（税前）<br />
+                                    <td class="xl121" style="border-top: none; border-left: none; width: 209px" width="279">材料费表-主材费(税前)<br />
                                         <asp:Label ID="LB_XiangMuCurrentMonthShiJiFaShengChengBencailiaofeizhucaisqAmount" runat="server"></asp:Label>
                                     </td>
                                     <td class="xl185" style="border-top: none; border-left: none; width: 159px" width="211">
@@ -1132,7 +1132,7 @@
                                     <td class="xl85" style="border-left: none; width: 258px" width="344">
                                         <asp:Label ID="LB_XiangMuErChiBiaoJiaFenLiBiaoZhiJieFuCaiAfterTaxAmount" runat="server"></asp:Label>
                                     </td>
-                                    <td class="xl121" style="border-left: none; width: 209px" width="279">材料费表-辅材费（税前）<br />
+                                    <td class="xl121" style="border-left: none; width: 209px" width="279">材料费表-辅材费(税前)<br />
                                         <asp:Label ID="LB_XiangMuCurrentMonthShiJiFaShengChengBencailiaofeifucaisqAmount" runat="server"></asp:Label>
                                     </td>
                                     <td class="xl185" style="border-top: none; border-left: none; width: 159px" width="211">
@@ -1175,7 +1175,7 @@
                                     <td class="xl85" style="border-left: none; width: 258px" width="344">
                                         <asp:Label ID="LB_XiangMuErChiBiaoJiaFenLiBiaoZhiJieCaiLiaoPingKuAfterTaxAmount" runat="server"></asp:Label>
                                     </td>
-                                    <td class="xl121" style="border-left: none; width: 209px" width="279">材料费表-平库费（税前）<br />
+                                    <td class="xl121" style="border-left: none; width: 209px" width="279">材料费表-平库费(税前)<br />
                                         <asp:Label ID="LB_XiangMuCurrentMonthShiJiFaShengChengBencailiaofeipingkusqAmount" runat="server"></asp:Label>
                                     </td>
                                     <td class="xl185" style="border-top: none; border-left: none; width: 159px" width="211">
@@ -1218,7 +1218,7 @@
                                     <td class="xl85" style="border-left: none; width: 258px" width="344">
                                         <asp:Label ID="LB_XiangMuErChiBiaoJiaFenLiBiaoZhiJieDiQiAfterTaxAmount" runat="server"></asp:Label>
                                     </td>
-                                    <td class="xl121" style="border-left: none; width: 209px" width="279">材料费表-底漆费（税前）<br />
+                                    <td class="xl121" style="border-left: none; width: 209px" width="279">材料费表-底漆费(税前)<br />
                                         <asp:Label ID="LB_XiangMuCurrentMonthShiJiFaShengChengBencailiaofeidiqisqAmount" runat="server"></asp:Label>
                                     </td>
                                     <td class="xl185" style="border-top: none; border-left: none; width: 159px" width="211">
@@ -1304,7 +1304,7 @@
                                     <td class="auto-style402" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="344">
                                         <asp:Label ID="LB_XiangMuErChiBiaoJiaFenLiBiaoZhiJieJiJieShiYongFeiAfterTaxAmount" runat="server"></asp:Label>
                                     </td>
-                                    <td class="auto-style403" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="279">机械设备租赁费表-机械使用费（税前）<br />
+                                    <td class="auto-style403" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="279">机械设备租赁费表-机械使用费(税前)<br />
                                         <asp:Label ID="LB_XiangMuCurrentMonthShiJiFaShengChengBenjixieshiyongfeisqAmount" runat="server"></asp:Label>
                                     </td>
                                     <td class="auto-style404" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="211">
@@ -1347,7 +1347,7 @@
                                     <td class="auto-style281" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="344">
                                         <asp:Label ID="LB_XiangMuErChiBiaoJiaFenLiBiaoZhiJieFenGongShiZiWanAfterTaxAmount" runat="server"></asp:Label>
                                     </td>
-                                    <td class="auto-style282" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="279">机械设备租赁费表-分公司自完（税前）<br />
+                                    <td class="auto-style282" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="279">机械设备租赁费表-分公司自完(税前)<br />
                                         <asp:Label ID="LB_XiangMuCurrentMonthShiJiFaShengChengBenjxfengongsiziwansqAmount" runat="server"></asp:Label>
                                     </td>
                                     <td class="auto-style516" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="211">
@@ -1390,7 +1390,7 @@
                                     <td class="auto-style320" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="344">
                                         <asp:Label ID="LB_XiangMuErChiBiaoJiaFenLiBiaoZhiJieQiTaAfterTaxAmount" runat="server"></asp:Label>
                                     </td>
-                                    <td class="auto-style321" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="279">机械设备租赁费表-其它（税前）<br />
+                                    <td class="auto-style321" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="279">机械设备租赁费表-其它(税前)<br />
                                         &nbsp;<asp:Label ID="LB_XiangMuCurrentMonthShiJiFaShengChengBenjxqitasqAmount" runat="server"></asp:Label>
                                     </td>
                                     <td class="auto-style322" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="211">
@@ -1433,7 +1433,7 @@
                                     <td class="auto-style236" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="344">
                                         <asp:Label ID="LB_XiangMuErChiBiaoJiaFenLiBiaoZhiJieLingShiSheSiFeiAfterTaxAmount" runat="server"></asp:Label>
                                     </td>
-                                    <td class="auto-style237" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="279">临时设施费表-临时设施（税前）<br />
+                                    <td class="auto-style237" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="279">临时设施费表-临时设施(税前)<br />
                                         &nbsp;
                                 <asp:Label ID="LB_XiangMuCurrentMonthShiJiFaShengChengBenlinshisheshisqAmount" runat="server"></asp:Label>
                                     </td>
@@ -1477,7 +1477,7 @@
                                     <td class="auto-style102" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="344">
                                         <asp:Label ID="LB_XiangMuErChiBiaoJiaFenLiBiaoZhiJieAnQianChuShiFeiAfterTaxAmount" runat="server"></asp:Label>
                                     </td>
-                                    <td class="auto-style103" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="279">安全措施费表-安全措施（税前）<br />
+                                    <td class="auto-style103" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="279">安全措施费表-安全措施(税前)<br />
                                         <asp:Label ID="LB_XiangMuCurrentMonthShiJiFaShengChengBenanquancuoshisqAmount" runat="server"></asp:Label>
                                     </td>
                                     <td class="auto-style104" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="211">
@@ -1520,7 +1520,7 @@
                                     <td class="auto-style145" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="344">
                                         <asp:Label ID="LB_XiangMuErChiBiaoJiaFenLiBiaoZhiJieShuiDianFeiAfterTaxAmount" runat="server"></asp:Label>
                                     </td>
-                                    <td class="auto-style146" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="279">水电费表-水电费（税前）<br />
+                                    <td class="auto-style146" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="279">水电费表-水电费(税前)<br />
                                         <asp:Label ID="LB_XiangMuCurrentMonthShiJiFaShengChengBenshuidianfeisqAmount" runat="server"></asp:Label>
                                     </td>
                                     <td class="auto-style147" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="211">
@@ -1563,7 +1563,7 @@
                                     <td class="auto-style159" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="344">
                                         <asp:Label ID="LB_XiangMuErChiBiaoJiaFenLiBiaoZhiJieQiTaGongChengFeiAfterTaxAmount" runat="server"></asp:Label>
                                     </td>
-                                    <td class="auto-style160" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="279">其他工程费用表-其它工程费（税前）<br />
+                                    <td class="auto-style160" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="279">其他工程费用表-其它工程费(税前)<br />
                                         <asp:Label ID="LB_XiangMuCurrentMonthShiJiFaShengChengBenqitagongchengfeisqAmount" runat="server"></asp:Label>
                                     </td>
                                     <td class="auto-style161" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="211">
@@ -1606,7 +1606,7 @@
                                     <td class="auto-style320" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="344">
                                         <asp:Label ID="LB_XiangMuErChiBiaoJiaFenLiBiaoZhiJieQiTaFeiAfterTaxAmount" runat="server"></asp:Label>
                                     </td>
-                                    <td class="auto-style321" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="279">其他费表-其它费合计（税前）<br />
+                                    <td class="auto-style321" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="279">其他费表-其它费合计(税前)<br />
                                         <asp:Label ID="LB_XiangMuCurrentMonthShiJiFaShengChengBenqitafeihejisqAmount" runat="server"></asp:Label>
                                     </td>
                                     <td class="auto-style322" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="211">
@@ -1649,7 +1649,7 @@
                                     <td class="auto-style90" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="344">
                                         <asp:Label ID="LB_XiangMuErChiBiaoJiaFenLiBiaoZhiJieJianCheFeiAfterTaxAmount" runat="server"></asp:Label>
                                     </td>
-                                    <td class="auto-style91" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="279">其他费表-检测费（税前）<br />
+                                    <td class="auto-style91" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="279">其他费表-检测费(税前)<br />
                                         <asp:Label ID="LB_XiangMuCurrentMonthShiJiFaShengChengBenjiancefeisqAmount" runat="server"></asp:Label>
                                     </td>
                                     <td class="auto-style92" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="211">
@@ -1692,7 +1692,7 @@
                                     <td class="auto-style339" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="344">
                                         <asp:Label ID="LB_XiangMuErChiBiaoJiaFenLiBiaoZhiJieWaiXieJiaGongFeiAfterTaxAmount" runat="server"></asp:Label>
                                     </td>
-                                    <td class="auto-style340" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="279">其他费表-外协加工费（税前）<br />
+                                    <td class="auto-style340" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="279">其他费表-外协加工费(税前)<br />
                                         <asp:Label ID="LB_XiangMuCurrentMonthShiJiFaShengChengBenwaixiejiagongfeisqAmount" runat="server"></asp:Label>
                                     </td>
                                     <td class="auto-style341" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="211">
@@ -1735,7 +1735,7 @@
                                     <td class="auto-style66" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="344">
                                         <asp:Label ID="LB_XiangMuErChiBiaoJiaFenLiBiaoZhiJieZhuLingFeiAfterTaxAmount" runat="server"></asp:Label>
                                     </td>
-                                    <td class="auto-style67" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="279">其他费表-租赁费（税前）<br />
+                                    <td class="auto-style67" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="279">其他费表-租赁费(税前)<br />
                                         <asp:Label ID="LB_XiangMuCurrentMonthShiJiFaShengChengBenzulinfeisqAmount" runat="server"></asp:Label>
                                     </td>
                                     <td class="auto-style68" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="211">
@@ -1778,7 +1778,7 @@
                                     <td class="auto-style339" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="344">
                                         <asp:Label ID="LB_XiangMuErChiBiaoJiaFenLiBiaoZhiJieLaoDongBaoHuFeiAfterTaxAmount" runat="server"></asp:Label>
                                     </td>
-                                    <td class="auto-style340" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="279">其他费表-劳动保护费（税前）<br />
+                                    <td class="auto-style340" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="279">其他费表-劳动保护费(税前)<br />
                                         <asp:Label ID="LB_XiangMuCurrentMonthShiJiFaShengChengBenlaodongbaohufeisqAmount" runat="server"></asp:Label>
                                     </td>
                                     <td class="auto-style341" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="211">
@@ -1821,7 +1821,7 @@
                                     <td class="auto-style339" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="344">
                                         <asp:Label ID="LB_XiangMuErChiBiaoJiaFenLiBiaoZhiJieXiuLiFeiAfterTaxAmount" runat="server"></asp:Label>
                                     </td>
-                                    <td class="auto-style340" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="279">其他费表-修理费（税前）<br />
+                                    <td class="auto-style340" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="279">其他费表-修理费(税前)<br />
                                         <asp:Label ID="LB_XiangMuCurrentMonthShiJiFaShengChengBenxiulifeisqAmount" runat="server"></asp:Label>
                                     </td>
                                     <td class="auto-style341" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="211">
@@ -1864,7 +1864,7 @@
                                     <td class="auto-style159" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="344">
                                         <asp:Label ID="LB_XiangMuErChiBiaoJiaFenLiBiaoZhiJieBuKeYiJianChenBenAfterTaxAmount" runat="server"></asp:Label>
                                     </td>
-                                    <td class="auto-style160" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="279">其他费表-不可预见费（税前）<br />
+                                    <td class="auto-style160" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="279">其他费表-不可预见费(税前)<br />
                                         <asp:Label ID="LB_XiangMuCurrentMonthShiJiFaShengChengBenbukeyujiansqAmount" runat="server"></asp:Label>
                                     </td>
                                     <td class="auto-style161" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="211">
@@ -1907,7 +1907,7 @@
                                     <td class="auto-style320" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="344">
                                         <asp:Label ID="LB_XiangMuErChiBiaoJiaFenLiBiaoZhiJieFaKuanAfterTaxAmount" runat="server"></asp:Label>
                                     </td>
-                                    <td class="auto-style321" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="279">其他费表-罚款费（税前）<br />
+                                    <td class="auto-style321" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="279">其他费表-罚款费(税前)<br />
                                         <asp:Label ID="LB_XiangMuCurrentMonthShiJiFaShengChengBenfakuansqAmount" runat="server"></asp:Label>
                                     </td>
                                     <td class="auto-style322" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="211">
@@ -1950,7 +1950,7 @@
                                     <td class="auto-style339" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="344">
                                         <asp:Label ID="LB_XiangMuErChiBiaoJiaFenLiBiaoZhiJiePanGongYongPingAfterTaxAmount" runat="server"></asp:Label>
                                     </td>
-                                    <td class="auto-style340" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="279">其他费表-办公用品（税前）<br />
+                                    <td class="auto-style340" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="279">其他费表-办公用品(税前)<br />
                                         <asp:Label ID="LB_XiangMuCurrentMonthShiJiFaShengChengBenbangongyongpingsqAmount" runat="server"></asp:Label>
                                     </td>
                                     <td class="auto-style341" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="211">
@@ -1993,7 +1993,7 @@
                                     <td class="auto-style131" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="344">
                                         <asp:Label ID="LB_XiangMuErChiBiaoJiaFenLiBiaoZhiJieQiTa2AfterTaxAmount" runat="server"></asp:Label>
                                     </td>
-                                    <td class="auto-style132" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="279">其他费表-其它费（税前）<br />
+                                    <td class="auto-style132" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="279">其他费表-其它费(税前)<br />
                                         <asp:Label ID="LB_XiangMuCurrentMonthShiJiFaShengChengBenqitaqitasqAmount" runat="server"></asp:Label>
                                     </td>
                                     <td class="auto-style133" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="211">
@@ -2036,7 +2036,7 @@
                                     <td class="auto-style339" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="344">
                                         <asp:Label ID="LB_XiangMuErChiBiaoJiaFenLiBiaoZhiJieTongQianFeiAfterTaxAmount" runat="server"></asp:Label>
                                     </td>
-                                    <td class="auto-style340" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="279"></span>动迁费表-动迁费（税前）<br />
+                                    <td class="auto-style340" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="279"></span>动迁费表-动迁费(税前)<br />
                                         <asp:Label ID="LB_XiangMuCurrentMonthShiJiFaShengChengBendongqianfeisqAmount" runat="server"></asp:Label>
                                     </td>
                                     <td class="auto-style341" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="211">
@@ -2079,7 +2079,7 @@
                                     <td class="auto-style266" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="344">
                                         <asp:Label ID="LB_XiangMuErChiBiaoJiaFenLiBiaoZhiJieQiTaLiangLiXiangAfterTaxAmount" runat="server"></asp:Label>
                                     </td>
-                                    <td class="auto-style267" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="279">让利成本项表-让利成本（税前）<br />
+                                    <td class="auto-style267" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="279">让利成本项表-让利成本(税前)<br />
                                         <asp:Label ID="LB_XiangMuCurrentMonthShiJiFaShengChengBenranglichengbensqAmount" runat="server"></asp:Label>
                                     </td>
                                     <td class="auto-style268" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="211">
@@ -2122,7 +2122,7 @@
                                     <td class="auto-style90" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="344">
                                         <asp:Label ID="LB_XiangMuErChiBiaoJiaFenLiBiaoZhiJieZongChengBenAfterTaxAmount" runat="server"></asp:Label>
                                     </td>
-                                    <td class="auto-style91" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="279">当月实际发生成本（税前）:<br />
+                                    <td class="auto-style91" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="279">当月实际发生成本(税前):<br />
                                         <asp:Label ID="LB_XiangMuCurrentMonthShiJiFaShengChengBenShiJiChengBenAmount" runat="server"></asp:Label>
                                     </td>
                                     <td class="auto-style92" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="211">
@@ -2161,7 +2161,7 @@
                                     <td class="auto-style23" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="199"></td>
                                     <td class="auto-style24" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="190"></td>
                                     <td class="auto-style25" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="344"></td>
-                                    <td class="auto-style26" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="279">利润（总收入-累计实际发生成本（税前 ））<br />
+                                    <td class="auto-style26" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;" width="279">利润(总收入-累计实际发生成本(税前 ))<br />
                                         <asp:Label ID="LB_XiangMuCurrentMonthShiJiFaShengProfitAmount" runat="server"></asp:Label>
                                     </td>
                                     <td class="auto-style376" style="border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;" width="211"></td>
@@ -2406,7 +2406,7 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td class="auto-style436" style="border-top-style: none; border-top-color: inherit; border-top-width: medium;">利润（毛利）</td>
+                                                <td class="auto-style436" style="border-top-style: none; border-top-color: inherit; border-top-width: medium;">利润(毛利)</td>
                                                 <td class="auto-style437" colspan="2" style="border-left-style: none; border-left-color: inherit; border-left-width: medium;">
                                                     <asp:Label ID="LB_XiangMuYiJiFaShengLiRenMaoLiAmount" runat="server"></asp:Label>
                                                 </td>
@@ -2505,12 +2505,12 @@
                                             <%-- 
                                             <tr height="16" style="height: 12.0px">
                                                 <td class="xl255" height="16" style="height: 12.0px">累计已发放奖金额<span style="mso-spacerun: yes">&nbsp;</span></td>
-                                                <td class="xl288" colspan="5" style="border-right: .5pt solid black">截至到上个月的下面单元格B17的“本次可发放额”值的总和（就是不含本月累计值），其中项目开始第一个月的累计值取“0”</td>
+                                                <td class="xl288" colspan="5" style="border-right: .5pt solid black">截至到上个月的下面单元格B17的“本次可发放额”值的总和(就是不含本月累计值)，其中项目开始第一个月的累计值取“0”</td>
                                             </tr>
                                             <tr height="65" style="height: 48.75px">
                                                 <td class="xl256"  height="65" style="height: 48.75px; width: 104px" width="139">本次可发放额</td>
                                                 <td class="xl285" colspan="5"  style="border-left: none; width: 550px"
-                                                    width="733"><font class="font75">项目部每月可动用奖金额=奖金包干总额*（进度、结算、回款及HSE综合打分系数）-累计已发放奖金额+单项奖+事件考核奖励+超额利润提成<span style="mso-spacerun: yes">&nbsp;</span></font><font class="font25"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></font><font class="font8"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></font><font class="font25"><br>
+                                                    width="733"><font class="font75">项目部每月可动用奖金额=奖金包干总额*(进度、结算、回款及HSE综合打分系数)-累计已发放奖金额+单项奖+事件考核奖励+超额利润提成<span style="mso-spacerun: yes">&nbsp;</span></font><font class="font25"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></font><font class="font8"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></font><font class="font25"><br>
                                                     </font><![if !supportAnnotations]><span class="msocomspan1"><span id="_anchor_1" class="msocomspan2" language="JavaScripx" onmouseout="msoCommentHide('_com_1')" onmouseover="msoCommentShow('_com_1','_anchor_1')"><a class="msocomanch" href="#_msocom_1" name="_msoanchor_1">[1]</a></span></span><![endif]></td>
                                             </tr>--%>
                                             <tr height="17" style="text-align: center; height: 13.0px">
@@ -2534,11 +2534,11 @@
                                                         <tr height="31" style="height: 23.0px">
                                                             <td height="31" style="height: 23.0px; border-top: none; text-align: center; width: 20%">时段</td>
 
-                                                            <td style="border-top: none; border-left: none; text-align: center; width: 20%">目标成本（二次）</td>
+                                                            <td style="border-top: none; border-left: none; text-align: center; width: 20%">目标成本(二次)</td>
 
-                                                            <td style="border-top: none; border-left: none; text-align: center; width: 20%">累计实际发生成本（税前 ）</td>
+                                                            <td style="border-top: none; border-left: none; text-align: center; width: 20%">累计实际发生成本(税前 )</td>
 
-                                                            <td style="border-top: none; border-left: none; text-align: center; width: 20%">累计实际发生成本（税后）</td>
+                                                            <td style="border-top: none; border-left: none; text-align: center; width: 20%">累计实际发生成本(税后)</td>
 
                                                             <td style="border-top: none; border-left: none; text-align: center; width: 20%">累计结算</td>
                                                         </tr>
@@ -2554,13 +2554,13 @@
                                                             <asp:BoundColumn DataField="MonthNumber" HeaderText="Month">
                                                                 <ItemStyle CssClass="itemBorder" BorderWidth="1" Horizontalalign="left" Width="20%" />
                                                             </asp:BoundColumn>
-                                                            <asp:BoundColumn DataField="CurrentMonthTotalCost" HeaderText="目标成本（二次）">
+                                                            <asp:BoundColumn DataField="CurrentMonthTotalCost" HeaderText="目标成本(二次)">
                                                                 <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="20%" />
                                                             </asp:BoundColumn>
-                                                            <asp:BoundColumn DataField="CumulativeActualTaxCost" HeaderText="累计实际发生成本（税前 ）">
+                                                            <asp:BoundColumn DataField="CumulativeActualTaxCost" HeaderText="累计实际发生成本(税前 )">
                                                                 <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="20%" />
                                                             </asp:BoundColumn>
-                                                            <asp:BoundColumn DataField="CumulativeActualAfterTaxCost" HeaderText="累计实际发生成本（税后）">
+                                                            <asp:BoundColumn DataField="CumulativeActualAfterTaxCost" HeaderText="累计实际发生成本(税后)">
                                                                 <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="20%" />
                                                             </asp:BoundColumn>
                                                             <asp:BoundColumn DataField="AccumulationSettlement" HeaderText="累计结算">

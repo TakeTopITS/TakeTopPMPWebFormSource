@@ -698,7 +698,7 @@
                                                                                                         <div class="npbxs">
                                                                                                             <h3>
                                                                                                                 <strong>
-                                                                                                                    <asp:Label ID="Label16" runat="server" Text="<%$ Resources:lang,CiRenWuFenPaiJiLuZiJiLu %>"></asp:Label>£¨<span style="font-size: 9pt"><asp:Label ID="Label17" runat="server" Text="<%$ Resources:lang,XuanZeKeZaiShangMianXiuGai %>"></asp:Label>£©:</span></strong>
+                                                                                                                    <asp:Label ID="Label16" runat="server" Text="<%$ Resources:lang,CiRenWuFenPaiJiLuZiJiLu %>"></asp:Label>(<span style="font-size: 9pt"><asp:Label ID="Label17" runat="server" Text="<%$ Resources:lang,XuanZeKeZaiShangMianXiuGai %>"></asp:Label>):</span></strong>
 
                                                                                                             </h3>
                                                                                                             <asp:DataGrid ID="DataGrid2" runat="server" AutoGenerateColumns="False" CellPadding="4"
@@ -792,11 +792,11 @@
                             </td>
                         </tr>
                         <tr style="display: none;">
-                            <td>£¨<asp:Label ID="Label27" runat="server" Text="<%$ Resources:lang,GuanLianHuiYi%>"></asp:Label>:<asp:HyperLink ID="HL_RelatedMeetingID"
+                            <td>(<asp:Label ID="Label27" runat="server" Text="<%$ Resources:lang,GuanLianHuiYi%>"></asp:Label>:<asp:HyperLink ID="HL_RelatedMeetingID"
                                 runat="server"></asp:HyperLink>
 
                                 <asp:HyperLink ID="HL_RelatedMeetingName" runat="server"></asp:HyperLink>
-                                £©
+                                )
 
                                                                         <asp:Label ID="LB_ProjectID" runat="server" Visible="False"></asp:Label>
                                 <asp:Label ID="LB_UserName" runat="server" Visible="False"></asp:Label>

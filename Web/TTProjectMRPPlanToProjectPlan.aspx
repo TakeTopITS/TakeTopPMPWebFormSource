@@ -42,7 +42,7 @@
                                     <td class="ItemAlignLeft" background="ImagesSkin/main_top_bj.jpg">
                                         <table>
                                             <tr>
-                                                <td>£¨
+                                                <td>(
                                                 </td>
                                                 <td>
                                                     <asp:Label ID="Label1" runat="server" Text="<%$ Resources:lang,ZhiDingJiHuaBanBenHao%>"></asp:Label>:
@@ -67,7 +67,7 @@
                                                     <asp:Button ID="BT_DeleteVersion" runat="server" CssClass="inpu"
                                                         OnClick="BT_DeleteVersion_Click" OnClientClick="return confirmContinue(getDeleteMsgByLangCode(), this, event)" Text="<%$ Resources:lang,ShanChu%>" />
                                                 </td>
-                                                <td>£©</td>
+                                                <td>)</td>
                                                 <td></td>
                                                 <td>(
                                                 </td>
@@ -81,7 +81,7 @@
                                                         DataValueField="ID" OnSelectedIndexChanged="DL_OldVersionID_SelectedIndexChanged"
                                                         AutoPostBack="True">
                                                     </asp:DropDownList></td>
-                                               <td>£©
+                                               <td>)
                                                 </td>
                                             </tr>
                                         </table>

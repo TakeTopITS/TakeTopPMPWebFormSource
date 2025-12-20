@@ -182,7 +182,7 @@
                                             <asp:Button ID="BT_DeleteVersion" runat="server" CssClass="inpu" OnClick="BT_DeleteVersion_Click" OnClientClick="return confirmContinue(getDeleteMsgByLangCode(), this, event)"
                                                 Text="<%$ Resources:lang,Delete%>" />
                                         </td>
-                                        <td style="padding-top: 5px;">£©(<asp:Label ID="LB_CopyVersion" runat="server" Text="<%$ Resources:lang,CopyVersion%>" />:
+                                        <td style="padding-top: 5px;">)(<asp:Label ID="LB_CopyVersion" runat="server" Text="<%$ Resources:lang,CopyVersion%>" />:
                                         </td>
                                         <td style="padding-top: 5px;">
                                             <asp:Label ID="LB_From" runat="server" Text="<%$ Resources:lang,From%>" />
@@ -280,13 +280,13 @@
                                                             </asp:TreeView>
                                                         </div>
                                                         <hr />
-                                                        <span style="font-size: x-small; text-align: center;">&nbsp;£¨
+                                                        <span style="font-size: x-small; text-align: center;">&nbsp;(
                                                                         <asp:Label ID="LB_Red" runat="server" Text="<%$ Resources:lang,Red%>" />:
                                                                         <asp:Label ID="LB_Delay" runat="server" Text="<%$ Resources:lang,Delay%>" />,
                                                                         <asp:Label ID="LB_Bold" runat="server" Text="<%$ Resources:lang,Bold%>" />:
                                                                         <asp:Label ID="LB_Involved" runat="server" Text="<%$ Resources:lang,Involved%>" />,
                                                                         <asp:Label ID="LB_Black" runat="server" Text="<%$ Resources:lang,Black%>" />:
-                                                                        <asp:Label ID="LB_Normal" runat="server" Text="<%$ Resources:lang,Normal%>" />£©
+                                                                        <asp:Label ID="LB_Normal" runat="server" Text="<%$ Resources:lang,Normal%>" />)
                                                         </span>
                                                         <hr />
                                                     </td>
@@ -623,7 +623,7 @@
                                                             Target="_blank" Text="<%$ Resources:lang,ShiShiWenDangTuiSong%>"></asp:HyperLink>
                                                         &nbsp;
                                                                      <asp:HyperLink ID="HL_RunProjectPlanByWF" runat="server" Enabled="False" Target="_blank" Visible="false"
-                                                                         Text="<%$ Resources:lang,hlRunProjectPlanByWF%>">£©</asp:HyperLink>
+                                                                         Text="<%$ Resources:lang,hlRunProjectPlanByWF%>">)</asp:HyperLink>
                                                         &nbsp;
                                                                       <asp:HyperLink ID="HL_RelatedWorkFlowTemplate" runat="server" Target="_blank" Visible="false"
                                                                           Enabled="false" Text="<%$ Resources:lang,RelatedWFTemplate%>"></asp:HyperLink>

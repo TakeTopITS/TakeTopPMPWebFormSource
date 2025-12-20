@@ -145,7 +145,7 @@
             var modalWidth = modalElement.offsetWidth;
             var modalHeight = modalElement.offsetHeight;
 
-            // 计算在按钮上方的位置（视口相对位置）
+            // 计算在按钮上方的位置(视口相对位置)
             var topPosition = buttonRect.top - modalHeight - 10; // 按钮上方10px
             var leftPosition = buttonRect.left;
 
@@ -175,7 +175,7 @@
                 topPosition = Math.max(10, viewportHeight - modalHeight - 10);
             }
 
-            // 设置模态框位置（相对于视口）
+            // 设置模态框位置(相对于视口)
             $(modalElement).css({
                 'top': topPosition + 'px',
                 'left': leftPosition + 'px'
@@ -444,7 +444,7 @@
                                                                     <asp:BoundColumn DataField="Status" HeaderText="Status">
                                                                         <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="15%" />
                                                                     </asp:BoundColumn>
-                                                                    <asp:TemplateColumn HeaderText="模块名称（本语）">
+                                                                    <asp:TemplateColumn HeaderText="模块名称(本语)">
                                                                         <ItemTemplate>
                                                                             <asp:TextBox ID="TB_HomeName" runat="server" Width="100px" Text='<%# DataBinder.Eval(Container.DataItem,"HomeName") %>'></asp:TextBox>
                                                                         </ItemTemplate>
@@ -726,7 +726,7 @@
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="30%" />
                                                                                 </asp:TemplateColumn>
 
-                                                                                <asp:TemplateColumn HeaderText="模块名称（本语）">
+                                                                                <asp:TemplateColumn HeaderText="模块名称(本语)">
                                                                                     <ItemTemplate>
                                                                                         <asp:TextBox ID="TB_HomeName" runat="server" Width="100px" Text='<%# DataBinder.Eval(Container.DataItem,"HomeName") %>'></asp:TextBox>
                                                                                     </ItemTemplate>
@@ -769,7 +769,7 @@
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="30%" />
                                                                                 </asp:TemplateColumn>
 
-                                                                                <asp:TemplateColumn HeaderText="模块名称（本语）">
+                                                                                <asp:TemplateColumn HeaderText="模块名称(本语)">
                                                                                     <ItemTemplate>
                                                                                         <asp:TextBox ID="TB_HomeName" runat="server" Width="100px" Text='<%# DataBinder.Eval(Container.DataItem,"HomeName") %>'></asp:TextBox>
                                                                                     </ItemTemplate>
@@ -811,7 +811,7 @@
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="30%" />
                                                                                 </asp:TemplateColumn>
 
-                                                                                <asp:TemplateColumn HeaderText="模块名称（本语）">
+                                                                                <asp:TemplateColumn HeaderText="模块名称(本语)">
                                                                                     <ItemTemplate>
                                                                                         <asp:TextBox ID="TB_HomeName" runat="server" Width="100px" Text='<%# DataBinder.Eval(Container.DataItem,"HomeName") %>'></asp:TextBox>
                                                                                     </ItemTemplate>
@@ -853,7 +853,7 @@
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="30%" />
                                                                                 </asp:TemplateColumn>
 
-                                                                                <asp:TemplateColumn HeaderText="模块名称（本语）">
+                                                                                <asp:TemplateColumn HeaderText="模块名称(本语)">
                                                                                     <ItemTemplate>
                                                                                         <asp:TextBox ID="TB_HomeName" runat="server" Width="100px" Text='<%# DataBinder.Eval(Container.DataItem,"HomeName") %>'></asp:TextBox>
                                                                                     </ItemTemplate>
@@ -894,7 +894,7 @@
                                                                                     </ItemTemplate>
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="30%" />
                                                                                 </asp:TemplateColumn>
-                                                                                <asp:TemplateColumn HeaderText="模块名称（本语）">
+                                                                                <asp:TemplateColumn HeaderText="模块名称(本语)">
                                                                                     <ItemTemplate>
                                                                                         <asp:TextBox ID="TB_HomeName" runat="server" Text='<%# DataBinder.Eval(Container.DataItem,"HomeName") %>' Width="100px"></asp:TextBox>
                                                                                     </ItemTemplate>
@@ -1007,7 +1007,7 @@
                                                                                     </ItemTemplate>
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="30%" />
                                                                                 </asp:TemplateColumn>
-                                                                                <asp:TemplateColumn HeaderText="模块名称（本语）">
+                                                                                <asp:TemplateColumn HeaderText="模块名称(本语)">
                                                                                     <ItemTemplate>
                                                                                         <asp:TextBox ID="TB_HomeName" runat="server" Text='<%# DataBinder.Eval(Container.DataItem,"HomeName") %>' Width="100px"></asp:TextBox>
                                                                                     </ItemTemplate>
@@ -1077,7 +1077,7 @@
                                                                                     </ItemTemplate>
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="30%" />
                                                                                 </asp:TemplateColumn>
-                                                                                <asp:TemplateColumn HeaderText="模块名称（本语）">
+                                                                                <asp:TemplateColumn HeaderText="模块名称(本语)">
                                                                                     <ItemTemplate>
                                                                                         <asp:TextBox ID="TB_HomeName" runat="server" Text='<%# DataBinder.Eval(Container.DataItem,"HomeName") %>' Width="100px"></asp:TextBox>
                                                                                     </ItemTemplate>
@@ -1147,7 +1147,7 @@
                                                                                     </ItemTemplate>
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="30%" />
                                                                                 </asp:TemplateColumn>
-                                                                                <asp:TemplateColumn HeaderText="模块名称（本语）">
+                                                                                <asp:TemplateColumn HeaderText="模块名称(本语)">
                                                                                     <ItemTemplate>
                                                                                         <asp:TextBox ID="TB_HomeName" runat="server" Text='<%# DataBinder.Eval(Container.DataItem,"HomeName") %>' Width="100px"></asp:TextBox>
                                                                                     </ItemTemplate>
@@ -1218,7 +1218,7 @@
                                                                                     </ItemTemplate>
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="40%" />
                                                                                 </asp:TemplateColumn>
-                                                                                <asp:TemplateColumn HeaderText="模块名称（本语）">
+                                                                                <asp:TemplateColumn HeaderText="模块名称(本语)">
                                                                                     <ItemTemplate>
                                                                                         <asp:TextBox ID="TB_HomeName" runat="server" Text='<%# DataBinder.Eval(Container.DataItem,"HomeName") %>' Width="99%"></asp:TextBox>
                                                                                     </ItemTemplate>
@@ -1578,7 +1578,7 @@
                                                 <asp:ListItem Value="NO" Text="<%$ Resources:lang,Fou%>" />
                                                 <asp:ListItem Value="YES" Text="<%$ Resources:lang,Shi%>" />
                                             </asp:DropDownList>
-                                            <span style="color: red; font-size: 8pt;">（<asp:Label ID="Label18" runat="server" Text="<%$ Resources:lang,XuanZeKeGengGai%>"></asp:Label>）
+                                            <span style="color: red; font-size: 8pt;">(<asp:Label ID="Label18" runat="server" Text="<%$ Resources:lang,XuanZeKeGengGai%>"></asp:Label>)
                                             </span>
                                         </td>
                                     </tr>

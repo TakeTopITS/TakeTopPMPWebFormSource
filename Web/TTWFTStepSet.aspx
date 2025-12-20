@@ -297,8 +297,8 @@
                                                                         <asp:Label ID="Label24" runat="server" Text="<%$ Resources:lang,ZuiShaoRenShu %>"></asp:Label></td>
                                                                     <td class="formItemBgStyleForAlignLeft">
                                                                         <NickLee:NumberBox MaxAmount="1000000000000" MinAmount="-1000000000000" ID="TB_LimitedOperator" runat="server" Precision="0" Width="43px"
-                                                                            OnBlur="" OnFocus="" OnKeyPress="" PositiveColor="">0</NickLee:NumberBox><span class="color: #FF0066;">£¨<span
-                                                                                class="font-size: small;"><asp:Label ID="Label25" runat="server" Text="<%$ Resources:lang,XYHDYCYCBZDRSZH %>"></asp:Label></span>£©</span> </td>
+                                                                            OnBlur="" OnFocus="" OnKeyPress="" PositiveColor="">0</NickLee:NumberBox><span class="color: #FF0066;">(<span
+                                                                                class="font-size: small;"><asp:Label ID="Label25" runat="server" Text="<%$ Resources:lang,XYHDYCYCBZDRSZH %>"></asp:Label></span>)</span> </td>
                                                                     <td class="formItemBgStyleForAlignLeft">
                                                                         <asp:Label ID="Label26" runat="server" Text="<%$ Resources:lang,ZuiChiShiJian %>"></asp:Label>: </td>
                                                                     <td class="formItemBgStyleForAlignLeft">

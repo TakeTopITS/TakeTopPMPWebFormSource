@@ -128,7 +128,7 @@
                                             <td width="60%" class="ItemAlignLeft">
                                                 <table>
                                                     <tr>
-                                                        <td class="ItemAlignLeft">（ 
+                                                        <td class="ItemAlignLeft">( 
                                                         </td>
                                                         <td class="ItemAlignLeft">
                                                             <asp:Label ID="Label211" runat="server" Text="<%$ Resources:lang,CangKu %>"></asp:Label>:
@@ -143,7 +143,7 @@
                                                             <asp:TextBox ID="TB_FindVendorName" runat="server" Width="120px"></asp:TextBox>
                                                         </td>
                                                         <td>
-                                                            <asp:Button ID="BT_FindAll" runat="server" CssClass="inpu" Text="<%$ Resources:lang,ChaXun %>" OnClick="BT_FindAll_Click" />）
+                                                            <asp:Button ID="BT_FindAll" runat="server" CssClass="inpu" Text="<%$ Resources:lang,ChaXun %>" OnClick="BT_FindAll_Click" />)
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -646,7 +646,7 @@
                                                             <asp:Button ID="BT_UploadPhoto" CssClass="inpu"
                                                                 runat="server" Text="<%$ Resources:lang,ShangChuan%>" OnClick="BT_UploadPhoto_Click" OnClientClick="popShow('popwindow','true');popShow('popwindow','true','popDetailWindow');" />
                                                             <br />
-                                                            （<asp:Label ID="Label79" runat="server" Text="<%$ Resources:lang,Kuan200Gao200%>"></asp:Label>）
+                                                            (<asp:Label ID="Label79" runat="server" Text="<%$ Resources:lang,Kuan200Gao200%>"></asp:Label>)
                                                         </ContentTemplate>
                                                         <Triggers>
                                                             <asp:PostBackTrigger ControlID="BT_UploadPhoto"></asp:PostBackTrigger>
@@ -1856,7 +1856,7 @@
                                                                             <asp:BoundColumn DataField="Amount" HeaderText="Amount">
                                                                                 <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="7%" />
                                                                             </asp:BoundColumn>
-                                                                            <asp:BoundColumn DataField="SaleOrderNumber" HeaderText="在单量（销售单）">
+                                                                            <asp:BoundColumn DataField="SaleOrderNumber" HeaderText="在单量(销售单)">
                                                                                 <ItemStyle CssClass="itemBorder" Horizontalalign="left" />
                                                                             </asp:BoundColumn>
                                                                             <asp:BoundColumn DataField="PurchaseOrderNumber" HeaderText="在订单 ">

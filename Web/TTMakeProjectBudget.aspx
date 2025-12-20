@@ -295,10 +295,10 @@
                                             &nbsp;<asp:Label ID="LB_OperatorName" runat="server"></asp:Label>
                                             &nbsp;<asp:Label ID="Label10" runat="server" Text="<%$ Resources:lang,KeMu%>"></asp:Label>:
                                             <asp:Label ID="LB_Account" runat="server" Text="<%$ Resources:lang,SuoYou%>"></asp:Label>
-                                            &nbsp;<asp:Label ID="Label9" runat="server" Text="<%$ Resources:lang,FeiYongMingXi%>"></asp:Label>:</strong> £¨<asp:Label ID="Label8" runat="server" Text="<%$ Resources:lang,JinE%>"></asp:Label>:
+                                            &nbsp;<asp:Label ID="Label9" runat="server" Text="<%$ Resources:lang,FeiYongMingXi%>"></asp:Label>:</strong> (<asp:Label ID="Label8" runat="server" Text="<%$ Resources:lang,JinE%>"></asp:Label>:
                                         <asp:Label ID="LB_Amount" runat="server"></asp:Label>&nbsp
                                         <asp:Label ID="Label7" runat="server" Text="<%$ Resources:lang,QueRenJinE%>"></asp:Label>:
-                                        <asp:Label ID="LB_ConfirmAmount" runat="server"></asp:Label>£©&nbsp;
+                                        <asp:Label ID="LB_ConfirmAmount" runat="server"></asp:Label>)&nbsp;
                                     </td>
                                 </tr>
                             </table>

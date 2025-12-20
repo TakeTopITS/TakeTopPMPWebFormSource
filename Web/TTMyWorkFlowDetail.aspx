@@ -323,7 +323,7 @@
                                                                                 <td class="ItemAlignLeft" width="30%"><strong>
                                                                                     <asp:Label ID="Label23" runat="server" Text="<%$ Resources:lang,MingBuZhouCheng %>"></asp:Label></strong></td>
                                                                                 <td class="ItemAlignLeft" width="14%"><strong>
-                                                                                    <asp:Label ID="Label24" runat="server" Text="<%$ Resources:lang,ShiJian %>"></asp:Label><span style="font-size: xx-small;">£¨<asp:Label ID="Label25" runat="server" Text="<%$ Resources:lang,FenZhong %>"></asp:Label>£©</span></strong> </td>
+                                                                                    <asp:Label ID="Label24" runat="server" Text="<%$ Resources:lang,ShiJian %>"></asp:Label><span style="font-size: xx-small;">(<asp:Label ID="Label25" runat="server" Text="<%$ Resources:lang,FenZhong %>"></asp:Label>)</span></strong> </td>
                                                                                 <td class="ItemAlignLeft" width="10%"><strong>
                                                                                     <asp:Label ID="Label26" runat="server" Text="<%$ Resources:lang,BiBeiRenShu %>"></asp:Label></strong></td>
                                                                                 <td class="ItemAlignLeft" width="20%"><strong>
@@ -834,7 +834,7 @@
                                                             <td class="ItemAlignLeft" width="20%"><strong>
                                                                 <asp:Label ID="Label33" runat="server" Text="<%$ Resources:lang,YaoShenHeDeGongZuo %>"></asp:Label></strong></td>
                                                             <td class="ItemAlignLeft" width="8%"><strong>
-                                                                <asp:Label ID="Label34" runat="server" Text="<%$ Resources:lang,ShiJian %>"></asp:Label><span style="font-size: xx-small;">£¨<asp:Label ID="Label35" runat="server" Text="<%$ Resources:lang,FenZhong %>"></asp:Label>£©</span></strong> </td>
+                                                                <asp:Label ID="Label34" runat="server" Text="<%$ Resources:lang,ShiJian %>"></asp:Label><span style="font-size: xx-small;">(<asp:Label ID="Label35" runat="server" Text="<%$ Resources:lang,FenZhong %>"></asp:Label>)</span></strong> </td>
                                                             <td class="ItemAlignLeft" width="6%"><strong>
                                                                 <asp:Label ID="Label37" runat="server" Text="<%$ Resources:lang,DongZuo %>"></asp:Label></strong></td>
                                                             <td class="ItemAlignLeft" width="16%"><strong>

@@ -99,7 +99,7 @@
                                                                     <asp:BoundField DataField="ProjectBVI" HeaderText="账单绩效(BVI)" DataFormatString="{0:p}" />
                                                                     <asp:BoundField DataField="ProjectRVI" HeaderText="回款绩效(RVI)" DataFormatString="{0:p}" />
                                                                     <asp:BoundField DataField="ProjectPL" HeaderText="工程利润(P&amp;L)" />
-                                                                    <asp:BoundField DataField="ProjectRP" HeaderText="成本绩效（RP）" DataFormatString="{0:p}" />
+                                                                    <asp:BoundField DataField="ProjectRP" HeaderText="成本绩效(RP)" DataFormatString="{0:p}" />
                                                                     <asp:BoundField DataField="ProjectTotalSpending" HeaderText="总支出" />
                                                                     <asp:BoundField DataField="ProjectTotalIncome" HeaderText="总收入" />
                                                                     <asp:BoundField DataField="ProjectIncomeDifference" HeaderText="收支总差" />

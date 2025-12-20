@@ -483,7 +483,7 @@
                                                                                         </tr>
                                                                                         <tr>
                                                                                             <td class="formItemBgStyleForAlignLeft"><strong>
-                                                                                                <asp:Label ID="Label38" runat="server" Text="<%$ Resources:lang,CiRenWuFenPaiJiLuZiJiLu %>"></asp:Label>£¨<span style="font-size: 9pt"><asp:Label ID="Label39" runat="server" Text="<%$ Resources:lang,XuanZeKeZaiShangMianXiuGai %>"></asp:Label>£©:</span></strong> </td>
+                                                                                                <asp:Label ID="Label38" runat="server" Text="<%$ Resources:lang,CiRenWuFenPaiJiLuZiJiLu %>"></asp:Label>(<span style="font-size: 9pt"><asp:Label ID="Label39" runat="server" Text="<%$ Resources:lang,XuanZeKeZaiShangMianXiuGai %>"></asp:Label>):</span></strong> </td>
                                                                                         </tr>
                                                                                         <tr>
                                                                                             <td class="formItemBgStyleForAlignLeft">

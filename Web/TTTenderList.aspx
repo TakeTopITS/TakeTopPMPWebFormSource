@@ -566,7 +566,7 @@
 
                                                             <asp:Label ID="LB_tbActorGroupList" runat="server" Text="<%$ Resources:lang,ActorGroupList %>" />: </td>
 
-                                                        <td>（</td>
+                                                        <td>(</td>
 
                                                         <td>
                                                             <asp:Label ID="Label32" runat="server" Text="<%$ Resources:lang,JueSeZuMingCheng %>"></asp:Label>:</td>
@@ -933,7 +933,7 @@
 
                                 <td class="formItemBgStyleForAlignLeft"></td>
 
-                                <td class="formItemBgStyleForAlignLeft" style="height: 19px;">（<asp:Label ID="Label62" runat="server" Text="<%$ Resources:lang,DaiMa%>"></asp:Label>要求收到处理信息:<asp:CheckBox ID="CB_SMS" runat="server" Text="<%$ Resources:lang,DuanXin%>" /><asp:CheckBox
+                                <td class="formItemBgStyleForAlignLeft" style="height: 19px;">(<asp:Label ID="Label62" runat="server" Text="<%$ Resources:lang,DaiMa%>"></asp:Label>要求收到处理信息:<asp:CheckBox ID="CB_SMS" runat="server" Text="<%$ Resources:lang,DuanXin%>" /><asp:CheckBox
                                     ID="CB_Mail" runat="server" Font-Size="10pt" Text="<%$ Resources:lang,YouJian%>" />
 
                                     <span style="font-size: 10pt">) </span>

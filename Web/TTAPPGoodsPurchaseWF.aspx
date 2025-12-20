@@ -1155,7 +1155,7 @@
                                                                 <asp:BoundColumn DataField="Amount" HeaderText="Amount">
                                                                     <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="7%" />
                                                                 </asp:BoundColumn>
-                                                                <asp:BoundColumn DataField="SaleOrderNumber" HeaderText="在单量（销售单）">
+                                                                <asp:BoundColumn DataField="SaleOrderNumber" HeaderText="在单量(销售单)">
                                                                     <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="7%" />
                                                                 </asp:BoundColumn>
                                                                 <asp:BoundColumn DataField="PurchaseOrderNumber" HeaderText="在订单 ">
@@ -1619,7 +1619,7 @@
                                 </tr>
                                 <tr style="font-size: 10pt">
                                     <td class="formItemBgStyleForAlignLeft"></td>
-                                    <td class="formItemBgStyleForAlignLeft" style="height: 19px;">（<asp:Label ID="Label55" runat="server" Text="<%$ Resources:lang,YaoQiuShouDaoChuLiXinXi%>"></asp:Label>:<asp:CheckBox ID="CB_SMS" runat="server" Text="<%$ Resources:lang,DuanXin%>" /><asp:CheckBox
+                                    <td class="formItemBgStyleForAlignLeft" style="height: 19px;">(<asp:Label ID="Label55" runat="server" Text="<%$ Resources:lang,YaoQiuShouDaoChuLiXinXi%>"></asp:Label>:<asp:CheckBox ID="CB_SMS" runat="server" Text="<%$ Resources:lang,DuanXin%>" /><asp:CheckBox
                                         ID="CB_Mail" runat="server" Font-Size="10pt" Text="<%$ Resources:lang,YouJian%>" /><span style="font-size: 10pt">) </span>
                                         <asp:Button ID="BT_SubmitApply" runat="server" Enabled="False" Text="<%$ Resources:lang,TiJiaoShenQing%>" CssClass="inpu" /><cc1:ModalPopupExtender ID="BT_SubmitApply_ModalPopupExtender" runat="server" Enabled="True"
                                             TargetControlID="BT_SubmitApply" PopupControlID="Panel1" BackgroundCssClass="modalBackground" Y="150"

@@ -54,7 +54,7 @@
                                         <td>
                                             <asp:Label ID="Label1" runat="server" Text="<%$ Resources:lang,GongZuoZongJieHuiZong%>"></asp:Label>
                                         </td>
-                                        <td>ги<asp:Button ID="BT_AllMember" runat="server" CssClass="inpuLong" OnClick="BT_AllMember_Click"
+                                        <td>(<asp:Button ID="BT_AllMember" runat="server" CssClass="inpuLong" OnClick="BT_AllMember_Click"
                                             Text="<%$ Resources:lang,ChaKanSuoYouGongZuoZongJie%>" />
                                         </td>
                                         <td>

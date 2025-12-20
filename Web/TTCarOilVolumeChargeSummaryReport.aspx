@@ -154,19 +154,19 @@
                                                     <asp:BoundColumn DataField="DepartDay" HeaderText="出车日期">
                                                         <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="10%" />
                                                     </asp:BoundColumn>
-                                                    <asp:BoundColumn DataField="TotalOilVolume" HeaderText="加油量（升）">
+                                                    <asp:BoundColumn DataField="TotalOilVolume" HeaderText="加油量(升)">
                                                         <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="10%" />
                                                     </asp:BoundColumn>
-                                                    <asp:BoundColumn DataField="TotalOilCharge" HeaderText="金额（元）">
+                                                    <asp:BoundColumn DataField="TotalOilCharge" HeaderText="金额(元)">
                                                         <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="10%" />
                                                     </asp:BoundColumn>
-                                                    <asp:BoundColumn DataField="TotalCurrentMileage" HeaderText="里程（公里）">
+                                                    <asp:BoundColumn DataField="TotalCurrentMileage" HeaderText="里程(公里)">
                                                         <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="10%" />
                                                     </asp:BoundColumn>
-                                                    <asp:BoundColumn DataField="TotalMileage" HeaderText="总里程（公里）">
+                                                    <asp:BoundColumn DataField="TotalMileage" HeaderText="总里程(公里)">
                                                         <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="10%" />
                                                     </asp:BoundColumn>
-                                                    <asp:BoundColumn DataField="OilUnitPrice" HeaderText="单价（元）">
+                                                    <asp:BoundColumn DataField="OilUnitPrice" HeaderText="单价(元)">
                                                         <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="10%" />
                                                     </asp:BoundColumn>
                                                     <asp:BoundColumn DataField="AverageEconomy" HeaderText="平均油耗">

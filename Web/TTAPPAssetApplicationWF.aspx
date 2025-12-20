@@ -722,7 +722,7 @@
                                         <table width="100%">
                                             <tr>
                                                 <td class="ItemAlignLeft" style="width: 550px; height: 27px">
-                                                    <span style="font-size: 10pt">ги<asp:Label ID="Label31" runat="server" Text="<%$ Resources:lang,YaoQiuShouDaoXinXi %>"></asp:Label>:</span><asp:CheckBox ID="CB_SMS" runat="server"
+                                                    <span style="font-size: 10pt">(<asp:Label ID="Label31" runat="server" Text="<%$ Resources:lang,YaoQiuShouDaoXinXi %>"></asp:Label>:</span><asp:CheckBox ID="CB_SMS" runat="server"
                                                         Font-Size="10pt" Text="<%$ Resources:lang,DuanXin %>" />
                                                     <asp:CheckBox ID="CB_Mail" runat="server" Text="<%$ Resources:lang,YouJian %>" />
                                                     <span style="font-size: 10pt">) </span>

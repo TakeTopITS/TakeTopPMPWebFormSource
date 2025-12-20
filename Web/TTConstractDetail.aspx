@@ -2897,7 +2897,7 @@
                                                                 <asp:BoundColumn DataField="Amount" HeaderText="Amount">
                                                                     <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="7%" />
                                                                 </asp:BoundColumn>
-                                                                <asp:BoundColumn DataField="SaleOrderNumber" HeaderText="在单量（销售单）">
+                                                                <asp:BoundColumn DataField="SaleOrderNumber" HeaderText="在单量(销售单)">
                                                                     <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="7%" />
                                                                 </asp:BoundColumn>
                                                                 <asp:BoundColumn DataField="PurchaseOrderNumber" HeaderText="在订单 ">
@@ -3262,7 +3262,7 @@
                                                                 <asp:BoundColumn DataField="Amount" HeaderText="Amount">
                                                                     <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="7%" />
                                                                 </asp:BoundColumn>
-                                                                <asp:BoundColumn DataField="SaleOrderNumber" HeaderText="在单量（销售单）">
+                                                                <asp:BoundColumn DataField="SaleOrderNumber" HeaderText="在单量(销售单)">
                                                                     <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="7%" />
                                                                 </asp:BoundColumn>
                                                                 <asp:BoundColumn DataField="PurchaseOrderNumber" HeaderText="在订单 ">

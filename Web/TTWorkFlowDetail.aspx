@@ -963,7 +963,7 @@
                                                                                         <td class="ItemAlignLeft" width="35%"><strong>
                                                                                             <asp:Label ID="Label57" runat="server" Text="<%$ Resources:lang,BuZhouMingChen %>"></asp:Label></strong></td>
                                                                                         <td class="ItemAlignLeft" width="15%"><strong>
-                                                                                            <asp:Label ID="Label58" runat="server" Text="<%$ Resources:lang,ShiJianXiaoShi %>"></asp:Label>（小时）</strong> </td>
+                                                                                            <asp:Label ID="Label58" runat="server" Text="<%$ Resources:lang,ShiJianXiaoShi %>"></asp:Label>(小时)</strong> </td>
                                                                                         <td class="ItemAlignLeft" width="10%"><strong>
                                                                                             <asp:Label ID="Label59" runat="server" Text="<%$ Resources:lang,BiBeiRenShu %>"></asp:Label></strong></td>
                                                                                         <td class="ItemAlignLeft" width="20%"><strong>

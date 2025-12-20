@@ -171,7 +171,7 @@
                                                                 <asp:ListItem Value="All" Text="<%$ Resources:lang,SuoYou%>" />
                                                                 <asp:ListItem Value="Part" Text="<%$ Resources:lang,BuFen%>" />
                                                             </asp:DropDownList>
-                                                            <span style="font-size: x-small; color: Red;">£¨<asp:Label ID="Label6" runat="server" Text="<%$ Resources:lang,XuanZeKeGengGaiQuanXian%>"></asp:Label>£©</span>
+                                                            <span style="font-size: x-small; color: Red;">(<asp:Label ID="Label6" runat="server" Text="<%$ Resources:lang,XuanZeKeGengGaiQuanXian%>"></asp:Label>)</span>
                                                         </td>
                                                     </tr>
                                                     <tr>

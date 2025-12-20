@@ -66,7 +66,7 @@
                                             <td wiidth="60%" class="ItemAlignLeft">
                                                 <table>
                                                     <tr>
-                                                        <td class="ItemAlignLeft">（
+                                                        <td class="ItemAlignLeft">(
                                                         </td>
                                                         <td class="ItemAlignLeft">
                                                             <asp:Label ID="Label211" runat="server" Text="<%$ Resources:lang,CangKu %>"></asp:Label>:
@@ -81,7 +81,7 @@
                                                             <asp:TextBox ID="TB_CustomerName" runat="server" Width="120px"></asp:TextBox>
                                                         </td>
                                                         <td>
-                                                            <asp:Button ID="BT_FindAll" runat="server" CssClass="inpu" Text="<%$ Resources:lang,ChaXun %>" OnClick="BT_FindAll_Click" />）
+                                                            <asp:Button ID="BT_FindAll" runat="server" CssClass="inpu" Text="<%$ Resources:lang,ChaXun %>" OnClick="BT_FindAll_Click" />)
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -428,7 +428,7 @@
                                                             <asp:BoundColumn DataField="UnitName" HeaderText="Unit">
                                                                 <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="8%" />
                                                             </asp:BoundColumn>
-                                                            <asp:BoundColumn DataField="WarrantyPeriod" HeaderText="保修期（天）">
+                                                            <asp:BoundColumn DataField="WarrantyPeriod" HeaderText="保修期(天)">
                                                                 <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="8%" />
                                                             </asp:BoundColumn>
                                                             <asp:BoundColumn DataField="SN" HeaderText="序列号">

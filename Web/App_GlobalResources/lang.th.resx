@@ -32638,7 +32638,7 @@
     <value>จัดสรรงบประมาณ</value>
   </data>
   <data name="XYHDKHHSYY" xml:space="preserve">
-    <value>เลื่อนไปทางขวาเพื่อกลับไปยังหน้าก่อนหน้า</value>
+    <value>ปัดไปทางขวาเพื่อกลับหน้าเดิม ปัดลงเพื่อรีเฟรชหน้านี้</value>
   </data>
   <data name="ZZSJSJKSHSFZQXH" xml:space="preserve">
     <value>กำลังอัปเกรดฐานข้อมูล ใช้เวลาประมาณ 15 วินาที กรุณารอสักครู่...</value>

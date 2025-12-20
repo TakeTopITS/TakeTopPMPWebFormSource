@@ -170,10 +170,10 @@
                                                                     <asp:BoundColumn DataField="Name" HeaderText="计划内容">
                                                                         <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="25%" />
                                                                     </asp:BoundColumn>
-                                                                    <asp:BoundColumn DataField="ManHourBudget" HeaderText="估计工作量（人日）">
+                                                                    <asp:BoundColumn DataField="ManHourBudget" HeaderText="估计工作量(人日)">
                                                                         <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="25%" />
                                                                     </asp:BoundColumn>
-                                                                    <asp:BoundColumn DataField="ManHourTrue" HeaderText="估计工作量（人日）">
+                                                                    <asp:BoundColumn DataField="ManHourTrue" HeaderText="估计工作量(人日)">
                                                                         <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="25%" />
                                                                     </asp:BoundColumn>
                                                                     <asp:BoundColumn DataField="HourPercent" HeaderText="百分比">
@@ -271,7 +271,7 @@
                                                                         <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="15%" />
                                                                     </asp:BoundColumn>
 
-                                                                    <asp:BoundColumn DataField="MemberManHour" HeaderText="估计工作量（人日）">
+                                                                    <asp:BoundColumn DataField="MemberManHour" HeaderText="估计工作量(人日)">
                                                                         <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="10%" />
                                                                     </asp:BoundColumn>
 

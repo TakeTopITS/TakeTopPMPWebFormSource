@@ -150,7 +150,7 @@
                         }
                     } catch (error) {
                         console.error('无法访问 iframe 内容:', error);
-                        // 如果无法访问 iframe 的内容（例如跨域限制），假设其内容为空
+                        // 如果无法访问 iframe 的内容(例如跨域限制)，假设其内容为空
                         hasEmptyIframeBody = true;
                         break;
                     }

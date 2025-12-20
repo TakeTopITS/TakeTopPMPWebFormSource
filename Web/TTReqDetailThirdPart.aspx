@@ -459,7 +459,7 @@
                                                                                                         <table cellpadding="0" cellspacing="0" width="98%">
                                                                                                             <tr>
                                                                                                                 <td class="formItemBgStyleForAlignLeft"><strong>
-                                                                                                                    <asp:Label ID="Label32" runat="server" Text="<%$ Resources:lang,CFPJLDZJL %>"></asp:Label>£¨<span style="font-size: 9pt"><asp:Label ID="Label33" runat="server" Text="<%$ Resources:lang,XuanZeKeZaiShangMianXiuGai %>"></asp:Label>£©:</span></strong> </td>
+                                                                                                                    <asp:Label ID="Label32" runat="server" Text="<%$ Resources:lang,CFPJLDZJL %>"></asp:Label>(<span style="font-size: 9pt"><asp:Label ID="Label33" runat="server" Text="<%$ Resources:lang,XuanZeKeZaiShangMianXiuGai %>"></asp:Label>):</span></strong> </td>
                                                                                                             </tr>
                                                                                                             <tr>
                                                                                                                 <td class="ItemAlignLeft">

@@ -4441,7 +4441,7 @@
                                         <SelectedItemStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333"></SelectedItemStyle>
                                     </asp:DataGrid>
                                     <hr />
-                                    <a onclick="javascript:changeProjectDocDataGridVisible();">--Other Doc£¨<asp:Label ID="LB_ProjectDocNumber" runat="server"></asp:Label>£©--</a>
+                                    <a onclick="javascript:changeProjectDocDataGridVisible();">--Other Doc(<asp:Label ID="LB_ProjectDocNumber" runat="server"></asp:Label>)--</a>
                                     <table width="100%">
                                         <tr id="TR_OtherDoc" style="display: none;">
                                             <td align="left">

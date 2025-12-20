@@ -86,7 +86,7 @@
 
                                                 <table cellpadding="0" cellspacing="0" width="100%" style="padding-bottom: 5px;">
                                                     <tr>
-                                                        <td align="right">£¨<asp:Label ID="Label8" runat="server" Text="<%$ Resources:lang,DaiMa%>"></asp:Label>:
+                                                        <td align="right">(<asp:Label ID="Label8" runat="server" Text="<%$ Resources:lang,DaiMa%>"></asp:Label>:
                                                         </td>
                                                         <td class="ItemAlignLeft">
                                                             <asp:TextBox ID="TB_CustCode" runat="server" Width="120px"></asp:TextBox>
@@ -141,10 +141,10 @@
                                                             <asp:TextBox ID="TB_FindCity" runat="server" Width="120px"></asp:TextBox>
                                                         </td>
                                                         <td>
-                                                            <asp:Button ID="BT_Find" runat="server" CssClass="inpu" Text="<%$ Resources:lang,ChaXun%>" OnClick="BT_Find_Click" />£©
+                                                            <asp:Button ID="BT_Find" runat="server" CssClass="inpu" Text="<%$ Resources:lang,ChaXun%>" OnClick="BT_Find_Click" />)
                                                         </td>
                                                         <td>
-                                                            <asp:Button ID="BT_ExportCustomerRelatedUser" runat="server" CssClass="inpuLong" Text="<%$ Resources:lang,DaoChuKeShiYongHu%>" OnClientClick="javascript:document.getElementById('IMG_Waiting').style.display = 'block'" OnClick="BT_ExportCustomerRelatedUser_Click" />£©
+                                                            <asp:Button ID="BT_ExportCustomerRelatedUser" runat="server" CssClass="inpuLong" Text="<%$ Resources:lang,DaoChuKeShiYongHu%>" OnClientClick="javascript:document.getElementById('IMG_Waiting').style.display = 'block'" OnClick="BT_ExportCustomerRelatedUser_Click" />)
                                                             <img id="IMG_Waiting" src="Images/Processing.gif" alt="Loading,please wait..." onmouseover="avascript:document.getElementById('IMG_Waiting').style.display = 'none'" style="text-align: center; display: none;" />
 
                                                         </td>
@@ -1557,7 +1557,7 @@
                                                                                         <asp:Label ID="LB_tbActorGroupList" runat="server" Text="<%$ Resources:lang,ActorGroupList %>" />: </td>
 
 
-                                                                                    <td>£¨</td>
+                                                                                    <td>(</td>
 
 
                                                                                     <td>
@@ -4922,7 +4922,7 @@
 
                                         <table>
                                             <tr>
-                                                <td class="ItemAlignLeft">£¨<asp:Label ID="Label178" runat="server" Text="<%$ Resources:lang,DaiMa%>"></asp:Label>:
+                                                <td class="ItemAlignLeft">(<asp:Label ID="Label178" runat="server" Text="<%$ Resources:lang,DaiMa%>"></asp:Label>:
                                                 </td>
                                                 <td>
                                                     <asp:TextBox ID="TB_FindAgencyCode" runat="server" Width="120px"></asp:TextBox>
@@ -4951,7 +4951,7 @@
                                                     <asp:TextBox ID="TB_AgencyContactPerson" runat="server" Width="120px"></asp:TextBox>
                                                 </td>
                                                 <td>
-                                                    <asp:Button ID="BT_FindAgency" runat="server" CssClass="inpu" Text="<%$ Resources:lang,ChaXun%>" OnClick="BT_FindAgency_Click" />£©
+                                                    <asp:Button ID="BT_FindAgency" runat="server" CssClass="inpu" Text="<%$ Resources:lang,ChaXun%>" OnClick="BT_FindAgency_Click" />)
                                                 </td>
                                             </tr>
                                         </table>

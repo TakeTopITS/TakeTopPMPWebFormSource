@@ -427,7 +427,7 @@
                                                                                 <asp:BoundColumn DataField="ModuleName" HeaderText="模块名称">
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="10%" />
                                                                                 </asp:BoundColumn>
-                                                                                <asp:TemplateColumn HeaderText="模块名称（本语）">
+                                                                                <asp:TemplateColumn HeaderText="模块名称(本语)">
                                                                                     <ItemTemplate>
                                                                                         <asp:TextBox ID="TB_HomeModuleName" runat="server" Width="98%"></asp:TextBox>
                                                                                     </ItemTemplate>

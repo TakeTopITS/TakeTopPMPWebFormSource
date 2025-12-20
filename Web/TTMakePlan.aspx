@@ -821,7 +821,7 @@
                                                 <td class="formItemBgStyleForAlignLeft">
 
                                                     <asp:Label ID="LB_LeaderCode" runat="server"></asp:Label><asp:Label ID="LB_LeaderName"
-                                                        runat="server"></asp:Label>£¨--&gt;<asp:Label ID="Label27" runat="server" Text="<%$ Resources:lang,CongYouBianXuanQu%>"></asp:Label>£©
+                                                        runat="server"></asp:Label>(--&gt;<asp:Label ID="Label27" runat="server" Text="<%$ Resources:lang,CongYouBianXuanQu%>"></asp:Label>)
                                                 </td>
                                             </tr>
 

@@ -371,7 +371,7 @@
                                                     <asp:Label ID="Label25" runat="server" Text="<%$ Resources:lang,ShenGouZheDaiMa %>"></asp:Label>:
                                                 </td>
                                                 <td colspan="3" class="formItemBgStyleForAlignLeft" >
-                                                    <asp:TextBox ID="TB_ApplicantCode" runat="server" Width="100px"></asp:TextBox><asp:Label ID="LB_ApplicantName" runat="server"></asp:Label>&#160; (---&gt;<asp:Label ID="Label26" runat="server" Text="<%$ Resources:lang,KeYiCongYouBianXuanQu %>"></asp:Label>£© 
+                                                    <asp:TextBox ID="TB_ApplicantCode" runat="server" Width="100px"></asp:TextBox><asp:Label ID="LB_ApplicantName" runat="server"></asp:Label>&#160; (---&gt;<asp:Label ID="Label26" runat="server" Text="<%$ Resources:lang,KeYiCongYouBianXuanQu %>"></asp:Label>) 
                                                     <asp:Label ID="LB_ID" runat="server" Visible="false"></asp:Label></td>
                                             </tr>
                                             <tr>
@@ -517,7 +517,7 @@
                                 </tr>
                                 <tr style="font-size: 10pt">
                                     <td class="formItemBgStyleForAlignLeft"></td>
-                                    <td class="formItemBgStyleForAlignLeft" style="height: 19px;">£¨<asp:Label ID="Label46" runat="server" Text="<%$ Resources:lang,YaoQiuShouDaoChuLiXinXi%>"></asp:Label>:<asp:CheckBox ID="CB_SMS" runat="server" Text="<%$ Resources:lang,DuanXin%>" /><asp:CheckBox ID="CB_Mail" runat="server" Text="<%$ Resources:lang,YouJian%>" /><span style="font-size: 10pt">) </span>
+                                    <td class="formItemBgStyleForAlignLeft" style="height: 19px;">(<asp:Label ID="Label46" runat="server" Text="<%$ Resources:lang,YaoQiuShouDaoChuLiXinXi%>"></asp:Label>:<asp:CheckBox ID="CB_SMS" runat="server" Text="<%$ Resources:lang,DuanXin%>" /><asp:CheckBox ID="CB_Mail" runat="server" Text="<%$ Resources:lang,YouJian%>" /><span style="font-size: 10pt">) </span>
                                         <asp:Button ID="BT_SubmitApply" runat="server" CssClass="inpu" Enabled="False" Text="<%$ Resources:lang,TiJiaoShenQing%>" /><cc1:ModalPopupExtender ID="BT_SubmitApply_ModalPopupExtender" runat="server" BackgroundCssClass="modalBackground" Y="150"
                                             DynamicServicePath="" Enabled="True" PopupControlID="Panel1" TargetControlID="BT_SubmitApply">
                                         </cc1:ModalPopupExtender>

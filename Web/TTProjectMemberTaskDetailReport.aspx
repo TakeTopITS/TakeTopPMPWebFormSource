@@ -132,7 +132,7 @@
                                             &nbsp;&nbsp;   <a href="#" onclick="preview1()">
                                                 <img src="ImagesSkin/print.gif" alt="´òÓ¡" border="0" />
                                             </a>
-                                            £©
+                                            )
 
                                         </td>
                                         <td class="ItemAlignLeft">

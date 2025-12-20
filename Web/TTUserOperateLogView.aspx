@@ -41,7 +41,7 @@
                             <td>
                                 <asp:Label ID="Label1" runat="server" Text="<%$ Resources:lang,CaoZuoRiZhi%>"></asp:Label>
                             </td>
-                            <td>£¨</td>
+                            <td>(</td>
                             <td align="right">
                                 <asp:Label ID="Label2" runat="server" Text="<%$ Resources:lang,KaiShiRiQi%>"></asp:Label>
                             </td>
@@ -67,7 +67,7 @@
                             <td>
                                 <a href="#" onclick="preview1()">
                                     <img src="ImagesSkin/print.gif" alt="´òÓ¡" border="0" />
-                                </a>£©
+                                </a>)
                             </td>
                         </tr>
                     </table>

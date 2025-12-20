@@ -255,8 +255,8 @@
                                                             <table>
                                                                 <tr>
                                                                     <td>
-                                                                        <asp:Label ID="Label14" runat="server" Text="<%$ Resources:lang,CaiGouXuQiuJiHua%>"></asp:Label>£¨Ver:
-                                                                        <asp:Label ID="LB_PlanMRPVersion" runat="server"></asp:Label>£©
+                                                                        <asp:Label ID="Label14" runat="server" Text="<%$ Resources:lang,CaiGouXuQiuJiHua%>"></asp:Label>(Ver:
+                                                                        <asp:Label ID="LB_PlanMRPVersion" runat="server"></asp:Label>)
                                                                     </td>
                                                                     <td>
                                                                         <asp:CheckBox ID="CB_OnOrder" runat="server" Text="<%$ Resources:lang,ZaiTuLiang%>" />

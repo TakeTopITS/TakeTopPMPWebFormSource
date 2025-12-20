@@ -181,7 +181,7 @@
                                                     <span style="font-weight: bold; font-size: 15px;">
                                                         <asp:Label ID="Label3" runat="server" Text="<%$ Resources:lang,DXWFSDDX%>"></asp:Label></span>
                                                     <br />
-                                                    £¨<asp:Label ID="Label4" runat="server" Text="<%$ Resources:lang,QXZZBXZYJSXXDFZRBXJXZBQBFZTSXX%>"></asp:Label>£©
+                                                    (<asp:Label ID="Label4" runat="server" Text="<%$ Resources:lang,QXZZBXZYJSXXDFZRBXJXZBQBFZTSXX%>"></asp:Label>)
                                                         <br />
 
                                                 </td>

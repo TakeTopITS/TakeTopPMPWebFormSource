@@ -944,7 +944,7 @@
                                                                                 <tr>
                                                                                     <td>
                                                                                         <asp:Label ID="LB_tbActorGroupList" runat="server" Text="<%$ Resources:lang,ActorGroupList %>" />: </td>
-                                                                                    <td>ги</td>
+                                                                                    <td>(</td>
                                                                                     <td>
                                                                                         <asp:Label ID="Label75" runat="server" Text="<%$ Resources:lang,JueSeZuMingCheng%>"></asp:Label>:</td>
                                                                                     <td>

@@ -487,7 +487,7 @@
                                                 <td class="formItemBgStyleForAlignLeft">
                                                     <asp:Label ID="LB_ApplicantCode" runat="server"></asp:Label>
                                                     &nbsp;<asp:Label ID="LB_ApplicantName" runat="server"></asp:Label>
-                                                    &nbsp;&nbsp; (--&gt;<asp:Label ID="Label7" runat="server" Text="<%$ Resources:lang,KeYiCongYouBianXuanQu%>"></asp:Label>£©
+                                                    &nbsp;&nbsp; (--&gt;<asp:Label ID="Label7" runat="server" Text="<%$ Resources:lang,KeYiCongYouBianXuanQu%>"></asp:Label>)
                                                 </td>
                                                 <td class="formItemBgStyleForAlignLeft">
                                                     <asp:Label ID="Label8" runat="server" Text="<%$ Resources:lang,YongCheBuMen%>"></asp:Label>:

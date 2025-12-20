@@ -112,9 +112,9 @@
                             <td class="ItemAlignLeft" style="padding: 5px 5px 5px 5px;">
                                 <br />
                                 <strong>
-                                    <asp:Label ID="Label3" runat="server" Text="<%$ Resources:lang,WoDePingHeYiJian%>"></asp:Label>:</strong>£¨  
+                                    <asp:Label ID="Label3" runat="server" Text="<%$ Resources:lang,WoDePingHeYiJian%>"></asp:Label>:</strong>(  
                                 <asp:HyperLink ID="HL_ReviewReport" runat="server" Target="_blank">
-                                    <asp:Label ID="Label4" runat="server" Text="<%$ Resources:lang,SuoYouYiJian%>"></asp:Label></asp:HyperLink>£©
+                                    <asp:Label ID="Label4" runat="server" Text="<%$ Resources:lang,SuoYouYiJian%>"></asp:Label></asp:HyperLink>)
                             </td>
                         </tr>
                         <tr>

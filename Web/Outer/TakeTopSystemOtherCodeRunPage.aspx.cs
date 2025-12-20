@@ -20,6 +20,8 @@ public partial class TakeTopSystemOtherCodeRunPage : System.Web.UI.Page
         {
             Session["SystemName"] = System.Configuration.ConfigurationManager.AppSettings["SystemName"];
 
+            //LogClass.WriteLogFile("OtherCodeUpgradeBegin");
+
             AsyncWork();
         }
     }

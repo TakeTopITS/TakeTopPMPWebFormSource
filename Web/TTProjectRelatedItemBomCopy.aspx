@@ -69,7 +69,7 @@
                                                                         OnClick="BT_NewVersion_Click" Text="<%$ Resources:lang,New%>" />
                                                                     &nbsp;<asp:Button ID="BT_DeleteVersion" runat="server" CssClass="ButtonCss" Height="20px" OnClientClick="return confirmContinue(getDeleteMsgByLangCode(), this, event)"
                                                                         OnClick="BT_DeleteVersion_Click" Text="<%$ Resources:lang,Delete%>" />
-                                                                    £©(<asp:Label ID="LB_tiCopyBOM" runat="server" Text="<%$ Resources:lang,Copy%>"></asp:Label>
+                                                                    )(<asp:Label ID="LB_tiCopyBOM" runat="server" Text="<%$ Resources:lang,Copy%>"></asp:Label>
                                                                     BOM:<asp:Label ID="LB_tbFrom" runat="server" Text="<%$ Resources:lang,From%>"></asp:Label>
                                                                     &nbsp;<asp:Label ID="LB_OldProjectID" runat="server"></asp:Label>
                                                                     &nbsp;BOM<asp:Label ID="LB_tiFromVersion" runat="server" Text="<%$ Resources:lang,Version%>"></asp:Label>

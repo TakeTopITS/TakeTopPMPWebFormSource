@@ -131,7 +131,7 @@
                                                                                 <asp:BoundField DataField="Amount" HeaderText="申请金额" />
                                                                                 <asp:BoundField DataField="Purpose" HeaderText="用途说明" />
                                                                                 <asp:BoundField DataField="CostFeeID" HeaderText="大类编号" />
-                                                                                <asp:BoundField DataField="Title" HeaderText="临时设施项目（大类）" />
+                                                                                <asp:BoundField DataField="Title" HeaderText="临时设施项目(大类)" />
                                                                                 <asp:BoundField DataField="CostFeeSubID" HeaderText="子类编号" />
                                                                                 <asp:BoundField DataField="SubTitle" HeaderText="间接费项目分类" />
                                                                                 <asp:BoundField DataField="AccountName" HeaderText="会计科目" />

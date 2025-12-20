@@ -43,7 +43,7 @@
                                                     <td width="5">
                                                         <%-- <img src="ImagesSkin/main_top_r.jpg" width="5" height="31" />--%>
                                                     </td>
-                                                    <td class="ItemAlignLeft">£¨<asp:Label ID="Label2" runat="server" Text="<%$ Resources:lang,DaiMa%>"></asp:Label>:
+                                                    <td class="ItemAlignLeft">(<asp:Label ID="Label2" runat="server" Text="<%$ Resources:lang,DaiMa%>"></asp:Label>:
                                                     </td>
                                                     <td>
                                                         <asp:TextBox ID="TB_CustCode" runat="server" Width="120px"></asp:TextBox>
@@ -66,7 +66,7 @@
                                                         </asp:DropDownList>
                                                     </td>
                                                     <td>
-                                                        <asp:Button ID="BT_Find" runat="server" CssClass="inpu" Text="<%$ Resources:lang,ChaXun%>" OnClick="BT_Find_Click" />£©
+                                                        <asp:Button ID="BT_Find" runat="server" CssClass="inpu" Text="<%$ Resources:lang,ChaXun%>" OnClick="BT_Find_Click" />)
                                                     </td>
                                                     <td></td>
                                                 </tr>

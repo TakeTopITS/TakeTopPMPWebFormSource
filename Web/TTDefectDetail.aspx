@@ -491,8 +491,8 @@
                                                                                                             <tr>
                                                                                                                 <td class="formItemBgStyleForAlignLeft" style="text-align: left;"><strong>
                                                                                                                     <asp:Label ID="Label32" runat="server" Text="<%$ Resources:lang,CFPJLDZJL %>"></asp:Label>
-                                                                                                                    £¨<span style="font-size: 9pt"><asp:Label ID="Label31" runat="server" Text="<%$ Resources:lang,XuanZeKeZaiShangMianXiuGai %>"></asp:Label>
-                                                                                                                        £©:</span></strong> </td>
+                                                                                                                    (<span style="font-size: 9pt"><asp:Label ID="Label31" runat="server" Text="<%$ Resources:lang,XuanZeKeZaiShangMianXiuGai %>"></asp:Label>
+                                                                                                                        ):</span></strong> </td>
                                                                                                             </tr>
                                                                                                             <tr>
                                                                                                                 <td class="ItemAlignLeft">

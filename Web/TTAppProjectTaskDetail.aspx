@@ -690,7 +690,7 @@
                                                                                             <div class="npbxs">
                                                                                                 <h3>
                                                                                                     <strong>
-                                                                                                        <asp:Label ID="Label49" runat="server" Text="<%$ Resources:lang,CiRenWuFenPaiJiLuZiJiLu %>"></asp:Label>£¨<span style="font-size: 9pt"><asp:Label ID="Label50" runat="server" Text="<%$ Resources:lang,XuanZeKeZaiShangMianXiuGai %>"></asp:Label>£©:</span></strong>
+                                                                                                        <asp:Label ID="Label49" runat="server" Text="<%$ Resources:lang,CiRenWuFenPaiJiLuZiJiLu %>"></asp:Label>(<span style="font-size: 9pt"><asp:Label ID="Label50" runat="server" Text="<%$ Resources:lang,XuanZeKeZaiShangMianXiuGai %>"></asp:Label>):</span></strong>
 
                                                                                                 </h3>
 
@@ -773,11 +773,11 @@
                                     <asp:Label ID="Label26" runat="server" Text="<%$ Resources:lang,DangTianXiangMuRiZhi%>"></asp:Label>
                                 </asp:HyperLink>
 
-                                £¨<asp:Label ID="Label27" runat="server" Text="<%$ Resources:lang,GuanLianXiangMu%>"></asp:Label>:<asp:HyperLink ID="HL_RelatedProjectID"
+                                (<asp:Label ID="Label27" runat="server" Text="<%$ Resources:lang,GuanLianXiangMu%>"></asp:Label>:<asp:HyperLink ID="HL_RelatedProjectID"
                                     runat="server">[HL_RelatedProjectID]</asp:HyperLink>
 
                                 <asp:HyperLink ID="HL_RelatedProjectName" runat="server">[HL_RelatedProjectID]</asp:HyperLink>
-                                £©<asp:Label ID="LB_ProjectID" runat="server" Visible="False"></asp:Label>
+                                )<asp:Label ID="LB_ProjectID" runat="server" Visible="False"></asp:Label>
                                 <asp:Label ID="LB_UserName" runat="server" Visible="False"></asp:Label>
                                 <asp:Label ID="LB_UserCode" runat="server" Visible="False"></asp:Label>
                                 <asp:Label ID="LB_PlanID" runat="server" Visible="False"></asp:Label>

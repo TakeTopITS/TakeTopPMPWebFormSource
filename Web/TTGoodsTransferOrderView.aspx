@@ -219,7 +219,7 @@
                                     <asp:BoundColumn DataField="UnitName" HeaderText="Unit">
                                         <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="8%" />
                                     </asp:BoundColumn>
-                                    <%-- <asp:BoundColumn DataField="WarrantyPeriod" HeaderText="保修期（天）">
+                                    <%-- <asp:BoundColumn DataField="WarrantyPeriod" HeaderText="保修期(天)">
                                                                         <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="8%" />
                                                                     </asp:BoundColumn>
                                                                     <asp:BoundColumn DataField="SN" HeaderText="序列号">

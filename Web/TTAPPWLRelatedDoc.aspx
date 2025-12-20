@@ -573,7 +573,7 @@
                                                                                     <asp:Label ID="Label20" runat="server" Text="<%$ Resources:lang,YaoQiuShouDaoXinXi%>"></asp:Label>
                                                                                     <asp:CheckBox ID="CB_RequiredMail" runat="server"
                                                                                         Font-Size="10pt" Text="<%$ Resources:lang,YouJian%>" />
-                                                                                    <asp:CheckBox ID="CB_RequiredSMS" runat="server" Font-Size="10pt" Text="<%$ Resources:lang,DuanXin%>" />£©
+                                                                                    <asp:CheckBox ID="CB_RequiredSMS" runat="server" Font-Size="10pt" Text="<%$ Resources:lang,DuanXin%>" />)
                                                                                 </span>
                                                                                 <asp:UpdatePanel ID="UpdatePanel7" runat="server" UpdateMode="Conditional">
                                                                                     <ContentTemplate>

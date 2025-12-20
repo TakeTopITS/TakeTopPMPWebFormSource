@@ -43,7 +43,7 @@
                                                             <asp:Label ID="Label2" runat="server" Text="<%$ Resources:lang,XueShengMingChen%>"></asp:Label></td>
                                                         <td align="center" background="ImagesSkin/main_top_bj.jpg" class="titlezi">
                                                             <asp:Label ID="LB_StudentCode" runat="server"></asp:Label>
-                                                            &nbsp;<asp:Label ID="LB_StudentName" runat="server"></asp:Label>£©
+                                                            &nbsp;<asp:Label ID="LB_StudentName" runat="server"></asp:Label>)
                                                         </td>
                                                         <td width="5">
                                                             <%-- <img src="ImagesSkin/main_top_r.jpg" width="5" height="31" />--%>

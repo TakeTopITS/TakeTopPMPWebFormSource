@@ -194,13 +194,13 @@
             }
         }
 
-        function displayBTLogin(varDisplay) {
-            this.document.getElementById("BT_Login").style.display = varDisplay;
-        }
-        function displayLBMessage(varDisplay) {
-            this.document.getElementById("loadingContainer").style.display = varDisplay;
-            this.document.getElementById("LB_Message").style.display = varDisplay;
-        }
+        //function displayBTLogin(varDisplay) {
+        //    this.document.getElementById("BT_Login").style.display = varDisplay;
+        //}
+        //function displayLBMessage(varDisplay) {
+        //    this.document.getElementById("loadingContainer").style.display = varDisplay;
+        //    this.document.getElementById("LB_Message").style.display = varDisplay;
+        //}
 
 
     </script>
@@ -294,8 +294,8 @@
                     <br />
                     <asp:Label ID="LB_Slogon" runat="server"></asp:Label>
 
-                    <iframe id="IF_DBUpgrade" src="TakeTopDBUpgrade.aspx" runat="server">Upgrade Database,please wait...
-                    </iframe>
+                  <%--  <iframe id="IF_DBUpgrade" src="TakeTopDBUpgrade.aspx" runat="server">Upgrade Database,please wait...
+                    </iframe>--%>
 
                 </div>
             </form>
