@@ -280,6 +280,38 @@
                                                     </tr>
                                                 </table>
                                             </td>
+                                            <td width="60px"></td>
+                                            <td width="800px">
+                                                <table style="width:800px;">
+                                                    <tr>
+                                                        <td align="right">AI Seeting:</td>
+                                                        <td>
+                                                            <asp:Label ID="LB_AIType" runat="server" Text="AIType"></asp:Label>
+                                                        </td>
+                                                        <td>
+                                                            <asp:DropDownList ID="DL_AIType" AccessKey="A" runat="server" AutoPostBack="false">
+                                                                <asp:ListItem Value="Local" Text="Local"></asp:ListItem>
+                                                                <asp:ListItem Value="Outer" Text="Outer"></asp:ListItem>
+                                                            </asp:DropDownList>
+                                                        </td>
+                                                        <td>
+                                                            <asp:Label ID="Label4" runat="server" Text="AIURL"></asp:Label>
+                                                        </td>
+                                                        <td>
+                                                            <asp:TextBox ID="TB_AIURL" runat="server" Width="180px"></asp:TextBox>
+                                                        </td>
+                                                        <td>
+                                                            <asp:Label ID="Label15" runat="server" Text="AIModel"></asp:Label>
+                                                        </td>
+                                                        <td>
+                                                            <asp:TextBox ID="TB_AIModel" runat="server" Width="150px"></asp:TextBox>
+                                                        </td>
+                                                        <td>
+                                                            <asp:Button ID="BT_AISave" runat="server" CssClass="inpu" Text="<%$ Resources:lang,BaoCun%>" OnClick="BT_AISave_Click" />
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
                                         </tr>
                                     </table>
 
@@ -902,6 +934,7 @@
                                 <asp:Button ID="TB_ProjectTypeNew" runat="server" CssClass="inpu" OnClick="TB_ProejctTypeNew_Click"
                                     Text="<%$ Resources:lang,BaoCun%>" />
                                 &nbsp;
+                               
                                 <asp:Button ID="BT_ProjectTypeDelete" runat="server" Enabled="false" CssClass="inpu" OnClientClick="return confirmContinue(getDeleteMsgByLangCode(), this, event)" OnClick="BT_ProjectTypeDelete_Click"
                                     Text="<%$ Resources:lang,ShanChu%>" />
                                 <button type="button" class="close-modal" onclick="hideModal('modalProjectType')">
@@ -947,6 +980,7 @@
                                 <asp:Button ID="BT_ProjectStatusNew" runat="server" CssClass="inpu" OnClick="BT_ProjectStatusNew_Click"
                                     Text="<%$ Resources:lang,BaoCun%>" />
                                 &nbsp;
+                               
                                 <asp:Button ID="BT_ProjectStatusDelete" runat="server" CssClass="inpu" OnClientClick="return confirmContinue(getDeleteMsgByLangCode(), this, event)" OnClick="BT_ProjectStatusDelete_Click"
                                     Text="<%$ Resources:lang,ShanChu%>" />
                                 <button type="button" class="close-modal" onclick="hideModal('modalProjectStatus')">
@@ -973,6 +1007,7 @@
                             <div class="modal-footer">
                                 <asp:Button ID="BT_TaskStatusNew" runat="server" CssClass="inpu" OnClick="BT_TaskStatusNew_Click" Text="<%$ Resources:lang,BaoCun%>" />
                                 &nbsp;
+                               
                                 <asp:Button ID="BT_TaskStatusDelete" runat="server" CssClass="inpu" OnClick="BT_TaskStatusDelete_Click" OnClientClick="return confirmContinue(getDeleteMsgByLangCode(), this, event)" Text="<%$ Resources:lang,ShanChu%>" />
                                 <button type="button" class="close-modal" onclick="hideModal('modalTaskStatus')">
                                     <asp:Label ID="LabelClose3" runat="server" Text="<%$ Resources:lang,GuanBi%>"></asp:Label>
@@ -998,6 +1033,7 @@
                             <div class="modal-footer">
                                 <asp:Button ID="BT_PlanStatusNew" runat="server" CssClass="inpu" OnClick="BT_PlanStatusNew_Click" Text="<%$ Resources:lang,BaoCun%>" />
                                 &nbsp;
+                               
                                 <asp:Button ID="BT_PlanStatusDelete" runat="server" CssClass="inpu" OnClick="BT_PlanStatusDelete_Click" OnClientClick="return confirmContinue(getDeleteMsgByLangCode(), this, event)" Text="<%$ Resources:lang,ShanChu%>" />
                                 <button type="button" class="close-modal" onclick="hideModal('modalPlanStatus')">
                                     <asp:Label ID="LabelClose4" runat="server" Text="<%$ Resources:lang,GuanBi%>"></asp:Label>
@@ -1023,6 +1059,7 @@
                             <div class="modal-footer">
                                 <asp:Button ID="BT_TestStatusNew" runat="server" CssClass="inpu" OnClick="BT_TestStatusNew_Click" Text="<%$ Resources:lang,BaoCun%>" />
                                 &nbsp;
+                               
                                 <asp:Button ID="BT_TestStatusDelete" runat="server" CssClass="inpu" OnClick="BT_TestStatusDelete_Click" OnClientClick="return confirmContinue(getDeleteMsgByLangCode(), this, event)" Text="<%$ Resources:lang,ShanChu%>" />
                                 <button type="button" class="close-modal" onclick="hideModal('modalTestStatus')">
                                     <asp:Label ID="LabelClose5" runat="server" Text="<%$ Resources:lang,GuanBi%>"></asp:Label>

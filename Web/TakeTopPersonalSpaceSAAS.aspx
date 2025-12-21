@@ -376,10 +376,10 @@
         <form id="form1" runat="server">
             <asp:ScriptManager ID="ScriptManager1" runat="server" />
             <div id="divGuide" class="nav">
-             <%--   <asp:Timer ID="Timer1" OnTick="Timer1_Tick" runat="server" Interval="15000" />--%>
+                <%--   <asp:Timer ID="Timer1" OnTick="Timer1_Tick" runat="server" Interval="15000" />--%>
                 <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
                     <Triggers>
-                    <%--    <asp:AsyncPostBackTrigger ControlID="Timer1" />--%>
+                        <%--    <asp:AsyncPostBackTrigger ControlID="Timer1" />--%>
                     </Triggers>
                     <ContentTemplate>
                         <ul id="navlist">
@@ -414,6 +414,18 @@
                         <td width="40px" class="ItemAlignLeft" style="padding-top: 7px; padding-bottom: 5px;">
                             <a runat="server" class="titleSpan" href="javascript:top.frames[0].frames[2].parent.frames['rightTabFrame'].popShowByURL('TTAPPQRCodeForLocalSAAS.aspx', '', 800, 600,window.location);">
                                 <img src="ImagesSkin/App.png" width="22" height="22"></a>
+                        </td>
+                        <td width="40px" align="center" style="padding-top: 7px; padding-bottom: 5px;">
+                            <%--  <asp:HyperLink ID="HL_AIURL" runat="server" NavigateUrl="https://www.deepseek.com" Target="_blank" Visible="false">
+                                   <img src="ImagesSkin/AI.png" width="22" height="22" alt="">
+                             </asp:HyperLink>--%>
+
+                            <a id="HL_AIURL" runat="server" class="titleSpan" href="javascript:top.frames[0].frames[2].parent.frames['rightTabFrame'].openRightLayer('https://www.deepseek.com','TakeTopAI');" visible="false">
+                                <img src="ImagesSkin/AI.png" width="22" height="22" alt="">
+                            </a>
+                            <a id="a_AIURL" runat="server" class="titleSpan" href="javascript:top.frames[0].frames[2].parent.frames['rightTabFrame'].openRightLayer('TTAIHandlerByDeepSeek.aspx','TakeTopAI');" visible="false">
+                                <img src="ImagesSkin/AI.png" width="22" height="22" alt="">
+                            </a>
                         </td>
                         <td width="10px">&nbsp;</td>
                         <td class="ItemAlignLeft" style="padding-top: 7px; padding-bottom: 0px;">
@@ -485,6 +497,7 @@
                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
                             <tr>
                                 <td class="ItemAlignLeft" style="padding-top: 40px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;请用微信扫描下面二维码关注:项目宝 公众号，并在公众号中点击: 登录使用  菜单，登录【项目宝】的微信端APP，登录后可以在手机中使用此APP和接受平台各种消息！
+                                   
                                     <br />
                                     <br />
                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;登录APP后，此提示信息将不会再显示！

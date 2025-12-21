@@ -44,6 +44,9 @@ public partial class TakeTopPersonalSpaceSAAS : System.Web.UI.Page
             //    Session["IsUpdatePersonalSpace"] = null;
             //}
 
+            //设置AI接口URL
+            SetAIURL();
+
             LB_UserName.Text = ShareClass.GetUserName(strUserCode);
 
             string strProductType = System.Configuration.ConfigurationManager.AppSettings["ProductType"];
@@ -193,6 +196,35 @@ public partial class TakeTopPersonalSpaceSAAS : System.Web.UI.Page
             Page.Response.Expires = 0;
             Page.Response.CacheControl = "no-cache";
             Page.Response.Cache.SetNoStore();
+        }
+    }
+
+    //设置AI接口URL
+    public void SetAIURL()
+    {
+        string strAIType, strAIURL;
+        string strHQL;
+
+        strHQL = "Select AIType,URL,Model From T_AIInterface";
+        DataSet ds = ShareClass.GetDataSetFromSql(strHQL, "T_AIInterface");
+        if (ds.Tables[0].Rows.Count > 0)
+        {
+            strAIType = ds.Tables[0].Rows[0]["AIType"].ToString().Trim();
+            strAIURL = ds.Tables[0].Rows[0]["URL"].ToString().Trim();
+
+            if (strAIType == "Outer")
+            {
+                HL_AIURL.Visible = true;
+                //HL_AIURL.NavigateUrl = strAIURL;
+
+                a_AIURL.Visible = false;
+            }
+            else
+            {
+                a_AIURL.Visible = true;
+
+                HL_AIURL.Visible = false;
+            }
         }
     }
 

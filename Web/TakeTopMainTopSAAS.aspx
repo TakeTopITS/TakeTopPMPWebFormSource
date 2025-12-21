@@ -291,6 +291,19 @@
                                                                 </a>
                                                             </td>
                                                             <td width="10px">&nbsp;</td>
+                                                            <td width="20px" align="left">
+                                                                <%--  <asp:HyperLink ID="HL_AIURL" runat="server" NavigateUrl="https://www.deepseek.com" Target="_blank" Visible="false">
+                                                                    <img src="ImagesSkin/AI.png" width="22" height="22" alt="">
+                                                                </asp:HyperLink>--%>
+
+                                                                <a id="HL_AIURL" runat="server" class="titleSpan" href="javascript:top.frames[0].frames[2].parent.frames['rightTabFrame'].openRightLayer('https://www.deepseek.com','TakeTopAI');" visible="false">
+                                                                    <img src="ImagesSkin/AI.png" width="22" height="22" alt="">
+                                                                </a>
+                                                                <a id="a_AIURL" runat="server" class="titleSpan" href="javascript:top.frames[0].frames[2].parent.frames['rightTabFrame'].openRightLayer('TTAIHandlerByDeepSeek.aspx','TakeTopAI');" visible="false">
+                                                                    <img src="ImagesSkin/AI.png" width="22" height="22" alt="">
+                                                                </a>
+                                                            </td>
+                                                            <td width="10px">&nbsp;</td>
                                                             <td width="40px" align="center" style="padding-top: 0px; padding-bottom: 5px;">
                                                                 <asp:ImageButton ID="IM_ExitSystem" ImageUrl="ImagesSkin/exit.png" Width="25" Height="23" OnClientClick="javascript:return confirmExit(getExitMsgByLangCode(), this, event, 'Default.aspx');" runat="server" />
                                                             </td>
@@ -371,13 +384,18 @@
                     <div style="display: none;">
                         <asp:Label ID="LB_Copyright" runat="server"></asp:Label>
                         &nbsp;
+                       
                         <asp:Label ID="Label1" runat="server" Text="<%$ Resources:lang,Version%>" Visible="false"></asp:Label>:<asp:Label ID="LB_VerType" runat="server" Visible="false"></asp:Label>
                         &nbsp;
+                       
                         <asp:Label ID="Label2" runat="server" Text="<%$ Resources:lang,CurrentUser%>"></asp:Label>:<asp:Label
                             ID="LB_CurrentUserName" runat="server"></asp:Label>&nbsp;&nbsp;
+                       
                         <asp:Label ID="Label4" runat="server" Text="<%$ Resources:lang,SystemMessage%>"></asp:Label>:
+                       
                         <div id='blink' style="display: none;">
                             <a href="TTUnHandledCaseMain.aspx" target="_blank">+
+                               
                                 <asp:Label ID="LB_UnHandledCase" runat="server" Target="_blank" Enabled="false"></asp:Label>
                             </a>
                         </div>

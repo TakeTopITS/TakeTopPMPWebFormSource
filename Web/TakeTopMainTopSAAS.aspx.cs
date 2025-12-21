@@ -26,8 +26,8 @@ public partial class TakeTopMainTopSAAS : System.Web.UI.Page
         //ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "clickParentA", "aHandlerForSpecialPopWindow();", true);
         if (Page.IsPostBack == false)
         {
-            ////设置AI接口URL
-            //SetAIURL();
+            //设置AI接口URL
+            SetAIURL();
 
 
             strUserName = ShareClass.GetUserName(strUserCode);
@@ -60,19 +60,18 @@ public partial class TakeTopMainTopSAAS : System.Web.UI.Page
             strAIType = ds.Tables[0].Rows[0]["AIType"].ToString().Trim();
             strAIURL = ds.Tables[0].Rows[0]["URL"].ToString().Trim();
 
-            //if (strAIType == "Outer")
-            //{
-            //    HL_AIURL.Visible = true;
-            //    //HL_AIURL.NavigateUrl = strAIURL;
+            if (strAIType == "Outer")
+            {
+                HL_AIURL.Visible = true;
 
-            //    a_AIURL.Visible = false;
-            //}
-            //else
-            //{
-            //    a_AIURL.Visible = true;
+                a_AIURL.Visible = false;
+            }
+            else
+            {
+                a_AIURL.Visible = true;
 
-            //    HL_AIURL.Visible = false;
-            //}
+                HL_AIURL.Visible = false;
+            }
         }
     }
 
