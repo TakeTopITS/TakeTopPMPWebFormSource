@@ -416,10 +416,7 @@
                                 <img src="ImagesSkin/App.png" width="22" height="22"></a>
                         </td>
                         <td width="40px" align="center" style="padding-top: 7px; padding-bottom: 5px;">
-                            <%--  <asp:HyperLink ID="HL_AIURL" runat="server" NavigateUrl="https://www.deepseek.com" Target="_blank" Visible="false">
-                                   <img src="ImagesSkin/AI.png" width="22" height="22" alt="">
-                             </asp:HyperLink>--%>
-
+                          
                             <a id="HL_AIURL" runat="server" class="titleSpan" href="javascript:top.frames[0].frames[2].parent.frames['rightTabFrame'].openRightLayer('https://www.deepseek.com','TakeTopAI');" visible="false">
                                 <img src="ImagesSkin/AI.png" width="22" height="22" alt="">
                             </a>

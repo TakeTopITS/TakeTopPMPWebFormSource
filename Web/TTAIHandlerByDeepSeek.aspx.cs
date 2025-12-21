@@ -1,13 +1,16 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
-using System.Data;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Newtonsoft.Json;
 
 public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
 {
@@ -21,6 +24,9 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
         public string Error { get; set; }
     }
 
+    // 新增：AI服务器状态
+    private bool _aiServerAvailable = false;
+
     protected void Page_Load(object sender, EventArgs e)
     {
         // CKEditor initialization
@@ -32,9 +38,114 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
 
         if (!IsPostBack)
         {
-            // Load configuration
+            // Load configuration and check AI server
             LoadConfig();
+
+            // 新增：检查AI服务器状态
+            _aiServerAvailable = CheckAIServerAvailable();
+
+            // 更新服务器状态显示
+            UpdateAIServerStatusDisplay();
+
             txtPrompt.Focus();
+        }
+    }
+
+    // 新增：更新AI服务器状态显示
+    private void UpdateAIServerStatusDisplay()
+    {
+        if (_aiServerAvailable)
+        {
+            // AI服务器可用，显示成功状态
+            aiServerStatusContainer.Visible = true;
+            aiServerStatusContainer.Attributes["class"] = "ai-server-status success";
+            lblAIServerStatus.Text = "✅ AI Server is available and ready to use.";
+        }
+        else
+        {
+            // AI服务器不可用，显示错误状态
+            aiServerStatusContainer.Visible = true;
+            aiServerStatusContainer.Attributes["class"] = "ai-server-status error";
+            lblAIServerStatus.Text = "⚠️ No valid AI server found. Please contact the system administrator for installation.";
+        }
+    }
+
+    // 新增：检查AI服务器是否可用
+    private bool CheckAIServerAvailable()
+    {
+        try
+        {
+            // 1. 从数据库获取配置
+            string strHQL = "Select AIType, URL, Model From T_AIInterface";
+            DataSet ds = ShareClass.GetDataSetFromSql(strHQL, "T_AIInterface");
+
+            if (ds.Tables[0].Rows.Count == 0)
+            {
+                return false; // 没有配置
+            }
+
+            string strAIType = ds.Tables[0].Rows[0]["AIType"].ToString().Trim();
+            string strAIURL = ds.Tables[0].Rows[0]["URL"].ToString().Trim();
+            string strAIModel = ds.Tables[0].Rows[0]["Model"].ToString().Trim();
+
+            if (strAIType != "Local")
+            {
+                return false; // 只支持本地模式
+            }
+
+            // 2. 测试Ollama服务器连接
+            return TestOllamaConnection(strAIURL, strAIModel);
+        }
+        catch
+        {
+            return false;
+        }
+    }
+
+    // 新增：测试Ollama连接
+    private bool TestOllamaConnection(string apiUrl, string aiModel)
+    {
+        try
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                client.Timeout = TimeSpan.FromSeconds(10); // 较短的超时时间用于测试
+
+                // 测试OpenAI兼容接口
+                var testRequestBody = new
+                {
+                    model = aiModel, // 使用实际配置的模型名
+                    messages = new[]
+                    {
+                        new { role = "user", content = "test" }
+                    },
+                    max_tokens = 1,
+                    stream = false
+                };
+
+                string jsonContent = JsonConvert.SerializeObject(testRequestBody);
+                HttpContent httpContent = new StringContent(jsonContent, Encoding.UTF8, "application/json");
+
+                var response = client.PostAsync(apiUrl, httpContent).Result;
+
+                // 只要服务器响应（即使是错误），就说明服务器存在
+                return response != null;
+            }
+        }
+        catch (HttpRequestException httpEx)
+        {
+            // HTTP请求异常，可能是服务器不存在
+            return false;
+        }
+        catch (TaskCanceledException)
+        {
+            // 超时，服务器可能未响应
+            return false;
+        }
+        catch
+        {
+            // 其他异常
+            return false;
         }
     }
 
@@ -53,14 +164,16 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
             }
             else
             {
+                // 修改：使用正确的Ollama OpenAI兼容接口
                 txtDeepSeekApi.Text = "http://localhost:11434/v1/chat/completions";
-                txtModel.Text = "deepseek-chat";
+                txtModel.Text = "llama3.2"; // 请根据实际安装的模型修改
             }
         }
         catch
         {
+            // 修改：使用正确的Ollama OpenAI兼容接口
             txtDeepSeekApi.Text = "http://localhost:11434/v1/chat/completions";
-            txtModel.Text = "deepseek-chat";
+            txtModel.Text = "llama3.2"; // 请根据实际安装的模型修改
         }
     }
 
@@ -68,6 +181,12 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
 
     protected void BT_Simple_Click(object sender, EventArgs e)
     {
+        // 检查AI服务器
+        if (!_aiServerAvailable)
+        {
+            // 不需要弹出窗口，状态已经在页面顶端显示
+        }
+
         divDataAnalysisMode.Visible = false;
         divSimpleMode.Visible = true;
 
@@ -78,6 +197,12 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
 
     protected void BT_DataAnalysis_Click(object sender, EventArgs e)
     {
+        // 检查AI服务器
+        if (!_aiServerAvailable)
+        {
+            // 不需要弹出窗口，状态已经在页面顶端显示
+        }
+
         divDataAnalysisMode.Visible = true;
         divSimpleMode.Visible = false;
 
@@ -88,6 +213,13 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
 
     protected void btnGenerateText_Click(object sender, EventArgs e)
     {
+        // 检查AI服务器
+        if (!_aiServerAvailable)
+        {
+            lblGeneratedText.Text = "⚠️ AI Server is not available. Please contact the supplier for installation.";
+            return;
+        }
+
         string localApiUrl, result;
         string strAIType, strAIURL;
 
@@ -112,10 +244,11 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
 
                 if (strAIType == "Local")
                 {
-                    // DeepSeek or Ollama local API URL
-                    localApiUrl = strAIURL + "/api/generate"; // Ollama default API URL
+                    // 修改：直接使用配置的URL（应该是 http://localhost:11434/v1/chat/completions）
+                    localApiUrl = strAIURL;
 
-                    result = CallLocalApi(localApiUrl);
+                    // 修改：调用修正后的方法
+                    result = CallOllamaAPI(localApiUrl);
 
                     // Display result
                     lblGeneratedText.Text = result;
@@ -137,7 +270,8 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
         }
     }
 
-    private string CallLocalApi(string apiUrl)
+    // 修改：重写这个方法以正确调用Ollama的OpenAI兼容接口
+    private string CallOllamaAPI(string apiUrl)
     {
         string strAIModel;
         string strHQL;
@@ -152,11 +286,20 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
 
                 using (HttpClient client = new HttpClient())
                 {
-                    // Example request body
+                    // 设置较长的超时时间，因为本地模型可能需要更长时间
+                    client.Timeout = TimeSpan.FromSeconds(300);
+
+                    // 修改：使用OpenAI兼容的请求格式
                     var requestBody = new
                     {
                         model = strAIModel,
-                        prompt = txtPrompt.Text
+                        messages = new[]
+                        {
+                            new { role = "user", content = txtPrompt.Text }
+                        },
+                        stream = false,
+                        temperature = 0.7,
+                        max_tokens = 2000
                     };
 
                     string jsonContent = Newtonsoft.Json.JsonConvert.SerializeObject(requestBody);
@@ -169,63 +312,97 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
                     {
                         string jsonString = response.Content.ReadAsStringAsync().Result;
 
-                        jsonString = jsonString.Replace("\\u003cthink\\u003e", "").Replace("\\u003c/think\\u003e", "");
-                        jsonString = jsonString.Replace("***", "");
-                        jsonString = jsonString.Replace("**", "");
-                        jsonString = jsonString.Replace("###", "");
-                        jsonString = jsonString.Replace("##", "");
-                        jsonString = jsonString.Replace("\\n", "<br>");
+                        // 清理JSON字符串
+                        jsonString = CleanJsonString(jsonString);
 
-                        // Extract all strings after "response":
-                        List<string> responses = new List<string>();
-                        int index = 0;
+                        // 解析响应
+                        dynamic responseData = JsonConvert.DeserializeObject(jsonString);
 
-                        while (true)
+                        // 从OpenAI兼容格式中提取内容
+                        string result = "";
+
+                        // 方式1：优先使用 choices[0].message.content
+                        if (responseData.choices != null && responseData.choices.Count > 0 &&
+                            responseData.choices[0].message != null &&
+                            responseData.choices[0].message.content != null)
                         {
-                            // Find position of "response":"
-                            int startIndex = jsonString.IndexOf(@"""response"":""", index);
-                            if (startIndex == -1) break;
-
-                            // Skip length of "response":"
-                            startIndex += @"""response"":""".Length;
-
-                            // Find next double quote position
-                            int endIndex = jsonString.IndexOf(@"""", startIndex);
-                            if (endIndex == -1) break;
-
-                            // Extract response value
-                            string responseItem = jsonString.Substring(startIndex, endIndex - startIndex);
-                            responses.Add(responseItem);
-
-                            // Update search starting position
-                            index = endIndex + 1;
+                            result = responseData.choices[0].message.content.ToString();
+                        }
+                        // 方式2：尝试直接提取response字段（向后兼容）
+                        else if (responseData.response != null)
+                        {
+                            result = responseData.response.ToString();
+                        }
+                        // 方式3：尝试直接提取content字段
+                        else if (responseData.content != null)
+                        {
+                            result = responseData.content.ToString();
+                        }
+                        else
+                        {
+                            result = "Error: Could not parse response from Ollama.";
                         }
 
-                        // Join all response values with space
-                        string combinedResponse = string.Join("", responses);
-
-                        return combinedResponse;
+                        // 清理和格式化结果
+                        result = CleanAndFormatResult(result);
+                        return result;
                     }
                     else
                     {
-                        return "Error";
+                        return $"Error: API call failed with status {response.StatusCode}. {response.ReasonPhrase}";
                     }
                 }
             }
             else
             {
-                return "Error";
+                return "Error: No AI configuration found.";
             }
         }
         catch (Exception ex)
         {
-            return ex.Message;
+            return $"Error: {ex.Message}";
         }
+    }
+
+    // 新增：清理JSON字符串
+    private string CleanJsonString(string jsonString)
+    {
+        if (string.IsNullOrEmpty(jsonString))
+            return jsonString;
+
+        // 替换常见的转义字符
+        return jsonString.Replace("\\u003cthink\\u003e", "")
+                         .Replace("\\u003c/think\\u003e", "")
+                         .Replace("\\u003c", "<")
+                         .Replace("\\u003e", ">")
+                         .Replace("\\\"", "\"")
+                         .Replace("\\n", "\n")
+                         .Replace("\\t", "\t")
+                         .Replace("\\r", "\r");
+    }
+
+    // 新增：清理和格式化结果
+    private string CleanAndFormatResult(string result)
+    {
+        if (string.IsNullOrEmpty(result))
+            return result;
+
+        // 移除多余的标记
+        result = result.Replace("***", "")
+                       .Replace("**", "")
+                       .Replace("###", "")
+                       .Replace("##", "");
+
+        // 将换行符转换为HTML换行
+        result = result.Replace("\n", "<br>")
+                       .Replace("\r\n", "<br>");
+
+        return result;
     }
 
     protected void btnStopAI_Click(object sender, EventArgs e)
     {
-        // Stop logic
+        // Stop logic - 可留空或实现停止逻辑
     }
 
     // ==================== New Data Analysis Functionality ====================
@@ -350,6 +527,17 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
     // Start data analysis
     protected void btnStartAnalysis_Click(object sender, EventArgs e)
     {
+        // 检查AI服务器
+        if (!_aiServerAvailable)
+        {
+            litSummary.Text = "<div style='color: orange; padding: 20px; font-weight: bold;'>⚠️ AI Server is not available. Please contact the supplier for installation.</div>";
+
+            // 显示结果区域
+            ScriptManager.RegisterStartupScript(this, GetType(), "ShowResultSection",
+                "showResultSection();", true);
+            return;
+        }
+
         try
         {
             // Get selected tables
@@ -422,11 +610,11 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
             // 3. Build analysis prompt
             var prompt = BuildAnalysisPrompt(selectedTables, txtAnalysisRequirement.Text.Trim(), metadata);
 
-            // 4. Call DeepSeek
-            var deepSeekResponse = CallDeepSeekForAnalysis(aiConfig, prompt);
+            // 4. Call Ollama for analysis (修改：使用修正后的方法)
+            var ollamaResponse = CallOllamaForAnalysis(aiConfig, prompt);
 
             // 5. Parse response
-            var analysis = ParseAnalysisResponse(deepSeekResponse);
+            var analysis = ParseAnalysisResponse(ollamaResponse);
 
             result.Summary = analysis.Summary;
             result.Insights = analysis.Insights;
@@ -566,25 +754,31 @@ Please provide a detailed analysis report including:
 Please respond in English, provide specific, actionable suggestions.";
     }
 
-    // Call DeepSeek for analysis
-    private string CallDeepSeekForAnalysis(AIConfig config, string prompt)
+    // 修改：重写这个方法以正确调用Ollama
+    private string CallOllamaForAnalysis(AIConfig config, string prompt)
     {
         if (config.AIType != "Local")
         {
-            throw new Exception("Only local DeepSeek analysis is supported");
+            throw new Exception("Only local Ollama analysis is supported");
         }
 
-        string apiUrl = config.URL + "/api/generate";
+        string apiUrl = config.URL; // 应该是 http://localhost:11434/v1/chat/completions
 
         using (HttpClient client = new HttpClient())
         {
             client.Timeout = TimeSpan.FromSeconds(300);
 
+            // 修改：使用OpenAI兼容的请求格式
             var requestBody = new
             {
                 model = config.Model,
-                prompt = prompt,
-                stream = false
+                messages = new[]
+                {
+                    new { role = "user", content = prompt }
+                },
+                stream = false,
+                temperature = 0.3, // 分析任务使用较低的温度以获得更确定的输出
+                max_tokens = 4000 // 分析任务可能需要更长的输出
             };
 
             string jsonContent = JsonConvert.SerializeObject(requestBody);
@@ -596,19 +790,34 @@ Please respond in English, provide specific, actionable suggestions.";
             if (response.IsSuccessStatusCode)
             {
                 string jsonString = response.Content.ReadAsStringAsync().Result;
+                jsonString = CleanJsonString(jsonString);
                 dynamic responseData = JsonConvert.DeserializeObject(jsonString);
 
-                if (responseData.response != null)
-                {
-                    return responseData.response.ToString();
-                }
-                else if (responseData.choices != null && responseData.choices.Count > 0)
+                // 从OpenAI兼容格式中提取内容
+                if (responseData.choices != null && responseData.choices.Count > 0 &&
+                    responseData.choices[0].message != null &&
+                    responseData.choices[0].message.content != null)
                 {
                     return responseData.choices[0].message.content.ToString();
                 }
+                else if (responseData.response != null)
+                {
+                    return responseData.response.ToString();
+                }
+                else if (responseData.content != null)
+                {
+                    return responseData.content.ToString();
+                }
+                else
+                {
+                    throw new Exception("Could not parse response from Ollama: Invalid response format");
+                }
             }
-
-            throw new Exception("DeepSeek API call failed");
+            else
+            {
+                string errorContent = response.Content.ReadAsStringAsync().Result;
+                throw new Exception($"Ollama API call failed with status {response.StatusCode}. Response: {errorContent}");
+            }
         }
     }
 
@@ -617,24 +826,70 @@ Please respond in English, provide specific, actionable suggestions.";
     {
         var result = new AnalysisResult();
 
-        // Simple parsing: extract summary (first 500 characters)
+        if (string.IsNullOrEmpty(response))
+        {
+            result.Summary = "No response received from AI analysis.";
+            result.Insights = "No insights available.";
+            result.Recommendations = "No recommendations available.";
+            return result;
+        }
+
+        // 清理响应
+        response = CleanAndFormatResult(response);
+
+        // 简单解析：提取摘要（前500字符）
         if (response.Length > 500)
         {
-            result.Summary = response.Substring(0, 500) + "...";
+            // 尝试找到第一个自然段落结束
+            int endIndex = response.IndexOf("。", 300);
+            if (endIndex > 0)
+            {
+                result.Summary = response.Substring(0, endIndex + 1) + "...";
+            }
+            else
+            {
+                result.Summary = response.Substring(0, 500) + "...";
+            }
         }
         else
         {
             result.Summary = response;
         }
 
-        // Full response as detailed insights
+        // 完整响应作为详细洞察
         result.Insights = response;
 
-        // Try to extract suggestions part
-        if (response.Contains("Suggestions"))
+        // 尝试提取建议部分
+        if (response.Contains("Suggestions") || response.Contains("建议"))
         {
-            int startIndex = response.IndexOf("Suggestions");
-            result.Recommendations = response.Substring(startIndex);
+            int startIndex = Math.Max(
+                response.LastIndexOf("Suggestions"),
+                response.LastIndexOf("建议")
+            );
+            if (startIndex > 0)
+            {
+                result.Recommendations = response.Substring(startIndex);
+            }
+            else
+            {
+                result.Recommendations = response;
+            }
+        }
+        else if (response.Contains("3.") || response.Contains("三、"))
+        {
+            // 尝试根据序号提取第三部分（通常是建议）
+            int startIndex = Math.Max(
+                response.LastIndexOf("3."),
+                response.LastIndexOf("三、")
+            );
+            if (startIndex > 0)
+            {
+                result.Recommendations = response.Substring(startIndex);
+            }
+            else
+            {
+                result.Recommendations = response;
+            }
         }
         else
         {
@@ -943,7 +1198,7 @@ Please respond in English, provide specific, actionable suggestions.";
     {
         try
         {
-            // Save DeepSeek configuration
+            // Save Ollama configuration
             string checkSql = "SELECT COUNT(*) FROM T_AIInterface";
             DataSet ds = ShareClass.GetDataSetFromSql(checkSql, "TempTable");
             int count = 0;

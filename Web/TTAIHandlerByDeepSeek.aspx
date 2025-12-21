@@ -360,6 +360,29 @@
             margin-bottom: 20px;
         }
     </style>
+    <!-- 添加CSS样式（可以在页面的<style>标签中或外部CSS文件中） -->
+    <style>
+        .ai-server-status {
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+            font-size: 14px;
+        }
+
+            .ai-server-status.success {
+                background-color: #d4edda;
+                border: 1px solid #c3e6cb;
+                color: #155724;
+            }
+
+            .ai-server-status.error {
+                background-color: #f8d7da;
+                border: 1px solid #f5c6cb;
+                color: #721c24;
+            }
+    </style>
     <script>
         // Result tab switching
         function showResultTab(tabName, e) {
@@ -574,6 +597,13 @@
     <form id="form1" runat="server">
         <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">
         </asp:ScriptManager>
+        <!-- 在页面顶部添加AI服务器状态显示 -->
+        <div id="aiServerStatusContainer" runat="server" visible="false"
+            style="margin: 10px 0; padding: 15px; border-radius: 5px; font-weight: bold; text-align: center;">
+            <asp:Label ID="lblAIServerStatus" runat="server"></asp:Label>
+        </div>
+
+
 
         <!-- Container outside UpdatePanel -->
         <div class="container">

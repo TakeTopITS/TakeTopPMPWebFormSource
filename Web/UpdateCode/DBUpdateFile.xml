@@ -15357,10 +15357,16 @@ GRANT ALL ON TABLE public.v_projectmember_workload TO postgres;</SQLText>
 	langcode, language, sortnumber)
 	VALUES ('th', 'แปลเป็นภาษาไทย', 4);</SQLText>
   </DataBaseUpgradeFile>
-
- <DataBaseUpgradeFile>
+  <DataBaseUpgradeFile>
     <ID>3900</ID>
     <SQLText>Delete From public.t_relateduser Where UserCode Not in (Select UserCode From T_ProjectMember);</SQLText>
   </DataBaseUpgradeFile>
-
+  <DataBaseUpgradeFile>
+    <ID>3901</ID>
+    <SQLText>-- 如果有记录但需要更新
+UPDATE T_AIInterface 
+SET URL = 'http://localhost:11434/v1/chat/completions',
+    Model = 'deepseek-r1:1.5b'
+WHERE AIType = 'Local';</SQLText>
+  </DataBaseUpgradeFile>
 </DataBaseUpgradeFiles>
