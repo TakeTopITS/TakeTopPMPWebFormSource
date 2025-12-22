@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
@@ -59,14 +58,14 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
             // AI服务器可用，显示成功状态
             aiServerStatusContainer.Visible = true;
             aiServerStatusContainer.Attributes["class"] = "ai-server-status success";
-            lblAIServerStatus.Text = "✅ AI Server is available and ready to use.";
+            lblAIServerStatus.Text = LanguageHandle.GetWord("DSeekAIServerAvailable");
         }
         else
         {
             // AI服务器不可用，显示错误状态
             aiServerStatusContainer.Visible = true;
             aiServerStatusContainer.Attributes["class"] = "ai-server-status error";
-            lblAIServerStatus.Text = "⚠️ No valid AI server found. Please contact the system administrator for installation.";
+            lblAIServerStatus.Text = LanguageHandle.GetWord("DSeekNoValidAIServer");
         }
     }
 
@@ -216,7 +215,7 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
         // 检查AI服务器
         if (!_aiServerAvailable)
         {
-            lblGeneratedText.Text = "⚠️ AI Server is not available. Please contact the supplier for installation.";
+            lblGeneratedText.Text = LanguageHandle.GetWord("DSeekAIServerNotAvailable");
             return;
         }
 
@@ -229,7 +228,7 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
 
         if (txtPrompt.Text.Trim() == "")
         {
-            lblGeneratedText.Text = "Prompt can't be empty!";
+            lblGeneratedText.Text = LanguageHandle.GetWord("DSeekPromptCantBeEmpty");
             return;
         }
 
@@ -340,7 +339,7 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
                         }
                         else
                         {
-                            result = "Error: Could not parse response from Ollama.";
+                            result = LanguageHandle.GetWord("DSeekCouldNotParseResponseFromOllama");
                         }
 
                         // 清理和格式化结果
@@ -349,18 +348,18 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
                     }
                     else
                     {
-                        return $"Error: API call failed with status {response.StatusCode}. {response.ReasonPhrase}";
+                        return LanguageHandle.GetWord("DSeekAPICallFailedWithStatus") + $"{response.StatusCode}. " + $"{response.ReasonPhrase}";
                     }
                 }
             }
             else
             {
-                return "Error: No AI configuration found.";
+                return LanguageHandle.GetWord("DSeekNoAIConfigurationFound");
             }
         }
         catch (Exception ex)
         {
-            return $"Error: {ex.Message}";
+            return LanguageHandle.GetWord("DSeekError") + $"{ex.Message}";
         }
     }
 
@@ -415,7 +414,7 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
             var tableNames = txtTableNames.Text.Trim();
             if (string.IsNullOrEmpty(tableNames))
             {
-                ShowMessage("Please enter table names", "warning");
+                ShowMessage(LanguageHandle.GetWord("DSeekPleaseEnterTableNames"), "warning");
                 return;
             }
 
@@ -426,7 +425,7 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
 
             if (tables.Count == 0)
             {
-                ShowMessage("No valid table names found", "warning");
+                ShowMessage(LanguageHandle.GetWord("DSeekNoValidTableNamesFound"), "warning");
                 return;
             }
 
@@ -458,7 +457,7 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
                             INSERT INTO T_DBTablesForAI (TableName, Description, CreatedBy, CreatedAt, IsActive)
                             VALUES ('{0}', '{1}', '{2}', '{3}', true)",
                             EscapeSql(tableName),
-                            EscapeSql($"Table added through interface - {now:yyyy-MM-dd}"),
+                            EscapeSql(LanguageHandle.GetWord("DSeekTableAddedThroughInterface") + " - " + $"{now:yyyy-MM-dd}"),
                             EscapeSql(currentUser),
                             now.ToString("yyyy-MM-dd HH:mm:ss"));
 
@@ -472,14 +471,14 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
                 }
             }
 
-            ShowMessage($"Save successful! Saved {savedCount} tables to database", "success");
+            ShowMessage(LanguageHandle.GetWord("DSeekSaveSuccessfulSaved") + $"{savedCount} " + LanguageHandle.GetWord("DSeekTablesToDatabase"), "success");
 
             // Clear input box
             txtTableNames.Text = "";
         }
         catch (Exception ex)
         {
-            ShowMessage($"Save failed: {ex.Message}", "error");
+            ShowMessage(LanguageHandle.GetWord("DSeekSaveFailed") + $"{ex.Message}", "error");
         }
     }
 
@@ -504,7 +503,7 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
                 string text = tableName;
                 if (!string.IsNullOrEmpty(description))
                 {
-                    text += $" - {description}";
+                    text += " - " + $"{description}";
                 }
 
                 cblTables.Items.Add(new ListItem(text, tableName));
@@ -516,11 +515,11 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
             string script = "updateSelectedTables();";
             ScriptManager.RegisterStartupScript(this, GetType(), "UpdateTableSelection", script, true);
 
-            ShowMessage($"Load successful! Loaded {ds.Tables[0].Rows.Count} tables", "success");
+           // ShowMessage(LanguageHandle.GetWord("DSeekLoadSuccessfulLoaded") + $"{ds.Tables[0].Rows.Count} " + LanguageHandle.GetWord("DSeekTables"), "success");
         }
         catch (Exception ex)
         {
-            ShowMessage($"Load failed: {ex.Message}", "error");
+            ShowMessage(LanguageHandle.GetWord("DSeekLoadFailed") + $"{ex.Message}", "error");
         }
     }
 
@@ -530,7 +529,7 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
         // 检查AI服务器
         if (!_aiServerAvailable)
         {
-            litSummary.Text = "<div style='color: orange; padding: 20px; font-weight: bold;'>⚠️ AI Server is not available. Please contact the supplier for installation.</div>";
+            litSummary.Text = "<div style='color: orange; padding: 20px; font-weight: bold;'>" + LanguageHandle.GetWord("DSeekAIServerNotAvailableContactSupplier") + "</div>";
 
             // 显示结果区域
             ScriptManager.RegisterStartupScript(this, GetType(), "ShowResultSection",
@@ -552,13 +551,13 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
 
             if (selectedTables.Count == 0)
             {
-                ShowMessage("Please select tables to analyze", "warning");
+                ShowMessage(LanguageHandle.GetWord("DSeekPleaseSelectTablesToAnalyze"), "warning");
                 return;
             }
 
             if (string.IsNullOrEmpty(txtAnalysisRequirement.Text.Trim()))
             {
-                ShowMessage("Please enter analysis requirements", "warning");
+                ShowMessage(LanguageHandle.GetWord("DSeekPleaseEnterAnalysisRequirements"), "warning");
                 return;
             }
 
@@ -581,7 +580,7 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
         }
         catch (Exception ex)
         {
-            litSummary.Text = $"<div style='color: red; padding: 20px;'>Analysis failed: {ex.Message}</div>";
+            litSummary.Text = LanguageHandle.GetWord("DSeekAnalysisFailed") + $"{ex.Message}";
 
             // Show result section
             ScriptManager.RegisterStartupScript(this, GetType(), "ShowResultSection",
@@ -600,7 +599,7 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
             var aiConfig = GetAIConfig();
             if (aiConfig == null)
             {
-                result.Error = "AI configuration not found";
+                result.Error = LanguageHandle.GetWord("DSeekAIConfigurationNotFound");
                 return result;
             }
 
@@ -627,7 +626,7 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
         }
         catch (Exception ex)
         {
-            result.Error = $"Error during analysis: {ex.Message}";
+            result.Error = LanguageHandle.GetWord("DSeekErrorDuringAnalysis") + $"{ex.Message}";
             return result;
         }
     }
@@ -713,7 +712,7 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
                 metadata.Add(new TableMetadata
                 {
                     TableName = table,
-                    Error = $"Failed to get table structure: {ex.Message}"
+                    Error = LanguageHandle.GetWord("DSeekFailedToGetTableStructure") + $"{ex.Message}"
                 });
             }
         }
@@ -726,32 +725,24 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
     {
         var metadataJson = JsonConvert.SerializeObject(metadata, Formatting.Indented);
 
-        return $@"Please analyze the following database table data:
-
-Tables to analyze: {string.Join(", ", tables)}
-
-User analysis requirements:
-{requirement}
-
-Table structure information:
-{metadataJson}
-
-Please provide a detailed analysis report including:
-
-1. **Data Overview Analysis**
-   - Data volume and key field analysis for each table
-   - Data quality assessment
-
-2. **Business Insights Discovery**
-   - In-depth analysis based on user requirements
-   - Data patterns and trends discovered
-   - Outliers and potential issues
-
-3. **Optimization Suggestions**
-   - Data quality improvement suggestions
-   - Business optimization recommendations
-
-Please respond in English, provide specific, actionable suggestions.";
+        return LanguageHandle.GetWord("DSeekPleaseAnalyzeDatabaseTableData") + "\n\n" +
+               LanguageHandle.GetWord("DSeekTablesToAnalyze") + $"{string.Join(", ", tables)}\n\n" +
+               LanguageHandle.GetWord("DSeekUserAnalysisRequirements") + ":\n" +
+               $"{requirement}\n\n" +
+               LanguageHandle.GetWord("DSeekTableStructureInformation") + ":\n" +
+               $"{metadataJson}\n\n" +
+               LanguageHandle.GetWord("DSeekPleaseProvideDetailedAnalysisReport") + ":\n\n" +
+               "1. **" + LanguageHandle.GetWord("DSeekDataOverviewAnalysis") + "**\n" +
+               "   - " + LanguageHandle.GetWord("DSeekDataVolumeAndKeyFieldAnalysis") + "\n" +
+               "   - " + LanguageHandle.GetWord("DSeekDataQualityAssessment") + "\n\n" +
+               "2. **" + LanguageHandle.GetWord("DSeekBusinessInsightsDiscovery") + "**\n" +
+               "   - " + LanguageHandle.GetWord("DSeekInDepthAnalysisBasedOnRequirements") + "\n" +
+               "   - " + LanguageHandle.GetWord("DSeekDataPatternsAndTrendsDiscovered") + "\n" +
+               "   - " + LanguageHandle.GetWord("DSeekOutliersAndPotentialIssues") + "\n\n" +
+               "3. **" + LanguageHandle.GetWord("DSeekOptimizationSuggestions") + "**\n" +
+               "   - " + LanguageHandle.GetWord("DSeekDataQualityImprovementSuggestions") + "\n" +
+               "   - " + LanguageHandle.GetWord("DSeekBusinessOptimizationRecommendations") + "\n\n" +
+               LanguageHandle.GetWord("DSeekPleaseRespondInEnglish") + ".";
     }
 
     // 修改：重写这个方法以正确调用Ollama
@@ -759,7 +750,7 @@ Please respond in English, provide specific, actionable suggestions.";
     {
         if (config.AIType != "Local")
         {
-            throw new Exception("Only local Ollama analysis is supported");
+            throw new Exception(LanguageHandle.GetWord("DSeekOnlyLocalOllamaAnalysisSupported"));
         }
 
         string apiUrl = config.URL; // 应该是 http://localhost:11434/v1/chat/completions
@@ -810,13 +801,13 @@ Please respond in English, provide specific, actionable suggestions.";
                 }
                 else
                 {
-                    throw new Exception("Could not parse response from Ollama: Invalid response format");
+                    throw new Exception(LanguageHandle.GetWord("DSeekCouldNotParseResponseInvalidFormat"));
                 }
             }
             else
             {
                 string errorContent = response.Content.ReadAsStringAsync().Result;
-                throw new Exception($"Ollama API call failed with status {response.StatusCode}. Response: {errorContent}");
+                throw new Exception(LanguageHandle.GetWord("DSeekOllamaAPICallFailed") + $"{response.StatusCode}. " + LanguageHandle.GetWord("DSeekResponse") + $"{errorContent}");
             }
         }
     }
@@ -828,9 +819,9 @@ Please respond in English, provide specific, actionable suggestions.";
 
         if (string.IsNullOrEmpty(response))
         {
-            result.Summary = "No response received from AI analysis.";
-            result.Insights = "No insights available.";
-            result.Recommendations = "No recommendations available.";
+            result.Summary = LanguageHandle.GetWord("DSeekNoResponseReceivedFromAIAnalysis");
+            result.Insights = LanguageHandle.GetWord("DSeekNoInsightsAvailable");
+            result.Recommendations = LanguageHandle.GetWord("DSeekNoRecommendationsAvailable");
             return result;
         }
 
@@ -909,8 +900,8 @@ Please respond in English, provide specific, actionable suggestions.";
             try
             {
                 // Basic statistics queries
-                queries.Add($"-- {table} table basic statistics");
-                queries.Add($"SELECT COUNT(*) as TotalRecords FROM \"{table}\";");
+                queries.Add("-- " + $"{table} " + LanguageHandle.GetWord("DSeekTableBasicStatistics"));
+                queries.Add("SELECT COUNT(*) as TotalRecords FROM \"" + $"{table}" + "\";");
 
                 // Get table field information
                 string columnSql = $@"
@@ -930,8 +921,8 @@ Please respond in English, provide specific, actionable suggestions.";
                         columnName.Contains("date") || columnName.Contains("time") ||
                         columnName.Contains("create") || columnName.Contains("update"))
                     {
-                        queries.Add($"-- {table}.{columnName} time analysis");
-                        queries.Add($"SELECT MIN(\"{columnName}\") as EarliestRecord, MAX(\"{columnName}\") as LatestRecord FROM \"{table}\";");
+                        queries.Add("-- " + $"{table}.{columnName} " + LanguageHandle.GetWord("DSeekTimeAnalysis"));
+                        queries.Add("SELECT MIN(\"" + $"{columnName}" + "\") as EarliestRecord, MAX(\"" + $"{columnName}" + "\") as LatestRecord FROM \"" + $"{table}" + "\";");
                     }
 
                     // Check if it's a numeric field
@@ -939,14 +930,14 @@ Please respond in English, provide specific, actionable suggestions.";
                         dataType.Contains("num") || dataType.Contains("real") ||
                         dataType.Contains("float") || dataType.Contains("double"))
                     {
-                        queries.Add($"-- {table}.{columnName} numeric statistics");
-                        queries.Add($"SELECT MIN(\"{columnName}\") as MinValue, MAX(\"{columnName}\") as MaxValue, AVG(\"{columnName}\") as Average FROM \"{table}\";");
+                        queries.Add("-- " + $"{table}.{columnName} " + LanguageHandle.GetWord("DSeekNumericStatistics"));
+                        queries.Add("SELECT MIN(\"" + $"{columnName}" + "\") as MinValue, MAX(\"" + $"{columnName}" + "\") as MaxValue, AVG(\"" + $"{columnName}" + "\") as Average FROM \"" + $"{table}" + "\";");
                     }
                 }
             }
             catch (Exception ex)
             {
-                queries.Add($"-- {table} table query error: {ex.Message}");
+                queries.Add("-- " + $"{table} " + LanguageHandle.GetWord("DSeekTableQueryError") + $"{ex.Message}");
             }
         }
 
@@ -957,7 +948,7 @@ Please respond in English, provide specific, actionable suggestions.";
     private void DisplayAnalysisResults(AnalysisResult result, List<string> selectedTables, double analysisTime)
     {
         // Update time display
-        litAnalysisTime.Text = $"{DateTime.Now:yyyy-MM-dd HH:mm:ss} (Time taken: {analysisTime:F1} seconds)";
+        litAnalysisTime.Text = $"{DateTime.Now:yyyy-MM-dd HH:mm:ss} " + "(" + LanguageHandle.GetWord("DSeekTimeTaken") + $"{analysisTime:F1} " + LanguageHandle.GetWord("DSeekSeconds") + ")";
         litAnalyzedTables.Text = string.Join(", ", selectedTables);
 
         // Format and display results
@@ -1094,7 +1085,7 @@ Please respond in English, provide specific, actionable suggestions.";
     private void ShowMessage(string message, string type)
     {
         string icon = type == "warning" ? "⚠️" : type == "error" ? "❌" : "✅";
-        string script = $"alert('{icon} {message.Replace("'", "\\'")}');";
+        string script = "alert('" + $"{icon} " + message.Replace("'", "\\'") + "');";
         ScriptManager.RegisterStartupScript(this, GetType(), "ShowMessage", script, true);
     }
 
@@ -1102,7 +1093,7 @@ Please respond in English, provide specific, actionable suggestions.";
     private string FormatAnalysisContent(string content)
     {
         if (string.IsNullOrEmpty(content))
-            return "<div style='color: #666; font-style: italic; padding: 20px;'>No content available</div>";
+            return "<div style='color: #666; font-style: italic; padding: 20px;'>" + LanguageHandle.GetWord("DSeekNoContentAvailable") + "</div>";
 
         // Clean and format
         content = content.Replace("\\n", "<br/>")
@@ -1116,28 +1107,28 @@ Please respond in English, provide specific, actionable suggestions.";
         content = System.Text.RegularExpressions.Regex.Replace(content, @"- (.+)", "<li>$1</li>");
         content = System.Text.RegularExpressions.Regex.Replace(content, @"\d+\. (.+)", "<li>$1</li>");
 
-        return $"<div style='line-height: 1.6;'>{content}</div>";
+        return "<div style='line-height: 1.6;'>" + $"{content}" + "</div>";
     }
 
     // Format queries
     private string FormatQueries(List<string> queries)
     {
         if (queries == null || queries.Count == 0)
-            return "<div style='color: #666; font-style: italic; padding: 20px;'>No queries generated</div>";
+            return "<div style='color: #666; font-style: italic; padding: 20px;'>" + LanguageHandle.GetWord("DSeekNoQueriesGenerated") + "</div>";
 
         var sb = new StringBuilder();
         sb.AppendLine("<div style='font-family: Consolas, monospace; font-size: 13px;'>");
 
         foreach (var query in queries)
         {
-            sb.AppendLine($"<div style='margin-bottom: 15px;'>");
-            sb.AppendLine($"<div style='background: #f8f9fa; padding: 10px; border-radius: 5px; margin-bottom: 5px; color: #666; font-size: 12px;'>");
+            sb.AppendLine("<div style='margin-bottom: 15px;'>");
+            sb.AppendLine("<div style='background: #f8f9fa; padding: 10px; border-radius: 5px; margin-bottom: 5px; color: #666; font-size: 12px;'>");
             sb.AppendLine(HttpUtility.HtmlEncode(query.Split('\n').FirstOrDefault() ?? ""));
-            sb.AppendLine($"</div>");
-            sb.AppendLine($"<pre style='background: white; padding: 15px; border-radius: 5px; border: 1px solid #ddd; overflow-x: auto; margin: 0;'>");
+            sb.AppendLine("</div>");
+            sb.AppendLine("<pre style='background: white; padding: 15px; border-radius: 5px; border: 1px solid #ddd; overflow-x: auto; margin: 0;'>");
             sb.AppendLine(HttpUtility.HtmlEncode(query));
-            sb.AppendLine($"</pre>");
-            sb.AppendLine($"</div>");
+            sb.AppendLine("</pre>");
+            sb.AppendLine("</div>");
         }
 
         sb.AppendLine("</div>");
@@ -1180,16 +1171,16 @@ Please respond in English, provide specific, actionable suggestions.";
                 string dbName = ds.Tables[0].Rows[0]["dbname"].ToString();
                 string tableCount = ds.Tables[0].Rows[0]["tablecount"].ToString();
 
-                ShowMessage($"✅ Database connection successful! Current database: {dbName}, Table count: {tableCount}", "success");
+                ShowMessage(LanguageHandle.GetWord("DSeekDatabaseConnectionSuccessfulCurrentDatabase") + $"{dbName}, " + LanguageHandle.GetWord("DSeekTableCount") + $"{tableCount}", "success");
             }
             else
             {
-                ShowMessage("✅ Database connection successful!", "success");
+                ShowMessage(LanguageHandle.GetWord("DSeekDatabaseConnectionSuccessful"), "success");
             }
         }
         catch (Exception ex)
         {
-            ShowMessage($"❌ Database connection failed: {ex.Message}", "error");
+            ShowMessage(LanguageHandle.GetWord("DSeekDatabaseConnectionFailed") + $"{ex.Message}", "error");
         }
     }
 
@@ -1223,11 +1214,11 @@ Please respond in English, provide specific, actionable suggestions.";
                 ShareClass.RunSqlCommand(insertSql);
             }
 
-            ShowMessage("✅ Configuration saved successfully!", "success");
+            ShowMessage(LanguageHandle.GetWord("DSeekConfigurationSavedSuccessfully"), "success");
         }
         catch (Exception ex)
         {
-            ShowMessage($"❌ Save failed: {ex.Message}", "error");
+            ShowMessage(LanguageHandle.GetWord("DSeekSaveFailed") + $"{ex.Message}", "error");
         }
     }
 }

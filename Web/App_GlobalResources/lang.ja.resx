@@ -32661,4 +32661,412 @@
   <data name="DRZYYUISJ" xml:space="preserve">
     <value>開発環境において：エクスポートした言語Excelファイルを UpdateCode\Language\skin フォルダに配置し、さらに App_GlobalResources ディレクトリにある対応言語のresxファイルも UpdateCode\Language\skin ディレクトリにコピーします。その後、 「この言語のデータをインポート」 ボタンをクリックしてインポートを行います。</value>
   </data>
+  <data name="DSeekSmartChat" xml:space="preserve">
+    <value>💬 スマートチャット</value>
+    <comment>💬 スマートチャット</comment>
+  </data>
+  <data name="DSeekDataAnalysis" xml:space="preserve">
+    <value>📊 データ分析</value>
+    <comment>📊 データ分析</comment>
+  </data>
+  <data name="DSeekGenerate" xml:space="preserve">
+    <value>生成</value>
+    <comment>生成</comment>
+  </data>
+  <data name="DSeekStop" xml:space="preserve">
+    <value>停止</value>
+    <comment>停止</comment>
+  </data>
+  <data name="DSeekSaveToDB" xml:space="preserve">
+    <value>データベースに保存</value>
+    <comment>データベースに保存</comment>
+  </data>
+  <data name="DSeekLoadSavedTables" xml:space="preserve">
+    <value>🔄 保存済みテーブルを読み込む</value>
+    <comment>🔄 保存済みテーブルを読み込む</comment>
+  </data>
+  <data name="DSeekStartIntelligentAnalysis" xml:space="preserve">
+    <value>🚀 インテリジェント分析を開始</value>
+    <comment>🚀 インテリジェント分析を開始</comment>
+  </data>
+  <data name="DSeekClear" xml:space="preserve">
+    <value>🔄 クリア</value>
+    <comment>🔄 クリア</comment>
+  </data>
+  <data name="DSeekTestConnection" xml:space="preserve">
+    <value>🔗 接続テスト</value>
+    <comment>🔗 接続テスト</comment>
+  </data>
+  <data name="DSeekSaveConfiguration" xml:space="preserve">
+    <value>💾 設定を保存</value>
+    <comment>💾 設定を保存</comment>
+  </data>
+  <data name="DSeekIntelligentDataAnalysisTitle" xml:space="preserve">
+    <value>インテリジェントデータ分析 - DeepSeek</value>
+    <comment>インテリジェントデータ分析 - DeepSeek</comment>
+  </data>
+  <data name="DSeekIntelligentAnalysisPlatform" xml:space="preserve">
+    <value>AIインテリジェント分析プラットフォーム</value>
+    <comment>DeepSeekインテリジェント分析プラットフォーム</comment>
+  </data>
+  <data name="DSeekSmartChatDataAnalysisDualMode" xml:space="preserve">
+    <value>スマートチャット + データ分析 デュアルモード</value>
+    <comment>スマートチャット + データ分析 デュアルモード</comment>
+  </data>
+  <data name="DSeekEnterYourQuestion" xml:space="preserve">
+    <value>質問を入力してください...</value>
+    <comment>質問を入力してください...</comment>
+  </data>
+  <data name="DSeekLoadingPleaseWait" xml:space="preserve">
+    <value>読み込み中、お待ちください...</value>
+    <comment>読み込み中、お待ちください...</comment>
+  </data>
+  <data name="DSeekAnalysisTableManagement" xml:space="preserve">
+    <value>分析テーブル管理</value>
+    <comment>分析テーブル管理</comment>
+  </data>
+  <data name="DSeekAddTableNames" xml:space="preserve">
+    <value>テーブル名を追加（カンマ区切り）:</value>
+    <comment>テーブル名を追加（カンマ区切り）:</comment>
+  </data>
+  <data name="DSeekTableNamesPlaceholder" xml:space="preserve">
+    <value>例: projects, tasks, users, orders</value>
+    <comment>例: projects, tasks, users, orders</comment>
+  </data>
+  <data name="DSeekTableNamesSaved" xml:space="preserve">
+    <value>テーブル名はT_DBTablesForAIテーブルに保存されます</value>
+    <comment>テーブル名はT_DBTablesForAIテーブルに保存されます</comment>
+  </data>
+  <data name="DSeekSelectTablesForAnalysis" xml:space="preserve">
+    <value>分析するテーブルを選択:</value>
+    <comment>分析するテーブルを選択:</comment>
+  </data>
+  <data name="DSeekSelectedTables" xml:space="preserve">
+    <value>選択されたテーブル:</value>
+    <comment>選択されたテーブル:</comment>
+  </data>
+  <data name="DSeekAnalysisRequirementDescription" xml:space="preserve">
+    <value>分析要件説明</value>
+    <comment>分析要件説明</comment>
+  </data>
+  <data name="DSeekAnalysisRequirementExamples" xml:space="preserve">
+    <value>💡 分析要件例:</value>
+    <comment>💡 分析要件例:</comment>
+  </data>
+  <data name="DSeekAnalysisExample1" xml:space="preserve">
+    <value>これらのテーブルからプロジェクトコストと利益を分析する</value>
+    <comment>これらのテーブルからプロジェクトコストと利益を分析する</comment>
+  </data>
+  <data name="DSeekAnalysisExample2" xml:space="preserve">
+    <value>データ内の異常と問題を発見する</value>
+    <comment>データ内の異常と問題を発見する</comment>
+  </data>
+  <data name="DSeekAnalysisRequirementPlaceholder" xml:space="preserve">
+    <value>分析したい内容を詳細に説明してください...</value>
+    <comment>分析したい内容を詳細に説明してください...</comment>
+  </data>
+  <data name="DSeekAnalysisCustomizedReports" xml:space="preserve">
+    <value>AIは要件に基づいてカスタマイズ分析レポートを生成します</value>
+    <comment>DeepSeekは要件に基づいてカスタマイズ分析レポートを生成します</comment>
+  </data>
+  <data name="DSeekAnalysisResults" xml:space="preserve">
+    <value>分析結果</value>
+    <comment>分析結果</comment>
+  </data>
+  <data name="DSeekAnalysisTime" xml:space="preserve">
+    <value>分析時間</value>
+    <comment>分析時間</comment>
+  </data>
+  <data name="DSeekAnalyzedTables" xml:space="preserve">
+    <value>分析済みテーブル</value>
+    <comment>分析済みテーブル</comment>
+  </data>
+  <data name="DSeekAnalysisSummary" xml:space="preserve">
+    <value>分析サマリー</value>
+    <comment>分析サマリー</comment>
+  </data>
+  <data name="DSeekDetailedInsights" xml:space="preserve">
+    <value>詳細な洞察</value>
+    <comment>詳細な洞察</comment>
+  </data>
+  <data name="DSeekGeneratedQueries" xml:space="preserve">
+    <value>生成されたクエリ</value>
+    <comment>生成されたクエリ</comment>
+  </data>
+  <data name="DSeekOptimizationSuggestions" xml:space="preserve">
+    <value>最適化提案</value>
+    <comment>最適化提案</comment>
+  </data>
+  <data name="DSeekExportReport" xml:space="preserve">
+    <value>レポートをエクスポート</value>
+    <comment>レポートをエクスポート</comment>
+  </data>
+  <data name="DSeekNewAnalysis" xml:space="preserve">
+    <value>新規分析</value>
+    <comment>新規分析</comment>
+  </data>
+  <data name="DSeekSystemConfiguration" xml:space="preserve">
+    <value>システム設定</value>
+    <comment>システム設定</comment>
+  </data>
+  <data name="DSeekDeepSeekAPI" xml:space="preserve">
+    <value>AI API</value>
+    <comment>DeepSeek API</comment>
+  </data>
+  <data name="DSeekModelName" xml:space="preserve">
+    <value>モデル名</value>
+    <comment>モデル名</comment>
+  </data>
+  <data name="DSeekDeepSeekAnalyzing" xml:space="preserve">
+    <value>AIはデータを分析中です</value>
+    <comment>DeepSeekはデータを分析中です</comment>
+  </data>
+  <data name="DSeekConnectingToDatabase" xml:space="preserve">
+    <value>データベースに接続中...</value>
+    <comment>データベースに接続中...</comment>
+  </data>
+  <data name="DSeekPleaseWaitProcessing" xml:space="preserve">
+    <value>お待ちください、リクエストを処理中です</value>
+    <comment>お待ちください、リクエストを処理中です</comment>
+  </data>
+  <data name="DSeekDeepSeekThinking" xml:space="preserve">
+    <value>分析要件を理解し、最適な解決策を考えています...</value>
+    <comment>"分析要件を理解し、最適な解決策を考えています..."</comment>
+  </data>
+  <data name="DSeekAIServerAvailable" xml:space="preserve">
+    <value>✅ AIサーバーは利用可能で準備完了です。</value>
+    <comment>✅ AIサーバーは利用可能で準備完了です。</comment>
+  </data>
+  <data name="DSeekNoValidAIServer" xml:space="preserve">
+    <value>⚠️ 有効なAIサーバーが見つかりませんでした。システム管理者に連絡してインストールしてください。</value>
+    <comment>⚠️ 有効なAIサーバーが見つかりませんでした。システム管理者に連絡してインストールしてください。</comment>
+  </data>
+  <data name="DSeekAIServerNotAvailable" xml:space="preserve">
+    <value>⚠️ AIサーバーは利用できません。サプライヤーに連絡してインストールしてください。</value>
+    <comment>⚠️ AIサーバーは利用できません。サプライヤーに連絡してインストールしてください。</comment>
+  </data>
+  <data name="DSeekPromptCantBeEmpty" xml:space="preserve">
+    <value>プロンプトを空にできません！</value>
+    <comment>プロンプトを空にできません！</comment>
+  </data>
+  <data name="DSeekCouldNotParseResponseFromOllama" xml:space="preserve">
+    <value>エラー: Ollamaからの応答を解析できませんでした。</value>
+    <comment>エラー: Ollamaからの応答を解析できませんでした。</comment>
+  </data>
+  <data name="DSeekAPICallFailedWithStatus" xml:space="preserve">
+    <value>エラー: API呼び出しが失敗しました、ステータスコード </value>
+    <comment>エラー: API呼び出しが失敗しました、ステータスコード </comment>
+  </data>
+  <data name="DSeekNoAIConfigurationFound" xml:space="preserve">
+    <value>エラー: AI設定が見つかりませんでした。</value>
+    <comment>エラー: AI設定が見つかりませんでした。</comment>
+  </data>
+  <data name="DSeekError" xml:space="preserve">
+    <value>エラー: </value>
+    <comment>エラー: </comment>
+  </data>
+  <data name="DSeekPleaseEnterTableNames" xml:space="preserve">
+    <value>テーブル名を入力してください</value>
+    <comment>テーブル名を入力してください</comment>
+  </data>
+  <data name="DSeekNoValidTableNamesFound" xml:space="preserve">
+    <value>有効なテーブル名が見つかりませんでした</value>
+    <comment>有効なテーブル名が見つかりませんでした</comment>
+  </data>
+  <data name="DSeekTableAddedThroughInterface" xml:space="preserve">
+    <value>インターフェースを通じて追加されたテーブル</value>
+    <comment>インターフェースを通じて追加されたテーブル</comment>
+  </data>
+  <data name="DSeekSaveSuccessfulSaved" xml:space="preserve">
+    <value>保存成功！保存済み </value>
+    <comment>保存成功！保存済み </comment>
+  </data>
+  <data name="DSeekTablesToDatabase" xml:space="preserve">
+    <value>テーブルをデータベースへ</value>
+    <comment>テーブルをデータベースへ</comment>
+  </data>
+  <data name="DSeekSaveFailed" xml:space="preserve">
+    <value>保存失敗: </value>
+    <comment>保存失敗: </comment>
+  </data>
+  <data name="DSeekLoadSuccessfulLoaded" xml:space="preserve">
+    <value>読み込み成功！読み込み済み </value>
+    <comment>読み込み成功！読み込み済み </comment>
+  </data>
+  <data name="DSeekTables" xml:space="preserve">
+    <value>テーブル</value>
+    <comment>テーブル</comment>
+  </data>
+  <data name="DSeekLoadFailed" xml:space="preserve">
+    <value>読み込み失敗: </value>
+    <comment>読み込み失敗: </comment>
+  </data>
+  <data name="DSeekAIServerNotAvailableContactSupplier" xml:space="preserve">
+    <value>⚠️ AIサーバーは利用できません。サプライヤーに連絡してインストールしてください。</value>
+    <comment>⚠️ AIサーバーは利用できません。サプライヤーに連絡してインストールしてください。</comment>
+  </data>
+  <data name="DSeekPleaseSelectTablesToAnalyze" xml:space="preserve">
+    <value>分析するテーブルを選択してください</value>
+    <comment>分析するテーブルを選択してください</comment>
+  </data>
+  <data name="DSeekPleaseEnterAnalysisRequirements" xml:space="preserve">
+    <value>分析要件を入力してください</value>
+    <comment>分析要件を入力してください</comment>
+  </data>
+  <data name="DSeekAnalysisFailed" xml:space="preserve">
+    <value>分析失敗: </value>
+    <comment>分析失敗: </comment>
+  </data>
+  <data name="DSeekAIConfigurationNotFound" xml:space="preserve">
+    <value>AI設定が見つかりません</value>
+    <comment>AI設定が見つかりません</comment>
+  </data>
+  <data name="DSeekErrorDuringAnalysis" xml:space="preserve">
+    <value>分析中のエラー: </value>
+    <comment>分析中のエラー: </comment>
+  </data>
+  <data name="DSeekFailedToGetTableStructure" xml:space="preserve">
+    <value>テーブル構造の取得に失敗: </value>
+    <comment>テーブル構造の取得に失敗: </comment>
+  </data>
+  <data name="DSeekPleaseAnalyzeDatabaseTableData" xml:space="preserve">
+    <value>以下のデータベーステーブルデータを分析してください:</value>
+    <comment>以下のデータベーステーブルデータを分析してください:</comment>
+  </data>
+  <data name="DSeekTablesToAnalyze" xml:space="preserve">
+    <value>分析するテーブル: </value>
+    <comment>分析するテーブル: </comment>
+  </data>
+  <data name="DSeekUserAnalysisRequirements" xml:space="preserve">
+    <value>ユーザー分析要件</value>
+    <comment>ユーザー分析要件</comment>
+  </data>
+  <data name="DSeekTableStructureInformation" xml:space="preserve">
+    <value>テーブル構造情報</value>
+    <comment>テーブル構造情報</comment>
+  </data>
+  <data name="DSeekPleaseProvideDetailedAnalysisReport" xml:space="preserve">
+    <value>詳細な分析レポートを提供してください、以下を含む:</value>
+    <comment>詳細な分析レポートを提供してください、以下を含む:</comment>
+  </data>
+  <data name="DSeekDataOverviewAnalysis" xml:space="preserve">
+    <value>データ概要分析</value>
+    <comment>データ概要分析</comment>
+  </data>
+  <data name="DSeekDataVolumeAndKeyFieldAnalysis" xml:space="preserve">
+    <value>各テーブルのデータ量とキーフィールド分析</value>
+    <comment>各テーブルのデータ量とキーフィールド分析</comment>
+  </data>
+  <data name="DSeekDataQualityAssessment" xml:space="preserve">
+    <value>データ品質評価</value>
+    <comment>データ品質評価</comment>
+  </data>
+  <data name="DSeekBusinessInsightsDiscovery" xml:space="preserve">
+    <value>ビジネスインサイト発見</value>
+    <comment>ビジネスインサイト発見</comment>
+  </data>
+  <data name="DSeekInDepthAnalysisBasedOnRequirements" xml:space="preserve">
+    <value>ユーザー要件に基づく詳細分析</value>
+    <comment>ユーザー要件に基づく詳細分析</comment>
+  </data>
+  <data name="DSeekDataPatternsAndTrendsDiscovered" xml:space="preserve">
+    <value>発見されたデータパターンとトレンド</value>
+    <comment>発見されたデータパターンとトレンド</comment>
+  </data>
+  <data name="DSeekOutliersAndPotentialIssues" xml:space="preserve">
+    <value>外れ値と潜在的な問題</value>
+    <comment>外れ値と潜在的な問題</comment>
+  </data>
+  <data name="DSeekDataQualityImprovementSuggestions" xml:space="preserve">
+    <value>データ品質改善提案</value>
+    <comment>データ品質改善提案</comment>
+  </data>
+  <data name="DSeekBusinessOptimizationRecommendations" xml:space="preserve">
+    <value>ビジネス最適化推奨</value>
+    <comment>ビジネス最適化推奨</comment>
+  </data>
+  <data name="DSeekPleaseRespondInEnglish" xml:space="preserve">
+    <value>英語で回答してください、具体的で実行可能な提案を提供してください</value>
+    <comment>英語で回答してください、具体的で実行可能な提案を提供してください</comment>
+  </data>
+  <data name="DSeekOnlyLocalOllamaAnalysisSupported" xml:space="preserve">
+    <value>ローカルOllama分析のみサポートされています</value>
+    <comment>ローカルOllama分析のみサポートされています</comment>
+  </data>
+  <data name="DSeekCouldNotParseResponseInvalidFormat" xml:space="preserve">
+    <value>Ollamaからの応答を解析できませんでした: 無効な応答形式</value>
+    <comment>Ollamaからの応答を解析できませんでした: 無効な応答形式</comment>
+  </data>
+  <data name="DSeekOllamaAPICallFailed" xml:space="preserve">
+    <value>Ollama API呼び出しが失敗しました、ステータスコード </value>
+    <comment>Ollama API呼び出しが失敗しました、ステータスコード </comment>
+  </data>
+  <data name="DSeekResponse" xml:space="preserve">
+    <value>。応答: </value>
+    <comment>。応答: </comment>
+  </data>
+  <data name="DSeekNoResponseReceivedFromAIAnalysis" xml:space="preserve">
+    <value>AI分析からの応答が受信されませんでした。</value>
+    <comment>AI分析からの応答が受信されませんでした。</comment>
+  </data>
+  <data name="DSeekNoInsightsAvailable" xml:space="preserve">
+    <value>利用可能なインサイトがありません。</value>
+    <comment>利用可能なインサイトがありません。</comment>
+  </data>
+  <data name="DSeekNoRecommendationsAvailable" xml:space="preserve">
+    <value>利用可能な推奨事項がありません。</value>
+    <comment>利用可能な推奨事項がありません。</comment>
+  </data>
+  <data name="DSeekTableBasicStatistics" xml:space="preserve">
+    <value>テーブル基本統計</value>
+    <comment>テーブル基本統計</comment>
+  </data>
+  <data name="DSeekTimeAnalysis" xml:space="preserve">
+    <value>時間分析</value>
+    <comment>時間分析</comment>
+  </data>
+  <data name="DSeekNumericStatistics" xml:space="preserve">
+    <value>数値統計</value>
+    <comment>数値統計</comment>
+  </data>
+  <data name="DSeekTableQueryError" xml:space="preserve">
+    <value>テーブルクエリエラー: </value>
+    <comment>テーブルクエリエラー: </comment>
+  </data>
+  <data name="DSeekTimeTaken" xml:space="preserve">
+    <value>所要時間: </value>
+    <comment>所要時間: </comment>
+  </data>
+  <data name="DSeekSeconds" xml:space="preserve">
+    <value>秒</value>
+    <comment>秒</comment>
+  </data>
+  <data name="DSeekNoContentAvailable" xml:space="preserve">
+    <value>利用可能なコンテンツがありません</value>
+    <comment>利用可能なコンテンツがありません</comment>
+  </data>
+  <data name="DSeekNoQueriesGenerated" xml:space="preserve">
+    <value>生成されたクエリがありません</value>
+    <comment>生成されたクエリがありません</comment>
+  </data>
+  <data name="DSeekDatabaseConnectionSuccessfulCurrentDatabase" xml:space="preserve">
+    <value>✅ データベース接続成功！現在のデータベース: </value>
+    <comment>✅ データベース接続成功！現在のデータベース: </comment>
+  </data>
+  <data name="DSeekTableCount" xml:space="preserve">
+    <value>テーブル数: </value>
+    <comment>テーブル数: </comment>
+  </data>
+  <data name="DSeekDatabaseConnectionSuccessful" xml:space="preserve">
+    <value>✅ データベース接続成功！</value>
+    <comment>✅ データベース接続成功！</comment>
+  </data>
+  <data name="DSeekDatabaseConnectionFailed" xml:space="preserve">
+    <value>❌ データベース接続失敗: </value>
+    <comment>❌ データベース接続失敗: </comment>
+  </data>
+  <data name="DSeekConfigurationSavedSuccessfully" xml:space="preserve">
+    <value>✅ 設定が正常に保存されました！</value>
+    <comment>✅ 設定が正常に保存されました！</comment>
+  </data>
 </root>

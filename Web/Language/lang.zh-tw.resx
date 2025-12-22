@@ -32662,4 +32662,304 @@
   <data name="DRZYYUISJ" xml:space="preserve">
     <value>在開發環境下：將上面匯出的語言Excel檔案放到 UpdateCode\Language\skin 資料夾中，同時把在 App_GlobalResources 目錄下對應語言的resx檔案也複製到 UpdateCode\Language\skin 目錄下。再點擊 「匯入此語言資料」 按鈕進行匯入。</value>
   </data>
+
+<data name="DSeekAIServerAvailable" xml:space="preserve">
+  <value>✅ AI 伺服器可用且準備就緒。</value>
+  <comment>✅ AI 伺服器可用且準備就緒。</comment>
+</data>
+
+<data name="DSeekNoValidAIServer" xml:space="preserve">
+  <value>⚠️ 未找到有效的 AI 伺服器。請聯繫系統管理員進行安裝。</value>
+  <comment>⚠️ 未找到有效的 AI 伺服器。請聯繫系統管理員進行安裝。</comment>
+</data>
+
+<data name="DSeekAIServerNotAvailable" xml:space="preserve">
+  <value>⚠️ AI 伺服器不可用。請聯繫供應商進行安裝。</value>
+  <comment>⚠️ AI 伺服器不可用。請聯繫供應商進行安裝。</comment>
+</data>
+
+<data name="DSeekPromptCantBeEmpty" xml:space="preserve">
+  <value>提示詞不能為空！</value>
+  <comment>提示詞不能為空！</comment>
+</data>
+
+<data name="DSeekCouldNotParseResponseFromOllama" xml:space="preserve">
+  <value>錯誤：無法解析來自 Ollama 的回應。</value>
+  <comment>錯誤：無法解析來自 Ollama 的回應。</comment>
+</data>
+
+<data name="DSeekAPICallFailedWithStatus" xml:space="preserve">
+  <value>錯誤：API 調用失敗，狀態碼 </value>
+  <comment>錯誤：API 調用失敗，狀態碼 </comment>
+</data>
+
+<data name="DSeekNoAIConfigurationFound" xml:space="preserve">
+  <value>錯誤：未找到 AI 配置。</value>
+  <comment>錯誤：未找到 AI 配置。</comment>
+</data>
+
+<data name="DSeekError" xml:space="preserve">
+  <value>錯誤：</value>
+  <comment>錯誤：</comment>
+</data>
+
+<data name="DSeekPleaseEnterTableNames" xml:space="preserve">
+  <value>請輸入資料表名稱</value>
+  <comment>請輸入資料表名稱</comment>
+</data>
+
+<data name="DSeekNoValidTableNamesFound" xml:space="preserve">
+  <value>未找到有效的資料表名稱</value>
+  <comment>未找到有效的資料表名稱</comment>
+</data>
+
+<data name="DSeekTableAddedThroughInterface" xml:space="preserve">
+  <value>已透過介面新增資料表</value>
+  <comment>已透過介面新增資料表</comment>
+</data>
+
+<data name="DSeekSaveSuccessfulSaved" xml:space="preserve">
+  <value>儲存成功！已儲存 </value>
+  <comment>儲存成功！已儲存 </comment>
+</data>
+
+<data name="DSeekTablesToDatabase" xml:space="preserve">
+  <value>張資料表至資料庫</value>
+  <comment>張資料表至資料庫</comment>
+</data>
+
+<data name="DSeekSaveFailed" xml:space="preserve">
+  <value>儲存失敗：</value>
+  <comment>儲存失敗：</comment>
+</data>
+
+<data name="DSeekLoadSuccessfulLoaded" xml:space="preserve">
+  <value>載入成功！已載入 </value>
+  <comment>載入成功！已載入 </comment>
+</data>
+
+<data name="DSeekTables" xml:space="preserve">
+  <value>張資料表</value>
+  <comment>張資料表</comment>
+</data>
+
+<data name="DSeekLoadFailed" xml:space="preserve">
+  <value>載入失敗：</value>
+  <comment>載入失敗：</comment>
+</data>
+
+<data name="DSeekAIServerNotAvailableContactSupplier" xml:space="preserve">
+  <value>⚠️ AI 伺服器不可用。請聯繫供應商進行安裝。</value>
+  <comment>⚠️ AI 伺服器不可用。請聯繫供應商進行安裝。</comment>
+</data>
+
+<data name="DSeekPleaseSelectTablesToAnalyze" xml:space="preserve">
+  <value>請選擇要分析的資料表</value>
+  <comment>請選擇要分析的資料表</comment>
+</data>
+
+<data name="DSeekPleaseEnterAnalysisRequirements" xml:space="preserve">
+  <value>請輸入分析需求</value>
+  <comment>請輸入分析需求</comment>
+</data>
+
+<data name="DSeekAnalysisFailed" xml:space="preserve">
+  <value>分析失敗：</value>
+  <comment>分析失敗：</comment>
+</data>
+
+<data name="DSeekAIConfigurationNotFound" xml:space="preserve">
+  <value>未找到 AI 配置</value>
+  <comment>未找到 AI 配置</comment>
+</data>
+
+<data name="DSeekErrorDuringAnalysis" xml:space="preserve">
+  <value>分析過程中發生錯誤：</value>
+  <comment>分析過程中發生錯誤：</comment>
+</data>
+
+<data name="DSeekFailedToGetTableStructure" xml:space="preserve">
+  <value>無法取得資料表結構：</value>
+  <comment>無法取得資料表結構：</comment>
+</data>
+
+<data name="DSeekPleaseAnalyzeDatabaseTableData" xml:space="preserve">
+  <value>請分析以下資料庫資料表數據：</value>
+  <comment>請分析以下資料庫資料表數據：</comment>
+</data>
+
+<data name="DSeekTablesToAnalyze" xml:space="preserve">
+  <value>要分析的資料表：</value>
+  <comment>要分析的資料表：</comment>
+</data>
+
+<data name="DSeekUserAnalysisRequirements" xml:space="preserve">
+  <value>使用者分析需求</value>
+  <comment>使用者分析需求</comment>
+</data>
+
+<data name="DSeekTableStructureInformation" xml:space="preserve">
+  <value>資料表結構資訊</value>
+  <comment>資料表結構資訊</comment>
+</data>
+
+<data name="DSeekPleaseProvideDetailedAnalysisReport" xml:space="preserve">
+  <value>請提供詳細的分析報告，包含：</value>
+  <comment>請提供詳細的分析報告，包含：</comment>
+</data>
+
+<data name="DSeekDataOverviewAnalysis" xml:space="preserve">
+  <value>資料總覽分析</value>
+  <comment>資料總覽分析</comment>
+</data>
+
+<data name="DSeekDataVolumeAndKeyFieldAnalysis" xml:space="preserve">
+  <value>各資料表的資料量與關鍵欄位分析</value>
+  <comment>各資料表的資料量與關鍵欄位分析</comment>
+</data>
+
+<data name="DSeekDataQualityAssessment" xml:space="preserve">
+  <value>資料品質評估</value>
+  <comment>資料品質評估</comment>
+</data>
+
+<data name="DSeekBusinessInsightsDiscovery" xml:space="preserve">
+  <value>業務洞察發現</value>
+  <comment>業務洞察發現</comment>
+</data>
+
+<data name="DSeekInDepthAnalysisBasedOnRequirements" xml:space="preserve">
+  <value>基於使用者需求的深度分析</value>
+  <comment>基於使用者需求的深度分析</comment>
+</data>
+
+<data name="DSeekDataPatternsAndTrendsDiscovered" xml:space="preserve">
+  <value>發現的資料模式與趨勢</value>
+  <comment>發現的資料模式與趨勢</comment>
+</data>
+
+<data name="DSeekOutliersAndPotentialIssues" xml:space="preserve">
+  <value>異常值與潛在問題</value>
+  <comment>異常值與潛在問題</comment>
+</data>
+
+<data name="DSeekOptimizationSuggestions" xml:space="preserve">
+  <value>優化建議</value>
+  <comment>優化建議</comment>
+</data>
+
+<data name="DSeekDataQualityImprovementSuggestions" xml:space="preserve">
+  <value>資料品質改善建議</value>
+  <comment>資料品質改善建議</comment>
+</data>
+
+<data name="DSeekBusinessOptimizationRecommendations" xml:space="preserve">
+  <value>業務優化建議</value>
+  <comment>業務優化建議</comment>
+</data>
+
+<data name="DSeekPleaseRespondInEnglish" xml:space="preserve">
+  <value>請以英文回應，提供具體、可行的建議</value>
+  <comment>請以英文回應，提供具體、可行的建議</comment>
+</data>
+
+<data name="DSeekOnlyLocalOllamaAnalysisSupported" xml:space="preserve">
+  <value>僅支援本機 Ollama 分析</value>
+  <comment>僅支援本機 Ollama 分析</comment>
+</data>
+
+<data name="DSeekCouldNotParseResponseInvalidFormat" xml:space="preserve">
+  <value>無法解析來自 Ollama 的回應：回應格式無效</value>
+  <comment>無法解析來自 Ollama 的回應：回應格式無效</comment>
+</data>
+
+<data name="DSeekOllamaAPICallFailed" xml:space="preserve">
+  <value>Ollama API 調用失敗，狀態碼 </value>
+  <comment>Ollama API 調用失敗，狀態碼 </comment>
+</data>
+
+<data name="DSeekResponse" xml:space="preserve">
+  <value>。回應：</value>
+  <comment>。回應：</comment>
+</data>
+
+<data name="DSeekNoResponseReceivedFromAIAnalysis" xml:space="preserve">
+  <value>未收到 AI 分析的回應。</value>
+  <comment>未收到 AI 分析的回應。</comment>
+</data>
+
+<data name="DSeekNoInsightsAvailable" xml:space="preserve">
+  <value>無可用洞察。</value>
+  <comment>無可用洞察。</comment>
+</data>
+
+<data name="DSeekNoRecommendationsAvailable" xml:space="preserve">
+  <value>無可用建議。</value>
+  <comment>無可用建議。</comment>
+</data>
+
+<data name="DSeekTableBasicStatistics" xml:space="preserve">
+  <value>資料表基礎統計</value>
+  <comment>資料表基礎統計</comment>
+</data>
+
+<data name="DSeekTimeAnalysis" xml:space="preserve">
+  <value>時間分析</value>
+  <comment>時間分析</comment>
+</data>
+
+<data name="DSeekNumericStatistics" xml:space="preserve">
+  <value>數值統計</value>
+  <comment>數值統計</comment>
+</data>
+
+<data name="DSeekTableQueryError" xml:space="preserve">
+  <value>資料表查詢錯誤：</value>
+  <comment>資料表查詢錯誤：</comment>
+</data>
+
+<data name="DSeekTimeTaken" xml:space="preserve">
+  <value>花費時間：</value>
+  <comment>花費時間：</comment>
+</data>
+
+<data name="DSeekSeconds" xml:space="preserve">
+  <value>秒</value>
+  <comment>秒</comment>
+</data>
+
+<data name="DSeekNoContentAvailable" xml:space="preserve">
+  <value>無可用內容</value>
+  <comment>無可用內容</comment>
+</data>
+
+<data name="DSeekNoQueriesGenerated" xml:space="preserve">
+  <value>未產生查詢</value>
+  <comment>未產生查詢</comment>
+</data>
+
+<data name="DSeekDatabaseConnectionSuccessfulCurrentDatabase" xml:space="preserve">
+  <value>✅ 資料庫連接成功！目前資料庫：</value>
+  <comment>✅ 資料庫連接成功！目前資料庫：</comment>
+</data>
+
+<data name="DSeekTableCount" xml:space="preserve">
+  <value>資料表數量：</value>
+  <comment>資料表數量：</comment>
+</data>
+
+<data name="DSeekDatabaseConnectionSuccessful" xml:space="preserve">
+  <value>✅ 資料庫連接成功！</value>
+  <comment>✅ 資料庫連接成功！</comment>
+</data>
+
+<data name="DSeekDatabaseConnectionFailed" xml:space="preserve">
+  <value>❌ 資料庫連接失敗：</value>
+  <comment>❌ 資料庫連接失敗：</comment>
+</data>
+
+<data name="DSeekConfigurationSavedSuccessfully" xml:space="preserve">
+  <value>✅ 設定儲存成功！</value>
+  <comment>✅ 設定儲存成功！</comment>
+</data>
 </root>

@@ -33526,4 +33526,526 @@
   <data name="ZZZZYSCDWJ" xml:space="preserve">
     <value>Harap pilih file yang akan diunggah!</value>
   </data>
+
+<data name="DSeekSmartChat" xml:space="preserve">
+  <value>💬 Obrolan Cerdas</value>
+  <comment>💬 Obrolan Cerdas</comment>
+</data>
+
+<data name="DSeekDataAnalysis" xml:space="preserve">
+  <value>📊 Analisis Data</value>
+  <comment>📊 Analisis Data</comment>
+</data>
+
+<data name="DSeekGenerate" xml:space="preserve">
+  <value>Hasilkan</value>
+  <comment>Hasilkan</comment>
+</data>
+
+<data name="DSeekStop" xml:space="preserve">
+  <value>Berhenti</value>
+  <comment>Berhenti</comment>
+</data>
+
+<data name="DSeekSaveToDB" xml:space="preserve">
+  <value>Simpan ke Database</value>
+  <comment>Simpan ke Database</comment>
+</data>
+
+<data name="DSeekLoadSavedTables" xml:space="preserve">
+  <value>🔄 Muat Tabel Tersimpan</value>
+  <comment>🔄 Muat Tabel Tersimpan</comment>
+</data>
+
+<data name="DSeekStartIntelligentAnalysis" xml:space="preserve">
+  <value>🚀 Mulai Analisis Cerdas</value>
+  <comment>🚀 Mulai Analisis Cerdas</comment>
+</data>
+
+<data name="DSeekClear" xml:space="preserve">
+  <value>🔄 Hapus</value>
+  <comment>🔄 Hapus</comment>
+</data>
+
+<data name="DSeekTestConnection" xml:space="preserve">
+  <value>🔗 Uji Koneksi</value>
+  <comment>🔗 Uji Koneksi</comment>
+</data>
+
+<data name="DSeekSaveConfiguration" xml:space="preserve">
+  <value>💾 Simpan Konfigurasi</value>
+  <comment>💾 Simpan Konfigurasi</comment>
+</data>
+
+<!-- Judul dan Header -->
+<data name="DSeekIntelligentDataAnalysisTitle" xml:space="preserve">
+  <value>Analisis Data Cerdas - DeepSeek</value>
+  <comment>Analisis Data Cerdas - DeepSeek</comment>
+</data>
+
+<data name="DSeekIntelligentAnalysisPlatform" xml:space="preserve">
+  <value>Platform Analisis Cerdas DeepSeek</value>
+  <comment>Platform Analisis Cerdas DeepSeek</comment>
+</data>
+
+<data name="DSeekSmartChatDataAnalysisDualMode" xml:space="preserve">
+  <value>Obrolan Cerdas + Analisis Data Mode Ganda</value>
+  <comment>Obrolan Cerdas + Analisis Data Mode Ganda</comment>
+</data>
+
+<!-- Placeholder Input -->
+<data name="DSeekEnterYourQuestion" xml:space="preserve">
+  <value>Silakan masukkan pertanyaan Anda...</value>
+  <comment>Silakan masukkan pertanyaan Anda...</comment>
+</data>
+
+<data name="DSeekLoadingPleaseWait" xml:space="preserve">
+  <value>Memuat, harap tunggu...</value>
+  <comment>Memuat, harap tunggu...</comment>
+</data>
+
+<!-- Terkait Analisis Data -->
+<data name="DSeekAnalysisTableManagement" xml:space="preserve">
+  <value>Manajemen Tabel Analisis</value>
+  <comment>Manajemen Tabel Analisis</comment>
+</data>
+
+<data name="DSeekAddTableNames" xml:space="preserve">
+  <value>Tambah Nama Tabel (dipisahkan koma):</value>
+  <comment>Tambah Nama Tabel (dipisahkan koma):</comment>
+</data>
+
+<data name="DSeekTableNamesPlaceholder" xml:space="preserve">
+  <value>contoh: projects, tasks, users, orders</value>
+  <comment>contoh: projects, tasks, users, orders</comment>
+</data>
+
+<data name="DSeekTableNamesSaved" xml:space="preserve">
+  <value>Nama tabel akan disimpan ke tabel T_DBTablesForAI</value>
+  <comment>Nama tabel akan disimpan ke tabel T_DBTablesForAI</comment>
+</data>
+
+<data name="DSeekSelectTablesForAnalysis" xml:space="preserve">
+  <value>Pilih tabel untuk analisis:</value>
+  <comment>Pilih tabel untuk analisis:</comment>
+</data>
+
+<data name="DSeekSelectedTables" xml:space="preserve">
+  <value>Tabel Terpilih:</value>
+  <comment>Tabel Terpilih:</comment>
+</data>
+
+<!-- Persyaratan Analisis -->
+<data name="DSeekAnalysisRequirementDescription" xml:space="preserve">
+  <value>Deskripsi Persyaratan Analisis</value>
+  <comment>Deskripsi Persyaratan Analisis</comment>
+</data>
+
+<data name="DSeekAnalysisRequirementExamples" xml:space="preserve">
+  <value>💡 Contoh Persyaratan Analisis:</value>
+  <comment>💡 Contoh Persyaratan Analisis:</comment>
+</data>
+
+<data name="DSeekAnalysisExample1" xml:space="preserve">
+  <value>Analisis biaya dan keuntungan proyek dari tabel-tabel ini</value>
+  <comment>Analisis biaya dan keuntungan proyek dari tabel-tabel ini</comment>
+</data>
+
+<data name="DSeekAnalysisExample2" xml:space="preserve">
+  <value>Temukan anomali dan masalah dalam data</value>
+  <comment>Temukan anomali dan masalah dalam data</comment>
+</data>
+
+<data name="DSeekAnalysisRequirementPlaceholder" xml:space="preserve">
+  <value>Jelaskan secara rinci apa yang ingin Anda analisis...</value>
+  <comment>Jelaskan secara rinci apa yang ingin Anda analisis...</comment>
+</data>
+
+<data name="DSeekAnalysisCustomizedReports" xml:space="preserve">
+  <value>DeepSeek akan menghasilkan laporan analisis yang disesuaikan berdasarkan persyaratan Anda</value>
+  <comment>DeepSeek akan menghasilkan laporan analisis yang disesuaikan berdasarkan persyaratan Anda</comment>
+</data>
+
+<!-- Area Hasil -->
+<data name="DSeekAnalysisResults" xml:space="preserve">
+  <value>Hasil Analisis</value>
+  <comment>Hasil Analisis</comment>
+</data>
+
+<data name="DSeekAnalysisTime" xml:space="preserve">
+  <value>Waktu Analisis</value>
+  <comment>Waktu Analisis</comment>
+</data>
+
+<data name="DSeekAnalyzedTables" xml:space="preserve">
+  <value>Tabel yang Dianalisis</value>
+  <comment>Tabel yang Dianalisis</comment>
+</data>
+
+<data name="DSeekAnalysisSummary" xml:space="preserve">
+  <value>Ringkasan Analisis</value>
+  <comment>Ringkasan Analisis</comment>
+</data>
+
+<data name="DSeekDetailedInsights" xml:space="preserve">
+  <value>Wawasan Mendetail</value>
+  <comment>Wawasan Mendetail</comment>
+</data>
+
+<data name="DSeekGeneratedQueries" xml:space="preserve">
+  <value>Kueri yang Dihasilkan</value>
+  <comment>Kueri yang Dihasilkan</comment>
+</data>
+
+<data name="DSeekOptimizationSuggestions" xml:space="preserve">
+  <value>Saran Optimasi</value>
+  <comment>Saran Optimasi</comment>
+</data>
+
+<data name="DSeekExportReport" xml:space="preserve">
+  <value>Ekspor Laporan</value>
+  <comment>Ekspor Laporan</comment>
+</data>
+
+<data name="DSeekNewAnalysis" xml:space="preserve">
+  <value>Analisis Baru</value>
+  <comment>Analisis Baru</comment>
+</data>
+
+<!-- Area Konfigurasi -->
+<data name="DSeekSystemConfiguration" xml:space="preserve">
+  <value>Konfigurasi Sistem</value>
+  <comment>Konfigurasi Sistem</comment>
+</data>
+
+<data name="DSeekDeepSeekAPI" xml:space="preserve">
+  <value>API DeepSeek</value>
+  <comment>API DeepSeek</comment>
+</data>
+
+<data name="DSeekModelName" xml:space="preserve">
+  <value>Nama Model</value>
+  <comment>Nama Model</comment>
+</data>
+
+<!-- Tips Pemuatan -->
+<data name="DSeekDeepSeekAnalyzing" xml:space="preserve">
+  <value>DeepSeek sedang menganalisis data</value>
+  <comment>DeepSeek sedang menganalisis data</comment>
+</data>
+
+<data name="DSeekConnectingToDatabase" xml:space="preserve">
+  <value>Menghubungkan ke database...</value>
+  <comment>Menghubungkan ke database...</comment>
+</data>
+
+<data name="DSeekPleaseWaitProcessing" xml:space="preserve">
+  <value>Harap tunggu, memproses permintaan Anda</value>
+  <comment>Harap tunggu, memproses permintaan Anda</comment>
+</data>
+
+<data name="DSeekDeepSeekThinking" xml:space="preserve">
+  <value>"Saya memahami persyaratan analisis Anda, memikirkan solusi terbaik..."</value>
+  <comment>"Saya memahami persyaratan analisis Anda, memikirkan solusi terbaik..."</comment>
+</data>
+
+<data name="DSeekAIServerAvailable" xml:space="preserve">
+  <value>✅ Server AI tersedia dan siap digunakan.</value>
+  <comment>✅ Server AI tersedia dan siap digunakan.</comment>
+</data>
+
+<data name="DSeekNoValidAIServer" xml:space="preserve">
+  <value>⚠️ Tidak ditemukan server AI yang valid. Silakan hubungi administrator sistem untuk instalasi.</value>
+  <comment>⚠️ Tidak ditemukan server AI yang valid. Silakan hubungi administrator sistem untuk instalasi.</comment>
+</data>
+
+<data name="DSeekAIServerNotAvailable" xml:space="preserve">
+  <value>⚠️ Server AI tidak tersedia. Silakan hubungi penyedia untuk instalasi.</value>
+  <comment>⚠️ Server AI tidak tersedia. Silakan hubungi penyedia untuk instalasi.</comment>
+</data>
+
+<data name="DSeekPromptCantBeEmpty" xml:space="preserve">
+  <value>Prompt tidak boleh kosong!</value>
+  <comment>Prompt tidak boleh kosong!</comment>
+</data>
+
+<data name="DSeekCouldNotParseResponseFromOllama" xml:space="preserve">
+  <value>Kesalahan: Tidak dapat menguraikan respons dari Ollama.</value>
+  <comment>Kesalahan: Tidak dapat menguraikan respons dari Ollama.</comment>
+</data>
+
+<data name="DSeekAPICallFailedWithStatus" xml:space="preserve">
+  <value>Kesalahan: Panggilan API gagal dengan kode status </value>
+  <comment>Kesalahan: Panggilan API gagal dengan kode status </comment>
+</data>
+
+<data name="DSeekNoAIConfigurationFound" xml:space="preserve">
+  <value>Kesalahan: Tidak ditemukan konfigurasi AI.</value>
+  <comment>Kesalahan: Tidak ditemukan konfigurasi AI.</comment>
+</data>
+
+<data name="DSeekError" xml:space="preserve">
+  <value>Kesalahan: </value>
+  <comment>Kesalahan: </comment>
+</data>
+
+<data name="DSeekPleaseEnterTableNames" xml:space="preserve">
+  <value>Silakan masukkan nama tabel</value>
+  <comment>Silakan masukkan nama tabel</comment>
+</data>
+
+<data name="DSeekNoValidTableNamesFound" xml:space="preserve">
+  <value>Tidak ditemukan nama tabel yang valid</value>
+  <comment>Tidak ditemukan nama tabel yang valid</comment>
+</data>
+
+<data name="DSeekTableAddedThroughInterface" xml:space="preserve">
+  <value>Tabel ditambahkan melalui antarmuka</value>
+  <comment>Tabel ditambahkan melalui antarmuka</comment>
+</data>
+
+<data name="DSeekSaveSuccessfulSaved" xml:space="preserve">
+  <value>Simpan berhasil! Tersimpan </value>
+  <comment>Simpan berhasil! Tersimpan </comment>
+</data>
+
+<data name="DSeekTablesToDatabase" xml:space="preserve">
+  <value>tabel ke database</value>
+  <comment>tabel ke database</comment>
+</data>
+
+<data name="DSeekSaveFailed" xml:space="preserve">
+  <value>Simpan gagal: </value>
+  <comment>Simpan gagal: </comment>
+</data>
+
+<data name="DSeekLoadSuccessfulLoaded" xml:space="preserve">
+  <value>Muat berhasil! Dimuat </value>
+  <comment>Muat berhasil! Dimuat </comment>
+</data>
+
+<data name="DSeekTables" xml:space="preserve">
+  <value>tabel</value>
+  <comment>tabel</comment>
+</data>
+
+<data name="DSeekLoadFailed" xml:space="preserve">
+  <value>Muat gagal: </value>
+  <comment>Muat gagal: </comment>
+</data>
+
+<data name="DSeekAIServerNotAvailableContactSupplier" xml:space="preserve">
+  <value>⚠️ Server AI tidak tersedia. Silakan hubungi penyedia untuk instalasi.</value>
+  <comment>⚠️ Server AI tidak tersedia. Silakan hubungi penyedia untuk instalasi.</comment>
+</data>
+
+<data name="DSeekPleaseSelectTablesToAnalyze" xml:space="preserve">
+  <value>Silakan pilih tabel untuk dianalisis</value>
+  <comment>Silakan pilih tabel untuk dianalisis</comment>
+</data>
+
+<data name="DSeekPleaseEnterAnalysisRequirements" xml:space="preserve">
+  <value>Silakan masukkan persyaratan analisis</value>
+  <comment>Silakan masukkan persyaratan analisis</comment>
+</data>
+
+<data name="DSeekAnalysisFailed" xml:space="preserve">
+  <value>Analisis gagal: </value>
+  <comment>Analisis gagal: </comment>
+</data>
+
+<data name="DSeekAIConfigurationNotFound" xml:space="preserve">
+  <value>Konfigurasi AI tidak ditemukan</value>
+  <comment>Konfigurasi AI tidak ditemukan</comment>
+</data>
+
+<data name="DSeekErrorDuringAnalysis" xml:space="preserve">
+  <value>Kesalahan selama analisis: </value>
+  <comment>Kesalahan selama analisis: </comment>
+</data>
+
+<data name="DSeekFailedToGetTableStructure" xml:space="preserve">
+  <value>Gagal mendapatkan struktur tabel: </value>
+  <comment>Gagal mendapatkan struktur tabel: </comment>
+</data>
+
+<data name="DSeekPleaseAnalyzeDatabaseTableData" xml:space="preserve">
+  <value>Silakan analisis data tabel database berikut:</value>
+  <comment>Silakan analisis data tabel database berikut:</comment>
+</data>
+
+<data name="DSeekTablesToAnalyze" xml:space="preserve">
+  <value>Tabel untuk dianalisis: </value>
+  <comment>Tabel untuk dianalisis: </comment>
+</data>
+
+<data name="DSeekUserAnalysisRequirements" xml:space="preserve">
+  <value>Persyaratan analisis pengguna</value>
+  <comment>Persyaratan analisis pengguna</comment>
+</data>
+
+<data name="DSeekTableStructureInformation" xml:space="preserve">
+  <value>Informasi struktur tabel</value>
+  <comment>Informasi struktur tabel</comment>
+</data>
+
+<data name="DSeekPleaseProvideDetailedAnalysisReport" xml:space="preserve">
+  <value>Silakan berikan laporan analisis terperinci termasuk:</value>
+  <comment>Silakan berikan laporan analisis terperinci termasuk:</comment>
+</data>
+
+<data name="DSeekDataOverviewAnalysis" xml:space="preserve">
+  <value>Analisis Gambaran Umum Data</value>
+  <comment>Analisis Gambaran Umum Data</comment>
+</data>
+
+<data name="DSeekDataVolumeAndKeyFieldAnalysis" xml:space="preserve">
+  <value>Volume data dan analisis bidang kunci untuk setiap tabel</value>
+  <comment>Volume data dan analisis bidang kunci untuk setiap tabel</comment>
+</data>
+
+<data name="DSeekDataQualityAssessment" xml:space="preserve">
+  <value>Penilaian Kualitas Data</value>
+  <comment>Penilaian Kualitas Data</comment>
+</data>
+
+<data name="DSeekBusinessInsightsDiscovery" xml:space="preserve">
+  <value>Penemuan Wawasan Bisnis</value>
+  <comment>Penemuan Wawasan Bisnis</comment>
+</data>
+
+<data name="DSeekInDepthAnalysisBasedOnRequirements" xml:space="preserve">
+  <value>Analisis mendalam berdasarkan persyaratan pengguna</value>
+  <comment>Analisis mendalam berdasarkan persyaratan pengguna</comment>
+</data>
+
+<data name="DSeekDataPatternsAndTrendsDiscovered" xml:space="preserve">
+  <value>Pola dan tren data yang ditemukan</value>
+  <comment>Pola dan tren data yang ditemukan</comment>
+</data>
+
+<data name="DSeekOutliersAndPotentialIssues" xml:space="preserve">
+  <value>Pencilan dan masalah potensial</value>
+  <comment>Pencilan dan masalah potensial</comment>
+</data>
+
+<data name="DSeekOptimizationSuggestions" xml:space="preserve">
+  <value>Saran Optimasi</value>
+  <comment>Saran Optimasi</comment>
+</data>
+
+<data name="DSeekDataQualityImprovementSuggestions" xml:space="preserve">
+  <value>Saran peningkatan kualitas data</value>
+  <comment>Saran peningkatan kualitas data</comment>
+</data>
+
+<data name="DSeekBusinessOptimizationRecommendations" xml:space="preserve">
+  <value>Rekomendasi optimasi bisnis</value>
+  <comment>Rekomendasi optimasi bisnis</comment>
+</data>
+
+<data name="DSeekPleaseRespondInEnglish" xml:space="preserve">
+  <value>Silakan tanggapi dalam bahasa Inggris, berikan saran yang spesifik dan dapat ditindaklanjuti</value>
+  <comment>Silakan tanggapi dalam bahasa Inggris, berikan saran yang spesifik dan dapat ditindaklanjuti</comment>
+</data>
+
+<data name="DSeekOnlyLocalOllamaAnalysisSupported" xml:space="preserve">
+  <value>Hanya analisis Ollama lokal yang didukung</value>
+  <comment>Hanya analisis Ollama lokal yang didukung</comment>
+</data>
+
+<data name="DSeekCouldNotParseResponseInvalidFormat" xml:space="preserve">
+  <value>Tidak dapat menguraikan respons dari Ollama: Format respons tidak valid</value>
+  <comment>Tidak dapat menguraikan respons dari Ollama: Format respons tidak valid</comment>
+</data>
+
+<data name="DSeekOllamaAPICallFailed" xml:space="preserve">
+  <value>Panggilan API Ollama gagal dengan kode status </value>
+  <comment>Panggilan API Ollama gagal dengan kode status </comment>
+</data>
+
+<data name="DSeekResponse" xml:space="preserve">
+  <value>. Respons: </value>
+  <comment>. Respons: </comment>
+</data>
+
+<data name="DSeekNoResponseReceivedFromAIAnalysis" xml:space="preserve">
+  <value>Tidak ada respons yang diterima dari analisis AI.</value>
+  <comment>Tidak ada respons yang diterima dari analisis AI.</comment>
+</data>
+
+<data name="DSeekNoInsightsAvailable" xml:space="preserve">
+  <value>Tidak ada wawasan yang tersedia.</value>
+  <comment>Tidak ada wawasan yang tersedia.</comment>
+</data>
+
+<data name="DSeekNoRecommendationsAvailable" xml:space="preserve">
+  <value>Tidak ada rekomendasi yang tersedia.</value>
+  <comment>Tidak ada rekomendasi yang tersedia.</comment>
+</data>
+
+<data name="DSeekTableBasicStatistics" xml:space="preserve">
+  <value>statistik dasar tabel</value>
+  <comment>statistik dasar tabel</comment>
+</data>
+
+<data name="DSeekTimeAnalysis" xml:space="preserve">
+  <value>analisis waktu</value>
+  <comment>analisis waktu</comment>
+</data>
+
+<data name="DSeekNumericStatistics" xml:space="preserve">
+  <value>statistik numerik</value>
+  <comment>statistik numerik</comment>
+</data>
+
+<data name="DSeekTableQueryError" xml:space="preserve">
+  <value>kesalahan kueri tabel: </value>
+  <comment>kesalahan kueri tabel: </comment>
+</data>
+
+<data name="DSeekTimeTaken" xml:space="preserve">
+  <value>Waktu yang diambil: </value>
+  <comment>Waktu yang diambil: </comment>
+</data>
+
+<data name="DSeekSeconds" xml:space="preserve">
+  <value>detik</value>
+  <comment>detik</comment>
+</data>
+
+<data name="DSeekNoContentAvailable" xml:space="preserve">
+  <value>Tidak ada konten yang tersedia</value>
+  <comment>Tidak ada konten yang tersedia</comment>
+</data>
+
+<data name="DSeekNoQueriesGenerated" xml:space="preserve">
+  <value>Tidak ada kueri yang dihasilkan</value>
+  <comment>Tidak ada kueri yang dihasilkan</comment>
+</data>
+
+<data name="DSeekDatabaseConnectionSuccessfulCurrentDatabase" xml:space="preserve">
+  <value>✅ Koneksi database berhasil! Database saat ini: </value>
+  <comment>✅ Koneksi database berhasil! Database saat ini: </comment>
+</data>
+
+<data name="DSeekTableCount" xml:space="preserve">
+  <value>Jumlah tabel: </value>
+  <comment>Jumlah tabel: </comment>
+</data>
+
+<data name="DSeekDatabaseConnectionSuccessful" xml:space="preserve">
+  <value>✅ Koneksi database berhasil!</value>
+  <comment>✅ Koneksi database berhasil!</comment>
+</data>
+
+<data name="DSeekDatabaseConnectionFailed" xml:space="preserve">
+  <value>❌ Koneksi database gagal: </value>
+  <comment>❌ Koneksi database gagal: </comment>
+</data>
+
+<data name="DSeekConfigurationSavedSuccessfully" xml:space="preserve">
+  <value>✅ Konfigurasi berhasil disimpan!</value>
+  <comment>✅ Konfigurasi berhasil disimpan!</comment>
+</data>
 </root>

@@ -32663,4 +32663,262 @@
   <data name="DRZYYUISJ" xml:space="preserve">
     <value>В среде разработки: поместите экспортированный языковой файл Excel в папку UpdateCode\Language\skin, а также скопируйте соответствующий языковой файл resx из каталога App_GlobalResources в каталог UpdateCode\Language\skin. Затем нажмите кнопку «Импортировать данные этого языка» для импорта.</value>
   </data>
+  <data name="DSeekIntelligentDataAnalysisTitle" xml:space="preserve">
+    <value>Интеллектуальный анализ данных - AI</value>
+  </data>
+  <data name="DSeekIntelligentAnalysisPlatform" xml:space="preserve">
+    <value>Платформа интеллектуального анализа AI</value>
+  </data>
+  <data name="DSeekAnalysisCustomizedReports" xml:space="preserve">
+    <value>AI создаст индивидуальный аналитический отчет в соответствии с вашими требованиями</value>
+  </data>
+  <data name="DSeekOptimizationSuggestions" xml:space="preserve">
+    <value>Предложения по оптимизации</value>
+    <comment>Предложения по оптимизации</comment>
+  </data>
+  <data name="DSeekDeepSeekAPI" xml:space="preserve">
+    <value>AI API</value>
+  </data>
+  <data name="DSeekDeepSeekAnalyzing" xml:space="preserve">
+    <value>AI анализирует данные</value>
+  </data>
+  <data name="DSeekDeepSeekThinking" xml:space="preserve">
+    <value>AI понимает ваши аналитические потребности и обдумывает оптимальное решение...</value>
+  </data>
+  <data name="DSeekAIServerAvailable" xml:space="preserve">
+    <value>✅ AI-сервер доступен и готов к использованию.</value>
+    <comment>✅ AI-сервер доступен и готов к использованию.</comment>
+  </data>
+  <data name="DSeekNoValidAIServer" xml:space="preserve">
+    <value>⚠️ Действительный AI-сервер не найден. Обратитесь к системному администратору для установки.</value>
+    <comment>⚠️ Действительный AI-сервер не найден. Обратитесь к системному администратору для установки.</comment>
+  </data>
+  <data name="DSeekAIServerNotAvailable" xml:space="preserve">
+    <value>⚠️ AI-сервер недоступен. Обратитесь к поставщику для установки.</value>
+    <comment>⚠️ AI-сервер недоступен. Обратитесь к поставщику для установки.</comment>
+  </data>
+  <data name="DSeekPromptCantBeEmpty" xml:space="preserve">
+    <value>Поле запроса не может быть пустым!</value>
+    <comment>Поле запроса не может быть пустым!</comment>
+  </data>
+  <data name="DSeekCouldNotParseResponseFromOllama" xml:space="preserve">
+    <value>Ошибка: Не удалось разобрать ответ от Ollama.</value>
+    <comment>Ошибка: Не удалось разобрать ответ от Ollama.</comment>
+  </data>
+  <data name="DSeekAPICallFailedWithStatus" xml:space="preserve">
+    <value>Ошибка: Вызов API завершился неудачей со статусом </value>
+    <comment>Ошибка: Вызов API завершился неудачей со статусом </comment>
+  </data>
+  <data name="DSeekNoAIConfigurationFound" xml:space="preserve">
+    <value>Ошибка: Конфигурация AI не найдена.</value>
+    <comment>Ошибка: Конфигурация AI не найдена.</comment>
+  </data>
+  <data name="DSeekError" xml:space="preserve">
+    <value>Ошибка: </value>
+    <comment>Ошибка: </comment>
+  </data>
+  <data name="DSeekPleaseEnterTableNames" xml:space="preserve">
+    <value>Пожалуйста, введите названия таблиц</value>
+    <comment>Пожалуйста, введите названия таблиц</comment>
+  </data>
+  <data name="DSeekNoValidTableNamesFound" xml:space="preserve">
+    <value>Действительных названий таблиц не найдено</value>
+    <comment>Действительных названий таблиц не найдено</comment>
+  </data>
+  <data name="DSeekTableAddedThroughInterface" xml:space="preserve">
+    <value>Таблица добавлена через интерфейс</value>
+    <comment>Таблица добавлена через интерфейс</comment>
+  </data>
+  <data name="DSeekSaveSuccessfulSaved" xml:space="preserve">
+    <value>Сохранение успешно! Сохранено </value>
+    <comment>Сохранение успешно! Сохранено </comment>
+  </data>
+  <data name="DSeekTablesToDatabase" xml:space="preserve">
+    <value>таблиц в базу данных</value>
+    <comment>таблиц в базу данных</comment>
+  </data>
+  <data name="DSeekSaveFailed" xml:space="preserve">
+    <value>Ошибка сохранения: </value>
+    <comment>Ошибка сохранения: </comment>
+  </data>
+  <data name="DSeekLoadSuccessfulLoaded" xml:space="preserve">
+    <value>Загрузка успешна! Загружено </value>
+    <comment>Загрузка успешна! Загружено </comment>
+  </data>
+  <data name="DSeekTables" xml:space="preserve">
+    <value>таблиц</value>
+    <comment>таблиц</comment>
+  </data>
+  <data name="DSeekLoadFailed" xml:space="preserve">
+    <value>Ошибка загрузки: </value>
+    <comment>Ошибка загрузки: </comment>
+  </data>
+  <data name="DSeekAIServerNotAvailableContactSupplier" xml:space="preserve">
+    <value>⚠️ AI-сервер недоступен. Обратитесь к поставщику для установки.</value>
+    <comment>⚠️ AI-сервер недоступен. Обратитесь к поставщику для установки.</comment>
+  </data>
+  <data name="DSeekPleaseSelectTablesToAnalyze" xml:space="preserve">
+    <value>Пожалуйста, выберите таблицы для анализа</value>
+    <comment>Пожалуйста, выберите таблицы для анализа</comment>
+  </data>
+  <data name="DSeekPleaseEnterAnalysisRequirements" xml:space="preserve">
+    <value>Пожалуйста, введите требования к анализу</value>
+    <comment>Пожалуйста, введите требования к анализу</comment>
+  </data>
+  <data name="DSeekAnalysisFailed" xml:space="preserve">
+    <value>Ошибка анализа: </value>
+    <comment>Ошибка анализа: </comment>
+  </data>
+  <data name="DSeekAIConfigurationNotFound" xml:space="preserve">
+    <value>Конфигурация AI не найдена</value>
+    <comment>Конфигурация AI не найдена</comment>
+  </data>
+  <data name="DSeekErrorDuringAnalysis" xml:space="preserve">
+    <value>Ошибка во время анализа: </value>
+    <comment>Ошибка во время анализа: </comment>
+  </data>
+  <data name="DSeekFailedToGetTableStructure" xml:space="preserve">
+    <value>Не удалось получить структуру таблицы: </value>
+    <comment>Не удалось получить структуру таблицы: </comment>
+  </data>
+  <data name="DSeekPleaseAnalyzeDatabaseTableData" xml:space="preserve">
+    <value>Проанализируйте, пожалуйста, следующие данные таблиц базы данных:</value>
+    <comment>Проанализируйте, пожалуйста, следующие данные таблиц базы данных:</comment>
+  </data>
+  <data name="DSeekTablesToAnalyze" xml:space="preserve">
+    <value>Таблицы для анализа: </value>
+    <comment>Таблицы для анализа: </comment>
+  </data>
+  <data name="DSeekUserAnalysisRequirements" xml:space="preserve">
+    <value>Требования пользователя к анализу</value>
+    <comment>Требования пользователя к анализу</comment>
+  </data>
+  <data name="DSeekTableStructureInformation" xml:space="preserve">
+    <value>Информация о структуре таблицы</value>
+    <comment>Информация о структуре таблицы</comment>
+  </data>
+  <data name="DSeekPleaseProvideDetailedAnalysisReport" xml:space="preserve">
+    <value>Предоставьте, пожалуйста, подробный аналитический отчет, включающий:</value>
+    <comment>Предоставьте, пожалуйста, подробный аналитический отчет, включающий:</comment>
+  </data>
+  <data name="DSeekDataOverviewAnalysis" xml:space="preserve">
+    <value>Анализ обзора данных</value>
+    <comment>Анализ обзора данных</comment>
+  </data>
+  <data name="DSeekDataVolumeAndKeyFieldAnalysis" xml:space="preserve">
+    <value>Анализ объема данных и ключевых полей для каждой таблицы</value>
+    <comment>Анализ объема данных и ключевых полей для каждой таблицы</comment>
+  </data>
+  <data name="DSeekDataQualityAssessment" xml:space="preserve">
+    <value>Оценка качества данных</value>
+    <comment>Оценка качества данных</comment>
+  </data>
+  <data name="DSeekBusinessInsightsDiscovery" xml:space="preserve">
+    <value>Обнаружение бизнес-инсайтов</value>
+    <comment>Обнаружение бизнес-инсайтов</comment>
+  </data>
+  <data name="DSeekInDepthAnalysisBasedOnRequirements" xml:space="preserve">
+    <value>Углубленный анализ на основе требований пользователя</value>
+    <comment>Углубленный анализ на основе требований пользователя</comment>
+  </data>
+  <data name="DSeekDataPatternsAndTrendsDiscovered" xml:space="preserve">
+    <value>Обнаруженные шаблоны и тренды данных</value>
+    <comment>Обнаруженные шаблоны и тренды данных</comment>
+  </data>
+  <data name="DSeekOutliersAndPotentialIssues" xml:space="preserve">
+    <value>Выбросы и потенциальные проблемы</value>
+    <comment>Выбросы и потенциальные проблемы</comment>
+  </data>
+  <data name="DSeekDataQualityImprovementSuggestions" xml:space="preserve">
+    <value>Предложения по улучшению качества данных</value>
+    <comment>Предложения по улучшению качества данных</comment>
+  </data>
+  <data name="DSeekBusinessOptimizationRecommendations" xml:space="preserve">
+    <value>Рекомендации по бизнес-оптимизации</value>
+    <comment>Рекомендации по бизнес-оптимизации</comment>
+  </data>
+  <data name="DSeekPleaseRespondInEnglish" xml:space="preserve">
+    <value>Пожалуйста, отвечайте на английском языке, предоставляйте конкретные, действенные предложения</value>
+    <comment>Пожалуйста, отвечайте на английском языке, предоставляйте конкретные, действенные предложения</comment>
+  </data>
+  <data name="DSeekOnlyLocalOllamaAnalysisSupported" xml:space="preserve">
+    <value>Поддерживается только локальный анализ через Ollama</value>
+    <comment>Поддерживается только локальный анализ через Ollama</comment>
+  </data>
+  <data name="DSeekCouldNotParseResponseInvalidFormat" xml:space="preserve">
+    <value>Не удалось разобрать ответ от Ollama: Неверный формат ответа</value>
+    <comment>Не удалось разобрать ответ от Ollama: Неверный формат ответа</comment>
+  </data>
+  <data name="DSeekOllamaAPICallFailed" xml:space="preserve">
+    <value>Вызов API Ollama завершился неудачей со статусом </value>
+    <comment>Вызов API Ollama завершился неудачей со статусом </comment>
+  </data>
+  <data name="DSeekResponse" xml:space="preserve">
+    <value>. Ответ: </value>
+    <comment>. Ответ: </comment>
+  </data>
+  <data name="DSeekNoResponseReceivedFromAIAnalysis" xml:space="preserve">
+    <value>Ответ от AI-анализа не получен.</value>
+    <comment>Ответ от AI-анализа не получен.</comment>
+  </data>
+  <data name="DSeekNoInsightsAvailable" xml:space="preserve">
+    <value>Инсайты отсутствуют.</value>
+    <comment>Инсайты отсутствуют.</comment>
+  </data>
+  <data name="DSeekNoRecommendationsAvailable" xml:space="preserve">
+    <value>Рекомендации отсутствуют.</value>
+    <comment>Рекомендации отсутствуют.</comment>
+  </data>
+  <data name="DSeekTableBasicStatistics" xml:space="preserve">
+    <value>базовая статистика таблицы</value>
+    <comment>базовая статистика таблицы</comment>
+  </data>
+  <data name="DSeekTimeAnalysis" xml:space="preserve">
+    <value>анализ времени</value>
+    <comment>анализ времени</comment>
+  </data>
+  <data name="DSeekNumericStatistics" xml:space="preserve">
+    <value>числовая статистика</value>
+    <comment>числовая статистика</comment>
+  </data>
+  <data name="DSeekTableQueryError" xml:space="preserve">
+    <value>ошибка запроса к таблице: </value>
+    <comment>ошибка запроса к таблице: </comment>
+  </data>
+  <data name="DSeekTimeTaken" xml:space="preserve">
+    <value>Затраченное время: </value>
+    <comment>Затраченное время: </comment>
+  </data>
+  <data name="DSeekSeconds" xml:space="preserve">
+    <value>секунд</value>
+    <comment>секунд</comment>
+  </data>
+  <data name="DSeekNoContentAvailable" xml:space="preserve">
+    <value>Контент отсутствует</value>
+    <comment>Контент отсутствует</comment>
+  </data>
+  <data name="DSeekNoQueriesGenerated" xml:space="preserve">
+    <value>Запросы не сгенерированы</value>
+    <comment>Запросы не сгенерированы</comment>
+  </data>
+  <data name="DSeekDatabaseConnectionSuccessfulCurrentDatabase" xml:space="preserve">
+    <value>✅ Подключение к базе данных успешно! Текущая база данных: </value>
+    <comment>✅ Подключение к базе данных успешно! Текущая база данных: </comment>
+  </data>
+  <data name="DSeekTableCount" xml:space="preserve">
+    <value>Количество таблиц: </value>
+    <comment>Количество таблиц: </comment>
+  </data>
+  <data name="DSeekDatabaseConnectionSuccessful" xml:space="preserve">
+    <value>✅ Подключение к базе данных успешно!</value>
+    <comment>✅ Подключение к базе данных успешно!</comment>
+  </data>
+  <data name="DSeekDatabaseConnectionFailed" xml:space="preserve">
+    <value>❌ Ошибка подключения к базе данных: </value>
+    <comment>❌ Ошибка подключения к базе данных: </comment>
+  </data>
+  <data name="DSeekConfigurationSavedSuccessfully" xml:space="preserve">
+    <value>✅ Конфигурация успешно сохранена!</value>
+    <comment>✅ Конфигурация успешно сохранена!</comment>
+  </data>
 </root>

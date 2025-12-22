@@ -32662,4 +32662,412 @@ The progress of the task affects the schedule to be confirmed</value>
   <data name="DRZYYUISJ" xml:space="preserve">
     <value>In the development environment: Place the exported language Excel file into the UpdateCode\Language\skin folder, and also copy the corresponding language’s resx file from the App_GlobalResources directory to the UpdateCode\Language\skin directory. Then click the “Import this language’s data” button to import.</value>
   </data>
+  <data name="DSeekSmartChat" xml:space="preserve">
+    <value>💬 Smart Chat</value>
+    <comment>💬 Smart Chat</comment>
+  </data>
+  <data name="DSeekDataAnalysis" xml:space="preserve">
+    <value>📊 Data Analysis</value>
+    <comment>📊 Data Analysis</comment>
+  </data>
+  <data name="DSeekGenerate" xml:space="preserve">
+    <value>Generate</value>
+    <comment>Generate</comment>
+  </data>
+  <data name="DSeekStop" xml:space="preserve">
+    <value>Stop</value>
+    <comment>Stop</comment>
+  </data>
+  <data name="DSeekSaveToDB" xml:space="preserve">
+    <value>Save to Database</value>
+    <comment>Save to Database</comment>
+  </data>
+  <data name="DSeekLoadSavedTables" xml:space="preserve">
+    <value>🔄 Load Saved Tables</value>
+    <comment>🔄 Load Saved Tables</comment>
+  </data>
+  <data name="DSeekStartIntelligentAnalysis" xml:space="preserve">
+    <value>🚀 Start Intelligent Analysis</value>
+    <comment>🚀 Start Intelligent Analysis</comment>
+  </data>
+  <data name="DSeekClear" xml:space="preserve">
+    <value>🔄 Clear</value>
+    <comment>🔄 Clear</comment>
+  </data>
+  <data name="DSeekTestConnection" xml:space="preserve">
+    <value>🔗 Test Connection</value>
+    <comment>🔗 Test Connection</comment>
+  </data>
+  <data name="DSeekSaveConfiguration" xml:space="preserve">
+    <value>💾 Save Configuration</value>
+    <comment>💾 Save Configuration</comment>
+  </data>
+  <data name="DSeekIntelligentDataAnalysisTitle" xml:space="preserve">
+    <value>Intelligent Data Analysis - AI</value>
+    <comment>Intelligent Data Analysis - DeepSeek</comment>
+  </data>
+  <data name="DSeekIntelligentAnalysisPlatform" xml:space="preserve">
+    <value>AI Intelligent Analysis Platform</value>
+    <comment>DeepSeek Intelligent Analysis Platform</comment>
+  </data>
+  <data name="DSeekSmartChatDataAnalysisDualMode" xml:space="preserve">
+    <value>Smart Chat + Data Analysis Dual Mode</value>
+    <comment>Smart Chat + Data Analysis Dual Mode</comment>
+  </data>
+  <data name="DSeekEnterYourQuestion" xml:space="preserve">
+    <value>Please enter your question...</value>
+    <comment>Please enter your question...</comment>
+  </data>
+  <data name="DSeekLoadingPleaseWait" xml:space="preserve">
+    <value>Loading, please wait...</value>
+    <comment>Loading, please wait...</comment>
+  </data>
+  <data name="DSeekAnalysisTableManagement" xml:space="preserve">
+    <value>Analysis Table Management</value>
+    <comment>Analysis Table Management</comment>
+  </data>
+  <data name="DSeekAddTableNames" xml:space="preserve">
+    <value>Add Table Names (comma separated):</value>
+    <comment>Add Table Names (comma separated):</comment>
+  </data>
+  <data name="DSeekTableNamesPlaceholder" xml:space="preserve">
+    <value>e.g.: projects, tasks, users, orders</value>
+    <comment>e.g.: projects, tasks, users, orders</comment>
+  </data>
+  <data name="DSeekTableNamesSaved" xml:space="preserve">
+    <value>Table names will be saved to T_DBTablesForAI table</value>
+    <comment>Table names will be saved to T_DBTablesForAI table</comment>
+  </data>
+  <data name="DSeekSelectTablesForAnalysis" xml:space="preserve">
+    <value>Select tables for analysis:</value>
+    <comment>Select tables for analysis:</comment>
+  </data>
+  <data name="DSeekSelectedTables" xml:space="preserve">
+    <value>Selected Tables:</value>
+    <comment>Selected Tables:</comment>
+  </data>
+  <data name="DSeekAnalysisRequirementDescription" xml:space="preserve">
+    <value>Analysis Requirement Description</value>
+    <comment>Analysis Requirement Description</comment>
+  </data>
+  <data name="DSeekAnalysisRequirementExamples" xml:space="preserve">
+    <value>💡 Analysis Requirement Examples:</value>
+    <comment>💡 Analysis Requirement Examples:</comment>
+  </data>
+  <data name="DSeekAnalysisExample1" xml:space="preserve">
+    <value>Analyze project costs and profits from these tables</value>
+    <comment>Analyze project costs and profits from these tables</comment>
+  </data>
+  <data name="DSeekAnalysisExample2" xml:space="preserve">
+    <value>Discover anomalies and issues in the data</value>
+    <comment>Discover anomalies and issues in the data</comment>
+  </data>
+  <data name="DSeekAnalysisRequirementPlaceholder" xml:space="preserve">
+    <value>Describe in detail what you want to analyze...</value>
+    <comment>Describe in detail what you want to analyze...</comment>
+  </data>
+  <data name="DSeekAnalysisCustomizedReports" xml:space="preserve">
+    <value>AI will generate customized analysis reports based on your requirements</value>
+    <comment>DeepSeek will generate customized analysis reports based on your requirements</comment>
+  </data>
+  <data name="DSeekAnalysisResults" xml:space="preserve">
+    <value>Analysis Results</value>
+    <comment>Analysis Results</comment>
+  </data>
+  <data name="DSeekAnalysisTime" xml:space="preserve">
+    <value>Analysis Time</value>
+    <comment>Analysis Time</comment>
+  </data>
+  <data name="DSeekAnalyzedTables" xml:space="preserve">
+    <value>Analyzed Tables</value>
+    <comment>Analyzed Tables</comment>
+  </data>
+  <data name="DSeekAnalysisSummary" xml:space="preserve">
+    <value>Analysis Summary</value>
+    <comment>Analysis Summary</comment>
+  </data>
+  <data name="DSeekDetailedInsights" xml:space="preserve">
+    <value>Detailed Insights</value>
+    <comment>Detailed Insights</comment>
+  </data>
+  <data name="DSeekGeneratedQueries" xml:space="preserve">
+    <value>Generated Queries</value>
+    <comment>Generated Queries</comment>
+  </data>
+  <data name="DSeekOptimizationSuggestions" xml:space="preserve">
+    <value>Optimization Suggestions</value>
+    <comment>Optimization Suggestions</comment>
+  </data>
+  <data name="DSeekExportReport" xml:space="preserve">
+    <value>Export Report</value>
+    <comment>Export Report</comment>
+  </data>
+  <data name="DSeekNewAnalysis" xml:space="preserve">
+    <value>New Analysis</value>
+    <comment>New Analysis</comment>
+  </data>
+  <data name="DSeekSystemConfiguration" xml:space="preserve">
+    <value>System Configuration</value>
+    <comment>System Configuration</comment>
+  </data>
+  <data name="DSeekDeepSeekAPI" xml:space="preserve">
+    <value>AI API</value>
+    <comment>DeepSeek API</comment>
+  </data>
+  <data name="DSeekModelName" xml:space="preserve">
+    <value>Model Name</value>
+    <comment>Model Name</comment>
+  </data>
+  <data name="DSeekDeepSeekAnalyzing" xml:space="preserve">
+    <value>AI is analyzing data</value>
+    <comment>DeepSeek is analyzing data</comment>
+  </data>
+  <data name="DSeekConnectingToDatabase" xml:space="preserve">
+    <value>Connecting to database...</value>
+    <comment>Connecting to database...</comment>
+  </data>
+  <data name="DSeekPleaseWaitProcessing" xml:space="preserve">
+    <value>Please wait, processing your request</value>
+    <comment>Please wait, processing your request</comment>
+  </data>
+  <data name="DSeekDeepSeekThinking" xml:space="preserve">
+    <value>I'm understanding your analysis requirements, thinking about the best solution...</value>
+    <comment>"I'm understanding your analysis requirements, thinking about the best solution..."</comment>
+  </data>
+  <data name="DSeekAIServerAvailable" xml:space="preserve">
+    <value>✅ AI Server is available and ready to use.</value>
+    <comment>✅ AI Server is available and ready to use.</comment>
+  </data>
+  <data name="DSeekNoValidAIServer" xml:space="preserve">
+    <value>⚠️ No valid AI server found. Please contact the system administrator for installation.</value>
+    <comment>⚠️ No valid AI server found. Please contact the system administrator for installation.</comment>
+  </data>
+  <data name="DSeekAIServerNotAvailable" xml:space="preserve">
+    <value>⚠️ AI Server is not available. Please contact the supplier for installation.</value>
+    <comment>⚠️ AI Server is not available. Please contact the supplier for installation.</comment>
+  </data>
+  <data name="DSeekPromptCantBeEmpty" xml:space="preserve">
+    <value>Prompt can't be empty!</value>
+    <comment>Prompt can't be empty!</comment>
+  </data>
+  <data name="DSeekCouldNotParseResponseFromOllama" xml:space="preserve">
+    <value>Error: Could not parse response from Ollama.</value>
+    <comment>Error: Could not parse response from Ollama.</comment>
+  </data>
+  <data name="DSeekAPICallFailedWithStatus" xml:space="preserve">
+    <value>Error: API call failed with status code </value>
+    <comment>Error: API call failed with status code </comment>
+  </data>
+  <data name="DSeekNoAIConfigurationFound" xml:space="preserve">
+    <value>Error: No AI configuration found.</value>
+    <comment>Error: No AI configuration found.</comment>
+  </data>
+  <data name="DSeekError" xml:space="preserve">
+    <value>Error: </value>
+    <comment>Error: </comment>
+  </data>
+  <data name="DSeekPleaseEnterTableNames" xml:space="preserve">
+    <value>Please enter table names</value>
+    <comment>Please enter table names</comment>
+  </data>
+  <data name="DSeekNoValidTableNamesFound" xml:space="preserve">
+    <value>No valid table names found</value>
+    <comment>No valid table names found</comment>
+  </data>
+  <data name="DSeekTableAddedThroughInterface" xml:space="preserve">
+    <value>Table added through interface</value>
+    <comment>Table added through interface</comment>
+  </data>
+  <data name="DSeekSaveSuccessfulSaved" xml:space="preserve">
+    <value>Save successful! Saved </value>
+    <comment>Save successful! Saved </comment>
+  </data>
+  <data name="DSeekTablesToDatabase" xml:space="preserve">
+    <value>tables to database</value>
+    <comment>tables to database</comment>
+  </data>
+  <data name="DSeekSaveFailed" xml:space="preserve">
+    <value>Save failed: </value>
+    <comment>Save failed: </comment>
+  </data>
+  <data name="DSeekLoadSuccessfulLoaded" xml:space="preserve">
+    <value>Load successful! Loaded </value>
+    <comment>Load successful! Loaded </comment>
+  </data>
+  <data name="DSeekTables" xml:space="preserve">
+    <value>tables</value>
+    <comment>tables</comment>
+  </data>
+  <data name="DSeekLoadFailed" xml:space="preserve">
+    <value>Load failed: </value>
+    <comment>Load failed: </comment>
+  </data>
+  <data name="DSeekAIServerNotAvailableContactSupplier" xml:space="preserve">
+    <value>⚠️ AI Server is not available. Please contact the supplier for installation.</value>
+    <comment>⚠️ AI Server is not available. Please contact the supplier for installation.</comment>
+  </data>
+  <data name="DSeekPleaseSelectTablesToAnalyze" xml:space="preserve">
+    <value>Please select tables to analyze</value>
+    <comment>Please select tables to analyze</comment>
+  </data>
+  <data name="DSeekPleaseEnterAnalysisRequirements" xml:space="preserve">
+    <value>Please enter analysis requirements</value>
+    <comment>Please enter analysis requirements</comment>
+  </data>
+  <data name="DSeekAnalysisFailed" xml:space="preserve">
+    <value>Analysis failed: </value>
+    <comment>Analysis failed: </comment>
+  </data>
+  <data name="DSeekAIConfigurationNotFound" xml:space="preserve">
+    <value>AI configuration not found</value>
+    <comment>AI configuration not found</comment>
+  </data>
+  <data name="DSeekErrorDuringAnalysis" xml:space="preserve">
+    <value>Error during analysis: </value>
+    <comment>Error during analysis: </comment>
+  </data>
+  <data name="DSeekFailedToGetTableStructure" xml:space="preserve">
+    <value>Failed to get table structure: </value>
+    <comment>Failed to get table structure: </comment>
+  </data>
+  <data name="DSeekPleaseAnalyzeDatabaseTableData" xml:space="preserve">
+    <value>Please analyze the following database table data:</value>
+    <comment>Please analyze the following database table data:</comment>
+  </data>
+  <data name="DSeekTablesToAnalyze" xml:space="preserve">
+    <value>Tables to analyze: </value>
+    <comment>Tables to analyze: </comment>
+  </data>
+  <data name="DSeekUserAnalysisRequirements" xml:space="preserve">
+    <value>User analysis requirements</value>
+    <comment>User analysis requirements</comment>
+  </data>
+  <data name="DSeekTableStructureInformation" xml:space="preserve">
+    <value>Table structure information</value>
+    <comment>Table structure information</comment>
+  </data>
+  <data name="DSeekPleaseProvideDetailedAnalysisReport" xml:space="preserve">
+    <value>Please provide a detailed analysis report including:</value>
+    <comment>Please provide a detailed analysis report including:</comment>
+  </data>
+  <data name="DSeekDataOverviewAnalysis" xml:space="preserve">
+    <value>Data Overview Analysis</value>
+    <comment>Data Overview Analysis</comment>
+  </data>
+  <data name="DSeekDataVolumeAndKeyFieldAnalysis" xml:space="preserve">
+    <value>Data volume and key field analysis for each table</value>
+    <comment>Data volume and key field analysis for each table</comment>
+  </data>
+  <data name="DSeekDataQualityAssessment" xml:space="preserve">
+    <value>Data quality assessment</value>
+    <comment>Data quality assessment</comment>
+  </data>
+  <data name="DSeekBusinessInsightsDiscovery" xml:space="preserve">
+    <value>Business Insights Discovery</value>
+    <comment>Business Insights Discovery</comment>
+  </data>
+  <data name="DSeekInDepthAnalysisBasedOnRequirements" xml:space="preserve">
+    <value>In-depth analysis based on user requirements</value>
+    <comment>In-depth analysis based on user requirements</comment>
+  </data>
+  <data name="DSeekDataPatternsAndTrendsDiscovered" xml:space="preserve">
+    <value>Data patterns and trends discovered</value>
+    <comment>Data patterns and trends discovered</comment>
+  </data>
+  <data name="DSeekOutliersAndPotentialIssues" xml:space="preserve">
+    <value>Outliers and potential issues</value>
+    <comment>Outliers and potential issues</comment>
+  </data>
+  <data name="DSeekDataQualityImprovementSuggestions" xml:space="preserve">
+    <value>Data quality improvement suggestions</value>
+    <comment>Data quality improvement suggestions</comment>
+  </data>
+  <data name="DSeekBusinessOptimizationRecommendations" xml:space="preserve">
+    <value>Business optimization recommendations</value>
+    <comment>Business optimization recommendations</comment>
+  </data>
+  <data name="DSeekPleaseRespondInEnglish" xml:space="preserve">
+    <value>Please respond in English, provide specific, actionable suggestions</value>
+    <comment>Please respond in English, provide specific, actionable suggestions</comment>
+  </data>
+  <data name="DSeekOnlyLocalOllamaAnalysisSupported" xml:space="preserve">
+    <value>Only local Ollama analysis is supported</value>
+    <comment>Only local Ollama analysis is supported</comment>
+  </data>
+  <data name="DSeekCouldNotParseResponseInvalidFormat" xml:space="preserve">
+    <value>Could not parse response from Ollama: Invalid response format</value>
+    <comment>Could not parse response from Ollama: Invalid response format</comment>
+  </data>
+  <data name="DSeekOllamaAPICallFailed" xml:space="preserve">
+    <value>Ollama API call failed with status code </value>
+    <comment>Ollama API call failed with status code </comment>
+  </data>
+  <data name="DSeekResponse" xml:space="preserve">
+    <value>. Response: </value>
+    <comment>. Response: </comment>
+  </data>
+  <data name="DSeekNoResponseReceivedFromAIAnalysis" xml:space="preserve">
+    <value>No response received from AI analysis.</value>
+    <comment>No response received from AI analysis.</comment>
+  </data>
+  <data name="DSeekNoInsightsAvailable" xml:space="preserve">
+    <value>No insights available.</value>
+    <comment>No insights available.</comment>
+  </data>
+  <data name="DSeekNoRecommendationsAvailable" xml:space="preserve">
+    <value>No recommendations available.</value>
+    <comment>No recommendations available.</comment>
+  </data>
+  <data name="DSeekTableBasicStatistics" xml:space="preserve">
+    <value>table basic statistics</value>
+    <comment>table basic statistics</comment>
+  </data>
+  <data name="DSeekTimeAnalysis" xml:space="preserve">
+    <value>time analysis</value>
+    <comment>time analysis</comment>
+  </data>
+  <data name="DSeekNumericStatistics" xml:space="preserve">
+    <value>numeric statistics</value>
+    <comment>numeric statistics</comment>
+  </data>
+  <data name="DSeekTableQueryError" xml:space="preserve">
+    <value>table query error: </value>
+    <comment>table query error: </comment>
+  </data>
+  <data name="DSeekTimeTaken" xml:space="preserve">
+    <value>Time taken: </value>
+    <comment>Time taken: </comment>
+  </data>
+  <data name="DSeekSeconds" xml:space="preserve">
+    <value>seconds</value>
+    <comment>seconds</comment>
+  </data>
+  <data name="DSeekNoContentAvailable" xml:space="preserve">
+    <value>No content available</value>
+    <comment>No content available</comment>
+  </data>
+  <data name="DSeekNoQueriesGenerated" xml:space="preserve">
+    <value>No queries generated</value>
+    <comment>No queries generated</comment>
+  </data>
+  <data name="DSeekDatabaseConnectionSuccessfulCurrentDatabase" xml:space="preserve">
+    <value>✅ Database connection successful! Current database: </value>
+    <comment>✅ Database connection successful! Current database: </comment>
+  </data>
+  <data name="DSeekTableCount" xml:space="preserve">
+    <value>Table count: </value>
+    <comment>Table count: </comment>
+  </data>
+  <data name="DSeekDatabaseConnectionSuccessful" xml:space="preserve">
+    <value>✅ Database connection successful!</value>
+    <comment>✅ Database connection successful!</comment>
+  </data>
+  <data name="DSeekDatabaseConnectionFailed" xml:space="preserve">
+    <value>❌ Database connection failed: </value>
+    <comment>❌ Database connection failed: </comment>
+  </data>
+  <data name="DSeekConfigurationSavedSuccessfully" xml:space="preserve">
+    <value>✅ Configuration saved successfully!</value>
+    <comment>✅ Configuration saved successfully!</comment>
+  </data>
 </root>

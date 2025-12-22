@@ -2969,6 +2969,7 @@
   </data>
   <data name="DBMZYYSJ" xml:space="preserve">
     <value>更新该模组语言数据</value>
+    <comment>更新该模组语言数据</comment>
   </data>
   <data name="DCaoZuoXingXuQiu" xml:space="preserve">
     <value>D操作性需求</value>
@@ -26339,7 +26340,7 @@
     <value>警告，密码必须大于等于8位，请检查！</value>
   </data>
   <data name="ZZSJHBNWKQJC" xml:space="preserve">
-    <value>手机号不能为空，请检查！</value>
+    <value>用户代码不能为空，请检查！</value>
   </data>
   <data name="ChaoQi" xml:space="preserve">
     <value>超期</value>
@@ -28011,7 +28012,7 @@
     <value>文件上传者包含:</value>
   </data>
   <data name="BAnLeiXingLiuLanSuoYouXiangMuB" xml:space="preserve">
-    <value>&lt;B按类型浏览所有项目&lt;/B</value>
+    <value>按类型浏览所有项目</value>
   </data>
   <data name="DiSanFangCaoZuoJiLuLieBiao" xml:space="preserve">
     <value>第三方操作记录列表:</value>
@@ -28053,7 +28054,7 @@
     <value>客户服务需求列表</value>
   </data>
   <data name="BKeHuFuWuXuQiuLieBiaoB" xml:space="preserve">
-    <value>&lt;B客户服务需求列表&lt;/B</value>
+    <value>客户服务需求列表</value>
   </data>
   <data name="CuoWuXiangYingMoBanHuoMoBanWen" xml:space="preserve">
     <value>错误，相应模板或模板文件不存在，请检查！</value>
@@ -28188,7 +28189,7 @@
     <value>警告，工程单位和设备单位不能为空，请检查！</value>
   </data>
   <data name="BSuoYouXiangMuB" xml:space="preserve">
-    <value>&lt;B所有项目&lt;/B</value>
+    <value>所有项目</value>
   </data>
   <data name="FenBaoFuKuanShenQing" xml:space="preserve">
     <value>分包付款申请</value>
@@ -28432,6 +28433,7 @@
   </data>
   <data name="XiangMuXingERPPingTai" xml:space="preserve">
     <value>项目型ERP平台</value>
+    <comment>项目型ERP平台</comment>
   </data>
   <data name="CRMPingTai" xml:space="preserve">
     <value>CRM平台</value>
@@ -28545,7 +28547,7 @@
     <value>缺陷分派通知</value>
   </data>
   <data name="BZongXiangMuB" xml:space="preserve">
-    <value>&lt;B总项目&lt;/B</value>
+    <value>总项目</value>
   </data>
   <data name="QueXianZhuaiXiangTongZhi" xml:space="preserve">
     <value>缺陷转项通知</value>
@@ -28566,7 +28568,7 @@
     <value>，请及时查看！</value>
   </data>
   <data name="WenDangLieBiaoB" xml:space="preserve">
-    <value>文档列表&lt;/B</value>
+    <value>文档列表</value>
   </data>
   <data name="RiJi" xml:space="preserve">
     <value>日期</value>
@@ -28644,7 +28646,7 @@
     <value>第{0}行，制造成本不能为空</value>
   </data>
   <data name="Di0HangZhiZaoChengBenZhiNengSh" xml:space="preserve">
-    <value>第{0}行，制造成本只能是小数&lt;br/</value>
+    <value>第{0}行，制造成本只能是小数</value>
   </data>
   <data name="Di0HangDunHaoBuNengWeiKongbr" xml:space="preserve">
     <value>第{0}行，吨耗不能为空</value>
@@ -28761,7 +28763,7 @@
     <value>生产加工费用</value>
   </data>
   <data name="CaiGouTuiHuoBaoBiaoxls" xml:space="preserve">
-    <value>采购退货报表.xls</value>
+    <value>采购退货报表</value>
   </data>
   <data name="XiaoShouTuiHuoBaoBiaoxls" xml:space="preserve">
     <value>销售退货报表.xls</value>
@@ -28776,7 +28778,7 @@
     <value>物料报价单</value>
   </data>
   <data name="WuLiaoXiaoShouBaoBiaoxls" xml:space="preserve">
-    <value>物料销售报表.xls</value>
+    <value>物料销售物料销售报表.xls</value>
   </data>
   <data name="DeWuLiaoLieBiao" xml:space="preserve">
     <value>的物料列表:</value>
@@ -29043,22 +29045,22 @@
     <value>直接成员请假信息列表:</value>
   </data>
   <data name="BSuoYouBuMenZhiJieChengYuanZuZ" xml:space="preserve">
-    <value>&lt;B所有部门直接成员组织层次图&lt;/B</value>
+    <value>所有部门直接成员组织层次图</value>
   </data>
   <data name="ZhiJieChengYuanZuZhiCengCiTuB" xml:space="preserve">
-    <value>直接成员组织层次图&lt;/B</value>
+    <value>直接成员组织层次图</value>
   </data>
   <data name="ZZScriptManagerRegisterStartup" xml:space="preserve">
     <value>ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "alert(保存失败，你不是此流程模板的创建者，不能保存些流程图片！</value>
   </data>
   <data name="BAnLeiXingLiuLanWoJianLiDeXian" xml:space="preserve">
-    <value>&lt;B按类型浏览我建立的项目&lt;/B</value>
+    <value>按类型浏览我建立的项目</value>
   </data>
   <data name="BAnLeiXingLiuLanWoCanYuDeXiang" xml:space="preserve">
-    <value>&lt;B按类型浏览我参与的项目&lt;/B</value>
+    <value>按类型浏览我参与的项目</value>
   </data>
   <data name="BAnLeiXingLiuLanWoChengYuanDeX" xml:space="preserve">
-    <value>&lt;B按类型浏览我成员的项目&lt;/B</value>
+    <value>按类型浏览我成员的项目</value>
   </data>
   <data name="WoDeZhiJieChengYuanJiXiaoZongP" xml:space="preserve">
     <value>我的直接成员绩效总评分对比图</value>
@@ -29067,7 +29069,7 @@
     <value>提示，请先选择项目！</value>
   </data>
   <data name="BAnLeiXingLiuLanWoDeXiangMuB" xml:space="preserve">
-    <value>&lt;B按类型浏览我的项目&lt;/B</value>
+    <value>按类型浏览我的项目</value>
   </data>
   <data name="ZZJingGaoCiChengYuanYiCunZaiBu" xml:space="preserve">
     <value>警告，此成员已存在，不能重复添加，请检查！</value>
@@ -29697,7 +29699,7 @@
     <value>错误提示: 只可以选择Excel文件!</value>
   </data>
   <data name="CongExcelWenJianDaoRuChengBenJ" xml:space="preserve">
-    <value>从Excel文件导入成本绩效基准数据</value>
+    <value>从Excel文件导入成本绩效基准数据共</value>
   </data>
   <data name="ZiXiangXuHaoShuRuYouWuYingQuan" xml:space="preserve">
     <value>【子项序号】输入有误，应全为数字，请正确输入后再试！\n</value>
@@ -29949,10 +29951,10 @@
     <value>评审流程</value>
   </data>
   <data name="BJiaoSeZuB" xml:space="preserve">
-    <value>&lt;B角色组&lt;/B</value>
+    <value>角色组</value>
   </data>
   <data name="BSuoYouB" xml:space="preserve">
-    <value>&lt;B所有&lt;/B</value>
+    <value>所有</value>
   </data>
   <data name="CiXuQiuBuCunZaiKeNengYiBeiShan" xml:space="preserve">
     <value>此需求不存在，可能已被删除,请检查!</value>
@@ -30006,7 +30008,7 @@
     <value>出错了</value>
   </data>
   <data name="BBuFenB" xml:space="preserve">
-    <value>&lt;B部分&lt;/B</value>
+    <value>部分</value>
   </data>
   <data name="GaiBianLeXiangMu" xml:space="preserve">
     <value>改变了项目:</value>
@@ -30030,7 +30032,7 @@
     <value>RTX分机号</value>
   </data>
   <data name="bXieMianMoZub" xml:space="preserve">
-    <value>&lt;b页面模组&lt;b</value>
+    <value>页面模组</value>
   </data>
   <data name="ZZJingGaoGongBenFeiHeDaiLiFeiB" xml:space="preserve">
     <value>警告，工本费和代理费必须为数字类型，请检查！</value>
@@ -30129,7 +30131,7 @@
     <value>修改</value>
   </data>
   <data name="ZZTuiChuLanguageHandleGetWordZ" xml:space="preserve">
-    <value>退出"</value>
+    <value>退出</value>
   </data>
   <data name="ZZChongXinLanguageHandleGetWor" xml:space="preserve">
     <value>重新</value>
@@ -30726,234 +30728,311 @@
   </data>
   <data name="LianXian" xml:space="preserve">
     <value>连线</value>
+    <comment>连线</comment>
   </data>
   <data name="ZhaoBiaoRen" xml:space="preserve">
     <value>招标人</value>
+    <comment>招标人</comment>
   </data>
   <data name="XiangMuJinBanRen" xml:space="preserve">
     <value>项目经办人</value>
+    <comment>Projektbearbeiter</comment>
   </data>
   <data name="NiWaiSuoXing" xml:space="preserve">
     <value>内外属性</value>
+    <comment>内外属性</comment>
   </data>
   <data name="TouBiaoBaoJia" xml:space="preserve">
     <value>投标报价</value>
+    <comment>投标报价</comment>
   </data>
   <data name="KongZhiJia" xml:space="preserve">
     <value>控制价</value>
+    <comment>控制价</comment>
   </data>
   <data name="XiangMuSuoSuoZhuanYe" xml:space="preserve">
     <value>项目所属专业</value>
+    <comment>Projektfachgebiet</comment>
   </data>
   <data name="BenNianDuZiLeiXingJiaBanZongTianShu" xml:space="preserve">
     <value>本年度此类型已加班总天数</value>
+    <comment>本年度此类型已加班总天数</comment>
   </data>
   <data name="JiaBanShiYou" xml:space="preserve">
     <value>加班事由</value>
+    <comment>加班事由</comment>
   </data>
   <data name="JiaBanShiJian" xml:space="preserve">
     <value>加班时间</value>
+    <comment>加班时间</comment>
   </data>
   <data name="BenBi" xml:space="preserve">
     <value>本币</value>
+    <comment>本币</comment>
   </data>
   <data name="FaPiaoLiXing" xml:space="preserve">
     <value>发票类型</value>
+    <comment>Rechnungstyp</comment>
   </data>
   <data name="XiaoShouLeiXing" xml:space="preserve">
     <value>销售类型</value>
+    <comment>销售类型</comment>
   </data>
   <data name="HeTongShouZiBiLei" xml:space="preserve">
     <value>合同收支比例</value>
+    <comment>合同收支比例</comment>
   </data>
   <data name="TouBiaoZhuanYe" xml:space="preserve">
     <value>投标专业</value>
+    <comment>投标专业</comment>
   </data>
   <data name="ZiJunLaiYuan" xml:space="preserve">
     <value>资金来源</value>
+    <comment>Quelle der Mittel </comment>
   </data>
   <data name="WeiHuanLiang" xml:space="preserve">
     <value>末完量</value>
+    <comment>末完量</comment>
   </data>
   <data name="BianGengHaoJinE" xml:space="preserve">
     <value>变更后金额</value>
+    <comment>变更后金额</comment>
   </data>
   <data name="WuZiWeiTuoDaiLiRen" xml:space="preserve">
-    <value>物資委託代理人</value>
+    <value>物资委托代理人</value>
+    <comment>物资委托代理人</comment>
   </data>
   <data name="JiaBanLeiXing" xml:space="preserve">
     <value>加班类型</value>
+    <comment>加班类型</comment>
   </data>
   <data name="JianBanLeiYou" xml:space="preserve">
     <value>加班理由</value>
+    <comment>加班理由</comment>
   </data>
   <data name="BenNianDuYiJiaBanTianShu" xml:space="preserve">
     <value>本年度已加班天数</value>
+    <comment>本年度已加班天数</comment>
   </data>
   <data name="LiShiJiaGe" xml:space="preserve">
     <value>历史价格</value>
+    <comment>历史价格</comment>
   </data>
   <data name="GanLianMuGuai" xml:space="preserve">
     <value>关联模块</value>
+    <comment>关联模块</comment>
   </data>
   <data name="BaoHanZiXiang" xml:space="preserve">
     <value>包含子项</value>
+    <comment>包含子项</comment>
   </data>
   <data name="JieRi" xml:space="preserve">
     <value>节日</value>
+    <comment>节日</comment>
   </data>
   <data name="TiaoXiu" xml:space="preserve">
     <value>调休</value>
+    <comment>调休</comment>
   </data>
   <data name="ZhuanChengXiangMuJiHua" xml:space="preserve">
     <value>转成项目计划</value>
+    <comment>转成项目计划</comment>
   </data>
   <data name="HeTongLiXiangYiJi" xml:space="preserve">
     <value>合同立项依据</value>
+    <comment>合同立项依据</comment>
   </data>
   <data name="ZhongBiaoRiQi" xml:space="preserve">
     <value>中标日期</value>
+    <comment>中标日期</comment>
   </data>
   <data name="QianShuRen" xml:space="preserve">
     <value>签署人</value>
+    <comment>签署人</comment>
   </data>
   <data name="ZhanLieQing" xml:space="preserve">
     <value>暂列金</value>
+    <comment>暂列金</comment>
   </data>
   <data name="AnQuanWenMingSiGongFei" xml:space="preserve">
     <value>安全文明施工费</value>
+    <comment>安全文明施工费</comment>
   </data>
   <data name="YeDingKaiGongRiQi" xml:space="preserve">
     <value>约定开工日期</value>
+    <comment>约定开工日期</comment>
   </data>
   <data name="YeDingWanGongRiQi" xml:space="preserve">
     <value>约定完工日期</value>
+    <comment>约定完工日期</comment>
   </data>
   <data name="ZiBaoQi" xml:space="preserve">
     <value>质保期</value>
+    <comment>质保期</comment>
   </data>
   <data name="DiYeFang" xml:space="preserve">
     <value>缔约方</value>
+    <comment>缔约方</comment>
   </data>
   <data name="DiYeFangHeTongHao" xml:space="preserve">
     <value>缔约方合同号</value>
+    <comment>缔约方合同号</comment>
   </data>
   <data name="JSCODEDescription" xml:space="preserve">
-    <value>域规则:当前用户代码:[TAKETOPUSERCODE]，当前用户名称:[TAKETOPUSERNAME]，当前用户部门代码:[TAKETOPDEPARTCODE],当前用户部门名称:[TAKETOPDEPARTNAME],申请者代码:[TAKETOPWFCREATORCODE]，申请者名称:[TAKETOPWFCREATORNAME]，申请者部门代码:[TAKETOPWFCREATORDEPARTCODE]，申请者部门名称:[TAKETOPWFCREATORDEPARTNAME]，关联类型:[TAKETOPRELATEDTYPE]，关联ID:[TAKETOPRELATEDID],关联代码:[TAKETOPRELATEDCODE]）</value>
+    <value>（域规则:当前用户代码:[TAKETOPUSERCODE]，当前用户名称:[TAKETOPUSERNAME]，当前用户部门代码:[TAKETOPDEPARTCODE],当前用户部门名称:[TAKETOPDEPARTNAME],申请者代码:[TAKETOPWFCREATORCODE]，申请者名称:[TAKETOPWFCREATORNAME]，申请者部门代码:[TAKETOPWFCREATORDEPARTCODE]，申请者部门名称:[TAKETOPWFCREATORDEPARTNAME]，关联类型:[TAKETOPRELATEDTYPE]，关联ID:[TAKETOPRELATEDID],关联代码:[TAKETOPRELATEDCODE]）</value>
+    <comment>（域规则:当前用户代码:[TAKETOPUSERCODE]，当前用户名称:[TAKETOPUSERNAME]，当前用户部门代码:[TAKETOPDEPARTCODE],当前用户部门名称:[TAKETOPDEPARTNAME],申请者代码:[TAKETOPWFCREATORCODE]，申请者名称:[TAKETOPWFCREATORNAME]，申请者部门代码:[TAKETOPWFCREATORDEPARTCODE]，申请者部门名称:[TAKETOPWFCREATORDEPARTNAME]，关联类型:[TAKETOPRELATEDTYPE]，关联ID:[TAKETOPRELATEDID],关联代码:[TAKETOPRELATEDCODE]）</comment>
   </data>
   <data name="BaoDanLeiXing" xml:space="preserve">
     <value>表单类型</value>
+    <comment>表单类型</comment>
   </data>
   <data name="BiaoDanMing" xml:space="preserve">
     <value>表单名</value>
+    <comment>表单名</comment>
   </data>
   <data name="BiaoDanHao" xml:space="preserve">
     <value>表单号</value>
+    <comment>表单号</comment>
   </data>
   <data name="HangChuan" xml:space="preserve">
     <value>行串</value>
+    <comment>行串</comment>
   </data>
   <data name="LieMing" xml:space="preserve">
     <value>列名</value>
+    <comment>列名</comment>
   </data>
   <data name="LieZhi" xml:space="preserve">
     <value>列值</value>
+    <comment>列值</comment>
   </data>
   <data name="BiaoDanShuangChuan" xml:space="preserve">
     <value>表单上传</value>
+    <comment>表单上传</comment>
   </data>
   <data name="BiaoDanYangShiXieZai" xml:space="preserve">
     <value>表单样式下载</value>
+    <comment>表单样式下载</comment>
   </data>
   <data name="ShouHuoDiZi" xml:space="preserve">
     <value>收货地址</value>
+    <comment>收货地址</comment>
   </data>
   <data name="XiangMuNianSouDan" xml:space="preserve">
     <value>项目验收单</value>
+    <comment>项目验收单</comment>
   </data>
   <data name="SheBeiMingCheng" xml:space="preserve">
     <value>设备名称</value>
+    <comment>设备名称</comment>
   </data>
   <data name="XiangMuWZFYFKSQ" xml:space="preserve">
     <value>项目物资费用付款申请</value>
+    <comment>项目物资费用付款申请</comment>
   </data>
   <data name="ZiDongJiHuo" xml:space="preserve">
     <value>自动激活</value>
+    <comment>自动激活</comment>
   </data>
   <data name="XiaoShiZiDongPiZheng" xml:space="preserve">
     <value>小时自动批准</value>
+    <comment>小时自动批准</comment>
   </data>
   <data name="JiHuaXuanZhe" xml:space="preserve">
     <value>计划选择</value>
+    <comment>计划选择</comment>
   </data>
   <data name="ZuoYeShiJian" xml:space="preserve">
     <value>作业时间</value>
+    <comment>作业时间</comment>
   </data>
   <data name="ZuoYeFei" xml:space="preserve">
     <value>作业费</value>
+    <comment>作业费</comment>
   </data>
   <data name="JiaoFuRiQi" xml:space="preserve">
     <value>交付日期</value>
+    <comment>交付日期</comment>
   </data>
   <data name="ChengFangChuangWei" xml:space="preserve">
     <value>存放仓位</value>
+    <comment>存放仓位</comment>
   </data>
   <data name="ChuKuChuangWei" xml:space="preserve">
     <value>出库仓位</value>
+    <comment>出库仓位</comment>
   </data>
   <data name="XiangMuFangXiang" xml:space="preserve">
-    <value>項目方向</value>
+    <value>项目方向</value>
+    <comment>项目方向</comment>
   </data>
   <data name="XiangMuYiShuanKeMu" xml:space="preserve">
     <value>项目预算科目</value>
+    <comment>项目预算科目</comment>
   </data>
   <data name="YaoQiuShuLiang" xml:space="preserve">
     <value>要求数量</value>
+    <comment>要求数量</comment>
   </data>
   <data name="YiWanChenLiang" xml:space="preserve">
     <value>已完成量</value>
+    <comment>已完成量</comment>
   </data>
   <data name="DaiLiFei" xml:space="preserve">
     <value>代理费</value>
+    <comment>代理费</comment>
   </data>
   <data name="GongBenFei" xml:space="preserve">
     <value>工本费</value>
+    <comment>工本费</comment>
   </data>
   <data name="ZiZhiWenJian" xml:space="preserve">
     <value>资质文件</value>
+    <comment>资质文件</comment>
   </data>
   <data name="XiuanZheYiShuan" xml:space="preserve">
-    <value>预算选择</value>
+    <value>选择预算</value>
+    <comment>选择预算</comment>
   </data>
   <data name="GuanLianQianZheng" xml:space="preserve">
     <value>关联签证</value>
+    <comment>关联签证</comment>
   </data>
   <data name="QQBBDBQWSHEET1" xml:space="preserve">
     <value>注:请确保EXCEL表的标签是否为 Sheet1</value>
+    <comment>注:请确保EXCEL表的标签是否为 Sheet1</comment>
   </data>
   <data name="XMGLWZDRMB" xml:space="preserve">
-    <value>Шаблон для импорта материалов, связанных с проектом</value>
+    <value>项目关联物资导入模板</value>
+    <comment>项目关联物资导入模板</comment>
   </data>
   <data name="BaoHanZiBUMEN" xml:space="preserve">
     <value>包含子部门</value>
+    <comment>包含子部门</comment>
   </data>
   <data name="KHKSRYDRMB" xml:space="preserve">
     <value>客户可视人员导入模板</value>
+    <comment>客户可视人员导入模板</comment>
   </data>
   <data name="DaoRuShiShanChuYuanLaiDe" xml:space="preserve">
     <value>导入时删除原来的</value>
+    <comment>导入时删除原来的</comment>
   </data>
   <data name="KHKSRYDR" xml:space="preserve">
     <value>客户可视人员导入</value>
+    <comment>客户可视人员导入</comment>
   </data>
   <data name="ZuoYeTuiLiao" xml:space="preserve">
     <value>作业退料</value>
+    <comment>作业退料</comment>
   </data>
   <data name="QuanBuTianJia" xml:space="preserve">
     <value>全部添加</value>
+    <comment>全部添加</comment>
   </data>
   <data name="QuanBuXiTongYongHu" xml:space="preserve">
     <value>全部系统用户</value>
+    <comment>全部系统用户</comment>
   </data>
   <data name="ShengCheng" xml:space="preserve">
     <value>生成</value>
@@ -31806,21 +31885,27 @@
   </data>
   <data name="HuaXueChengFengSi" xml:space="preserve">
     <value>化学成分是</value>
+    <comment>化学成分是</comment>
   </data>
   <data name="WenKongLeiXun" xml:space="preserve">
     <value>文控类型</value>
+    <comment>文控类型</comment>
   </data>
   <data name="ZhuYongChanPingLeiXing" xml:space="preserve">
     <value>租用产品类型</value>
+    <comment>租用产品类型</comment>
   </data>
   <data name="zhuYongChanPingBanBeng" xml:space="preserve">
     <value>租用产品版本</value>
+    <comment>租用产品版本</comment>
   </data>
   <data name="ShiYongChanPingYuanYing" xml:space="preserve">
     <value>试用产品原因</value>
+    <comment>试用产品原因</comment>
   </data>
   <data name="YuanYing" xml:space="preserve">
     <value>原因</value>
+    <comment>原因</comment>
   </data>
   <data name="DiJiao" xml:space="preserve">
     <value>提交</value>
@@ -31833,6 +31918,7 @@
   </data>
   <data name="DiJiaoChengGongHouKeFuJiangHuiLiKeLianJiNiNiYeKeYiZhiJieLianJiZhuGuan" xml:space="preserve">
     <value>提交成功后，客服会立刻与你联络，你也可以直接联络客服</value>
+    <comment>提交成功后，客服会立刻与你联络，你也可以直接联络客服</comment>
   </data>
   <data name="FuJiaShuiMing" xml:space="preserve">
     <value>附加說明</value>
@@ -31842,6 +31928,7 @@
   </data>
   <data name="MoKuaiYuJiaGe" xml:space="preserve">
     <value>模组与价格</value>
+    <comment>模组与价格</comment>
   </data>
   <data name="NiYeKeYiZhiJieLianJiKeFu" xml:space="preserve">
     <value>你也可以直接联络客服</value>
@@ -31854,6 +31941,7 @@
   </data>
   <data name="ZhuYaoJieShouChongYaoXinXiQingZhengQueTianXie" xml:space="preserve">
     <value>注:为接收重要信息，请正确填写。</value>
+    <comment>注:为接收重要信息，请正确填写。</comment>
   </data>
   <data name="BiaoZhunBan" xml:space="preserve">
     <value>标准版</value>
@@ -31941,6 +32029,7 @@
   </data>
   <data name="JiMuHuaJieGouKeAnXuXuanPeiZi" xml:space="preserve">
     <value>积木式结构，可按需选配自由组合</value>
+    <comment>积木式结构，可按需选配自由组合</comment>
   </data>
   <data name="JingXiaoHuoBan" xml:space="preserve">
     <value>经销伙伴</value>
@@ -32013,6 +32102,7 @@
   </data>
   <data name="ShiYongManYiHouBiXuFuFeiCai" xml:space="preserve">
     <value>试用满意后，需要付费才能继续使用该系统，如果期间内付款中断，系统将进入保留期，</value>
+    <comment>试用满意后，需要付费才能继续使用该系统，如果期间内付款中断，系统将进入保留期，</comment>
   </data>
   <data name="ShiYongShiJianBuXianRuanJianAn" xml:space="preserve">
     <value>使用时间不限，软件安装在用户自备的服务器上，请在下面填写购买申请</value>
@@ -32021,7 +32111,8 @@
     <value>是指获得实施服务体系的资格认证并具备较强的管理软件服务实施服务的伙伴</value>
   </data>
   <data name="ShiZhiNengGouTongGuoPingTaiHuo" xml:space="preserve">
-    <value>是指能够通过平台或可集成平台开发形成与互补的行业模块产品的伙伴，</value>
+    <value>是指能够通过平台或可集成平台开发形成与互补的行业模块产品的伙伴</value>
+    <comment>是指能够通过平台或可集成平台开发形成与互补的行业模块产品的伙伴，</comment>
   </data>
   <data name="ShiZhiNengJieHeXiLie" xml:space="preserve">
     <value>是指能结合系列</value>
@@ -32076,6 +32167,7 @@
   </data>
   <data name="XiangMuXingPingTai" xml:space="preserve">
     <value>项目型ERP平台</value>
+    <comment>项目型ERP平台</comment>
   </data>
   <data name="XiangMuXingZhiZaoGuanLi" xml:space="preserve">
     <value>项目型制造管理</value>
@@ -32121,6 +32213,7 @@
   </data>
   <data name="ZaiTaiDingYunShangZuYongTai" xml:space="preserve">
     <value>在泰鼎云上租用泰顶拓鼎项目管理软件（Saas模式:按人按月付费）请在下面填写申请信息</value>
+    <comment>在泰鼎云上租用泰顶拓鼎项目管理软件（Saas模式:按人按月付费）请在下面填写申请信息</comment>
   </data>
   <data name="ZengZhiFenXiaoHuoBan" xml:space="preserve">
     <value>增值分销伙伴</value>
@@ -32148,9 +32241,11 @@
   </data>
   <data name="JianZhanXinXi" xml:space="preserve">
     <value>建站信息</value>
+    <comment>建站信息</comment>
   </data>
   <data name="ZhuYaoJieShouZhongYaoXinXiQing" xml:space="preserve">
     <value>注要接收重要信息请正确填写</value>
+    <comment>注要接收重要信息请正确填写</comment>
   </data>
   <data name="BaZhanDian" xml:space="preserve">
     <value>把网站</value>
@@ -32628,72 +32723,617 @@
   </data>
   <data name="GouMaiZhiXunWenTi" xml:space="preserve">
     <value>购买咨询问题</value>
+    <comment>购买咨询问题</comment>
   </data>
   <data name="CaoZuoShiYongWenTi" xml:space="preserve">
     <value>操作使用问题</value>
+    <comment>操作使用问题</comment>
   </data>
   <data name="ShiShiFuWuWenTi" xml:space="preserve">
     <value>实施服务问题</value>
+    <comment>实施服务问题</comment>
   </data>
   <data name="QiTaiWenTi" xml:space="preserve">
-    <value>其他问题</value>
+    <value>其它问题</value>
+    <comment>其它问题</comment>
   </data>
   <data name="ZZZYLCZTTGHJA" xml:space="preserve">
     <value>只有流程状态为通过或结案的才能记账！</value>
+    <comment>只有流程状态为通过或结案的才能记账！</comment>
   </data>
   <data name="GongChengFenBaoFeiYong" xml:space="preserve">
     <value>工程分包费用</value>
+    <comment>工程分包费用</comment>
   </data>
   <data name="QingShuRuNiDeDaiMa" xml:space="preserve">
     <value>请输入你的代码</value>
+    <comment>请输入你的代码</comment>
   </data>
   <data name="QingShuRuNiDeMiMa" xml:space="preserve">
     <value>请输入你的密码</value>
+    <comment>请输入你的密码</comment>
   </data>
   <data name="KeHuKeShi" xml:space="preserve">
     <value>客户可视</value>
+    <comment>客户可视</comment>
   </data>
   <data name="KPIKeShi" xml:space="preserve">
     <value>KPI可视</value>
+    <comment>KPI可视</comment>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="MeiHuangLieShu" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="MeiHuangLieShu" xml:space="preserve">
+    <value>每行列数</value>
+    <comment>每行列数</comment>
   </data>
   <data name="DuZhanYiHuang" xml:space="preserve">
     <value>独占一行</value>
+    <comment>独占一行</comment>
   </data>
   <data name="NIMOYOUQIANXIANGOUJIHUA" xml:space="preserve">
     <value>提示，此项目状态已不允许或你没有权限去更改此项目计划，任何操作结果都不会被保存，请知晓！</value>
+    <comment>提示，此项目状态已不允许或你没有权限去更改此项目计划，任何操作结果都不会被保存，请知晓！</comment>
   </data>
   <data name="ZZJGCYHDMHXMBCZQXZC" xml:space="preserve">
     <value>提示，此用户代码或姓名不存在，请先注册！</value>
+    <comment>提示，此用户代码或姓名不存在，请先注册！</comment>
   </data>
   <data name="FenPeiYuShuan" xml:space="preserve">
     <value>分配预算</value>
+    <comment>分配预算</comment>
   </data>
   <data name="XYHDKHHSYY" xml:space="preserve">
     <value>向右滑动返回上一页，向下滑动刷新本页面</value>
+    <comment>向右滑动返回上一页，向下滑动刷新本页面</comment>
   </data>
   <data name="ZZSJSJKSHSFZQXH" xml:space="preserve">
     <value>正在升级数据库，大概需要15秒钟，请稍候...</value>
+    <comment>正在升级数据库，大概需要15秒钟，请稍候...</comment>
   </data>
   <data name="GXXTYYSJ" xml:space="preserve">
     <value>更新系统语言数据</value>
+    <comment>更新系统语言数据</comment>
   </data>
   <data name="GXMZYYSJ" xml:space="preserve">
     <value>更新模组语言数据</value>
+    <comment>更新模组语言数据</comment>
   </data>
   <data name="GXUiYYSJ" xml:space="preserve">
     <value>更新UI语言数据</value>
+    <comment>更新UI语言数据</comment>
   </data>
   <data name="DCCYYUISJ" xml:space="preserve">
     <value>倒出此语言数据</value>
+    <comment>倒出此语言数据</comment>
   </data>
   <data name="DRMZYYSJSM" xml:space="preserve">
     <value>在开发环境下，把上面导出的语言Excel文件放到UpdateCode\Language\Module文件夹中，再点击“更新此模组语言数据”按钮进行导入。</value>
+    <comment>在开发环境下，把上面导出的语言Excel文件放到UpdateCode\Language\Module文件夹中，再点击“更新此模组语言数据”按钮进行导入。</comment>
   </data>
   <data name="DRZYYUISJ" xml:space="preserve">
     <value>在开发环境下，把上面导出的语言Excel文件放到UpdateCode\Language\skin文件夹中，同时把在App_GlobalResources目录下对应语言的resx文件也复制到UpdateCode\Language\skin目录下。再点击 “导入此语言数据” 按钮进行导入。</value>
+    <comment>在开发环境下，把上面导出的语言Excel文件放到UpdateCode\Language\skin文件夹中，同时把在App_GlobalResources目录下对应语言的resx文件也复制到UpdateCode\Language\skin目录下。再点击 “导入此语言数据” 按钮进行导入。</comment>
   </data>
+
+<data name="DSeekSmartChat" xml:space="preserve">
+  <value>💬 智能聊天</value>
+  <comment>💬 智能聊天</comment>
+</data>
+
+<data name="DSeekDataAnalysis" xml:space="preserve">
+  <value>📊 数据分析</value>
+  <comment>📊 数据分析</comment>
+</data>
+
+<data name="DSeekGenerate" xml:space="preserve">
+  <value>生成</value>
+  <comment>生成</comment>
+</data>
+
+<data name="DSeekStop" xml:space="preserve">
+  <value>停止</value>
+  <comment>停止</comment>
+</data>
+
+<data name="DSeekSaveToDB" xml:space="preserve">
+  <value>保存到数据库</value>
+  <comment>保存到数据库</comment>
+</data>
+
+<data name="DSeekLoadSavedTables" xml:space="preserve">
+  <value>🔄 加载已保存表</value>
+  <comment>🔄 加载已保存表</comment>
+</data>
+
+<data name="DSeekStartIntelligentAnalysis" xml:space="preserve">
+  <value>🚀 开始智能分析</value>
+  <comment>🚀 开始智能分析</comment>
+</data>
+
+<data name="DSeekClear" xml:space="preserve">
+  <value>🔄 清除</value>
+  <comment>🔄 清除</comment>
+</data>
+
+<data name="DSeekTestConnection" xml:space="preserve">
+  <value>🔗 测试连接</value>
+  <comment>🔗 测试连接</comment>
+</data>
+
+<data name="DSeekSaveConfiguration" xml:space="preserve">
+  <value>💾 保存配置</value>
+  <comment>💾 保存配置</comment>
+</data>
+
+<!-- 标题和头部 -->
+<data name="DSeekIntelligentDataAnalysisTitle" xml:space="preserve">
+  <value>智能数据分析 - DeepSeek</value>
+  <comment>智能数据分析 - DeepSeek</comment>
+</data>
+
+<data name="DSeekIntelligentAnalysisPlatform" xml:space="preserve">
+  <value>DeepSeek智能分析平台</value>
+  <comment>DeepSeek智能分析平台</comment>
+</data>
+
+<data name="DSeekSmartChatDataAnalysisDualMode" xml:space="preserve">
+  <value>智能聊天 + 数据分析双模式</value>
+  <comment>智能聊天 + 数据分析双模式</comment>
+</data>
+
+<!-- 输入框占位符 -->
+<data name="DSeekEnterYourQuestion" xml:space="preserve">
+  <value>请输入您的问题...</value>
+  <comment>请输入您的问题...</comment>
+</data>
+
+<data name="DSeekLoadingPleaseWait" xml:space="preserve">
+  <value>加载中，请稍候...</value>
+  <comment>加载中，请稍候...</comment>
+</data>
+
+<!-- 数据分析相关 -->
+<data name="DSeekAnalysisTableManagement" xml:space="preserve">
+  <value>分析表管理</value>
+  <comment>分析表管理</comment>
+</data>
+
+<data name="DSeekAddTableNames" xml:space="preserve">
+  <value>添加表名（逗号分隔）：</value>
+  <comment>添加表名（逗号分隔）：</comment>
+</data>
+
+<data name="DSeekTableNamesPlaceholder" xml:space="preserve">
+  <value>例如：projects, tasks, users, orders</value>
+  <comment>例如：projects, tasks, users, orders</comment>
+</data>
+
+<data name="DSeekTableNamesSaved" xml:space="preserve">
+  <value>表名将保存到 T_DBTablesForAI 表中</value>
+  <comment>表名将保存到 T_DBTablesForAI 表中</comment>
+</data>
+
+<data name="DSeekSelectTablesForAnalysis" xml:space="preserve">
+  <value>选择要分析的表：</value>
+  <comment>选择要分析的表：</comment>
+</data>
+
+<data name="DSeekSelectedTables" xml:space="preserve">
+  <value>已选表：</value>
+  <comment>已选表：</comment>
+</data>
+
+<!-- 分析需求 -->
+<data name="DSeekAnalysisRequirementDescription" xml:space="preserve">
+  <value>分析需求描述</value>
+  <comment>分析需求描述</comment>
+</data>
+
+<data name="DSeekAnalysisRequirementExamples" xml:space="preserve">
+  <value>💡 分析需求示例：</value>
+  <comment>💡 分析需求示例：</comment>
+</data>
+
+<data name="DSeekAnalysisExample1" xml:space="preserve">
+  <value>从这些表中分析项目成本和利润</value>
+  <comment>从这些表中分析项目成本和利润</comment>
+</data>
+
+<data name="DSeekAnalysisExample2" xml:space="preserve">
+  <value>发现数据中的异常和问题</value>
+  <comment>发现数据中的异常和问题</comment>
+</data>
+
+<data name="DSeekAnalysisRequirementPlaceholder" xml:space="preserve">
+  <value>详细描述您想要分析的内容...</value>
+  <comment>详细描述您想要分析的内容...</comment>
+</data>
+
+<data name="DSeekAnalysisCustomizedReports" xml:space="preserve">
+  <value>DeepSeek将根据您的需求生成定制化分析报告</value>
+  <comment>DeepSeek将根据您的需求生成定制化分析报告</comment>
+</data>
+
+<!-- 结果区域 -->
+<data name="DSeekAnalysisResults" xml:space="preserve">
+  <value>分析结果</value>
+  <comment>分析结果</comment>
+</data>
+
+<data name="DSeekAnalysisTime" xml:space="preserve">
+  <value>分析时间</value>
+  <comment>分析时间</comment>
+</data>
+
+<data name="DSeekAnalyzedTables" xml:space="preserve">
+  <value>分析表</value>
+  <comment>分析表</comment>
+</data>
+
+<data name="DSeekAnalysisSummary" xml:space="preserve">
+  <value>分析摘要</value>
+  <comment>分析摘要</comment>
+</data>
+
+<data name="DSeekDetailedInsights" xml:space="preserve">
+  <value>详细洞察</value>
+  <comment>详细洞察</comment>
+</data>
+
+<data name="DSeekGeneratedQueries" xml:space="preserve">
+  <value>生成的查询</value>
+  <comment>生成的查询</comment>
+</data>
+
+<data name="DSeekOptimizationSuggestions" xml:space="preserve">
+  <value>优化建议</value>
+  <comment>优化建议</comment>
+</data>
+
+<data name="DSeekExportReport" xml:space="preserve">
+  <value>导出报告</value>
+  <comment>导出报告</comment>
+</data>
+
+<data name="DSeekNewAnalysis" xml:space="preserve">
+  <value>新建分析</value>
+  <comment>新建分析</comment>
+</data>
+
+<!-- 配置区域 -->
+<data name="DSeekSystemConfiguration" xml:space="preserve">
+  <value>系统配置</value>
+  <comment>系统配置</comment>
+</data>
+
+<data name="DSeekDeepSeekAPI" xml:space="preserve">
+  <value>DeepSeek API</value>
+  <comment>DeepSeek API</comment>
+</data>
+
+<data name="DSeekModelName" xml:space="preserve">
+  <value>模型名称</value>
+  <comment>模型名称</comment>
+</data>
+
+<!-- 加载提示 -->
+<data name="DSeekDeepSeekAnalyzing" xml:space="preserve">
+  <value>DeepSeek正在分析数据</value>
+  <comment>DeepSeek正在分析数据</comment>
+</data>
+
+<data name="DSeekConnectingToDatabase" xml:space="preserve">
+  <value>正在连接到数据库...</value>
+  <comment>正在连接到数据库...</comment>
+</data>
+
+<data name="DSeekPleaseWaitProcessing" xml:space="preserve">
+  <value>请稍候，正在处理您的请求</value>
+  <comment>请稍候，正在处理您的请求</comment>
+</data>
+
+<data name="DSeekDeepSeekThinking" xml:space="preserve">
+  <value>"我正在理解您的分析需求，思考最佳解决方案..."</value>
+  <comment>"我正在理解您的分析需求，思考最佳解决方案..."</comment>
+</data>
+
+<data name="DSeekAIServerAvailable" xml:space="preserve">
+  <value>✅ AI服务器可用且准备就绪。</value>
+  <comment>✅ AI服务器可用且准备就绪。</comment>
+</data>
+
+<data name="DSeekNoValidAIServer" xml:space="preserve">
+  <value>⚠️ 未找到有效的AI服务器。请联系系统管理员安装。</value>
+  <comment>⚠️ 未找到有效的AI服务器。请联系系统管理员安装。</comment>
+</data>
+
+<data name="DSeekAIServerNotAvailable" xml:space="preserve">
+  <value>⚠️ AI服务器不可用。请联系供应商安装。</value>
+  <comment>⚠️ AI服务器不可用。请联系供应商安装。</comment>
+</data>
+
+<data name="DSeekPromptCantBeEmpty" xml:space="preserve">
+  <value>提示不能为空！</value>
+  <comment>提示不能为空！</comment>
+</data>
+
+<data name="DSeekCouldNotParseResponseFromOllama" xml:space="preserve">
+  <value>错误：无法解析Ollama的响应。</value>
+  <comment>错误：无法解析Ollama的响应。</comment>
+</data>
+
+<data name="DSeekAPICallFailedWithStatus" xml:space="preserve">
+  <value>错误：API调用失败，状态码 </value>
+  <comment>错误：API调用失败，状态码 </comment>
+</data>
+
+<data name="DSeekNoAIConfigurationFound" xml:space="preserve">
+  <value>错误：未找到AI配置。</value>
+  <comment>错误：未找到AI配置。</comment>
+</data>
+
+<data name="DSeekError" xml:space="preserve">
+  <value>错误：</value>
+  <comment>错误：</comment>
+</data>
+
+<data name="DSeekPleaseEnterTableNames" xml:space="preserve">
+  <value>请输入表名</value>
+  <comment>请输入表名</comment>
+</data>
+
+<data name="DSeekNoValidTableNamesFound" xml:space="preserve">
+  <value>未找到有效的表名</value>
+  <comment>未找到有效的表名</comment>
+</data>
+
+<data name="DSeekTableAddedThroughInterface" xml:space="preserve">
+  <value>通过界面添加的表</value>
+  <comment>通过界面添加的表</comment>
+</data>
+
+<data name="DSeekSaveSuccessfulSaved" xml:space="preserve">
+  <value>保存成功！已保存 </value>
+  <comment>保存成功！已保存 </comment>
+</data>
+
+<data name="DSeekTablesToDatabase" xml:space="preserve">
+  <value>个表到数据库</value>
+  <comment>个表到数据库</comment>
+</data>
+
+<data name="DSeekSaveFailed" xml:space="preserve">
+  <value>保存失败：</value>
+  <comment>保存失败：</comment>
+</data>
+
+<data name="DSeekLoadSuccessfulLoaded" xml:space="preserve">
+  <value>加载成功！已加载 </value>
+  <comment>加载成功！已加载 </comment>
+</data>
+
+<data name="DSeekTables" xml:space="preserve">
+  <value>个表</value>
+  <comment>个表</comment>
+</data>
+
+<data name="DSeekLoadFailed" xml:space="preserve">
+  <value>加载失败：</value>
+  <comment>加载失败：</comment>
+</data>
+
+<data name="DSeekAIServerNotAvailableContactSupplier" xml:space="preserve">
+  <value>⚠️ AI服务器不可用。请联系供应商安装。</value>
+  <comment>⚠️ AI服务器不可用。请联系供应商安装。</comment>
+</data>
+
+<data name="DSeekPleaseSelectTablesToAnalyze" xml:space="preserve">
+  <value>请选择要分析的表</value>
+  <comment>请选择要分析的表</comment>
+</data>
+
+<data name="DSeekPleaseEnterAnalysisRequirements" xml:space="preserve">
+  <value>请输入分析需求</value>
+  <comment>请输入分析需求</comment>
+</data>
+
+<data name="DSeekAnalysisFailed" xml:space="preserve">
+  <value>分析失败：</value>
+  <comment>分析失败：</comment>
+</data>
+
+<data name="DSeekAIConfigurationNotFound" xml:space="preserve">
+  <value>未找到AI配置</value>
+  <comment>未找到AI配置</comment>
+</data>
+
+<data name="DSeekErrorDuringAnalysis" xml:space="preserve">
+  <value>分析过程中出错：</value>
+  <comment>分析过程中出错：</comment>
+</data>
+
+<data name="DSeekFailedToGetTableStructure" xml:space="preserve">
+  <value>获取表结构失败：</value>
+  <comment>获取表结构失败：</comment>
+</data>
+
+<data name="DSeekPleaseAnalyzeDatabaseTableData" xml:space="preserve">
+  <value>请分析以下数据库表数据：</value>
+  <comment>请分析以下数据库表数据：</comment>
+</data>
+
+<data name="DSeekTablesToAnalyze" xml:space="preserve">
+  <value>要分析的表：</value>
+  <comment>要分析的表：</comment>
+</data>
+
+<data name="DSeekUserAnalysisRequirements" xml:space="preserve">
+  <value>用户分析需求</value>
+  <comment>用户分析需求</comment>
+</data>
+
+<data name="DSeekTableStructureInformation" xml:space="preserve">
+  <value>表结构信息</value>
+  <comment>表结构信息</comment>
+</data>
+
+<data name="DSeekPleaseProvideDetailedAnalysisReport" xml:space="preserve">
+  <value>请提供详细的分析报告，包括：</value>
+  <comment>请提供详细的分析报告，包括：</comment>
+</data>
+
+<data name="DSeekDataOverviewAnalysis" xml:space="preserve">
+  <value>数据概览分析</value>
+  <comment>数据概览分析</comment>
+</data>
+
+<data name="DSeekDataVolumeAndKeyFieldAnalysis" xml:space="preserve">
+  <value>每个表的数据量和关键字段分析</value>
+  <comment>每个表的数据量和关键字段分析</comment>
+</data>
+
+<data name="DSeekDataQualityAssessment" xml:space="preserve">
+  <value>数据质量评估</value>
+  <comment>数据质量评估</comment>
+</data>
+
+<data name="DSeekBusinessInsightsDiscovery" xml:space="preserve">
+  <value>业务洞察发现</value>
+  <comment>业务洞察发现</comment>
+</data>
+
+<data name="DSeekInDepthAnalysisBasedOnRequirements" xml:space="preserve">
+  <value>基于用户需求的深度分析</value>
+  <comment>基于用户需求的深度分析</comment>
+</data>
+
+<data name="DSeekDataPatternsAndTrendsDiscovered" xml:space="preserve">
+  <value>发现的数据模式和趋势</value>
+  <comment>发现的数据模式和趋势</comment>
+</data>
+
+<data name="DSeekOutliersAndPotentialIssues" xml:space="preserve">
+  <value>异常值和潜在问题</value>
+  <comment>异常值和潜在问题</comment>
+</data>
+
+<data name="DSeekOptimizationSuggestions" xml:space="preserve">
+  <value>优化建议</value>
+  <comment>优化建议</comment>
+</data>
+
+<data name="DSeekDataQualityImprovementSuggestions" xml:space="preserve">
+  <value>数据质量改进建议</value>
+  <comment>数据质量改进建议</comment>
+</data>
+
+<data name="DSeekBusinessOptimizationRecommendations" xml:space="preserve">
+  <value>业务优化建议</value>
+  <comment>业务优化建议</comment>
+</data>
+
+<data name="DSeekPleaseRespondInEnglish" xml:space="preserve">
+  <value>请用英文回复，提供具体、可操作的建议</value>
+  <comment>请用英文回复，提供具体、可操作的建议</comment>
+</data>
+
+<data name="DSeekOnlyLocalOllamaAnalysisSupported" xml:space="preserve">
+  <value>仅支持本地Ollama分析</value>
+  <comment>仅支持本地Ollama分析</comment>
+</data>
+
+<data name="DSeekCouldNotParseResponseInvalidFormat" xml:space="preserve">
+  <value>无法解析Ollama的响应：响应格式无效</value>
+  <comment>无法解析Ollama的响应：响应格式无效</comment>
+</data>
+
+<data name="DSeekOllamaAPICallFailed" xml:space="preserve">
+  <value>Ollama API调用失败，状态码 </value>
+  <comment>Ollama API调用失败，状态码 </comment>
+</data>
+
+<data name="DSeekResponse" xml:space="preserve">
+  <value>。响应：</value>
+  <comment>。响应：</comment>
+</data>
+
+<data name="DSeekNoResponseReceivedFromAIAnalysis" xml:space="preserve">
+  <value>未收到AI分析响应。</value>
+  <comment>未收到AI分析响应。</comment>
+</data>
+
+<data name="DSeekNoInsightsAvailable" xml:space="preserve">
+  <value>无可用洞察。</value>
+  <comment>无可用洞察。</comment>
+</data>
+
+<data name="DSeekNoRecommendationsAvailable" xml:space="preserve">
+  <value>无可用建议。</value>
+  <comment>无可用建议。</comment>
+</data>
+
+<data name="DSeekTableBasicStatistics" xml:space="preserve">
+  <value>表基础统计</value>
+  <comment>表基础统计</comment>
+</data>
+
+<data name="DSeekTimeAnalysis" xml:space="preserve">
+  <value>时间分析</value>
+  <comment>时间分析</comment>
+</data>
+
+<data name="DSeekNumericStatistics" xml:space="preserve">
+  <value>数值统计</value>
+  <comment>数值统计</comment>
+</data>
+
+<data name="DSeekTableQueryError" xml:space="preserve">
+  <value>表查询错误：</value>
+  <comment>表查询错误：</comment>
+</data>
+
+<data name="DSeekTimeTaken" xml:space="preserve">
+  <value>耗时：</value>
+  <comment>耗时：</comment>
+</data>
+
+<data name="DSeekSeconds" xml:space="preserve">
+  <value>秒</value>
+  <comment>秒</comment>
+</data>
+
+<data name="DSeekNoContentAvailable" xml:space="preserve">
+  <value>无可用内容</value>
+  <comment>无可用内容</comment>
+</data>
+
+<data name="DSeekNoQueriesGenerated" xml:space="preserve">
+  <value>未生成查询</value>
+  <comment>未生成查询</comment>
+</data>
+
+<data name="DSeekDatabaseConnectionSuccessfulCurrentDatabase" xml:space="preserve">
+  <value>✅ 数据库连接成功！当前数据库：</value>
+  <comment>✅ 数据库连接成功！当前数据库：</comment>
+</data>
+
+<data name="DSeekTableCount" xml:space="preserve">
+  <value>表数量：</value>
+  <comment>表数量：</comment>
+</data>
+
+<data name="DSeekDatabaseConnectionSuccessful" xml:space="preserve">
+  <value>✅ 数据库连接成功！</value>
+  <comment>✅ 数据库连接成功！</comment>
+</data>
+
+<data name="DSeekDatabaseConnectionFailed" xml:space="preserve">
+  <value>❌ 数据库连接失败：</value>
+  <comment>❌ 数据库连接失败：</comment>
+</data>
+
+<data name="DSeekConfigurationSavedSuccessfully" xml:space="preserve">
+  <value>✅ 配置保存成功！</value>
+  <comment>✅ 配置保存成功！</comment>
+</data>
+
 </root>
