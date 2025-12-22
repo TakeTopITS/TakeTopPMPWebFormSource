@@ -31,18 +31,6 @@ public partial class TakeTopPersonalSpaceForOuterUser : System.Web.UI.Page
 
         if (Page.IsPostBack == false)
         {
-            //if (Session["IsUpdatePersonalSpace"] != null)
-            //{
-            //    // Ç¿ÖÆÇå³ý»º´æ
-            //    Response.Cache.SetCacheability(HttpCacheability.NoCache);
-            //    Response.Cache.SetExpires(DateTime.UtcNow.AddDays(-1));
-            //    Response.Cache.SetValidUntilExpires(false);
-            //    Response.Cache.SetRevalidation(HttpCacheRevalidation.AllCaches);
-            //    Response.Cache.SetNoStore();
-
-            //    Session["IsUpdatePersonalSpace"] = null;
-            //}
-
             LB_UserName.Text = ShareClass.GetUserName(strUserCode);
 
             string strProductType = System.Configuration.ConfigurationManager.AppSettings["ProductType"];

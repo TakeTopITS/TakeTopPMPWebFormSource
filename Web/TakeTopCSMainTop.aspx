@@ -250,30 +250,8 @@
                                                 <td align="right">
                                                     <table>
                                                         <tr>
-                                                            <td width="20px" align="center" style="padding-top: 4px; padding-right: 10px; display: none;">
-                                                            </td>
-
-                                                            <%--  <td width="10px">&nbsp;</td>
-                                                            <td width="20px" align="left">
-                                                            
-                                                                <a id="HL_AIURL" runat="server" class="titleSpan" href="javascript:top.frames[0].frames[2].parent.frames['rightTabFrame'].openRightLayer('https://www.deepseek.com','TakeTopAI');" visible="false">
-                                                                    <img src="ImagesSkin/AI.png" width="22" height="22" alt="">
-                                                                </a>
-                                                                <a id="a_AIURL" runat="server" class="titleSpan" href="javascript:top.frames[0].frames[2].parent.frames['rightTabFrame'].openRightLayer('TTAIHandlerByDeepSeek.aspx','TakeTopAI');" visible="false">
-                                                                    <img src="ImagesSkin/AI.png" width="22" height="22" alt="">
-                                                                </a>
-                                                            </td>--%>
-                                                            <td width="10px">&nbsp;</td>
-                                                            <td width="20px" align="right">
-                                                                <a runat="server" class="titleSpan" href="javascript:top.frames[0].frames[2].parent.frames['rightTabFrame'].popShowByURL('TTAPPQRCodeForLocalSAAS.aspx', '', 800, 600,window.location);" visible="false">
-                                                                    <img src="ImagesSkin/App.png" width="22" height="22" alt=""></a>
-                                                            </td>
-
-                                                            <td align="right" style="display: none;">
-                                                               
-                                                            </td>
-                                                            <td style="width: 10px;"></td>
-                                                            <td align="center" style="padding-top: 0px; padding-bottom: 0px;">
+                                                            <td width="20px" align="center" style="padding-top: 4px; padding-right: 10px; display: none;"></td>
+                                                            <td align="center" style="padding-top: 0px; padding-bottom: 0px; display: none;">
                                                                 <a runat="server" class="titleSpan" href="javascript:top.frames[0].frames[2].parent.frames['rightTabFrame'].popShowByURL('TTUpdateUserInfor.aspx', 'UserInformation', 800, 600, window.location);">
                                                                     <div class="container">
                                                                         <div id="div_username">
@@ -285,9 +263,12 @@
                                                                     </div>
                                                                 </a>
                                                             </td>
-                                                            <td width="10px">&nbsp;</td>
+                                                            <td width="40px" align="center">
+                                                                <a runat="server" class="titleSpan" href="javascript:top.frames[0].frames[2].parent.frames['rightTabFrame'].popShowByURL('TTAPPQRCodeForLocalSAAS.aspx', '', 800, 600,window.location);" >
+                                                                    <img src="ImagesSkin/App.png" width="22" height="22" alt=""></a>
+                                                            </td>
                                                             <td width="40px" align="center" style="padding-top: 0px; padding-bottom: 5px;">
-                                                                 <asp:ImageButton ID="IM_ExitSystem" ImageUrl="ImagesSkin/exit.png" Width="25" Height="23" OnClientClick="javascript:return confirmExit(getExitMsgByLangCode(), this, event, 'Default.aspx');" runat="server" />
+                                                                <asp:ImageButton ID="IM_ExitSystem" ImageUrl="ImagesSkin/exit.png" Width="25" Height="23" OnClientClick="javascript:return confirmExit(getExitMsgByLangCode(), this, event, 'Default.aspx');" runat="server" />
                                                             </td>
                                                         </tr>
                                                     </table>
@@ -365,14 +346,18 @@
                     </div>
                     <div style="display: none;">
                         <asp:Label ID="LB_Copyright" runat="server"></asp:Label>
-                        <asp:Label ID ="lbl_CssDirectory" runat="server" ></asp:Label>
+                        <asp:Label ID="lbl_CssDirectory" runat="server"></asp:Label>
                         <asp:Label ID="LB_VerType" Text="text" runat="server" />
                         &nbsp;
+                       
                         <asp:Label ID="Label2" runat="server" Text="<%$ Resources:lang,CurrentUser%>"></asp:Label>:<asp:Label
                             ID="LB_CurrentUserName" runat="server"></asp:Label>&nbsp;&nbsp;
+                       
                         <asp:Label ID="Label4" runat="server" Text="<%$ Resources:lang,SystemMessage%>"></asp:Label>:
+                       
                         <div id='blink' style="display: none;">
                             <a href="TTUnHandledCaseMain.aspx" target="_blank">+
+                               
                                 <asp:Label ID="LB_UnHandledCase" runat="server" Target="_blank" Enabled="false"></asp:Label>
                             </a>
                         </div>

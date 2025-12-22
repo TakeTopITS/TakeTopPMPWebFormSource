@@ -402,6 +402,19 @@
                 </asp:UpdatePanel>
                 <table border="0" align="right" cellpadding="0" cellspacing="0">
                     <tr>
+                        <td aligh="center" style="padding-top: 7px; padding-bottom: 0px;">
+                            <a runat="server" class="titleSpan" href="javascript:top.frames[0].frames[2].parent.frames['rightTabFrame'].popShowByURL('TTUpdateUserInfor.aspx', 'UserInformation', 800, 600, window.location);">
+                                <div class="container">
+                                    <div id="div_username">
+                                        <asp:Label ID="LB_UserName" runat="server"></asp:Label>
+                                    </div>
+                                    <div id="div_updatepersoninfor">
+                                        <img src="ImagesSkin/UpdatePersonInfor.png" width="22" height="22">
+                                    </div>
+                                </div>
+                            </a>
+                        </td>
+
                         <td width="40px" align="center" style="padding-top: 7px; padding-bottom: 5px;">
                             <a runat="server" class="titleSpan" href="javascript:top.frames[0].frames[2].parent.frames['rightTabFrame'].popShowByURL('TTSystemAnalystChartRelatedUserSet.aspx?FormType=PersonalSpacePage', 'AnalysisChartSelect', 800, 600, window.location);">
                                 <img src="ImagesSkin/AnalystChart.png" width="22" height="22"></a>
@@ -415,20 +428,7 @@
                                 <img src="ImagesSkin/App.png" width="22" height="22"></a>
                         </td>
 
-                        <td width="40px" align="center" style="padding-top: 7px; padding-bottom: 5px;">
-                            <a runat="server" class="titleSpan" href="javascript:top.frames[0].frames[2].parent.frames['rightTabFrame'].popShowByURL('TTUpdateUserInfor.aspx', 'UserInformation', 800, 600, window.location);">
-                                <div class="container">
-                                    <div id="div_username">
-                                        <asp:Label ID="LB_UserName" runat="server"></asp:Label>
-                                    </div>
-                                    <div id="div_updatepersoninfor">
-                                        <img src="ImagesSkin/UpdatePersonInfor.png" width="22" height="22">
-                                    </div>
-                                </div>
-                            </a>
-                        </td>
-
-                        <td width="40px" class="ItemAlignLeft" style="padding-top: 7px; padding-bottom: 5px;">
+                        <td width="40px" aligh="center" style="padding-top: 7px; padding-bottom: 5px;">
                             <asp:ImageButton ID="IM_ExitSystem" ImageUrl="ImagesSkin/exit.png" Width="25" Height="23"
                                 OnClientClick="javascript:return confirmExit(getExitMsgByLangCode(), this, event, 'Default.aspx');"
                                 runat="server" />

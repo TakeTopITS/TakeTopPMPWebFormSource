@@ -260,20 +260,11 @@
                                                                     OnClick="BT_CloseIMByPC_Click" />
                                                                 <asp:Button ID="BT_OpenIMByMobile" CssClass="inpuIMOpen" Visible="false" runat="server" />
                                                             </td>
-                                                             <td width="40px" align="center" style="padding-top: 7px; padding-bottom: 5px;">
+                                                            <td width="40px" align="center" style="padding-top: 7px; padding-bottom: 5px; display: none;">
                                                                 <a runat="server" class="titleSpan" href="javascript:top.frames[0].frames[2].parent.frames['rightTabFrame'].popShowByURL('TTAPPQRCodeForLocalSAAS.aspx', '', 800, 600,window.location);" visible="false">
                                                                     <img src="ImagesSkin/App.png" width="22" height="22" alt=""></a>
                                                             </td>
-                                                            <td id="tdAI" runat="server" width="40px" align="center">
-                                                                <a id="HL_AIURL" runat="server" class="titleSpan" href="javascript:top.frames[0].frames[2].parent.frames['rightTabFrame'].openRightLayer('https://www.deepseek.com','TakeTopAI');" visible="false">
-                                                                    <img src="ImagesSkin/AI.png" width="22" height="22" alt="">
-                                                                </a>
-                                                                <a id="a_AIURL" runat="server" class="titleSpan" href="javascript:top.frames[0].frames[2].parent.frames['rightTabFrame'].openRightLayer('TTAIHandlerByDeepSeek.aspx','TakeTopAI');" visible="false">
-                                                                    <img src="ImagesSkin/AI.png" width="22" height="22" alt="">
-                                                                </a>
-                                                            </td>
-                                                            <td style="width: 10px;"></td>
-                                                               <td width="40px" align="center" style="padding-top: 7px; padding-bottom: 5px;">
+                                                            <td width="40px" align="center" style="padding-top: 0px; padding-bottom: 0px; display: none;">
                                                                 <a runat="server" class="titleSpan" href="javascript:top.frames[0].frames[2].parent.frames['rightTabFrame'].popShowByURL('TTUpdateUserInfor.aspx', 'UserInformation', 800, 600, window.location);">
                                                                     <div class="container">
                                                                         <div id="div_username">
@@ -285,7 +276,14 @@
                                                                     </div>
                                                                 </a>
                                                             </td>
-                                                         
+                                                            <td id="tdAI" runat="server" width="40px" align="center">
+                                                                <a id="HL_AIURL" runat="server" class="titleSpan" href="javascript:top.frames[0].frames[2].parent.frames['rightTabFrame'].openRightLayer('https://www.deepseek.com','TakeTopAI');" visible="false">
+                                                                    <img src="ImagesSkin/AI.png" width="22" height="22" alt="">
+                                                                </a>
+                                                                <a id="a_AIURL" runat="server" class="titleSpan" href="javascript:top.frames[0].frames[2].parent.frames['rightTabFrame'].openRightLayer('TTAIHandlerByDeepSeek.aspx','TakeTopAI');" visible="false">
+                                                                    <img src="ImagesSkin/AI.png" width="22" height="22" alt="">
+                                                                </a>
+                                                            </td>
                                                             <td width="40px" align="center" style="padding-top: 0px; padding-bottom: 5px;">
                                                                 <asp:ImageButton ID="IM_ExitSystem" ImageUrl="ImagesSkin/exit.png" Width="25" Height="23" OnClientClick="javascript:return confirmExit(getExitMsgByLangCode(), this, event, 'Default.aspx');" runat="server" />
                                                             </td>
