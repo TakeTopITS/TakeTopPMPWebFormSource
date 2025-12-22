@@ -1096,8 +1096,7 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
     private void ShowMessage(string message, string type)
     {
         string icon = type == "warning" ? "⚠️" : type == "error" ? "❌" : "✅";
-        string script = "alert('" + $"{icon} " + message.Replace("'", "\\'") + "');";
-        ScriptManager.RegisterStartupScript(this, GetType(), "ShowMessage", script, true);
+        ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + $"{icon} " + message.Replace("'", "\\'") + "')", true);
     }
 
     // Format analysis content

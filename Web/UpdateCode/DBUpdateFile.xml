@@ -15409,4 +15409,9 @@ values('SAMPLE','AIAnalyst','SYSTEM','INNER','','YES','YES');
 Insert Into T_ProModule(UserCode,ModuleName,ModuleType,UserType,ModuleDefinition,DiyFlow,Visible)
 values('SAMPLE','AIAnalyst','SYSTEM','OUTER','','YES','YES');</SQLText>
   </DataBaseUpgradeFile>
+  <DataBaseUpgradeFile>
+    <ID>3903</ID>
+    <SQLText>Insert Into T_ProModuleLevel(ModuleName,HomeModuleName,ParentModule,PageName,ModuleType,UserType,LangCode,IconURL,ModuleDefinition,DiyFlow,UpdateMark,SortNumber,IsDeleted,Visible)
+values('AIAnalyst','AIAnalyst','','','SYSTEM','INNER','en','ImagesSkin/Analyst.png','','YES',0,0,'NO','YES');</SQLText>
+  </DataBaseUpgradeFile>
 </DataBaseUpgradeFiles>

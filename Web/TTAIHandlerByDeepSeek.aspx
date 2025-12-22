@@ -385,6 +385,9 @@
                 color: #721c24;
             }
     </style>
+
+    <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="js/allAHandler.js"></script>
     <script>
         // Result tab switching
         function showResultTab(tabName, e) {
@@ -525,7 +528,10 @@
             const insights = document.getElementById('<%= litInsights.ClientID %>');
 
             if (!summary || !insights) {
-                alert('Analysis results not found!');
+
+                showAlertAtMouse('Analysis results not found!');
+                /* alert('Analysis results not found!');*/
+
                 return;
             }
 
@@ -544,7 +550,8 @@
             document.body.removeChild(a);
             window.URL.revokeObjectURL(url);
 
-            alert('Report exported successfully!');
+            showAlertAtMouse('Report exported successfully!')
+            //alert('Report exported successfully!');
         }
 
         // Clear results
@@ -609,7 +616,8 @@
         <div class="container">
             <!-- Header -->
             <div class="header">
-                <h1 style="margin: 0;">🤖 <asp:Literal ID="LiteralHeaderTitle" runat="server" Text="<%$ Resources:lang,DSeekIntelligentAnalysisPlatform%>"></asp:Literal></h1>
+                <h1 style="margin: 0;">🤖
+                    <asp:Literal ID="LiteralHeaderTitle" runat="server" Text="<%$ Resources:lang,DSeekIntelligentAnalysisPlatform%>"></asp:Literal></h1>
                 <p style="margin: 10px 0 0 0; opacity: 0.9;">
                     <asp:Label ID="LabelDSeekSmartChatDataAnalysisDualMode" runat="server" Text="<%$ Resources:lang,DSeekSmartChatDataAnalysisDualMode%>"></asp:Label>
                 </p>
@@ -653,7 +661,7 @@
                             </center>
                         </div>
 
-                        <CKEditor:CKEditorControl ID="lblGeneratedText" runat="server" Height="600px" Width="100%" Toolbar="" />
+                        <ckeditor:ckeditorcontrol id="lblGeneratedText" runat="server" height="600px" width="100%" toolbar="" />
 
                         <div style="display: none;">
                             <asp:HyperLink ID="HL_AIURL" runat="server" Target="_blank"></asp:HyperLink>
@@ -664,12 +672,14 @@
                     <div id="divDataAnalysisMode" class="content-area" runat="server" visible="false">
                         <!-- Table Management Area -->
                         <div class="config-section">
-                            <div class="config-title">📊 <asp:Literal ID="LiteralAnalysisTableManagement" runat="server" Text="<%$ Resources:lang,DSeekAnalysisTableManagement%>"></asp:Literal></div>
+                            <div class="config-title">📊
+                                <asp:Literal ID="LiteralAnalysisTableManagement" runat="server" Text="<%$ Resources:lang,DSeekAnalysisTableManagement%>"></asp:Literal></div>
 
                             <div class="table-management">
                                 <!-- Table Name Input -->
                                 <div style="margin-bottom: 15px;">
-                                    <div style="font-weight: 600; margin-bottom: 8px;"><asp:Literal ID="LiteralAddTableNames" runat="server" Text="<%$ Resources:lang,DSeekAddTableNames%>"></asp:Literal></div>
+                                    <div style="font-weight: 600; margin-bottom: 8px;">
+                                        <asp:Literal ID="LiteralAddTableNames" runat="server" Text="<%$ Resources:lang,DSeekAddTableNames%>"></asp:Literal></div>
                                     <div class="table-input-area">
                                         <asp:TextBox ID="txtTableNames" runat="server"
                                             CssClass="config-input"
@@ -679,12 +689,14 @@
                                             CssClass="btn btn-success"
                                             OnClick="btnSaveTables_Click" />
                                     </div>
-                                    <div class="hint-text"><asp:Literal ID="LiteralTableNamesSaved" runat="server" Text="<%$ Resources:lang,DSeekTableNamesSaved%>"></asp:Literal></div>
+                                    <div class="hint-text">
+                                        <asp:Literal ID="LiteralTableNamesSaved" runat="server" Text="<%$ Resources:lang,DSeekTableNamesSaved%>"></asp:Literal></div>
                                 </div>
 
                                 <!-- Saved Table List -->
                                 <div style="margin-top: 20px;">
-                                    <div style="font-weight: 600; margin-bottom: 8px;"><asp:Literal ID="LiteralSelectTablesForAnalysis" runat="server" Text="<%$ Resources:lang,DSeekSelectTablesForAnalysis%>"></asp:Literal></div>
+                                    <div style="font-weight: 600; margin-bottom: 8px;">
+                                        <asp:Literal ID="LiteralSelectTablesForAnalysis" runat="server" Text="<%$ Resources:lang,DSeekSelectTablesForAnalysis%>"></asp:Literal></div>
                                     <asp:Button ID="btnLoadTables" runat="server"
                                         Text="<%$ Resources:lang,DSeekLoadSavedTables%>"
                                         CssClass="btn btn-primary"
@@ -696,7 +708,8 @@
                                     </asp:Panel>
 
                                     <div id="selectedTablesPanel" class="selected-tables">
-                                        <div style="font-weight: 600; color: #4F46E5; margin-bottom: 10px;"><asp:Literal ID="LiteralSelectedTables" runat="server" Text="<%$ Resources:lang,DSeekSelectedTables%>"></asp:Literal></div>
+                                        <div style="font-weight: 600; color: #4F46E5; margin-bottom: 10px;">
+                                            <asp:Literal ID="LiteralSelectedTables" runat="server" Text="<%$ Resources:lang,DSeekSelectedTables%>"></asp:Literal></div>
                                         <div id="selectedTableTags" class="selected-table-tags"></div>
                                     </div>
                                 </div>
@@ -705,13 +718,17 @@
 
                         <!-- Analysis Requirement Area -->
                         <div class="config-section">
-                            <div class="config-title">🎯 <asp:Literal ID="LiteralAnalysisRequirementDescription" runat="server" Text="<%$ Resources:lang,DSeekAnalysisRequirementDescription%>"></asp:Literal></div>
+                            <div class="config-title">🎯
+                                <asp:Literal ID="LiteralAnalysisRequirementDescription" runat="server" Text="<%$ Resources:lang,DSeekAnalysisRequirementDescription%>"></asp:Literal></div>
 
                             <div class="analysis-tips">
-                                <strong><asp:Literal ID="LiteralAnalysisRequirementExamples" runat="server" Text="<%$ Resources:lang,DSeekAnalysisRequirementExamples%>"></asp:Literal></strong>
+                                <strong>
+                                    <asp:Literal ID="LiteralAnalysisRequirementExamples" runat="server" Text="<%$ Resources:lang,DSeekAnalysisRequirementExamples%>"></asp:Literal></strong>
                                 <ul>
-                                    <li><asp:Literal ID="LiteralAnalysisExample1" runat="server" Text="<%$ Resources:lang,DSeekAnalysisExample1%>"></asp:Literal></li>
-                                    <li><asp:Literal ID="LiteralAnalysisExample2" runat="server" Text="<%$ Resources:lang,DSeekAnalysisExample2%>"></asp:Literal></li>
+                                    <li>
+                                        <asp:Literal ID="LiteralAnalysisExample1" runat="server" Text="<%$ Resources:lang,DSeekAnalysisExample1%>"></asp:Literal></li>
+                                    <li>
+                                        <asp:Literal ID="LiteralAnalysisExample2" runat="server" Text="<%$ Resources:lang,DSeekAnalysisExample2%>"></asp:Literal></li>
                                 </ul>
                             </div>
 
@@ -719,7 +736,8 @@
                                 <asp:TextBox ID="txtAnalysisRequirement" runat="server"
                                     CssClass="config-textarea"
                                     placeholder="Analysis Requirement Placeholder"></asp:TextBox>
-                                <div class="hint-text"><asp:Literal ID="LiteralAnalysisCustomizedReports" runat="server" Text="<%$ Resources:lang,DSeekAnalysisCustomizedReports%>"></asp:Literal></div>
+                                <div class="hint-text">
+                                    <asp:Literal ID="LiteralAnalysisCustomizedReports" runat="server" Text="<%$ Resources:lang,DSeekAnalysisCustomizedReports%>"></asp:Literal></div>
                             </div>
 
                             <div class="action-buttons">
@@ -739,11 +757,13 @@
                         <!-- Analysis Result Area -->
                         <div id="analysisResultSection" class="analysis-result-section">
                             <div class="result-header">
-                                <div style="font-weight: 600; color: #4F46E5; margin-bottom: 5px;">📋 <asp:Literal ID="LiteralAnalysisResults" runat="server" Text="<%$ Resources:lang,DSeekAnalysisResults%>"></asp:Literal></div>
+                                <div style="font-weight: 600; color: #4F46E5; margin-bottom: 5px;">📋
+                                    <asp:Literal ID="LiteralAnalysisResults" runat="server" Text="<%$ Resources:lang,DSeekAnalysisResults%>"></asp:Literal></div>
                                 <div style="color: #666; font-size: 14px;">
                                     <asp:Literal ID="LiteralAnalysisTime" runat="server" Text="<%$ Resources:lang,DSeekAnalysisTime%>"></asp:Literal>:
                                     <asp:Literal ID="litAnalysisTime" runat="server"></asp:Literal>
-                                    | <asp:Literal ID="LiteralAnalyzedTables" runat="server" Text="<%$ Resources:lang,DSeekAnalyzedTables%>"></asp:Literal>:
+                                    |
+                                    <asp:Literal ID="LiteralAnalyzedTables" runat="server" Text="<%$ Resources:lang,DSeekAnalyzedTables%>"></asp:Literal>:
                                     <asp:Literal ID="litAnalyzedTables" runat="server"></asp:Literal>
                                 </div>
                             </div>
@@ -780,18 +800,22 @@
                             </div>
 
                             <div style="text-align: right; margin-top: 20px;">
-                                <button type="button" class="btn btn-primary" onclick="exportAnalysis()">📄 <asp:Literal ID="LiteralExportReport" runat="server" Text="<%$ Resources:lang,DSeekExportReport%>"></asp:Literal></button>
-                                <button type="button" class="btn" style="background: #4F46E5; color: white;" onclick="clearResults()">🔄 <asp:Literal ID="LiteralNewAnalysis" runat="server" Text="<%$ Resources:lang,DSeekNewAnalysis%>"></asp:Literal></button>
+                                <button type="button" class="btn btn-primary" onclick="exportAnalysis()">📄
+                                    <asp:Literal ID="LiteralExportReport" runat="server" Text="<%$ Resources:lang,DSeekExportReport%>"></asp:Literal></button>
+                                <button type="button" class="btn" style="background: #4F46E5; color: white;" onclick="clearResults()">🔄
+                                    <asp:Literal ID="LiteralNewAnalysis" runat="server" Text="<%$ Resources:lang,DSeekNewAnalysis%>"></asp:Literal></button>
                             </div>
                         </div>
                     </div>
 
                     <div class="config-section" style="display: none;">
                         <!-- Configuration Area -->
-                        <div class="config-title">⚙️ <asp:Literal ID="LiteralSystemConfiguration" runat="server" Text="<%$ Resources:lang,DSeekSystemConfiguration%>"></asp:Literal></div>
+                        <div class="config-title">⚙️
+                            <asp:Literal ID="LiteralSystemConfiguration" runat="server" Text="<%$ Resources:lang,DSeekSystemConfiguration%>"></asp:Literal></div>
 
                         <div class="config-row">
-                            <div><asp:Literal ID="LiteralDeepSeekAPI" runat="server" Text="<%$ Resources:lang,DSeekDeepSeekAPI%>"></asp:Literal>:</div>
+                            <div>
+                                <asp:Literal ID="LiteralDeepSeekAPI" runat="server" Text="<%$ Resources:lang,DSeekDeepSeekAPI%>"></asp:Literal>:</div>
                             <div>
                                 <asp:TextBox ID="txtDeepSeekApi" runat="server"
                                     CssClass="config-input"
@@ -800,7 +824,8 @@
                         </div>
 
                         <div class="config-row">
-                            <div><asp:Literal ID="LiteralModelName" runat="server" Text="<%$ Resources:lang,DSeekModelName%>"></asp:Literal>:</div>
+                            <div>
+                                <asp:Literal ID="LiteralModelName" runat="server" Text="<%$ Resources:lang,DSeekModelName%>"></asp:Literal>:</div>
                             <div>
                                 <asp:TextBox ID="txtModel" runat="server"
                                     CssClass="config-input"
@@ -827,7 +852,8 @@
         <div class="loading-overlay" id="loadingOverlay">
             <div class="loading-content">
                 <div style="font-size: 20px; color: #4F46E5; margin-bottom: 15px;">
-                    🤔 <asp:Literal ID="LiteralDeepSeekAnalyzing" runat="server" Text="<%$ Resources:lang,DSeekDeepSeekAnalyzing%>"></asp:Literal>
+                    🤔
+                    <asp:Literal ID="LiteralDeepSeekAnalyzing" runat="server" Text="<%$ Resources:lang,DSeekDeepSeekAnalyzing%>"></asp:Literal>
                 </div>
 
                 <div class="thinking-dots">
