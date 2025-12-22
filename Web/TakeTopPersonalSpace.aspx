@@ -404,12 +404,12 @@
                 </asp:UpdatePanel>
                 <table border="0" align="right" cellpadding="0" cellspacing="0">
                     <tr>
-                        <td width="20px" class="ItemAlignLeft" style="padding-top: 10px; display: none;">
+                        <td width="40px" align="center" style="padding-top: 10px; display: none;">
                             <asp:Button ID="BT_PopMsg" runat="server" CssClass="inpu" OnClientClick="javascript:clickPopMsgWindow();"
                                 Text="M" Width="23px" Height="20px" />
                         </td>
-                        <td style="width: 20px;"></td>
-                        <td class="ItemAlignLeft" style="padding-top: 7px; padding-bottom: 0px;">
+                       
+                        <td align="center" style="padding-top: 7px; padding-bottom: 0px;">
                             <a runat="server" class="titleSpan" href="javascript:top.frames[0].frames[2].parent.frames['rightTabFrame'].popShowByURL('TTUpdateUserInfor.aspx', 'UserInformation', 800, 600, window.location);">
                                 <div class="container">
                                     <div id="div_username">
@@ -421,7 +421,7 @@
                                 </div>
                             </a>
                         </td>
-                        <td style="width: 5px;"></td>
+                    
                         <td width="40px" align="center" style="padding-top: 7px; padding-bottom: 5px;">
                             <a runat="server" class="titleSpan" href="javascript:top.frames[0].frames[2].parent.frames['rightTabFrame'].popShowByURL('TTSystemAnalystChartRelatedUserSet.aspx?FormType=PersonalSpacePage', 'AnalysisChartSelect', 800, 600, window.location);">
                                 <img src="ImagesSkin/AnalystChart.png" width="22" height="22"></a>
