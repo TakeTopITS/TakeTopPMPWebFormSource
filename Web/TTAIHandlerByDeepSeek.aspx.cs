@@ -165,14 +165,14 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
             {
                 // 修改：使用正确的Ollama OpenAI兼容接口
                 txtDeepSeekApi.Text = "http://localhost:11434/v1/chat/completions";
-                txtModel.Text = "llama3.2"; // 请根据实际安装的模型修改
+                txtModel.Text = "deepseek-r1:1.5b"; // 请根据实际安装的模型修改
             }
         }
         catch
         {
             // 修改：使用正确的Ollama OpenAI兼容接口
             txtDeepSeekApi.Text = "http://localhost:11434/v1/chat/completions";
-            txtModel.Text = "llama3.2"; // 请根据实际安装的模型修改
+            txtModel.Text = "deepseek-r1:1.5b"; // 请根据实际安装的模型修改
         }
     }
 

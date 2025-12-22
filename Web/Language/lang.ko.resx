@@ -32661,526 +32661,412 @@
   <data name="DRZYYUISJ" xml:space="preserve">
     <value>개발 환경에서: 내보낸 언어 Excel 파일을 UpdateCode\Language\skin 폴더에 넣고, App_GlobalResources 디렉토리에 있는 해당 언어의 resx 파일도 UpdateCode\Language\skin 디렉토리로 복사하세요. 그런 다음 “이 언어 데이터 가져오기” 버튼을 클릭하여 가져옵니다.</value>
   </data>
-
-<data name="DSeekSmartChat" xml:space="preserve">
-  <value>💬 스마트 채팅</value>
-  <comment>💬 스마트 채팅</comment>
-</data>
-
-<data name="DSeekDataAnalysis" xml:space="preserve">
-  <value>📊 데이터 분석</value>
-  <comment>📊 데이터 분석</comment>
-</data>
-
-<data name="DSeekGenerate" xml:space="preserve">
-  <value>생성</value>
-  <comment>생성</comment>
-</data>
-
-<data name="DSeekStop" xml:space="preserve">
-  <value>중지</value>
-  <comment>중지</comment>
-</data>
-
-<data name="DSeekSaveToDB" xml:space="preserve">
-  <value>데이터베이스에 저장</value>
-  <comment>데이터베이스에 저장</comment>
-</data>
-
-<data name="DSeekLoadSavedTables" xml:space="preserve">
-  <value>🔄 저장된 테이블 로드</value>
-  <comment>🔄 저장된 테이블 로드</comment>
-</data>
-
-<data name="DSeekStartIntelligentAnalysis" xml:space="preserve">
-  <value>🚀 지능형 분석 시작</value>
-  <comment>🚀 지능형 분석 시작</comment>
-</data>
-
-<data name="DSeekClear" xml:space="preserve">
-  <value>🔄 지우기</value>
-  <comment>🔄 지우기</comment>
-</data>
-
-<data name="DSeekTestConnection" xml:space="preserve">
-  <value>🔗 연결 테스트</value>
-  <comment>🔗 연결 테스트</comment>
-</data>
-
-<data name="DSeekSaveConfiguration" xml:space="preserve">
-  <value>💾 구성 저장</value>
-  <comment>💾 구성 저장</comment>
-</data>
-
-<!-- 제목 및 헤더 -->
-<data name="DSeekIntelligentDataAnalysisTitle" xml:space="preserve">
-  <value>지능형 데이터 분석 - DeepSeek</value>
-  <comment>지능형 데이터 분석 - DeepSeek</comment>
-</data>
-
-<data name="DSeekIntelligentAnalysisPlatform" xml:space="preserve">
-  <value>DeepSeek 지능형 분석 플랫폼</value>
-  <comment>DeepSeek 지능형 분석 플랫폼</comment>
-</data>
-
-<data name="DSeekSmartChatDataAnalysisDualMode" xml:space="preserve">
-  <value>스마트 채팅 + 데이터 분석 듀얼 모드</value>
-  <comment>스마트 채팅 + 데이터 분석 듀얼 모드</comment>
-</data>
-
-<!-- 입력 자리표시자 -->
-<data name="DSeekEnterYourQuestion" xml:space="preserve">
-  <value>질문을 입력해 주세요...</value>
-  <comment>질문을 입력해 주세요...</comment>
-</data>
-
-<data name="DSeekLoadingPleaseWait" xml:space="preserve">
-  <value>로딩 중, 잠시 기다려 주세요...</value>
-  <comment>로딩 중, 잠시 기다려 주세요...</comment>
-</data>
-
-<!-- 데이터 분석 관련 -->
-<data name="DSeekAnalysisTableManagement" xml:space="preserve">
-  <value>분석 테이블 관리</value>
-  <comment>분석 테이블 관리</comment>
-</data>
-
-<data name="DSeekAddTableNames" xml:space="preserve">
-  <value>테이블 이름 추가 (쉼표로 구분):</value>
-  <comment>테이블 이름 추가 (쉼표로 구분):</comment>
-</data>
-
-<data name="DSeekTableNamesPlaceholder" xml:space="preserve">
-  <value>예: projects, tasks, users, orders</value>
-  <comment>예: projects, tasks, users, orders</comment>
-</data>
-
-<data name="DSeekTableNamesSaved" xml:space="preserve">
-  <value>테이블 이름은 T_DBTablesForAI 테이블에 저장됩니다</value>
-  <comment>테이블 이름은 T_DBTablesForAI 테이블에 저장됩니다</comment>
-</data>
-
-<data name="DSeekSelectTablesForAnalysis" xml:space="preserve">
-  <value>분석할 테이블 선택:</value>
-  <comment>분석할 테이블 선택:</comment>
-</data>
-
-<data name="DSeekSelectedTables" xml:space="preserve">
-  <value>선택된 테이블:</value>
-  <comment>선택된 테이블:</comment>
-</data>
-
-<!-- 분석 요구사항 -->
-<data name="DSeekAnalysisRequirementDescription" xml:space="preserve">
-  <value>분석 요구사항 설명</value>
-  <comment>분석 요구사항 설명</comment>
-</data>
-
-<data name="DSeekAnalysisRequirementExamples" xml:space="preserve">
-  <value>💡 분석 요구사항 예시:</value>
-  <comment>💡 분석 요구사항 예시:</comment>
-</data>
-
-<data name="DSeekAnalysisExample1" xml:space="preserve">
-  <value>이 테이블들에서 프로젝트 비용과 이익 분석</value>
-  <comment>이 테이블들에서 프로젝트 비용과 이익 분석</comment>
-</data>
-
-<data name="DSeekAnalysisExample2" xml:space="preserve">
-  <value>데이터 내 이상치 및 문제점 발견</value>
-  <comment>데이터 내 이상치 및 문제점 발견</comment>
-</data>
-
-<data name="DSeekAnalysisRequirementPlaceholder" xml:space="preserve">
-  <value>분석하고 싶은 내용을 자세히 설명해 주세요...</value>
-  <comment>분석하고 싶은 내용을 자세히 설명해 주세요...</comment>
-</data>
-
-<data name="DSeekAnalysisCustomizedReports" xml:space="preserve">
-  <value>DeepSeek이 요구사항에 맞춘 맞춤형 분석 보고서를 생성합니다</value>
-  <comment>DeepSeek이 요구사항에 맞춘 맞춤형 분석 보고서를 생성합니다</comment>
-</data>
-
-<!-- 결과 영역 -->
-<data name="DSeekAnalysisResults" xml:space="preserve">
-  <value>분석 결과</value>
-  <comment>분석 결과</comment>
-</data>
-
-<data name="DSeekAnalysisTime" xml:space="preserve">
-  <value>분석 시간</value>
-  <comment>분석 시간</comment>
-</data>
-
-<data name="DSeekAnalyzedTables" xml:space="preserve">
-  <value>분석된 테이블</value>
-  <comment>분석된 테이블</comment>
-</data>
-
-<data name="DSeekAnalysisSummary" xml:space="preserve">
-  <value>분석 요약</value>
-  <comment>분석 요약</comment>
-</data>
-
-<data name="DSeekDetailedInsights" xml:space="preserve">
-  <value>상세 인사이트</value>
-  <comment>상세 인사이트</comment>
-</data>
-
-<data name="DSeekGeneratedQueries" xml:space="preserve">
-  <value>생성된 쿼리</value>
-  <comment>생성된 쿼리</comment>
-</data>
-
-<data name="DSeekOptimizationSuggestions" xml:space="preserve">
-  <value>최적화 제안</value>
-  <comment>최적화 제안</comment>
-</data>
-
-<data name="DSeekExportReport" xml:space="preserve">
-  <value>보고서 내보내기</value>
-  <comment>보고서 내보내기</comment>
-</data>
-
-<data name="DSeekNewAnalysis" xml:space="preserve">
-  <value>새 분석</value>
-  <comment>새 분석</comment>
-</data>
-
-<!-- 구성 영역 -->
-<data name="DSeekSystemConfiguration" xml:space="preserve">
-  <value>시스템 구성</value>
-  <comment>시스템 구성</comment>
-</data>
-
-<data name="DSeekDeepSeekAPI" xml:space="preserve">
-  <value>DeepSeek API</value>
-  <comment>DeepSeek API</comment>
-</data>
-
-<data name="DSeekModelName" xml:space="preserve">
-  <value>모델 이름</value>
-  <comment>모델 이름</comment>
-</data>
-
-<!-- 로딩 팁 -->
-<data name="DSeekDeepSeekAnalyzing" xml:space="preserve">
-  <value>DeepSeek이 데이터를 분석 중입니다</value>
-  <comment>DeepSeek이 데이터를 분석 중입니다</comment>
-</data>
-
-<data name="DSeekConnectingToDatabase" xml:space="preserve">
-  <value>데이터베이스에 연결 중...</value>
-  <comment>데이터베이스에 연결 중...</comment>
-</data>
-
-<data name="DSeekPleaseWaitProcessing" xml:space="preserve">
-  <value>잠시 기다려 주세요, 요청을 처리 중입니다</value>
-  <comment>잠시 기다려 주세요, 요청을 처리 중입니다</comment>
-</data>
-
-<data name="DSeekDeepSeekThinking" xml:space="preserve">
-  <value>"분석 요구사항을 이해하고 최적의 해결책을 생각하고 있습니다..."</value>
-  <comment>"분석 요구사항을 이해하고 최적의 해결책을 생각하고 있습니다..."</comment>
-</data>
-
-<data name="DSeekAIServerAvailable" xml:space="preserve">
-  <value>✅ AI 서버가 사용 가능하고 준비되었습니다.</value>
-  <comment>✅ AI 서버가 사용 가능하고 준비되었습니다.</comment>
-</data>
-
-<data name="DSeekNoValidAIServer" xml:space="preserve">
-  <value>⚠️ 유효한 AI 서버를 찾을 수 없습니다. 설치를 위해 시스템 관리자에게 문의해 주세요.</value>
-  <comment>⚠️ 유효한 AI 서버를 찾을 수 없습니다. 설치를 위해 시스템 관리자에게 문의해 주세요.</comment>
-</data>
-
-<data name="DSeekAIServerNotAvailable" xml:space="preserve">
-  <value>⚠️ AI 서버를 사용할 수 없습니다. 설치를 위해 공급업체에 문의해 주세요.</value>
-  <comment>⚠️ AI 서버를 사용할 수 없습니다. 설치를 위해 공급업체에 문의해 주세요.</comment>
-</data>
-
-<data name="DSeekPromptCantBeEmpty" xml:space="preserve">
-  <value>프롬프트를 비울 수 없습니다!</value>
-  <comment>프롬프트를 비울 수 없습니다!</comment>
-</data>
-
-<data name="DSeekCouldNotParseResponseFromOllama" xml:space="preserve">
-  <value>오류: Ollama의 응답을 구문 분석할 수 없습니다.</value>
-  <comment>오류: Ollama의 응답을 구문 분석할 수 없습니다.</comment>
-</data>
-
-<data name="DSeekAPICallFailedWithStatus" xml:space="preserve">
-  <value>오류: API 호출 실패, 상태 코드 </value>
-  <comment>오류: API 호출 실패, 상태 코드 </comment>
-</data>
-
-<data name="DSeekNoAIConfigurationFound" xml:space="preserve">
-  <value>오류: AI 구성을 찾을 수 없습니다.</value>
-  <comment>오류: AI 구성을 찾을 수 없습니다.</comment>
-</data>
-
-<data name="DSeekError" xml:space="preserve">
-  <value>오류: </value>
-  <comment>오류: </comment>
-</data>
-
-<data name="DSeekPleaseEnterTableNames" xml:space="preserve">
-  <value>테이블 이름을 입력해 주세요</value>
-  <comment>테이블 이름을 입력해 주세요</comment>
-</data>
-
-<data name="DSeekNoValidTableNamesFound" xml:space="preserve">
-  <value>유효한 테이블 이름을 찾을 수 없습니다</value>
-  <comment>유효한 테이블 이름을 찾을 수 없습니다</comment>
-</data>
-
-<data name="DSeekTableAddedThroughInterface" xml:space="preserve">
-  <value>인터페이스를 통해 추가된 테이블</value>
-  <comment>인터페이스를 통해 추가된 테이블</comment>
-</data>
-
-<data name="DSeekSaveSuccessfulSaved" xml:space="preserve">
-  <value>저장 성공! 저장됨 </value>
-  <comment>저장 성공! 저장됨 </comment>
-</data>
-
-<data name="DSeekTablesToDatabase" xml:space="preserve">
-  <value>테이블을 데이터베이스에</value>
-  <comment>테이블을 데이터베이스에</comment>
-</data>
-
-<data name="DSeekSaveFailed" xml:space="preserve">
-  <value>저장 실패: </value>
-  <comment>저장 실패: </comment>
-</data>
-
-<data name="DSeekLoadSuccessfulLoaded" xml:space="preserve">
-  <value>로드 성공! 로드됨 </value>
-  <comment>로드 성공! 로드됨 </comment>
-</data>
-
-<data name="DSeekTables" xml:space="preserve">
-  <value>테이블</value>
-  <comment>테이블</comment>
-</data>
-
-<data name="DSeekLoadFailed" xml:space="preserve">
-  <value>로드 실패: </value>
-  <comment>로드 실패: </comment>
-</data>
-
-<data name="DSeekAIServerNotAvailableContactSupplier" xml:space="preserve">
-  <value>⚠️ AI 서버를 사용할 수 없습니다. 설치를 위해 공급업체에 문의해 주세요.</value>
-  <comment>⚠️ AI 서버를 사용할 수 없습니다. 설치를 위해 공급업체에 문의해 주세요.</comment>
-</data>
-
-<data name="DSeekPleaseSelectTablesToAnalyze" xml:space="preserve">
-  <value>분석할 테이블을 선택해 주세요</value>
-  <comment>분석할 테이블을 선택해 주세요</comment>
-</data>
-
-<data name="DSeekPleaseEnterAnalysisRequirements" xml:space="preserve">
-  <value>분석 요구사항을 입력해 주세요</value>
-  <comment>분석 요구사항을 입력해 주세요</comment>
-</data>
-
-<data name="DSeekAnalysisFailed" xml:space="preserve">
-  <value>분석 실패: </value>
-  <comment>분석 실패: </comment>
-</data>
-
-<data name="DSeekAIConfigurationNotFound" xml:space="preserve">
-  <value>AI 구성을 찾을 수 없습니다</value>
-  <comment>AI 구성을 찾을 수 없습니다</comment>
-</data>
-
-<data name="DSeekErrorDuringAnalysis" xml:space="preserve">
-  <value>분석 중 오류: </value>
-  <comment>분석 중 오류: </comment>
-</data>
-
-<data name="DSeekFailedToGetTableStructure" xml:space="preserve">
-  <value>테이블 구조 가져오기 실패: </value>
-  <comment>테이블 구조 가져오기 실패: </comment>
-</data>
-
-<data name="DSeekPleaseAnalyzeDatabaseTableData" xml:space="preserve">
-  <value>다음 데이터베이스 테이블 데이터를 분석해 주세요:</value>
-  <comment>다음 데이터베이스 테이블 데이터를 분석해 주세요:</comment>
-</data>
-
-<data name="DSeekTablesToAnalyze" xml:space="preserve">
-  <value>분석할 테이블: </value>
-  <comment>분석할 테이블: </comment>
-</data>
-
-<data name="DSeekUserAnalysisRequirements" xml:space="preserve">
-  <value>사용자 분석 요구사항</value>
-  <comment>사용자 분석 요구사항</comment>
-</data>
-
-<data name="DSeekTableStructureInformation" xml:space="preserve">
-  <value>테이블 구조 정보</value>
-  <comment>테이블 구조 정보</comment>
-</data>
-
-<data name="DSeekPleaseProvideDetailedAnalysisReport" xml:space="preserve">
-  <value>다음을 포함한 상세 분석 보고서를 제공해 주세요:</value>
-  <comment>다음을 포함한 상세 분석 보고서를 제공해 주세요:</comment>
-</data>
-
-<data name="DSeekDataOverviewAnalysis" xml:space="preserve">
-  <value>데이터 개요 분석</value>
-  <comment>데이터 개요 분석</comment>
-</data>
-
-<data name="DSeekDataVolumeAndKeyFieldAnalysis" xml:space="preserve">
-  <value>각 테이블의 데이터 양 및 주요 필드 분석</value>
-  <comment>각 테이블의 데이터 양 및 주요 필드 분석</comment>
-</data>
-
-<data name="DSeekDataQualityAssessment" xml:space="preserve">
-  <value>데이터 품질 평가</value>
-  <comment>데이터 품질 평가</comment>
-</data>
-
-<data name="DSeekBusinessInsightsDiscovery" xml:space="preserve">
-  <value>비즈니스 인사이트 발견</value>
-  <comment>비즈니스 인사이트 발견</comment>
-</data>
-
-<data name="DSeekInDepthAnalysisBasedOnRequirements" xml:space="preserve">
-  <value>사용자 요구사항 기반 심층 분석</value>
-  <comment>사용자 요구사항 기반 심층 분석</comment>
-</data>
-
-<data name="DSeekDataPatternsAndTrendsDiscovered" xml:space="preserve">
-  <value>발견된 데이터 패턴 및 트렌드</value>
-  <comment>발견된 데이터 패턴 및 트렌드</comment>
-</data>
-
-<data name="DSeekOutliersAndPotentialIssues" xml:space="preserve">
-  <value>이상치 및 잠재적 문제</value>
-  <comment>이상치 및 잠재적 문제</comment>
-</data>
-
-<data name="DSeekOptimizationSuggestions" xml:space="preserve">
-  <value>최적화 제안</value>
-  <comment>최적화 제안</comment>
-</data>
-
-<data name="DSeekDataQualityImprovementSuggestions" xml:space="preserve">
-  <value>데이터 품질 개선 제안</value>
-  <comment>데이터 품질 개선 제안</comment>
-</data>
-
-<data name="DSeekBusinessOptimizationRecommendations" xml:space="preserve">
-  <value>비즈니스 최적화 권장사항</value>
-  <comment>비즈니스 최적화 권장사항</comment>
-</data>
-
-<data name="DSeekPleaseRespondInEnglish" xml:space="preserve">
-  <value>영어로 응답해 주세요, 구체적이고 실행 가능한 제안을 제공해 주세요</value>
-  <comment>영어로 응답해 주세요, 구체적이고 실행 가능한 제안을 제공해 주세요</comment>
-</data>
-
-<data name="DSeekOnlyLocalOllamaAnalysisSupported" xml:space="preserve">
-  <value>로컬 Ollama 분석만 지원됩니다</value>
-  <comment>로컬 Ollama 분석만 지원됩니다</comment>
-</data>
-
-<data name="DSeekCouldNotParseResponseInvalidFormat" xml:space="preserve">
-  <value>Ollama의 응답을 구문 분석할 수 없습니다: 잘못된 응답 형식</value>
-  <comment>Ollama의 응답을 구문 분석할 수 없습니다: 잘못된 응답 형식</comment>
-</data>
-
-<data name="DSeekOllamaAPICallFailed" xml:space="preserve">
-  <value>Ollama API 호출 실패, 상태 코드 </value>
-  <comment>Ollama API 호출 실패, 상태 코드 </comment>
-</data>
-
-<data name="DSeekResponse" xml:space="preserve">
-  <value>. 응답: </value>
-  <comment>. 응답: </comment>
-</data>
-
-<data name="DSeekNoResponseReceivedFromAIAnalysis" xml:space="preserve">
-  <value>AI 분석으로부터 응답을 받지 못했습니다.</value>
-  <comment>AI 분석으로부터 응답을 받지 못했습니다.</comment>
-</data>
-
-<data name="DSeekNoInsightsAvailable" xml:space="preserve">
-  <value>사용 가능한 인사이트가 없습니다.</value>
-  <comment>사용 가능한 인사이트가 없습니다.</comment>
-</data>
-
-<data name="DSeekNoRecommendationsAvailable" xml:space="preserve">
-  <value>사용 가능한 권장사항이 없습니다.</value>
-  <comment>사용 가능한 권장사항이 없습니다.</comment>
-</data>
-
-<data name="DSeekTableBasicStatistics" xml:space="preserve">
-  <value>테이블 기본 통계</value>
-  <comment>테이블 기본 통계</comment>
-</data>
-
-<data name="DSeekTimeAnalysis" xml:space="preserve">
-  <value>시간 분석</value>
-  <comment>시간 분석</comment>
-</data>
-
-<data name="DSeekNumericStatistics" xml:space="preserve">
-  <value>수치 통계</value>
-  <comment>수치 통계</comment>
-</data>
-
-<data name="DSeekTableQueryError" xml:space="preserve">
-  <value>테이블 쿼리 오류: </value>
-  <comment>테이블 쿼리 오류: </comment>
-</data>
-
-<data name="DSeekTimeTaken" xml:space="preserve">
-  <value>소요 시간: </value>
-  <comment>소요 시간: </comment>
-</data>
-
-<data name="DSeekSeconds" xml:space="preserve">
-  <value>초</value>
-  <comment>초</comment>
-</data>
-
-<data name="DSeekNoContentAvailable" xml:space="preserve">
-  <value>사용 가능한 콘텐츠가 없습니다</value>
-  <comment>사용 가능한 콘텐츠가 없습니다</comment>
-</data>
-
-<data name="DSeekNoQueriesGenerated" xml:space="preserve">
-  <value>생성된 쿼리가 없습니다</value>
-  <comment>생성된 쿼리가 없습니다</comment>
-</data>
-
-<data name="DSeekDatabaseConnectionSuccessfulCurrentDatabase" xml:space="preserve">
-  <value>✅ 데이터베이스 연결 성공! 현재 데이터베이스: </value>
-  <comment>✅ 데이터베이스 연결 성공! 현재 데이터베이스: </comment>
-</data>
-
-<data name="DSeekTableCount" xml:space="preserve">
-  <value>테이블 개수: </value>
-  <comment>테이블 개수: </comment>
-</data>
-
-<data name="DSeekDatabaseConnectionSuccessful" xml:space="preserve">
-  <value>✅ 데이터베이스 연결 성공!</value>
-  <comment>✅ 데이터베이스 연결 성공!</comment>
-</data>
-
-<data name="DSeekDatabaseConnectionFailed" xml:space="preserve">
-  <value>❌ 데이터베이스 연결 실패: </value>
-  <comment>❌ 데이터베이스 연결 실패: </comment>
-</data>
-
-<data name="DSeekConfigurationSavedSuccessfully" xml:space="preserve">
-  <value>✅ 구성이 성공적으로 저장되었습니다!</value>
-  <comment>✅ 구성이 성공적으로 저장되었습니다!</comment>
-</data>
+  <data name="DSeekSmartChat" xml:space="preserve">
+    <value>💬 스마트 채팅</value>
+    <comment>💬 스마트 채팅</comment>
+  </data>
+  <data name="DSeekDataAnalysis" xml:space="preserve">
+    <value>📊 데이터 분석</value>
+    <comment>📊 데이터 분석</comment>
+  </data>
+  <data name="DSeekGenerate" xml:space="preserve">
+    <value>생성</value>
+    <comment>생성</comment>
+  </data>
+  <data name="DSeekStop" xml:space="preserve">
+    <value>중지</value>
+    <comment>중지</comment>
+  </data>
+  <data name="DSeekSaveToDB" xml:space="preserve">
+    <value>데이터베이스에 저장</value>
+    <comment>데이터베이스에 저장</comment>
+  </data>
+  <data name="DSeekLoadSavedTables" xml:space="preserve">
+    <value>🔄 저장된 테이블 로드</value>
+    <comment>🔄 저장된 테이블 로드</comment>
+  </data>
+  <data name="DSeekStartIntelligentAnalysis" xml:space="preserve">
+    <value>🚀 지능형 분석 시작</value>
+    <comment>🚀 지능형 분석 시작</comment>
+  </data>
+  <data name="DSeekClear" xml:space="preserve">
+    <value>🔄 지우기</value>
+    <comment>🔄 지우기</comment>
+  </data>
+  <data name="DSeekTestConnection" xml:space="preserve">
+    <value>🔗 연결 테스트</value>
+    <comment>🔗 연결 테스트</comment>
+  </data>
+  <data name="DSeekSaveConfiguration" xml:space="preserve">
+    <value>💾 구성 저장</value>
+    <comment>💾 구성 저장</comment>
+  </data>
+  <data name="DSeekIntelligentDataAnalysisTitle" xml:space="preserve">
+    <value>지능형 데이터 분석 - AI</value>
+    <comment>지능형 데이터 분석 - DeepSeek</comment>
+  </data>
+  <data name="DSeekIntelligentAnalysisPlatform" xml:space="preserve">
+    <value>AI 지능형 분석 플랫폼</value>
+    <comment>DeepSeek 지능형 분석 플랫폼</comment>
+  </data>
+  <data name="DSeekSmartChatDataAnalysisDualMode" xml:space="preserve">
+    <value>스마트 채팅 + 데이터 분석 듀얼 모드</value>
+    <comment>스마트 채팅 + 데이터 분석 듀얼 모드</comment>
+  </data>
+  <data name="DSeekEnterYourQuestion" xml:space="preserve">
+    <value>질문을 입력해 주세요...</value>
+    <comment>질문을 입력해 주세요...</comment>
+  </data>
+  <data name="DSeekLoadingPleaseWait" xml:space="preserve">
+    <value>로딩 중, 잠시 기다려 주세요...</value>
+    <comment>로딩 중, 잠시 기다려 주세요...</comment>
+  </data>
+  <data name="DSeekAnalysisTableManagement" xml:space="preserve">
+    <value>분석 테이블 관리</value>
+    <comment>분석 테이블 관리</comment>
+  </data>
+  <data name="DSeekAddTableNames" xml:space="preserve">
+    <value>테이블 이름 추가 (쉼표로 구분):</value>
+    <comment>테이블 이름 추가 (쉼표로 구분):</comment>
+  </data>
+  <data name="DSeekTableNamesPlaceholder" xml:space="preserve">
+    <value>예: projects, tasks, users, orders</value>
+    <comment>예: projects, tasks, users, orders</comment>
+  </data>
+  <data name="DSeekTableNamesSaved" xml:space="preserve">
+    <value>테이블 이름은 T_DBTablesForAI 테이블에 저장됩니다</value>
+    <comment>테이블 이름은 T_DBTablesForAI 테이블에 저장됩니다</comment>
+  </data>
+  <data name="DSeekSelectTablesForAnalysis" xml:space="preserve">
+    <value>분석할 테이블 선택:</value>
+    <comment>분석할 테이블 선택:</comment>
+  </data>
+  <data name="DSeekSelectedTables" xml:space="preserve">
+    <value>선택된 테이블:</value>
+    <comment>선택된 테이블:</comment>
+  </data>
+  <data name="DSeekAnalysisRequirementDescription" xml:space="preserve">
+    <value>분석 요구사항 설명</value>
+    <comment>분석 요구사항 설명</comment>
+  </data>
+  <data name="DSeekAnalysisRequirementExamples" xml:space="preserve">
+    <value>💡 분석 요구사항 예시:</value>
+    <comment>💡 분석 요구사항 예시:</comment>
+  </data>
+  <data name="DSeekAnalysisExample1" xml:space="preserve">
+    <value>이 테이블들에서 프로젝트 비용과 이익 분석</value>
+    <comment>이 테이블들에서 프로젝트 비용과 이익 분석</comment>
+  </data>
+  <data name="DSeekAnalysisExample2" xml:space="preserve">
+    <value>데이터 내 이상치 및 문제점 발견</value>
+    <comment>데이터 내 이상치 및 문제점 발견</comment>
+  </data>
+  <data name="DSeekAnalysisRequirementPlaceholder" xml:space="preserve">
+    <value>분석하고 싶은 내용을 자세히 설명해 주세요...</value>
+    <comment>분석하고 싶은 내용을 자세히 설명해 주세요...</comment>
+  </data>
+  <data name="DSeekAnalysisCustomizedReports" xml:space="preserve">
+    <value>AI이 요구사항에 맞춘 맞춤형 분석 보고서를 생성합니다</value>
+    <comment>DeepSeek이 요구사항에 맞춘 맞춤형 분석 보고서를 생성합니다</comment>
+  </data>
+  <data name="DSeekAnalysisResults" xml:space="preserve">
+    <value>분석 결과</value>
+    <comment>분석 결과</comment>
+  </data>
+  <data name="DSeekAnalysisTime" xml:space="preserve">
+    <value>분석 시간</value>
+    <comment>분석 시간</comment>
+  </data>
+  <data name="DSeekAnalyzedTables" xml:space="preserve">
+    <value>분석된 테이블</value>
+    <comment>분석된 테이블</comment>
+  </data>
+  <data name="DSeekAnalysisSummary" xml:space="preserve">
+    <value>분석 요약</value>
+    <comment>분석 요약</comment>
+  </data>
+  <data name="DSeekDetailedInsights" xml:space="preserve">
+    <value>상세 인사이트</value>
+    <comment>상세 인사이트</comment>
+  </data>
+  <data name="DSeekGeneratedQueries" xml:space="preserve">
+    <value>생성된 쿼리</value>
+    <comment>생성된 쿼리</comment>
+  </data>
+  <data name="DSeekOptimizationSuggestions" xml:space="preserve">
+    <value>최적화 제안</value>
+    <comment>최적화 제안</comment>
+  </data>
+  <data name="DSeekExportReport" xml:space="preserve">
+    <value>보고서 내보내기</value>
+    <comment>보고서 내보내기</comment>
+  </data>
+  <data name="DSeekNewAnalysis" xml:space="preserve">
+    <value>새 분석</value>
+    <comment>새 분석</comment>
+  </data>
+  <data name="DSeekSystemConfiguration" xml:space="preserve">
+    <value>시스템 구성</value>
+    <comment>시스템 구성</comment>
+  </data>
+  <data name="DSeekDeepSeekAPI" xml:space="preserve">
+    <value>AI API</value>
+    <comment>DeepSeek API</comment>
+  </data>
+  <data name="DSeekModelName" xml:space="preserve">
+    <value>모델 이름</value>
+    <comment>모델 이름</comment>
+  </data>
+  <data name="DSeekDeepSeekAnalyzing" xml:space="preserve">
+    <value>AI이 데이터를 분석 중입니다</value>
+    <comment>DeepSeek이 데이터를 분석 중입니다</comment>
+  </data>
+  <data name="DSeekConnectingToDatabase" xml:space="preserve">
+    <value>데이터베이스에 연결 중...</value>
+    <comment>데이터베이스에 연결 중...</comment>
+  </data>
+  <data name="DSeekPleaseWaitProcessing" xml:space="preserve">
+    <value>잠시 기다려 주세요, 요청을 처리 중입니다</value>
+    <comment>잠시 기다려 주세요, 요청을 처리 중입니다</comment>
+  </data>
+  <data name="DSeekDeepSeekThinking" xml:space="preserve">
+    <value>분석 요구사항을 이해하고 최적의 해결책을 생각하고 있습니다...</value>
+    <comment>"분석 요구사항을 이해하고 최적의 해결책을 생각하고 있습니다..."</comment>
+  </data>
+  <data name="DSeekAIServerAvailable" xml:space="preserve">
+    <value>✅ AI 서버가 사용 가능하고 준비되었습니다.</value>
+    <comment>✅ AI 서버가 사용 가능하고 준비되었습니다.</comment>
+  </data>
+  <data name="DSeekNoValidAIServer" xml:space="preserve">
+    <value>⚠️ 유효한 AI 서버를 찾을 수 없습니다. 설치를 위해 시스템 관리자에게 문의해 주세요.</value>
+    <comment>⚠️ 유효한 AI 서버를 찾을 수 없습니다. 설치를 위해 시스템 관리자에게 문의해 주세요.</comment>
+  </data>
+  <data name="DSeekAIServerNotAvailable" xml:space="preserve">
+    <value>⚠️ AI 서버를 사용할 수 없습니다. 설치를 위해 공급업체에 문의해 주세요.</value>
+    <comment>⚠️ AI 서버를 사용할 수 없습니다. 설치를 위해 공급업체에 문의해 주세요.</comment>
+  </data>
+  <data name="DSeekPromptCantBeEmpty" xml:space="preserve">
+    <value>프롬프트를 비울 수 없습니다!</value>
+    <comment>프롬프트를 비울 수 없습니다!</comment>
+  </data>
+  <data name="DSeekCouldNotParseResponseFromOllama" xml:space="preserve">
+    <value>오류: Ollama의 응답을 구문 분석할 수 없습니다.</value>
+    <comment>오류: Ollama의 응답을 구문 분석할 수 없습니다.</comment>
+  </data>
+  <data name="DSeekAPICallFailedWithStatus" xml:space="preserve">
+    <value>오류: API 호출 실패, 상태 코드 </value>
+    <comment>오류: API 호출 실패, 상태 코드 </comment>
+  </data>
+  <data name="DSeekNoAIConfigurationFound" xml:space="preserve">
+    <value>오류: AI 구성을 찾을 수 없습니다.</value>
+    <comment>오류: AI 구성을 찾을 수 없습니다.</comment>
+  </data>
+  <data name="DSeekError" xml:space="preserve">
+    <value>오류: </value>
+    <comment>오류: </comment>
+  </data>
+  <data name="DSeekPleaseEnterTableNames" xml:space="preserve">
+    <value>테이블 이름을 입력해 주세요</value>
+    <comment>테이블 이름을 입력해 주세요</comment>
+  </data>
+  <data name="DSeekNoValidTableNamesFound" xml:space="preserve">
+    <value>유효한 테이블 이름을 찾을 수 없습니다</value>
+    <comment>유효한 테이블 이름을 찾을 수 없습니다</comment>
+  </data>
+  <data name="DSeekTableAddedThroughInterface" xml:space="preserve">
+    <value>인터페이스를 통해 추가된 테이블</value>
+    <comment>인터페이스를 통해 추가된 테이블</comment>
+  </data>
+  <data name="DSeekSaveSuccessfulSaved" xml:space="preserve">
+    <value>저장 성공! 저장됨 </value>
+    <comment>저장 성공! 저장됨 </comment>
+  </data>
+  <data name="DSeekTablesToDatabase" xml:space="preserve">
+    <value>테이블을 데이터베이스에</value>
+    <comment>테이블을 데이터베이스에</comment>
+  </data>
+  <data name="DSeekSaveFailed" xml:space="preserve">
+    <value>저장 실패: </value>
+    <comment>저장 실패: </comment>
+  </data>
+  <data name="DSeekLoadSuccessfulLoaded" xml:space="preserve">
+    <value>로드 성공! 로드됨 </value>
+    <comment>로드 성공! 로드됨 </comment>
+  </data>
+  <data name="DSeekTables" xml:space="preserve">
+    <value>테이블</value>
+    <comment>테이블</comment>
+  </data>
+  <data name="DSeekLoadFailed" xml:space="preserve">
+    <value>로드 실패: </value>
+    <comment>로드 실패: </comment>
+  </data>
+  <data name="DSeekAIServerNotAvailableContactSupplier" xml:space="preserve">
+    <value>⚠️ AI 서버를 사용할 수 없습니다. 설치를 위해 공급업체에 문의해 주세요.</value>
+    <comment>⚠️ AI 서버를 사용할 수 없습니다. 설치를 위해 공급업체에 문의해 주세요.</comment>
+  </data>
+  <data name="DSeekPleaseSelectTablesToAnalyze" xml:space="preserve">
+    <value>분석할 테이블을 선택해 주세요</value>
+    <comment>분석할 테이블을 선택해 주세요</comment>
+  </data>
+  <data name="DSeekPleaseEnterAnalysisRequirements" xml:space="preserve">
+    <value>분석 요구사항을 입력해 주세요</value>
+    <comment>분석 요구사항을 입력해 주세요</comment>
+  </data>
+  <data name="DSeekAnalysisFailed" xml:space="preserve">
+    <value>분석 실패: </value>
+    <comment>분석 실패: </comment>
+  </data>
+  <data name="DSeekAIConfigurationNotFound" xml:space="preserve">
+    <value>AI 구성을 찾을 수 없습니다</value>
+    <comment>AI 구성을 찾을 수 없습니다</comment>
+  </data>
+  <data name="DSeekErrorDuringAnalysis" xml:space="preserve">
+    <value>분석 중 오류: </value>
+    <comment>분석 중 오류: </comment>
+  </data>
+  <data name="DSeekFailedToGetTableStructure" xml:space="preserve">
+    <value>테이블 구조 가져오기 실패: </value>
+    <comment>테이블 구조 가져오기 실패: </comment>
+  </data>
+  <data name="DSeekPleaseAnalyzeDatabaseTableData" xml:space="preserve">
+    <value>다음 데이터베이스 테이블 데이터를 분석해 주세요:</value>
+    <comment>다음 데이터베이스 테이블 데이터를 분석해 주세요:</comment>
+  </data>
+  <data name="DSeekTablesToAnalyze" xml:space="preserve">
+    <value>분석할 테이블: </value>
+    <comment>분석할 테이블: </comment>
+  </data>
+  <data name="DSeekUserAnalysisRequirements" xml:space="preserve">
+    <value>사용자 분석 요구사항</value>
+    <comment>사용자 분석 요구사항</comment>
+  </data>
+  <data name="DSeekTableStructureInformation" xml:space="preserve">
+    <value>테이블 구조 정보</value>
+    <comment>테이블 구조 정보</comment>
+  </data>
+  <data name="DSeekPleaseProvideDetailedAnalysisReport" xml:space="preserve">
+    <value>다음을 포함한 상세 분석 보고서를 제공해 주세요:</value>
+    <comment>다음을 포함한 상세 분석 보고서를 제공해 주세요:</comment>
+  </data>
+  <data name="DSeekDataOverviewAnalysis" xml:space="preserve">
+    <value>데이터 개요 분석</value>
+    <comment>데이터 개요 분석</comment>
+  </data>
+  <data name="DSeekDataVolumeAndKeyFieldAnalysis" xml:space="preserve">
+    <value>각 테이블의 데이터 양 및 주요 필드 분석</value>
+    <comment>각 테이블의 데이터 양 및 주요 필드 분석</comment>
+  </data>
+  <data name="DSeekDataQualityAssessment" xml:space="preserve">
+    <value>데이터 품질 평가</value>
+    <comment>데이터 품질 평가</comment>
+  </data>
+  <data name="DSeekBusinessInsightsDiscovery" xml:space="preserve">
+    <value>비즈니스 인사이트 발견</value>
+    <comment>비즈니스 인사이트 발견</comment>
+  </data>
+  <data name="DSeekInDepthAnalysisBasedOnRequirements" xml:space="preserve">
+    <value>사용자 요구사항 기반 심층 분석</value>
+    <comment>사용자 요구사항 기반 심층 분석</comment>
+  </data>
+  <data name="DSeekDataPatternsAndTrendsDiscovered" xml:space="preserve">
+    <value>발견된 데이터 패턴 및 트렌드</value>
+    <comment>발견된 데이터 패턴 및 트렌드</comment>
+  </data>
+  <data name="DSeekOutliersAndPotentialIssues" xml:space="preserve">
+    <value>이상치 및 잠재적 문제</value>
+    <comment>이상치 및 잠재적 문제</comment>
+  </data>
+  <data name="DSeekDataQualityImprovementSuggestions" xml:space="preserve">
+    <value>데이터 품질 개선 제안</value>
+    <comment>데이터 품질 개선 제안</comment>
+  </data>
+  <data name="DSeekBusinessOptimizationRecommendations" xml:space="preserve">
+    <value>비즈니스 최적화 권장사항</value>
+    <comment>비즈니스 최적화 권장사항</comment>
+  </data>
+  <data name="DSeekPleaseRespondInEnglish" xml:space="preserve">
+    <value>영어로 응답해 주세요, 구체적이고 실행 가능한 제안을 제공해 주세요</value>
+    <comment>영어로 응답해 주세요, 구체적이고 실행 가능한 제안을 제공해 주세요</comment>
+  </data>
+  <data name="DSeekOnlyLocalOllamaAnalysisSupported" xml:space="preserve">
+    <value>로컬 Ollama 분석만 지원됩니다</value>
+    <comment>로컬 Ollama 분석만 지원됩니다</comment>
+  </data>
+  <data name="DSeekCouldNotParseResponseInvalidFormat" xml:space="preserve">
+    <value>Ollama의 응답을 구문 분석할 수 없습니다: 잘못된 응답 형식</value>
+    <comment>Ollama의 응답을 구문 분석할 수 없습니다: 잘못된 응답 형식</comment>
+  </data>
+  <data name="DSeekOllamaAPICallFailed" xml:space="preserve">
+    <value>Ollama API 호출 실패, 상태 코드 </value>
+    <comment>Ollama API 호출 실패, 상태 코드 </comment>
+  </data>
+  <data name="DSeekResponse" xml:space="preserve">
+    <value>. 응답: </value>
+    <comment>. 응답: </comment>
+  </data>
+  <data name="DSeekNoResponseReceivedFromAIAnalysis" xml:space="preserve">
+    <value>AI 분석으로부터 응답을 받지 못했습니다.</value>
+    <comment>AI 분석으로부터 응답을 받지 못했습니다.</comment>
+  </data>
+  <data name="DSeekNoInsightsAvailable" xml:space="preserve">
+    <value>사용 가능한 인사이트가 없습니다.</value>
+    <comment>사용 가능한 인사이트가 없습니다.</comment>
+  </data>
+  <data name="DSeekNoRecommendationsAvailable" xml:space="preserve">
+    <value>사용 가능한 권장사항이 없습니다.</value>
+    <comment>사용 가능한 권장사항이 없습니다.</comment>
+  </data>
+  <data name="DSeekTableBasicStatistics" xml:space="preserve">
+    <value>테이블 기본 통계</value>
+    <comment>테이블 기본 통계</comment>
+  </data>
+  <data name="DSeekTimeAnalysis" xml:space="preserve">
+    <value>시간 분석</value>
+    <comment>시간 분석</comment>
+  </data>
+  <data name="DSeekNumericStatistics" xml:space="preserve">
+    <value>수치 통계</value>
+    <comment>수치 통계</comment>
+  </data>
+  <data name="DSeekTableQueryError" xml:space="preserve">
+    <value>테이블 쿼리 오류: </value>
+    <comment>테이블 쿼리 오류: </comment>
+  </data>
+  <data name="DSeekTimeTaken" xml:space="preserve">
+    <value>소요 시간: </value>
+    <comment>소요 시간: </comment>
+  </data>
+  <data name="DSeekSeconds" xml:space="preserve">
+    <value>초</value>
+    <comment>초</comment>
+  </data>
+  <data name="DSeekNoContentAvailable" xml:space="preserve">
+    <value>사용 가능한 콘텐츠가 없습니다</value>
+    <comment>사용 가능한 콘텐츠가 없습니다</comment>
+  </data>
+  <data name="DSeekNoQueriesGenerated" xml:space="preserve">
+    <value>생성된 쿼리가 없습니다</value>
+    <comment>생성된 쿼리가 없습니다</comment>
+  </data>
+  <data name="DSeekDatabaseConnectionSuccessfulCurrentDatabase" xml:space="preserve">
+    <value>✅ 데이터베이스 연결 성공! 현재 데이터베이스: </value>
+    <comment>✅ 데이터베이스 연결 성공! 현재 데이터베이스: </comment>
+  </data>
+  <data name="DSeekTableCount" xml:space="preserve">
+    <value>테이블 개수: </value>
+    <comment>테이블 개수: </comment>
+  </data>
+  <data name="DSeekDatabaseConnectionSuccessful" xml:space="preserve">
+    <value>✅ 데이터베이스 연결 성공!</value>
+    <comment>✅ 데이터베이스 연결 성공!</comment>
+  </data>
+  <data name="DSeekDatabaseConnectionFailed" xml:space="preserve">
+    <value>❌ 데이터베이스 연결 실패: </value>
+    <comment>❌ 데이터베이스 연결 실패: </comment>
+  </data>
+  <data name="DSeekConfigurationSavedSuccessfully" xml:space="preserve">
+    <value>✅ 구성이 성공적으로 저장되었습니다!</value>
+    <comment>✅ 구성이 성공적으로 저장되었습니다!</comment>
+  </data>
 </root>

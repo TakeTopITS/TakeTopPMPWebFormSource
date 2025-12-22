@@ -283,7 +283,7 @@
                                                                     <td>
                                                                         <asp:DropDownList ID="DL_AIType" AccessKey="A" runat="server" AutoPostBack="false">
                                                                             <asp:ListItem Value="Local" Text="Local"></asp:ListItem>
-                                                                            <asp:ListItem Value="Outer" Text="Outer"></asp:ListItem>
+                                                                        <%--    <asp:ListItem Value="Outer" Text="Outer"></asp:ListItem>--%>
                                                                         </asp:DropDownList>
                                                                     </td>
                                                                     <td>
