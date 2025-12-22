@@ -41,17 +41,23 @@ public partial class TakeTopMainTop : System.Web.UI.Page
         //ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "clickParentA", "aHandlerForSpecialPopWindow();", true);
         if (Page.IsPostBack == false)
         {
-            //设置AI接口URL
-            SetAIURL();
+            if (!ShareClass.checkModuleIsVisible("AIAnalyst", strLangCode))
+            {
+                tdAI.Visible = false;
+            }
+            else
+            {     //设置AI接口URL
+                SetAIURL();
+            }
 
             if (Session["SystemVersionType"].ToString() == "SAAS")
             {
                 Response.Redirect("TakeTopMainTopSAAS.aspx");
             }
-        
+
             strUserName = ShareClass.GetUserName(strUserCode);
             LB_UserName.Text = strUserName;
-            LB_SystemMsg.Text = Resources.lang.NiHao + "，" + Resources.lang.HuanYingNiShiYong + " " + System.Configuration.ConfigurationManager.AppSettings["SystemName"];       
+            LB_SystemMsg.Text = Resources.lang.NiHao + "，" + Resources.lang.HuanYingNiShiYong + " " + System.Configuration.ConfigurationManager.AppSettings["SystemName"];
 
             //清空页面缓存，用于改变皮肤
             SetPageNoCache();
@@ -505,7 +511,7 @@ public partial class TakeTopMainTop : System.Web.UI.Page
         }
         else
         {
-            lbl_FunInfoDialBoxNum.Text =  LanguageHandle.GetWord("MeiYouXinDeXinXi");
+            lbl_FunInfoDialBoxNum.Text = LanguageHandle.GetWord("MeiYouXinDeXinXi");
         }
 
         return i;

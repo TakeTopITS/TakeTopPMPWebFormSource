@@ -25,6 +25,7 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
 
     // 新增：AI服务器状态
     private bool _aiServerAvailable = false;
+    string strUserCode;
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -35,8 +36,16 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
         _FileBrowser.SetupCKEditor(lblGeneratedText);
         lblGeneratedText.Language = Session["LangCode"].ToString();
 
+        strUserCode = Session["UserCode"].ToString();
+
         if (!IsPostBack)
         {
+            //检查用户是否可以用AI分析功能
+            if (!ShareClass.checkUserHasModuleRight("AIAnalyst", strUserCode))
+            {
+                divModeSwitcher.Visible = false;
+            }
+
             // Load configuration and check AI server
             LoadConfig();
 
@@ -49,6 +58,8 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
             txtPrompt.Focus();
         }
     }
+
+
 
     // 新增：更新AI服务器状态显示
     private void UpdateAIServerStatusDisplay()
@@ -515,7 +526,7 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
             string script = "updateSelectedTables();";
             ScriptManager.RegisterStartupScript(this, GetType(), "UpdateTableSelection", script, true);
 
-           // ShowMessage(LanguageHandle.GetWord("DSeekLoadSuccessfulLoaded") + $"{ds.Tables[0].Rows.Count} " + LanguageHandle.GetWord("DSeekTables"), "success");
+            // ShowMessage(LanguageHandle.GetWord("DSeekLoadSuccessfulLoaded") + $"{ds.Tables[0].Rows.Count} " + LanguageHandle.GetWord("DSeekTables"), "success");
         }
         catch (Exception ex)
         {

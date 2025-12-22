@@ -32,20 +32,15 @@ public partial class TakeTopPersonalSpaceSAAS : System.Web.UI.Page
 
         if (Page.IsPostBack == false)
         {
-            //if (Session["IsUpdatePersonalSpace"] != null)
-            //{
-            //    // 强制清除缓存
-            //    Response.Cache.SetCacheability(HttpCacheability.NoCache);
-            //    Response.Cache.SetExpires(DateTime.UtcNow.AddDays(-1));
-            //    Response.Cache.SetValidUntilExpires(false);
-            //    Response.Cache.SetRevalidation(HttpCacheRevalidation.AllCaches);
-            //    Response.Cache.SetNoStore();
-
-            //    Session["IsUpdatePersonalSpace"] = null;
-            //}
-
-            //设置AI接口URL
-            SetAIURL();
+            if (!ShareClass.checkModuleIsVisible("AIAnalyst", strLangCode))
+            {
+                tdAI.Visible = false;
+            }
+            else
+            {
+                //设置AI接口URL
+                SetAIURL();
+            }
 
             LB_UserName.Text = ShareClass.GetUserName(strUserCode);
 

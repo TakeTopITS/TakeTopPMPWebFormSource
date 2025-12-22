@@ -94,7 +94,7 @@ public partial class TakeTopLRExLeft : System.Web.UI.Page
         strUserName = Session["UserName"].ToString();
         if (strUserCode == "ADMIN")
         {
-            if (ShareClass.IsExistModuleByUserCode("ADMIN", LanguageHandle.GetWord("GuanKongZhongXin"), "SYSTEM", strUserType) == false)
+            if (ShareClass.IsExistModuleByUserCode("ADMIN", "ControlCenter", "SYSTEM", strUserType) == false)
             {
                 //strHQL = "Insert Into T_ProModule(ModuleName,UserCode,Visible,ModuleType,UserType) Values('ControlCenter','ADMIN','YES','SYSTEM','" + strUserType + "')";   
                 //ShareClass.RunSqlCommand(strHQL);
@@ -105,7 +105,7 @@ public partial class TakeTopLRExLeft : System.Web.UI.Page
                 ShareClass.RunSqlCommand(strHQL);
             }
 
-            if (ShareClass.IsExistModuleByUserCode("ADMIN", LanguageHandle.GetWord("JiTongMoZuSheDing"), "SYSTEM", strUserType) == false)
+            if (ShareClass.IsExistModuleByUserCode("ADMIN", "SystemModuleSettings", "SYSTEM", strUserType) == false)
             {
                 //strHQL = "Insert Into T_ProModule(ModuleName,UserCode,Visible,ModuleType,UserType) Values('SystemModuleSettings','ADMIN','YES','SYSTEM','" + strUserType + "')";   
                 //ShareClass.RunSqlCommand(strHQL);
@@ -200,7 +200,7 @@ public partial class TakeTopLRExLeft : System.Web.UI.Page
             }
             strPageNameForDoubleClick = ShareClass.ObjectToString("TTModuleFlowDesignerJS.aspx?Type=UserModule&IdentifyString=" + strModuleID);
 
-            if (strModuleName == "OperateNavigation")
+            if ("OperateNavigation,AIAnalyst".IndexOf(strModuleName) > -1)
             {
                 strHtml += "";
             }

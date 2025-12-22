@@ -156,7 +156,7 @@ public partial class TakeTopCSLRLeft : System.Web.UI.Page
             }
             strPageNameForDoubleClick = ShareClass.ObjectToString("TTModuleFlowDesignerJS.aspx?Type=UserModule&IdentifyString=" + strModuleID);
 
-            if (strModuleName == "OperateNavigation")
+            if ("OperateNavigation,AIAnalyst".IndexOf(strModuleName) > -1)
             {
                 strHtml += "";
             }

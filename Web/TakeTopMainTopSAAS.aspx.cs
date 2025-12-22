@@ -26,9 +26,14 @@ public partial class TakeTopMainTopSAAS : System.Web.UI.Page
         //ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "clickParentA", "aHandlerForSpecialPopWindow();", true);
         if (Page.IsPostBack == false)
         {
-            //设置AI接口URL
-            SetAIURL();
-
+            if (!ShareClass.checkModuleIsVisible("AIAnalyst", strLangCode))
+            {
+                tdAI.Visible = false;
+            }
+            else
+            {     //设置AI接口URL
+                SetAIURL();
+            }
 
             strUserName = ShareClass.GetUserName(strUserCode);
             LB_UserName.Text = strUserName;
@@ -480,12 +485,12 @@ public partial class TakeTopMainTopSAAS : System.Web.UI.Page
             }
             else
             {
-                lbl_FunInfoDialBoxNum.Text =  LanguageHandle.GetWord("MeiYouXinDeXinXi");
+                lbl_FunInfoDialBoxNum.Text = LanguageHandle.GetWord("MeiYouXinDeXinXi");
             }
         }
         else
         {
-            lbl_FunInfoDialBoxNum.Text =  LanguageHandle.GetWord("MeiYouXinDeXinXi");
+            lbl_FunInfoDialBoxNum.Text = LanguageHandle.GetWord("MeiYouXinDeXinXi");
         }
 
         return i;
@@ -678,7 +683,7 @@ public partial class TakeTopMainTopSAAS : System.Web.UI.Page
 
                     TB_OldToBeHandledNumber.Text = intNewCount.ToString();
 
-                    BT_OpenIMByPC.ToolTip = ds.Tables[0].Rows.Count + LanguageHandle.GetWord("TiaoXiaoXi"); 
+                    BT_OpenIMByPC.ToolTip = ds.Tables[0].Rows.Count + LanguageHandle.GetWord("TiaoXiaoXi");
                     BT_OpenIMByMobile.ToolTip = ds.Tables[0].Rows.Count + LanguageHandle.GetWord("TiaoXiaoXi");
 
                     BT_OpenIMByPC.Visible = true;

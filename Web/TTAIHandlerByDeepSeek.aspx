@@ -616,7 +616,7 @@
             </div>
 
             <!-- Mode Switcher -->
-            <div class="mode-switcher">
+            <div id="divModeSwitcher" runat="server" class="mode-switcher">
                 <asp:Button ID="BT_Simple" runat="server" CssClass="mode-button active" OnClick="BT_Simple_Click" Text="<%$ Resources:lang,DSeekSmartChat%>"></asp:Button>
                 <asp:Button ID="BT_DataAnalysis" runat="server" CssClass="mode-button" OnClick="BT_DataAnalysis_Click" Text="<%$ Resources:lang,DSeekDataAnalysis%>"></asp:Button>
             </div>

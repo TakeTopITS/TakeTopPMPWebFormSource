@@ -539,20 +539,70 @@ function openRightLayer(pageName, titleName) {
         type: 2,
         title: titleName,
         content: pageName,
-        area: ['460px', '800px'],  // 默认尺寸
-        offset: 'r',               // 右侧弹出
-        shade: 0,                  // 无遮罩
-        fixed: true,               // 固定位置
-        zIndex: layer.zIndex,      // 使用 layer 管理的 z-index
-        maxmin: true,              // 启用最大化/最小化按钮
-        resize: true,              // 允许调整大小（可选）
-        move: false,               // 禁止拖动
+        area: ['460px', '800px'],
+        offset: 'r',
+        shade: 0,
+        fixed: true,
+        zIndex: layer.zIndex,
+        maxmin: true,
+        resize: true,
+        move: false,                   // 先禁用 layer 自带的拖动
         success: function (layero, index) {
             // 手动设置更高 z-index
-            layero.css('z-index', layer.zIndex + 1);
+            layero.css('z-index', layer.zIndex + 100);
+
+            // 往下移动20px
+            var currentTop = parseInt(layero.css('top')) || 0;
+            layero.css('top', (currentTop + 20) + 'px');
+
+            // 自定义整个层都可拖动
+            enableCustomDrag(layero);
         }
     });
 }
+
+// 自定义拖动函数
+function enableCustomDrag(layero) {
+    var $layero = $(layero);
+    var isDragging = false;
+    var startX, startY, startLeft, startTop;
+
+    // 整个层都可以拖动
+    $layero.css('cursor', 'move');
+
+    $layero.on('mousedown', function (e) {
+        if (e.target.closest('.layui-layer-setwin')) return; // 排除关闭按钮区域
+
+        isDragging = true;
+        startX = e.clientX;
+        startY = e.clientY;
+        startLeft = parseInt($layero.css('left')) || 0;
+        startTop = parseInt($layero.css('top')) || 0;
+
+        // 防止文本选择
+        $('body').css('user-select', 'none');
+
+        e.preventDefault();
+    });
+
+    $(document).on('mousemove', function (e) {
+        if (!isDragging) return;
+
+        var deltaX = e.clientX - startX;
+        var deltaY = e.clientY - startY;
+
+        $layero.css({
+            'left': (startLeft + deltaX) + 'px',
+            'top': (startTop + deltaY) + 'px'
+        });
+    });
+
+    $(document).on('mouseup', function () {
+        isDragging = false;
+        $('body').css('user-select', '');
+    });
+}
+
 
 //AI-设置右边AI窗口的AI提示词文本
 function setAIWindowPromptText(text) {

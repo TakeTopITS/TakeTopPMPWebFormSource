@@ -67,6 +67,36 @@ public static class ShareClass
 
     #region 用户登录机制
 
+    //检查用户是否有使用模组的权限
+    public static bool checkUserHasModuleRight(string strModuleName, string strUserCode)
+    {
+        string strHQL = "Select * From T_ProModule B Where UserCode='" + strUserCode + "' And ModuleName='" + strModuleName + "' and Visible = 'YES'";
+        DataSet ds = ShareClass.GetDataSetFromSql(strHQL, "T_ProModule");
+        if (ds.Tables[0].Rows.Count > 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    //检查模组的是否可用
+    public static bool checkModuleIsVisible(string strModuleName, string strLangCode)
+    {
+        string strHQL = "Select * From T_ProModuleLevel B Where LangCode='" + strLangCode + "' And ModuleName='" + strModuleName + "' and Visible = 'YES' and IsDeleted = 'NO'";
+        DataSet ds = ShareClass.GetDataSetFromSql(strHQL, "T_ProModuleLevel");
+        if (ds.Tables[0].Rows.Count > 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     //预加载模组流程图数据集
     public static void PreLoadModuleFlowChartDataSet()
     {

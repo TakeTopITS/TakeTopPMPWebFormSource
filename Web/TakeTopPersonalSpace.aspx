@@ -379,10 +379,10 @@
         <form id="form1" runat="server">
             <asp:ScriptManager ID="ScriptManager1" runat="server" />
             <div id="divGuide" class="nav">
-              <%--  <asp:Timer ID="Timer1" OnTick="Timer1_Tick" runat="server" Interval="15000" />--%>
+                <%--  <asp:Timer ID="Timer1" OnTick="Timer1_Tick" runat="server" Interval="15000" />--%>
                 <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
                     <Triggers>
-                     <%--   <asp:AsyncPostBackTrigger ControlID="Timer1" />--%>
+                        <%--   <asp:AsyncPostBackTrigger ControlID="Timer1" />--%>
                     </Triggers>
                     <ContentTemplate>
                         <ul id="navlist">
@@ -422,19 +422,15 @@
                             </a>
                         </td>
                         <td style="width: 5px;"></td>
-                        <td width="40px" class="ItemAlignLeft" style="padding-top: 7px; padding-bottom: 4px;">
+                        <td width="40px" align="center" style="padding-top: 7px; padding-bottom: 5px;">
                             <a runat="server" class="titleSpan" href="javascript:top.frames[0].frames[2].parent.frames['rightTabFrame'].popShowByURL('TTSystemAnalystChartRelatedUserSet.aspx?FormType=PersonalSpacePage', 'AnalysisChartSelect', 800, 600, window.location);">
                                 <img src="ImagesSkin/AnalystChart.png" width="22" height="22"></a>
                         </td>
-                        <td width="40px" class="ItemAlignLeft" style="padding-top: 7px; padding-bottom: 5px;">
+                        <td width="40px" align="center" style="padding-top: 7px; padding-bottom: 5px;">
                             <a runat="server" class="titleSpan" href="javascript:top.frames[0].frames[2].parent.frames['rightTabFrame'].popShowByURL('TTPersonalSpaceModuleSetForUser.aspx', 'ModuleSelect', 800, 600, window.location);">
                                 <img src="ImagesSkin/ModuleSelect.png" width="22" height="22"></a>
                         </td>
-                        <td width="40px" align="center" style="padding-top: 7px; padding-bottom: 5px;">
-                            <%--  <asp:HyperLink ID="HL_AIURL" runat="server" NavigateUrl="https://www.deepseek.com" Target="_blank" Visible="false">
-                                  <img src="ImagesSkin/AI.png" width="22" height="22" alt="">
-                            </asp:HyperLink>--%>
-
+                        <td id="tdAI" runat="server" width="40px" align="center" style="padding-top: 7px; padding-bottom: 5px;">
                             <a id="HL_AIURL" runat="server" class="titleSpan" href="javascript:top.frames[0].frames[2].parent.frames['rightTabFrame'].openRightLayer('https://www.deepseek.com','TakeTopAI');" visible="false">
                                 <img src="ImagesSkin/AI.png" width="22" height="22" alt="">
                             </a>
@@ -443,7 +439,7 @@
                             </a>
                         </td>
 
-                        <td width="40px" class="ItemAlignLeft" style="padding-top: 7px; padding-bottom: 5px;">
+                        <td width="40px" align="center" style="padding-top: 7px; padding-bottom: 5px;">
                             <a runat="server" class="titleSpan" href="javascript:top.frames[0].frames[2].parent.frames['rightTabFrame'].popShowByURL('TTAPPQRCodeForLocalSAAS.aspx', '', 800, 600,window.location);">
                                 <img src="ImagesSkin/App.png" width="22" height="22"></a>
                         </td>
