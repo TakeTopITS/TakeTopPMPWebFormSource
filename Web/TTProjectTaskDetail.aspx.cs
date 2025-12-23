@@ -322,7 +322,7 @@ public partial class TTProjectTaskDetail : System.Web.UI.Page
             LB_RequireNumber.Text = GetTaskUnFinishedNumber(strTaskID).ToString();
 
             //提交当天的项目日志
-            ShareClass.UpdateDailyWork(strUserCode, strProjectID, "Task", strTaskID,strTaskName, strContent);
+            ShareClass.UpdateDailyWork(strUserCode, strProjectID, "Task", strTaskID, strTaskName, strContent);
 
             ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZBCCG") + "')", true);
 
@@ -337,7 +337,7 @@ public partial class TTProjectTaskDetail : System.Web.UI.Page
     protected void BT_Finish_Click(object sender, EventArgs e)
     {
         string strHQL, strContent;
-        string strID, strTaskID,strTaskName;
+        string strID, strTaskID, strTaskName;
         string strUserCode;
         int intFinishPercent;
 
@@ -408,7 +408,7 @@ public partial class TTProjectTaskDetail : System.Web.UI.Page
             LB_RequireNumber.Text = GetTaskUnFinishedNumber(strTaskID).ToString();
 
             //提交当天的项目日志
-            ShareClass.UpdateDailyWork(strUserCode, strProjectID, "Task", strTaskID,strTaskName, strContent);
+            ShareClass.UpdateDailyWork(strUserCode, strProjectID, "Task", strTaskID, strTaskName, strContent);
 
             TB_Message.Text = strUserName + LanguageHandle.GetWord("WanChengLeNiDeRenWu") + strTaskID + " " + strTaskName;
 
@@ -435,7 +435,7 @@ public partial class TTProjectTaskDetail : System.Web.UI.Page
         if (strPlanID != "0")
         {
             string strHQL, strContent;
-            string strID, strTaskID,strTaskName;
+            string strID, strTaskID, strTaskName;
             string strUserCode;
             int intFinishPercent;
 
@@ -483,7 +483,7 @@ public partial class TTProjectTaskDetail : System.Web.UI.Page
                 NB_TaskProgress.Amount = ShareClass.UpdateTaskProgress(strTaskID);
 
                 //提交当天的项目日志
-                ShareClass.UpdateDailyWork(strUserCode, strProjectID, "Task", strTaskID,strTaskName, strContent);
+                ShareClass.UpdateDailyWork(strUserCode, strProjectID, "Task", strTaskID, strTaskName, strContent);
                 TB_Message.Text = strUserName + LanguageHandle.GetWord("WanChengLeNiDeRenWu") + strTaskID + " " + strTaskName;
 
                 //确认更改关联计划的进度、费用和工时

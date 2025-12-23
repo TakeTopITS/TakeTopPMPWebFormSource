@@ -4518,10 +4518,9 @@ public static class ShareClass
             ShareClass.RunSqlCommand(strHQL);
 
             strHQL = "Select COALESCE(Avg(Percent_Done),0) From T_ImplePlan Where ProjectID = " + strProjectID + " And VerID = " + strVerID;
-            strHQL += " and ID Not In (Select ParentID From T_ImplePlan Where ProjectID = " + strProjectID + " And VerID = " + strVerID + ")";
+            strHQL += " and ID Not In (Select COALESCE(ParentID,0) From T_ImplePlan Where ProjectID = " + strProjectID + " And VerID = " + strVerID + ")";
             strHQL += " and Parent_ID > 0";
             DataSet ds = ShareClass.GetDataSetFromSql(strHQL, "T_ImplePlan");
-
             deProjectProgress = decimal.Parse(ds.Tables[0].Rows[0][0].ToString());
 
             strHQL = "Update T_ImplePlan Set Percent_Done = " + deProjectProgress.ToString();

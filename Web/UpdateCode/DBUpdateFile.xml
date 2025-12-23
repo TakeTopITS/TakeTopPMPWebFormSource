@@ -15414,4 +15414,95 @@ values('SAMPLE','AIAnalyst','SYSTEM','OUTER','','YES','YES');</SQLText>
     <SQLText>Insert Into T_ProModuleLevel(ModuleName,HomeModuleName,ParentModule,PageName,ModuleType,UserType,LangCode,IconURL,ModuleDefinition,DiyFlow,UpdateMark,SortNumber,IsDeleted,Visible)
 values('AIAnalyst','AIAnalyst','','','SYSTEM','INNER','en','ImagesSkin/Analyst.png','','YES',0,0,'NO','YES');</SQLText>
   </DataBaseUpgradeFile>
+  <DataBaseUpgradeFile>
+    <ID>3904</ID>
+    <SQLText>-- FUNCTION: public.Func_tg_ImplePlan_Insert()
+
+-- DROP FUNCTION IF EXISTS public."Func_tg_ImplePlan_Insert"();
+
+CREATE OR REPLACE FUNCTION public."Func_tg_ImplePlan_Insert"()
+    RETURNS trigger
+    LANGUAGE 'plpgsql'
+    COST 100
+    VOLATILE NOT LEAKPROOF
+AS $BODY$
+
+			declare charCreatorCode char(20);
+			declare charPlanOperatorCode char(20);
+			declare charPlanOperatorName char(20);
+			declare charBelongDepartCode char(20);
+			declare charBelongDepartName varchar(40);
+			declare charLeaderCode char(20);
+			declare charLeaderName char(20);
+
+			begin
+			select rtrim(COALESCE(new.OperatorCode,'')),rtrim(COALESCE(new.OperatorName,'')),rtrim(COALESCE(new.BelongDepartCode,''))
+			,rtrim(COALESCE(new.BelongDepartName,'')),rtrim(COALESCE(new.LeaderCode,'')),rtrim(COALESCE(new.leader,''))
+			into charPlanOperatorCode,charPlanOperatorName,charBelongDepartCode ,charBelongDepartName,charLeaderCode,charLeaderName;
+
+			--更新归属部门代码和名称
+			if  length(charLeaderCode) &gt; 0  then
+
+			select DepartCode,DepartName into charBelongDepartCode,charBelongDepartName From T_ProjectMember  Where UserCode = charLeaderCode;
+			Update T_ImplePlan Set BelongDepartCode = charBelongDepartCode,BelongDepartName = charBelongDepartName Where ID = new.ID;
+
+			End if;
+
+			--增加小时，纠正日期
+			update T_ImplePlan Set end_date = timeadd('hour',23, end_date) Where ID = new.ID and date_part('hour',end_date) = 0;
+
+			--改变基准时间段和单位的值
+			update T_ImplePlan Set BaseLine_Start_Date = new.Start_Date,BaseLine_End_Date = new.End_Date Where ID = new.ID;
+			update T_ImplePlan Set Duration = F_WorkDay(new.Start_Date,new.End_Date)+1,Duration_Unit='d' Where ID = new.ID;
+
+			if(new.ProjectID = 0 or new.ProjectID = null)
+			then
+
+			Select cast(substring(ltrim(rtrim(cast(new.PID as char(50)))) from 0  for char_length(ltrim(rtrim(cast(new.PID as char(50)))))-1) as int) into new.ProjectID;
+			Select cast(substring(ltrim(rtrim(cast(new.PID as char(50)))) from char_length(ltrim(rtrim(cast (new.PID as char(50)))))-1 for 2) as int) into new.VerID;
+
+			-- 		  --增加小时，纠正日期
+			-- 		  update T_ImplePlan Set end_date = timeadd('hour',23, end_date) Where ID = new.ID and date_part('hour',end_date) = 0;
+
+			-- 		  --改变基准时间段和单位的值
+			-- 		  update T_ImplePlan Set BaseLine_Start_Date = new.Start_Date,BaseLine_End_Date = new.End_Date Where ID = new.ID;
+			-- 		  update T_ImplePlan Set Duration = F_WorkDay(new.Start_Date,new.End_Date)+1,Duration_Unit='d' Where ID = new.ID;
+
+			Update T_ImplePlan Set ProjectID = new.ProjectID Where ID = new.ID;
+			Update T_ImplePlan Set VerID = new.VerID   Where ID = new.ID;
+
+			Select CreatorCode into charCreatorCode From T_ProjectPlanVersion Where ProjectID = new.ProjectID and VerID = new.VerID;
+
+			Update T_ImplePlan Set UpdateManCode = charCreatorCode  Where ID = new.ID;
+			Update T_ImplePlan Set CreatorCode = charCreatorCode  Where ID = new.ID;
+
+			Update T_ImplePlan Set Type = 'Plan'  Where ID = new.ID;
+			Update T_ImplePlan Set Status = 'Plan'  Where ID = new.ID;
+			Update T_ImplePlan Set PriorID = 0 Where Id = new.ID;
+			Update T_ImplePlan Set FromPlanID = new.ID Where ID = new.ID;
+
+			Update T_ImplePlan Set ParentID = new.Parent_ID Where ID = new.ID;
+
+			if(charPlanOperatorCode = null Or charPlanOperatorCode = '')
+			then
+
+			Select PMCode,PMName into charPlanOperatorCode , charPlanOperatorName From T_Project Where ProjectID = new.ProjectID;
+			Update T_ImplePlan Set OperatorCode = charPlanOperatorCode,OperatorName =charPlanOperatorName Where ID = new.ID;
+
+			end if;
+
+			end if;
+
+			return new;
+			end
+			
+$BODY$;
+
+ALTER FUNCTION public."Func_tg_ImplePlan_Insert"()
+    OWNER TO postgres;</SQLText>
+  </DataBaseUpgradeFile>
+  <DataBaseUpgradeFile>
+    <ID>3905</ID>
+    <SQLText>Update T_ImplePlan Set ParentID = Parent_ID;</SQLText>
+  </DataBaseUpgradeFile>
 </DataBaseUpgradeFiles>
