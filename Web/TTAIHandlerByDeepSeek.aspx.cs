@@ -1,5 +1,7 @@
 ﻿using Newtonsoft.Json;
 
+using Stimulsoft.Base;
+
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -203,6 +205,8 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
         // Set button active state
         BT_Simple.CssClass = "mode-button active";
         BT_DataAnalysis.CssClass = "mode-button";
+
+       // ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "ajustHeight", "maximizeAllLayers();", true);
     }
 
     protected void BT_DataAnalysis_Click(object sender, EventArgs e)
@@ -219,6 +223,8 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
         // Set button active state
         BT_DataAnalysis.CssClass = "mode-button active";
         BT_Simple.CssClass = "mode-button";
+
+        //ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "ajustHeight", "maximizeAllLayers();", true);
     }
 
     protected void btnGenerateText_Click(object sender, EventArgs e)

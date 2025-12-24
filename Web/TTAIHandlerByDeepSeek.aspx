@@ -361,6 +361,13 @@
             border-radius: 8px;
             margin-bottom: 20px;
         }
+
+        .loading-center {
+            display: none; /* 初始隐藏 */
+            text-align: center;
+            margin: 10px auto;
+            width: 100%;
+        }
     </style>
     <!-- 添加CSS样式（可以在页面的<style>标签中或外部CSS文件中） -->
     <style>
@@ -600,6 +607,8 @@
                 showResultSection();
             }
         }
+
+
     </script>
 </head>
 <body>
@@ -625,8 +634,14 @@
 
             <!-- Mode Switcher -->
             <div id="divModeSwitcher" runat="server" class="mode-switcher">
-                <asp:Button ID="BT_Simple" runat="server" CssClass="mode-button active" OnClick="BT_Simple_Click" Text="<%$ Resources:lang,DSeekSmartChat%>"></asp:Button>
-                <asp:Button ID="BT_DataAnalysis" runat="server" CssClass="mode-button" OnClick="BT_DataAnalysis_Click" Text="<%$ Resources:lang,DSeekDataAnalysis%>"></asp:Button>
+
+                <asp:Button ID="BT_Simple" runat="server" CssClass="mode-button active" OnClick="BT_Simple_Click" Text="<%$ Resources:lang,DSeekSmartChat%>" OnClientClick="javascript:document.getElementById('loadingContainer').style.display = 'block';" />
+                <!-- 减少margin，使用小间距 -->
+                <div id="loadingContainer" style="display: none; text-align: center; margin: 2px 0;">
+                    <img id="IMG_Waiting" src="Images/Processing.gif" alt="Loading,please wait..." />
+                </div>
+
+                <asp:Button ID="BT_DataAnalysis" runat="server" CssClass="mode-button" OnClick="BT_DataAnalysis_Click" Text="<%$ Resources:lang,DSeekDataAnalysis%>" OnClientClick="javascript:document.getElementById('loadingContainer').style.display = 'block';" />
             </div>
 
             <!-- UpdatePanel contains all content areas -->
@@ -661,7 +676,7 @@
                             </center>
                         </div>
 
-                        <ckeditor:ckeditorcontrol id="lblGeneratedText" runat="server" height="600px" width="100%" toolbar="" />
+                        <CKEditor:CKEditorControl ID="lblGeneratedText" runat="server" Height="600px" Width="100%" Toolbar="" />
 
                         <div style="display: none;">
                             <asp:HyperLink ID="HL_AIURL" runat="server" Target="_blank"></asp:HyperLink>
@@ -672,14 +687,17 @@
                     <div id="divDataAnalysisMode" class="content-area" runat="server" visible="false">
                         <!-- Table Management Area -->
                         <div class="config-section">
-                            <div class="config-title">📊
-                                <asp:Literal ID="LiteralAnalysisTableManagement" runat="server" Text="<%$ Resources:lang,DSeekAnalysisTableManagement%>"></asp:Literal></div>
+                            <div class="config-title">
+                                📊
+                                <asp:Literal ID="LiteralAnalysisTableManagement" runat="server" Text="<%$ Resources:lang,DSeekAnalysisTableManagement%>"></asp:Literal>
+                            </div>
 
                             <div class="table-management">
                                 <!-- Table Name Input -->
                                 <div style="margin-bottom: 15px;">
                                     <div style="font-weight: 600; margin-bottom: 8px;">
-                                        <asp:Literal ID="LiteralAddTableNames" runat="server" Text="<%$ Resources:lang,DSeekAddTableNames%>"></asp:Literal></div>
+                                        <asp:Literal ID="LiteralAddTableNames" runat="server" Text="<%$ Resources:lang,DSeekAddTableNames%>"></asp:Literal>
+                                    </div>
                                     <div class="table-input-area">
                                         <asp:TextBox ID="txtTableNames" runat="server"
                                             CssClass="config-input"
@@ -690,13 +708,15 @@
                                             OnClick="btnSaveTables_Click" />
                                     </div>
                                     <div class="hint-text">
-                                        <asp:Literal ID="LiteralTableNamesSaved" runat="server" Text="<%$ Resources:lang,DSeekTableNamesSaved%>"></asp:Literal></div>
+                                        <asp:Literal ID="LiteralTableNamesSaved" runat="server" Text="<%$ Resources:lang,DSeekTableNamesSaved%>"></asp:Literal>
+                                    </div>
                                 </div>
 
                                 <!-- Saved Table List -->
                                 <div style="margin-top: 20px;">
                                     <div style="font-weight: 600; margin-bottom: 8px;">
-                                        <asp:Literal ID="LiteralSelectTablesForAnalysis" runat="server" Text="<%$ Resources:lang,DSeekSelectTablesForAnalysis%>"></asp:Literal></div>
+                                        <asp:Literal ID="LiteralSelectTablesForAnalysis" runat="server" Text="<%$ Resources:lang,DSeekSelectTablesForAnalysis%>"></asp:Literal>
+                                    </div>
                                     <asp:Button ID="btnLoadTables" runat="server"
                                         Text="<%$ Resources:lang,DSeekLoadSavedTables%>"
                                         CssClass="btn btn-primary"
@@ -709,7 +729,8 @@
 
                                     <div id="selectedTablesPanel" class="selected-tables">
                                         <div style="font-weight: 600; color: #4F46E5; margin-bottom: 10px;">
-                                            <asp:Literal ID="LiteralSelectedTables" runat="server" Text="<%$ Resources:lang,DSeekSelectedTables%>"></asp:Literal></div>
+                                            <asp:Literal ID="LiteralSelectedTables" runat="server" Text="<%$ Resources:lang,DSeekSelectedTables%>"></asp:Literal>
+                                        </div>
                                         <div id="selectedTableTags" class="selected-table-tags"></div>
                                     </div>
                                 </div>
@@ -718,8 +739,10 @@
 
                         <!-- Analysis Requirement Area -->
                         <div class="config-section">
-                            <div class="config-title">🎯
-                                <asp:Literal ID="LiteralAnalysisRequirementDescription" runat="server" Text="<%$ Resources:lang,DSeekAnalysisRequirementDescription%>"></asp:Literal></div>
+                            <div class="config-title">
+                                🎯
+                                <asp:Literal ID="LiteralAnalysisRequirementDescription" runat="server" Text="<%$ Resources:lang,DSeekAnalysisRequirementDescription%>"></asp:Literal>
+                            </div>
 
                             <div class="analysis-tips">
                                 <strong>
@@ -737,7 +760,8 @@
                                     CssClass="config-textarea"
                                     placeholder="Analysis Requirement Placeholder"></asp:TextBox>
                                 <div class="hint-text">
-                                    <asp:Literal ID="LiteralAnalysisCustomizedReports" runat="server" Text="<%$ Resources:lang,DSeekAnalysisCustomizedReports%>"></asp:Literal></div>
+                                    <asp:Literal ID="LiteralAnalysisCustomizedReports" runat="server" Text="<%$ Resources:lang,DSeekAnalysisCustomizedReports%>"></asp:Literal>
+                                </div>
                             </div>
 
                             <div class="action-buttons">
@@ -757,8 +781,10 @@
                         <!-- Analysis Result Area -->
                         <div id="analysisResultSection" class="analysis-result-section">
                             <div class="result-header">
-                                <div style="font-weight: 600; color: #4F46E5; margin-bottom: 5px;">📋
-                                    <asp:Literal ID="LiteralAnalysisResults" runat="server" Text="<%$ Resources:lang,DSeekAnalysisResults%>"></asp:Literal></div>
+                                <div style="font-weight: 600; color: #4F46E5; margin-bottom: 5px;">
+                                    📋
+                                    <asp:Literal ID="LiteralAnalysisResults" runat="server" Text="<%$ Resources:lang,DSeekAnalysisResults%>"></asp:Literal>
+                                </div>
                                 <div style="color: #666; font-size: 14px;">
                                     <asp:Literal ID="LiteralAnalysisTime" runat="server" Text="<%$ Resources:lang,DSeekAnalysisTime%>"></asp:Literal>:
                                     <asp:Literal ID="litAnalysisTime" runat="server"></asp:Literal>
@@ -800,9 +826,11 @@
                             </div>
 
                             <div style="text-align: right; margin-top: 20px;">
-                                <button type="button" class="btn btn-primary" onclick="exportAnalysis()">📄
+                                <button type="button" class="btn btn-primary" onclick="exportAnalysis()">
+                                    📄
                                     <asp:Literal ID="LiteralExportReport" runat="server" Text="<%$ Resources:lang,DSeekExportReport%>"></asp:Literal></button>
-                                <button type="button" class="btn" style="background: #4F46E5; color: white;" onclick="clearResults()">🔄
+                                <button type="button" class="btn" style="background: #4F46E5; color: white;" onclick="clearResults()">
+                                    🔄
                                     <asp:Literal ID="LiteralNewAnalysis" runat="server" Text="<%$ Resources:lang,DSeekNewAnalysis%>"></asp:Literal></button>
                             </div>
                         </div>
@@ -810,12 +838,15 @@
 
                     <div class="config-section" style="display: none;">
                         <!-- Configuration Area -->
-                        <div class="config-title">⚙️
-                            <asp:Literal ID="LiteralSystemConfiguration" runat="server" Text="<%$ Resources:lang,DSeekSystemConfiguration%>"></asp:Literal></div>
+                        <div class="config-title">
+                            ⚙️
+                            <asp:Literal ID="LiteralSystemConfiguration" runat="server" Text="<%$ Resources:lang,DSeekSystemConfiguration%>"></asp:Literal>
+                        </div>
 
                         <div class="config-row">
                             <div>
-                                <asp:Literal ID="LiteralDeepSeekAPI" runat="server" Text="<%$ Resources:lang,DSeekDeepSeekAPI%>"></asp:Literal>:</div>
+                                <asp:Literal ID="LiteralDeepSeekAPI" runat="server" Text="<%$ Resources:lang,DSeekDeepSeekAPI%>"></asp:Literal>:
+                            </div>
                             <div>
                                 <asp:TextBox ID="txtDeepSeekApi" runat="server"
                                     CssClass="config-input"
@@ -825,7 +856,8 @@
 
                         <div class="config-row">
                             <div>
-                                <asp:Literal ID="LiteralModelName" runat="server" Text="<%$ Resources:lang,DSeekModelName%>"></asp:Literal>:</div>
+                                <asp:Literal ID="LiteralModelName" runat="server" Text="<%$ Resources:lang,DSeekModelName%>"></asp:Literal>:
+                            </div>
                             <div>
                                 <asp:TextBox ID="txtModel" runat="server"
                                     CssClass="config-input"
@@ -877,6 +909,13 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div style="position: fixed; display: none; z-index: 9999;" id="progressContainer">
+            <asp:UpdateProgress ID="TakeTopUp" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
+                <ProgressTemplate>
+                    <img src="Images/Processing.gif" alt="Loading,please wait..." />
+                </ProgressTemplate>
+            </asp:UpdateProgress>
         </div>
     </form>
     <script type="text/javascript" language="javascript">var cssDirectory = '<%=Session["CssDirectory"] %>'; var oLink = document.getElementById('mainCss'); oLink.href = 'css/' + cssDirectory + '/' + 'bluelightmain.css';</script>

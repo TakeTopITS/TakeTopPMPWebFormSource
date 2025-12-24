@@ -290,7 +290,7 @@
                                                                         <asp:Label ID="Label4" runat="server" Text="AIURL"></asp:Label>
                                                                     </td>
                                                                     <td>
-                                                                        <asp:TextBox ID="TB_AIURL" runat="server" Width="150px"></asp:TextBox>
+                                                                        <asp:TextBox ID="TB_AIURL" runat="server" Width="260px"></asp:TextBox>
                                                                     </td>
                                                                     <td>
                                                                         <asp:Label ID="Label15" runat="server" Text="AIModel"></asp:Label>

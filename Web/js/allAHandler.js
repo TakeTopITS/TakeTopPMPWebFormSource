@@ -532,77 +532,296 @@ function aHandlerForTab() {
 
     });
 }
-
 // 在页面侧边栏打开窗口，带回调函数的版本（支持放大/缩小）
 function openRightLayer(pageName, titleName) {
+    // 保存每个层的原始状态
+    window.layerStates = window.layerStates || {};
+
     layer.open({
         type: 2,
         title: titleName,
         content: pageName,
         area: ['460px', '800px'],
-        offset: 'r',
+        offset: 'rb',
         shade: 0,
-        fixed: true,
+        fixed: false,
         zIndex: layer.zIndex,
         maxmin: true,
-        resize: true,
-        move: false,                   // 先禁用 layer 自带的拖动
+        resize: false,
+        move: false,
         success: function (layero, index) {
             // 手动设置更高 z-index
             layero.css('z-index', layer.zIndex + 100);
 
-            // 往下移动20px
-            var currentTop = parseInt(layero.css('top')) || 0;
-            layero.css('top', (currentTop + 20) + 'px');
+            // 保存层索引
+            layero.data('layer-index', index);
 
-            // 自定义整个层都可拖动
-            enableCustomDrag(layero);
+            // 保存原始状态
+            window.layerStates[index] = {
+                originalWidth: 460,
+                originalHeight: 800,
+                // 状态记录：normal（原始大小）, minimized（最小化）, maximized（最大化）
+                currentState: 'normal',
+                // 记录从哪个状态进入最小化的
+                minimizedFrom: null
+            };
+
+            // 设置初始位置：距离顶部20px
+            setLayerPosition(layero, 'normal');
+
+            // 监听窗口大小变化
+            $(window).off('resize.layer-' + index).on('resize.layer-' + index, function () {
+                var state = window.layerStates[index];
+                if (state) {
+                    setLayerPosition(layero, state.currentState);
+                }
+            });
+
+            // 重写最小化和最大化行为
+            setTimeout(function () {
+                overrideLayerControls(layero, index);
+            }, 100);
+        },
+        cancel: function (index) {
+            // 清理事件监听
+            $(window).off('resize.layer-' + index);
+            // 清理状态
+            if (window.layerStates && window.layerStates[index]) {
+                delete window.layerStates[index];
+            }
+        },
+        // 添加关闭时的清理
+        end: function (index) {
+            $(window).off('resize.layer-' + index);
+            if (window.layerStates && window.layerStates[index]) {
+                delete window.layerStates[index];
+            }
         }
     });
 }
 
-// 自定义拖动函数
-function enableCustomDrag(layero) {
+// 设置层位置（根据状态）
+function setLayerPosition(layero, state) {
     var $layero = $(layero);
-    var isDragging = false;
-    var startX, startY, startLeft, startTop;
+    var index = $layero.data('layer-index');
+    var layerState = window.layerStates[index];
 
-    // 整个层都可以拖动
-    $layero.css('cursor', 'move');
+    if (!layerState) return;
 
-    $layero.on('mousedown', function (e) {
-        if (e.target.closest('.layui-layer-setwin')) return; // 排除关闭按钮区域
+    var windowHeight = $(window).height();
+    var windowWidth = $(window).width();
 
-        isDragging = true;
-        startX = e.clientX;
-        startY = e.clientY;
-        startLeft = parseInt($layero.css('left')) || 0;
-        startTop = parseInt($layero.css('top')) || 0;
+    var layerWidth, layerHeight, topPosition, leftPosition;
 
-        // 防止文本选择
-        $('body').css('user-select', 'none');
+    switch (state) {
+        case 'minimized':
+            // 最小化状态：右上角小窗口
+            layerWidth = 200;
+            layerHeight = 60;
+            topPosition = 20;
+            var rightPosition = 20;
 
-        e.preventDefault();
+            // 确保最小化窗口不会超出窗口左侧
+            var maxLeft = windowWidth - layerWidth - 5; // 减去5px边距
+            leftPosition = Math.min(windowWidth - layerWidth - rightPosition, maxLeft);
+
+            // 如果窗口太小，确保层始终可见
+            if (windowWidth < layerWidth + 40) {
+                layerWidth = Math.max(150, windowWidth - 40); // 最小宽度150px
+                leftPosition = 10; // 左边距10px
+            }
+            break;
+
+        case 'maximized':
+            // 最大化状态：全屏
+            layerWidth = windowWidth;
+            layerHeight = windowHeight;
+            topPosition = 0;
+            leftPosition = 0;
+            break;
+
+        case 'normal':
+        default:
+            // 正常状态：原始大小，右侧显示
+            layerWidth = layerState.originalWidth;
+            layerHeight = layerState.originalHeight;
+            topPosition = 20;
+            var rightPosition = 20;
+
+            // 确保不会超出窗口左侧
+            var maxNormalLeft = windowWidth - layerWidth - 5;
+            leftPosition = Math.min(windowWidth - layerWidth - rightPosition, maxNormalLeft);
+
+            // 如果窗口太小，调整宽度
+            if (windowWidth < layerWidth + 40) {
+                layerWidth = Math.max(300, windowWidth - 40); // 最小宽度300px
+                leftPosition = 10; // 左边距10px
+            }
+
+            // 确保层不会超出窗口底部
+            if (topPosition + layerHeight > windowHeight) {
+                topPosition = windowHeight - layerHeight - 5;
+                if (topPosition < 5) topPosition = 5;
+            }
+            break;
+    }
+
+    // 确保leftPosition不会为负数
+    leftPosition = Math.max(5, leftPosition);
+
+    // 应用位置
+    $layero.css({
+        'position': 'fixed',
+        'top': topPosition + 'px',
+        'left': leftPosition + 'px',
+        'right': 'auto',
+        'bottom': 'auto',
+        'width': layerWidth + 'px',
+        'height': layerHeight + 'px',
+        'transition': 'all 0.3s ease'
     });
 
-    $(document).on('mousemove', function (e) {
-        if (!isDragging) return;
-
-        var deltaX = e.clientX - startX;
-        var deltaY = e.clientY - startY;
-
-        $layero.css({
-            'left': (startLeft + deltaX) + 'px',
-            'top': (startTop + deltaY) + 'px'
-        });
-    });
-
-    $(document).on('mouseup', function () {
-        isDragging = false;
-        $('body').css('user-select', '');
-    });
+    // 记录当前实际尺寸到状态中
+    layerState.actualWidth = layerWidth;
+    layerState.actualHeight = layerHeight;
 }
 
+// 重写layer.js的控制按钮行为
+function overrideLayerControls(layero, index) {
+    var $layero = $(layero);
+    var state = window.layerStates[index];
+
+    // 获取控制按钮
+    var minBtn = $layero.find('.layui-layer-min');
+    var maxBtn = $layero.find('.layui-layer-max');
+
+    // 1. 重写最小化按钮
+    if (minBtn.length) {
+        minBtn.off('click').on('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            // 更新状态：记录是从哪个状态最小化的
+            state.minimizedFrom = state.currentState;
+            state.currentState = 'minimized';
+
+            // 执行最小化
+            executeStateChange(layero, index, 'minimized');
+
+            // 更新按钮显示
+            updateButtonDisplay($layero, 'minimized');
+        });
+    }
+
+    // 2. 重写最大化按钮
+    if (maxBtn.length) {
+        maxBtn.off('click').on('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            if (state.currentState === 'minimized') {
+                // 如果当前是最小化状态
+                if (state.minimizedFrom === 'maximized') {
+                    // 如果是从最大化状态最小化的，还原到最大化
+                    state.currentState = 'maximized';
+                    executeStateChange(layero, index, 'maximized');
+                    updateButtonDisplay($layero, 'maximized');
+                } else {
+                    // 如果是从正常状态最小化的，还原到正常状态
+                    state.currentState = 'normal';
+                    state.minimizedFrom = null;
+                    executeStateChange(layero, index, 'normal');
+                    updateButtonDisplay($layero, 'normal');
+                }
+            } else if (state.currentState === 'maximized') {
+                // 如果当前是最大化状态，还原到正常状态
+                state.currentState = 'normal';
+                state.minimizedFrom = null;
+                executeStateChange(layero, index, 'normal');
+                updateButtonDisplay($layero, 'normal');
+            } else if (state.currentState === 'normal') {
+                // 如果当前是正常状态，最大化
+                state.currentState = 'maximized';
+                state.minimizedFrom = null;
+                executeStateChange(layero, index, 'maximized');
+                updateButtonDisplay($layero, 'maximized');
+            }
+        });
+    }
+
+    // 初始按钮显示
+    updateButtonDisplay($layero, state.currentState);
+}
+
+// 执行状态变化
+function executeStateChange(layero, index, targetState) {
+    var $layero = $(layero);
+    var state = window.layerStates[index];
+
+    // 设置位置
+    setLayerPosition(layero, targetState);
+
+    // 处理内容显示/隐藏
+    var $content = $layero.find('.layui-layer-content');
+    if ($content.length) {
+        if (targetState === 'minimized') {
+            $content.hide();
+            $layero.addClass('minimized-state');
+        } else {
+            $content.show();
+            $layero.removeClass('minimized-state');
+        }
+    }
+
+    // 确保层级
+    if (targetState === 'minimized') {
+        $layero.css('z-index', layer.zIndex + 200);
+    }
+}
+
+// 更新按钮显示
+function updateButtonDisplay($layero, state) {
+    var minBtn = $layero.find('.layui-layer-min');
+    var maxBtn = $layero.find('.layui-layer-max');
+
+    switch (state) {
+        case 'minimized':
+            // 最小化时：隐藏减号按钮，最大化按钮显示为还原图标
+            minBtn.hide();
+            maxBtn.removeClass('layui-layer-max').addClass('layui-layer-maxmin');
+            break;
+
+        case 'maximized':
+            // 最大化时：显示减号按钮，最大化按钮显示为还原图标
+            minBtn.show();
+            maxBtn.removeClass('layui-layer-max').addClass('layui-layer-maxmin');
+            break;
+
+        case 'normal':
+        default:
+            // 正常状态时：显示减号按钮，最大化按钮显示为放大图标
+            minBtn.show();
+            maxBtn.removeClass('layui-layer-maxmin').addClass('layui-layer-max');
+            break;
+    }
+}
+
+// 全局监听窗口大小变化
+$(window).on('resize', function () {
+    var windowWidth = $(window).width();
+
+    $('.layui-layer').each(function () {
+        var $layero = $(this);
+        var index = $layero.data('layer-index');
+
+        if (index && window.layerStates && window.layerStates[index]) {
+            var state = window.layerStates[index];
+
+            // 实时更新位置
+            setLayerPosition($layero, state.currentState);
+        }
+    });
+});
 
 //AI-设置右边AI窗口的AI提示词文本
 function setAIWindowPromptText(text) {
