@@ -282,35 +282,11 @@
                                             </td>
                                             <td width="60px"></td>
                                             <td width="800px">
-                                                <table style="width:800px;">
-                                                    <tr>
-                                                        <td align="right">AI Seeting:</td>
-                                                        <td>
-                                                            <asp:Label ID="LB_AIType" runat="server" Text="AIType"></asp:Label>
-                                                        </td>
-                                                        <td>
-                                                            <asp:DropDownList ID="DL_AIType" AccessKey="A" runat="server" AutoPostBack="false">
-                                                                <asp:ListItem Value="Local" Text="Local"></asp:ListItem>
-                                                             <%--   <asp:ListItem Value="Outer" Text="Outer"></asp:ListItem>--%>
-                                                            </asp:DropDownList>
-                                                        </td>
-                                                        <td>
-                                                            <asp:Label ID="Label4" runat="server" Text="AIURL"></asp:Label>
-                                                        </td>
-                                                        <td>
-                                                            <asp:TextBox ID="TB_AIURL" runat="server" Width="260px"></asp:TextBox>
-                                                        </td>
-                                                        <td>
-                                                            <asp:Label ID="Label15" runat="server" Text="AIModel"></asp:Label>
-                                                        </td>
-                                                        <td>
-                                                            <asp:TextBox ID="TB_AIModel" runat="server" Width="150px"></asp:TextBox>
-                                                        </td>
-                                                        <td>
-                                                            <asp:Button ID="BT_AISave" runat="server" CssClass="inpu" Text="<%$ Resources:lang,BaoCun%>" OnClick="BT_AISave_Click" />
-                                                        </td>
-                                                    </tr>
-                                                </table>
+                                                <!-- 在页头或适当位置添加 -->
+                                                <div style="text-align: left; margin-bottom: 10px;">
+                                                    <a href="TTAIServerConfiguration.aspx" style="color: #4F46E5; text-decoration: none; font-weight: 600;">⚙️ AI Server Configuration
+                                                    </a>
+                                                </div>
                                             </td>
                                         </tr>
                                     </table>

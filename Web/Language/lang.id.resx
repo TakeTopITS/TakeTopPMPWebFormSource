@@ -33934,4 +33934,378 @@
   <data name="ZZZZYSCDWJ" xml:space="preserve">
     <value>Harap pilih file yang akan diunggah!</value>
   </data>
+
+<data name="DSeekAIServerType" xml:space="preserve">
+    <value>Tipe Server AI</value>
+    <comment>Tipe Server AI</comment>
+</data>
+<data name="DSeekLocalAI" xml:space="preserve">
+    <value>Lokal (Ollama)</value>
+    <comment>Lokal (Ollama)</comment>
+</data>
+<data name="DSeekExternalAI" xml:space="preserve">
+    <value>AI Eksternal</value>
+    <comment>AI Eksternal</comment>
+</data>
+<data name="DSeekAPIURL" xml:space="preserve">
+    <value>URL API</value>
+    <comment>URL API</comment>
+</data>
+<data name="DSeekAPIKey" xml:space="preserve">
+    <value>Kunci API</value>
+    <comment>Kunci API</comment>
+</data>
+<data name="DSeekLocalAIHint" xml:space="preserve">
+    <value>Lokal: gunakan server Ollama di localhost | Eksternal: gunakan OpenAI, DeepSeek API, dll.</value>
+    <comment>Lokal: gunakan server Ollama di localhost | Eksternal: gunakan OpenAI, DeepSeek API, dll.</comment>
+</data>
+<data name="DSeekModelHint" xml:space="preserve">
+    <value>Lokal: deepseek-r1:1.5b, llama2, dll. | Eksternal: gpt-3.5-turbo, gpt-4, deepseek-chat, dll.</value>
+    <comment>Lokal: deepseek-r1:1.5b, llama2, dll. | Eksternal: gpt-3.5-turbo, gpt-4, deepseek-chat, dll.</comment>
+</data>
+<data name="DSeekShowConfiguration" xml:space="preserve">
+    <value>Tampilkan Konfigurasi AI</value>
+    <comment>Tampilkan Konfigurasi AI</comment>
+</data>
+<data name="DSeekAIServerAvailable" xml:space="preserve">
+    <value>✅ Server AI Tersedia</value>
+    <comment>✅ Server AI Tersedia</comment>
+</data>
+<data name="DSeekExternalAIServerAvailable" xml:space="preserve">
+    <value>✅ Server AI Eksternal Tersedia</value>
+    <comment>✅ Server AI Eksternal Tersedia</comment>
+</data>
+<data name="DSeekAIServerNotAvailableContactSupplier" xml:space="preserve">
+    <value>⚠️ Server AI tidak tersedia. Silakan periksa konfigurasi atau hubungi penyedia.</value>
+    <comment>⚠️ Server AI tidak tersedia. Silakan periksa konfigurasi atau hubungi penyedia.</comment>
+</data>
+<!-- Istilah terkait Konfigurasi Server AI -->
+<data name="AIServerConfigurationTitle" xml:space="preserve">
+    <value>Konfigurasi Server AI</value>
+    <comment>Konfigurasi Server AI</comment>
+</data>
+
+<data name="AIBackToAI" xml:space="preserve">
+    <value>Kembali ke Analisis AI</value>
+    <comment>Kembali ke Analisis AI</comment>
+</data>
+
+<data name="AIServerConfiguration" xml:space="preserve">
+    <value>Konfigurasi Server</value>
+    <comment>Konfigurasi Server</comment>
+</data>
+
+<data name="AIConfigurationSubtitle" xml:space="preserve">
+    <value>Konfigurasikan pengaturan server untuk layanan AI lokal dan eksternal</value>
+    <comment>Konfigurasikan pengaturan server untuk layanan AI lokal dan eksternal</comment>
+</data>
+
+<data name="AIServerTypeTitle" xml:space="preserve">
+    <value>Tipe Server AI</value>
+    <comment>Tipe Server AI</comment>
+</data>
+
+<data name="AIServerType" xml:space="preserve">
+    <value>Tipe Server</value>
+    <comment>Tipe Server</comment>
+</data>
+
+<data name="AILocalAI" xml:space="preserve">
+    <value>Lokal (Ollama)</value>
+    <comment>Lokal (Ollama)</comment>
+</data>
+
+<data name="AIExternalAI" xml:space="preserve">
+    <value>AI Eksternal</value>
+    <comment>AI Eksternal</comment>
+</data>
+
+<data name="AIServerTypeHint" xml:space="preserve">
+    <value>&lt;strong&gt;Lokal&lt;/strong&gt;: Jalankan model AI secara lokal menggunakan server Ollama&lt;br /&gt;
+            &lt;strong&gt;Eksternal&lt;/strong&gt;: Gunakan layanan AI cloud seperti OpenAI, DeepSeek API, dll.</value>
+    <comment>&lt;strong&gt;Lokal&lt;/strong&gt;: Jalankan model AI secara lokal menggunakan server Ollama&lt;br /&gt;
+            &lt;strong&gt;Eksternal&lt;/strong&gt;: Gunakan layanan AI cloud seperti OpenAI, DeepSeek API, dll.</comment>
+</data>
+
+<data name="AIAPIURL" xml:space="preserve">
+    <value>URL API</value>
+    <comment>URL API</comment>
+</data>
+
+<data name="AIAPIURLPlaceholder" xml:space="preserve">
+    <value>Masukkan URL endpoint API</value>
+    <comment>Masukkan URL endpoint API</comment>
+</data>
+
+<data name="AIAPIURLExamples" xml:space="preserve">
+    <value>Contoh:&lt;br /&gt;
+            • Lokal: &lt;code&gt;http://localhost:11434/v1/chat/completions&lt;/code&gt;&lt;br /&gt;
+            • OpenAI: &lt;code&gt;https://api.openai.com/v1/chat/completions&lt;/code&gt;&lt;br /&gt;
+            • DeepSeek: &lt;code&gt;https://api.deepseek.com/v1/chat/completions&lt;/code&gt;</value>
+    <comment>Contoh:&lt;br /&gt;
+            • Lokal: &lt;code&gt;http://localhost:11434/v1/chat/completions&lt;/code&gt;&lt;br /&gt;
+            • OpenAI: &lt;code&gt;https://api.openai.com/v1/chat/completions&lt;/code&gt;&lt;br /&gt;
+            • DeepSeek: &lt;code&gt;https://api.deepseek.com/v1/chat/completions&lt;/code&gt;</comment>
+</data>
+
+<data name="AIAPIKey" xml:space="preserve">
+    <value>Kunci API</value>
+    <comment>Kunci API</comment>
+</data>
+
+<data name="AIAPIKeyPlaceholder" xml:space="preserve">
+    <value>Masukkan kunci API untuk layanan AI eksternal</value>
+    <comment>Masukkan kunci API untuk layanan AI eksternal</comment>
+</data>
+
+<data name="AIAPIKeyHint" xml:space="preserve">
+    <value>Diperlukan untuk layanan AI eksternal. Harap simpan dengan aman.</value>
+    <comment>Diperlukan untuk layanan AI eksternal. Harap simpan dengan aman.</comment>
+</data>
+
+<data name="AIShowAPIKey" xml:space="preserve">
+    <value>Tampilkan Kunci API</value>
+    <comment>Tampilkan Kunci API</comment>
+</data>
+
+<data name="AIModelName" xml:space="preserve">
+    <value>Nama Model</value>
+    <comment>Nama Model</comment>
+</data>
+
+<data name="AIModelPlaceholder" xml:space="preserve">
+    <value>Masukkan nama model</value>
+    <comment>Masukkan nama model</comment>
+</data>
+
+<data name="AIQuickPresets" xml:space="preserve">
+    <value>Prasetel Model Cepat:</value>
+    <comment>Prasetel Model Cepat:</comment>
+</data>
+
+<data name="AIPresetHint" xml:space="preserve">
+    <value>Klik pada prasetel untuk mengatur nama model dengan cepat</value>
+    <comment>Klik pada prasetel untuk mengatur nama model dengan cepat</comment>
+</data>
+
+<data name="AICurrentStatus" xml:space="preserve">
+    <value>Status Konfigurasi Saat Ini</value>
+    <comment>Status Konfigurasi Saat Ini</comment>
+</data>
+
+<data name="AIServerURL" xml:space="preserve">
+    <value>URL Server</value>
+    <comment>URL Server</comment>
+</data>
+
+<data name="AINotConfigured" xml:space="preserve">
+    <value>Tidak dikonfigurasi</value>
+    <comment>Tidak dikonfigurasi</comment>
+</data>
+
+<data name="AIModel" xml:space="preserve">
+    <value>Model</value>
+    <comment>Model</comment>
+</data>
+
+<data name="AIStatus" xml:space="preserve">
+    <value>Status</value>
+    <comment>Status</comment>
+</data>
+
+<data name="AIUnknown" xml:space="preserve">
+    <value>Tidak Diketahui</value>
+    <comment>Tidak Diketahui</comment>
+</data>
+
+<data name="AILastTest" xml:space="preserve">
+    <value>Test Terakhir</value>
+    <comment>Test Terakhir</comment>
+</data>
+
+<data name="AINeverTested" xml:space="preserve">
+    <value>Belum Pernah Diuji</value>
+    <comment>Belum Pernah Diuji</comment>
+</data>
+
+<data name="AITestConnection" xml:space="preserve">
+    <value>🔄 Test Koneksi</value>
+    <comment>🔄 Test Koneksi</comment>
+</data>
+
+<data name="AISaveConfiguration" xml:space="preserve">
+    <value>💾 Simpan Konfigurasi</value>
+    <comment>💾 Simpan Konfigurasi</comment>
+</data>
+
+<data name="AILoadCurrent" xml:space="preserve">
+    <value>📂 Muat Konfigurasi Saat Ini</value>
+    <comment>📂 Muat Konfigurasi Saat Ini</comment>
+</data>
+
+<data name="AIResetToDefault" xml:space="preserve">
+    <value>🔄 Atur Ulang ke Default</value>
+    <comment>🔄 Atur Ulang ke Default</comment>
+</data>
+
+<data name="AIInformationHelp" xml:space="preserve">
+    <value>Informasi &amp; Bantuan</value>
+    <comment>Informasi &amp; Bantuan</comment>
+</data>
+
+<data name="AILocalAISetup" xml:space="preserve">
+    <value>Pengaturan AI Lokal:</value>
+    <comment>Pengaturan AI Lokal:</comment>
+</data>
+
+<data name="AIInstallOllama" xml:space="preserve">
+    <value>Instal Ollama dari &lt;a href="https://ollama.ai" target="_blank"&gt;ollama.ai&lt;/a&gt;</value>
+    <comment>Instal Ollama dari &lt;a href="https://ollama.ai" target="_blank"&gt;ollama.ai&lt;/a&gt;</comment>
+</data>
+
+<data name="AIOllamaCommand" xml:space="preserve">
+    <value>Jalankan perintah: &lt;code&gt;ollama run deepseek-r1:1.5b&lt;/code&gt; untuk mengunduh dan menguji model</value>
+    <comment>Jalankan perintah: &lt;code&gt;ollama run deepseek-r1:1.5b&lt;/code&gt; untuk mengunduh dan menguji model</comment>
+</data>
+
+<data name="AIOllamaPort" xml:space="preserve">
+    <value>Pastikan Ollama berjalan di port 11434</value>
+    <comment>Pastikan Ollama berjalan di port 11434</comment>
+</data>
+
+<data name="AIExternalAISetup" xml:space="preserve">
+    <value>Pengaturan AI Eksternal:</value>
+    <comment>Pengaturan AI Eksternal:</comment>
+</data>
+
+<data name="AIGetAPIKey" xml:space="preserve">
+    <value>Dapatkan kunci API dari penyedia layanan AI Anda</value>
+    <comment>Dapatkan kunci API dari penyedia layanan AI Anda</comment>
+</data>
+
+<data name="AICheckCredits" xml:space="preserve">
+    <value>Pastikan akun Anda memiliki kredit/kuota yang cukup</value>
+    <comment>Pastikan akun Anda memiliki kredit/kuota yang cukup</comment>
+</data>
+
+<data name="AICheckAPIDocs" xml:space="preserve">
+    <value>Periksa dokumentasi API untuk URL endpoint yang benar</value>
+    <comment>Periksa dokumentasi API untuk URL endpoint yang benar</comment>
+</data>
+
+<data name="AINote" xml:space="preserve">
+    <value>Catatan:</value>
+    <comment>Catatan:</comment>
+</data>
+
+<data name="AIConfigurationNote" xml:space="preserve">
+    <value>Konfigurasi akan disimpan ke database dan digunakan untuk semua fitur analisis AI.</value>
+    <comment>Konfigurasi akan disimpan ke database dan digunakan untuk semua fitur analisis AI.</comment>
+</data>
+
+<data name="AITestingConnection" xml:space="preserve">
+    <value>Menguji Koneksi Server AI</value>
+    <comment>Menguji Koneksi Server AI</comment>
+</data>
+
+<data name="AIPleaseWaitConnection" xml:space="preserve">
+    <value>Harap tunggu sementara kami menguji koneksi ke server AI Anda...</value>
+    <comment>Harap tunggu sementara kami menguji koneksi ke server AI Anda...</comment>
+</data>
+
+<!-- Istilah yang digunakan di backend -->
+<data name="AIErrorLoadingConfig" xml:space="preserve">
+    <value>Kesalahan memuat konfigurasi:</value>
+    <comment>Kesalahan memuat konfigurasi:</comment>
+</data>
+
+<data name="AILocalServerReachable" xml:space="preserve">
+    <value>✅ Server AI lokal dapat dijangkau</value>
+    <comment>✅ Server AI lokal dapat dijangkau</comment>
+</data>
+
+<data name="AICannotConnectLocal" xml:space="preserve">
+    <value>❌ Tidak dapat terhubung ke server AI lokal</value>
+    <comment>❌ Tidak dapat terhubung ke server AI lokal</comment>
+</data>
+
+<data name="AIExternalServerReachable" xml:space="preserve">
+    <value>✅ Server AI eksternal dapat dijangkau</value>
+    <comment>✅ Server AI eksternal dapat dijangkau</comment>
+</data>
+
+<data name="AICannotConnectExternal" xml:space="preserve">
+    <value>❌ Tidak dapat terhubung ke server AI eksternal</value>
+    <comment>❌ Tidak dapat terhubung ke server AI eksternal</comment>
+</data>
+
+<data name="AIConnected" xml:space="preserve">
+    <value>✅ Terhubung</value>
+    <comment>✅ Terhubung</comment>
+</data>
+
+<data name="AINotConnected" xml:space="preserve">
+    <value>❌ Tidak Terhubung</value>
+    <comment>❌ Tidak Terhubung</comment>
+</data>
+
+<data name="AIConnectionTestFailed" xml:space="preserve">
+    <value>❌ Test koneksi gagal:</value>
+    <comment>❌ Test koneksi gagal:</comment>
+</data>
+
+<data name="AITestFailed" xml:space="preserve">
+    <value>❌ Test Gagal</value>
+    <comment>❌ Test Gagal</comment>
+</data>
+
+<data name="AIConfigSavedSuccess" xml:space="preserve">
+    <value>✅ Konfigurasi berhasil disimpan!</value>
+    <comment>✅ Konfigurasi berhasil disimpan!</comment>
+</data>
+
+<data name="AINotTested" xml:space="preserve">
+    <value>Belum Diuji</value>
+    <comment>Belum Diuji</comment>
+</data>
+
+<data name="AIErrorSavingConfig" xml:space="preserve">
+    <value>❌ Kesalahan menyimpan konfigurasi:</value>
+    <comment>❌ Kesalahan menyimpan konfigurasi:</comment>
+</data>
+
+<data name="AICurrentConfigLoaded" xml:space="preserve">
+    <value>📂 Konfigurasi saat ini dimuat dari database</value>
+    <comment>📂 Konfigurasi saat ini dimuat dari database</comment>
+</data>
+
+<data name="AIEnterAPIURL" xml:space="preserve">
+    <value>❌ Silakan masukkan URL API</value>
+    <comment>❌ Silakan masukkan URL API</comment>
+</data>
+
+<data name="AIEnterModelName" xml:space="preserve">
+    <value>❌ Silakan masukkan nama model</value>
+    <comment>❌ Silakan masukkan nama model</comment>
+</data>
+
+<data name="AIAPIKeyRequired" xml:space="preserve">
+    <value>❌ Kunci API diperlukan untuk AI eksternal</value>
+    <comment>❌ Kunci API diperlukan untuk AI eksternal</comment>
+</data>
+
+<data name="AILocalConfigActive" xml:space="preserve">
+    <value>🏠 Konfigurasi AI lokal aktif</value>
+    <comment>🏠 Konfigurasi AI lokal aktif</comment>
+</data>
+
+<data name="AIExternalConfigActive" xml:space="preserve">
+    <value>🌐 Konfigurasi AI eksternal aktif</value>
+    <comment>🌐 Konfigurasi AI eksternal aktif</comment>
+</data>
+
+<data name="AINoAIConfigFound" xml:space="preserve">
+    <value>⚠️ Tidak ditemukan konfigurasi AI. Silakan konfigurasikan pengaturan server AI.</value>
+    <comment>⚠️ Tidak ditemukan konfigurasi AI. Silakan konfigurasikan pengaturan server AI.</comment>
+</data>
 </root>

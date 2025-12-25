@@ -368,9 +368,8 @@
             margin: 10px auto;
             width: 100%;
         }
-    </style>
-    <!-- 添加CSS样式（可以在页面的<style>标签中或外部CSS文件中） -->
-    <style>
+        
+        /* AI服务器状态样式 */
         .ai-server-status {
             margin: 10px 0;
             padding: 15px;
@@ -391,6 +390,35 @@
                 border: 1px solid #f5c6cb;
                 color: #721c24;
             }
+            
+        /* 配置按钮区域样式 */
+        .config-button-area {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+            text-align: center;
+        }
+        
+        .config-link {
+            color: #4F46E5;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 6px;
+            border: 2px solid #a5b4fc;
+            background: #eef2ff;
+            transition: all 0.3s;
+        }
+        
+        .config-link:hover {
+            background: #4F46E5;
+            color: white;
+            text-decoration: none;
+        }
     </style>
 
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
@@ -535,10 +563,7 @@
             const insights = document.getElementById('<%= litInsights.ClientID %>');
 
             if (!summary || !insights) {
-
                 showAlertAtMouse('Analysis results not found!');
-                /* alert('Analysis results not found!');*/
-
                 return;
             }
 
@@ -557,8 +582,7 @@
             document.body.removeChild(a);
             window.URL.revokeObjectURL(url);
 
-            showAlertAtMouse('Report exported successfully!')
-            //alert('Report exported successfully!');
+            showAlertAtMouse('Report exported successfully!');
         }
 
         // Clear results
@@ -607,23 +631,21 @@
                 showResultSection();
             }
         }
-
-
     </script>
 </head>
 <body>
     <form id="form1" runat="server">
         <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">
         </asp:ScriptManager>
-        <!-- 在页面顶部添加AI服务器状态显示 -->
-        <div id="aiServerStatusContainer" runat="server" visible="false"
-            style="margin: 10px 0; padding: 15px; border-radius: 5px; font-weight: bold; text-align: center;">
+        
+        <!-- AI服务器状态显示 -->
+        <div id="aiServerStatusContainer" runat="server" visible="false" class="ai-server-status">
             <asp:Label ID="lblAIServerStatus" runat="server"></asp:Label>
         </div>
 
-        <!-- Container outside UpdatePanel -->
+        <!-- 主容器 -->
         <div class="container">
-            <!-- Header -->
+            <!-- 页头 -->
             <div class="header">
                 <h1 style="margin: 0;">🤖
                     <asp:Literal ID="LiteralHeaderTitle" runat="server" Text="<%$ Resources:lang,DSeekIntelligentAnalysisPlatform%>"></asp:Literal></h1>
@@ -632,22 +654,20 @@
                 </p>
             </div>
 
-            <!-- Mode Switcher -->
+        
+            <!-- 模式切换器 -->
             <div id="divModeSwitcher" runat="server" class="mode-switcher">
-
                 <asp:Button ID="BT_Simple" runat="server" CssClass="mode-button active" OnClick="BT_Simple_Click" Text="<%$ Resources:lang,DSeekSmartChat%>" OnClientClick="javascript:document.getElementById('loadingContainer').style.display = 'block';" />
-                <!-- 减少margin，使用小间距 -->
                 <div id="loadingContainer" style="display: none; text-align: center; margin: 2px 0;">
                     <img id="IMG_Waiting" src="Images/Processing.gif" alt="Loading,please wait..." />
                 </div>
-
                 <asp:Button ID="BT_DataAnalysis" runat="server" CssClass="mode-button" OnClick="BT_DataAnalysis_Click" Text="<%$ Resources:lang,DSeekDataAnalysis%>" OnClientClick="javascript:document.getElementById('loadingContainer').style.display = 'block';" />
             </div>
 
-            <!-- UpdatePanel contains all content areas -->
+            <!-- UpdatePanel包含所有内容区域 -->
             <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
                 <ContentTemplate>
-                    <!-- Simple Chat Mode -->
+                    <!-- 简单聊天模式 -->
                     <div id="divSimpleMode" class="content-area" runat="server">
                         <div class="simple-prompt-area">
                             <center>
@@ -683,9 +703,9 @@
                         </div>
                     </div>
 
-                    <!-- Data Analysis Mode -->
+                    <!-- 数据分析模式 -->
                     <div id="divDataAnalysisMode" class="content-area" runat="server" visible="false">
-                        <!-- Table Management Area -->
+                        <!-- 表格管理区域 -->
                         <div class="config-section">
                             <div class="config-title">
                                 📊
@@ -693,7 +713,7 @@
                             </div>
 
                             <div class="table-management">
-                                <!-- Table Name Input -->
+                                <!-- 表格名称输入 -->
                                 <div style="margin-bottom: 15px;">
                                     <div style="font-weight: 600; margin-bottom: 8px;">
                                         <asp:Literal ID="LiteralAddTableNames" runat="server" Text="<%$ Resources:lang,DSeekAddTableNames%>"></asp:Literal>
@@ -701,7 +721,7 @@
                                     <div class="table-input-area">
                                         <asp:TextBox ID="txtTableNames" runat="server"
                                             CssClass="config-input"
-                                            placeholder="Table Names Place holder"></asp:TextBox>
+                                            placeholder="Enter table names separated by commas"></asp:TextBox>
                                         <asp:Button ID="btnSaveTables" runat="server"
                                             Text="<%$ Resources:lang,DSeekSaveToDB%>"
                                             CssClass="btn btn-success"
@@ -712,7 +732,7 @@
                                     </div>
                                 </div>
 
-                                <!-- Saved Table List -->
+                                <!-- 已保存表格列表 -->
                                 <div style="margin-top: 20px;">
                                     <div style="font-weight: 600; margin-bottom: 8px;">
                                         <asp:Literal ID="LiteralSelectTablesForAnalysis" runat="server" Text="<%$ Resources:lang,DSeekSelectTablesForAnalysis%>"></asp:Literal>
@@ -737,7 +757,7 @@
                             </div>
                         </div>
 
-                        <!-- Analysis Requirement Area -->
+                        <!-- 分析需求区域 -->
                         <div class="config-section">
                             <div class="config-title">
                                 🎯
@@ -758,7 +778,7 @@
                             <div>
                                 <asp:TextBox ID="txtAnalysisRequirement" runat="server"
                                     CssClass="config-textarea"
-                                    placeholder="Analysis Requirement Placeholder"></asp:TextBox>
+                                    placeholder="Enter your analysis requirements here..."></asp:TextBox>
                                 <div class="hint-text">
                                     <asp:Literal ID="LiteralAnalysisCustomizedReports" runat="server" Text="<%$ Resources:lang,DSeekAnalysisCustomizedReports%>"></asp:Literal>
                                 </div>
@@ -778,7 +798,7 @@
                             </div>
                         </div>
 
-                        <!-- Analysis Result Area -->
+                        <!-- 分析结果区域 -->
                         <div id="analysisResultSection" class="analysis-result-section">
                             <div class="result-header">
                                 <div style="font-weight: 600; color: #4F46E5; margin-bottom: 5px;">
@@ -835,52 +855,11 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="config-section" style="display: none;">
-                        <!-- Configuration Area -->
-                        <div class="config-title">
-                            ⚙️
-                            <asp:Literal ID="LiteralSystemConfiguration" runat="server" Text="<%$ Resources:lang,DSeekSystemConfiguration%>"></asp:Literal>
-                        </div>
-
-                        <div class="config-row">
-                            <div>
-                                <asp:Literal ID="LiteralDeepSeekAPI" runat="server" Text="<%$ Resources:lang,DSeekDeepSeekAPI%>"></asp:Literal>:
-                            </div>
-                            <div>
-                                <asp:TextBox ID="txtDeepSeekApi" runat="server"
-                                    CssClass="config-input"
-                                    placeholder="http://localhost:11434/v1/chat/completions"></asp:TextBox>
-                            </div>
-                        </div>
-
-                        <div class="config-row">
-                            <div>
-                                <asp:Literal ID="LiteralModelName" runat="server" Text="<%$ Resources:lang,DSeekModelName%>"></asp:Literal>:
-                            </div>
-                            <div>
-                                <asp:TextBox ID="txtModel" runat="server"
-                                    CssClass="config-input"
-                                    placeholder="AI-chat" Text="AI-chat"></asp:TextBox>
-                            </div>
-                        </div>
-
-                        <div class="config-buttons">
-                            <asp:Button ID="btnTestConfig" runat="server"
-                                Text="<%$ Resources:lang,DSeekTestConnection%>"
-                                CssClass="btn btn-primary"
-                                OnClick="btnTestConfig_Click" />
-                            <asp:Button ID="btnSaveConfig" runat="server"
-                                Text="<%$ Resources:lang,DSeekSaveConfiguration%>"
-                                CssClass="btn btn-success"
-                                OnClick="btnSaveConfig_Click" />
-                        </div>
-                    </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
         </div>
 
-        <!-- Loading Overlay (outside UpdatePanel) -->
+        <!-- 加载遮罩层 -->
         <div class="loading-overlay" id="loadingOverlay">
             <div class="loading-content">
                 <div style="font-size: 20px; color: #4F46E5; margin-bottom: 15px;">
@@ -910,6 +889,7 @@
                 </div>
             </div>
         </div>
+        
         <div style="position: fixed; display: none; z-index: 9999;" id="progressContainer">
             <asp:UpdateProgress ID="TakeTopUp" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
                 <ProgressTemplate>

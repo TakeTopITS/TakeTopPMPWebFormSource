@@ -37,8 +37,6 @@ public partial class TTBaseDataInner : System.Web.UI.Page
             strLangCode = Session["LangCode"].ToString();
             LB_SelectedProjectType.Text = "";
 
-            LoadAIInterface();
-
             LoadProjectType();
             LoadProjectStatus("", strLangCode);
 
@@ -182,42 +180,7 @@ public partial class TTBaseDataInner : System.Web.UI.Page
             ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZFZSBJC") + "')", true);
         }
     }
-
-    protected void BT_AISave_Click(object sender, EventArgs e)
-    {
-        string strHQL;
-
-        string strAIType, strAIURL, strAIModel;
-
-        strAIType = DL_AIType.SelectedValue.Trim();
-        strAIURL = TB_AIURL.Text.Trim();
-        strAIModel = TB_AIModel.Text.Trim();
-
-        strHQL = string.Format(@"Update T_AIInterface Set AIType = '{0}', URL = '{1}', Model = '{2}'", strAIType, strAIURL, strAIModel);
-
-        try
-        {
-            ShareClass.RunSqlCommand(strHQL);
-            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZBCCG") + "')", true);
-        }
-        catch
-        {
-            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZBCSBJC") + "')", true);
-        }
-    }
-
-    protected void LoadAIInterface()
-    {
-        string strHQL;
-        strHQL = "Select * From T_AIInterface";
-        DataSet ds = ShareClass.GetDataSetFromSql(strHQL, "T_AIInterface");
-        if (ds.Tables[0].Rows.Count > 0)
-        {
-            DL_AIType.SelectedValue = ds.Tables[0].Rows[0]["AIType"].ToString().Trim();
-            TB_AIURL.Text = ds.Tables[0].Rows[0]["URL"].ToString().Trim();
-            TB_AIModel.Text = ds.Tables[0].Rows[0]["Model"].ToString().Trim();
-        }
-    }
+  
 
     protected void DataGrid3_ItemCommand(object sender, DataGridCommandEventArgs e)
     {

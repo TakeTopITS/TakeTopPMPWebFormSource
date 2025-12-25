@@ -25,8 +25,10 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
         public string Error { get; set; }
     }
 
-    // 新增：AI服务器状态
+    // AI服务器状态
     private bool _aiServerAvailable = false;
+    private string _aiServerType = "Local";
+    private string _aiApiKey = "";
     string strUserCode;
 
     protected void Page_Load(object sender, EventArgs e)
@@ -48,10 +50,7 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
                 divModeSwitcher.Visible = false;
             }
 
-            // Load configuration and check AI server
-            LoadConfig();
-
-            // 新增：检查AI服务器状态
+            // 检查AI服务器状态
             _aiServerAvailable = CheckAIServerAvailable();
 
             // 更新服务器状态显示
@@ -61,9 +60,7 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
         }
     }
 
-
-
-    // 新增：更新AI服务器状态显示
+    // 更新AI服务器状态显示
     private void UpdateAIServerStatusDisplay()
     {
         if (_aiServerAvailable)
@@ -71,7 +68,9 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
             // AI服务器可用，显示成功状态
             aiServerStatusContainer.Visible = true;
             aiServerStatusContainer.Attributes["class"] = "ai-server-status success";
-            lblAIServerStatus.Text = LanguageHandle.GetWord("DSeekAIServerAvailable");
+            lblAIServerStatus.Text = _aiServerType == "Local" ?
+                LanguageHandle.GetWord("DSeekAIServerAvailable") :
+                LanguageHandle.GetWord("DSeekExternalAIServerAvailable");
         }
         else
         {
@@ -82,13 +81,13 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
         }
     }
 
-    // 新增：检查AI服务器是否可用
+    // 检查AI服务器是否可用，支持本地和外部服务器
     private bool CheckAIServerAvailable()
     {
         try
         {
-            // 1. 从数据库获取配置
-            string strHQL = "Select AIType, URL, Model From T_AIInterface";
+            // 从数据库获取配置
+            string strHQL = "Select AIType, URL, AIKey, Model From T_AIInterface Where InUse = 'YES' ";
             DataSet ds = ShareClass.GetDataSetFromSql(strHQL, "T_AIInterface");
 
             if (ds.Tables[0].Rows.Count == 0)
@@ -99,14 +98,27 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
             string strAIType = ds.Tables[0].Rows[0]["AIType"].ToString().Trim();
             string strAIURL = ds.Tables[0].Rows[0]["URL"].ToString().Trim();
             string strAIModel = ds.Tables[0].Rows[0]["Model"].ToString().Trim();
+            string strAIKey = ds.Tables[0].Rows[0]["AIKey"].ToString().Trim();
 
-            if (strAIType != "Local")
+            // 保存配置信息
+            _aiServerType = strAIType;
+            _aiApiKey = strAIKey;
+
+            if (strAIType == "Local")
             {
-                return false; // 只支持本地模式
+                // 测试本地Ollama服务器连接
+                return TestOllamaConnection(strAIURL, strAIModel);
             }
-
-            // 2. 测试Ollama服务器连接
-            return TestOllamaConnection(strAIURL, strAIModel);
+            else if (strAIType == "Outer")
+            {
+                // 测试外部AI服务器连接
+                return TestExternalAIConnection(strAIURL, strAIKey, strAIModel);
+            }
+            else
+            {
+                // 不支持的类型
+                return false;
+            }
         }
         catch
         {
@@ -114,19 +126,25 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
         }
     }
 
-    // 新增：测试Ollama连接
-    private bool TestOllamaConnection(string apiUrl, string aiModel)
+    // 测试外部AI服务器连接
+    private bool TestExternalAIConnection(string apiUrl, string apiKey, string model)
     {
         try
         {
             using (HttpClient client = new HttpClient())
             {
-                client.Timeout = TimeSpan.FromSeconds(10); // 较短的超时时间用于测试
+                client.Timeout = TimeSpan.FromSeconds(15);
 
-                // 测试OpenAI兼容接口
+                // 为外部API添加认证头
+                if (!string.IsNullOrEmpty(apiKey))
+                {
+                    client.DefaultRequestHeaders.Add("Authorization", $"Bearer {apiKey}");
+                }
+
+                // 构建测试请求
                 var testRequestBody = new
                 {
-                    model = aiModel, // 使用实际配置的模型名
+                    model = model,
                     messages = new[]
                     {
                         new { role = "user", content = "test" }
@@ -140,93 +158,74 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
 
                 var response = client.PostAsync(apiUrl, httpContent).Result;
 
-                // 只要服务器响应（即使是错误），就说明服务器存在
-                return response != null;
+                // 检查响应状态
+                return response.IsSuccessStatusCode || response != null;
             }
-        }
-        catch (HttpRequestException httpEx)
-        {
-            // HTTP请求异常，可能是服务器不存在
-            return false;
-        }
-        catch (TaskCanceledException)
-        {
-            // 超时，服务器可能未响应
-            return false;
         }
         catch
         {
-            // 其他异常
             return false;
         }
     }
 
-    // Load configuration
-    private void LoadConfig()
+    // 测试Ollama连接
+    private bool TestOllamaConnection(string apiUrl, string aiModel)
     {
         try
         {
-            // Load DeepSeek configuration
-            string strHQL = "Select AIType, URL, Model From T_AIInterface";
-            DataSet ds = ShareClass.GetDataSetFromSql(strHQL, "T_AIInterface");
-            if (ds.Tables[0].Rows.Count > 0)
+            using (HttpClient client = new HttpClient())
             {
-                txtDeepSeekApi.Text = ds.Tables[0].Rows[0]["URL"].ToString().Trim();
-                txtModel.Text = ds.Tables[0].Rows[0]["Model"].ToString().Trim();
-            }
-            else
-            {
-                // 修改：使用正确的Ollama OpenAI兼容接口
-                txtDeepSeekApi.Text = "http://localhost:11434/v1/chat/completions";
-                txtModel.Text = "deepseek-r1:1.5b"; // 请根据实际安装的模型修改
+                client.Timeout = TimeSpan.FromSeconds(10);
+
+                // 测试OpenAI兼容接口
+                var testRequestBody = new
+                {
+                    model = aiModel,
+                    messages = new[]
+                    {
+                        new { role = "user", content = "test" }
+                    },
+                    max_tokens = 1,
+                    stream = false
+                };
+
+                string jsonContent = JsonConvert.SerializeObject(testRequestBody);
+                HttpContent httpContent = new StringContent(jsonContent, Encoding.UTF8, "application/json");
+
+                var response = client.PostAsync(apiUrl, httpContent).Result;
+
+                return response != null;
             }
         }
         catch
         {
-            // 修改：使用正确的Ollama OpenAI兼容接口
-            txtDeepSeekApi.Text = "http://localhost:11434/v1/chat/completions";
-            txtModel.Text = "deepseek-r1:1.5b"; // 请根据实际安装的模型修改
+            return false;
         }
     }
 
-    // ==================== Original Functionality ====================
-
+    // 简单模式按钮点击
     protected void BT_Simple_Click(object sender, EventArgs e)
     {
-        // 检查AI服务器
-        if (!_aiServerAvailable)
-        {
-            // 不需要弹出窗口，状态已经在页面顶端显示
-        }
-
         divDataAnalysisMode.Visible = false;
         divSimpleMode.Visible = true;
 
-        // Set button active state
+        // 设置按钮活动状态
         BT_Simple.CssClass = "mode-button active";
         BT_DataAnalysis.CssClass = "mode-button";
-
-       // ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "ajustHeight", "maximizeAllLayers();", true);
     }
 
+    // 数据分析模式按钮点击
     protected void BT_DataAnalysis_Click(object sender, EventArgs e)
     {
-        // 检查AI服务器
-        if (!_aiServerAvailable)
-        {
-            // 不需要弹出窗口，状态已经在页面顶端显示
-        }
-
         divDataAnalysisMode.Visible = true;
         divSimpleMode.Visible = false;
 
-        // Set button active state
+        // 设置按钮活动状态
         BT_DataAnalysis.CssClass = "mode-button active";
         BT_Simple.CssClass = "mode-button";
-
-        //ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "ajustHeight", "maximizeAllLayers();", true);
     }
 
+    // 生成文本按钮点击
     protected void btnGenerateText_Click(object sender, EventArgs e)
     {
         // 检查AI服务器
@@ -236,8 +235,8 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
             return;
         }
 
-        string localApiUrl, result;
-        string strAIType, strAIURL;
+        string apiUrl, result;
+        string strAIType, strAIURL, strAIKey;
 
         string strHQL;
 
@@ -251,29 +250,33 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
 
         try
         {
-            strHQL = "Select AIType,URL,Model From T_AIInterface";
+            strHQL = "Select AIType, URL, AIKey, Model From T_AIInterface Where InUse = 'YES' ";
             DataSet ds = ShareClass.GetDataSetFromSql(strHQL, "T_AIInterface");
             if (ds.Tables[0].Rows.Count > 0)
             {
                 strAIType = ds.Tables[0].Rows[0]["AIType"].ToString().Trim();
                 strAIURL = ds.Tables[0].Rows[0]["URL"].ToString().Trim();
+                strAIKey = ds.Tables[0].Rows[0]["AIKey"].ToString().Trim();
+
+                apiUrl = strAIURL;
 
                 if (strAIType == "Local")
                 {
-                    // 修改：直接使用配置的URL（应该是 http://localhost:11434/v1/chat/completions）
-                    localApiUrl = strAIURL;
-
-                    // 修改：调用修正后的方法
-                    result = CallOllamaAPI(localApiUrl);
-
-                    // Display result
-                    lblGeneratedText.Text = result;
+                    // 调用本地Ollama API
+                    result = CallOllamaAPI(apiUrl);
+                }
+                else if (strAIType == "Outer")
+                {
+                    // 调用外部AI API
+                    result = CallExternalAIAPI(apiUrl, strAIKey);
                 }
                 else
                 {
-                    localApiUrl = strAIURL;
-                    ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "ajustHeight", "window.open('" + strAIURL + "');", true);
+                    result = LanguageHandle.GetWord("DSeekUnsupportedAIType");
                 }
+
+                // 显示结果
+                lblGeneratedText.Text = result;
             }
             else
             {
@@ -286,7 +289,7 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
         }
     }
 
-    // 修改：重写这个方法以正确调用Ollama的OpenAI兼容接口
+    // 调用Ollama API
     private string CallOllamaAPI(string apiUrl)
     {
         string strAIModel;
@@ -294,7 +297,7 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
 
         try
         {
-            strHQL = "Select AIType,URL,Model From T_AIInterface";
+            strHQL = "Select Model From T_AIInterface Where InUse = 'YES'";
             DataSet ds = ShareClass.GetDataSetFromSql(strHQL, "T_AIInterface");
             if (ds.Tables[0].Rows.Count > 0)
             {
@@ -302,10 +305,9 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
 
                 using (HttpClient client = new HttpClient())
                 {
-                    // 设置较长的超时时间，因为本地模型可能需要更长时间
                     client.Timeout = TimeSpan.FromSeconds(300);
 
-                    // 修改：使用OpenAI兼容的请求格式
+                    // 使用OpenAI兼容的请求格式
                     var requestBody = new
                     {
                         model = strAIModel,
@@ -321,52 +323,9 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
                     string jsonContent = Newtonsoft.Json.JsonConvert.SerializeObject(requestBody);
                     HttpContent httpContent = new StringContent(jsonContent, Encoding.UTF8, "application/json");
 
-                    // Synchronous call
                     HttpResponseMessage response = client.PostAsync(apiUrl, httpContent).Result;
 
-                    if (response.IsSuccessStatusCode)
-                    {
-                        string jsonString = response.Content.ReadAsStringAsync().Result;
-
-                        // 清理JSON字符串
-                        jsonString = CleanJsonString(jsonString);
-
-                        // 解析响应
-                        dynamic responseData = JsonConvert.DeserializeObject(jsonString);
-
-                        // 从OpenAI兼容格式中提取内容
-                        string result = "";
-
-                        // 方式1：优先使用 choices[0].message.content
-                        if (responseData.choices != null && responseData.choices.Count > 0 &&
-                            responseData.choices[0].message != null &&
-                            responseData.choices[0].message.content != null)
-                        {
-                            result = responseData.choices[0].message.content.ToString();
-                        }
-                        // 方式2：尝试直接提取response字段（向后兼容）
-                        else if (responseData.response != null)
-                        {
-                            result = responseData.response.ToString();
-                        }
-                        // 方式3：尝试直接提取content字段
-                        else if (responseData.content != null)
-                        {
-                            result = responseData.content.ToString();
-                        }
-                        else
-                        {
-                            result = LanguageHandle.GetWord("DSeekCouldNotParseResponseFromOllama");
-                        }
-
-                        // 清理和格式化结果
-                        result = CleanAndFormatResult(result);
-                        return result;
-                    }
-                    else
-                    {
-                        return LanguageHandle.GetWord("DSeekAPICallFailedWithStatus") + $"{response.StatusCode}. " + $"{response.ReasonPhrase}";
-                    }
+                    return ProcessAIResponse(response, "Ollama");
                 }
             }
             else
@@ -380,13 +339,120 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
         }
     }
 
-    // 新增：清理JSON字符串
+    // 调用外部AI API
+    private string CallExternalAIAPI(string apiUrl, string apiKey)
+    {
+        string strAIModel;
+        string strHQL;
+
+        try
+        {
+            strHQL = "Select Model From T_AIInterface Where InUse = 'YES'";
+            DataSet ds = ShareClass.GetDataSetFromSql(strHQL, "T_AIInterface");
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                strAIModel = ds.Tables[0].Rows[0]["Model"].ToString().Trim();
+
+                using (HttpClient client = new HttpClient())
+                {
+                    client.Timeout = TimeSpan.FromSeconds(300);
+
+                    // 添加认证头
+                    if (!string.IsNullOrEmpty(apiKey))
+                    {
+                        client.DefaultRequestHeaders.Add("Authorization", $"Bearer {apiKey}");
+                    }
+
+                    // 使用OpenAI兼容的请求格式
+                    var requestBody = new
+                    {
+                        model = strAIModel,
+                        messages = new[]
+                        {
+                            new { role = "user", content = txtPrompt.Text }
+                        },
+                        stream = false,
+                        temperature = 0.7,
+                        max_tokens = 2000
+                    };
+
+                    string jsonContent = Newtonsoft.Json.JsonConvert.SerializeObject(requestBody);
+                    HttpContent httpContent = new StringContent(jsonContent, Encoding.UTF8, "application/json");
+
+                    HttpResponseMessage response = client.PostAsync(apiUrl, httpContent).Result;
+
+                    return ProcessAIResponse(response, "External");
+                }
+            }
+            else
+            {
+                return LanguageHandle.GetWord("DSeekNoAIConfigurationFound");
+            }
+        }
+        catch (Exception ex)
+        {
+            return LanguageHandle.GetWord("DSeekError") + $"{ex.Message}";
+        }
+    }
+
+    // 处理AI响应
+    private string ProcessAIResponse(HttpResponseMessage response, string aiType)
+    {
+        if (response.IsSuccessStatusCode)
+        {
+            string jsonString = response.Content.ReadAsStringAsync().Result;
+
+            // 清理JSON字符串
+            jsonString = CleanJsonString(jsonString);
+
+            // 解析响应
+            dynamic responseData = JsonConvert.DeserializeObject(jsonString);
+
+            // 从OpenAI兼容格式中提取内容
+            string result = "";
+
+            // 方式1：优先使用 choices[0].message.content
+            if (responseData.choices != null && responseData.choices.Count > 0 &&
+                responseData.choices[0].message != null &&
+                responseData.choices[0].message.content != null)
+            {
+                result = responseData.choices[0].message.content.ToString();
+            }
+            // 方式2：尝试直接提取response字段
+            else if (responseData.response != null)
+            {
+                result = responseData.response.ToString();
+            }
+            // 方式3：尝试直接提取content字段
+            else if (responseData.content != null)
+            {
+                result = responseData.content.ToString();
+            }
+            else
+            {
+                result = LanguageHandle.GetWord("DSeekCouldNotParseResponseFromAI");
+            }
+
+            // 清理和格式化结果
+            result = CleanAndFormatResult(result);
+            return result;
+        }
+        else
+        {
+            string errorContent = response.Content.ReadAsStringAsync().Result;
+            return LanguageHandle.GetWord("DSeekAPICallFailedWithStatus") +
+                   $"{response.StatusCode}. " +
+                   LanguageHandle.GetWord("DSeekResponse") +
+                   $"{errorContent}";
+        }
+    }
+
+    // 清理JSON字符串
     private string CleanJsonString(string jsonString)
     {
         if (string.IsNullOrEmpty(jsonString))
             return jsonString;
 
-        // 替换常见的转义字符
         return jsonString.Replace("\\u003cthink\\u003e", "")
                          .Replace("\\u003c/think\\u003e", "")
                          .Replace("\\u003c", "<")
@@ -397,7 +463,7 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
                          .Replace("\\r", "\r");
     }
 
-    // 新增：清理和格式化结果
+    // 清理和格式化结果
     private string CleanAndFormatResult(string result)
     {
         if (string.IsNullOrEmpty(result))
@@ -418,12 +484,10 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
 
     protected void btnStopAI_Click(object sender, EventArgs e)
     {
-        // Stop logic - 可留空或实现停止逻辑
+        // 停止逻辑
     }
 
-    // ==================== New Data Analysis Functionality ====================
-
-    // Save tables to database
+    // 保存表格到数据库
     protected void btnSaveTables_Click(object sender, EventArgs e)
     {
         try
@@ -446,7 +510,7 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
                 return;
             }
 
-            // Create tables if not exist
+            // 创建表（如果不存在）
             CreateTablesIfNotExist();
 
             int savedCount = 0;
@@ -457,7 +521,7 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
             {
                 try
                 {
-                    // Check if table already exists
+                    // 检查表是否已存在
                     string checkSql = string.Format(@"SELECT COUNT(*) FROM T_DBTablesForAI WHERE TableName = '{0}' AND IsActive = true",
                                                     EscapeSql(tableName));
 
@@ -484,13 +548,13 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
                 }
                 catch
                 {
-                    // Ignore errors for individual tables
+                    // 忽略单个表的错误
                 }
             }
 
             ShowMessage(LanguageHandle.GetWord("DSeekSaveSuccessfulSaved") + $"{savedCount} " + LanguageHandle.GetWord("DSeekTablesToDatabase"), "success");
 
-            // Clear input box
+            // 清空输入框
             txtTableNames.Text = "";
         }
         catch (Exception ex)
@@ -499,12 +563,12 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
         }
     }
 
-    // Load saved tables
+    // 加载保存的表格
     protected void btnLoadTables_Click(object sender, EventArgs e)
     {
         try
         {
-            // Ensure table exists
+            // 确保表存在
             CreateTablesIfNotExist();
 
             string sql = "SELECT TableName, Description FROM T_DBTablesForAI WHERE IsActive = true ORDER BY TableName";
@@ -528,11 +592,9 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
 
             pnlTableList.Visible = true;
 
-            // Register script to update selection display
+            // 注册脚本更新选择显示
             string script = "updateSelectedTables();";
             ScriptManager.RegisterStartupScript(this, GetType(), "UpdateTableSelection", script, true);
-
-            // ShowMessage(LanguageHandle.GetWord("DSeekLoadSuccessfulLoaded") + $"{ds.Tables[0].Rows.Count} " + LanguageHandle.GetWord("DSeekTables"), "success");
         }
         catch (Exception ex)
         {
@@ -540,13 +602,14 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
         }
     }
 
-    // Start data analysis
+    // 开始数据分析
     protected void btnStartAnalysis_Click(object sender, EventArgs e)
     {
         // 检查AI服务器
         if (!_aiServerAvailable)
         {
-            litSummary.Text = "<div style='color: orange; padding: 20px; font-weight: bold;'>" + LanguageHandle.GetWord("DSeekAIServerNotAvailableContactSupplier") + "</div>";
+            litSummary.Text = "<div style='color: orange; padding: 20px; font-weight: bold;'>" +
+                              LanguageHandle.GetWord("DSeekAIServerNotAvailableContactSupplier") + "</div>";
 
             // 显示结果区域
             ScriptManager.RegisterStartupScript(this, GetType(), "ShowResultSection",
@@ -556,7 +619,7 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
 
         try
         {
-            // Get selected tables
+            // 获取选中的表格
             var selectedTables = new List<string>();
             foreach (ListItem item in cblTables.Items)
             {
@@ -578,7 +641,7 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
                 return;
             }
 
-            // Execute analysis
+            // 执行分析
             DateTime startTime = DateTime.Now;
             var result = ExecuteDataAnalysis(selectedTables);
             double analysisTime = (DateTime.Now - startTime).TotalSeconds;
@@ -588,10 +651,10 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
                 throw new Exception(result.Error);
             }
 
-            // Display results
+            // 显示结果
             DisplayAnalysisResults(result, selectedTables, analysisTime);
 
-            // Save analysis history
+            // 保存分析历史
             SaveAnalysisHistory(selectedTables, analysisTime);
 
         }
@@ -599,20 +662,20 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
         {
             litSummary.Text = LanguageHandle.GetWord("DSeekAnalysisFailed") + $"{ex.Message}";
 
-            // Show result section
+            // 显示结果区域
             ScriptManager.RegisterStartupScript(this, GetType(), "ShowResultSection",
                 "showResultSection();", true);
         }
     }
 
-    // Execute data analysis
+    // 执行数据分析
     private AnalysisResult ExecuteDataAnalysis(List<string> selectedTables)
     {
         var result = new AnalysisResult();
 
         try
         {
-            // 1. Get AI configuration
+            // 1. 获取AI配置
             var aiConfig = GetAIConfig();
             if (aiConfig == null)
             {
@@ -620,23 +683,36 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
                 return result;
             }
 
-            // 2. Get table metadata
+            // 2. 获取表格元数据
             var metadata = GetTableMetadata(selectedTables);
 
-            // 3. Build analysis prompt
+            // 3. 构建分析提示
             var prompt = BuildAnalysisPrompt(selectedTables, txtAnalysisRequirement.Text.Trim(), metadata);
 
-            // 4. Call Ollama for analysis (修改：使用修正后的方法)
-            var ollamaResponse = CallOllamaForAnalysis(aiConfig, prompt);
+            // 4. 调用AI进行分析
+            string aiResponse = "";
+            if (aiConfig.AIType == "Local")
+            {
+                aiResponse = CallOllamaForAnalysis(aiConfig, prompt);
+            }
+            else if (aiConfig.AIType == "Outer")
+            {
+                aiResponse = CallExternalAIForAnalysis(aiConfig, prompt);
+            }
+            else
+            {
+                result.Error = LanguageHandle.GetWord("DSeekUnsupportedAIType");
+                return result;
+            }
 
-            // 5. Parse response
-            var analysis = ParseAnalysisResponse(ollamaResponse);
+            // 5. 解析响应
+            var analysis = ParseAnalysisResponse(aiResponse);
 
             result.Summary = analysis.Summary;
             result.Insights = analysis.Insights;
             result.Recommendations = analysis.Recommendations;
 
-            // 6. Generate SQL queries
+            // 6. 生成SQL查询
             result.Queries = GenerateAnalysisQueries(selectedTables);
 
             return result;
@@ -648,10 +724,10 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
         }
     }
 
-    // Get AI configuration
+    // 获取AI配置
     private AIConfig GetAIConfig()
     {
-        string strHQL = "Select AIType, URL, Model From T_AIInterface";
+        string strHQL = "Select AIType, URL, AIKey, Model From T_AIInterface Where InUse = 'YES'";
         DataSet ds = ShareClass.GetDataSetFromSql(strHQL, "T_AIInterface");
 
         if (ds.Tables[0].Rows.Count > 0)
@@ -660,6 +736,7 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
             {
                 AIType = ds.Tables[0].Rows[0]["AIType"].ToString().Trim(),
                 URL = ds.Tables[0].Rows[0]["URL"].ToString().Trim(),
+                AIKey = ds.Tables[0].Rows[0]["AIKey"].ToString().Trim(),
                 Model = ds.Tables[0].Rows[0]["Model"].ToString().Trim()
             };
         }
@@ -667,7 +744,7 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
         return null;
     }
 
-    // Get table metadata
+    // 获取表格元数据
     private List<TableMetadata> GetTableMetadata(List<string> tables)
     {
         var metadata = new List<TableMetadata>();
@@ -676,7 +753,7 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
         {
             try
             {
-                // Get table structure information
+                // 获取表格结构信息
                 string columnSql = $@"
                     SELECT 
                         column_name as Name,
@@ -700,7 +777,7 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
                     });
                 }
 
-                // Get row count
+                // 获取行数
                 long rowCount = 0;
                 try
                 {
@@ -725,7 +802,6 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
             }
             catch (Exception ex)
             {
-                // Log error but continue processing other tables
                 metadata.Add(new TableMetadata
                 {
                     TableName = table,
@@ -737,7 +813,7 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
         return metadata;
     }
 
-    // Build analysis prompt
+    // 构建分析提示
     private string BuildAnalysisPrompt(List<string> tables, string requirement, List<TableMetadata> metadata)
     {
         var metadataJson = JsonConvert.SerializeObject(metadata, Formatting.Indented);
@@ -762,21 +838,15 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
                LanguageHandle.GetWord("DSeekPleaseRespondInEnglish") + ".";
     }
 
-    // 修改：重写这个方法以正确调用Ollama
+    // 调用Ollama进行分析
     private string CallOllamaForAnalysis(AIConfig config, string prompt)
     {
-        if (config.AIType != "Local")
-        {
-            throw new Exception(LanguageHandle.GetWord("DSeekOnlyLocalOllamaAnalysisSupported"));
-        }
-
-        string apiUrl = config.URL; // 应该是 http://localhost:11434/v1/chat/completions
+        string apiUrl = config.URL;
 
         using (HttpClient client = new HttpClient())
         {
             client.Timeout = TimeSpan.FromSeconds(300);
 
-            // 修改：使用OpenAI兼容的请求格式
             var requestBody = new
             {
                 model = config.Model,
@@ -785,51 +855,95 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
                     new { role = "user", content = prompt }
                 },
                 stream = false,
-                temperature = 0.3, // 分析任务使用较低的温度以获得更确定的输出
-                max_tokens = 4000 // 分析任务可能需要更长的输出
+                temperature = 0.3,
+                max_tokens = 4000
             };
 
             string jsonContent = JsonConvert.SerializeObject(requestBody);
             HttpContent httpContent = new StringContent(jsonContent, Encoding.UTF8, "application/json");
 
-            // Synchronous call
             HttpResponseMessage response = client.PostAsync(apiUrl, httpContent).Result;
 
-            if (response.IsSuccessStatusCode)
-            {
-                string jsonString = response.Content.ReadAsStringAsync().Result;
-                jsonString = CleanJsonString(jsonString);
-                dynamic responseData = JsonConvert.DeserializeObject(jsonString);
-
-                // 从OpenAI兼容格式中提取内容
-                if (responseData.choices != null && responseData.choices.Count > 0 &&
-                    responseData.choices[0].message != null &&
-                    responseData.choices[0].message.content != null)
-                {
-                    return responseData.choices[0].message.content.ToString();
-                }
-                else if (responseData.response != null)
-                {
-                    return responseData.response.ToString();
-                }
-                else if (responseData.content != null)
-                {
-                    return responseData.content.ToString();
-                }
-                else
-                {
-                    throw new Exception(LanguageHandle.GetWord("DSeekCouldNotParseResponseInvalidFormat"));
-                }
-            }
-            else
-            {
-                string errorContent = response.Content.ReadAsStringAsync().Result;
-                throw new Exception(LanguageHandle.GetWord("DSeekOllamaAPICallFailed") + $"{response.StatusCode}. " + LanguageHandle.GetWord("DSeekResponse") + $"{errorContent}");
-            }
+            return ProcessAnalysisResponse(response);
         }
     }
 
-    // Parse analysis response
+    // 调用外部AI进行分析
+    private string CallExternalAIForAnalysis(AIConfig config, string prompt)
+    {
+        string apiUrl = config.URL;
+
+        using (HttpClient client = new HttpClient())
+        {
+            client.Timeout = TimeSpan.FromSeconds(300);
+
+            // 添加认证头
+            if (!string.IsNullOrEmpty(config.AIKey))
+            {
+                client.DefaultRequestHeaders.Add("Authorization", $"Bearer {config.AIKey}");
+            }
+
+            var requestBody = new
+            {
+                model = config.Model,
+                messages = new[]
+                {
+                    new { role = "user", content = prompt }
+                },
+                stream = false,
+                temperature = 0.3,
+                max_tokens = 4000
+            };
+
+            string jsonContent = JsonConvert.SerializeObject(requestBody);
+            HttpContent httpContent = new StringContent(jsonContent, Encoding.UTF8, "application/json");
+
+            HttpResponseMessage response = client.PostAsync(apiUrl, httpContent).Result;
+
+            return ProcessAnalysisResponse(response);
+        }
+    }
+
+    // 处理分析响应
+    private string ProcessAnalysisResponse(HttpResponseMessage response)
+    {
+        if (response.IsSuccessStatusCode)
+        {
+            string jsonString = response.Content.ReadAsStringAsync().Result;
+            jsonString = CleanJsonString(jsonString);
+            dynamic responseData = JsonConvert.DeserializeObject(jsonString);
+
+            // 从OpenAI兼容格式中提取内容
+            if (responseData.choices != null && responseData.choices.Count > 0 &&
+                responseData.choices[0].message != null &&
+                responseData.choices[0].message.content != null)
+            {
+                return responseData.choices[0].message.content.ToString();
+            }
+            else if (responseData.response != null)
+            {
+                return responseData.response.ToString();
+            }
+            else if (responseData.content != null)
+            {
+                return responseData.content.ToString();
+            }
+            else
+            {
+                throw new Exception(LanguageHandle.GetWord("DSeekCouldNotParseResponseInvalidFormat"));
+            }
+        }
+        else
+        {
+            string errorContent = response.Content.ReadAsStringAsync().Result;
+            throw new Exception(LanguageHandle.GetWord("DSeekAIAPICallFailed") +
+                               $"{response.StatusCode}. " +
+                               LanguageHandle.GetWord("DSeekResponse") +
+                               $"{errorContent}");
+        }
+    }
+
+    // 解析分析响应
     private AnalysisResult ParseAnalysisResponse(string response)
     {
         var result = new AnalysisResult();
@@ -845,10 +959,9 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
         // 清理响应
         response = CleanAndFormatResult(response);
 
-        // 简单解析：提取摘要（前500字符）
+        // 简单解析：提取摘要
         if (response.Length > 500)
         {
-            // 尝试找到第一个自然段落结束
             int endIndex = response.IndexOf("。", 300);
             if (endIndex > 0)
             {
@@ -885,7 +998,6 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
         }
         else if (response.Contains("3.") || response.Contains("三、"))
         {
-            // 尝试根据序号提取第三部分（通常是建议）
             int startIndex = Math.Max(
                 response.LastIndexOf("3."),
                 response.LastIndexOf("三、")
@@ -907,7 +1019,7 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
         return result;
     }
 
-    // Generate SQL queries
+    // 生成SQL查询
     private List<string> GenerateAnalysisQueries(List<string> tables)
     {
         var queries = new List<string>();
@@ -916,11 +1028,11 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
         {
             try
             {
-                // Basic statistics queries
+                // 基础统计查询
                 queries.Add("-- " + $"{table} " + LanguageHandle.GetWord("DSeekTableBasicStatistics"));
                 queries.Add("SELECT COUNT(*) as TotalRecords FROM \"" + $"{table}" + "\";");
 
-                // Get table field information
+                // 获取表格字段信息
                 string columnSql = $@"
                     SELECT column_name, data_type
                     FROM information_schema.columns
@@ -933,7 +1045,7 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
                     string columnName = row["column_name"].ToString();
                     string dataType = row["data_type"].ToString();
 
-                    // Check if it's a datetime field
+                    // 检查是否是日期时间字段
                     if (dataType.Contains("date") || dataType.Contains("time") ||
                         columnName.Contains("date") || columnName.Contains("time") ||
                         columnName.Contains("create") || columnName.Contains("update"))
@@ -942,7 +1054,7 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
                         queries.Add("SELECT MIN(\"" + $"{columnName}" + "\") as EarliestRecord, MAX(\"" + $"{columnName}" + "\") as LatestRecord FROM \"" + $"{table}" + "\";");
                     }
 
-                    // Check if it's a numeric field
+                    // 检查是否是数字字段
                     if (dataType.Contains("int") || dataType.Contains("dec") ||
                         dataType.Contains("num") || dataType.Contains("real") ||
                         dataType.Contains("float") || dataType.Contains("double"))
@@ -961,30 +1073,32 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
         return queries;
     }
 
-    // Display analysis results
+    // 显示分析结果
     private void DisplayAnalysisResults(AnalysisResult result, List<string> selectedTables, double analysisTime)
     {
-        // Update time display
-        litAnalysisTime.Text = $"{DateTime.Now:yyyy-MM-dd HH:mm:ss} " + "(" + LanguageHandle.GetWord("DSeekTimeTaken") + $"{analysisTime:F1} " + LanguageHandle.GetWord("DSeekSeconds") + ")";
+        // 更新时间显示
+        litAnalysisTime.Text = $"{DateTime.Now:yyyy-MM-dd HH:mm:ss} " +
+                               "(" + LanguageHandle.GetWord("DSeekTimeTaken") +
+                               $"{analysisTime:F1} " + LanguageHandle.GetWord("DSeekSeconds") + ")";
         litAnalyzedTables.Text = string.Join(", ", selectedTables);
 
-        // Format and display results
+        // 格式化和显示结果
         litSummary.Text = FormatAnalysisContent(result.Summary);
         litInsights.Text = FormatAnalysisContent(result.Insights);
         litQueries.Text = FormatQueries(result.Queries);
         litRecommendations.Text = FormatAnalysisContent(result.Recommendations);
 
-        // Show result section
+        // 显示结果区域
         ScriptManager.RegisterStartupScript(this, GetType(), "ShowResultSection",
             "showResultSection();", true);
     }
 
-    // Save analysis history
+    // 保存分析历史
     private void SaveAnalysisHistory(List<string> selectedTables, double analysisTime)
     {
         try
         {
-            // Ensure table exists
+            // 确保表存在
             CreateTablesIfNotExist();
 
             string currentUser = GetCurrentUser();
@@ -996,7 +1110,7 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
             {
                 try
                 {
-                    // Get configuration ID for the table
+                    // 获取配置ID
                     string getTableIdSql = string.Format(@"SELECT ID FROM T_DBTablesForAI WHERE TableName = '{0}'",
                                                          EscapeSql(tableName));
 
@@ -1005,7 +1119,7 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
                     {
                         int tableId = Convert.ToInt32(ds.Tables[0].Rows[0][0]);
 
-                        // Insert analysis history
+                        // 插入分析历史
                         string insertHistorySql = string.Format(@"
                             INSERT INTO T_AnalysisHistory 
                             (ConfigID, AnalysisRequirement, SelectedTables, CreatedBy, CreatedAt, AnalysisTime, Status)
@@ -1019,7 +1133,7 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
 
                         ShareClass.RunSqlCommand(insertHistorySql);
 
-                        // Update table analysis count
+                        // 更新表格分析计数
                         string updateTableSql = string.Format(@"
                             UPDATE T_DBTablesForAI 
                             SET AnalysisCount = AnalysisCount + 1, LastAnalyzed = '{0}' 
@@ -1032,22 +1146,22 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
                 }
                 catch
                 {
-                    // Ignore errors for individual tables
+                    // 忽略单个表的错误
                 }
             }
         }
         catch
         {
-            // Ignore history save errors
+            // 忽略历史保存错误
         }
     }
 
-    // Create required tables if they don't exist
+    // 创建必需的表（如果不存在）
     private void CreateTablesIfNotExist()
     {
         try
         {
-            // Create AI analysis table configuration table
+            // 创建AI分析表配置表
             string createTable1 = @"
                 CREATE TABLE IF NOT EXISTS T_DBTablesForAI (
                     ID SERIAL PRIMARY KEY,
@@ -1062,7 +1176,7 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
 
             ShareClass.RunSqlCommand(createTable1);
 
-            // Create analysis history table
+            // 创建分析历史表
             string createTable2 = @"
                 CREATE TABLE IF NOT EXISTS T_AnalysisHistory (
                     ID SERIAL PRIMARY KEY,
@@ -1079,11 +1193,11 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
         }
         catch
         {
-            // If tables already exist, ignore error
+            // 如果表已存在，忽略错误
         }
     }
 
-    // Escape SQL string
+    // 转义SQL字符串
     private string EscapeSql(string input)
     {
         if (string.IsNullOrEmpty(input))
@@ -1092,31 +1206,33 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
         return input.Replace("'", "''");
     }
 
-    // Get current user
+    // 获取当前用户
     private string GetCurrentUser()
     {
         return User.Identity?.Name ?? "System";
     }
 
-    // Show message
+    // 显示消息
     private void ShowMessage(string message, string type)
     {
         string icon = type == "warning" ? "⚠️" : type == "error" ? "❌" : "✅";
-        ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + $"{icon} " + message.Replace("'", "\\'") + "')", true);
+        ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click",
+            "showAlertAtMouse('" + $"{icon} " + message.Replace("'", "\\'") + "')", true);
     }
 
-    // Format analysis content
+    // 格式化分析内容
     private string FormatAnalysisContent(string content)
     {
         if (string.IsNullOrEmpty(content))
-            return "<div style='color: #666; font-style: italic; padding: 20px;'>" + LanguageHandle.GetWord("DSeekNoContentAvailable") + "</div>";
+            return "<div style='color: #666; font-style: italic; padding: 20px;'>" +
+                   LanguageHandle.GetWord("DSeekNoContentAvailable") + "</div>";
 
-        // Clean and format
+        // 清理和格式化
         content = content.Replace("\\n", "<br/>")
                          .Replace("\n", "<br/>")
                          .Replace("  ", " &nbsp;");
 
-        // Simple Markdown conversion
+        // 简单Markdown转换
         content = System.Text.RegularExpressions.Regex.Replace(content, @"\*\*(.+?)\*\*", "<strong>$1</strong>");
         content = System.Text.RegularExpressions.Regex.Replace(content, @"### (.+)", "<h3>$1</h3>");
         content = System.Text.RegularExpressions.Regex.Replace(content, @"## (.+)", "<h2>$1</h2>");
@@ -1126,11 +1242,12 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
         return "<div style='line-height: 1.6;'>" + $"{content}" + "</div>";
     }
 
-    // Format queries
+    // 格式化查询
     private string FormatQueries(List<string> queries)
     {
         if (queries == null || queries.Count == 0)
-            return "<div style='color: #666; font-style: italic; padding: 20px;'>" + LanguageHandle.GetWord("DSeekNoQueriesGenerated") + "</div>";
+            return "<div style='color: #666; font-style: italic; padding: 20px;'>" +
+                   LanguageHandle.GetWord("DSeekNoQueriesGenerated") + "</div>";
 
         var sb = new StringBuilder();
         sb.AppendLine("<div style='font-family: Consolas, monospace; font-size: 13px;'>");
@@ -1151,11 +1268,12 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
         return sb.ToString();
     }
 
-    // Data classes
+    // 数据类
     private class AIConfig
     {
         public string AIType { get; set; }
         public string URL { get; set; }
+        public string AIKey { get; set; }
         public string Model { get; set; }
     }
 
@@ -1172,69 +1290,5 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
         public string Name { get; set; }
         public string DataType { get; set; }
         public string IsNullable { get; set; }
-    }
-
-    // Test configuration connection
-    protected void btnTestConfig_Click(object sender, EventArgs e)
-    {
-        try
-        {
-            // Test database connection
-            string sql = @"SELECT current_database() as dbname,COUNT(*) as tablecount FROM information_schema.tables WHERE table_schema = 'public'";
-            DataSet ds = ShareClass.GetDataSetFromSql(sql, "TestConnection");
-            if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
-            {
-                string dbName = ds.Tables[0].Rows[0]["dbname"].ToString();
-                string tableCount = ds.Tables[0].Rows[0]["tablecount"].ToString();
-
-                ShowMessage(LanguageHandle.GetWord("DSeekDatabaseConnectionSuccessfulCurrentDatabase") + $"{dbName}, " + LanguageHandle.GetWord("DSeekTableCount") + $"{tableCount}", "success");
-            }
-            else
-            {
-                ShowMessage(LanguageHandle.GetWord("DSeekDatabaseConnectionSuccessful"), "success");
-            }
-        }
-        catch (Exception ex)
-        {
-            ShowMessage(LanguageHandle.GetWord("DSeekDatabaseConnectionFailed") + $"{ex.Message}", "error");
-        }
-    }
-
-    // Save configuration
-    protected void btnSaveConfig_Click(object sender, EventArgs e)
-    {
-        try
-        {
-            // Save Ollama configuration
-            string checkSql = "SELECT COUNT(*) FROM T_AIInterface";
-            DataSet ds = ShareClass.GetDataSetFromSql(checkSql, "TempTable");
-            int count = 0;
-            if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
-            {
-                count = Convert.ToInt32(ds.Tables[0].Rows[0][0]);
-            }
-
-            string url = EscapeSql(txtDeepSeekApi.Text.Trim());
-            string model = EscapeSql(txtModel.Text.Trim());
-
-            if (count > 0)
-            {
-                string updateSql = string.Format(@"UPDATE T_AIInterface SET URL = '{0}', Model = '{1}' WHERE AIType = 'Local'",
-                                                url, model);
-                ShareClass.RunSqlCommand(updateSql);
-            }
-            else
-            {
-                string insertSql = string.Format(@"INSERT INTO T_AIInterface (AIType, URL, Model) VALUES ('Local', '{0}', '{1}')",
-                                                url, model);
-                ShareClass.RunSqlCommand(insertSql);
-            }
-
-            ShowMessage(LanguageHandle.GetWord("DSeekConfigurationSavedSuccessfully"), "success");
-        }
-        catch (Exception ex)
-        {
-            ShowMessage(LanguageHandle.GetWord("DSeekSaveFailed") + $"{ex.Message}", "error");
-        }
     }
 }

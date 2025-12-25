@@ -72,7 +72,7 @@ public partial class TakeTopPersonalSpaceSAAS : System.Web.UI.Page
     protected void BT_Extend_Click(object sender, EventArgs e)
     {
         string strLeftBarExtend;
-     
+
         if (Session["LeftBarExtend"].ToString() == "YES")
         {
             strLeftBarExtend = "NO";
@@ -99,7 +99,7 @@ public partial class TakeTopPersonalSpaceSAAS : System.Web.UI.Page
             ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click66", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZGGSBJC") + "')", true);
         }
     }
-   
+
     protected void Timer1_Tick(object sender, EventArgs e)
     {
         if (intRunNumber == 0)
@@ -116,7 +116,7 @@ public partial class TakeTopPersonalSpaceSAAS : System.Web.UI.Page
     private async System.Threading.Tasks.Task AsyncWork()
     {
         await System.Threading.Tasks.Task.Delay(1000);
-      
+
         BindNewsAndNoticeTypeData();
         BindPersonalSpaceModuleList();
     }
@@ -207,19 +207,7 @@ public partial class TakeTopPersonalSpaceSAAS : System.Web.UI.Page
             strAIType = ds.Tables[0].Rows[0]["AIType"].ToString().Trim();
             strAIURL = ds.Tables[0].Rows[0]["URL"].ToString().Trim();
 
-            if (strAIType == "Outer")
-            {
-                HL_AIURL.Visible = true;
-                //HL_AIURL.NavigateUrl = strAIURL;
-
-                a_AIURL.Visible = false;
-            }
-            else
-            {
-                a_AIURL.Visible = true;
-
-                HL_AIURL.Visible = false;
-            }
+            a_AIURL.Visible = true;
         }
     }
 

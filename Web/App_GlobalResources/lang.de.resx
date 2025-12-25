@@ -33069,4 +33069,378 @@
     <value>✅ Konfiguration erfolgreich gespeichert!</value>
     <comment>✅ Konfiguration erfolgreich gespeichert!</comment>
   </data>
+
+<data name="DSeekAIServerType" xml:space="preserve">
+    <value>AI-Servertyp</value>
+    <comment>AI-Servertyp</comment>
+</data>
+<data name="DSeekLocalAI" xml:space="preserve">
+    <value>Lokal (Ollama)</value>
+    <comment>Lokal (Ollama)</comment>
+</data>
+<data name="DSeekExternalAI" xml:space="preserve">
+    <value>Externe KI</value>
+    <comment>Externe KI</comment>
+</data>
+<data name="DSeekAPIURL" xml:space="preserve">
+    <value>API-URL</value>
+    <comment>API-URL</comment>
+</data>
+<data name="DSeekAPIKey" xml:space="preserve">
+    <value>API-Schlüssel</value>
+    <comment>API-Schlüssel</comment>
+</data>
+<data name="DSeekLocalAIHint" xml:space="preserve">
+    <value>Lokal: Verwenden Sie den Ollama-Server auf localhost | Extern: Verwenden Sie OpenAI, DeepSeek API usw.</value>
+    <comment>Lokal: Verwenden Sie den Ollama-Server auf localhost | Extern: Verwenden Sie OpenAI, DeepSeek API usw.</comment>
+</data>
+<data name="DSeekModelHint" xml:space="preserve">
+    <value>Lokal: deepseek-r1:1.5b, llama2 usw. | Extern: gpt-3.5-turbo, gpt-4, deepseek-chat usw.</value>
+    <comment>Lokal: deepseek-r1:1.5b, llama2 usw. | Extern: gpt-3.5-turbo, gpt-4, deepseek-chat usw.</comment>
+</data>
+<data name="DSeekShowConfiguration" xml:space="preserve">
+    <value>KI-Konfiguration anzeigen</value>
+    <comment>KI-Konfiguration anzeigen</comment>
+</data>
+<data name="DSeekAIServerAvailable" xml:space="preserve">
+    <value>✅ KI-Server verfügbar</value>
+    <comment>✅ KI-Server verfügbar</comment>
+</data>
+<data name="DSeekExternalAIServerAvailable" xml:space="preserve">
+    <value>✅ Externer KI-Server verfügbar</value>
+    <comment>✅ Externer KI-Server verfügbar</comment>
+</data>
+<data name="DSeekAIServerNotAvailableContactSupplier" xml:space="preserve">
+    <value>⚠️ KI-Server nicht verfügbar. Bitte überprüfen Sie die Konfiguration oder kontaktieren Sie den Anbieter.</value>
+    <comment>⚠️ KI-Server nicht verfügbar. Bitte überprüfen Sie die Konfiguration oder kontaktieren Sie den Anbieter.</comment>
+</data>
+<!-- AI Server Configuration related terms -->
+<data name="AIServerConfigurationTitle" xml:space="preserve">
+    <value>KI-Serverkonfiguration</value>
+    <comment>KI-Serverkonfiguration</comment>
+</data>
+
+<data name="AIBackToAI" xml:space="preserve">
+    <value>Zurück zur KI-Analyse</value>
+    <comment>Zurück zur KI-Analyse</comment>
+</data>
+
+<data name="AIServerConfiguration" xml:space="preserve">
+    <value>Serverkonfiguration</value>
+    <comment>Serverkonfiguration</comment>
+</data>
+
+<data name="AIConfigurationSubtitle" xml:space="preserve">
+    <value>Konfigurieren Sie Server-Einstellungen für lokale und externe KI-Dienste</value>
+    <comment>Konfigurieren Sie Server-Einstellungen für lokale und externe KI-Dienste</comment>
+</data>
+
+<data name="AIServerTypeTitle" xml:space="preserve">
+    <value>KI-Servertyp</value>
+    <comment>KI-Servertyp</comment>
+</data>
+
+<data name="AIServerType" xml:space="preserve">
+    <value>Servertyp</value>
+    <comment>Servertyp</comment>
+</data>
+
+<data name="AILocalAI" xml:space="preserve">
+    <value>Lokal (Ollama)</value>
+    <comment>Lokal (Ollama)</comment>
+</data>
+
+<data name="AIExternalAI" xml:space="preserve">
+    <value>Externe KI</value>
+    <comment>Externe KI</comment>
+</data>
+
+<data name="AIServerTypeHint" xml:space="preserve">
+    <value>&lt;strong&gt;Lokal&lt;/strong&gt;: Führen Sie KI-Modelle lokal mit dem Ollama-Server aus&lt;br /&gt;
+            &lt;strong&gt;Extern&lt;/strong&gt;: Verwenden Sie Cloud-KI-Dienste wie OpenAI, DeepSeek API usw.</value>
+    <comment>&lt;strong&gt;Lokal&lt;/strong&gt;: Führen Sie KI-Modelle lokal mit dem Ollama-Server aus&lt;br /&gt;
+            &lt;strong&gt;Extern&lt;/strong&gt;: Verwenden Sie Cloud-KI-Dienste wie OpenAI, DeepSeek API usw.</comment>
+</data>
+
+<data name="AIAPIURL" xml:space="preserve">
+    <value>API-URL</value>
+    <comment>API-URL</comment>
+</data>
+
+<data name="AIAPIURLPlaceholder" xml:space="preserve">
+    <value>API-Endpunkt-URL eingeben</value>
+    <comment>API-Endpunkt-URL eingeben</comment>
+</data>
+
+<data name="AIAPIURLExamples" xml:space="preserve">
+    <value>Beispiele:&lt;br /&gt;
+            • Lokal: &lt;code&gt;http://localhost:11434/v1/chat/completions&lt;/code&gt;&lt;br /&gt;
+            • OpenAI: &lt;code&gt;https://api.openai.com/v1/chat/completions&lt;/code&gt;&lt;br /&gt;
+            • DeepSeek: &lt;code&gt;https://api.deepseek.com/v1/chat/completions&lt;/code&gt;</value>
+    <comment>Beispiele:&lt;br /&gt;
+            • Lokal: &lt;code&gt;http://localhost:11434/v1/chat/completions&lt;/code&gt;&lt;br /&gt;
+            • OpenAI: &lt;code&gt;https://api.openai.com/v1/chat/completions&lt;/code&gt;&lt;br /&gt;
+            • DeepSeek: &lt;code&gt;https://api.deepseek.com/v1/chat/completions&lt;/code&gt;</comment>
+</data>
+
+<data name="AIAPIKey" xml:space="preserve">
+    <value>API-Schlüssel</value>
+    <comment>API-Schlüssel</comment>
+</data>
+
+<data name="AIAPIKeyPlaceholder" xml:space="preserve">
+    <value>API-Schlüssel für externen KI-Dienst eingeben</value>
+    <comment>API-Schlüssel für externen KI-Dienst eingeben</comment>
+</data>
+
+<data name="AIAPIKeyHint" xml:space="preserve">
+    <value>Für externe KI-Dienste erforderlich. Bitte sicher aufbewahren.</value>
+    <comment>Für externe KI-Dienste erforderlich. Bitte sicher aufbewahren.</comment>
+</data>
+
+<data name="AIShowAPIKey" xml:space="preserve">
+    <value>API-Schlüssel anzeigen</value>
+    <comment>API-Schlüssel anzeigen</comment>
+</data>
+
+<data name="AIModelName" xml:space="preserve">
+    <value>Modellname</value>
+    <comment>Modellname</comment>
+</data>
+
+<data name="AIModelPlaceholder" xml:space="preserve">
+    <value>Modellnamen eingeben</value>
+    <comment>Modellnamen eingeben</comment>
+</data>
+
+<data name="AIQuickPresets" xml:space="preserve">
+    <value>Schnelle Modellvoreinstellungen:</value>
+    <comment>Schnelle Modellvoreinstellungen:</comment>
+</data>
+
+<data name="AIPresetHint" xml:space="preserve">
+    <value>Klicken Sie auf eine Voreinstellung, um den Modellnamen schnell festzulegen</value>
+    <comment>Klicken Sie auf eine Voreinstellung, um den Modellnamen schnell festzulegen</comment>
+</data>
+
+<data name="AICurrentStatus" xml:space="preserve">
+    <value>Aktueller Konfigurationsstatus</value>
+    <comment>Aktueller Konfigurationsstatus</comment>
+</data>
+
+<data name="AIServerURL" xml:space="preserve">
+    <value>Server-URL</value>
+    <comment>Server-URL</comment>
+</data>
+
+<data name="AINotConfigured" xml:space="preserve">
+    <value>Nicht konfiguriert</value>
+    <comment>Nicht konfiguriert</comment>
+</data>
+
+<data name="AIModel" xml:space="preserve">
+    <value>Modell</value>
+    <comment>Modell</comment>
+</data>
+
+<data name="AIStatus" xml:space="preserve">
+    <value>Status</value>
+    <comment>Status</comment>
+</data>
+
+<data name="AIUnknown" xml:space="preserve">
+    <value>Unbekannt</value>
+    <comment>Unbekannt</comment>
+</data>
+
+<data name="AILastTest" xml:space="preserve">
+    <value>Letzter Test</value>
+    <comment>Letzter Test</comment>
+</data>
+
+<data name="AINeverTested" xml:space="preserve">
+    <value>Nie getestet</value>
+    <comment>Nie getestet</comment>
+</data>
+
+<data name="AITestConnection" xml:space="preserve">
+    <value>🔄 Verbindung testen</value>
+    <comment>🔄 Verbindung testen</comment>
+</data>
+
+<data name="AISaveConfiguration" xml:space="preserve">
+    <value>💾 Konfiguration speichern</value>
+    <comment>💾 Konfiguration speichern</comment>
+</data>
+
+<data name="AILoadCurrent" xml:space="preserve">
+    <value>📂 Aktuelle laden</value>
+    <comment>📂 Aktuelle laden</comment>
+</data>
+
+<data name="AIResetToDefault" xml:space="preserve">
+    <value>🔄 Auf Standard zurücksetzen</value>
+    <comment>🔄 Auf Standard zurücksetzen</comment>
+</data>
+
+<data name="AIInformationHelp" xml:space="preserve">
+    <value>Informationen &amp; Hilfe</value>
+    <comment>Informationen &amp; Hilfe</comment>
+</data>
+
+<data name="AILocalAISetup" xml:space="preserve">
+    <value>Lokale KI-Einrichtung:</value>
+    <comment>Lokale KI-Einrichtung:</comment>
+</data>
+
+<data name="AIInstallOllama" xml:space="preserve">
+    <value>Installieren Sie Ollama von &lt;a href="https://ollama.ai" target="_blank"&gt;ollama.ai&lt;/a&gt;</value>
+    <comment>Installieren Sie Ollama von &lt;a href="https://ollama.ai" target="_blank"&gt;ollama.ai&lt;/a&gt;</comment>
+</data>
+
+<data name="AIOllamaCommand" xml:space="preserve">
+    <value>Befehl ausführen: &lt;code&gt;ollama run deepseek-r1:1.5b&lt;/code&gt; zum Herunterladen und Testen des Modells</value>
+    <comment>Befehl ausführen: &lt;code&gt;ollama run deepseek-r1:1.5b&lt;/code&gt; zum Herunterladen und Testen des Modells</comment>
+</data>
+
+<data name="AIOllamaPort" xml:space="preserve">
+    <value>Stellen Sie sicher, dass Ollama auf Port 11434 läuft</value>
+    <comment>Stellen Sie sicher, dass Ollama auf Port 11434 läuft</comment>
+</data>
+
+<data name="AIExternalAISetup" xml:space="preserve">
+    <value>Externe KI-Einrichtung:</value>
+    <comment>Externe KI-Einrichtung:</comment>
+</data>
+
+<data name="AIGetAPIKey" xml:space="preserve">
+    <value>Holen Sie sich den API-Schlüssel von Ihrem KI-Dienstanbieter</value>
+    <comment>Holen Sie sich den API-Schlüssel von Ihrem KI-Dienstanbieter</comment>
+</data>
+
+<data name="AICheckCredits" xml:space="preserve">
+    <value>Stellen Sie sicher, dass Ihr Konto ausreichend Guthaben/Kontingent hat</value>
+    <comment>Stellen Sie sicher, dass Ihr Konto ausreichend Guthaben/Kontingent hat</comment>
+</data>
+
+<data name="AICheckAPIDocs" xml:space="preserve">
+    <value>Überprüfen Sie die API-Dokumentation für die korrekte Endpunkt-URL</value>
+    <comment>Überprüfen Sie die API-Dokumentation für die korrekte Endpunkt-URL</comment>
+</data>
+
+<data name="AINote" xml:space="preserve">
+    <value>Hinweis:</value>
+    <comment>Hinweis:</comment>
+</data>
+
+<data name="AIConfigurationNote" xml:space="preserve">
+    <value>Die Konfiguration wird in der Datenbank gespeichert und für alle KI-Analysefunktionen verwendet.</value>
+    <comment>Die Konfiguration wird in der Datenbank gespeichert und für alle KI-Analysefunktionen verwendet.</comment>
+</data>
+
+<data name="AITestingConnection" xml:space="preserve">
+    <value>KI-Serververbindung wird getestet</value>
+    <comment>KI-Serververbindung wird getestet</comment>
+</data>
+
+<data name="AIPleaseWaitConnection" xml:space="preserve">
+    <value>Bitte warten Sie, während die Verbindung zu Ihrem KI-Server getestet wird...</value>
+    <comment>Bitte warten Sie, während die Verbindung zu Ihrem KI-Server getestet wird...</comment>
+</data>
+
+<!-- Backend used terms -->
+<data name="AIErrorLoadingConfig" xml:space="preserve">
+    <value>Fehler beim Laden der Konfiguration:</value>
+    <comment>Fehler beim Laden der Konfiguration:</comment>
+</data>
+
+<data name="AILocalServerReachable" xml:space="preserve">
+    <value>✅ Lokaler KI-Server erreichbar</value>
+    <comment>✅ Lokaler KI-Server erreichbar</comment>
+</data>
+
+<data name="AICannotConnectLocal" xml:space="preserve">
+    <value>❌ Verbindung zum lokalen KI-Server nicht möglich</value>
+    <comment>❌ Verbindung zum lokalen KI-Server nicht möglich</comment>
+</data>
+
+<data name="AIExternalServerReachable" xml:space="preserve">
+    <value>✅ Externer KI-Server erreichbar</value>
+    <comment>✅ Externer KI-Server erreichbar</comment>
+</data>
+
+<data name="AICannotConnectExternal" xml:space="preserve">
+    <value>❌ Verbindung zum externen KI-Server nicht möglich</value>
+    <comment>❌ Verbindung zum externen KI-Server nicht möglich</comment>
+</data>
+
+<data name="AIConnected" xml:space="preserve">
+    <value>✅ Verbunden</value>
+    <comment>✅ Verbunden</comment>
+</data>
+
+<data name="AINotConnected" xml:space="preserve">
+    <value>❌ Nicht verbunden</value>
+    <comment>❌ Nicht verbunden</comment>
+</data>
+
+<data name="AIConnectionTestFailed" xml:space="preserve">
+    <value>❌ Verbindungstest fehlgeschlagen:</value>
+    <comment>❌ Verbindungstest fehlgeschlagen:</comment>
+</data>
+
+<data name="AITestFailed" xml:space="preserve">
+    <value>❌ Test fehlgeschlagen</value>
+    <comment>❌ Test fehlgeschlagen</comment>
+</data>
+
+<data name="AIConfigSavedSuccess" xml:space="preserve">
+    <value>✅ Konfiguration erfolgreich gespeichert!</value>
+    <comment>✅ Konfiguration erfolgreich gespeichert!</comment>
+</data>
+
+<data name="AINotTested" xml:space="preserve">
+    <value>Nicht getestet</value>
+    <comment>Nicht getestet</comment>
+</data>
+
+<data name="AIErrorSavingConfig" xml:space="preserve">
+    <value>❌ Fehler beim Speichern der Konfiguration:</value>
+    <comment>❌ Fehler beim Speichern der Konfiguration:</comment>
+</data>
+
+<data name="AICurrentConfigLoaded" xml:space="preserve">
+    <value>📂 Aktuelle Konfiguration aus Datenbank geladen</value>
+    <comment>📂 Aktuelle Konfiguration aus Datenbank geladen</comment>
+</data>
+
+<data name="AIEnterAPIURL" xml:space="preserve">
+    <value>❌ Bitte API-URL eingeben</value>
+    <comment>❌ Bitte API-URL eingeben</comment>
+</data>
+
+<data name="AIEnterModelName" xml:space="preserve">
+    <value>❌ Bitte Modellnamen eingeben</value>
+    <comment>❌ Bitte Modellnamen eingeben</comment>
+</data>
+
+<data name="AIAPIKeyRequired" xml:space="preserve">
+    <value>❌ API-Schlüssel für externe KI erforderlich</value>
+    <comment>❌ API-Schlüssel für externe KI erforderlich</comment>
+</data>
+
+<data name="AILocalConfigActive" xml:space="preserve">
+    <value>🏠 Lokale KI-Konfiguration aktiv</value>
+    <comment>🏠 Lokale KI-Konfiguration aktiv</comment>
+</data>
+
+<data name="AIExternalConfigActive" xml:space="preserve">
+    <value>🌐 Externe KI-Konfiguration aktiv</value>
+    <comment>🌐 Externe KI-Konfiguration aktiv</comment>
+</data>
+
+<data name="AINoAIConfigFound" xml:space="preserve">
+    <value>⚠️ Keine KI-Konfiguration gefunden. Bitte konfigurieren Sie die KI-Servereinstellungen.</value>
+    <comment>⚠️ Keine KI-Konfiguration gefunden. Bitte konfigurieren Sie die KI-Servereinstellungen.</comment>
+</data>
 </root>

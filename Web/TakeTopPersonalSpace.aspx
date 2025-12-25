@@ -431,9 +431,7 @@
                                 <img src="ImagesSkin/ModuleSelect.png" width="22" height="22"></a>
                         </td>
                         <td id="tdAI" runat="server" width="40px" align="center" style="padding-top: 7px; padding-bottom: 5px;">
-                            <a id="HL_AIURL" runat="server" class="titleSpan" href="javascript:top.frames[0].frames[2].parent.frames['rightTabFrame'].openRightLayer('https://www.deepseek.com','TakeTopAI');" visible="false">
-                                <img src="ImagesSkin/AI.png" width="22" height="22" alt="">
-                            </a>
+                         
                             <a id="a_AIURL" runat="server" class="titleSpan" href="javascript:top.frames[0].frames[2].parent.frames['rightTabFrame'].openRightLayer('TTAIHandlerByDeepSeek.aspx','TakeTopAI');" visible="false">
                                 <img src="ImagesSkin/AI.png" width="22" height="22" alt="">
                             </a>

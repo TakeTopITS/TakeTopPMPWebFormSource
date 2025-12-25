@@ -122,7 +122,7 @@
                                                             : </td>
                                                         <td>
                                                             <asp:TextBox ID="TB_HomeName" runat="server" Width="125px"></asp:TextBox>
-                                                        
+
                                                         </td>
                                                         <td>
                                                             <asp:Label ID="Label2" runat="server" Text="<%$ Resources:lang,LeiXing%>"></asp:Label>
@@ -226,7 +226,9 @@
                                                         </asp:ButtonColumn>
                                                         <asp:TemplateColumn HeaderText="Delete">
                                                             <ItemTemplate>
-                                                                <div onclick="return showSimpleDeleteModal(this, event);" style="cursor: pointer; display: inline-block;"  class="custom-delete-icon"  title="Delete">  <img src="ImagesSkin/Delete.png" border="0" alt='Delete' /></div><asp:LinkButton ID="LBT_Delete" CommandName="Delete" runat="server" Style="display: none;"></asp:LinkButton>
+                                                                <div onclick="return showSimpleDeleteModal(this, event);" style="cursor: pointer; display: inline-block;" class="custom-delete-icon" title="Delete">
+                                                                    <img src="ImagesSkin/Delete.png" border="0" alt='Delete' /></div>
+                                                                <asp:LinkButton ID="LBT_Delete" CommandName="Delete" runat="server" Style="display: none;"></asp:LinkButton>
                                                             </ItemTemplate>
                                                             <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="5%" />
                                                         </asp:TemplateColumn>
@@ -365,7 +367,7 @@
                                                                 : </td>
                                                             <td colspan="3" class="formItemBgStyleForAlignLeft" style="width: 45%; text-align: left;">
                                                                 <asp:Label ID="LB_ActorGroupName" runat="server" Visible="false"></asp:Label>
-                                                                 <asp:Label ID="LB_ActorGroupHomeNameForDetail" runat="server"></asp:Label>
+                                                                <asp:Label ID="LB_ActorGroupHomeNameForDetail" runat="server"></asp:Label>
                                                                 <asp:Label ID="LB_ID" runat="server" Visible="false"></asp:Label>
                                                             </td>
                                                         </tr>

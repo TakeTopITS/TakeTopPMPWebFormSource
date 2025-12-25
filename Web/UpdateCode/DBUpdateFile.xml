@@ -15505,4 +15505,48 @@ ALTER FUNCTION public."Func_tg_ImplePlan_Insert"()
     <ID>3905</ID>
     <SQLText>Update T_ImplePlan Set ParentID = Parent_ID;</SQLText>
   </DataBaseUpgradeFile>
+  <DataBaseUpgradeFile>
+    <ID>3906</ID>
+    <SQLText>DROP TABLE IF EXISTS public.t_aiinterface;</SQLText>
+  </DataBaseUpgradeFile>
+  <DataBaseUpgradeFile>
+    <ID>3907</ID>
+    <SQLText>-- 创建AI接口配置表（如果不存在）
+CREATE TABLE IF NOT EXISTS T_AIInterface (
+    ID SERIAL PRIMARY KEY,
+    AIType VARCHAR(50) NOT NULL DEFAULT 'Local',
+    URL VARCHAR(500) NOT NULL,
+    AIKey TEXT,
+    Model VARCHAR(100) NOT NULL DEFAULT 'deepseek-r1:1.5b',
+    InUse VARCHAR(3) NOT NULL DEFAULT 'YES',
+    CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 插入默认配置（如果不存在有效配置）
+INSERT INTO T_AIInterface (AIType, URL, AIKey, Model, InUse)
+SELECT 'Local', 'http://localhost:11434/v1/chat/completions', '', 'deepseek-r1:1.5b', 'YES'
+WHERE NOT EXISTS (SELECT 1 FROM T_AIInterface WHERE InUse = 'YES');
+
+-- 确保字段存在（向后兼容）
+DO $$
+BEGIN
+    -- 添加AIType字段（如果不存在）
+    IF NOT EXISTS (SELECT 1 FROM information_schema.columns 
+                   WHERE table_name = 't_aiinterface' AND column_name = 'aitype') THEN
+        ALTER TABLE T_AIInterface ADD COLUMN AIType VARCHAR(50) DEFAULT 'Local';
+    END IF;
+    
+    -- 添加AIKey字段（如果不存在）
+    IF NOT EXISTS (SELECT 1 FROM information_schema.columns 
+                   WHERE table_name = 't_aiinterface' AND column_name = 'aikey') THEN
+        ALTER TABLE T_AIInterface ADD COLUMN AIKey TEXT;
+    END IF;
+    
+    -- 添加InUse字段（如果不存在）
+    IF NOT EXISTS (SELECT 1 FROM information_schema.columns 
+                   WHERE table_name = 't_aiinterface' AND column_name = 'inuse') THEN
+        ALTER TABLE T_AIInterface ADD COLUMN InUse VARCHAR(3) DEFAULT 'YES';
+    END IF;
+END $$;</SQLText>
+  </DataBaseUpgradeFile>
 </DataBaseUpgradeFiles>

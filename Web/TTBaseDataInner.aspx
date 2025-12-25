@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTBaseDataInner.aspx.cs" Inherits="TTBaseDataInner" %>
+Ôªø<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTBaseDataInner.aspx.cs" Inherits="TTBaseDataInner" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -17,7 +17,7 @@
             height: 30px;
         }
 
-        /* ƒ£Ã¨øÚ—˘ Ω */
+        /* Ê®°ÊÄÅÊ°ÜÊ†∑Âºè */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -136,45 +136,45 @@
             var modal = $('#' + modalId);
             modal.show();
 
-            // ªÒ»°∞¥≈•‘⁄ ”ø⁄÷–µƒŒª÷√
+            // Ëé∑ÂèñÊåâÈíÆÂú®ËßÜÂè£‰∏≠ÁöÑ‰ΩçÁΩÆ
             var buttonRect = buttonElement.getBoundingClientRect();
 
-            // ªÒ»°ƒ£Ã¨øÚ‘™Àÿ
+            // Ëé∑ÂèñÊ®°ÊÄÅÊ°ÜÂÖÉÁ¥†
             var modalElement = modal.find('.modal-content')[0];
             var modalWidth = modalElement.offsetWidth;
             var modalHeight = modalElement.offsetHeight;
 
-            // º∆À„‘⁄∞¥≈•…œ∑ΩµƒŒª÷√( ”ø⁄œ‡∂‘Œª÷√)
-            var topPosition = buttonRect.top - modalHeight - 10; // ∞¥≈•…œ∑Ω10px
+            // ËÆ°ÁÆóÂú®ÊåâÈíÆ‰∏äÊñπÁöÑ‰ΩçÁΩÆ(ËßÜÂè£Áõ∏ÂØπ‰ΩçÁΩÆ)
+            var topPosition = buttonRect.top - modalHeight - 10; // ÊåâÈíÆ‰∏äÊñπ10px
             var leftPosition = buttonRect.left;
 
-            // »∑±£ƒ£Ã¨øÚ≤ªª·≥¨≥ˆ ”ø⁄
+            // Á°Æ‰øùÊ®°ÊÄÅÊ°Ü‰∏ç‰ºöË∂ÖÂá∫ËßÜÂè£
             var viewportWidth = window.innerWidth;
             var viewportHeight = window.innerHeight;
 
-            // ÀÆ∆Ω∑ΩœÚµ˜’˚
+            // Ê∞¥Âπ≥ÊñπÂêëË∞ÉÊï¥
             if (leftPosition + modalWidth > viewportWidth) {
                 leftPosition = Math.max(10, viewportWidth - modalWidth - 10);
             } else if (leftPosition < 0) {
                 leftPosition = 10;
             }
 
-            // »Áπ˚…œ∑Ωø’º‰≤ªπª£¨µ˜’˚µΩ∞¥≈•œ¬∑Ω
+            // Â¶ÇÊûú‰∏äÊñπÁ©∫Èó¥‰∏çÂ§üÔºåË∞ÉÊï¥Âà∞ÊåâÈíÆ‰∏ãÊñπ
             if (topPosition < 0) {
                 topPosition = buttonRect.bottom + 10;
 
-                // »Áπ˚œ¬∑Ωø’º‰“≤≤ªπª£¨µ˜’˚µΩ ”ø⁄÷–º‰
+                // Â¶ÇÊûú‰∏ãÊñπÁ©∫Èó¥‰πü‰∏çÂ§üÔºåË∞ÉÊï¥Âà∞ËßÜÂè£‰∏≠Èó¥
                 if (topPosition + modalHeight > viewportHeight) {
                     topPosition = Math.max(10, (viewportHeight - modalHeight) / 2);
                 }
             }
 
-            // »∑±£≤ªª·≥¨≥ˆµ◊≤ø±ﬂΩÁ
+            // Á°Æ‰øù‰∏ç‰ºöË∂ÖÂá∫Â∫ïÈÉ®ËæπÁïå
             if (topPosition + modalHeight > viewportHeight) {
                 topPosition = Math.max(10, viewportHeight - modalHeight - 10);
             }
 
-            // …Ë÷√ƒ£Ã¨øÚŒª÷√(œ‡∂‘”⁄ ”ø⁄)
+            // ËÆæÁΩÆÊ®°ÊÄÅÊ°Ü‰ΩçÁΩÆ(Áõ∏ÂØπ‰∫éËßÜÂè£)
             $(modalElement).css({
                 'top': topPosition + 'px',
                 'left': leftPosition + 'px'
@@ -185,7 +185,7 @@
             $('#' + modalId).hide();
         }
 
-        // Œ™À˘”–ƒ£Ã¨øÚÃÌº”µ„ª˜Õ‚≤øπÿ±’π¶ƒ‹
+        // ‰∏∫ÊâÄÊúâÊ®°ÊÄÅÊ°ÜÊ∑ªÂä†ÁÇπÂáªÂ§ñÈÉ®ÂÖ≥Èó≠ÂäüËÉΩ
         $(document).on('click', function (e) {
             $('.modal-overlay').each(function () {
                 if ($(this).is(':visible') && !$(e.target).closest('.modal-content').length) {
@@ -194,32 +194,32 @@
             });
         });
 
-        // ◊Ë÷πƒ£Ã¨øÚƒ⁄»›µ„ª˜ ¬º˛√∞≈›
+        // ÈòªÊ≠¢Ê®°ÊÄÅÊ°ÜÂÜÖÂÆπÁÇπÂáª‰∫ã‰ª∂ÂÜíÊ≥°
         $(document).on('click', '.modal-content', function (e) {
             e.stopPropagation();
         });
 
-        // ¥¶¿Ì–¬‘ˆ∞¥≈•µ„ª˜
+        // Â§ÑÁêÜÊñ∞Â¢ûÊåâÈíÆÁÇπÂáª
         function handleAddClick(modalId, event) {
             if (event) {
                 event.stopPropagation();
                 event.preventDefault();
             }
             showModal(modalId, event.target);
-            return false; // ◊Ë÷πƒ¨»œ––Œ™
+            return false; // ÈòªÊ≠¢ÈªòËÆ§Ë°å‰∏∫
         }
 
-        // »´æ÷∫Ø ˝£¨π©∫Û∂Àµ˜”√
+        // ÂÖ®Â±ÄÂáΩÊï∞Ôºå‰æõÂêéÁ´ØË∞ÉÁî®
         function openModal(modalId) {
             var modal = $('#' + modalId);
             modal.show();
 
-            // æ”÷–œ‘ æƒ£Ã¨øÚ
+            // Â±Ö‰∏≠ÊòæÁ§∫Ê®°ÊÄÅÊ°Ü
             var modalElement = modal.find('.modal-content')[0];
             var topPosition = (window.innerHeight - modalElement.offsetHeight) / 2;
             var leftPosition = (window.innerWidth - modalElement.offsetWidth) / 2;
 
-            // …Ë÷√ƒ£Ã¨øÚŒª÷√
+            // ËÆæÁΩÆÊ®°ÊÄÅÊ°Ü‰ΩçÁΩÆ
             $(modalElement).css({
                 'top': Math.max(topPosition, 20) + 'px',
                 'left': Math.max(leftPosition, 20) + 'px'
@@ -274,35 +274,11 @@
                                                         </td>
                                                         <td width="60px;"></td>
                                                         <td width="800px">
-                                                            <table style="width: 800px;">
-                                                                <tr>
-                                                                    <td align="right">AI Seeting:</td>
-                                                                    <td>
-                                                                        <asp:Label ID="LB_AIType" runat="server" Text="AIType"></asp:Label>
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:DropDownList ID="DL_AIType" AccessKey="A" runat="server" AutoPostBack="false">
-                                                                            <asp:ListItem Value="Local" Text="Local"></asp:ListItem>
-                                                                        <%--    <asp:ListItem Value="Outer" Text="Outer"></asp:ListItem>--%>
-                                                                        </asp:DropDownList>
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:Label ID="Label4" runat="server" Text="AIURL"></asp:Label>
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:TextBox ID="TB_AIURL" runat="server" Width="260px"></asp:TextBox>
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:Label ID="Label15" runat="server" Text="AIModel"></asp:Label>
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:TextBox ID="TB_AIModel" runat="server" Width="120px"></asp:TextBox>
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:Button ID="BT_AISave" runat="server" CssClass="inpu" Text="<%$ Resources:lang,BaoCun%>" OnClick="BT_AISave_Click" />
-                                                                    </td>
-                                                                </tr>
-                                                            </table>
+                                                            <!-- Âú®È°µÂ§¥ÊàñÈÄÇÂΩì‰ΩçÁΩÆÊ∑ªÂä† -->
+                                                            <div style="text-align: left; margin-bottom: 10px;">
+                                                                <a href="TTAIServerConfiguration.aspx" style="color: #4F46E5; text-decoration: none; font-weight: 600;">‚öôÔ∏è AI Server Configuration
+                                                                </a>
+                                                            </div>
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -355,10 +331,10 @@
                                                                             </ItemTemplate>
                                                                             <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="30%" />
                                                                         </asp:TemplateColumn>
-                                                                        <asp:BoundColumn DataField="KeyWord" HeaderText="πÿº¸¥ ">
+                                                                        <asp:BoundColumn DataField="KeyWord" HeaderText="ÂÖ≥ÈîÆËØç">
                                                                             <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="15%" />
                                                                         </asp:BoundColumn>
-                                                                        <asp:BoundColumn DataField="SortNumber" HeaderText="À≥–Ú">
+                                                                        <asp:BoundColumn DataField="SortNumber" HeaderText="È°∫Â∫è">
                                                                             <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="10%" />
                                                                         </asp:BoundColumn>
                                                                         <asp:TemplateColumn>
@@ -443,23 +419,23 @@
                                                                     <asp:BoundColumn DataField="Status" HeaderText="Status">
                                                                         <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="15%" />
                                                                     </asp:BoundColumn>
-                                                                    <asp:TemplateColumn HeaderText="ƒ£øÈ√˚≥∆(±æ”Ô)">
+                                                                    <asp:TemplateColumn HeaderText="Ê®°ÂùóÂêçÁß∞(Êú¨ËØ≠)">
                                                                         <ItemTemplate>
                                                                             <asp:TextBox ID="TB_HomeName" runat="server" Width="100px" Text='<%# DataBinder.Eval(Container.DataItem,"HomeName") %>'></asp:TextBox>
                                                                         </ItemTemplate>
                                                                         <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="18%" />
                                                                     </asp:TemplateColumn>
-                                                                    <asp:BoundColumn DataField="LangCode" HeaderText="”Ô—‘">
+                                                                    <asp:BoundColumn DataField="LangCode" HeaderText="ËØ≠Ë®Ä">
                                                                         <ItemStyle CssClass="itemBorder" HorizontalAlign="left" />
                                                                         <HeaderStyle Font-Bold="True" Width="15%" />
                                                                     </asp:BoundColumn>
-                                                                    <asp:TemplateColumn HeaderText="À≥–Ú">
+                                                                    <asp:TemplateColumn HeaderText="È°∫Â∫è">
                                                                         <ItemTemplate>
                                                                             <asp:TextBox ID="TB_SortNumber" runat="server" Width="50px" Text='<%# DataBinder.Eval(Container.DataItem,"SortNumber") %>'></asp:TextBox>
                                                                         </ItemTemplate>
                                                                         <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="12%" />
                                                                     </asp:TemplateColumn>
-                                                                    <asp:BoundColumn DataField="ReviewControl" HeaderText="øÿ÷∆µ„">
+                                                                    <asp:BoundColumn DataField="ReviewControl" HeaderText="ÊéßÂà∂ÁÇπ">
                                                                         <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="15%" />
                                                                     </asp:BoundColumn>
                                                                     <asp:BoundColumn DataField="MakeType" HeaderText="Type">
@@ -475,7 +451,7 @@
                                                             <table style="width: 100%;" cellpadding="3" cellspacing="0" class="formBgStyle">
                                                                 <tr>
                                                                     <td class="formItemBgStyleForAlignLeft" rowspan="2">
-                                                                        <!-- œÓƒø¿‡–Õ±Ìµ•øÿº˛“—“∆µΩƒ£Ã¨¥∞ø⁄ -->
+                                                                        <!-- È°πÁõÆÁ±ªÂûãË°®ÂçïÊéß‰ª∂Â∑≤ÁßªÂà∞Ê®°ÊÄÅÁ™óÂè£ -->
                                                                         <table style="width: 100%;" cellpadding="3" cellspacing="0" class="formBgStyle">
                                                                             <tr>
                                                                                 <td colspan="8" class="formItemBgStyleForAlignLeft"></td>
@@ -489,7 +465,7 @@
                                                             <table cellpadding="3" cellspacing="0" class="formBgStyle">
                                                                 <tr>
                                                                     <td class="formItemBgStyleForAlignLeft">
-                                                                        <!-- œÓƒø◊¥Ã¨±Ìµ•øÿº˛“—“∆µΩƒ£Ã¨¥∞ø⁄ -->
+                                                                        <!-- È°πÁõÆÁä∂ÊÄÅË°®ÂçïÊéß‰ª∂Â∑≤ÁßªÂà∞Ê®°ÊÄÅÁ™óÂè£ -->
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
@@ -725,18 +701,18 @@
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="30%" />
                                                                                 </asp:TemplateColumn>
 
-                                                                                <asp:TemplateColumn HeaderText="ƒ£øÈ√˚≥∆(±æ”Ô)">
+                                                                                <asp:TemplateColumn HeaderText="Ê®°ÂùóÂêçÁß∞(Êú¨ËØ≠)">
                                                                                     <ItemTemplate>
                                                                                         <asp:TextBox ID="TB_HomeName" runat="server" Width="100px" Text='<%# DataBinder.Eval(Container.DataItem,"HomeName") %>'></asp:TextBox>
                                                                                     </ItemTemplate>
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="30%" />
                                                                                 </asp:TemplateColumn>
-                                                                                <asp:BoundColumn DataField="LangCode" HeaderText="”Ô—‘">
+                                                                                <asp:BoundColumn DataField="LangCode" HeaderText="ËØ≠Ë®Ä">
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" />
                                                                                     <HeaderStyle Font-Bold="True" Width="25%" />
                                                                                 </asp:BoundColumn>
 
-                                                                                <asp:BoundColumn DataField="SortNumber" HeaderText="À≥–Ú">
+                                                                                <asp:BoundColumn DataField="SortNumber" HeaderText="È°∫Â∫è">
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="10%" />
                                                                                 </asp:BoundColumn>
                                                                                 <asp:BoundColumn DataField="MakeType" HeaderText="Type">
@@ -748,7 +724,7 @@
                                                                             </Columns>
                                                                             <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                                                                         </asp:DataGrid>
-                                                                        <!-- –Ë«Û◊¥Ã¨±Ìµ•øÿº˛“—“∆µΩƒ£Ã¨¥∞ø⁄ -->
+                                                                        <!-- ÈúÄÊ±ÇÁä∂ÊÄÅË°®ÂçïÊéß‰ª∂Â∑≤ÁßªÂà∞Ê®°ÊÄÅÁ™óÂè£ -->
                                                                         <br />
                                                                         <asp:Button ID="BT_ReqStatusSave" runat="server" CssClass="inpu" OnClick="BT_ReqStatusSave_Click" Text="<%$ Resources:lang,BaoCun%>" />
                                                                     </td>
@@ -768,17 +744,17 @@
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="30%" />
                                                                                 </asp:TemplateColumn>
 
-                                                                                <asp:TemplateColumn HeaderText="ƒ£øÈ√˚≥∆(±æ”Ô)">
+                                                                                <asp:TemplateColumn HeaderText="Ê®°ÂùóÂêçÁß∞(Êú¨ËØ≠)">
                                                                                     <ItemTemplate>
                                                                                         <asp:TextBox ID="TB_HomeName" runat="server" Width="100px" Text='<%# DataBinder.Eval(Container.DataItem,"HomeName") %>'></asp:TextBox>
                                                                                     </ItemTemplate>
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="30%" />
                                                                                 </asp:TemplateColumn>
-                                                                                <asp:BoundColumn DataField="LangCode" HeaderText="”Ô—‘">
+                                                                                <asp:BoundColumn DataField="LangCode" HeaderText="ËØ≠Ë®Ä">
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" />
                                                                                     <HeaderStyle Font-Bold="True" Width="25%" />
                                                                                 </asp:BoundColumn>
-                                                                                <asp:BoundColumn DataField="SortNumber" HeaderText="À≥–Ú">
+                                                                                <asp:BoundColumn DataField="SortNumber" HeaderText="È°∫Â∫è">
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="10%" />
                                                                                 </asp:BoundColumn>
                                                                                 <asp:BoundColumn DataField="MakeType" HeaderText="Type">
@@ -790,7 +766,7 @@
                                                                             </Columns>
                                                                             <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                                                                         </asp:DataGrid>
-                                                                        <!-- »ŒŒÒ◊¥Ã¨±Ìµ•øÿº˛“—“∆µΩƒ£Ã¨¥∞ø⁄ -->
+                                                                        <!-- ‰ªªÂä°Áä∂ÊÄÅË°®ÂçïÊéß‰ª∂Â∑≤ÁßªÂà∞Ê®°ÊÄÅÁ™óÂè£ -->
                                                                         <br />
                                                                         <asp:Button ID="BT_TaskStatusSave" runat="server" CssClass="inpu" OnClick="BT_TaskStatusSave_Click" Text="<%$ Resources:lang,BaoCun%>" />
                                                                     </td>
@@ -810,17 +786,17 @@
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="30%" />
                                                                                 </asp:TemplateColumn>
 
-                                                                                <asp:TemplateColumn HeaderText="ƒ£øÈ√˚≥∆(±æ”Ô)">
+                                                                                <asp:TemplateColumn HeaderText="Ê®°ÂùóÂêçÁß∞(Êú¨ËØ≠)">
                                                                                     <ItemTemplate>
                                                                                         <asp:TextBox ID="TB_HomeName" runat="server" Width="100px" Text='<%# DataBinder.Eval(Container.DataItem,"HomeName") %>'></asp:TextBox>
                                                                                     </ItemTemplate>
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="30%" />
                                                                                 </asp:TemplateColumn>
-                                                                                <asp:BoundColumn DataField="LangCode" HeaderText="”Ô—‘">
+                                                                                <asp:BoundColumn DataField="LangCode" HeaderText="ËØ≠Ë®Ä">
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" />
                                                                                     <HeaderStyle Font-Bold="True" Width="25%" />
                                                                                 </asp:BoundColumn>
-                                                                                <asp:BoundColumn DataField="SortNumber" HeaderText="À≥–Ú">
+                                                                                <asp:BoundColumn DataField="SortNumber" HeaderText="È°∫Â∫è">
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="10%" />
                                                                                 </asp:BoundColumn>
                                                                                 <asp:BoundColumn DataField="MakeType" HeaderText="Type">
@@ -832,7 +808,7 @@
                                                                             </Columns>
                                                                             <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                                                                         </asp:DataGrid>
-                                                                        <!-- º∆ªÆ◊¥Ã¨±Ìµ•øÿº˛“—“∆µΩƒ£Ã¨¥∞ø⁄ -->
+                                                                        <!-- ËÆ°ÂàíÁä∂ÊÄÅË°®ÂçïÊéß‰ª∂Â∑≤ÁßªÂà∞Ê®°ÊÄÅÁ™óÂè£ -->
                                                                         <br />
                                                                         <asp:Button ID="BT_PlanStatusSave" runat="server" CssClass="inpu" OnClick="BT_PlanStatusSave_Click" Text="<%$ Resources:lang,BaoCun%>" />
                                                                     </td>
@@ -852,17 +828,17 @@
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="30%" />
                                                                                 </asp:TemplateColumn>
 
-                                                                                <asp:TemplateColumn HeaderText="ƒ£øÈ√˚≥∆(±æ”Ô)">
+                                                                                <asp:TemplateColumn HeaderText="Ê®°ÂùóÂêçÁß∞(Êú¨ËØ≠)">
                                                                                     <ItemTemplate>
                                                                                         <asp:TextBox ID="TB_HomeName" runat="server" Width="100px" Text='<%# DataBinder.Eval(Container.DataItem,"HomeName") %>'></asp:TextBox>
                                                                                     </ItemTemplate>
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="30%" />
                                                                                 </asp:TemplateColumn>
-                                                                                <asp:BoundColumn DataField="LangCode" HeaderText="”Ô—‘">
+                                                                                <asp:BoundColumn DataField="LangCode" HeaderText="ËØ≠Ë®Ä">
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" />
                                                                                     <HeaderStyle Font-Bold="True" Width="25%" />
                                                                                 </asp:BoundColumn>
-                                                                                <asp:BoundColumn DataField="SortNumber" HeaderText="À≥–Ú">
+                                                                                <asp:BoundColumn DataField="SortNumber" HeaderText="È°∫Â∫è">
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="10%" />
                                                                                 </asp:BoundColumn>
                                                                                 <asp:BoundColumn DataField="MakeType" HeaderText="Type">
@@ -874,7 +850,7 @@
                                                                             </Columns>
                                                                             <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                                                                         </asp:DataGrid>
-                                                                        <!-- π§◊˜¡˜◊¥Ã¨±Ìµ•øÿº˛“—“∆µΩƒ£Ã¨¥∞ø⁄ -->
+                                                                        <!-- Â∑•‰ΩúÊµÅÁä∂ÊÄÅË°®ÂçïÊéß‰ª∂Â∑≤ÁßªÂà∞Ê®°ÊÄÅÁ™óÂè£ -->
                                                                         <br />
                                                                         <asp:Button ID="BT_WorkflowStatusSave" runat="server" CssClass="inpu" OnClick="BT_WorkflowStatusSave_Click" Text="<%$ Resources:lang,BaoCun%>" />
                                                                     </td>
@@ -893,17 +869,17 @@
                                                                                     </ItemTemplate>
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="30%" />
                                                                                 </asp:TemplateColumn>
-                                                                                <asp:TemplateColumn HeaderText="ƒ£øÈ√˚≥∆(±æ”Ô)">
+                                                                                <asp:TemplateColumn HeaderText="Ê®°ÂùóÂêçÁß∞(Êú¨ËØ≠)">
                                                                                     <ItemTemplate>
                                                                                         <asp:TextBox ID="TB_HomeName" runat="server" Text='<%# DataBinder.Eval(Container.DataItem,"HomeName") %>' Width="100px"></asp:TextBox>
                                                                                     </ItemTemplate>
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="30%" />
                                                                                 </asp:TemplateColumn>
-                                                                                <asp:BoundColumn DataField="LangCode" HeaderText="”Ô—‘">
+                                                                                <asp:BoundColumn DataField="LangCode" HeaderText="ËØ≠Ë®Ä">
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" />
                                                                                     <HeaderStyle Font-Bold="True" Width="25%" />
                                                                                 </asp:BoundColumn>
-                                                                                <asp:BoundColumn DataField="SortNumber" HeaderText="À≥–Ú">
+                                                                                <asp:BoundColumn DataField="SortNumber" HeaderText="È°∫Â∫è">
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="15%" />
                                                                                 </asp:BoundColumn>
                                                                                 <asp:BoundColumn DataField="MakeType" HeaderText="Type">
@@ -915,7 +891,7 @@
                                                                             </Columns>
                                                                             <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                                                                         </asp:DataGrid>
-                                                                        <!-- ≤‚ ‘◊¥Ã¨±Ìµ•øÿº˛“—“∆µΩƒ£Ã¨¥∞ø⁄ -->
+                                                                        <!-- ÊµãËØïÁä∂ÊÄÅË°®ÂçïÊéß‰ª∂Â∑≤ÁßªÂà∞Ê®°ÊÄÅÁ™óÂè£ -->
                                                                         <br />
                                                                         <asp:Button ID="BT_TestStatusSave" runat="server" CssClass="inpu" OnClick="BT_TestStatusSave_Click" Text="<%$ Resources:lang,BaoCun%>" />
                                                                     </td>
@@ -1006,17 +982,17 @@
                                                                                     </ItemTemplate>
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="30%" />
                                                                                 </asp:TemplateColumn>
-                                                                                <asp:TemplateColumn HeaderText="ƒ£øÈ√˚≥∆(±æ”Ô)">
+                                                                                <asp:TemplateColumn HeaderText="Ê®°ÂùóÂêçÁß∞(Êú¨ËØ≠)">
                                                                                     <ItemTemplate>
                                                                                         <asp:TextBox ID="TB_HomeName" runat="server" Text='<%# DataBinder.Eval(Container.DataItem,"HomeName") %>' Width="100px"></asp:TextBox>
                                                                                     </ItemTemplate>
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="30%" />
                                                                                 </asp:TemplateColumn>
-                                                                                <asp:BoundColumn DataField="LangCode" HeaderText="”Ô—‘">
+                                                                                <asp:BoundColumn DataField="LangCode" HeaderText="ËØ≠Ë®Ä">
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" />
                                                                                     <HeaderStyle Font-Bold="True" Width="25%" />
                                                                                 </asp:BoundColumn>
-                                                                                <asp:BoundColumn DataField="SortNumber" HeaderText="À≥–Ú">
+                                                                                <asp:BoundColumn DataField="SortNumber" HeaderText="È°∫Â∫è">
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="15%" />
                                                                                 </asp:BoundColumn>
                                                                                 <asp:BoundColumn DataField="MakeType" HeaderText="Type">
@@ -1076,17 +1052,17 @@
                                                                                     </ItemTemplate>
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="30%" />
                                                                                 </asp:TemplateColumn>
-                                                                                <asp:TemplateColumn HeaderText="ƒ£øÈ√˚≥∆(±æ”Ô)">
+                                                                                <asp:TemplateColumn HeaderText="Ê®°ÂùóÂêçÁß∞(Êú¨ËØ≠)">
                                                                                     <ItemTemplate>
                                                                                         <asp:TextBox ID="TB_HomeName" runat="server" Text='<%# DataBinder.Eval(Container.DataItem,"HomeName") %>' Width="100px"></asp:TextBox>
                                                                                     </ItemTemplate>
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="30%" />
                                                                                 </asp:TemplateColumn>
-                                                                                <asp:BoundColumn DataField="LangCode" HeaderText="”Ô—‘">
+                                                                                <asp:BoundColumn DataField="LangCode" HeaderText="ËØ≠Ë®Ä">
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" />
                                                                                     <HeaderStyle Font-Bold="True" Width="25%" />
                                                                                 </asp:BoundColumn>
-                                                                                <asp:BoundColumn DataField="SortNumber" HeaderText="À≥–Ú">
+                                                                                <asp:BoundColumn DataField="SortNumber" HeaderText="È°∫Â∫è">
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="15%" />
                                                                                 </asp:BoundColumn>
                                                                                 <asp:BoundColumn DataField="MakeType" HeaderText="Type">
@@ -1098,7 +1074,7 @@
                                                                             </Columns>
                                                                             <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                                                                         </asp:DataGrid>
-                                                                        <!-- π§◊˜¡˜¿‡–Õ±Ìµ•øÿº˛“—“∆µΩƒ£Ã¨¥∞ø⁄ -->
+                                                                        <!-- Â∑•‰ΩúÊµÅÁ±ªÂûãË°®ÂçïÊéß‰ª∂Â∑≤ÁßªÂà∞Ê®°ÊÄÅÁ™óÂè£ -->
                                                                         <br />
                                                                         <asp:Button ID="BT_WFTypeSave" runat="server" CssClass="inpu" OnClick="BT_WFTypeSave_Click" Text="<%$ Resources:lang,BaoCun%>" />
                                                                     </td>
@@ -1146,17 +1122,17 @@
                                                                                     </ItemTemplate>
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="30%" />
                                                                                 </asp:TemplateColumn>
-                                                                                <asp:TemplateColumn HeaderText="ƒ£øÈ√˚≥∆(±æ”Ô)">
+                                                                                <asp:TemplateColumn HeaderText="Ê®°ÂùóÂêçÁß∞(Êú¨ËØ≠)">
                                                                                     <ItemTemplate>
                                                                                         <asp:TextBox ID="TB_HomeName" runat="server" Text='<%# DataBinder.Eval(Container.DataItem,"HomeName") %>' Width="100px"></asp:TextBox>
                                                                                     </ItemTemplate>
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="30%" />
                                                                                 </asp:TemplateColumn>
-                                                                                <asp:BoundColumn DataField="LangCode" HeaderText="”Ô—‘">
+                                                                                <asp:BoundColumn DataField="LangCode" HeaderText="ËØ≠Ë®Ä">
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" />
                                                                                     <HeaderStyle Font-Bold="True" Width="25%" />
                                                                                 </asp:BoundColumn>
-                                                                                <asp:BoundColumn DataField="SortNumber" HeaderText="À≥–Ú">
+                                                                                <asp:BoundColumn DataField="SortNumber" HeaderText="È°∫Â∫è">
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="15%" />
                                                                                 </asp:BoundColumn>
                                                                                 <asp:BoundColumn DataField="MakeType" HeaderText="Type">
@@ -1168,7 +1144,7 @@
                                                                             </Columns>
                                                                             <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                                                                         </asp:DataGrid>
-                                                                        <!-- ∆‰À˚◊¥Ã¨±Ìµ•øÿº˛“—“∆µΩƒ£Ã¨¥∞ø⁄ -->
+                                                                        <!-- ÂÖ∂‰ªñÁä∂ÊÄÅË°®ÂçïÊéß‰ª∂Â∑≤ÁßªÂà∞Ê®°ÊÄÅÁ™óÂè£ -->
                                                                         <br />
                                                                         <asp:Button ID="BT_OtherStatusSave" runat="server" CssClass="inpu" OnClick="BT_OtherStatusSave_Click" Text="<%$ Resources:lang,BaoCun%>" />
                                                                     </td>
@@ -1211,23 +1187,23 @@
 
                                                                             <ItemStyle CssClass="itemStyle" />
                                                                             <Columns>
-                                                                                <asp:TemplateColumn HeaderText="√¸¡Ó">
+                                                                                <asp:TemplateColumn HeaderText="ÂëΩ‰ª§">
                                                                                     <ItemTemplate>
                                                                                         <asp:Button ID="BT_OrderName" runat="server" CssClass="inpuLong" Text='<%# DataBinder.Eval(Container.DataItem,"InforName") %>' CommandName="Edit" />
                                                                                     </ItemTemplate>
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="40%" />
                                                                                 </asp:TemplateColumn>
-                                                                                <asp:TemplateColumn HeaderText="ƒ£øÈ√˚≥∆(±æ”Ô)">
+                                                                                <asp:TemplateColumn HeaderText="Ê®°ÂùóÂêçÁß∞(Êú¨ËØ≠)">
                                                                                     <ItemTemplate>
                                                                                         <asp:TextBox ID="TB_HomeName" runat="server" Text='<%# DataBinder.Eval(Container.DataItem,"HomeName") %>' Width="99%"></asp:TextBox>
                                                                                     </ItemTemplate>
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="30%" />
                                                                                 </asp:TemplateColumn>
-                                                                                <asp:BoundColumn DataField="LangCode" HeaderText="”Ô—‘">
+                                                                                <asp:BoundColumn DataField="LangCode" HeaderText="ËØ≠Ë®Ä">
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" />
                                                                                     <HeaderStyle Font-Bold="True" Width="20%" />
                                                                                 </asp:BoundColumn>
-                                                                                <asp:BoundColumn DataField="SortNumber" HeaderText="À≥–Ú">
+                                                                                <asp:BoundColumn DataField="SortNumber" HeaderText="È°∫Â∫è">
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="10%" />
                                                                                 </asp:BoundColumn>
 
@@ -1281,7 +1257,7 @@
                                                                 <tr>
                                                                     <td colspan="2" valign="top" class="ItemAlignLeft">
 
-                                                                        <!-- ◊‚”√≤˙∆∑¿‡–ÕDataGrid -->
+                                                                        <!-- ÁßüÁî®‰∫ßÂìÅÁ±ªÂûãDataGrid -->
                                                                         <table background="ImagesSkin/main_n_bj.jpg" border="0" cellpadding="0" cellspacing="0" width="98%">
                                                                             <tr>
                                                                                 <td>
@@ -1317,7 +1293,7 @@
                                                                             <PagerStyle CssClass="notTab" HorizontalAlign="Center" Mode="NumericPages" NextPageText="" PrevPageText="" />
                                                                             <ItemStyle CssClass="itemStyle" />
                                                                             <Columns>
-                                                                                <asp:TemplateColumn HeaderText="¿‡–Õ√˚≥∆">
+                                                                                <asp:TemplateColumn HeaderText="Á±ªÂûãÂêçÁß∞">
                                                                                     <ItemTemplate>
                                                                                         <asp:Button ID="BT_ID" runat="server" CssClass="inpu" Text='<%# DataBinder.Eval(Container.DataItem,"ID") %>' CommandName="Edit" />
                                                                                     </ItemTemplate>
@@ -1335,19 +1311,19 @@
                                                                                 <asp:BoundColumn DataField="DemoURL" HeaderText="DemoURL">
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="Center" Width="35%" />
                                                                                 </asp:BoundColumn>
-                                                                                <asp:BoundColumn DataField="SortNumber" HeaderText="≈≈–Ú">
+                                                                                <asp:BoundColumn DataField="SortNumber" HeaderText="ÊéíÂ∫è">
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="Center" Width="5%" />
                                                                                 </asp:BoundColumn>
-                                                                                <asp:BoundColumn DataField="LangCode" HeaderText="”Ô—‘">
+                                                                                <asp:BoundColumn DataField="LangCode" HeaderText="ËØ≠Ë®Ä">
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="Center" />
                                                                                 </asp:BoundColumn>
                                                                             </Columns>
                                                                         </asp:DataGrid>
-                                                                        <!-- ◊‚”√≤˙∆∑¿‡–Õ±Ìµ•øÿº˛“—“∆µΩƒ£Ã¨¥∞ø⁄ -->
+                                                                        <!-- ÁßüÁî®‰∫ßÂìÅÁ±ªÂûãË°®ÂçïÊéß‰ª∂Â∑≤ÁßªÂà∞Ê®°ÊÄÅÁ™óÂè£ -->
 
                                                                     </td>
                                                                     <td colspan="2">
-                                                                        <!-- ◊‚”√≤˙∆∑∞Ê±æ¿‡–ÕDataGrid -->
+                                                                        <!-- ÁßüÁî®‰∫ßÂìÅÁâàÊú¨Á±ªÂûãDataGrid -->
                                                                         <table background="ImagesSkin/main_n_bj.jpg" border="0" cellpadding="0" cellspacing="0" width="98%">
                                                                             <tr>
                                                                                 <td>
@@ -1390,10 +1366,10 @@
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="Center" Width="30%" />
                                                                                 </asp:BoundColumn>
 
-                                                                                <asp:BoundColumn DataField="SortNumber" HeaderText="≈≈–Ú">
+                                                                                <asp:BoundColumn DataField="SortNumber" HeaderText="ÊéíÂ∫è">
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="Center" />
                                                                                 </asp:BoundColumn>
-                                                                                <asp:BoundColumn DataField="LangCode" HeaderText="”Ô—‘">
+                                                                                <asp:BoundColumn DataField="LangCode" HeaderText="ËØ≠Ë®Ä">
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="Center" />
                                                                                 </asp:BoundColumn>
                                                                             </Columns>
@@ -1402,7 +1378,7 @@
 
                                                                     </td>
                                                                     <td colspan="2">
-                                                                        <!--  ‘”√≤˙∆∑‘≠“Ú¿‡–ÕDataGrid -->
+                                                                        <!-- ËØïÁî®‰∫ßÂìÅÂéüÂõ†Á±ªÂûãDataGrid -->
                                                                         <table background="ImagesSkin/main_n_bj.jpg" border="0" cellpadding="0" cellspacing="0" width="98%">
                                                                             <tr>
                                                                                 <td>
@@ -1444,10 +1420,10 @@
                                                                                 <asp:BoundColumn DataField="HomeTypeName" HeaderText="Type">
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="Center" Width="30%" />
                                                                                 </asp:BoundColumn>
-                                                                                <asp:BoundColumn DataField="SortNumber" HeaderText="≈≈–Ú">
+                                                                                <asp:BoundColumn DataField="SortNumber" HeaderText="ÊéíÂ∫è">
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="Center" />
                                                                                 </asp:BoundColumn>
-                                                                                <asp:BoundColumn DataField="LangCode" HeaderText="”Ô—‘">
+                                                                                <asp:BoundColumn DataField="LangCode" HeaderText="ËØ≠Ë®Ä">
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="Center" />
                                                                                 </asp:BoundColumn>
                                                                             </Columns>
@@ -1467,8 +1443,8 @@
                         </table>
                     </div>
 
-                    <!-- ƒ£Ã¨øÚ∂®“Â -->
-                    <!-- œÓƒø¿‡–Õƒ£Ã¨øÚ -->
+                    <!-- Ê®°ÊÄÅÊ°ÜÂÆö‰πâ -->
+                    <!-- È°πÁõÆÁ±ªÂûãÊ®°ÊÄÅÊ°Ü -->
                     <div id="modalProjectType" class="modal-overlay">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -1555,7 +1531,7 @@
                         </div>
                     </div>
 
-                    <!-- œÓƒø◊¥Ã¨ƒ£Ã¨øÚ -->
+                    <!-- È°πÁõÆÁä∂ÊÄÅÊ®°ÊÄÅÊ°Ü -->
                     <div id="modalProjectStatus" class="modal-overlay">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -1601,7 +1577,7 @@
                         </div>
                     </div>
 
-                    <!-- –Ë«Û◊¥Ã¨ƒ£Ã¨øÚ -->
+                    <!-- ÈúÄÊ±ÇÁä∂ÊÄÅÊ®°ÊÄÅÊ°Ü -->
                     <div id="modalReqStatus" class="modal-overlay">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -1627,7 +1603,7 @@
                         </div>
                     </div>
 
-                    <!-- »ŒŒÒ◊¥Ã¨ƒ£Ã¨øÚ -->
+                    <!-- ‰ªªÂä°Áä∂ÊÄÅÊ®°ÊÄÅÊ°Ü -->
                     <div id="modalTaskStatus" class="modal-overlay">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -1653,7 +1629,7 @@
                         </div>
                     </div>
 
-                    <!-- º∆ªÆ◊¥Ã¨ƒ£Ã¨øÚ -->
+                    <!-- ËÆ°ÂàíÁä∂ÊÄÅÊ®°ÊÄÅÊ°Ü -->
                     <div id="modalPlanStatus" class="modal-overlay">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -1679,7 +1655,7 @@
                         </div>
                     </div>
 
-                    <!-- π§◊˜¡˜◊¥Ã¨ƒ£Ã¨øÚ -->
+                    <!-- Â∑•‰ΩúÊµÅÁä∂ÊÄÅÊ®°ÊÄÅÊ°Ü -->
                     <div id="modalWLStatus" class="modal-overlay">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -1705,7 +1681,7 @@
                         </div>
                     </div>
 
-                    <!-- ≤‚ ‘◊¥Ã¨ƒ£Ã¨øÚ -->
+                    <!-- ÊµãËØïÁä∂ÊÄÅÊ®°ÊÄÅÊ°Ü -->
                     <div id="modalTestStatus" class="modal-overlay">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -1731,7 +1707,7 @@
                         </div>
                     </div>
 
-                    <!-- Ω«…´◊Èƒ£Ã¨øÚ -->
+                    <!-- ËßíËâ≤ÁªÑÊ®°ÊÄÅÊ°Ü -->
                     <div id="modalActorGroup" class="modal-overlay">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -1754,7 +1730,7 @@
                         </div>
                     </div>
 
-                    <!-- π§◊˜¡˜¿‡–Õƒ£Ã¨øÚ -->
+                    <!-- Â∑•‰ΩúÊµÅÁ±ªÂûãÊ®°ÊÄÅÊ°Ü -->
                     <div id="modalWLType" class="modal-overlay">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -1780,7 +1756,7 @@
                         </div>
                     </div>
 
-                    <!-- ∆‰À˚◊¥Ã¨ƒ£Ã¨øÚ -->
+                    <!-- ÂÖ∂‰ªñÁä∂ÊÄÅÊ®°ÊÄÅÊ°Ü -->
                     <div id="modalOtherStatus" class="modal-overlay">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -1806,7 +1782,7 @@
                         </div>
                     </div>
 
-                    <!-- ◊‚”√≤˙∆∑¿‡–Õƒ£Ã¨øÚ -->
+                    <!-- ÁßüÁî®‰∫ßÂìÅÁ±ªÂûãÊ®°ÊÄÅÊ°Ü -->
                     <div id="modalRentProductType" class="modal-overlay">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -1844,7 +1820,7 @@
                         </div>
                     </div>
 
-                    <!-- ◊‚”√≤˙∆∑∞Ê±æ¿‡–Õƒ£Ã¨øÚ -->
+                    <!-- ÁßüÁî®‰∫ßÂìÅÁâàÊú¨Á±ªÂûãÊ®°ÊÄÅÊ°Ü -->
                     <div id="modalRentProductVersionType" class="modal-overlay">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -1875,7 +1851,7 @@
                         </div>
                     </div>
 
-                    <!--  ‘”√≤˙∆∑‘≠“Ú¿‡–Õƒ£Ã¨øÚ -->
+                    <!-- ËØïÁî®‰∫ßÂìÅÂéüÂõ†Á±ªÂûãÊ®°ÊÄÅÊ°Ü -->
                     <div id="modalTryProductResonType" class="modal-overlay">
                         <div class="modal-content">
                             <div class="modal-header">
