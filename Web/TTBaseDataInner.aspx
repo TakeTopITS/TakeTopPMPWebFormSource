@@ -276,7 +276,8 @@
                                                         <td width="800px">
                                                             <!-- 在页头或适当位置添加 -->
                                                             <div style="text-align: left; margin-bottom: 10px;">
-                                                                <a href="TTAIServerConfiguration.aspx" style="color: #4F46E5; text-decoration: none; font-weight: 600;">⚙️ AI Server Configuration
+                                                                <a href="TTAIServerConfiguration.aspx" style="color: #4F46E5; text-decoration: none; font-weight: 600;">
+                                                                    ⚙️ <asp:Label ID="LB_ServerConfigtion" runat ="server" Text="<%$ Resources:lang,AIServerConfigurationTitle%>"></asp:Label>
                                                                 </a>
                                                             </div>
                                                         </td>
