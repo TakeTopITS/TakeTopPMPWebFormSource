@@ -66,14 +66,14 @@ a:hover {
 
     .page_topbj a {
         color: black;
-        2 text-decoration: none;
+        text-decoration: none;
         cursor: pointer;
         font-size: 14px;
     }
 
         .page_topbj a:hover {
             color: black;
-            2 text-decoration: underline;
+            text-decoration: underline;
         }
 
 .main_topbj {

@@ -44,7 +44,7 @@ a:hover {
 
 .page_topbj {
     background-color: goldenrod;
-    2 cursor: move;
+    cursor: move;
     color: black;
     border-radius: 12px 0px 0px 0px;
     margin: 1px 1px 1px 1px;
@@ -52,14 +52,14 @@ a:hover {
 
     .page_topbj a {
         color: black;
-        2 text-decoration: none;
+        text-decoration: none;
         cursor: pointer;
         font-size: 14px;
     }
 
         .page_topbj a:hover {
             color: black;
-            2 text-decoration: underline;
+            text-decoration: underline;
         }
 
 .main_topbj {
