@@ -25,8 +25,18 @@ public partial class DefaultSAAS : System.Web.UI.Page
 
         this.Title = System.Configuration.ConfigurationManager.AppSettings["SystemName"];
 
+        string strTargetLagCode;
+        strTargetLagCode = Request.QueryString["TargetLangCode"];
+        Session["TargetLangCode"] = strTargetLagCode;
+        if (Session["TargetLangCode"] == null)
+        {
+            Session["LangCode"] = System.Configuration.ConfigurationManager.AppSettings["DefaultLang"];
+        }
+        else
+        {
+            Session["LangCode"] = Session["TargetLangCode"];
+        }
 
-      
 
         if (Page.IsPostBack != true)
         {
@@ -415,12 +425,17 @@ public partial class DefaultSAAS : System.Web.UI.Page
 
         InitializeCulture();
 
-        Response.Redirect("DefaultSAAS.aspx");
+        Response.Redirect("DefaultSAAS.aspx?TargetLangCode=" + Session["LangCode"].ToString());
     }
 
     protected override void InitializeCulture()
     {
         string strLangCode;
+
+        if (Session["TargetLangCode"] != null)
+        {
+            Session["LangCode"] = Session["TargetLangCode"];
+        }
 
         if (Session["LangCode"] == null)
         {
@@ -436,31 +451,17 @@ public partial class DefaultSAAS : System.Web.UI.Page
         {
             Response.SetCookie(new HttpCookie("LangCode", strLangCode));
         }
-        catch { }
+        catch
+        {
+        }
 
         if (Request.Cookies["LangCode"] != null)
         {
-            string cultureCode = Request.Cookies["LangCode"].Value.ToString();
+            System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.CreateSpecificCulture(Request.Cookies["LangCode"].Value.ToString());
+            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(Request.Cookies["LangCode"].Value.ToString());
 
-            // 分离：界面文化用于显示，固定文化用于数据操作
-            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(cultureCode);
-
-            if ("th,km,lo,my".IndexOf(cultureCode) == -1)
-            {
-                //如果需要支持多种公历文化，可以根据语言代码映射
-                System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.CreateSpecificCulture(cultureCode);
-
-                Page.UICulture = cultureCode;
-                Page.Culture = strLangCode;
-            }
-            else
-            {
-                //如果需要支持多种公历文化，可以根据语言代码映射
-                System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.CreateSpecificCulture("en");
-
-                Page.UICulture = cultureCode;
-                Page.Culture = "en";
-            }
+            Page.Culture = Request.Cookies["LangCode"].Value;
+            Page.UICulture = Request.Cookies["LangCode"].Value;
 
             base.InitializeCulture();
         }

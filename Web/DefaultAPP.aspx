@@ -258,7 +258,7 @@
                                                 <asp:Label ID="LB_Copyright" runat="server" Text="Copyright TakeTop Software 2006-2036 "></asp:Label>
                                             </td>
                                         </tr>
-                                        <tr style="display: none;">
+                                        <tr >
                                             <td align="center">[
                                                   <asp:DropDownList ID="ddlLangSwitcher" runat="server" DataValueField="LangCode" DataTextField="Language" AutoPostBack="true" OnSelectedIndexChanged="ddlLangSwitcher_SelectedIndexChanged" Style="height: 22px;">
                                                   </asp:DropDownList>
