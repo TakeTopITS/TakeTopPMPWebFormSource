@@ -21,6 +21,18 @@ public partial class DefaultAPP : System.Web.UI.Page
 
         this.Title = System.Configuration.ConfigurationManager.AppSettings["SystemName"];
 
+        string strTargetLagCode;
+        strTargetLagCode = Request.QueryString["TargetLangCode"];
+        Session["TargetLangCode"] = strTargetLagCode;
+        if (Session["TargetLangCode"] == null)
+        {
+            Session["LangCode"] = System.Configuration.ConfigurationManager.AppSettings["DefaultLang"];
+        }
+        else
+        {
+            Session["LangCode"] = Session["TargetLangCode"];
+        }
+
         if (Page.IsPostBack != true)
         {
             strVerificationCode = System.Configuration.ConfigurationManager.AppSettings["VerificationCode"].Trim().ToUpper();
