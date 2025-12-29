@@ -409,18 +409,57 @@ public partial class DefaultDemo : System.Web.UI.Page
 
     protected void ddlLangSwitcher_SelectedIndexChanged(object sender, EventArgs e)
     {
-        if (ddlLangSwitcher.SelectedValue != "")
+        string selectedValue = ddlLangSwitcher.SelectedValue;
+
+        if (!string.IsNullOrEmpty(selectedValue))
         {
-            Session["LangCode"] = ddlLangSwitcher.SelectedValue;
+            // 只在 Session 中设置，不在这里调用 InitializeCulture()
+            Session["LangCode"] = selectedValue;
+
+            // 重定向到带参数的页面
+            // 新页面加载时会处理 URL 参数并调用自己的 InitializeCulture()
+            Response.Redirect("DefaultDemo.aspx?TargetLangCode=" + selectedValue, false);
+        }
+    }
+
+    protected override void InitializeCulture()
+    {
+        base.InitializeCulture();
+
+        string strLangCode;
+
+        // 优先使用 URL 参数
+        string targetLang = Request.QueryString["TargetLangCode"];
+        if (!string.IsNullOrEmpty(targetLang))
+        {
+            strLangCode = targetLang;
+            Session["LangCode"] = strLangCode;
+        }
+        else if (Session["LangCode"] != null)
+        {
+            strLangCode = Session["LangCode"].ToString();
         }
         else
         {
-            Session["LangCode"] = null;
+            strLangCode = System.Configuration.ConfigurationManager.AppSettings["DefaultLang"];
+            Session["LangCode"] = strLangCode;
         }
 
-        InitializeCulture();
+        // 设置 Cookie
+        if (Response.Cookies["LangCode"] == null)
+        {
+            Response.Cookies.Add(new HttpCookie("LangCode", strLangCode));
+        }
+        else
+        {
+            Response.Cookies["LangCode"].Value = strLangCode;
+        }
 
-        Response.Redirect("DefaultDemo.aspx?TargetLangCode=" + Session["LangCode"].ToString());
+        // 应用文化设置
+        System.Threading.Thread.CurrentThread.CurrentCulture =
+            System.Globalization.CultureInfo.CreateSpecificCulture(strLangCode);
+        System.Threading.Thread.CurrentThread.CurrentUICulture =
+            new System.Globalization.CultureInfo(strLangCode);
     }
 
     protected string GetModulePageName(string strModuleName)
@@ -432,46 +471,6 @@ public partial class DefaultDemo : System.Web.UI.Page
 
         return ds.Tables[0].Rows[0][0].ToString();
     }
-
-    protected override void InitializeCulture()
-    {
-        string strLangCode;
-
-        if (Session["TargetLangCode"] != null)
-        {
-            Session["LangCode"] = Session["TargetLangCode"];
-        }
-
-        if (Session["LangCode"] == null)
-        {
-            strLangCode = System.Configuration.ConfigurationManager.AppSettings["DefaultLang"];
-            Session["LangCode"] = strLangCode;
-        }
-        else
-        {
-            strLangCode = Session["LangCode"].ToString();
-        }
-
-        try
-        {
-            Response.SetCookie(new HttpCookie("LangCode", strLangCode));
-        }
-        catch
-        {
-        }
-
-        if (Request.Cookies["LangCode"] != null)
-        {
-            System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.CreateSpecificCulture(Request.Cookies["LangCode"].Value.ToString());
-            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(Request.Cookies["LangCode"].Value.ToString());
-
-            Page.Culture = Request.Cookies["LangCode"].Value;
-            Page.UICulture = Request.Cookies["LangCode"].Value;
-
-            base.InitializeCulture();
-        }
-    }
-
 
     protected void InsertOrUpdateSMSCode(string strUserCode, string strSMSCode)
     {

@@ -600,57 +600,57 @@ public partial class DefaultInterface : System.Web.UI.Page
 
     protected void ddlLangSwitcher_SelectedIndexChanged(object sender, EventArgs e)
     {
-        if (ddlLangSwitcher.SelectedValue != "")
-        {
-            Session["LangCode"] = ddlLangSwitcher.SelectedValue;
-        }
-        else
-        {
-            Session["LangCode"] = null;
-        }
+        string selectedValue = ddlLangSwitcher.SelectedValue;
 
-        InitializeCulture();
+        if (!string.IsNullOrEmpty(selectedValue))
+        {
+            // 只在 Session 中设置，不在这里调用 InitializeCulture()
+            Session["LangCode"] = selectedValue;
 
-        Response.Redirect("DefaultInterface.aspx?TargetLangCode=" + Session["LangCode"].ToString());
+            // 重定向到带参数的页面
+            // 新页面加载时会处理 URL 参数并调用自己的 InitializeCulture()
+            Response.Redirect("DefaultInterface.aspx?TargetLangCode=" + selectedValue, false);
+        }
     }
 
     protected override void InitializeCulture()
     {
+        base.InitializeCulture();
+
         string strLangCode;
 
-        if (Session["TargetLangCode"] != null)
+        // 优先使用 URL 参数
+        string targetLang = Request.QueryString["TargetLangCode"];
+        if (!string.IsNullOrEmpty(targetLang))
         {
-            Session["LangCode"] = Session["TargetLangCode"];
+            strLangCode = targetLang;
+            Session["LangCode"] = strLangCode;
         }
-
-        if (Session["LangCode"] == null)
+        else if (Session["LangCode"] != null)
+        {
+            strLangCode = Session["LangCode"].ToString();
+        }
+        else
         {
             strLangCode = System.Configuration.ConfigurationManager.AppSettings["DefaultLang"];
             Session["LangCode"] = strLangCode;
         }
+
+        // 设置 Cookie
+        if (Response.Cookies["LangCode"] == null)
+        {
+            Response.Cookies.Add(new HttpCookie("LangCode", strLangCode));
+        }
         else
         {
-            strLangCode = Session["LangCode"].ToString();
+            Response.Cookies["LangCode"].Value = strLangCode;
         }
 
-        try
-        {
-            Response.SetCookie(new HttpCookie("LangCode", strLangCode));
-        }
-        catch
-        {
-        }
-
-        if (Request.Cookies["LangCode"] != null)
-        {
-            System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.CreateSpecificCulture(Request.Cookies["LangCode"].Value.ToString());
-            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(Request.Cookies["LangCode"].Value.ToString());
-
-            Page.Culture = Request.Cookies["LangCode"].Value;
-            Page.UICulture = Request.Cookies["LangCode"].Value;
-
-            base.InitializeCulture();
-        }
+        // 应用文化设置
+        System.Threading.Thread.CurrentThread.CurrentCulture =
+            System.Globalization.CultureInfo.CreateSpecificCulture(strLangCode);
+        System.Threading.Thread.CurrentThread.CurrentUICulture =
+            new System.Globalization.CultureInfo(strLangCode);
     }
 
     protected void InsertOrUpdateSMSCode(string strUserCode, string strSMSCode)
