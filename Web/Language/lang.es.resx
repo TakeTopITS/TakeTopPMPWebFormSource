@@ -32834,8 +32834,8 @@
     <comment>"Estoy entendiendo sus requisitos de análisis, pensando en la mejor solución..."</comment>
   </data>
   <data name="DSeekAIServerAvailable" xml:space="preserve">
-    <value>✅ Servidor de IA disponible y listo para usar.</value>
-    <comment>✅ Servidor de IA disponible y listo para usar.</comment>
+    <value>✅ Servidor de IA disponible</value>
+    <comment>✅ Servidor de IA disponible</comment>
   </data>
   <data name="DSeekNoValidAIServer" xml:space="preserve">
     <value>⚠️ No se encontró un servidor de IA válido. Por favor contacte al administrador del sistema para la instalación.</value>
@@ -32902,8 +32902,8 @@
     <comment>Carga fallida: </comment>
   </data>
   <data name="DSeekAIServerNotAvailableContactSupplier" xml:space="preserve">
-    <value>⚠️ Servidor de IA no disponible. Por favor contacte al proveedor para la instalación.</value>
-    <comment>⚠️ Servidor de IA no disponible. Por favor contacte al proveedor para la instalación.</comment>
+    <value>⚠️ Servidor de IA no disponible. Por favor, verifique la configuración o contacte al proveedor.</value>
+    <comment>⚠️ Servidor de IA no disponible. Por favor, verifique la configuración o contacte al proveedor.</comment>
   </data>
   <data name="DSeekPleaseSelectTablesToAnalyze" xml:space="preserve">
     <value>Por favor seleccione tablas para analizar</value>
@@ -33069,110 +33069,89 @@
     <value>✅ ¡Configuración guardada exitosamente!</value>
     <comment>✅ ¡Configuración guardada exitosamente!</comment>
   </data>
-
-<data name="DSeekAIServerType" xml:space="preserve">
+  <data name="DSeekAIServerType" xml:space="preserve">
     <value>Tipo de servidor de IA</value>
     <comment>Tipo de servidor de IA</comment>
-</data>
-<data name="DSeekLocalAI" xml:space="preserve">
+  </data>
+  <data name="DSeekLocalAI" xml:space="preserve">
     <value>Local (Ollama)</value>
     <comment>Local (Ollama)</comment>
-</data>
-<data name="DSeekExternalAI" xml:space="preserve">
+  </data>
+  <data name="DSeekExternalAI" xml:space="preserve">
     <value>IA externa</value>
     <comment>IA externa</comment>
-</data>
-<data name="DSeekAPIURL" xml:space="preserve">
+  </data>
+  <data name="DSeekAPIURL" xml:space="preserve">
     <value>URL de API</value>
     <comment>URL de API</comment>
-</data>
-<data name="DSeekAPIKey" xml:space="preserve">
+  </data>
+  <data name="DSeekAPIKey" xml:space="preserve">
     <value>Clave de API</value>
     <comment>Clave de API</comment>
-</data>
-<data name="DSeekLocalAIHint" xml:space="preserve">
+  </data>
+  <data name="DSeekLocalAIHint" xml:space="preserve">
     <value>Local: utilizar servidor Ollama en localhost | Externo: utilizar OpenAI, DeepSeek API, etc.</value>
     <comment>Local: utilizar servidor Ollama en localhost | Externo: utilizar OpenAI, DeepSeek API, etc.</comment>
-</data>
-<data name="DSeekModelHint" xml:space="preserve">
+  </data>
+  <data name="DSeekModelHint" xml:space="preserve">
     <value>Local: deepseek-r1:1.5b, llama2, etc. | Externo: gpt-3.5-turbo, gpt-4, deepseek-chat, etc.</value>
     <comment>Local: deepseek-r1:1.5b, llama2, etc. | Externo: gpt-3.5-turbo, gpt-4, deepseek-chat, etc.</comment>
-</data>
-<data name="DSeekShowConfiguration" xml:space="preserve">
+  </data>
+  <data name="DSeekShowConfiguration" xml:space="preserve">
     <value>Mostrar configuración de IA</value>
     <comment>Mostrar configuración de IA</comment>
-</data>
-<data name="DSeekAIServerAvailable" xml:space="preserve">
-    <value>✅ Servidor de IA disponible</value>
-    <comment>✅ Servidor de IA disponible</comment>
-</data>
-<data name="DSeekExternalAIServerAvailable" xml:space="preserve">
+  </data>
+  <data name="DSeekExternalAIServerAvailable" xml:space="preserve">
     <value>✅ Servidor de IA externo disponible</value>
     <comment>✅ Servidor de IA externo disponible</comment>
-</data>
-<data name="DSeekAIServerNotAvailableContactSupplier" xml:space="preserve">
-    <value>⚠️ Servidor de IA no disponible. Por favor, verifique la configuración o contacte al proveedor.</value>
-    <comment>⚠️ Servidor de IA no disponible. Por favor, verifique la configuración o contacte al proveedor.</comment>
-</data>
-<!-- Términos relacionados con la configuración del servidor de IA -->
-<data name="AIServerConfigurationTitle" xml:space="preserve">
+  </data>
+  <data name="AIServerConfigurationTitle" xml:space="preserve">
     <value>Configuración del servidor de IA</value>
     <comment>Configuración del servidor de IA</comment>
-</data>
-
-<data name="AIBackToAI" xml:space="preserve">
+  </data>
+  <data name="AIBackToAI" xml:space="preserve">
     <value>Volver al análisis de IA</value>
     <comment>Volver al análisis de IA</comment>
-</data>
-
-<data name="AIServerConfiguration" xml:space="preserve">
+  </data>
+  <data name="AIServerConfiguration" xml:space="preserve">
     <value>Configuración del servidor</value>
     <comment>Configuración del servidor</comment>
-</data>
-
-<data name="AIConfigurationSubtitle" xml:space="preserve">
+  </data>
+  <data name="AIConfigurationSubtitle" xml:space="preserve">
     <value>Configure los ajustes del servidor para servicios de IA locales y externos</value>
     <comment>Configure los ajustes del servidor para servicios de IA locales y externos</comment>
-</data>
-
-<data name="AIServerTypeTitle" xml:space="preserve">
+  </data>
+  <data name="AIServerTypeTitle" xml:space="preserve">
     <value>Tipo de servidor de IA</value>
     <comment>Tipo de servidor de IA</comment>
-</data>
-
-<data name="AIServerType" xml:space="preserve">
+  </data>
+  <data name="AIServerType" xml:space="preserve">
     <value>Tipo de servidor</value>
     <comment>Tipo de servidor</comment>
-</data>
-
-<data name="AILocalAI" xml:space="preserve">
+  </data>
+  <data name="AILocalAI" xml:space="preserve">
     <value>Local (Ollama)</value>
     <comment>Local (Ollama)</comment>
-</data>
-
-<data name="AIExternalAI" xml:space="preserve">
+  </data>
+  <data name="AIExternalAI" xml:space="preserve">
     <value>IA externa</value>
     <comment>IA externa</comment>
-</data>
-
-<data name="AIServerTypeHint" xml:space="preserve">
+  </data>
+  <data name="AIServerTypeHint" xml:space="preserve">
     <value>&lt;strong&gt;Local&lt;/strong&gt;: Ejecute modelos de IA localmente usando el servidor Ollama&lt;br /&gt;
             &lt;strong&gt;Externo&lt;/strong&gt;: Use servicios de IA en la nube como OpenAI, DeepSeek API, etc.</value>
     <comment>&lt;strong&gt;Local&lt;/strong&gt;: Ejecute modelos de IA localmente usando el servidor Ollama&lt;br /&gt;
             &lt;strong&gt;Externo&lt;/strong&gt;: Use servicios de IA en la nube como OpenAI, DeepSeek API, etc.</comment>
-</data>
-
-<data name="AIAPIURL" xml:space="preserve">
+  </data>
+  <data name="AIAPIURL" xml:space="preserve">
     <value>URL de API</value>
     <comment>URL de API</comment>
-</data>
-
-<data name="AIAPIURLPlaceholder" xml:space="preserve">
+  </data>
+  <data name="AIAPIURLPlaceholder" xml:space="preserve">
     <value>Ingrese la URL del endpoint de API</value>
     <comment>Ingrese la URL del endpoint de API</comment>
-</data>
-
-<data name="AIAPIURLExamples" xml:space="preserve">
+  </data>
+  <data name="AIAPIURLExamples" xml:space="preserve">
     <value>Ejemplos:&lt;br /&gt;
             • Local: &lt;code&gt;http://localhost:11434/v1/chat/completions&lt;/code&gt;&lt;br /&gt;
             • OpenAI: &lt;code&gt;https://api.openai.com/v1/chat/completions&lt;/code&gt;&lt;br /&gt;
@@ -33181,266 +33160,219 @@
             • Local: &lt;code&gt;http://localhost:11434/v1/chat/completions&lt;/code&gt;&lt;br /&gt;
             • OpenAI: &lt;code&gt;https://api.openai.com/v1/chat/completions&lt;/code&gt;&lt;br /&gt;
             • DeepSeek: &lt;code&gt;https://api.deepseek.com/v1/chat/completions&lt;/code&gt;</comment>
-</data>
-
-<data name="AIAPIKey" xml:space="preserve">
+  </data>
+  <data name="AIAPIKey" xml:space="preserve">
     <value>Clave de API</value>
     <comment>Clave de API</comment>
-</data>
-
-<data name="AIAPIKeyPlaceholder" xml:space="preserve">
+  </data>
+  <data name="AIAPIKeyPlaceholder" xml:space="preserve">
     <value>Ingrese la clave de API para el servicio de IA externo</value>
     <comment>Ingrese la clave de API para el servicio de IA externo</comment>
-</data>
-
-<data name="AIAPIKeyHint" xml:space="preserve">
+  </data>
+  <data name="AIAPIKeyHint" xml:space="preserve">
     <value>Requerido para servicios de IA externos. Por favor, manténgalo seguro.</value>
     <comment>Requerido para servicios de IA externos. Por favor, manténgalo seguro.</comment>
-</data>
-
-<data name="AIShowAPIKey" xml:space="preserve">
+  </data>
+  <data name="AIShowAPIKey" xml:space="preserve">
     <value>Mostrar clave de API</value>
     <comment>Mostrar clave de API</comment>
-</data>
-
-<data name="AIModelName" xml:space="preserve">
+  </data>
+  <data name="AIModelName" xml:space="preserve">
     <value>Nombre del modelo</value>
     <comment>Nombre del modelo</comment>
-</data>
-
-<data name="AIModelPlaceholder" xml:space="preserve">
+  </data>
+  <data name="AIModelPlaceholder" xml:space="preserve">
     <value>Ingrese el nombre del modelo</value>
     <comment>Ingrese el nombre del modelo</comment>
-</data>
-
-<data name="AIQuickPresets" xml:space="preserve">
+  </data>
+  <data name="AIQuickPresets" xml:space="preserve">
     <value>Preajustes rápidos de modelos:</value>
     <comment>Preajustes rápidos de modelos:</comment>
-</data>
-
-<data name="AIPresetHint" xml:space="preserve">
+  </data>
+  <data name="AIPresetHint" xml:space="preserve">
     <value>Haga clic en un preajuste para establecer rápidamente el nombre del modelo</value>
     <comment>Haga clic en un preajuste para establecer rápidamente el nombre del modelo</comment>
-</data>
-
-<data name="AICurrentStatus" xml:space="preserve">
+  </data>
+  <data name="AICurrentStatus" xml:space="preserve">
     <value>Estado actual de configuración</value>
     <comment>Estado actual de configuración</comment>
-</data>
-
-<data name="AIServerURL" xml:space="preserve">
+  </data>
+  <data name="AIServerURL" xml:space="preserve">
     <value>URL del servidor</value>
     <comment>URL del servidor</comment>
-</data>
-
-<data name="AINotConfigured" xml:space="preserve">
+  </data>
+  <data name="AINotConfigured" xml:space="preserve">
     <value>No configurado</value>
     <comment>No configurado</comment>
-</data>
-
-<data name="AIModel" xml:space="preserve">
+  </data>
+  <data name="AIModel" xml:space="preserve">
     <value>Modelo</value>
     <comment>Modelo</comment>
-</data>
-
-<data name="AIStatus" xml:space="preserve">
+  </data>
+  <data name="AIStatus" xml:space="preserve">
     <value>Estado</value>
     <comment>Estado</comment>
-</data>
-
-<data name="AIUnknown" xml:space="preserve">
+  </data>
+  <data name="AIUnknown" xml:space="preserve">
     <value>Desconocido</value>
     <comment>Desconocido</comment>
-</data>
-
-<data name="AILastTest" xml:space="preserve">
+  </data>
+  <data name="AILastTest" xml:space="preserve">
     <value>Última prueba</value>
     <comment>Última prueba</comment>
-</data>
-
-<data name="AINeverTested" xml:space="preserve">
+  </data>
+  <data name="AINeverTested" xml:space="preserve">
     <value>Nunca probado</value>
     <comment>Nunca probado</comment>
-</data>
-
-<data name="AITestConnection" xml:space="preserve">
+  </data>
+  <data name="AITestConnection" xml:space="preserve">
     <value>🔄 Probar conexión</value>
     <comment>🔄 Probar conexión</comment>
-</data>
-
-<data name="AISaveConfiguration" xml:space="preserve">
+  </data>
+  <data name="AISaveConfiguration" xml:space="preserve">
     <value>💾 Guardar configuración</value>
     <comment>💾 Guardar configuración</comment>
-</data>
-
-<data name="AILoadCurrent" xml:space="preserve">
+  </data>
+  <data name="AILoadCurrent" xml:space="preserve">
     <value>📂 Cargar actual</value>
     <comment>📂 Cargar actual</comment>
-</data>
-
-<data name="AIResetToDefault" xml:space="preserve">
+  </data>
+  <data name="AIResetToDefault" xml:space="preserve">
     <value>🔄 Restablecer a predeterminado</value>
     <comment>🔄 Restablecer a predeterminado</comment>
-</data>
-
-<data name="AIInformationHelp" xml:space="preserve">
+  </data>
+  <data name="AIInformationHelp" xml:space="preserve">
     <value>Información &amp; Ayuda</value>
     <comment>Información &amp; Ayuda</comment>
-</data>
-
-<data name="AILocalAISetup" xml:space="preserve">
+  </data>
+  <data name="AILocalAISetup" xml:space="preserve">
     <value>Configuración de IA local:</value>
     <comment>Configuración de IA local:</comment>
-</data>
-
-<data name="AIInstallOllama" xml:space="preserve">
+  </data>
+  <data name="AIInstallOllama" xml:space="preserve">
     <value>Instale Ollama desde &lt;a href="https://ollama.ai" target="_blank"&gt;ollama.ai&lt;/a&gt;</value>
     <comment>Instale Ollama desde &lt;a href="https://ollama.ai" target="_blank"&gt;ollama.ai&lt;/a&gt;</comment>
-</data>
-
-<data name="AIOllamaCommand" xml:space="preserve">
+  </data>
+  <data name="AIOllamaCommand" xml:space="preserve">
     <value>Ejecute comando: &lt;code&gt;ollama run deepseek-r1:1.5b&lt;/code&gt; para descargar y probar el modelo</value>
     <comment>Ejecute comando: &lt;code&gt;ollama run deepseek-r1:1.5b&lt;/code&gt; para descargar y probar el modelo</comment>
-</data>
-
-<data name="AIOllamaPort" xml:space="preserve">
+  </data>
+  <data name="AIOllamaPort" xml:space="preserve">
     <value>Asegúrese de que Ollama se esté ejecutando en el puerto 11434</value>
     <comment>Asegúrese de que Ollama se esté ejecutando en el puerto 11434</comment>
-</data>
-
-<data name="AIExternalAISetup" xml:space="preserve">
+  </data>
+  <data name="AIExternalAISetup" xml:space="preserve">
     <value>Configuración de IA externa:</value>
     <comment>Configuración de IA externa:</comment>
-</data>
-
-<data name="AIGetAPIKey" xml:space="preserve">
+  </data>
+  <data name="AIGetAPIKey" xml:space="preserve">
     <value>Obtenga la clave de API de su proveedor de servicios de IA</value>
     <comment>Obtenga la clave de API de su proveedor de servicios de IA</comment>
-</data>
-
-<data name="AICheckCredits" xml:space="preserve">
+  </data>
+  <data name="AICheckCredits" xml:space="preserve">
     <value>Asegúrese de que su cuenta tenga créditos/cuota suficientes</value>
     <comment>Asegúrese de que su cuenta tenga créditos/cuota suficientes</comment>
-</data>
-
-<data name="AICheckAPIDocs" xml:space="preserve">
+  </data>
+  <data name="AICheckAPIDocs" xml:space="preserve">
     <value>Consulte la documentación de API para la URL de endpoint correcta</value>
     <comment>Consulte la documentación de API para la URL de endpoint correcta</comment>
-</data>
-
-<data name="AINote" xml:space="preserve">
+  </data>
+  <data name="AINote" xml:space="preserve">
     <value>Nota:</value>
     <comment>Nota:</comment>
-</data>
-
-<data name="AIConfigurationNote" xml:space="preserve">
+  </data>
+  <data name="AIConfigurationNote" xml:space="preserve">
     <value>La configuración se guardará en la base de datos y se usará para todas las funciones de análisis de IA.</value>
     <comment>La configuración se guardará en la base de datos y se usará para todas las funciones de análisis de IA.</comment>
-</data>
-
-<data name="AITestingConnection" xml:space="preserve">
+  </data>
+  <data name="AITestingConnection" xml:space="preserve">
     <value>Probando conexión del servidor de IA</value>
     <comment>Probando conexión del servidor de IA</comment>
-</data>
-
-<data name="AIPleaseWaitConnection" xml:space="preserve">
+  </data>
+  <data name="AIPleaseWaitConnection" xml:space="preserve">
     <value>Por favor espere mientras probamos la conexión a su servidor de IA...</value>
     <comment>Por favor espere mientras probamos la conexión a su servidor de IA...</comment>
-</data>
-
-<!-- Términos usados en el backend -->
-<data name="AIErrorLoadingConfig" xml:space="preserve">
+  </data>
+  <data name="AIErrorLoadingConfig" xml:space="preserve">
     <value>Error al cargar configuración:</value>
     <comment>Error al cargar configuración:</comment>
-</data>
-
-<data name="AILocalServerReachable" xml:space="preserve">
+  </data>
+  <data name="AILocalServerReachable" xml:space="preserve">
     <value>✅ Servidor de IA local accesible</value>
     <comment>✅ Servidor de IA local accesible</comment>
-</data>
-
-<data name="AICannotConnectLocal" xml:space="preserve">
+  </data>
+  <data name="AICannotConnectLocal" xml:space="preserve">
     <value>❌ No se puede conectar al servidor de IA local</value>
     <comment>❌ No se puede conectar al servidor de IA local</comment>
-</data>
-
-<data name="AIExternalServerReachable" xml:space="preserve">
+  </data>
+  <data name="AIExternalServerReachable" xml:space="preserve">
     <value>✅ Servidor de IA externo accesible</value>
     <comment>✅ Servidor de IA externo accesible</comment>
-</data>
-
-<data name="AICannotConnectExternal" xml:space="preserve">
+  </data>
+  <data name="AICannotConnectExternal" xml:space="preserve">
     <value>❌ No se puede conectar al servidor de IA externo</value>
     <comment>❌ No se puede conectar al servidor de IA externo</comment>
-</data>
-
-<data name="AIConnected" xml:space="preserve">
+  </data>
+  <data name="AIConnected" xml:space="preserve">
     <value>✅ Conectado</value>
     <comment>✅ Conectado</comment>
-</data>
-
-<data name="AINotConnected" xml:space="preserve">
+  </data>
+  <data name="AINotConnected" xml:space="preserve">
     <value>❌ No conectado</value>
     <comment>❌ No conectado</comment>
-</data>
-
-<data name="AIConnectionTestFailed" xml:space="preserve">
+  </data>
+  <data name="AIConnectionTestFailed" xml:space="preserve">
     <value>❌ Prueba de conexión fallida:</value>
     <comment>❌ Prueba de conexión fallida:</comment>
-</data>
-
-<data name="AITestFailed" xml:space="preserve">
+  </data>
+  <data name="AITestFailed" xml:space="preserve">
     <value>❌ Prueba fallida</value>
     <comment>❌ Prueba fallida</comment>
-</data>
-
-<data name="AIConfigSavedSuccess" xml:space="preserve">
+  </data>
+  <data name="AIConfigSavedSuccess" xml:space="preserve">
     <value>✅ ¡Configuración guardada exitosamente!</value>
     <comment>✅ ¡Configuración guardada exitosamente!</comment>
-</data>
-
-<data name="AINotTested" xml:space="preserve">
+  </data>
+  <data name="AINotTested" xml:space="preserve">
     <value>No probado</value>
     <comment>No probado</comment>
-</data>
-
-<data name="AIErrorSavingConfig" xml:space="preserve">
+  </data>
+  <data name="AIErrorSavingConfig" xml:space="preserve">
     <value>❌ Error al guardar configuración:</value>
     <comment>❌ Error al guardar configuración:</comment>
-</data>
-
-<data name="AICurrentConfigLoaded" xml:space="preserve">
+  </data>
+  <data name="AICurrentConfigLoaded" xml:space="preserve">
     <value>📂 Configuración actual cargada desde la base de datos</value>
     <comment>📂 Configuración actual cargada desde la base de datos</comment>
-</data>
-
-<data name="AIEnterAPIURL" xml:space="preserve">
+  </data>
+  <data name="AIEnterAPIURL" xml:space="preserve">
     <value>❌ Por favor ingrese la URL de API</value>
     <comment>❌ Por favor ingrese la URL de API</comment>
-</data>
-
-<data name="AIEnterModelName" xml:space="preserve">
+  </data>
+  <data name="AIEnterModelName" xml:space="preserve">
     <value>❌ Por favor ingrese el nombre del modelo</value>
     <comment>❌ Por favor ingrese el nombre del modelo</comment>
-</data>
-
-<data name="AIAPIKeyRequired" xml:space="preserve">
+  </data>
+  <data name="AIAPIKeyRequired" xml:space="preserve">
     <value>❌ Se requiere clave de API para IA externa</value>
     <comment>❌ Se requiere clave de API para IA externa</comment>
-</data>
-
-<data name="AILocalConfigActive" xml:space="preserve">
+  </data>
+  <data name="AILocalConfigActive" xml:space="preserve">
     <value>🏠 Configuración de IA local activa</value>
     <comment>🏠 Configuración de IA local activa</comment>
-</data>
-
-<data name="AIExternalConfigActive" xml:space="preserve">
+  </data>
+  <data name="AIExternalConfigActive" xml:space="preserve">
     <value>🌐 Configuración de IA externa activa</value>
     <comment>🌐 Configuración de IA externa activa</comment>
-</data>
-
-<data name="AINoAIConfigFound" xml:space="preserve">
+  </data>
+  <data name="AINoAIConfigFound" xml:space="preserve">
     <value>⚠️ No se encontró configuración de IA. Por favor configure los ajustes del servidor de IA.</value>
     <comment>⚠️ No se encontró configuración de IA. Por favor configure los ajustes del servidor de IA.</comment>
-</data>
+  </data>
+  <data name="ShuRuNiDeFenXiXuQiu" xml:space="preserve">
+    <value>Introduzca sus requisitos de análisis...</value>
+  </data>
+  <data name="ShuRuShuJiBiaoMingChengCTaoHaoFengKai" xml:space="preserve">
+    <value>Entrez les noms de table, séparés par des virgules...</value>
+  </data>
 </root>

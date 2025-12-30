@@ -32668,6 +32668,9 @@
   <data name="DSeekIntelligentAnalysisPlatform" xml:space="preserve">
     <value>AI智慧分析平台</value>
   </data>
+  <data name="DSeekEnterYourQuestion" xml:space="preserve">
+    <value>請輸入您的問題...</value>
+  </data>
   <data name="DSeekAnalysisCustomizedReports" xml:space="preserve">
     <value>AI將根據您的需求生成客製化分析報告</value>
   </data>
@@ -32685,8 +32688,8 @@
     <value>AI正在理解您的分析需求，思考最佳解決方案...</value>
   </data>
   <data name="DSeekAIServerAvailable" xml:space="preserve">
-    <value>✅ AI 伺服器可用且準備就緒。</value>
-    <comment>✅ AI 伺服器可用且準備就緒。</comment>
+    <value>✅ AI伺服器可用</value>
+    <comment>✅ AI伺服器可用</comment>
   </data>
   <data name="DSeekNoValidAIServer" xml:space="preserve">
     <value>⚠️ 未找到有效的 AI 伺服器。請聯繫系統管理員進行安裝。</value>
@@ -32753,8 +32756,8 @@
     <comment>載入失敗：</comment>
   </data>
   <data name="DSeekAIServerNotAvailableContactSupplier" xml:space="preserve">
-    <value>⚠️ AI 伺服器不可用。請聯繫供應商進行安裝。</value>
-    <comment>⚠️ AI 伺服器不可用。請聯繫供應商進行安裝。</comment>
+    <value>⚠️ AI伺服器不可用。請檢查配置或聯繫供應商。</value>
+    <comment>⚠️ AI伺服器不可用。請檢查配置或聯繫供應商。</comment>
   </data>
   <data name="DSeekPleaseSelectTablesToAnalyze" xml:space="preserve">
     <value>請選擇要分析的資料表</value>
@@ -32920,110 +32923,89 @@
     <value>✅ 設定儲存成功！</value>
     <comment>✅ 設定儲存成功！</comment>
   </data>
-
-<data name="DSeekAIServerType" xml:space="preserve">
+  <data name="DSeekAIServerType" xml:space="preserve">
     <value>AI伺服器類型</value>
     <comment>AI伺服器類型</comment>
-</data>
-<data name="DSeekLocalAI" xml:space="preserve">
+  </data>
+  <data name="DSeekLocalAI" xml:space="preserve">
     <value>本地 (Ollama)</value>
     <comment>本地 (Ollama)</comment>
-</data>
-<data name="DSeekExternalAI" xml:space="preserve">
+  </data>
+  <data name="DSeekExternalAI" xml:space="preserve">
     <value>外部AI</value>
     <comment>外部AI</comment>
-</data>
-<data name="DSeekAPIURL" xml:space="preserve">
+  </data>
+  <data name="DSeekAPIURL" xml:space="preserve">
     <value>API網址</value>
     <comment>API網址</comment>
-</data>
-<data name="DSeekAPIKey" xml:space="preserve">
+  </data>
+  <data name="DSeekAPIKey" xml:space="preserve">
     <value>API金鑰</value>
     <comment>API金鑰</comment>
-</data>
-<data name="DSeekLocalAIHint" xml:space="preserve">
+  </data>
+  <data name="DSeekLocalAIHint" xml:space="preserve">
     <value>本地：使用localhost上的Ollama伺服器 | 外部：使用OpenAI、DeepSeek API等</value>
     <comment>本地：使用localhost上的Ollama伺服器 | 外部：使用OpenAI、DeepSeek API等</comment>
-</data>
-<data name="DSeekModelHint" xml:space="preserve">
+  </data>
+  <data name="DSeekModelHint" xml:space="preserve">
     <value>本地：deepseek-r1:1.5b、llama2等 | 外部：gpt-3.5-turbo、gpt-4、deepseek-chat等</value>
     <comment>本地：deepseek-r1:1.5b、llama2等 | 外部：gpt-3.5-turbo、gpt-4、deepseek-chat等</comment>
-</data>
-<data name="DSeekShowConfiguration" xml:space="preserve">
+  </data>
+  <data name="DSeekShowConfiguration" xml:space="preserve">
     <value>顯示AI配置</value>
     <comment>顯示AI配置</comment>
-</data>
-<data name="DSeekAIServerAvailable" xml:space="preserve">
-    <value>✅ AI伺服器可用</value>
-    <comment>✅ AI伺服器可用</comment>
-</data>
-<data name="DSeekExternalAIServerAvailable" xml:space="preserve">
+  </data>
+  <data name="DSeekExternalAIServerAvailable" xml:space="preserve">
     <value>✅ 外部AI伺服器可用</value>
     <comment>✅ 外部AI伺服器可用</comment>
-</data>
-<data name="DSeekAIServerNotAvailableContactSupplier" xml:space="preserve">
-    <value>⚠️ AI伺服器不可用。請檢查配置或聯繫供應商。</value>
-    <comment>⚠️ AI伺服器不可用。請檢查配置或聯繫供應商。</comment>
-</data>
-<!-- AI伺服器配置相關詞彙 -->
-<data name="AIServerConfigurationTitle" xml:space="preserve">
+  </data>
+  <data name="AIServerConfigurationTitle" xml:space="preserve">
     <value>AI伺服器配置</value>
     <comment>AI伺服器配置</comment>
-</data>
-
-<data name="AIBackToAI" xml:space="preserve">
+  </data>
+  <data name="AIBackToAI" xml:space="preserve">
     <value>返回AI分析</value>
     <comment>返回AI分析</comment>
-</data>
-
-<data name="AIServerConfiguration" xml:space="preserve">
+  </data>
+  <data name="AIServerConfiguration" xml:space="preserve">
     <value>伺服器配置</value>
     <comment>伺服器配置</comment>
-</data>
-
-<data name="AIConfigurationSubtitle" xml:space="preserve">
+  </data>
+  <data name="AIConfigurationSubtitle" xml:space="preserve">
     <value>配置本地和外部AI服務的伺服器設定</value>
     <comment>配置本地和外部AI服務的伺服器設定</comment>
-</data>
-
-<data name="AIServerTypeTitle" xml:space="preserve">
+  </data>
+  <data name="AIServerTypeTitle" xml:space="preserve">
     <value>AI伺服器類型</value>
     <comment>AI伺服器類型</comment>
-</data>
-
-<data name="AIServerType" xml:space="preserve">
+  </data>
+  <data name="AIServerType" xml:space="preserve">
     <value>伺服器類型</value>
     <comment>伺服器類型</comment>
-</data>
-
-<data name="AILocalAI" xml:space="preserve">
+  </data>
+  <data name="AILocalAI" xml:space="preserve">
     <value>本地 (Ollama)</value>
     <comment>本地 (Ollama)</comment>
-</data>
-
-<data name="AIExternalAI" xml:space="preserve">
+  </data>
+  <data name="AIExternalAI" xml:space="preserve">
     <value>外部AI</value>
     <comment>外部AI</comment>
-</data>
-
-<data name="AIServerTypeHint" xml:space="preserve">
+  </data>
+  <data name="AIServerTypeHint" xml:space="preserve">
     <value>&lt;strong&gt;本地&lt;/strong&gt;：使用Ollama伺服器在本地執行AI模型&lt;br /&gt;
             &lt;strong&gt;外部&lt;/strong&gt;：使用雲端AI服務如OpenAI、DeepSeek API等</value>
     <comment>&lt;strong&gt;本地&lt;/strong&gt;：使用Ollama伺服器在本地執行AI模型&lt;br /&gt;
             &lt;strong&gt;外部&lt;/strong&gt;：使用雲端AI服務如OpenAI、DeepSeek API等</comment>
-</data>
-
-<data name="AIAPIURL" xml:space="preserve">
+  </data>
+  <data name="AIAPIURL" xml:space="preserve">
     <value>API網址</value>
     <comment>API網址</comment>
-</data>
-
-<data name="AIAPIURLPlaceholder" xml:space="preserve">
+  </data>
+  <data name="AIAPIURLPlaceholder" xml:space="preserve">
     <value>輸入API端點網址</value>
     <comment>輸入API端點網址</comment>
-</data>
-
-<data name="AIAPIURLExamples" xml:space="preserve">
+  </data>
+  <data name="AIAPIURLExamples" xml:space="preserve">
     <value>示例：&lt;br /&gt;
             • 本地: &lt;code&gt;http://localhost:11434/v1/chat/completions&lt;/code&gt;&lt;br /&gt;
             • OpenAI: &lt;code&gt;https://api.openai.com/v1/chat/completions&lt;/code&gt;&lt;br /&gt;
@@ -33032,266 +33014,219 @@
             • 本地: &lt;code&gt;http://localhost:11434/v1/chat/completions&lt;/code&gt;&lt;br /&gt;
             • OpenAI: &lt;code&gt;https://api.openai.com/v1/chat/completions&lt;/code&gt;&lt;br /&gt;
             • DeepSeek: &lt;code&gt;https://api.deepseek.com/v1/chat/completions&lt;/code&gt;</comment>
-</data>
-
-<data name="AIAPIKey" xml:space="preserve">
+  </data>
+  <data name="AIAPIKey" xml:space="preserve">
     <value>API金鑰</value>
     <comment>API金鑰</comment>
-</data>
-
-<data name="AIAPIKeyPlaceholder" xml:space="preserve">
+  </data>
+  <data name="AIAPIKeyPlaceholder" xml:space="preserve">
     <value>輸入外部AI服務的API金鑰</value>
     <comment>輸入外部AI服務的API金鑰</comment>
-</data>
-
-<data name="AIAPIKeyHint" xml:space="preserve">
+  </data>
+  <data name="AIAPIKeyHint" xml:space="preserve">
     <value>外部AI服務需要。請妥善保管。</value>
     <comment>外部AI服務需要。請妥善保管。</comment>
-</data>
-
-<data name="AIShowAPIKey" xml:space="preserve">
+  </data>
+  <data name="AIShowAPIKey" xml:space="preserve">
     <value>顯示API金鑰</value>
     <comment>顯示API金鑰</comment>
-</data>
-
-<data name="AIModelName" xml:space="preserve">
+  </data>
+  <data name="AIModelName" xml:space="preserve">
     <value>模型名稱</value>
     <comment>模型名稱</comment>
-</data>
-
-<data name="AIModelPlaceholder" xml:space="preserve">
+  </data>
+  <data name="AIModelPlaceholder" xml:space="preserve">
     <value>輸入模型名稱</value>
     <comment>輸入模型名稱</comment>
-</data>
-
-<data name="AIQuickPresets" xml:space="preserve">
+  </data>
+  <data name="AIQuickPresets" xml:space="preserve">
     <value>快速模型預設：</value>
     <comment>快速模型預設：</comment>
-</data>
-
-<data name="AIPresetHint" xml:space="preserve">
+  </data>
+  <data name="AIPresetHint" xml:space="preserve">
     <value>點擊預設快速設定模型名稱</value>
     <comment>點擊預設快速設定模型名稱</comment>
-</data>
-
-<data name="AICurrentStatus" xml:space="preserve">
+  </data>
+  <data name="AICurrentStatus" xml:space="preserve">
     <value>目前配置狀態</value>
     <comment>目前配置狀態</comment>
-</data>
-
-<data name="AIServerURL" xml:space="preserve">
+  </data>
+  <data name="AIServerURL" xml:space="preserve">
     <value>伺服器網址</value>
     <comment>伺服器網址</comment>
-</data>
-
-<data name="AINotConfigured" xml:space="preserve">
+  </data>
+  <data name="AINotConfigured" xml:space="preserve">
     <value>未配置</value>
     <comment>未配置</comment>
-</data>
-
-<data name="AIModel" xml:space="preserve">
+  </data>
+  <data name="AIModel" xml:space="preserve">
     <value>模型</value>
     <comment>模型</comment>
-</data>
-
-<data name="AIStatus" xml:space="preserve">
+  </data>
+  <data name="AIStatus" xml:space="preserve">
     <value>狀態</value>
     <comment>狀態</comment>
-</data>
-
-<data name="AIUnknown" xml:space="preserve">
+  </data>
+  <data name="AIUnknown" xml:space="preserve">
     <value>未知</value>
     <comment>未知</comment>
-</data>
-
-<data name="AILastTest" xml:space="preserve">
+  </data>
+  <data name="AILastTest" xml:space="preserve">
     <value>最後測試</value>
     <comment>最後測試</comment>
-</data>
-
-<data name="AINeverTested" xml:space="preserve">
+  </data>
+  <data name="AINeverTested" xml:space="preserve">
     <value>從未測試</value>
     <comment>從未測試</comment>
-</data>
-
-<data name="AITestConnection" xml:space="preserve">
+  </data>
+  <data name="AITestConnection" xml:space="preserve">
     <value>🔄 測試連接</value>
     <comment>🔄 測試連接</comment>
-</data>
-
-<data name="AISaveConfiguration" xml:space="preserve">
+  </data>
+  <data name="AISaveConfiguration" xml:space="preserve">
     <value>💾 儲存配置</value>
     <comment>💾 儲存配置</comment>
-</data>
-
-<data name="AILoadCurrent" xml:space="preserve">
+  </data>
+  <data name="AILoadCurrent" xml:space="preserve">
     <value>📂 載入目前配置</value>
     <comment>📂 載入目前配置</comment>
-</data>
-
-<data name="AIResetToDefault" xml:space="preserve">
+  </data>
+  <data name="AIResetToDefault" xml:space="preserve">
     <value>🔄 重設為預設值</value>
     <comment>🔄 重設為預設值</comment>
-</data>
-
-<data name="AIInformationHelp" xml:space="preserve">
+  </data>
+  <data name="AIInformationHelp" xml:space="preserve">
     <value>資訊與協助</value>
     <comment>資訊與協助</comment>
-</data>
-
-<data name="AILocalAISetup" xml:space="preserve">
+  </data>
+  <data name="AILocalAISetup" xml:space="preserve">
     <value>本地AI設定：</value>
     <comment>本地AI設定：</comment>
-</data>
-
-<data name="AIInstallOllama" xml:space="preserve">
+  </data>
+  <data name="AIInstallOllama" xml:space="preserve">
     <value>從&lt;a href="https://ollama.ai" target="_blank"&gt;ollama.ai&lt;/a&gt;安裝Ollama</value>
     <comment>從&lt;a href="https://ollama.ai" target="_blank"&gt;ollama.ai&lt;/a&gt;安裝Ollama</comment>
-</data>
-
-<data name="AIOllamaCommand" xml:space="preserve">
+  </data>
+  <data name="AIOllamaCommand" xml:space="preserve">
     <value>執行指令：&lt;code&gt;ollama run deepseek-r1:1.5b&lt;/code&gt; 下載並測試模型</value>
     <comment>執行指令：&lt;code&gt;ollama run deepseek-r1:1.5b&lt;/code&gt; 下載並測試模型</comment>
-</data>
-
-<data name="AIOllamaPort" xml:space="preserve">
+  </data>
+  <data name="AIOllamaPort" xml:space="preserve">
     <value>確保Ollama在端口11434上執行</value>
     <comment>確保Ollama在端口11434上執行</comment>
-</data>
-
-<data name="AIExternalAISetup" xml:space="preserve">
+  </data>
+  <data name="AIExternalAISetup" xml:space="preserve">
     <value>外部AI設定：</value>
     <comment>外部AI設定：</comment>
-</data>
-
-<data name="AIGetAPIKey" xml:space="preserve">
+  </data>
+  <data name="AIGetAPIKey" xml:space="preserve">
     <value>從您的AI服務提供商取得API金鑰</value>
     <comment>從您的AI服務提供商取得API金鑰</comment>
-</data>
-
-<data name="AICheckCredits" xml:space="preserve">
+  </data>
+  <data name="AICheckCredits" xml:space="preserve">
     <value>確保您的帳戶有足夠的額度/配額</value>
     <comment>確保您的帳戶有足夠的額度/配額</comment>
-</data>
-
-<data name="AICheckAPIDocs" xml:space="preserve">
+  </data>
+  <data name="AICheckAPIDocs" xml:space="preserve">
     <value>檢查API文件以獲取正確的端點網址</value>
     <comment>檢查API文件以獲取正確的端點網址</comment>
-</data>
-
-<data name="AINote" xml:space="preserve">
+  </data>
+  <data name="AINote" xml:space="preserve">
     <value>注意：</value>
     <comment>注意：</comment>
-</data>
-
-<data name="AIConfigurationNote" xml:space="preserve">
+  </data>
+  <data name="AIConfigurationNote" xml:space="preserve">
     <value>配置將儲存到資料庫，並用於所有AI分析功能。</value>
     <comment>配置將儲存到資料庫，並用於所有AI分析功能。</comment>
-</data>
-
-<data name="AITestingConnection" xml:space="preserve">
+  </data>
+  <data name="AITestingConnection" xml:space="preserve">
     <value>測試AI伺服器連接</value>
     <comment>測試AI伺服器連接</comment>
-</data>
-
-<data name="AIPleaseWaitConnection" xml:space="preserve">
+  </data>
+  <data name="AIPleaseWaitConnection" xml:space="preserve">
     <value>請稍候，正在測試AI伺服器連接...</value>
     <comment>請稍候，正在測試AI伺服器連接...</comment>
-</data>
-
-<!-- 後端使用的詞彙 -->
-<data name="AIErrorLoadingConfig" xml:space="preserve">
+  </data>
+  <data name="AIErrorLoadingConfig" xml:space="preserve">
     <value>載入配置錯誤：</value>
     <comment>載入配置錯誤：</comment>
-</data>
-
-<data name="AILocalServerReachable" xml:space="preserve">
+  </data>
+  <data name="AILocalServerReachable" xml:space="preserve">
     <value>✅ 本地AI伺服器可連接</value>
     <comment>✅ 本地AI伺服器可連接</comment>
-</data>
-
-<data name="AICannotConnectLocal" xml:space="preserve">
+  </data>
+  <data name="AICannotConnectLocal" xml:space="preserve">
     <value>❌ 無法連接到本地AI伺服器</value>
     <comment>❌ 無法連接到本地AI伺服器</comment>
-</data>
-
-<data name="AIExternalServerReachable" xml:space="preserve">
+  </data>
+  <data name="AIExternalServerReachable" xml:space="preserve">
     <value>✅ 外部AI伺服器可連接</value>
     <comment>✅ 外部AI伺服器可連接</comment>
-</data>
-
-<data name="AICannotConnectExternal" xml:space="preserve">
+  </data>
+  <data name="AICannotConnectExternal" xml:space="preserve">
     <value>❌ 無法連接到外部AI伺服器</value>
     <comment>❌ 無法連接到外部AI伺服器</comment>
-</data>
-
-<data name="AIConnected" xml:space="preserve">
+  </data>
+  <data name="AIConnected" xml:space="preserve">
     <value>✅ 已連接</value>
     <comment>✅ 已連接</comment>
-</data>
-
-<data name="AINotConnected" xml:space="preserve">
+  </data>
+  <data name="AINotConnected" xml:space="preserve">
     <value>❌ 未連接</value>
     <comment>❌ 未連接</comment>
-</data>
-
-<data name="AIConnectionTestFailed" xml:space="preserve">
+  </data>
+  <data name="AIConnectionTestFailed" xml:space="preserve">
     <value>❌ 連接測試失敗：</value>
     <comment>❌ 連接測試失敗：</comment>
-</data>
-
-<data name="AITestFailed" xml:space="preserve">
+  </data>
+  <data name="AITestFailed" xml:space="preserve">
     <value>❌ 測試失敗</value>
     <comment>❌ 測試失敗</comment>
-</data>
-
-<data name="AIConfigSavedSuccess" xml:space="preserve">
+  </data>
+  <data name="AIConfigSavedSuccess" xml:space="preserve">
     <value>✅ 配置儲存成功！</value>
     <comment>✅ 配置儲存成功！</comment>
-</data>
-
-<data name="AINotTested" xml:space="preserve">
+  </data>
+  <data name="AINotTested" xml:space="preserve">
     <value>未測試</value>
     <comment>未測試</comment>
-</data>
-
-<data name="AIErrorSavingConfig" xml:space="preserve">
+  </data>
+  <data name="AIErrorSavingConfig" xml:space="preserve">
     <value>❌ 儲存配置錯誤：</value>
     <comment>❌ 儲存配置錯誤：</comment>
-</data>
-
-<data name="AICurrentConfigLoaded" xml:space="preserve">
+  </data>
+  <data name="AICurrentConfigLoaded" xml:space="preserve">
     <value>📂 從資料庫載入目前配置</value>
     <comment>📂 從資料庫載入目前配置</comment>
-</data>
-
-<data name="AIEnterAPIURL" xml:space="preserve">
+  </data>
+  <data name="AIEnterAPIURL" xml:space="preserve">
     <value>❌ 請輸入API網址</value>
     <comment>❌ 請輸入API網址</comment>
-</data>
-
-<data name="AIEnterModelName" xml:space="preserve">
+  </data>
+  <data name="AIEnterModelName" xml:space="preserve">
     <value>❌ 請輸入模型名稱</value>
     <comment>❌ 請輸入模型名稱</comment>
-</data>
-
-<data name="AIAPIKeyRequired" xml:space="preserve">
+  </data>
+  <data name="AIAPIKeyRequired" xml:space="preserve">
     <value>❌ 外部AI需要API金鑰</value>
     <comment>❌ 外部AI需要API金鑰</comment>
-</data>
-
-<data name="AILocalConfigActive" xml:space="preserve">
+  </data>
+  <data name="AILocalConfigActive" xml:space="preserve">
     <value>🏠 本地AI配置已啟用</value>
     <comment>🏠 本地AI配置已啟用</comment>
-</data>
-
-<data name="AIExternalConfigActive" xml:space="preserve">
+  </data>
+  <data name="AIExternalConfigActive" xml:space="preserve">
     <value>🌐 外部AI配置已啟用</value>
     <comment>🌐 外部AI配置已啟用</comment>
-</data>
-
-<data name="AINoAIConfigFound" xml:space="preserve">
+  </data>
+  <data name="AINoAIConfigFound" xml:space="preserve">
     <value>⚠️ 未找到AI配置。請配置AI伺服器設定。</value>
     <comment>⚠️ 未找到AI配置。請配置AI伺服器設定。</comment>
-</data>
+  </data>
+  <data name="ShuRuNiDeFenXiXuQiu" xml:space="preserve">
+    <value>輸入您的分析需求...</value>
+  </data>
+  <data name="ShuRuShuJiBiaoMingChengCTaoHaoFengKai" xml:space="preserve">
+    <value>輸入資料表名稱，以逗號分隔...</value>
+  </data>
 </root>

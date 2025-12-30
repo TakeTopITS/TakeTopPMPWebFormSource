@@ -32834,8 +32834,8 @@
     <comment>"分析要件を理解し、最適な解決策を考えています..."</comment>
   </data>
   <data name="DSeekAIServerAvailable" xml:space="preserve">
-    <value>✅ AIサーバーは利用可能で準備完了です。</value>
-    <comment>✅ AIサーバーは利用可能で準備完了です。</comment>
+    <value>✅ AIサーバー利用可能</value>
+    <comment>✅ AIサーバー利用可能</comment>
   </data>
   <data name="DSeekNoValidAIServer" xml:space="preserve">
     <value>⚠️ 有効なAIサーバーが見つかりませんでした。システム管理者に連絡してインストールしてください。</value>
@@ -32902,8 +32902,8 @@
     <comment>読み込み失敗: </comment>
   </data>
   <data name="DSeekAIServerNotAvailableContactSupplier" xml:space="preserve">
-    <value>⚠️ AIサーバーは利用できません。サプライヤーに連絡してインストールしてください。</value>
-    <comment>⚠️ AIサーバーは利用できません。サプライヤーに連絡してインストールしてください。</comment>
+    <value>⚠️ AIサーバーが利用できません。設定を確認するか、サプライヤーにお問い合わせください。</value>
+    <comment>⚠️ AIサーバーが利用できません。設定を確認するか、サプライヤーにお問い合わせください。</comment>
   </data>
   <data name="DSeekPleaseSelectTablesToAnalyze" xml:space="preserve">
     <value>分析するテーブルを選択してください</value>
@@ -33069,110 +33069,89 @@
     <value>✅ 設定が正常に保存されました！</value>
     <comment>✅ 設定が正常に保存されました！</comment>
   </data>
-
-<data name="DSeekAIServerType" xml:space="preserve">
+  <data name="DSeekAIServerType" xml:space="preserve">
     <value>AIサーバータイプ</value>
     <comment>AIサーバータイプ</comment>
-</data>
-<data name="DSeekLocalAI" xml:space="preserve">
+  </data>
+  <data name="DSeekLocalAI" xml:space="preserve">
     <value>ローカル（Ollama）</value>
     <comment>ローカル（Ollama）</comment>
-</data>
-<data name="DSeekExternalAI" xml:space="preserve">
+  </data>
+  <data name="DSeekExternalAI" xml:space="preserve">
     <value>外部AI</value>
     <comment>外部AI</comment>
-</data>
-<data name="DSeekAPIURL" xml:space="preserve">
+  </data>
+  <data name="DSeekAPIURL" xml:space="preserve">
     <value>API URL</value>
     <comment>API URL</comment>
-</data>
-<data name="DSeekAPIKey" xml:space="preserve">
+  </data>
+  <data name="DSeekAPIKey" xml:space="preserve">
     <value>APIキー</value>
     <comment>APIキー</comment>
-</data>
-<data name="DSeekLocalAIHint" xml:space="preserve">
+  </data>
+  <data name="DSeekLocalAIHint" xml:space="preserve">
     <value>ローカル：localhost上のOllamaサーバーを使用 | 外部：OpenAI、DeepSeek APIなどを使用</value>
     <comment>ローカル：localhost上のOllamaサーバーを使用 | 外部：OpenAI、DeepSeek APIなどを使用</comment>
-</data>
-<data name="DSeekModelHint" xml:space="preserve">
+  </data>
+  <data name="DSeekModelHint" xml:space="preserve">
     <value>ローカル：deepseek-r1:1.5b、llama2など | 外部：gpt-3.5-turbo、gpt-4、deepseek-chatなど</value>
     <comment>ローカル：deepseek-r1:1.5b、llama2など | 外部：gpt-3.5-turbo、gpt-4、deepseek-chatなど</comment>
-</data>
-<data name="DSeekShowConfiguration" xml:space="preserve">
+  </data>
+  <data name="DSeekShowConfiguration" xml:space="preserve">
     <value>AI設定を表示</value>
     <comment>AI設定を表示</comment>
-</data>
-<data name="DSeekAIServerAvailable" xml:space="preserve">
-    <value>✅ AIサーバー利用可能</value>
-    <comment>✅ AIサーバー利用可能</comment>
-</data>
-<data name="DSeekExternalAIServerAvailable" xml:space="preserve">
+  </data>
+  <data name="DSeekExternalAIServerAvailable" xml:space="preserve">
     <value>✅ 外部AIサーバー利用可能</value>
     <comment>✅ 外部AIサーバー利用可能</comment>
-</data>
-<data name="DSeekAIServerNotAvailableContactSupplier" xml:space="preserve">
-    <value>⚠️ AIサーバーが利用できません。設定を確認するか、サプライヤーにお問い合わせください。</value>
-    <comment>⚠️ AIサーバーが利用できません。設定を確認するか、サプライヤーにお問い合わせください。</comment>
-</data>
-<!-- AIサーバー設定関連用語 -->
-<data name="AIServerConfigurationTitle" xml:space="preserve">
+  </data>
+  <data name="AIServerConfigurationTitle" xml:space="preserve">
     <value>AIサーバー設定</value>
     <comment>AIサーバー設定</comment>
-</data>
-
-<data name="AIBackToAI" xml:space="preserve">
+  </data>
+  <data name="AIBackToAI" xml:space="preserve">
     <value>AI分析に戻る</value>
     <comment>AI分析に戻る</comment>
-</data>
-
-<data name="AIServerConfiguration" xml:space="preserve">
+  </data>
+  <data name="AIServerConfiguration" xml:space="preserve">
     <value>サーバー設定</value>
     <comment>サーバー設定</comment>
-</data>
-
-<data name="AIConfigurationSubtitle" xml:space="preserve">
+  </data>
+  <data name="AIConfigurationSubtitle" xml:space="preserve">
     <value>ローカルおよび外部AIサービスのサーバー設定を構成</value>
     <comment>ローカルおよび外部AIサービスのサーバー設定を構成</comment>
-</data>
-
-<data name="AIServerTypeTitle" xml:space="preserve">
+  </data>
+  <data name="AIServerTypeTitle" xml:space="preserve">
     <value>AIサーバータイプ</value>
     <comment>AIサーバータイプ</comment>
-</data>
-
-<data name="AIServerType" xml:space="preserve">
+  </data>
+  <data name="AIServerType" xml:space="preserve">
     <value>サーバータイプ</value>
     <comment>サーバータイプ</comment>
-</data>
-
-<data name="AILocalAI" xml:space="preserve">
+  </data>
+  <data name="AILocalAI" xml:space="preserve">
     <value>ローカル（Ollama）</value>
     <comment>ローカル（Ollama）</comment>
-</data>
-
-<data name="AIExternalAI" xml:space="preserve">
+  </data>
+  <data name="AIExternalAI" xml:space="preserve">
     <value>外部AI</value>
     <comment>外部AI</comment>
-</data>
-
-<data name="AIServerTypeHint" xml:space="preserve">
+  </data>
+  <data name="AIServerTypeHint" xml:space="preserve">
     <value>&lt;strong&gt;ローカル&lt;/strong&gt;：Ollamaサーバーを使用してAIモデルをローカルで実行&lt;br /&gt;
             &lt;strong&gt;外部&lt;/strong&gt;：OpenAI、DeepSeek APIなどのクラウドAIサービスを使用</value>
     <comment>&lt;strong&gt;ローカル&lt;/strong&gt;：Ollamaサーバーを使用してAIモデルをローカルで実行&lt;br /&gt;
             &lt;strong&gt;外部&lt;/strong&gt;：OpenAI、DeepSeek APIなどのクラウドAIサービスを使用</comment>
-</data>
-
-<data name="AIAPIURL" xml:space="preserve">
+  </data>
+  <data name="AIAPIURL" xml:space="preserve">
     <value>API URL</value>
     <comment>API URL</comment>
-</data>
-
-<data name="AIAPIURLPlaceholder" xml:space="preserve">
+  </data>
+  <data name="AIAPIURLPlaceholder" xml:space="preserve">
     <value>APIエンドポイントURLを入力</value>
     <comment>APIエンドポイントURLを入力</comment>
-</data>
-
-<data name="AIAPIURLExamples" xml:space="preserve">
+  </data>
+  <data name="AIAPIURLExamples" xml:space="preserve">
     <value>例：&lt;br /&gt;
             • ローカル: &lt;code&gt;http://localhost:11434/v1/chat/completions&lt;/code&gt;&lt;br /&gt;
             • OpenAI: &lt;code&gt;https://api.openai.com/v1/chat/completions&lt;/code&gt;&lt;br /&gt;
@@ -33181,266 +33160,219 @@
             • ローカル: &lt;code&gt;http://localhost:11434/v1/chat/completions&lt;/code&gt;&lt;br /&gt;
             • OpenAI: &lt;code&gt;https://api.openai.com/v1/chat/completions&lt;/code&gt;&lt;br /&gt;
             • DeepSeek: &lt;code&gt;https://api.deepseek.com/v1/chat/completions&lt;/code&gt;</comment>
-</data>
-
-<data name="AIAPIKey" xml:space="preserve">
+  </data>
+  <data name="AIAPIKey" xml:space="preserve">
     <value>APIキー</value>
     <comment>APIキー</comment>
-</data>
-
-<data name="AIAPIKeyPlaceholder" xml:space="preserve">
+  </data>
+  <data name="AIAPIKeyPlaceholder" xml:space="preserve">
     <value>外部AIサービスのAPIキーを入力</value>
     <comment>外部AIサービスのAPIキーを入力</comment>
-</data>
-
-<data name="AIAPIKeyHint" xml:space="preserve">
+  </data>
+  <data name="AIAPIKeyHint" xml:space="preserve">
     <value>外部AIサービスに必要です。安全に保管してください。</value>
     <comment>外部AIサービスに必要です。安全に保管してください。</comment>
-</data>
-
-<data name="AIShowAPIKey" xml:space="preserve">
+  </data>
+  <data name="AIShowAPIKey" xml:space="preserve">
     <value>APIキーを表示</value>
     <comment>APIキーを表示</comment>
-</data>
-
-<data name="AIModelName" xml:space="preserve">
+  </data>
+  <data name="AIModelName" xml:space="preserve">
     <value>モデル名</value>
     <comment>モデル名</comment>
-</data>
-
-<data name="AIModelPlaceholder" xml:space="preserve">
+  </data>
+  <data name="AIModelPlaceholder" xml:space="preserve">
     <value>モデル名を入力</value>
     <comment>モデル名を入力</comment>
-</data>
-
-<data name="AIQuickPresets" xml:space="preserve">
+  </data>
+  <data name="AIQuickPresets" xml:space="preserve">
     <value>クイックモデルプリセット：</value>
     <comment>クイックモデルプリセット：</comment>
-</data>
-
-<data name="AIPresetHint" xml:space="preserve">
+  </data>
+  <data name="AIPresetHint" xml:space="preserve">
     <value>プリセットをクリックしてモデル名を素早く設定</value>
     <comment>プリセットをクリックしてモデル名を素早く設定</comment>
-</data>
-
-<data name="AICurrentStatus" xml:space="preserve">
+  </data>
+  <data name="AICurrentStatus" xml:space="preserve">
     <value>現在の設定ステータス</value>
     <comment>現在の設定ステータス</comment>
-</data>
-
-<data name="AIServerURL" xml:space="preserve">
+  </data>
+  <data name="AIServerURL" xml:space="preserve">
     <value>サーバーURL</value>
     <comment>サーバーURL</comment>
-</data>
-
-<data name="AINotConfigured" xml:space="preserve">
+  </data>
+  <data name="AINotConfigured" xml:space="preserve">
     <value>未設定</value>
     <comment>未設定</comment>
-</data>
-
-<data name="AIModel" xml:space="preserve">
+  </data>
+  <data name="AIModel" xml:space="preserve">
     <value>モデル</value>
     <comment>モデル</comment>
-</data>
-
-<data name="AIStatus" xml:space="preserve">
+  </data>
+  <data name="AIStatus" xml:space="preserve">
     <value>ステータス</value>
     <comment>ステータス</comment>
-</data>
-
-<data name="AIUnknown" xml:space="preserve">
+  </data>
+  <data name="AIUnknown" xml:space="preserve">
     <value>不明</value>
     <comment>不明</comment>
-</data>
-
-<data name="AILastTest" xml:space="preserve">
+  </data>
+  <data name="AILastTest" xml:space="preserve">
     <value>最終テスト</value>
     <comment>最終テスト</comment>
-</data>
-
-<data name="AINeverTested" xml:space="preserve">
+  </data>
+  <data name="AINeverTested" xml:space="preserve">
     <value>未テスト</value>
     <comment>未テスト</comment>
-</data>
-
-<data name="AITestConnection" xml:space="preserve">
+  </data>
+  <data name="AITestConnection" xml:space="preserve">
     <value>🔄 接続テスト</value>
     <comment>🔄 接続テスト</comment>
-</data>
-
-<data name="AISaveConfiguration" xml:space="preserve">
+  </data>
+  <data name="AISaveConfiguration" xml:space="preserve">
     <value>💾 設定を保存</value>
     <comment>💾 設定を保存</comment>
-</data>
-
-<data name="AILoadCurrent" xml:space="preserve">
+  </data>
+  <data name="AILoadCurrent" xml:space="preserve">
     <value>📂 現在の設定を読み込む</value>
     <comment>📂 現在の設定を読み込む</comment>
-</data>
-
-<data name="AIResetToDefault" xml:space="preserve">
+  </data>
+  <data name="AIResetToDefault" xml:space="preserve">
     <value>🔄 デフォルトにリセット</value>
     <comment>🔄 デフォルトにリセット</comment>
-</data>
-
-<data name="AIInformationHelp" xml:space="preserve">
+  </data>
+  <data name="AIInformationHelp" xml:space="preserve">
     <value>情報 &amp; ヘルプ</value>
     <comment>情報 &amp; ヘルプ</comment>
-</data>
-
-<data name="AILocalAISetup" xml:space="preserve">
+  </data>
+  <data name="AILocalAISetup" xml:space="preserve">
     <value>ローカルAI設定：</value>
     <comment>ローカルAI設定：</comment>
-</data>
-
-<data name="AIInstallOllama" xml:space="preserve">
+  </data>
+  <data name="AIInstallOllama" xml:space="preserve">
     <value>&lt;a href="https://ollama.ai" target="_blank"&gt;ollama.ai&lt;/a&gt;からOllamaをインストール</value>
     <comment>&lt;a href="https://ollama.ai" target="_blank"&gt;ollama.ai&lt;/a&gt;からOllamaをインストール</comment>
-</data>
-
-<data name="AIOllamaCommand" xml:space="preserve">
+  </data>
+  <data name="AIOllamaCommand" xml:space="preserve">
     <value>コマンドを実行：&lt;code&gt;ollama run deepseek-r1:1.5b&lt;/code&gt; モデルをダウンロードしてテスト</value>
     <comment>コマンドを実行：&lt;code&gt;ollama run deepseek-r1:1.5b&lt;/code&gt; モデルをダウンロードしてテスト</comment>
-</data>
-
-<data name="AIOllamaPort" xml:space="preserve">
+  </data>
+  <data name="AIOllamaPort" xml:space="preserve">
     <value>Ollamaがポート11434で実行されていることを確認</value>
     <comment>Ollamaがポート11434で実行されていることを確認</comment>
-</data>
-
-<data name="AIExternalAISetup" xml:space="preserve">
+  </data>
+  <data name="AIExternalAISetup" xml:space="preserve">
     <value>外部AI設定：</value>
     <comment>外部AI設定：</comment>
-</data>
-
-<data name="AIGetAPIKey" xml:space="preserve">
+  </data>
+  <data name="AIGetAPIKey" xml:space="preserve">
     <value>AIサービスプロバイダーからAPIキーを取得</value>
     <comment>AIサービスプロバイダーからAPIキーを取得</comment>
-</data>
-
-<data name="AICheckCredits" xml:space="preserve">
+  </data>
+  <data name="AICheckCredits" xml:space="preserve">
     <value>アカウントに十分なクレジット/クォータがあることを確認</value>
     <comment>アカウントに十分なクレジット/クォータがあることを確認</comment>
-</data>
-
-<data name="AICheckAPIDocs" xml:space="preserve">
+  </data>
+  <data name="AICheckAPIDocs" xml:space="preserve">
     <value>正しいエンドポイントURLのAPIドキュメントを確認</value>
     <comment>正しいエンドポイントURLのAPIドキュメントを確認</comment>
-</data>
-
-<data name="AINote" xml:space="preserve">
+  </data>
+  <data name="AINote" xml:space="preserve">
     <value>注意：</value>
     <comment>注意：</comment>
-</data>
-
-<data name="AIConfigurationNote" xml:space="preserve">
+  </data>
+  <data name="AIConfigurationNote" xml:space="preserve">
     <value>設定はデータベースに保存され、すべてのAI分析機能に使用されます。</value>
     <comment>設定はデータベースに保存され、すべてのAI分析機能に使用されます。</comment>
-</data>
-
-<data name="AITestingConnection" xml:space="preserve">
+  </data>
+  <data name="AITestingConnection" xml:space="preserve">
     <value>AIサーバー接続テスト中</value>
     <comment>AIサーバー接続テスト中</comment>
-</data>
-
-<data name="AIPleaseWaitConnection" xml:space="preserve">
+  </data>
+  <data name="AIPleaseWaitConnection" xml:space="preserve">
     <value>AIサーバーへの接続をテスト中です。お待ちください...</value>
     <comment>AIサーバーへの接続をテスト中です。お待ちください...</comment>
-</data>
-
-<!-- バックエンドで使用される用語 -->
-<data name="AIErrorLoadingConfig" xml:space="preserve">
+  </data>
+  <data name="AIErrorLoadingConfig" xml:space="preserve">
     <value>設定読み込みエラー：</value>
     <comment>設定読み込みエラー：</comment>
-</data>
-
-<data name="AILocalServerReachable" xml:space="preserve">
+  </data>
+  <data name="AILocalServerReachable" xml:space="preserve">
     <value>✅ ローカルAIサーバーに接続可能</value>
     <comment>✅ ローカルAIサーバーに接続可能</comment>
-</data>
-
-<data name="AICannotConnectLocal" xml:space="preserve">
+  </data>
+  <data name="AICannotConnectLocal" xml:space="preserve">
     <value>❌ ローカルAIサーバーに接続できません</value>
     <comment>❌ ローカルAIサーバーに接続できません</comment>
-</data>
-
-<data name="AIExternalServerReachable" xml:space="preserve">
+  </data>
+  <data name="AIExternalServerReachable" xml:space="preserve">
     <value>✅ 外部AIサーバーに接続可能</value>
     <comment>✅ 外部AIサーバーに接続可能</comment>
-</data>
-
-<data name="AICannotConnectExternal" xml:space="preserve">
+  </data>
+  <data name="AICannotConnectExternal" xml:space="preserve">
     <value>❌ 外部AIサーバーに接続できません</value>
     <comment>❌ 外部AIサーバーに接続できません</comment>
-</data>
-
-<data name="AIConnected" xml:space="preserve">
+  </data>
+  <data name="AIConnected" xml:space="preserve">
     <value>✅ 接続済み</value>
     <comment>✅ 接続済み</comment>
-</data>
-
-<data name="AINotConnected" xml:space="preserve">
+  </data>
+  <data name="AINotConnected" xml:space="preserve">
     <value>❌ 未接続</value>
     <comment>❌ 未接続</comment>
-</data>
-
-<data name="AIConnectionTestFailed" xml:space="preserve">
+  </data>
+  <data name="AIConnectionTestFailed" xml:space="preserve">
     <value>❌ 接続テスト失敗：</value>
     <comment>❌ 接続テスト失敗：</comment>
-</data>
-
-<data name="AITestFailed" xml:space="preserve">
+  </data>
+  <data name="AITestFailed" xml:space="preserve">
     <value>❌ テスト失敗</value>
     <comment>❌ テスト失敗</comment>
-</data>
-
-<data name="AIConfigSavedSuccess" xml:space="preserve">
+  </data>
+  <data name="AIConfigSavedSuccess" xml:space="preserve">
     <value>✅ 設定が正常に保存されました！</value>
     <comment>✅ 設定が正常に保存されました！</comment>
-</data>
-
-<data name="AINotTested" xml:space="preserve">
+  </data>
+  <data name="AINotTested" xml:space="preserve">
     <value>未テスト</value>
     <comment>未テスト</comment>
-</data>
-
-<data name="AIErrorSavingConfig" xml:space="preserve">
+  </data>
+  <data name="AIErrorSavingConfig" xml:space="preserve">
     <value>❌ 設定保存エラー：</value>
     <comment>❌ 設定保存エラー：</comment>
-</data>
-
-<data name="AICurrentConfigLoaded" xml:space="preserve">
+  </data>
+  <data name="AICurrentConfigLoaded" xml:space="preserve">
     <value>📂 データベースから現在の設定を読み込み</value>
     <comment>📂 データベースから現在の設定を読み込み</comment>
-</data>
-
-<data name="AIEnterAPIURL" xml:space="preserve">
+  </data>
+  <data name="AIEnterAPIURL" xml:space="preserve">
     <value>❌ API URLを入力してください</value>
     <comment>❌ API URLを入力してください</comment>
-</data>
-
-<data name="AIEnterModelName" xml:space="preserve">
+  </data>
+  <data name="AIEnterModelName" xml:space="preserve">
     <value>❌ モデル名を入力してください</value>
     <comment>❌ モデル名を入力してください</comment>
-</data>
-
-<data name="AIAPIKeyRequired" xml:space="preserve">
+  </data>
+  <data name="AIAPIKeyRequired" xml:space="preserve">
     <value>❌ 外部AIにはAPIキーが必要です</value>
     <comment>❌ 外部AIにはAPIキーが必要です</comment>
-</data>
-
-<data name="AILocalConfigActive" xml:space="preserve">
+  </data>
+  <data name="AILocalConfigActive" xml:space="preserve">
     <value>🏠 ローカルAI設定が有効です</value>
     <comment>🏠 ローカルAI設定が有効です</comment>
-</data>
-
-<data name="AIExternalConfigActive" xml:space="preserve">
+  </data>
+  <data name="AIExternalConfigActive" xml:space="preserve">
     <value>🌐 外部AI設定が有効です</value>
     <comment>🌐 外部AI設定が有効です</comment>
-</data>
-
-<data name="AINoAIConfigFound" xml:space="preserve">
+  </data>
+  <data name="AINoAIConfigFound" xml:space="preserve">
     <value>⚠️ AI設定が見つかりません。AIサーバー設定を構成してください。</value>
     <comment>⚠️ AI設定が見つかりません。AIサーバー設定を構成してください。</comment>
-</data>
+  </data>
+  <data name="ShuRuNiDeFenXiXuQiu" xml:space="preserve">
+    <value>分析要件を入力してください...</value>
+  </data>
+  <data name="ShuRuShuJiBiaoMingChengCTaoHaoFengKai" xml:space="preserve">
+    <value>テーブル名をカンマ区切りで入力してください...</value>
+  </data>
 </root>

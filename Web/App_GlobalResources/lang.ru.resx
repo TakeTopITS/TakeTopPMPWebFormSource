@@ -32669,6 +32669,9 @@
   <data name="DSeekIntelligentAnalysisPlatform" xml:space="preserve">
     <value>Платформа интеллектуального анализа AI</value>
   </data>
+  <data name="DSeekEnterYourQuestion" xml:space="preserve">
+    <value>Пожалуйста, введите ваш вопрос...</value>
+  </data>
   <data name="DSeekAnalysisCustomizedReports" xml:space="preserve">
     <value>AI создаст индивидуальный аналитический отчет в соответствии с вашими требованиями</value>
   </data>
@@ -32686,8 +32689,8 @@
     <value>AI понимает ваши аналитические потребности и обдумывает оптимальное решение...</value>
   </data>
   <data name="DSeekAIServerAvailable" xml:space="preserve">
-    <value>✅ AI-сервер доступен и готов к использованию.</value>
-    <comment>✅ AI-сервер доступен и готов к использованию.</comment>
+    <value>✅ ИИ-сервер доступен</value>
+    <comment>✅ ИИ-сервер доступен</comment>
   </data>
   <data name="DSeekNoValidAIServer" xml:space="preserve">
     <value>⚠️ Действительный AI-сервер не найден. Обратитесь к системному администратору для установки.</value>
@@ -32754,8 +32757,8 @@
     <comment>Ошибка загрузки: </comment>
   </data>
   <data name="DSeekAIServerNotAvailableContactSupplier" xml:space="preserve">
-    <value>⚠️ AI-сервер недоступен. Обратитесь к поставщику для установки.</value>
-    <comment>⚠️ AI-сервер недоступен. Обратитесь к поставщику для установки.</comment>
+    <value>⚠️ ИИ-сервер недоступен. Проверьте конфигурацию или обратитесь к поставщику.</value>
+    <comment>⚠️ ИИ-сервер недоступен. Проверьте конфигурацию или обратитесь к поставщику.</comment>
   </data>
   <data name="DSeekPleaseSelectTablesToAnalyze" xml:space="preserve">
     <value>Пожалуйста, выберите таблицы для анализа</value>
@@ -32921,110 +32924,89 @@
     <value>✅ Конфигурация успешно сохранена!</value>
     <comment>✅ Конфигурация успешно сохранена!</comment>
   </data>
-
-<data name="DSeekAIServerType" xml:space="preserve">
+  <data name="DSeekAIServerType" xml:space="preserve">
     <value>Тип ИИ-сервера</value>
     <comment>Тип ИИ-сервера</comment>
-</data>
-<data name="DSeekLocalAI" xml:space="preserve">
+  </data>
+  <data name="DSeekLocalAI" xml:space="preserve">
     <value>Локальный (Ollama)</value>
     <comment>Локальный (Ollama)</comment>
-</data>
-<data name="DSeekExternalAI" xml:space="preserve">
+  </data>
+  <data name="DSeekExternalAI" xml:space="preserve">
     <value>Внешний ИИ</value>
     <comment>Внешний ИИ</comment>
-</data>
-<data name="DSeekAPIURL" xml:space="preserve">
+  </data>
+  <data name="DSeekAPIURL" xml:space="preserve">
     <value>URL API</value>
     <comment>URL API</comment>
-</data>
-<data name="DSeekAPIKey" xml:space="preserve">
+  </data>
+  <data name="DSeekAPIKey" xml:space="preserve">
     <value>Ключ API</value>
     <comment>Ключ API</comment>
-</data>
-<data name="DSeekLocalAIHint" xml:space="preserve">
+  </data>
+  <data name="DSeekLocalAIHint" xml:space="preserve">
     <value>Локальный: использовать сервер Ollama на localhost | Внешний: использовать OpenAI, DeepSeek API и т.д.</value>
     <comment>Локальный: использовать сервер Ollama на localhost | Внешний: использовать OpenAI, DeepSeek API и т.д.</comment>
-</data>
-<data name="DSeekModelHint" xml:space="preserve">
+  </data>
+  <data name="DSeekModelHint" xml:space="preserve">
     <value>Локальный: deepseek-r1:1.5b, llama2 и др. | Внешний: gpt-3.5-turbo, gpt-4, deepseek-chat и др.</value>
     <comment>Локальный: deepseek-r1:1.5b, llama2 и др. | Внешний: gpt-3.5-turbo, gpt-4, deepseek-chat и др.</comment>
-</data>
-<data name="DSeekShowConfiguration" xml:space="preserve">
+  </data>
+  <data name="DSeekShowConfiguration" xml:space="preserve">
     <value>Показать конфигурацию ИИ</value>
     <comment>Показать конфигурацию ИИ</comment>
-</data>
-<data name="DSeekAIServerAvailable" xml:space="preserve">
-    <value>✅ ИИ-сервер доступен</value>
-    <comment>✅ ИИ-сервер доступен</comment>
-</data>
-<data name="DSeekExternalAIServerAvailable" xml:space="preserve">
+  </data>
+  <data name="DSeekExternalAIServerAvailable" xml:space="preserve">
     <value>✅ Внешний ИИ-сервер доступен</value>
     <comment>✅ Внешний ИИ-сервер доступен</comment>
-</data>
-<data name="DSeekAIServerNotAvailableContactSupplier" xml:space="preserve">
-    <value>⚠️ ИИ-сервер недоступен. Проверьте конфигурацию или обратитесь к поставщику.</value>
-    <comment>⚠️ ИИ-сервер недоступен. Проверьте конфигурацию или обратитесь к поставщику.</comment>
-</data>
-<!-- Термины, связанные с конфигурацией ИИ-сервера -->
-<data name="AIServerConfigurationTitle" xml:space="preserve">
+  </data>
+  <data name="AIServerConfigurationTitle" xml:space="preserve">
     <value>Конфигурация ИИ-сервера</value>
     <comment>Конфигурация ИИ-сервера</comment>
-</data>
-
-<data name="AIBackToAI" xml:space="preserve">
+  </data>
+  <data name="AIBackToAI" xml:space="preserve">
     <value>Вернуться к анализу ИИ</value>
     <comment>Вернуться к анализу ИИ</comment>
-</data>
-
-<data name="AIServerConfiguration" xml:space="preserve">
+  </data>
+  <data name="AIServerConfiguration" xml:space="preserve">
     <value>Конфигурация сервера</value>
     <comment>Конфигурация сервера</comment>
-</data>
-
-<data name="AIConfigurationSubtitle" xml:space="preserve">
+  </data>
+  <data name="AIConfigurationSubtitle" xml:space="preserve">
     <value>Настройте параметры сервера для локальных и внешних ИИ-сервисов</value>
     <comment>Настройте параметры сервера для локальных и внешних ИИ-сервисов</comment>
-</data>
-
-<data name="AIServerTypeTitle" xml:space="preserve">
+  </data>
+  <data name="AIServerTypeTitle" xml:space="preserve">
     <value>Тип ИИ-сервера</value>
     <comment>Тип ИИ-сервера</comment>
-</data>
-
-<data name="AIServerType" xml:space="preserve">
+  </data>
+  <data name="AIServerType" xml:space="preserve">
     <value>Тип сервера</value>
     <comment>Тип сервера</comment>
-</data>
-
-<data name="AILocalAI" xml:space="preserve">
+  </data>
+  <data name="AILocalAI" xml:space="preserve">
     <value>Локальный (Ollama)</value>
     <comment>Локальный (Ollama)</comment>
-</data>
-
-<data name="AIExternalAI" xml:space="preserve">
+  </data>
+  <data name="AIExternalAI" xml:space="preserve">
     <value>Внешний ИИ</value>
     <comment>Внешний ИИ</comment>
-</data>
-
-<data name="AIServerTypeHint" xml:space="preserve">
+  </data>
+  <data name="AIServerTypeHint" xml:space="preserve">
     <value>&lt;strong&gt;Локальный&lt;/strong&gt;: Запускайте модели ИИ локально с использованием сервера Ollama&lt;br /&gt;
             &lt;strong&gt;Внешний&lt;/strong&gt;: Используйте облачные ИИ-сервисы, такие как OpenAI, DeepSeek API и т.д.</value>
     <comment>&lt;strong&gt;Локальный&lt;/strong&gt;: Запускайте модели ИИ локально с использованием сервера Ollama&lt;br /&gt;
             &lt;strong&gt;Внешний&lt;/strong&gt;: Используйте облачные ИИ-сервисы, такие как OpenAI, DeepSeek API и т.д.</comment>
-</data>
-
-<data name="AIAPIURL" xml:space="preserve">
+  </data>
+  <data name="AIAPIURL" xml:space="preserve">
     <value>URL API</value>
     <comment>URL API</comment>
-</data>
-
-<data name="AIAPIURLPlaceholder" xml:space="preserve">
+  </data>
+  <data name="AIAPIURLPlaceholder" xml:space="preserve">
     <value>Введите URL конечной точки API</value>
     <comment>Введите URL конечной точки API</comment>
-</data>
-
-<data name="AIAPIURLExamples" xml:space="preserve">
+  </data>
+  <data name="AIAPIURLExamples" xml:space="preserve">
     <value>Примеры:&lt;br /&gt;
             • Локальный: &lt;code&gt;http://localhost:11434/v1/chat/completions&lt;/code&gt;&lt;br /&gt;
             • OpenAI: &lt;code&gt;https://api.openai.com/v1/chat/completions&lt;/code&gt;&lt;br /&gt;
@@ -33033,267 +33015,219 @@
             • Локальный: &lt;code&gt;http://localhost:11434/v1/chat/completions&lt;/code&gt;&lt;br /&gt;
             • OpenAI: &lt;code&gt;https://api.openai.com/v1/chat/completions&lt;/code&gt;&lt;br /&gt;
             • DeepSeek: &lt;code&gt;https://api.deepseek.com/v1/chat/completions&lt;/code&gt;</comment>
-</data>
-
-<data name="AIAPIKey" xml:space="preserve">
+  </data>
+  <data name="AIAPIKey" xml:space="preserve">
     <value>Ключ API</value>
     <comment>Ключ API</comment>
-</data>
-
-<data name="AIAPIKeyPlaceholder" xml:space="preserve">
+  </data>
+  <data name="AIAPIKeyPlaceholder" xml:space="preserve">
     <value>Введите ключ API для внешнего ИИ-сервиса</value>
     <comment>Введите ключ API для внешнего ИИ-сервиса</comment>
-</data>
-
-<data name="AIAPIKeyHint" xml:space="preserve">
+  </data>
+  <data name="AIAPIKeyHint" xml:space="preserve">
     <value>Требуется для внешних ИИ-сервисов. Храните его в безопасности.</value>
     <comment>Требуется для внешних ИИ-сервисов. Храните его в безопасности.</comment>
-</data>
-
-<data name="AIShowAPIKey" xml:space="preserve">
+  </data>
+  <data name="AIShowAPIKey" xml:space="preserve">
     <value>Показать ключ API</value>
     <comment>Показать ключ API</comment>
-</data>
-
-<data name="AIModelName" xml:space="preserve">
+  </data>
+  <data name="AIModelName" xml:space="preserve">
     <value>Название модели</value>
     <comment>Название модели</comment>
-</data>
-
-<data name="AIModelPlaceholder" xml:space="preserve">
+  </data>
+  <data name="AIModelPlaceholder" xml:space="preserve">
     <value>Введите название модели</value>
     <comment>Введите название модели</comment>
-</data>
-
-<data name="AIQuickPresets" xml:space="preserve">
+  </data>
+  <data name="AIQuickPresets" xml:space="preserve">
     <value>Быстрые предустановки моделей:</value>
     <comment>Быстрые предустановки моделей:</comment>
-</data>
-
-<data name="AIPresetHint" xml:space="preserve">
+  </data>
+  <data name="AIPresetHint" xml:space="preserve">
     <value>Нажмите на предустановку, чтобы быстро задать название модели</value>
     <comment>Нажмите на предустановку, чтобы быстро задать название модели</comment>
-</data>
-
-<data name="AICurrentStatus" xml:space="preserve">
+  </data>
+  <data name="AICurrentStatus" xml:space="preserve">
     <value>Текущий статус конфигурации</value>
     <comment>Текущий статус конфигурации</comment>
-</data>
-
-<data name="AIServerURL" xml:space="preserve">
+  </data>
+  <data name="AIServerURL" xml:space="preserve">
     <value>URL сервера</value>
     <comment>URL сервера</comment>
-</data>
-
-<data name="AINotConfigured" xml:space="preserve">
+  </data>
+  <data name="AINotConfigured" xml:space="preserve">
     <value>Не настроено</value>
     <comment>Не настроено</comment>
-</data>
-
-<data name="AIModel" xml:space="preserve">
+  </data>
+  <data name="AIModel" xml:space="preserve">
     <value>Модель</value>
     <comment>Модель</comment>
-</data>
-
-<data name="AIStatus" xml:space="preserve">
+  </data>
+  <data name="AIStatus" xml:space="preserve">
     <value>Статус</value>
     <comment>Статус</comment>
-</data>
-
-<data name="AIUnknown" xml:space="preserve">
+  </data>
+  <data name="AIUnknown" xml:space="preserve">
     <value>Неизвестно</value>
     <comment>Неизвестно</comment>
-</data>
-
-<data name="AILastTest" xml:space="preserve">
+  </data>
+  <data name="AILastTest" xml:space="preserve">
     <value>Последний тест</value>
     <comment>Последний тест</comment>
-</data>
-
-<data name="AINeverTested" xml:space="preserve">
+  </data>
+  <data name="AINeverTested" xml:space="preserve">
     <value>Никогда не тестировалось</value>
     <comment>Никогда не тестировалось</comment>
-</data>
-
-<data name="AITestConnection" xml:space="preserve">
+  </data>
+  <data name="AITestConnection" xml:space="preserve">
     <value>🔄 Проверить соединение</value>
     <comment>🔄 Проверить соединение</comment>
-</data>
-
-<data name="AISaveConfiguration" xml:space="preserve">
+  </data>
+  <data name="AISaveConfiguration" xml:space="preserve">
     <value>💾 Сохранить конфигурацию</value>
     <comment>💾 Сохранить конфигурацию</comment>
-</data>
-
-<data name="AILoadCurrent" xml:space="preserve">
+  </data>
+  <data name="AILoadCurrent" xml:space="preserve">
     <value>📂 Загрузить текущую</value>
     <comment>📂 Загрузить текущую</comment>
-</data>
-
-<data name="AIResetToDefault" xml:space="preserve">
+  </data>
+  <data name="AIResetToDefault" xml:space="preserve">
     <value>🔄 Сбросить к значениям по умолчанию</value>
     <comment>🔄 Сбросить к значениям по умолчанию</comment>
-</data>
-
-<data name="AIInformationHelp" xml:space="preserve">
+  </data>
+  <data name="AIInformationHelp" xml:space="preserve">
     <value>Информация &amp; Помощь</value>
     <comment>Информация &amp; Помощь</comment>
-</data>
-
-<data name="AILocalAISetup" xml:space="preserve">
+  </data>
+  <data name="AILocalAISetup" xml:space="preserve">
     <value>Настройка локального ИИ:</value>
     <comment>Настройка локального ИИ:</comment>
-</data>
-
-<data name="AIInstallOllama" xml:space="preserve">
+  </data>
+  <data name="AIInstallOllama" xml:space="preserve">
     <value>Установите Ollama с &lt;a href="https://ollama.ai" target="_blank"&gt;ollama.ai&lt;/a&gt;</value>
     <comment>Установите Ollama с &lt;a href="https://ollama.ai" target="_blank"&gt;ollama.ai&lt;/a&gt;</comment>
-</data>
-
-<data name="AIOllamaCommand" xml:space="preserve">
+  </data>
+  <data name="AIOllamaCommand" xml:space="preserve">
     <value>Выполните команду: &lt;code&gt;ollama run deepseek-r1:1.5b&lt;/code&gt; для загрузки и тестирования модели</value>
     <comment>Выполните команду: &lt;code&gt;ollama run deepseek-r1:1.5b&lt;/code&gt; для загрузки и тестирования модели</comment>
-</data>
-
-<data name="AIOllamaPort" xml:space="preserve">
+  </data>
+  <data name="AIOllamaPort" xml:space="preserve">
     <value>Убедитесь, что Ollama работает на порту 11434</value>
     <comment>Убедитесь, что Ollama работает на порту 11434</comment>
-</data>
-
-<data name="AIExternalAISetup" xml:space="preserve">
+  </data>
+  <data name="AIExternalAISetup" xml:space="preserve">
     <value>Настройка внешнего ИИ:</value>
     <comment>Настройка внешнего ИИ:</comment>
-</data>
-
-<data name="AIGetAPIKey" xml:space="preserve">
+  </data>
+  <data name="AIGetAPIKey" xml:space="preserve">
     <value>Получите ключ API у вашего провайдера ИИ-услуг</value>
     <comment>Получите ключ API у вашего провайдера ИИ-услуг</comment>
-</data>
-
-<data name="AICheckCredits" xml:space="preserve">
+  </data>
+  <data name="AICheckCredits" xml:space="preserve">
     <value>Убедитесь, что на вашем аккаунте достаточно кредитов/квоты</value>
     <comment>Убедитесь, что на вашем аккаунте достаточно кредитов/квоты</comment>
-</data>
-
-<data name="AICheckAPIDocs" xml:space="preserve">
+  </data>
+  <data name="AICheckAPIDocs" xml:space="preserve">
     <value>Проверьте документацию API для правильного URL конечной точки</value>
     <comment>Проверьте документацию API для правильного URL конечной точки</comment>
-</data>
-
-<data name="AINote" xml:space="preserve">
+  </data>
+  <data name="AINote" xml:space="preserve">
     <value>Примечание:</value>
     <comment>Примечание:</comment>
-</data>
-
-<data name="AIConfigurationNote" xml:space="preserve">
+  </data>
+  <data name="AIConfigurationNote" xml:space="preserve">
     <value>Конфигурация будет сохранена в базе данных и использована для всех функций ИИ-анализа.</value>
     <comment>Конфигурация будет сохранена в базе данных и использована для всех функций ИИ-анализа.</comment>
-</data>
-
-<data name="AITestingConnection" xml:space="preserve">
+  </data>
+  <data name="AITestingConnection" xml:space="preserve">
     <value>Проверка соединения с ИИ-сервером</value>
     <comment>Проверка соединения с ИИ-сервером</comment>
-</data>
-
-<data name="AIPleaseWaitConnection" xml:space="preserve">
+  </data>
+  <data name="AIPleaseWaitConnection" xml:space="preserve">
     <value>Пожалуйста, подождите, пока мы проверяем соединение с вашим ИИ-сервером...</value>
     <comment>Пожалуйста, подождите, пока мы проверяем соединение с вашим ИИ-сервером...</comment>
-</data>
-
-<!-- Термины, используемые в бэкенде -->
-<data name="AIErrorLoadingConfig" xml:space="preserve">
+  </data>
+  <data name="AIErrorLoadingConfig" xml:space="preserve">
     <value>Ошибка загрузки конфигурации:</value>
     <comment>Ошибка загрузки конфигурации:</comment>
-</data>
-
-<data name="AILocalServerReachable" xml:space="preserve">
+  </data>
+  <data name="AILocalServerReachable" xml:space="preserve">
     <value>✅ Локальный ИИ-сервер доступен</value>
     <comment>✅ Локальный ИИ-сервер доступен</comment>
-</data>
-
-<data name="AICannotConnectLocal" xml:space="preserve">
+  </data>
+  <data name="AICannotConnectLocal" xml:space="preserve">
     <value>❌ Не удается подключиться к локальному ИИ-серверу</value>
     <comment>❌ Не удается подключиться к локальному ИИ-серверу</comment>
-</data>
-
-<data name="AIExternalServerReachable" xml:space="preserve">
+  </data>
+  <data name="AIExternalServerReachable" xml:space="preserve">
     <value>✅ Внешний ИИ-сервер доступен</value>
     <comment>✅ Внешний ИИ-сервер доступен</comment>
-</data>
-
-<data name="AICannotConnectExternal" xml:space="preserve">
+  </data>
+  <data name="AICannotConnectExternal" xml:space="preserve">
     <value>❌ Не удается подключиться к внешнему ИИ-серверу</value>
     <comment>❌ Не удается подключиться к внешнему ИИ-серверу</comment>
-</data>
-
-<data name="AIConnected" xml:space="preserve">
+  </data>
+  <data name="AIConnected" xml:space="preserve">
     <value>✅ Подключено</value>
     <comment>✅ Подключено</comment>
-</data>
-
-<data name="AINotConnected" xml:space="preserve">
+  </data>
+  <data name="AINotConnected" xml:space="preserve">
     <value>❌ Не подключено</value>
     <comment>❌ Не подключено</comment>
-</data>
-
-<data name="AIConnectionTestFailed" xml:space="preserve">
+  </data>
+  <data name="AIConnectionTestFailed" xml:space="preserve">
     <value>❌ Проверка соединения не удалась:</value>
     <comment>❌ Проверка соединения не удалась:</comment>
-</data>
-
-<data name="AITestFailed" xml:space="preserve">
+  </data>
+  <data name="AITestFailed" xml:space="preserve">
     <value>❌ Проверка не удалась</value>
     <comment>❌ Проверка не удалась</comment>
-</data>
-
-<data name="AIConfigSavedSuccess" xml:space="preserve">
+  </data>
+  <data name="AIConfigSavedSuccess" xml:space="preserve">
     <value>✅ Конфигурация успешно сохранена!</value>
     <comment>✅ Конфигурация успешно сохранена!</comment>
-</data>
-
-<data name="AINotTested" xml:space="preserve">
+  </data>
+  <data name="AINotTested" xml:space="preserve">
     <value>Не проверено</value>
     <comment>Не проверено</comment>
-</data>
-
-<data name="AIErrorSavingConfig" xml:space="preserve">
+  </data>
+  <data name="AIErrorSavingConfig" xml:space="preserve">
     <value>❌ Ошибка сохранения конфигурации:</value>
     <comment>❌ Ошибка сохранения конфигурации:</comment>
-</data>
-
-<data name="AICurrentConfigLoaded" xml:space="preserve">
+  </data>
+  <data name="AICurrentConfigLoaded" xml:space="preserve">
     <value>📂 Текущая конфигурация загружена из базы данных</value>
     <comment>📂 Текущая конфигурация загружена из базы данных</comment>
-</data>
-
-<data name="AIEnterAPIURL" xml:space="preserve">
+  </data>
+  <data name="AIEnterAPIURL" xml:space="preserve">
     <value>❌ Пожалуйста, введите URL API</value>
     <comment>❌ Пожалуйста, введите URL API</comment>
-</data>
-
-<data name="AIEnterModelName" xml:space="preserve">
+  </data>
+  <data name="AIEnterModelName" xml:space="preserve">
     <value>❌ Пожалуйста, введите название модели</value>
     <comment>❌ Пожалуйста, введите название модели</comment>
-</data>
-
-<data name="AIAPIKeyRequired" xml:space="preserve">
+  </data>
+  <data name="AIAPIKeyRequired" xml:space="preserve">
     <value>❌ Для внешнего ИИ требуется ключ API</value>
     <comment>❌ Для внешнего ИИ требуется ключ API</comment>
-</data>
-
-<data name="AILocalConfigActive" xml:space="preserve">
+  </data>
+  <data name="AILocalConfigActive" xml:space="preserve">
     <value>🏠 Локальная ИИ-конфигурация активна</value>
     <comment>🏠 Локальная ИИ-конфигурация активна</comment>
-</data>
-
-<data name="AIExternalConfigActive" xml:space="preserve">
+  </data>
+  <data name="AIExternalConfigActive" xml:space="preserve">
     <value>🌐 Внешняя ИИ-конфигурация активна</value>
     <comment>🌐 Внешняя ИИ-конфигурация активна</comment>
-</data>
-
-<data name="AINoAIConfigFound" xml:space="preserve">
+  </data>
+  <data name="AINoAIConfigFound" xml:space="preserve">
     <value>⚠️ Конфигурация ИИ не найдена. Пожалуйста, настройте параметры ИИ-сервера.</value>
     <comment>⚠️ Конфигурация ИИ не найдена. Пожалуйста, настройте параметры ИИ-сервера.</comment>
-</data>
-
+  </data>
+  <data name="ShuRuNiDeFenXiXuQiu" xml:space="preserve">
+    <value>Введите ваши потребности в анализе...</value>
+  </data>
+  <data name="ShuRuShuJiBiaoMingChengCTaoHaoFengKai" xml:space="preserve">
+    <value>Введите имена таблиц, разделенные запятыми...</value>
+  </data>
 </root>

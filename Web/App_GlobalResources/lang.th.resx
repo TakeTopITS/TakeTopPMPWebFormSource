@@ -32667,6 +32667,9 @@
   <data name="DSeekIntelligentAnalysisPlatform" xml:space="preserve">
     <value>แพลตฟอร์มการวิเคราะห์อัจฉริยะ AI</value>
   </data>
+  <data name="DSeekEnterYourQuestion" xml:space="preserve">
+    <value>กรุณาใส่คำถามของคุณ...</value>
+  </data>
   <data name="DSeekAnalysisCustomizedReports" xml:space="preserve">
     <value>AI จะสร้างรายงานการวิเคราะห์ที่ปรับแต่งเองตามความต้องการของคุณ</value>
   </data>
@@ -32684,8 +32687,8 @@
     <value>AI กำลังทำความเข้าใจความต้องการในการวิเคราะห์ของคุณและคิดหาวิธีแก้ไขที่ดีที่สุด...</value>
   </data>
   <data name="DSeekAIServerAvailable" xml:space="preserve">
-    <value>✅ เซิร์ฟเวอร์ AI พร้อมใช้งานและพร้อมใช้แล้ว</value>
-    <comment>✅ เซิร์ฟเวอร์ AI พร้อมใช้งานและพร้อมใช้แล้ว</comment>
+    <value>✅ เซิร์ฟเวอร์ AI พร้อมใช้งาน</value>
+    <comment>✅ เซิร์ฟเวอร์ AI พร้อมใช้งาน</comment>
   </data>
   <data name="DSeekNoValidAIServer" xml:space="preserve">
     <value>⚠️ ไม่พบเซิร์ฟเวอร์ AI ที่ถูกต้อง กรุณาติดต่อผู้ดูแลระบบเพื่อติดตั้ง</value>
@@ -32752,8 +32755,8 @@
     <comment>โหลดล้มเหลว: </comment>
   </data>
   <data name="DSeekAIServerNotAvailableContactSupplier" xml:space="preserve">
-    <value>⚠️ เซิร์ฟเวอร์ AI ไม่สามารถใช้งานได้ กรุณาติดต่อผู้จำหน่ายเพื่อติดตั้ง</value>
-    <comment>⚠️ เซิร์ฟเวอร์ AI ไม่สามารถใช้งานได้ กรุณาติดต่อผู้จำหน่ายเพื่อติดตั้ง</comment>
+    <value>⚠️ เซิร์ฟเวอร์ AI ไม่พร้อมใช้งาน โปรดตรวจสอบการตั้งค่าหรือติดต่อผู้ให้บริการ</value>
+    <comment>⚠️ เซิร์ฟเวอร์ AI ไม่พร้อมใช้งาน โปรดตรวจสอบการตั้งค่าหรือติดต่อผู้ให้บริการ</comment>
   </data>
   <data name="DSeekPleaseSelectTablesToAnalyze" xml:space="preserve">
     <value>กรุณาเลือกตารางที่จะวิเคราะห์</value>
@@ -32918,6 +32921,306 @@
   <data name="DSeekConfigurationSavedSuccessfully" xml:space="preserve">
     <value>✅ บันทึกการกำหนดค่าสำเร็จ!</value>
     <comment>✅ บันทึกการกำหนดค่าสำเร็จ!</comment>
+  </data>
+  <data name="DSeekAIServerType" xml:space="preserve">
+    <value>ประเภทเซิร์ฟเวอร์ AI</value>
+    <comment>ประเภทเซิร์ฟเวอร์ AI</comment>
+  </data>
+  <data name="DSeekLocalAI" xml:space="preserve">
+    <value>ท้องถิ่น (Ollama)</value>
+    <comment>ท้องถิ่น (Ollama)</comment>
+  </data>
+  <data name="DSeekExternalAI" xml:space="preserve">
+    <value>AI ภายนอก</value>
+    <comment>AI ภายนอก</comment>
+  </data>
+  <data name="DSeekAPIURL" xml:space="preserve">
+    <value>URL API</value>
+    <comment>URL API</comment>
+  </data>
+  <data name="DSeekAPIKey" xml:space="preserve">
+    <value>คีย์ API</value>
+    <comment>คีย์ API</comment>
+  </data>
+  <data name="DSeekLocalAIHint" xml:space="preserve">
+    <value>ท้องถิ่น: ใช้เซิร์ฟเวอร์ Ollama บน localhost | ภายนอก: ใช้ OpenAI, DeepSeek API เป็นต้น</value>
+    <comment>ท้องถิ่น: ใช้เซิร์ฟเวอร์ Ollama บน localhost | ภายนอก: ใช้ OpenAI, DeepSeek API เป็นต้น</comment>
+  </data>
+  <data name="DSeekModelHint" xml:space="preserve">
+    <value>ท้องถิ่น: deepseek-r1:1.5b, llama2 เป็นต้น | ภายนอก: gpt-3.5-turbo, gpt-4, deepseek-chat เป็นต้น</value>
+    <comment>ท้องถิ่น: deepseek-r1:1.5b, llama2 เป็นต้น | ภายนอก: gpt-3.5-turbo, gpt-4, deepseek-chat เป็นต้น</comment>
+  </data>
+  <data name="DSeekShowConfiguration" xml:space="preserve">
+    <value>แสดงการตั้งค่า AI</value>
+    <comment>แสดงการตั้งค่า AI</comment>
+  </data>
+  <data name="DSeekExternalAIServerAvailable" xml:space="preserve">
+    <value>✅ เซิร์ฟเวอร์ AI ภายนอกพร้อมใช้งาน</value>
+    <comment>✅ เซิร์ฟเวอร์ AI ภายนอกพร้อมใช้งาน</comment>
+  </data>
+  <data name="AIServerConfigurationTitle" xml:space="preserve">
+    <value>การตั้งค่าเซิร์ฟเวอร์ AI</value>
+    <comment>การตั้งค่าเซิร์ฟเวอร์ AI</comment>
+  </data>
+  <data name="AIBackToAI" xml:space="preserve">
+    <value>กลับไปวิเคราะห์ AI</value>
+    <comment>กลับไปวิเคราะห์ AI</comment>
+  </data>
+  <data name="AIServerConfiguration" xml:space="preserve">
+    <value>การตั้งค่าเซิร์ฟเวอร์</value>
+    <comment>การตั้งค่าเซิร์ฟเวอร์</comment>
+  </data>
+  <data name="AIConfigurationSubtitle" xml:space="preserve">
+    <value>กำหนดค่าการตั้งค่าเซิร์ฟเวอร์สำหรับบริการ AI ท้องถิ่นและภายนอก</value>
+    <comment>กำหนดค่าการตั้งค่าเซิร์ฟเวอร์สำหรับบริการ AI ท้องถิ่นและภายนอก</comment>
+  </data>
+  <data name="AIServerTypeTitle" xml:space="preserve">
+    <value>ประเภทเซิร์ฟเวอร์ AI</value>
+    <comment>ประเภทเซิร์ฟเวอร์ AI</comment>
+  </data>
+  <data name="AIServerType" xml:space="preserve">
+    <value>ประเภทเซิร์ฟเวอร์</value>
+    <comment>ประเภทเซิร์ฟเวอร์</comment>
+  </data>
+  <data name="AILocalAI" xml:space="preserve">
+    <value>ท้องถิ่น (Ollama)</value>
+    <comment>ท้องถิ่น (Ollama)</comment>
+  </data>
+  <data name="AIExternalAI" xml:space="preserve">
+    <value>AI ภายนอก</value>
+    <comment>AI ภายนอก</comment>
+  </data>
+  <data name="AIServerTypeHint" xml:space="preserve">
+    <value>&lt;strong&gt;ท้องถิ่น&lt;/strong&gt;: เรียกใช้โมเดล AI ในเครื่องโดยใช้เซิร์ฟเวอร์ Ollama&lt;br /&gt;
+            &lt;strong&gt;ภายนอก&lt;/strong&gt;: ใช้บริการ AI บนคลาวด์เช่น OpenAI, DeepSeek API เป็นต้น</value>
+    <comment>&lt;strong&gt;ท้องถิ่น&lt;/strong&gt;: เรียกใช้โมเดล AI ในเครื่องโดยใช้เซิร์ฟเวอร์ Ollama&lt;br /&gt;
+            &lt;strong&gt;ภายนอก&lt;/strong&gt;: ใช้บริการ AI บนคลาวด์เช่น OpenAI, DeepSeek API เป็นต้น</comment>
+  </data>
+  <data name="AIAPIURL" xml:space="preserve">
+    <value>URL API</value>
+    <comment>URL API</comment>
+  </data>
+  <data name="AIAPIURLPlaceholder" xml:space="preserve">
+    <value>ป้อน URL endpoint API</value>
+    <comment>ป้อน URL endpoint API</comment>
+  </data>
+  <data name="AIAPIURLExamples" xml:space="preserve">
+    <value>ตัวอย่าง:&lt;br /&gt;
+            • ท้องถิ่น: &lt;code&gt;http://localhost:11434/v1/chat/completions&lt;/code&gt;&lt;br /&gt;
+            • OpenAI: &lt;code&gt;https://api.openai.com/v1/chat/completions&lt;/code&gt;&lt;br /&gt;
+            • DeepSeek: &lt;code&gt;https://api.deepseek.com/v1/chat/completions&lt;/code&gt;</value>
+    <comment>ตัวอย่าง:&lt;br /&gt;
+            • ท้องถิ่น: &lt;code&gt;http://localhost:11434/v1/chat/completions&lt;/code&gt;&lt;br /&gt;
+            • OpenAI: &lt;code&gt;https://api.openai.com/v1/chat/completions&lt;/code&gt;&lt;br /&gt;
+            • DeepSeek: &lt;code&gt;https://api.deepseek.com/v1/chat/completions&lt;/code&gt;</comment>
+  </data>
+  <data name="AIAPIKey" xml:space="preserve">
+    <value>คีย์ API</value>
+    <comment>คีย์ API</comment>
+  </data>
+  <data name="AIAPIKeyPlaceholder" xml:space="preserve">
+    <value>ป้อนคีย์ API สำหรับบริการ AI ภายนอก</value>
+    <comment>ป้อนคีย์ API สำหรับบริการ AI ภายนอก</comment>
+  </data>
+  <data name="AIAPIKeyHint" xml:space="preserve">
+    <value>จำเป็นสำหรับบริการ AI ภายนอก โปรดเก็บรักษาไว้อย่างปลอดภัย</value>
+    <comment>จำเป็นสำหรับบริการ AI ภายนอก โปรดเก็บรักษาไว้อย่างปลอดภัย</comment>
+  </data>
+  <data name="AIShowAPIKey" xml:space="preserve">
+    <value>แสดงคีย์ API</value>
+    <comment>แสดงคีย์ API</comment>
+  </data>
+  <data name="AIModelName" xml:space="preserve">
+    <value>ชื่อโมเดล</value>
+    <comment>ชื่อโมเดล</comment>
+  </data>
+  <data name="AIModelPlaceholder" xml:space="preserve">
+    <value>ป้อนชื่อโมเดล</value>
+    <comment>ป้อนชื่อโมเดล</comment>
+  </data>
+  <data name="AIQuickPresets" xml:space="preserve">
+    <value>โมเดลพรีเซ็ตด่วน:</value>
+    <comment>โมเดลพรีเซ็ตด่วน:</comment>
+  </data>
+  <data name="AIPresetHint" xml:space="preserve">
+    <value>คลิกที่พรีเซ็ตเพื่อตั้งชื่อโมเดลอย่างรวดเร็ว</value>
+    <comment>คลิกที่พรีเซ็ตเพื่อตั้งชื่อโมเดลอย่างรวดเร็ว</comment>
+  </data>
+  <data name="AICurrentStatus" xml:space="preserve">
+    <value>สถานะการตั้งค่าปัจจุบัน</value>
+    <comment>สถานะการตั้งค่าปัจจุบัน</comment>
+  </data>
+  <data name="AIServerURL" xml:space="preserve">
+    <value>URL เซิร์ฟเวอร์</value>
+    <comment>URL เซิร์ฟเวอร์</comment>
+  </data>
+  <data name="AINotConfigured" xml:space="preserve">
+    <value>ไม่ได้กำหนดค่า</value>
+    <comment>ไม่ได้กำหนดค่า</comment>
+  </data>
+  <data name="AIModel" xml:space="preserve">
+    <value>โมเดล</value>
+    <comment>โมเดล</comment>
+  </data>
+  <data name="AIStatus" xml:space="preserve">
+    <value>สถานะ</value>
+    <comment>สถานะ</comment>
+  </data>
+  <data name="AIUnknown" xml:space="preserve">
+    <value>ไม่ทราบ</value>
+    <comment>ไม่ทราบ</comment>
+  </data>
+  <data name="AILastTest" xml:space="preserve">
+    <value>การทดสอบล่าสุด</value>
+    <comment>การทดสอบล่าสุด</comment>
+  </data>
+  <data name="AINeverTested" xml:space="preserve">
+    <value>ไม่เคยทดสอบ</value>
+    <comment>ไม่เคยทดสอบ</comment>
+  </data>
+  <data name="AITestConnection" xml:space="preserve">
+    <value>🔄 ทดสอบการเชื่อมต่อ</value>
+    <comment>🔄 ทดสอบการเชื่อมต่อ</comment>
+  </data>
+  <data name="AISaveConfiguration" xml:space="preserve">
+    <value>💾 บันทึกการตั้งค่า</value>
+    <comment>💾 บันทึกการตั้งค่า</comment>
+  </data>
+  <data name="AILoadCurrent" xml:space="preserve">
+    <value>📂 โหลดค่าปัจจุบัน</value>
+    <comment>📂 โหลดค่าปัจจุบัน</comment>
+  </data>
+  <data name="AIResetToDefault" xml:space="preserve">
+    <value>🔄 รีเซ็ตเป็นค่าเริ่มต้น</value>
+    <comment>🔄 รีเซ็ตเป็นค่าเริ่มต้น</comment>
+  </data>
+  <data name="AIInformationHelp" xml:space="preserve">
+    <value>ข้อมูล &amp; ความช่วยเหลือ</value>
+    <comment>ข้อมูล &amp; ความช่วยเหลือ</comment>
+  </data>
+  <data name="AILocalAISetup" xml:space="preserve">
+    <value>การตั้งค่า AI ท้องถิ่น:</value>
+    <comment>การตั้งค่า AI ท้องถิ่น:</comment>
+  </data>
+  <data name="AIInstallOllama" xml:space="preserve">
+    <value>ติดตั้ง Ollama จาก &lt;a href="https://ollama.ai" target="_blank"&gt;ollama.ai&lt;/a&gt;</value>
+    <comment>ติดตั้ง Ollama จาก &lt;a href="https://ollama.ai" target="_blank"&gt;ollama.ai&lt;/a&gt;</comment>
+  </data>
+  <data name="AIOllamaCommand" xml:space="preserve">
+    <value>รันคำสั่ง: &lt;code&gt;ollama run deepseek-r1:1.5b&lt;/code&gt; เพื่อดาวน์โหลดและทดสอบโมเดล</value>
+    <comment>รันคำสั่ง: &lt;code&gt;ollama run deepseek-r1:1.5b&lt;/code&gt; เพื่อดาวน์โหลดและทดสอบโมเดล</comment>
+  </data>
+  <data name="AIOllamaPort" xml:space="preserve">
+    <value>ตรวจสอบให้แน่ใจว่า Ollama ทำงานบนพอร์ต 11434</value>
+    <comment>ตรวจสอบให้แน่ใจว่า Ollama ทำงานบนพอร์ต 11434</comment>
+  </data>
+  <data name="AIExternalAISetup" xml:space="preserve">
+    <value>การตั้งค่า AI ภายนอก:</value>
+    <comment>การตั้งค่า AI ภายนอก:</comment>
+  </data>
+  <data name="AIGetAPIKey" xml:space="preserve">
+    <value>รับคีย์ API จากผู้ให้บริการบริการ AI ของคุณ</value>
+    <comment>รับคีย์ API จากผู้ให้บริการบริการ AI ของคุณ</comment>
+  </data>
+  <data name="AICheckCredits" xml:space="preserve">
+    <value>ตรวจสอบให้แน่ใจว่าบัญชีของคุณมีเครดิต/โควต้าที่เพียงพอ</value>
+    <comment>ตรวจสอบให้แน่ใจว่าบัญชีของคุณมีเครดิต/โควต้าที่เพียงพอ</comment>
+  </data>
+  <data name="AICheckAPIDocs" xml:space="preserve">
+    <value>ตรวจสอบเอกสาร API สำหรับ URL endpoint ที่ถูกต้อง</value>
+    <comment>ตรวจสอบเอกสาร API สำหรับ URL endpoint ที่ถูกต้อง</comment>
+  </data>
+  <data name="AINote" xml:space="preserve">
+    <value>หมายเหตุ:</value>
+    <comment>หมายเหตุ:</comment>
+  </data>
+  <data name="AIConfigurationNote" xml:space="preserve">
+    <value>การตั้งค่าจะถูกบันทึกลงในฐานข้อมูลและใช้สำหรับคุณสมบัติการวิเคราะห์ AI ทั้งหมด</value>
+    <comment>การตั้งค่าจะถูกบันทึกลงในฐานข้อมูลและใช้สำหรับคุณสมบัติการวิเคราะห์ AI ทั้งหมด</comment>
+  </data>
+  <data name="AITestingConnection" xml:space="preserve">
+    <value>กำลังทดสอบการเชื่อมต่อเซิร์ฟเวอร์ AI</value>
+    <comment>กำลังทดสอบการเชื่อมต่อเซิร์ฟเวอร์ AI</comment>
+  </data>
+  <data name="AIPleaseWaitConnection" xml:space="preserve">
+    <value>โปรดรอสักครู่ขณะที่เราทดสอบการเชื่อมต่อกับเซิร์ฟเวอร์ AI ของคุณ...</value>
+    <comment>โปรดรอสักครู่ขณะที่เราทดสอบการเชื่อมต่อกับเซิร์ฟเวอร์ AI ของคุณ...</comment>
+  </data>
+  <data name="AIErrorLoadingConfig" xml:space="preserve">
+    <value>ข้อผิดพลาดในการโหลดการตั้งค่า:</value>
+    <comment>ข้อผิดพลาดในการโหลดการตั้งค่า:</comment>
+  </data>
+  <data name="AILocalServerReachable" xml:space="preserve">
+    <value>✅ เชื่อมต่อเซิร์ฟเวอร์ AI ท้องถิ่นได้</value>
+    <comment>✅ เชื่อมต่อเซิร์ฟเวอร์ AI ท้องถิ่นได้</comment>
+  </data>
+  <data name="AICannotConnectLocal" xml:space="preserve">
+    <value>❌ ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์ AI ท้องถิ่น</value>
+    <comment>❌ ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์ AI ท้องถิ่น</comment>
+  </data>
+  <data name="AIExternalServerReachable" xml:space="preserve">
+    <value>✅ เชื่อมต่อเซิร์ฟเวอร์ AI ภายนอกได้</value>
+    <comment>✅ เชื่อมต่อเซิร์ฟเวอร์ AI ภายนอกได้</comment>
+  </data>
+  <data name="AICannotConnectExternal" xml:space="preserve">
+    <value>❌ ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์ AI ภายนอก</value>
+    <comment>❌ ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์ AI ภายนอก</comment>
+  </data>
+  <data name="AIConnected" xml:space="preserve">
+    <value>✅ เชื่อมต่อแล้ว</value>
+    <comment>✅ เชื่อมต่อแล้ว</comment>
+  </data>
+  <data name="AINotConnected" xml:space="preserve">
+    <value>❌ ไม่ได้เชื่อมต่อ</value>
+    <comment>❌ ไม่ได้เชื่อมต่อ</comment>
+  </data>
+  <data name="AIConnectionTestFailed" xml:space="preserve">
+    <value>❌ การทดสอบการเชื่อมต่อล้มเหลว:</value>
+    <comment>❌ การทดสอบการเชื่อมต่อล้มเหลว:</comment>
+  </data>
+  <data name="AITestFailed" xml:space="preserve">
+    <value>❌ การทดสอบล้มเหลว</value>
+    <comment>❌ การทดสอบล้มเหลว</comment>
+  </data>
+  <data name="AIConfigSavedSuccess" xml:space="preserve">
+    <value>✅ บันทึกการตั้งค่าเรียบร้อยแล้ว!</value>
+    <comment>✅ บันทึกการตั้งค่าเรียบร้อยแล้ว!</comment>
+  </data>
+  <data name="AINotTested" xml:space="preserve">
+    <value>ยังไม่ได้ทดสอบ</value>
+    <comment>ยังไม่ได้ทดสอบ</comment>
+  </data>
+  <data name="AIErrorSavingConfig" xml:space="preserve">
+    <value>❌ ข้อผิดพลาดในการบันทึกการตั้งค่า:</value>
+    <comment>❌ ข้อผิดพลาดในการบันทึกการตั้งค่า:</comment>
+  </data>
+  <data name="AICurrentConfigLoaded" xml:space="preserve">
+    <value>📂 โหลดการตั้งค่าปัจจุบันจากฐานข้อมูล</value>
+    <comment>📂 โหลดการตั้งค่าปัจจุบันจากฐานข้อมูล</comment>
+  </data>
+  <data name="AIEnterAPIURL" xml:space="preserve">
+    <value>❌ โปรดป้อน URL API</value>
+    <comment>❌ โปรดป้อน URL API</comment>
+  </data>
+  <data name="AIEnterModelName" xml:space="preserve">
+    <value>❌ โปรดป้อนชื่อโมเดล</value>
+    <comment>❌ โปรดป้อนชื่อโมเดล</comment>
+  </data>
+  <data name="AIAPIKeyRequired" xml:space="preserve">
+    <value>❌ ต้องใช้คีย์ API สำหรับ AI ภายนอก</value>
+    <comment>❌ ต้องใช้คีย์ API สำหรับ AI ภายนอก</comment>
+  </data>
+  <data name="AILocalConfigActive" xml:space="preserve">
+    <value>🏠 การตั้งค่า AI ท้องถิ่นเปิดใช้งานแล้ว</value>
+    <comment>🏠 การตั้งค่า AI ท้องถิ่นเปิดใช้งานแล้ว</comment>
+  </data>
+  <data name="AIExternalConfigActive" xml:space="preserve">
+    <value>🌐 การตั้งค่า AI ภายนอกเปิดใช้งานแล้ว</value>
+    <comment>🌐 การตั้งค่า AI ภายนอกเปิดใช้งานแล้ว</comment>
+  </data>
+  <data name="AINoAIConfigFound" xml:space="preserve">
+    <value>⚠️ ไม่พบการตั้งค่า AI โปรดกำหนดค่าการตั้งค่าเซิร์ฟเวอร์ AI</value>
+    <comment>⚠️ ไม่พบการตั้งค่า AI โปรดกำหนดค่าการตั้งค่าเซิร์ฟเวอร์ AI</comment>
   </data>
   <data name="DGMBSTDTB" xml:space="preserve">
     <value>การยื่นเสนอราคาที่รอซื้อเอกสารประกวดราคา</value>
@@ -42235,379 +42538,10 @@
   <data name="QiYeJiKuaZhanRuanJian" xml:space="preserve">
     <value>ซอฟต์แวร์ขยายขนาดระดับองค์กร</value>
   </data>
-
-<data name="DSeekAIServerType" xml:space="preserve">
-    <value>ประเภทเซิร์ฟเวอร์ AI</value>
-    <comment>ประเภทเซิร์ฟเวอร์ AI</comment>
-</data>
-<data name="DSeekLocalAI" xml:space="preserve">
-    <value>ท้องถิ่น (Ollama)</value>
-    <comment>ท้องถิ่น (Ollama)</comment>
-</data>
-<data name="DSeekExternalAI" xml:space="preserve">
-    <value>AI ภายนอก</value>
-    <comment>AI ภายนอก</comment>
-</data>
-<data name="DSeekAPIURL" xml:space="preserve">
-    <value>URL API</value>
-    <comment>URL API</comment>
-</data>
-<data name="DSeekAPIKey" xml:space="preserve">
-    <value>คีย์ API</value>
-    <comment>คีย์ API</comment>
-</data>
-<data name="DSeekLocalAIHint" xml:space="preserve">
-    <value>ท้องถิ่น: ใช้เซิร์ฟเวอร์ Ollama บน localhost | ภายนอก: ใช้ OpenAI, DeepSeek API เป็นต้น</value>
-    <comment>ท้องถิ่น: ใช้เซิร์ฟเวอร์ Ollama บน localhost | ภายนอก: ใช้ OpenAI, DeepSeek API เป็นต้น</comment>
-</data>
-<data name="DSeekModelHint" xml:space="preserve">
-    <value>ท้องถิ่น: deepseek-r1:1.5b, llama2 เป็นต้น | ภายนอก: gpt-3.5-turbo, gpt-4, deepseek-chat เป็นต้น</value>
-    <comment>ท้องถิ่น: deepseek-r1:1.5b, llama2 เป็นต้น | ภายนอก: gpt-3.5-turbo, gpt-4, deepseek-chat เป็นต้น</comment>
-</data>
-<data name="DSeekShowConfiguration" xml:space="preserve">
-    <value>แสดงการตั้งค่า AI</value>
-    <comment>แสดงการตั้งค่า AI</comment>
-</data>
-<data name="DSeekAIServerAvailable" xml:space="preserve">
-    <value>✅ เซิร์ฟเวอร์ AI พร้อมใช้งาน</value>
-    <comment>✅ เซิร์ฟเวอร์ AI พร้อมใช้งาน</comment>
-</data>
-<data name="DSeekExternalAIServerAvailable" xml:space="preserve">
-    <value>✅ เซิร์ฟเวอร์ AI ภายนอกพร้อมใช้งาน</value>
-    <comment>✅ เซิร์ฟเวอร์ AI ภายนอกพร้อมใช้งาน</comment>
-</data>
-<data name="DSeekAIServerNotAvailableContactSupplier" xml:space="preserve">
-    <value>⚠️ เซิร์ฟเวอร์ AI ไม่พร้อมใช้งาน โปรดตรวจสอบการตั้งค่าหรือติดต่อผู้ให้บริการ</value>
-    <comment>⚠️ เซิร์ฟเวอร์ AI ไม่พร้อมใช้งาน โปรดตรวจสอบการตั้งค่าหรือติดต่อผู้ให้บริการ</comment>
-</data>
-<!-- คำศัพท์ที่เกี่ยวข้องกับการตั้งค่าเซิร์ฟเวอร์ AI -->
-<data name="AIServerConfigurationTitle" xml:space="preserve">
-    <value>การตั้งค่าเซิร์ฟเวอร์ AI</value>
-    <comment>การตั้งค่าเซิร์ฟเวอร์ AI</comment>
-</data>
-
-<data name="AIBackToAI" xml:space="preserve">
-    <value>กลับไปวิเคราะห์ AI</value>
-    <comment>กลับไปวิเคราะห์ AI</comment>
-</data>
-
-<data name="AIServerConfiguration" xml:space="preserve">
-    <value>การตั้งค่าเซิร์ฟเวอร์</value>
-    <comment>การตั้งค่าเซิร์ฟเวอร์</comment>
-</data>
-
-<data name="AIConfigurationSubtitle" xml:space="preserve">
-    <value>กำหนดค่าการตั้งค่าเซิร์ฟเวอร์สำหรับบริการ AI ท้องถิ่นและภายนอก</value>
-    <comment>กำหนดค่าการตั้งค่าเซิร์ฟเวอร์สำหรับบริการ AI ท้องถิ่นและภายนอก</comment>
-</data>
-
-<data name="AIServerTypeTitle" xml:space="preserve">
-    <value>ประเภทเซิร์ฟเวอร์ AI</value>
-    <comment>ประเภทเซิร์ฟเวอร์ AI</comment>
-</data>
-
-<data name="AIServerType" xml:space="preserve">
-    <value>ประเภทเซิร์ฟเวอร์</value>
-    <comment>ประเภทเซิร์ฟเวอร์</comment>
-</data>
-
-<data name="AILocalAI" xml:space="preserve">
-    <value>ท้องถิ่น (Ollama)</value>
-    <comment>ท้องถิ่น (Ollama)</comment>
-</data>
-
-<data name="AIExternalAI" xml:space="preserve">
-    <value>AI ภายนอก</value>
-    <comment>AI ภายนอก</comment>
-</data>
-
-<data name="AIServerTypeHint" xml:space="preserve">
-    <value>&lt;strong&gt;ท้องถิ่น&lt;/strong&gt;: เรียกใช้โมเดล AI ในเครื่องโดยใช้เซิร์ฟเวอร์ Ollama&lt;br /&gt;
-            &lt;strong&gt;ภายนอก&lt;/strong&gt;: ใช้บริการ AI บนคลาวด์เช่น OpenAI, DeepSeek API เป็นต้น</value>
-    <comment>&lt;strong&gt;ท้องถิ่น&lt;/strong&gt;: เรียกใช้โมเดล AI ในเครื่องโดยใช้เซิร์ฟเวอร์ Ollama&lt;br /&gt;
-            &lt;strong&gt;ภายนอก&lt;/strong&gt;: ใช้บริการ AI บนคลาวด์เช่น OpenAI, DeepSeek API เป็นต้น</comment>
-</data>
-
-<data name="AIAPIURL" xml:space="preserve">
-    <value>URL API</value>
-    <comment>URL API</comment>
-</data>
-
-<data name="AIAPIURLPlaceholder" xml:space="preserve">
-    <value>ป้อน URL endpoint API</value>
-    <comment>ป้อน URL endpoint API</comment>
-</data>
-
-<data name="AIAPIURLExamples" xml:space="preserve">
-    <value>ตัวอย่าง:&lt;br /&gt;
-            • ท้องถิ่น: &lt;code&gt;http://localhost:11434/v1/chat/completions&lt;/code&gt;&lt;br /&gt;
-            • OpenAI: &lt;code&gt;https://api.openai.com/v1/chat/completions&lt;/code&gt;&lt;br /&gt;
-            • DeepSeek: &lt;code&gt;https://api.deepseek.com/v1/chat/completions&lt;/code&gt;</value>
-    <comment>ตัวอย่าง:&lt;br /&gt;
-            • ท้องถิ่น: &lt;code&gt;http://localhost:11434/v1/chat/completions&lt;/code&gt;&lt;br /&gt;
-            • OpenAI: &lt;code&gt;https://api.openai.com/v1/chat/completions&lt;/code&gt;&lt;br /&gt;
-            • DeepSeek: &lt;code&gt;https://api.deepseek.com/v1/chat/completions&lt;/code&gt;</comment>
-</data>
-
-<data name="AIAPIKey" xml:space="preserve">
-    <value>คีย์ API</value>
-    <comment>คีย์ API</comment>
-</data>
-
-<data name="AIAPIKeyPlaceholder" xml:space="preserve">
-    <value>ป้อนคีย์ API สำหรับบริการ AI ภายนอก</value>
-    <comment>ป้อนคีย์ API สำหรับบริการ AI ภายนอก</comment>
-</data>
-
-<data name="AIAPIKeyHint" xml:space="preserve">
-    <value>จำเป็นสำหรับบริการ AI ภายนอก โปรดเก็บรักษาไว้อย่างปลอดภัย</value>
-    <comment>จำเป็นสำหรับบริการ AI ภายนอก โปรดเก็บรักษาไว้อย่างปลอดภัย</comment>
-</data>
-
-<data name="AIShowAPIKey" xml:space="preserve">
-    <value>แสดงคีย์ API</value>
-    <comment>แสดงคีย์ API</comment>
-</data>
-
-<data name="AIModelName" xml:space="preserve">
-    <value>ชื่อโมเดล</value>
-    <comment>ชื่อโมเดล</comment>
-</data>
-
-<data name="AIModelPlaceholder" xml:space="preserve">
-    <value>ป้อนชื่อโมเดล</value>
-    <comment>ป้อนชื่อโมเดล</comment>
-</data>
-
-<data name="AIQuickPresets" xml:space="preserve">
-    <value>โมเดลพรีเซ็ตด่วน:</value>
-    <comment>โมเดลพรีเซ็ตด่วน:</comment>
-</data>
-
-<data name="AIPresetHint" xml:space="preserve">
-    <value>คลิกที่พรีเซ็ตเพื่อตั้งชื่อโมเดลอย่างรวดเร็ว</value>
-    <comment>คลิกที่พรีเซ็ตเพื่อตั้งชื่อโมเดลอย่างรวดเร็ว</comment>
-</data>
-
-<data name="AICurrentStatus" xml:space="preserve">
-    <value>สถานะการตั้งค่าปัจจุบัน</value>
-    <comment>สถานะการตั้งค่าปัจจุบัน</comment>
-</data>
-
-<data name="AIServerURL" xml:space="preserve">
-    <value>URL เซิร์ฟเวอร์</value>
-    <comment>URL เซิร์ฟเวอร์</comment>
-</data>
-
-<data name="AINotConfigured" xml:space="preserve">
-    <value>ไม่ได้กำหนดค่า</value>
-    <comment>ไม่ได้กำหนดค่า</comment>
-</data>
-
-<data name="AIModel" xml:space="preserve">
-    <value>โมเดล</value>
-    <comment>โมเดล</comment>
-</data>
-
-<data name="AIStatus" xml:space="preserve">
-    <value>สถานะ</value>
-    <comment>สถานะ</comment>
-</data>
-
-<data name="AIUnknown" xml:space="preserve">
-    <value>ไม่ทราบ</value>
-    <comment>ไม่ทราบ</comment>
-</data>
-
-<data name="AILastTest" xml:space="preserve">
-    <value>การทดสอบล่าสุด</value>
-    <comment>การทดสอบล่าสุด</comment>
-</data>
-
-<data name="AINeverTested" xml:space="preserve">
-    <value>ไม่เคยทดสอบ</value>
-    <comment>ไม่เคยทดสอบ</comment>
-</data>
-
-<data name="AITestConnection" xml:space="preserve">
-    <value>🔄 ทดสอบการเชื่อมต่อ</value>
-    <comment>🔄 ทดสอบการเชื่อมต่อ</comment>
-</data>
-
-<data name="AISaveConfiguration" xml:space="preserve">
-    <value>💾 บันทึกการตั้งค่า</value>
-    <comment>💾 บันทึกการตั้งค่า</comment>
-</data>
-
-<data name="AILoadCurrent" xml:space="preserve">
-    <value>📂 โหลดค่าปัจจุบัน</value>
-    <comment>📂 โหลดค่าปัจจุบัน</comment>
-</data>
-
-<data name="AIResetToDefault" xml:space="preserve">
-    <value>🔄 รีเซ็ตเป็นค่าเริ่มต้น</value>
-    <comment>🔄 รีเซ็ตเป็นค่าเริ่มต้น</comment>
-</data>
-
-<data name="AIInformationHelp" xml:space="preserve">
-    <value>ข้อมูล &amp; ความช่วยเหลือ</value>
-    <comment>ข้อมูล &amp; ความช่วยเหลือ</comment>
-</data>
-
-<data name="AILocalAISetup" xml:space="preserve">
-    <value>การตั้งค่า AI ท้องถิ่น:</value>
-    <comment>การตั้งค่า AI ท้องถิ่น:</comment>
-</data>
-
-<data name="AIInstallOllama" xml:space="preserve">
-    <value>ติดตั้ง Ollama จาก &lt;a href="https://ollama.ai" target="_blank"&gt;ollama.ai&lt;/a&gt;</value>
-    <comment>ติดตั้ง Ollama จาก &lt;a href="https://ollama.ai" target="_blank"&gt;ollama.ai&lt;/a&gt;</comment>
-</data>
-
-<data name="AIOllamaCommand" xml:space="preserve">
-    <value>รันคำสั่ง: &lt;code&gt;ollama run deepseek-r1:1.5b&lt;/code&gt; เพื่อดาวน์โหลดและทดสอบโมเดล</value>
-    <comment>รันคำสั่ง: &lt;code&gt;ollama run deepseek-r1:1.5b&lt;/code&gt; เพื่อดาวน์โหลดและทดสอบโมเดล</comment>
-</data>
-
-<data name="AIOllamaPort" xml:space="preserve">
-    <value>ตรวจสอบให้แน่ใจว่า Ollama ทำงานบนพอร์ต 11434</value>
-    <comment>ตรวจสอบให้แน่ใจว่า Ollama ทำงานบนพอร์ต 11434</comment>
-</data>
-
-<data name="AIExternalAISetup" xml:space="preserve">
-    <value>การตั้งค่า AI ภายนอก:</value>
-    <comment>การตั้งค่า AI ภายนอก:</comment>
-</data>
-
-<data name="AIGetAPIKey" xml:space="preserve">
-    <value>รับคีย์ API จากผู้ให้บริการบริการ AI ของคุณ</value>
-    <comment>รับคีย์ API จากผู้ให้บริการบริการ AI ของคุณ</comment>
-</data>
-
-<data name="AICheckCredits" xml:space="preserve">
-    <value>ตรวจสอบให้แน่ใจว่าบัญชีของคุณมีเครดิต/โควต้าที่เพียงพอ</value>
-    <comment>ตรวจสอบให้แน่ใจว่าบัญชีของคุณมีเครดิต/โควต้าที่เพียงพอ</comment>
-</data>
-
-<data name="AICheckAPIDocs" xml:space="preserve">
-    <value>ตรวจสอบเอกสาร API สำหรับ URL endpoint ที่ถูกต้อง</value>
-    <comment>ตรวจสอบเอกสาร API สำหรับ URL endpoint ที่ถูกต้อง</comment>
-</data>
-
-<data name="AINote" xml:space="preserve">
-    <value>หมายเหตุ:</value>
-    <comment>หมายเหตุ:</comment>
-</data>
-
-<data name="AIConfigurationNote" xml:space="preserve">
-    <value>การตั้งค่าจะถูกบันทึกลงในฐานข้อมูลและใช้สำหรับคุณสมบัติการวิเคราะห์ AI ทั้งหมด</value>
-    <comment>การตั้งค่าจะถูกบันทึกลงในฐานข้อมูลและใช้สำหรับคุณสมบัติการวิเคราะห์ AI ทั้งหมด</comment>
-</data>
-
-<data name="AITestingConnection" xml:space="preserve">
-    <value>กำลังทดสอบการเชื่อมต่อเซิร์ฟเวอร์ AI</value>
-    <comment>กำลังทดสอบการเชื่อมต่อเซิร์ฟเวอร์ AI</comment>
-</data>
-
-<data name="AIPleaseWaitConnection" xml:space="preserve">
-    <value>โปรดรอสักครู่ขณะที่เราทดสอบการเชื่อมต่อกับเซิร์ฟเวอร์ AI ของคุณ...</value>
-    <comment>โปรดรอสักครู่ขณะที่เราทดสอบการเชื่อมต่อกับเซิร์ฟเวอร์ AI ของคุณ...</comment>
-</data>
-
-<!-- คำศัพท์ที่ใช้ในแบ็กเอนด์ -->
-<data name="AIErrorLoadingConfig" xml:space="preserve">
-    <value>ข้อผิดพลาดในการโหลดการตั้งค่า:</value>
-    <comment>ข้อผิดพลาดในการโหลดการตั้งค่า:</comment>
-</data>
-
-<data name="AILocalServerReachable" xml:space="preserve">
-    <value>✅ เชื่อมต่อเซิร์ฟเวอร์ AI ท้องถิ่นได้</value>
-    <comment>✅ เชื่อมต่อเซิร์ฟเวอร์ AI ท้องถิ่นได้</comment>
-</data>
-
-<data name="AICannotConnectLocal" xml:space="preserve">
-    <value>❌ ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์ AI ท้องถิ่น</value>
-    <comment>❌ ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์ AI ท้องถิ่น</comment>
-</data>
-
-<data name="AIExternalServerReachable" xml:space="preserve">
-    <value>✅ เชื่อมต่อเซิร์ฟเวอร์ AI ภายนอกได้</value>
-    <comment>✅ เชื่อมต่อเซิร์ฟเวอร์ AI ภายนอกได้</comment>
-</data>
-
-<data name="AICannotConnectExternal" xml:space="preserve">
-    <value>❌ ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์ AI ภายนอก</value>
-    <comment>❌ ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์ AI ภายนอก</comment>
-</data>
-
-<data name="AIConnected" xml:space="preserve">
-    <value>✅ เชื่อมต่อแล้ว</value>
-    <comment>✅ เชื่อมต่อแล้ว</comment>
-</data>
-
-<data name="AINotConnected" xml:space="preserve">
-    <value>❌ ไม่ได้เชื่อมต่อ</value>
-    <comment>❌ ไม่ได้เชื่อมต่อ</comment>
-</data>
-
-<data name="AIConnectionTestFailed" xml:space="preserve">
-    <value>❌ การทดสอบการเชื่อมต่อล้มเหลว:</value>
-    <comment>❌ การทดสอบการเชื่อมต่อล้มเหลว:</comment>
-</data>
-
-<data name="AITestFailed" xml:space="preserve">
-    <value>❌ การทดสอบล้มเหลว</value>
-    <comment>❌ การทดสอบล้มเหลว</comment>
-</data>
-
-<data name="AIConfigSavedSuccess" xml:space="preserve">
-    <value>✅ บันทึกการตั้งค่าเรียบร้อยแล้ว!</value>
-    <comment>✅ บันทึกการตั้งค่าเรียบร้อยแล้ว!</comment>
-</data>
-
-<data name="AINotTested" xml:space="preserve">
-    <value>ยังไม่ได้ทดสอบ</value>
-    <comment>ยังไม่ได้ทดสอบ</comment>
-</data>
-
-<data name="AIErrorSavingConfig" xml:space="preserve">
-    <value>❌ ข้อผิดพลาดในการบันทึกการตั้งค่า:</value>
-    <comment>❌ ข้อผิดพลาดในการบันทึกการตั้งค่า:</comment>
-</data>
-
-<data name="AICurrentConfigLoaded" xml:space="preserve">
-    <value>📂 โหลดการตั้งค่าปัจจุบันจากฐานข้อมูล</value>
-    <comment>📂 โหลดการตั้งค่าปัจจุบันจากฐานข้อมูล</comment>
-</data>
-
-<data name="AIEnterAPIURL" xml:space="preserve">
-    <value>❌ โปรดป้อน URL API</value>
-    <comment>❌ โปรดป้อน URL API</comment>
-</data>
-
-<data name="AIEnterModelName" xml:space="preserve">
-    <value>❌ โปรดป้อนชื่อโมเดล</value>
-    <comment>❌ โปรดป้อนชื่อโมเดล</comment>
-</data>
-
-<data name="AIAPIKeyRequired" xml:space="preserve">
-    <value>❌ ต้องใช้คีย์ API สำหรับ AI ภายนอก</value>
-    <comment>❌ ต้องใช้คีย์ API สำหรับ AI ภายนอก</comment>
-</data>
-
-<data name="AILocalConfigActive" xml:space="preserve">
-    <value>🏠 การตั้งค่า AI ท้องถิ่นเปิดใช้งานแล้ว</value>
-    <comment>🏠 การตั้งค่า AI ท้องถิ่นเปิดใช้งานแล้ว</comment>
-</data>
-
-<data name="AIExternalConfigActive" xml:space="preserve">
-    <value>🌐 การตั้งค่า AI ภายนอกเปิดใช้งานแล้ว</value>
-    <comment>🌐 การตั้งค่า AI ภายนอกเปิดใช้งานแล้ว</comment>
-</data>
-
-<data name="AINoAIConfigFound" xml:space="preserve">
-    <value>⚠️ ไม่พบการตั้งค่า AI โปรดกำหนดค่าการตั้งค่าเซิร์ฟเวอร์ AI</value>
-    <comment>⚠️ ไม่พบการตั้งค่า AI โปรดกำหนดค่าการตั้งค่าเซิร์ฟเวอร์ AI</comment>
-</data>
-
+  <data name="ShuRuNiDeFenXiXuQiu" xml:space="preserve">
+    <value>ป้อนความต้องการการวิเคราะห์ของคุณ...</value>
+  </data>
+  <data name="ShuRuShuJiBiaoMingChengCTaoHaoFengKai" xml:space="preserve">
+    <value>ป้อนชื่อตาราง คั่นด้วยเครื่องหมายจุลภาค...</value>
+  </data>
 </root>

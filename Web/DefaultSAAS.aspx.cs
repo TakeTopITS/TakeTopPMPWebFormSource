@@ -94,8 +94,6 @@ public partial class DefaultSAAS : System.Web.UI.Page
                 Session["LangCode"] = System.Configuration.ConfigurationManager.AppSettings["DefaultLang"];
             }
         }
-
-  
     }
 
     protected void LB_Login_Click(object sender, EventArgs e)

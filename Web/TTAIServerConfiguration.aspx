@@ -467,7 +467,7 @@
                             </div>
                             <div>
                                 <asp:TextBox ID="txtApiUrl" runat="server" CssClass="config-input"
-                                    placeholder="AI API URL Placeholder"></asp:TextBox>
+                                    placeholder="AI API URL"></asp:TextBox>
                                 <div class="hint-text">
                                     <asp:Literal ID="LiteralAPIURLExamples" runat="server" Text="<%$ Resources:lang,AIAPIURLExamples%>"></asp:Literal>
                                 </div>
@@ -482,7 +482,7 @@
                             </div>
                             <div>
                                 <asp:TextBox ID="txtApiKey" runat="server" CssClass="config-input"
-                                    TextMode="Password" placeholder="AI API Key Placeholder"></asp:TextBox>
+                                    TextMode="Password" placeholder="AI API Key"></asp:TextBox>
                                 <div class="hint-text">
                                     <asp:Literal ID="LiteralAPIKeyHint" runat="server" Text="<%$ Resources:lang,AIAPIKeyHint%>"></asp:Literal><br />
                                     <asp:CheckBox ID="chkShowKey" runat="server" Text="<%$ Resources:lang,AIShowAPIKey%>" 
@@ -499,7 +499,7 @@
                             </div>
                             <div>
                                 <asp:TextBox ID="txtModel" runat="server" CssClass="config-input"
-                                    placeholder="AI Model Placeholder"></asp:TextBox>
+                                    placeholder="AI Model"></asp:TextBox>
 
                                 <div class="preset-section">
                                     <h4>

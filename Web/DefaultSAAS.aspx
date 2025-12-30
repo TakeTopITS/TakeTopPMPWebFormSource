@@ -270,6 +270,12 @@
                                             <asp:Image ID="IM_CheckCode" runat="server" ClientIDMode="Static" />
                                         </a>
                                     </td>
+                                    <td align="center">[
+                                      <asp:DropDownList ID="ddlLangSwitcher" runat="server" DataValueField="LangCode" DataTextField="Language"
+                                          AutoPostBack="true" OnSelectedIndexChanged="ddlLangSwitcher_SelectedIndexChanged">
+                                      </asp:DropDownList>
+                                        ]
+                                    </td>
                                 </tr>
                             </table>
                         </td>
@@ -317,14 +323,7 @@
                                         <asp:Label ID="LB_Copyright" runat="server" Text="Copyright TakeTop Software 2006-2036 "></asp:Label>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td align="center">[
-                                        <asp:DropDownList ID="ddlLangSwitcher" runat="server" DataValueField="LangCode" DataTextField="Language"
-                                            AutoPostBack="true" OnSelectedIndexChanged="ddlLangSwitcher_SelectedIndexChanged">
-                                        </asp:DropDownList>
-                                        ]
-                                    </td>
-                                </tr>
+
                             </table>
                         </td>
                     </tr>

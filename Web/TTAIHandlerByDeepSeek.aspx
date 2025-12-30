@@ -675,7 +675,7 @@
                                     <tr>
                                         <td>
                                             <asp:TextBox ID="txtPrompt" runat="server" Width="250px" Height="80px"
-                                                TextMode="MultiLine" placeholder="Enter Your Question"></asp:TextBox>
+                                                TextMode="MultiLine" placeholder="<%$ Resources:lang,DSeekEnterYourQuestion%>"></asp:TextBox>
                                         </td>
                                         <td>
                                             <asp:ImageButton ID="btnGenerateText" ImageUrl="ImagesSkin/AIGenerate.png"
@@ -721,7 +721,7 @@
                                     <div class="table-input-area">
                                         <asp:TextBox ID="txtTableNames" runat="server"
                                             CssClass="config-input"
-                                            placeholder="Enter table names separated by commas"></asp:TextBox>
+                                            placeholder="<%$ Resources:lang,ShuRuShuJiBiaoMingChengCTaoHaoFengKai%>"></asp:TextBox>
                                         <asp:Button ID="btnSaveTables" runat="server"
                                             Text="<%$ Resources:lang,DSeekSaveToDB%>"
                                             CssClass="btn btn-success"
@@ -778,7 +778,7 @@
                             <div>
                                 <asp:TextBox ID="txtAnalysisRequirement" runat="server"
                                     CssClass="config-textarea"
-                                    placeholder="Enter your analysis requirements here..."></asp:TextBox>
+                                    placeholder="<%$ Resources:lang,ShuRuNiDeFenXiXuQiu%>"></asp:TextBox>
                                 <div class="hint-text">
                                     <asp:Literal ID="LiteralAnalysisCustomizedReports" runat="server" Text="<%$ Resources:lang,DSeekAnalysisCustomizedReports%>"></asp:Literal>
                                 </div>
