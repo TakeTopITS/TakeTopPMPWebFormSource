@@ -134,11 +134,12 @@
         }
 
         .btn-group {
-            display: flex;
-            gap: 15px;
+         /*   display: flex;
+            gap: 15px;*/
             margin-top: 30px;
             padding-top: 20px;
             border-top: 1px solid #e0e0e0;
+            text-align:center;
         }
 
         .btn {

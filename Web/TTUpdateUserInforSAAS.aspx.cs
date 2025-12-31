@@ -23,14 +23,6 @@ public partial class TTUpdateUserInforSAAS : System.Web.UI.Page
         IList lst;
 
         ProjectMemberBLL projectMemberBLL = new ProjectMemberBLL();
-        Label1.Text = ShareClass.GetPageTitle(this.GetType().BaseType.Name + ".aspx");
-        //bool blVisible = TakeTopSecurity.TakeTopLicense.GetAuthobility(this.GetType().BaseType.Name + ".aspx", strUserCode);  //Label1.Text = ShareClass.GetPageTitle(this.GetType().BaseType.Name + ".aspx"); bool blVisible = TakeTopSecurity.TakeTopLicense.GetAuthobility(this.GetType().BaseType.Name + ".aspx", "ÎÒµÄµµ°¸", strUserCode);
-        //if (blVisible == false)
-        //{
-        //    Response.Redirect("TTDisplayErrors.aspx");
-        //    return;
-        //}
-
         ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "clickA", "aHandler();", true);
         if (Page.IsPostBack == false)
         {

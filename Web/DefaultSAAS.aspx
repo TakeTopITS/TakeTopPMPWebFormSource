@@ -270,11 +270,11 @@
                                             <asp:Image ID="IM_CheckCode" runat="server" ClientIDMode="Static" />
                                         </a>
                                     </td>
-                                    <td align="center">[
-                                      <asp:DropDownList ID="ddlLangSwitcher" runat="server" DataValueField="LangCode" DataTextField="Language"
-                                          AutoPostBack="true" OnSelectedIndexChanged="ddlLangSwitcher_SelectedIndexChanged">
-                                      </asp:DropDownList>
-                                        ]
+                                    <td align="center">
+                                        <asp:DropDownList ID="ddlLangSwitcher" Width="70px" Height="35px" runat="server" DataValueField="LangCode" DataTextField="Language"
+                                            AutoPostBack="true" OnSelectedIndexChanged="ddlLangSwitcher_SelectedIndexChanged">
+                                        </asp:DropDownList>
+
                                     </td>
                                 </tr>
                             </table>

@@ -15549,4 +15549,149 @@ BEGIN
     END IF;
 END $$;</SQLText>
   </DataBaseUpgradeFile>
+  <DataBaseUpgradeFile>
+    <ID>3908</ID>
+    <SQLText>truncate table public.t_dbtablesforai;</SQLText>
+  </DataBaseUpgradeFile>
+  <DataBaseUpgradeFile>
+    <ID>3909</ID>
+    <SQLText>INSERT INTO public.t_dbtablesforai(
+	tablename, description, createdby, createdat, isactive, lastanalyzed, analysiscount)
+	VALUES ('T_Project', 'Added By Operator', 'ADMIN', now(), true, null, null);
+INSERT INTO public.t_dbtablesforai(
+	tablename, description, createdby, createdat, isactive, lastanalyzed, analysiscount)
+	VALUES ('T_ProjectTask', 'Added By Operator', 'ADMIN', now(), true, null, null);
+INSERT INTO public.t_dbtablesforai(
+	tablename, description, createdby, createdat, isactive, lastanalyzed, analysiscount)
+	VALUES ('T_ImplePlan', 'Added By Operator', 'ADMIN', now(), true, null, null);
+INSERT INTO public.t_dbtablesforai(
+	tablename, description, createdby, createdat, isactive, lastanalyzed, analysiscount)
+	VALUES ('t_constract', 'Added By Operator', 'ADMIN', now(), true, null, null);
+INSERT INTO public.t_dbtablesforai(
+	tablename, description, createdby, createdat, isactive, lastanalyzed, analysiscount)
+	VALUES ('t_constractreceivables', 'Added By Operator', 'ADMIN', now(), true, null, null);
+INSERT INTO public.t_dbtablesforai(
+	tablename, description, createdby, createdat, isactive, lastanalyzed, analysiscount)
+	VALUES ('t_constractreceivablesrecord', 'Added By Operator', 'ADMIN', now(), true, null, null);
+INSERT INTO public.t_dbtablesforai(
+	tablename, description, createdby, createdat, isactive, lastanalyzed, analysiscount)
+	VALUES ('t_constractpayable', 'Added By Operator', 'ADMIN', now(), true, null, null);
+INSERT INTO public.t_dbtablesforai(
+	tablename, description, createdby, createdat, isactive, lastanalyzed, analysiscount)
+	VALUES ('t_constractpayablerecord', 'Added By Operator', 'ADMIN', now(), true, null, null);
+INSERT INTO public.t_dbtablesforai(
+	tablename, description, createdby, createdat, isactive, lastanalyzed, analysiscount)
+	VALUES ('t_relateduser', 'Added By Operator', 'ADMIN', now(), true, null, null);
+INSERT INTO public.t_dbtablesforai(
+	tablename, description, createdby, createdat, isactive, lastanalyzed, analysiscount)
+	VALUES ('t_taskassignrecord', 'Added By Operator', 'ADMIN', now(), true, null, null);
+INSERT INTO public.t_dbtablesforai(
+	tablename, description, createdby, createdat, isactive, lastanalyzed, analysiscount)
+	VALUES ('t_Document', 'Added By Operator', 'ADMIN', now(), true, null, null);
+
+INSERT INTO public.t_dbtablesforai(
+	tablename, description, createdby, createdat, isactive, lastanalyzed, analysiscount)
+	VALUES ('t_Department', 'Added By Operator', 'ADMIN', now(), true, null, null);
+INSERT INTO public.t_dbtablesforai(
+	tablename, description, createdby, createdat, isactive, lastanalyzed, analysiscount)
+	VALUES ('T_ProjectMember', 'Added By Operator', 'ADMIN', now(), true, null, null);</SQLText>
+  </DataBaseUpgradeFile>
+  <DataBaseUpgradeFile>
+    <ID>3910</ID>
+    <SQLText>truncate table public.t_dbtablesforai;</SQLText>
+  </DataBaseUpgradeFile>
+  <DataBaseUpgradeFile>
+    <ID>3911</ID>
+    <SQLText>INSERT INTO public.t_dbtablesforai(
+	tablename, description, createdby, createdat, isactive, lastanalyzed, analysiscount)
+	VALUES ('T_Project', 'Project Information', 'ADMIN', now(), true, null, null);
+INSERT INTO public.t_dbtablesforai(
+	tablename, description, createdby, createdat, isactive, lastanalyzed, analysiscount)
+	VALUES ('T_ProjectTask', 'Project Task Information', 'ADMIN', now(), true, null, null);
+INSERT INTO public.t_dbtablesforai(
+	tablename, description, createdby, createdat, isactive, lastanalyzed, analysiscount)
+	VALUES ('T_ImplePlan', 'Project Plan Information', 'ADMIN', now(), true, null, null);
+INSERT INTO public.t_dbtablesforai(
+	tablename, description, createdby, createdat, isactive, lastanalyzed, analysiscount)
+	VALUES ('t_constract', 'Contract Information', 'ADMIN', now(), true, null, null);
+INSERT INTO public.t_dbtablesforai(
+	tablename, description, createdby, createdat, isactive, lastanalyzed, analysiscount)
+	VALUES ('t_constractreceivables', 'Contract Receivables', 'ADMIN', now(), true, null, null);
+INSERT INTO public.t_dbtablesforai(
+	tablename, description, createdby, createdat, isactive, lastanalyzed, analysiscount)
+	VALUES ('t_constractreceivablesrecord', 'Contract Receivables Record', 'ADMIN', now(), true, null, null);
+INSERT INTO public.t_dbtablesforai(
+	tablename, description, createdby, createdat, isactive, lastanalyzed, analysiscount)
+	VALUES ('t_constractpayable', 'Contract Payable', 'ADMIN', now(), true, null, null);
+INSERT INTO public.t_dbtablesforai(
+	tablename, description, createdby, createdat, isactive, lastanalyzed, analysiscount)
+	VALUES ('t_constractpayablerecord', 'Contract Payable Record', 'ADMIN', now(), true, null, null);
+INSERT INTO public.t_dbtablesforai(
+	tablename, description, createdby, createdat, isactive, lastanalyzed, analysiscount)
+	VALUES ('t_relateduser', 'Project Members', 'ADMIN', now(), true, null, null);
+INSERT INTO public.t_dbtablesforai(
+	tablename, description, createdby, createdat, isactive, lastanalyzed, analysiscount)
+	VALUES ('t_taskassignrecord', 'Task Assign Record', 'ADMIN', now(), true, null, null);
+INSERT INTO public.t_dbtablesforai(
+	tablename, description, createdby, createdat, isactive, lastanalyzed, analysiscount)
+	VALUES ('t_Document', 'Document Information', 'ADMIN', now(), true, null, null);
+
+INSERT INTO public.t_dbtablesforai(
+	tablename, description, createdby, createdat, isactive, lastanalyzed, analysiscount)
+	VALUES ('t_Department', 'Department Information', 'ADMIN', now(), true, null, null);
+
+	
+INSERT INTO public.t_dbtablesforai(
+	tablename, description, createdby, createdat, isactive, lastanalyzed, analysiscount)
+	VALUES ('T_ProjectMember', 'User Information', 'ADMIN', now(), true, null, null);</SQLText>
+  </DataBaseUpgradeFile>
+  <DataBaseUpgradeFile>
+    <ID>3912</ID>
+    <SQLText>truncate table public.t_dbtablesforai;</SQLText>
+  </DataBaseUpgradeFile>
+  <DataBaseUpgradeFile>
+    <ID>3913</ID>
+    <SQLText>INSERT INTO public.t_dbtablesforai(
+	tablename, description, createdby, createdat, isactive, lastanalyzed, analysiscount)
+	VALUES ('T_Project', 'Project Information', 'ADMIN', now(), true, null, null);
+INSERT INTO public.t_dbtablesforai(
+	tablename, description, createdby, createdat, isactive, lastanalyzed, analysiscount)
+	VALUES ('T_ProjectTask', 'Project Task Information', 'ADMIN', now(), true, null, null);
+INSERT INTO public.t_dbtablesforai(
+	tablename, description, createdby, createdat, isactive, lastanalyzed, analysiscount)
+	VALUES ('T_ImplePlan', 'Project Plan Information', 'ADMIN', now(), true, null, null);
+INSERT INTO public.t_dbtablesforai(
+	tablename, description, createdby, createdat, isactive, lastanalyzed, analysiscount)
+	VALUES ('t_constract', 'Contract Information', 'ADMIN', now(), true, null, null);
+INSERT INTO public.t_dbtablesforai(
+	tablename, description, createdby, createdat, isactive, lastanalyzed, analysiscount)
+	VALUES ('t_constractreceivables', 'Contract Receivables', 'ADMIN', now(), true, null, null);
+INSERT INTO public.t_dbtablesforai(
+	tablename, description, createdby, createdat, isactive, lastanalyzed, analysiscount)
+	VALUES ('t_constractreceivablesrecord', 'Contract Receivables Record', 'ADMIN', now(), true, null, null);
+INSERT INTO public.t_dbtablesforai(
+	tablename, description, createdby, createdat, isactive, lastanalyzed, analysiscount)
+	VALUES ('t_constractpayable', 'Contract Payable', 'ADMIN', now(), true, null, null);
+INSERT INTO public.t_dbtablesforai(
+	tablename, description, createdby, createdat, isactive, lastanalyzed, analysiscount)
+	VALUES ('t_constractpayablerecord', 'Contract Payable Record', 'ADMIN', now(), true, null, null);
+INSERT INTO public.t_dbtablesforai(
+	tablename, description, createdby, createdat, isactive, lastanalyzed, analysiscount)
+	VALUES ('t_relateduser', 'Project Members', 'ADMIN', now(), true, null, null);
+INSERT INTO public.t_dbtablesforai(
+	tablename, description, createdby, createdat, isactive, lastanalyzed, analysiscount)
+	VALUES ('t_taskassignrecord', 'Task Assign Record', 'ADMIN', now(), true, null, null);
+INSERT INTO public.t_dbtablesforai(
+	tablename, description, createdby, createdat, isactive, lastanalyzed, analysiscount)
+	VALUES ('t_Document', 'Document Information', 'ADMIN', now(), true, null, null);
+
+INSERT INTO public.t_dbtablesforai(
+	tablename, description, createdby, createdat, isactive, lastanalyzed, analysiscount)
+	VALUES ('t_Department', 'Organization Department Information', 'ADMIN', now(), true, null, null);
+
+	
+INSERT INTO public.t_dbtablesforai(
+	tablename, description, createdby, createdat, isactive, lastanalyzed, analysiscount)
+	VALUES ('T_ProjectMember', 'User Information', 'ADMIN', now(), true, null, null);</SQLText>
+  </DataBaseUpgradeFile>
 </DataBaseUpgradeFiles>

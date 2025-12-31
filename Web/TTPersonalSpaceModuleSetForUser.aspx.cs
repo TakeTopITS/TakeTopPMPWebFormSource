@@ -41,13 +41,13 @@ public partial class TTPersonalSpaceModuleSetForUser : System.Web.UI.Page
 
             LoadNewsTypeList(strLangCode);
 
-            if(strUserCode == "ADMIN")
+            if (strUserCode == "ADMIN")
             {
-                trNewsTypeList.Visible = true; 
+                DataGrid4.Visible = true;
             }
             else
             {
-                trNewsTypeList.Visible = false;
+                DataGrid4.Visible = false;
             }
         }
     }

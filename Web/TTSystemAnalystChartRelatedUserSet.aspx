@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTSystemAnalystChartRelatedUserSet.aspx.cs" Inherits="TTSystemAnalystChartRelatedUserSet" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" Async="true" CodeFile="TTSystemAnalystChartRelatedUserSet.aspx.cs" Inherits="TTSystemAnalystChartRelatedUserSet" %>
 
 <%@ Register Assembly="NickLee.Web.UI" Namespace="NickLee.Web.UI" TagPrefix="NickLee" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
@@ -6,14 +6,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
-    <title></title>
-    <link id="mainCss" href="css/bluelightmain.css" rel="stylesheet" type="text/css" />
-    <style type="text/css">
-        #AboveDiv {
-            min-width: 1200px;
-            width: expression (document.body.clientWidth <= 1200? "1200px" : "auto" ));
-        }
-    </style>
+    <title>
+        <asp:Label ID="Label1" runat="server" Text="<%$ Resources:lang,WeDeYeWuFenXiTu%>"></asp:Label>
+    </title>
+    <link href="css/common-styles.css" rel="stylesheet" type="text/css" />
+
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="js/allAHandler.js"></script>
     <script type="text/javascript" language="javascript">
@@ -21,177 +18,215 @@
             if (top.location != self.location) { } else { CloseWebPage(); }
         });
 
-        //ˢ�¸�ҳ��
         function reloadPrentPage() {
-
             parent.reloadPage();
         }
 
+        function showLoading() {
+            var overlay = document.getElementById('loadingOverlay');
+            if (overlay) {
+                overlay.style.display = 'flex';
+                setTimeout(function () {
+                    overlay.style.display = 'none';
+                }, 30000);
+            }
+        }
+
+        function hideLoading() {
+            var overlay = document.getElementById('loadingOverlay');
+            if (overlay) {
+                overlay.style.display = 'none';
+            }
+        }
+
+        // 绑定按钮点击事件
+        document.addEventListener('DOMContentLoaded', function () {
+            var btnSave = document.getElementById('<%= BT_Save.ClientID %>');
+            if (btnSave) {
+                btnSave.addEventListener('click', function () {
+                    showLoading();
+                });
+            }
+        });
     </script>
 </head>
 <body>
-    <center>
-        <form id="form1" runat="server">
-            <%--  <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">--%>
-            <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">
-            </asp:ScriptManager>
-            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                <ContentTemplate>
-                    <div id="AboveDiv">
-                        <table id="AboveTable" cellpadding="0" width="100%" cellspacing="0" class="bian">
-                            <tr>
-                                <td height="31" class="page_topbj">
-                                    <table width="96%" border="0" class="ItemAlignLeft" cellpadding="0" cellspacing="0">
-                                        <tr>
-                                            <td class="ItemAlignLeft">
-                                                <table width="345" border="0" class="ItemAlignLeft" cellpadding="0" cellspacing="0">
-                                                    <tr>
-                                                        <td width="29">
-                                                            <%--<img src="Logo/main_top_l.jpg" alt="" width="29" height="31" />--%>
-                                                        </td>
-                                                        <td background="ImagesSkin/main_top_bj.jpg" class="titlezi">
-                                                            <asp:Label ID="Label1" runat="server" Text="<%$ Resources:lang,WeDeYeWuFenXiTu%>"></asp:Label>
-                                                        </td>
-                                                        <td width="5">
-                                                            <%--<img src="ImagesSkin/main_top_r.jpg" width="5" height="31" alt="" />--%>
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="padding: 5px 5px 5px 5px;">
-                                    <table width="100%" cellpadding="0" cellspacing="0">
-                                        <tr>
-                                            <td width="180px" class="tdMain" class="ItemAlignLeft" valign="top">
-                                                <table width="100%" border="0" cellpadding="0" cellspacing="0" background="ImagesSkin/main_n_bj.jpg">
-                                                    <tr>
-                                                        <td width="7">
-                                                            <img src="ImagesSkin/main_n_l.jpg" width="7" height="26" />
-                                                        </td>
-                                                        <td>
-                                                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                                                <tr>
-                                                                    <td class="ItemAlignLeft">
-                                                                        <strong>
-                                                                            <asp:Label ID="Label2" runat="server" Text="<%$ Resources:lang,FenXiTu%>"></asp:Label></strong>
-                                                                    </td>
-                                                                </tr>
-                                                            </table>
-                                                            <asp:DataGrid ID="DataGrid1" runat="server" AutoGenerateColumns="False" OnItemCommand="DataGrid1_ItemCommand"
-                                                                Width="100%" CellPadding="4" ForeColor="#333333" GridLines="None" ShowHeader="false"
-                                                                Font-Bold="True">
-                                                                <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                                                                <EditItemStyle BackColor="#2461BF" />
-                                                                <SelectedItemStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-                                                                <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="left" />
+    <form id="form1" runat="server">
+        <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">
+        </asp:ScriptManager>
 
-                                                                <ItemStyle CssClass="itemStyle" />
-                                                                <Columns>
-                                                                    <asp:TemplateColumn HeaderText="">
-                                                                        <ItemTemplate>
-                                                                            <table width="100%">
-                                                                                <tr>
-                                                                                    <td>
-                                                                                        <asp:Button ID="BT_ChartName" runat="server" CssClass="inpu" Width="200px" Text='<%# DataBinder.Eval(Container.DataItem,"ChartName") %>' />
-                                                                                    </td>
-                                                                                </tr>
-                                                                            </table>
+        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            <ContentTemplate>
 
-                                                                        </ItemTemplate>
-                                                                        <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" />
-                                                                    </asp:TemplateColumn>
-                                                                </Columns>
-                                                                <HeaderStyle BackColor="#507CD1" Font-Bold="True" HorizontalAlign="Left" ForeColor="White" />
-                                                            </asp:DataGrid>
-                                                        </td>
-                                                        <td width="6" align="right">
-                                                            <img src="ImagesSkin/main_n_r.jpg" width="6" alt="" height="26" />
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-                                            <td class="tdMain" class="ItemAlignLeft" valign="top" style="border-right: solid 1px #D8D8D8; padding-top: 35px;">
+                <table id="AboveTable" cellpadding="0" width="100%" cellspacing="0" class="bian">
+                    <tr>
+                        <td height="31" class="page_topbj">
+                            <!-- 修改为居中的标题结构 -->
+                            <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td align="center">
+                                        <div style="display: inline-block; text-align: center;">
+                                            📊 
+                                            <asp:Label ID="Label4" runat="server" CssClass="titlezi"
+                                                Text="<%$ Resources:lang,WeDeYeWuFenXiTu%>"></asp:Label>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
 
-                                                <table width="100%" border="0" class="formBgStyle" cellpadding="2" cellspacing="0">
-                                                    <tr>
-                                                        <td class="formItemBgStyleForAlignLeft" style="padding-top: 0px;">
-                                                            <asp:DataGrid ID="DataGrid4" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Height="1px" OnItemCommand="DataGrid4_ItemCommand" Width="90%">
-                                                                <Columns>
-                                                                    <asp:BoundColumn DataField="ID" HeaderText="ID">
-                                                                        <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" Width="10%" />
-                                                                        <HeaderStyle BorderColor="#394f66" BorderStyle="Solid" BorderWidth="1px" Font-Bold="true"
-                                                                            HorizontalAlign="left" />
-                                                                    </asp:BoundColumn>
-                                                                    <asp:TemplateColumn HeaderText="<%$ Resources:lang,MingChengZhongWen%>">
-                                                                        <ItemTemplate>
-                                                                            <asp:Label ID="LB_ModuleName" runat="server" Text='<%# DataBinder.Eval(Container.DataItem,"ChartName") %>'></asp:Label>
-                                                                        </ItemTemplate>
-                                                                        <HeaderStyle BorderColor="#394F66" BorderStyle="Solid" BorderWidth="1px" Font-Bold="True" Width="45%" />
-                                                                        <ItemStyle BorderColor="#394F66" BorderStyle="Solid" BorderWidth="1px" Font-Bold="False" Font-Italic="False" Font-Overline="False" Font-Strikeout="False" Font-Underline="False" HorizontalAlign="left" />
-                                                                    </asp:TemplateColumn>
 
-                                                                    <asp:TemplateColumn HeaderText="<%$ Resources:lang,ShongXuHao%>">
-                                                                        <ItemTemplate>
-                                                                            <asp:TextBox ID="TB_SortNumber" runat="server" Text="0" Width="40px"></asp:TextBox>
-                                                                        </ItemTemplate>
-                                                                        <HeaderStyle BorderColor="#394F66" BorderStyle="Solid" BorderWidth="1px" Font-Bold="True" Width="15%" />
-                                                                        <ItemStyle BorderColor="#394F66" BorderStyle="Solid" BorderWidth="1px" Font-Bold="False" Font-Italic="False" Font-Overline="False" Font-Strikeout="False" Font-Underline="False" HorizontalAlign="left" />
-                                                                    </asp:TemplateColumn>
+                <div class="chart-setup-container">
+                    <!-- 状态消息 -->
+                    <div id="statusContainer" runat="server" class="status-container" style="display: none;"></div>
 
-                                                                    <asp:TemplateColumn HeaderText="">
-                                                                        <ItemStyle BorderColor="#394F66" BorderStyle="Solid" BorderWidth="1px" Font-Bold="False" Font-Italic="False" Font-Overline="False" Font-Strikeout="False" Font-Underline="False" HorizontalAlign="left" />
-                                                                        <ItemTemplate>
-                                                                            <asp:Button ID="BT_DeleteChart" runat="server" CommandName="DELETE" CssClass="inpu" Text="<%$ Resources:lang,ShanChu%>" />
-                                                                        </ItemTemplate>
-                                                                        <HeaderStyle BorderColor="#394F66" BorderStyle="Solid" BorderWidth="1px" Font-Bold="True" />
-                                                                    </asp:TemplateColumn>
-                                                                </Columns>
-                                                                <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                                                                <EditItemStyle BackColor="#2461BF" />
-                                                                <SelectedItemStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-                                                                <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="left" />
+                    <div class="content-section">
+                        <!-- 左栏：图表列表 -->
+                        <div class="chart-list-container">
+                            <div class="chart-list-header">
+                                <asp:Label ID="Label3" runat="server" Text="<%$ Resources:lang,FenXiTu%>"></asp:Label>
+                            </div>
+                            <div class="chart-list-content">
+                                <asp:DataGrid ID="DataGrid1" runat="server" AutoGenerateColumns="False"
+                                    OnItemCommand="DataGrid1_ItemCommand" ShowHeader="false" Width="100%">
+                                    <Columns>
+                                        <asp:TemplateColumn>
+                                            <ItemTemplate>
+                                                <asp:Button ID="BT_ChartName" runat="server"
+                                                    CommandArgument='<%# DataBinder.Eval(Container.DataItem,"ChartName") %>'
+                                                    CssClass="chart-button"
+                                                    Text='<%# DataBinder.Eval(Container.DataItem,"ChartName") %>' />
+                                            </ItemTemplate>
+                                        </asp:TemplateColumn>
+                                    </Columns>
+                                    <ItemStyle CssClass="itemStyle" HorizontalAlign="Left" />
+                                </asp:DataGrid>
+                            </div>
+                        </div>
 
-                                                                <ItemStyle BackColor="#EFF3FB" CssClass="dg_item" />
-                                                                <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" HorizontalAlign="left" />
-                                                            </asp:DataGrid>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="formItemBgStyleForAlignLeft" colspan="2">
+                        <!-- 右栏：已选图表表格 -->
 
-                                                            <table width="58%" border="0" class="formBgStyle" cellpadding="2" cellspacing="0">
-                                                                <tr>
-                                                                    <td class="formItemBgStyleForAlignRight">
-                                                                        <asp:Button ID="BT_Save" runat="server" CssClass="inpu" OnClick="BT_Save_Click" Text="<%$ Resources:lang,BaoCun%>" />
-                                                                    </td>
-                                                                </tr>
-                                                            </table>
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </td>
-                            </tr>
-                        </table>
-                      
+                        <div class="unified-table-container">
+                            <asp:DataGrid ID="DataGrid4" runat="server" AutoGenerateColumns="False"
+                                OnItemCommand="DataGrid4_ItemCommand" ShowHeader="true" CssClass="unified-table">
+                                <HeaderStyle BackColor="#374151" Font-Bold="True" ForeColor="White"
+                                    HorizontalAlign="Left" VerticalAlign="Middle" Height="40px" />
+                                <Columns>
+                                    <asp:BoundColumn DataField="ID" HeaderText="ID">
+                                        <ItemStyle CssClass="chart-id-column" HorizontalAlign="Left" />
+                                        <HeaderStyle CssClass="chart-id-column" HorizontalAlign="Left" />
+                                    </asp:BoundColumn>
+                                    <asp:TemplateColumn HeaderText="<%$ Resources:lang,MingChengZhongWen%>">
+                                        <ItemTemplate>
+                                            <asp:Label ID="LB_ModuleName" runat="server"
+                                                Text='<%# DataBinder.Eval(Container.DataItem,"ChartName") %>'></asp:Label>
+                                        </ItemTemplate>
+                                        <ItemStyle CssClass="chart-name-column" HorizontalAlign="Left" />
+                                        <HeaderStyle CssClass="chart-name-column" HorizontalAlign="Left" />
+                                    </asp:TemplateColumn>
+                                    <asp:TemplateColumn HeaderText="<%$ Resources:lang,ShongXuHao%>">
+                                        <ItemTemplate>
+                                            <asp:TextBox ID="TB_SortNumber" runat="server"
+                                                CssClass="form-control sort-number-input"
+                                                Text='<%# DataBinder.Eval(Container.DataItem,"SortNumber") %>'></asp:TextBox>
+                                        </ItemTemplate>
+                                        <ItemStyle CssClass="chart-sort-column" HorizontalAlign="Left" />
+                                        <HeaderStyle CssClass="chart-sort-column" HorizontalAlign="Left" />
+                                    </asp:TemplateColumn>
+                                    <asp:TemplateColumn HeaderText="操作">
+                                        <ItemTemplate>
+                                            <asp:Button ID="BT_DeleteChart" runat="server"
+                                                CommandName="DELETE"
+                                                CssClass="btn-danger"
+                                                Text="<%$ Resources:lang,ShanChu%>" />
+                                        </ItemTemplate>
+                                        <ItemStyle CssClass="chart-action-column" HorizontalAlign="Left" />
+                                        <HeaderStyle CssClass="chart-action-column" HorizontalAlign="Left" />
+                                    </asp:TemplateColumn>
+                                </Columns>
+                                <ItemStyle CssClass="itemStyle" HorizontalAlign="Left" />
+                            </asp:DataGrid>
+
+                            <!-- 保存按钮 -->
+                            <div class="chart-btn-group">
+                                <asp:Button ID="BT_Save" runat="server" CssClass="btn btn-success"
+                                    Text="<%$ Resources:lang,BaoCun%>" OnClick="BT_Save_Click"
+                                    OnClientClick="showLoading(); return true;" />
+                            </div>
+                            
+                        </div>
+
+
                     </div>
-                </ContentTemplate>
-            </asp:UpdatePanel>
-            <div style="position: fixed; display: none; z-index: 9999;" id="progressContainer">
-                <asp:UpdateProgress ID="TakeTopUp" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
-                    <ProgressTemplate>
-                        <img src="Images/Processing.gif" alt="Loading,please wait..." />
-                    </ProgressTemplate>
-                </asp:UpdateProgress>
-            </div>
-        </form>
-    </center>
+                </div>
+            </ContentTemplate>
+        </asp:UpdatePanel>
+
+        <!-- 原有进度条容器 -->
+        <div style="position: fixed; display: none; z-index: 9999;" id="progressContainer">
+            <asp:UpdateProgress ID="TakeTopUp" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
+                <ProgressTemplate>
+                    <img src="Images/Processing.gif" alt="Loading,please wait..." />
+                </ProgressTemplate>
+            </asp:UpdateProgress>
+        </div>
+    </form>
 </body>
-<script type="text/javascript" language="javascript">var cssDirectory = '<%=Session["CssDirectory"] %>'; var oLink = document.getElementById('mainCss'); oLink.href = 'css/' + cssDirectory + '/' + 'bluelightmain.css';</script>
+<script type="text/javascript" language="javascript">
+    // 隐藏加载动画（AJAX完成时调用）
+    function hideLoading() {
+        var overlay = document.getElementById('loadingOverlay');
+        if (overlay) {
+            overlay.style.display = 'none';
+        }
+    }
+
+    // 绑定AJAX完成事件
+    if (typeof Sys !== 'undefined') {
+        Sys.WebForms.PageRequestManager.getInstance().add_endRequest(function () {
+            hideLoading();
+
+            // 确保文本框内容正确显示
+            var sortInputs = document.querySelectorAll('.sort-number-input');
+            sortInputs.forEach(function (input) {
+                if (input.value === '' || input.value === null) {
+                    input.value = '0';
+                }
+            });
+
+            // 确保所有文本左对齐
+            var allCells = document.querySelectorAll('.unified-table td, .unified-table th');
+            allCells.forEach(function (cell) {
+                cell.style.textAlign = 'left';
+            });
+        });
+    }
+
+    // 页面加载完成后检查和修正对齐
+    document.addEventListener('DOMContentLoaded', function () {
+        setTimeout(function () {
+            // 检查排序号文本框
+            var sortInputs = document.querySelectorAll('.sort-number-input');
+            sortInputs.forEach(function (input) {
+                if (input.value === '' || input.value === null) {
+                    input.value = '0';
+                }
+            });
+
+            // 强制所有列左对齐
+            var allCells = document.querySelectorAll('.unified-table td, .unified-table th');
+            allCells.forEach(function (cell) {
+                cell.style.textAlign = 'left';
+            });
+
+            // 确保表头也左对齐
+            var headerCells = document.querySelectorAll('.unified-table th');
+            headerCells.forEach(function (cell) {
+                cell.style.textAlign = 'left';
+            });
+        }, 500);
+    });
+</script>
 </html>

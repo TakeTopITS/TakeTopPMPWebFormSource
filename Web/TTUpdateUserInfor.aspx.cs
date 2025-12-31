@@ -27,9 +27,10 @@ public partial class TTUpdateUserInfor : System.Web.UI.Page
         {
             Response.Redirect("TTUpdateUserInforSAAS.aspx");
         }
+        Response.Redirect("TTUpdateUserInforSAAS.aspx");
 
         ProjectMemberBLL projectMemberBLL = new ProjectMemberBLL();
-        Label1.Text = ShareClass.GetPageTitle(this.GetType().BaseType.Name + ".aspx");
+      
         bool blVisible = TakeTopSecurity.TakeTopLicense.GetAuthobility(this.GetType().BaseType.Name + ".aspx", strUserCode);  //Label1.Text = ShareClass.GetPageTitle(this.GetType().BaseType.Name + ".aspx"); bool blVisible = TakeTopSecurity.TakeTopLicense.GetAuthobility(this.GetType().BaseType.Name + ".aspx", "ÎÒµÄµµ°¸", strUserCode);
         if (blVisible == false)
         {
