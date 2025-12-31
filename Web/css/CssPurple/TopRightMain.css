@@ -895,7 +895,7 @@ body {
 }
 
 .chart-list-header {
-    background: linear-gradient(135deg, #4F46E5, #7C3AED);
+    background: #374151;
     color: white;
     padding: 15px;
     font-weight: 600;

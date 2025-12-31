@@ -9,7 +9,7 @@
     <title>
         <asp:Label ID="Label1" runat="server" Text="<%$ Resources:lang,WeDeYeWuFenXiTu%>"></asp:Label>
     </title>
-    <link href="css/common-styles.css" rel="stylesheet" type="text/css" />
+    <link href="css/CssPurple/TopRightMain.css" rel="stylesheet" type="text/css" />
 
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="js/allAHandler.js"></script>
@@ -79,9 +79,6 @@
 
 
                 <div class="chart-setup-container">
-                    <!-- 状态消息 -->
-                    <div id="statusContainer" runat="server" class="status-container" style="display: none;"></div>
-
                     <div class="content-section">
                         <!-- 左栏：图表列表 -->
                         <div class="chart-list-container">
