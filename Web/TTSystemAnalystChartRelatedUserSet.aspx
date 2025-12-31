@@ -132,7 +132,7 @@
                                         <ItemStyle CssClass="chart-sort-column" HorizontalAlign="Left" />
                                         <HeaderStyle CssClass="chart-sort-column" HorizontalAlign="Left" />
                                     </asp:TemplateColumn>
-                                    <asp:TemplateColumn HeaderText="操作">
+                                    <asp:TemplateColumn HeaderText="">
                                         <ItemTemplate>
                                             <asp:Button ID="BT_DeleteChart" runat="server"
                                                 CommandName="DELETE"

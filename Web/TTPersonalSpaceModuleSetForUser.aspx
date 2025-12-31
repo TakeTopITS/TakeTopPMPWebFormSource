@@ -98,7 +98,7 @@
                                                                             </asp:BoundColumn>
                                                                             <asp:TemplateColumn HeaderText="<%$ Resources:lang,FanWei%>">
                                                                                 <ItemTemplate>
-                                                                                    <asp:DropDownList ID="DL_NewsScope" runat="server" Width="100%">
+                                                                                    <asp:DropDownList ID="DL_NewsScope" runat="server" Width="90px">
                                                                                         <asp:ListItem Value="ALL" Text="<%$ Resources:lang,QuanBu%>"></asp:ListItem>
                                                                                         <asp:ListItem Value="INNER" Text="<%$ Resources:lang,NeiBu%>"></asp:ListItem>
                                                                                         <asp:ListItem Value="OUTER" Text="<%$ Resources:lang,WaiBu%>"></asp:ListItem>
