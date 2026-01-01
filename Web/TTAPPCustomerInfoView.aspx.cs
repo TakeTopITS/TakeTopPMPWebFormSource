@@ -44,10 +44,10 @@ public partial class TTAPPCustomerInfoView : System.Web.UI.Page
 
             Customer customer = (Customer)lst[0];
 
-            //this.Title = "客户:" + strCustomerCode + " " + customer.CustomerName.Trim() + " 档案";
+            ////this.Title = "客户:" + strCustomerCode + " " + customer.CustomerName.Trim() + " 档案";
 
-            HL_RelatedContactInfor.Enabled = true;
-            HL_RelatedContactInfor.NavigateUrl = "TTContactList.aspx?RelatedType=Customer&RelatedID=" + strCustomerCode;
+            //HL_RelatedContactInfor.Enabled = true;
+            //HL_RelatedContactInfor.NavigateUrl = "TTContactList.aspx?RelatedType=Customer&RelatedID=" + strCustomerCode;
 
             LoadCustomerQuestion(strCustomerCode);
             LoadCustomerRelatedProject(strCustomerCode);
@@ -65,10 +65,10 @@ public partial class TTAPPCustomerInfoView : System.Web.UI.Page
                 string strProductType = System.Configuration.ConfigurationManager.AppSettings["ProductType"];
                 if (strProductType != "ERP" & strProductType != "CRM" & strProductType != "SIMP" & strProductType != "EDPMP" & strProductType != "ECMP" & strProductType != "DEMO")
                 {
-                    TabPanel3.Visible = false;
-                    TabPanel5.Visible = false;
-                    TabPanel6.Visible = false;
-                    TabPanel8.Visible = false;
+                    //TabPanel3.Visible = false;
+                    //TabPanel5.Visible = false;
+                    //TabPanel6.Visible = false;
+                    //TabPanel8.Visible = false;
                 }
             }
             catch

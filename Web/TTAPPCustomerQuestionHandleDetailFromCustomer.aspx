@@ -19,11 +19,248 @@
     <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />
 
     <style type="text/css">
-        #AboveDiv {
-            min-width: 1240px;
-            width: expression (document.body.clientWidth <= 1240? "1240px" : "auto" ));
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            font-size: 14px;
+        }
+        
+        .mobile-container {
+            width: 100%;
+            margin: 0 auto;
+        }
+        
+        .mobile-header {
+            background-color: #1a73e8;
+            color: white;
+            padding: 10px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            height: 50px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .header-back {
+            display: flex;
+            align-items: center;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .header-back img {
+            margin-right: 8px;
+        }
+        
+        .mobile-content {
+            margin-top: 10px;
+            padding: 10px;
+            padding-bottom: 60px;
+        }
+        
+        .mobile-section {
+            background: white;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+        }
+        
+        .mobile-form-group {
+            margin-bottom: 15px;
+        }
+        
+        .mobile-label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        
+        .mobile-input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        
+        .mobile-dropdown {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: white;
+            box-sizing: border-box;
+        }
+        
+        .mobile-button {
+            width: 100%;
+            padding: 10px;
+            background-color: #1a73e8;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            margin-bottom: 5px;
+            cursor: pointer;
+        }
+        
+        .mobile-button.yellow {
+            background-color: #fbbc05;
+        }
+        
+        .mobile-button-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 10px;
+        }
+        
+        .mobile-button-small {
+            flex: 1;
+            padding: 8px;
+            background-color: #34a853;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 12px;
+            cursor: pointer;
+            text-align: center;
+        }
+        
+        .mobile-button-small.red {
+            background-color: #ea4335;
+        }
+        
+        .mobile-button-small.blue {
+            background-color: #1a73e8;
+        }
+        
+        .data-item {
+            background: #f9f9f9;
+            border: 1px solid #eee;
+            border-radius: 4px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .data-row {
+            margin-bottom: 5px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .data-label {
+            font-weight: bold;
+            color: #666;
+            min-width: 80px;
+        }
+        
+        .data-value {
+            color: #333;
+            flex: 1;
+        }
+        
+        .mobile-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 2000;
+            overflow-y: auto;
+        }
+        
+        .modal-content {
+            background: white;
+            margin: 20px;
+            border-radius: 5px;
+        }
+        
+        .modal-header {
+            background: #f0f0f0;
+            padding: 10px;
+            font-weight: bold;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .modal-body {
+            padding: 10px;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+        
+        .modal-footer {
+            padding: 10px;
+            border-top: 1px solid #ddd;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .modal-button {
+            flex: 1;
+            padding: 8px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .modal-button.primary {
+            background-color: #1a73e8;
+            color: white;
+        }
+        
+        .modal-button.secondary {
+            background-color: #ccc;
+            color: #333;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 12px;
+            background-color: #e8f0fe;
+            color: #1a73e8;
+        }
+        
+        .action-icons {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .action-icon {
+            width: 30px;
+            height: 30px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #f0f0f0;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        @media (max-width: 768px) {
+            .data-row {
+                flex-direction: column;
+            }
+            
+            .data-label {
+                min-width: auto;
+                margin-bottom: 2px;
+            }
         }
     </style>
+    
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="js/allAHandler.js"></script>
     <script src="js/exif.js" type="text/javascript"></script>
@@ -35,7 +272,8 @@
         //    //需要页面加载完成执行的代码
         //});
         var $load = function (loadFunc) {
-            $(function () { initSwipeBack();// 初始化滑动返回功能  initSwipeBack();// 初始化滑动返回功能
+            $(function () {
+                initSwipeBack();// 初始化滑动返回功能  initSwipeBack();// 初始化滑动返回功能
                 if (typeof (Sys) != 'undefined') {
                     Sys.WebForms.PageRequestManager.getInstance().add_pageLoaded(loadFunc);
                 }
@@ -84,6 +322,9 @@
                 };
                 _reader.readAsDataURL(_simpleFile);
             });
+
+            // 移动端初始化
+            initMobileUI();
 
         });
 
@@ -209,913 +450,735 @@
             }
         }
 
+        function initMobileUI() {
+            // 移动端UI初始化
+            $('.mobile-button').on('touchstart', function () {
+                $(this).css('opacity', '0.8');
+            }).on('touchend', function () {
+                $(this).css('opacity', '1');
+            });
+        }
+
+        function showModal(modalId) {
+            $('#' + modalId).show();
+        }
+
+        function hideModal() {
+            $('.mobile-modal').hide();
+        }
+
     </script>
 </head>
 <body><div id="swipeFeedback" class="swipe-feedback"><asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" /></div> <!-- 滑动反馈层 -->
     <canvas id="myCanvas" style="display: none;"></canvas>
-    <center>
+    
+    <div class="mobile-container">
         <form id="form1" runat="server">
-            <%--  <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">--%>
             <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">
             </asp:ScriptManager>
-            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                <ContentTemplate>
-                    <div id="AboveDiv">
-                        <table id="AboveTable" cellpadding="0" width="100%" cellspacing="0" class="bian">
-                            <tr>
-                                <td height="31" class="page_topbj">
-                                    <table width="94%" border="0" class="ItemAlignLeft" cellpadding="0" cellspacing="0">
-                                        <tr>
-                                            <td class="ItemAlignLeft">
-                                                <%-- <a href="TTAppProject.aspx" onclick="javascript:document.getElementById('IMG_Waiting').style.display = 'block';">--%>
-                                                <a id="aAPPBackPriorPage" href="javascript:window.history.go(-1)" target="_top" onclick="javascript:document.getElementById('IMG_Waiting').style.display = 'block';">
-                                                    <table width="245" border="0" class="ItemAlignLeft" cellpadding="0" cellspacing="0">
-                                                        <tr>
-                                                            <td width="29">
-                                                                <img src="ImagesSkin/return.png" alt="" />
-                                                            </td>
-                                                            <td background="ImagesSkin/main_top_bj.jpg" class="titleziAPP">
-                                                                <asp:Label runat="server" Text="<%$ Resources:lang,Back%>" />
-                                                            </td>
-                                                            <td width="5">
-                                                                <%-- <img src="ImagesSkin/main_top_r.jpg" width="5" height="31" />--%>
-                                                            </td>
-                                                        </tr>
-                                                    </table>
-                                                    <img id="IMG_Waiting" src="Images/Processing.gif" alt="请稍候，处理中..." style="display: none;" />
-                                                </a>
-                                            </td>
-
-                                        </tr>
-                                    </table>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <table width="100%">
-                                        <tr>
-                                            <td>
-                                                <div id="div_xuqiu" runat="server">
-                                                    <table width="100%">
-                                                        <tr>
-                                                            <td class="ItemAlignLeft" valign="top">
-                                                                <div style="width: 97vw; text-align: right;">
-                                                                    <asp:Button ID="BT_Create" runat="server" CssClass="inpu" OnClick="BT_Create_Click" Text="<%$ Resources:lang,XuQiu%>" />
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="ItemAlignLeft" valign="top" style="font-weight: bold; height: 24px; color: #394f66; background-image: url('ImagesSkin/titleBG.jpg')">
-
-                                                                <asp:DataGrid ID="DataGrid4" runat="server" AutoGenerateColumns="False" GridLines="None"
-                                                                    OnItemCommand="DataGrid4_ItemCommand"
-                                                                    AllowCustomPaging="false" ShowHeader="False"
-                                                                    Width="100%">
-                                                                    <ItemStyle CssClass="itemStyle" />
-                                                                    <Columns>
-                                                                        <asp:ButtonColumn ButtonType="LinkButton" CommandName="Update" Text="&lt;div&gt;&lt;img src=ImagesSkin/Update.png border=0 alt='Modify' /&gt;&lt;/div&gt;">
-                                                                            <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="6%" />
-                                                                        </asp:ButtonColumn>
-                                                                        <asp:TemplateColumn HeaderText="Delete">
-                                                                            <ItemTemplate>
-                                                                                <div onclick="return showSimpleDeleteModal(this, event);" style="cursor: pointer; display: inline-block;"  class="custom-delete-icon"  title="Delete">  <img src="ImagesSkin/Delete.png" border="0" alt='Delete' /></div><asp:LinkButton ID="LBT_Delete" CommandName="Delete" runat="server" Style="display: none;"></asp:LinkButton>
-                                                                            </ItemTemplate>
-                                                                            <ItemStyle CssClass="itemBorder" HorizontalAlign="right" Width="3%" />
-                                                                        </asp:TemplateColumn>
-                                                                        <asp:BoundColumn DataField="ID" HeaderText="Number">
-                                                                            <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="5%" />
-                                                                        </asp:BoundColumn>
-                                                                        <asp:BoundColumn DataField="Type" HeaderText="Type">
-                                                                            <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="10%" />
-                                                                        </asp:BoundColumn>
-                                                                        <asp:HyperLinkColumn DataNavigateUrlField="ID" DataNavigateUrlFormatString="TTCustomerQuestionHandleDetail.aspx?ID={0}" DataTextField="Question" HeaderText="服务需求" Target="_blank">
-                                                                            <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" />
-                                                                        </asp:HyperLinkColumn>
-                                                                        <asp:HyperLinkColumn DataNavigateUrlField="OperatorCode" DataNavigateUrlFormatString="TTUserInforSimple.aspx?UserCode={0}" DataTextField="OperatorName" HeaderText="受理人" Target="_blank">
-                                                                            <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="10%" />
-                                                                        </asp:HyperLinkColumn>
-                                                                        <asp:TemplateColumn HeaderText="Status">
-                                                                            <ItemTemplate>
-                                                                                <%# ShareClass.GetStatusHomeNameByOtherStatus(Eval("OperatorStatus").ToString()) %>
-                                                                            </ItemTemplate>
-                                                                            <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" Width="5%" />
-                                                                        </asp:TemplateColumn>
-                                                                        <asp:TemplateColumn>
-                                                                            <ItemTemplate>
-                                                                                <table>
-                                                                                    <tr>
-                                                                                        <td style="text-align: left; width: 50px;">
-                                                                                            <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl='<%# DataBinder.Eval(Container, "DataItem.ID", "TTCustomerQuestionRelatedDoc.aspx?RelatedID={0}") %>' Target="_blank"><img src="ImagesSkin/UpLoad.jpg"  class="noBorder" /></asp:HyperLink>
-
-                                                                                        </td>
-                                                                                        <td>
-                                                                                            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# DataBinder.Eval(Container, "DataItem.ID", "TTDocumentTreeView.aspx?RelatedType=CustomerQuestion&RelatedID={0}") %>' Target="_blank"><img src="ImagesSkin/Doc.gif"  class="noBorder" /></asp:HyperLink>
-                                                                                        </td>
-                                                                                    </tr>
-                                                                                </table>
-                                                                            </ItemTemplate>
-                                                                            <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" Width="6%" />
-                                                                        </asp:TemplateColumn>
-                                                                    </Columns>
-                                                                    <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                                                                    <EditItemStyle BackColor="#2461BF" />
-                                                                    <SelectedItemStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-                                                                    <PagerStyle HorizontalAlign="center" Mode="NumericPages" NextPageText="" PrevPageText="" CssClass="notTab" />
-                                                                </asp:DataGrid>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="ItemAlignLeft" valign="top" style="font-weight: bold; height: 24px; color: #394f66; background-image: url('ImagesSkin/titleBG.jpg')">
-                                                                <table width="100%">
-                                                                    <tr>
-                                                                        <td class="ItemAlignLeft">
-                                                                            <table>
-                                                                                <tr>
-
-                                                                                    <td>
-                                                                                        <asp:Label ID="Label48" runat="server" Text="<%$ Resources:lang,FuWuChuLiXiJie%>"></asp:Label>
-                                                                                        :</td>
-                                                                                    <td style="text-align: center;">
-                                                                                        <asp:Button ID="BT_Accept" runat="server" CssClass="inpu" OnClick="BT_Accept_Click"
-                                                                                            Text="<%$ Resources:lang,ShouLi%>" />
-                                                                                    </td>
-                                                                                    <td style="text-align: center;">
-                                                                                        <asp:Button ID="BT_Exit" runat="server" CssClass="inpu" OnClick="BT_Exit_Click" Text="<%$ Resources:lang,TuiChuShouLi%>" />
-                                                                                    </td>
-
-                                                                                    <td>
-                                                                                        <asp:Label ID="Label51" runat="server" Text="<%$ Resources:lang,CYHSJ%>"></asp:Label>
-                                                                                        :</td>
-                                                                                    <td>
-                                                                                        <asp:DropDownList ID="DL_IsImportant" runat="server" Width="99%" AutoPostBack="true" OnSelectedIndexChanged="DL_IsImportant_SelectedIndexChanged">
-                                                                                            <asp:ListItem>NO</asp:ListItem>
-                                                                                            <asp:ListItem>YES</asp:ListItem>
-                                                                                        </asp:DropDownList>
-                                                                                    </td>
-                                                                                    <td style="text-align: center;">
-                                                                                        <asp:Button ID="BT_Finish" runat="server" CssClass="inpu" OnClick="BT_Finish_Click" Text="<%$ Resources:lang,WanCheng%>" />
-                                                                                    </td>
-
-                                                                                    <td>
-                                                                                        <asp:Label ID="Label49" runat="server" Text="<%$ Resources:lang,ZhiJieChengYuan%>"></asp:Label>
-                                                                                        :</td>
-                                                                                    <td>
-                                                                                        <asp:DropDownList ID="DL_Operator" runat="server" DataTextField="UserName" DataValueField="UserCode">
-                                                                                        </asp:DropDownList>
-                                                                                    </td>
-                                                                                    <td style="text-align: center;">
-                                                                                        <asp:Button ID="BT_TransferOperator" runat="server" CssClass="inpuLong" OnClick="BT_TransferOperator_Click" Text="<%$ Resources:lang,ZhiDingWeiShouLiRen%>" />
-                                                                                    </td>
-                                                                                </tr>
-                                                                            </table>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td align="right">
-                                                                            <table>
-                                                                                <tr style="display: none;">
-                                                                                    <td style="padding-left: 5px;">
-                                                                                        <asp:HyperLink ID="HL_RelatedDoc" runat="server" NavigateUrl="TTCollaborationRelatedDoc.aspx" Text="<%$ Resources:lang,XiangGuanWenJian%>"
-                                                                                            Target="_blank">
-                                                                                        </asp:HyperLink>
-                                                                                    </td>
-                                                                                    <td style="padding-left: 5px;">
-                                                                                        <asp:HyperLink ID="HL_Expense" runat="server" NavigateUrl="TTProExpense.aspx" Text="<%$ Resources:lang,FeiYongMingXiYuBaoXiao%>" Target="_blank"></asp:HyperLink>
-                                                                                    </td>
-
-                                                                                    <%-- <td style="padding-left: 5px;">
-                                                                                        <asp:HyperLink ID="HL_CustomerCollector" runat="server" NavigateUrl="TTRelatedDIYWorkflowForm.aspx?RelatedType=CustomerService&RelatedID=2" Text="<%$ Resources:lang,XinXiShouJi%>" Target="_blank"></asp:HyperLink>
-                                                                                    </td>--%>
-
-                                                                                    <td style="padding-left: 5px;">
-                                                                                        <asp:HyperLink ID="HL_ResoveResultReview"
-                                                                                            runat="server" NavigateUrl="TTCustomerQuestionResultReviewWF.aspx" Text="<%$ Resources:lang,TiJiaoPingShen%>" Target="_blank">
-                                                                                        </asp:HyperLink>
-                                                                                    </td>
-                                                                                </tr>
-                                                                            </table>
-                                                                        </td>
-                                                                    </tr>
-                                                                </table>
-                                                            </td>
-                                                        </tr>
-                                                    </table>
+            
+            <!-- 移动端头部 -->
+          <div class="page_topbj">
+                <a id="aAPPBackPriorPage" href="javascript:window.history.go(-1)" class="header-back" onclick="javascript:document.getElementById('IMG_Waiting').style.display = 'block';">
+                    <img src="ImagesSkin/return.png" alt="" />
+                    <asp:Label runat="server" Text="<%$ Resources:lang,Back%>" />
+                </a>
+                <img id="IMG_Waiting" src="Images/Processing.gif" alt="请稍候，处理中..." style="display: none; margin-left: 10px;" />
+            </div>
+            
+            <div class="mobile-content">
+                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                    <ContentTemplate>
+                        <!-- 服务需求部分 -->
+                        <div id="div_xuqiu" runat="server" class="mobile-section">
+                            <div style="text-align: right; margin-bottom: 10px;">
+                                <asp:Button ID="BT_Create" runat="server" CssClass="mobile-button" OnClick="BT_Create_Click" Text="<%$ Resources:lang,XuQiu%>" />
+                            </div>
+                            
+                            <!-- 服务需求列表 -->
+                            <asp:DataGrid ID="DataGrid4" runat="server" AutoGenerateColumns="False" GridLines="None"
+                                OnItemCommand="DataGrid4_ItemCommand"
+                                AllowCustomPaging="false" ShowHeader="False"
+                                Width="100%">
+                                <ItemStyle CssClass="data-item" />
+                                <Columns>
+                                    <asp:TemplateColumn>
+                                        <ItemTemplate>
+                                            <div class="data-row">
+                                                <div class="data-label"><asp:Label ID="Label27" runat="server" Text="<%$ Resources:lang,BianHao%>" />:</div>
+                                                <div class="data-value"><%# DataBinder.Eval(Container.DataItem, "ID") %></div>
+                                            </div>
+                                            
+                                            <div class="data-row">
+                                                <div class="data-label"><asp:Label ID="Label28" runat="server" Text="<%$ Resources:lang,LeiBie%>" />:</div>
+                                                <div class="data-value"><%# DataBinder.Eval(Container.DataItem, "Type") %></div>
+                                            </div>
+                                            
+                                            <div class="data-row">
+                                                <div class="data-label"><asp:Label ID="Label32" runat="server" Text="<%$ Resources:lang,WenTi%>" />:</div>
+                                                <div class="data-value">
+                                                    <a href='TTCustomerQuestionHandleDetail.aspx?ID=<%# DataBinder.Eval(Container.DataItem, "ID") %>' target="_blank">
+                                                        <%# DataBinder.Eval(Container.DataItem, "Question") %>
+                                                    </a>
                                                 </div>
-                                                <br />
-                                                <table width="100%">
-                                                    <tr>
-                                                        <td class="ItemAlignLeft" valign="top">
-                                                            <div style="width: 97vw; text-align: right;">
-                                                                <asp:Button ID="BT_CreateRecord" runat="server" Text="<%$ Resources:lang,New%>" CssClass="inpuYello" OnClick="BT_CreateRecord_Click" />
-                                                                <asp:Label ID="LB_QuestionID" runat="server" Visible="false"></asp:Label>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="ItemAlignLeft" valign="top">
-                                                            <asp:DataList ID="DataList3" runat="server" CellPadding="0" ForeColor="#333333" OnItemCommand="DataList3_ItemCommand"
-                                                                Height="1px" Width="100%">
-
-                                                                <SelectedItemStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-
-                                                                <HeaderTemplate>
-
-                                                                    <table width="100%" border="0" cellpadding="0" cellspacing="0" background="ImagesSkin/main_n_bj.jpg">
-
-                                                                        <tr>
-
-                                                                            <td width="7">
-
-                                                                                <img src="ImagesSkin/main_n_l.jpg" width="7" height="26" />
-                                                                            </td>
-
-                                                                            <td>
-
-                                                                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
-
-                                                                                    <tr>
-
-                                                                                        <td width="5%" class="ItemAlignLeft">
-
-                                                                                            <strong></strong>
-                                                                                        </td>
-
-                                                                                        <td width="10%" class="ItemAlignLeft">
-
-                                                                                            <strong>
-
-                                                                                                <asp:Label ID="Label27" runat="server" Text="<%$ Resources:lang,BianHao%>"></asp:Label></strong>
-                                                                                        </td>
-
-                                                                                        <td width="10%" class="ItemAlignLeft">
-
-                                                                                            <strong>
-
-                                                                                                <asp:Label ID="Label28" runat="server" Text="<%$ Resources:lang,LianXiRen%>"></asp:Label></strong>
-                                                                                        </td>
-
-                                                                                        <td width="10%" class="ItemAlignLeft">
-
-                                                                                            <strong>
-
-                                                                                                <asp:Label ID="Label29" runat="server" Text="<%$ Resources:lang,LianXiFangShi%>"></asp:Label></strong>
-                                                                                        </td>
-
-                                                                                        <td width="10%" class="ItemAlignLeft">
-
-                                                                                            <strong>
-
-                                                                                                <asp:Label ID="Label30" runat="server" Text="<%$ Resources:lang,FuWuFangFa%>"></asp:Label></strong>
-                                                                                        </td>
-
-                                                                                        <td width="15%" class="ItemAlignLeft">
-
-                                                                                            <strong>
-
-                                                                                                <asp:Label ID="Label31" runat="server" Text="<%$ Resources:lang,ChuLiShiJian%>"></asp:Label></strong>
-                                                                                        </td>
-
-                                                                                        <td width="10%" class="ItemAlignLeft">
-
-                                                                                            <strong>
-
-                                                                                                <asp:Label ID="Label32" runat="server" Text="<%$ Resources:lang,YongShiChangDu%>"></asp:Label></strong>
-                                                                                        </td>
-
-                                                                                        <td width="10%" class="ItemAlignLeft">
-
-                                                                                            <strong>
-
-                                                                                                <asp:Label ID="Label33" runat="server" Text="<%$ Resources:lang,ZhuangTai%>"></asp:Label></strong>
-                                                                                        </td>
-
-                                                                                        <td width="10%" class="ItemAlignLeft">
-
-                                                                                            <strong>
-
-                                                                                                <asp:Label ID="Label34" runat="server" Text="<%$ Resources:lang,ShouLiRen%>"></asp:Label></strong>
-                                                                                        </td>
-                                                                                    </tr>
-                                                                                </table>
-                                                                            </td>
-
-                                                                            <td width="6" align="right">
-
-                                                                                <img src="ImagesSkin/main_n_r.jpg" width="6" alt="" height="26" /></td>
-                                                                        </tr>
-                                                                    </table>
-                                                                </HeaderTemplate>
-
-                                                                <ItemTemplate>
-
-                                                                    <table cellpadding="4" cellspacing="0" width="100%">
-
-                                                                        <tr>
-
-                                                                            <td class="tdLeft" style="width: 5%; text-align: center;">
-
-                                                                                <asp:LinkButton ID="LinkButton1" runat="server" Text="&lt;div&gt;&lt;img src=ImagesSkin/Update.png border=0 alt='Modify' /&gt;&lt;/div&gt;" CssClass="inpu" CommandName="Update" />
-                                                                            </td>
-
-                                                                            <%-- <td class="tdLeft" style="width: 5%; text-align: center;">
-
-                                                                                <asp:LinkButton ID="LinkButton2" CommandName="Delete" runat="server" OnClientClick="return confirmContinue(getDeleteMsgByLangCode(), this, event)" Text="&lt;div&gt;&lt;img src=ImagesSkin/Delete.png border=0 alt='Deleted' /&gt;&lt;/div&gt;" />
-                                                                            </td>--%>
-
-                                                                            <td class="tdLeft" style="width: 10%; text-align: center;">
-
-                                                                                <asp:Label ID="BT_ID" runat="server" Text=' <%#DataBinder .Eval (Container .DataItem ,"ID") %> ' />
-                                                                            </td>
-
-                                                                            <td class="tdLeft" style="width: 10%; padding-left: 5px; text-align: left;">
-
-                                                                                <%#DataBinder.Eval(Container.DataItem, "CustomerAcceptor")%>
-                                                                            </td>
-
-                                                                            <td class="tdLeft" style="width: 10%; text-align: center;">
-
-                                                                                <%#DataBinder.Eval(Container.DataItem, "AcceptorContactWay")%>
-                                                                            </td>
-
-                                                                            <td class="tdLeft" style="width: 10%; text-align: center;">
-
-                                                                                <%#DataBinder.Eval(Container.DataItem, "HandleWay")%>
-                                                                            </td>
-
-                                                                            <td class="tdLeft" style="width: 15%; text-align: center;">
-
-                                                                                <%#DataBinder.Eval(Container.DataItem, "HandleTime","{0:yyyy/MM/dd hh:MM:ss}")%>
-                                                                            </td>
-
-                                                                            <td class="tdLeft" style="width: 10%; text-align: center;">
-
-                                                                                <%#DataBinder .Eval (Container .DataItem ,"UsedTime") %>
-
-                                                                                <%#DataBinder .Eval (Container .DataItem ,"TimeUnit") %>
-                                                                            </td>
-
-                                                                            <td class="tdLeft" style="width: 10%; text-align: center;">
-
-                                                                                <%#DataBinder .Eval (Container .DataItem ,"HandleStatus") %>
-                                                                            </td>
-
-                                                                            <td class="tdRight" style="width: 10%; text-align: center;">
-
-                                                                                <%#DataBinder .Eval (Container .DataItem ,"OperatorName") %>
-                                                                            </td>
-                                                                        </tr>
-
-                                                                        <tr>
-
-                                                                            <td class="tdLeft" style="width: 5%; text-align: center; font-size: 10pt;">
-
-                                                                                <asp:Label ID="Label35" runat="server" Text="<%$ Resources:lang,KeFangYiJian%>"></asp:Label>
-                                                                            </td>
-
-                                                                            <td class="tdRight" colspan="10" style="width: 95%; text-align: left; padding-left: 5px">
-
-                                                                                <%#DataBinder.Eval(Container.DataItem, "CustomerComment")%>
-                                                                            </td>
-                                                                        </tr>
-
-                                                                        <tr>
-
-                                                                            <td class="tdLeft" style="width: 5%; text-align: center; font-size: 10pt;">
-
-                                                                                <asp:Label ID="Label36" runat="server" Text="<%$ Resources:lang,ChuLiNeiRong%>"></asp:Label>
-                                                                            </td>
-
-                                                                            <td class="tdRight" colspan="10" style="width: 95%; text-align: left; padding-left: 5px">
-
-                                                                                <%#DataBinder.Eval(Container.DataItem, "HandleDetail")%>
-                                                                            </td>
-                                                                        </tr>
-
-                                                                        <tr>
-
-                                                                            <td class="tdLeft" style="width: 5%; text-align: center; font-size: 10pt;">
-
-                                                                                <asp:Label ID="Label37" runat="server" Text="<%$ Resources:lang,XiaCiFuWuShiJian%>"></asp:Label>
-                                                                            </td>
-
-                                                                            <td class="tdRight" style="text-align: left; padding-left: 5px">
-
-                                                                                <%#DataBinder.Eval(Container.DataItem, "NextServiceTime")%>
-                                                                            </td>
-
-                                                                            <td class="tdLeft" style="text-align: center; font-size: 10pt;">
-
-                                                                                <asp:Label ID="Label38" runat="server" Text="<%$ Resources:lang,TiQianTongZhiTianShu%>"></asp:Label>
-                                                                            </td>
-
-                                                                            <td class="tdRight" colspan="6" style="text-align: left; padding-left: 5px">
-
-                                                                                <%#DataBinder.Eval(Container.DataItem, "PreDays")%>
-                                                                            </td>
-                                                                        </tr>
-                                                                    </table>
-                                                                </ItemTemplate>
-
-                                                                <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-
-                                                                <ItemStyle CssClass="itemStyle" />
-                                                            </asp:DataList>
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-                                            <td style="width: 220px; border-right: solid 1px #D8D8D8; padding: 5px 0px 0px 5px;"
-                                                valign="top" class="ItemAlignLeft">
-                                                <div id="DivID" style="width: 100%; height: 800px; overflow: auto;">
-                                                    <asp:TreeView ID="TreeView1" runat="server" NodeWrap="True" OnSelectedNodeChanged="TreeView1_SelectedNodeChanged"
-                                                        ShowLines="True" Width="220px">
-                                                        <RootNodeStyle CssClass="rootNode" />
-                                                        <NodeStyle CssClass="treeNode" />
-                                                        <LeafNodeStyle CssClass="leafNode" />
-                                                        <SelectedNodeStyle CssClass="selectNode" />
-                                                    </asp:TreeView>
+                                            </div>
+                                            
+                                            <div class="data-row">
+                                                <div class="data-label"><asp:Label ID="Label34" runat="server" Text="<%$ Resources:lang,ShouLiRen%>" />:</div>
+                                                <div class="data-value">
+                                                    <a href='TTUserInforSimple.aspx?UserCode=<%# DataBinder.Eval(Container.DataItem, "OperatorCode") %>' target="_blank">
+                                                        <%# DataBinder.Eval(Container.DataItem, "OperatorName") %>
+                                                    </a>
                                                 </div>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-
-                    <div class="layui-layer layui-layer-iframe" id="popwindow" name="fixedDiv"
-                        style="z-index: 9999; width: 98%; height: 500px; position: absolute; overflow: hidden; display: none; border-radius: 10px;">
-                        <div class="layui-layer-title" style="background: #e7e7e8;" id="popwindow_title">
-                            <asp:Label ID="Label6" runat="server" Text="&lt;div&gt;&lt;img src=ImagesSkin/Update.png border=0 width=30px height=30px alt='BusinessForm' /&gt;&lt;/div&gt;"></asp:Label>
-                        </div>
-                        <div id="popwindow_content" class="layui-layer-content" style="overflow: auto; padding: 0px 5px 0px 5px;">
-
-                            <table width="100%">
-                                <tr>
-                                    <td class="ItemAlignLeft">
-                                        <asp:Label ID="Label4" runat="server" Text="<%$ Resources:lang,FuWuXuQiuLeiBie%>"></asp:Label>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="ItemAlignLeft">
-                                        <asp:DropDownList ID="DL_CustomerQuestionTypeNew" runat="server" CssClass="DDList" DataTextField="Type" DataValueField="Type" Width="99%">
-                                        </asp:DropDownList>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="ItemAlignLeft">
-                                        <asp:Label ID="Label8" runat="server" Text="<%$ Resources:lang,CYHSJ%>"></asp:Label>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="ItemAlignLeft">
-                                        <asp:DropDownList ID="DL_IsImportantNew" runat="server" Width="99%">
-                                            <asp:ListItem>NO</asp:ListItem>
-                                            <asp:ListItem>YES</asp:ListItem>
-                                        </asp:DropDownList>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td width="15%" class="ItemAlignLeft">
-                                        <asp:Label ID="Label5" runat="server" Text="<%$ Resources:lang,XuQiuShangJiMiaoShu%>"></asp:Label>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="ItemAlignLeft">
-
-                                        <CKEditor:CKEditorControl runat="server" ID="HT_Question" Width="90%" Height="120px" Visible="False" />
-                                        <span class="auto-style1">*</span>
-
-                                    </td>
-                                </tr>
-
-                                </tr>
-                                <tr>
-                                    <td style="width: 15%;" class="formItemBgStyleForAlignLeft">
-                                        <asp:Label ID="Label11" runat="server" Text="<%$ Resources:lang,KeHuMingCheng%>"></asp:Label>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="formItemBgStyleForAlignLeft">
-                                        <asp:TextBox ID="TB_Company" runat="server" Width="99%"></asp:TextBox><span class="auto-style1">*</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td width="15%" class="formItemBgStyleForAlignLeft">
-                                        <asp:Label ID="Label12" runat="server" Text="<%$ Resources:lang,LianXiRen%>"></asp:Label>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td width="30%" class="formItemBgStyleForAlignLeft">
-                                        <asp:TextBox ID="TB_ContactPerson" runat="server" Width="90%"></asp:TextBox><span class="auto-style1">*</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td width="15%" class="formItemBgStyleForAlignLeft">
-                                        <asp:Label ID="Label13" runat="server" Text="<%$ Resources:lang,LianXiFangFa%>"></asp:Label>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="formItemBgStyleForAlignLeft">
-                                        <asp:TextBox ID="TB_PhoneNumber" runat="server" Width="99%"></asp:TextBox><span class="auto-style1">*</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="formItemBgStyleForAlignLeft">
-                                        <asp:Label ID="Label14" runat="server" Text="<%$ Resources:lang,YaoQiuDaFuShiJian%>"></asp:Label>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="formItemBgStyleForAlignLeft">
-                                        <asp:TextBox ID="DLC_AnswerTime" runat="server" Width="99%"></asp:TextBox>
-                                        <ajaxToolkit:CalendarExtender Format="yyyy-MM-dd" ID="CalendarExtender2" runat="server" TargetControlID="DLC_AnswerTime" Enabled="True"></ajaxToolkit:CalendarExtender>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="formItemBgStyleForAlignLeft">
-                                        <asp:Label ID="Label15" runat="server" Text="<%$ Resources:lang,LianXiDiZhi%>"></asp:Label>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="formItemBgStyleForAlignLeft">
-                                        <asp:TextBox ID="TB_Address" runat="server" Width="99%"></asp:TextBox></td>
-                                </tr>
-                                <tr>
-                                    <td class="formItemBgStyleForAlignLeft">
-                                        <asp:Label ID="Label2" runat="server" Text="<%$ Resources:lang,EMail%>"></asp:Label>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="formItemBgStyleForAlignLeft">
-                                        <asp:TextBox ID="TB_EMail" runat="server" Width="99%"></asp:TextBox>&#160;&#160;</td>
-                                </tr>
-                                <tr>
-
-                                    <td class="formItemBgStyleForAlignLeft">
-                                        <asp:Label ID="Label39" runat="server" Text="<%$ Resources:lang,YouBian%>"></asp:Label>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="formItemBgStyleForAlignLeft">
-                                        <asp:TextBox ID="TB_PostCode" runat="server" Width="99%"></asp:TextBox></td>
-                                </tr>
-
-                                <tr>
-                                    <td style="text-align: center;" colspan="2" class="formItemBgStyleForAlignLeft">
-                                        <asp:Label ID="Label41" runat="server" Text="<%$ Resources:lang,SHANGJIXINXI%>"></asp:Label>
-                                    </td>
-                                </tr>
-
-                                <tr>
-
-                                    <td style="width: 15%;" class="formItemBgStyleForAlignLeft">
-                                        <asp:Label ID="Label50" runat="server" Text="<%$ Resources:lang,YIQICHENGJIAOSHIJIAN%>"></asp:Label>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="formItemBgStyleForAlignLeft">
-                                        <asp:TextBox ID="DLC_ExpectedTime" runat="server" Width="99%"></asp:TextBox>
-                                        <cc2:CalendarExtender ID="CalendarExtender3" runat="server" Enabled="True" Format="yyyy-MM-dd" TargetControlID="DLC_ExpectedTime">
-                                        </cc2:CalendarExtender>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="width: 15%;" class="formItemBgStyleForAlignLeft">
-                                        <asp:Label ID="Label3" runat="server" Text="<%$ Resources:lang,YIQICHENGJIAOJINGE%>"></asp:Label>
-
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="formItemBgStyleForAlignLeft">
-                                        <NickLee:NumberBox ID="NB_ExpectedEarnings" runat="server" MaxAmount="1000000000000" MinAmount="-1000000000000" Width="99%">0.00</NickLee:NumberBox>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td style="width: 15%;" class="formItemBgStyleForAlignLeft">
-                                        <asp:Label ID="Label7" runat="server" Text="<%$ Resources:lang,CHENGGONGGANJIANYINGSHU%>"></asp:Label>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td width="25%" class="formItemBgStyleForAlignLeft">
-                                        <asp:TextBox ID="TB_SucessKeyReason" runat="server" Width="99%" />
-                                    </td>
-
-                                </tr>
-                                <tr>
-                                    <td style="width: 15%;" class="formItemBgStyleForAlignLeft">
-                                        <asp:Label ID="Label9" runat="server" Text="<%$ Resources:lang,SHIBAIGANJIANYINGSHU%>"></asp:Label>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="formItemBgStyleForAlignLeft">
-                                        <asp:TextBox ID="TB_FailedKeyReason" runat="server" Width="99%"></asp:TextBox>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="formItemBgStyleForAlignLeft" style="width: 15%;">
-                                        <asp:Label ID="Label52" runat="server" Text="<%$ Resources:lang,ShangJiJieDuan%>"></asp:Label>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="formItemBgStyleForAlignLeft" width="25%">
-                                        <asp:DropDownList ID="DL_Stage" runat="server" CssClass="DDList" Width="99%" AutoPostBack="true" DataTextField="Stage" DataValueField="Stage" OnSelectedIndexChanged="DL_Stage_SelectedIndexChanged">
-                                        </asp:DropDownList>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="formItemBgStyleForAlignLeft" style="width: 15%;">
-                                        <asp:Label ID="Label53" runat="server" Text="<%$ Resources:lang,YingLu%>"></asp:Label>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="formItemBgStyleForAlignLeft">
-                                        <NickLee:NumberBox ID="NB_Possibility" runat="server" MaxAmount="1000000000000" MinAmount="-1000000000000" Precision="0" Width="90%">0</NickLee:NumberBox>
-                                        %
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td class="formItemBgStyleForAlignLeft" style="width: 15%;">
-                                        <asp:Label ID="Label10" runat="server" Text="<%$ Resources:lang,KeHuShangJiJieDuan%>"></asp:Label>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="formItemBgStyleForAlignLeft" width="25%">
-                                        <asp:DropDownList ID="DL_CustomerStage" runat="server" CssClass="DDList" DataTextField="Stage" DataValueField="Stage" Width="99%">
-                                        </asp:DropDownList>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="formItemBgStyleForAlignLeft" style="width: 15%;">
-                                        <asp:Label ID="Label16" runat="server" Text="<%$ Resources:lang,SHANGJIDAILI%>"></asp:Label>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="formItemBgStyleForAlignLeft">
-                                        <asp:TextBox ID="TB_AgencyName" runat="server" Width="99%" />
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td style="width: 15%;" class="formItemBgStyleForAlignLeft">
-                                        <asp:Label ID="Label17" runat="server" Text="<%$ Resources:lang,SHANGJILAIYUAN%>"></asp:Label>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="formItemBgStyleForAlignLeft" colspan="3">
-                                        <asp:TextBox ID="TB_BusinessSource" runat="server" Width="99%" />
-                                    </td>
-                                </tr>
-
-                                <tr style="display: none;">
-                                    <td class="formItemBgStyleForAlignLeft" style="width: 15%;">
-                                        <asp:Label ID="Label54" runat="server" Text="<%$ Resources:lang,SHANGJIXINXI%>"></asp:Label>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="formItemBgStyleForAlignLeft" width="25%">
-                                        <asp:TextBox ID="TB_BusinessName" runat="server" Width="99%"></asp:TextBox>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td class="formItemBgStyleForAlignLeft" style="width: 15%;">
-                                        <asp:Label ID="Label55" runat="server" Text="<%$ Resources:lang,KeHuMingCheng%>"></asp:Label>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="formItemBgStyleForAlignLeft">
-                                        <asp:TextBox ID="TB_CustomerName" runat="server" Width="99%" />
-                                    </td>
-                                </tr>
-                                <tr style="display: none;">
-                                    <td class="formItemBgStyleForAlignLeft" style="width: 15%;">
-                                        <asp:Label ID="Label18" runat="server" Text="<%$ Resources:lang,KeHuJingLi%>"></asp:Label>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="formItemBgStyleForAlignLeft">
-                                        <asp:TextBox ID="TB_CustomerManager" runat="server" Width="99%"></asp:TextBox>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="formItemBgStyleForAlignLeft" style="width: 15%;">
-                                        <asp:Label ID="LB_UserCode" runat="server" Visible="False"></asp:Label>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="formItemBgStyleForAlignLeft" width="25%">
-                                        <asp:Label ID="LB_UserName" runat="server" Visible="False"></asp:Label>
-                                        <asp:Label ID="LB_Sql4" runat="server" Visible="False"></asp:Label>
-                                        <asp:Label ID="Label56" runat="server" Visible="False"></asp:Label>
-                                    </td>
-                                </tr>
-                            </table>
-
-                            <table width="100%" style="display: none;">
-                                <tr>
-                                    <td width="100px">
-                                        <asp:Label ID="Label19" runat="server" Text="<%$ Resources:lang,FuWuXuQiuLeiBie%>"></asp:Label>
-                                    </td>
-                                    <td width="205px">
-                                        <asp:DropDownList ID="DL_CustomerQuestionType" runat="server" CssClass="DDList" DataTextField="Type" DataValueField="Type" Width="200px" AutoPostBack="true" OnSelectedIndexChanged="DL_CustomerQuestionType_SelectedIndexChanged">
-                                        </asp:DropDownList>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td width="100px">
-                                        <asp:Label ID="Label20" runat="server" Text="<%$ Resources:lang,FuWuXuQiuMiaoShu%>"></asp:Label>
-                                    </td>
-                                    <td>
-                                        <asp:Label ID="LB_Question" runat="server" Width="70%"></asp:Label></td>
-                                </tr>
-                            </table>
-                            <br />
-                            <br />
-                        </div>
-
-                        <div id="popwindow_footer" class="layui-layer-btn" style="border-top: 1px solid #ccc;">
-                            <asp:LinkButton ID="BT_New" runat="server" class="layui-layer-btn notTab" OnClick="BT_New_Click" Text="<%$ Resources:lang,BaoCun%>"></asp:LinkButton><a class="layui-layer-btn notTab" onclick="return popClose();"><asp:Label ID="Label21" runat="server" Text="<%$ Resources:lang,GuanBi%>" /></a>
-                        </div>
-                        <span class="layui-layer-setwin"><a onclick="return popClose();" class="layui-layer-ico layui-layer-close layui-layer-close1 notTab" href="javascript:;"></a></span>
-                    </div>
-
-                    <div class="layui-layer layui-layer-iframe" id="popDetailWindow" name="fixedDiv"
-                        style="z-index: 9999; width: 98%; height: 500px; position: absolute; overflow: hidden; display: none; border-radius: 10px;">
-                        <div class="layui-layer-title" style="background: #e7e7e8;" id="popwindow_title1">
-                            <asp:Label ID="Label22" runat="server" Text="&lt;div&gt;&lt;img src=ImagesSkin/Update.png border=0 width=30px height=30px alt='BusinessForm' /&gt;&lt;/div&gt;"></asp:Label>
-                        </div>
-                        <div id="popwindow_content1" class="layui-layer-content" style="overflow: auto; padding: 0px 5px 0px 5px;">
-
-                            <table style="width: 100%; padding: 5px 0px 0px 5px" cellpadding="0" cellspacing="0">
-                                <tr>
-                                    <td style="width: 10%;" class="formItemBgStyleForAlignLeft">
-                                        <asp:Label ID="LB_ID" runat="server" Visible="false"></asp:Label>
-                                        <asp:Label ID="Label23" runat="server" Text="<%$ Resources:lang,KeHuYiJian%>"></asp:Label>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="formItemBgStyleForAlignLeft">
-                                        <CKEditor:CKEditorControl ID="HE_CustomerComment" runat="server" Width="99%" Height="80px" Visible="false" />
-                                        <CKEditor:CKEditorControl ID="HT_CustomerComment" runat="server" Width="99%" Height="80px" Visible="False" />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="formItemBgStyleForAlignLeft">
-                                        <asp:Label ID="Label24" runat="server" Text="<%$ Resources:lang,ChuLiFangShi%>"></asp:Label>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="formItemBgStyleForAlignLeft">
-                                        <asp:TextBox ID="TB_HandleWay" runat="server" Width="60%"></asp:TextBox>
-                                        <asp:DropDownList ID="DL_HandleWay" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DL_ContactWay_SelectedIndexChanged">
-                                            <asp:ListItem Value="" Text="<%$ Resources:lang,QingXuanZe%>" />
-                                            <asp:ListItem Value="Telephone" Text="<%$ Resources:lang,DianHua%>" />
-                                            <asp:ListItem Value="IM" Text="<%$ Resources:lang,IM%>" />
-                                            <asp:ListItem Value="RemoteControl" Text="<%$ Resources:lang,YuanChengKongZhi%>" />
-                                            <asp:ListItem Value="EMail" Text="<%$ Resources:lang,EMail%>" />
-                                            <asp:ListItem Value="DoorToDoorVisit" Text="<%$ Resources:lang,ShangMenBaiFang%>" />
-                                            <asp:ListItem Value="OtherMethods" Text="<%$ Resources:lang,QiTaFangShi%>" />
-                                        </asp:DropDownList>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="formItemBgStyleForAlignLeft">
-                                        <asp:Label ID="Label25" runat="server" Text="<%$ Resources:lang,ChuLiZhuangTai%>"></asp:Label>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="formItemBgStyleForAlignLeft">
-                                        <asp:DropDownList ID="DL_HandleStatus" runat="server" Width="99%">
-                                            <asp:ListItem Value="InProgress" Text="<%$ Resources:lang,ChuLiZhong%>" />
-                                            <asp:ListItem Value="Reviewing" Text="<%$ Resources:lang,PingShenZhong%>" />
-                                            <asp:ListItem Value="Suspended" Text="<%$ Resources:lang,GuaQi%>" />
-                                            <asp:ListItem Value="Completed" Text="<%$ Resources:lang,WanCheng%>" />
-                                            <asp:ListItem Value="Cancel" Text="<%$ Resources:lang,QuXiao%>" />
-                                        </asp:DropDownList>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="formItemBgStyleForAlignLeft">
-                                        <asp:Label ID="Label40" runat="server" Text="<%$ Resources:lang,YongShi%>"></asp:Label>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="formItemBgStyleForAlignLeft">
-                                        <NickLee:NumberBox MaxAmount="1000000000000" MinAmount="-1000000000000" ID="NB_UsedTime" runat="server" Width="60%" Amount="1">1.00</NickLee:NumberBox>
-                                        <asp:DropDownList ID="DL_TimeUnit" runat="server">
-                                            <asp:ListItem Value="Minutes" Text="<%$ Resources:lang,FenZhong%>" />
-                                            <asp:ListItem Value="Hours" Text="<%$ Resources:lang,XiaoShi%>" />
-                                            <asp:ListItem Value="Days" Text="<%$ Resources:lang,Tian%>" />
-                                        </asp:DropDownList>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="formItemBgStyleForAlignLeft">
-                                        <asp:Label ID="Label57" runat="server" Text="<%$ Resources:lang,LianLuoRen%>"></asp:Label>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="formItemBgStyleForAlignLeft">
-                                        <asp:TextBox ID="TB_CustomerAcceptor" runat="server" Width="99%"></asp:TextBox>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="formItemBgStyleForAlignLeft">
-                                        <asp:Label ID="Label58" runat="server" Text="<%$ Resources:lang,LianXiFangFa%>"></asp:Label>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td s class="formItemBgStyleForAlignLeft">
-                                        <asp:TextBox ID="TB_AcceptorContactWay" runat="server" Width="99%"></asp:TextBox>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="formItemBgStyleForAlignLeft">
-                                        <asp:Label ID="Label59" runat="server" Text="<%$ Resources:lang,ChuLiNeiRong%>"></asp:Label>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="formItemBgStyleForAlignLeft">
-                                        <CKEditor:CKEditorControl ID="HE_HandleDetail" runat="server" Width="90%" Height="80px" Visible="false" />
-                                        <CKEditor:CKEditorControl ID="HT_HandleDetail" runat="server" Width="90%" Height="80px" Visible="False" />
-
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td>
-                                        <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional">
-                                            <ContentTemplate>
-                                                <div>
-                                                    <Upload:InputFile ID="AttachFile" runat="server" name="photo" Accept="image/*;capture=camera" Width="180px" />
-                                                    <input type="hidden" val="" id="imgData" runat="server" />
-                                                    &nbsp;<input type="button" id="BtnUP" onclick="upload()" value="Upload" />
-                                                    <img id="IMG_Uploading" src="Images/Processing.gif" alt="请稍候，处理中..." style="display: none;" />
-
-                                                    <br />
-
-                                                    <%--<div id="ProgressBar">
-                                                            <Upload:ProgressBar ID="ProgressBar1" runat='server' Width="500px" Height="100px">
-                                                            </Upload:ProgressBar>
-                                                        </div>--%>
+                                            </div>
+                                            
+                                            <div class="data-row">
+                                                <div class="data-label"><asp:Label ID="Label33" runat="server" Text="<%$ Resources:lang,ZhuangTai%>" />:</div>
+                                                <div class="data-value status-badge">
+                                                    <%# ShareClass.GetStatusHomeNameByOtherStatus(Eval("OperatorStatus").ToString()) %>
                                                 </div>
-                                            </ContentTemplate>
-                                            <Triggers>
-                                                <%--  <asp:PostBackTrigger ControlID="BtnUP" />--%>
-                                            </Triggers>
-                                        </asp:UpdatePanel>
+                                            </div>
+                                            
+                                            <div class="action-icons" style="display:none;">
+                                                <asp:ButtonColumn ButtonType="LinkButton" CommandName="Update" Text="&lt;div class='action-icon'&gt;&lt;img src='ImagesSkin/Update.png' style='width:20px;height:20px;' /&gt;&lt;/div&gt;">
+                                                    <ItemStyle Width="30px" />
+                                                </asp:ButtonColumn>
+                                                <asp:TemplateColumn>
+                                                    <ItemTemplate>
+                                                        <div onclick="return showSimpleDeleteModal(this, event);" class="action-icon" title="Delete">
+                                                            <img src="ImagesSkin/Delete.png" style="width:20px;height:20px;" />
+                                                        </div>
+                                                        <asp:LinkButton ID="LBT_Delete" CommandName="Delete" runat="server" Style="display: none;"></asp:LinkButton>
+                                                    </ItemTemplate>
+                                                    <ItemStyle Width="30px" />
+                                                </asp:TemplateColumn>
+                                                <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl='<%# DataBinder.Eval(Container, "DataItem.ID", "TTCustomerQuestionRelatedDoc.aspx?RelatedID={0}") %>' Target="_blank" CssClass="action-icon">
+                                                    <img src="ImagesSkin/UpLoad.jpg" style="width:20px;height:20px;" />
+                                                </asp:HyperLink>
+                                                <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# DataBinder.Eval(Container, "DataItem.ID", "TTDocumentTreeView.aspx?RelatedType=CustomerQuestion&RelatedID={0}") %>' Target="_blank" CssClass="action-icon">
+                                                    <img src="ImagesSkin/Doc.gif" style="width:20px;height:20px;" />
+                                                </asp:HyperLink>
+                                            </div>
+                                        </ItemTemplate>
+                                    </asp:TemplateColumn>
+                                </Columns>
+                            </asp:DataGrid>
+                            
+                            <!-- 服务处理按钮 -->
+                            <div style="margin-top: 15px;">
+                                <div class="mobile-form-group">
+                                    <div class="mobile-label"><asp:Label ID="Label48" runat="server" Text="<%$ Resources:lang,FuWuChuLiXiJie%>" /></div>
+                                </div>
+                                
+                                <div class="mobile-form-group">
+                                    <div class="mobile-label"><asp:Label ID="Label51" runat="server" Text="<%$ Resources:lang,CYHSJ%>" /></div>
+                                    <asp:DropDownList ID="DL_IsImportant" runat="server" CssClass="mobile-dropdown" AutoPostBack="true" OnSelectedIndexChanged="DL_IsImportant_SelectedIndexChanged">
+                                        <asp:ListItem>NO</asp:ListItem>
+                                        <asp:ListItem>YES</asp:ListItem>
+                                    </asp:DropDownList>
+                                </div>
+                                
+                                <div class="mobile-form-group">
+                                    <div class="mobile-label"><asp:Label ID="Label49" runat="server" Text="<%$ Resources:lang,ZhiJieChengYuan%>" /></div>
+                                    <asp:DropDownList ID="DL_Operator" runat="server" CssClass="mobile-dropdown" DataTextField="UserName" DataValueField="UserCode">
+                                    </asp:DropDownList>
+                                </div>
+                                
+                                <div class="mobile-button-group">
+                                    <asp:Button ID="BT_Accept" runat="server" CssClass="mobile-button-small" OnClick="BT_Accept_Click" Text="<%$ Resources:lang,ShouLi%>" />
+                                    <asp:Button ID="BT_Exit" runat="server" CssClass="mobile-button-small red" OnClick="BT_Exit_Click" Text="<%$ Resources:lang,TuiChuShouLi%>" />
+                                    <asp:Button ID="BT_Finish" runat="server" CssClass="mobile-button-small" OnClick="BT_Finish_Click" Text="<%$ Resources:lang,WanCheng%>" />
+                                    <asp:Button ID="BT_TransferOperator" runat="server" CssClass="mobile-button-small blue" OnClick="BT_TransferOperator_Click" Text="<%$ Resources:lang,ZhiDingWeiShouLiRen%>" />
+                                </div>
+                                
+                                <div style="margin-top: 10px; display: none;">
+                                    <asp:HyperLink ID="HL_RelatedDoc" runat="server" NavigateUrl="TTCollaborationRelatedDoc.aspx" Text="<%$ Resources:lang,XiangGuanWenJian%>"
+                                        Target="_blank" CssClass="mobile-button-small">
+                                    </asp:HyperLink>
+                                    <asp:HyperLink ID="HL_Expense" runat="server" NavigateUrl="TTProExpense.aspx" Text="<%$ Resources:lang,FeiYongMingXiYuBaoXiao%>" 
+                                        Target="_blank" CssClass="mobile-button-small">
+                                    </asp:HyperLink>
+                                    <asp:HyperLink ID="HL_ResoveResultReview"
+                                        runat="server" NavigateUrl="TTCustomerQuestionResultReviewWF.aspx" Text="<%$ Resources:lang,TiJiaoPingShen%>" 
+                                        Target="_blank" CssClass="mobile-button-small">
+                                    </asp:HyperLink>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 处理记录部分 -->
+                        <div class="mobile-section">
+                            <div style="text-align: right; margin-bottom: 10px;">
+                                <asp:Button ID="BT_CreateRecord" runat="server" Text="<%$ Resources:lang,New%>" CssClass="mobile-button yellow" OnClick="BT_CreateRecord_Click" />
+                                <asp:Label ID="LB_QuestionID" runat="server" Visible="false"></asp:Label>
+                            </div>
+                            
+                            <asp:DataList ID="DataList3" runat="server" CellPadding="0" ForeColor="#333333" OnItemCommand="DataList3_ItemCommand"
+                                Height="1px" Width="100%">
+                                <ItemTemplate>
+                                    <div class="data-item">
+                                        <div class="data-row">
+                                            <div class="data-label"><asp:Label ID="Label27" runat="server" Text="<%$ Resources:lang,BianHao%>" />:</div>
+                                            <div class="data-value"><%# DataBinder.Eval(Container.DataItem, "ID") %></div>
+                                        </div>
+                                        
+                                        <div class="data-row">
+                                            <div class="data-label"><asp:Label ID="Label28" runat="server" Text="<%$ Resources:lang,LianXiRen%>" />:</div>
+                                            <div class="data-value"><%# DataBinder.Eval(Container.DataItem, "CustomerAcceptor") %></div>
+                                        </div>
+                                        
+                                        <div class="data-row">
+                                            <div class="data-label"><asp:Label ID="Label29" runat="server" Text="<%$ Resources:lang,LianXiFangShi%>" />:</div>
+                                            <div class="data-value"><%# DataBinder.Eval(Container.DataItem, "AcceptorContactWay") %></div>
+                                        </div>
+                                        
+                                        <div class="data-row">
+                                            <div class="data-label"><asp:Label ID="Label30" runat="server" Text="<%$ Resources:lang,FuWuFangFa%>" />:</div>
+                                            <div class="data-value"><%# DataBinder.Eval(Container.DataItem, "HandleWay") %></div>
+                                        </div>
+                                        
+                                        <div class="data-row">
+                                            <div class="data-label"><asp:Label ID="Label31" runat="server" Text="<%$ Resources:lang,ChuLiShiJian%>" />:</div>
+                                            <div class="data-value"><%# DataBinder.Eval(Container.DataItem, "HandleTime","{0:yyyy/MM/dd HH:mm}") %></div>
+                                        </div>
+                                        
+                                        <div class="data-row">
+                                            <div class="data-label"><asp:Label ID="Label32" runat="server" Text="<%$ Resources:lang,YongShiChangDu%>" />:</div>
+                                            <div class="data-value">
+                                                <%# DataBinder.Eval(Container.DataItem, "UsedTime") %>
+                                                <%# DataBinder.Eval(Container.DataItem, "TimeUnit") %>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="data-row">
+                                            <div class="data-label"><asp:Label ID="Label33" runat="server" Text="<%$ Resources:lang,ZhuangTai%>" />:</div>
+                                            <div class="data-value"><%# DataBinder.Eval(Container.DataItem, "HandleStatus") %></div>
+                                        </div>
+                                        
+                                        <div class="data-row">
+                                            <div class="data-label"><asp:Label ID="Label34" runat="server" Text="<%$ Resources:lang,ShouLiRen%>" />:</div>
+                                            <div class="data-value"><%# DataBinder.Eval(Container.DataItem, "OperatorName") %></div>
+                                        </div>
+                                        
+                                        <div class="data-row">
+                                            <div class="data-label"><asp:Label ID="Label35" runat="server" Text="<%$ Resources:lang,KeFangYiJian%>" />:</div>
+                                            <div class="data-value"><%# DataBinder.Eval(Container.DataItem, "CustomerComment") %></div>
+                                        </div>
+                                        
+                                        <div class="data-row">
+                                            <div class="data-label"><asp:Label ID="Label36" runat="server" Text="<%$ Resources:lang,ChuLiNeiRong%>" />:</div>
+                                            <div class="data-value"><%# DataBinder.Eval(Container.DataItem, "HandleDetail") %></div>
+                                        </div>
+                                        
+                                        <div class="data-row">
+                                            <div class="data-label"><asp:Label ID="Label37" runat="server" Text="<%$ Resources:lang,XiaCiFuWuShiJian%>" />:</div>
+                                            <div class="data-value"><%# DataBinder.Eval(Container.DataItem, "NextServiceTime") %></div>
+                                        </div>
+                                        
+                                        <div class="data-row">
+                                            <div class="data-label"><asp:Label ID="Label38" runat="server" Text="<%$ Resources:lang,TiQianTongZhiTianShu%>" />:</div>
+                                            <div class="data-value"><%# DataBinder.Eval(Container.DataItem, "PreDays") %></div>
+                                        </div>
+                                        
+                                        <div style="margin-top: 10px; text-align: center;display:none;">
+                                            <asp:LinkButton ID="LinkButton1" runat="server" CssClass="mobile-button-small" CommandName="Update">
+                                                <img src="ImagesSkin/Update.png" style="width:16px;height:16px;vertical-align:middle;" />
+                                                <asp:Label runat="server" Text="<%$ Resources:lang,BaoCun%>" />
+                                            </asp:LinkButton>
+                                        </div>
+                                    </div>
+                                </ItemTemplate>
+                            </asp:DataList>
+                        </div>
+                        
+                        <!-- 树形视图 -->
+                        <div class="mobile-section" style="display: none;">
+                            <div style="max-height: 300px; overflow-y: auto;">
+                                <asp:TreeView ID="TreeView1" runat="server" NodeWrap="True" OnSelectedNodeChanged="TreeView1_SelectedNodeChanged"
+                                    ShowLines="True" Width="100%">
+                                    <RootNodeStyle CssClass="rootNode" />
+                                    <NodeStyle CssClass="treeNode" />
+                                    <LeafNodeStyle CssClass="leafNode" />
+                                    <SelectedNodeStyle CssClass="selectNode" />
+                                </asp:TreeView>
+                            </div>
+                        </div>
+                        
+                        <!-- 原有的模态框保持不变 -->
+                        <div class="layui-layer layui-layer-iframe" id="popwindow" name="fixedDiv"
+                            style="z-index: 9999; width: 98%; height: 500px; position: absolute; overflow: hidden; display: none; border-radius: 10px;">
+                            <div class="layui-layer-title" style="background: #e7e7e8;" id="popwindow_title">
+                                <asp:Label ID="Label6" runat="server" Text="&lt;div&gt;&lt;img src=ImagesSkin/Update.png border=0 width=30px height=30px alt='BusinessForm' /&gt;&lt;/div&gt;"></asp:Label>
+                            </div>
+                            <div id="popwindow_content" class="layui-layer-content" style="overflow: auto; padding: 0px 5px 0px 5px;">
 
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="formItemBgStyleForAlignLeft">
-                                        <asp:Label ID="Label60" runat="server" Text="<%$ Resources:lang,XiaCiFuWuShiJian%>"></asp:Label>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="formItemBgStyleForAlignLeft">
-                                        <asp:TextBox ID="DLC_NextServiceTime" ReadOnly="false" runat="server" Width="99%"></asp:TextBox>
-                                        <ajaxToolkit:CalendarExtender Format="yyyy-MM-dd" ID="CalendarExtender1" runat="server" TargetControlID="DLC_NextServiceTime">
-                                        </ajaxToolkit:CalendarExtender>
-                                    </td>
-                                </tr>
-                                <tr>
+                                <table width="100%">
+                                    <tr>
+                                        <td class="ItemAlignLeft">
+                                            <asp:Label ID="Label4" runat="server" Text="<%$ Resources:lang,FuWuXuQiuLeiBie%>"></asp:Label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="ItemAlignLeft">
+                                            <asp:DropDownList ID="DL_CustomerQuestionTypeNew" runat="server" CssClass="DDList" DataTextField="Type" DataValueField="Type" Width="99%">
+                                            </asp:DropDownList>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="ItemAlignLeft">
+                                            <asp:Label ID="Label8" runat="server" Text="<%$ Resources:lang,CYHSJ%>"></asp:Label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="ItemAlignLeft">
+                                            <asp:DropDownList ID="DL_IsImportantNew" runat="server" Width="99%">
+                                                <asp:ListItem>NO</asp:ListItem>
+                                                <asp:ListItem>YES</asp:ListItem>
+                                            </asp:DropDownList>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="15%" class="ItemAlignLeft">
+                                            <asp:Label ID="Label5" runat="server" Text="<%$ Resources:lang,XuQiuShangJiMiaoShu%>"></asp:Label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="ItemAlignLeft">
 
-                                    <td class="formItemBgStyleForAlignLeft">
-                                        <asp:Label ID="Label61" runat="server" Text="<%$ Resources:lang,TiQianTongZhiTianShu%>"></asp:Label>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td s class="formItemBgStyleForAlignLeft">
-                                        <NickLee:NumberBox ID="NB_PreDays" runat="server" MaxAmount="1000000000000" MinAmount="-1000000000000" Width="90%" Precision="0">0</NickLee:NumberBox>
-                                        <asp:Label ID="Label62" runat="server" Text="<%$ Resources:lang,Tian%>"></asp:Label>
-                                    </td>
-                                </tr>
-                            </table>
-                            <br />
-                            <br />
+                                            <CKEditor:CKEditorControl runat="server" ID="HT_Question" Width="90%" Height="120px" Visible="False" />
+                                            <span class="auto-style1">*</span>
+
+                                        </td>
+                                    </tr>
+
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 15%;" class="formItemBgStyleForAlignLeft">
+                                            <asp:Label ID="Label11" runat="server" Text="<%$ Resources:lang,KeHuMingCheng%>"></asp:Label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="formItemBgStyleForAlignLeft">
+                                            <asp:TextBox ID="TB_Company" runat="server" Width="99%"></asp:TextBox><span class="auto-style1">*</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="15%" class="formItemBgStyleForAlignLeft">
+                                            <asp:Label ID="Label12" runat="server" Text="<%$ Resources:lang,LianXiRen%>"></asp:Label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="30%" class="formItemBgStyleForAlignLeft">
+                                            <asp:TextBox ID="TB_ContactPerson" runat="server" Width="90%"></asp:TextBox><span class="auto-style1">*</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="15%" class="formItemBgStyleForAlignLeft">
+                                            <asp:Label ID="Label13" runat="server" Text="<%$ Resources:lang,LianXiFangFa%>"></asp:Label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="formItemBgStyleForAlignLeft">
+                                            <asp:TextBox ID="TB_PhoneNumber" runat="server" Width="99%"></asp:TextBox><span class="auto-style1">*</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="formItemBgStyleForAlignLeft">
+                                            <asp:Label ID="Label14" runat="server" Text="<%$ Resources:lang,YaoQiuDaFuShiJian%>"></asp:Label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="formItemBgStyleForAlignLeft">
+                                            <asp:TextBox ID="DLC_AnswerTime" runat="server" Width="99%"></asp:TextBox>
+                                            <ajaxToolkit:CalendarExtender Format="yyyy-MM-dd" ID="CalendarExtender2" runat="server" TargetControlID="DLC_AnswerTime" Enabled="True"></ajaxToolkit:CalendarExtender>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="formItemBgStyleForAlignLeft">
+                                            <asp:Label ID="Label15" runat="server" Text="<%$ Resources:lang,LianXiDiZhi%>"></asp:Label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="formItemBgStyleForAlignLeft">
+                                            <asp:TextBox ID="TB_Address" runat="server" Width="99%"></asp:TextBox></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="formItemBgStyleForAlignLeft">
+                                            <asp:Label ID="Label2" runat="server" Text="<%$ Resources:lang,EMail%>"></asp:Label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="formItemBgStyleForAlignLeft">
+                                            <asp:TextBox ID="TB_EMail" runat="server" Width="99%"></asp:TextBox>&#160;&#160;</td>
+                                    </tr>
+                                    <tr>
+
+                                        <td class="formItemBgStyleForAlignLeft">
+                                            <asp:Label ID="Label39" runat="server" Text="<%$ Resources:lang,YouBian%>"></asp:Label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="formItemBgStyleForAlignLeft">
+                                            <asp:TextBox ID="TB_PostCode" runat="server" Width="99%"></asp:TextBox></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="text-align: center;" colspan="2" class="formItemBgStyleForAlignLeft">
+                                            <asp:Label ID="Label41" runat="server" Text="<%$ Resources:lang,SHANGJIXINXI%>"></asp:Label>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+
+                                        <td style="width: 15%;" class="formItemBgStyleForAlignLeft">
+                                            <asp:Label ID="Label50" runat="server" Text="<%$ Resources:lang,YIQICHENGJIAOSHIJIAN%>"></asp:Label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="formItemBgStyleForAlignLeft">
+                                            <asp:TextBox ID="DLC_ExpectedTime" runat="server" Width="99%"></asp:TextBox>
+                                            <cc2:CalendarExtender ID="CalendarExtender3" runat="server" Enabled="True" Format="yyyy-MM-dd" TargetControlID="DLC_ExpectedTime">
+                                            </cc2:CalendarExtender>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 15%;" class="formItemBgStyleForAlignLeft">
+                                            <asp:Label ID="Label3" runat="server" Text="<%$ Resources:lang,YIQICHENGJIAOJINGE%>"></asp:Label>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="formItemBgStyleForAlignLeft">
+                                            <NickLee:NumberBox ID="NB_ExpectedEarnings" runat="server" MaxAmount="1000000000000" MinAmount="-1000000000000" Width="99%">0.00</NickLee:NumberBox>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="width: 15%;" class="formItemBgStyleForAlignLeft">
+                                            <asp:Label ID="Label7" runat="server" Text="<%$ Resources:lang,CHENGGONGGANJIANYINGSHU%>"></asp:Label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="25%" class="formItemBgStyleForAlignLeft">
+                                            <asp:TextBox ID="TB_SucessKeyReason" runat="server" Width="99%" />
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 15%;" class="formItemBgStyleForAlignLeft">
+                                            <asp:Label ID="Label9" runat="server" Text="<%$ Resources:lang,SHIBAIGANJIANYINGSHU%>"></asp:Label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="formItemBgStyleForAlignLeft">
+                                            <asp:TextBox ID="TB_FailedKeyReason" runat="server" Width="99%"></asp:TextBox>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="formItemBgStyleForAlignLeft" style="width: 15%;">
+                                            <asp:Label ID="Label52" runat="server" Text="<%$ Resources:lang,ShangJiJieDuan%>"></asp:Label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="formItemBgStyleForAlignLeft" width="25%">
+                                            <asp:DropDownList ID="DL_Stage" runat="server" CssClass="DDList" Width="99%" AutoPostBack="true" DataTextField="Stage" DataValueField="Stage" OnSelectedIndexChanged="DL_Stage_SelectedIndexChanged">
+                                            </asp:DropDownList>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="formItemBgStyleForAlignLeft" style="width: 15%;">
+                                            <asp:Label ID="Label53" runat="server" Text="<%$ Resources:lang,YingLu%>"></asp:Label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="formItemBgStyleForAlignLeft">
+                                            <NickLee:NumberBox ID="NB_Possibility" runat="server" MaxAmount="1000000000000" MinAmount="-1000000000000" Precision="0" Width="90%">0</NickLee:NumberBox>
+                                            %
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="formItemBgStyleForAlignLeft" style="width: 15%;">
+                                            <asp:Label ID="Label10" runat="server" Text="<%$ Resources:lang,KeHuShangJiJieDuan%>"></asp:Label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="formItemBgStyleForAlignLeft" width="25%">
+                                            <asp:DropDownList ID="DL_CustomerStage" runat="server" CssClass="DDList" DataTextField="Stage" DataValueField="Stage" Width="99%">
+                                            </asp:DropDownList>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="formItemBgStyleForAlignLeft" style="width: 15%;">
+                                            <asp:Label ID="Label16" runat="server" Text="<%$ Resources:lang,SHANGJIDAILI%>"></asp:Label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="formItemBgStyleForAlignLeft">
+                                            <asp:TextBox ID="TB_AgencyName" runat="server" Width="99%" />
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="width: 15%;" class="formItemBgStyleForAlignLeft">
+                                            <asp:Label ID="Label17" runat="server" Text="<%$ Resources:lang,SHANGJILAIYUAN%>"></asp:Label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="formItemBgStyleForAlignLeft" colspan="3">
+                                            <asp:TextBox ID="TB_BusinessSource" runat="server" Width="99%" />
+                                        </td>
+                                    </tr>
+
+                                    <tr style="display: none;">
+                                        <td class="formItemBgStyleForAlignLeft" style="width: 15%;">
+                                            <asp:Label ID="Label54" runat="server" Text="<%$ Resources:lang,SHANGJIXINXI%>"></asp:Label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="formItemBgStyleForAlignLeft" width="25%">
+                                            <asp:TextBox ID="TB_BusinessName" runat="server" Width="99%"></asp:TextBox>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="formItemBgStyleForAlignLeft" style="width: 15%;">
+                                            <asp:Label ID="Label55" runat="server" Text="<%$ Resources:lang,KeHuMingCheng%>"></asp:Label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="formItemBgStyleForAlignLeft">
+                                            <asp:TextBox ID="TB_CustomerName" runat="server" Width="99%" />
+                                        </td>
+                                    </tr>
+                                    <tr style="display: none;">
+                                        <td class="formItemBgStyleForAlignLeft" style="width: 15%;">
+                                            <asp:Label ID="Label18" runat="server" Text="<%$ Resources:lang,KeHuJingLi%>"></asp:Label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="formItemBgStyleForAlignLeft">
+                                            <asp:TextBox ID="TB_CustomerManager" runat="server" Width="99%"></asp:TextBox>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="formItemBgStyleForAlignLeft" style="width: 15%;">
+                                            <asp:Label ID="LB_UserCode" runat="server" Visible="False"></asp:Label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="formItemBgStyleForAlignLeft" width="25%">
+                                            <asp:Label ID="LB_UserName" runat="server" Visible="False"></asp:Label>
+                                            <asp:Label ID="LB_Sql4" runat="server" Visible="False"></asp:Label>
+                                            <asp:Label ID="Label56" runat="server" Visible="False"></asp:Label>
+                                        </td>
+                                    </tr>
+                                </table>
+
+                                <table width="100%" style="display: none;">
+                                    <tr>
+                                        <td width="100px">
+                                            <asp:Label ID="Label19" runat="server" Text="<%$ Resources:lang,FuWuXuQiuLeiBie%>"></asp:Label>
+                                        </td>
+                                        <td width="205px">
+                                            <asp:DropDownList ID="DL_CustomerQuestionType" runat="server" CssClass="DDList" DataTextField="Type" DataValueField="Type" Width="200px" AutoPostBack="true" OnSelectedIndexChanged="DL_CustomerQuestionType_SelectedIndexChanged">
+                                            </asp:DropDownList>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="100px">
+                                            <asp:Label ID="Label20" runat="server" Text="<%$ Resources:lang,FuWuXuQiuMiaoShu%>"></asp:Label>
+                                        </td>
+                                        <td>
+                                            <asp:Label ID="LB_Question" runat="server" Width="70%"></asp:Label></td>
+                                    </tr>
+                                </table>
+                                <br />
+                                <br />
+                            </div>
+
+                            <div id="popwindow_footer" class="layui-layer-btn" style="border-top: 1px solid #ccc;">
+                                <asp:LinkButton ID="BT_New" runat="server" class="layui-layer-btn notTab" OnClick="BT_New_Click" Text="<%$ Resources:lang,BaoCun%>"></asp:LinkButton><a class="layui-layer-btn notTab" onclick="return popClose();"><asp:Label ID="Label21" runat="server" Text="<%$ Resources:lang,GuanBi%>" /></a>
+                            </div>
+                            <span class="layui-layer-setwin"><a onclick="return popClose();" class="layui-layer-ico layui-layer-close layui-layer-close1 notTab" href="javascript:;"></a></span>
                         </div>
 
-                        <div id="popwindow_footer1" class="layui-layer-btn" style="border-top: 1px solid #ccc;">
-                            <asp:LinkButton ID="BT_NewRecord" runat="server" class="layui-layer-btn notTab" OnClick="BT_NewRecord_Click" Text="<%$ Resources:lang,BaoCun%>"></asp:LinkButton><a class="layui-layer-btn notTab" onclick="return popClose();"><asp:Label ID="Label63" runat="server" Text="<%$ Resources:lang,GuanBi%>" /></a>
-                        </div>
-                        <span class="layui-layer-setwin"><a onclick="return popClose();" class="layui-layer-ico layui-layer-close layui-layer-close1 notTab" href="javascript:;"></a></span>
-                    </div>
+                        <div class="layui-layer layui-layer-iframe" id="popDetailWindow" name="fixedDiv"
+                            style="z-index: 9999; width: 98%; height: 500px; position: absolute; overflow: hidden; display: none; border-radius: 10px;">
+                            <div class="layui-layer-title" style="background: #e7e7e8;" id="popwindow_title1">
+                                <asp:Label ID="Label22" runat="server" Text="&lt;div&gt;&lt;img src=ImagesSkin/Update.png border=0 width=30px height=30px alt='BusinessForm' /&gt;&lt;/div&gt;"></asp:Label>
+                            </div>
+                            <div id="popwindow_content1" class="layui-layer-content" style="overflow: auto; padding: 0px 5px 0px 5px;">
 
-                    <div class="layui-layer-shade" id="popwindow_shade" style="z-index: 9998; background-color: #000; opacity: 0.3; filter: alpha(opacity=30); display: none;"></div>
-                </ContentTemplate>
-            </asp:UpdatePanel>
-            <div style="position: fixed; display: none; z-index: 9999;" id="progressContainer">
-                <asp:UpdateProgress ID="TakeTopUp" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
-                    <ProgressTemplate>
-                        <img src="Images/Processing.gif" alt="Loading,please wait..." />
-                    </ProgressTemplate>
-                </asp:UpdateProgress>
+                                <table style="width: 100%; padding: 5px 0px 0px 5px" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <td style="width: 10%;" class="formItemBgStyleForAlignLeft">
+                                            <asp:Label ID="LB_ID" runat="server" Visible="false"></asp:Label>
+                                            <asp:Label ID="Label23" runat="server" Text="<%$ Resources:lang,KeHuYiJian%>"></asp:Label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="formItemBgStyleForAlignLeft">
+                                            <CKEditor:CKEditorControl ID="HE_CustomerComment" runat="server" Width="99%" Height="80px" Visible="false" />
+                                            <CKEditor:CKEditorControl ID="HT_CustomerComment" runat="server" Width="99%" Height="80px" Visible="False" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="formItemBgStyleForAlignLeft">
+                                            <asp:Label ID="Label24" runat="server" Text="<%$ Resources:lang,ChuLiFangShi%>"></asp:Label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="formItemBgStyleForAlignLeft">
+                                            <asp:TextBox ID="TB_HandleWay" runat="server" Width="60%"></asp:TextBox>
+                                            <asp:DropDownList ID="DL_HandleWay" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DL_ContactWay_SelectedIndexChanged">
+                                                <asp:ListItem Value="" Text="<%$ Resources:lang,QingXuanZe%>" />
+                                                <asp:ListItem Value="Telephone" Text="<%$ Resources:lang,DianHua%>" />
+                                                <asp:ListItem Value="IM" Text="<%$ Resources:lang,IM%>" />
+                                                <asp:ListItem Value="RemoteControl" Text="<%$ Resources:lang,YuanChengKongZhi%>" />
+                                                <asp:ListItem Value="EMail" Text="<%$ Resources:lang,EMail%>" />
+                                                <asp:ListItem Value="DoorToDoorVisit" Text="<%$ Resources:lang,ShangMenBaiFang%>" />
+                                                <asp:ListItem Value="OtherMethods" Text="<%$ Resources:lang,QiTaFangShi%>" />
+                                            </asp:DropDownList>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="formItemBgStyleForAlignLeft">
+                                            <asp:Label ID="Label25" runat="server" Text="<%$ Resources:lang,ChuLiZhuangTai%>"></asp:Label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="formItemBgStyleForAlignLeft">
+                                            <asp:DropDownList ID="DL_HandleStatus" runat="server" Width="99%">
+                                                <asp:ListItem Value="InProgress" Text="<%$ Resources:lang,ChuLiZhong%>" />
+                                                <asp:ListItem Value="Reviewing" Text="<%$ Resources:lang,PingShenZhong%>" />
+                                                <asp:ListItem Value="Suspended" Text="<%$ Resources:lang,GuaQi%>" />
+                                                <asp:ListItem Value="Completed" Text="<%$ Resources:lang,WanCheng%>" />
+                                                <asp:ListItem Value="Cancel" Text="<%$ Resources:lang,QuXiao%>" />
+                                            </asp:DropDownList>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="formItemBgStyleForAlignLeft">
+                                            <asp:Label ID="Label40" runat="server" Text="<%$ Resources:lang,YongShi%>"></asp:Label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="formItemBgStyleForAlignLeft">
+                                            <NickLee:NumberBox MaxAmount="1000000000000" MinAmount="-1000000000000" ID="NB_UsedTime" runat="server" Width="60%" Amount="1">1.00</NickLee:NumberBox>
+                                            <asp:DropDownList ID="DL_TimeUnit" runat="server">
+                                                <asp:ListItem Value="Minutes" Text="<%$ Resources:lang,FenZhong%>" />
+                                                <asp:ListItem Value="Hours" Text="<%$ Resources:lang,XiaoShi%>" />
+                                                <asp:ListItem Value="Days" Text="<%$ Resources:lang,Tian%>" />
+                                            </asp:DropDownList>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="formItemBgStyleForAlignLeft">
+                                            <asp:Label ID="Label57" runat="server" Text="<%$ Resources:lang,LianLuoRen%>"></asp:Label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="formItemBgStyleForAlignLeft">
+                                            <asp:TextBox ID="TB_CustomerAcceptor" runat="server" Width="99%"></asp:TextBox>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="formItemBgStyleForAlignLeft">
+                                            <asp:Label ID="Label58" runat="server" Text="<%$ Resources:lang,LianXiFangFa%>"></asp:Label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td s class="formItemBgStyleForAlignLeft">
+                                            <asp:TextBox ID="TB_AcceptorContactWay" runat="server" Width="99%"></asp:TextBox>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="formItemBgStyleForAlignLeft">
+                                            <asp:Label ID="Label59" runat="server" Text="<%$ Resources:lang,ChuLiNeiRong%>"></asp:Label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="formItemBgStyleForAlignLeft">
+                                            <CKEditor:CKEditorControl ID="HE_HandleDetail" runat="server" Width="90%" Height="80px" Visible="false" />
+                                            <CKEditor:CKEditorControl ID="HT_HandleDetail" runat="server" Width="90%" Height="80px" Visible="False" />
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional">
+                                                <ContentTemplate>
+                                                    <div>
+                                                        <Upload:InputFile ID="AttachFile" runat="server" name="photo" Accept="image/*;capture=camera" Width="180px" />
+                                                        <input type="hidden" val="" id="imgData" runat="server" />
+                                                        &nbsp;<input type="button" id="BtnUP" onclick="upload()" value="Upload" />
+                                                        <img id="IMG_Uploading" src="Images/Processing.gif" alt="请稍候，处理中..." style="display: none;" />
+
+                                                        <br />
+
+                                                        <%--<div id="ProgressBar">
+                                                                <Upload:ProgressBar ID="ProgressBar1" runat='server' Width="500px" Height="100px">
+                                                                </Upload:ProgressBar>
+                                                            </div>--%>
+                                                    </div>
+                                                </ContentTemplate>
+                                                <Triggers>
+                                                    <%--  <asp:PostBackTrigger ControlID="BtnUP" />--%>
+                                                </Triggers>
+                                            </asp:UpdatePanel>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="formItemBgStyleForAlignLeft">
+                                            <asp:Label ID="Label60" runat="server" Text="<%$ Resources:lang,XiaCiFuWuShiJian%>"></asp:Label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="formItemBgStyleForAlignLeft">
+                                            <asp:TextBox ID="DLC_NextServiceTime" ReadOnly="false" runat="server" Width="99%"></asp:TextBox>
+                                            <ajaxToolkit:CalendarExtender Format="yyyy-MM-dd" ID="CalendarExtender1" runat="server" TargetControlID="DLC_NextServiceTime">
+                                            </ajaxToolkit:CalendarExtender>
+                                        </td>
+                                    </tr>
+                                    <tr>
+
+                                        <td class="formItemBgStyleForAlignLeft">
+                                            <asp:Label ID="Label61" runat="server" Text="<%$ Resources:lang,TiQianTongZhiTianShu%>"></asp:Label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td s class="formItemBgStyleForAlignLeft">
+                                            <NickLee:NumberBox ID="NB_PreDays" runat="server" MaxAmount="1000000000000" MinAmount="-1000000000000" Width="90%" Precision="0">0</NickLee:NumberBox>
+                                            <asp:Label ID="Label62" runat="server" Text="<%$ Resources:lang,Tian%>"></asp:Label>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <br />
+                                <br />
+                            </div>
+
+                            <div id="popwindow_footer1" class="layui-layer-btn" style="border-top: 1px solid #ccc;">
+                                <asp:LinkButton ID="BT_NewRecord" runat="server" class="layui-layer-btn notTab" OnClick="BT_NewRecord_Click" Text="<%$ Resources:lang,BaoCun%>"></asp:LinkButton><a class="layui-layer-btn notTab" onclick="return popClose();"><asp:Label ID="Label63" runat="server" Text="<%$ Resources:lang,GuanBi%>" /></a>
+                            </div>
+                            <span class="layui-layer-setwin"><a onclick="return popClose();" class="layui-layer-ico layui-layer-close layui-layer-close1 notTab" href="javascript:;"></a></span>
+                        </div>
+
+                        <div class="layui-layer-shade" id="popwindow_shade" style="z-index: 9998; background-color: #000; opacity: 0.3; filter: alpha(opacity=30); display: none;"></div>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+                
+                <div style="position: fixed; display: none; z-index: 9999;" id="progressContainer">
+                    <asp:UpdateProgress ID="TakeTopUp" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
+                        <ProgressTemplate>
+                            <img src="Images/Processing.gif" alt="Loading,please wait..." />
+                        </ProgressTemplate>
+                    </asp:UpdateProgress>
+                </div>
             </div>
         </form>
-    </center>
+    </div>
 </body>
-<%--<script type="text/javascript" language="javascript">var cssDirectory = '<%=Session["CssDirectory"] %>'; var oLink = document.getElementById('mainCss'); oLink.href = 'css/' + cssDirectory + '/' + 'bluelightmain.css';</script>--%>
 </html>
