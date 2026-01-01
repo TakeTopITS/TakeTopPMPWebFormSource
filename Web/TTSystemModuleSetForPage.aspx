@@ -17,6 +17,10 @@
             height: 50px;
             width: 50px;
         }
+        
+        .sort-number-input {
+            text-align: center;
+        }
     </style>
 
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
@@ -25,6 +29,94 @@
         $(function () {
             if (top.location != self.location) { } else { CloseWebPage(); }
 
+        });
+
+        // 只能输入数字的函数
+        function allowOnlyNumbers(event) {
+            var key = event.keyCode || event.which;
+            var keyChar = String.fromCharCode(key);
+
+            // 允许功能键: backspace, delete, tab, escape, enter, 箭头键等
+            var specialKeys = [8, 9, 13, 27, 35, 36, 37, 38, 39, 40, 45, 46];
+
+            // 允许数字键 (0-9) 和功能键
+            if ((key >= 48 && key <= 57) || (key >= 96 && key <= 105) ||
+                $.inArray(key, specialKeys) !== -1) {
+                return true;
+            }
+
+            // 允许 Ctrl + A, Ctrl + C, Ctrl + V, Ctrl + X
+            if ((event.ctrlKey || event.metaKey) &&
+                (keyChar === 'a' || keyChar === 'c' || keyChar === 'v' || keyChar === 'x')) {
+                return true;
+            }
+
+            event.preventDefault();
+            return false;
+        }
+
+        // 粘贴时验证内容是否为数字
+        function validatePaste(event) {
+            var clipboardData = event.clipboardData || window.clipboardData;
+            var pastedText = clipboardData.getData('text');
+
+            // 检查粘贴的内容是否只包含数字
+            if (!/^\d+$/.test(pastedText)) {
+                event.preventDefault();
+                return false;
+            }
+            return true;
+        }
+
+        // 绑定数字输入限制到所有排序号文本框
+        function bindNumberInputEvents() {
+            var sortInputs = document.querySelectorAll('.sort-number-input');
+            sortInputs.forEach(function (input) {
+                // 按键事件
+                input.addEventListener('keydown', function (e) {
+                    return allowOnlyNumbers(e);
+                });
+
+                // 粘贴事件
+                input.addEventListener('paste', function (e) {
+                    return validatePaste(e);
+                });
+
+                // 输入事件（处理中文输入法等）
+                input.addEventListener('input', function (e) {
+                    // 移除非数字字符
+                    var originalValue = this.value;
+                    var cleanedValue = originalValue.replace(/[^\d]/g, '');
+
+                    // 如果值发生变化，更新文本框
+                    if (originalValue !== cleanedValue) {
+                        this.value = cleanedValue;
+                    }
+                });
+
+                // 失去焦点时验证
+                input.addEventListener('blur', function () {
+                    if (this.value === '' || this.value === '-') {
+                        this.value = '0';
+                    }
+                });
+            });
+        }
+
+        // 页面加载完成后初始化
+        $(document).ready(function () {
+            // 延迟执行以确保所有元素都已加载
+            setTimeout(function () {
+                bindNumberInputEvents();
+
+                // 初始化空值
+                var sortInputs = document.querySelectorAll('.sort-number-input');
+                sortInputs.forEach(function (input) {
+                    if (input.value === '' || input.value === null) {
+                        input.value = '0';
+                    }
+                });
+            }, 500);
         });
     </script>
 </head>
@@ -321,7 +413,10 @@
                                                                                 </asp:BoundColumn>
                                                                                 <asp:TemplateColumn HeaderText="顺序">
                                                                                     <ItemTemplate>
-                                                                                        <asp:TextBox ID="TB_SortNumber" runat="server" Width="40px" Text="0"></asp:TextBox>
+                                                                                        <asp:TextBox ID="TB_SortNumber" runat="server" Width="40px" Text="0"
+                                                                                            CssClass="sort-number-input"
+                                                                                            onkeypress="return allowOnlyNumbers(event)"
+                                                                                            onpaste="return validatePaste(event)"></asp:TextBox>
                                                                                     </ItemTemplate>
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="5%" />
                                                                                 </asp:TemplateColumn>
@@ -406,5 +501,115 @@
         </form>
     </center>
 </body>
-<script type="text/javascript" language="javascript">var cssDirectory = '<%=Session["CssDirectory"] %>'; var oLink = document.getElementById('mainCss'); oLink.href = 'css/' + cssDirectory + '/' + 'bluelightmain.css';</script>
+<script type="text/javascript" language="javascript">
+    var cssDirectory = '<%=Session["CssDirectory"] %>';
+    var oLink = document.getElementById('mainCss');
+    oLink.href = 'css/' + cssDirectory + '/' + 'bluelightmain.css';
+
+    // 只能输入数字的函数
+    function allowOnlyNumbers(event) {
+        var key = event.keyCode || event.which;
+        var keyChar = String.fromCharCode(key);
+
+        // 允许功能键: backspace, delete, tab, escape, enter, 箭头键等
+        var specialKeys = [8, 9, 13, 27, 35, 36, 37, 38, 39, 40, 45, 46];
+
+        // 允许数字键 (0-9) 和功能键
+        if ((key >= 48 && key <= 57) || (key >= 96 && key <= 105) ||
+            specialKeys.indexOf(key) !== -1) {
+            return true;
+        }
+
+        // 允许 Ctrl + A, Ctrl + C, Ctrl + V, Ctrl + X
+        if ((event.ctrlKey || event.metaKey) &&
+            (keyChar === 'a' || keyChar === 'c' || keyChar === 'v' || keyChar === 'x')) {
+            return true;
+        }
+
+        event.preventDefault();
+        return false;
+    }
+
+    // 粘贴时验证内容是否为数字
+    function validatePaste(event) {
+        var clipboardData = event.clipboardData || window.clipboardData;
+        var pastedText = clipboardData.getData('text');
+
+        // 检查粘贴的内容是否只包含数字
+        if (!/^\d+$/.test(pastedText)) {
+            event.preventDefault();
+            return false;
+        }
+        return true;
+    }
+
+    // 绑定数字输入限制到所有排序号文本框
+    function bindNumberInputEvents() {
+        var sortInputs = document.querySelectorAll('.sort-number-input');
+        sortInputs.forEach(function (input) {
+            // 按键事件
+            input.addEventListener('keydown', function (e) {
+                return allowOnlyNumbers(e);
+            });
+
+            // 粘贴事件
+            input.addEventListener('paste', function (e) {
+                return validatePaste(e);
+            });
+
+            // 输入事件（处理中文输入法等）
+            input.addEventListener('input', function (e) {
+                // 移除非数字字符
+                var originalValue = this.value;
+                var cleanedValue = originalValue.replace(/[^\d]/g, '');
+
+                // 如果值发生变化，更新文本框
+                if (originalValue !== cleanedValue) {
+                    this.value = cleanedValue;
+                }
+            });
+
+            // 失去焦点时验证
+            input.addEventListener('blur', function () {
+                if (this.value === '' || this.value === '-') {
+                    this.value = '0';
+                }
+            });
+        });
+    }
+
+    // 页面加载完成后初始化
+    document.addEventListener('DOMContentLoaded', function () {
+        // 延迟执行以确保所有元素都已加载
+        setTimeout(function () {
+            bindNumberInputEvents();
+
+            // 初始化空值
+            var sortInputs = document.querySelectorAll('.sort-number-input');
+            sortInputs.forEach(function (input) {
+                if (input.value === '' || input.value === null) {
+                    input.value = '0';
+                }
+            });
+        }, 500);
+    });
+
+    // 绑定AJAX完成事件（处理UpdatePanel刷新）
+    if (typeof Sys !== 'undefined') {
+        Sys.WebForms.PageRequestManager.getInstance().add_endRequest(function () {
+            // UpdatePanel刷新后重新绑定事件
+            setTimeout(function () {
+                bindNumberInputEvents();
+
+                // 初始化空值
+                var sortInputs = document.querySelectorAll('.sort-number-input');
+                sortInputs.forEach(function (input) {
+                    if (input.value === '' || input.value === null) {
+                        input.value = '0';
+                    }
+                });
+            }, 100);
+        });
+    }
+</script>
 </html>

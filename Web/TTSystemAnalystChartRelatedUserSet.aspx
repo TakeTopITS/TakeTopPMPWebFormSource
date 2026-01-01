@@ -39,6 +39,73 @@
             }
         }
 
+        // 只能输入数字的函数
+        function allowOnlyNumbers(event) {
+            var key = event.keyCode || event.which;
+            var keyChar = String.fromCharCode(key);
+
+            // 允许功能键: backspace, delete, tab, escape, enter, 箭头键
+            var specialKeys = [8, 9, 13, 27, 35, 36, 37, 38, 39, 40, 45, 46];
+
+            // 允许数字键 (0-9) 和功能键
+            if ((key >= 48 && key <= 57) || (key >= 96 && key <= 105) ||
+                $.inArray(key, specialKeys) !== -1) {
+                return true;
+            }
+
+            // 允许 Ctrl + A, Ctrl + C, Ctrl + V, Ctrl + X
+            if ((event.ctrlKey || event.metaKey) &&
+                (keyChar === 'a' || keyChar === 'c' || keyChar === 'v' || keyChar === 'x')) {
+                return true;
+            }
+
+            event.preventDefault();
+            return false;
+        }
+
+        // 粘贴时验证内容是否为数字
+        function validatePaste(event) {
+            var clipboardData = event.clipboardData || window.clipboardData;
+            var pastedText = clipboardData.getData('text');
+
+            // 检查粘贴的内容是否只包含数字
+            if (!/^\d+$/.test(pastedText)) {
+                event.preventDefault();
+                return false;
+            }
+            return true;
+        }
+
+        // 绑定文本框的输入限制
+        function bindNumberInputEvents() {
+            var sortInputs = document.querySelectorAll('.sort-number-input');
+            sortInputs.forEach(function (input) {
+                // 按键事件
+                input.addEventListener('keydown', allowOnlyNumbers);
+
+                // 粘贴事件
+                input.addEventListener('paste', validatePaste);
+
+                // 输入事件（处理中文输入法等）
+                input.addEventListener('input', function (e) {
+                    // 移除非数字字符
+                    this.value = this.value.replace(/[^\d]/g, '');
+
+                    // 移除前导零（可选，根据需求决定）
+                    // if (this.value.length > 1 && this.value.startsWith('0')) {
+                    //     this.value = this.value.replace(/^0+/, '');
+                    // }
+                });
+
+                // 失去焦点时验证
+                input.addEventListener('blur', function () {
+                    if (this.value === '') {
+                        this.value = '0';
+                    }
+                });
+            });
+        }
+
         // 绑定按钮点击事件
         document.addEventListener('DOMContentLoaded', function () {
             var btnSave = document.getElementById('<%= BT_Save.ClientID %>');
@@ -47,6 +114,9 @@
                     showLoading();
                 });
             }
+
+            // 绑定数字输入限制
+            bindNumberInputEvents();
         });
     </script>
 </head>
@@ -127,7 +197,9 @@
                                         <ItemTemplate>
                                             <asp:TextBox ID="TB_SortNumber" runat="server"
                                                 CssClass="form-control sort-number-input"
-                                                Text='<%# DataBinder.Eval(Container.DataItem,"SortNumber") %>'></asp:TextBox>
+                                                Text='<%# DataBinder.Eval(Container.DataItem,"SortNumber") %>'
+                                                onkeypress="return allowOnlyNumbers(event)"
+                                                onpaste="return validatePaste(event)"></asp:TextBox>
                                         </ItemTemplate>
                                         <ItemStyle CssClass="chart-sort-column" HorizontalAlign="Left" />
                                         <HeaderStyle CssClass="chart-sort-column" HorizontalAlign="Left" />
@@ -172,12 +244,74 @@
     </form>
 </body>
 <script type="text/javascript" language="javascript">
+    // 只能输入数字的函数
+    function allowOnlyNumbers(event) {
+        var key = event.keyCode || event.which;
+        var keyChar = String.fromCharCode(key);
+
+        // 允许功能键: backspace, delete, tab, escape, enter, 箭头键
+        var specialKeys = [8, 9, 13, 27, 35, 36, 37, 38, 39, 40, 45, 46];
+
+        // 允许数字键 (0-9) 和功能键
+        if ((key >= 48 && key <= 57) || (key >= 96 && key <= 105) ||
+            specialKeys.indexOf(key) !== -1) {
+            return true;
+        }
+
+        // 允许 Ctrl + A, Ctrl + C, Ctrl + V, Ctrl + X
+        if ((event.ctrlKey || event.metaKey) &&
+            (keyChar === 'a' || keyChar === 'c' || keyChar === 'v' || keyChar === 'x')) {
+            return true;
+        }
+
+        event.preventDefault();
+        return false;
+    }
+
+    // 粘贴时验证内容是否为数字
+    function validatePaste(event) {
+        var clipboardData = event.clipboardData || window.clipboardData;
+        var pastedText = clipboardData.getData('text');
+
+        // 检查粘贴的内容是否只包含数字
+        if (!/^\d+$/.test(pastedText)) {
+            event.preventDefault();
+            return false;
+        }
+        return true;
+    }
+
     // 隐藏加载动画（AJAX完成时调用）
     function hideLoading() {
         var overlay = document.getElementById('loadingOverlay');
         if (overlay) {
             overlay.style.display = 'none';
         }
+    }
+
+    // 绑定数字输入限制
+    function bindNumberInputEvents() {
+        var sortInputs = document.querySelectorAll('.sort-number-input');
+        sortInputs.forEach(function (input) {
+            // 按键事件
+            input.addEventListener('keydown', allowOnlyNumbers);
+
+            // 粘贴事件
+            input.addEventListener('paste', validatePaste);
+
+            // 输入事件（处理中文输入法等）
+            input.addEventListener('input', function (e) {
+                // 移除非数字字符
+                this.value = this.value.replace(/[^\d]/g, '');
+            });
+
+            // 失去焦点时验证
+            input.addEventListener('blur', function () {
+                if (this.value === '') {
+                    this.value = '0';
+                }
+            });
+        });
     }
 
     // 绑定AJAX完成事件
@@ -193,6 +327,9 @@
                 }
             });
 
+            // 重新绑定数字输入事件（因为UpdatePanel可能重新渲染了控件）
+            bindNumberInputEvents();
+
             // 确保所有文本左对齐
             var allCells = document.querySelectorAll('.unified-table td, .unified-table th');
             allCells.forEach(function (cell) {
@@ -204,6 +341,9 @@
     // 页面加载完成后检查和修正对齐
     document.addEventListener('DOMContentLoaded', function () {
         setTimeout(function () {
+            // 绑定数字输入限制
+            bindNumberInputEvents();
+
             // 检查排序号文本框
             var sortInputs = document.querySelectorAll('.sort-number-input');
             sortInputs.forEach(function (input) {
