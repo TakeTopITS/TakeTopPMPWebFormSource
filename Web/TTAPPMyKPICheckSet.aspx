@@ -4,7 +4,7 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
-<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=0.1; user-scalable=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -13,453 +13,917 @@
     <link id="mainCss" href="css/bluelightmain.css" rel="stylesheet" type="text/css" />
     <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />
     <style type="text/css">
+        /* 移动端优化样式 */
         body {
-            /*margin-top: 5px;*/
-            /*background-image: url(Images/login_bj.jpg);*/
-            background-repeat: repeat-x;
-            font: normal 100% Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            font-size: 14px;
+            line-height: 1.5;
+            color: #333;
+            background-color: #f5f5f5;
+            -webkit-text-size-adjust: 100%;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .mobile-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 50px;
+            background: linear-gradient(135deg, #1976D2 0%, #0D47A1 100%);
+            color: white;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            padding: 0 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-title {
+            flex: 1;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .header-back {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+        }
+
+        .content-wrapper {
+            margin-top: 5px;
+            margin-bottom: 60px;
+            padding: 15px;
+        }
+
+        .mobile-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+
+        .card-header {
+            padding: 15px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #eee;
+            font-weight: 500;
+            color: #1976D2;
+        }
+
+        .card-body {
+            padding: 15px;
+        }
+
+        .mobile-button {
+            display: block;
+            width: 100%;
+            padding: 12px 15px;
+            background: #1976D2;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            text-align: center;
+            margin: 10px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+            .mobile-button:hover,
+            .mobile-button:active {
+                background: #1565C0;
+                transform: translateY(-1px);
+                box-shadow: 0 4px 12px rgba(25,118,210,0.3);
+            }
+
+            .mobile-button.yellow {
+                background: #FFC107;
+                color: #333;
+            }
+
+                .mobile-button.yellow:hover,
+                .mobile-button.yellow:active {
+                    background: #FFB300;
+                }
+
+        .list-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+            background: white;
+            transition: background 0.2s ease;
+        }
+
+            .list-item:active {
+                background: #f5f5f5;
+            }
+
+        .action-buttons {
+            display: flex;
+            gap: 8px;
+            margin: 8px 0;
+        }
+
+        .action-button {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            background: #f5f5f5;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+            .action-button:active {
+                background: #e0e0e0;
+                transform: scale(0.95);
+            }
+
+        .mobile-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            -webkit-appearance: none;
+        }
+
+            .mobile-input:focus {
+                outline: none;
+                border-color: #1976D2;
+                box-shadow: 0 0 0 2px rgba(25,118,210,0.1);
+            }
+
+        .mobile-select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            margin: 8px 0;
+            background: white;
+            -webkit-appearance: none;
+        }
+
+        /* DataGrid移动端样式 */
+        .datagrid-container {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .datagrid-table {
+            min-width: 100%;
+            background: white;
+        }
+
+            .datagrid-table .itemStyle {
+                border-bottom: 1px solid #eee;
+            }
+
+            .datagrid-table .itemBorder {
+                padding: 12px 8px;
+                vertical-align: middle;
+            }
+
+                .datagrid-table .itemBorder img {
+                    width: 20px;
+                    height: 20px;
+                }
+
+        .pagination {
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #eee;
+        }
+
+        /* KPI评分项样式 */
+        .kpi-summary {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .kpi-item {
+            flex: 1;
+            min-width: 150px;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        .kpi-label {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .kpi-value {
+            font-size: 18px;
+            font-weight: bold;
+            color: #1976D2;
+        }
+
+        .kpi-status {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 500;
+            background: #E8F5E9;
+            color: #388E3C;
+        }
+
+        /* 弹窗移动端适配 */
+        .layui-layer-iframe {
+            max-width: 98%;
+            left: 50% !important;
+            transform: translateX(-50%);
+            margin-top: 20px;
+        }
+
+        /* 弹窗标题 */
+        .layui-layer-title {
+            padding: 12px 15px !important;
+            height: auto !important;
+            line-height: 1.4 !important;
+            background: #e7e7e8 !important;
+            font-weight: 500 !important;
+        }
+
+        /* 弹窗内容区域 - 确保有滚动且不覆盖底部按钮 */
+        .layui-layer-content {
+            overflow-y: auto !important;
+            -webkit-overflow-scrolling: touch !important;
+        }
+
+        /* 弹窗底部按钮 */
+        .layui-layer-btn {
+            padding: 15px !important;
+            background: white !important;
+            border-top: 1px solid #eee !important;
+            display: flex !important;
+            justify-content: center !important;
+            gap: 10px !important;
+            flex-wrap: wrap !important;
+        }
+
+            /* 弹窗内部按钮样式 */
+            .layui-layer-btn .popup-button {
+                display: inline-block !important;
+                width: 48% !important;
+                min-width: 120px !important;
+                padding: 12px 0 !important;
+                text-align: center !important;
+                text-decoration: none !important;
+                border-radius: 8px !important;
+                font-size: 16px !important;
+                font-weight: 500 !important;
+                cursor: pointer !important;
+            }
+
+        /* 弹窗内容优化 */
+        .popup-content {
+            padding: 15px;
+        }
+
+        .score-section {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .comment-section {
+            margin-bottom: 20px;
+        }
+
+        .comment-item {
+            margin-bottom: 15px;
+            padding: 12px;
+            background: white;
+            border-radius: 6px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .comment-title {
+            font-weight: 500;
+            color: #1976D2;
+            margin-bottom: 8px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .comment-content {
+            color: #333;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .comment-meta {
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .layui-layer-iframe {
+                width: 95% !important;
+                max-height: 90vh !important;
+                top: 20px !important;
+            }
+
+            .layui-layer-content {
+                max-height: calc(90vh - 140px) !important;
+            }
+
+            .layui-layer-btn {
+                padding: 12px 10px !important;
+            }
+
+                .layui-layer-btn .popup-button {
+                    width: 48% !important;
+                    min-width: 110px !important;
+                    padding: 10px 0 !important;
+                    font-size: 15px !important;
+                }
+
+            /* 弹窗内容在移动端的优化 */
+            .popup-content {
+                padding: 10px;
+            }
+
+            .score-section {
+                padding: 12px;
+                margin-bottom: 15px;
+            }
+
+            .comment-item {
+                padding: 10px;
+                margin-bottom: 12px;
+            }
+
+            /* DataGrid在移动端的优化 */
+            .datagrid-table {
+                font-size: 14px;
+            }
+
+                .datagrid-table .itemBorder {
+                    padding: 10px 5px;
+                }
+
+            /* KPI评分项在移动端的优化 */
+            .kpi-summary {
+                padding: 10px;
+            }
+
+            .kpi-item {
+                min-width: 120px;
+                padding: 8px;
+            }
+
+            .kpi-value {
+                font-size: 16px;
+            }
+
+            /* 弹窗表格布局改为块状布局 */
+            .formBgStyle {
+                width: 100%;
+                border-collapse: collapse;
+            }
+
+                .formBgStyle tr {
+                    display: block;
+                    margin-bottom: 10px;
+                }
+
+                .formBgStyle td {
+                    display: block;
+                    width: 100% !important;
+                    padding: 5px 0;
+                }
+
+                .formBgStyle .formItemBgStyleForAlignLeft {
+                    background: none;
+                    padding: 8px 0;
+                }
+
+                /* 移除弹窗中的行合并 */
+                .formBgStyle td[rowspan] {
+                    position: static !important;
+                }
+        }
+
+        /* 触摸反馈 */
+        .touch-feedback {
+            position: relative;
+            overflow: hidden;
+        }
+
+            .touch-feedback:after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 5px;
+                height: 5px;
+                background: rgba(0,0,0,0.1);
+                opacity: 0;
+                border-radius: 100%;
+                transform: scale(1, 1) translate(-50%);
+                transform-origin: 50% 50%;
+            }
+
+            .touch-feedback:active:after {
+                animation: ripple 0.6s ease-out;
+            }
+
+        @keyframes ripple {
+            0% {
+                transform: scale(0, 0);
+                opacity: 0.5;
+            }
+
+            100% {
+                transform: scale(20, 20);
+                opacity: 0;
+            }
         }
     </style>
-
-    <%-- <style type="text/css">
-        #AboveDiv {
-            max-width: 1024px;
-            width: expression (document.body.clientWidth >= 1024? "1024px" : "auto" ));
-            min-width: 277px;
-            width: expression (document.body.clientWidth <= 277? "277px" : "auto" ));
-        }
-    </style>--%>
 
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="js/allAHandler.js"></script>
     <script type="text/javascript" src="js/layer/layer/layer.js"></script>
     <script type="text/javascript" src="js/popwindow.js"></script>
     <script type="text/javascript" language="javascript">
-        $(function () { initSwipeBack();// 初始化滑动返回功能  initSwipeBack();// 初始化滑动返回功能
+        $(function () {
+            initSwipeBack();
 
-            /*  if (top.location != self.location) { } else { CloseWebPage(); }*/
+            // 移动端触摸优化
+            $('.list-item, .action-button, .mobile-button, .datagrid-table a').addClass('touch-feedback');
 
+            // 防止双击放大
+            var lastTouchEnd = 0;
+            document.addEventListener('touchend', function (event) {
+                var now = (new Date()).getTime();
+                if (now - lastTouchEnd <= 300) {
+                    event.preventDefault();
+                }
+                lastTouchEnd = now;
+            }, false);
+
+            // 优化滚动性能
+            $('.content-wrapper').on('touchmove', function (e) {
+                e.stopPropagation();
+            });
+
+            // 显示加载状态
+            $('form').on('submit', function () {
+                showLoading();
+            });
+
+            // 返回按钮点击
+            $('.header-back').on('click', function () {
+                window.history.back();
+            });
+
+            // 弹窗适配移动端
+            adaptPopupForMobile();
+
+            // 修复弹窗显示时的高度计算
+            fixPopupHeight();
+
+            // 为更新按钮添加点击事件，显示弹窗
+            $('[id*="DataGrid2"] [commandname="Update"]').on('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                showKPIPopup();
+                return false;
+            });
         });
 
+        function showLoading() {
+            $('<div style="position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(255,255,255,0.9); display:flex; align-items:center; justify-content:center; z-index:9999;"><div style="width:40px; height:40px; border:3px solid #f3f3f3; border-top:3px solid #1976D2; border-radius:50%; animation:spin 1s linear infinite;"></div></div>').appendTo('body');
+        }
+
+        function hideLoading() {
+            $('[style*="position:fixed"][style*="background:rgba(255,255,255,0.9)"]').remove();
+        }
+
+        function adaptPopupForMobile() {
+            // 弹窗显示时调整位置
+            $(document).on('click', '[data-popup]', function () {
+                setTimeout(function () {
+                    var $popup = $('#popwindow:visible');
+                    if ($popup.length) {
+                        adjustPopupPosition($popup);
+                    }
+                }, 100);
+            });
+        }
+
+        function fixPopupHeight() {
+            // 监听弹窗显示事件，确保按钮不被遮挡
+            $(document).on('click', '[onclick*="popShow"], [onclick*="showKPIPopup"]', function () {
+                setTimeout(function () {
+                    var $popup = $('#popwindow');
+                    if ($popup.is(':visible')) {
+                        adjustPopupPosition($popup);
+                    }
+                }, 50);
+            });
+        }
+
+        function adjustPopupPosition($popup) {
+            var windowHeight = $(window).height();
+            var windowWidth = $(window).width();
+
+            // 计算弹窗高度（不超过窗口高度的85%）
+            var popupHeight = Math.min(windowHeight * 0.85, 600);
+
+            // 计算弹窗顶部位置（居中显示，但如果窗口太小则从顶部开始）
+            var topPosition = Math.max(20, (windowHeight - popupHeight) / 2);
+
+            // 设置弹窗样式
+            $popup.css({
+                'position': 'fixed',
+                'top': topPosition + 'px',
+                'left': '50%',
+                'transform': 'translateX(-50%)',
+                'width': Math.min(windowWidth * 0.95, 500) + 'px',
+                'height': popupHeight + 'px',
+                'display': 'block'
+            });
+
+            // 显示遮罩层
+            $('#popwindow_shade').css({
+                'display': 'block',
+                'position': 'fixed',
+                'top': '0',
+                'left': '0',
+                'right': '0',
+                'bottom': '0',
+                'z-index': '9998'
+            });
+
+            // 计算内容区域可用高度
+            var titleHeight = $popup.find('.layui-layer-title').outerHeight() || 50;
+            var footerHeight = $popup.find('#popwindow_footer').outerHeight() || 70;
+            var contentHeight = popupHeight - titleHeight - footerHeight;
+
+            // 设置内容区域高度
+            $popup.find('.layui-layer-content').css({
+                'height': contentHeight + 'px',
+                'max-height': contentHeight + 'px',
+                'overflow-y': 'auto'
+            });
+        }
+
+        function showKPIPopup() {
+            var $popup = $('#popwindow');
+            if ($popup.length) {
+                adjustPopupPosition($popup);
+            }
+        }
+
+        // 确保popClose函数存在
+        if (typeof popClose !== 'function') {
+            function popClose() {
+                $('#popwindow').hide();
+                $('#popwindow_shade').hide();
+                return false;
+            }
+        }
     </script>
-
 </head>
-<body><div id="swipeFeedback" class="swipe-feedback"><asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" /></div> <!-- 滑动反馈层 -->
-    <center>
-        <form id="form1" runat="server">
-            <%--  <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">--%>
-            <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">
-            </asp:ScriptManager>
-            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                <ContentTemplate>
-                    <div id="AboveDiv">
-                        <table id="AboveTable" cellpadding="0" width="100%" cellspacing="0" class="bian">
-                            <tr>
-                                <td height="31" class="page_topbj">
-                                    <table width="94%" border="0" class="ItemAlignLeft" cellpadding="0" cellspacing="0">
-                                        <tr>
-                                            <td class="ItemAlignLeft">
-                                                <%-- <a href="TTAppProject.aspx" onclick="javascript:document.getElementById('IMG_Waiting').style.display = 'block';">--%>
-                                                <a id="aAPPBackPriorPage" href="javascript:window.history.go(-1)" target="_top" onclick="javascript:document.getElementById('IMG_Waiting').style.display = 'block';">
-                                                    <table width="245" border="0" class="ItemAlignLeft" cellpadding="0" cellspacing="0">
-                                                        <tr>
-                                                            <td width="29">
-                                                                <img src="ImagesSkin/return.png" alt="" />
-                                                            </td>
-                                                            <td background="ImagesSkin/main_top_bj.jpg" class="titleziAPP">
-                                                                <asp:Label runat="server" Text="<%$ Resources:lang,Back%>" />
-                                                            </td>
-                                                            <td width="5">
-                                                                <%-- <img src="ImagesSkin/main_top_r.jpg" width="5" height="31" />--%>
-                                                            </td>
-                                                        </tr>
-                                                    </table>
-                                                    <img id="IMG_Waiting" src="Images/Processing.gif" alt="请稍候，处理中..." style="display: none;" />
-                                                </a>
-                                            </td>
+<body>
 
-                                        </tr>
-                                    </table>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <table width="100%" cellpadding="0" cellspacing="0">
-                                        <tr>
-                                            <td valign="top" style="padding: 5px 5px 0px 5px; border-right: solid 1px #D8D8D8"
-                                                class="ItemAlignLeft">
-                                                <table style="width: 100%; text-align: left;" cellpadding="3" cellspacing="0" class="formBgStyle">
-                                                    <tr>
-                                                        <td class="formItemBgStyleForAlignLeft" style="height: 26px;">
-                                                            <b>
-                                                                <asp:Label ID="Label2" runat="server" Text="<%$ Resources:lang,BianHao%>"></asp:Label>:<asp:Label ID="LB_KPICheckID" runat="server"></asp:Label>
-                                                                &nbsp;<asp:Label ID="LB_KPICheckName" runat="server"></asp:Label>
-                                                                &nbsp;KPI: </b>
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                                <table class="formBgStyle" style="width: 100%; text-align: left;" cellpadding="3"
-                                                    cellspacing="0">
-                                                    <tr>
-                                                        <td width="90px" class="formItemBgStyleForAlignLeft">
-                                                            <asp:Label ID="Label25" runat="server" Text="<%$ Resources:lang,ZiPingZongFen%>"></asp:Label>:
-                                                        </td>
-                                                        <td class="formItemBgStyleForAlignLeft">
-                                                            <b>
-                                                                <asp:Label ID="LB_TotalSelfPoint" runat="server"></asp:Label>
-                                                            </b>
-                                                        </td>
-                                                        <td width="100px" class="formItemBgStyleForAlignLeft">
-                                                            <asp:Label ID="Label26" runat="server" Text="<%$ Resources:lang,LingDaoPingZongFen%>"></asp:Label>:
-                                                        </td>
-                                                        <td class="formItemBgStyleForAlignLeft">
-                                                            <b>
-                                                                <asp:Label ID="LB_TotalLeaderPoint" runat="server"></asp:Label>
-                                                            </b>
-                                                        </td>
-                                                        <td width="115px" class="formItemBgStyleForAlignLeft">
-                                                            <asp:Label ID="Label27" runat="server" Text="<%$ Resources:lang,DiSanFangPingZongFen%>"></asp:Label>:
-                                                        </td>
-                                                        <td class="formItemBgStyleForAlignLeft">
-                                                            <b>
-                                                                <asp:Label ID="LB_TotalThirdPartPoint" runat="server"></asp:Label>
-                                                            </b>
-                                                        </td>
-                                                        <td class="formItemBgStyleForAlignLeft" width="100px">
-                                                            <asp:Label ID="Label28" runat="server" Text="<%$ Resources:lang,XiTongZongPingFen%>"></asp:Label>:</td>
-                                                        <td class="formItemBgStyleForAlignLeft"><b>
-                                                            <asp:Label ID="LB_TotalSqlPoint" runat="server"></asp:Label>
-                                                        </b></td>
-                                                        <td class="formItemBgStyleForAlignLeft" width="100px">
-                                                            <asp:Label ID="Label29" runat="server" Text="<%$ Resources:lang,RenShiPingZongFen%>"></asp:Label>:
-                                                        </td>
-                                                        <td class="formItemBgStyleForAlignLeft">
-                                                            <b>
-                                                                <asp:Label ID="LB_TotalHRPoint" runat="server"></asp:Label>
-                                                            </b>
-                                                        </td>
-                                                        <td width="100px" class="formItemBgStyleForAlignLeft">
-                                                            <asp:Label ID="Label30" runat="server" Text="<%$ Resources:lang,ZongFen%>"></asp:Label>:
-                                                        </td>
-                                                        <td class="formItemBgStyleForAlignLeft">
-                                                            <b>
-                                                                <asp:Label ID="LB_TotalPoint" runat="server"></asp:Label>
-                                                            </b>
-                                                        </td>
-                                                        <td width="100px" class="formItemBgStyleForAlignLeft">
-                                                            <asp:Label ID="Label31" runat="server" Text="<%$ Resources:lang,ZhuangTai%>"></asp:Label>:
-                                                        </td>
-                                                        <td class="formItemBgStyleForAlignLeft">
-                                                            <asp:Label ID="LB_Status" runat="server"></asp:Label>
-                                                        </td>
-                                                        <asp:Label ID="LB_Sql" runat="server" Visible="false"></asp:Label>
-                                                    </tr>
-                                                </table>
-                                                <br />
-                                                <table width="100%" class="ItemAlignLeft" cellpadding="0" cellspacing="0">
-                                                    <tr>
-                                                        <td>
-                                                            <table width="100%" cellpadding="0" cellspacing="0" background="ImagesSkin/main_n_bj.jpg">
-                                                                <tr>
-                                                                    <td width="7">
-                                                                        <img src="ImagesSkin/main_n_l.jpg" width="7" height="26" />
-                                                                    </td>
-                                                                    <td>
-                                                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                                                            <tr>
-                                                                                <td width="3%" class="ItemAlignLeft">
-                                                                                    <strong>&nbsp;
-                                                                                    </strong>
-                                                                                </td>
-                                                                                <td width="5%" class="ItemAlignLeft">
-                                                                                    <strong>
-                                                                                        <asp:Label ID="Label3" runat="server" Text="<%$ Resources:lang,XuHao%>"></asp:Label></strong>
-                                                                                </td>
-                                                                                <td width="10%" class="ItemAlignLeft">
-                                                                                    <strong>KPI</strong>
-                                                                                </td>
-                                                                                <td width="14%" class="ItemAlignLeft">
-                                                                                    <strong>
-                                                                                        <asp:Label ID="Label4" runat="server" Text="<%$ Resources:lang,DingYi%>"></asp:Label></strong>
-                                                                                </td>
-                                                                                <td width="10%" class="ItemAlignLeft">
-                                                                                    <strong>
-                                                                                        <asp:Label ID="Label5" runat="server" Text="<%$ Resources:lang,MuBiao%>"></asp:Label></strong>
-                                                                                </td>
-                                                                                <td width="10%" class="ItemAlignLeft">
-                                                                                    <strong>
-                                                                                        <asp:Label ID="Label6" runat="server" Text="<%$ Resources:lang,GongShi%>"></asp:Label></strong>
-                                                                                </td>
-                                                                                <td width="7%" class="ItemAlignLeft">
-                                                                                    <strong>
-                                                                                        <asp:Label ID="Label7" runat="server" Text="<%$ Resources:lang,QuanZhong%>"></asp:Label></strong>
-                                                                                </td>
-                                                                                <td width="7%" class="ItemAlignLeft">
-                                                                                    <strong>
-                                                                                        <asp:Label ID="Label8" runat="server" Text="<%$ Resources:lang,ZiPingFen%>"></asp:Label></strong>
-                                                                                </td>
-                                                                                <td width="7%" class="ItemAlignLeft">
-                                                                                    <strong>
-                                                                                        <asp:Label ID="Label9" runat="server" Text="<%$ Resources:lang,LingDaoPingFen%>"></asp:Label></strong>
-                                                                                </td>
-                                                                                <td width="7%" class="ItemAlignLeft">
-                                                                                    <strong>
-                                                                                        <asp:Label ID="Label10" runat="server" Text="<%$ Resources:lang,DiSanFangPingFen%>"></asp:Label></strong>
-                                                                                </td>
-                                                                                <td width="7%" class="ItemAlignLeft">
-                                                                                    <strong>
-                                                                                        <asp:Label ID="Label11" runat="server" Text="<%$ Resources:lang,XiTongPingFen%>"></asp:Label></strong>
-                                                                                </td>
-                                                                                <td width="7%" class="ItemAlignLeft">
-                                                                                    <strong>
-                                                                                        <asp:Label ID="Label12" runat="server" Text="<%$ Resources:lang,RenShiPingFen%>"></asp:Label></strong>
-                                                                                </td>
-                                                                                <td width="7%" class="ItemAlignLeft">
-                                                                                    <strong>
-                                                                                        <asp:Label ID="Label13" runat="server" Text="<%$ Resources:lang,ZongPingFen%>"></asp:Label></strong>
-                                                                                </td>
-                                                                            </tr>
-                                                                        </table>
-                                                                    </td>
-                                                                    <td width="6" align="right">
-                                                                        <img src="ImagesSkin/main_n_r.jpg" width="6" alt="" height="26" />
-                                                                    </td>
-                                                                </tr>
-                                                            </table>
-                                                            <asp:DataGrid ID="DataGrid2" runat="server" AutoGenerateColumns="False" GridLines="None"
-                                                                OnItemCommand="DataGrid2_ItemCommand" OnPageIndexChanged="DataGrid2_PageIndexChanged"
-                                                                AllowCustomPaging="false" AllowPaging="true" PageSize="10" ShowHeader="False"
-                                                                Width="100%">
-                                                                <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                                                                <EditItemStyle BackColor="#2461BF" />
-                                                                <SelectedItemStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-                                                                <PagerStyle HorizontalAlign="center" Mode="NumericPages" NextPageText="" PrevPageText="" CssClass="notTab" />
+    <!-- 移动端头部 -->
+    <table cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td height="31" class="page_topbj">
+                <table width="96%" border="0" class="ItemAlignLeft" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td class="ItemAlignLeft">
+                            <a id="aAPPBackPriorPage" href="javascript:window.history.go(-1)" target="_parent" onclick="javascript:document.getElementById('IMG_Waiting').style.display = 'block';">
 
-                                                                <ItemStyle CssClass="itemStyle" />
-                                                                <Columns>
-                                                                    <asp:ButtonColumn ButtonType="LinkButton" CommandName="Update" Text="&lt;div&gt;&lt;img src=ImagesSkin/Update.png border=0 alt='Modify' /&gt;&lt;/div&gt;">
-                                                                        <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="3%" />
-                                                                    </asp:ButtonColumn>
-                                                                    <asp:BoundColumn DataField="ID" HeaderText="ID">
-                                                                        <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="5%" />
-                                                                    </asp:BoundColumn>
-                                                                    <%--  <asp:TemplateColumn>
-                                                                        <ItemStyle Horizontalalign="left" Width="7%" CssClass="itemBorder" />
-                                                                        <ItemTemplate>
-                                                                            <asp:Button ID="BT_ID" runat="server" CssClass="inpu" Text='<%# DataBinder.Eval(Container.DataItem,"ID") %>' />
-                                                                        </ItemTemplate>
-                                                                    </asp:TemplateColumn>--%>
-                                                                    <asp:BoundColumn DataField="KPI" HeaderText="KPI">
-                                                                        <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" Width="10%" />
-                                                                    </asp:BoundColumn>
-                                                                    <asp:BoundColumn DataField="Definition" HeaderText="定义">
-                                                                        <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" Width="14%" />
-                                                                    </asp:BoundColumn>
-                                                                    <asp:BoundColumn DataField="Target" HeaderText="目标">
-                                                                        <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" Width="10%" />
-                                                                    </asp:BoundColumn>
-                                                                    <asp:BoundColumn DataField="Formula" HeaderText="公式">
-                                                                        <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" Width="10%" />
-                                                                    </asp:BoundColumn>
-                                                                    <asp:BoundColumn DataField="Weight" HeaderText="权重">
-                                                                        <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="7%" />
-                                                                    </asp:BoundColumn>
-                                                                    <asp:BoundColumn DataField="SelfPoint" HeaderText="SelfAssessmentScore">
-                                                                        <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="7%" />
-                                                                    </asp:BoundColumn>
-                                                                    <asp:BoundColumn DataField="LeaderPoint" HeaderText="LeaderAssessmentScore">
-                                                                        <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="7%" />
-                                                                    </asp:BoundColumn>
-                                                                    <asp:BoundColumn DataField="ThirdPartPoint" HeaderText="ThirdPartyAssessmentScore">
-                                                                        <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="7%" />
-                                                                    </asp:BoundColumn>
-                                                                    <asp:BoundColumn DataField="SqlPoint" HeaderText="SystemAssessmentScore">
-                                                                        <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="7%" />
-                                                                    </asp:BoundColumn>
-                                                                    <asp:BoundColumn DataField="HRPoint" HeaderText="HumanResourcesScore">
-                                                                        <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="7%" />
-                                                                    </asp:BoundColumn>
-                                                                    <asp:BoundColumn DataField="Point" HeaderText="总评分">
-                                                                        <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="7%" />
-                                                                    </asp:BoundColumn>
-                                                                </Columns>
-                                                            </asp:DataGrid>
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                                <br />
-
-                                                <iframe runat="server" id="IFrame_Chart1" src="TTTakeTopAnalystChartSet.aspx" style="width: 800px; height: 295px; border: 1px solid white; overflow: hidden;"></iframe>
-
-                                                <%-- <asp:Chart ID="Chart1" runat="server" Width="800px" Visible="false">
-                                                    <Series>
-                                                        <asp:Series ChartType="Column" Label="#VAL" Name="Series1">
-                                                        </asp:Series>
-                                                    </Series>
-                                                    <ChartAreas>
-                                                        <asp:ChartArea AlignmentOrientation="Horizontal" Name="ChartArea1">
-                                                        </asp:ChartArea>
-                                                    </ChartAreas>
-                                                    <Titles>
-                                                        <asp:Title Alignment="TopCenter" DockedToChartArea="ChartArea1" IsDockedInsideChartArea="false"
-                                                            Name="标题">
-                                                        </asp:Title>
-                                                    </Titles>
-                                                </asp:Chart>--%>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </td>
-                            </tr>
-                        </table>
-                        <br />
-                        </td> </tr> </table>
-                    </div>
-
-
-                    <div class="layui-layer layui-layer-iframe" id="popwindow" name="fixedDiv"
-                        style="z-index: 9999; width: 99%; height: 530px; position: absolute; overflow: hidden; display: none; border-radius: 10px;">
-                        <div class="layui-layer-title" style="background: #e7e7e8;" id="popwindow_title">
-                            <asp:Label ID="Label172" runat="server" Text="&lt;div&gt;&lt;img src=ImagesSkin/Update.png border=0 width=30px height=30px alt='BusinessForm' /&gt;&lt;/div&gt;"></asp:Label>
-                        </div>
-                        <div id="popwindow_content" class="layui-layer-content" style="overflow: auto; padding: 0px 5px 0px 5px;">
-
-
-                            <table class="formBgStyle" style="width: 100%; text-align: left;" cellpadding="3"
-                                cellspacing="0">
-                                <tr>
-                                    <td colspan="2" class="formItemBgStyleForAlignLeft">
-
-
-                                        <asp:Label ID="LB_KPIID" runat="server" Visible="false"></asp:Label>
-
-                                        <asp:Label ID="Label16" runat="server" Text="<%$ Resources:lang,ZiPingFen%>"></asp:Label>:
-                                         <NickLee:NumberBox MaxAmount="1000000000000" MinAmount="-1000000000000" ID="NB_SelfPoint" runat="server" Width="53px">0.00</NickLee:NumberBox>
-                                    </td>
-                                    <td class="formItemBgStyleForAlignLeft" rowspan="2">
-                                        <asp:Label ID="Label15" runat="server" Text="<%$ Resources:lang,PingHeYiJian%>"></asp:Label>:
-                                        <asp:DataList ID="DataList1" runat="server" CellPadding="0" ForeColor="#333333" Height="16px"
-                                            Width="100%">
-                                            <SelectedItemStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-                                            <HeaderTemplate>
-                                            </HeaderTemplate>
-                                            <ItemTemplate>
-                                                <table cellpadding="4" cellspacing="0" width="100%">
-                                                    <tr>
-                                                        <td class="ItemAlignLeft">
-                                                            <asp:Label ID="Label17" runat="server" Text="<%$ Resources:lang,ZiPing%>"></asp:Label>:
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="ItemAlignLeft" class="tdLeft" style="color: Blue; font-style: italic;">
-                                                            <%#DataBinder.Eval(Container.DataItem, "SelfComment")%>
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                            </ItemTemplate>
-                                            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                                            <ItemStyle CssClass="itemStyle" />
-                                        </asp:DataList>
-                                        <asp:DataList ID="DataList3" runat="server" CellPadding="0" ForeColor="#333333" Height="16px"
-                                            Width="100%">
-                                            <SelectedItemStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-                                            <HeaderTemplate>
-                                            </HeaderTemplate>
-                                            <ItemTemplate>
-                                                <table cellpadding="4" cellspacing="0" width="100%">
-                                                    <tr>
-                                                        <td class="ItemAlignLeft">
-                                                            <asp:Label ID="Label18" runat="server" Text="<%$ Resources:lang,DiSanFangPing%>"></asp:Label>:
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="ItemAlignLeft" class="tdLeft" style="color: Blue; font-style: italic;">
-                                                            <asp:Label ID="Label19" runat="server" Text="<%$ Resources:lang,PingHeRen%>"></asp:Label>:
-                                                            *******
-                                                            <br />
-                                                            <%#DataBinder.Eval(Container.DataItem, "Comment")%>
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                            </ItemTemplate>
-                                            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                                            <ItemStyle CssClass="itemStyle" />
-                                        </asp:DataList>
-                                        <asp:DataList ID="DataList2" runat="server" CellPadding="0" ForeColor="#333333" Height="16px"
-                                            Width="100%">
-                                            <SelectedItemStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-                                            <HeaderTemplate>
-                                            </HeaderTemplate>
-                                            <ItemTemplate>
-                                                <table cellpadding="4" cellspacing="0" width="100%">
-                                                    <tr>
-                                                        <td class="ItemAlignLeft">
-                                                            <asp:Label ID="Label20" runat="server" Text="<%$ Resources:lang,LingDaoPing%>"></asp:Label>:
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="ItemAlignLeft" class="tdLeft" style="color: Blue; font-style: italic;">
-                                                            <asp:Label ID="Label21" runat="server" Text="<%$ Resources:lang,PingHeRen%>"></asp:Label>:<%#DataBinder.Eval(Container.DataItem, "LeaderName")%><br />
-                                                            <%#DataBinder.Eval(Container.DataItem, "Comment")%></td>
-                                                    </tr>
-                                                </table>
-                                            </ItemTemplate>
-                                            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                                            <ItemStyle CssClass="itemStyle" />
-                                        </asp:DataList>
-                                        <asp:DataList ID="DataList4" runat="server" CellPadding="0" ForeColor="#333333" Height="16px"
-                                            Width="100%">
-                                            <SelectedItemStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-                                            <HeaderTemplate>
-                                            </HeaderTemplate>
-                                            <ItemTemplate>
-                                                <table cellpadding="4" cellspacing="0" width="100%">
-                                                    <tr>
-                                                        <td class="ItemAlignLeft">
-                                                            <asp:Label ID="Label22" runat="server" Text="<%$ Resources:lang,RenShiPing%>"></asp:Label>:
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="ItemAlignLeft" class="tdLeft" style="color: Blue; font-style: italic;">
-                                                            <asp:Label ID="Label23" runat="server" Text="<%$ Resources:lang,PingHeRen%>"></asp:Label>:<%#DataBinder.Eval(Container.DataItem, "HRName")%><br />
-                                                            <%#DataBinder.Eval(Container.DataItem, "Comment")%></td>
-                                                    </tr>
-                                                </table>
-                                            </ItemTemplate>
-                                            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                                            <ItemStyle CssClass="itemStyle" />
-                                        </asp:DataList>
-                                    </td>
-
+                                <table width="245" border="0" class="ItemAlignLeft" cellpadding="0" cellspacing="0">
                                     <tr>
-                                        <td colspan="2" class="ItemAlignLeft" valign="top" class="formItemBgStyleForAlignLeft">
-                                            <asp:Label ID="Label32" runat="server" Text="<%$ Resources:lang,YiJian%>"></asp:Label>:<br />
-                                            <CKEditor:CKEditorControl ID="HE_SelfSummary" runat="server" Toolbar="" Height="150px" Width="98%" Visible="false" />
-                                            <CKEditor:CKEditorControl runat="server" ID="HT_SelfSummary" Toolbar="" Width="98%" Height="150px" Visible="False" />
+                                        <td width="29">
+                                            <img src="ImagesSkin/return.png" alt="" />
+                                        </td>
+                                        <td background="ImagesSkin/main_top_bj.jpg" class="titleziAPP">
+                                            <asp:Label runat="server" Text="<%$ Resources:lang,Back%>" />
+                                        </td>
+                                        <td width="5">
+                                            <%-- <img src="ImagesSkin/main_top_r.jpg" width="5" height="31" />--%>
                                         </td>
                                     </tr>
-                            </table>
+                                </table>
+                                <img id="IMG_Waiting" src="Images/Processing.gif" alt="请稍候，处理中..." style="display: none;" />
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
 
+    <!-- 主要内容区域 -->
+    <div class="content-wrapper">
+        <form id="form1" runat="server">
+            <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">
+            </asp:ScriptManager>
+
+            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                <ContentTemplate>
+                    <!-- KPI信息摘要 -->
+                    <div class="mobile-card">
+                        <div class="card-header">
+                            <asp:Label ID="Label2" runat="server" Text="<%$ Resources:lang,BianHao%>"></asp:Label>:
+                            <asp:Label ID="LB_KPICheckID" runat="server"></asp:Label>
+                            &nbsp;<asp:Label ID="LB_KPICheckName" runat="server"></asp:Label>
+                            &nbsp;KPI
                         </div>
-                        <div id="popwindow_footer" class="layui-layer-btn" style="border-top: 1px solid #ccc;">
-                            <asp:LinkButton ID="BT_NewMain" runat="server" class="layui-layer-btn notTab" OnClick="BT_NewMain_Click" Text="<%$ Resources:lang,BaoCun%>"></asp:LinkButton><a class="layui-layer-btn notTab" onclick="return popClose();"><asp:Label ID="Label173" runat="server" Text="<%$ Resources:lang,GuanBi%>" /></a>
+                        <div class="card-body">
+                            <!-- KPI评分摘要 -->
+                            <div class="kpi-summary">
+                                <div class="kpi-item">
+                                    <div class="kpi-label">
+                                        <asp:Label ID="Label25" runat="server" Text="<%$ Resources:lang,ZiPingZongFen%>"></asp:Label>
+                                    </div>
+                                    <div class="kpi-value">
+                                        <asp:Label ID="LB_TotalSelfPoint" runat="server"></asp:Label>
+                                    </div>
+                                </div>
+                                <div class="kpi-item">
+                                    <div class="kpi-label">
+                                        <asp:Label ID="Label26" runat="server" Text="<%$ Resources:lang,LingDaoPingZongFen%>"></asp:Label>
+                                    </div>
+                                    <div class="kpi-value">
+                                        <asp:Label ID="LB_TotalLeaderPoint" runat="server"></asp:Label>
+                                    </div>
+                                </div>
+                                <div class="kpi-item">
+                                    <div class="kpi-label">
+                                        <asp:Label ID="Label27" runat="server" Text="<%$ Resources:lang,DiSanFangPingZongFen%>"></asp:Label>
+                                    </div>
+                                    <div class="kpi-value">
+                                        <asp:Label ID="LB_TotalThirdPartPoint" runat="server"></asp:Label>
+                                    </div>
+                                </div>
+                                <div class="kpi-item">
+                                    <div class="kpi-label">
+                                        <asp:Label ID="Label28" runat="server" Text="<%$ Resources:lang,XiTongZongPingFen%>"></asp:Label>
+                                    </div>
+                                    <div class="kpi-value">
+                                        <asp:Label ID="LB_TotalSqlPoint" runat="server"></asp:Label>
+                                    </div>
+                                </div>
+                                <div class="kpi-item">
+                                    <div class="kpi-label">
+                                        <asp:Label ID="Label29" runat="server" Text="<%$ Resources:lang,RenShiPingZongFen%>"></asp:Label>
+                                    </div>
+                                    <div class="kpi-value">
+                                        <asp:Label ID="LB_TotalHRPoint" runat="server"></asp:Label>
+                                    </div>
+                                </div>
+                                <div class="kpi-item">
+                                    <div class="kpi-label">
+                                        <asp:Label ID="Label30" runat="server" Text="<%$ Resources:lang,ZongFen%>"></asp:Label>
+                                    </div>
+                                    <div class="kpi-value">
+                                        <asp:Label ID="LB_TotalPoint" runat="server"></asp:Label>
+                                    </div>
+                                </div>
+                                <div class="kpi-item">
+                                    <div class="kpi-label">
+                                        <asp:Label ID="Label31" runat="server" Text="<%$ Resources:lang,ZhuangTai%>"></asp:Label>
+                                    </div>
+                                    <div class="kpi-value">
+                                        <asp:Label ID="LB_Status" runat="server"></asp:Label>
+                                    </div>
+                                </div>
+                            </div>
+                            <asp:Label ID="LB_Sql" runat="server" Visible="false"></asp:Label>
                         </div>
-                        <span class="layui-layer-setwin"><a onclick="return popClose();" class="layui-layer-ico layui-layer-close layui-layer-close1 notTab" href="javascript:;"></a></span>
                     </div>
 
-                    <div class="layui-layer-shade" id="popwindow_shade" style="z-index: 9998; background-color: #000; opacity: 0.3; filter: alpha(opacity=30); display: none;"></div>
+                    <!-- KPI列表 -->
+                    <div class="mobile-card">
+                        <div class="card-header">
+                            KPI List
+                        </div>
+                        <div class="card-body datagrid-container">
+                            <asp:DataGrid ID="DataGrid2" runat="server" AutoGenerateColumns="False" GridLines="None"
+                                OnItemCommand="DataGrid2_ItemCommand" OnPageIndexChanged="DataGrid2_PageIndexChanged"
+                                AllowCustomPaging="false" AllowPaging="true" PageSize="10" ShowHeader="False"
+                                Width="100%" CssClass="datagrid-table">
+                                <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                <EditItemStyle BackColor="#2461BF" />
+                                <SelectedItemStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                                <PagerStyle HorizontalAlign="center" Mode="NumericPages" NextPageText="" PrevPageText="" CssClass="notTab pagination" />
+
+                                <ItemStyle CssClass="itemStyle" />
+                                <Columns>
+                                    <asp:ButtonColumn ButtonType="LinkButton" CommandName="Update" Text="&lt;div&gt;&lt;img src=ImagesSkin/Update.png border=0 alt='Modify' /&gt;&lt;/div&gt;">
+                                        <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="3%" />
+                                    </asp:ButtonColumn>
+                                    <asp:BoundColumn DataField="ID" HeaderText="ID">
+                                        <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="15%" />
+                                    </asp:BoundColumn>
+                                    <asp:BoundColumn DataField="KPI" HeaderText="KPI">
+                                        <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" />
+                                    </asp:BoundColumn>
+                                </Columns>
+                            </asp:DataGrid>
+                        </div>
+                    </div>
+
+                    <!-- 图表 -->
+                    <div class="mobile-card" style="display: none;">
+                        <div class="card-header">
+                            KPI图表
+                        </div>
+                        <div class="card-body">
+                            <iframe runat="server" id="IFrame_Chart1" src="TTTakeTopAnalystChartSet.aspx" style="width: 100%; height: 250px; border: none;"></iframe>
+                        </div>
+                    </div>
+
+                    <!-- 弹窗区域 (修复后的布局) -->
+                    <div class="layui-layer layui-layer-iframe" id="popwindow" name="fixedDiv"
+                        style="z-index: 9999; display: none; border-radius: 10px; background: white; box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
+                        <div class="layui-layer-title" style="background: #e7e7e8; padding: 12px 15px; font-weight: 500; border-radius: 10px 10px 0 0;" id="popwindow_title">
+                            <asp:Label ID="Label172" runat="server" Text="KPI评分"></asp:Label>
+                        </div>
+                        <div id="popwindow_content" class="layui-layer-content" style="overflow-y: auto; -webkit-overflow-scrolling: touch;">
+                            <div class="popup-content">
+                                <!-- 评分输入区 -->
+                                <div class="score-section">
+                                    <asp:Label ID="LB_KPIID" runat="server" Visible="false"></asp:Label>
+                                    <div style="margin-bottom: 15px;">
+                                        <asp:Label ID="Label16" runat="server" Text="<%$ Resources:lang,ZiPingFen%>" Style="display: block; margin-bottom: 8px; font-weight: 500; color: #333;"></asp:Label>
+                                        <NickLee:NumberBox MaxAmount="1000000000000" MinAmount="-1000000000000" ID="NB_SelfPoint" runat="server" Width="100%" CssClass="mobile-input">0.00</NickLee:NumberBox>
+                                    </div>
+
+                                    <div style="margin-bottom: 15px;">
+                                        <asp:Label ID="Label32" runat="server" Text="<%$ Resources:lang,YiJian%>" Style="display: block; margin-bottom: 8px; font-weight: 500; color: #333;"></asp:Label>
+                                        <CKEditor:CKEditorControl ID="HE_SelfSummary" runat="server" Toolbar="" Height="150px" Width="100%" Visible="false" />
+                                        <CKEditor:CKEditorControl runat="server" ID="HT_SelfSummary" Toolbar="" Width="100%" Height="150px" Visible="False" />
+                                    </div>
+                                </div>
+
+                                <!-- 评论显示区 -->
+                                <div class="comment-section">
+                                    <asp:Label ID="Label15" runat="server" Text="<%$ Resources:lang,PingHeYiJian%>" Style="display: block; margin-bottom: 15px; font-weight: 500; color: #1976D2; font-size: 16px;"></asp:Label>
+
+                                    <!-- 自评评论 -->
+                                    <asp:DataList ID="DataList1" runat="server" CellPadding="0" ForeColor="#333333" Height="16px" Width="100%">
+                                        <SelectedItemStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                                        <HeaderTemplate></HeaderTemplate>
+                                        <ItemTemplate>
+                                            <div class="comment-item">
+                                                <div class="comment-title">
+                                                    <asp:Label ID="Label17" runat="server" Text="<%$ Resources:lang,ZiPing%>"></asp:Label>
+                                                </div>
+                                                <div class="comment-content">
+                                                    <%#DataBinder.Eval(Container.DataItem, "SelfComment")%>
+                                                </div>
+                                            </div>
+                                        </ItemTemplate>
+                                        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                        <ItemStyle CssClass="itemStyle" />
+                                    </asp:DataList>
+
+                                    <!-- 第三方评论 -->
+                                    <asp:DataList ID="DataList3" runat="server" CellPadding="0" ForeColor="#333333" Height="16px" Width="100%">
+                                        <SelectedItemStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                                        <HeaderTemplate></HeaderTemplate>
+                                        <ItemTemplate>
+                                            <div class="comment-item">
+                                                <div class="comment-title">
+                                                    <asp:Label ID="Label18" runat="server" Text="<%$ Resources:lang,DiSanFangPing%>"></asp:Label>
+                                                </div>
+                                                <div class="comment-meta">
+                                                    <asp:Label ID="Label19" runat="server" Text="<%$ Resources:lang,PingHeRen%>"></asp:Label>: *******
+                                                </div>
+                                                <div class="comment-content">
+                                                    <%#DataBinder.Eval(Container.DataItem, "Comment")%>
+                                                </div>
+                                            </div>
+                                        </ItemTemplate>
+                                        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                        <ItemStyle CssClass="itemStyle" />
+                                    </asp:DataList>
+
+                                    <!-- 领导评论 -->
+                                    <asp:DataList ID="DataList2" runat="server" CellPadding="0" ForeColor="#333333" Height="16px" Width="100%">
+                                        <SelectedItemStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                                        <HeaderTemplate></HeaderTemplate>
+                                        <ItemTemplate>
+                                            <div class="comment-item">
+                                                <div class="comment-title">
+                                                    <asp:Label ID="Label20" runat="server" Text="<%$ Resources:lang,LingDaoPing%>"></asp:Label>
+                                                </div>
+                                                <div class="comment-meta">
+                                                    <asp:Label ID="Label21" runat="server" Text="<%$ Resources:lang,PingHeRen%>"></asp:Label>: <%#DataBinder.Eval(Container.DataItem, "LeaderName")%>
+                                                </div>
+                                                <div class="comment-content">
+                                                    <%#DataBinder.Eval(Container.DataItem, "Comment")%>
+                                                </div>
+                                            </div>
+                                        </ItemTemplate>
+                                        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                        <ItemStyle CssClass="itemStyle" />
+                                    </asp:DataList>
+
+                                    <!-- 人事评论 -->
+                                    <asp:DataList ID="DataList4" runat="server" CellPadding="0" ForeColor="#333333" Height="16px" Width="100%">
+                                        <SelectedItemStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                                        <HeaderTemplate></HeaderTemplate>
+                                        <ItemTemplate>
+                                            <div class="comment-item">
+                                                <div class="comment-title">
+                                                    <asp:Label ID="Label22" runat="server" Text="<%$ Resources:lang,RenShiPing%>"></asp:Label>
+                                                </div>
+                                                <div class="comment-meta">
+                                                    <asp:Label ID="Label23" runat="server" Text="<%$ Resources:lang,PingHeRen%>"></asp:Label>: <%#DataBinder.Eval(Container.DataItem, "HRName")%>
+                                                </div>
+                                                <div class="comment-content">
+                                                    <%#DataBinder.Eval(Container.DataItem, "Comment")%>
+                                                </div>
+                                            </div>
+                                        </ItemTemplate>
+                                        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                        <ItemStyle CssClass="itemStyle" />
+                                    </asp:DataList>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 底部按钮区域 -->
+                        <div id="popwindow_footer" class="layui-layer-btn">
+                            <asp:LinkButton ID="BT_NewMain" runat="server"
+                                OnClick="BT_NewMain_Click"
+                                Style="display: inline-block; width: 30%; background: #1976D2; color: white; border-radius: 8px; font-size: 16px; font-weight: 500; text-decoration: none; border: none; cursor: pointer;"
+                                CssClass="popup-button">
+                                <asp:Label runat="server" Text="<%$ Resources:lang,BaoCun%>" />
+                            </asp:LinkButton>
+
+                            <a onclick="return popClose();"
+                                style="display: inline-block; width: 30%; height: 40px; text-align:center; line-height: 40px; background: #f5f5f5; color: #333; border: none; border-radius: 8px; font-size: 16px; font-weight: 500; cursor: pointer; text-decoration: none;">
+                                <asp:Label ID="Label1" runat="server" Text="<%$ Resources:lang,GuanBi%>" />
+                            </a>
+                        </div>
+
+                        <span class="layui-layer-setwin">
+                            <a onclick="return popClose();" class="layui-layer-ico layui-layer-close layui-layer-close1 notTab" href="javascript:;" style="top: 12px; right: 12px;"></a>
+                        </span>
+                    </div>
+
+                    <div class="layui-layer-shade" id="popwindow_shade" style="z-index: 9998; background-color: #000; opacity: 0.3; filter: alpha(opacity=30); display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;"></div>
 
                 </ContentTemplate>
             </asp:UpdatePanel>
+
+            <!-- 加载指示器 -->
             <div style="position: fixed; display: none; z-index: 9999;" id="progressContainer">
                 <asp:UpdateProgress ID="TakeTopUp" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
                     <ProgressTemplate>
-                        <img src="Images/Processing.gif" alt="Loading,please wait..." />
+                        <div style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255,255,255,0.9); display: flex; align-items: center; justify-content: center; z-index: 9999;">
+                            <div style="width: 40px; height: 40px; border: 3px solid #f3f3f3; border-top: 3px solid #1976D2; border-radius: 50%; animation: spin 1s linear infinite;"></div>
+                        </div>
                     </ProgressTemplate>
                 </asp:UpdateProgress>
             </div>
         </form>
-    </center>
+    </div>
+
+    <!-- 等待图标 -->
+    <img id="IMG_Waiting" src="Images/Processing.gif" alt="请稍候，处理中..." style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 9999;" />
 </body>
-<%--<script type="text/javascript" language="javascript">var cssDirectory = '<%=Session["CssDirectory"] %>'; var oLink = document.getElementById('mainCss'); oLink.href = 'css/' + cssDirectory + '/' + 'bluelightmain.css';</script>--%>
 </html>
