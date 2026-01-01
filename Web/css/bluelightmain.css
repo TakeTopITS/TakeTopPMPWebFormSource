@@ -1760,3 +1760,136 @@ select {
     outline: 2px solid #4d90fe;
     outline-offset: 2px;
 }
+
+
+
+
+/* ========== TAB背景色 - 方案六：高对比度（深色主题） ========== */
+.PMBTab-bg-undertake {
+    background-color: #e1f5fe; /* 极浅蓝色 */
+}
+
+.PMBTab-bg-involved {
+    background-color: #b3e5fc; /* 浅蓝色 */
+}
+
+.PMBTab-bg-created {
+    background-color: #81d4fa; /* 中等浅蓝色 */
+}
+
+/* ========== 选中状态颜色 ========== */
+/* 选中状态 - 深红色（与框架同色系但更深） */
+.PMBTab-radio:checked + .PMBTab-page + .PMBTab-nav.PMBTab-bg-undertake,
+.PMBTab-radio:checked + .PMBTab-page + .PMBTab-nav.PMBTab-bg-involved,
+.PMBTab-radio:checked + .PMBTab-page + .PMBTab-nav.PMBTab-bg-created {
+    background-color: #7094d2;
+    color: #ffffff;
+    border-bottom-color: #7094d2;
+    font-weight: 600;
+}
+
+/* ========== 通用样式 ========== */
+.PMBTab-radio:checked + .PMBTab-page + .PMBTab-nav {
+    padding-left: 20px;
+}
+
+    .PMBTab-radio:checked + .PMBTab-page + .PMBTab-nav .PMBTab-nav-content {
+        padding-left: 20px;
+    }
+
+.PMBTab-nav-content {
+    padding-left: 0px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.PMBTab-page {
+    grid-column-start: 1;
+    grid-row-start: 2;
+    grid-column-end: span 3;
+    padding: 0px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.PMBTab-page-contents > * {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: PMBTab-fadeInUp 0.5s forwards;
+}
+
+    /* 简化动画延迟设置 */
+    .PMBTab-page-contents > *:nth-child(1) {
+        animation-delay: 0.1s;
+    }
+
+    .PMBTab-page-contents > *:nth-child(2) {
+        animation-delay: 0.2s;
+    }
+
+    .PMBTab-page-contents > *:nth-child(3) {
+        animation-delay: 0.3s;
+    }
+
+    .PMBTab-page-contents > *:nth-child(4) {
+        animation-delay: 0.4s;
+    }
+
+    .PMBTab-page-contents > *:nth-child(5) {
+        animation-delay: 0.5s;
+    }
+
+@keyframes PMBTab-fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.PMBTab-radio + .PMBTab-page {
+    transition: transform 0.3s ease;
+    transform: translateX(100%);
+}
+
+.PMBTab-radio:checked + .PMBTab-page {
+    transform: translateX(0%);
+}
+
+    .PMBTab-radio:checked + .PMBTab-page .PMBTab-page-contents > * {
+        animation-play-state: running;
+    }
+
+.PMBTab-page-contents {
+    max-width: 30%;
+    width: 100px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* personal-space-custom.css - Personal Space Page Custom Styles */
+
+/* Body background settings for Personal Space page (内网用户) */
+.personal-space-body {
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    font-family: Arial, sans-serif, Helvetica, Tahoma;
+    font-size: 12px;
+    color: black;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background: linear-gradient(90deg, #D53E54 0%, #057BF9 100%);
+}
+
+/* Gradient line style */
+.personal-space-cline {
+    background: linear-gradient(90deg, #D53E54 0%, #057BF9 100%);
+    height: 6px;
+    width: 100%;
+    border-radius: 8px 8px 0px 0px;
+}

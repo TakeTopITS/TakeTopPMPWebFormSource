@@ -11,36 +11,14 @@
 <head>
     <title>PersonalSpace</title>
     <link id="mainCss" href="css/bluelightmain.css" rel="stylesheet" type="text/css" />
+    <!-- 新增：个人空间自定义样式 -->
+    <link href="css/personal-space-custom.css" rel="stylesheet" type="text/css" />
     <style type="text/css">
-        /*  #AboveDiv {
-            min-width: 1180px;
-            width: expression (document.body.clientWidth <= 1180? "1180px" : "auto" ));
-            text-align: center;
-        }*/
-
-        body {
-            margin: 0;
-            padding: 0;
-            text-align: left;
-            font-family: Arial, sans-serif, Helvetica, Tahoma;
-            font-size: 12px;
-            /*    line-height: 1.5;*/
-            color: black;
-            background-image: url(img/Backgroud.jpg);
-            background-size: cover;
-            background-position: center center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-        }
-
         @-moz-document url-prefix() {
-            /*      #divGuide {
-                margin-top: -11px;
-            }*/
+            /* Firefox specific styles */
         }
 
         #divGuide {
-            /*  margin-top: -6px;*/
             height: 39px;
         }
 
@@ -53,7 +31,6 @@
             #navlist li {
                 float: left;
                 display: inline;
-                /*  margin: 2px 2px 2px 2px;*/
                 padding-left: 10px;
             }
 
@@ -62,13 +39,6 @@
                 }
 
             #navlist a:link, #navlist a:visited {
-                #65533:;
-                #65533:;
-                #65533:;
-                #65533:;
-                #65533:;
-                #65533:;
-                #65533:;
                 display: block;
                 color: #ffffff;
                 font-style: normal;
@@ -76,9 +46,7 @@
                 font-weight: normal;
                 font-size: 14px;
                 line-height: 33px;
-                font-family: &#930;
-                #378:;
-                #65533:;
+                font-family: Helvetica, Tahoma;
             }
 
             #navlist a.current:link, #nav a.current:visited {
@@ -103,9 +71,8 @@
             width: 98%;
             text-align: center;
             margin: -5px 0 0 0;
-            /*  padding: 0;*/
-            border: none; /* 移除边框 */
-            display: block; /* 确保块级显示 */
+            border: none;
+            display: block;
             justify-content: space-around;
             align-items: center;
         }
@@ -114,9 +81,8 @@
             width: 98%;
             text-align: center;
             margin: -22px 0 0 0;
-            /*   padding: -10px,0,0,0;*/
-            border: none; /* 移除边框 */
-            display: block; /* 确保块级显示 */
+            border: none;
+            display: block;
             justify-content: space-around;
             align-items: center;
         }
@@ -157,13 +123,6 @@
             padding: 0;
         }
 
-        .cline {
-            height: 6px;
-            width: 100%;
-            background: linear-gradient(90deg, #D53E54 0%, #057BF9 100%);
-            border-radius: 8px 8px 0px 0px;
-        }
-
         .SpaceLine {
             height: 20px;
             background-color: #EFF2F7;
@@ -187,8 +146,7 @@
         }
 
         #div_username {
-            /*  display: flex;*/
-            align-items: center; /* 垂直居中 */
+            align-items: center;
             color: white;
             font-size: 12px;
         }
@@ -197,7 +155,7 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%); /* 让图标相对于其自身中心点定位 */
+            transform: translate(-50%, -50%);
         }
 
         .TextColor {
@@ -227,8 +185,7 @@
                 margin: 0 auto;
             }
 
-            /* 为loading和iframe的共同父容器添加相对定位 */
-            .loading + .cline + iframe,
+            .loading + .personal-space-cline + iframe,
             .loading + iframe {
                 position: relative;
             }
@@ -240,98 +197,62 @@
     <script type="text/javascript" src="js/popwindow.js"></script>
     <script type="text/javascript" language="javascript">
         $(function () {
-
             window.parent.parent.document.getElementById("rightFrame").rows = '0,0,*';
 
             if (top.location != self.location) { } else { CloseWebPage(); }
-
         });
 
         function ChangeMenu(way) {
-
             if (way == 1) {
                 if (window.parent.parent.document.getElementById("TakeTopLRMDI").cols === '45,*') {
-
                     window.parent.parent.document.getElementById("TakeTopLRMDI").cols = '180,*';
-
                     window.parent.parent.document.getElementById("leftMiddleFrameID").setAttribute("scrolling", "yes");
-
                     setExtendValue("YES");
-
                 } else {
-
                     window.parent.parent.document.getElementById("TakeTopLRMDI").cols = '45,*';
-
                     window.parent.parent.document.getElementById("leftMiddleFrameID").setAttribute("scrolling", "no");
-
                     setExtendValue("NO");
-
                 }
             }
 
             if (way == 3) {
-
                 window.parent.document.getElementById("TakeTopLRMDI").cols = '180,*';
-
                 window.parent.document.getElementById("leftMiddleFrameID").setAttribute("scrolling", "yes");
-
                 setExtendValue("YES");
-
             }
 
             if (way == 4) {
-
                 window.parent.document.getElementById("TakeTopLRMDI").cols = '45,*';
-
                 setExtendValue("NO");
-
             }
-
         }
 
-        //设置左边栏元素的值
         function setExtendValue(isFalse) {
-
             top.frames[0].frames[2].parent.frames["leftMiddleFrame"].setExtendValue(isFalse);
-
         }
 
-        //弹出消息框
         function clickPopMsgWindow() {
-
             top.frames[0].frames[2].parent.frames["rightTopFrame"].clickPopMsgWindow();
         }
 
-
-        //设置屏幕状态
         var varScreenFull = false;
         function setScreenStatus() {
-
             if (varScreenFull == false) {
-
                 fullScreen();
-
             }
             else {
-
                 exitScreen();
-
             }
-
         }
 
-        //全屏
         function fullScreen() {
-
             var el = top.document.documentElement;
             var rfs = el.requestFullScreen || el.webkitRequestFullScreen || el.mozRequestFullScreen || el.msRequestFullScreen;
 
-            //typeof rfs != "undefined" && rfs
             if (rfs) {
                 rfs.call(el);
             }
             else if (typeof window.ActiveXObject !== "undefined") {
-                //for IE?????????????????????????F11???????????
                 var wscript = new ActiveXObject("WScript.Shell");
                 if (wscript != null) {
                     wscript.SendKeys("{F11}");
@@ -339,21 +260,16 @@
             }
 
             varScreenFull = true;
-
         }
 
-        //退出全屏
         function exitScreen() {
-
             var el = document;
             var cfs = el.cancelFullScreen || el.webkitCancelFullScreen || el.mozCancelFullScreen || el.exitFullScreen;
 
-            //typeof cfs != "undefined" && cfs
             if (cfs) {
                 cfs.call(el);
             }
             else if (typeof window.ActiveXObject !== "undefined") {
-                //for IE???????fullScreen??????????F11????????
                 var wscript = new ActiveXObject("WScript.Shell");
                 if (wscript != null) {
                     wscript.SendKeys("{F11}");
@@ -361,27 +277,22 @@
             }
 
             varScreenFull = false;
-
         }
 
         function OnMouseDownEvent(obj) {
-
             jQuery(obj).parent().parent().find("a").removeClass("current");
             jQuery(obj).parents().find("span").removeClass("TextColor");
             jQuery(obj).addClass("current");
         }
-
     </script>
 </head>
-<body>
+<body class="personal-space-body">
     <center>
         <form id="form1" runat="server">
             <asp:ScriptManager ID="ScriptManager1" runat="server" />
             <div id="divGuide" class="nav">
-                <%--  <asp:Timer ID="Timer1" OnTick="Timer1_Tick" runat="server" Interval="15000" />--%>
                 <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
                     <Triggers>
-                        <%--   <asp:AsyncPostBackTrigger ControlID="Timer1" />--%>
                     </Triggers>
                     <ContentTemplate>
                         <ul id="navlist">
@@ -402,7 +313,7 @@
                 </asp:UpdatePanel>
                 <table border="0" align="right" cellpadding="0" cellspacing="0">
                     <tr>
-                        <td aligh="center" style="padding-top: 7px; padding-bottom: 0px;">
+                        <td align="center" style="padding-top: 7px; padding-bottom: 0px;">
                             <a runat="server" class="titleSpan" href="javascript:top.frames[0].frames[2].parent.frames['rightTabFrame'].popShowByURL('TTUpdateUserInfor.aspx', 'UserInformation', 800, 600, window.location);">
                                 <div class="container">
                                     <div id="div_username">
@@ -428,12 +339,11 @@
                                 <img src="ImagesSkin/App.png" width="22" height="22"></a>
                         </td>
 
-                        <td width="40px" aligh="center" style="padding-top: 7px; padding-bottom: 5px;">
+                        <td width="40px" align="center" style="padding-top: 7px; padding-bottom: 5px;">
                             <asp:ImageButton ID="IM_ExitSystem" ImageUrl="ImagesSkin/exit.png" Width="25" Height="23"
                                 OnClientClick="javascript:return confirmExit(getExitMsgByLangCode(), this, event, 'Default.aspx');"
                                 runat="server" />
                         </td>
-
                     </tr>
                 </table>
             </div>
@@ -451,7 +361,8 @@
                                     <div id="loading" class="loading">
                                         <img src="Images/Processing.gif" alt="Loading,please wait..." />
                                     </div>
-                                    <div class="cline"></div>
+                                    <!-- 使用新的CSS类名 -->
+                                    <div class="personal-space-cline"></div>
                                     <iframe id="IF_Module" name="IF_Module" src='<%# DataBinder.Eval(Container.DataItem, "ModulePage") + "&Flag=" + Session["SkinFlag"].ToString()  %>'
                                         style="width: 100%; height: 320px;" frameborder="no" marginwidth="0" marginheight="0"
                                         scrolling="auto"></iframe>
@@ -465,7 +376,8 @@
                         <asp:Repeater ID="Repeater2" runat="server">
                             <ItemTemplate>
                                 <li>
-                                    <div class="cline"></div>
+                                    <!-- 使用新的CSS类名 -->
+                                    <div class="personal-space-cline"></div>
                                     <iframe id="IF_Module" name="IF_Module" src='<%# DataBinder.Eval(Container.DataItem, "ModulePage") + "&Flag=" + Session["SkinFlag"].ToString()  %>'
                                         style="width: 100%; height: 350px;" frameborder="no" marginwidth="0" marginheight="0"
                                         scrolling="auto"></iframe>
@@ -492,49 +404,3 @@
     oLink.href = 'css/' + cssDirectory + '/' + 'bluelightmain.css';
 </script>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
