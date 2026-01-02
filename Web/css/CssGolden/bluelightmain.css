@@ -1850,7 +1850,7 @@ select {
 
 /* Gradient line style */
 .personal-space-cline {
-    background: linear-gradient(90deg, #D53E54 0%, #057BF9 100%);
+    background: linear-gradient(90deg, #B36900 0%, #F29D00 100%);
     height: 6px;
     width: 100%;
     border-radius: 8px 8px 0px 0px;

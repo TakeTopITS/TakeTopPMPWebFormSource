@@ -58,7 +58,7 @@ a:hover {
 
 .page_topbj {
     background: linear-gradient(90deg, #D53E54 0%, #057BF9 100%);
-    2 background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#D53E54), color-stop(100%,#057BF9));
+    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#D53E54), color-stop(100%,#057BF9));
     cursor: move;
     color: white;
     border-radius: 12px 0px 0px 0px;
@@ -1585,16 +1585,6 @@ select {
 }
 
 
-
-
-
-
-
-
-
-
-
-
 .dibian {
     word-break: break-all;
     word-wrap: break-word;
@@ -1778,13 +1768,13 @@ select {
 }
 
 /* ========== 选中状态颜色 ========== */
-/* 选中状态 - 深红色（与框架同色系但更深） */
+/* 选中状态 - 渐变色（与框架同色系但更深） */
 .PMBTab-radio:checked + .PMBTab-page + .PMBTab-nav.PMBTab-bg-undertake,
 .PMBTab-radio:checked + .PMBTab-page + .PMBTab-nav.PMBTab-bg-involved,
 .PMBTab-radio:checked + .PMBTab-page + .PMBTab-nav.PMBTab-bg-created {
-    background-color: #7094d2;
+    background-color: #C42944;
     color: #ffffff;
-    border-bottom-color: #7094d2;
+    border-bottom-color: #C42944;
     font-weight: 600;
 }
 
@@ -1883,7 +1873,7 @@ select {
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background: linear-gradient(90deg, #D53E54 0%, #057BF9 100%);
+    background-color: #057BF9;
 }
 
 /* Gradient line style */

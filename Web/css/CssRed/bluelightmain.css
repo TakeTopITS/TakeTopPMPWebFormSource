@@ -1738,9 +1738,9 @@ select {
 .PMBTab-radio:checked + .PMBTab-page + .PMBTab-nav.PMBTab-bg-undertake,
 .PMBTab-radio:checked + .PMBTab-page + .PMBTab-nav.PMBTab-bg-involved,
 .PMBTab-radio:checked + .PMBTab-page + .PMBTab-nav.PMBTab-bg-created {
-    background-color: #FF7F50; /* 深红色 */
+    background-color: #c62828; /* 深红色 */
     color: #ffffff;
-    border-bottom-color: #FF7F50; /* 边框也变为深红色 */
+    border-bottom-color: #c62828;
     font-weight: 600;
 }
 
@@ -1844,7 +1844,7 @@ select {
 
 /* Gradient line style */
 .personal-space-cline {
-    background: linear-gradient(90deg, #D53E54 0%, #057BF9 100%);
+    background: linear-gradient(90deg, #6B0000 0%, #B20000 100%);
     height: 6px;
     width: 100%;
     border-radius: 8px 8px 0px 0px;

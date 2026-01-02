@@ -1748,9 +1748,9 @@ select {
 .PMBTab-radio:checked + .PMBTab-page + .PMBTab-nav.PMBTab-bg-undertake,
 .PMBTab-radio:checked + .PMBTab-page + .PMBTab-nav.PMBTab-bg-involved,
 .PMBTab-radio:checked + .PMBTab-page + .PMBTab-nav.PMBTab-bg-created {
-    background-color: #7094d2; 
+    background-color: #2c3e50; /* 更深的蓝灰色 */
     color: #ffffff;
-    border-bottom-color: #7094d2; 
+    border-bottom-color: #2c3e50;
     font-weight: 600;
 }
 
@@ -1854,7 +1854,7 @@ select {
 
 /* Gradient line style */
 .personal-space-cline {
-    background: linear-gradient(90deg, #D53E54 0%, #057BF9 100%);
+    background: linear-gradient(90deg, #2C3E50 0%, #4A6572 100%);
     height: 6px;
     width: 100%;
     border-radius: 8px 8px 0px 0px;
