@@ -116,8 +116,6 @@ public partial class TTMakeProject : System.Web.UI.Page
         }
     }
 
-
-
     protected void BT_Find_Click(object sender, EventArgs e)
     {
         string strHQL;

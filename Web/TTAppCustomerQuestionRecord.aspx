@@ -440,8 +440,8 @@
         $(function () {
             initSwipeBack();
 
-            // 移动端触摸优化
-            $('.list-item, .action-button, .mobile-button, .datagrid-table a').addClass('touch-feedback');
+            //// 移动端触摸优化
+            //$('.list-item, .action-button, .mobile-button, .datagrid-table a').addClass('touch-feedback');
 
             // 防止双击放大
             var lastTouchEnd = 0;
@@ -453,15 +453,15 @@
                 lastTouchEnd = now;
             }, false);
 
-            // 优化滚动性能
-            $('.content-wrapper').on('touchmove', function (e) {
-                e.stopPropagation();
-            });
+            //// 优化滚动性能
+            //$('.content-wrapper').on('touchmove', function (e) {
+            //    e.stopPropagation();
+            //});
 
-            // 显示加载状态
-            $('form').on('submit', function () {
-                showLoading();
-            });
+            //// 显示加载状态
+            //$('form').on('submit', function () {
+            //    showLoading();
+            //});
 
             // 返回按钮点击
             $('.header-back').on('click', function () {
@@ -525,15 +525,7 @@
                 }, 100);
             });
         }
-
-        function showSimpleDeleteModal(element, event) {
-            event.preventDefault();
-            event.stopPropagation();
-            if (confirm('确认删除吗？')) {
-                $(element).closest('td').find('#LBT_Delete').click();
-            }
-            return false;
-        }
+        
 
         function enhanceDatePickers() {
             // 为日期输入框添加移动端优化

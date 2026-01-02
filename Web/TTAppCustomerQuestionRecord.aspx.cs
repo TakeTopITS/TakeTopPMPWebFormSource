@@ -303,6 +303,9 @@ TB_Question.Language = Session["LangCode"].ToString();
             strID = e.Item.Cells[2].Text.Trim();
 
             strHQL = "from CustomerQuestion as customerQuestion where customerQuestion.ID = " + strID;
+
+            LogClass.WriteLogFile(strHQL);
+
             CustomerQuestionBLL customerQuestionBLL = new CustomerQuestionBLL();
             lst = customerQuestionBLL.GetAllCustomerQuestions(strHQL);
 

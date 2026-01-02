@@ -1746,7 +1746,6 @@ function manualRefresh() {
 //------------------APP端下拉刷新功能结束--------------------------
 
 
-
 //------------------在鼠标位置加载等待图标处理开始--------------------------
 (function () {
     // 配置参数
@@ -1755,11 +1754,13 @@ function manualRefresh() {
         iconOffset: 50,                   // 左侧偏移量（鼠标左边50px）
         verticalOffset: 10,               // 垂直偏移量
         minLeft: 10,                      // 最小左边距
-        debug: false                      // 调试模式
+        debug: false,                     // 调试模式
+        autoHideDelay: 15000              // 自动隐藏延迟（15秒）
     };
 
     var mouseX = 0, mouseY = 0;
     var isInitialized = false;
+    var hideTimeout = null;  // 存储setTimeout的引用
 
     // 工具函数：日志输出
     function log(message) {
@@ -1771,6 +1772,30 @@ function manualRefresh() {
     // 工具函数：检查元素是否存在
     function elementExists(id) {
         return document.getElementById(id) !== null;
+    }
+
+    // 清除隐藏定时器
+    function clearHideTimeout() {
+        if (hideTimeout) {
+            clearTimeout(hideTimeout);
+            hideTimeout = null;
+            log('清除自动隐藏定时器');
+        }
+    }
+
+    // 设置自动隐藏
+    function setupAutoHide() {
+        // 先清除现有的定时器
+        clearHideTimeout();
+
+        // 设置新的定时器
+        hideTimeout = setTimeout(function () {
+            log('自动隐藏定时器触发，隐藏加载图标');
+            hideLoadingIcon();
+            hideTimeout = null;
+        }, config.autoHideDelay);
+
+        log('设置自动隐藏定时器：' + config.autoHideDelay + '毫秒');
     }
 
     // 捕获鼠标位置
@@ -1798,6 +1823,9 @@ function manualRefresh() {
         container.style.top = (mouseY + config.verticalOffset) + 'px';
         container.style.display = 'block';
 
+        // 设置15秒后自动隐藏
+        setupAutoHide();
+
         log('显示加载图标在位置: ' + leftPosition + ', ' + (mouseY + config.verticalOffset));
     }
 
@@ -1806,6 +1834,10 @@ function manualRefresh() {
         var container = document.getElementById(config.containerId);
         if (container) {
             container.style.display = 'none';
+
+            // 清除自动隐藏定时器
+            clearHideTimeout();
+
             log('隐藏加载图标');
         }
     }
@@ -1929,6 +1961,11 @@ function manualRefresh() {
             if (elementExists(config.containerId)) {
                 showLoadingIcon();
             }
+        },
+        // 新增：手动设置自动隐藏时间
+        setAutoHideDelay: function (delay) {
+            config.autoHideDelay = delay;
+            log('自动隐藏延迟设置为: ' + delay + '毫秒');
         }
     };
 
