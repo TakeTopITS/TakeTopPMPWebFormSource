@@ -539,7 +539,7 @@
                                                                                                     <asp:CheckBox ID="CB_IsDIYFlow" runat="server" />
                                                                                                 </td>
                                                                                                 <td>
-                                                                                                    <a href="TTModuleFlowDesignerJS.aspx?IdentifyString=<%# DataBinder.Eval(Container.DataItem,"ID") %>">
+                                                                                                    <a href="TTModuleFlowDesignerJS.aspx?Type=SystemModule&IdentifyString=<%# DataBinder.Eval(Container.DataItem,"ID") %>">
                                                                                                         <asp:Label ID="Label30" runat="server" Text="<%$ Resources:lang,TaoHuangTu%>"></asp:Label>
                                                                                                     </a>
                                                                                                 </td>

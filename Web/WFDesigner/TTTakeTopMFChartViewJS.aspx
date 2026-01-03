@@ -1,14 +1,11 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTTakeTopMFChartViewJS.aspx.cs" Inherits="WFDesigner_TTTakeTopMFChartViewJS" %>
 
-<%--<%@ OutputCache Duration="2678400" VaryByParam="*" %>--%>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <title></title>
+    <title>Workflow View</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link type="text/css" href="lib/jquery-ui-1.8.4.custom/css/smoothness/jquery-ui-1.8.4.custom.css"
-        rel="stylesheet" />
+    <link type="text/css" href="lib/jquery-ui-1.8.4.custom/css/smoothness/jquery-ui-1.8.4.custom.css" rel="stylesheet" />
 
     <style type="text/css">
         body {
@@ -26,81 +23,34 @@
             background-attachment: fixed;
         }
 
-        .node {
-            width: 70px;
-            text-align: center;
-            vertical-align: middle;
-            border: 1px solid #fff;
+        /* 外部容器：控制对齐方式 */
+        #TakeTopFlow {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: auto; /* 核心：超出时显示滚动条 */
+            overflow-y: auto;
         }
 
-        .mover {
-            border: 1px solid #ddd;
-            background-color: #ddd;
+        /* 默认状态：当内容窄时居中 */
+        .justify-center {
+            align-items: center;
         }
 
-        .selected {
-            background-color: #ddd;
+        /* 靠左状态：当内容宽时靠左 */
+        .justify-left {
+            align-items: flex-start;
         }
 
-        .state {
+        svg {
+            display: block;
+            flex-shrink: 0;
+            /* 移除可能存在的默认 margin */
+            margin-left: 0;
+            margin-right: 0;
         }
 
-        #TakeTopFlow_props table {
-        }
-
-        #TakeTopFlow_props th {
-            letter-spacing: 2px;
-            text-align: left;
-            padding: 6px;
-            background: #ddd;
-        }
-
-        #TakeTopFlow_props td {
-            background: #fff;
-            padding: 6px;
-        }
-
-        #pointer {
-            background-repeat: no-repeat;
-            background-position: center;
-        }
-
-        #path {
-            background-repeat: no-repeat;
-            background-position: center;
-        }
-
-        #task {
-            background-repeat: no-repeat;
-            background-position: center;
-        }
-
-        #state {
-            background-repeat: no-repeat;
-            background-position: center;
-        }
-
-        .context-menu {
-            display: none;
-            position: absolute;
-            background-color: white;
-            border: 1px solid gray;
-            padding: 5px;
-            z-index: 9999;
-        }
-
-            .context-menu a {
-                display: block;
-                padding: 5px;
-                text-decoration: none;
-                color: black;
-            }
-
-                .context-menu a:hover {
-                    background-color: #f5f5f5;
-                }
-
-        /* 新增样式：右上角设置按钮 */
         .settings-button {
             position: fixed;
             top: 10px;
@@ -112,87 +62,90 @@
         }
     </style>
 
-    <link type="text/css"
-        href="lib/jquery-ui-1.8.4.custom/css/smoothness/jquery-ui-1.8.4.custom.css"
-        rel="stylesheet" />
-    <script type="text/javascript"
-        src="lib/jquery-ui-1.8.4.custom/js/jquery-1.4.2.min.js"></script>
-    <script type="text/javascript"
-        src="lib/jquery-ui-1.8.4.custom/js/jquery-ui-1.8.4.custom.min.js"></script>
-
+    <script type="text/javascript" src="lib/jquery-ui-1.8.4.custom/js/jquery-1.4.2.min.js"></script>
     <script type="text/javascript" src="lib/jquery-ui-1.8.4.custom/js/jquery-ui-1.8.4.custom.min.js"></script>
     <script type="text/javascript" src="lib/TakeTopFlowBase.js"></script>
     <script type="text/javascript" src="TakeTopModuleFlowView.js"></script>
     <script type="text/javascript" src="TakeTopModuleFlow.jpdtd.js"></script>
     <script type="text/javascript" src="TakeTopModuleFlow.editors.js"></script>
 
-    <script type="text/javascript" language="javascript">
+    <script type="text/javascript">
         $(function () {
             if (top.location != self.location) {
-                // 在iframe中，立即加载图形
                 loadChartImmediately();
-            } else {
-                CloseWebPage();
             }
+            $(window).resize(function () {
+                resizeSvg("auto");
+            });
         });
 
         function loadChartImmediately() {
-            // 立即加载工作流图形
             LoadWFChart();
-            displayProcessing('NONE');
-
-            // 延迟调整尺寸以确保图形完全加载
+            if (typeof displayProcessing === "function") displayProcessing('NONE');
             setTimeout(function () {
-                displayScroll();
+                resizeSvg("auto");
             }, 500);
         }
 
-        function displayScroll() {
-            resizeSvg("auto");
-            var svgs = this.document.getElementsByTagName("svg");
-            this.document.getElementById("TakeTopFlow").style.width = svgs[0].style.width;
-            document.getElementById("TakeTopFlow").style.overflow = "auto";
-        }
+        // 核心函数：仅针对 rect 元素计算精确边界
+        function findBoundariesOfRects(svgElement) {
+            let minX = Infinity;
+            let maxX = -Infinity;
+            const rects = svgElement.getElementsByTagName('rect');
 
-        function hideScroll() {
-            this.document.getElementById("TakeTopFlow").style.width = "100%";
-            document.getElementById("TakeTopFlowe").style.overflow = "hidden";
+            let foundValidRect = false;
+            for (let i = 0; i < rects.length; i++) {
+                const bbox = rects[i].getBBox();
+                // 排除宽度极小或隐藏的 rect
+                if (bbox.width > 1) {
+                    if (bbox.x < minX) minX = bbox.x;
+                    if (bbox.x + bbox.width > maxX) maxX = bbox.x + bbox.width;
+                    foundValidRect = true;
+                }
+            }
+
+            return foundValidRect ? { minX: minX, maxX: maxX, width: (maxX - minX) } : null;
         }
 
         function resizeSvg(varSvgStatus) {
-            var svgs = this.document.getElementsByTagName("svg");
-            for (i = 0; i < svgs.length; i++) {
-                svgs[i].style.height = "2148px";
-                svgs[i].style.overflow = varSvgStatus;
-                var maxX = findMaxXOfChildRects(svgs[i]);
-                svgs[i].style.width = (maxX + 216) + "px";
+            const svgs = document.getElementsByTagName("svg");
+            const container = document.getElementById("TakeTopFlow");
+            const windowWidth = $(window).width();
+
+            for (let i = 0; i < svgs.length; i++) {
+                const svg = svgs[i];
+                const bounds = findBoundariesOfRects(svg);
+
+                if (!bounds) continue;
+
+                // 1. 设置 SVG 的高度（保持原有逻辑）
+                svg.style.height = "2148px";
+                svg.style.overflow = varSvgStatus;
+
+                // 2. 核心修正：使用 viewBox 裁剪掉左边的空白
+                // viewBox = "minX minY width height"
+                // 这样 SVG 的内容就会从最左边的 rect 开始显示
+                const sidePadding = 20; // 给左右留一点点呼吸间距
+                const totalWidth = bounds.width + (sidePadding * 2);
+
+                svg.setAttribute("viewBox", (bounds.minX - sidePadding) + " 0 " + totalWidth + " 2148");
+                svg.style.width = totalWidth + "px";
+
+                // 3. 判断是否需要居中
+                if (totalWidth < windowWidth) {
+                    // 图形窄于页面 -> 居中
+                    container.className = "justify-center";
+                } else {
+                    // 图形宽于页面 -> 靠左，最左边的 rect 会挨着页面左边
+                    container.className = "justify-left";
+                }
             }
         }
 
-        //取得rect的最大x值
-        function findMaxXOfChildRects(parentElement) {
-            let maxX = 0;
-            const childElements = parentElement.querySelectorAll('*');
-            childElements.forEach(child => {
-                const rect = child.getBoundingClientRect();
-                if (rect.x > maxX) {
-                    maxX = rect.x;
-                }
-            });
-            return maxX;
-        }
-
-        function printDiv(obj) {
-            var newWindow = window.open("Print Window", "_blank");
-            var docStr = obj.innerHTML;
-            newWindow.document.write(docStr);
-            newWindow.document.close();
-            newWindow.print();
-            newWindow.close();
-        }
-
         function displayProcessing(varStatus) {
-            parent.parent.parent.window.document.getElementById("loading").style.display = varStatus;
+            try {
+                parent.parent.parent.window.document.getElementById("loading").style.display = varStatus;
+            } catch (e) { }
         }
     </script>
 </head>
@@ -202,22 +155,10 @@
             <img src="img/Set.jpg" alt="Design" width="21px" height="21px" />
         </div>
 
-        <div id="TakeTopFlow_tools"
-            style="top: 10; right: 10; background-color: #fff; width: 21px; cursor: default; padding: 3px; display: none;"
-            class="ui-widget-content">
-            <div class="node print" id="TakeTopFlow_print" onclick="printDiv(document.getElementById('TakeTopFlow'))" style="width: 21px; height: 21px;">
-                <img src="img/print.png" alt="Print" width="21px" height="21px" />
+        <div id="TakeTopFlow" class="justify-center">
             </div>
-        </div>
 
-        <div id="TakeTopFlow" style="padding-top: 0px; text-align: center;" onmousemove="javascript:displayScroll();">
-        </div>
-
-        <%------右键菜单------%>
-        <div id="contextMenu" class="context-menu">
-            <!-- Context menu items will be dynamically added here -->
-        </div>
+        <div id="contextMenu" class="context-menu"></div>
     </form>
-
 </body>
 </html>
