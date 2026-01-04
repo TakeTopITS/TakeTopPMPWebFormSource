@@ -11,7 +11,6 @@
 <head>
     <title>PersonalSpace</title>
     <link id="mainCss" href="css/bluelightmain.css" rel="stylesheet" type="text/css" />
-    <!-- 新增：个人空间自定义样式 -->
     <link href="css/personal-space-custom.css" rel="stylesheet" type="text/css" />
     <style type="text/css">
         @-moz-document url-prefix() {
@@ -88,6 +87,7 @@
         }
 
         #navlist2 li {
+            position: relative; /* 重要：设为定位基准 */
             flex: 0 0 100%;
             margin: 0;
             list-style: none;
@@ -95,6 +95,7 @@
             border-radius: 8px;
             box-shadow: 0px 0px 15px rgb(0 0 0 / 15%);
             margin-bottom: 10px;
+            overflow: hidden; /* 防止loading圆角溢出 */
         }
 
         ul#navlist2 {
@@ -106,6 +107,7 @@
         }
 
         #navlist3 li {
+            position: relative; /* 重要：设为定位基准 */
             flex: 0 0 49.5%;
             margin: 0;
             list-style: none;
@@ -113,6 +115,7 @@
             border-radius: 8px;
             box-shadow: 0px 0px 15px rgb(0 0 0 / 15%);
             margin-bottom: 10px;
+            overflow: hidden;
         }
 
         ul#navlist3 {
@@ -158,31 +161,27 @@
             transform: translate(-50%, -50%);
         }
 
+        /* 修改：将Loading设为绝对定位，不占用原有的布局空间 */
         .loading {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             z-index: 100;
             background-color: rgba(255, 255, 255, 0.9);
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            display: flex;
-            flex-direction: column;
+            display: flex; /* 使用Flex居中Loading图片 */
             align-items: center;
             justify-content: center;
         }
 
-            .loading img {
-                display: block;
-                margin: 0 auto;
-            }
-
-            .loading + .personal-space-cline + iframe,
-            .loading + iframe {
-                position: relative;
-            }
+        /* 修正原有的图片偏移逻辑 */
+        .loading img {
+            display: block;
+            margin: 0 !important;
+            position: static !important;
+            transform: none !important;
+        }
     </style>
     <script type="text/javascript" src="css/tab.js"></script>
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
@@ -195,6 +194,11 @@
 
             if (top.location != self.location) { } else { CloseWebPage(); }
         });
+
+        // 新增：隐藏对应模块的加载动画
+        function hideModuleLoading(iframeObj) {
+            $(iframeObj).parent().find('.loading').fadeOut(300);
+        }
 
         function ChangeMenu(way) {
             if (way == 1) {
@@ -360,12 +364,13 @@
                         <asp:Repeater ID="Repeater1" runat="server">
                             <ItemTemplate>
                                 <li>
-                                    <div id="loading" class="loading">
+                                    <div class="loading">
                                         <img src="Images/Processing.gif" alt="Loading,please wait..." />
                                     </div>
-                                    <!-- 使用新的CSS类名 -->
                                     <div class="personal-space-cline"></div>
-                                    <iframe id="IF_Module" name="IF_Module" src='<%# DataBinder.Eval(Container.DataItem, "ModulePage") + "&Flag=" + Session["SkinFlag"].ToString()  %>'
+                                    <iframe id="IF_Module" name="IF_Module" 
+                                        onload="hideModuleLoading(this);"
+                                        src='<%# DataBinder.Eval(Container.DataItem, "ModulePage") + "&Flag=" + Session["SkinFlag"].ToString()  %>'
                                         style="width: 100%; height: 320px;" frameborder="no" marginwidth="0" marginheight="0"
                                         scrolling="auto"></iframe>
                                 </li>
@@ -378,9 +383,13 @@
                         <asp:Repeater ID="Repeater2" runat="server">
                             <ItemTemplate>
                                 <li>
-                                    <!-- 使用新的CSS类名 -->
+                                    <div class="loading">
+                                        <img src="Images/Processing.gif" alt="Loading,please wait..." />
+                                    </div>
                                     <div class="personal-space-cline"></div>
-                                    <iframe id="IF_Module" name="IF_Module" src='<%# DataBinder.Eval(Container.DataItem, "ModulePage") + "&Flag=" + Session["SkinFlag"].ToString()  %>'
+                                    <iframe id="IF_Module" name="IF_Module" 
+                                        onload="hideModuleLoading(this);"
+                                        src='<%# DataBinder.Eval(Container.DataItem, "ModulePage") + "&Flag=" + Session["SkinFlag"].ToString()  %>'
                                         style="width: 100%; height: 350px;" frameborder="no" marginwidth="0" marginheight="0"
                                         scrolling="auto"></iframe>
                                 </li>

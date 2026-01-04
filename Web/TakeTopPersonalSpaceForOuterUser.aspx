@@ -11,7 +11,6 @@
 <head>
     <title>PersonalSpace</title>
     <link id="mainCss" href="css/bluelightmain.css" rel="stylesheet" type="text/css" />
-    <!-- 新增：个人空间自定义样式 -->
     <link href="css/personal-space-custom.css" rel="stylesheet" type="text/css" />
     <style type="text/css">
         @-moz-document url-prefix() {
@@ -67,27 +66,21 @@
             align-items: center;
         }
 
-        #nav2 {
+        #nav2, #nav3 {
             width: 98%;
             text-align: center;
-            margin: -5px 0 0 0;
             border: none;
             display: block;
             justify-content: space-around;
             align-items: center;
         }
 
-        #nav3 {
-            width: 98%;
-            text-align: center;
-            margin: -22px 0 0 0;
-            border: none;
-            display: block;
-            justify-content: space-around;
-            align-items: center;
-        }
+        #nav2 { margin: -5px 0 0 0; }
+        #nav3 { margin: -22px 0 0 0; }
 
-        #navlist2 li {
+        /* --- 核心修改部分 --- */
+        #navlist2 li, #navlist3 li {
+            position: relative; /* 必须：使内部绝对定位的loading参考此容器 */
             flex: 0 0 100%;
             margin: 0;
             list-style: none;
@@ -95,37 +88,39 @@
             border-radius: 8px;
             box-shadow: 0px 0px 15px rgb(0 0 0 / 15%);
             margin-bottom: 10px;
-        }
-
-        ul#navlist2 {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            padding: 0;
+            overflow: hidden;
         }
 
         #navlist3 li {
             flex: 0 0 49.5%;
-            margin: 0;
-            list-style: none;
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0px 0px 15px rgb(0 0 0 / 15%);
-            margin-bottom: 10px;
         }
 
-        ul#navlist3 {
+        .loading {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 100;
+            background-color: rgba(255, 255, 255, 0.8); /* 半透明背景 */
+            display: flex;          /* 使用Flexbox轻松居中 */
+            align-items: center;    /* 垂直居中 */
+            justify-content: center;/* 水平居中 */
+        }
+
+        .loading img {
+            width: 32px; /* 根据gif实际大小调整 */
+            height: 32px;
+            margin: 0 !important;
+        }
+        /* ------------------ */
+
+        ul#navlist2, ul#navlist3 {
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
             padding: 0;
-        }
-
-        .SpaceLine {
-            height: 20px;
-            background-color: #EFF2F7;
         }
 
         .NflexBox {
@@ -135,10 +130,6 @@
             width: 100%;
             height: 95%;
             align-content: flex-start;
-        }
-
-        #UpdatePanel1 td {
-            border: 0px !important;
         }
 
         .container {
@@ -157,38 +148,6 @@
             left: 50%;
             transform: translate(-50%, -50%);
         }
-
-        .TextColor {
-            color: red;
-            background: #017afb;
-            padding: 3px;
-        }
-
-        .loading {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 100;
-            background-color: rgba(255, 255, 255, 0.9);
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-            .loading img {
-                display: block;
-                margin: 0 auto;
-            }
-
-            .loading + .personal-space-cline + iframe,
-            .loading + iframe {
-                position: relative;
-            }
     </style>
     <script type="text/javascript" src="css/tab.js"></script>
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
@@ -198,32 +157,26 @@
     <script type="text/javascript" language="javascript">
         $(function () {
             window.parent.parent.document.getElementById("rightFrame").rows = '0,0,*';
-
             if (top.location != self.location) { } else { CloseWebPage(); }
         });
 
+        // 新增：iframe加载完成后隐藏loading
+        function hideLoading(iframe) {
+            $(iframe).siblings('.loading').fadeOut(300);
+        }
+
         function ChangeMenu(way) {
             if (way == 1) {
-                if (window.parent.parent.document.getElementById("TakeTopLRMDI").cols === '45,*') {
-                    window.parent.parent.document.getElementById("TakeTopLRMDI").cols = '180,*';
+                var frame = window.parent.parent.document.getElementById("TakeTopLRMDI");
+                if (frame.cols === '45,*') {
+                    frame.cols = '180,*';
                     window.parent.parent.document.getElementById("leftMiddleFrameID").setAttribute("scrolling", "yes");
                     setExtendValue("YES");
                 } else {
-                    window.parent.parent.document.getElementById("TakeTopLRMDI").cols = '45,*';
+                    frame.cols = '45,*';
                     window.parent.parent.document.getElementById("leftMiddleFrameID").setAttribute("scrolling", "no");
                     setExtendValue("NO");
                 }
-            }
-
-            if (way == 3) {
-                window.parent.document.getElementById("TakeTopLRMDI").cols = '180,*';
-                window.parent.document.getElementById("leftMiddleFrameID").setAttribute("scrolling", "yes");
-                setExtendValue("YES");
-            }
-
-            if (way == 4) {
-                window.parent.document.getElementById("TakeTopLRMDI").cols = '45,*';
-                setExtendValue("NO");
             }
         }
 
@@ -231,57 +184,8 @@
             top.frames[0].frames[2].parent.frames["leftMiddleFrame"].setExtendValue(isFalse);
         }
 
-        function clickPopMsgWindow() {
-            top.frames[0].frames[2].parent.frames["rightTopFrame"].clickPopMsgWindow();
-        }
-
-        var varScreenFull = false;
-        function setScreenStatus() {
-            if (varScreenFull == false) {
-                fullScreen();
-            }
-            else {
-                exitScreen();
-            }
-        }
-
-        function fullScreen() {
-            var el = top.document.documentElement;
-            var rfs = el.requestFullScreen || el.webkitRequestFullScreen || el.mozRequestFullScreen || el.msRequestFullScreen;
-
-            if (rfs) {
-                rfs.call(el);
-            }
-            else if (typeof window.ActiveXObject !== "undefined") {
-                var wscript = new ActiveXObject("WScript.Shell");
-                if (wscript != null) {
-                    wscript.SendKeys("{F11}");
-                }
-            }
-
-            varScreenFull = true;
-        }
-
-        function exitScreen() {
-            var el = document;
-            var cfs = el.cancelFullScreen || el.webkitCancelFullScreen || el.mozCancelFullScreen || el.exitFullScreen;
-
-            if (cfs) {
-                cfs.call(el);
-            }
-            else if (typeof window.ActiveXObject !== "undefined") {
-                var wscript = new ActiveXObject("WScript.Shell");
-                if (wscript != null) {
-                    wscript.SendKeys("{F11}");
-                }
-            }
-
-            varScreenFull = false;
-        }
-
         function OnMouseDownEvent(obj) {
             jQuery(obj).parent().parent().find("a").removeClass("current");
-            jQuery(obj).parents().find("span").removeClass("TextColor");
             jQuery(obj).addClass("current");
         }
     </script>
@@ -292,8 +196,6 @@
             <asp:ScriptManager ID="ScriptManager1" runat="server" />
             <div id="divGuide" class="nav">
                 <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
-                    <Triggers>
-                    </Triggers>
                     <ContentTemplate>
                         <ul id="navlist">
                             <li style="padding-top: 7px;">
@@ -303,7 +205,8 @@
                             <asp:Repeater ID="RP_NewsTypeList" runat="server">
                                 <ItemTemplate>
                                     <li>
-                                        <asp:HyperLink ID="HL_NavBar" runat="server" onmousedown="OnMouseDownEvent(this)" Style="text-decoration: none;" NavigateUrl='<%# DataBinder.Eval(Container.DataItem,"PageName").ToString().Trim() + "?Type=" +  DataBinder.Eval(Container.DataItem,"Type").ToString().Trim() + "&HomeName=" +  DataBinder.Eval(Container.DataItem,"HomeName").ToString().Trim () +"&Flag=" + Session["SkinFlag"].ToString() %>'
+                                        <asp:HyperLink ID="HL_NavBar" runat="server" onmousedown="OnMouseDownEvent(this)" Style="text-decoration: none;" 
+                                            NavigateUrl='<%# DataBinder.Eval(Container.DataItem,"PageName").ToString().Trim() + "?Type=" +  DataBinder.Eval(Container.DataItem,"Type").ToString().Trim() + "&HomeName=" +  DataBinder.Eval(Container.DataItem,"HomeName").ToString().Trim () +"&Flag=" + Session["SkinFlag"].ToString() %>'
                                             Text='<%# DataBinder.Eval(Container.DataItem,"HomeName") %>' Target="IF_NewsList"></asp:HyperLink>
                                     </li>
                                 </ItemTemplate>
@@ -316,16 +219,11 @@
                         <td align="center" style="padding-top: 7px; padding-bottom: 0px;">
                             <a runat="server" class="titleSpan" href="javascript:top.frames[0].frames[2].parent.frames['rightTabFrame'].popShowByURL('TTUpdateUserInfor.aspx', 'UserInformation', 800, 600, window.location);">
                                 <div class="container">
-                                    <div id="div_username">
-                                        <asp:Label ID="LB_UserName" runat="server"></asp:Label>
-                                    </div>
-                                    <div id="div_updatepersoninfor">
-                                        <img src="ImagesSkin/UpdatePersonInfor.png" width="22" height="22">
-                                    </div>
+                                    <div id="div_username"><asp:Label ID="LB_UserName" runat="server"></asp:Label></div>
+                                    <div id="div_updatepersoninfor"><img src="ImagesSkin/UpdatePersonInfor.png" width="22" height="22"></div>
                                 </div>
                             </a>
                         </td>
-
                         <td width="40px" align="center" style="padding-top: 7px; padding-bottom: 5px;">
                             <a runat="server" class="titleSpan" href="javascript:top.frames[0].frames[2].parent.frames['rightTabFrame'].popShowByURL('TTSystemAnalystChartRelatedUserSet.aspx?FormType=PersonalSpacePage', 'AnalysisChartSelect', 800, 600, window.location);">
                                 <img src="ImagesSkin/AnalystChart.png" width="22" height="22"></a>
@@ -338,7 +236,6 @@
                             <a runat="server" class="titleSpan" href="javascript:top.frames[0].frames[2].parent.frames['rightTabFrame'].popShowByURL('TTAPPQRCodeForLocalSAAS.aspx', '', 800, 600,window.location);">
                                 <img src="ImagesSkin/App.png" width="22" height="22"></a>
                         </td>
-
                         <td width="40px" align="center" style="padding-top: 7px; padding-bottom: 5px;">
                             <asp:ImageButton ID="IM_ExitSystem" ImageUrl="ImagesSkin/exit.png" Width="25" Height="23"
                                 OnClientClick="javascript:return confirmExit(getExitMsgByLangCode(), this, event, 'Default.aspx');"
@@ -347,6 +244,7 @@
                     </tr>
                 </table>
             </div>
+
             <div class="NflexBox">
                 <div id="nav1">
                     <iframe id="IF_NewsList" name="IF_NewsList" src='TTPersonalSpaceNews.aspx?Flag=<%=Session["SkinFlag"].ToString()%>'
@@ -358,12 +256,13 @@
                         <asp:Repeater ID="Repeater1" runat="server">
                             <ItemTemplate>
                                 <li>
-                                    <div id="loading" class="loading">
-                                        <img src="Images/Processing.gif" alt="Loading,please wait..." />
+                                    <div class="loading">
+                                        <img src="Images/Processing.gif" alt="Loading..." />
                                     </div>
-                                    <!-- 使用新的CSS类名 -->
                                     <div class="personal-space-cline"></div>
-                                    <iframe id="IF_Module" name="IF_Module" src='<%# DataBinder.Eval(Container.DataItem, "ModulePage") + "&Flag=" + Session["SkinFlag"].ToString()  %>'
+                                    <iframe id="IF_Module" name="IF_Module" 
+                                        onload="hideLoading(this);"
+                                        src='<%# DataBinder.Eval(Container.DataItem, "ModulePage") + "&Flag=" + Session["SkinFlag"].ToString()  %>'
                                         style="width: 100%; height: 320px;" frameborder="no" marginwidth="0" marginheight="0"
                                         scrolling="auto"></iframe>
                                 </li>
@@ -376,9 +275,13 @@
                         <asp:Repeater ID="Repeater2" runat="server">
                             <ItemTemplate>
                                 <li>
-                                    <!-- 使用新的CSS类名 -->
+                                    <div class="loading">
+                                        <img src="Images/Processing.gif" alt="Loading..." />
+                                    </div>
                                     <div class="personal-space-cline"></div>
-                                    <iframe id="IF_Module" name="IF_Module" src='<%# DataBinder.Eval(Container.DataItem, "ModulePage") + "&Flag=" + Session["SkinFlag"].ToString()  %>'
+                                    <iframe id="IF_Module" name="IF_Module" 
+                                        onload="hideLoading(this);"
+                                        src='<%# DataBinder.Eval(Container.DataItem, "ModulePage") + "&Flag=" + Session["SkinFlag"].ToString()  %>'
                                         style="width: 100%; height: 350px;" frameborder="no" marginwidth="0" marginheight="0"
                                         scrolling="auto"></iframe>
                                 </li>
@@ -387,19 +290,11 @@
                     </ul>
                 </div>
             </div>
-            <div style="position: fixed; display: none; z-index: 9999;" id="progressContainer">
-                <asp:UpdateProgress ID="TakeTopUp" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
-                    <ProgressTemplate>
-                        <img src="Images/Processing3 .gif" alt="Loading,please wait..." />
-                    </ProgressTemplate>
-                </asp:UpdateProgress>
-            </div>
         </form>
     </center>
 </body>
 <script type="text/javascript" language="javascript">
     var cssDirectory = '<%=Session["CssDirectory"] %>';
-
     var oLink = document.getElementById('mainCss');
     oLink.href = 'css/' + cssDirectory + '/' + 'bluelightmain.css';
 </script>
