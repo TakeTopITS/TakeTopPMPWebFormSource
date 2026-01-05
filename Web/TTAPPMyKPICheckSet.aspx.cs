@@ -31,7 +31,7 @@ public partial class TTAPPMyKPICheckSet : System.Web.UI.Page
         CKFinder.FileBrowser _FileBrowser = new CKFinder.FileBrowser();
         _FileBrowser.BasePath = "ckfinder/"; Session["PageName"] = "TakeTopSiteContentEdit";
         _FileBrowser.SetupCKEditor(HE_SelfSummary);
-HE_SelfSummary.Language = Session["LangCode"].ToString();
+        HE_SelfSummary.Language = Session["LangCode"].ToString();
 
 
         strUserCode = Session["UserCode"].ToString();
@@ -46,14 +46,8 @@ HE_SelfSummary.Language = Session["LangCode"].ToString();
 
         ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "clickA", "aHandler();", true); if (Page.IsPostBack == false)
         {
-            if (strIsMobileDevice == "YES")
-            {
-                HT_SelfSummary.Visible = true;
-            }
-            else
-            {
-                HE_SelfSummary.Visible = true;
-            }
+
+            HE_SelfSummary.Visible = true;
 
             //计算KPI的系统评分
             LB_TotalSqlPoint.Text = ShareClass.CalculateSystemPoint(strKPICheckID).ToString();
@@ -131,14 +125,8 @@ HE_SelfSummary.Language = Session["LangCode"].ToString();
             UserKPICheckDetail userKPICheckDetail = (UserKPICheckDetail)lst[0];
             NB_SelfPoint.Amount = userKPICheckDetail.SelfPoint;
 
-            if (strIsMobileDevice == "YES")
-            {
-                HT_SelfSummary.Text = userKPICheckDetail.SelfComment.Trim();
-            }
-            else
-            {
-                HE_SelfSummary.Text = userKPICheckDetail.SelfComment.Trim();
-            }
+
+            HE_SelfSummary.Text = userKPICheckDetail.SelfComment.Trim();
 
             //列出KPI评论列表
             LoadKPIReviewList(strID);
@@ -191,14 +179,8 @@ HE_SelfSummary.Language = Session["LangCode"].ToString();
             return;
         }
 
-        if (strIsMobileDevice == "YES")
-        {
-            strSelfComment = HT_SelfSummary.Text.Trim();
-        }
-        else
-        {
-            strSelfComment = HE_SelfSummary.Text.Trim();
-        }
+
+        strSelfComment = HE_SelfSummary.Text.Trim();
 
         strHQL = "From UserKPICheckDetail as userKPICheckDetail Where userKPICheckDetail.ID = " + strKPIID;
         UserKPICheckDetailBLL userKPICheckDetailBLL = new UserKPICheckDetailBLL();

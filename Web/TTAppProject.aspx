@@ -9,7 +9,7 @@
 <head id="Head1" runat="server">
     <title></title>
     <link id="mainCss" href="css/bluelightmain.css" rel="stylesheet" type="text/css" />
-    <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />
+     <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />
 
     <style type="text/css">
         body {
@@ -28,6 +28,24 @@
             width: expression (document.body.clientWidth >= 1024? "1024px" : "auto" ));
             min-width: 277px;
             width: expression (document.body.clientWidth <= 277? "277px" : "auto" ));
+        }
+
+        /* 顶部导航栏 */
+        .page_topbj {
+            background: linear-gradient(90deg, #D53E54 0%, #057BF9 100%);
+            color: white;
+            padding: 12px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .titleziAPP {
+            font-size: 18px;
+            font-weight: 600;
+            color: white;
+            padding-left: 8px;
         }
     </style>
 
@@ -52,7 +70,10 @@
     </script>
 
 </head>
-<body><div id="swipeFeedback" class="swipe-feedback"><asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" /></div> <!-- 滑动反馈层 -->
+<body>
+    <div id="swipeFeedback" class="swipe-feedback">
+        <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" /></div>
+    <!-- 滑动反馈层 -->
     <form id="form1" class="napf" runat="server">
         <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">
         </asp:ScriptManager>
@@ -96,7 +117,8 @@
                                             <tr>
                                                 <td width="80%" align="right">
                                                     <asp:Label ID="Label9" runat="server" Text="<%$ Resources:lang,XiangMuMa%>"></asp:Label>:
-                                                        <asp:TextBox ID="TB_ProjectCode" runat="server" Width="70%"></asp:TextBox>
+                                                       
+                                                    <asp:TextBox ID="TB_ProjectCode" runat="server" Width="70%"></asp:TextBox>
                                                 </td>
                                                 <td>
                                                     <asp:Button ID="BT_AddProject" CssClass="inpu" runat="server" Text="<%$ Resources:lang,JiaRu%>" OnClick="BT_AddProject_Click" />
@@ -152,6 +174,7 @@
                                                 </h3>
                                                 <asp:Label ID="LB_Sql1" runat="server" Visible="false"></asp:Label>
                                                 </asp:label>
+                                           
                                             </div>
                                             <asp:DataGrid ID="DataGrid1" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Height="1px" ItemDataBound="DataGrid1_ItemDataBound" OnPageIndexChanged="DataGrid1_PageIndexChanged" ShowHeader="false" Width="100%">
                                                 <Columns>

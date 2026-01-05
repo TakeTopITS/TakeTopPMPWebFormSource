@@ -7,7 +7,7 @@
     <title></title>
 
     <link id="mainCss" href="css/bluelightmain.css" rel="stylesheet" type="text/css" />
-     <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />
+      <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />
     <style type="text/css">
         body {
             /*margin-top: 5px;*/
@@ -27,7 +27,7 @@
     </style>
 
     <script type="text/javascript">
-        var preFrameW = "50px";
+        var preFrameW = "80px";
         var FrameHide = 0;
 
         var decreaseTimer;
@@ -42,26 +42,26 @@
             if (FrameHide == 0) {
                 preFrameW = this.document.getElementById("divRight").style.height;
 
-                if (preFrameW != "85%") {
+                if (preFrameW != "65%") {
 
-                    this.document.getElementById("divRight").style.height = "85%";
-                    this.document.getElementById("divLeft").style.height = "50px";
+                    this.document.getElementById("divRight").style.height = "65%";
+                    this.document.getElementById("divLeft").style.height = "80px";
 
                     FrameHide = 1;
                     return;
                 }
                 else {
 
-                    this.document.getElementById("divRight").style.height = "50px";
-                    this.document.getElementById("divLeft").style.height = "85%";
+                    this.document.getElementById("divRight").style.height = "80px";
+                    this.document.getElementById("divLeft").style.height = "65%";
 
                     FrameHide = 1;
                     return;
                 }
             } else {
 
-                this.document.getElementById("divRight").style.height = "85%";
-                this.document.getElementById("divLeft").style.height = "50px";
+                this.document.getElementById("divRight").style.height = "65%";
+                this.document.getElementById("divLeft").style.height = "80px";
 
                 FrameHide = 0;
                 return;
@@ -72,19 +72,19 @@
 
             preFrameW = this.document.getElementById("divRight").style.height;
 
-            if (preFrameW == "85%") {
+            if (preFrameW == "65%") {
 
-                this.document.getElementById("divRight").style.height = "85%";
-                this.document.getElementById("divLeft").style.height = "50px";
+                this.document.getElementById("divRight").style.height = "65%";
+                this.document.getElementById("divLeft").style.height = "80px";
 
                 FrameHide = 1;
                 return;
             }
 
-            if (preFrameW == "50px") {
+            if (preFrameW == "80px") {
 
-                this.document.getElementById("divRight").style.height = "50px";
-                this.document.getElementById("divLeft").style.height = "85%";
+                this.document.getElementById("divRight").style.height = "80px";
+                this.document.getElementById("divLeft").style.height = "65%";
 
                 FrameHide = 1;
                 return;
@@ -97,11 +97,11 @@
 </head>
 <body onmousemove="NoChangeMenu(0);">
 
-    <div id="divLeft" style="width: 100%; height: 85%; overflow-y: auto;">
+    <div id="divLeft" style="width: 100%; height: 65%; overflow-y: auto;">
         <iframe id="Left" name="Left" style="width: 100%; height: 100%;" class="bian"  src="TTAPPRegularWLList.aspx"></iframe>
     </div>
 
-    <div id="divRight" style="width: 100%; height: 50px;">
+    <div id="divRight" style="width: 100%; height: 80px;">
         <iframe id="Right" name="Right" style="width: 100%; height: 100%;" class="bian"  src="TTRegularWLDetail.aspx"></iframe>
     </div>
 

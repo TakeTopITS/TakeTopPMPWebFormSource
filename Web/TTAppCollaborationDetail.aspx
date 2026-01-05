@@ -12,7 +12,7 @@
 <head id="Head1" runat="server">
     <title></title>
     <link id="mainCss" href="css/bluelightmain.css" rel="stylesheet" type="text/css" />
-    <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />
+     <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />
 
 
     <style type="text/css">
@@ -48,7 +48,8 @@
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="js/allAHandler.js"></script>
     <script type="text/javascript" language="javascript">
-        $(function () { initSwipeBack();// 初始化滑动返回功能  initSwipeBack();// 初始化滑动返回功能
+        $(function () {
+            initSwipeBack();// 初始化滑动返回功能  initSwipeBack();// 初始化滑动返回功能
 
 
 
@@ -57,7 +58,11 @@
     </script>
 
 </head>
-<body><div id="swipeFeedback" class="swipe-feedback"><asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" /></div> <!-- 滑动反馈层 -->
+<body>
+    <div id="swipeFeedback" class="swipe-feedback">
+        <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" />
+    </div>
+    <!-- 滑动反馈层 -->
 
     <form id="form1" runat="server">
         <%--  <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">--%>
@@ -66,7 +71,7 @@
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
 
-                <table style="width: 100%" cellpadding="0" cellspacing="0" class="ItemAlignLeft">
+                <table style="width: 100%" cellpadding="0" cellspacing="0" >
                     <tr>
                         <td height="31" class="page_topbj">
                             <table width="96%" border="0" class="ItemAlignLeft" cellpadding="0" cellspacing="0">
@@ -104,9 +109,9 @@
                                             <div class="npbx">
                                                 <div class="cline"></div>
 
-                                                <div class="mline" style="padding-left:5px;">
+                                                <div class="mline" style="padding-left: 5px;">
                                                     <h4></h4>
-                                                  <asp:Label ID="LB_CollaborationName" runat="server"></asp:Label>
+                                                    <asp:Label ID="LB_CollaborationName" runat="server"></asp:Label>
                                                     <asp:Label ID="LB_CoID" runat="server" Visible="false"></asp:Label>
                                                 </div>
 
@@ -114,19 +119,17 @@
                                                     <h4></h4>
                                                     <asp:Repeater ID="RP_Attendant" runat="server">
                                                         <ItemTemplate>
-                                                            <asp:Button ID="BT_UserName" runat="server" CssClass="inpu" ForeColor="Black" Text='<%# DataBinder.Eval(Container.DataItem,"UserName") %>' />
+                                                            <asp:Label ID="LB_UserName" runat="server" ForeColor="Black" Text='<%# DataBinder.Eval(Container.DataItem,"UserName") %>' />&nbsp;
                                                         </ItemTemplate>
                                                     </asp:Repeater>
                                                 </div>
-
+                                                <br />
                                                 <div class="npbxs">
 
-                                                    <h3></h3>
-                                                    <CKEditor:CKEditorControl ID="CKEditor1" runat="server" Toolbar="TextColor|BGColor|Bold|Font|FontSize|Image" Height="130px" Visible="False" Width="98%" />
-                                                    <CKEditor:CKEditorControl ID="HTEditor1" runat="server" Height="170px" Style="width: 98%;" Visible="False" />
+                                                    <CKEditor:CKEditorControl ID="HTEditor1" runat="server" Height="150px" Style="width: 98%;" Visible="False" />
                                                 </div>
 
-                                                <div class="npbtn">
+                                               <div class="equal-buttons">
                                                     <asp:Button ID="BT_AddLog" runat="server" CssClass="inpu" OnClick="BT_AddLog_Click" Text="<%$ Resources:lang,FaSong%>" />
                                                     <asp:Button ID="BT_Close" runat="server" CssClass="inpu" OnClick="BT_Close_Click" Text="<%$ Resources:lang,GuanBiXieZuo%>" Visible="False" />
                                                     <asp:Button ID="BT_Active" runat="server" CssClass="inpu" OnClick="BT_Active_Click" Text="<%$ Resources:lang,JiHuoXieZuo%>" Visible="False" />
@@ -147,7 +150,7 @@
                     <tr style="display: none;">
                         <td style="text-align: Right; vertical-align: middle;" class="formItemBgStyleForAlignLeft">
                             <asp:Label ID="Label2" runat="server" Text="<%$ Resources:lang,NeiRong%>"></asp:Label>: </td>
-                        <td class="formItemBgStyleForAlignLeft" >
+                        <td class="formItemBgStyleForAlignLeft">
                             <div id="mess_box" style="width: 100%; height: 150px; overflow: auto;">
                                 <asp:DataList ID="DataList1" runat="server" CellPadding="4" ForeColor="#333333" Width="100%">
                                     <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
@@ -170,8 +173,10 @@
                             <asp:Label ID="Label3" runat="server" Text="<%$ Resources:lang,ChuangJianZhe%>"></asp:Label>: </td>
                         <td class="formItemBgStyleForAlignLeft">
                             <asp:Label ID="LB_Creator" runat="server" Text="<%$ Resources:lang,ChuangJianShiJian%>"></asp:Label>:
-                                                    <asp:Label ID="LB_CreateTime" runat="server" Text="<%$ Resources:lang,ZhuangTai%>"></asp:Label>:
-                                                    <asp:Label ID="LB_Status" runat="server"></asp:Label>
+                                                   
+                            <asp:Label ID="LB_CreateTime" runat="server" Text="<%$ Resources:lang,ZhuangTai%>"></asp:Label>:
+                                                   
+                            <asp:Label ID="LB_Status" runat="server"></asp:Label>
                             <asp:HyperLink ID="HL_CollaborationToTask" runat="server" Enabled="False" NavigateUrl="~/CollaborationToTask">--&gt;<asp:Label ID="Label4" runat="server" Text="<%$ Resources:lang,ZhuanChengRenWu%>"></asp:Label></asp:HyperLink>
                         </td>
                     </tr>

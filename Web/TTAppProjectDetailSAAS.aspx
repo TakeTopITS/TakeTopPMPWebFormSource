@@ -40,7 +40,8 @@
     <script type="text/javascript" src="js/allAHandler.js"></script>
     <script src="js/exif.js" type="text/javascript"></script>
     <script type="text/javascript" language="javascript">
-        $(function () { initSwipeBack();// 初始化滑动返回功能  initSwipeBack();// 初始化滑动返回功能
+        $(function () {
+            initSwipeBack();// 初始化滑动返回功能  initSwipeBack();// 初始化滑动返回功能
 
 
 
@@ -191,7 +192,10 @@
         }
     </script>
 </head>
-<body><div id="swipeFeedback" class="swipe-feedback"><asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" /></div> <!-- 滑动反馈层 -->
+<body>
+    <div id="swipeFeedback" class="swipe-feedback">
+        <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" /></div>
+    <!-- 滑动反馈层 -->
     <canvas id="myCanvas" style="display: none;"></canvas>
     <center>
         <form id="form1" runat="server" method="post" enctype="multipart/form-data">
@@ -253,7 +257,7 @@
                                                                     <div class="mline">
                                                                         <h4>
                                                                             <asp:Label ID="LB_Progress" runat="server" Text="<%$ Resources:lang,Progress%>" /></h4>
-                                                                      
+
                                                                         <NickLee:NumberBox ID="NB_FinishPercent" runat="server" Width="94%" MaxAmount="100" MinAmount="0">0.00</NickLee:NumberBox>
                                                                         <asp:Label ID="Label5" runat="server" Font-Bold="True" Text="%"></asp:Label>
                                                                     </div>
@@ -271,7 +275,7 @@
                                                                         <asp:Label ID="Label7" runat="server" Text="<%$ Resources:lang,ZongJie %>"></asp:Label></h3>
                                                                     <br />
                                                                     <CKEditor:CKEditorControl ID="HE_TodaySummary" runat="server" Toolbar="" Width="99%" Height="170" Visible="false" />
-                                                                    <CKEditor:CKEditorControl runat="server" ID="HT_TodaySummary" Toolbar="" Width="99%" Height="170px" Visible="false" />
+
                                                                     <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional">
                                                                         <ContentTemplate>
                                                                             <div class="nmar">
@@ -304,7 +308,7 @@
                                                                         <asp:Button ID="BT_Send" runat="server" CssClass="inpu" OnClick="BT_Send_Click" Text="<%$ Resources:lang,Send%>" />
                                                                     </div>
 
-                                                                    <div class="npbtn">
+                                                                    <div class="equal-buttons">
                                                                         <asp:Button ID="BT_Summit" runat="server" CssClass="inpu" OnClick="BT_Summit_Click" Text="<%$ Resources:lang,Submit%>" />
                                                                         <asp:Button ID="BT_Receive" runat="server" Text="<%$ Resources:lang,ProjectAgree%>"
                                                                             CssClass="inpu" OnClick="BT_Receive_Click" Visible="false" />
@@ -402,7 +406,7 @@
                                                                         &nbsp;
 
                                                                 &nbsp; &nbsp;<asp:HyperLink ID="HL_MakeCollaboration" runat="server" NavigateUrl="~/TTMakeCollaboration.aspx"
-                                                                    Text="<%$ Resources:lang,hlMakeCollaboration%>"></asp:HyperLink>
+                                                                            Text="<%$ Resources:lang,hlMakeCollaboration%>"></asp:HyperLink>
                                                                     </td>
                                                                 </tr>
                                                                 <tr style="height: 15px; display: none;">
@@ -419,8 +423,9 @@
                                                                             &nbsp;<asp:HyperLink ID="HL_ProjectAssetApplication" runat="server"
                                                                                 Text="<%$ Resources:lang,AssetApplication%>"></asp:HyperLink>
                                                                             &nbsp;
-                                                                <asp:HyperLink ID="HL_AssetShipmentReport" runat="server" NavigateUrl="~/TTAssetShipmentReport.aspx"
-                                                                    Text="<%$ Resources:lang,AssetShipmentReport%>"></asp:HyperLink>
+                                                               
+                                                                            <asp:HyperLink ID="HL_AssetShipmentReport" runat="server" NavigateUrl="~/TTAssetShipmentReport.aspx"
+                                                                                Text="<%$ Resources:lang,AssetShipmentReport%>"></asp:HyperLink>
                                                                             &nbsp;<asp:HyperLink ID="HL_ExpenseApplySummary" runat="server" Text="<%$ Resources:lang,ExpenseApplySummary%>"></asp:HyperLink>
                                                                             &nbsp;<asp:HyperLink ID="HL_ExpenseClaimSummary" runat="server" Text="<%$ Resources:lang,ExpenseClaimSummary%>"></asp:HyperLink>
                                                                             &nbsp;<asp:HyperLink ID="HL_RelatedWorkFlow" runat="server" Text="<%$ Resources:lang,RelatedWorkFlow%>"></asp:HyperLink>

@@ -37,14 +37,9 @@ public partial class TTAppCollaborationDetail : System.Web.UI.Page
         //CKEditor≥ı ºªØ
         CKFinder.FileBrowser _FileBrowser = new CKFinder.FileBrowser();
         _FileBrowser.BasePath = "ckfinder/"; Session["PageName"] = "TakeTopSiteContentEdit";
-        _FileBrowser.SetupCKEditor(CKEditor1);
-CKEditor1.Language = Session["LangCode"].ToString();
-
-
-        CKEditor1.Language = Session["LangCode"].ToString();
-
+     
         strCoID = Request.QueryString["CoID"].Trim();
-   
+
 
         if (Page.IsPostBack == false)
         {
@@ -52,10 +47,6 @@ CKEditor1.Language = Session["LangCode"].ToString();
             {
                 HTEditor1.Visible = true;
                 HTEditor1.Toolbar = "";
-            }
-            else
-            {
-                CKEditor1.Visible = true;
             }
 
 
@@ -99,18 +90,14 @@ CKEditor1.Language = Session["LangCode"].ToString();
     protected void BT_AddLog_Click(object sender, EventArgs e)
     {
         string strCoID;
-        String strLog;
+        String strLog = "";
 
         strCoID = LB_CoID.Text.Trim();
 
-        if (strIsMobileDevice == "YES")
-        {
-            strLog = HTEditor1.Text.Trim();
-        }
-        else
-        {
-            strLog = CKEditor1.Text.Trim();
-        }
+
+        strLog = HTEditor1.Text.Trim();
+
+
 
         CollaborationLogBLL collaborationLogBLL = new CollaborationLogBLL();
         CollaborationLog collaborationLog = new CollaborationLog();
@@ -126,11 +113,9 @@ CKEditor1.Language = Session["LangCode"].ToString();
         {
             collaborationLogBLL.AddCollaborationLog(collaborationLog);
 
-            CKEditor1.Text = "";
+            HTEditor1.Text = "";
 
             UpdateCollaborationStatus(strCoID);
-
-
 
             ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "window.parent.frames['rightFrame'].location.reload()", true);
         }

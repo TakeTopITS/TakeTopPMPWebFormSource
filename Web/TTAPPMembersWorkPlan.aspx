@@ -33,14 +33,19 @@
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="js/allAHandler.js"></script>
     <script type="text/javascript" language="javascript">
-        $(function () { initSwipeBack();// 初始化滑动返回功能 
+        $(function () {
+            initSwipeBack();// 初始化滑动返回功能 
 
             //
 
         });
     </script>
 </head>
-<body><div id="swipeFeedback" class="swipe-feedback"><asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" /></div> <!-- 滑动反馈层 -->
+<body>
+    <div id="swipeFeedback" class="swipe-feedback">
+        <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" />
+    </div>
+    <!-- 滑动反馈层 -->
 
     <form id="form1" runat="server">
         <%--  <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">--%>
@@ -299,14 +304,15 @@
                                                                         <asp:TemplateColumn HeaderText="Progress">
                                                                             <ItemTemplate>
                                                                                 <asp:Label ID="LB_TargetProgress" runat="server" Text='<%# DataBinder.Eval(Container.DataItem,"Progress")%> '></asp:Label>%
+                                                                           
                                                                             </ItemTemplate>
-                                                                            <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="20%" />
+                                                                            <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="20%" />
                                                                         </asp:TemplateColumn>
                                                                     </Columns>
                                                                     <EditItemStyle BackColor="#2461BF" />
                                                                     <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                                                                     <ItemStyle CssClass="itemStyle" />
-                                                                    <PagerStyle Horizontalalign="center" Mode="NumericPages" NextPageText="" PrevPageText="" CssClass="notTab" />
+                                                                    <PagerStyle HorizontalAlign="center" Mode="NumericPages" NextPageText="" PrevPageText="" CssClass="notTab" />
                                                                     <SelectedItemStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
                                                                 </asp:DataGrid></td>
                                                         </tr>
@@ -394,37 +400,39 @@
                                                     <asp:Label ID="Label29" runat="server" Text="<%$ Resources:lang,WoDeYiJian%>"></asp:Label>
                                                 </HeaderTemplate>
                                                 <ContentTemplate>
-                                                    <table style="width: 100%; padding: 5px 0px 0px 5px" cellpadding="3" cellspacing="0"
-                                                        class="formBgStyle">
+                                                    <table style="width: 100%; padding: 5px 0px 0px 5px" cellpadding="3" cellspacing="0" >
+                                                      
 
                                                         <tr>
-                                                            <td style="width: 90px; " class="formItemBgStyleForAlignLeft">
-                                                                <asp:Label ID="Label31" runat="server" Text="<%$ Resources:lang,ShenHeYiJian %>"></asp:Label>: </td>
-                                                            <td class="formItemBgStyleForAlignLeft">
+                                                            <td  class="formItemBgStyleForAlignLeft">
+                                                                <asp:Label ID="Label31" runat="server" Text="<%$ Resources:lang,ShenHeYiJian %>"></asp:Label>
+                                                           
                                                                 <CKEditor:CKEditorControl ID="HE_ReviewDetail" runat="server" Height="180px" Width="90%" Visible="False" /><CKEditor:CKEditorControl runat="server" ID="HT_ReviewDetail" Width="90%" Height="180px" Visible="False" />
                                                             </td>
 
                                                         </tr>
                                                         <tr>
-                                                            <td style="width: 90px; " class="formItemBgStyleForAlignLeft">
-                                                                <asp:Label ID="Label32" runat="server" Text="<%$ Resources:lang,PingFen %>"></asp:Label>: </td>
-                                                            <td class="formItemBgStyleForAlignLeft">
+                                                            <td  class="formItemBgStyleForAlignLeft">
+                                                                <asp:Label ID="Label32" runat="server" Text="<%$ Resources:lang,PingFen %>"></asp:Label>
                                                                 <NickLee:NumberBox MaxAmount="1000000000000" MinAmount="-1000000000000" ID="NB_Scoring" runat="server" Width="80px" OnBlur="" OnFocus=""
                                                                     OnKeyPress="" PositiveColor="">0.00</NickLee:NumberBox></td>
                                                         </tr>
                                                         <tr style="display: none;">
-                                                            <td style="width: 90px; " class="formItemBgStyleForAlignLeft">
-                                                                <asp:Label ID="Label30" runat="server" Text="<%$ Resources:lang,BianHao %>"></asp:Label>: </td>
-                                                            <td class="formItemBgStyleForAlignLeft">
+                                                            <td  class="formItemBgStyleForAlignLeft">
+                                                                <asp:Label ID="Label30" runat="server" Text="<%$ Resources:lang,BianHao %>"></asp:Label>:
                                                                 <asp:Label ID="LB_ID" runat="server"></asp:Label></td>
                                                         </tr>
                                                         <tr>
-                                                            <td style="width: 90px; " class="formItemBgStyleForAlignLeft"></td>
-                                                            <td class="formItemBgStyleForAlignLeft">
-                                                                <asp:Button ID="BT_Add" CssClass="inpu" runat="server" Enabled="False" Text="<%$ Resources:lang,XinJian %>"
-                                                                    OnClick="BT_Add_Click" /><asp:Button ID="BT_Update" runat="server" CssClass="inpu" Enabled="False" OnClick="BT_Update_Click"
-                                                                        Text="<%$ Resources:lang,BaoCun %>" /><asp:Button ID="BT_Delete" runat="server" CssClass="inpu" Enabled="False" OnClick="BT_Delete_Click" OnClientClick="return confirmContinue(getDeleteMsgByLangCode(), this, event)"
-                                                                            Text="<%$ Resources:lang,ShanChu %>" /><br />
+                                                            <td  class="formItemBgStyleForAlignLeft">
+                                                                <div class="equal-buttons">
+                                                                    <asp:Button ID="BT_Add" CssClass="inpu" runat="server" Enabled="False" Text="<%$ Resources:lang,XinJian %>"
+                                                                        OnClick="BT_Add_Click" />
+                                                                    <asp:Button ID="BT_Update" runat="server" CssClass="inpu" Enabled="False" OnClick="BT_Update_Click"
+                                                                        Text="<%$ Resources:lang,BaoCun %>" />
+                                                                    <asp:Button ID="BT_Delete" runat="server" CssClass="inpu" Enabled="False" OnClick="BT_Delete_Click" OnClientClick="return confirmContinue(getDeleteMsgByLangCode(), this, event)"
+                                                                        Text="<%$ Resources:lang,ShanChu %>" />
+                                                                </div>
+                                                                <br />
                                                             </td>
                                                         </tr>
 
@@ -461,8 +469,8 @@
                                                                 <tr>
                                                                     <td class="tdLeft" style="width: 10%; text-align: center;">
 
-                                                                        <asp:Button ID="BT_ID" runat="server" Text=' <%#DataBinder .Eval (Container .DataItem ,"ID") %> '
-                                                                            CssClass="inpu" CommandName="Update" />
+                                                                        <asp:Button ID="BT_ID" CssClass="inpu" runat="server" Text=' <%#DataBinder .Eval (Container .DataItem ,"ID") %> '
+                                                                            CommandName="Update" />
                                                                     </td>
 
                                                                     <td class="tdLeft" style="width: 60%; text-align: left;">
@@ -522,7 +530,7 @@
 
                                                     <iframe runat="server" id="IFrame_Chart1" src="TTTakeTopAnalystChartSet.aspx" style="width: 800px; height: 295px; border: 1px solid white; overflow: hidden;"></iframe>
 
-                                                   <%-- <asp:Chart ID="Chart1" Width="800px" runat="server">
+                                                    <%-- <asp:Chart ID="Chart1" Width="800px" runat="server">
                                                         <Series>
                                                             <asp:Series Name="Series1" ChartType="Column" Label="#VAL">
                                                             </asp:Series>

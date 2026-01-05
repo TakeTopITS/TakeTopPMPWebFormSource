@@ -6,7 +6,7 @@
 <head runat="server">
     <title></title>
      <link id="mainCss" href="css/bluelightmain.css" rel="stylesheet" type="text/css" />
-     <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />
+      <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />
 </head>
 <body><div id="swipeFeedback" class="swipe-feedback"><asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" /></div> <!-- »¬¶¯·´À¡²ã -->
     <form id="form1" runat="server">

@@ -11,7 +11,7 @@
 <head id="Head1" runat="server">
     <title></title>
     <link id="mainCss" href="css/bluelightmain.css" rel="stylesheet" type="text/css" />
-    <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />
+     <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />
     <style type="text/css">
         body {
             /*margin-top: 5px;*/
@@ -64,7 +64,8 @@
     <script src="js/My97DatePicker/WdatePicker.js"></script>
 
     <script type="text/javascript" language="javascript">
-        $(function () { initSwipeBack();// 初始化滑动返回功能  initSwipeBack();// 初始化滑动返回功能
+        $(function () {
+            initSwipeBack();// 初始化滑动返回功能  initSwipeBack();// 初始化滑动返回功能
 
 
 
@@ -73,7 +74,11 @@
     </script>
 
 </head>
-<body><div id="swipeFeedback" class="swipe-feedback"><asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" /></div> <!-- 滑动反馈层 -->
+<body>
+    <div id="swipeFeedback" class="swipe-feedback">
+        <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" />
+    </div>
+    <!-- 滑动反馈层 -->
     <center>
         <form id="form1" runat="server">
             <%--  <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">--%>
@@ -265,15 +270,17 @@
                                                                     <tr>
                                                                         <td style="text-align: center; height: 2px;" class="formItemBgStyleForAlignLeft">
 
-                                                                            <div class="npbtn">
+                                                                            <div class="equal-buttons">
                                                                                 <asp:Button ID="BT_Update" runat="server" CssClass="inpu" Enabled="False" OnClick="BT_Update_Click" Text="<%$ Resources:lang,BaoCun%>" />
 
                                                                                 <asp:Button ID="BT_Delete" runat="server" CssClass="inpu" Enabled="False" OnClick="BT_Delete_Click" OnClientClick="return confirmContinue(getDeleteMsgByLangCode(), this, event)" Text="<%$ Resources:lang,ShanChu%>" />
 
                                                                                 &nbsp;
-                                                                         <asp:Button ID="BT_Close" runat="server" CssClass="inpuClose" ToolTip="<%$ Resources:lang,GuanBi%>" Enabled="False" Visible="false" OnClick="BT_Close_Click" />
+                                                                        
+                                                                                <asp:Button ID="BT_Close" runat="server" CssClass="inpuClose" ToolTip="<%$ Resources:lang,GuanBi%>" Enabled="False" Visible="false" OnClick="BT_Close_Click" />
                                                                                 &nbsp;
-                                                                         <asp:Button ID="BT_Active" runat="server" CssClass="inpuActive" ToolTip="<%$ Resources:lang,JiHuo%>" Enabled="False" OnClick="BT_Active_Click" Visible="false" />
+                                                                        
+                                                                                <asp:Button ID="BT_Active" runat="server" CssClass="inpuActive" ToolTip="<%$ Resources:lang,JiHuo%>" Enabled="False" OnClick="BT_Active_Click" Visible="false" />
                                                                             </div>
 
                                                                         </td>
@@ -328,7 +335,7 @@
                                                                     <tr>
                                                                         <td class="formItemBgStyleForAlignLeft">
                                                                             <CKEditor:CKEditorControl ID="HE_Operation" runat="server" Width="99%" Toolbar="" Height="170px" Visible="false" />
-                                                                            <CKEditor:CKEditorControl runat="server" ID="HT_Operation" Width="99%" Toolbar="" Height="170px" Visible="False" />
+
                                                                             <asp:DropDownList ID="DL_WorkRequest" runat="server" AutoPostBack="True" DataTextField="Operation"
                                                                                 DataValueField="Operation" OnSelectedIndexChanged="DL_WorkRequest_SelectedIndexChanged">
                                                                             </asp:DropDownList>
@@ -359,7 +366,7 @@
                                                                     </tr>
                                                                     <tr>
                                                                         <td class="formItemBgStyleForAlignLeft">
-                                                                            <div class="npbtn">
+                                                                            <div class="equal-buttons">
                                                                                 <asp:Button ID="BT_UpdateAssign" runat="server" CssClass="inpu" Enabled="False" OnClick="BT_UpdateAssign_Click" Text="<%$ Resources:lang,BaoCun%>" />
                                                                                 &nbsp;<asp:Button ID="BT_DeleteAssign" runat="server" CssClass="inpu" Enabled="False" OnClick="BT_DeleteAssign_Click" OnClientClick="return confirmContinue(getDeleteMsgByLangCode(), this, event)" Text="<%$ Resources:lang,ShanChu%>" />
                                                                                 &nbsp;<asp:Button ID="BT_Assign" runat="server" CssClass="inpu" Enabled="False" OnClick="BT_Assign_Click" Text="<%$ Resources:lang,FenPai%>" />
@@ -447,28 +454,33 @@
                             <td>
                                 <asp:HyperLink ID="HL_RunTaskByWF" runat="server" Enabled="False">---&gt;<asp:Label ID="Label24" runat="server" Text="<%$ Resources:lang,RenWuChuLiLiuChengMoShi%>"></asp:Label>)</asp:HyperLink>
                                 &nbsp;
-                                                                    <asp:HyperLink ID="HL_TaskReview" runat="server" Enabled="False">---&gt;<asp:Label ID="Label25" runat="server" Text="<%$ Resources:lang,RenWuPingShen%>"></asp:Label></asp:HyperLink>
+                                                                   
+                                <asp:HyperLink ID="HL_TaskReview" runat="server" Enabled="False">---&gt;<asp:Label ID="Label25" runat="server" Text="<%$ Resources:lang,RenWuPingShen%>"></asp:Label></asp:HyperLink>
                                 &nbsp;&nbsp;<asp:HyperLink ID="HL_RelatedWorkFlowTemplate" runat="server" NavigateUrl="TTProRelatedWFTemplate.aspx"
                                     Enabled="False">
                                     <asp:Label ID="Label26" runat="server" Text="<%$ Resources:lang,GuanLianGongZuoLiuMuBan%>"></asp:Label>
                                 </asp:HyperLink>
                                 &nbsp;
-                                                                    <asp:HyperLink ID="HL_ActorGroup" runat="server" Font-Size="10pt" NavigateUrl="~/TTProjectRelatedActorGroup.aspx"
-                                                                        Enabled="False">
-                                                                        <asp:Label ID="Label27" runat="server" Text="<%$ Resources:lang,JueSeZuSheZhi%>"></asp:Label>
-                                                                    </asp:HyperLink>
+                                                                   
+                                <asp:HyperLink ID="HL_ActorGroup" runat="server" Font-Size="10pt" NavigateUrl="~/TTProjectRelatedActorGroup.aspx"
+                                    Enabled="False">
+                                    <asp:Label ID="Label27" runat="server" Text="<%$ Resources:lang,JueSeZuSheZhi%>"></asp:Label>
+                                </asp:HyperLink>
                                 &nbsp;
-                                                                    <asp:HyperLink ID="HL_WLTem" runat="server" NavigateUrl="~/TTWorkFlowTemplate.aspx"
-                                                                        Enabled="False">
-                                                                        <asp:Label ID="Label28" runat="server" Text="<%$ Resources:lang,MuBanWeiHu%>"></asp:Label>
-                                                                    </asp:HyperLink>&nbsp;&nbsp;
-                                                                    <asp:HyperLink ID="HL_TaskRelatedDoc" runat="server" Enabled="False" NavigateUrl="TTProTaskRelatedDoc.aspx">
-                                                                        <asp:Label ID="Label29" runat="server" Text="<%$ Resources:lang,XiangGuanWenDang%>"></asp:Label>
-                                                                    </asp:HyperLink>
+                                                                   
+                                <asp:HyperLink ID="HL_WLTem" runat="server" NavigateUrl="~/TTWorkFlowTemplate.aspx"
+                                    Enabled="False">
+                                    <asp:Label ID="Label28" runat="server" Text="<%$ Resources:lang,MuBanWeiHu%>"></asp:Label>
+                                </asp:HyperLink>&nbsp;&nbsp;
+                                                                   
+                                <asp:HyperLink ID="HL_TaskRelatedDoc" runat="server" Enabled="False" NavigateUrl="TTProTaskRelatedDoc.aspx">
+                                    <asp:Label ID="Label29" runat="server" Text="<%$ Resources:lang,XiangGuanWenDang%>"></asp:Label>
+                                </asp:HyperLink>
                                 &nbsp;
-                                                                    <asp:HyperLink ID="HL_TestCase" runat="server" Enabled="False" NavigateUrl="TTMakeTaskTestCase.aspx">
-                                                                        <asp:Label ID="Label30" runat="server" Text="<%$ Resources:lang,CeShiYongLi%>"></asp:Label>
-                                                                    </asp:HyperLink>
+                                                                   
+                                <asp:HyperLink ID="HL_TestCase" runat="server" Enabled="False" NavigateUrl="TTMakeTaskTestCase.aspx">
+                                    <asp:Label ID="Label30" runat="server" Text="<%$ Resources:lang,CeShiYongLi%>"></asp:Label>
+                                </asp:HyperLink>
                             </td>
                         </tr>
                     </table>

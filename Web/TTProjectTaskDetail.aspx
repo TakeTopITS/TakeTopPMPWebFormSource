@@ -262,7 +262,7 @@
                                                                                                         <td style="width: 10%;" class="formItemBgStyleForAlignLeft">
                                                                                                             <asp:Label ID="Label22" runat="server" Text="<%$ Resources:lang,GongZuoZongJie %>"></asp:Label>: </td>
                                                                                                         <td class="formItemBgStyleForAlignLeft">
-                                                                                                            <CKEditor:CKEditorControl ID="HE_FinishContent" Height="150px" runat="server" Visible="False" Width="" /><CKEditor:CKEditorControl runat="server" ID="HT_FinishContent" Width="100%" Height="150px" Visible="False" /></td>
+                                                                                                            <CKEditor:CKEditorControl ID="HE_FinishContent" Height="150px" runat="server" Visible="False" Width="" />
                                                                                                     </tr>
                                                                                                     <tr>
                                                                                                         <td style="width: 10%;" class="formItemBgStyleForAlignLeft"></td>

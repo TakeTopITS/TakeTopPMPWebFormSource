@@ -8,10 +8,10 @@
 <head id="Head1" runat="server">
     <title></title>
     <link id="mainCss" href="css/bluelightmain.css" rel="stylesheet" type="text/css" />
-     <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />
+      <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />
 </head>
 
-<frameset rows="500,*" frameborder="no" border="0" framespacing="0">
+<frameset rows="600,*" frameborder="no" border="0" framespacing="0">
       <frame src="TTAppCollaborationDetail.aspx?CoID=<%=Request.QueryString["CoID"].ToString()%>" name="leftFrame"   / >
       <frame src="TTAppCollaborationDetailList.aspx?CoID=<%=Request.QueryString["CoID"].ToString()%>" name="rightFrame"  />
 </frameset>

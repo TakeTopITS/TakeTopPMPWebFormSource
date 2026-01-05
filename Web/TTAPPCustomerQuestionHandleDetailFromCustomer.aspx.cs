@@ -34,9 +34,9 @@ public partial class TTAPPCustomerQuestionHandleDetailFromCustomer : System.Web.
         CKFinder.FileBrowser _FileBrowser = new CKFinder.FileBrowser();
         _FileBrowser.BasePath = "ckfinder/"; Session["PageName"] = "TakeTopSiteContentEdit";
         _FileBrowser.SetupCKEditor(HE_CustomerComment);
-HE_CustomerComment.Language = Session["LangCode"].ToString();
+        HE_CustomerComment.Language = Session["LangCode"].ToString();
         _FileBrowser.SetupCKEditor(HE_HandleDetail);
-HE_HandleDetail.Language = Session["LangCode"].ToString();
+        HE_HandleDetail.Language = Session["LangCode"].ToString();
 
         strUserCode = Session["UserCode"].ToString();
         strUserName = Session["UserName"].ToString();
@@ -51,30 +51,21 @@ HE_HandleDetail.Language = Session["LangCode"].ToString();
         ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "clickA", "aHandler();", true);
         if (Page.IsPostBack == false)
         {
-            HT_HandleDetail.Visible = true;
-            HT_CustomerComment.Visible = true;
+
             HT_Question.Visible = true;
 
-            HT_HandleDetail.Toolbar = "";
-            HT_CustomerComment.Toolbar = "";
+
             HT_Question.Toolbar = "";
 
 
             LoadCustomerQuestionCustomerStage();
             LoadCustomerQuestionStage();
 
-            if (strIsMobileDevice == "YES")
-            {
-                HT_CustomerComment.Visible = true;
-                HT_HandleDetail.Visible = true;
 
-                HT_Question.Visible = true;
-            }
-            else
-            {
-                HE_CustomerComment.Visible = true;
-                HE_HandleDetail.Visible = true;
-            }
+            HT_Question.Visible = true;
+
+            HE_CustomerComment.Visible = true;
+            HE_HandleDetail.Visible = true;
 
             DLC_ExpectedTime.Text = DateTime.Now.ToString("yyyy-MM-dd");
             DLC_AnswerTime.Text = DateTime.Now.ToString("yyyy-MM-dd");
@@ -1353,16 +1344,9 @@ HE_HandleDetail.Language = Session["LangCode"].ToString();
         int intPreDays;
         DateTime dtNextServiceTime;
 
-        if (strIsMobileDevice == "YES")
-        {
-            strHandleDetail = HT_HandleDetail.Text.Trim();
-            strCustomerComment = HT_CustomerComment.Text.Trim();
-        }
-        else
-        {
-            strHandleDetail = HE_HandleDetail.Text.Trim();
-            strCustomerComment = HE_CustomerComment.Text.Trim();
-        }
+
+        strHandleDetail = HE_HandleDetail.Text.Trim();
+        strCustomerComment = HE_CustomerComment.Text.Trim();
 
         strQuestionID = LB_QuestionID.Text.Trim();
 
@@ -1437,16 +1421,9 @@ HE_HandleDetail.Language = Session["LangCode"].ToString();
         strID = LB_ID.Text.Trim();
         strQuestionID = LB_QuestionID.Text.Trim();
 
-        if (strIsMobileDevice == "YES")
-        {
-            strHandleDetail = HT_HandleDetail.Text.Trim();
-            strCustomerComment = HT_CustomerComment.Text.Trim();
-        }
-        else
-        {
-            strHandleDetail = HE_HandleDetail.Text.Trim();
-            strCustomerComment = HE_CustomerComment.Text.Trim();
-        }
+
+        strHandleDetail = HE_HandleDetail.Text.Trim();
+        strCustomerComment = HE_CustomerComment.Text.Trim();
 
         strStatus = DL_HandleStatus.SelectedValue.Trim();
         strHandleWay = TB_HandleWay.Text.Trim();
@@ -1549,16 +1526,9 @@ HE_HandleDetail.Language = Session["LangCode"].ToString();
             CustomerQuestionHandleRecord customerQuestionHandleRecord = (CustomerQuestionHandleRecord)lst[0];
 
             LB_ID.Text = strID;
-            if (strIsMobileDevice == "YES")
-            {
-                HT_HandleDetail.Text = customerQuestionHandleRecord.HandleDetail.Trim();
-                HT_CustomerComment.Text = customerQuestionHandleRecord.CustomerComment.Trim();
-            }
-            else
-            {
-                HE_HandleDetail.Text = customerQuestionHandleRecord.HandleDetail.Trim();
-                HE_CustomerComment.Text = customerQuestionHandleRecord.CustomerComment.Trim();
-            }
+
+            HE_HandleDetail.Text = customerQuestionHandleRecord.HandleDetail.Trim();
+            HE_CustomerComment.Text = customerQuestionHandleRecord.CustomerComment.Trim();
 
             TB_HandleWay.Text = customerQuestionHandleRecord.HandleWay.Trim();
             HE_HandleDetail.Text = customerQuestionHandleRecord.HandleDetail.Trim();

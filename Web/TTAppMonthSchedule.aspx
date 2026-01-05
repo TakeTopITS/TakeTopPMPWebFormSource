@@ -12,7 +12,7 @@
     <title></title>
 
     <link id="mainCss" href="css/bluelightmain.css" rel="stylesheet" type="text/css" />
-     <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />
+      <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="js/modal.js"></script>
 
     <style type="text/css">

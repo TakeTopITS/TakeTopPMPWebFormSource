@@ -69,16 +69,9 @@ public partial class TTMeetingTaskDetail : System.Web.UI.Page
 
         ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "clickA", "aHandler();", true); if (Page.IsPostBack != true)
         {
-            if (strIsMobileDevice == "YES")
-            {
-                HT_FinishContent.Visible = true;
-                HT_Operation.Visible = true; HT_Operation.Toolbar = "";
-            }
-            else
-            {
-                HE_FinishContent.Visible = true;
-                HE_Operation.Visible = true;
-            }
+
+            HE_FinishContent.Visible = true;
+            HE_Operation.Visible = true;
 
             DataSet ds;
             strHQL = "Select HomeModuleName, PageName || " + "'" + strTaskID + "' as ModulePage  From T_ProModuleLevelForPage Where ParentModule = 'TaskHandling' and LangCode = '" + strLangCode + "' and Visible ='YES' Order By SortNumber ASC";
@@ -89,14 +82,8 @@ public partial class TTMeetingTaskDetail : System.Web.UI.Page
             DLC_BeginDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
             DLC_EndDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
 
-            if (strIsMobileDevice == "YES")
-            {
-                HT_FinishContent.Text = taskAssignRecord.OperatorContent.Trim();
-            }
-            else
-            {
-                HE_FinishContent.Text = taskAssignRecord.OperatorContent.Trim();
-            }
+
+            HE_FinishContent.Text = taskAssignRecord.OperatorContent.Trim();
 
             TB_Expense.Amount = taskAssignRecord.Expense;
             NB_ManHour.Amount = taskAssignRecord.ManHour;
@@ -189,28 +176,16 @@ public partial class TTMeetingTaskDetail : System.Web.UI.Page
 
         strTaskID = LB_TaskID.Text.Trim();
 
-        if (strIsMobileDevice == "YES")
-        {
-            strContent = HT_FinishContent.Text.Trim();
-        }
-        else
-        {
-            strContent = HE_FinishContent.Text.Trim();
-        }
+
+        strContent = HE_FinishContent.Text.Trim();
 
         intFinishPercent = int.Parse(NB_FinishPercent.Amount.ToString());
 
         if (strContent == "")
         {
             strContent = "Accepted";
-            if (strIsMobileDevice == "YES")
-            {
-                HT_FinishContent.Text = strContent;
-            }
-            else
-            {
-                HE_FinishContent.Text = strContent;
-            }
+
+            HE_FinishContent.Text = strContent;
         }
 
         strID = LB_AssignID.Text.Trim();
@@ -248,27 +223,15 @@ public partial class TTMeetingTaskDetail : System.Web.UI.Page
         strUserCode = LB_UserCode.Text.Trim();
 
         strTaskID = LB_TaskID.Text.Trim();
-        if (strIsMobileDevice == "YES")
-        {
-            strContent = HT_FinishContent.Text.Trim();
-        }
-        else
-        {
-            strContent = HE_FinishContent.Text.Trim();
-        }
+
+        strContent = HE_FinishContent.Text.Trim();
         intFinishPercent = int.Parse(NB_FinishPercent.Amount.ToString());
 
         if (strContent == "")
         {
             strContent = "Rejected";
-            if (strIsMobileDevice == "YES")
-            {
-                HT_FinishContent.Text = strContent;
-            }
-            else
-            {
-                HE_FinishContent.Text = strContent;
-            }
+
+            HE_FinishContent.Text = strContent;
         }
 
         strID = LB_AssignID.Text.Trim();
@@ -502,14 +465,8 @@ public partial class TTMeetingTaskDetail : System.Web.UI.Page
         strTaskID = LB_TaskID.Text.Trim();
         strTaskName = LB_Task.Text.Trim();
 
-        if (strIsMobileDevice == "YES")
-        {
-            strContent = HT_FinishContent.Text.Trim();
-        }
-        else
-        {
-            strContent = HE_FinishContent.Text.Trim();
-        }
+
+        strContent = HE_FinishContent.Text.Trim();
 
         intFinishPercent = int.Parse(NB_FinishPercent.Amount.ToString());
 
@@ -518,14 +475,8 @@ public partial class TTMeetingTaskDetail : System.Web.UI.Page
         if (strContent == "")
         {
             strContent = "InProgress";
-            if (strIsMobileDevice == "YES")
-            {
-                HT_FinishContent.Text = strContent;
-            }
-            else
-            {
-                HE_FinishContent.Text = strContent;
-            }
+
+            HE_FinishContent.Text = strContent;
         }
 
         strID = LB_AssignID.Text.Trim();
@@ -576,14 +527,8 @@ public partial class TTMeetingTaskDetail : System.Web.UI.Page
         strProjectID = LB_ProjectID.Text.Trim();
         strTaskID = LB_TaskID.Text.Trim();
 
-        if (strIsMobileDevice == "YES")
-        {
-            strContent = HT_FinishContent.Text.Trim();
-        }
-        else
-        {
-            strContent = HE_FinishContent.Text.Trim();
-        }
+
+        strContent = HE_FinishContent.Text.Trim();
 
         intFinishPercent = int.Parse(NB_FinishPercent.Amount.ToString());
 
@@ -592,52 +537,45 @@ public partial class TTMeetingTaskDetail : System.Web.UI.Page
         if (strContent == "")
         {
             strContent = "Completed";
-            if (strIsMobileDevice == "YES")
+
+            HE_FinishContent.Text = strContent;
+
+            strID = LB_AssignID.Text.Trim();
+            strHQL = "from TaskAssignRecord as taskAssignRecord where taskAssignRecord.ID = " + strID;
+            TaskAssignRecordBLL taskAssignRecordBLL = new TaskAssignRecordBLL();
+            IList lst = taskAssignRecordBLL.GetAllTaskAssignRecords(strHQL);
+            TaskAssignRecord taskAssignRecord = (TaskAssignRecord)lst[0];
+
+            taskAssignRecord.OperatorContent = strContent;
+            taskAssignRecord.Status = "Completed";
+
+            taskAssignRecord.ManHour = NB_ManHour.Amount;
+            taskAssignRecord.FinishPercent = intFinishPercent;
+            taskAssignRecord.MakeDate = DateTime.Now;
+
+
+            try
             {
-                HT_FinishContent.Text = strContent;
+                taskAssignRecordBLL.UpdateTaskAssignRecord(taskAssignRecord, int.Parse(strID));
+
+                LoadAssignRecord(strID);
+                ShareClass.UpdateTaskExpenseManHourSummary(strTaskID);
+
+                //当更改任务进度
+                NB_TaskProgress.Amount = ShareClass.UpdateTaskProgress(strTaskID);
+
+                ShareClass.UpdateDailyWork(strUserCode, strProjectID, "Task", strTaskID, strTaskName, strContent);
+
+                TB_Message.Text = strUserName + LanguageHandle.GetWord("WanChengLeNiDeRenWu") + strTaskID + " " + strTaskName;
+
+                ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZWCCGNRYTJDDTXMRZDXMCLYMZL") + "')", true);
+
             }
-            else
+            catch
             {
-                HE_FinishContent.Text = strContent;
+                ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZWCSBJC") + "')", true);
             }
         }
-
-        strID = LB_AssignID.Text.Trim();
-        strHQL = "from TaskAssignRecord as taskAssignRecord where taskAssignRecord.ID = " + strID;
-        TaskAssignRecordBLL taskAssignRecordBLL = new TaskAssignRecordBLL();
-        IList lst = taskAssignRecordBLL.GetAllTaskAssignRecords(strHQL);
-        TaskAssignRecord taskAssignRecord = (TaskAssignRecord)lst[0];
-
-        taskAssignRecord.OperatorContent = strContent;
-        taskAssignRecord.Status = "Completed";
-
-        taskAssignRecord.ManHour = NB_ManHour.Amount;
-        taskAssignRecord.FinishPercent = intFinishPercent;
-        taskAssignRecord.MakeDate = DateTime.Now;
-
-
-        try
-        {
-            taskAssignRecordBLL.UpdateTaskAssignRecord(taskAssignRecord, int.Parse(strID));
-
-            LoadAssignRecord(strID);
-            ShareClass.UpdateTaskExpenseManHourSummary(strTaskID);
-
-            //当更改任务进度
-            NB_TaskProgress.Amount = ShareClass.UpdateTaskProgress(strTaskID);
-
-            ShareClass.UpdateDailyWork(strUserCode, strProjectID, "Task", strTaskID, strTaskName, strContent);
-
-            TB_Message.Text = strUserName + LanguageHandle.GetWord("WanChengLeNiDeRenWu") + strTaskID + " " + strTaskName;
-
-            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZWCCGNRYTJDDTXMRZDXMCLYMZL") + "')", true);
-
-        }
-        catch
-        {
-            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZWCSBJC") + "')", true);
-        }
-    }
 
     protected void BT_TBD_Click(object sender, EventArgs e)
     {
@@ -647,26 +585,15 @@ public partial class TTMeetingTaskDetail : System.Web.UI.Page
         strProjectID = LB_ProjectID.Text.Trim();
         strTaskID = LB_TaskID.Text.Trim();
 
-        if (strIsMobileDevice == "YES")
-        {
-            strContent = HT_FinishContent.Text.Trim();
-        }
-        else
-        {
-            strContent = HE_FinishContent.Text.Trim();
-        }
+
+        strContent = HE_FinishContent.Text.Trim();
 
         if (strContent == "")
         {
             strContent = "Suspended";
-            if (strIsMobileDevice == "YES")
-            {
-                HT_FinishContent.Text = strContent;
-            }
-            else
-            {
-                HE_FinishContent.Text = strContent;
-            }
+
+            HE_FinishContent.Text = strContent;
+
         }
 
         strID = LB_AssignID.Text.Trim();

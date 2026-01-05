@@ -1,6 +1,6 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppMeetingTaskDetail.aspx.cs" Inherits="TTAppMeetingTaskDetail" %>
+Ôªø<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppMeetingTaskDetail.aspx.cs" Inherits="TTAppMeetingTaskDetail" %>
 
-<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
 <%@ Register Assembly="Brettle.Web.NeatUpload" Namespace="Brettle.Web.NeatUpload"
     TagPrefix="Upload" %>
@@ -16,53 +16,6 @@
     <link id="mainCss" href="css/bluelightmain.css" rel="stylesheet" type="text/css" />
     <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />
 
-    <style type="text/css">
-        body {
-            /*margin-top: 5px;*/
-            /*background-image: url(Images/login_bj.jpg);*/
-            background-repeat: repeat-x;
-            font: normal 100% Helvetica, Arial, sans-serif;
-            /* ∑¿÷π∫·œÚπˆ∂Ø */
-            overflow-x: hidden;
-            width: 100%;
-            position: relative;
-        }
-
-        #AboveDiv {
-            max-width: 1024px;
-            width: expression (document.body.clientWidth >= 1024? "1024px" : "auto" ));
-            min-width: 277px;
-            width: expression (document.body.clientWidth <= 277? "277px" : "auto" ));
-        }
-
-        /* –¬‘ˆ£∫∑¿÷π∫·œÚπˆ∂Øµƒ—˘ Ω */
-        center {
-            width: 100%;
-            max-width: 100%;
-            overflow-x: hidden;
-        }
-
-        #AboveTable, .napbox, .npbx, .ajax_tab_menu, .modalPopup {
-            max-width: 100%;
-            overflow-x: hidden;
-        }
-
-        table {
-            max-width: 100%;
-            table-layout: fixed;
-        }
-
-        /* »∑±£ ‰»ÎøÚµ»‘™Àÿ≤ª≥¨≥ˆ»›∆˜ */
-        .npbxs, .mline, .npbtn {
-            max-width: 100%;
-        }
-
-        .CKEditor, .inpu, .NumberBox {
-            max-width: 100%;
-            box-sizing: border-box;
-        }
-    </style>
-
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="js/allAHandler.js"></script>
     <script src="js/My97DatePicker/WdatePicker.js"></script>
@@ -73,28 +26,23 @@
 
     <script src="js/exif.js" type="text/javascript"></script>
     <script type="text/javascript" language="javascript">
-        $(function () { initSwipeBack();// ≥ı ºªØª¨∂Ø∑µªÿπ¶ƒ‹  initSwipeBack();// ≥ı ºªØª¨∂Ø∑µªÿπ¶ƒ‹
+        $(function () {
+            initSwipeBack();// ÂàùÂßãÂåñÊªëÂä®ËøîÂõûÂäüËÉΩ
 
-            //—°‘ÒÕº∆¨∫Û—πÀıÕº∆¨
-            $("#TabContainer1_TabPanel2_AttachFile").change(function () {
-
-                //alert("KKK");
-
-                //console.log(this.files[0]);
+            //ÈÄâÊã©ÂõæÁâáÂêéÂéãÁº©ÂõæÁâá
+            $("#AttachFile").change(function () {
                 var _ua = window.navigator.userAgent;
                 var _simpleFile = this.files[0];
-                //≈–∂œ «∑ÒŒ™Õº∆¨
+                //Âà§Êñ≠ÊòØÂê¶‰∏∫ÂõæÁâá
                 if (!/\/(?:jpeg|png|gif|png|bmp)/i.test(_simpleFile.type)) return;
 
-                //≤Âº˛exif.jsªÒ»°iosÕº∆¨µƒ∑ΩœÚ–≈œ¢
+                //Êèí‰ª∂exif.jsËé∑ÂèñiosÂõæÁâáÁöÑÊñπÂêë‰ø°ÊÅØ
                 var _orientation;
-                //if (_ua.indexOf('iphone') > 0) {
                 EXIF.getData(_simpleFile, function () {
                     _orientation = EXIF.getTag(this, 'Orientation');
                 });
-                //}
 
-                //1.∂¡»°Œƒº˛£¨Õ®π˝FileReader£¨Ω´Õº∆¨Œƒº˛◊™ªØŒ™DataURL£¨º¥data:img/png;base64£¨ø™Õ∑µƒurl£¨ø…“‘÷±Ω”∑≈‘⁄image.src÷–;
+                //1.ËØªÂèñÊñá‰ª∂ÔºåÈÄöËøáFileReaderÔºåÂ∞ÜÂõæÁâáÊñá‰ª∂ËΩ¨Âåñ‰∏∫DataURLÔºåÂç≥data:img/png;base64ÔºåÂºÄÂ§¥ÁöÑurlÔºåÂèØ‰ª•Áõ¥Êé•ÊîæÂú®image.src‰∏≠;
                 var _reader = new FileReader(),
                     _img = new Image(),
                     _url;
@@ -102,7 +50,7 @@
                 _reader.onload = function () {
                     _img.onload = function () {
                         var data = compress(_img);
-                        $("#TabContainer1_TabPanel2_imgData").val(compress(_img, _orientation));
+                        $("#imgData").val(compress(_img, _orientation));
                     };
                     _url = this.result;
                     _img.src = _url;
@@ -121,7 +69,7 @@
                 var url = $(this).attr("href");
                 var click = $(this).attr("onclick");
 
-                //≈–∂œ «∑Ò «tree£¨ªÚ’ﬂ∑÷“≥
+                //Âà§Êñ≠ÊòØÂê¶ÊòØtreeÔºåÊàñËÄÖÂàÜÈ°µ
                 if (click != "" && click != null && click != undefined) {
                     if (click.toLowerCase().indexOf("treeview") == -1 && url.toLowerCase().indexOf("lbt_delete") == -1) {
                         $(this).click(function () {
@@ -131,8 +79,6 @@
                                 popShowByURL(url, title, 800, 600, window.location);
                                 return false;
                             }
-
-                            //top.frames[0].frames[2].parent.frames["rightTabFrame"].popShowByURL(url, 800, 600,window.location);
 
                         });
                     }
@@ -147,8 +93,6 @@
                                 return false;
                             }
 
-                            //top.frames[0].frames[2].parent.frames["rightTabFrame"].popShowByURL(url, 800, 600,window.location);
-
                         }
                     });
                 }
@@ -157,24 +101,24 @@
         }
 
         /**
-         * º∆À„Õº∆¨µƒ≥ﬂ¥Á£¨∏˘æ›≥ﬂ¥Á—πÀı
-         * 1. iphone ÷ª˙html5…œ¥´Õº∆¨∑ΩœÚŒ Ã‚£¨ΩË÷˙exif.js
-         * 2. ∞≤◊øUC‰Ø¿¿∆˜≤ª÷ß≥÷ new Blob()£¨ π”√BlobBuilder
-         * @param {Object} _img     Õº∆¨
-         * @param {Number} _orientation ’’∆¨–≈œ¢
-         * @return {String}       —πÀı∫Ûbase64∏Ò ΩµƒÕº∆¨
+         * ËÆ°ÁÆóÂõæÁâáÁöÑÂ∞∫ÂØ∏ÔºåÊ†πÊçÆÂ∞∫ÂØ∏ÂéãÁº©
+         * 1. iphoneÊâãÊú∫html5‰∏ä‰º†ÂõæÁâáÊñπÂêëÈóÆÈ¢òÔºåÂÄüÂä©exif.js
+         * 2. ÂÆâÂçìUCÊµèËßàÂô®‰∏çÊîØÊåÅ new Blob()Ôºå‰ΩøÁî®BlobBuilder
+         * @param {Object} _img     ÂõæÁâá
+         * @param {Number} _orientation ÁÖßÁâá‰ø°ÊÅØ
+         * @return {String}       ÂéãÁº©Âêébase64Ê†ºÂºèÁöÑÂõæÁâá
          */
         function compress(_img, _orientation) {
-            //2.º∆À„∑˚∫œƒø±Í≥ﬂ¥ÁøÌ∏ﬂ÷µ£¨»Ù…œ¥´Õº∆¨µƒøÌ∏ﬂ∂º¥Û”⁄ƒø±ÍÕº£¨∂‘ƒø±ÍÕºµ»±»—πÀı£ª»Áπ˚”–“ª±ﬂ–°”⁄£¨∂‘…œ¥´Õº∆¨µ»±»∑≈¥Û°£
-            var _goalWidth = 640,         //ƒø±ÍøÌ∂»
-                _goalHeight = 480,         //ƒø±Í∏ﬂ∂»
-                _imgWidth = _img.naturalWidth,   //Õº∆¨øÌ∂»
-                _imgHeight = _img.naturalHeight,  //Õº∆¨∏ﬂ∂»
-                _tempWidth = _imgWidth,      //∑≈¥ÛªÚÀı–°∫Ûµƒ¡Ÿ ±øÌ∂»
-                _tempHeight = _imgHeight,     //∑≈¥ÛªÚÀı–°∫Ûµƒ¡Ÿ ±øÌ∂»
-                _r = 0;              //—πÀı±»
+            //2.ËÆ°ÁÆóÁ¨¶ÂêàÁõÆÊ†áÂ∞∫ÂØ∏ÂÆΩÈ´òÂÄºÔºåËã•‰∏ä‰º†ÂõæÁâáÁöÑÂÆΩÈ´òÈÉΩÂ§ß‰∫éÁõÆÊ†áÂõæÔºåÂØπÁõÆÊ†áÂõæÁ≠âÊØîÂéãÁº©ÔºõÂ¶ÇÊûúÊúâ‰∏ÄËæπÂ∞è‰∫éÔºåÂØπ‰∏ä‰º†ÂõæÁâáÁ≠âÊØîÊîæÂ§ß„ÄÇ
+            var _goalWidth = 640,         //ÁõÆÊ†áÂÆΩÂ∫¶
+                _goalHeight = 480,         //ÁõÆÊ†áÈ´òÂ∫¶
+                _imgWidth = _img.naturalWidth,   //ÂõæÁâáÂÆΩÂ∫¶
+                _imgHeight = _img.naturalHeight,  //ÂõæÁâáÈ´òÂ∫¶
+                _tempWidth = _imgWidth,      //ÊîæÂ§ßÊàñÁº©Â∞èÂêéÁöÑ‰∏¥Êó∂ÂÆΩÂ∫¶
+                _tempHeight = _imgHeight,     //ÊîæÂ§ßÊàñÁº©Â∞èÂêéÁöÑ‰∏¥Êó∂ÂÆΩÂ∫¶
+                _r = 0;              //ÂéãÁº©ÊØî
 
-            if (_imgWidth > _goalWidth || _imgHeight > _goalHeight) {//øÌªÚ∏ﬂ¥Û”⁄ƒø±ÍÕº£¨–Ëµ»±»—πÀı
+            if (_imgWidth > _goalWidth || _imgHeight > _goalHeight) {//ÂÆΩÊàñÈ´òÂ§ß‰∫éÁõÆÊ†áÂõæÔºåÈúÄÁ≠âÊØîÂéãÁº©
                 _r = _imgWidth / _goalWidth;
                 if (_imgHeight / _goalHeight < _r) {
                     _r = _imgHeight / _goalHeight;
@@ -183,7 +127,7 @@
                 _tempHeight = Math.ceil(_imgHeight / _r);
             }
 
-            //3.¿˚”√canvas∂‘Õº∆¨Ω¯––≤√ºÙ£¨µ»±»∑≈¥ÛªÚÀı–°∫ÛΩ¯––æ”÷–≤√ºÙ
+            //3.Âà©Áî®canvasÂØπÂõæÁâáËøõË°åË£ÅÂâ™ÔºåÁ≠âÊØîÊîæÂ§ßÊàñÁº©Â∞èÂêéËøõË°åÂ±Ö‰∏≠Ë£ÅÂâ™
             var _canvas = $("#myCanvas")[0];
 
             var _context = _canvas.getContext('2d');
@@ -191,15 +135,15 @@
             _canvas.height = _tempHeight;
             var _degree;
 
-            //ios bug£¨iphone ÷ª˙…œø…ƒ‹ª·”ˆµΩÕº∆¨∑ΩœÚ¥ÌŒÛŒ Ã‚
+            //ios bugÔºåiphoneÊâãÊú∫‰∏äÂèØËÉΩ‰ºöÈÅáÂà∞ÂõæÁâáÊñπÂêëÈîôËØØÈóÆÈ¢ò
             switch (_orientation) {
-                //iphone∫·∆¡≈ƒ…„£¨¥À ±homeº¸‘⁄◊Û≤‡
+                //iphoneÊ®™Â±èÊãçÊëÑÔºåÊ≠§Êó∂homeÈîÆÂú®Â∑¶‰æß
                 case 3:
                     _degree = 180;
                     _tempWidth = -_imgWidth;
                     _tempHeight = -_imgHeight;
                     break;
-                //iphone ˙∆¡≈ƒ…„£¨¥À ±homeº¸‘⁄œ¬∑Ω(’˝≥£ƒ√ ÷ª˙µƒ∑ΩœÚ)
+                //iphoneÁ´ñÂ±èÊãçÊëÑÔºåÊ≠§Êó∂homeÈîÆÂú®‰∏ãÊñπ(Ê≠£Â∏∏ÊãøÊâãÊú∫ÁöÑÊñπÂêë)
                 case 6:
                     _canvas.width = _imgHeight;
                     _canvas.height = _imgWidth;
@@ -207,7 +151,7 @@
                     _tempWidth = _imgWidth;
                     _tempHeight = -_imgHeight;
                     break;
-                //iphone ˙∆¡≈ƒ…„£¨¥À ±homeº¸‘⁄…œ∑Ω
+                //iphoneÁ´ñÂ±èÊãçÊëÑÔºåÊ≠§Êó∂homeÈîÆÂú®‰∏äÊñπ
                 case 8:
                     _canvas.width = _imgHeight;
                     _canvas.height = _imgWidth;
@@ -222,28 +166,28 @@
             } else {
                 _context.drawImage(_img, 0, 0, _tempWidth, _tempHeight);
             }
-            //toDataURL∑Ω∑®£¨ø…“‘ªÒ»°∏Ò ΩŒ™"data:image/png;base64,***"µƒbase64Õº∆¨–≈œ¢£ª
+            //toDataURLÊñπÊ≥ïÔºåÂèØ‰ª•Ëé∑ÂèñÊ†ºÂºè‰∏∫"data:image/png;base64,***"ÁöÑbase64ÂõæÁâá‰ø°ÊÅØÔºõ
             var _data = _canvas.toDataURL('image/jpeg');
             return _data;
         }
 
         function upload() {
             $.ajax({
-                //Ã·Ωª ˝æ›µƒ¿‡–Õ POST GET
+                //Êèê‰∫§Êï∞ÊçÆÁöÑÁ±ªÂûã POST GET
                 type: "POST",
-                //Ã·ΩªµƒÕ¯÷∑
+                //Êèê‰∫§ÁöÑÁΩëÂùÄ
                 url: "Handler/UploadPhotoToServerSite.ashx",
-                //Ã·Ωªµƒ ˝æ›
-                data: { FileData: $("#TabContainer1_TabPanel2_imgData").val(), FileName: $("#TabContainer1_TabPanel2_AttachFile").val() },
-                //∑µªÿ ˝æ›µƒ∏Ò Ω
-                //‘⁄«Î«Û÷Æ«∞µ˜”√µƒ∫Ø ˝
+                //Êèê‰∫§ÁöÑÊï∞ÊçÆ
+                data: { FileData: $("#imgData").val(), FileName: $("#AttachFile").val() },
+                //ËøîÂõûÊï∞ÊçÆÁöÑÊ†ºÂºè
+                //Âú®ËØ∑Ê±Ç‰πãÂâçË∞ÉÁî®ÁöÑÂáΩÊï∞
                 beforeSend: function () {
                     $("#IMG_Waiting").show();
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                     console.log(XMLHttpRequest);
                 },
-                //≥…π¶∑µªÿ÷Æ∫Ûµ˜”√µƒ∫Ø ˝
+                //ÊàêÂäüËøîÂõû‰πãÂêéË∞ÉÁî®ÁöÑÂáΩÊï∞
                 success: function (data) {
                     if (data.indexOf("img") > 0) {
 
@@ -253,7 +197,7 @@
                         alert(data);
                     }
                 },
-                //µ˜”√÷¥––∫Ûµ˜”√µƒ∫Ø ˝
+                //Ë∞ÉÁî®ÊâßË°åÂêéË∞ÉÁî®ÁöÑÂáΩÊï∞
                 complete: function (XMLHttpRequest, textStatus) {
                     $("#IMG_Waiting").hide();
                 }
@@ -261,16 +205,22 @@
         }
     </script>
 </head>
-<body><div id="swipeFeedback" class="swipe-feedback"><asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" /></div> <!-- ª¨∂Ø∑¥¿°≤„ -->
+<!-- ‰øÆÊîπÁÇπ1Ôºö‰∏∫bodyÊ†áÁ≠æÊ∑ªÂä†class="napbac" -->
+<body class="napbac">
+    <div id="swipeFeedback" class="swipe-feedback">
+        <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" />
+    </div>
+    <!-- ÊªëÂä®ÂèçÈ¶àÂ±Ç -->
 
     <script type="text/javascript" language="javascript">
 
         var txtQrCode = '#<%=TB_QrCode.ClientID%>';
         var btnSaveQrCode = '#<%=BT_SaveQrCode.ClientID%>';
 
-        var loadingIndex; //Ã· æ≤„index
-        var isWxConfigReady = false; //config «∑Ò—È÷§Õ®π˝
-        $(function () { initSwipeBack();// ≥ı ºªØª¨∂Ø∑µªÿπ¶ƒ‹  initSwipeBack();// ≥ı ºªØª¨∂Ø∑µªÿπ¶ƒ‹
+        var loadingIndex; //ÊèêÁ§∫Â±Çindex
+        var isWxConfigReady = false; //configÊòØÂê¶È™åËØÅÈÄöËøá
+        $(function () {
+            initSwipeBack();// ÂàùÂßãÂåñÊªëÂä®ËøîÂõûÂäüËÉΩ  initSwipeBack();// ÂàùÂßãÂåñÊªëÂä®ËøîÂõûÂäüËÉΩ
 
             try {
                 if ('<%=signModel.appId %>' == '') {
@@ -286,7 +236,7 @@
                 });
                 wxApi();
 
-                //…æ≥˝“‚Õ‚µØ≥ˆ≤„
+                //Âà†Èô§ÊÑèÂ§ñÂºπÂá∫Â±Ç
                 if (isWxConfigReady == false) {
                     var m = document.getElementById("layui-layer1");
                     m.parentNode.removeChild(m);
@@ -306,11 +256,11 @@
                 // , content: 'ImagesSkin/Processing.gif'
             });
             wx.config({
-                debug: false, // ø™∆Ùµ˜ ‘ƒ£ Ω,µ˜”√µƒÀ˘”–apiµƒ∑µªÿ÷µª·‘⁄øÕªß∂Àalert≥ˆ¿¥£¨»Ù“™≤Èø¥¥´»Îµƒ≤Œ ˝£¨ø…“‘‘⁄pc∂À¥Úø™£¨≤Œ ˝–≈œ¢ª·Õ®π˝log¥Ú≥ˆ£¨Ωˆ‘⁄pc∂À ±≤≈ª·¥Ú”°°£
-                appId: '<%=signModel.appId %>', // ±ÿÃÓ£¨π´÷⁄∫≈µƒŒ®“ª±Í ∂
-                timestamp: '<%=signModel.time %>', // ±ÿÃÓ£¨…˙≥…«©√˚µƒ ±º‰¥¡(ÀÊ±„ÃÓ–¥)
-                nonceStr: '<%=signModel.randstr %>', // ±ÿÃÓ£¨…˙≥…«©√˚µƒÀÊª˙¥Æ(ÀÊ±„ÃÓ–¥)
-                signature: '<%=signModel.signstr %>', // ±ÿÃÓ£¨«©√˚£¨º˚∏Ω¬º1
+                debug: false, // ÂºÄÂêØË∞ÉËØïÊ®°Âºè,Ë∞ÉÁî®ÁöÑÊâÄÊúâapiÁöÑËøîÂõûÂÄº‰ºöÂú®ÂÆ¢Êà∑Á´ØalertÂá∫Êù•ÔºåËã•Ë¶ÅÊü•Áúã‰º†ÂÖ•ÁöÑÂèÇÊï∞ÔºåÂèØ‰ª•Âú®pcÁ´ØÊâìÂºÄÔºåÂèÇÊï∞‰ø°ÊÅØ‰ºöÈÄöËøálogÊâìÂá∫Ôºå‰ªÖÂú®pcÁ´ØÊó∂Êâç‰ºöÊâìÂç∞„ÄÇ
+                appId: '<%=signModel.appId %>', // ÂøÖÂ°´ÔºåÂÖ¨‰ºóÂè∑ÁöÑÂîØ‰∏ÄÊ†áËØÜ
+                timestamp: '<%=signModel.time %>', // ÂøÖÂ°´ÔºåÁîüÊàêÁ≠æÂêçÁöÑÊó∂Èó¥Êà≥(Èöè‰æøÂ°´ÂÜô)
+                nonceStr: '<%=signModel.randstr %>', // ÂøÖÂ°´ÔºåÁîüÊàêÁ≠æÂêçÁöÑÈöèÊú∫‰∏≤(Èöè‰æøÂ°´ÂÜô)
+                signature: '<%=signModel.signstr %>', // ÂøÖÂ°´ÔºåÁ≠æÂêçÔºåËßÅÈôÑÂΩï1
 
                 jsApiList: [
                     'checkJsApi',
@@ -356,34 +306,34 @@
                     //'onVoicePlayEnd',
                     //'translateVoice',
 
-                ] // ±ÿÃÓ£¨–Ë“™ π”√µƒJSΩ”ø⁄¡–±Ì£¨À˘”–JSΩ”ø⁄¡–±Ìº˚∏Ω¬º2
+                ] // ÂøÖÂ°´ÔºåÈúÄË¶Å‰ΩøÁî®ÁöÑJSÊé•Âè£ÂàóË°®ÔºåÊâÄÊúâJSÊé•Âè£ÂàóË°®ËßÅÈôÑÂΩï2
             });
 
             wx.ready(function () {
                 layer.close(loadingIndex);
-                // config–≈œ¢—È÷§∫Ûª·÷¥––ready∑Ω∑®£¨À˘”–Ω”ø⁄µ˜”√∂º±ÿ–Î‘⁄configΩ”ø⁄ªÒµ√Ω·π˚÷Æ∫Û£¨config «“ª∏ˆøÕªß∂Àµƒ“Ï≤Ω≤Ÿ◊˜£¨À˘“‘»Áπ˚–Ë“™‘⁄“≥√Êº”‘ÿ ±æÕµ˜”√œ‡πÿΩ”ø⁄£¨‘Ú–Î∞—œ‡πÿΩ”ø⁄∑≈‘⁄ready∫Ø ˝÷–µ˜”√¿¥»∑±£’˝»∑÷¥––°£∂‘”⁄”√ªß¥•∑¢ ±≤≈µ˜”√µƒΩ”ø⁄£¨‘Úø…“‘÷±Ω”µ˜”√£¨≤ª–Ë“™∑≈‘⁄ready∫Ø ˝÷–°£
+                // config‰ø°ÊÅØÈ™åËØÅÂêé‰ºöÊâßË°åreadyÊñπÊ≥ïÔºåÊâÄÊúâÊé•Âè£Ë∞ÉÁî®ÈÉΩÂøÖÈ°ªÂú®configÊé•Âè£Ëé∑ÂæóÁªìÊûú‰πãÂêéÔºåconfigÊòØ‰∏Ä‰∏™ÂÆ¢Êà∑Á´ØÁöÑÂºÇÊ≠•Êìç‰ΩúÔºåÊâÄ‰ª•Â¶ÇÊûúÈúÄË¶ÅÂú®È°µÈù¢Âä†ËΩΩÊó∂Â∞±Ë∞ÉÁî®Áõ∏ÂÖ≥Êé•Âè£ÔºåÂàôÈ°ªÊääÁõ∏ÂÖ≥Êé•Âè£ÊîæÂú®readyÂáΩÊï∞‰∏≠Ë∞ÉÁî®Êù•Á°Æ‰øùÊ≠£Á°ÆÊâßË°å„ÄÇÂØπ‰∫éÁî®Êà∑Ëß¶ÂèëÊó∂ÊâçË∞ÉÁî®ÁöÑÊé•Âè£ÔºåÂàôÂèØ‰ª•Áõ¥Êé•Ë∞ÉÁî®Ôºå‰∏çÈúÄË¶ÅÊîæÂú®readyÂáΩÊï∞‰∏≠„ÄÇ
                 isWxConfigReady = true;
             });
             wx.error(function (res) {
                 layer.close(loadingIndex);
                 alert(JSON.stringify(res));
-                // config–≈œ¢—È÷§ ß∞‹ª·÷¥––error∫Ø ˝£¨»Á«©√˚π˝∆⁄µº÷¬—È÷§ ß∞‹£¨æﬂÃÂ¥ÌŒÛ–≈œ¢ø…“‘¥Úø™configµƒdebugƒ£ Ω≤Èø¥£¨“≤ø…“‘‘⁄∑µªÿµƒres≤Œ ˝÷–≤Èø¥£¨∂‘”⁄SPAø…“‘‘⁄’‚¿Ô∏¸–¬«©√˚°£
+                // config‰ø°ÊÅØÈ™åËØÅÂ§±Ë¥•‰ºöÊâßË°åerrorÂáΩÊï∞ÔºåÂ¶ÇÁ≠æÂêçËøáÊúüÂØºËá¥È™åËØÅÂ§±Ë¥•ÔºåÂÖ∑‰ΩìÈîôËØØ‰ø°ÊÅØÂèØ‰ª•ÊâìÂºÄconfigÁöÑdebugÊ®°ÂºèÊü•ÁúãÔºå‰πüÂèØ‰ª•Âú®ËøîÂõûÁöÑresÂèÇÊï∞‰∏≠Êü•ÁúãÔºåÂØπ‰∫éSPAÂèØ‰ª•Âú®ËøôÈáåÊõ¥Êñ∞Á≠æÂêç„ÄÇ
             });
         }
 
         function qrcode() {
             wx.scanQRCode({
-                needResult: 1, // ƒ¨»œŒ™0£¨…®√ËΩ·π˚”…Œ¢–≈¥¶¿Ì£¨1‘Ú÷±Ω”∑µªÿ…®√ËΩ·π˚£¨
-                scanType: ["qrCode", "barCode"], // ø…“‘÷∏∂®…®∂˛Œ¨¬Îªπ «“ªŒ¨¬Î£¨ƒ¨»œ∂˛’ﬂ∂º”–
+                needResult: 1, // ÈªòËÆ§‰∏∫0ÔºåÊâ´ÊèèÁªìÊûúÁî±ÂæÆ‰ø°Â§ÑÁêÜÔºå1ÂàôÁõ¥Êé•ËøîÂõûÊâ´ÊèèÁªìÊûúÔºå
+                scanType: ["qrCode", "barCode"], // ÂèØ‰ª•ÊåáÂÆöÊâ´‰∫åÁª¥Á†ÅËøòÊòØ‰∏ÄÁª¥Á†ÅÔºåÈªòËÆ§‰∫åËÄÖÈÉΩÊúâ
                 success: function (res) {
-                    var result = res.resultStr; // µ±needResult Œ™ 1  ±£¨…®¬Î∑µªÿµƒΩ·π˚
+                    var result = res.resultStr; // ÂΩìneedResult ‰∏∫ 1 Êó∂ÔºåÊâ´Á†ÅËøîÂõûÁöÑÁªìÊûú
                     if (typeof (result) != "undefined") {
 
                         result = result.substring(result.indexOf(',') + 1, result.length);
 
-                        //Œƒ±æøÚ∏≥÷µ
+                        //ÊñáÊú¨Ê°ÜËµãÂÄº
                         $(txtQrCode).val(result);
-                        //µ„ª˜≤È—Ø∞¥≈•
+                        //ÁÇπÂáªÊü•ËØ¢ÊåâÈíÆ
                         $(btnSaveQrCode).click();
                     }
                 }
@@ -395,348 +345,275 @@
     <canvas id="myCanvas" style="display: none;"></canvas>
     <center>
         <form id="form1" runat="server" method="post" enctype="multipart/form-data">
-            <%--  <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">--%>
             <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">
             </asp:ScriptManager>
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>
 
-                    <table id="AboveTable" cellpadding="0" width="100%" cellspacing="0" class="bian">
+                    <table cellpadding="0" cellspacing="0" width="100%" class="bian">
                         <tr>
-                            <td>
-
-                                <table cellpadding="0" cellspacing="0" width="100%">
+                            <td colspan="2" height="31" class="page_topbj">
+                                <table width="96%" border="0" class="ItemAlignLeft" cellpadding="0" cellspacing="0">
                                     <tr>
-                                        <td height="31" class="page_topbj">
-                                            <table width="94%" border="0" class="ItemAlignLeft" cellpadding="0" cellspacing="0">
-                                                <tr>
-                                                    <td class="ItemAlignLeft">
-                                                        <%-- <a href="TTAppTask.aspx" onclick="javascript:document.getElementById('IMG_Waiting').style.display = 'block';">--%>
-                                                        <a id="aAPPBackPriorPage" href="javascript:window.history.go(-1)" target="_top" onclick="javascript:document.getElementById('IMG_Waiting').style.display = 'block';">
-                                                            <table width="245" border="0" class="ItemAlignLeft" cellpadding="0" cellspacing="0">
-                                                                <tr>
-                                                                    <td width="29">
-                                                                        <img src="ImagesSkin/return.png" alt="" />
-                                                                    </td>
-                                                                    <td background="ImagesSkin/main_top_bj.jpg" class="titleziAPP">
-                                                                        <asp:Label runat="server" Text="<%$ Resources:lang,Back%>" />
-                                                                    </td>
-                                                                    <td width="5">
-                                                                        <%-- <img src="ImagesSkin/main_top_r.jpg" width="5" height="31" />--%>
-                                                                    </td>
-                                                                </tr>
-                                                            </table>
-                                                            <img id="IMG_Waiting" src="Images/Processing.gif" alt="«Î…‘∫Ú£¨¥¶¿Ì÷–..." style="display: none;" />
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td valign="top">
-                                            <table cellpadding="0" cellspacing="0" width="100%">
-                                                <tr>
-                                                    <td>
-                                                        <table style="width: 100%;">
-                                                            <tr>
-                                                                <td style="text-align: left; padding-left: 5px;">
-                                                                    <span class="style1">
-                                                                        <asp:Label ID="Label2" runat="server" Text="<%$ Resources:lang,RenWu%>"></asp:Label>:<asp:Label ID="LB_TaskID" runat="server"></asp:Label><asp:Label ID="LB_Task" runat="server"></asp:Label></span>
-                                                                </td>
-                                                            </tr>
-
-                                                            <tr>
-                                                                <td class="ItemAlignLeft">
-                                                                    <cc1:TabContainer CssClass="ajax_tab_menu" ID="TabContainer1" runat="server" ActiveTabIndex="0" Width="98%">
-                                                                        <cc1:TabPanel ID="TabPanel2" runat="server" HeaderText="TaskHandling">
-                                                                            <HeaderTemplate>
-                                                                                <asp:Label ID="Label3" runat="server" Text="<%$ Resources:lang,RenWuChuLi%>"></asp:Label>
-                                                                            </HeaderTemplate>
-                                                                            <ContentTemplate>
-
-
-                                                                                <table width="100%" cellpadding="3" cellspacing="0">
-                                                                                    <tr>
-                                                                                        <td>
-                                                                                            <div class="napbox">
-                                                                                                <div class="npbx">
-                                                                                                    <div class="cline"></div>
-                                                                                                    <div class="npbxs">
-                                                                                                        <h3>
-                                                                                                            <asp:HyperLink ID="HL_StartupBusinessForm" runat="server" Text="<%$ Resources:lang,XiangGuanYeWuDan %>"></asp:HyperLink>
-
-                                                                                                            <asp:HyperLink ID="HL_GoodsApplication" runat="server" Text="<%$ Resources:lang,LiaoPingLingYong %>"></asp:HyperLink>
-
-                                                                                                           <asp:Image ID="IMG_QrCode" runat="server" CssClass="inpuQrCode"  onclick="qrcode()"  Width="16px" />
-
-                                                                                                            <asp:Button ID="BT_SaveQrCode" runat="server" Style="display: none;" CssClass="inpu" Text="<%$ Resources:lang,BaoCun %>" OnClick="BT_SaveQrCode_Click" />
-                                                                                                           
-                                                                                                            <asp:TextBox ID="TB_QrCode" runat="server" Style="display: none;"></asp:TextBox>
-
-                                                                                                        </h3>
-
-                                                                                                        <div class="mline">
-                                                                                                            <h4>
-                                                                                                                <asp:Label ID="Label5" runat="server" Text="<%$ Resources:lang,GongShi2 %>"></asp:Label>
-                                                                                                            </h4>
-                                                                                                            <NickLee:NumberBox ID="NB_ManHour" runat="server" MaxAmount="1000000000000" MinAmount="-1000000000000" OnBlur="" OnFocus="" OnKeyPress="" PositiveColor="" Width="99%">0.00</NickLee:NumberBox>
-                                                                                                        </div>
-                                                                                                        <div class="mline">
-                                                                                                            <h4>
-                                                                                                                <asp:Label ID="Label4" runat="server" Text="<%$ Resources:lang,FeiYong %>" Visible="False"></asp:Label>
-                                                                                                            </h4>
-                                                                                                            <NickLee:NumberBox ID="TB_Expense" runat="server" MaxAmount="1000000000000" MinAmount="-1000000000000" OnBlur="" OnFocus="" OnKeyPress="" PositiveColor="" Visible="False" Width="99%">0.00</NickLee:NumberBox>
-                                                                                                        </div>
-                                                                                                        <div class="mline">
-                                                                                                            <h4>
-                                                                                                                <asp:Label ID="Label6" runat="server" Text="<%$ Resources:lang,JinDu %>"></asp:Label>
-                                                                                                            </h4>
-                                                                                                            <NickLee:NumberBox ID="NB_FinishPercent" runat="server" MaxAmount="1000000000000" MinAmount="-1000000000000" OnBlur="" OnFocus="" OnKeyPress="" PositiveColor="" Precision="0" Width="94%">0</NickLee:NumberBox>
-                                                                                                            <asp:Label ID="Label1" runat="server" Font-Bold="True" Text="%"></asp:Label>
-                                                                                                        </div>
-                                                                                                        <div class="mline">
-                                                                                                            <h4>
-                                                                                                                <asp:Label ID="LB_TaskProgress" runat="server" Text="<%$ Resources:lang,ZhengTi %>"></asp:Label></h4>
-                                                                                                            <NickLee:NumberBox MaxAmount="1000000000000" MinAmount="-1000000000000" ID="NB_TaskProgress" runat="server" OnBlur="" OnFocus="" OnKeyPress="" Enabled="False"
-                                                                                                                PositiveColor="" Precision="0" Width="94%">0</NickLee:NumberBox><asp:Label ID="Label52" runat="server" Font-Bold="True" Text="%"></asp:Label>
-                                                                                                        </div>
-                                                                                                        <div class="mline">
-                                                                                                            <h4>
-                                                                                                                <asp:Label ID="LB_UnitName" runat="server"></asp:Label></h4>
-                                                                                                            <asp:Label ID="Label47" runat="server" Text="<%$ Resources:lang,FeiYong %>" Visible="False"></asp:Label>
-                                                                                                            <NickLee:NumberBox ID="NumberBox4" runat="server" MaxAmount="1000000000000" MinAmount="-1000000000000" OnBlur="" OnFocus="" OnKeyPress="" PositiveColor="" Width="99%" Visible="False">0.00</NickLee:NumberBox>
-                                                                                                        </div>
-                                                                                                    </div>
-
-
-
-                                                                                                    <div class="npbxs">
-
-                                                                                                        <h3>
-                                                                                                            <asp:Label ID="Label7" runat="server" Text="<%$ Resources:lang,ZongJie %>"></asp:Label>
-
-                                                                                                        </h3>
-                                                                                                        <br />
-                                                                                                        <CKEditor:CKEditorControl ID="HE_FinishContent" runat="server" Toolbar="" Width="99%" Height="170px" Visible="False"></CKEditor:CKEditorControl>
-                                                                                                        <CKEditor:CKEditorControl ID="HT_FinishContent" runat="server" Toolbar="" Width="99%" Height="150px" Visible="False" />
-                                                                                                        <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional">
-                                                                                                            <ContentTemplate>
-                                                                                                                <div>
-                                                                                                                    <Upload:InputFile ID="AttachFile" runat="server" name="photo" Accept="image/*;capture=camera" Width="180px" />
-                                                                                                                    <input type="hidden" val="" id="imgData" runat="server" />&#160;<input type="button" id="BtnUP" onclick="upload()" value="Upload" />&nbsp;
-                                                                                                        <img id="IMG_Uploading" src="Images/Processing.gif" alt="«Î…‘∫Ú£¨¥¶¿Ì÷–..." style="display: none;" /><br />
-                                                                                                                </div>
-                                                                                                            </ContentTemplate>
-                                                                                                        </asp:UpdatePanel>
-
-                                                                                                        <div class="manyspan" style="display: none;">
-
-                                                                                                            <asp:CheckBox ID="CB_ReturnMsg" runat="server" Font-Bold="False" Text="<%$ Resources:lang,FaXinXi %>" />
-                                                                                                            <asp:CheckBox ID="CB_ReturnMail" runat="server" Font-Bold="False" Text="<%$ Resources:lang,FaYouJian %>" />
-                                                                                                            <asp:Label ID="Label8" runat="server" Text="<%$ Resources:lang,TongZhiFenPaiRen %>"></asp:Label>
-                                                                                                            <asp:TextBox ID="TB_Message" runat="server" Width="45%"></asp:TextBox>
-                                                                                                            <asp:Button ID="BT_Send" runat="server" CssClass="inpu" OnClick="BT_Send_Click" Text="<%$ Resources:lang,FaSong %>" />
-                                                                                                            <asp:Label ID="LB_AssignID" runat="server" Visible="False"></asp:Label><asp:Label ID="LB_RouteNumber" runat="server" Visible="False"></asp:Label>
-                                                                                                        </div>
-
-                                                                                                        <div class="npbtn">
-
-
-                                                                                                            <asp:Button ID="BT_Activity" runat="server" CssClass="inpu" OnClick="BT_Activity_Click" Text="<%$ Resources:lang,BaoCun %>" />
-                                                                                                            <asp:Button ID="BT_Finish" runat="server" CssClass="inpu" Font-Bold="True" OnClick="BT_Finish_Click" Text="<%$ Resources:lang,WanChengTiJiao %>" />
-                                                                                                            <asp:Button ID="BT_TBD" runat="server" CssClass="inpu" Visible="False" OnClick="BT_TBD_Click" Text="<%$ Resources:lang,GuaQi %>" />
-                                                                                                            <asp:Button ID="BT_CloseTask" runat="server" CssClass="inpu" Visible="False" Enabled="False" OnClick="BT_CloseTask_Click" Text="<%$ Resources:lang,GuanBiCiRenWu %>" />
-                                                                                                            <asp:Button ID="BT_ActiveTask" runat="server" CssClass="inpu" Visible="False" Enabled="False" OnClick="BT_ActiveTask_Click" Text="<%$ Resources:lang,JiHuoCiRenWu %>" />
-
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </td>
-                                                                                    </tr>
-                                                                                </table>
-
-                                                                            </ContentTemplate>
-                                                                        </cc1:TabPanel>
-                                                                        <cc1:TabPanel ID="TabPanel1" runat="server" HeaderText="ºÃ–¯∑÷≈…">
-                                                                            <HeaderTemplate>
-                                                                                <asp:Label ID="Label20" runat="server" Text="<%$ Resources:lang,JiXuFenPai%>"></asp:Label>
-                                                                            </HeaderTemplate>
-                                                                            <ContentTemplate>
-
-                                                                                <table width="100%" cellpadding="3" cellspacing="0">
-                                                                                    <tr>
-                                                                                        <td>
-
-                                                                                            <div class="napbox">
-                                                                                                <div class="npbx">
-                                                                                                    <div class="cline"></div>
-                                                                                                    <div class="npbxs">
-
-
-
-                                                                                                        <div class="mline">
-                                                                                                            <h4>
-                                                                                                                <asp:Label ID="Label10" runat="server" Text="<%$ Resources:lang,LeiXing %>"></asp:Label>
-
-
-                                                                                                            </h4>
-                                                                                                            <asp:DropDownList ID="DL_RecordType" runat="server" DataTextField="Type" DataValueField="Type" Width="99%">
-                                                                                                            </asp:DropDownList>
-
-                                                                                                            <strong>
-
-                                                                                                                <asp:Label ID="LB_ID" runat="server" Visible="False"></asp:Label>
-                                                                                                            </strong>
-
-                                                                                                        </div>
-                                                                                                        <div class="mline">
-                                                                                                            <h4>
-                                                                                                                <asp:Label ID="Label11" runat="server" Text="<%$ Resources:lang,ShouLiRen %>"></asp:Label>
-                                                                                                            </h4>
-                                                                                                            <asp:DropDownList ID="DL_OperatorCode" runat="server" DataTextField="UserName" DataValueField="UserCode" Width="99%">
-                                                                                                            </asp:DropDownList>
-                                                                                                        </div>
-
-
-                                                                                                    </div>
-
-
-
-                                                                                                    <div class="npbxs">
-
-                                                                                                        <h3>
-                                                                                                            <asp:Label ID="Label12" runat="server" Text="<%$ Resources:lang,YaoQiu %>"></asp:Label>
-
-                                                                                                        </h3>
-                                                                                                        <CKEditor:CKEditorControl ID="HE_Operation" runat="server" Height="150px" Visible="False" Width="99%" />
-
-                                                                                                        <CKEditor:CKEditorControl runat="server" ID="HT_Operation" Height="150px" Visible="False" Width="99%" />
-
-                                                                                                        <asp:DropDownList ID="DL_WorkRequest" runat="server" AutoPostBack="True" DataTextField="Operation"
-                                                                                                            DataValueField="Operation" OnSelectedIndexChanged="DL_WorkRequest_SelectedIndexChanged" Width="99%">
-                                                                                                        </asp:DropDownList>
-
-
-
-                                                                                                        <div class="mline">
-                                                                                                            <h4>
-                                                                                                                <asp:Label ID="Label13" runat="server" Text="<%$ Resources:lang,KaiShi %>"></asp:Label>
-
-
-                                                                                                            </h4>
-                                                                                                            <asp:TextBox ID="DLC_BeginDate" runat="server" Width="99%" onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})" onFocus="WdatePicker({lang:'auto'})"></asp:TextBox>
-
-                                                                                                        </div>
-
-                                                                                                        <div class="mline">
-                                                                                                            <h4>
-                                                                                                                <asp:Label ID="Label14" runat="server" Text="<%$ Resources:lang,JieShu %>"></asp:Label>
-
-                                                                                                            </h4>
-                                                                                                            <asp:TextBox ID="DLC_EndDate" runat="server" Width="99%" onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})" onFocus="WdatePicker({lang:'auto'})"></asp:TextBox>
-
-                                                                                                        </div>
-
-
-
-                                                                                                        <div class="manyspan" style="display: none;">
-
-                                                                                                            <asp:CheckBox ID="CB_SendMsg" runat="server" Font-Bold="False" Text="<%$ Resources:lang,FaXinXi %>" />
-
-                                                                                                            <asp:CheckBox ID="CB_SendMail" runat="server" Font-Bold="False" Text="<%$ Resources:lang,FaYouJian %>" />
-
-                                                                                                            <asp:Label ID="Label15" runat="server" Text="<%$ Resources:lang,TongZhiShouLiRen %>"></asp:Label>
-
-                                                                                                            <asp:TextBox ID="TB_AssignMessage" runat="server" Width="45%"></asp:TextBox>
-
-                                                                                                            <asp:Button ID="BT_SendAssignMsg" runat="server" CssClass="inpu" OnClick="BT_SendAssignMsg_Click"
-                                                                                                                Text="<%$ Resources:lang,FaSong %>" />
-
-                                                                                                        </div>
-
-                                                                                                        <div class="npbtn">
-                                                                                                            <asp:Button ID="BT_UpdateAssign" runat="server" CssClass="inpu" Enabled="False" OnClick="BT_UpdateAssign_Click" Text="<%$ Resources:lang,BaoCun %>" />
-                                                                                                            &nbsp;
-                                                                                                            <asp:Button ID="BT_DeleteAssign" runat="server" CssClass="inpu" Enabled="False" OnClick="BT_DeleteAssign_Click" OnClientClick="return confirmContinue(getDeleteMsgByLangCode(), this, event)" Text="<%$ Resources:lang,ShanChu %>" />
-                                                                                                            &nbsp;
-                                                                                                            <asp:Button ID="BT_Assign" runat="server" CssClass="inpu" OnClick="BT_Assign_Click" Text="<%$ Resources:lang,FenPai %>" />
-                                                                                                        </div>
-
-
-                                                                                                        <div class="npbxs">
-                                                                                                            <h3>
-                                                                                                                <strong>
-                                                                                                                    <asp:Label ID="Label16" runat="server" Text="<%$ Resources:lang,CiRenWuFenPaiJiLuZiJiLu %>"></asp:Label>(<span style="font-size: 9pt"><asp:Label ID="Label17" runat="server" Text="<%$ Resources:lang,XuanZeKeZaiShangMianXiuGai %>"></asp:Label>):</span></strong>
-
-                                                                                                            </h3>
-                                                                                                            <asp:DataGrid ID="DataGrid2" runat="server" AutoGenerateColumns="False" CellPadding="4"
-                                                                                                                ShowHeader="false" ForeColor="#333333" GridLines="None" Height="1px" OnItemCommand="DataGrid2_ItemCommand"
-                                                                                                                Width="99%">
-
-                                                                                                                <Columns>
-
-                                                                                                                    <asp:TemplateColumn HeaderText="">
-                                                                                                                        <ItemTemplate>
-
-                                                                                                                            <div class="npb npbs">
-                                                                                                                                <div class="nplef">
-                                                                                                                                    <asp:Button ID="BT_ID" runat="server" Text='<%# DataBinder.Eval(Container.DataItem,"ID") %>'
-                                                                                                                                        CssClass="inpu" />
-                                                                                                                                </div>
-                                                                                                                                <div class="nprig">
-
-                                                                                                                                    <h5><%# DataBinder.Eval(Container.DataItem,"OperatorName") %>  <sub></sub></h5>
-                                                                                                                                    <h6><%# DataBinder.Eval(Container.DataItem,"Operation") %></h6>
-
-                                                                                                                                </div>
-                                                                                                                            </div>
-
-                                                                                                                        </ItemTemplate>
-                                                                                                                    </asp:TemplateColumn>
-
-
-                                                                                                                </Columns>
-
-
-                                                                                                                <%--  <EditItemStyle BackColor="#2461BF" />--%>
-                                                                                                                <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-
-                                                                                                                <%--  <ItemStyle CssClass="itemStyle" />--%>
-
-                                                                                                                <PagerStyle HorizontalAlign="center" Mode="NumericPages" NextPageText="" PrevPageText="" CssClass="notTab" />
-
-                                                                                                                <SelectedItemStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-                                                                                                            </asp:DataGrid>
-
-
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>
-
-                                                                                        </td>
-                                                                                    </tr>
-
-                                                                                </table>
-                                                                            </ContentTemplate>
-                                                                        </cc1:TabPanel>
-                                                                    </cc1:TabContainer>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="ItemAlignLeft"></td>
-                                                            </tr>
-                                                        </table>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                            <br />
+                                        <td class="ItemAlignLeft">
+                                            <a id="aAPPBackPriorPage" href="javascript:window.history.go(-1)" target="_top" onclick="javascript:document.getElementById('IMG_Waiting').style.display = 'block';">
+                                                <table width="245" border="0" class="ItemAlignLeft" cellpadding="0" cellspacing="0">
+                                                    <tr>
+                                                        <td width="29">
+                                                            <img src="ImagesSkin/return.png" alt="" />
+                                                        </td>
+                                                        <td background="ImagesSkin/main_top_bj.jpg" class="titleziAPP">
+                                                            <asp:Label ID="Label9" runat="server" Text="<%$ Resources:lang,Back%>" />
+                                                        </td>
+                                                        <td width="5">
+                                                            <%-- <img src="ImagesSkin/main_top_r.jpg" width="5" height="31" />--%>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                                <img id="IMG_Waiting" src="Images/Processing.gif" alt="ËØ∑Á®çÂÄôÔºåÂ§ÑÁêÜ‰∏≠..." style="display: none;" />
+                                            </a>
                                         </td>
                                     </tr>
                                 </table>
                             </td>
+                        </tr>
+                        <tr>
+                            <td valign="top">
+                                <table cellpadding="0" cellspacing="0" width="100%">
+                                    <tr>
+                                        <td>
+                                            <table style="width: 100%;">
+                                                <tr>
+                                                    <td style="text-align: left; padding-left: 5px;">
+                                                        <span class="style1">
+                                                            <asp:Label ID="Label2" runat="server" Text="<%$ Resources:lang,RenWu%>"></asp:Label>:<asp:Label ID="LB_TaskID" runat="server"></asp:Label><asp:Label ID="LB_Task" runat="server"></asp:Label>
+                                                        </span>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="ItemAlignLeft">
+                                                        <asp:Label ID="Label3" runat="server" Text="<%$ Resources:lang,RenWuChuLi%>"></asp:Label>
+
+                                                        <table width="100%" cellpadding="3" cellspacing="0">
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="napbox">
+                                                                        <div class="npbx">
+                                                                            <div class="cline"></div>
+                                                                            <div class="npbxs">
+                                                                                <h3>
+                                                                                    <asp:HyperLink ID="HL_StartupBusinessForm" runat="server" Text="<%$ Resources:lang,XiangGuanYeWuDan %>" CssClass="HyperLink"></asp:HyperLink>
+                                                                                    <asp:HyperLink ID="HL_GoodsApplication" runat="server" Text="<%$ Resources:lang,LiaoPingLingYong %>" CssClass="HyperLink"></asp:HyperLink>
+                                                                                    <asp:Image ID="IMG_QrCode" runat="server" CssClass="inpuQrCode" onclick="qrcode()" Width="16px" />
+                                                                                    <asp:Button ID="BT_SaveQrCode" runat="server" Style="display: none;" CssClass="inpu" Text="<%$ Resources:lang,BaoCun %>" OnClick="BT_SaveQrCode_Click" />
+                                                                                    <asp:TextBox ID="TB_QrCode" runat="server" Style="display: none;"></asp:TextBox>
+                                                                                </h3>
+
+                                                                                <div class="mline">
+                                                                                    <h4>
+                                                                                        <asp:Label ID="Label5" runat="server" Text="<%$ Resources:lang,GongShi2 %>"></asp:Label>
+                                                                                    </h4>
+                                                                                    <NickLee:NumberBox ID="NB_ManHour" runat="server" MaxAmount="1000000000000" MinAmount="-1000000000000" OnBlur="" OnFocus="" OnKeyPress="" PositiveColor="" Width="99%">0.00</NickLee:NumberBox>
+                                                                                </div>
+                                                                                <div class="mline">
+                                                                                    <h4>
+                                                                                        <asp:Label ID="Label4" runat="server" Text="<%$ Resources:lang,FeiYong %>" Visible="False"></asp:Label>
+                                                                                    </h4>
+                                                                                    <NickLee:NumberBox ID="TB_Expense" runat="server" MaxAmount="1000000000000" MinAmount="-1000000000000" OnBlur="" OnFocus="" OnKeyPress="" PositiveColor="" Visible="False" Width="99%">0.00</NickLee:NumberBox>
+                                                                                </div>
+                                                                                <div class="mline">
+                                                                                    <h4>
+                                                                                        <asp:Label ID="Label6" runat="server" Text="<%$ Resources:lang,JinDu %>"></asp:Label>
+                                                                                    </h4>
+                                                                                    <NickLee:NumberBox ID="NB_FinishPercent" runat="server" MaxAmount="1000000000000" MinAmount="-1000000000000" OnBlur="" OnFocus="" OnKeyPress="" PositiveColor="" Precision="0" Width="94%">0</NickLee:NumberBox>
+                                                                                    <asp:Label ID="Label1" runat="server" CssClass="percent-label" Text="%"></asp:Label>
+                                                                                </div>
+                                                                                <div class="mline">
+                                                                                    <h4>
+                                                                                        <asp:Label ID="LB_TaskProgress" runat="server" Text="<%$ Resources:lang,ZhengTi %>"></asp:Label>
+                                                                                    </h4>
+                                                                                    <NickLee:NumberBox MaxAmount="1000000000000" MinAmount="-1000000000000" ID="NB_TaskProgress" runat="server" OnBlur="" OnFocus="" OnKeyPress="" Enabled="False"
+                                                                                        PositiveColor="" Precision="0" Width="94%">0</NickLee:NumberBox>
+                                                                                    <asp:Label ID="Label52" runat="server" CssClass="percent-label" Text="%"></asp:Label>
+                                                                                </div>
+                                                                                <div class="mline">
+                                                                                    <h4>
+                                                                                        <asp:Label ID="LB_UnitName" runat="server"></asp:Label>
+                                                                                    </h4>
+                                                                                    <asp:Label ID="Label47" runat="server" Text="<%$ Resources:lang,FeiYong %>" Visible="False"></asp:Label>
+                                                                                    <NickLee:NumberBox ID="NumberBox4" runat="server" MaxAmount="1000000000000" MinAmount="-1000000000000" OnBlur="" OnFocus="" OnKeyPress="" PositiveColor="" Width="99%" Visible="False">0.00</NickLee:NumberBox>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="npbxs">
+                                                                                <h3>
+                                                                                    <asp:Label ID="Label7" runat="server" Text="<%$ Resources:lang,ZongJie %>"></asp:Label>
+                                                                                </h3>
+                                                                                <CKEditor:CKEditorControl ID="HE_FinishContent" runat="server" Toolbar="" Width="99%" Height="170px" Visible="False"></CKEditor:CKEditorControl>
+
+                                                                                <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional">
+                                                                                    <ContentTemplate>
+                                                                                        <div class="nmar">
+                                                                                            <Upload:InputFile ID="AttachFile" runat="server" name="photo" Accept="image/*;capture=camera" Width="100%" />
+                                                                                            <input type="hidden" val="" id="imgData" runat="server" />
+                                                                                            <input type="button" id="BtnUP" onclick="upload()" value="‰∏ä‰º†ÂõæÁâá" />
+                                                                                            <img id="IMG_Uploading" src="Images/Processing.gif" alt="ËØ∑Á®çÂÄôÔºåÂ§ÑÁêÜ‰∏≠..." style="display: none;" />
+                                                                                        </div>
+                                                                                    </ContentTemplate>
+                                                                                </asp:UpdatePanel>
+
+                                                                                <div class="manyspan" style="display: none;">
+                                                                                    <asp:CheckBox ID="CB_ReturnMsg" runat="server" Font-Bold="False" Text="<%$ Resources:lang,FaXinXi %>" />
+                                                                                    <asp:CheckBox ID="CB_ReturnMail" runat="server" Font-Bold="False" Text="<%$ Resources:lang,FaYouJian %>" />
+                                                                                    <asp:Label ID="Label8" runat="server" Text="<%$ Resources:lang,TongZhiFenPaiRen %>"></asp:Label>
+                                                                                    <asp:TextBox ID="TB_Message" runat="server" Width="45%"></asp:TextBox>
+                                                                                    <asp:Button ID="BT_Send" runat="server" CssClass="inpu" OnClick="BT_Send_Click" Text="<%$ Resources:lang,FaSong %>" />
+                                                                                    <asp:Label ID="LB_AssignID" runat="server" Visible="False"></asp:Label>
+                                                                                    <asp:Label ID="LB_RouteNumber" runat="server" Visible="False"></asp:Label>
+                                                                                </div>
+
+                                                                                <!-- Ê≥®ÊÑèÔºöËøô‰∏™È°µÈù¢ÁöÑÊåâÈíÆÂÆπÂô®Â∑≤ÁªèÊòØ equal-buttonsÔºå‰∏çÈúÄË¶Å‰øÆÊîπ -->
+                                                                                <div class="equal-buttons">
+                                                                                    <asp:Button ID="BT_Activity" runat="server" CssClass="inpu" OnClick="BT_Activity_Click" Text="<%$ Resources:lang,BaoCun %>" />
+                                                                                    <asp:Button ID="BT_Finish" runat="server" CssClass="inpu" Font-Bold="True" OnClick="BT_Finish_Click" Text="<%$ Resources:lang,WanChengTiJiao %>" />
+                                                                                </div>
+
+                                                                                <div class="equal-buttons">
+                                                                                    <asp:Button ID="BT_TBD" runat="server" CssClass="inpu" Visible="False" OnClick="BT_TBD_Click" Text="<%$ Resources:lang,GuaQi %>" />
+                                                                                    <asp:Button ID="BT_CloseTask" runat="server" CssClass="inpu" Visible="False" Enabled="False" OnClick="BT_CloseTask_Click" Text="<%$ Resources:lang,GuanBiCiRenWu %>" />
+                                                                                    <asp:Button ID="BT_ActiveTask" runat="server" CssClass="inpu" Visible="False" Enabled="False" OnClick="BT_ActiveTask_Click" Text="<%$ Resources:lang,JiHuoCiRenWu %>" />
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+
+                                                        <asp:Label ID="Label20" runat="server" Text="<%$ Resources:lang,JiXuFenPai%>"></asp:Label>
+
+                                                        <table width="100%" cellpadding="3" cellspacing="0">
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="napbox">
+                                                                        <div class="npbx">
+                                                                            <div class="cline"></div>
+                                                                            <div class="npbxs">
+                                                                                <div class="mline">
+                                                                                    <h4>
+                                                                                        <asp:Label ID="Label10" runat="server" Text="<%$ Resources:lang,LeiXing %>"></asp:Label>
+                                                                                    </h4>
+                                                                                    <asp:DropDownList ID="DL_RecordType" runat="server" DataTextField="Type" DataValueField="Type" Width="99%">
+                                                                                    </asp:DropDownList>
+                                                                                    <strong>
+                                                                                        <asp:Label ID="LB_ID" runat="server" Visible="False"></asp:Label>
+                                                                                    </strong>
+                                                                                </div>
+                                                                                <div class="mline">
+                                                                                    <h4>
+                                                                                        <asp:Label ID="Label11" runat="server" Text="<%$ Resources:lang,ShouLiRen %>"></asp:Label>
+                                                                                    </h4>
+                                                                                    <asp:DropDownList ID="DL_OperatorCode" runat="server" DataTextField="UserName" DataValueField="UserCode" Width="99%">
+                                                                                    </asp:DropDownList>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="npbxs">
+                                                                                <h3>
+                                                                                    <asp:Label ID="Label12" runat="server" Text="<%$ Resources:lang,YaoQiu %>"></asp:Label>
+                                                                                </h3>
+                                                                                <CKEditor:CKEditorControl ID="HE_Operation" runat="server" Toolbar="" Height="150px" Visible="False" Width="99%" />
+                                                                                <asp:DropDownList ID="DL_WorkRequest" runat="server" AutoPostBack="True" DataTextField="Operation"
+                                                                                    DataValueField="Operation" OnSelectedIndexChanged="DL_WorkRequest_SelectedIndexChanged" Width="99%">
+                                                                                </asp:DropDownList>
+
+                                                                                <div class="mline">
+                                                                                    <h4>
+                                                                                        <asp:Label ID="Label13" runat="server" Text="<%$ Resources:lang,KaiShi %>"></asp:Label>
+                                                                                    </h4>
+                                                                                    <asp:TextBox ID="DLC_BeginDate" runat="server" Width="99%" onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})" onFocus="WdatePicker({lang:'auto'})"></asp:TextBox>
+                                                                                </div>
+
+                                                                                <div class="mline">
+                                                                                    <h4>
+                                                                                        <asp:Label ID="Label14" runat="server" Text="<%$ Resources:lang,JieShu %>"></asp:Label>
+                                                                                    </h4>
+                                                                                    <asp:TextBox ID="DLC_EndDate" runat="server" Width="99%" onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})" onFocus="WdatePicker({lang:'auto'})"></asp:TextBox>
+                                                                                </div>
+
+                                                                                <div class="manyspan" style="display: none;">
+                                                                                    <asp:CheckBox ID="CB_SendMsg" runat="server" Font-Bold="False" Text="<%$ Resources:lang,FaXinXi %>" />
+                                                                                    <asp:CheckBox ID="CB_SendMail" runat="server" Font-Bold="False" Text="<%$ Resources:lang,FaYouJian %>" />
+                                                                                    <asp:Label ID="Label15" runat="server" Text="<%$ Resources:lang,TongZhiShouLiRen %>"></asp:Label>
+                                                                                    <asp:TextBox ID="TB_AssignMessage" runat="server" Width="45%"></asp:TextBox>
+                                                                                    <asp:Button ID="BT_SendAssignMsg" runat="server" CssClass="inpu" OnClick="BT_SendAssignMsg_Click"
+                                                                                        Text="<%$ Resources:lang,FaSong %>" />
+                                                                                </div>
+
+                                                                                <div class="equal-buttons">
+                                                                                    <asp:Button ID="BT_UpdateAssign" runat="server" CssClass="inpu" Enabled="False" OnClick="BT_UpdateAssign_Click" Text="<%$ Resources:lang,BaoCun %>" />
+                                                                                    <asp:Button ID="BT_DeleteAssign" runat="server" CssClass="inpu" Enabled="False" OnClick="BT_DeleteAssign_Click" OnClientClick="return confirmContinue(getDeleteMsgByLangCode(), this, event)" Text="<%$ Resources:lang,ShanChu %>" />
+                                                                                    <asp:Button ID="BT_Assign" runat="server" CssClass="inpu" OnClick="BT_Assign_Click" Text="<%$ Resources:lang,FenPai %>" />
+                                                                                </div>
+
+                                                                                <div class="npbxs">
+                                                                                    <h3>
+                                                                                        <strong>
+                                                                                            <asp:Label ID="Label16" runat="server" Text="<%$ Resources:lang,CiRenWuFenPaiJiLuZiJiLu %>"></asp:Label>
+                                                                                            (<span style="font-size: 9pt">
+                                                                                                <asp:Label ID="Label17" runat="server" Text="<%$ Resources:lang,XuanZeKeZaiShangMianXiuGai %>"></asp:Label>):
+                                                                                            </span>
+                                                                                        </strong>
+                                                                                    </h3>
+                                                                                    <asp:DataGrid ID="DataGrid2" runat="server" AutoGenerateColumns="False" CellPadding="4"
+                                                                                        ShowHeader="false" ForeColor="#333333" GridLines="None" Height="1px" OnItemCommand="DataGrid2_ItemCommand"
+                                                                                        Width="99%">
+                                                                                        <Columns>
+                                                                                            <asp:TemplateColumn HeaderText="">
+                                                                                                <ItemTemplate>
+                                                                                                    <div class="npb npbs">
+                                                                                                        <div class="nplef">
+                                                                                                            <asp:Button ID="BT_ID" runat="server" Text='<%# DataBinder.Eval(Container.DataItem,"ID") %>'
+                                                                                                                CssClass="inpu" />
+                                                                                                        </div>
+                                                                                                        <div class="nprig">
+                                                                                                            <h5><%# DataBinder.Eval(Container.DataItem,"OperatorName") %>  <sub></sub></h5>
+                                                                                                            <h6><%# DataBinder.Eval(Container.DataItem,"Operation") %></h6>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </ItemTemplate>
+                                                                                            </asp:TemplateColumn>
+                                                                                        </Columns>
+                                                                                        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                                                                        <PagerStyle HorizontalAlign="center" Mode="NumericPages" NextPageText="" PrevPageText="" CssClass="notTab" />
+                                                                                        <SelectedItemStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                                                                                    </asp:DataGrid>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="ItemAlignLeft"></td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <br />
+                            </td>
+                        </tr>
+                    </table>
+
+
+                    <table id="AboveTable" cellpadding="0" width="100%" cellspacing="0" class="bian">
+                        <tr>
+                            <td></td>
                         </tr>
                         <tr style="display: none;">
                             <td>
@@ -745,35 +622,26 @@
                                 </asp:HyperLink>
                                 (<asp:Label ID="Label19" runat="server" Text="<%$ Resources:lang,GuanLianHuiYi%>"></asp:Label>:<asp:HyperLink ID="HL_RelatedMeetingID"
                                     runat="server"></asp:HyperLink>
-
                                 <asp:HyperLink ID="HL_RelatedMeetingName" runat="server"></asp:HyperLink>
                                 )
-
-                                    <asp:Label ID="LB_ProjectID" runat="server" Visible="False"></asp:Label>
+                                <asp:Label ID="LB_ProjectID" runat="server" Visible="False"></asp:Label>
                                 <asp:Label ID="LB_UserName" runat="server" Visible="False"></asp:Label>
                                 <asp:Label ID="LB_UserCode" runat="server" Visible="False"></asp:Label>
                             </td>
                         </tr>
                         <tr style="display: none;">
-
                             <td class="formItemBgStyleForAlignLeft">
-
                                 <asp:HyperLink ID="HL_TaskReview" runat="server" Enabled="False">---&gt;<asp:Label ID="Label23" runat="server" Text="<%$ Resources:lang,RenWuPingShen%>"></asp:Label></asp:HyperLink>
-
                                 <asp:HyperLink ID="HL_MakeProjectReq" runat="server">--&gt;<asp:Label ID="Label24" runat="server" Text="<%$ Resources:lang,JianLiHeFenPaiXuQiu%>"></asp:Label></asp:HyperLink>
-
                                 <asp:HyperLink ID="HL_TestCase" runat="server" NavigateUrl="TTMakeTaskTestCase.aspx">
                                     <asp:Label ID="Label25" runat="server" Text="<%$ Resources:lang,CeShiYongLi%>"></asp:Label>
                                 </asp:HyperLink>
-
                                 <asp:HyperLink ID="HL_TaskRelatedDoc" runat="server" NavigateUrl="TTProTaskRelatedDoc.aspx">
                                     <asp:Label ID="Label26" runat="server" Text="<%$ Resources:lang,XiangGuanWenDang%>"></asp:Label>
                                 </asp:HyperLink>
-
                                 <asp:HyperLink ID="HL_TaskAssignRecord" runat="server" NavigateUrl="TTTaskAssignRecord.aspx">
                                     <asp:Label ID="Label28" runat="server" Text="<%$ Resources:lang,SuoYouFenPaiJiLu%>"></asp:Label>
                                 </asp:HyperLink>
-
                                 <asp:HyperLink ID="HL_ProjectDetail" runat="server">
                                     <asp:Label ID="Label27" runat="server" Text="<%$ Resources:lang,DangTianXiangMuRiZhi%>"></asp:Label>
                                 </asp:HyperLink>
@@ -840,7 +708,7 @@
                                             </tr>
                                             <tr>
                                                 <td style="text-align: right">
-                                                    <asp:Label ID="Label36" runat="server" Text="<%$ Resources:lang,WoDeFanKui%>"></asp:Label>°¢:
+                                                    <asp:Label ID="Label36" runat="server" Text="<%$ Resources:lang,WoDeFanKui%>"></asp:Label>„ÄÅ:
                                                 </td>
                                                 <td colspan="3" style="text-align: left">
                                                     <%# DataBinder.Eval(Container.DataItem,"OperatorContent") %>
@@ -870,7 +738,6 @@
                                             </tr>
                                         </table>
                                     </ItemTemplate>
-
                                     <ItemStyle BackColor="#EFF3FB" />
                                     <SelectedItemStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
                                     <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
@@ -894,7 +761,6 @@
                                             </tr>
                                         </table>
                                     </ItemTemplate>
-
                                     <ItemStyle BackColor="#EFF3FB" />
                                     <SelectedItemStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
                                     <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
@@ -914,5 +780,4 @@
         </form>
     </center>
 </body>
-<%--<script type="text/javascript" language="javascript">var cssDirectory = '<%=Session["CssDirectory"] %>'; var oLink = document.getElementById('mainCss'); oLink.href = 'css/' + cssDirectory + '/' + 'bluelightmain.css';</script>--%>
 </html>

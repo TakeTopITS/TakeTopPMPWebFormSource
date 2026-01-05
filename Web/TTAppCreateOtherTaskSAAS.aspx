@@ -12,7 +12,7 @@
 <head id="Head1" runat="server">
     <title></title>
     <link id="mainCss" href="css/bluelightmain.css" rel="stylesheet" type="text/css" />
-     <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />
+      <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />
     <style type="text/css">
         <style type="text/css" > body {
             /*margin-top: 5px;*/
@@ -542,8 +542,9 @@
                                 </tr>
                                 <tr>
                                     <td class="formItemBgStyleForAlignLeft">
-                                        <CKEditor:CKEditorControl ID="HE_Operation" runat="server" Height="150px" Width="99%" Visible="False" />
-                                        <CKEditor:CKEditorControl runat="server" ID="HT_Operation" Width="99%" Height="150px" Visible="False" />
+                                     
+                                        <CKEditor:CKEditorControl runat="server" ID="HE_Operation" Toolbar="" Width="99%" Height="150px" Visible="False" />
+
                                         <asp:DropDownList ID="DL_WorkRequest" runat="server" AutoPostBack="True" DataTextField="Operation"
                                             DataValueField="Operation" OnSelectedIndexChanged="DL_WorkRequest_SelectedIndexChanged" Width="99%">
                                         </asp:DropDownList>

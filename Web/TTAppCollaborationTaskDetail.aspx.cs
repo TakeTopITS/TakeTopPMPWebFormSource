@@ -105,22 +105,11 @@ public partial class TTAppCollaborationTaskDetail : System.Web.UI.Page
         ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "clickA", "aHandler();", true);
         if (Page.IsPostBack != true)
         {
-            if (strIsMobileDevice == "YES")
-            {
-                HT_FinishContent.Visible = true;
-                HT_FinishContent.Text = taskAssignRecord.OperatorContent.Trim();
-                HT_FinishContent.Toolbar = "";
 
-                HT_Operation.Visible = true;
-                HT_Operation.Toolbar = "";
-            }
-            else
-            {
-                HE_FinishContent.Visible = true;
-                HE_FinishContent.Text = taskAssignRecord.OperatorContent.Trim();
+            HE_FinishContent.Visible = true;
+            HE_FinishContent.Text = taskAssignRecord.OperatorContent.Trim();
 
-                HE_Operation.Visible = true;
-            }
+            HE_Operation.Visible = true;
 
 
             DLC_BeginDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
@@ -254,27 +243,15 @@ public partial class TTAppCollaborationTaskDetail : System.Web.UI.Page
 
         strTaskID = LB_TaskID.Text.Trim();
 
-        if (strIsMobileDevice == "YES")
-        {
-            strContent = HT_FinishContent.Text.Trim();
-        }
-        else
-        {
-            strContent = HE_FinishContent.Text.Trim();
-        }
+        strContent = HE_FinishContent.Text.Trim();
+
         intFinishPercent = int.Parse(NB_FinishPercent.Amount.ToString());
 
         if (strContent == "")
         {
             strContent = "Accepted";
-            if (strIsMobileDevice == "YES")
-            {
-                HT_FinishContent.Text = strContent;
-            }
-            else
-            {
-                HE_FinishContent.Text = strContent;
-            }
+
+            HE_FinishContent.Text = strContent;
         }
 
         strID = LB_AssignID.Text.Trim();
@@ -312,28 +289,16 @@ public partial class TTAppCollaborationTaskDetail : System.Web.UI.Page
         strUserCode = LB_UserCode.Text.Trim();
 
         strTaskID = LB_TaskID.Text.Trim();
-        if (strIsMobileDevice == "YES")
-        {
-            strContent = HT_FinishContent.Text.Trim();
-        }
-        else
-        {
-            strContent = HE_FinishContent.Text.Trim();
-        }
+
+        strContent = HE_FinishContent.Text.Trim();
         intFinishPercent = int.Parse(NB_FinishPercent.Amount.ToString());
 
         if (strContent == "")
         {
             strContent = "Rejected";
 
-            if (strIsMobileDevice == "YES")
-            {
-                HT_FinishContent.Text = strContent;
-            }
-            else
-            {
-                HE_FinishContent.Text = strContent;
-            }
+
+            HE_FinishContent.Text = strContent;
         }
 
         strID = LB_AssignID.Text.Trim();
@@ -380,14 +345,8 @@ public partial class TTAppCollaborationTaskDetail : System.Web.UI.Page
         strAssignManCode = LB_UserCode.Text.Trim();
         strAssignManName = LB_UserName.Text.Trim();
 
-        if (strIsMobileDevice == "YES")
-        {
-            strOperation = HT_Operation.Text.Trim();
-        }
-        else
-        {
-            strOperation = HE_Operation.Text.Trim();
-        }
+
+        strOperation = HE_Operation.Text.Trim();
 
         intPriorID = int.Parse(LB_AssignID.Text.Trim());
         dtBeginDate = DateTime.Parse(DLC_BeginDate.Text);
@@ -470,9 +429,6 @@ public partial class TTAppCollaborationTaskDetail : System.Web.UI.Page
         ScriptManager.RegisterStartupScript(UpdatePanel1, GetType(), "pop", "popShow('popwindow','true') ", true);
     }
 
-
-
-
     protected void BtnUP_Click(object sender, EventArgs e)
     {
         if (AttachFile.HasFile)
@@ -511,7 +467,7 @@ public partial class TTAppCollaborationTaskDetail : System.Web.UI.Page
                         ShareClass.ReducesPic(strDocSavePath, strFileName3, 640, 480, 3);
                     }
 
-                    HT_FinishContent.Text += strPhotoURL;
+                    HE_FinishContent.Text += strPhotoURL;
                 }
                 catch
                 {
@@ -538,14 +494,7 @@ public partial class TTAppCollaborationTaskDetail : System.Web.UI.Page
         strProjectID = LB_ProjectID.Text.Trim();
         strTaskID = LB_TaskID.Text.Trim();
 
-        if (strIsMobileDevice == "YES")
-        {
-            strContent = HT_FinishContent.Text.Trim();
-        }
-        else
-        {
-            strContent = HE_FinishContent.Text.Trim();
-        }
+        strContent = HE_FinishContent.Text.Trim();
 
 
         intFinishPercent = int.Parse(NB_FinishPercent.Amount.ToString());
@@ -556,14 +505,8 @@ public partial class TTAppCollaborationTaskDetail : System.Web.UI.Page
         {
             strContent = "InProgress";
 
-            if (strIsMobileDevice == "YES")
-            {
-                HT_FinishContent.Text = strContent;
-            }
-            else
-            {
-                HE_FinishContent.Text = strContent;
-            }
+
+            HE_FinishContent.Text = strContent;
         }
 
         strID = LB_AssignID.Text.Trim();
@@ -617,14 +560,9 @@ public partial class TTAppCollaborationTaskDetail : System.Web.UI.Page
         strTaskID = LB_TaskID.Text.Trim();
         strTaskName = LB_Task.Text.Trim();
 
-        if (strIsMobileDevice == "YES")
-        {
-            strContent = HT_FinishContent.Text.Trim();
-        }
-        else
-        {
-            strContent = HE_FinishContent.Text.Trim();
-        }
+
+        strContent = HE_FinishContent.Text.Trim();
+
         intFinishPercent = int.Parse(NB_FinishPercent.Amount.ToString());
 
         Msg msg = new Msg();
@@ -633,14 +571,8 @@ public partial class TTAppCollaborationTaskDetail : System.Web.UI.Page
         {
             strContent = "Completed";
 
-            if (strIsMobileDevice == "YES")
-            {
-                HT_FinishContent.Text = strContent;
-            }
-            else
-            {
-                HE_FinishContent.Text = strContent;
-            }
+
+            HE_FinishContent.Text = strContent;
         }
 
         strID = LB_AssignID.Text.Trim();
@@ -691,27 +623,15 @@ public partial class TTAppCollaborationTaskDetail : System.Web.UI.Page
         strProjectID = LB_ProjectID.Text.Trim();
         strTaskID = LB_TaskID.Text.Trim();
 
-        if (strIsMobileDevice == "YES")
-        {
-            strContent = HT_FinishContent.Text.Trim();
-        }
-        else
-        {
-            strContent = HE_FinishContent.Text.Trim();
-        }
+
+        strContent = HE_FinishContent.Text.Trim();
 
         if (strContent == "")
         {
             strContent = "Suspended";
 
-            if (strIsMobileDevice == "YES")
-            {
-                HT_FinishContent.Text = strContent;
-            }
-            else
-            {
-                HE_FinishContent.Text = strContent;
-            }
+
+            HE_FinishContent.Text = strContent;
         }
 
         strID = LB_AssignID.Text.Trim();
@@ -957,14 +877,8 @@ public partial class TTAppCollaborationTaskDetail : System.Web.UI.Page
         taskAssignRecord.Type = DL_RecordType.SelectedValue.Trim();
         taskAssignRecord.OperatorContent = "";
 
-        if (strIsMobileDevice == "YES")
-        {
-            taskAssignRecord.Operation = HT_Operation.Text.Trim();
-        }
-        else
-        {
-            taskAssignRecord.Operation = HE_Operation.Text.Trim();
-        }
+
+        taskAssignRecord.Operation = HE_Operation.Text.Trim();
         taskAssignRecord.OperatorCode = DL_OperatorCode.SelectedValue;
         taskAssignRecord.OperatorName = DL_OperatorCode.SelectedItem.Text;
         taskAssignRecord.BeginDate = DateTime.Parse(DLC_BeginDate.Text);
@@ -1011,14 +925,8 @@ public partial class TTAppCollaborationTaskDetail : System.Web.UI.Page
     {
         string strWorkRequest = DL_WorkRequest.SelectedValue.Trim();
 
-        if (strIsMobileDevice == "YES")
-        {
-            HT_Operation.Text = strWorkRequest;
-        }
-        else
-        {
-            HE_Operation.Text = strWorkRequest;
-        }
+
+        HE_Operation.Text = strWorkRequest;
     }
 
 

@@ -38,9 +38,9 @@ public partial class TTAppCustomerQuestionHandleDetailForMembers : System.Web.UI
         CKFinder.FileBrowser _FileBrowser = new CKFinder.FileBrowser();
         _FileBrowser.BasePath = "ckfinder/"; Session["PageName"] = "TakeTopSiteContentEdit";
         _FileBrowser.SetupCKEditor(HE_CustomerComment);
-HE_CustomerComment.Language = Session["LangCode"].ToString();
+        HE_CustomerComment.Language = Session["LangCode"].ToString();
         _FileBrowser.SetupCKEditor(HE_HandleDetail);
-HE_HandleDetail.Language = Session["LangCode"].ToString();
+        HE_HandleDetail.Language = Session["LangCode"].ToString();
 
         strUserCode = Session["UserCode"].ToString();
         strUserName = Session["UserName"].ToString();
@@ -68,19 +68,9 @@ HE_HandleDetail.Language = Session["LangCode"].ToString();
 
         if (Page.IsPostBack == false)
         {
-            if (strIsMobileDevice == "YES")
-            {
-                HT_HandleDetail.Visible = true;
-                HT_CustomerComment.Visible = true;
 
-                HT_HandleDetail.Toolbar = "";
-                HT_CustomerComment.Toolbar = "";
-            }
-            else
-            {
-                HE_HandleDetail.Visible = true;
-                HE_CustomerComment.Visible = true;
-            }
+            HE_HandleDetail.Visible = true;
+            HE_CustomerComment.Visible = true;
 
             DataList2.DataSource = lst;
             DataList2.DataBind();
@@ -216,11 +206,11 @@ HE_HandleDetail.Language = Session["LangCode"].ToString();
 
             BT_TransferOperator.Enabled = false;
 
-            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" +LanguageHandle.GetWord("ZZTuiChuLanguageHandleGetWordZ")+"')", true); 
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZTuiChuLanguageHandleGetWordZ") + "')", true);
         }
         catch
         {
-            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" +LanguageHandle.GetWord("ZZTuiChuLanguageHandleGetWordZ")+"')", true); 
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZTuiChuLanguageHandleGetWordZ") + "')", true);
         }
     }
 
@@ -339,7 +329,7 @@ HE_HandleDetail.Language = Session["LangCode"].ToString();
             //推送消息给受理人
             Msg msg = new Msg();
             string strMsg = LanguageHandle.GetWord("FuWuXuQiu") + ":" + customerQuestion.Question.Trim() + "," + LanguageHandle.GetWord("ZZYaoNiChuLi");
-            msg.SendMSM("Message",strOperatorCode, strMsg, strUserCode);
+            msg.SendMSM("Message", strOperatorCode, strMsg, strUserCode);
 
             ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZZDCG") + "')", true);
         }
@@ -399,7 +389,7 @@ HE_HandleDetail.Language = Session["LangCode"].ToString();
                         ShareClass.ReducesPic(strDocSavePath, strFileName3, 640, 480, 3);
                     }
 
-                    HT_HandleDetail.Text += strPhotoURL;
+                    HE_HandleDetail.Text += strPhotoURL;
                 }
                 catch
                 {
@@ -448,16 +438,9 @@ HE_HandleDetail.Language = Session["LangCode"].ToString();
         int intPreDays;
         DateTime dtNextServiceTime;
 
-        if (strIsMobileDevice == "YES")
-        {
-            strHandleDetail = HT_HandleDetail.Text.Trim();
-            strCustomerComment = HT_CustomerComment.Text.Trim();
-        }
-        else
-        {
-            strHandleDetail = HE_HandleDetail.Text.Trim();
-            strCustomerComment = HE_CustomerComment.Text.Trim();
-        }
+
+        strHandleDetail = HE_HandleDetail.Text.Trim();
+        strCustomerComment = HE_CustomerComment.Text.Trim();
 
         strStatus = DL_HandleStatus.SelectedValue.Trim();
         strHandleWay = TB_HandleWay.Text.Trim();
@@ -527,16 +510,9 @@ HE_HandleDetail.Language = Session["LangCode"].ToString();
 
         strID = LB_ID.Text.Trim();
 
-        if (strIsMobileDevice == "YES")
-        {
-            strHandleDetail = HT_HandleDetail.Text.Trim();
-            strCustomerComment = HT_CustomerComment.Text.Trim();
-        }
-        else
-        {
-            strHandleDetail = HE_HandleDetail.Text.Trim();
-            strCustomerComment = HE_CustomerComment.Text.Trim();
-        }
+
+        strHandleDetail = HE_HandleDetail.Text.Trim();
+        strCustomerComment = HE_CustomerComment.Text.Trim();
 
         strStatus = DL_HandleStatus.SelectedValue.Trim();
         strHandleWay = TB_HandleWay.Text.Trim();
@@ -591,16 +567,9 @@ HE_HandleDetail.Language = Session["LangCode"].ToString();
         int intPreDays;
         DateTime dtNextServiceTime;
 
-        if (strIsMobileDevice == "YES")
-        {
-            strHandleDetail = HT_HandleDetail.Text.Trim();
-            strCustomerComment = HT_CustomerComment.Text.Trim();
-        }
-        else
-        {
-            strHandleDetail = HE_HandleDetail.Text.Trim();
-            strCustomerComment = HE_CustomerComment.Text.Trim();
-        }
+
+        strHandleDetail = HE_HandleDetail.Text.Trim();
+        strCustomerComment = HE_CustomerComment.Text.Trim();
 
         strStatus = DL_HandleStatus.SelectedValue.Trim();
         strHandleWay = TB_HandleWay.Text.Trim();
@@ -667,16 +636,9 @@ HE_HandleDetail.Language = Session["LangCode"].ToString();
 
         strID = LB_ID.Text.Trim();
 
-        if (strIsMobileDevice == "YES")
-        {
-            strHandleDetail = HT_HandleDetail.Text.Trim();
-            strCustomerComment = HT_CustomerComment.Text.Trim();
-        }
-        else
-        {
-            strHandleDetail = HE_HandleDetail.Text.Trim();
-            strCustomerComment = HE_CustomerComment.Text.Trim();
-        }
+
+        strHandleDetail = HE_HandleDetail.Text.Trim();
+        strCustomerComment = HE_CustomerComment.Text.Trim();
 
         strStatus = DL_HandleStatus.SelectedValue.Trim();
         strHandleWay = TB_HandleWay.Text.Trim();
@@ -778,16 +740,9 @@ HE_HandleDetail.Language = Session["LangCode"].ToString();
             CustomerQuestionHandleRecord customerQuestionHandleRecord = (CustomerQuestionHandleRecord)lst[0];
 
             LB_ID.Text = strID;
-            if (strIsMobileDevice == "YES")
-            {
-                HT_HandleDetail.Text = customerQuestionHandleRecord.HandleDetail.Trim();
-                HT_CustomerComment.Text = customerQuestionHandleRecord.CustomerComment.Trim();
-            }
-            else
-            {
-                HE_HandleDetail.Text = customerQuestionHandleRecord.HandleDetail.Trim();
-                HE_CustomerComment.Text = customerQuestionHandleRecord.CustomerComment.Trim();
-            }
+
+            HE_HandleDetail.Text = customerQuestionHandleRecord.HandleDetail.Trim();
+            HE_CustomerComment.Text = customerQuestionHandleRecord.CustomerComment.Trim();
 
             TB_HandleWay.Text = customerQuestionHandleRecord.HandleWay.Trim();
             HE_HandleDetail.Text = customerQuestionHandleRecord.HandleWay.Trim();
@@ -865,16 +820,9 @@ HE_HandleDetail.Language = Session["LangCode"].ToString();
             CustomerQuestionHandleRecord customerQuestionHandleRecord = (CustomerQuestionHandleRecord)lst[0];
 
             LB_ID.Text = strID;
-            if (strIsMobileDevice == "YES")
-            {
-                HT_HandleDetail.Text = customerQuestionHandleRecord.HandleDetail.Trim();
-                HT_CustomerComment.Text = customerQuestionHandleRecord.CustomerComment.Trim();
-            }
-            else
-            {
-                HE_HandleDetail.Text = customerQuestionHandleRecord.HandleDetail.Trim();
-                HE_CustomerComment.Text = customerQuestionHandleRecord.CustomerComment.Trim();
-            }
+
+            HE_HandleDetail.Text = customerQuestionHandleRecord.HandleDetail.Trim();
+            HE_CustomerComment.Text = customerQuestionHandleRecord.CustomerComment.Trim();
 
 
             TB_HandleWay.Text = customerQuestionHandleRecord.HandleWay.Trim();

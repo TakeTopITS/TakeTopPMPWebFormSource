@@ -18,7 +18,7 @@
 <head id="Head1" runat="server">
     <title></title>
     <link id="mainCss" href="css/bluelightmain.css" rel="stylesheet" type="text/css" />
-    <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />
+     <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />
 
     <style type="text/css">
         body {
@@ -262,7 +262,7 @@
                                                 <asp:Label ID="Label7" runat="server" Text="<%$ Resources:lang,ZongJie %>"></asp:Label></h3>
                                             <br />
                                             <CKEditor:CKEditorControl ID="HE_TodaySummary" runat="server" Toolbar="" Width="99%" Height="170" Visible="false" />
-                                            <CKEditor:CKEditorControl runat="server" ID="HT_TodaySummary" Toolbar="" Width="99%" Height="170px" Visible="false" />
+                                          
                                             <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional">
                                                 <ContentTemplate>
                                                     <div class="nmar">
@@ -299,7 +299,7 @@
                                                 <asp:Button ID="BT_Send" runat="server" CssClass="inpu" OnClick="BT_Send_Click" Text="<%$ Resources:lang,Send%>" />
                                             </div>
 
-                                            <div class="npbtn">
+                                            <div class="equal-buttons">
                                                 <asp:Button ID="BT_Summit" runat="server" CssClass="inpu" OnClick="BT_Summit_Click" Text="<%$ Resources:lang,Submit%>" />
 
                                                 <asp:Button ID="BT_Receive" runat="server" Text="<%$ Resources:lang,ProjectAgree%>"

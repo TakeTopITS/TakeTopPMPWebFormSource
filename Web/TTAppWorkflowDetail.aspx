@@ -11,7 +11,7 @@
 <head id="Head1" runat="server">
     <title></title>
     <link id="mainCss" href="css/bluelightmain.css" rel="stylesheet" type="text/css" />
-    <%--    <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />--%>
+        <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />
 
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="js/allAHandler.js"></script>
@@ -179,21 +179,21 @@
         </asp:ScriptManager>
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
-                <div id="AboveDiv" >
+                <div id="AboveDiv">
                     <table width="100%" class="page_topbj">
                         <tr>
-                            <td style="vertical-align: middle; width: 100px;">
+                            <td style="vertical-align: middle; width: 150px;">
                                 <a id="aAPPBackPriorPage" href="javascript:window.history.go(-1)" runat="server" onclick="javascript:document.getElementById('IMG_Waiting').style.display = 'block';" target="_top">
-                                    <table border="0" class="ItemAlignLeft" cellpadding="0" cellspacing="0" style="vertical-align: middle;">
+                                    <table width="150px" border="0" class="ItemAlignLeft" cellpadding="0" cellspacing="0">
                                         <tr>
-                                            <td width="29" style="vertical-align: middle;">
-                                                <img src="ImagesSkin/return.png" alt="" style="vertical-align: middle;" />
+                                            <td width="29">
+                                                <img src="ImagesSkin/return.png" alt="" />
                                             </td>
-                                            <td class="ItemAlignLeft" background="ImagesSkin/main_top_bj.jpg" class="titleziAPP" style="width: 60px; vertical-align: middle;">
-                                                <asp:Label ID="Label12" runat="server" Text="<%$ Resources:lang,Back%>" Style="vertical-align: middle;" />
+                                            <td background="ImagesSkin/main_top_bj.jpg" class="titleziAPP">
+                                                <asp:Label ID="Label12" runat="server" Text="<%$ Resources:lang,Back%>" />
                                             </td>
-                                            <td width="5" style="vertical-align: middle;">
-                                                <img id="IMG_Waiting" src="Images/Processing.gif" alt="请稍候，处理中..." style="display: none; vertical-align: middle;" />
+                                            <td width="5">
+                                                <img id="IMG_Waiting" src="Images/Processing.gif" alt="请稍候，处理中..." style="display: none;" />
                                             </td>
                                         </tr>
                                     </table>
@@ -202,8 +202,8 @@
                             <td style="text-align: left; vertical-align: middle;">
                                 <asp:RadioButtonList ID="RB_WorkflowOperation" runat="server" AutoPostBack="true"
                                     RepeatLayout="Flow" RepeatDirection="Horizontal"
-                                    OnSelectedIndexChanged="RB_WorkflowOperation_SelectedIndexChanged"
-                                    Style="vertical-align: middle; display: inline-block; white-space: nowrap;">
+                                    OnSelectedIndexChanged="RB_WorkflowOperation_SelectedIndexChanged" >
+                                  
                                     <asp:ListItem Text="<%$ Resources:lang,TongYi %>" Value="<%$ Resources:lang,TongYi %>"
                                         style="display: inline-block; margin-right: 15px;"></asp:ListItem>
                                     <asp:ListItem Text="<%$ Resources:lang,BuTongYi %>" Value="<%$ Resources:lang,BuTongYi %>"
@@ -215,9 +215,7 @@
                                     <asp:Image ID="IMG_LRArrow" ImageUrl="Images/UpDnArrow.png" Width="18px" Height="24px" border="0" alt="放大缩小" runat="server" ToolTip="放大缩小" Style="vertical-align: middle;" />
                                 </a>
                             </td>
-                            <td id="divScale" style="text-align: right; font-size: x-large; vertical-align: middle;" onclick="javascript:setTBContendVisible();">
-                                <%-- +--%>
-                            </td>
+                            <td id="divScale" style="text-align: right; font-size: x-large; vertical-align: middle;" onclick="javascript:setTBContendVisible();"></td>
                             <td style="width: 60px; text-align: left; color: #394f66; vertical-align: middle;">
                                 <asp:HyperLink ID="HL_WLRelatedDoc" runat="server" Target="_blank" ToolTip="上传文档" Style="vertical-align: middle;">
                                 <img src="ImagesSkin/UploadDoc.png" width="24" height="24" class="noBorder" style="vertical-align: middle;" />
@@ -286,26 +284,28 @@
                                 <table style="width: 100%;">
                                     <tr>
                                         <td style="width: 65%; padding-top: 10px; padding-left: 10px;">
+                                            <div class="equal-buttons">
 
-                                            <asp:Button ID="BT_Refuse" runat="server" Height="30px" CssClass="inpu" OnClientClick="SaveDIYFormData('Refuse');" Text="<%$ Resources:lang,BoHui %>" />
-
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                            <asp:Button ID="BT_AddApprover" runat="server" Text="<%$ Resources:lang,JiaJian %>" Height="30px" CssClass="inpu" OnClientClick="window.parent.document.getElementById('bodyFrame').rows = '175,*';" OnClick="BT_AddApprover_Click" />
-
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-                                              <asp:Button ID="BT_Agree" runat="server" CssClass="inpu" Height="30px" Style="border: 1px solid red" OnClientClick="SaveDIYFormData('Agree');" Text="<%$ Resources:lang,WanChengTongGuo %>" />
+                                                <asp:Button ID="BT_Refuse" runat="server" Height="30px" CssClass="inpu" OnClientClick="SaveDIYFormData('Refuse');" Text="<%$ Resources:lang,BoHui %>" />
 
 
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                            <asp:Button ID="BT_Cancel" runat="server" CssClass="inpu" Height="30px" Enabled="False" OnClientClick="SaveDIYFormData('Cancel');" Text="<%$ Resources:lang,CheXiao %>" />
+                                                <asp:Button ID="BT_AddApprover" runat="server" Text="<%$ Resources:lang,JiaJian %>" Height="30px" CssClass="inpu" OnClientClick="window.parent.document.getElementById('bodyFrame').rows = '175,*';" OnClick="BT_AddApprover_Click" />
 
+
+
+                                                <asp:Button ID="BT_Agree" runat="server" CssClass="inpu" Height="30px" Style="border: 1px solid red" OnClientClick="SaveDIYFormData('Agree');" Text="<%$ Resources:lang,WanChengTongGuo %>" />
+
+
+
+                                                <asp:Button ID="BT_Cancel" runat="server" CssClass="inpu" Height="30px" Enabled="False" OnClientClick="SaveDIYFormData('Cancel');" Text="<%$ Resources:lang,CheXiao %>" />
+                                            </div>
                                         </td>
                                         <td style="text-align: left; padding-top: 10px;">
                                             <asp:Repeater ID="RP_RelatedModule" runat="server">
                                                 <ItemTemplate>
                                                     <a href='<%# DataBinder.Eval(Container.DataItem,"PageName") %>&MainTableCanAdd=<%# DataBinder.Eval(Container.DataItem,"MainTableCanAdd").ToString().Trim() %>&DetailTableCanAdd=<%# DataBinder.Eval(Container.DataItem,"DetailTableCanAdd").ToString().Trim() %>&MainTableCanEdit=<%# DataBinder.Eval(Container.DataItem,"MainTableCanEdit").ToString().Trim() %>&MainTableCanDelete=<%# DataBinder.Eval(Container.DataItem,"MainTableCanDelete").ToString().Trim() %>&DetailTableCanEdit=<%# DataBinder.Eval(Container.DataItem,"DetailTableCanEdit").ToString().Trim() %>&&DetailTableCanDelete=<%# DataBinder.Eval(Container.DataItem,"DetailTableCanDelete").ToString().Trim() %>&RelatedWorkFlowID=<%# DataBinder.Eval(Container.DataItem,"WorkflowID").ToString().Trim() %>&RelatedWorkflowStepID=<%# DataBinder.Eval(Container.DataItem,"WorkflowStepID") %>&RelatedWorkflowStepDetailID=<%# DataBinder.Eval(Container.DataItem,"WorkflowStepDetailID") %>' target="_blank"><%# DataBinder.Eval(Container.DataItem,"HomeModuleName") %> </a>
                                                     &nbsp;
+                                               
                                                 </ItemTemplate>
                                             </asp:Repeater>
                                         </td>
@@ -476,6 +476,7 @@
                                         <td style="height: 15px; text-align: left;">
                                             <asp:Label ID="Label28" runat="server" Text="<%$ Resources:lang,GongZuoLiuMingCheng%>"></asp:Label>
                                             :
+                                           
                                             <asp:DataList ID="DataList2" runat="server" Style="border: 1px solid yellow;" CellPadding="0" ForeColor="#333333"
                                                 Width="800px">
                                                 <ItemTemplate>
@@ -531,6 +532,7 @@
                                                                             <asp:Label ID="Label37" runat="server" Text="<%$ Resources:lang,XuanZheXiaYiBu %>"></asp:Label>
                                                                             <asp:Label ID="LB_NextSortNumber" runat="server" Style="font-weight: 700"></asp:Label>
                                                                             &#160;
+                                                                           
                                                                             <asp:Label ID="LB_NextStepID" runat="server" Style="font-weight: 700" Visible="False"></asp:Label>
                                                                             <asp:Label ID="LB_NextStepName" runat="server" Style="font-weight: 700"></asp:Label>
                                                                         </td>
@@ -1309,6 +1311,7 @@
                                             <asp:Label ID="LB_TemStepID" runat="server" Visible="False"></asp:Label>
 
                                             &nbsp; &nbsp; &nbsp; &nbsp;
+                                           
                                             <asp:HyperLink ID="HL_RelatedMeeting" runat="server" Target="_blank" Text="<%$ Resources:lang,hlMakeMeeting %>"></asp:HyperLink>
                                             &nbsp;<asp:HyperLink ID="HL_MakeCollaboration" runat="server" NavigateUrl="~/TTMakeCollaboration.aspx" Target="_blank" Text="<%$ Resources:lang,hlMakeCollaboration %>"></asp:HyperLink>
                                         </td>
@@ -1549,7 +1552,8 @@
                                 <td style="text-align: left">
                                     <asp:Label ID="Label71" runat="server" Text="<%$ Resources:lang,BuXu %>"></asp:Label>
                                     :<asp:Label ID="LB_SortNumber" runat="server"></asp:Label>&#160;
-                                                                                            <asp:Label ID="LB_StepName" runat="server"></asp:Label>
+                                                                                           
+                                    <asp:Label ID="LB_StepName" runat="server"></asp:Label>
                                     <asp:Label ID="LB_WFTemStepID" runat="server" Visible="False"></asp:Label>
                                     <asp:Label ID="Label80" runat="server" Text="<%$ Resources:lang,MingXi %>"></asp:Label>
                                     : </td>
@@ -1633,6 +1637,7 @@
                     &#160;&#160;<asp:Button ID="BT_ReviewWF" runat="server" Height="30px" CssClass="inpu" OnClick="BT_Review_Click" Text="<%$ Resources:lang,FuHeZhong %>" />
                     &#160;&#160;<asp:Button ID="BT_CancelWF" runat="server" CssClass="inpu" Height="30px" OnClick="BT_Cancel_Click" Text="<%$ Resources:lang,CheXiaoPiZhun %>" />
                     &#160;&#160;
+                   
                     <asp:Button ID="BT_BackPirorStepWF" runat="server" CssClass="inpu" Height="30px" OnClick="BT_BackPirorStep_Click" Text="<%$ Resources:lang,PiZhunFanHui %>" />
                     <asp:Button ID="BT_Checking" runat="server" Height="30px" CssClass="inpu" OnClientClick="SaveDIYFormData('Checking');" Text="<%$ Resources:lang,ShenHeZhong %>" />
                     <asp:Button ID="BT_Signing" runat="server" Height="30px" CssClass="inpu" OnClientClick="SaveDIYFormData('Signing');" Text="<%$ Resources:lang,HuiQianZhong %>" />

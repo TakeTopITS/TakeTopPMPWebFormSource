@@ -258,185 +258,6 @@
             color: #388E3C;
         }
 
-        /* 弹窗移动端适配 */
-        .layui-layer-iframe {
-            max-width: 98%;
-            left: 50% !important;
-            transform: translateX(-50%);
-            margin-top: 20px;
-        }
-
-        /* 弹窗标题 */
-        .layui-layer-title {
-            padding: 12px 15px !important;
-            height: auto !important;
-            line-height: 1.4 !important;
-            background: #e7e7e8 !important;
-            font-weight: 500 !important;
-        }
-
-        /* 弹窗内容区域 - 确保有滚动且不覆盖底部按钮 */
-        .layui-layer-content {
-            overflow-y: auto !important;
-            -webkit-overflow-scrolling: touch !important;
-        }
-
-        /* 弹窗底部按钮 */
-        .layui-layer-btn {
-            padding: 15px !important;
-            background: white !important;
-            border-top: 1px solid #eee !important;
-            display: flex !important;
-            justify-content: center !important;
-            gap: 10px !important;
-            flex-wrap: wrap !important;
-        }
-
-            /* 弹窗内部按钮样式 */
-            .layui-layer-btn .popup-button {
-                display: inline-block !important;
-                width: 48% !important;
-                min-width: 120px !important;
-                padding: 12px 0 !important;
-                text-align: center !important;
-                text-decoration: none !important;
-                border-radius: 8px !important;
-                font-size: 16px !important;
-                font-weight: 500 !important;
-                cursor: pointer !important;
-            }
-
-        /* 弹窗内容优化 */
-        .popup-content {
-            padding: 15px;
-        }
-
-        .score-section {
-            margin-bottom: 20px;
-            padding: 15px;
-            background: #f8f9fa;
-            border-radius: 8px;
-        }
-
-        .comment-section {
-            margin-bottom: 20px;
-        }
-
-        .comment-item {
-            margin-bottom: 15px;
-            padding: 12px;
-            background: white;
-            border-radius: 6px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-
-        .comment-title {
-            font-weight: 500;
-            color: #1976D2;
-            margin-bottom: 8px;
-            padding-bottom: 5px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .comment-content {
-            color: #333;
-            font-size: 14px;
-            line-height: 1.5;
-        }
-
-        .comment-meta {
-            font-size: 12px;
-            color: #666;
-            margin-top: 5px;
-        }
-
-        @media (max-width: 768px) {
-            .layui-layer-iframe {
-                width: 95% !important;
-                max-height: 90vh !important;
-                top: 20px !important;
-            }
-
-            .layui-layer-content {
-                max-height: calc(90vh - 140px) !important;
-            }
-
-            .layui-layer-btn {
-                padding: 12px 10px !important;
-            }
-
-                .layui-layer-btn .popup-button {
-                    width: 48% !important;
-                    min-width: 110px !important;
-                    padding: 10px 0 !important;
-                    font-size: 15px !important;
-                }
-
-            /* 弹窗内容在移动端的优化 */
-            .popup-content {
-                padding: 10px;
-            }
-
-            .score-section {
-                padding: 12px;
-                margin-bottom: 15px;
-            }
-
-            .comment-item {
-                padding: 10px;
-                margin-bottom: 12px;
-            }
-
-            /* DataGrid在移动端的优化 */
-            .datagrid-table {
-                font-size: 14px;
-            }
-
-                .datagrid-table .itemBorder {
-                    padding: 10px 5px;
-                }
-
-            /* KPI评分项在移动端的优化 */
-            .kpi-summary {
-                padding: 10px;
-            }
-
-            .kpi-item {
-                min-width: 120px;
-                padding: 8px;
-            }
-
-            .kpi-value {
-                font-size: 16px;
-            }
-
-            /* 弹窗表格布局改为块状布局 */
-            .formBgStyle {
-                width: 100%;
-                border-collapse: collapse;
-            }
-
-                .formBgStyle tr {
-                    display: block;
-                    margin-bottom: 10px;
-                }
-
-                .formBgStyle td {
-                    display: block;
-                    width: 100% !important;
-                    padding: 5px 0;
-                }
-
-                .formBgStyle .formItemBgStyleForAlignLeft {
-                    background: none;
-                    padding: 8px 0;
-                }
-
-                /* 移除弹窗中的行合并 */
-                .formBgStyle td[rowspan] {
-                    position: static !important;
-                }
-        }
 
         /* 触摸反馈 */
         .touch-feedback {
@@ -477,14 +298,24 @@
 
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="js/allAHandler.js"></script>
-    <script type="text/javascript" src="js/layer/layer/layer.js"></script>
-    <script type="text/javascript" src="js/popwindow.js"></script>
-    <script type="text/javascript" language="javascript">
-        $(function () {
-            initSwipeBack();
 
-            // 移动端触摸优化
-            $('.list-item, .action-button, .mobile-button, .datagrid-table a').addClass('touch-feedback');
+    <script type="text/javascript" language="javascript">
+        // 使用与第二个页面相同的加载方式
+        var $load = function (loadFunc) {
+            $(function () {
+                initSwipeBack(); // 初始化滑动返回功能
+                if (typeof (Sys) != 'undefined') {
+                    Sys.WebForms.PageRequestManager.getInstance().add_pageLoaded(loadFunc);
+                }
+                else {
+                    loadFunc();
+                }
+            });
+        };
+
+        $load(function () {
+            //// 移动端触摸优化
+            //$('.list-item, .action-button, .mobile-button, .datagrid-table a').addClass('touch-feedback');
 
             // 防止双击放大
             var lastTouchEnd = 0;
@@ -496,10 +327,11 @@
                 lastTouchEnd = now;
             }, false);
 
-            // 优化滚动性能
-            $('.content-wrapper').on('touchmove', function (e) {
-                e.stopPropagation();
-            });
+            // 注意：这里移除了阻止滚动的事件监听器，因为它会影响滑动刷新功能
+            // 如果页面有滚动问题，可以尝试使用更精细的控制
+            // $('.content-wrapper').on('touchmove', function (e) {
+            //     e.stopPropagation();
+            // });
 
             // 显示加载状态
             $('form').on('submit', function () {
@@ -621,7 +453,11 @@
     </script>
 </head>
 <body>
-
+   <div id="swipeFeedback" class="swipe-feedback">
+      <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" />
+  </div>
+  <!-- 滑动反馈层 -->
+  <canvas id="myCanvas" style="display: none;"></canvas>
     <!-- 移动端头部 -->
     <table cellpadding="0" cellspacing="0" width="100%">
         <tr>
@@ -793,7 +629,7 @@
                                     <div style="margin-bottom: 15px;">
                                         <asp:Label ID="Label32" runat="server" Text="<%$ Resources:lang,YiJian%>" Style="display: block; margin-bottom: 8px; font-weight: 500; color: #333;"></asp:Label>
                                         <CKEditor:CKEditorControl ID="HE_SelfSummary" runat="server" Toolbar="" Height="150px" Width="100%" Visible="false" />
-                                        <CKEditor:CKEditorControl runat="server" ID="HT_SelfSummary" Toolbar="" Width="100%" Height="150px" Visible="False" />
+
                                     </div>
                                 </div>
 
@@ -895,7 +731,7 @@
                             </asp:LinkButton>
 
                             <a onclick="return popClose();"
-                                style="display: inline-block; width: 30%; height: 40px; text-align:center; line-height: 40px; background: #f5f5f5; color: #333; border: none; border-radius: 8px; font-size: 16px; font-weight: 500; cursor: pointer; text-decoration: none;">
+                                style="display: inline-block; width: 30%; height: 40px; text-align: center; line-height: 40px; background: #f5f5f5; color: #333; border: none; border-radius: 8px; font-size: 16px; font-weight: 500; cursor: pointer; text-decoration: none;">
                                 <asp:Label ID="Label1" runat="server" Text="<%$ Resources:lang,GuanBi%>" />
                             </a>
                         </div>

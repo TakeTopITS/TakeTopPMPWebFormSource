@@ -1,5 +1,6 @@
 using ProjectMgt.BLL;
 using ProjectMgt.Model;
+
 using System;
 using System.Collections;
 using System.Web.UI;
@@ -32,15 +33,8 @@ public partial class TTAppCreateProjectTaskDetail : System.Web.UI.Page
 
         if (Page.IsPostBack != true)
         {
-            if (strIsMobildeDevice == "YES")
-            {
-                HT_Operation.Visible = true; 
-                HT_Operation.Toolbar = "";
-            }
-            else
-            {
-                 HE_Operation.Visible = true; 
-            }
+
+            HE_Operation.Visible = true;
 
             DLC_BeginDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
             DLC_EndDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
@@ -203,14 +197,9 @@ public partial class TTAppCreateProjectTaskDetail : System.Web.UI.Page
             {
             }
 
-            if (strIsMobildeDevice == "YES")
-            {
-                HT_Operation.Text = taskAssignRecord.Operation.Trim();
-            }
-            else
-            {
-                HE_Operation.Text = taskAssignRecord.Operation.Trim();
-            }
+
+            HE_Operation.Text = taskAssignRecord.Operation.Trim();
+
             DLC_TaskBegin.Text = taskAssignRecord.BeginDate.ToString("yyyy-MM-dd");
             DLC_TaskEnd.Text = taskAssignRecord.EndDate.ToString("yyyy-MM-dd");
 
@@ -288,13 +277,13 @@ public partial class TTAppCreateProjectTaskDetail : System.Web.UI.Page
                     strHQL += ",ActualHour = " + ShareClass.GetTotalRealManHourByPlan(strPlanID);
                     strHQL += ",Expense = " + ShareClass.GetTotalRealExpenseByPlan(strPlanID);
                     strHQL += " Where ID = " + strPlanID;
-                
+
                     ShareClass.RunSqlCommand(strHQL);
                 }
 
                 ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZGXCG") + "')", true);
             }
-            catch(Exception err)
+            catch (Exception err)
             {
                 LogClass.WriteLogFile(err.ToString());
                 ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZGXCCJC") + "')", true);
@@ -424,14 +413,9 @@ public partial class TTAppCreateProjectTaskDetail : System.Web.UI.Page
         strAssignManCode = LB_UserCode.Text.Trim();
         strAssignManName = ShareClass.GetUserName(strAssignManCode);
 
-        if (strIsMobildeDevice == "YES")
-        {
-            strOperation = HT_Operation.Text.Trim();
-        }
-        else
-        {
-            strOperation = HE_Operation.Text.Trim();
-        }
+
+        strOperation = HE_Operation.Text.Trim();
+
         intPriorID = 0;
         dtBeginDate = DateTime.Parse(DLC_TaskBegin.Text);
         dtEndDate = DateTime.Parse(DLC_TaskEnd.Text);
@@ -465,7 +449,7 @@ public partial class TTAppCreateProjectTaskDetail : System.Web.UI.Page
         taskAssignRecord.Status = "ToHandle";
 
         taskAssignRecord.FinishedNumber = 0;
-        taskAssignRecord.UnitName = ""; 
+        taskAssignRecord.UnitName = "";
         taskAssignRecord.MoveTime = DateTime.Now;
 
         try
@@ -529,14 +513,9 @@ public partial class TTAppCreateProjectTaskDetail : System.Web.UI.Page
         taskAssignRecord.Type = DL_RecordType.SelectedValue.Trim();
         taskAssignRecord.Content = "";
 
-        if (strIsMobildeDevice == "YES")
-        {
-            taskAssignRecord.Operation = HT_Operation.Text.Trim();
-        }
-        else
-        {
-            taskAssignRecord.Operation = HE_Operation.Text.Trim();
-        }
+
+        taskAssignRecord.Operation = HE_Operation.Text.Trim();
+
         taskAssignRecord.OperatorCode = DL_OperatorCode.SelectedValue;
         taskAssignRecord.OperatorName = ShareClass.GetUserName(DL_OperatorCode.SelectedValue);
         taskAssignRecord.BeginDate = DateTime.Parse(DLC_TaskBegin.Text);
@@ -568,7 +547,7 @@ public partial class TTAppCreateProjectTaskDetail : System.Web.UI.Page
 
             if (CB_SendMsg.Checked == true)
             {
-                msg.SendMSM("Message",strOperatorCode, strMsg, strUserCode);
+                msg.SendMSM("Message", strOperatorCode, strMsg, strUserCode);
             }
 
             if (CB_SendMail.Checked == true)
@@ -647,14 +626,8 @@ public partial class TTAppCreateProjectTaskDetail : System.Web.UI.Page
     {
         string strWorkRequest = DL_WorkRequest.SelectedValue.Trim();
 
-        if (strIsMobildeDevice == "YES")
-        {
-            HT_Operation.Text = strWorkRequest;
-        }
-        else
-        {
-            HE_Operation.Text = strWorkRequest;
-        }
+
+        HE_Operation.Text = strWorkRequest;
     }
 
     protected string GetTaskRelatedProjectID(string strTaskID)

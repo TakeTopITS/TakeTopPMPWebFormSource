@@ -37,26 +37,19 @@ public partial class TTAppCustomerQuestionRecord : System.Web.UI.Page
         //CKEditor≥ı ºªØ      
         CKFinder.FileBrowser _FileBrowser = new CKFinder.FileBrowser();
         _FileBrowser.BasePath = "ckfinder/"; Session["PageName"] = "TakeTopSiteContentEdit";
-        _FileBrowser.SetupCKEditor(TB_Question);
-TB_Question.Language = Session["LangCode"].ToString();
-
       
+
+
         ShareClass.LoadSytemChart(strUserCode, "CustomerQuestionRecord", RP_ChartList);
         HL_SystemAnalystChartRelatedUserSet.NavigateUrl = "TTSystemAnalystChartRelatedUserSet.aspx?FormType=CustomerQuestionRecord";
 
         //ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "clickA", "aHandler();", true);
         if (Page.IsPostBack == false)
         {
-            if (strIsMobileDevice == "YES")
-            {
-                HT_Question.Visible = true;
-                HT_Question.Toolbar = "";
-            }
-            else
-            {
-                TB_Question.Visible = true;
-                TB_Question.Toolbar = "";
-            }
+
+            HT_Question.Visible = true;
+            HT_Question.Toolbar = "";
+
 
             DLC_ExpectedTime.Text = DateTime.Now.ToString("yyyy-MM-dd");
             DLC_AnswerTime.Text = DateTime.Now.ToString("yyyy-MM-dd");
@@ -102,14 +95,9 @@ TB_Question.Language = Session["LangCode"].ToString();
 
             DL_IsImportant.SelectedValue = customerQuestion.IsImportant.Trim();
 
-            if (strIsMobileDevice == "YES")
-            {
-                HT_Question.Text = customerQuestion.Question.Trim();
-            }
-            else
-            {
-                TB_Question.Text = customerQuestion.Question.Trim();
-            }
+
+            HT_Question.Text = customerQuestion.Question.Trim();
+
 
             DLC_AnswerTime.Text = customerQuestion.AnswerTime.ToString("yyyy-MM-dd");
             TB_Company.Text = customerQuestion.Company.Trim();
@@ -235,14 +223,9 @@ TB_Question.Language = Session["LangCode"].ToString();
 
                     DL_IsImportant.SelectedValue = customerQuestion.IsImportant.Trim();
 
-                    if (strIsMobileDevice == "YES")
-                    {
-                        HT_Question.Text = customerQuestion.Question.Trim();
-                    }
-                    else
-                    {
-                        TB_Question.Text = customerQuestion.Question.Trim();
-                    }
+
+                    HT_Question.Text = customerQuestion.Question.Trim();
+
 
                     DLC_AnswerTime.Text = customerQuestion.AnswerTime.ToString("yyyy-MM-dd");
                     TB_Company.Text = customerQuestion.Company.Trim();
@@ -324,7 +307,7 @@ TB_Question.Language = Session["LangCode"].ToString();
                     customerQuestionBLL.DeleteCustomerQuestion(customerQuestion);
 
                     LB_ID.Text = "";
-                    TB_Question.Text = "";
+
                     HT_Question.Text = "";
 
                     DLC_AnswerTime.Text = DateTime.Now.ToString("yyyy-MM-dd");
@@ -409,14 +392,9 @@ TB_Question.Language = Session["LangCode"].ToString();
         strType = DL_CustomerQuestionType.SelectedValue.Trim();
         strIsImportant = DL_IsImportant.SelectedValue.Trim();
 
-        if (strIsMobileDevice == "YES")
-        {
-            strQuestion = HT_Question.Text.Trim();
-        }
-        else
-        {
-            strQuestion = TB_Question.Text.Trim();
-        }
+
+        strQuestion = HT_Question.Text.Trim();
+
         dtAnswerTime = DateTime.Parse(DLC_AnswerTime.Text);
 
 
@@ -525,14 +503,9 @@ TB_Question.Language = Session["LangCode"].ToString();
         strAddress = TB_Address.Text.Trim();
         strPostCode = TB_PostCode.Text.Trim();
         strType = DL_CustomerQuestionType.SelectedValue.Trim();
-        if (strIsMobileDevice == "YES")
-        {
-            strQuestion = HT_Question.Text.Trim();
-        }
-        else
-        {
-            strQuestion = TB_Question.Text.Trim();
-        }
+
+        strQuestion = HT_Question.Text.Trim();
+
         dtAnswerTime = DateTime.Parse(DLC_AnswerTime.Text);
 
         if (strCompany == "" | strContactPerson == "" | strPhoneNumber == "" | strQuestion == "")
@@ -624,7 +597,7 @@ TB_Question.Language = Session["LangCode"].ToString();
     protected void BT_Clear_Click(object sender, EventArgs e)
     {
         LB_ID.Text = "";
-        TB_Question.Text = "";
+
         HT_Question.Text = "";
 
         DLC_AnswerTime.Text = DateTime.Now.ToString("yyyy-MM-dd");

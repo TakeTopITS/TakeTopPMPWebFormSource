@@ -7,7 +7,7 @@
 <head id="Head1" runat="server">
     <title></title>
     <link id="mainCss" href="css/bluelightmain.css" rel="stylesheet" type="text/css" />
-     <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />
+      <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />
     <style type="text/css">
         body {
             /*margin-top: 5px;*/
@@ -244,8 +244,8 @@
                                                     <asp:Label ID="Label5" runat="server" Text="<%$ Resources:lang,NeiRong%>"></asp:Label>
                                                 </td>
                                                 <td class="formItemBgStyleForAlignLeft">
-                                                    <CKEditor:CKEditorControl ID="CKEditor1" runat="server" Width="99%" Height="150px" Visible="false"></CKEditor:CKEditorControl>
-                                                    <CKEditor:CKEditorControl ID="HTEditor1" runat="server" Width="99%" Height="150px" Visible="false" />
+                                                    <CKEditor:CKEditorControl ID="CKEditor1" runat="server" Toolbar="" Width="99%" Height="150px" Visible="false"></CKEditor:CKEditorControl>
+                                                  
                                                 </td>
                                             </tr>
                                             <tr>

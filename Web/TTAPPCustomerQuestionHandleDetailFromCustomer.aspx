@@ -19,248 +19,9 @@
     <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />
 
     <style type="text/css">
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-            font-size: 14px;
-        }
-        
-        .mobile-container {
-            width: 100%;
-            margin: 0 auto;
-        }
-        
-        .mobile-header {
-            background-color: #1a73e8;
-            color: white;
-            padding: 10px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            height: 50px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .header-back {
-            display: flex;
-            align-items: center;
-            color: white;
-            text-decoration: none;
-        }
-        
-        .header-back img {
-            margin-right: 8px;
-        }
-        
-        .mobile-content {
-            margin-top: 10px;
-            padding: 10px;
-            padding-bottom: 60px;
-        }
-        
-        .mobile-section {
-            background: white;
-            border-radius: 5px;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ddd;
-        }
-        
-        .mobile-form-group {
-            margin-bottom: 15px;
-        }
-        
-        .mobile-label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 5px;
-            color: #333;
-        }
-        
-        .mobile-input {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-        
-        .mobile-dropdown {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            background-color: white;
-            box-sizing: border-box;
-        }
-        
-        .mobile-button {
-            width: 100%;
-            padding: 10px;
-            background-color: #1a73e8;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            font-size: 14px;
-            margin-bottom: 5px;
-            cursor: pointer;
-        }
-        
-        .mobile-button.yellow {
-            background-color: #fbbc05;
-        }
-        
-        .mobile-button-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 5px;
-            margin-top: 10px;
-        }
-        
-        .mobile-button-small {
-            flex: 1;
-            padding: 8px;
-            background-color: #34a853;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            font-size: 12px;
-            cursor: pointer;
-            text-align: center;
-        }
-        
-        .mobile-button-small.red {
-            background-color: #ea4335;
-        }
-        
-        .mobile-button-small.blue {
-            background-color: #1a73e8;
-        }
-        
-        .data-item {
-            background: #f9f9f9;
-            border: 1px solid #eee;
-            border-radius: 4px;
-            padding: 10px;
-            margin-bottom: 10px;
-        }
-        
-        .data-row {
-            margin-bottom: 5px;
-            display: flex;
-            flex-wrap: wrap;
-        }
-        
-        .data-label {
-            font-weight: bold;
-            color: #666;
-            min-width: 80px;
-        }
-        
-        .data-value {
-            color: #333;
-            flex: 1;
-        }
-        
-        .mobile-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.5);
-            z-index: 2000;
-            overflow-y: auto;
-        }
-        
-        .modal-content {
-            background: white;
-            margin: 20px;
-            border-radius: 5px;
-        }
-        
-        .modal-header {
-            background: #f0f0f0;
-            padding: 10px;
-            font-weight: bold;
-            border-bottom: 1px solid #ddd;
-        }
-        
-        .modal-body {
-            padding: 10px;
-            max-height: 70vh;
-            overflow-y: auto;
-        }
-        
-        .modal-footer {
-            padding: 10px;
-            border-top: 1px solid #ddd;
-            display: flex;
-            gap: 10px;
-        }
-        
-        .modal-button {
-            flex: 1;
-            padding: 8px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        
-        .modal-button.primary {
-            background-color: #1a73e8;
-            color: white;
-        }
-        
-        .modal-button.secondary {
-            background-color: #ccc;
-            color: #333;
-        }
-        
-        .status-badge {
-            display: inline-block;
-            padding: 2px 8px;
-            border-radius: 10px;
-            font-size: 12px;
-            background-color: #e8f0fe;
-            color: #1a73e8;
-        }
-        
-        .action-icons {
-            display: flex;
-            gap: 10px;
-            margin-top: 10px;
-        }
-        
-        .action-icon {
-            width: 30px;
-            height: 30px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: #f0f0f0;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        
-        @media (max-width: 768px) {
-            .data-row {
-                flex-direction: column;
-            }
-            
-            .data-label {
-                min-width: auto;
-                margin-bottom: 2px;
-            }
-        }
+       
     </style>
-    
+
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="js/allAHandler.js"></script>
     <script src="js/exif.js" type="text/javascript"></script>
@@ -325,6 +86,12 @@
 
             // 移动端初始化
             initMobileUI();
+
+            // 优化弹窗按钮
+            enhancePopupButtons();
+
+            // 弹窗适配移动端
+            adaptPopupForMobile();
 
         });
 
@@ -467,34 +234,114 @@
             $('.mobile-modal').hide();
         }
 
+        function enhancePopupButtons() {
+            // 为弹窗按钮添加触摸反馈
+            $('.popup-button, .layui-layer-btn a').addClass('touch-feedback');
+
+            // 确保按钮有正确的大小和间距
+            $('.layui-layer-btn').css({
+                'display': 'flex',
+                'justify-content': 'space-between',
+                'gap': '10px'
+            });
+
+            $('.layui-layer-btn a, .layui-layer-btn .popup-button').css({
+                'flex': '1',
+                'margin': '0'
+            });
+        }
+
+        function adaptPopupForMobile() {
+            // 弹窗显示时调整位置和大小
+            $(document).on('click', '[data-popup]', function () {
+                setTimeout(function () {
+                    var $popup = $('.layui-layer-iframe:visible');
+                    if ($popup.length) {
+                        var windowHeight = $(window).height();
+                        var popupHeight = Math.min(windowHeight - 40, 600);
+
+                        $popup.css({
+                            'top': '20px',
+                            'left': '50%',
+                            'transform': 'translateX(-50%)',
+                            'width': '95%',
+                            'height': popupHeight + 'px',
+                            'max-width': '500px'
+                        });
+
+                        // 确保内容可滚动
+                        var contentHeight = popupHeight - 120; // 减去标题和底部按钮的高度
+                        $popup.find('.layui-layer-content').css({
+                            'max-height': contentHeight + 'px',
+                            'overflow-y': 'auto'
+                        });
+                    }
+                }, 100);
+            });
+        }
+
+        // 确保popClose函数存在
+        if (typeof popClose !== 'function') {
+            function popClose() {
+                $('.layui-layer-iframe:visible').hide();
+                $('#popwindow_shade').hide();
+                return false;
+            }
+        }
+
     </script>
 </head>
-<body><div id="swipeFeedback" class="swipe-feedback"><asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" /></div> <!-- 滑动反馈层 -->
+<body>
+    <div id="swipeFeedback" class="swipe-feedback">
+        <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" />
+    </div>
+    <!-- 滑动反馈层 -->
     <canvas id="myCanvas" style="display: none;"></canvas>
-    
+
     <div class="mobile-container">
         <form id="form1" runat="server">
             <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">
             </asp:ScriptManager>
-            
+
             <!-- 移动端头部 -->
-          <div class="page_topbj">
-                <a id="aAPPBackPriorPage" href="javascript:window.history.go(-1)" class="header-back" onclick="javascript:document.getElementById('IMG_Waiting').style.display = 'block';">
-                    <img src="ImagesSkin/return.png" alt="" />
-                    <asp:Label runat="server" Text="<%$ Resources:lang,Back%>" />
-                </a>
-                <img id="IMG_Waiting" src="Images/Processing.gif" alt="请稍候，处理中..." style="display: none; margin-left: 10px;" />
-            </div>
-            
+            <table cellpadding="0" cellspacing="0" width="100%" class="bian">
+                <tr>
+                    <td colspan="2" height="31" class="page_topbj">
+                        <table width="96%" border="0" class="ItemAlignLeft" cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td class="ItemAlignLeft">
+                                    <a id="aAPPBackPriorPage" href="javascript:window.history.go(-1)" target="_top" onclick="javascript:document.getElementById('IMG_Waiting').style.display = 'block';">
+                                        <table width="245" border="0" class="ItemAlignLeft" cellpadding="0" cellspacing="0">
+                                            <tr>
+                                                <td width="29">
+                                                    <img src="ImagesSkin/return.png" alt="" />
+                                                </td>
+                                                <td background="ImagesSkin/main_top_bj.jpg" class="titleziAPP">
+                                                    <asp:Label ID="Label1" runat="server" Text="<%$ Resources:lang,Back%>" />
+                                                </td>
+                                                <td width="5">
+                                                    <%-- <img src="ImagesSkin/main_top_r.jpg" width="5" height="31" />--%>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <img id="IMG_Waiting" src="Images/Processing.gif" alt="请稍候，处理中..." style="display: none;" />
+                                    </a>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+
             <div class="mobile-content">
                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                     <ContentTemplate>
                         <!-- 服务需求部分 -->
                         <div id="div_xuqiu" runat="server" class="mobile-section">
                             <div style="text-align: right; margin-bottom: 10px;">
-                                <asp:Button ID="BT_Create" runat="server" CssClass="mobile-button" OnClick="BT_Create_Click" Text="<%$ Resources:lang,XuQiu%>" />
+                                <asp:Button ID="BT_Create" runat="server" CssClass="inpu" OnClick="BT_Create_Click" Text="<%$ Resources:lang,XuQiu%>" />
                             </div>
-                            
+
                             <!-- 服务需求列表 -->
                             <asp:DataGrid ID="DataGrid4" runat="server" AutoGenerateColumns="False" GridLines="None"
                                 OnItemCommand="DataGrid4_ItemCommand"
@@ -505,52 +352,62 @@
                                     <asp:TemplateColumn>
                                         <ItemTemplate>
                                             <div class="data-row">
-                                                <div class="data-label"><asp:Label ID="Label27" runat="server" Text="<%$ Resources:lang,BianHao%>" />:</div>
+                                                <div class="data-label">
+                                                    <asp:Label ID="Label27" runat="server" Text="<%$ Resources:lang,BianHao%>" />:
+                                                </div>
                                                 <div class="data-value"><%# DataBinder.Eval(Container.DataItem, "ID") %></div>
                                             </div>
-                                            
+
                                             <div class="data-row">
-                                                <div class="data-label"><asp:Label ID="Label28" runat="server" Text="<%$ Resources:lang,LeiBie%>" />:</div>
+                                                <div class="data-label">
+                                                    <asp:Label ID="Label28" runat="server" Text="<%$ Resources:lang,LeiBie%>" />:
+                                                </div>
                                                 <div class="data-value"><%# DataBinder.Eval(Container.DataItem, "Type") %></div>
                                             </div>
-                                            
+
                                             <div class="data-row">
-                                                <div class="data-label"><asp:Label ID="Label32" runat="server" Text="<%$ Resources:lang,WenTi%>" />:</div>
+                                                <div class="data-label">
+                                                    <asp:Label ID="Label32" runat="server" Text="<%$ Resources:lang,WenTi%>" />:
+                                                </div>
                                                 <div class="data-value">
                                                     <a href='TTCustomerQuestionHandleDetail.aspx?ID=<%# DataBinder.Eval(Container.DataItem, "ID") %>' target="_blank">
                                                         <%# DataBinder.Eval(Container.DataItem, "Question") %>
                                                     </a>
                                                 </div>
                                             </div>
-                                            
+
                                             <div class="data-row">
-                                                <div class="data-label"><asp:Label ID="Label34" runat="server" Text="<%$ Resources:lang,ShouLiRen%>" />:</div>
+                                                <div class="data-label">
+                                                    <asp:Label ID="Label34" runat="server" Text="<%$ Resources:lang,ShouLiRen%>" />:
+                                                </div>
                                                 <div class="data-value">
                                                     <a href='TTUserInforSimple.aspx?UserCode=<%# DataBinder.Eval(Container.DataItem, "OperatorCode") %>' target="_blank">
                                                         <%# DataBinder.Eval(Container.DataItem, "OperatorName") %>
                                                     </a>
                                                 </div>
                                             </div>
-                                            
+
                                             <div class="data-row">
-                                                <div class="data-label"><asp:Label ID="Label33" runat="server" Text="<%$ Resources:lang,ZhuangTai%>" />:</div>
+                                                <div class="data-label">
+                                                    <asp:Label ID="Label33" runat="server" Text="<%$ Resources:lang,ZhuangTai%>" />:
+                                                </div>
                                                 <div class="data-value status-badge">
                                                     <%# ShareClass.GetStatusHomeNameByOtherStatus(Eval("OperatorStatus").ToString()) %>
                                                 </div>
                                             </div>
-                                            
-                                            <div class="action-icons" style="display:none;">
+
+                                            <div class="action-icons" style="display: none;">
                                                 <asp:ButtonColumn ButtonType="LinkButton" CommandName="Update" Text="&lt;div class='action-icon'&gt;&lt;img src='ImagesSkin/Update.png' style='width:20px;height:20px;' /&gt;&lt;/div&gt;">
-                                                    <ItemStyle Width="30px" />
+                                                    <itemstyle width="30px" />
                                                 </asp:ButtonColumn>
                                                 <asp:TemplateColumn>
-                                                    <ItemTemplate>
+                                                    <itemtemplate>
                                                         <div onclick="return showSimpleDeleteModal(this, event);" class="action-icon" title="Delete">
-                                                            <img src="ImagesSkin/Delete.png" style="width:20px;height:20px;" />
+                                                            <img src="ImagesSkin/Delete.png" style="width: 20px; height: 20px;" />
                                                         </div>
                                                         <asp:LinkButton ID="LBT_Delete" CommandName="Delete" runat="server" Style="display: none;"></asp:LinkButton>
-                                                    </ItemTemplate>
-                                                    <ItemStyle Width="30px" />
+                                                    </itemtemplate>
+                                                    <itemstyle width="30px" />
                                                 </asp:TemplateColumn>
                                                 <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl='<%# DataBinder.Eval(Container, "DataItem.ID", "TTCustomerQuestionRelatedDoc.aspx?RelatedID={0}") %>' Target="_blank" CssClass="action-icon">
                                                     <img src="ImagesSkin/UpLoad.jpg" style="width:20px;height:20px;" />
@@ -563,125 +420,155 @@
                                     </asp:TemplateColumn>
                                 </Columns>
                             </asp:DataGrid>
-                            
+
                             <!-- 服务处理按钮 -->
                             <div style="margin-top: 15px;">
                                 <div class="mobile-form-group">
-                                    <div class="mobile-label"><asp:Label ID="Label48" runat="server" Text="<%$ Resources:lang,FuWuChuLiXiJie%>" /></div>
+                                    <div class="mobile-label">
+                                        <asp:Label ID="Label48" runat="server" Text="<%$ Resources:lang,FuWuChuLiXiJie%>" />
+                                    </div>
                                 </div>
-                                
+
                                 <div class="mobile-form-group">
-                                    <div class="mobile-label"><asp:Label ID="Label51" runat="server" Text="<%$ Resources:lang,CYHSJ%>" /></div>
+                                    <div class="mobile-label">
+                                        <asp:Label ID="Label51" runat="server" Text="<%$ Resources:lang,CYHSJ%>" />
+                                    </div>
                                     <asp:DropDownList ID="DL_IsImportant" runat="server" CssClass="mobile-dropdown" AutoPostBack="true" OnSelectedIndexChanged="DL_IsImportant_SelectedIndexChanged">
                                         <asp:ListItem>NO</asp:ListItem>
                                         <asp:ListItem>YES</asp:ListItem>
                                     </asp:DropDownList>
                                 </div>
-                                
+
                                 <div class="mobile-form-group">
-                                    <div class="mobile-label"><asp:Label ID="Label49" runat="server" Text="<%$ Resources:lang,ZhiJieChengYuan%>" /></div>
+                                    <div class="mobile-label">
+                                        <asp:Label ID="Label49" runat="server" Text="<%$ Resources:lang,ZhiJieChengYuan%>" />
+                                    </div>
                                     <asp:DropDownList ID="DL_Operator" runat="server" CssClass="mobile-dropdown" DataTextField="UserName" DataValueField="UserCode">
                                     </asp:DropDownList>
                                 </div>
-                                
-                                <div class="mobile-button-group">
-                                    <asp:Button ID="BT_Accept" runat="server" CssClass="mobile-button-small" OnClick="BT_Accept_Click" Text="<%$ Resources:lang,ShouLi%>" />
-                                    <asp:Button ID="BT_Exit" runat="server" CssClass="mobile-button-small red" OnClick="BT_Exit_Click" Text="<%$ Resources:lang,TuiChuShouLi%>" />
-                                    <asp:Button ID="BT_Finish" runat="server" CssClass="mobile-button-small" OnClick="BT_Finish_Click" Text="<%$ Resources:lang,WanCheng%>" />
-                                    <asp:Button ID="BT_TransferOperator" runat="server" CssClass="mobile-button-small blue" OnClick="BT_TransferOperator_Click" Text="<%$ Resources:lang,ZhiDingWeiShouLiRen%>" />
+
+                                <div class="equal-buttons">
+                                    <asp:Button ID="BT_Accept" runat="server" CssClass="inpu" OnClick="BT_Accept_Click" Text="<%$ Resources:lang,ShouLi%>" />
+                                    <asp:Button ID="BT_Exit" runat="server" CssClass="inpu" OnClick="BT_Exit_Click" Text="<%$ Resources:lang,TuiChuShouLi%>" />
+                                    <asp:Button ID="BT_Finish" runat="server" CssClass="inpu" OnClick="BT_Finish_Click" Text="<%$ Resources:lang,WanCheng%>" />
+                                    <asp:Button ID="BT_TransferOperator" runat="server" CssClass="inpu" OnClick="BT_TransferOperator_Click" Text="<%$ Resources:lang,ZhiDingWeiShouLiRen%>" />
                                 </div>
-                                
+
                                 <div style="margin-top: 10px; display: none;">
                                     <asp:HyperLink ID="HL_RelatedDoc" runat="server" NavigateUrl="TTCollaborationRelatedDoc.aspx" Text="<%$ Resources:lang,XiangGuanWenJian%>"
-                                        Target="_blank" CssClass="mobile-button-small">
+                                        Target="_blank" CssClass="inpu">
                                     </asp:HyperLink>
-                                    <asp:HyperLink ID="HL_Expense" runat="server" NavigateUrl="TTProExpense.aspx" Text="<%$ Resources:lang,FeiYongMingXiYuBaoXiao%>" 
-                                        Target="_blank" CssClass="mobile-button-small">
+                                    <asp:HyperLink ID="HL_Expense" runat="server" NavigateUrl="TTProExpense.aspx" Text="<%$ Resources:lang,FeiYongMingXiYuBaoXiao%>"
+                                        Target="_blank" CssClass="inpu">
                                     </asp:HyperLink>
                                     <asp:HyperLink ID="HL_ResoveResultReview"
-                                        runat="server" NavigateUrl="TTCustomerQuestionResultReviewWF.aspx" Text="<%$ Resources:lang,TiJiaoPingShen%>" 
-                                        Target="_blank" CssClass="mobile-button-small">
+                                        runat="server" NavigateUrl="TTCustomerQuestionResultReviewWF.aspx" Text="<%$ Resources:lang,TiJiaoPingShen%>"
+                                        Target="_blank" CssClass="inpu">
                                     </asp:HyperLink>
                                 </div>
                             </div>
                         </div>
-                        
+
                         <!-- 处理记录部分 -->
                         <div class="mobile-section">
                             <div style="text-align: right; margin-bottom: 10px;">
-                                <asp:Button ID="BT_CreateRecord" runat="server" Text="<%$ Resources:lang,New%>" CssClass="mobile-button yellow" OnClick="BT_CreateRecord_Click" />
+                                <asp:Button ID="BT_CreateRecord" runat="server" Text="<%$ Resources:lang,New%>" CssClass="inpu" OnClick="BT_CreateRecord_Click" />
                                 <asp:Label ID="LB_QuestionID" runat="server" Visible="false"></asp:Label>
                             </div>
-                            
+
                             <asp:DataList ID="DataList3" runat="server" CellPadding="0" ForeColor="#333333" OnItemCommand="DataList3_ItemCommand"
                                 Height="1px" Width="100%">
                                 <ItemTemplate>
                                     <div class="data-item">
                                         <div class="data-row">
-                                            <div class="data-label"><asp:Label ID="Label27" runat="server" Text="<%$ Resources:lang,BianHao%>" />:</div>
+                                            <div class="data-label">
+                                                <asp:Label ID="Label27" runat="server" Text="<%$ Resources:lang,BianHao%>" />:
+                                            </div>
                                             <div class="data-value"><%# DataBinder.Eval(Container.DataItem, "ID") %></div>
                                         </div>
-                                        
+
                                         <div class="data-row">
-                                            <div class="data-label"><asp:Label ID="Label28" runat="server" Text="<%$ Resources:lang,LianXiRen%>" />:</div>
+                                            <div class="data-label">
+                                                <asp:Label ID="Label28" runat="server" Text="<%$ Resources:lang,LianXiRen%>" />:
+                                            </div>
                                             <div class="data-value"><%# DataBinder.Eval(Container.DataItem, "CustomerAcceptor") %></div>
                                         </div>
-                                        
+
                                         <div class="data-row">
-                                            <div class="data-label"><asp:Label ID="Label29" runat="server" Text="<%$ Resources:lang,LianXiFangShi%>" />:</div>
+                                            <div class="data-label">
+                                                <asp:Label ID="Label29" runat="server" Text="<%$ Resources:lang,LianXiFangShi%>" />:
+                                            </div>
                                             <div class="data-value"><%# DataBinder.Eval(Container.DataItem, "AcceptorContactWay") %></div>
                                         </div>
-                                        
+
                                         <div class="data-row">
-                                            <div class="data-label"><asp:Label ID="Label30" runat="server" Text="<%$ Resources:lang,FuWuFangFa%>" />:</div>
+                                            <div class="data-label">
+                                                <asp:Label ID="Label30" runat="server" Text="<%$ Resources:lang,FuWuFangFa%>" />:
+                                            </div>
                                             <div class="data-value"><%# DataBinder.Eval(Container.DataItem, "HandleWay") %></div>
                                         </div>
-                                        
+
                                         <div class="data-row">
-                                            <div class="data-label"><asp:Label ID="Label31" runat="server" Text="<%$ Resources:lang,ChuLiShiJian%>" />:</div>
+                                            <div class="data-label">
+                                                <asp:Label ID="Label31" runat="server" Text="<%$ Resources:lang,ChuLiShiJian%>" />:
+                                            </div>
                                             <div class="data-value"><%# DataBinder.Eval(Container.DataItem, "HandleTime","{0:yyyy/MM/dd HH:mm}") %></div>
                                         </div>
-                                        
+
                                         <div class="data-row">
-                                            <div class="data-label"><asp:Label ID="Label32" runat="server" Text="<%$ Resources:lang,YongShiChangDu%>" />:</div>
+                                            <div class="data-label">
+                                                <asp:Label ID="Label32" runat="server" Text="<%$ Resources:lang,YongShiChangDu%>" />:
+                                            </div>
                                             <div class="data-value">
                                                 <%# DataBinder.Eval(Container.DataItem, "UsedTime") %>
                                                 <%# DataBinder.Eval(Container.DataItem, "TimeUnit") %>
                                             </div>
                                         </div>
-                                        
+
                                         <div class="data-row">
-                                            <div class="data-label"><asp:Label ID="Label33" runat="server" Text="<%$ Resources:lang,ZhuangTai%>" />:</div>
+                                            <div class="data-label">
+                                                <asp:Label ID="Label33" runat="server" Text="<%$ Resources:lang,ZhuangTai%>" />:
+                                            </div>
                                             <div class="data-value"><%# DataBinder.Eval(Container.DataItem, "HandleStatus") %></div>
                                         </div>
-                                        
+
                                         <div class="data-row">
-                                            <div class="data-label"><asp:Label ID="Label34" runat="server" Text="<%$ Resources:lang,ShouLiRen%>" />:</div>
+                                            <div class="data-label">
+                                                <asp:Label ID="Label34" runat="server" Text="<%$ Resources:lang,ShouLiRen%>" />:
+                                            </div>
                                             <div class="data-value"><%# DataBinder.Eval(Container.DataItem, "OperatorName") %></div>
                                         </div>
-                                        
+
                                         <div class="data-row">
-                                            <div class="data-label"><asp:Label ID="Label35" runat="server" Text="<%$ Resources:lang,KeFangYiJian%>" />:</div>
+                                            <div class="data-label">
+                                                <asp:Label ID="Label35" runat="server" Text="<%$ Resources:lang,KeFangYiJian%>" />:
+                                            </div>
                                             <div class="data-value"><%# DataBinder.Eval(Container.DataItem, "CustomerComment") %></div>
                                         </div>
-                                        
+
                                         <div class="data-row">
-                                            <div class="data-label"><asp:Label ID="Label36" runat="server" Text="<%$ Resources:lang,ChuLiNeiRong%>" />:</div>
+                                            <div class="data-label">
+                                                <asp:Label ID="Label36" runat="server" Text="<%$ Resources:lang,ChuLiNeiRong%>" />:
+                                            </div>
                                             <div class="data-value"><%# DataBinder.Eval(Container.DataItem, "HandleDetail") %></div>
                                         </div>
-                                        
+
                                         <div class="data-row">
-                                            <div class="data-label"><asp:Label ID="Label37" runat="server" Text="<%$ Resources:lang,XiaCiFuWuShiJian%>" />:</div>
+                                            <div class="data-label">
+                                                <asp:Label ID="Label37" runat="server" Text="<%$ Resources:lang,XiaCiFuWuShiJian%>" />:
+                                            </div>
                                             <div class="data-value"><%# DataBinder.Eval(Container.DataItem, "NextServiceTime") %></div>
                                         </div>
-                                        
+
                                         <div class="data-row">
-                                            <div class="data-label"><asp:Label ID="Label38" runat="server" Text="<%$ Resources:lang,TiQianTongZhiTianShu%>" />:</div>
+                                            <div class="data-label">
+                                                <asp:Label ID="Label38" runat="server" Text="<%$ Resources:lang,TiQianTongZhiTianShu%>" />:
+                                            </div>
                                             <div class="data-value"><%# DataBinder.Eval(Container.DataItem, "PreDays") %></div>
                                         </div>
-                                        
-                                        <div style="margin-top: 10px; text-align: center;display:none;">
-                                            <asp:LinkButton ID="LinkButton1" runat="server" CssClass="mobile-button-small" CommandName="Update">
+
+                                        <div style="margin-top: 10px; text-align: center; display: none;">
+                                            <asp:LinkButton ID="LinkButton1" runat="server" CssClass="inpu" CommandName="Update">
                                                 <img src="ImagesSkin/Update.png" style="width:16px;height:16px;vertical-align:middle;" />
                                                 <asp:Label runat="server" Text="<%$ Resources:lang,BaoCun%>" />
                                             </asp:LinkButton>
@@ -690,7 +577,7 @@
                                 </ItemTemplate>
                             </asp:DataList>
                         </div>
-                        
+
                         <!-- 树形视图 -->
                         <div class="mobile-section" style="display: none;">
                             <div style="max-height: 300px; overflow-y: auto;">
@@ -703,7 +590,7 @@
                                 </asp:TreeView>
                             </div>
                         </div>
-                        
+
                         <!-- 原有的模态框保持不变 -->
                         <div class="layui-layer layui-layer-iframe" id="popwindow" name="fixedDiv"
                             style="z-index: 9999; width: 98%; height: 500px; position: absolute; overflow: hidden; display: none; border-radius: 10px;">
@@ -745,7 +632,7 @@
                                     <tr>
                                         <td class="ItemAlignLeft">
 
-                                            <CKEditor:CKEditorControl runat="server" ID="HT_Question" Width="90%" Height="120px" Visible="False" />
+                                            <CKEditor:CKEditorControl runat="server" ID="HT_Question" Width="90%" Toolbar="" Height="120px" Visible="False" />
                                             <span class="auto-style1">*</span>
 
                                         </td>
@@ -997,8 +884,18 @@
                                 <br />
                             </div>
 
-                            <div id="popwindow_footer" class="layui-layer-btn" style="border-top: 1px solid #ccc;">
-                                <asp:LinkButton ID="BT_New" runat="server" class="layui-layer-btn notTab" OnClick="BT_New_Click" Text="<%$ Resources:lang,BaoCun%>"></asp:LinkButton><a class="layui-layer-btn notTab" onclick="return popClose();"><asp:Label ID="Label21" runat="server" Text="<%$ Resources:lang,GuanBi%>" /></a>
+                            <!-- 修改后的弹窗底部按钮 -->
+                            <div id="popwindow_footer" class="layui-layer-btn" style="border-top: 1px solid #ccc; padding: 15px; text-align: center; background: white; position: sticky; bottom: 0;">
+                                <asp:LinkButton ID="LinkButton1" runat="server"
+                                    OnClick="BT_New_Click"
+                                    Text="<%$ Resources:lang,BaoCun%>"
+                                    CssClass="popup-button"
+                                    Style="margin-right: 4%;">
+                                </asp:LinkButton>
+                                <a onclick="return popClose();" 
+                                   class="popup-button cancel">
+                                    <asp:Label ID="Label21" runat="server" Text="<%$ Resources:lang,GuanBi%>" />
+                                </a>
                             </div>
                             <span class="layui-layer-setwin"><a onclick="return popClose();" class="layui-layer-ico layui-layer-close layui-layer-close1 notTab" href="javascript:;"></a></span>
                         </div>
@@ -1019,8 +916,8 @@
                                     </tr>
                                     <tr>
                                         <td class="formItemBgStyleForAlignLeft">
-                                            <CKEditor:CKEditorControl ID="HE_CustomerComment" runat="server" Width="99%" Height="80px" Visible="false" />
-                                            <CKEditor:CKEditorControl ID="HT_CustomerComment" runat="server" Width="99%" Height="80px" Visible="False" />
+                                            <CKEditor:CKEditorControl ID="HE_CustomerComment" runat="server" Toolbar="" Width="99%" Height="80px" Visible="false" />
+
                                         </td>
                                     </tr>
                                     <tr>
@@ -1100,8 +997,8 @@
                                     </tr>
                                     <tr>
                                         <td class="formItemBgStyleForAlignLeft">
-                                            <CKEditor:CKEditorControl ID="HE_HandleDetail" runat="server" Width="90%" Height="80px" Visible="false" />
-                                            <CKEditor:CKEditorControl ID="HT_HandleDetail" runat="server" Width="90%" Height="80px" Visible="False" />
+                                            <CKEditor:CKEditorControl ID="HE_HandleDetail" runat="server" Toolbar="" Width="90%" Height="80px" Visible="false" />
+
 
                                         </td>
                                     </tr>
@@ -1160,8 +1057,17 @@
                                 <br />
                             </div>
 
-                            <div id="popwindow_footer1" class="layui-layer-btn" style="border-top: 1px solid #ccc;">
-                                <asp:LinkButton ID="BT_NewRecord" runat="server" class="layui-layer-btn notTab" OnClick="BT_NewRecord_Click" Text="<%$ Resources:lang,BaoCun%>"></asp:LinkButton><a class="layui-layer-btn notTab" onclick="return popClose();"><asp:Label ID="Label63" runat="server" Text="<%$ Resources:lang,GuanBi%>" /></a>
+                            <!-- 修改后的第二个弹窗底部按钮 -->
+                            <div id="popwindow_footer1" class="layui-layer-btn" style="border-top: 1px solid #ccc; padding: 15px; text-align: center; background: white; position: sticky; bottom: 0;">
+                                <asp:LinkButton ID="BT_NewRecord" runat="server" 
+                                    OnClick="BT_NewRecord_Click" 
+                                    Text="<%$ Resources:lang,BaoCun%>"
+                                    CssClass="popup-button"
+                                    Style="margin-right: 4%;">
+                                </asp:LinkButton>
+                                <a class="popup-button cancel" onclick="return popClose();">
+                                    <asp:Label ID="Label63" runat="server" Text="<%$ Resources:lang,GuanBi%>" />
+                                </a>
                             </div>
                             <span class="layui-layer-setwin"><a onclick="return popClose();" class="layui-layer-ico layui-layer-close layui-layer-close1 notTab" href="javascript:;"></a></span>
                         </div>
@@ -1169,7 +1075,7 @@
                         <div class="layui-layer-shade" id="popwindow_shade" style="z-index: 9998; background-color: #000; opacity: 0.3; filter: alpha(opacity=30); display: none;"></div>
                     </ContentTemplate>
                 </asp:UpdatePanel>
-                
+
                 <div style="position: fixed; display: none; z-index: 9999;" id="progressContainer">
                     <asp:UpdateProgress ID="TakeTopUp" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
                         <ProgressTemplate>

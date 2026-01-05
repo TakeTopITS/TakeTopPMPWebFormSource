@@ -260,9 +260,9 @@
                                                                                                         </td>
                                                                                                         <td class="formItemBgStyleForAlignLeft">
 
-                                                                                                            <CKEditor:CKEditorControl ID="HE_FinishContent" Height="150px" runat="server" Visible="False" Width="" />
+                                                                                                            <CKEditor:CKEditorControl ID="HE_FinishContent" Height="150px" runat="server" Visible="False" Width="100%" />
 
-                                                                                                            <CKEditor:CKEditorControl runat="server" ID="HT_FinishContent" Width="100%" Height="150px" Visible="False" />
+                                                                                                          
                                                                                                         </td>
                                                                                                     </tr>
 

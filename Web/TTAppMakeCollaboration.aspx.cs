@@ -42,7 +42,7 @@ public partial class TTAppMakeCollaboration : System.Web.UI.Page
         CKFinder.FileBrowser _FileBrowser = new CKFinder.FileBrowser();
         _FileBrowser.BasePath = "ckfinder/"; Session["PageName"] = "TakeTopSiteContentEdit";
         _FileBrowser.SetupCKEditor(CKEditor1);
-CKEditor1.Language = Session["LangCode"].ToString();
+        CKEditor1.Language = Session["LangCode"].ToString();
 
 
         strRelatedType = Request.QueryString["RelatedType"];
@@ -69,7 +69,7 @@ CKEditor1.Language = Session["LangCode"].ToString();
         {
             strRelatedCode = "";
         }
-        
+
         strDepartCode = ShareClass.GetDepartCodeFromUserCode(strUserCode);
 
         if (strRelatedType == "MEETING")
@@ -645,14 +645,8 @@ CKEditor1.Language = Session["LangCode"].ToString();
                 LB_CoID.Text = collaboration.CoID.ToString();
                 TB_CollaborationName.Text = collaboration.CollaborationName.Trim();
 
-                if (strIsMobileDevice == "YES")
-                {
-                    HTEditor1.Text = collaboration.Comment.Trim();
-                }
-                else
-                {
-                    CKEditor1.Text = collaboration.Comment.Trim();
-                }
+
+                CKEditor1.Text = collaboration.Comment.Trim();
 
                 LB_Status.Text = collaboration.Status.Trim();
 
@@ -810,7 +804,7 @@ CKEditor1.Language = Session["LangCode"].ToString();
 
                     if (CB_MSM.Checked == true)
                     {
-                        msg.SendMSM("Message",strReceiverCode, strMsg, strUserCode);
+                        msg.SendMSM("Message", strReceiverCode, strMsg, strUserCode);
                     }
 
                     if (CB_Mail.Checked == true)

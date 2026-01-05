@@ -1,5 +1,6 @@
 using ProjectMgt.BLL;
 using ProjectMgt.Model;
+
 using System;
 using System.Collections;
 using System.IO;
@@ -40,19 +41,13 @@ public partial class TTAppInvolvedProjectDetailSAAS : System.Web.UI.Page
         CKFinder.FileBrowser _FileBrowser = new CKFinder.FileBrowser();
         _FileBrowser.BasePath = "ckfinder/"; Session["PageName"] = "TakeTopSiteContentEdit";
         _FileBrowser.SetupCKEditor(HE_TodaySummary);
-HE_TodaySummary.Language = Session["LangCode"].ToString();
+        HE_TodaySummary.Language = Session["LangCode"].ToString();
 
         //ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "clickA", "aHandler();", true);
         if (Page.IsPostBack == false)
         {
-            if (strIsMobileDevice == "YES")
-            {
-                HT_TodaySummary.Visible = true;
-            }
-            else
-            {
-                HE_TodaySummary.Visible = true;
-            }
+
+            HE_TodaySummary.Visible = true;
 
             //检查用户是否项目成员
             if (ShareClass.CheckUserIsProjectMember(strProjectID, strUserCode) == false)
@@ -84,7 +79,7 @@ HE_TodaySummary.Language = Session["LangCode"].ToString();
                 NB_ManHour.Enabled = true;
             }
 
-            strHQL = "from DailyWork as dailyWork where dailyWork.Type = 'Participate' and dailyWork.ProjectID =" + strProjectID + " and " + " dailyWork.UserCode = " + "'" + strUserCode + "'" + " and " + "to_char(dailyWork.WorkDate,'yyyymmdd') = " + "'" + DateTime.Now.ToString("yyyyMMdd") + "'";  
+            strHQL = "from DailyWork as dailyWork where dailyWork.Type = 'Participate' and dailyWork.ProjectID =" + strProjectID + " and " + " dailyWork.UserCode = " + "'" + strUserCode + "'" + " and " + "to_char(dailyWork.WorkDate,'yyyymmdd') = " + "'" + DateTime.Now.ToString("yyyyMMdd") + "'";
             DailyWorkBLL dailyWorkBLL = new DailyWorkBLL();
             lst = dailyWorkBLL.GetAllDailyWorks(strHQL);
 
@@ -92,16 +87,9 @@ HE_TodaySummary.Language = Session["LangCode"].ToString();
             {
                 DailyWork dailyWork = (DailyWork)lst[0];
 
-                if (strIsMobileDevice == "NO")
-                {
-                    HE_TodaySummary.Visible = true;
-                    HE_TodaySummary.Text = dailyWork.DailySummary;
-                }
-                else
-                {
-                    HT_TodaySummary.Visible = true;
-                    HT_TodaySummary.Text = dailyWork.DailySummary;
-                }
+                HE_TodaySummary.Visible = true;
+                HE_TodaySummary.Text = dailyWork.DailySummary;
+
 
                 //如果项目进度受细节影响，则直接取得
                 if (strImpactByDetail == "YES")
@@ -238,14 +226,7 @@ HE_TodaySummary.Language = Session["LangCode"].ToString();
 
         string strTodaySummary;
 
-        if (strIsMobileDevice == "YES")
-        {
-            strTodaySummary = HT_TodaySummary.Text.Trim();
-        }
-        else
-        {
-            strTodaySummary = HE_TodaySummary.Text.Trim();
-        }
+        strTodaySummary = HE_TodaySummary.Text.Trim();
 
         if (strTodaySummary == "")
         {
@@ -293,7 +274,7 @@ HE_TodaySummary.Language = Session["LangCode"].ToString();
                     strProject = project.ProjectName.Trim(); ;
                     deFinishPercent = NB_FinishPercent.Amount;
 
-                    dailyWork.Type = "Participate";  
+                    dailyWork.Type = "Participate";
                     dailyWork.UserCode = strUserCode;
                     dailyWork.UserName = ShareClass.GetUserName(strUserCode);
                     dailyWork.WorkDate = DateTime.Now;
@@ -573,7 +554,7 @@ HE_TodaySummary.Language = Session["LangCode"].ToString();
                         ShareClass.ReducesPic(strDocSavePath, strFileName3, 640, 480, 3);
                     }
 
-                    HT_TodaySummary.Text += strPhotoURL;
+                    HE_TodaySummary.Text += strPhotoURL;
                 }
                 catch
                 {

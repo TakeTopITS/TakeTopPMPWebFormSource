@@ -1,5 +1,6 @@
 using ProjectMgt.BLL;
 using ProjectMgt.Model;
+
 using System;
 using System.Collections;
 using System.Data;
@@ -31,20 +32,13 @@ public partial class TTAppCreateOtherTaskSAAS : System.Web.UI.Page
         CKFinder.FileBrowser _FileBrowser = new CKFinder.FileBrowser();
         _FileBrowser.BasePath = "ckfinder/"; Session["PageName"] = "TakeTopSiteContentEdit";
         _FileBrowser.SetupCKEditor(HE_Operation);
-HE_Operation.Language = Session["LangCode"].ToString();
+        HE_Operation.Language = Session["LangCode"].ToString();
 
         //ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "clickA", "aHandler();", true);
         if (Page.IsPostBack != true)
         {
-            if (strIsMobileDevice == "YES")
-            {
-                HT_Operation.Visible = true; 
-                HT_Operation.Toolbar = "";
-            }
-            else
-            {
-                 HE_Operation.Visible = true; 
-            }
+
+            HE_Operation.Visible = true;
 
             DLC_BeginDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
             DLC_EndDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
@@ -292,14 +286,7 @@ HE_Operation.Language = Session["LangCode"].ToString();
                 DL_RecordType.SelectedValue = taskAssignRecord.Type;
 
 
-                if (strIsMobileDevice == "YES")
-                {
-                    HT_Operation.Text = taskAssignRecord.Operation.Trim();
-                }
-                else
-                {
-                    HE_Operation.Text = taskAssignRecord.Operation.Trim();
-                }
+                HE_Operation.Text = taskAssignRecord.Operation.Trim();
 
                 DLC_TaskBegin.Text = taskAssignRecord.BeginDate.ToString("yyyy-MM-dd");
                 DLC_TaskEnd.Text = taskAssignRecord.EndDate.ToString("yyyy-MM-dd");
@@ -669,14 +656,8 @@ HE_Operation.Language = Session["LangCode"].ToString();
 
         taskAssignRecord.Type = DL_RecordType.SelectedValue;
 
-        if (strIsMobileDevice == "YES")
-        {
-            taskAssignRecord.Operation = HT_Operation.Text.Trim();
-        }
-        else
-        {
-            taskAssignRecord.Operation = HE_Operation.Text.Trim();
-        }
+
+        taskAssignRecord.Operation = HE_Operation.Text.Trim();
 
         taskAssignRecord.OperatorCode = DL_OperatorCode.SelectedValue;
         taskAssignRecord.OperatorName = ShareClass.GetUserName(DL_OperatorCode.SelectedValue);
@@ -749,14 +730,9 @@ HE_Operation.Language = Session["LangCode"].ToString();
         strAssignManCode = LB_UserCode.Text.Trim();
         strAssignManName = LB_UserName.Text.Trim();
 
-        if (strIsMobileDevice == "YES")
-        {
-            strOperation = HT_Operation.Text.Trim();
-        }
-        else
-        {
-            strOperation = HE_Operation.Text.Trim();
-        }
+
+        strOperation = HE_Operation.Text.Trim();
+
         intPriorID = 0;
         dtBeginDate = DateTime.Parse(DLC_TaskBegin.Text);
         dtEndDate = DateTime.Parse(DLC_TaskEnd.Text);
@@ -920,7 +896,7 @@ HE_Operation.Language = Session["LangCode"].ToString();
 
             if (CB_SendMsg.Checked == true)
             {
-                msg.SendMSM("Message",strOperatorCode, strMsg, strUserCode);
+                msg.SendMSM("Message", strOperatorCode, strMsg, strUserCode);
             }
 
             if (CB_SendMail.Checked == true)
@@ -938,14 +914,8 @@ HE_Operation.Language = Session["LangCode"].ToString();
     {
         string strWorkReques = DL_WorkRequest.SelectedValue.Trim();
 
-        if (strIsMobileDevice == "YES")
-        {
-            HT_Operation.Text = strWorkReques;
-        }
-        else
-        {
-            HE_Operation.Text = strWorkReques;
-        }
+
+        HE_Operation.Text = strWorkReques;
 
         ScriptManager.RegisterStartupScript(UpdatePanel1, GetType(), "pop", "popShow('popAssignWindow','true') ", true);
     }

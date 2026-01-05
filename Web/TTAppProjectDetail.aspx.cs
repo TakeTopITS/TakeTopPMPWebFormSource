@@ -39,15 +39,7 @@ public partial class TTAppProjectDetail : System.Web.UI.Page
 
         if (Page.IsPostBack == false)
         {
-            if (strIsMobileDevice == "YES")
-            {
-                HT_TodaySummary.Visible = true;
-                HT_TodaySummary.Toolbar = "";
-            }
-            else
-            {
-                HE_TodaySummary.Visible = true;
-            }
+            HE_TodaySummary.Visible = true;
 
             //检查用户是否项目成员
             if (ShareClass.CheckUserIsProjectManager(strProjectID, strUserCode) == false)
@@ -91,16 +83,9 @@ public partial class TTAppProjectDetail : System.Web.UI.Page
             if (lst.Count > 0)
             {
                 DailyWork dailyWork = (DailyWork)lst[0];
-                if (strIsMobileDevice == "NO")
-                {
-                    HE_TodaySummary.Visible = true;
-                    HE_TodaySummary.Text = dailyWork.DailySummary;
-                }
-                else
-                {
-                    HT_TodaySummary.Visible = true;
-                    HT_TodaySummary.Text = dailyWork.DailySummary;
-                }
+
+                HE_TodaySummary.Visible = true;
+                HE_TodaySummary.Text = dailyWork.DailySummary;
 
                 //如果项目进度受细节影响，则直接取得
                 if (strImpactByDetail == "YES")
@@ -269,14 +254,8 @@ public partial class TTAppProjectDetail : System.Web.UI.Page
 
         string strTodaySummary;
 
-        if (strIsMobileDevice == "YES")
-        {
-            strTodaySummary = HT_TodaySummary.Text.Trim();
-        }
-        else
-        {
-            strTodaySummary = HE_TodaySummary.Text.Trim();
-        }
+
+        strTodaySummary = HE_TodaySummary.Text.Trim();
 
         if (strTodaySummary == "")
         {
@@ -443,7 +422,7 @@ public partial class TTAppProjectDetail : System.Web.UI.Page
                     }
 
 
-                    HT_TodaySummary.Text += strPhotoURL;
+                    HE_TodaySummary.Text += strPhotoURL;
                 }
                 catch
                 {

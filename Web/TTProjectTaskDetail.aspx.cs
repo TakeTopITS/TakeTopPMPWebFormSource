@@ -62,20 +62,10 @@ public partial class TTProjectTaskDetail : System.Web.UI.Page
         ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "clickA", "aHandler();", true);
         if (Page.IsPostBack != true)
         {
-            if (strIsMobileDevice == "YES")
-            {
-                HT_FinishContent.Visible = true;
-                HT_FinishContent.Text = taskAssignRecord.OperatorContent.Trim();
+            HE_FinishContent.Visible = true;
+            HE_FinishContent.Text = taskAssignRecord.OperatorContent.Trim();
 
-                HT_Operation.Visible = true; HT_Operation.Toolbar = "";
-            }
-            else
-            {
-                HE_FinishContent.Visible = true;
-                HE_FinishContent.Text = taskAssignRecord.OperatorContent.Trim();
-
-                HE_Operation.Visible = true;
-            }
+            HE_Operation.Visible = true;
 
             DLC_BeginDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
             DLC_EndDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
@@ -520,14 +510,7 @@ public partial class TTProjectTaskDetail : System.Web.UI.Page
 
         strTaskID = LB_TaskID.Text.Trim();
 
-        if (strIsMobileDevice == "YES")
-        {
-            strContent = HT_FinishContent.Text.Trim();
-        }
-        else
-        {
-            strContent = HE_FinishContent.Text.Trim();
-        }
+        strContent = HE_FinishContent.Text.Trim();
 
         intFinishPercent = int.Parse(NB_FinishPercent.Amount.ToString());
 
@@ -535,14 +518,8 @@ public partial class TTProjectTaskDetail : System.Web.UI.Page
         {
             strContent = "Accepted";
 
-            if (strIsMobileDevice == "YES")
-            {
-                HT_FinishContent.Text = strContent;
-            }
-            else
-            {
-                HE_FinishContent.Text = strContent;
-            }
+
+            HE_FinishContent.Text = strContent;
         }
 
         strID = LB_AssignID.Text.Trim();
@@ -583,14 +560,8 @@ public partial class TTProjectTaskDetail : System.Web.UI.Page
 
         strTaskID = LB_TaskID.Text.Trim();
 
-        if (strIsMobileDevice == "YES")
-        {
-            strContent = HT_FinishContent.Text.Trim();
-        }
-        else
-        {
-            strContent = HE_FinishContent.Text.Trim();
-        }
+
+        strContent = HE_FinishContent.Text.Trim();
 
         intFinishPercent = int.Parse(NB_FinishPercent.Amount.ToString());
 
@@ -598,14 +569,8 @@ public partial class TTProjectTaskDetail : System.Web.UI.Page
         {
             strContent = "Rejected";
 
-            if (strIsMobileDevice == "YES")
-            {
-                HT_FinishContent.Text = strContent;
-            }
-            else
-            {
-                HE_FinishContent.Text = strContent;
-            }
+
+            HE_FinishContent.Text = strContent;
         }
 
         strID = LB_AssignID.Text.Trim();

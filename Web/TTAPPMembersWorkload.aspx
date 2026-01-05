@@ -10,7 +10,7 @@
     <title></title>
 
     <link id="mainCss" href="css/bluelightmain.css" rel="stylesheet" type="text/css" />
-    <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />
+     <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />
     <%-- <link type="text/css" href='Themes/themes.css' rel="stylesheet" />
     <link type="text/css" href='Media/layout.css' rel="stylesheet" />
     <link type="text/css" href='Media/elements.css' rel="stylesheet" />

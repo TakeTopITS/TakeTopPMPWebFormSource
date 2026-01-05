@@ -1,5 +1,6 @@
 using ProjectMgt.BLL;
 using ProjectMgt.Model;
+
 using System;
 using System.Collections;
 using System.Configuration;
@@ -23,7 +24,7 @@ public partial class TTAllMemberPlans : System.Web.UI.Page
         CKFinder.FileBrowser _FileBrowser = new CKFinder.FileBrowser();
         _FileBrowser.BasePath = "ckfinder/"; Session["PageName"] = "TakeTopSiteContentEdit";
         _FileBrowser.SetupCKEditor(HE_ReviewDetail);
-HE_ReviewDetail.Language = Session["LangCode"].ToString();
+        HE_ReviewDetail.Language = Session["LangCode"].ToString();
 
         HE_ReviewDetail.Language = Session["LangCode"].ToString();
 

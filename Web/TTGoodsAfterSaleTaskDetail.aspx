@@ -242,8 +242,8 @@
                                                                                                             <asp:Label ID="Label18" runat="server" Text="<%$ Resources:lang,GongZuoZongJie %>"></asp:Label>
                                                                                                             : </td>
                                                                                                         <td class="formItemBgStyleForAlignLeft">
-                                                                                                            <CKEditor:CKEditorControl ID="HE_FinishContent" runat="server" Height="150px" Width="" />
-                                                                                                            <CKEditor:CKEditorControl ID="HT_FinishContent" runat="server" Height="150px" Visible="False" Width="100%" />
+                                                                                                            <CKEditor:CKEditorControl ID="HE_FinishContent" runat="server" Height="150px" Width="100%" />
+                                                                                                           
                                                                                                         </td>
                                                                                                     </tr>
                                                                                                     <tr>
