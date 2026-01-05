@@ -466,14 +466,8 @@ public partial class TTGoodsAfterSaleTaskDetail : System.Web.UI.Page
         {
             strContent = "InProgress";
 
-            if (strIsMobileDevice == "YES")
-            {
-                HT_FinishContent.Text = strContent;
-            }
-            else
-            {
+          
                 HE_FinishContent.Text = strContent;
-            }
         }
 
         strID = LB_AssignID.Text.Trim();
@@ -534,14 +528,8 @@ public partial class TTGoodsAfterSaleTaskDetail : System.Web.UI.Page
         {
             strContent = "Completed";
 
-            if (strIsMobileDevice == "YES")
-            {
-                HT_FinishContent.Text = strContent;
-            }
-            else
-            {
+          
                 HE_FinishContent.Text = strContent;
-            }
         }
 
         strID = LB_AssignID.Text.Trim();

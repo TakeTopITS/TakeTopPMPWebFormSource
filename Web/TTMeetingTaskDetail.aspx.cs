@@ -576,6 +576,7 @@ public partial class TTMeetingTaskDetail : System.Web.UI.Page
                 ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZWCSBJC") + "')", true);
             }
         }
+    }
 
     protected void BT_TBD_Click(object sender, EventArgs e)
     {

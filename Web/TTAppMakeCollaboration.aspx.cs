@@ -126,15 +126,8 @@ public partial class TTAppMakeCollaboration : System.Web.UI.Page
         //ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "clickA", "aHandler();", true);
         if (Page.IsPostBack != true)
         {
-            if (strIsMobileDevice == "YES")
-            {
-                HTEditor1.Visible = true;
-                HTEditor1.Toolbar = "";
-            }
-            else
-            {
-                CKEditor1.Visible = true;
-            }
+
+            CKEditor1.Visible = true;
 
 
             TakeTopCore.CoreShareClass.InitialDepartmentTreeByAuthority(LanguageHandle.GetWord("ZZJGT"), TreeView1, strUserCode);
@@ -273,14 +266,8 @@ public partial class TTAppMakeCollaboration : System.Web.UI.Page
         strUserCode = LB_UserCode.Text.Trim();
         strCollaborationName = TB_CollaborationName.Text.Trim();
 
-        if (strIsMobileDevice == "YES")
-        {
-            strContent = HTEditor1.Text.Trim();
-        }
-        else
-        {
-            strContent = CKEditor1.Text.Trim();
-        }
+
+        strContent = CKEditor1.Text.Trim();
 
         CollaborationBLL collaborationBLL = new CollaborationBLL();
         Collaboration collaboration = new Collaboration();
@@ -356,15 +343,7 @@ public partial class TTAppMakeCollaboration : System.Web.UI.Page
         strCoID = LB_CoID.Text.Trim();
         strCollaborationName = TB_CollaborationName.Text.Trim();
 
-        if (strIsMobileDevice == "YES")
-        {
-            strContent = HTEditor1.Text.Trim();
-        }
-        else
-        {
-            strContent = CKEditor1.Text.Trim();
-        }
-
+        strContent = CKEditor1.Text.Trim();
 
         strHQL = "from Collaboration as collaboration where collaboration.CoID = " + strCoID;
         CollaborationBLL collaborationBLL = new CollaborationBLL();
