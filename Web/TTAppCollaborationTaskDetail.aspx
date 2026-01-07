@@ -360,22 +360,28 @@
                         </tr>
                         <tr>
                             <td style="text-align: left; padding-left: 5px;">
-                                <span class="style1">
-                                    <asp:Label ID="Label2" runat="server" Text="<%$ Resources:lang,RenWu%>"></asp:Label>:
-                                                <asp:Label ID="LB_TaskID" runat="server"></asp:Label>
-                                    <asp:Label ID="LB_Task" runat="server"></asp:Label>
-                                </span>
+                                <div class="npb">
+                                    <div class="cline"></div>
+                                    <h3>
+                                        <asp:Label ID="Label2" runat="server" Text="<%$ Resources:lang,RenWu%>"></asp:Label>:<asp:Label ID="LB_TaskID" runat="server"></asp:Label>
+                                        <asp:Label ID="LB_Task" runat="server"></asp:Label></h3>
+                                </div>
+
                             </td>
                         </tr>
                         <tr>
                             <td class="ItemAlignLeft">
-                                <asp:Label ID="Label3" runat="server" Text="<%$ Resources:lang,RenWuChuLi%>"></asp:Label>
+
                                 <table width="100%" cellpadding="3" cellspacing="0">
                                     <tr>
                                         <td>
                                             <div class="napbox">
                                                 <div class="npbx">
-                                                    <div class="cline"></div>
+                                                    <div class="npb">
+                                                        <div class="cline"></div>
+                                                        <h3>
+                                                            <asp:Label ID="Label9" runat="server" Text="<%$ Resources:lang,RenWuChuLi%>"></asp:Label></h3>
+                                                    </div>
                                                     <div class="npbxs">
                                                         <h3>
                                                             <asp:HyperLink ID="HL_StartupBusinessForm" runat="server" Text="<%$ Resources:lang,XiangGuanYeWuDan %>"></asp:HyperLink>
@@ -464,14 +470,18 @@
                                     </tr>
                                 </table>
 
-                                <asp:Label ID="Label40" runat="server" Text="<%$ Resources:lang,JiXuFenPai%>"></asp:Label>
+
 
                                 <table width="100%" cellpadding="3" cellspacing="0">
                                     <tr>
                                         <td>
                                             <div class="napbox">
                                                 <div class="npbx">
-                                                    <div class="cline"></div>
+                                                    <div class="npb">
+                                                        <div class="cline"></div>
+                                                        <h3>
+                                                            <asp:Label ID="Label3" runat="server" Text="<%$ Resources:lang,JiXuFenPai%>"></asp:Label></h3>
+                                                    </div>
                                                     <div class="npbxs">
                                                         <div class="mline">
                                                             <h4>

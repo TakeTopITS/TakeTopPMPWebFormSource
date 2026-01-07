@@ -120,7 +120,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td valign="top" style="padding: 0px 5px 5px 5px;" class="ItemAlignLeft">
+                                        <td valign="top" style="padding: 0px 5px 5px 5px;" >
                                             <table style="width: 100%; height: 1px;">
 
                                                 <tr>
@@ -130,7 +130,7 @@
                                                             <div class="npbx">
                                                                 <div class="cline"></div>
 
-                                                                <table class="formBgStyle" style="width: 99%;" cellpadding="3" cellspacing="0">
+                                                                <table  style="width: 99%;" cellpadding="3" cellspacing="0">
                                                                     <tr style="display: none;">
                                                                         <td class="formItemBgStyleForAlignLeft">
                                                                             <asp:Label ID="Label1" runat="server" Text="<%$ Resources:lang,BianHao%>"></asp:Label>
@@ -291,12 +291,12 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="ItemAlignLeft">
+                                                    <td >
 
                                                         <div class="napbox">
                                                             <div class="npbx">
                                                                 <div class="cline"></div>
-                                                                <table class="formBgStyle" style="width: 99%" cellpadding="3" cellspacing="0">
+                                                                <table style="width: 99%" cellpadding="3" cellspacing="0">
                                                                     <tr style="display: none;">
                                                                         <td class="formItemBgStyleForAlignLeft">
                                                                             <strong>

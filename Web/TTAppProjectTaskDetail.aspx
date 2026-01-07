@@ -386,23 +386,35 @@
                                 <table cellpadding="0" cellspacing="0" width="100%">
                                     <tr>
                                         <td colspan="2" style="text-align: left; padding-left: 5px;">
-                                            <span class="style1">
-                                                <asp:Label ID="Label2" runat="server" Text="<%$ Resources:lang,RenWu%>"></asp:Label>:<asp:Label ID="LB_TaskID" runat="server"></asp:Label>
-                                                <asp:Label ID="LB_Task" runat="server"></asp:Label>
-                                            </span>
+                                            <div class="npb">
+                                                <div class="cline"></div>
+                                                <h3>
+                                                    <asp:Label ID="Label2" runat="server" Text="<%$ Resources:lang,RenWu%>"></asp:Label>:<asp:Label ID="LB_TaskID" runat="server"></asp:Label>
+                                                    <asp:Label ID="LB_Task" runat="server"></asp:Label></h3>
+                                            </div>
+
+
                                         </td>
                                     </tr>
                                     <tr>
                                         <td colspan="2" class="ItemAlignLeft">
 
-                                            <asp:Label ID="Label9" runat="server" Text="<%$ Resources:lang,RenWuChuLi%>"></asp:Label>
+
+
 
                                             <table width="100%" cellpadding="3" cellspacing="0">
                                                 <tr>
                                                     <td>
                                                         <div class="napbox">
+
+
+
                                                             <div class="npbx">
-                                                                <div class="cline"></div>
+                                                                <div class="npb">
+                                                                    <div class="cline"></div>
+                                                                    <h3>
+                                                                        <asp:Label ID="Label9" runat="server" Text="<%$ Resources:lang,RenWuChuLi%>"></asp:Label></h3>
+                                                                </div>
                                                                 <div class="npbxs">
                                                                     <h3>
                                                                         <asp:HyperLink ID="HL_StartupBusinessForm" runat="server" Text="<%$ Resources:lang,XiangGuanYeWuDan %>"></asp:HyperLink>
@@ -423,7 +435,8 @@
                                                                             <asp:Label ID="LB_TaskProgress" runat="server" Text="<%$ Resources:lang,ZhengTi %>"></asp:Label></h4>
 
                                                                         <NickLee:NumberBox MaxAmount="1000000000000" MinAmount="-1000000000000" ID="NB_TaskProgress" runat="server" OnBlur="" OnFocus="" OnKeyPress="" Enabled="False"
-                                                                            PositiveColor="" Precision="0" Width="94%">0</NickLee:NumberBox><asp:Label ID="Label52" runat="server" Text="%"></asp:Label>
+                                                                            PositiveColor="" Precision="0" Width="94%">
+                                                                            0</NickLee:NumberBox><asp:Label ID="Label52" runat="server" Text="%"></asp:Label>
                                                                     </div>
                                                                     <div class="mline">
                                                                         <h4>
@@ -513,17 +526,18 @@
                                             </table>
 
 
-                                            <asp:Label ID="Label3" runat="server" Text="<%$ Resources:lang,JiXuFenPai%>"></asp:Label>
-
-
-
                                             <table width="100%" cellpadding="3" cellspacing="0">
                                                 <tr>
                                                     <td>
 
                                                         <div class="napbox">
+
                                                             <div class="npbx">
-                                                                <div class="cline"></div>
+                                                                <div class="npb">
+                                                                    <div class="cline"></div>
+                                                                    <h3>
+                                                                        <asp:Label ID="Label3" runat="server" Text="<%$ Resources:lang,JiXuFenPai%>"></asp:Label></h3>
+                                                                </div>
                                                                 <div class="npbxs">
 
 
@@ -604,7 +618,7 @@
                                                                             Text="<%$ Resources:lang,FaSong %>" />
 
                                                                     </div>
-
+                                                                    <br />
                                                                     <div class="equal-buttons">
                                                                         <asp:Button ID="BT_UpdateAssign" runat="server" CssClass="inpu" Enabled="False" OnClick="BT_UpdateAssign_Click" Text="<%$ Resources:lang,BaoCun %>" />
                                                                         <asp:Button ID="BT_DeleteAssign" runat="server" CssClass="inpu" Enabled="False" OnClick="BT_DeleteAssign_Click" OnClientClick="return confirmContinue(getDeleteMsgByLangCode(), this, event)" Text="<%$ Resources:lang,ShanChu %>" />
