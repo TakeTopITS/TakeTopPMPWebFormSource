@@ -892,8 +892,8 @@
                                     CssClass="popup-button"
                                     Style="margin-right: 4%;">
                                 </asp:LinkButton>
-                                <a onclick="return popClose();" 
-                                   class="popup-button cancel">
+                                <a onclick="return popClose();"
+                                    class="popup-button cancel">
                                     <asp:Label ID="Label21" runat="server" Text="<%$ Resources:lang,GuanBi%>" />
                                 </a>
                             </div>
@@ -1007,18 +1007,21 @@
                                         <td>
                                             <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional">
                                                 <ContentTemplate>
-                                                    <div>
-                                                        <Upload:InputFile ID="AttachFile" runat="server" name="photo" Accept="image/*;capture=camera" Width="180px" />
-                                                        <input type="hidden" val="" id="imgData" runat="server" />
-                                                        &nbsp;<input type="button" id="BtnUP" onclick="upload()" value="Upload" />
-                                                        <img id="IMG_Uploading" src="Images/Processing.gif" alt="请稍候，处理中..." style="display: none;" />
+                                                       <div class="nmar">
+                                                        <table>
+                                                            <tr>
+                                                                <td>
+                                                                    <Upload:InputFile ID="AttachFile" runat="server" name="photo" Accept="image/*;capture=camera" Width="160px" />
+                                                                    <input type="hidden" val="" id="imgData" runat="server" /></td>
+                                                                <td>
+                                                                    <input type="button" id="BtnUP" onclick="upload()" value="Upload" />
+                                                                    <img id="IMG_Uploading" src="Images/Processing.gif" alt="请稍候，处理中..." style="display: none;" />
+                                                                </td>
+                                                            </tr>
+                                                        </table>
 
+                                                             <br />
                                                         <br />
-
-                                                        <%--<div id="ProgressBar">
-                                                                <Upload:ProgressBar ID="ProgressBar1" runat='server' Width="500px" Height="100px">
-                                                                </Upload:ProgressBar>
-                                                            </div>--%>
                                                     </div>
                                                 </ContentTemplate>
                                                 <Triggers>
@@ -1059,8 +1062,8 @@
 
                             <!-- 修改后的第二个弹窗底部按钮 -->
                             <div id="popwindow_footer1" class="layui-layer-btn" style="border-top: 1px solid #ccc; padding: 15px; text-align: center; background: white; position: sticky; bottom: 0;">
-                                <asp:LinkButton ID="BT_NewRecord" runat="server" 
-                                    OnClick="BT_NewRecord_Click" 
+                                <asp:LinkButton ID="BT_NewRecord" runat="server"
+                                    OnClick="BT_NewRecord_Click"
                                     Text="<%$ Resources:lang,BaoCun%>"
                                     CssClass="popup-button"
                                     Style="margin-right: 4%;">

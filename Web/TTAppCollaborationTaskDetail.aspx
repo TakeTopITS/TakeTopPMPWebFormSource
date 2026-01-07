@@ -423,10 +423,19 @@
                                                         <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional">
                                                             <ContentTemplate>
                                                                 <div class="nmar">
-                                                                    <Upload:InputFile ID="AttachFile" runat="server" name="photo" Accept="image/*;capture=camera" Width="180px" />
-                                                                    <input type="hidden" val="" id="imgData" runat="server" />
-                                                                    &nbsp;<input type="button" id="BtnUP" onclick="upload()" value="Upload" />
-                                                                    <img id="IMG_Uploading" src="Images/Processing.gif" alt="请稍候，处理中..." style="display: none;" />
+                                                                    <table>
+                                                                        <tr>
+                                                                            <td>
+                                                                                <Upload:InputFile ID="AttachFile" runat="server" name="photo" Accept="image/*;capture=camera" Width="160px" />
+                                                                                <input type="hidden" val="" id="imgData" runat="server" /></td>
+                                                                            <td>
+                                                                                <input type="button" id="BtnUP" onclick="upload()" value="Upload" />
+                                                                                <img id="IMG_Uploading" src="Images/Processing.gif" alt="请稍候，处理中..." style="display: none;" />
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                    <br />
+                                                                    <br />
                                                                 </div>
                                                             </ContentTemplate>
                                                         </asp:UpdatePanel>

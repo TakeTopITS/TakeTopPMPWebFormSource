@@ -14,9 +14,9 @@
 <head id="Head1" runat="server">
     <title></title>
     <link id="mainCss" href="css/bluelightmain.css" rel="stylesheet" type="text/css" />
-     <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />
+    <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />
 
-    
+
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="js/allAHandler.js"></script>
     <script src="js/exif.js" type="text/javascript"></script>
@@ -280,7 +280,7 @@
                                 <ItemTemplate>
                                     <div class="data-item">
                                         <div class="data-row">
-                                          
+
                                             <div class="data-value">
                                                 <asp:Button ID="BT_ID" runat="server" CommandName="Update" CssClass="inpu" Text='<%#DataBinder.Eval(Container.DataItem, "ID") %>' />
                                             </div>
@@ -375,7 +375,7 @@
                         </div>
                         <div id="popwindow_content" class="layui-layer-content" style="overflow: auto; padding: 0px 5px 0px 5px;">
 
-                            <table style="width: 100%; padding: 5px 0px 0px 5px" cellpadding="3" cellspacing="0" >
+                            <table style="width: 100%; padding: 5px 0px 0px 5px" cellpadding="3" cellspacing="0">
                                 <tr>
                                     <td class="formItemBgStyleForAlignLeft">
                                         <asp:Label ID="Label6" runat="server" Text="<%$ Resources:lang,KeHuYiJian%>"></asp:Label>
@@ -474,11 +474,19 @@
                                     <td class="formItemBgStyleForAlignLeft">
                                         <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional">
                                             <ContentTemplate>
-                                                <div>
-                                                    <Upload:InputFile ID="AttachFile" runat="server" name="photo" Accept="image/*;capture=camera" Width="180px" />
-                                                    <input type="hidden" val="" id="imgData" runat="server" />
-                                                    &nbsp;<input type="button" id="BtnUP" onclick="upload()" value="Upload" />
-                                                    <img id="IMG_Uploading" src="Images/Processing.gif" alt="请稍候，处理中..." style="display: none;" />
+                                                <div class="nmar">
+                                                    <table>
+                                                        <tr>
+                                                            <td>
+                                                                <Upload:InputFile ID="AttachFile" runat="server" name="photo" Accept="image/*;capture=camera" Width="160px" />
+                                                                <input type="hidden" val="" id="imgData" runat="server" /></td>
+                                                            <td>
+                                                                <input type="button" id="BtnUP" onclick="upload()" value="Upload" />
+                                                                <img id="IMG_Uploading" src="Images/Processing.gif" alt="请稍候，处理中..." style="display: none;" />
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                    <br />  <br />
                                                 </div>
                                             </ContentTemplate>
                                         </asp:UpdatePanel>

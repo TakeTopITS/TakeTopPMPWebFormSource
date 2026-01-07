@@ -14,8 +14,8 @@
 <head id="Head1" runat="server">
     <title></title>
     <link id="mainCss" href="css/bluelightmain.css" rel="stylesheet" type="text/css" />
-     <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />
-    
+    <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />
+
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="js/allAHandler.js"></script>
 
@@ -282,7 +282,7 @@
 
                         <!-- 操作按钮 -->
                         <div class="mobile-section">
-                              <div class="equal-buttons">
+                            <div class="equal-buttons">
                                 <asp:Button ID="BT_Accept" runat="server" CssClass="inpu" OnClick="BT_Accept_Click"
                                     Text="<%$ Resources:lang,ShouLi%>" />
 
@@ -314,7 +314,7 @@
                                 </asp:DropDownList>
                             </div>
 
-                              <div class="equal-buttons">
+                            <div class="equal-buttons">
                                 <asp:Button ID="BT_TransferOperator" runat="server" CssClass="inpu" Text="<%$ Resources:lang,ZhiDingWeiShouLiRen%>" OnClick="BT_TransferOperator_Click" />
                             </div>
                         </div>
@@ -335,7 +335,7 @@
                                 <ItemTemplate>
                                     <div class="data-item">
                                         <div class="data-row">
-                                           
+
                                             <div class="data-value">
                                                 <asp:Button ID="BT_ID" runat="server" Text=' <%#DataBinder .Eval (Container .DataItem ,"ID") %> ' CssClass="inpu" CommandName="Update" />
                                             </div>
@@ -416,7 +416,7 @@
                                 Width="100%" Style="display: none;">
                             </asp:DataList>
 
-                              <div class="equal-buttons">
+                            <div class="equal-buttons">
                                 <asp:HyperLink ID="HL_RelatedDoc" runat="server" NavigateUrl="TTCollaborationRelatedDoc.aspx"
                                     CssClass="inpu">
                                     <asp:Label ID="Label37" runat="server" Text="<%$ Resources:lang,XiangGuanWenJian%>"></asp:Label>
@@ -549,19 +549,19 @@
                                     <td class="formItemBgStyleForAlignLeft">
                                         <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional">
                                             <ContentTemplate>
-                                                <div>
-                                                    <Upload:InputFile ID="AttachFile" runat="server" name="photo" Accept="image/*;capture=camera" Width="180px" />
-                                                    <input type="hidden" val="" id="imgData" runat="server" />
-                                                    &nbsp;<input type="button" id="BtnUP" onclick="upload()" value="Upload" />
-                                                    <img id="IMG_Uploading" src="Images/Processing.gif" alt="请稍候，处理中..." style="display: none;" />
-
-                                                    <br />
-
-                                                    <%--<div id="ProgressBar">
-                                                        <Upload:ProgressBar ID="ProgressBar1" runat='server' Width="500px" Height="100px">
-                                                        </Upload:ProgressBar>
-                                                    </div>--%>
-                                                </div>
+                                                <table>
+                                                    <tr>
+                                                        <td>
+                                                            <Upload:InputFile ID="AttachFile" runat="server" name="photo" Accept="image/*;capture=camera" Width="160px" />
+                                                            <input type="hidden" val="" id="imgData" runat="server" /></td>
+                                                        <td>
+                                                            <input type="button" id="BtnUP" onclick="upload()" value="Upload" />
+                                                            <img id="IMG_Uploading" src="Images/Processing.gif" alt="请稍候，处理中..." style="display: none;" />
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                                <br />
+                                                <br />
                                             </ContentTemplate>
                                             <Triggers>
                                                 <%--  <asp:PostBackTrigger ControlID="BtnUP" />--%>
@@ -604,9 +604,9 @@
                         </div>
 
                         <div id="popwindow_footer" class="layui-layer-btn" style="border-top: 1px solid #ccc;">
-                           
-                                <asp:LinkButton ID="BT_New" runat="server" class="layui-layer-btn notTab" OnClick="BT_New_Click" Text="<%$ Resources:lang,BaoCun%>"></asp:LinkButton><a class="layui-layer-btn notTab" onclick="return popClose();"><asp:Label ID="Label41" runat="server" Text="<%$ Resources:lang,GuanBi%>" /></a>
-                           
+
+                            <asp:LinkButton ID="BT_New" runat="server" class="layui-layer-btn notTab" OnClick="BT_New_Click" Text="<%$ Resources:lang,BaoCun%>"></asp:LinkButton><a class="layui-layer-btn notTab" onclick="return popClose();"><asp:Label ID="Label41" runat="server" Text="<%$ Resources:lang,GuanBi%>" /></a>
+
                         </div>
                         <span class="layui-layer-setwin"><a onclick="return popClose();" class="layui-layer-ico layui-layer-close layui-layer-close1 notTab" href="javascript:;"></a></span>
                     </div>

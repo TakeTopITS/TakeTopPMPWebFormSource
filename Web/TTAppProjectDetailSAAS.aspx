@@ -194,7 +194,8 @@
 </head>
 <body>
     <div id="swipeFeedback" class="swipe-feedback">
-        <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" /></div>
+        <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" />
+    </div>
     <!-- 滑动反馈层 -->
     <canvas id="myCanvas" style="display: none;"></canvas>
     <center>
@@ -279,19 +280,19 @@
                                                                     <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional">
                                                                         <ContentTemplate>
                                                                             <div class="nmar">
-
-                                                                                <Upload:InputFile ID="AttachFile" runat="server" name="photo" Accept="image/*;capture=camera" Width="180px" />
-                                                                                <input type="hidden" val="" id="imgData" runat="server" />
-                                                                                &nbsp;<input type="button" id="BtnUP" onclick="upload()" value="Upload" />
-                                                                                <img id="IMG_Uploading" src="Images/Processing.gif" alt="请稍候，处理中..." style="display: none;" />
-
-
+                                                                                <table>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <Upload:InputFile ID="AttachFile" runat="server" name="photo" Accept="image/*;capture=camera" Width="160px" />
+                                                                                            <input type="hidden" val="" id="imgData" runat="server" /></td>
+                                                                                        <td>
+                                                                                            <input type="button" id="BtnUP" onclick="upload()" value="Upload" />
+                                                                                            <img id="IMG_Uploading" src="Images/Processing.gif" alt="请稍候，处理中..." style="display: none;" />
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </table>
                                                                                 <br />
-
-                                                                                <%--<div id="ProgressBar">
-                                                                                                <Upload:ProgressBar ID="ProgressBar1" runat='server' Width="500px" Height="100px">
-                                                                                                </Upload:ProgressBar>
-                                                                                            </div>--%>
+                                                                                <br />
                                                                             </div>
                                                                         </ContentTemplate>
                                                                         <Triggers>
@@ -406,7 +407,7 @@
                                                                         &nbsp;
 
                                                                 &nbsp; &nbsp;<asp:HyperLink ID="HL_MakeCollaboration" runat="server" NavigateUrl="~/TTMakeCollaboration.aspx"
-                                                                            Text="<%$ Resources:lang,hlMakeCollaboration%>"></asp:HyperLink>
+                                                                    Text="<%$ Resources:lang,hlMakeCollaboration%>"></asp:HyperLink>
                                                                     </td>
                                                                 </tr>
                                                                 <tr style="height: 15px; display: none;">

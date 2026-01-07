@@ -18,7 +18,7 @@
 <head id="Head1" runat="server">
     <title></title>
     <link id="mainCss" href="css/bluelightmain.css" rel="stylesheet" type="text/css" />
-     <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />
+    <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />
 
     <style type="text/css">
         body {
@@ -38,7 +38,8 @@
     <script type="text/javascript" src="js/allAHandler.js"></script>
     <script src="js/exif.js" type="text/javascript"></script>
     <script type="text/javascript" language="javascript">
-        $(function () { initSwipeBack();// 初始化滑动返回功能  initSwipeBack();// 初始化滑动返回功能
+        $(function () {
+            initSwipeBack();// 初始化滑动返回功能  initSwipeBack();// 初始化滑动返回功能
 
 
 
@@ -189,7 +190,11 @@
         }
     </script>
 </head>
-<body class="napbac"><div id="swipeFeedback" class="swipe-feedback"><asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" /></div> <!-- 滑动反馈层 -->
+<body class="napbac">
+    <div id="swipeFeedback" class="swipe-feedback">
+        <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" />
+    </div>
+    <!-- 滑动反馈层 -->
     <canvas id="myCanvas" style="display: none;"></canvas>
     <center>
         <form id="form1" runat="server" method="post" enctype="multipart/form-data">
@@ -224,7 +229,7 @@
                                             </a>
                                         </td>
                                         <td class="ItemAlignLeft" style="padding-top: 3px;">
-                                           <%-- <asp:ImageButton ID="IB_ProPlanGanttNew" CssClass="inpu" ImageUrl="ImagesSkin/plan.png" Width="32px" Height="32px" runat="server" OnClick="IB_ProPlanGanttNew_Click"></asp:ImageButton>--%>
+                                            <%-- <asp:ImageButton ID="IB_ProPlanGanttNew" CssClass="inpu" ImageUrl="ImagesSkin/plan.png" Width="32px" Height="32px" runat="server" OnClick="IB_ProPlanGanttNew_Click"></asp:ImageButton>--%>
 
                                         </td>
                                     </tr>
@@ -244,14 +249,14 @@
                                             <div class="mline">
                                                 <h4>
                                                     <asp:Label ID="LB_Progress" runat="server" Text="<%$ Resources:lang,Progress%>" /></h4>
-                                              
+
                                                 <NickLee:NumberBox ID="NB_FinishPercent" runat="server" Width="94%" MaxAmount="100" MinAmount="0">0.00</NickLee:NumberBox>
                                                 <asp:Label ID="Label1" runat="server" Font-Bold="True" Text="%"></asp:Label>
                                             </div>
                                             <div class="mline">
                                                 <h4>
                                                     <asp:Label ID="LB_ManHour" runat="server" Text="<%$ Resources:lang,ManHour%>" /></h4>
-                                               
+
                                                 <NickLee:NumberBox MaxAmount="1000000000000" ID="NB_ManHour" runat="server" Width="94%" MinAmount="0">0.00</NickLee:NumberBox>
                                             </div>
                                         </div>
@@ -262,24 +267,22 @@
                                                 <asp:Label ID="Label7" runat="server" Text="<%$ Resources:lang,ZongJie %>"></asp:Label></h3>
                                             <br />
                                             <CKEditor:CKEditorControl ID="HE_TodaySummary" runat="server" Toolbar="" Width="99%" Height="170" Visible="false" />
-                                          
+
                                             <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional">
                                                 <ContentTemplate>
                                                     <div class="nmar">
-
-                                                        <Upload:InputFile ID="AttachFile" runat="server" name="photo" Accept="image/*;capture=camera" Width="180px" />
-                                                        <input type="hidden" val="" id="imgData" runat="server" />
-                                                        &nbsp;<input type="button" id="BtnUP" onclick="upload()" value="Upload" />
-                                                        <img id="IMG_Uploading" src="Images/Processing.gif" alt="请稍候，处理中..." style="display: none;" />
-
-
-
-                                                        <br />
-
-                                                        <%--<div id="ProgressBar">
-                                                            <Upload:ProgressBar ID="ProgressBar1" runat='server' Width="500px" Height="100px">
-                                                            </Upload:ProgressBar>
-                                                        </div>--%>
+                                                        <table>
+                                                            <tr>
+                                                                <td>
+                                                                    <Upload:InputFile ID="AttachFile" runat="server" name="photo" Accept="image/*;capture=camera" Width="160px" />
+                                                                    <input type="hidden" val="" id="imgData" runat="server" /></td>
+                                                                <td>
+                                                                    <input type="button" id="BtnUP" onclick="upload()" value="Upload" />
+                                                                    <img id="IMG_Uploading" src="Images/Processing.gif" alt="请稍候，处理中..." style="display: none;" />
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                        <br />  <br />
                                                     </div>
                                                 </ContentTemplate>
                                                 <Triggers>
