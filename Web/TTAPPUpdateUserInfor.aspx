@@ -61,7 +61,7 @@
                         </tr>
                         <tr>
                             <td style="padding-top: 5px; padding-bottom: 5px;" class="ItemAlignLeft">
-                                <table style="width: 100%;" cellpadding="3" cellspacing="0" class="formBgStyle">
+                                <table style="width: 100%;" cellpadding="3" cellspacing="0" >
                                     <tr>
                                         <td style="width: 15%; "  class="formItemBgStyleForAlignLeft">
                                             <asp:Label ID="Label2" runat="server" Text="<%$ Resources:lang,DaiMa%>"></asp:Label>

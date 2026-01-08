@@ -11,23 +11,27 @@
 <head id="Head1" runat="server">
     <title></title>
     <link id="mainCss" href="css/bluelightmain.css" rel="stylesheet" type="text/css" />
-        <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />
+    <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />
 
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="js/allAHandler.js"></script>
     <script src="js/My97DatePicker/WdatePicker.js"></script>
 
     <style type="text/css">
+        /*  --------------------------------自适应宽度---------------------------*/
         #AboveDiv {
-            min-width: 1150px;
-            width: expression (document.body.clientWidth <= 1150? "1150px" : "auto" ));
+            min-width: 1160px;
+            width: expression (document.body.clientWidth <= 1160? "1160px": "auto"));
         }
+
+
 
         select {
             height: 40px;
             border: 1px solid #ccc;
         }
     </style>
+
 
 
     <script type="text/javascript">
@@ -202,8 +206,8 @@
                             <td style="text-align: left; vertical-align: middle;">
                                 <asp:RadioButtonList ID="RB_WorkflowOperation" runat="server" AutoPostBack="true"
                                     RepeatLayout="Flow" RepeatDirection="Horizontal"
-                                    OnSelectedIndexChanged="RB_WorkflowOperation_SelectedIndexChanged" >
-                                  
+                                    OnSelectedIndexChanged="RB_WorkflowOperation_SelectedIndexChanged">
+
                                     <asp:ListItem Text="<%$ Resources:lang,TongYi %>" Value="<%$ Resources:lang,TongYi %>"
                                         style="display: inline-block; margin-right: 15px;"></asp:ListItem>
                                     <asp:ListItem Text="<%$ Resources:lang,BuTongYi %>" Value="<%$ Resources:lang,BuTongYi %>"
@@ -217,13 +221,13 @@
                             </td>
                             <td id="divScale" style="text-align: right; font-size: x-large; vertical-align: middle;" onclick="javascript:setTBContendVisible();"></td>
                             <td style="width: 60px; text-align: left; color: #394f66; vertical-align: middle;">
-                                <asp:HyperLink ID="HL_WLRelatedDoc" runat="server" Target="_blank" ToolTip="上传文档" Style="vertical-align: middle;">
+                                <asp:HyperLink ID="HL_WLRelatedDoc" runat="server" Target="_blank" ToolTip="Upload Document" Style="vertical-align: middle;">
                                 <img src="ImagesSkin/UploadDoc.png" width="24" height="24" class="noBorder" style="vertical-align: middle;" />
                                 </asp:HyperLink>
                             </td>
 
                             <td style="vertical-align: middle;">
-                                <table style="vertical-align: middle;">
+                                <table style="vertical-align: middle; width: 500px;">
                                     <tr>
                                         <td style="text-align: center; vertical-align: middle;">
                                             <asp:Label ID="Label48" runat="server" Text="<%$ Resources:lang,HaoFeiGongShi %>" Style="vertical-align: middle;"></asp:Label>
@@ -283,35 +287,35 @@
                             <td>
                                 <table style="width: 100%;">
                                     <tr>
-                                        <td style="width: 65%; padding-top: 10px; padding-left: 10px;">
-                                            <div class="equal-buttons">
+                                        <td style="padding-top: 10px;">
+                                            <%--<div class="equal-buttons">--%>
 
-                                                <asp:Button ID="BT_Refuse" runat="server" Height="30px" CssClass="inpu" OnClientClick="SaveDIYFormData('Refuse');" Text="<%$ Resources:lang,BoHui %>" />
-
-
-                                                <asp:Button ID="BT_AddApprover" runat="server" Text="<%$ Resources:lang,JiaJian %>" Height="30px" CssClass="inpu" OnClientClick="window.parent.document.getElementById('bodyFrame').rows = '175,*';" OnClick="BT_AddApprover_Click" />
+                                            <asp:Button ID="BT_Refuse" runat="server" Height="30px" CssClass="inpu" OnClientClick="SaveDIYFormData('Refuse');" Text="<%$ Resources:lang,BoHui %>" />
 
 
-
-                                                <asp:Button ID="BT_Agree" runat="server" CssClass="inpu" Height="30px" Style="border: 1px solid red" OnClientClick="SaveDIYFormData('Agree');" Text="<%$ Resources:lang,WanChengTongGuo %>" />
+                                            <asp:Button ID="BT_AddApprover" runat="server" Text="<%$ Resources:lang,JiaJian %>" Height="30px" CssClass="inpu" OnClientClick="window.parent.document.getElementById('bodyFrame').rows = '175,*';" OnClick="BT_AddApprover_Click" />
 
 
 
-                                                <asp:Button ID="BT_Cancel" runat="server" CssClass="inpu" Height="30px" Enabled="False" OnClientClick="SaveDIYFormData('Cancel');" Text="<%$ Resources:lang,CheXiao %>" />
-                                            </div>
-                                        </td>
-                                        <td style="text-align: left; padding-top: 10px;">
-                                            <asp:Repeater ID="RP_RelatedModule" runat="server">
+                                            <asp:Button ID="BT_Agree" runat="server" CssClass="inpu" Height="30px" Style="border: 1px solid red" OnClientClick="SaveDIYFormData('Agree');" Text="<%$ Resources:lang,WanChengTongGuo %>" />
+
+
+
+                                            <asp:Button ID="BT_Cancel" runat="server" CssClass="inpu" Height="30px" Enabled="False" OnClientClick="SaveDIYFormData('Cancel');" Text="<%$ Resources:lang,CheXiao %>" />
+                                            <%--</div>--%>
+
+                                            <asp:Repeater ID="RP_RelatedModule" runat="server" Visible="false">
                                                 <ItemTemplate>
                                                     <a href='<%# DataBinder.Eval(Container.DataItem,"PageName") %>&MainTableCanAdd=<%# DataBinder.Eval(Container.DataItem,"MainTableCanAdd").ToString().Trim() %>&DetailTableCanAdd=<%# DataBinder.Eval(Container.DataItem,"DetailTableCanAdd").ToString().Trim() %>&MainTableCanEdit=<%# DataBinder.Eval(Container.DataItem,"MainTableCanEdit").ToString().Trim() %>&MainTableCanDelete=<%# DataBinder.Eval(Container.DataItem,"MainTableCanDelete").ToString().Trim() %>&DetailTableCanEdit=<%# DataBinder.Eval(Container.DataItem,"DetailTableCanEdit").ToString().Trim() %>&&DetailTableCanDelete=<%# DataBinder.Eval(Container.DataItem,"DetailTableCanDelete").ToString().Trim() %>&RelatedWorkFlowID=<%# DataBinder.Eval(Container.DataItem,"WorkflowID").ToString().Trim() %>&RelatedWorkflowStepID=<%# DataBinder.Eval(Container.DataItem,"WorkflowStepID") %>&RelatedWorkflowStepDetailID=<%# DataBinder.Eval(Container.DataItem,"WorkflowStepDetailID") %>' target="_blank"><%# DataBinder.Eval(Container.DataItem,"HomeModuleName") %> </a>
                                                     &nbsp;
-                                               
+    
                                                 </ItemTemplate>
                                             </asp:Repeater>
                                         </td>
+
                                     </tr>
                                     <tr>
-                                        <td colspan="2" style="text-align: left;">
+                                        <td style="text-align: left;">
                                             <asp:Panel ID="Panel_DIYStep" runat="server">
                                                 <div style="padding-top: 10px;">
                                                     <table>
@@ -320,13 +324,14 @@
                                                                 <asp:Label ID="LB_DIYStep" runat="server" Text="<%$ Resources:lang,FanHuiQianMianBuZhou %>"></asp:Label>
                                                             </td>--%>
                                                             <td style="padding-left: 5px;">
-                                                                <asp:DropDownList ID="DL_NextStep" runat="server" AutoPostBack="True" DataTextField="StepValue"
-                                                                    DataValueField="SortNumber" Height="25px" Width="300px">
-                                                                </asp:DropDownList>
-                                                            </td>
-                                                            <td class="ItemAlignLeft" style="padding-top: 3px;">
-                                                                <asp:Button ID="BT_BackPirorStep" runat="server" CssClass="inpu" OnClientClick="SaveDIYFormData('BackPirorStep');"
-                                                                    Text="<%$ Resources:lang,FanHui %>" />
+                                                                <div class="equal-buttons">
+                                                                    <asp:DropDownList ID="DL_NextStep" runat="server" AutoPostBack="True" DataTextField="StepValue"
+                                                                        DataValueField="SortNumber" Height="25px" Width="300px">
+                                                                    </asp:DropDownList>
+                                                                    <br />
+                                                                    <asp:Button ID="BT_BackPirorStep" runat="server" CssClass="inpu" OnClientClick="SaveDIYFormData('BackPirorStep');"
+                                                                        Text="<%$ Resources:lang,FanHui %>" />
+                                                                </div>
                                                             </td>
                                                         </tr>
                                                     </table>
@@ -345,7 +350,7 @@
                                         <td class="formItemBgStyleForAlignLeft">
                                             <asp:Panel ID="Panel_ChildWF" runat="server" Style="border: 1px solid red;" Visible="False">
                                                 <div>
-                                                    <table cellpadding="3" cellspacing="0"  width="100%">
+                                                    <table cellpadding="3" cellspacing="0" width="100%">
                                                         <tr>
                                                             <td class="formItemBgStyleForAlignLeft">
                                                                 <asp:Label ID="Label24" runat="server" Text="<%$ Resources:lang,ZiLiuCheng %>"></asp:Label>
@@ -480,7 +485,7 @@
                                             <asp:DataList ID="DataList2" runat="server" Style="border: 1px solid yellow;" CellPadding="0" ForeColor="#333333"
                                                 Width="800px">
                                                 <ItemTemplate>
-                                                    <table style="width: 100%;" cellpadding="3" cellspacing="0" >
+                                                    <table style="width: 100%;" cellpadding="3" cellspacing="0">
                                                         <tr>
                                                             <td width="80px" class="formItemBgStyleForAlignLeft">
                                                                 <asp:Label ID="Label3" runat="server" Text="<%$ Resources:lang,MingCheng%>"></asp:Label>
@@ -862,7 +867,7 @@
                                                                             </td>
                                                                         </tr>
                                                                     </table>
-                                                                    <table style="width: 100%; display: none;" cellpadding="3" cellspacing="0" ">
+                                                                    <table style="width: 100%; display: none;" cellpadding="3" cellspacing="0">
                                                                         <tr>
                                                                             <td style="width: 10%; height: 15px;" class="formItemBgStyleForAlignLeft">
                                                                                 <asp:Label ID="Label9" runat="server" Text="<%$ Resources:lang,BianHao %>"></asp:Label>

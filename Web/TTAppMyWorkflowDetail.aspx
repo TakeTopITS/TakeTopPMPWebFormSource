@@ -12,11 +12,16 @@
 <head id="Head1" runat="server">
     <title></title>
     <link id="mainCss" href="css/bluelightmain.css" rel="stylesheet" type="text/css" />
-     <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />
+    <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />
     <script src="js/jquery-1.7.2.min.js"></script>
+    <style type="text/css">
 
-
-   
+        /*  --------------------------------自适应宽度---------------------------*/
+        #AboveDiv {
+            min-width: 1160px;
+            width: expression (document.body.clientWidth <= 1160? "1160px": "auto"));
+        }
+    </style>
 
     <script type="text/javascript">
 
@@ -64,7 +69,8 @@
 </head>
 <body>
     <div id="swipeFeedback" class="swipe-feedback">
-        <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" /></div>
+        <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" />
+    </div>
     <!-- 滑动反馈层 -->
     <form id="form1" runat="server">
         <asp:Literal ID="LIT_AttachUserJSCode" runat="server"></asp:Literal>
@@ -118,22 +124,24 @@
                     </tr>
 
                     <tr>
-                        <td class="formItemBgStyleForAlignLeft" style="padding-left: 15px; border-bottom-style: none">
+                        <td class="formItemBgStyleForAlignLeft" style="border-bottom-style: none">
 
-                            <div class="equal-buttons">
-                                <asp:Button ID="BT_Delete" runat="server" CssClass="inpu" Height="30px" OnClick="BT_Delete_Click" OnClientClick="return confirmContinue(getDeleteMsgByLangCode(), this, event)" Text="<%$ Resources:lang,ShanChu%>" />
-
-
-                                <asp:Button ID="BT_Active" runat="server" CssClass="inpu" Height="30px" OnClientClick="SaveDIYFormData('Active');" Text="<%$ Resources:lang,JiHuo%>" />
+                            <%-- <div class="equal-buttons">--%>
 
 
 
-                                <asp:Button ID="BT_ConfirmEffectPlanProgress" runat="server" CssClass="inpu" Text="<%$ Resources:lang,QueRenJinDu %>" OnClick="BT_ConfirmEffectPlanProgress_Click" />
+                            <asp:Button ID="BT_Success" runat="server" CssClass="inpu" Height="30px" OnClick="BT_Success_Click" Text="<%$ Resources:lang,ChengGongJieAn%>" />
+
+
+                            <asp:Button ID="BT_Active" runat="server" CssClass="inpu" Height="30px" OnClientClick="SaveDIYFormData('Active');" Text="<%$ Resources:lang,JiHuo%>" />
+
+                            <asp:Button ID="BT_ConfirmEffectPlanProgress" runat="server" CssClass="inpu" Text="<%$ Resources:lang,QueRenJinDu %>" OnClick="BT_ConfirmEffectPlanProgress_Click" />
 
 
 
-                                <asp:Button ID="BT_Success" runat="server" CssClass="inpu" Height="30px" OnClick="BT_Success_Click" Text="<%$ Resources:lang,ChengGongJieAn%>" />
-                            </div>
+                            <asp:Button ID="BT_Delete" runat="server" CssClass="inpu" Height="30px" OnClick="BT_Delete_Click" OnClientClick="return confirmContinue(getDeleteMsgByLangCode(), this, event)" Text="<%$ Resources:lang,ShanChu%>" />
+
+                            <%--</div>--%>
                         </td>
                     </tr>
                     <tr>
@@ -148,7 +156,8 @@
                     </tr>
                     <tr>
                         <td class="formItemBgStyleForAlignLeft" style="font-size: xx-small; padding-left: 20px; padding-top: 20px;">1.<asp:CheckBox ID="CB_DIYNextStep" runat="server" Checked="True" Text="<%$ Resources:lang,YunXuXuanZeQianZhiBuZhou %>" />
-                            &nbsp; 2.<asp:Label ID="Label7" runat="server" Text="<%$ Resources:lang,XuYaoTongZhiShenQingZhe %>"></asp:Label>
+                            &nbsp;
+                            2.<asp:Label ID="Label7" runat="server" Text="<%$ Resources:lang,XuYaoTongZhiShenQingZhe %>"></asp:Label>
                             :</span><asp:CheckBox ID="CB_SMS" runat="server" Text="<%$ Resources:lang,DuanXin %>" Checked="true" />
                             <asp:CheckBox ID="CB_Mail" runat="server" Text="<%$ Resources:lang,YouJian %>" Checked="true" />
 
@@ -205,7 +214,7 @@
                                                         <table style="width: 100%;">
                                                             <tr>
                                                                 <td>
-                                                                    <table style="width: 100%; display: none;" cellpadding="2" cellspacing="0" >
+                                                                    <table style="width: 100%; display: none;" cellpadding="2" cellspacing="0">
                                                                         <tr>
                                                                             <td style="width: 80px;" class="formItemBgStyleForAlignLeft">
                                                                                 <asp:Label ID="Label1" runat="server" Text="<%$ Resources:lang,MingCheng %>"></asp:Label>: </td>
@@ -223,7 +232,7 @@
                                                                                 <asp:Label ID="LB_WLDescription" runat="server"></asp:Label></td>
                                                                         </tr>
                                                                     </table>
-                                                                    <table style="width: 100%; display: none;" cellpadding="2" cellspacing="0" >
+                                                                    <table style="width: 100%; display: none;" cellpadding="2" cellspacing="0">
                                                                         <tr>
                                                                             <td style="width: 10%; height: 20px;" class="formItemBgStyleForAlignLeft">
                                                                                 <asp:Label ID="Label36" runat="server" Text="<%$ Resources:lang,BianHao %>"></asp:Label>: </td>
@@ -480,7 +489,9 @@
                                                                                 </tr>
                                                                             </table>
                                                                         </ItemTemplate>
-                                                                    </asp:DataList></td>
+                                                                    </asp:DataList>
+
+                                                                </td>
                                                             </tr>
                                                         </table>
                                                     </ContentTemplate>

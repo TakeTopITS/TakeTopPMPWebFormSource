@@ -44,6 +44,8 @@ body {
     margin: 0px;
 }
 
+
+
 /* ===== 通用布局 ===== */
 .cline, .nav, .page_topbj {
     background: linear-gradient(90deg, #D53E54 0%, #057BF9 100%);
@@ -71,7 +73,6 @@ body {
     align-items: center;
     vertical-align: middle;
 }
-
     /* ===== 顶部导航栏表格对齐修复 ===== */
     .page_topbj table,
     .page_topbj table tr,
@@ -83,7 +84,6 @@ body {
         margin: 0 !important;
         border-collapse: collapse !important;
     }
-
     /* 顶部导航栏中的表格单元格垂直居中 */
     .page_topbj .ItemAlignLeft[width="94%"],
     .page_topbj .ItemAlignLeft[width="96%"] {
@@ -92,7 +92,6 @@ body {
         vertical-align: middle !important;
         padding: 0 !important;
     }
-
         /* 左侧返回链接容器 */
         .page_topbj .ItemAlignLeft[width="94%"] a,
         .page_topbj .ItemAlignLeft[width="96%"] a {
@@ -101,7 +100,6 @@ body {
             height: 40px !important;
             vertical-align: middle !important;
         }
-
         /* 左侧返回链接内的表格 */
         .page_topbj .ItemAlignLeft[width="94%"] table,
         .page_topbj .ItemAlignLeft[width="96%"] table {
@@ -109,7 +107,6 @@ body {
             border-spacing: 0 !important;
             vertical-align: middle !important;
         }
-
             /* 左侧返回链接内的表格单元格 */
             .page_topbj .ItemAlignLeft[width="94%"] table td,
             .page_topbj .ItemAlignLeft[width="96%"] table td {
@@ -120,7 +117,6 @@ body {
                 border: none !important;
                 line-height: normal !important;
             }
-
         /* 右侧按钮单元格 */
         .page_topbj .ItemAlignLeft[width="94%"] + td,
         .page_topbj .ItemAlignLeft[width="96%"] + td {
@@ -130,7 +126,6 @@ body {
             padding-bottom: 0 !important;
             display: table-cell !important;
         }
-
             /* 右侧按钮 */
             .page_topbj .ItemAlignLeft[width="94%"] + td .inpu,
             .page_topbj .ItemAlignLeft[width="96%"] + td .inpu {
@@ -184,7 +179,6 @@ body {
     height: 20px;
     background-color: #EFF2F7;
 }
-
 /* ===== 链接样式 ===== */
 a:link {
     color: black;
@@ -198,7 +192,6 @@ a:hover {
     color: #000000;
     text-decoration: none;
 }
-
 /* ===== 表格和单元格 ===== */
 td {
     vertical-align: top;
@@ -225,7 +218,6 @@ td {
     color: #256ACD;
     text-decoration: none !important;
 }
-
 /* ===== 边框和布局 ===== */
 .bianTable {
     border: 1px solid #D8D8D8;
@@ -243,7 +235,6 @@ td {
     border-right: solid 1px #D8D8D8;
     vertical-align: top;
 }
-
 /* ===== 标题样式 ===== */
 .titlezi {
     font-size: 14px;
@@ -265,7 +256,6 @@ td {
     font-size: 14px;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Liberation Sans", "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", "Wenquanyi Micro Hei", "WenQuanYi Zen Hei", "ST Heiti", SimHei, SimSun, "WenQuanYi Zen Hei Sharp", sans-serif;
 }
-
 /* ===== 按钮系统 - 统一规范 ===== */
 /* 基础按钮重置 */
 .inpu,
@@ -281,7 +271,6 @@ td {
     background-image: none !important;
     background-color: transparent !important;
 }
-
     /* 覆盖ASP.NET内联样式 */
     input[type="submit"].inpu,
     input[type="button"].inpu,
@@ -296,7 +285,6 @@ td {
         font-family: "microsoft yahei", sans-serif !important;
         text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2) !important;
     }
-
 /* 通用按钮基础样式 */
 .inpu {
     display: inline-flex !important;
@@ -331,7 +319,6 @@ td {
     -moz-appearance: none !important;
     appearance: none !important;
 }
-
     /* 按钮状态 */
     .inpu:not(:disabled):not([disabled]):hover {
         transform: translateY(-2px) !important;
@@ -346,7 +333,6 @@ td {
         cursor: not-allowed !important;
         opacity: 0.7 !important;
     }
-
     /* 单按钮场景（占99%宽度） */
     .inpu:only-child,
     .inpu:only-of-type,
@@ -356,7 +342,6 @@ td {
         display: block !important;
         margin: 8px auto !important;
     }
-
 /* 多按钮自适应容器 */
 .multi-buttons {
     display: flex !important;
@@ -408,7 +393,6 @@ td {
         .multi-buttons .inpu:nth-child(6n+6) {
             background: linear-gradient(135deg, #00BCD4 0%, #0097A7 100%) !important;
         }
-
 /* 等宽按钮容器 */
 .equal-buttons {
     display: flex !important;
@@ -457,7 +441,6 @@ td {
         .equal-buttons .inpu:nth-child(6n+6):not(:disabled):not([disabled]) {
             background: linear-gradient(135deg, #00BCD4 0%, #0097A7 100%) !important;
         }
-
 /* DataGrid2中的特殊按钮 */
 .nplef .inpu {
     background: linear-gradient(135deg, #607D8B 0%, #455A64 100%) !important;
@@ -471,7 +454,6 @@ td {
     text-overflow: ellipsis !important;
     white-space: nowrap !important;
 }
-
 /* ===== 其他按钮变体 ===== */
 /* 按钮文本溢出通用处理 */
 .inpuTab,
@@ -574,7 +556,6 @@ td {
     padding-left: 5px;
     padding-right: 5px;
 }
-
 /* ===== 图标按钮 ===== */
 .inpuUpdate {
     border-style: none;
@@ -711,7 +692,6 @@ td {
     border: none;
     text-indent: -9999px; /* 隐藏文本，只显示图标 */
 }
-
 /* ===== 表单元素 ===== */
 select {
     height: 25px;
@@ -731,7 +711,6 @@ select {
     white-space: nowrap;
     box-sizing: border-box;
 }
-
 /* ===== 表格样式 ===== */
 .itemBorder {
     border-width: 1px;
@@ -780,7 +759,6 @@ select {
         overflow: hidden;
         text-overflow: ellipsis;
     }
-
 /* ===== TreeView样式 ===== */
 .rootNode {
     font-size: 14px;
@@ -814,7 +792,6 @@ select {
     text-overflow: ellipsis;
     white-space: nowrap;
 }
-
 /* ===== 表单布局 ===== */
 .formBgStyle {
     background-color: #D8D8D8;
@@ -877,7 +854,6 @@ select {
     overflow: hidden;
     text-overflow: ellipsis;
 }
-
 /* ===== 数据列表样式 ===== */
 .tdLeft, .tdRight {
     padding: 5px;
@@ -913,7 +889,6 @@ select {
 .noBorder {
     border-width: 0px;
 }
-
 /* ===== Tab控件样式 ===== */
 .ajax_tab_menu .ajax__tab_header {
     font-family: 宋体;
@@ -993,7 +968,6 @@ select {
     padding-left: 5px;
     padding-right: 5px;
 }
-
 /* ===== 进度条样式 ===== */
 .progress-column {
     width: 100px;
@@ -1032,7 +1006,6 @@ select {
     text-overflow: ellipsis;
     white-space: nowrap;
 }
-
 /* ===== 滑动反馈 ===== */
 .swipe-feedback {
     position: fixed;
@@ -1074,7 +1047,6 @@ select {
         display: none;
     }
 }
-
 /* ===== 自定义Tab系统 ===== */
 .PMBTab-bg-undertake {
     background-color: #e1f5fe;
@@ -1124,7 +1096,6 @@ select {
         transform: translateY(0);
     }
 }
-
 /* ===== RadioButtonList修复 ===== */
 table input[type="radio"] {
     vertical-align: middle !important;
@@ -1163,14 +1134,12 @@ table input[type="radio"] {
         text-overflow: ellipsis !important;
         white-space: nowrap !important;
     }
-
 /* ===== 响应式设计 ===== */
 @media (max-width: 768px) {
     .page_topbj {
         padding: 10px 0;
         height: 52px;
     }
-
         /* 响应式下保持表格单元格对齐 */
         .page_topbj table,
         .page_topbj table tr,
@@ -1239,7 +1208,6 @@ table input[type="radio"] {
         padding: 8px 0;
         height: 48px;
     }
-
         /* 响应式下保持表格单元格对齐 */
         .page_topbj table,
         .page_topbj table tr,
@@ -1316,7 +1284,6 @@ table input[type="radio"] {
     .page_topbj {
         height: 44px;
     }
-
         /* 响应式下保持表格单元格对齐 */
         .page_topbj table,
         .page_topbj table tr,
