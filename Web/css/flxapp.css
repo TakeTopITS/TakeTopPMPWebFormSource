@@ -1,12 +1,213 @@
-﻿/* ===== 基础样式 ===== */
-body {
+﻿/* ===== 禁止页面缩放 - 修复版 ===== */
+/* 1. 基础防缩放设置 */
+html, body {
+    -webkit-text-size-adjust: 100% !important;
+    text-size-adjust: 100% !important;
+    -ms-text-size-adjust: 100% !important;
+    touch-action: manipulation;
+    max-zoom: 1 !important;
+    min-zoom: 1 !important;
+    zoom: 1 !important;
+    width: 100% !important;
+    overflow-x: auto !important;
+    overflow-y: auto !important;
+    position: relative !important; /* 改为relative */
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
     background-color: #f5f5f5;
     font-size: 14px;
+    height: auto !important;
+    min-height: 100vh !important;
 }
 
+/* 2. 允许滚动 */
+body {
+    -webkit-user-drag: none;
+    user-drag: none;
+    -webkit-touch-callout: none;
+    touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+    overflow-x: auto !important;
+    overflow-y: auto !important; /* 改为auto允许滚动 */
+    position: relative !important;
+}
+
+/* 3. 允许输入框内的文字选择 */
+input, textarea, select {
+    -webkit-user-select: text !important;
+    user-select: text !important;
+    font-size: 16px !important; /* 关键：iOS在font-size小于16px时会自动缩放 */
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    border-radius: 0 !important;
+    min-height: 44px !important; /* 最小触摸目标尺寸 */
+    height: 40px;
+}
+
+    /* 4. 所有类型的输入框 */
+    input[type="text"],
+    input[type="number"],
+    input[type="tel"],
+    input[type="email"],
+    input[type="password"],
+    input[type="url"],
+    input[type="search"],
+    input[type="date"],
+    input[type="time"],
+    textarea,
+    select {
+        font-size: 16px !important;
+        max-height: 44px !important;
+    }
+
+/* 5. CKEditor特定修复 */
+.cke_contents,
+.cke_wysiwyg_frame,
+.cke_wysiwyg_div,
+.cke_inner,
+.cke_editor {
+    -webkit-text-size-adjust: 100% !important;
+    text-size-adjust: 100% !important;
+    -ms-text-size-adjust: 100% !important;
+    touch-action: manipulation !important;
+    max-zoom: 1 !important;
+    min-zoom: 1 !important;
+}
+
+    /* 6. CKEditor iframe内部 */
+    .cke_wysiwyg_frame iframe,
+    .cke_wysiwyg_div {
+        -webkit-text-size-adjust: 100% !important;
+        text-size-adjust: 100% !important;
+        max-zoom: 1 !important;
+        min-zoom: 1 !important;
+    }
+
+/* 7. 禁用所有元素的缩放 */
+* {
+    touch-action: pan-y !important;
+    -webkit-tap-highlight-color: transparent !important;
+    max-zoom: 1 !important;
+    min-zoom: 1 !important;
+}
+
+/* 8. 焦点状态防缩放 */
+input:focus,
+textarea:focus,
+select:focus,
+.cke_focus,
+.cke_contents:focus,
+.cke_wysiwyg_frame:focus,
+.cke_wysiwyg_div:focus {
+    font-size: 16px !important;
+    -webkit-text-size-adjust: 100% !important;
+    text-size-adjust: 100% !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* 9. 表单区域特殊处理 */
+form,
+.mobile-container,
+.napbox,
+.npb,
+.npbx,
+.npbxs {
+    -webkit-text-size-adjust: 100% !important;
+    text-size-adjust: 100% !important;
+    touch-action: manipulation !important;
+    max-zoom: 1 !important;
+    min-zoom: 1 !important;
+}
+
+/* 10. iOS Safari特殊处理 */
+@supports (-webkit-touch-callout: none) {
+    html, body {
+        -webkit-text-size-adjust: none !important;
+    }
+    /* iOS Safari输入框防缩放 */
+    input, textarea, select {
+        font-size: 16px !important;
+        -webkit-appearance: none !important;
+        -webkit-transform: translateZ(0) !important;
+        transform: translateZ(0) !important;
+    }
+    /* CKEditor在iOS上的特殊处理 */
+    .cke_contents iframe {
+        -webkit-overflow-scrolling: touch !important;
+        -webkit-transform: translateZ(0) !important;
+        transform: translateZ(0) !important;
+    }
+}
+
+/* ===== 修复滚动问题 ===== */
+/* 主滚动容器 */
+.scroll-main-container {
+    width: 100%;
+    max-height: calc(100vh - 100px) !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    overflow-x: hidden !important;
+    padding-bottom: 20px;
+}
+
+/* 修复AboveTable容器 */
+#AboveTable {
+    width: 100% !important;
+    min-height: 200px !important;
+    display: table !important;
+    table-layout: fixed !important;
+    overflow: visible !important;
+}
+
+/* 修复DataGrid容器 */
+table[width="100%"] {
+    width: 100% !important;
+    overflow: visible !important;
+}
+
+/* 修复DataGrid高度 */
+.aspDataGrid,
+.DataGrid1,
+.DataGrid4 {
+    height: auto !important;
+    min-height: 100px !important;
+    max-height: none !important;
+    overflow: visible !important;
+}
+
+/* 修复UpdatePanel */
+.UpdatePanel1,
+#UpdatePanel1 {
+    overflow: visible !important;
+    height: auto !important;
+    min-height: 300px !important;
+    position: relative !important;
+}
+
+/* 修复ContentTemplate */
+.ContentTemplate {
+    overflow: visible !important;
+    height: auto !important;
+}
+
+/* 修复表格行显示 */
+tr {
+    display: table-row;
+}
+
+td {
+    display: table-cell;
+    vertical-align: top;
+}
+
+/* ===== 基础样式 ===== */
 .mobile-container {
     width: 100%;
     margin: 0 auto;
@@ -16,10 +217,10 @@ body {
     background: #EFF2F7;
 }
 
-/* 在 bluelightmain.css 或 flxapp.css 中添加 */
-.napbac .inpu {
-    color: white !important;
-}
+    /* 在 bluelightmain.css 或 flxapp.css 中添加 */
+    .napbac .inpu {
+        color: white !important;
+    }
 
 .napf {
     margin: 0;
@@ -31,12 +232,14 @@ body {
 
 form {
     margin: 0;
+    overflow: visible !important;
 }
 
 .napbox {
     width: 95%;
     margin: 0 auto;
     margin-top: 15px;
+    overflow: visible !important;
 }
 
     .napbox td {
@@ -72,6 +275,7 @@ form {
     background: #fff;
     border-radius: 8px;
     margin-top: 10px;
+    overflow: visible !important;
 }
 
     .npb h3 {
@@ -232,6 +436,7 @@ form {
     background: #f7f7f8;
     border-radius: 8px;
     padding-bottom: 15px;
+    overflow: visible !important;
 }
 
     .npbx h3 {
@@ -248,6 +453,7 @@ form {
     border-radius: 8px;
     padding: 10px;
     margin: 18px 10px;
+    overflow: visible !important;
 }
 
     .npbxs input {
@@ -255,15 +461,6 @@ form {
         line-height: 22px;
     }
 
-/* ===== 头部样式 ===== */
-.page_topbj {
-    background-color: #1a73e8;
-    color: white;
-    padding: 10px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-}
 
 .header-back {
     display: flex;
@@ -281,6 +478,11 @@ form {
     margin-top: 10px;
     padding: 10px;
     padding-bottom: 60px;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    max-height: calc(100vh - 100px) !important;
+    height: auto !important;
+    min-height: 300px !important;
 }
 
 .mobile-section {
@@ -289,13 +491,71 @@ form {
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ddd;
+    overflow: visible !important;
 }
+
+/* ===== 修复分页样式 ===== */
+.notTab {
+    padding: 10px 0;
+    background: #f5f5f5;
+    border-top: 1px solid #ddd;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.aspDataGrid table {
+    width: 100% !important;
+    table-layout: fixed !important;
+}
+
+/* 修复分页按钮容器 */
+.DataGridPagerStyle {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    padding: 10px !important;
+    background: #f8f9fa !important;
+    border-top: 1px solid #dee2e6 !important;
+    margin-top: 10px !important;
+}
+
+    /* 分页按钮样式 */
+    .DataGridPagerStyle a,
+    .DataGridPagerStyle span {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        min-width: 30px !important;
+        height: 30px !important;
+        margin: 2px !important;
+        padding: 0 8px !important;
+        border: 1px solid #dee2e6 !important;
+        border-radius: 4px !important;
+        background: white !important;
+        color: #007bff !important;
+        text-decoration: none !important;
+        font-size: 14px !important;
+        line-height: 1 !important;
+    }
+
+    .DataGridPagerStyle span {
+        background: #007bff !important;
+        color: white !important;
+        border-color: #007bff !important;
+        font-weight: bold !important;
+    }
+
+    .DataGridPagerStyle a:hover {
+        background: #e9ecef !important;
+        border-color: #adb5bd !important;
+    }
 
 /* ===== 表单元素 ===== */
-input {
-    height: 40px;
-}
-
 select {
     height: 40px;
     border: 1px solid #ccc;
@@ -598,12 +858,15 @@ input#TB_Message {
 /* ===== 弹窗移动端适配 ===== */
 .layui-layer-iframe {
     max-width: 98%;
-    left: 50% !important;
-    transform: translateX(-50%);
-    margin-top: 20px;
+    left: 0 !important;
+    right: 0 !important;
+    margin: 20px auto !important; /* 改为auto margin居中 */
     border-radius: 10px;
     max-height: 600px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    transform: none !important; /* 移除transform */
+    z-index: 9999 !important;
+    position: fixed !important; /* 改为fixed定位 */
 }
 
 /* 弹窗内容区域优化 */
@@ -634,18 +897,6 @@ input#TB_Message {
 
 /* ===== 日期选择器修复 ===== */
 
-/* 1. 首先修复弹窗的定位方式，避免使用transform */
-.layui-layer-iframe {
-    max-width: 98%;
-    left: 0 !important;
-    right: 0 !important;
-    margin: 20px auto !important; /* 改为auto margin居中 */
-    border-radius: 10px;
-    max-height: 600px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-    transform: none !important; /* 移除transform */
-}
-
 /* 2. 修复AjaxControlToolkit日历控件的位置 */
 .ajax__calendar_container {
     position: fixed !important;
@@ -661,49 +912,9 @@ input#TB_Message {
     box-shadow: 0 4px 20px rgba(0,0,0,0.2) !important;
 }
 
-/* 3. 确保日期选择器在弹窗上方显示 */
-.layui-layer-iframe {
-    z-index: 9999 !important;
-    position: fixed !important; /* 改为fixed定位 */
-}
-
 /* 4. 修复日期输入框的父容器 */
 .formItemBgStyleForAlignLeft {
     position: relative !important;
-}
-
-/* 5. 修复移动端响应式 */
-@media (max-width: 768px) {
-    .layui-layer-iframe {
-        width: 95% !important;
-        left: 2.5% !important;
-        right: 2.5% !important;
-        margin: 20px auto !important;
-        max-height: 80vh;
-        overflow-y: auto;
-    }
-
-    .ajax__calendar_container {
-        width: 280px !important;
-    }
-
-    /* 确保弹窗底部按钮可见 */
-    .layui-layer-iframe #popwindow_footer,
-    .layui-layer-iframe #popwindow_footer1 {
-        position: relative;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        padding: 15px;
-        background: white;
-    }
-
-    /* 修复日期输入框在移动端的显示 */
-    .date-input {
-        font-size: 16px;
-        padding: 12px 15px;
-        min-height: 44px; /* 确保触摸区域足够大 */
-    }
 }
 
 /* 6. 修复日期图标的位置 */
@@ -833,6 +1044,31 @@ html {
 
 /* ===== 响应式设计 ===== */
 @media (max-width: 768px) {
+    /* 移动端加强防缩放 */
+    html, body {
+        -webkit-text-size-adjust: 100% !important;
+        text-size-adjust: 100% !important;
+        touch-action: manipulation !important;
+        overscroll-behavior: none !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+    }
+
+    /* 内容区域允许滚动但不缩放 */
+    .napbox,
+    .npbx {
+        overflow-y: visible !important;
+        -webkit-overflow-scrolling: touch !important;
+        max-height: none !important;
+    }
+
+    /* CKEditor在移动端的特殊处理 */
+    .cke_contents {
+        max-height: 200px !important;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+    }
+
     /* 针对移动端浏览器的特殊处理 */
     .npbxs input,
     .mline input,
@@ -867,6 +1103,8 @@ html {
         height: auto !important;
         max-height: 80vh;
         overflow-y: auto;
+        left: 2.5% !important;
+        right: 2.5% !important;
     }
 
         /* 确保弹窗底部按钮可见 */
@@ -946,6 +1184,22 @@ html {
         width: 100% !important;
         box-sizing: border-box;
     }
+
+    .ajax__calendar_container {
+        width: 280px !important;
+    }
+
+    /* 修复日期输入框在移动端的显示 */
+    .date-input {
+        font-size: 16px;
+        padding: 12px 15px;
+        min-height: 44px; /* 确保触摸区域足够大 */
+    }
+
+    /* 修复移动端滚动 */
+    .scroll-main-container {
+        max-height: calc(100vh - 80px) !important;
+    }
 }
 
 /* ===== 通用按钮容器样式 ===== */
@@ -969,7 +1223,6 @@ html {
     display: inline-block !important;
     width: auto !important;
 }
-
 
 #BtnUP {
     background-color: #2196F3 !important;
@@ -1008,7 +1261,6 @@ html {
         font-size: 14px !important;
     }
 }
-
 
 /* 修复文件选择器样式 - 确保文件路径可见 */
 input[type="file"] {
@@ -1053,4 +1305,186 @@ input[type="file"] {
     background-color: white !important;
     color: #333 !important;
     border: 1px solid #ccc !important;
+}
+
+/* 12. 针对Android设备的优化 */
+@supports (-webkit-overflow-scrolling: touch) {
+    /* 现代移动浏览器 */
+    html, body {
+        -webkit-text-size-adjust: 100% !important;
+    }
+}
+
+/* 13. 极端情况下使用的绝对定位方法 */
+.prevent-zoom-wrapper {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    overflow: auto !important; /* 改为auto */
+    -webkit-text-size-adjust: 100% !important;
+    text-size-adjust: 100% !important;
+}
+
+/* 14. CKEditor编辑器内容区域 */
+.cke_editable {
+    font-size: 16px !important;
+    -webkit-text-size-adjust: 100% !important;
+    text-size-adjust: 100% !important;
+    line-height: 1.5 !important;
+}
+
+/* 15. 占位符文字 */
+input::placeholder,
+textarea::placeholder {
+    font-size: 16px !important;
+    -webkit-text-size-adjust: 100% !important;
+}
+
+/* 16. 防止viewport变化 */
+.fixed-viewport {
+    width: 100vw !important;
+    height: 100vh !important;
+    position: relative !important; /* 改为relative */
+    top: auto !important;
+    left: auto !important;
+    overflow: auto !important; /* 改为auto */
+}
+
+/* 17. 表单元素容器 */
+.form-container,
+.editor-container {
+    -webkit-text-size-adjust: 100% !important;
+    text-size-adjust: 100% !important;
+    touch-action: pan-y !important;
+    overflow: visible !important;
+}
+
+/* 18. 如果CKEditor仍然有问题，强制其iframe样式 */
+iframe.cke_wysiwyg_frame {
+    -webkit-text-size-adjust: 100% !important;
+    text-size-adjust: 100% !important;
+    max-zoom: 1 !important;
+    min-zoom: 1 !important;
+}
+
+/* 19. 禁用所有缩放相关的CSS属性 */
+.no-zoom {
+    -webkit-text-size-adjust: 100% !important;
+    text-size-adjust: 100% !important;
+    -webkit-transform: none !important;
+    transform: none !important;
+    -webkit-transform-origin: 0 0 !important;
+    transform-origin: 0 0 !important;
+}
+
+/* ===== 滚动条美化 ===== */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 3px;
+}
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #a8a8a8;
+    }
+
+/* ===== 修复display:none被覆盖的问题 ===== */
+/* 1. 保护所有的display:none状态 */
+[style*="display:none"],
+[style*="display: none"] {
+    display: none !important;
+}
+
+/* 2. 保护常见的隐藏类 */
+.hide,
+.hidden,
+.d-none,
+.dn,
+.none,
+.display-none,
+.hidden-element,
+.invisible {
+    display: none !important;
+}
+
+/* 3. 确保visibility隐藏也有效 */
+.invisible,
+.visually-hidden,
+[style*="visibility:hidden"],
+[style*="visibility: hidden"] {
+    visibility: hidden !important;
+}
+
+/* 4. 防止其他CSS规则覆盖隐藏状态 */
+body *[style*="display:none"],
+body *[style*="display: none"] {
+    display: none !important;
+}
+
+/* 5. 特殊的隐藏状态保护 */
+[hidden],
+template {
+    display: none !important;
+}
+
+/* 6. 修复表格行和单元格的隐藏状态 */
+tr[style*="display:none"],
+tr[style*="display: none"],
+tr.hidden,
+tr.d-none {
+    display: none !important;
+}
+
+td[style*="display:none"],
+td[style*="display: none"],
+td.hidden,
+td.d-none {
+    display: none !important;
+}
+
+/* 7. JavaScript控制的隐藏元素 */
+.js-hidden,
+.is-hidden,
+[data-hidden="true"] {
+    display: none !important;
+}
+
+/* 8. 保护折叠/展开功能中的隐藏状态 */
+.collapse:not(.show),
+.accordion-collapse:not(.show) {
+    display: none !important;
+}
+
+/* 9. 保护模态框的隐藏状态 */
+.modal.fade:not(.show) {
+    display: none !important;
+}
+
+/* 10. 保护标签页的隐藏状态 */
+.tab-pane:not(.active),
+.tab-content:not(.active) {
+    display: none !important;
+}
+
+/* 11. 确保隐藏元素不占用空间 */
+[style*="display:none"] *,
+[style*="display: none"] * {
+    display: none !important;
+}
+
+/* 12. 额外的保护层，确保最高优先级 */
+html body [style*="display:none"],
+html body [style*="display: none"] {
+    display: none !important;
 }

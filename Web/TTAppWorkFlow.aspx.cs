@@ -179,7 +179,7 @@ public partial class TTAppWorkFlow : System.Web.UI.Page
 
         for (i = 0; i < DataGrid3.Items.Count; i++)
         {
-            strWFID = DataGrid3.Items[i].Cells[1].Text.Trim();
+            strWFID = DataGrid3.Items[i].Cells[0].Text.Trim();
             strStatus = GetWorkflowStatus(strWFID);
 
             if (strStatus == "Passed")

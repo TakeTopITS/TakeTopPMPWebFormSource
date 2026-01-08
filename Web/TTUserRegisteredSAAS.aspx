@@ -3,7 +3,7 @@
 <%@ Register Assembly="NickLee.Web.UI" Namespace="NickLee.Web.UI" TagPrefix="NickLee" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
-<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=0.1; user-scalable=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
 <%@ Import Namespace="System.Globalization" %>
 <!DOCTYPE html>
 
@@ -13,18 +13,7 @@
     <%--    <link href="css/zhuce.css" rel="stylesheet" type="text/css">--%>
     <link id="mainCss" href="css/bluelightmain.css" rel="stylesheet" type="text/css" />
     <style type="text/css">
-        body {
-            background-repeat: repeat-x;
-            font: normal 100% Helvetica, Arial, sans-serif;
-        }
-
-        #AboveDiv {
-            max-width: 1024px;
-            width: expression (document.body.clientWidth >= 1024? "1024px" : "auto" ));
-            min-width: 277px;
-            width: expression (document.body.clientWidth <= 277? "277px" : "auto" ));
-        }
-
+      
 
         .codea {
             display: inline-block;

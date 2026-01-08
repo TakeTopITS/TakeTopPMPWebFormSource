@@ -1,6 +1,6 @@
 <%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAPPGetUserPositionForIOSAndroid.aspx.cs" Inherits="TTAPPGetUserPositionForIOSAndroid" %>
 
-<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=0.1; user-scalable=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
 
 <meta http-equiv="Content-Type" content="textml; charset=UTF-8" />
 
@@ -10,27 +10,10 @@
     <title></title>
 
     <link id="mainCss" href="css/bluelightmain.css" rel="stylesheet" type="text/css" />
-      <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />
+    <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />
+
 
     <style type="text/css">
-        body {
-            /*margin-top: 5px;*/
-            /*background-image: url(Images/login_bj.jpg);*/
-            background-repeat: repeat-x;
-            font: normal 100% Helvetica, Arial, sans-serif;
-        }
-    </style>
-
-    <style type="text/css">
-        #AboveDiv {
-            max-width: 1024px;
-            width: expression (document.body.clientWidth >= 1024? "1024px" : "auto" ));
-            min-width: 277px;
-            width: expression (document.body.clientWidth <= 277? "277px" : "auto" ));
-            min-height: 640px;
-            height: expression (document.body.clientHeight <= 640 "640px" : "auto" ));
-        }
-
         #container {
             height: auto !important;
             height: 530px;
@@ -42,7 +25,6 @@
             border-radius: 10%;
         }
     </style>
-
     <script type="text/javascript" src="https://lib.sinaapp.com/js/jquery/1.7.2/jquery.min.js"></script>
     <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=Mesj2KjbrDAqsfcUrFBY7DNrQ4GZAUS0"></script>
 
@@ -52,7 +34,8 @@
     <script src="js/layer/mobile/layer.js"></script>
     <script src="js/jweixin-1.0.0.js"></script>
     <script type="text/javascript" language="javascript">
-        $(function () { initSwipeBack();// 初始化滑动返回功能 
+        $(function () {
+            initSwipeBack();// 初始化滑动返回功能 
 
 
 
@@ -61,21 +44,19 @@
     </script>
 
 </head>
-<body><div id="swipeFeedback" class="swipe-feedback"><asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" /></div> <!-- 滑动反馈层 -->
+<body>
+    <div id="swipeFeedback" class="swipe-feedback">
+        <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" />
+    </div>
+    <!-- 滑动反馈层 -->
     <form id="form1" runat="server">
-        <%--  <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">
-        </asp:ScriptManager>
-        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-            <ContentTemplate>--%>
-
-
 
         <table id="AboveTable" cellpadding="0" width="100%" cellspacing="0" class="bian">
             <tr>
-                <td  height="31" class="page_topbj">
+                <td height="31" class="page_topbj">
                     <table width="99%">
                         <tr>
-                            <td style="width: 50%; text-align: left;">
+                            <td class="ItemAlignLeft">
                                 <a id="aAPPBackPriorPage" href="TakeTopAPPMain.aspx" target="_top" onclick="javascript:document.getElementById('IMG_Waiting').style.display = 'block';">
                                     <table width="100%" border="0" class="ItemAlignLeft" cellpadding="0" cellspacing="0">
                                         <tr>
@@ -86,11 +67,13 @@
                                                 <asp:Label ID="Label8" runat="server" Text="<%$ Resources:lang,Back%>" />
                                             </td>
 
-                                            <td class="titleziAPP" style="width: 100px; text-align: center; padding-top: 5px;">
-                                                <img id="IMG_Waiting" src="Images/Processing.gif" alt="请稍候，处理中..." style="display: none;" />
-                                            </td>
+
+
+
                                         </tr>
                                     </table>
+
+                                    <img id="IMG_Waiting" src="Images/Processing.gif" alt="请稍候，处理中..." style="display: none;" />
                                 </a>
                             </td>
 
@@ -102,14 +85,14 @@
                     </table>
                 </td>
             </tr>
-           <tr>
+            <tr>
                 <td>
                     <table width="99%">
                         <tr>
                             <td style="width: 50%; text-align: left; vertical-align: middle;">
                                 <asp:RadioButtonList ID="RBL_ShiftType" runat="server" TextAlign="Left" CellPadding="10" CellSpacing="10">
                                 </asp:RadioButtonList></td>
-                          <td style="vertical-align: middle; text-align: center;" class="round">
+                            <td style="vertical-align: middle; text-align: center;" class="round">
                                 <br />
                                 <br />
                                 <asp:Button ID="BT_Attendance" runat="server" CssClass="inpuLong" Style="border: 1px solid #dedede; border-radius: 10%;" Width="80%" Height="30px" OnClick="BT_Attendance_Click" Text="<%$ Resources:lang,DaKaBingFanHuiZhuYe%>" />
@@ -121,26 +104,26 @@
                     </table>
 
                 </td>
-            <tr>
-                <td>
+                <tr>
+                    <td>
 
-                    <table width="99%">
-                        <tr>
-                            <td alight="right">
-                                <asp:Label ID="Label1" runat="server" Text="<%$ Resources:lang,Jing%>"></asp:Label>:</td>
-                            <td>
-                                <input type="text" id="LNG_value" runat="server" style="width: 100px;" readonly></input>
-                            </td>
-                            <td>
-                                <asp:Label ID="Label2" runat="server" Text="<%$ Resources:lang,Wei%>"></asp:Label>:</td>
-                            <td>
-                                <input type="text" id="LAT_value" runat="server" style="width: 100px;" readonly></input>
-                            </td>
+                        <table width="99%">
+                            <tr>
+                                <td alight="right">
+                                    <asp:Label ID="Label1" runat="server" Text="<%$ Resources:lang,Jing%>"></asp:Label>:</td>
+                                <td>
+                                    <input type="text" id="LNG_value" runat="server" style="width: 100px;" readonly></input>
+                                </td>
+                                <td>
+                                    <asp:Label ID="Label2" runat="server" Text="<%$ Resources:lang,Wei%>"></asp:Label>:</td>
+                                <td>
+                                    <input type="text" id="LAT_value" runat="server" style="width: 100px;" readonly></input>
+                                </td>
 
-                        </tr>
-                    </table>
-                </td>
-            </tr>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
             <tr>
                 <td>
                     <div id="status" style="text-align: center">

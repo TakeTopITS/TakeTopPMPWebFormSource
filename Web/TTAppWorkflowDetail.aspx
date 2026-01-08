@@ -1,6 +1,6 @@
 <%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppWorkflowDetail.aspx.cs" Inherits="TTAppWorkflowDetail" %>
 
-<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=0.1; user-scalable=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
 
 <%@ Register Assembly="NickLee.Web.UI" Namespace="NickLee.Web.UI" TagPrefix="NickLee" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
@@ -345,7 +345,7 @@
                                         <td class="formItemBgStyleForAlignLeft">
                                             <asp:Panel ID="Panel_ChildWF" runat="server" Style="border: 1px solid red;" Visible="False">
                                                 <div>
-                                                    <table cellpadding="3" cellspacing="0" class="formBgStyle" width="100%">
+                                                    <table cellpadding="3" cellspacing="0"  width="100%">
                                                         <tr>
                                                             <td class="formItemBgStyleForAlignLeft">
                                                                 <asp:Label ID="Label24" runat="server" Text="<%$ Resources:lang,ZiLiuCheng %>"></asp:Label>
@@ -480,7 +480,7 @@
                                             <asp:DataList ID="DataList2" runat="server" Style="border: 1px solid yellow;" CellPadding="0" ForeColor="#333333"
                                                 Width="800px">
                                                 <ItemTemplate>
-                                                    <table style="width: 100%;" cellpadding="3" cellspacing="0" class="formBgStyle">
+                                                    <table style="width: 100%;" cellpadding="3" cellspacing="0" >
                                                         <tr>
                                                             <td width="80px" class="formItemBgStyleForAlignLeft">
                                                                 <asp:Label ID="Label3" runat="server" Text="<%$ Resources:lang,MingCheng%>"></asp:Label>
@@ -523,7 +523,7 @@
                                         <td class="formItemBgStyleForAlignLeft">
                                             <asp:Panel ID="Panel_NextStep" runat="server" Style="width: 110%; border: 2px solid red;" Visible="False">
                                                 <div>
-                                                    <table cellpadding="3" cellspacing="0" class="formBgStyle" width="100%">
+                                                    <table cellpadding="3" cellspacing="0" c width="100%">
                                                         <tr>
                                                             <td style="height: 1px; text-align: left; font-weight: 700;">
                                                                 <table width="100%">
@@ -809,7 +809,7 @@
                                                             </tr>
                                                             <tr style="display: none;">
                                                                 <td>
-                                                                    <table style="width: 100%; display: none;" cellpadding="3" cellspacing="0" class="formBgStyle">
+                                                                    <table style="width: 100%; display: none;" cellpadding="3" cellspacing="0">
                                                                         <tr>
                                                                             <td width="80px" class="formItemBgStyleForAlignLeft">
                                                                                 <asp:Label ID="Label5" runat="server" Text="<%$ Resources:lang,MingChen %>"></asp:Label>
@@ -862,7 +862,7 @@
                                                                             </td>
                                                                         </tr>
                                                                     </table>
-                                                                    <table style="width: 100%; display: none;" cellpadding="3" cellspacing="0" class="formBgStyle">
+                                                                    <table style="width: 100%; display: none;" cellpadding="3" cellspacing="0" ">
                                                                         <tr>
                                                                             <td style="width: 10%; height: 15px;" class="formItemBgStyleForAlignLeft">
                                                                                 <asp:Label ID="Label9" runat="server" Text="<%$ Resources:lang,BianHao %>"></asp:Label>
@@ -1357,7 +1357,7 @@
                     <div id="popwindow_content" class="layui-layer-content" style="overflow: auto; padding: 0px 5px 0px 5px;">
 
 
-                        <table width="300px" cellpadding="3" cellspacing="0" class="formBgStyle">
+                        <table width="300px" cellpadding="3" cellspacing="0">
                             <tr>
                                 <td class="formItemBgStyleForAlignLeft" width="40%">
                                     <asp:Button ID="BT_OK" runat="server" Text="OK" />

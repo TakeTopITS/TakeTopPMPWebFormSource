@@ -1,6 +1,6 @@
 <%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAPPMembersWorkload.aspx.cs" Inherits="TTAPPMembersWorkload" %>
 
-<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=0.1; user-scalable=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
 
 <%@ Register Assembly="DayPilot" Namespace="DayPilot.Web.Ui" TagPrefix="DayPilot" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc2" %>
@@ -38,23 +38,7 @@
 
     <script type="text/javascript" src="../js/modal.js"></script>
 
-    <style type="text/css">
-        body {
-            /*margin-top: 5px;*/
-            /*background-image: url(Images/login_bj.jpg);*/
-            background-repeat: repeat-x;
-            font: normal 100% Helvetica, Arial, sans-serif;
-        }
-    </style>
-
-    <style type="text/css">
-        #AboveDiv {
-            max-width: 1024px;
-            width: expression (document.body.clientWidth >= 1024? "1024px" : "auto" ));
-            min-width: 277px;
-            width: expression (document.body.clientWidth <= 277? "277px" : "auto" ));
-        }
-    </style>
+   
 
 
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>

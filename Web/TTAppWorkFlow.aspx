@@ -1,6 +1,6 @@
 <%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppWorkFlow.aspx.cs" Inherits="TTAppWorkFlow" %>
 
-<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=0.1; user-scalable=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc2" %>
 <%@ Import Namespace="System.Globalization" %>
 <!DOCTYPE html>
@@ -9,15 +9,7 @@
 <head id="Head1" runat="server">
     <title></title>
     <link id="mainCss" href="css/bluelightmain.css" rel="stylesheet" type="text/css" />
-     <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />
-    <style type="text/css">
-        body {
-            /*margin-top: 5px;*/
-            /*background-image: url(Images/login_bj.jpg);*/
-            background-repeat: repeat-x;
-            font: normal 100% Helvetica, Arial, sans-serif;
-        }
-    </style>
+    <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />
 
     <style type="text/css">
         .ToolBarLeftRight {
@@ -152,7 +144,8 @@
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="js/allAHandler.js"></script>
     <script type="text/javascript" language="javascript">
-        $(function () { initSwipeBack();// 初始化滑动返回功能 
+        $(function () {
+            initSwipeBack();// 初始化滑动返回功能 
 
 
 
@@ -173,7 +166,11 @@
     </script>
 
 </head>
-<body><div id="swipeFeedback" class="swipe-feedback"><asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" /></div> <!-- 滑动反馈层 -->
+<body>
+    <div id="swipeFeedback" class="swipe-feedback">
+        <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" />
+    </div>
+    <!-- 滑动反馈层 -->
     <form id="form1" runat="server">
         <%--  <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">--%>
         <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">
@@ -223,9 +220,15 @@
                                                             <table cellpadding="0" cellspacing="0" border="0" width="100%">
                                                                 <tr>
                                                                     <td style="width: 100%; height: 1px;" class="ItemAlignLeft">
+                                                                        <div class="npb">
+                                                                            <div class="cline"></div>
+                                                                            <h3>
+                                                                                <asp:Label ID="LB_Reflash" runat="server" Text="<%$ Resources:lang,DaiChuLide %>" />
+                                                                            </h3>
+                                                                        </div>
 
 
-                                                                        <asp:Label ID="LB_Reflash" runat="server" Text="<%$ Resources:lang,DaiChuLide %>" />
+
 
                                                                         <asp:DataGrid ID="DataGrid4" runat="server" AllowPaging="True" AutoGenerateColumns="False"
                                                                             ShowHeader="False" CellPadding="4" ForeColor="#333333" GridLines="None" Height="1px"
@@ -233,7 +236,7 @@
 
                                                                             <Columns>
                                                                                 <asp:BoundColumn DataField="ID" HeaderText="Number" Visible="False">
-                                                                                    <ItemStyle CssClass="" Horizontalalign="left" Width="5%" />
+                                                                                    <ItemStyle CssClass="" HorizontalAlign="left" Width="5%" />
                                                                                 </asp:BoundColumn>
                                                                                 <asp:TemplateColumn HeaderText="要审核的工作">
                                                                                     <ItemTemplate>
@@ -247,7 +250,8 @@
                                                                                                     <h4><%# DataBinder.Eval(Container.DataItem,"WorkDetail") %></h4>
                                                                                                     <h5><%# DataBinder.Eval(Container.DataItem,"WLName") %></h5>
                                                                                                     <h6><%# DataBinder.Eval(Container.DataItem,"CreatorName") %></h6>
-                                                                                                    <sub class="yesno">必需:<%# DataBinder.Eval(Container.DataItem,"Requisite") %></sub><label><%# ShareClass.GetStatusHomeNameByWorkflowStatus(Eval("Status").ToString()) %></label></a></div>
+                                                                                                    <sub class="yesno">必需:<%# DataBinder.Eval(Container.DataItem,"Requisite") %></sub><label><%# ShareClass.GetStatusHomeNameByWorkflowStatus(Eval("Status").ToString()) %></label></a>
+                                                                                            </div>
                                                                                         </div>
 
 
@@ -264,7 +268,7 @@
                                                                             <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
 
 
-                                                                            <PagerStyle Horizontalalign="center" Mode="NumericPages" NextPageText="" PrevPageText="" CssClass="notTab" />
+                                                                            <PagerStyle HorizontalAlign="center" Mode="NumericPages" NextPageText="" PrevPageText="" CssClass="notTab" />
 
                                                                             <SelectedItemStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
                                                                         </asp:DataGrid>
@@ -277,9 +281,14 @@
 
                                                                 <tr>
                                                                     <td class="ItemAlignLeft">
+                                                                        <div class="npb">
+                                                                            <div class="cline"></div>
+                                                                            <h3>
+                                                                                <asp:Label ID="Label16" runat="server" Text="<%$ Resources:lang,YiChuLiDe %>" />
+                                                                            </h3>
+                                                                        </div>
 
 
-                                                                        <asp:Label ID="Label16" runat="server" Text="<%$ Resources:lang,YiChuLiDe %>" />
 
                                                                         <asp:DataGrid ID="DataGrid1" runat="server" AllowPaging="True" AutoGenerateColumns="False"
                                                                             ShowHeader="False" Height="1px" OnPageIndexChanged="DataGrid1_PageIndexChanged"
@@ -287,7 +296,7 @@
 
                                                                             <Columns>
                                                                                 <asp:BoundColumn DataField="ID" HeaderText="Number" Visible="False">
-                                                                                    <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="5%" />
+                                                                                    <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="5%" />
                                                                                 </asp:BoundColumn>
                                                                                 <asp:TemplateColumn HeaderText="要审核的工作">
                                                                                     <ItemTemplate>
@@ -303,7 +312,8 @@
                                                                                                     <h4><%# DataBinder.Eval(Container.DataItem,"WorkDetail") %></h4>
                                                                                                     <h5><%# DataBinder.Eval(Container.DataItem,"WLName") %></h5>
                                                                                                     <h6><%# DataBinder.Eval(Container.DataItem,"CreatorName") %></h6>
-                                                                                                    <sub class="yesno">必需:<%# DataBinder.Eval(Container.DataItem,"Requisite") %></sub><label><%# ShareClass.GetStatusHomeNameByWorkflowStatus(Eval("Status").ToString()) %></label></a></div>
+                                                                                                    <sub class="yesno">必需:<%# DataBinder.Eval(Container.DataItem,"Requisite") %></sub><label><%# ShareClass.GetStatusHomeNameByWorkflowStatus(Eval("Status").ToString()) %></label></a>
+                                                                                            </div>
                                                                                         </div>
 
 
@@ -314,21 +324,27 @@
                                                                             </Columns>
                                                                             <EditItemStyle BackColor="#2461BF" />
                                                                             <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                                                                            <PagerStyle Horizontalalign="center" Mode="NumericPages" NextPageText="" PrevPageText="" CssClass="notTab" />
+                                                                            <PagerStyle HorizontalAlign="center" Mode="NumericPages" NextPageText="" PrevPageText="" CssClass="notTab" />
                                                                             <SelectedItemStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
                                                                         </asp:DataGrid><asp:Label ID="LB_Sql1" runat="server" Visible="False"></asp:Label>
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td style="width: 100%; height: 1px;" class="ItemAlignLeft">
-                                                                        <asp:Label ID="Label18" runat="server" Text="<%$ Resources:lang,ChuangJianDe %>" />
+
+                                                                        <div class="npb">
+                                                                            <div class="cline"></div>
+                                                                            <h3>
+                                                                                <asp:Label ID="Label18" runat="server" Text="<%$ Resources:lang,ChuangJianDe %>" />
+                                                                            </h3>
+                                                                        </div>
 
                                                                         <asp:DataGrid ID="DataGrid3" runat="server" AllowPaging="True" AutoGenerateColumns="False"
                                                                             ShowHeader="false" Height="1px" OnPageIndexChanged="DataGrid3_PageIndexChanged"
                                                                             PageSize="5" Width="100%" CellPadding="0" GridLines="None">
-                                                                            <HeaderStyle Horizontalalign="left" />
+                                                                            <HeaderStyle HorizontalAlign="left" />
                                                                             <Columns>
-                                                                                <asp:TemplateColumn></asp:TemplateColumn>
+                                                                             
                                                                                 <asp:BoundColumn DataField="WLID" HeaderText="Number" Visible="false"></asp:BoundColumn>
 
                                                                                 <asp:TemplateColumn HeaderText="要审核的工作">
@@ -349,21 +365,12 @@
 
                                                                                 </asp:TemplateColumn>
 
-                                                                                <%--  <asp:HyperLinkColumn DataNavigateUrlField="WLID" DataNavigateUrlFormatString="TTAppMyWorkDetailMain.aspx?WLID={0}"
-                                                                                DataTextField="WLName" HeaderText="Workflow" Target="rightFrame">
-                                                                                
-                                                                            </asp:HyperLinkColumn>--%>
-                                                                                <asp:TemplateColumn HeaderText="Status">
-                                                                                    <ItemTemplate>
-                                                                                    </ItemTemplate>
-
-                                                                                </asp:TemplateColumn>
                                                                             </Columns>
 
                                                                             <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                                                                             <EditItemStyle BackColor="#2461BF" />
                                                                             <SelectedItemStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-                                                                            <PagerStyle Horizontalalign="center" Mode="NumericPages" NextPageText="" PrevPageText="" CssClass="notTab" />
+                                                                            <PagerStyle HorizontalAlign="center" Mode="NumericPages" NextPageText="" PrevPageText="" CssClass="notTab" />
                                                                         </asp:DataGrid>
                                                                         <asp:Label ID="LB_Sql3" runat="server" Visible="False"></asp:Label>
                                                                     </td>
@@ -400,5 +407,4 @@
     </form>
 </body>
 <%--<%--<script type="text/javascript" language="javascript">var cssDirectory = '<%=Session["CssDirectory"] %>'; var oLink = document.getElementById('mainCss'); oLink.href = 'css/' + cssDirectory + '/' + 'bluelightmain.css';</script>--%>
-
 </html>

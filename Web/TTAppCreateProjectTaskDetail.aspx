@@ -1,6 +1,6 @@
 <%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppCreateProjectTaskDetail.aspx.cs" Inherits="TTAppCreateProjectTaskDetail" %>
 
-<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
 
 <%@ Register Assembly="NickLee.Web.UI" Namespace="NickLee.Web.UI" TagPrefix="NickLee" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
@@ -12,53 +12,7 @@
     <title></title>
     <link id="mainCss" href="css/bluelightmain.css" rel="stylesheet" type="text/css" />
      <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />
-    <style type="text/css">
-        body {
-            /*margin-top: 5px;*/
-            /*background-image: url(Images/login_bj.jpg);*/
-            background-repeat: repeat-x;
-            font: normal 100% Helvetica, Arial, sans-serif;
-            /* 防止横向滚动 */
-            overflow-x: hidden;
-            width: 100%;
-            position: relative;
-        }
-
-        #AboveDiv {
-            max-width: 1024px;
-            width: expression (document.body.clientWidth >= 1024? "1024px" : "auto" ));
-            min-width: 277px;
-            width: expression (document.body.clientWidth <= 277? "277px" : "auto" ));
-        }
-
-        /* 新增：防止横向滚动的样式 */
-        center {
-            width: 100%;
-            max-width: 100%;
-            overflow-x: hidden;
-        }
-
-        #AboveTable, .napbox, .npbx, .ajax_tab_menu, .modalPopup {
-            max-width: 100%;
-            overflow-x: hidden;
-        }
-
-        table {
-            max-width: 100%;
-            table-layout: fixed;
-        }
-
-        /* 确保输入框等元素不超出容器 */
-        .npbxs, .mline, .npbtn {
-            max-width: 100%;
-        }
-
-        .CKEditor, .inpu, .NumberBox {
-            max-width: 100%;
-            box-sizing: border-box;
-        }
-    </style>
-
+  
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="js/allAHandler.js"></script>
     <script src="js/My97DatePicker/WdatePicker.js"></script>

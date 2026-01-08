@@ -2,7 +2,7 @@
 
 <meta http-equiv="Content-Type" content="textml; charset=UTF-8" />
 
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
 <meta http-equiv="Content-Type" content="textml; charset=UTF-8" />
 
 <!DOCTYPE html>
@@ -13,19 +13,7 @@
     <link id="mainCss" href="css/bluelightmain.css" rel="stylesheet" type="text/css" />
 
     <style type="text/css">
-        body {
-            /*margin-top: 5px;*/
-            /*background-image: url(Images/login_bj.jpg);*/
-            background-repeat: repeat-x;
-            font: normal 100% Helvetica, Arial, sans-serif;
-        }
-    </style>
-
-    <style type="text/css">
-        #AboveDiv {
-            min-width: 980px;
-            width: expression (document.body.clientWidth <= 980? "980px" : "auto" ));
-        }
+    
 
         #container {
             height: auto !important;
@@ -33,9 +21,6 @@
             min-height: 600px;
         }
 
-        .auto-style1 {
-            height: 35px;
-        }
     </style>
 
     <script type="text/javascript" language="javascript">

@@ -76,8 +76,6 @@ public partial class TTAPPMyMemProjectsRunStatus : System.Web.UI.Page
             //ShareClass.FinChargePercentByRow(DataGrid3, 1);
             SetProjectStartAndEndTime(DataGrid3, 0);
 
-            LB_QueryScope.Text = LanguageHandle.GetWord("ZZLeader") + strUserCode + " " + strUserName;
-
             ShareClass.LoadMemberByUserCodeForDataGrid(strUserCode, "Project", DataGrid1);
 
             strHQL = string.Format(@"select distinct A.Status, rtrim(A.HomeName) as HomeName,A.SortNumber from T_ProjectStatus A 
@@ -179,7 +177,6 @@ public partial class TTAPPMyMemProjectsRunStatus : System.Web.UI.Page
 
         LB_Underling.Text = strUnderlingCode;
 
-        LB_QueryScope.Text = LanguageHandle.GetWord("ZZLeader") + strUserCode + strUserName + LanguageHandle.GetWord("ZZXiaShu") + strUnderlingCode + strUnderLingName;
 
         ProjectBLL projectBLL = new ProjectBLL();
 
@@ -210,7 +207,6 @@ public partial class TTAPPMyMemProjectsRunStatus : System.Web.UI.Page
         {
             strHQL = "from Project as project where project.UserCode = project.PMCode and project.PMCode in ( select memberLevel.UnderCode from MemberLevel as memberLevel where memberLevel.ProjectVisible = 'YES' and memberLevel.UserCode = " + "'" + strUserCode + "'" + ")";
             strHQL += " and " + "project.Status = " + "'" + strStatus + "'" + " order by project.ProjectID DESC";
-            LB_QueryScope.Text = LanguageHandle.GetWord("ZZLeader") + strUserCode + strUserName + LanguageHandle.GetWord("ZZXMZT") + strStatus;
 
         }
         else
@@ -218,7 +214,6 @@ public partial class TTAPPMyMemProjectsRunStatus : System.Web.UI.Page
             strUnderLingName = ShareClass.GetUserName(strUnderling);
             strHQL = "from Project as project where project.PMCode = " + "'" + LB_Underling.Text + "'";
             strHQL += " and " + "project.Status = " + "'" + strStatus + "'" + " order by project.ProjectID DESC";
-            LB_QueryScope.Text = LanguageHandle.GetWord("ZZLeader") + strUserCode + strUserName + LanguageHandle.GetWord("ZZXiaShu") + strUnderling + strUnderLingName + LanguageHandle.GetWord("ZZXMZT") + strStatus;
         }
 
         ProjectBLL projectBLL = new ProjectBLL();
@@ -246,7 +241,6 @@ public partial class TTAPPMyMemProjectsRunStatus : System.Web.UI.Page
 
         strUserName = ShareClass.GetUserName(strUserCode);
 
-        LB_QueryScope.Text = LanguageHandle.GetWord("ZZLeader") + strUserCode + strUserName;
 
         LB_Underling.Text = "";
 
@@ -402,8 +396,6 @@ public partial class TTAPPMyMemProjectsRunStatus : System.Web.UI.Page
         //ShareClass.FinChargePercentByRow(DataGrid3, 1);
         SetProjectStartAndEndTime(DataGrid3, 0);
 
-        LB_QueryScope.Text = LanguageHandle.GetWord("ZZXMMBHZH") + TB_ProjectName.Text.Trim() + LanguageHandle.GetWord("StatusAll");
-
         LB_Sql.Text = strHQL;
 
     }
@@ -442,7 +434,6 @@ public partial class TTAPPMyMemProjectsRunStatus : System.Web.UI.Page
         //ShareClass.FinChargePercentByRow(DataGrid3, 1);
         SetProjectStartAndEndTime(DataGrid3, 0);
 
-        LB_QueryScope.Text = LanguageHandle.GetWord("ZZLiXiangRen") + TB_ProjectName.Text.Trim() + LanguageHandle.GetWord("StatusAll");
 
         LB_Sql.Text = strHQL;
     }
@@ -469,8 +460,6 @@ public partial class TTAPPMyMemProjectsRunStatus : System.Web.UI.Page
         //ShareClass.FinishPercentPicture(DataGrid3, 1);
         //ShareClass.FinChargePercentByRow(DataGrid3, 1);
         SetProjectStartAndEndTime(DataGrid3, 0);
-
-        LB_QueryScope.Text = LanguageHandle.GetWord("ZZLiXiangRen") + TB_ProjectName.Text.Trim() + LanguageHandle.GetWord("StatusAll");
 
         LB_Sql.Text = strHQL;
     }
@@ -500,7 +489,6 @@ public partial class TTAPPMyMemProjectsRunStatus : System.Web.UI.Page
         //ShareClass.FinChargePercentByRow(DataGrid3, 1);
         SetProjectStartAndEndTime(DataGrid3, 0);
 
-        LB_QueryScope.Text = strStartDate + "----" + strEndDate;
 
         LB_Sql.Text = strHQL;
 

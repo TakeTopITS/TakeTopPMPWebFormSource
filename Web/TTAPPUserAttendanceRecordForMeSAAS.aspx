@@ -1,6 +1,6 @@
 <%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAPPUserAttendanceRecordForMeSAAS.aspx.cs" Inherits="TTAPPUserAttendanceRecordForMeSAAS" %>
 
-<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;  user-scalable=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
 
 <!DOCTYPE html>
 
@@ -13,27 +13,14 @@
     <title></title>
     <link id="mainCss" href="css/bluelightmain.css" rel="stylesheet" type="text/css" />
       <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />
-    <style type="text/css">
-        body {
-            /*margin-top: 5px;*/
-            /*background-image: url(Images/login_bj.jpg);*/
-            background-repeat: repeat-x;
-            font: normal 100% Helvetica, Arial, sans-serif;
-        }
-    </style>
-
-    <style type="text/css">
-        #AboveDiv {
-            min-width: 2180px;
-            width: expression (document.body.clientWidth <= 2180? "2180px" : "auto" ));
-        }
-    </style>
+   
 
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="js/allAHandler.js"></script>
     <script type="text/javascript" language="javascript">
-        $(function () { initSwipeBack();// 初始化滑动返回功能  initSwipeBack();// 初始化滑动返回功能 
-           
+        $(function () {
+            initSwipeBack();// 初始化滑动返回功能  initSwipeBack();// 初始化滑动返回功能 
+
 
             //
 
@@ -96,114 +83,7 @@
                                     <table style="width: 100%; text-align: left;">
                                         <tr>
                                             <td>
-                                                <table width="100%" border="0" cellpadding="0" cellspacing="0" background="ImagesSkin/main_n_bj.jpg">
-                                                    <tr>
-                                                        <td width="7">
-                                                            <img src="ImagesSkin/main_n_l.jpg" width="7" height="26" /></td>
-                                                        <td>
-                                                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                                                <tr>
-                                                                    <td class="ItemAlignLeft" width="6%"><strong>ID</strong> </td>
-                                                                    <td width="4%" class="ItemAlignLeft">
-                                                                        <strong>
-                                                                            <asp:Label ID="Label2" runat="server" Text="<%$ Resources:lang,ZhuGuan%>"></asp:Label></strong>
-                                                                    </td>
-                                                                    <td width="6%" class="ItemAlignLeft">
-                                                                        <strong>
-                                                                            <asp:Label ID="Label3" runat="server" Text="<%$ Resources:lang,JianLiShiJian%>"></asp:Label></strong>
-                                                                    </td>
-
-                                                                    <td class="ItemAlignLeft" width="4%"><strong>
-                                                                        <asp:Label ID="Label268" runat="server" Text="<%$ Resources:lang,ZaoBanShangBanKaiShiShiJian%>"></asp:Label>
-                                                                    </strong></td>
-                                                                    <td class="ItemAlignLeft" width="4%"><strong>
-                                                                        <asp:Label ID="Label269" runat="server" Text="<%$ Resources:lang,ZaoBanShangBanJieShuShiJian%>"></asp:Label>
-                                                                    </strong></td>
-                                                                    <td class="ItemAlignLeft" width="2%"><strong>
-                                                                        <asp:Label ID="Label53" runat="server" Text="IsMust"></asp:Label>
-                                                                    </strong></td>
-
-                                                                    <td class="ItemAlignLeft" width="4%"><strong>
-                                                                        <asp:Label ID="Label4" runat="server" Text="<%$ Resources:lang,ZaoBanXiaBanKaiShiShiJian%>"></asp:Label>
-                                                                    </strong></td>
-                                                                    <td class="ItemAlignLeft" width="4%"><strong>
-                                                                        <asp:Label ID="Label271" runat="server" Text="<%$ Resources:lang,ZaoBanXiaBanJieShuShiJian%>"></asp:Label>
-                                                                    </strong></td>
-                                                                    <td class="ItemAlignLeft" width="2%"><strong>
-                                                                        <asp:Label ID="Label5" runat="server" Text="IsMust"></asp:Label>
-                                                                    </strong></td>
-
-                                                                    <td class="ItemAlignLeft" width="4%"><strong>
-                                                                        <asp:Label ID="Label272" runat="server" Text="<%$ Resources:lang,ZhongBanShangBanKaiShiShiJian%>"></asp:Label>
-                                                                    </strong></td>
-                                                                    <td class="ItemAlignLeft" width="4%"><strong>
-                                                                        <asp:Label ID="Label273" runat="server" Text="<%$ Resources:lang,ZhongBanShangBanJieShuShiJian%>"></asp:Label>
-                                                                    </strong></td>
-                                                                    <td class="ItemAlignLeft" width="2%"><strong>
-                                                                        <asp:Label ID="Label42" runat="server" Text="IsMust"></asp:Label>
-                                                                    </strong></td>
-
-                                                                    <td class="ItemAlignLeft" width="4%"><strong>
-                                                                        <asp:Label ID="Label274" runat="server" Text="<%$ Resources:lang,ZhongBanXiaBanKaiShiShiJian%>"></asp:Label>
-                                                                    </strong></td>
-                                                                    <td class="ItemAlignLeft" width="4%"><strong>
-                                                                        <asp:Label ID="Label275" runat="server" Text="<%$ Resources:lang,ZhongBanXiaBanJieShuShiJian%>"></asp:Label>
-                                                                    </strong></td>
-                                                                    <td class="ItemAlignLeft" width="2%"><strong>
-                                                                        <asp:Label ID="Label46" runat="server" Text="IsMust"></asp:Label>
-                                                                    </strong></td>
-
-                                                                    <td class="ItemAlignLeft" width="4%"><strong>
-                                                                        <asp:Label ID="Label276" runat="server" Text="<%$ Resources:lang,WanBanShangBanKaiShiShiJian%>"></asp:Label>
-                                                                    </strong></td>
-                                                                    <td class="ItemAlignLeft" width="4%"><strong>
-                                                                        <asp:Label ID="Label277" runat="server" Text="<%$ Resources:lang,WanBanShangBanJieShuShiJian%>"></asp:Label>
-                                                                    </strong></td>
-                                                                    <td class="ItemAlignLeft" width="2%"><strong>
-                                                                        <asp:Label ID="Label48" runat="server" Text="IsMust"></asp:Label>
-                                                                    </strong></td>
-
-                                                                    <td class="ItemAlignLeft" width="4%"><strong>
-                                                                        <asp:Label ID="Label278" runat="server" Text="<%$ Resources:lang,WanBanXiaBanKaiShiShiJian%>"></asp:Label>
-                                                                    </strong></td>
-                                                                    <td class="ItemAlignLeft" width="4%"><strong>
-                                                                        <asp:Label ID="Label279" runat="server" Text="<%$ Resources:lang,WanBanXiaBanJieShuShiJian%>"></asp:Label>
-                                                                    </strong></td>
-                                                                    <td class="ItemAlignLeft" width="2%"><strong>
-                                                                        <asp:Label ID="Label49" runat="server" Text="IsMust"></asp:Label>
-                                                                    </strong></td>
-
-                                                                    <td class="ItemAlignLeft" width="4%"><strong>
-                                                                        <asp:Label ID="Label2118" runat="server" Text="<%$ Resources:lang,JiaBanShangBanKaiShiShiJian%>"></asp:Label>
-                                                                    </strong></td>
-                                                                    <td class="ItemAlignLeft" width="4%"><strong>
-                                                                        <asp:Label ID="Label281" runat="server" Text="<%$ Resources:lang,JiaBanShangBanJieShuShiJian%>"></asp:Label>
-                                                                    </strong></td>
-                                                                    <td class="ItemAlignLeft" width="2%"><strong>
-                                                                        <asp:Label ID="Label50" runat="server" Text="IsMust"></asp:Label>
-                                                                    </strong></td>
-
-                                                                    <td class="ItemAlignLeft" width="4%"><strong>
-                                                                        <asp:Label ID="Label282" runat="server" Text="<%$ Resources:lang,JiaBanXiaBanKaiShiShiJian%>"></asp:Label>
-                                                                    </strong></td>
-                                                                    <td class="ItemAlignLeft" width="4%"><strong>
-                                                                        <asp:Label ID="Label283" runat="server" Text="<%$ Resources:lang,JiaBanXiaBanJieShuShiJian%>"></asp:Label>
-                                                                    </strong></td>
-                                                                    <td class="ItemAlignLeft" width="2%"><strong>
-                                                                        <asp:Label ID="Label52" runat="server" Text="IsMust"></asp:Label>
-                                                                    </strong></td>
-                                                                    <td class="ItemAlignLeft" width="4%"><strong>
-                                                                        <asp:Label ID="Label10" runat="server" Text="<%$ Resources:lang,YunXiZuiDaJuLi%>"></asp:Label>
-                                                                    </strong>(<asp:Label ID="Label56" runat="server" Text="<%$ Resources:lang,Mi%>"></asp:Label>)</td>
-
-
-                                                                </tr>
-                                                            </table>
-                                                        </td>
-                                                        <td width="6" align="right">
-                                                            <img src="ImagesSkin/main_n_r.jpg" width="6" alt="" height="26" /></td>
-                                                    </tr>
-                                                </table>
+                                                <!-- DataGrid3 - 考勤规则 -->
                                                 <asp:DataGrid ID="DataGrid3" runat="server" AutoGenerateColumns="False" ShowHeader="false" CellPadding="4" ForeColor="#333333"
                                                     GridLines="None" OnItemCommand="DataGrid3_ItemCommand" Width="100%" PageSize="20">
                                                     <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
@@ -213,104 +93,285 @@
 
                                                     <ItemStyle CssClass="itemStyle" />
                                                     <Columns>
-                                                        <asp:TemplateColumn HeaderText="ID">
+                                                        <asp:TemplateColumn>
                                                             <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="6%" />
                                                             <ItemTemplate>
+                                                                <strong>ID</strong><br />
                                                                 <asp:Button ID="BT_ID" runat="server" CssClass="inpu"
                                                                     Text='<%# DataBinder.Eval(Container.DataItem,"ID") %>' />
                                                             </ItemTemplate>
                                                         </asp:TemplateColumn>
-                                                        <asp:BoundColumn DataField="LeaderName" HeaderText="主管">
+                                                        
+                                                        <asp:TemplateColumn>
                                                             <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="4%" />
-                                                        </asp:BoundColumn>
-                                                        <asp:BoundColumn DataField="CreateDate" DataFormatString="{0:yyyy/MM/dd}" HeaderText="建立时间">
+                                                            <ItemTemplate>
+                                                                <strong>
+                                                                    <asp:Label ID="Label2" runat="server" Text="<%$ Resources:lang,ZhuGuan%>"></asp:Label>
+                                                                </strong><br />
+                                                                <%# Eval("LeaderName") %>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateColumn>
+                                                        
+                                                        <asp:TemplateColumn>
                                                             <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="6%" />
-                                                        </asp:BoundColumn>
+                                                            <ItemTemplate>
+                                                                <strong>
+                                                                    <asp:Label ID="Label3" runat="server" Text="<%$ Resources:lang,JianLiShiJian%>"></asp:Label>
+                                                                </strong><br />
+                                                                <%# Eval("CreateDate", "{0:yyyy/MM/dd}") %>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateColumn>
 
-                                                        <asp:BoundColumn DataField="MCheckInStart" HeaderText="早班上班开始时间">
+                                                        <asp:TemplateColumn>
                                                             <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="4%" />
-                                                        </asp:BoundColumn>
-                                                        <asp:BoundColumn DataField="MCheckInEnd" HeaderText="早班上班结束时间">
+                                                            <ItemTemplate>
+                                                                <strong>
+                                                                    <asp:Label ID="Label268" runat="server" Text="<%$ Resources:lang,ZaoBanShangBanKaiShiShiJian%>"></asp:Label>
+                                                                </strong><br />
+                                                                <%# Eval("MCheckInStart") %>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateColumn>
+                                                        
+                                                        <asp:TemplateColumn>
                                                             <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="4%" />
-                                                        </asp:BoundColumn>
-                                                        <asp:BoundColumn DataField="MCheckInIsMust" HeaderText="早班上班必须">
+                                                            <ItemTemplate>
+                                                                <strong>
+                                                                    <asp:Label ID="Label269" runat="server" Text="<%$ Resources:lang,ZaoBanShangBanJieShuShiJian%>"></asp:Label>
+                                                                </strong><br />
+                                                                <%# Eval("MCheckInEnd") %>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateColumn>
+                                                        
+                                                        <asp:TemplateColumn>
                                                             <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="2%" />
-                                                        </asp:BoundColumn>
+                                                            <ItemTemplate>
+                                                                <strong>
+                                                                    <asp:Label ID="Label53" runat="server" Text="IsMust"></asp:Label>
+                                                                </strong><br />
+                                                                <%# Eval("MCheckInIsMust") %>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateColumn>
 
-                                                        <asp:BoundColumn DataField="MCheckOutStart" HeaderText="早班下班开始时间">
+                                                        <asp:TemplateColumn>
                                                             <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="4%" />
-                                                        </asp:BoundColumn>
-                                                        <asp:BoundColumn DataField="MCheckOutEnd" HeaderText="早班下班结束时间">
+                                                            <ItemTemplate>
+                                                                <strong>
+                                                                    <asp:Label ID="Label4" runat="server" Text="<%$ Resources:lang,ZaoBanXiaBanKaiShiShiJian%>"></asp:Label>
+                                                                </strong><br />
+                                                                <%# Eval("MCheckOutStart") %>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateColumn>
+                                                        
+                                                        <asp:TemplateColumn>
                                                             <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="4%" />
-                                                        </asp:BoundColumn>
-                                                        <asp:BoundColumn DataField="MCheckOutIsMust" HeaderText="早班下班必须">
+                                                            <ItemTemplate>
+                                                                <strong>
+                                                                    <asp:Label ID="Label271" runat="server" Text="<%$ Resources:lang,ZaoBanXiaBanJieShuShiJian%>"></asp:Label>
+                                                                </strong><br />
+                                                                <%# Eval("MCheckOutEnd") %>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateColumn>
+                                                        
+                                                        <asp:TemplateColumn>
                                                             <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="2%" />
-                                                        </asp:BoundColumn>
+                                                            <ItemTemplate>
+                                                                <strong>
+                                                                    <asp:Label ID="Label5" runat="server" Text="IsMust"></asp:Label>
+                                                                </strong><br />
+                                                                <%# Eval("MCheckOutIsMust") %>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateColumn>
 
-                                                        <asp:BoundColumn DataField="ACheckInStart" HeaderText="中班上班开始时间">
+                                                        <asp:TemplateColumn>
                                                             <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="4%" />
-                                                        </asp:BoundColumn>
-                                                        <asp:BoundColumn DataField="ACheckInEnd" HeaderText="中班上班结束时间">
+                                                            <ItemTemplate>
+                                                                <strong>
+                                                                    <asp:Label ID="Label272" runat="server" Text="<%$ Resources:lang,ZhongBanShangBanKaiShiShiJian%>"></asp:Label>
+                                                                </strong><br />
+                                                                <%# Eval("ACheckInStart") %>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateColumn>
+                                                        
+                                                        <asp:TemplateColumn>
                                                             <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="4%" />
-                                                        </asp:BoundColumn>
-                                                        <asp:BoundColumn DataField="ACheckInIsMust" HeaderText="中上午上班必须">
+                                                            <ItemTemplate>
+                                                                <strong>
+                                                                    <asp:Label ID="Label273" runat="server" Text="<%$ Resources:lang,ZhongBanShangBanJieShuShiJian%>"></asp:Label>
+                                                                </strong><br />
+                                                                <%# Eval("ACheckInEnd") %>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateColumn>
+                                                        
+                                                        <asp:TemplateColumn>
                                                             <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="2%" />
-                                                        </asp:BoundColumn>
+                                                            <ItemTemplate>
+                                                                <strong>
+                                                                    <asp:Label ID="Label42" runat="server" Text="IsMust"></asp:Label>
+                                                                </strong><br />
+                                                                <%# Eval("ACheckInIsMust") %>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateColumn>
 
-                                                        <asp:BoundColumn DataField="ACheckOutStart" HeaderText="中班下班开始时间">
+                                                        <asp:TemplateColumn>
                                                             <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="4%" />
-                                                        </asp:BoundColumn>
-                                                        <asp:BoundColumn DataField="ACheckOutEnd" HeaderText="中班下班结束时间">
+                                                            <ItemTemplate>
+                                                                <strong>
+                                                                    <asp:Label ID="Label274" runat="server" Text="<%$ Resources:lang,ZhongBanXiaBanKaiShiShiJian%>"></asp:Label>
+                                                                </strong><br />
+                                                                <%# Eval("ACheckOutStart") %>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateColumn>
+                                                        
+                                                        <asp:TemplateColumn>
                                                             <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="4%" />
-                                                        </asp:BoundColumn>
-                                                        <asp:BoundColumn DataField="ACheckOutIsMust" HeaderText="中午下班必须">
+                                                            <ItemTemplate>
+                                                                <strong>
+                                                                    <asp:Label ID="Label275" runat="server" Text="<%$ Resources:lang,ZhongBanXiaBanJieShuShiJian%>"></asp:Label>
+                                                                </strong><br />
+                                                                <%# Eval("ACheckOutEnd") %>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateColumn>
+                                                        
+                                                        <asp:TemplateColumn>
                                                             <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="2%" />
-                                                        </asp:BoundColumn>
+                                                            <ItemTemplate>
+                                                                <strong>
+                                                                    <asp:Label ID="Label46" runat="server" Text="IsMust"></asp:Label>
+                                                                </strong><br />
+                                                                <%# Eval("ACheckOutIsMust") %>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateColumn>
 
-                                                        <asp:BoundColumn DataField="NCheckInStart" HeaderText="晚班上班开始时间">
+                                                        <asp:TemplateColumn>
                                                             <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="4%" />
-                                                        </asp:BoundColumn>
-                                                        <asp:BoundColumn DataField="NCheckInEnd" HeaderText="晚班上班结束时间">
+                                                            <ItemTemplate>
+                                                                <strong>
+                                                                    <asp:Label ID="Label276" runat="server" Text="<%$ Resources:lang,WanBanShangBanKaiShiShiJian%>"></asp:Label>
+                                                                </strong><br />
+                                                                <%# Eval("NCheckInStart") %>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateColumn>
+                                                        
+                                                        <asp:TemplateColumn>
                                                             <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="4%" />
-                                                        </asp:BoundColumn>
-                                                        <asp:BoundColumn DataField="NCheckInIsMust" HeaderText="晚班上班必须">
+                                                            <ItemTemplate>
+                                                                <strong>
+                                                                    <asp:Label ID="Label277" runat="server" Text="<%$ Resources:lang,WanBanShangBanJieShuShiJian%>"></asp:Label>
+                                                                </strong><br />
+                                                                <%# Eval("NCheckInEnd") %>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateColumn>
+                                                        
+                                                        <asp:TemplateColumn>
                                                             <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="2%" />
-                                                        </asp:BoundColumn>
+                                                            <ItemTemplate>
+                                                                <strong>
+                                                                    <asp:Label ID="Label48" runat="server" Text="IsMust"></asp:Label>
+                                                                </strong><br />
+                                                                <%# Eval("NCheckInIsMust") %>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateColumn>
 
-                                                        <asp:BoundColumn DataField="NCheckOutStart" HeaderText="晚班下班开始时间">
+                                                        <asp:TemplateColumn>
                                                             <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="4%" />
-                                                        </asp:BoundColumn>
-                                                        <asp:BoundColumn DataField="NCheckOutEnd" HeaderText="晚班下班结束时间">
+                                                            <ItemTemplate>
+                                                                <strong>
+                                                                    <asp:Label ID="Label278" runat="server" Text="<%$ Resources:lang,WanBanXiaBanKaiShiShiJian%>"></asp:Label>
+                                                                </strong><br />
+                                                                <%# Eval("NCheckOutStart") %>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateColumn>
+                                                        
+                                                        <asp:TemplateColumn>
                                                             <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="4%" />
-                                                        </asp:BoundColumn>
-                                                        <asp:BoundColumn DataField="NCheckOutIsMust" HeaderText="晚班下班必须">
+                                                            <ItemTemplate>
+                                                                <strong>
+                                                                    <asp:Label ID="Label279" runat="server" Text="<%$ Resources:lang,WanBanXiaBanJieShuShiJian%>"></asp:Label>
+                                                                </strong><br />
+                                                                <%# Eval("NCheckOutEnd") %>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateColumn>
+                                                        
+                                                        <asp:TemplateColumn>
                                                             <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="2%" />
-                                                        </asp:BoundColumn>
+                                                            <ItemTemplate>
+                                                                <strong>
+                                                                    <asp:Label ID="Label49" runat="server" Text="IsMust"></asp:Label>
+                                                                </strong><br />
+                                                                <%# Eval("NCheckOutIsMust") %>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateColumn>
 
-                                                        <asp:BoundColumn DataField="OCheckInStart" HeaderText="加班上班开始时间">
+                                                        <asp:TemplateColumn>
                                                             <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="4%" />
-                                                        </asp:BoundColumn>
-                                                        <asp:BoundColumn DataField="OCheckInEnd" HeaderText="加班上班结束时间">
+                                                            <ItemTemplate>
+                                                                <strong>
+                                                                    <asp:Label ID="Label2118" runat="server" Text="<%$ Resources:lang,JiaBanShangBanKaiShiShiJian%>"></asp:Label>
+                                                                </strong><br />
+                                                                <%# Eval("OCheckInStart") %>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateColumn>
+                                                        
+                                                        <asp:TemplateColumn>
                                                             <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="4%" />
-                                                        </asp:BoundColumn>
-                                                        <asp:BoundColumn DataField="OCheckInIsMust" HeaderText="加班上班必须">
+                                                            <ItemTemplate>
+                                                                <strong>
+                                                                    <asp:Label ID="Label281" runat="server" Text="<%$ Resources:lang,JiaBanShangBanJieShuShiJian%>"></asp:Label>
+                                                                </strong><br />
+                                                                <%# Eval("OCheckInEnd") %>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateColumn>
+                                                        
+                                                        <asp:TemplateColumn>
                                                             <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="2%" />
-                                                        </asp:BoundColumn>
+                                                            <ItemTemplate>
+                                                                <strong>
+                                                                    <asp:Label ID="Label50" runat="server" Text="IsMust"></asp:Label>
+                                                                </strong><br />
+                                                                <%# Eval("OCheckInIsMust") %>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateColumn>
 
-                                                        <asp:BoundColumn DataField="OCheckOutStart" HeaderText="加班下班开始时间">
+                                                        <asp:TemplateColumn>
                                                             <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="4%" />
-                                                        </asp:BoundColumn>
-                                                        <asp:BoundColumn DataField="OCheckOutEnd" HeaderText="加班下班结束时间">
+                                                            <ItemTemplate>
+                                                                <strong>
+                                                                    <asp:Label ID="Label282" runat="server" Text="<%$ Resources:lang,JiaBanXiaBanKaiShiShiJian%>"></asp:Label>
+                                                                </strong><br />
+                                                                <%# Eval("OCheckOutStart") %>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateColumn>
+                                                        
+                                                        <asp:TemplateColumn>
                                                             <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="4%" />
-                                                        </asp:BoundColumn>
-                                                        <asp:BoundColumn DataField="OCheckOutIsMust" HeaderText="加班下班必须">
+                                                            <ItemTemplate>
+                                                                <strong>
+                                                                    <asp:Label ID="Label283" runat="server" Text="<%$ Resources:lang,JiaBanXiaBanJieShuShiJian%>"></asp:Label>
+                                                                </strong><br />
+                                                                <%# Eval("OCheckOutEnd") %>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateColumn>
+                                                        
+                                                        <asp:TemplateColumn>
                                                             <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="2%" />
-                                                        </asp:BoundColumn>
-                                                        <asp:BoundColumn DataField="LargestDistance" HeaderText="MaximumAllowedDistance">
+                                                            <ItemTemplate>
+                                                                <strong>
+                                                                    <asp:Label ID="Label52" runat="server" Text="IsMust"></asp:Label>
+                                                                </strong><br />
+                                                                <%# Eval("OCheckOutIsMust") %>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateColumn>
+                                                        
+                                                        <asp:TemplateColumn>
                                                             <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="4%" />
-                                                        </asp:BoundColumn>
-
-
+                                                            <ItemTemplate>
+                                                                <strong>
+                                                                    <asp:Label ID="Label10" runat="server" Text="<%$ Resources:lang,YunXiZuiDaJuLi%>"></asp:Label>
+                                                                </strong><br />
+                                                                (<asp:Label ID="Label56" runat="server" Text="<%$ Resources:lang,Mi%>"></asp:Label>)<br />
+                                                                <%# Eval("LargestDistance") %>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateColumn>
                                                     </Columns>
                                                 </asp:DataGrid>
                                             </td>
@@ -330,90 +391,7 @@
                                         </tr>
                                         <tr>
                                             <td class="formItemBgStyleForAlignLeft">
-                                                <table width="100%" border="0" cellpadding="0" cellspacing="0" background="ImagesSkin/main_n_bj.jpg">
-                                                    <tr>
-                                                        <td width="7">
-                                                            <img src="ImagesSkin/main_n_l.jpg" width="7" height="26" />
-                                                        </td>
-                                                        <td>
-                                                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                                                <tr>
-                                                                    <td width="2%" class="ItemAlignLeft">
-                                                                        <strong>ID</strong>
-                                                                    </td>
-
-                                                                    <td width="5%" class="ItemAlignLeft">
-                                                                        <strong>
-                                                                            <asp:Label ID="Label6" runat="server" Text="<%$ Resources:lang,XingMing%>"></asp:Label></strong>
-                                                                    </td>
-                                                                    <td width="5%" class="ItemAlignLeft">
-                                                                        <strong>
-                                                                            <asp:Label ID="Label7" runat="server" Text="<%$ Resources:lang,ZhuGuan%>"></asp:Label></strong>
-                                                                    </td>
-                                                                    <td width="6%" class="ItemAlignLeft">
-                                                                        <strong>
-                                                                            <asp:Label ID="Label8" runat="server" Text="<%$ Resources:lang,ChuQingRiQi%>"></asp:Label></strong>
-                                                                    </td>
-                                                                    <td width="4%" class="ItemAlignLeft">
-                                                                        <strong>
-                                                                            <asp:Label ID="Label23" runat="server" Text="<%$ Resources:lang,ChiDao%>"></asp:Label></strong>
-                                                                        (<asp:Label ID="Label24" runat="server" Text="<%$ Resources:lang,Minute%>"></asp:Label>)
-                                                                    </td>
-
-                                                                    <td width="4%" class="ItemAlignLeft">
-                                                                        <strong>
-                                                                            <asp:Label ID="Label19" runat="server" Text="<%$ Resources:lang,ZaoTui%>"></asp:Label></strong>
-                                                                        (<asp:Label ID="Label25" runat="server" Text="<%$ Resources:lang,Minute%>"></asp:Label>)
-                                                                    </td>
-                                                                    <td width="6%" class="ItemAlignLeft">
-                                                                        <strong>
-                                                                            <asp:Label ID="Label18" runat="server" Text="<%$ Resources:lang,YunXiZuiDaJuLi%>"></asp:Label></strong>
-                                                                        (<asp:Label ID="Label26" runat="server" Text="<%$ Resources:lang,Mi%>"></asp:Label>)
-                                                                    </td>
-                                                                    
-                                                                    <td width="8%" class="ItemAlignLeft">
-                                                                        <strong>
-                                                                            <asp:Label ID="Label9" runat="server" Text="<%$ Resources:lang,ZaoBanShangBanShiJian%>"></asp:Label></strong>
-                                                                    </td>
-
-                                                                    <td width="8%" class="ItemAlignLeft">
-                                                                        <strong>
-                                                                            <asp:Label ID="Label11" runat="server" Text="<%$ Resources:lang,ZaoBanXiaBanShiJian%>"></asp:Label></strong>
-                                                                    </td>
-                                                                    <td width="8%" class="ItemAlignLeft">
-                                                                        <strong>
-                                                                            <asp:Label ID="Label12" runat="server" Text="<%$ Resources:lang,ZhongBanShangBanShiJian%>"></asp:Label></strong>
-                                                                    </td>
-                                                                    <td width="8%" class="ItemAlignLeft">
-                                                                        <strong>
-                                                                            <asp:Label ID="Label13" runat="server" Text="<%$ Resources:lang,ZhongBanXiaBanShiJian%>"></asp:Label></strong>
-                                                                    </td>
-                                                                    <td width="8%" class="ItemAlignLeft">
-                                                                        <strong>
-                                                                            <asp:Label ID="Label14" runat="server" Text="<%$ Resources:lang,WanBanShangBanShiJian%>"></asp:Label></strong>
-                                                                    </td>
-                                                                    <td width="8%" class="ItemAlignLeft">
-                                                                        <strong>
-                                                                            <asp:Label ID="Label15" runat="server" Text="<%$ Resources:lang,WanBanXiaBanShiJian%>"></asp:Label></strong>
-                                                                    </td>
-                                                                    <td width="8%" class="ItemAlignLeft">
-                                                                        <strong>
-                                                                            <asp:Label ID="Label16" runat="server" Text="<%$ Resources:lang,JiaBanShangBanShiJian%>"></asp:Label></strong>
-                                                                    </td>
-                                                                    <td width="8%" class="ItemAlignLeft">
-                                                                        <strong>
-                                                                            <asp:Label ID="Label17" runat="server" Text="<%$ Resources:lang,JiaBanXiaBanShiJian%>"></asp:Label></strong>
-                                                                    </td>
-                                                                    
-                                                                   
-                                                                </tr>
-                                                            </table>
-                                                        </td>
-                                                        <td width="6" align="right">
-                                                            <img src="ImagesSkin/main_n_r.jpg" width="6" alt="" height="26" />
-                                                        </td>
-                                                    </tr>
-                                                </table>
+                                                <!-- DataGrid1 - 考勤记录 -->
                                                 <asp:DataGrid ID="DataGrid1" runat="server" AutoGenerateColumns="False" CellPadding="4"
                                                     ShowHeader="false" ForeColor="#333333" GridLines="None" AllowPaging="True" OnPageIndexChanged="DataGrid1_PageIndexChanged"
                                                     PageSize="100" Width="100%">
@@ -424,143 +402,204 @@
 
                                                     <ItemStyle CssClass="itemStyle" />
                                                     <Columns>
-                                                        <asp:BoundColumn DataField="ID" HeaderText="Number">
+                                                        <asp:TemplateColumn>
+                                                            <ItemTemplate>
+                                                                <strong>ID</strong><br />
+                                                                <%# Eval("ID") %>
+                                                            </ItemTemplate>
                                                             <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="2%" />
-                                                        </asp:BoundColumn>
-                                                        <asp:BoundColumn DataField="UserName" HeaderText="Name">
+                                                        </asp:TemplateColumn>
+                                                        
+                                                        <asp:TemplateColumn>
+                                                            <ItemTemplate>
+                                                                <strong>
+                                                                    <asp:Label ID="Label6" runat="server" Text="<%$ Resources:lang,XingMing%>"></asp:Label>
+                                                                </strong><br />
+                                                                <%# Eval("UserName") %>
+                                                            </ItemTemplate>
                                                             <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="5%" />
-                                                        </asp:BoundColumn>
-                                                        <asp:BoundColumn DataField="LeaderName" HeaderText="主管">
+                                                        </asp:TemplateColumn>
+                                                        
+                                                        <asp:TemplateColumn>
+                                                            <ItemTemplate>
+                                                                <strong>
+                                                                    <asp:Label ID="Label7" runat="server" Text="<%$ Resources:lang,ZhuGuan%>"></asp:Label>
+                                                                </strong><br />
+                                                                <%# Eval("LeaderName") %>
+                                                            </ItemTemplate>
                                                             <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="5%" />
-                                                        </asp:BoundColumn>
-                                                        <asp:BoundColumn DataField="AttendanceDate" DataFormatString="{0:yyyy/MM/dd}" HeaderText="考勤日期">
+                                                        </asp:TemplateColumn>
+                                                        
+                                                        <asp:TemplateColumn>
+                                                            <ItemTemplate>
+                                                                <strong>
+                                                                    <asp:Label ID="Label8" runat="server" Text="<%$ Resources:lang,ChuQingRiQi%>"></asp:Label>
+                                                                </strong><br />
+                                                                <%# Eval("AttendanceDate", "{0:yyyy/MM/dd}") %>
+                                                            </ItemTemplate>
                                                             <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="6%" />
-                                                        </asp:BoundColumn>
-                                                         <asp:BoundColumn DataField="LateMinute" HeaderText="迟到分钟">
+                                                        </asp:TemplateColumn>
+                                                         
+                                                        <asp:TemplateColumn>
+                                                            <ItemTemplate>
+                                                                <strong>
+                                                                    <asp:Label ID="Label23" runat="server" Text="<%$ Resources:lang,ChiDao%>"></asp:Label>
+                                                                </strong><br />
+                                                                (<asp:Label ID="Label24" runat="server" Text="<%$ Resources:lang,Minute%>"></asp:Label>)<br />
+                                                                <%# Eval("LateMinute") %>
+                                                            </ItemTemplate>
                                                             <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="4%" />
-                                                        </asp:BoundColumn>
-                                                        <asp:BoundColumn DataField="EarlyMinute" HeaderText="早退分钟">
+                                                        </asp:TemplateColumn>
+                                                        
+                                                        <asp:TemplateColumn>
+                                                            <ItemTemplate>
+                                                                <strong>
+                                                                    <asp:Label ID="Label19" runat="server" Text="<%$ Resources:lang,ZaoTui%>"></asp:Label>
+                                                                </strong><br />
+                                                                (<asp:Label ID="Label25" runat="server" Text="<%$ Resources:lang,Minute%>"></asp:Label>)<br />
+                                                                <%# Eval("EarlyMinute") %>
+                                                            </ItemTemplate>
                                                             <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="4%" />
-                                                        </asp:BoundColumn>
-                                                          <asp:BoundColumn DataField="LargestDistance" HeaderText="MaximumAllowedDistance">
+                                                        </asp:TemplateColumn>
+                                                          
+                                                        <asp:TemplateColumn>
+                                                            <ItemTemplate>
+                                                                <strong>
+                                                                    <asp:Label ID="Label18" runat="server" Text="<%$ Resources:lang,YunXiZuiDaJuLi%>"></asp:Label>
+                                                                </strong><br />
+                                                                (<asp:Label ID="Label26" runat="server" Text="<%$ Resources:lang,Mi%>"></asp:Label>)<br />
+                                                                <%# Eval("LargestDistance") %>
+                                                            </ItemTemplate>
                                                             <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="6%" />
-                                                        </asp:BoundColumn>
-                                                        <asp:TemplateColumn>
-                                                            <ItemTemplate>
-                                                                <%# Eval("MCheckIn").ToString().Trim () %>
-                                                                <br />
-                                                                <%# Eval("MCheckInAddress").ToString().Trim () %>
-                                                                <br />
-                                                                <%# Eval("MCheckInDistance").ToString().Trim () %> (m)
-                                                              
-                                                        <br />
-                                                                IsMust:<%# Eval("MCheckInIsMust").ToString().Trim () %>
-                                                            </ItemTemplate>
-                                                            <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="8%" />
                                                         </asp:TemplateColumn>
-
-
+                                                        
                                                         <asp:TemplateColumn>
                                                             <ItemTemplate>
-                                                                <%# Eval("MCheckOut").ToString().Trim () %>
+                                                                <strong>
+                                                                    <asp:Label ID="Label9" runat="server" Text="<%$ Resources:lang,ZaoBanShangBanShiJian%>"></asp:Label>
+                                                                </strong><br />
+                                                                <%# Eval("MCheckIn") %>
                                                                 <br />
-                                                                <%# Eval("MCheckOutAddress").ToString().Trim () %>
+                                                                <%# Eval("MCheckInAddress") %>
                                                                 <br />
-                                                                <%# Eval("MCheckOutDistance").ToString().Trim () %> (m)
-                                                                
-                                                    <br />
-                                                                IsMust:<%# Eval("MCheckOutIsMust").ToString().Trim () %>
-                                                            </ItemTemplate>
-                                                            <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="8%" />
-                                                        </asp:TemplateColumn>
-
-
-                                                        <asp:TemplateColumn>
-                                                            <ItemTemplate>
-                                                                <%# Eval("ACheckIn").ToString().Trim () %>
+                                                                <%# Eval("MCheckInDistance") %> (m)
                                                                 <br />
-                                                                <%# Eval("ACheckInAddress").ToString().Trim () %>
-                                                                <br />
-                                                                <%# Eval("ACheckInDistance").ToString().Trim () %> (m)
-                                                                
-                                                        <br />
-                                                                IsMust:<%# Eval("ACheckInIsMust").ToString().Trim () %>
+                                                                IsMust:<%# Eval("MCheckInIsMust") %>
                                                             </ItemTemplate>
                                                             <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="8%" />
                                                         </asp:TemplateColumn>
 
                                                         <asp:TemplateColumn>
                                                             <ItemTemplate>
-                                                                <%# Eval("ACheckOut").ToString().Trim () %>
+                                                                <strong>
+                                                                    <asp:Label ID="Label11" runat="server" Text="<%$ Resources:lang,ZaoBanXiaBanShiJian%>"></asp:Label>
+                                                                </strong><br />
+                                                                <%# Eval("MCheckOut") %>
                                                                 <br />
-                                                                <%# Eval("ACheckOutAddress").ToString().Trim () %>
+                                                                <%# Eval("MCheckOutAddress") %>
                                                                 <br />
-                                                                <%# Eval("ACheckOutDistance").ToString().Trim () %> (m)
-                                                                 
-                                                        <br />
-                                                                IsMust:<%# Eval("ACheckOutIsMust").ToString().Trim () %>
+                                                                <%# Eval("MCheckOutDistance") %> (m)
+                                                                <br />
+                                                                IsMust:<%# Eval("MCheckOutIsMust") %>
                                                             </ItemTemplate>
                                                             <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="8%" />
                                                         </asp:TemplateColumn>
 
                                                         <asp:TemplateColumn>
                                                             <ItemTemplate>
-                                                                <%# Eval("NCheckIn").ToString().Trim () %>
+                                                                <strong>
+                                                                    <asp:Label ID="Label12" runat="server" Text="<%$ Resources:lang,ZhongBanShangBanShiJian%>"></asp:Label>
+                                                                </strong><br />
+                                                                <%# Eval("ACheckIn") %>
                                                                 <br />
-                                                                <%# Eval("NCheckInAddress").ToString().Trim () %>
+                                                                <%# Eval("ACheckInAddress") %>
                                                                 <br />
-                                                                <%# Eval("NCheckInDistance").ToString().Trim () %> (m)
-                                                                
-                                                        <br />
-                                                                IsMust:<%# Eval("NCheckInIsMust").ToString().Trim () %>
+                                                                <%# Eval("ACheckInDistance") %> (m)
+                                                                <br />
+                                                                IsMust:<%# Eval("ACheckInIsMust") %>
                                                             </ItemTemplate>
                                                             <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="8%" />
                                                         </asp:TemplateColumn>
 
                                                         <asp:TemplateColumn>
                                                             <ItemTemplate>
-                                                                <%# Eval("NCheckOut").ToString().Trim () %>
+                                                                <strong>
+                                                                    <asp:Label ID="Label13" runat="server" Text="<%$ Resources:lang,ZhongBanXiaBanShiJian%>"></asp:Label>
+                                                                </strong><br />
+                                                                <%# Eval("ACheckOut") %>
                                                                 <br />
-                                                                <%# Eval("NCheckOutAddress").ToString().Trim () %>
+                                                                <%# Eval("ACheckOutAddress") %>
                                                                 <br />
-                                                                <%# Eval("NCheckOutDistance").ToString().Trim () %> (m)
-                                                               
-                                                        <br />
-                                                                IsMust: <%# Eval("NCheckOutIsMust").ToString().Trim () %>
+                                                                <%# Eval("ACheckOutDistance") %> (m)
+                                                                <br />
+                                                                IsMust:<%# Eval("ACheckOutIsMust") %>
                                                             </ItemTemplate>
                                                             <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="8%" />
                                                         </asp:TemplateColumn>
 
                                                         <asp:TemplateColumn>
                                                             <ItemTemplate>
-                                                                <%# Eval("OCheckIn").ToString().Trim () %>
+                                                                <strong>
+                                                                    <asp:Label ID="Label14" runat="server" Text="<%$ Resources:lang,WanBanShangBanShiJian%>"></asp:Label>
+                                                                </strong><br />
+                                                                <%# Eval("NCheckIn") %>
                                                                 <br />
-                                                                <%# Eval("OCheckInAddress").ToString().Trim () %>
+                                                                <%# Eval("NCheckInAddress") %>
                                                                 <br />
-                                                                <%# Eval("OCheckInDistance").ToString().Trim () %> (m)
-                                                                 
-                                                        <br />
-                                                                IsMust: <%# Eval("OCheckInIsMust").ToString().Trim () %>
+                                                                <%# Eval("NCheckInDistance") %> (m)
+                                                                <br />
+                                                                IsMust:<%# Eval("NCheckInIsMust") %>
                                                             </ItemTemplate>
                                                             <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="8%" />
                                                         </asp:TemplateColumn>
 
                                                         <asp:TemplateColumn>
                                                             <ItemTemplate>
-                                                                <%# Eval("OCheckOut").ToString().Trim () %>
+                                                                <strong>
+                                                                    <asp:Label ID="Label15" runat="server" Text="<%$ Resources:lang,WanBanXiaBanShiJian%>"></asp:Label>
+                                                                </strong><br />
+                                                                <%# Eval("NCheckOut") %>
                                                                 <br />
-                                                                <%# Eval("OCheckOutAddress").ToString().Trim () %>
+                                                                <%# Eval("NCheckOutAddress") %>
                                                                 <br />
-                                                                <%# Eval("OCheckOutDistance").ToString().Trim () %> (m)
-                                                                  
-                                                        <br />
-                                                                IsMust: <%# Eval("OCheckOutIsMust").ToString().Trim () %>
+                                                                <%# Eval("NCheckOutDistance") %> (m)
+                                                                <br />
+                                                                IsMust: <%# Eval("NCheckOutIsMust") %>
                                                             </ItemTemplate>
                                                             <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="8%" />
                                                         </asp:TemplateColumn>
 
-                                                      
-                                                       
+                                                        <asp:TemplateColumn>
+                                                            <ItemTemplate>
+                                                                <strong>
+                                                                    <asp:Label ID="Label16" runat="server" Text="<%$ Resources:lang,JiaBanShangBanShiJian%>"></asp:Label>
+                                                                </strong><br />
+                                                                <%# Eval("OCheckIn") %>
+                                                                <br />
+                                                                <%# Eval("OCheckInAddress") %>
+                                                                <br />
+                                                                <%# Eval("OCheckInDistance") %> (m)
+                                                                <br />
+                                                                IsMust: <%# Eval("OCheckInIsMust") %>
+                                                            </ItemTemplate>
+                                                            <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="8%" />
+                                                        </asp:TemplateColumn>
+
+                                                        <asp:TemplateColumn>
+                                                            <ItemTemplate>
+                                                                <strong>
+                                                                    <asp:Label ID="Label17" runat="server" Text="<%$ Resources:lang,JiaBanXiaBanShiJian%>"></asp:Label>
+                                                                </strong><br />
+                                                                <%# Eval("OCheckOut") %>
+                                                                <br />
+                                                                <%# Eval("OCheckOutAddress") %>
+                                                                <br />
+                                                                <%# Eval("OCheckOutDistance") %> (m)
+                                                                <br />
+                                                                IsMust: <%# Eval("OCheckOutIsMust") %>
+                                                            </ItemTemplate>
+                                                            <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="8%" />
+                                                        </asp:TemplateColumn>
                                                     </Columns>
                                                 </asp:DataGrid>
                                             </td>

@@ -1,7 +1,7 @@
 <%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppDailyWorkReport.aspx.cs" Inherits="TTAppDailyWorkReport" %>
 
 
-<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=0.1; user-scalable=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <!DOCTYPE html>
@@ -70,7 +70,7 @@
                                             <table width="96%" border="0" class="ItemAlignLeft" cellpadding="0" cellspacing="0">
                                                 <tr>
                                                     <td class="ItemAlignLeft">
-                                                        <%--<a href="TTAppProject.aspx" onclick="javascript:document.getElementById('IMG_Waiting').style.display = 'block';">--%>
+                                                       
                                                         <a id="aAPPBackPriorPage" href="javascript:window.history.go(-1)" target="_top" onclick="javascript:document.getElementById('IMG_Waiting').style.display = 'block';">
                                                             <table width="245" border="0" class="ItemAlignLeft" cellpadding="0" cellspacing="0">
                                                                 <tr>
@@ -80,9 +80,7 @@
                                                                     <td background="ImagesSkin/main_top_bj.jpg" class="titleziAPP">
                                                                         <asp:Label runat="server" Text="<%$ Resources:lang,Back%>" />
                                                                     </td>
-                                                                    <td width="5">
-                                                                        <%-- <img src="ImagesSkin/main_top_r.jpg" width="5" height="31" />--%>
-                                                                    </td>
+                                                                   
                                                                 </tr>
                                                             </table>
                                                             <img id="IMG_Waiting" src="Images/Processing.gif" alt="ÇëÉÔºò£¬´¦ÀíÖÐ..." style="display: none;" />

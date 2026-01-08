@@ -1,6 +1,6 @@
 <%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAPPTaskAssignRecordForAfterService.aspx.cs" Inherits="TTAPPTaskAssignRecordForAfterService" %>
 
-<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
 
 <%@ Register Assembly="NickLee.Web.UI" Namespace="NickLee.Web.UI" TagPrefix="NickLee" %>
 <!DOCTYPE html>
@@ -9,26 +9,82 @@
 <head id="Head1" runat="server">
     <title></title>
     <link id="mainCss" href="css/bluelightmain.css" rel="stylesheet" type="text/css" />
-     <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />
+    <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />
 
+    <style>
+        /* 修复表格对齐问题 */
+        .form-aligned-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
 
-    <style type="text/css">
-        body {
-            /*margin-top: 5px;*/
-            /*background-image: url(Images/login_bj.jpg);*/
-            background-repeat: repeat-x;
-            font: normal 100% Helvetica, Arial, sans-serif;
+            .form-aligned-table td {
+                vertical-align: middle !important;
+                height: 50px !important;
+                line-height: 1 !important;
+            }
+
+            /* 确保所有元素基线对齐 */
+            .form-aligned-table .formItemBgStyleForAlignLeft {
+                display: table-cell;
+                vertical-align: middle !important;
+                height: 50px;
+                line-height: 50px !important;
+            }
+
+        /* 统一输入框高度 */
+        .form-input-text {
+            height: 35px !important;
+            line-height: 35px !important;
+            padding: 0 8px !important;
+            box-sizing: border-box !important;
+            vertical-align: middle !important;
+            border: 1px solid #ccc !important;
+            border-radius: 4px !important;
+        }
+
+        /* 统一按钮高度 */
+        .aligned-btn {
+            vertical-align: middle !important;
+            display: inline-block !important;
+            margin: 0 !important;
+        }
+
+        /* 特定按钮样式 */
+        .inpuQuery.aligned-btn {
+            width: 35px !important;
+            height: 35px !important;
+            min-width: 35px !important;
+            min-height: 35px !important;
+            background-size: 20px 20px !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+            border: 1px solid #ddd !important;
+            border-radius: 4px !important;
+            cursor: pointer !important;
+        }
+
+        .inpuQrCode.aligned-btn {
+            width: 35px !important;
+            height: 35px !important;
+            display: inline-block !important;
+            cursor: pointer !important;
+            border: 1px solid #ddd !important;
+            border-radius: 4px !important;
+            padding: 8px !important;
+            box-sizing: border-box !important;
+            background-color: #f8f9fa !important;
+        }
+
+        /* 二维码容器 */
+        .qrcode-container {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 35px;
         }
     </style>
 
-    <style type="text/css">
-        #AboveDiv {
-            max-width: 1024px;
-            width: expression (document.body.clientWidth >= 1024? "1024px" : "auto" ));
-            min-width: 277px;
-            width: expression (document.body.clientWidth <= 277? "277px" : "auto" ));
-        }
-    </style>
 
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="js/allAHandler.js"></script>
@@ -38,8 +94,9 @@
     <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 
     <script type="text/javascript" language="javascript">
-        $(function () { initSwipeBack();// 初始化滑动返回功能 
-             /*  if (top.location != self.location) { } else { CloseWebPage(); }*/
+        $(function () {
+            initSwipeBack();// 初始化滑动返回功能 
+            /*  if (top.location != self.location) { } else { CloseWebPage(); }*/
         });
 
 
@@ -60,7 +117,7 @@
 
                             if (url.indexOf("TakeTopAPPMain") == -1 && url.indexOf("TTAppTask") == -1) {
 
-                                popShowByURL(url, 800, 600,window.location);
+                                popShowByURL(url, 800, 600, window.location);
                                 return false;
                             }
 
@@ -76,7 +133,7 @@
 
                             if (url.indexOf("TakeTopAPPMain") == -1 && url.indexOf("TTAppTask") == -1) {
 
-                                popShowByURL(url, 800, 600,window.location);
+                                popShowByURL(url, 800, 600, window.location);
                                 return false;
                             }
 
@@ -105,7 +162,10 @@
     </script>
 
 </head>
-<body><div id="swipeFeedback" class="swipe-feedback"><asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" /></div> <!-- 滑动反馈层 -->
+<body>
+    <div id="swipeFeedback" class="swipe-feedback">
+        <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" /></div>
+    <!-- 滑动反馈层 -->
     <script type="text/javascript" language="javascript">
 
         var txtQrCode = '#<%=TB_QrCode.ClientID%>';
@@ -114,7 +174,8 @@
 
         var loadingIndex; //提示层index
         var isWxConfigReady = false; //config是否验证通过
-        $(function () { initSwipeBack();// 初始化滑动返回功能 
+        $(function () {
+            initSwipeBack();// 初始化滑动返回功能 
             try {
 
                 if ('<%=signModel.appId %>' == '') {
@@ -278,24 +339,25 @@
                     </tr>
                     <tr>
                         <td valign="top" class="ItemAlignLeft" style="padding: 5px 2px  0px 5px;">
-                            <table cellpadding="0" cellspacing="0">
+                            <table cellpadding="0" cellspacing="0" class="form-aligned-table">
                                 <tr>
-                                    <td class="formItemBgStyleForAlignLeft">
+                                    <td class="formItemBgStyleForAlignLeft" style="vertical-align: middle;">
                                         <asp:Label ID="Label1" runat="server" Text="<%$ Resources:lang,fenpaiRen%>" />:
                                     </td>
-                                    <td class="formItemBgStyleForAlignLeft">
-                                        <asp:TextBox ID="TB_AssignManName" runat="server" Width="90px"></asp:TextBox>
+                                    <td class="formItemBgStyleForAlignLeft" style="vertical-align: middle;">
+                                        <asp:TextBox ID="TB_AssignManName" runat="server" CssClass="form-input-text" Width="90px"></asp:TextBox>
                                     </td>
-                                    <td class="formItemBgStyleForAlignLeft" style="padding-left: 10px;">
-                                        <asp:Button ID="BT_FindAll" runat="server" CssClass="inpuQuery" OnClick="BT_FindAll_Click" />
-
+                                    <td class="formItemBgStyleForAlignLeft" style="vertical-align: middle; padding-left: 10px;">
+                                        <asp:Button ID="BT_FindAll" runat="server" CssClass="inpuQuery aligned-btn" OnClick="BT_FindAll_Click" />
                                     </td>
-                                    <td class="formItemBgStyleForAlignLeft" style="padding-left: 30px; padding-top: 10px;">
-
-                                      <asp:Image ID="IMG_QrCode" runat="server" CssClass="inpuQrCode"  onclick="qrcode()"  Width="16px" />
-                                        <asp:TextBox ID="TB_QrCode" runat="server" Style="display: none;"></asp:TextBox>
-                                        <asp:Button ID="BT_Find" runat="server" Style="display: none;" CssClass="inpu" Text="<%$ Resources:lang,ChaXun%>" OnClick="BT_Find_Click" />
-
+                                    <td class="formItemBgStyleForAlignLeft" style="vertical-align: middle; padding-left: 30px;">
+                                        <div class="qrcode-container">
+                                            <asp:Image ID="IMG_QrCode" runat="server" CssClass="inpuQrCode aligned-btn" onclick="qrcode()" Width="16px" />
+                                            <asp:TextBox ID="TB_QrCode" runat="server" Style="display: none;"></asp:TextBox>
+                                        </div>
+                                    </td>
+                                    <td class="formItemBgStyleForAlignLeft" style="vertical-align: middle; padding-left: 10px;">
+                                        <asp:Button ID="BT_Find" runat="server" Style="display: none;" CssClass="inpu aligned-btn" Text="<%$ Resources:lang,ChaXun%>" OnClick="BT_Find_Click" />
                                     </td>
                                 </tr>
                             </table>
@@ -308,7 +370,7 @@
 
                                 <tr>
                                     <td class="ItemAlignLeft">
-                                       
+
                                         <asp:DataList ID="DataList2" runat="server" Width="100%" OnItemCommand="DataList2_ItemCommand"
                                             DataKeyField="ID" CellPadding="0" ForeColor="#333333">
                                             <SelectedItemStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />

@@ -32,7 +32,7 @@
                     <table style="width: 100%" cellpadding="0" cellspacing="0" class="ItemAlignLeft">
                         <tr>
                             <td height="31" class="page_topbj">
-                                <table width="100%" border="0" class="ItemAlignLeft" cellpadding="0" cellspacing="0">
+                                <table width="245" border="0" class="ItemAlignLeft" cellpadding="0" cellspacing="0">
                                     <tr>
                                         <td class="ItemAlignLeft">
                                             <table width="245" border="0" class="ItemAlignLeft" cellpadding="0" cellspacing="0">

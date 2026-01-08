@@ -11,24 +11,10 @@
 
     <link id="mainCss" href="css/bluelightmain.css" rel="stylesheet" type="text/css" />
 
-    <style type="text/css">
-        body {
-            /*margin-top: 5px;*/
-            /*background-image: url(Images/login_bj.jpg);*/
-            background-repeat: repeat-x;
-            font: normal 100% Helvetica, Arial, sans-serif;
-        }
-    </style>
+ 
 
     <style type="text/css">
-        #AboveDiv {
-            max-width: 1024px;
-            width: expression (document.body.clientWidth >= 1024? "1024px" : "auto" ));
-            min-width: 277px;
-            width: expression (document.body.clientWidth <= 277? "277px" : "auto" ));
-            min-height: 640px;
-            height: expression (document.body.clientHeight <= 640 "640px" : "auto" ));
-        }
+      
 
         #container {
             height: auto !important;
@@ -137,7 +123,7 @@
     window.onload = function () {
         if (navigator.geolocation) {
             //document.getElementById("status").innerHTML = "HTML5 Geolocation is supported in your browser.";
-            // 百度地图API功能
+            // 鐧惧害鍦板浘API鍔熻兘
             //var map = new BMap.Map("container");
             //var point = new BMap.Point(113.373456, 23.14153);
             //map.centerAndZoom(point, 12);

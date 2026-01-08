@@ -1,6 +1,6 @@
 <%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppProject.aspx.cs" Inherits="TTAppProject" %>
 
-<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=0.1; user-scalable=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
 
 <%@ Import Namespace="System.Globalization" %>
 <!DOCTYPE html>
@@ -11,43 +11,7 @@
     <link id="mainCss" href="css/bluelightmain.css" rel="stylesheet" type="text/css" />
      <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />
 
-    <style type="text/css">
-        body {
-            background-repeat: repeat-x;
-            font: normal 100% Helvetica, Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            /* 确保body可以接收触摸事件 */
-            touch-action: pan-y;
-            width: 100%;
-            height: 100%;
-        }
-
-        #AboveDiv {
-            max-width: 1024px;
-            width: expression (document.body.clientWidth >= 1024? "1024px" : "auto" ));
-            min-width: 277px;
-            width: expression (document.body.clientWidth <= 277? "277px" : "auto" ));
-        }
-
-        /* 顶部导航栏 */
-        .page_topbj {
-            background: linear-gradient(90deg, #D53E54 0%, #057BF9 100%);
-            color: white;
-            padding: 12px 0;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .titleziAPP {
-            font-size: 18px;
-            font-weight: 600;
-            color: white;
-            padding-left: 8px;
-        }
-    </style>
+    
 
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="js/allAHandler.js"></script>

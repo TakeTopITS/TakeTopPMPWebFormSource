@@ -1,6 +1,6 @@
 <%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppMyWorkflowDetail.aspx.cs" Inherits="TTAppMyWorkflowDetail" %>
 
-<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=0.1; user-scalable=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
 
 <%@ Register Assembly="NickLee.Web.UI" Namespace="NickLee.Web.UI" TagPrefix="NickLee" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
@@ -16,24 +16,7 @@
     <script src="js/jquery-1.7.2.min.js"></script>
 
 
-    <style type="text/css">
-        body {
-            /*margin-top: 5px;*/
-            /*background-image: url(Images/login_bj.jpg);*/
-            background-repeat: repeat-x;
-            font: normal 100% Helvetica, Arial, sans-serif;
-        }
-    </style>
-
-    <style type="text/css">
-        #DivID {
-            max-width: 1024px;
-            width: expression (document.body.clientWidth >= 1024? "1024px" : "auto" ));
-            min-width: 277px;
-            width: expression (document.body.clientWidth <= 277? "277px" : "auto" ));
-        }
-    </style>
-
+   
 
     <script type="text/javascript">
 
@@ -222,7 +205,7 @@
                                                         <table style="width: 100%;">
                                                             <tr>
                                                                 <td>
-                                                                    <table style="width: 100%; display: none;" cellpadding="2" cellspacing="0" class="formBgStyle">
+                                                                    <table style="width: 100%; display: none;" cellpadding="2" cellspacing="0" >
                                                                         <tr>
                                                                             <td style="width: 80px;" class="formItemBgStyleForAlignLeft">
                                                                                 <asp:Label ID="Label1" runat="server" Text="<%$ Resources:lang,MingCheng %>"></asp:Label>: </td>
@@ -240,7 +223,7 @@
                                                                                 <asp:Label ID="LB_WLDescription" runat="server"></asp:Label></td>
                                                                         </tr>
                                                                     </table>
-                                                                    <table style="width: 100%; display: none;" cellpadding="2" cellspacing="0" class="formBgStyle">
+                                                                    <table style="width: 100%; display: none;" cellpadding="2" cellspacing="0" >
                                                                         <tr>
                                                                             <td style="width: 10%; height: 20px;" class="formItemBgStyleForAlignLeft">
                                                                                 <asp:Label ID="Label36" runat="server" Text="<%$ Resources:lang,BianHao %>"></asp:Label>: </td>
@@ -478,7 +461,7 @@
                                                                         <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                                                                         <ItemStyle CssClass="itemStyle" />
                                                                         <ItemTemplate>
-                                                                            <table style="width: 100%;" cellpadding="3" cellspacing="0" class="formBgStyle">
+                                                                            <table style="width: 100%;" cellpadding="3" cellspacing="0">
                                                                                 <tr>
                                                                                     <td class="formItemBgStyleForAlignLeft" width="80px">
                                                                                         <asp:Label ID="Label3" runat="server" Text="<%$ Resources:lang,MingCheng%>"></asp:Label>: </td>

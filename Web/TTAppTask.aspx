@@ -1,6 +1,6 @@
 <%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppTask.aspx.cs" Inherits="TTAppTask" %>
 
-<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=0.1; user-scalable=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc2" %>
 
@@ -12,30 +12,7 @@
     <title></title>
     <link id="mainCss" href="css/bluelightmain.css" rel="stylesheet" type="text/css" />
      <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />
-    <style type="text/css">
-        body {
-            /*margin-top: 5px;*/
-            /*background-image: url(Images/login_bj.jpg);*/
-            background-repeat: repeat-x;
-            font: normal 100% Helvetica, Arial, sans-serif;
-            /* 防止横向滚动 */
-            overflow-x: hidden;
-            width: 100%;
-            position: relative;
-        }
-
-        /* 确保所有容器正确约束 */
-        #AboveDiv, #AboveTable, .napbox, .npb, .ajax_tab_menu {
-            max-width: 100%;
-            overflow-x: hidden;
-        }
-
-        /* 防止长文本导致横向滚动 */
-        .nprig h4 a {
-            word-break: break-word;
-            white-space: normal;
-        }
-    </style>
+  
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="js/allAHandler.js"></script>
     <script type="text/javascript" language="javascript">

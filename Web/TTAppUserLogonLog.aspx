@@ -1,6 +1,6 @@
 <%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppUserLogonLog.aspx.cs" Inherits="TTAppUserLogonLog" %>
 
-<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=0.1; user-scalable=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
@@ -9,39 +9,15 @@
 <head id="Head1" runat="server">
     <title></title>
     <link id="mainCss" href="css/bluelightmain.css" rel="stylesheet" type="text/css" />
-     <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />
+    <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />
 
 
-    <style type="text/css">
-        body {
-            /*margin-top: 5px;*/
-            /*background-image: url(Images/login_bj.jpg);*/
-            background-repeat: repeat-x;
-            font: normal 100% Helvetica, Arial, sans-serif;
-        }
 
-        table {
-            table-layout: fixed;
-        }
-
-        td {
-            word-break: break-all;
-            word-wrap: break-word;
-        }
-    </style>
-
-    <style type="text/css">
-        #AboveDiv {
-            max-width: 1024px;
-            width: expression (document.body.clientWidth >= 1024? "1024px" : "auto" ));
-            min-width: 277px;
-            width: expression (document.body.clientWidth <= 277? "277px" : "auto" ));
-        }
-    </style>
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="js/allAHandler.js"></script>
     <script type="text/javascript" language="javascript">
-        $(function () { initSwipeBack();// 初始化滑动返回功能  initSwipeBack();// 初始化滑动返回功能
+        $(function () {
+            initSwipeBack();// 初始化滑动返回功能  initSwipeBack();// 初始化滑动返回功能
 
             //
 
@@ -49,7 +25,10 @@
 
     </script>
 </head>
-<body><div id="swipeFeedback" class="swipe-feedback"><asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" /></div> <!-- 滑动反馈层 -->
+<body>
+    <div id="swipeFeedback" class="swipe-feedback">
+        <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" /></div>
+    <!-- 滑动反馈层 -->
     <center>
         <form id="form1" runat="server">
             <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">
@@ -73,13 +52,15 @@
                                                             <asp:Label ID="Label8" runat="server" Text="<%$ Resources:lang,Back%>" />
                                                         </td>
 
-                                                        <td align="center" style="padding-top: 5px;">
-                                                            <asp:Label ID="LB_QueryScope" runat="server"></asp:Label>
-                                                        </td>
                                                     </tr>
                                                 </table>
                                                 <img id="IMG_Waiting" src="Images/Processing.gif" alt="请稍候，处理中..." style="display: none;" />
                                             </a>
+                                        </td>
+
+
+                                        <td align="center" style="padding-top: 6px;">
+                                            <asp:Label ID="LB_QueryScope" runat="server"></asp:Label>
                                         </td>
                                     </tr>
                                 </table>
@@ -135,7 +116,7 @@
                                                         <img src="ImagesSkin/napicon.png" />
                                                     </div>
                                                     <div class="nprig">
-                                                        <h4> <%# Eval("ID").ToString() %> <%# Eval("UserName") %>    </h4>
+                                                        <h4><%# Eval("ID").ToString() %> <%# Eval("UserName") %>    </h4>
                                                         <h5><%# Eval("UserIP") %>   <sub></sub></h5>
                                                         <h6>Start:<%# DataBinder.Eval(Container.DataItem,"LoginTime") %></h6>
                                                         <h6>End:<%# DataBinder.Eval(Container.DataItem,"LastestTime") %></h6>
@@ -165,7 +146,7 @@
                                     <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                                     <EditItemStyle BackColor="#2461BF" />
                                     <SelectedItemStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-                                    <PagerStyle Horizontalalign="center" Mode="NumericPages" NextPageText="" PrevPageText="" CssClass="notTab" />
+                                    <PagerStyle HorizontalAlign="center" Mode="NumericPages" NextPageText="" PrevPageText="" CssClass="notTab" />
 
                                     <ItemStyle CssClass="itemStyle" />
                                 </asp:DataGrid>

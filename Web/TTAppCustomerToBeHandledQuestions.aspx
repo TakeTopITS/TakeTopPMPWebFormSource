@@ -1,36 +1,21 @@
 <%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppCustomerToBeHandledQuestions.aspx.cs" Inherits="TTAppCustomerToBeHandledQuestions" %>
 
-<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=0.1; user-scalable=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
     <title></title>
     <link id="mainCss" href="css/bluelightmain.css" rel="stylesheet" type="text/css" />
-     <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />
+    <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />
 
-    <style type="text/css">
-        body {
-            /*margin-top: 5px;*/
-            /*background-image: url(Images/login_bj.jpg);*/
-            background-repeat: repeat-x;
-            font: normal 100% Helvetica, Arial, sans-serif;
-        }
-    </style>
 
-    <style type="text/css">
-        #AboveDiv {
-            max-width: 1024px;
-            width: expression (document.body.clientWidth >= 1024? "1024px" : "auto" ));
-            min-width: 277px;
-            width: expression (document.body.clientWidth <= 277? "277px" : "auto" ));
-        }
-    </style>
 
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="js/allAHandler.js"></script>
     <script type="text/javascript" language="javascript">
-        $(function () { initSwipeBack();// 初始化滑动返回功能 
+        $(function () {
+            initSwipeBack();// 初始化滑动返回功能 
 
             //
 
@@ -48,7 +33,11 @@
     </script>
 
 </head>
-<body><div id="swipeFeedback" class="swipe-feedback"><asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" /></div> <!-- 滑动反馈层 -->
+<body>
+    <div id="swipeFeedback" class="swipe-feedback">
+        <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" />
+    </div>
+    <!-- 滑动反馈层 -->
     <center>
         <form id="form1" runat="server">
             <%--  <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">--%>
@@ -83,7 +72,7 @@
                                         <td></td>
                                         <td align="right" style="padding-top: 5px; padding-bottom: 1px; padding-right: 8px;">
                                             <asp:Button ID="BT_MakeQuestion" runat="server" CssClass="inpuLong"
-                                                Text="<%$ Resources:lang,RecordRequirement%>" OnClick="BT_MakeQuestion_Click"/>
+                                                Text="<%$ Resources:lang,RecordRequirement%>" OnClick="BT_MakeQuestion_Click" />
                                         </td>
                                         <td align="right" style="padding-top: 5px; padding-bottom: 1px; padding-right: 8px;">
                                             <asp:Button ID="BT_AllQuestion" runat="server" CssClass="inpuLong" OnClick="BT_AllQuestion_Click"
@@ -101,7 +90,14 @@
                                             <table style="width: 100%; height: 1px">
                                                 <tr>
                                                     <td style="text-align: left;">
-                                                        <asp:Label ID="Lbel1" runat="server" Text="<%$ Resources:lang,ToBeAsigned%>" />:
+
+                                                        <div class="npb">
+                                                            <div class="cline"></div>
+                                                            <h3>
+                                                                <asp:Label ID="Lbel1" runat="server" Text="<%$ Resources:lang,ToBeAsigned%>" /></h3>
+                                                        </div>
+
+
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -153,10 +149,10 @@
                                                                                 <img src="ImagesSkin/napicon.png" />
                                                                             </div>
                                                                             <div class="nprig">
-                                                                                <h4><a href="TTAppCustomerToBeHandledQuestionsDetail.aspx?ID=<%# DataBinder.Eval(Container.DataItem,"ID") %>"> <%# DataBinder.Eval(Container.DataItem,"ID") %> <%# DataBinder.Eval(Container.DataItem,"Question") %></a></h4>
+                                                                                <h4><a href="TTAppCustomerToBeHandledQuestionsDetail.aspx?ID=<%# DataBinder.Eval(Container.DataItem,"ID") %>"><%# DataBinder.Eval(Container.DataItem,"ID") %> <%# DataBinder.Eval(Container.DataItem,"Question") %></a></h4>
                                                                                 <h5><%# DataBinder.Eval(Container.DataItem,"UserPosition") %><sub></sub></h5>
                                                                                 <h6><%# DataBinder.Eval(Container.DataItem,"summittime") %></h6>
-                                                                           <%--     <label></label>--%>
+                                                                                <%--     <label></label>--%>
                                                                             </div>
 
 
@@ -182,7 +178,7 @@
                                                             <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                                                             <EditItemStyle BackColor="#2461BF" />
                                                             <SelectedItemStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-                                                            <PagerStyle Horizontalalign="center" Mode="NumericPages" NextPageText="" PrevPageText="" CssClass="notTab" />
+                                                            <PagerStyle HorizontalAlign="center" Mode="NumericPages" NextPageText="" PrevPageText="" CssClass="notTab" />
                                                         </asp:DataGrid>
                                                         <asp:Label ID="LB_Sql1" runat="server" Visible="False"></asp:Label>
                                                         <asp:Label ID="LB_DepartString" runat="server" Visible="False"></asp:Label>
@@ -190,7 +186,14 @@
                                                 </tr>
                                                 <tr>
                                                     <td style="text-align: left;">
-                                                        <asp:Label ID="Label4" runat="server" Text="<%$ Resources:lang,MemberCustomerSevice%>" />:
+
+
+                                                        <div class="npb">
+                                                            <div class="cline"></div>
+                                                            <h3>
+                                                                <asp:Label ID="Label4" runat="server" Text="<%$ Resources:lang,MemberCustomerSevice%>" /></h3>
+                                                        </div>
+
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -245,7 +248,7 @@
                                                                                 <h4><a href="TTAppCustomerQuestionHandleDetailForMembers.aspx?ID=<%# DataBinder.Eval(Container.DataItem,"ID") %>"><%# DataBinder.Eval(Container.DataItem,"ID") %>  <%# DataBinder.Eval(Container.DataItem,"Question") %></a></h4>
                                                                                 <h5><%# DataBinder.Eval(Container.DataItem,"OperatorName") %>  <sub></sub></h5>
                                                                                 <h6><%# DataBinder.Eval(Container.DataItem,"summittime") %></h6>
-                                                                             <%--   <label></label>--%>
+                                                                                <%--   <label></label>--%>
                                                                             </div>
 
 
@@ -273,7 +276,7 @@
                                                             <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                                                             <EditItemStyle BackColor="#2461BF" />
                                                             <SelectedItemStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-                                                            <PagerStyle Horizontalalign="center" Mode="NumericPages" NextPageText="" PrevPageText="" CssClass="notTab" />
+                                                            <PagerStyle HorizontalAlign="center" Mode="NumericPages" NextPageText="" PrevPageText="" CssClass="notTab" />
                                                         </asp:DataGrid>
                                                         <asp:Label ID="LB_Sql4" runat="server" Visible="False"></asp:Label>
                                                     </td>
