@@ -32639,7 +32639,7 @@
     <value>分配預算</value>
   </data>
   <data name="XYHDKHHSYY" xml:space="preserve">
-    <value>向右滑動返回上一頁，向下滑動刷新本頁面</value>
+    <value>向右滑動返回上一頁</value>
   </data>
   <data name="ZZSJSJKSHSFZQXH" xml:space="preserve">
     <value>正在升級資料庫，大概需要15秒鐘，請稍候...</value>
@@ -33228,5 +33228,8 @@
   </data>
   <data name="ShuRuShuJiBiaoMingChengCTaoHaoFengKai" xml:space="preserve">
     <value>輸入資料表名稱，以逗號分隔...</value>
+  </data>
+  <data name="XYHDKHHSYYXXHDKSXBYM" xml:space="preserve">
+    <value>向右滑動返回上一頁，向下滑動刷新本頁面</value>
   </data>
 </root>

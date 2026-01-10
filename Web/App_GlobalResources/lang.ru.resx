@@ -32640,7 +32640,7 @@
     <value>Распределять бюджет</value>
   </data>
   <data name="XYHDKHHSYY" xml:space="preserve">
-    <value>Смахивайте вправо для возврата. Смахивайте вниз для обновления страницы</value>
+    <value>Смахивайте вправо для возврата</value>
   </data>
   <data name="ZZSJSJKSHSFZQXH" xml:space="preserve">
     <value>Идёт обновление базы данных. Этo займёт примерно 15секунд. Пожалуйста, подождите...</value>
@@ -33229,5 +33229,8 @@
   </data>
   <data name="ShuRuShuJiBiaoMingChengCTaoHaoFengKai" xml:space="preserve">
     <value>Введите имена таблиц, разделенные запятыми...</value>
+  </data>
+  <data name="XYHDKHHSYYXXHDKSXBYM" xml:space="preserve">
+    <value>Смахивайте вправо для возврата. Смахивайте вниз для обновления страницы</value>
   </data>
 </root>

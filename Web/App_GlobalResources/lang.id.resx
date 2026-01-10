@@ -32642,7 +32642,7 @@
     <value>Mengalokasikan Anggaran</value>
   </data>
   <data name="XYHDKHHSYY" xml:space="preserve">
-    <value>Gesek ke kanan untuk kembali. Gesek ke bawah untuk menyegarkan halaman ini</value>
+    <value>Gesek ke kanan untuk kembali</value>
   </data>
   <data name="ZZSJSJKSHSFZQXH" xml:space="preserve">
     <value>Sedang mengupgrade database. Proses ini membutuhkan waktu sekitar 15 detik. Harap tunggu...</value>
@@ -33372,6 +33372,12 @@
   <data name="AINoAIConfigFound" xml:space="preserve">
     <value>⚠️ Tidak ditemukan konfigurasi AI. Silakan konfigurasikan pengaturan server AI.</value>
     <comment>⚠️ Tidak ditemukan konfigurasi AI. Silakan konfigurasikan pengaturan server AI.</comment>
+  </data>
+  <data name="ShuRuNiDeFenXiXuQiu" xml:space="preserve">
+    <value>Introduzca sus requisitos de análisis...</value>
+  </data>
+  <data name="ShuRuShuJiBiaoMingChengCTaoHaoFengKai" xml:space="preserve">
+    <value>Masukkan nama tabel, dipisahkan dengan koma...</value>
   </data>
   <data name="BeiFenWenJianLuJian" xml:space="preserve">
     <value>Path penyimpanan file cadangan</value>
@@ -34234,10 +34240,7 @@
   <data name="ZZZZYSCDWJ" xml:space="preserve">
     <value>Harap pilih file yang akan diunggah!</value>
   </data>
-  <data name="ShuRuNiDeFenXiXuQiu" xml:space="preserve">
-    <value>Introduzca sus requisitos de análisis...</value>
-  </data>
-  <data name="ShuRuShuJiBiaoMingChengCTaoHaoFengKai" xml:space="preserve">
-    <value>Masukkan nama tabel, dipisahkan dengan koma...</value>
+  <data name="XYHDKHHSYYXXHDKSXBYM" xml:space="preserve">
+    <value>Gesek ke kanan untuk kembali. Gesek ke bawah untuk menyegarkan halaman ini</value>
   </data>
 </root>

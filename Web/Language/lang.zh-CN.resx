@@ -32782,7 +32782,7 @@
     <comment>分配预算</comment>
   </data>
   <data name="XYHDKHHSYY" xml:space="preserve">
-    <value>向右滑动返回上一页，向下滑动刷新本页面</value>
+    <value>向右滑动返回上一页</value>
     <comment>向右滑动返回上一页，向下滑动刷新本页面</comment>
   </data>
   <data name="ZZSJSJKSHSFZQXH" xml:space="preserve">
@@ -33526,5 +33526,8 @@
   </data>
   <data name="ShuRuShuJiBiaoMingChengCTaoHaoFengKai" xml:space="preserve">
     <value>输入数据表名称，以逗号分隔...</value>
+  </data>
+  <data name="XYHDKHHSYYXXHDKSXBYM" xml:space="preserve">
+    <value>向右滑动返回上一页，向下滑动刷新本页面</value>
   </data>
 </root>

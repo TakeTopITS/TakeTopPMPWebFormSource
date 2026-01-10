@@ -32638,7 +32638,7 @@
     <value>Alocar orçamento</value>
   </data>
   <data name="XYHDKHHSYY" xml:space="preserve">
-    <value>Deslize para a direita para voltar. Deslize para baixo para atualizar esta página</value>
+    <value>Deslize para a direita para voltar</value>
   </data>
   <data name="ZZSJSJKSHSFZQXH" xml:space="preserve">
     <value>Atualizando o banco de dados. Isso levará cerca de 15 segundos. Por favor, aguarde...</value>
@@ -33374,5 +33374,8 @@
   </data>
   <data name="ShuRuShuJiBiaoMingChengCTaoHaoFengKai" xml:space="preserve">
     <value>Insira os nomes das tabelas, separados por vírgulas...</value>
+  </data>
+  <data name="XYHDKHHSYYXXHDKSXBYM" xml:space="preserve">
+    <value>Deslize para a direita para voltar. Deslize para baixo para atualizar esta página</value>
   </data>
 </root>

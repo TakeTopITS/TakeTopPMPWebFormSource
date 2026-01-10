@@ -32638,7 +32638,7 @@
     <value>จัดสรรงบประมาณ</value>
   </data>
   <data name="XYHDKHHSYY" xml:space="preserve">
-    <value>ปัดไปทางขวาเพื่อกลับหน้าเดิม ปัดลงเพื่อรีเฟรชหน้านี้</value>
+    <value>เลื่อนนิ้วไปทางขวาเพื่อย้อนกลับไปยังหน้าสุดท้าย</value>
   </data>
   <data name="ZZSJSJKSHSFZQXH" xml:space="preserve">
     <value>กำลังอัปเกรดฐานข้อมูล ใช้เวลาประมาณ 15 วินาที กรุณารอสักครู่...</value>
@@ -33221,6 +33221,12 @@
   <data name="AINoAIConfigFound" xml:space="preserve">
     <value>⚠️ ไม่พบการตั้งค่า AI โปรดกำหนดค่าการตั้งค่าเซิร์ฟเวอร์ AI</value>
     <comment>⚠️ ไม่พบการตั้งค่า AI โปรดกำหนดค่าการตั้งค่าเซิร์ฟเวอร์ AI</comment>
+  </data>
+  <data name="ShuRuNiDeFenXiXuQiu" xml:space="preserve">
+    <value>ป้อนความต้องการการวิเคราะห์ของคุณ...</value>
+  </data>
+  <data name="ShuRuShuJiBiaoMingChengCTaoHaoFengKai" xml:space="preserve">
+    <value>ป้อนชื่อตาราง คั่นด้วยเครื่องหมายจุลภาค...</value>
   </data>
   <data name="DGMBSTDTB" xml:space="preserve">
     <value>การยื่นเสนอราคาที่รอซื้อเอกสารประกวดราคา</value>
@@ -42538,10 +42544,7 @@
   <data name="QiYeJiKuaZhanRuanJian" xml:space="preserve">
     <value>ซอฟต์แวร์ขยายขนาดระดับองค์กร</value>
   </data>
-  <data name="ShuRuNiDeFenXiXuQiu" xml:space="preserve">
-    <value>ป้อนความต้องการการวิเคราะห์ของคุณ...</value>
-  </data>
-  <data name="ShuRuShuJiBiaoMingChengCTaoHaoFengKai" xml:space="preserve">
-    <value>ป้อนชื่อตาราง คั่นด้วยเครื่องหมายจุลภาค...</value>
+  <data name="XYHDKHHSYYXXHDKSXBYM" xml:space="preserve">
+    <value>ปัดไปทางขวาเพื่อกลับหน้าเดิม ปัดลงเพื่อรีเฟรชหน้านี้</value>
   </data>
 </root>

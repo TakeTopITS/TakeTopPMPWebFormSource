@@ -855,8 +855,7 @@
                         <div class="modalPopup-text">
                             <div class="modalPopup-content">
                                 <div class="modalPopup-header">
-                                    <h3>选择接收人</h3>
-                                    <asp:ImageButton ID="IMBT_Close" ImageUrl="ImagesSkin/Close4.jpg" runat="server"
+                                    <asp:ImageButton ID="IMBT_Close" ImageUrl="ImagesSkin/Close4.jpg" runat="server" 
                                         CssClass="modalPopup-close" />
                                 </div>
                                 <div class="modalPopup-tree">
@@ -882,5 +881,6 @@
             </div>
         </form>
     </center>
+
 </body>
 </html>

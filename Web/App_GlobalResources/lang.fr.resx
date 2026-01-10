@@ -32638,7 +32638,7 @@
     <value>Allouer le budget</value>
   </data>
   <data name="XYHDKHHSYY" xml:space="preserve">
-    <value>Glissez vers la droite pour revenir en arrière. Glissez vers le bas pour actualiser cette page</value>
+    <value>Glissez vers la droite pour revenir en arrière</value>
   </data>
   <data name="ZZSJSJKSHSFZQXH" xml:space="preserve">
     <value>Mise à niveau de la base de données en cours. Cela prendra environ 15 secondes. Veuillez patienter...</value>
@@ -33374,5 +33374,8 @@
   </data>
   <data name="ShuRuShuJiBiaoMingChengCTaoHaoFengKai" xml:space="preserve">
     <value>Entrez les noms de table, séparés par des virgules...</value>
+  </data>
+  <data name="XYHDKHHSYYXXHDKSXBYM" xml:space="preserve">
+    <value>Glissez vers la droite pour revenir en arrière. Glissez vers le bas pour actualiser cette page</value>
   </data>
 </root>

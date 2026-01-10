@@ -32640,7 +32640,7 @@
     <value>Allocare il budget</value>
   </data>
   <data name="XYHDKHHSYY" xml:space="preserve">
-    <value>Scorri verso destra per tornare indietro. Scorri verso il basso per aggiornare questa pagina</value>
+    <value>Scorri verso destra per tornare indietro</value>
   </data>
   <data name="ZZSJSJKSHSFZQXH" xml:space="preserve">
     <value>Aggiornamento del database in corso, l'operazione richiederà circa 15 secondi, attendere prego...</value>
@@ -33376,5 +33376,8 @@
   </data>
   <data name="ShuRuShuJiBiaoMingChengCTaoHaoFengKai" xml:space="preserve">
     <value>Inserisci i nomi delle tabelle, separati da virgole...</value>
+  </data>
+  <data name="XYHDKHHSYYXXHDKSXBYM" xml:space="preserve">
+    <value>Scorri verso destra per tornare indietro. Scorri verso il basso per aggiornare questa pagina</value>
   </data>
 </root>

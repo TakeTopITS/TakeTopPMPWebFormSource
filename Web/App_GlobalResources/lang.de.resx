@@ -32638,7 +32638,7 @@
     <value>Budget zuweisen</value>
   </data>
   <data name="XYHDKHHSYY" xml:space="preserve">
-    <value>Zum Zurückgehen nach rechts wischen. Zum Aktualisieren nach unten wischen</value>
+    <value>Zum Zurückgehen nach rechts wischen</value>
   </data>
   <data name="ZZSJSJKSHSFZQXH" xml:space="preserve">
     <value>Die Datenbank wird aktualisiert. Dies wird etwa 15 Sekunden dauern. Bitte warten Sie...</value>
@@ -33374,5 +33374,8 @@
   </data>
   <data name="ShuRuShuJiBiaoMingChengCTaoHaoFengKai" xml:space="preserve">
     <value>Geben Sie die Tabellennamen ein, getrennt durch Kommas...</value>
+  </data>
+  <data name="XYHDKHHSYYXXHDKSXBYM" xml:space="preserve">
+    <value>Zum Zurückgehen nach rechts wischen. Zum Aktualisieren nach unten wischen</value>
   </data>
 </root>

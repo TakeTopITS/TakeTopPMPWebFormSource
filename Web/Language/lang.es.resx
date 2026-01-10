@@ -32638,7 +32638,7 @@
     <value>Asignar presupuesto</value>
   </data>
   <data name="XYHDKHHSYY" xml:space="preserve">
-    <value>Desliza hacia la derecha para volver. Desliza hacia abajo para actualizar esta página</value>
+    <value>Desliza hacia la derecha para volver</value>
   </data>
   <data name="ZZSJSJKSHSFZQXH" xml:space="preserve">
     <value>Actualizando la base de datos. Esto tomará unos 15 segundos. Por favor, espere...</value>
@@ -33374,5 +33374,8 @@
   </data>
   <data name="ShuRuShuJiBiaoMingChengCTaoHaoFengKai" xml:space="preserve">
     <value>Entrez les noms de table, séparés par des virgules...</value>
+  </data>
+  <data name="XYHDKHHSYYXXHDKSXBYM" xml:space="preserve">
+    <value>Desliza hacia la derecha para volver. Desliza hacia abajo para actualizar esta página</value>
   </data>
 </root>
