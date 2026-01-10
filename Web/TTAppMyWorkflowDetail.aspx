@@ -15,7 +15,6 @@
     <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />
     <script src="js/jquery-1.7.2.min.js"></script>
     <style type="text/css">
-
         /*  --------------------------------自适应宽度---------------------------*/
         #AboveDiv {
             min-width: 1160px;
@@ -68,7 +67,7 @@
     </script>
 </head>
 <body>
-    <div id="swipeFeedback" class="swipe-feedback">
+    <div id="swipeFeedback" class="swipe-feedback" >
         <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" />
     </div>
     <!-- 滑动反馈层 -->
@@ -125,23 +124,28 @@
 
                     <tr>
                         <td class="formItemBgStyleForAlignLeft" style="border-bottom-style: none">
+                            <div style="display: flex; justify-content: space-between; width: 100%; gap: 5px; flex-wrap: wrap;">
+                                <asp:Button ID="BT_Success" runat="server" CssClass="inpu" Height="30px"
+                                    OnClick="BT_Success_Click"
+                                    Text="<%$ Resources:lang,ChengGongJieAn%>"
+                                    Style="flex: 1; min-width: 0;" />
 
-                            <%-- <div class="equal-buttons">--%>
+                                <asp:Button ID="BT_Active" runat="server" CssClass="inpu" Height="30px"
+                                    OnClientClick="SaveDIYFormData('Active');"
+                                    Text="<%$ Resources:lang,JiHuo%>"
+                                    Style="flex: 1; min-width: 0;" />
 
+                                <asp:Button ID="BT_ConfirmEffectPlanProgress" runat="server" CssClass="inpu"
+                                    Text="<%$ Resources:lang,QueRenJinDu %>"
+                                    OnClick="BT_ConfirmEffectPlanProgress_Click"
+                                    Style="flex: 1; min-width: 0; height: 30px;" />
 
-
-                            <asp:Button ID="BT_Success" runat="server" CssClass="inpu" Height="30px" OnClick="BT_Success_Click" Text="<%$ Resources:lang,ChengGongJieAn%>" />
-
-
-                            <asp:Button ID="BT_Active" runat="server" CssClass="inpu" Height="30px" OnClientClick="SaveDIYFormData('Active');" Text="<%$ Resources:lang,JiHuo%>" />
-
-                            <asp:Button ID="BT_ConfirmEffectPlanProgress" runat="server" CssClass="inpu" Text="<%$ Resources:lang,QueRenJinDu %>" OnClick="BT_ConfirmEffectPlanProgress_Click" />
-
-
-
-                            <asp:Button ID="BT_Delete" runat="server" CssClass="inpu" Height="30px" OnClick="BT_Delete_Click" OnClientClick="return confirmContinue(getDeleteMsgByLangCode(), this, event)" Text="<%$ Resources:lang,ShanChu%>" />
-
-                            <%--</div>--%>
+                                <asp:Button ID="BT_Delete" runat="server" CssClass="inpu" Height="30px"
+                                    OnClick="BT_Delete_Click"
+                                    OnClientClick="return confirmContinue(getDeleteMsgByLangCode(), this, event)"
+                                    Text="<%$ Resources:lang,ShanChu%>"
+                                    Style="flex: 1; min-width: 0;" />
+                            </div>
                         </td>
                     </tr>
                     <tr>

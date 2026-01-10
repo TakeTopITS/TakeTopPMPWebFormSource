@@ -515,14 +515,22 @@
                                                             <h4>
                                                                 <asp:Label ID="Label13" runat="server" Text="<%$ Resources:lang,KaiShi %>"></asp:Label>
                                                             </h4>
-                                                            <asp:TextBox ID="DLC_BeginDate" runat="server" Width="99%" onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})" onFocus="WdatePicker({lang:'auto'})"></asp:TextBox>
+                                                            <asp:TextBox ID="DLC_BeginDate" ReadOnly="false" runat="server" Width="99%">
+                                                            </asp:TextBox>
+                                                            <ajaxToolkit:CalendarExtender Format="yyyy-MM-dd" ID="CalendarExtender1" runat="server"
+                                                                TargetControlID="DLC_BeginDate">
+                                                            </ajaxToolkit:CalendarExtender>
                                                         </div>
 
                                                         <div class="mline">
                                                             <h4>
                                                                 <asp:Label ID="Label14" runat="server" Text="<%$ Resources:lang,JieShu %>"></asp:Label>
                                                             </h4>
-                                                            <asp:TextBox ID="DLC_EndDate" runat="server" Width="99%" onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})" onFocus="WdatePicker({lang:'auto'})"></asp:TextBox>
+                                                            <asp:TextBox ID="DLC_EndDate" ReadOnly="false" runat="server" Width="99%">
+                                                            </asp:TextBox>
+                                                            <ajaxToolkit:CalendarExtender Format="yyyy-MM-dd" ID="CalendarExtender2" runat="server"
+                                                                TargetControlID="DLC_EndDate">
+                                                            </ajaxToolkit:CalendarExtender>
                                                         </div>
 
                                                         <div class="manyspan" style="display: none;">

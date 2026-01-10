@@ -38,6 +38,21 @@ body {
     position: relative !important;
 }
 
+/*  modal popup */
+.modalBackground {
+    background-color: Gray;
+    filter: alpha(opacity=70);
+    opacity: 0.7;
+}
+
+.modalPopup {
+    background-color: #EFF3FB;
+    border-width: 10px;
+    border-style: solid;
+    border-color: Gray;
+    padding: 3px;
+}
+
 /* 3. 允许输入框内的文字选择 */
 input, textarea, select {
     -webkit-user-select: text !important;
@@ -578,6 +593,7 @@ select {
     border: 1px solid #ddd;
     border-radius: 4px;
     box-sizing: border-box;
+    color: #000000 !important; /* 添加黑色字体 */
 }
 
 .mobile-dropdown {
@@ -587,6 +603,7 @@ select {
     border-radius: 4px;
     background-color: white;
     box-sizing: border-box;
+    color: #000000 !important; /* 添加黑色字体 */
 }
 
 /* ===== 表单布局 ===== */
@@ -658,7 +675,7 @@ input#TB_Message {
     border: 1px solid #cccccc !important;
     border-radius: 4px;
     padding: 5px 10px;
-    color: #ffffff !important;
+    color: #000000 !important; /* 改为黑色 */
     -webkit-tap-highlight-color: transparent;
 }
 
@@ -667,7 +684,7 @@ input#TB_Message {
     input#TB_Message:not([disabled]):not([readonly]) {
         background-color: #ffffff !important;
         border: 1px solid #cccccc !important;
-        color: #ffffff !important;
+        color: #000000 !important; /* 改为黑色 */
     }
 
     .npbxs input:disabled,
@@ -678,7 +695,7 @@ input#TB_Message {
     input#TB_Message[disabled] {
         background-color: #f5f5f5 !important;
         border: 1px solid #e0e0e0 !important;
-        color: #ffffff !important;
+        color: #666666 !important; /* 改为深灰色 */
         opacity: 1 !important;
     }
 
@@ -690,7 +707,7 @@ input#TB_Message {
     .npbxs input[type="password"],
     .npbxs input[type="url"],
     .npbxs input[type="search"] {
-        color: #ffffff !important;
+        color: #000000 !important; /* 改为黑色 */
     }
 
     /* 占位符文字颜色 */
@@ -895,64 +912,6 @@ input#TB_Message {
     color: #333;
 }
 
-/* ===== 日期选择器修复 ===== */
-
-/* 2. 修复AjaxControlToolkit日历控件的位置 */
-.ajax__calendar_container {
-    position: fixed !important;
-    top: 50% !important;
-    left: 50% !important;
-    transform: translate(-50%, -50%) !important;
-    z-index: 10002 !important;
-    width: 300px !important;
-    max-width: 90vw !important;
-    background: white !important;
-    border: 1px solid #ddd !important;
-    border-radius: 10px !important;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.2) !important;
-}
-
-/* 4. 修复日期输入框的父容器 */
-.formItemBgStyleForAlignLeft {
-    position: relative !important;
-}
-
-/* 6. 修复日期图标的位置 */
-.date-icon {
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #999;
-    pointer-events: none;
-    z-index: 1;
-}
-
-/* 7. 确保日期输入框有足够的右侧padding容纳图标 */
-.date-input {
-    padding-right: 40px !important;
-    position: relative;
-    z-index: 2;
-}
-
-/* 8. 修复弹窗内的日期输入框 */
-.layui-layer-content .date-input {
-    padding-right: 40px !important;
-}
-
-/* 9. 修复日历表格布局 */
-.ajax__calendar {
-    width: 100% !important;
-    table-layout: fixed !important;
-}
-
-.ajax__calendar_day {
-    width: 14.28% !important;
-    height: 35px !important;
-    line-height: 35px !important;
-    text-align: center !important;
-}
-
 /* 10. 修复弹窗遮罩层 */
 .layui-layer-shade {
     z-index: 9998 !important;
@@ -967,6 +926,7 @@ input#TB_Message {
     margin: 8px 0;
     background: white;
     -webkit-appearance: none;
+    color: #000000 !important; /* 添加黑色字体 */
 }
 
 .required-star {
@@ -1076,7 +1036,7 @@ html {
         background-image: none !important;
         -webkit-background-clip: padding-box !important;
         background-clip: padding-box !important;
-        color: #ffffff !important;
+        color: #000000 !important; /* 改为黑色 */
     }
 
         .npbxs input:not([disabled]):not([readonly]),
@@ -1085,7 +1045,7 @@ html {
             background-color: #ffffff !important;
             -webkit-background-clip: padding-box !important;
             background-clip: padding-box !important;
-            color: #ffffff !important;
+            color: #000000 !important; /* 改为黑色 */
         }
 
         .npbxs input:disabled,
@@ -1094,7 +1054,7 @@ html {
             background-color: #f5f5f5 !important;
             -webkit-background-clip: padding-box !important;
             background-clip: padding-box !important;
-            color: #ffffff !important;
+            color: #666666 !important; /* 改为深灰色 */
         }
 
     /* 弹窗优化 */
@@ -1183,10 +1143,6 @@ html {
     .DDList, .inpuLong {
         width: 100% !important;
         box-sizing: border-box;
-    }
-
-    .ajax__calendar_container {
-        width: 280px !important;
     }
 
     /* 修复日期输入框在移动端的显示 */
@@ -1487,4 +1443,52 @@ td.d-none {
 html body [style*="display:none"],
 html body [style*="display: none"] {
     display: none !important;
+}
+
+/* ===== 修复所有输入框字体颜色为黑色 ===== */
+/* 修复基础输入框颜色 */
+input,
+textarea,
+select {
+    color: #000000 !important;
+}
+
+/* 修复特定容器的输入框颜色 */
+.npbxs input,
+.mline input,
+.mobile-input,
+.mobile-dropdown,
+.mobile-select {
+    color: #000000 !important;
+}
+
+/* 修复日期输入框颜色 */
+input[id*="Date"],
+input[id*="DLC_"],
+.date-input {
+    color: #000000 !important;
+    background-color: #ffffff !important;
+}
+
+/* 修复禁用状态的颜色 */
+input:disabled,
+textarea:disabled,
+select:disabled {
+    color: #666666 !important;
+    background-color: #f5f5f5 !important;
+}
+
+/* 修复只读状态的颜色 */
+input[readonly],
+textarea[readonly] {
+    color: #000000 !important;
+    background-color: #f8f9fa !important;
+}
+
+/* 修复聚焦状态 */
+input:focus,
+textarea:focus,
+select:focus {
+    color: #000000 !important;
+    background-color: #ffffff !important;
 }

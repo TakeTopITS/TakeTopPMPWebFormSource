@@ -23,13 +23,6 @@
             min-width: 1160px;
             width: expression (document.body.clientWidth <= 1160? "1160px": "auto"));
         }
-
-
-
-        select {
-            height: 40px;
-            border: 1px solid #ccc;
-        }
     </style>
 
 
@@ -171,7 +164,7 @@
     <asp:Literal ID="LIT_AttachUserWFStepJSCode" runat="server"></asp:Literal>
 </head>
 <body onload="resizeContent()" onresize="resizeContent()">
-    <div id="swipeFeedback" class="swipe-feedback">
+    <div id="swipeFeedback" class="swipe-feedback" >
         <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" />
     </div>
     <!-- »¬¶¯·´À¡²ã -->
@@ -274,7 +267,7 @@
                     <table cellpadding="0" cellspacing="0" class="bian" width="100%">
 
                         <tr>
-                            <td colspan="7" style="padding-top: 4px;">
+                            <td  style="padding-top: 4px;padding-left:2px;">
 
                                 <asp:TextBox ID="TB_Content" onchange="reviewCommentTextChange()" TextMode="MultiLine" runat="server" Style="border: solid 1px grey;" Width="99%" Height="30"></asp:TextBox>
 
