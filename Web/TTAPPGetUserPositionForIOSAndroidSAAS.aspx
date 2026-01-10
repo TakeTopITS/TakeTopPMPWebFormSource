@@ -11,11 +11,9 @@
     <title></title>
     <link href="css/app.css" rel="stylesheet" type="text/css">
     <link id="mainCss" href="css/bluelightmain.css" rel="stylesheet" type="text/css" />
-      <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />
+    <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />
 
     <style type="text/css">
-     
-
         #container {
             height: auto !important;
             height: 530px;
@@ -34,7 +32,8 @@
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="js/allAHandler.js"></script>
     <script type="text/javascript" language="javascript">
-        $(function () { initSwipeBack();// 初始化滑动返回功能  initSwipeBack();// 初始化滑动返回功能
+        $(function () {
+            initSwipeBack();// 初始化滑动返回功能  initSwipeBack();// 初始化滑动返回功能
 
         });
 
@@ -42,7 +41,11 @@
 
 
 </head>
-<body><div id="swipeFeedback" class="swipe-feedback"><asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" /></div> <!-- 滑动反馈层 -->
+<body>
+    <div id="swipeFeedback" class="swipe-feedback">
+        <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" />
+    </div>
+    <!-- 滑动反馈层 -->
     <form id="form1" runat="server">
         <table id="AboveTable" cellpadding="0" width="100%" cellspacing="0" class="bian">
             <tr>
@@ -82,14 +85,14 @@
                     </table>
                 </td>
             </tr>
-          <tr>
+            <tr>
                 <td>
                     <table width="99%">
                         <tr>
                             <td style="width: 50%; text-align: left; vertical-align: middle;">
                                 <asp:RadioButtonList ID="RBL_ShiftType" runat="server" TextAlign="Left" CellPadding="10" CellSpacing="10">
                                 </asp:RadioButtonList></td>
-                          <td style="vertical-align: middle; text-align: center;" class="round">
+                            <td style="vertical-align: middle; text-align: center;" class="round">
                                 <br />
                                 <br />
                                 <asp:Button ID="BT_Attendance" runat="server" CssClass="inpuLong" Style="border: 1px solid #dedede; border-radius: 10%;" Width="80%" Height="30px" OnClick="BT_Attendance_Click" Text="<%$ Resources:lang,DaKaBingFanHuiZhuYe%>" />
@@ -101,30 +104,29 @@
                     </table>
 
                 </td>
-            <tr>
-                <td>
+                <tr>
+                    <td>
+                        <table width="99%">
+                            <tr>
+                                <td alight="right" style="vertical-align: middle;">
+                                    <asp:Label ID="Label1" runat="server" Text="<%$ Resources:lang,Jing%>"></asp:Label>:</td>
+                                <td>
+                                    <input type="text" id="LNG_value" runat="server" style="width: 100px;" readonly></input>
+                                </td>
+                                <td style="vertical-align: middle;">
+                                    <asp:Label ID="Label2" runat="server" Text="<%$ Resources:lang,Wei%>"></asp:Label>:</td>
+                                <td>
+                                    <input type="text" id="LAT_value" runat="server" style="width: 100px;" readonly></input>
+                                </td>
 
-                    <table width="99%">
-                        <tr>
-                            <td alight="right">
-                                <asp:Label ID="Label1" runat="server" Text="<%$ Resources:lang,Jing%>"></asp:Label>:</td>
-                            <td>
-                                <input type="text" id="LNG_value" runat="server" style="width: 100px;" readonly></input>
-                            </td>
-                            <td>
-                                <asp:Label ID="Label2" runat="server" Text="<%$ Resources:lang,Wei%>"></asp:Label>:</td>
-                            <td>
-                                <input type="text" id="LAT_value" runat="server" style="width: 100px;" readonly></input>
-                            </td>
-
-                        </tr>
-                    </table>
-                </td>
-            </tr>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
             <tr>
                 <td>
                     <div id="status" style="text-align: center">
-                        <a  href="javascript:window.history.go(-1)" target="_top" onclick="javascript:document.getElementById('IMG_Waiting').style.display = 'block';"></a>
+                        <a href="javascript:window.history.go(-1)" target="_top" onclick="javascript:document.getElementById('IMG_Waiting').style.display = 'block';"></a>
                     </div>
                     <div id="container" style="width: 99%; border: 1px solid gray; margin: 5px auto"></div>
                 </td>
@@ -150,15 +152,15 @@
         wx.config({
             debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
             appId: '<%=signModel.appId %>', // 必填，公众号的唯一标识
-            timestamp: '<%=signModel.time %>', // 必填，生成签名的时间戳(随便填写)
-            nonceStr: '<%=signModel.randstr %>', // 必填，生成签名的随机串(随便填写)
-            signature: '<%=signModel.signstr %>', // 必填，签名，见附录1
+                timestamp: '<%=signModel.time %>', // 必填，生成签名的时间戳(随便填写)
+                nonceStr: '<%=signModel.randstr %>', // 必填，生成签名的随机串(随便填写)
+                signature: '<%=signModel.signstr %>', // 必填，签名，见附录1
 
-            jsApiList: [
-                'getLocation',
-                'openLocation'
-            ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
-        });
+                jsApiList: [
+                    'getLocation',
+                    'openLocation'
+                ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+            });
 
 
         wx.ready(function () {

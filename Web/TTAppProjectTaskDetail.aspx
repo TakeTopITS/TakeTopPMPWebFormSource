@@ -217,7 +217,7 @@
         }
     </script>
 </head>
-<body class="napbac">
+<body class="napbac" data-disable-pullrefresh="true">
     <div id="swipeFeedback" class="swipe-feedback">
         <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" />
     </div>
@@ -589,7 +589,7 @@
                                                                             <asp:Label ID="Label13" runat="server" Text="<%$ Resources:lang,KaiShi %>"></asp:Label>
                                                                         </h4>
 
-                                                                        <asp:TextBox ID="DLC_BeginDate" ReadOnly="false" runat="server" Width="99%"  >
+                                                                        <asp:TextBox ID="DLC_BeginDate" ReadOnly="false" runat="server" Width="99%">
                                                                         </asp:TextBox>
                                                                         <ajaxToolkit:CalendarExtender Format="yyyy-MM-dd" ID="CalendarExtender1" runat="server"
                                                                             TargetControlID="DLC_BeginDate">
@@ -601,7 +601,7 @@
                                                                             <asp:Label ID="Label47" runat="server" Text="<%$ Resources:lang,JieShu %>"></asp:Label>
 
                                                                         </h4>
-                                                                        <asp:TextBox ID="DLC_EndDate" ReadOnly="false" runat="server" Width="99%" >
+                                                                        <asp:TextBox ID="DLC_EndDate" ReadOnly="false" runat="server" Width="99%">
                                                                         </asp:TextBox>
                                                                         <ajaxToolkit:CalendarExtender Format="yyyy-MM-dd" ID="CalendarExtender2" runat="server"
                                                                             TargetControlID="DLC_EndDate">
@@ -627,9 +627,10 @@
                                                                     </div>
                                                                     <br />
                                                                     <div class="equal-buttons">
+                                                                        <asp:Button ID="BT_Assign" runat="server" CssClass="inpu" OnClick="BT_Assign_Click" Text="<%$ Resources:lang,FenPai %>" />
                                                                         <asp:Button ID="BT_UpdateAssign" runat="server" CssClass="inpu" Enabled="False" OnClick="BT_UpdateAssign_Click" Text="<%$ Resources:lang,BaoCun %>" />
                                                                         <asp:Button ID="BT_DeleteAssign" runat="server" CssClass="inpu" Enabled="False" OnClick="BT_DeleteAssign_Click" OnClientClick="return confirmContinue(getDeleteMsgByLangCode(), this, event)" Text="<%$ Resources:lang,ShanChu %>" />
-                                                                        <asp:Button ID="BT_Assign" runat="server" CssClass="inpu" OnClick="BT_Assign_Click" Text="<%$ Resources:lang,FenPai %>" />
+
                                                                     </div>
 
 

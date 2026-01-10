@@ -25,8 +25,6 @@
         }
     </style>
 
-
-
     <script type="text/javascript">
 
         var way;
@@ -163,10 +161,11 @@
 
     <asp:Literal ID="LIT_AttachUserWFStepJSCode" runat="server"></asp:Literal>
 </head>
-<body onload="resizeContent()" onresize="resizeContent()">
-    <div id="swipeFeedback" class="swipe-feedback" >
+<body data-disable-swipe="true" data-disable-pullrefresh="true">
+    
+    <%-- <div id="swipeFeedback" class="swipe-feedback">
         <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" />
-    </div>
+    </div>--%>
     <!-- »¬¶¯·´À¡²ã -->
 
     <form id="form1" runat="server">
@@ -254,7 +253,7 @@
                                         <td style="text-align: right; vertical-align: middle;">
                                             <asp:Label ID="Label78" runat="server" Text="<%$ Resources:lang,QianMingRiQi %>" Style="vertical-align: middle;"></asp:Label>
                                         </td>
-                                        <td style="width: 100px; text-align: left; vertical-align: middle;">
+                                        <td style="width: 110px; text-align: left; vertical-align: middle;">
                                             <asp:TextBox ID="DLC_SignDate" Width="99%" runat="server" onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})" onFocus="WdatePicker({lang:'auto'})" Style="vertical-align: middle;"></asp:TextBox>
                                             <%--  <cc1:CalendarExtender ID="CalendarExtender2" runat="server" Enabled="True" Format="yyyy-MM-dd" TargetControlID="DLC_SignDate"></cc1:CalendarExtender>--%>
                                         </td>
@@ -267,7 +266,7 @@
                     <table cellpadding="0" cellspacing="0" class="bian" width="100%">
 
                         <tr>
-                            <td  style="padding-top: 4px;padding-left:2px;">
+                            <td colspan="7" style="padding-top: 4px;">
 
                                 <asp:TextBox ID="TB_Content" onchange="reviewCommentTextChange()" TextMode="MultiLine" runat="server" Style="border: solid 1px grey;" Width="99%" Height="30"></asp:TextBox>
 

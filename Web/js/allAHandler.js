@@ -1,5 +1,4 @@
-﻿
-document.write("<script language=javascript src='js/layer/layer/layer.js'></script>");
+﻿document.write("<script language=javascript src='js/layer/layer/layer.js'></script>");
 document.write("<script language=javascript src='js/popwindow.js'></script>");
 document.write("<script language=javascript src='js/allLanguageHandler.js'></script>");
 document.write("<script language=javascript src='js/AllHandlerForDialog.js'></script>");
@@ -1207,6 +1206,13 @@ function hideIframesForNoDataAnalystChart(callback) {
 
 //------------------APP端右滑返回主页功能开始--------------------------
 function initSwipeBack() {
+    // 检查是否禁用滑动返回功能
+    var disableSwipe = document.body.getAttribute('data-disable-swipe') === 'true';
+    if (disableSwipe) {
+        console.log('向右滑动返回功能已禁用');
+        return; // 直接返回，不初始化滑动功能
+    }
+
     var startX = 0;
     var startY = 0;
     var threshold = 100; // 滑动距离阈值
@@ -1287,6 +1293,13 @@ function triggerBackLink() {
 
 //------------------APP端下拉刷新功能开始--------------------------
 function initPullToRefresh() {
+    // 检查是否禁用下拉刷新功能
+    var disablePullRefresh = document.body.getAttribute('data-disable-pullrefresh') === 'true';
+    if (disablePullRefresh) {
+        console.log('下拉刷新功能已禁用');
+        return; // 直接返回，不初始化下拉刷新
+    }
+
     var startY = 0;
     var currentY = 0;
     var distance = 0;
@@ -1392,7 +1405,8 @@ function initPullToRefresh() {
 
             // 只有下拉才处理
             if (distance > 0) {
-                e.preventDefault(); // 阻止默认滚动
+                // 不要阻止默认滚动，只在真正需要时才阻止
+                // e.preventDefault(); // 注释掉这行
 
                 // 限制最大下拉距离
                 var pullDistance = Math.min(distance, maxPull);
@@ -1588,6 +1602,13 @@ function initPullToRefresh() {
 
 // 修改后的右滑返回功能（提示层在底部）
 function initSwipeBack() {
+    // 检查是否禁用滑动返回功能
+    var disableSwipe = document.body.getAttribute('data-disable-swipe') === 'true';
+    if (disableSwipe) {
+        console.log('向右滑动返回功能已禁用');
+        return; // 直接返回，不初始化滑动功能
+    }
+
     var startX = 0;
     var startY = 0;
     var threshold = 100;
@@ -1682,6 +1703,9 @@ function initSwipeBack() {
         if (distX > 30 && distY < restraint && !feedbackShown) {
             showSwipeFeedback();
         }
+
+        // 不要阻止默认的滚动行为
+        // 允许页面正常滚动
     });
 
     // 触摸结束事件
@@ -1709,13 +1733,17 @@ function initSwipeBack() {
         feedbackShown = true;
     });
 
-    // 新增：初始化下拉刷新
-    setTimeout(function () {
-        initPullToRefresh();
-    }, 500);
+    // 新增：初始化下拉刷新（但先检查是否禁用）
+    var disablePullRefresh = document.body.getAttribute('data-disable-pullrefresh') === 'true';
+    if (!disablePullRefresh) {
+        setTimeout(function () {
+            initPullToRefresh();
+        }, 500);
+    } else {
+        console.log('下拉刷新功能已禁用');
+    }
 }
 
-// 触发返回链接
 function triggerBackLink() {
     console.log('执行返回主页');
     var waitingImg = document.getElementById('IMG_Waiting');

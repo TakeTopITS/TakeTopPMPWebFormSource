@@ -177,7 +177,7 @@
         }
     </script>
 </head>
-<body class="napbac">
+<body class="napbac" data-disable-pullrefresh="true">
     <div id="swipeFeedback" class="swipe-feedback">
         <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" />
     </div>

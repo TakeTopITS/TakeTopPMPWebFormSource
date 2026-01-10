@@ -4,14 +4,14 @@ html, body {
     -webkit-text-size-adjust: 100% !important;
     text-size-adjust: 100% !important;
     -ms-text-size-adjust: 100% !important;
-    touch-action: manipulation;
+    touch-action: pan-y pinch-zoom;
     max-zoom: 1 !important;
     min-zoom: 1 !important;
     zoom: 1 !important;
     width: 100% !important;
     overflow-x: auto !important;
     overflow-y: auto !important;
-    position: relative !important; /* 改为relative */
+    position: relative !important;
     top: auto !important;
     left: auto !important;
     right: auto !important;
@@ -34,11 +34,11 @@ body {
     -webkit-user-select: none;
     user-select: none;
     overflow-x: auto !important;
-    overflow-y: auto !important; /* 改为auto允许滚动 */
+    overflow-y: auto !important;
     position: relative !important;
 }
 
-/*  modal popup */
+/* modal popup */
 .modalBackground {
     background-color: Gray;
     filter: alpha(opacity=70);
@@ -57,11 +57,11 @@ body {
 input, textarea, select {
     -webkit-user-select: text !important;
     user-select: text !important;
-    font-size: 16px !important; /* 关键：iOS在font-size小于16px时会自动缩放 */
+    font-size: 16px !important;
     -webkit-appearance: none !important;
     appearance: none !important;
     border-radius: 0 !important;
-    min-height: 44px !important; /* 最小触摸目标尺寸 */
+    min-height: 44px !important;
     height: 40px;
 }
 
@@ -90,7 +90,7 @@ input, textarea, select {
     -webkit-text-size-adjust: 100% !important;
     text-size-adjust: 100% !important;
     -ms-text-size-adjust: 100% !important;
-    touch-action: manipulation !important;
+    touch-action: pan-y pinch-zoom !important;
     max-zoom: 1 !important;
     min-zoom: 1 !important;
 }
@@ -105,8 +105,9 @@ input, textarea, select {
     }
 
 /* 7. 禁用所有元素的缩放 */
-* {
-    touch-action: pan-y !important;
+
+{
+    touch-action: pan-y pinch-zoom !important;
     -webkit-tap-highlight-color: transparent !important;
     max-zoom: 1 !important;
     min-zoom: 1 !important;
@@ -136,29 +137,30 @@ form,
 .npbxs {
     -webkit-text-size-adjust: 100% !important;
     text-size-adjust: 100% !important;
-    touch-action: manipulation !important;
+    touch-action: pan-y pinch-zoom !important;
     max-zoom: 1 !important;
     min-zoom: 1 !important;
 }
 
-/* 10. iOS Safari特殊处理 */
+/* 10. iOS Safari特殊处理 /
 @supports (-webkit-touch-callout: none) {
-    html, body {
-        -webkit-text-size-adjust: none !important;
-    }
-    /* iOS Safari输入框防缩放 */
-    input, textarea, select {
-        font-size: 16px !important;
-        -webkit-appearance: none !important;
-        -webkit-transform: translateZ(0) !important;
-        transform: translateZ(0) !important;
-    }
-    /* CKEditor在iOS上的特殊处理 */
-    .cke_contents iframe {
-        -webkit-overflow-scrolling: touch !important;
-        -webkit-transform: translateZ(0) !important;
-        transform: translateZ(0) !important;
-    }
+html, body {
+-webkit-text-size-adjust: none !important;
+}
+/ iOS Safari输入框防缩放 */
+input, textarea, select {
+    font-size: 16px !important;
+    -webkit-appearance: none !important;
+    -webkit-transform: translateZ(0) !important;
+    transform: translateZ(0) !important;
+}
+/* CKEditor在iOS上的特殊处理 */
+.cke_contents iframe {
+    -webkit-overflow-scrolling: touch !important;
+    -webkit-transform: translateZ(0) !important;
+    transform: translateZ(0) !important;
+}
+
 }
 
 /* ===== 修复滚动问题 ===== */
@@ -168,7 +170,7 @@ form,
     max-height: calc(100vh - 100px) !important;
     overflow-y: auto !important;
     -webkit-overflow-scrolling: touch !important;
-    overflow-x: hidden !important;
+    overflow-x: auto !important;
     padding-bottom: 20px;
 }
 
@@ -476,7 +478,6 @@ form {
         line-height: 22px;
     }
 
-
 .header-back {
     display: flex;
     align-items: center;
@@ -593,7 +594,7 @@ select {
     border: 1px solid #ddd;
     border-radius: 4px;
     box-sizing: border-box;
-    color: #000000 !important; /* 添加黑色字体 */
+    color: #000000 !important;
 }
 
 .mobile-dropdown {
@@ -603,7 +604,7 @@ select {
     border-radius: 4px;
     background-color: white;
     box-sizing: border-box;
-    color: #000000 !important; /* 添加黑色字体 */
+    color: #000000 !important;
 }
 
 /* ===== 表单布局 ===== */
@@ -675,7 +676,7 @@ input#TB_Message {
     border: 1px solid #cccccc !important;
     border-radius: 4px;
     padding: 5px 10px;
-    color: #000000 !important; /* 改为黑色 */
+    color: #000000 !important;
     -webkit-tap-highlight-color: transparent;
 }
 
@@ -684,7 +685,7 @@ input#TB_Message {
     input#TB_Message:not([disabled]):not([readonly]) {
         background-color: #ffffff !important;
         border: 1px solid #cccccc !important;
-        color: #000000 !important; /* 改为黑色 */
+        color: #000000 !important;
     }
 
     .npbxs input:disabled,
@@ -695,7 +696,7 @@ input#TB_Message {
     input#TB_Message[disabled] {
         background-color: #f5f5f5 !important;
         border: 1px solid #e0e0e0 !important;
-        color: #666666 !important; /* 改为深灰色 */
+        color: #666666 !important;
         opacity: 1 !important;
     }
 
@@ -707,7 +708,7 @@ input#TB_Message {
     .npbxs input[type="password"],
     .npbxs input[type="url"],
     .npbxs input[type="search"] {
-        color: #000000 !important; /* 改为黑色 */
+        color: #000000 !important;
     }
 
     /* 占位符文字颜色 */
@@ -877,13 +878,13 @@ input#TB_Message {
     max-width: 98%;
     left: 0 !important;
     right: 0 !important;
-    margin: 20px auto !important; /* 改为auto margin居中 */
+    margin: 20px auto !important;
     border-radius: 10px;
     max-height: 600px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-    transform: none !important; /* 移除transform */
+    transform: none !important;
     z-index: 9999 !important;
-    position: fixed !important; /* 改为fixed定位 */
+    position: fixed !important;
 }
 
 /* 弹窗内容区域优化 */
@@ -926,7 +927,7 @@ input#TB_Message {
     margin: 8px 0;
     background: white;
     -webkit-appearance: none;
-    color: #000000 !important; /* 添加黑色字体 */
+    color: #000000 !important;
 }
 
 .required-star {
@@ -1008,18 +1009,20 @@ html {
     html, body {
         -webkit-text-size-adjust: 100% !important;
         text-size-adjust: 100% !important;
-        touch-action: manipulation !important;
+        touch-action: pan-y pinch-zoom !important;
         overscroll-behavior: none !important;
         overflow-y: auto !important;
-        overflow-x: hidden !important;
+        overflow-x: auto !important;
     }
 
+    text
     /* 内容区域允许滚动但不缩放 */
     .napbox,
     .npbx {
         overflow-y: visible !important;
         -webkit-overflow-scrolling: touch !important;
         max-height: none !important;
+        overflow-x: visible !important;
     }
 
     /* CKEditor在移动端的特殊处理 */
@@ -1036,7 +1039,7 @@ html {
         background-image: none !important;
         -webkit-background-clip: padding-box !important;
         background-clip: padding-box !important;
-        color: #000000 !important; /* 改为黑色 */
+        color: #000000 !important;
     }
 
         .npbxs input:not([disabled]):not([readonly]),
@@ -1045,7 +1048,7 @@ html {
             background-color: #ffffff !important;
             -webkit-background-clip: padding-box !important;
             background-clip: padding-box !important;
-            color: #000000 !important; /* 改为黑色 */
+            color: #000000 !important;
         }
 
         .npbxs input:disabled,
@@ -1054,7 +1057,7 @@ html {
             background-color: #f5f5f5 !important;
             -webkit-background-clip: padding-box !important;
             background-clip: padding-box !important;
-            color: #666666 !important; /* 改为深灰色 */
+            color: #666666 !important;
         }
 
     /* 弹窗优化 */
@@ -1149,7 +1152,7 @@ html {
     .date-input {
         font-size: 16px;
         padding: 12px 15px;
-        min-height: 44px; /* 确保触摸区域足够大 */
+        min-height: 44px;
     }
 
     /* 修复移动端滚动 */
@@ -1185,17 +1188,13 @@ html {
     color: white !important;
     border: 2px solid #1976D2 !important;
     border-radius: 6px !important;
-    /* 精确2/3：8px * 0.667 = 5.33px，四舍五入为5px */
-    padding: 5px 12px !important; /* 16px * 0.667 = 10.67px，四舍五入为11px或12px */
+    padding: 5px 12px !important;
     font-weight: bold !important;
     cursor: pointer !important;
     transition: all 0.3s ease !important;
     margin-left: 10px !important;
     height: auto;
     line-height: 1.2;
-    /* 或者使用transform缩放 */
-    /* transform: scale(0.67); */
-    /* transform-origin: left center; */
 }
 
     /* 悬停效果 */
@@ -1263,12 +1262,13 @@ input[type="file"] {
     border: 1px solid #ccc !important;
 }
 
-/* 12. 针对Android设备的优化 */
+/* 12. 针对Android设备的优化 /
 @supports (-webkit-overflow-scrolling: touch) {
-    /* 现代移动浏览器 */
-    html, body {
-        -webkit-text-size-adjust: 100% !important;
-    }
+/ 现代移动浏览器 */
+html, body {
+    -webkit-text-size-adjust: 100% !important;
+}
+
 }
 
 /* 13. 极端情况下使用的绝对定位方法 */
@@ -1278,7 +1278,7 @@ input[type="file"] {
     left: 0 !important;
     width: 100% !important;
     height: 100% !important;
-    overflow: auto !important; /* 改为auto */
+    overflow: auto !important;
     -webkit-text-size-adjust: 100% !important;
     text-size-adjust: 100% !important;
 }
@@ -1302,10 +1302,10 @@ textarea::placeholder {
 .fixed-viewport {
     width: 100vw !important;
     height: 100vh !important;
-    position: relative !important; /* 改为relative */
+    position: relative !important;
     top: auto !important;
     left: auto !important;
-    overflow: auto !important; /* 改为auto */
+    overflow: auto !important;
 }
 
 /* 17. 表单元素容器 */
@@ -1313,7 +1313,7 @@ textarea::placeholder {
 .editor-container {
     -webkit-text-size-adjust: 100% !important;
     text-size-adjust: 100% !important;
-    touch-action: pan-y !important;
+    touch-action: pan-y pinch-zoom !important;
     overflow: visible !important;
 }
 
@@ -1356,10 +1356,10 @@ iframe.cke_wysiwyg_frame {
     }
 
 /* ===== 修复display:none被覆盖的问题 ===== */
-/* 1. 保护所有的display:none状态 */
-[style*="display:none"],
+/* 1. 保护所有的display:none状态 /
+[style="display:none"],
 [style*="display: none"] {
-    display: none !important;
+display: none !important;
 }
 
 /* 2. 保护常见的隐藏类 */
@@ -1374,17 +1374,17 @@ iframe.cke_wysiwyg_frame {
     display: none !important;
 }
 
-/* 3. 确保visibility隐藏也有效 */
+/* 3. 确保visibility隐藏也有效 /
 .invisible,
 .visually-hidden,
-[style*="visibility:hidden"],
+[style="visibility:hidden"],
 [style*="visibility: hidden"] {
-    visibility: hidden !important;
+visibility: hidden !important;
 }
 
 /* 4. 防止其他CSS规则覆盖隐藏状态 */
-body *[style*="display:none"],
-body *[style*="display: none"] {
+body [style="display:none"],
+body [style="display: none"] {
     display: none !important;
 }
 
@@ -1394,19 +1394,19 @@ template {
     display: none !important;
 }
 
-/* 6. 修复表格行和单元格的隐藏状态 */
-tr[style*="display:none"],
+/* 6. 修复表格行和单元格的隐藏状态 /
+tr[style="display:none"],
 tr[style*="display: none"],
 tr.hidden,
 tr.d-none {
-    display: none !important;
+display: none !important;
 }
 
-td[style*="display:none"],
-td[style*="display: none"],
+td[style="display:none"],
+td[style="display: none"],
 td.hidden,
 td.d-none {
-    display: none !important;
+display: none !important;
 }
 
 /* 7. JavaScript控制的隐藏元素 */
@@ -1433,16 +1433,16 @@ td.d-none {
     display: none !important;
 }
 
-/* 11. 确保隐藏元素不占用空间 */
-[style*="display:none"] *,
-[style*="display: none"] * {
-    display: none !important;
+/* 11. 确保隐藏元素不占用空间 /
+[style="display:none"] ,
+[style="display: none"] * {
+display: none !important;
 }
 
-/* 12. 额外的保护层，确保最高优先级 */
-html body [style*="display:none"],
+/* 12. 额外的保护层，确保最高优先级 /
+html body [style="display:none"],
 html body [style*="display: none"] {
-    display: none !important;
+display: none !important;
 }
 
 /* ===== 修复所有输入框字体颜色为黑色 ===== */
@@ -1462,12 +1462,12 @@ select {
     color: #000000 !important;
 }
 
-/* 修复日期输入框颜色 */
-input[id*="Date"],
+/* 修复日期输入框颜色 /
+input[id="Date"],
 input[id*="DLC_"],
 .date-input {
-    color: #000000 !important;
-    background-color: #ffffff !important;
+color: #000000 !important;
+background-color: #ffffff !important;
 }
 
 /* 修复禁用状态的颜色 */

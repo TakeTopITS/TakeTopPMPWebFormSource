@@ -106,20 +106,18 @@
                 </td>
                 <tr>
                     <td>
-
                         <table width="99%">
                             <tr>
-                                <td alight="right">
+                                <td alight="right" style="vertical-align:middle;">
                                     <asp:Label ID="Label1" runat="server" Text="<%$ Resources:lang,Jing%>"></asp:Label>:</td>
                                 <td>
                                     <input type="text" id="LNG_value" runat="server" style="width: 100px;" readonly></input>
                                 </td>
-                                <td>
+                                <td  style="vertical-align:middle;">
                                     <asp:Label ID="Label2" runat="server" Text="<%$ Resources:lang,Wei%>"></asp:Label>:</td>
                                 <td>
                                     <input type="text" id="LAT_value" runat="server" style="width: 100px;" readonly></input>
                                 </td>
-
                             </tr>
                         </table>
                     </td>
