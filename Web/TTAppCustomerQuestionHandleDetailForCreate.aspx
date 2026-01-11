@@ -500,25 +500,23 @@
                                         </div>
                                     </div>
                                     <div style="margin-bottom: 15px;">
-
+                                       
                                         <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional">
                                             <ContentTemplate>
-                                                <div class="nmar">
-                                                    <table>
-                                                        <tr>
-                                                            <td>
-                                                                <Upload:InputFile ID="AttachFile" runat="server" name="photo" Accept="image/*;capture=camera" Width="160px" />
-                                                                <input type="hidden" val="" id="imgData" runat="server" /></td>
-                                                            <td>
-                                                                <input type="button" id="BtnUP" onclick="upload()" value="Upload" />
-                                                                <img id="IMG_Uploading" src="Images/Processing.gif" alt="请稍候，处理中..." style="display: none;" />
-                                                            </td>
-                                                        </tr>
-                                                    </table>
-                                                    <br />
-                                                    <br />
+                                                <div style="display: flex; gap: 10px; align-items: center;">
+                                                    <div>
+                                                        <Upload:InputFile ID="AttachFile" runat="server" name="photo" Accept="image/*;capture=camera" Width="160px" />
+                                                        <input type="hidden" val="" id="imgData" runat="server" />
+                                                    </div>
+                                                    <div class="upload-button">
+                                                        <asp:Button ID="BtnUP" runat="server" OnClick="BtnUP_Click" OnClientClick="javascript:document.getElementById('IMG_Uploading').style.display = 'block';" Text="<%$ Resources:lang,ShiYong%>" CssClass="mobile-button" />
+                                                        <img id="IMG_Uploading" src="Images/Processing.gif" alt="请稍候，处理中..." style="display: none;" />
+                                                    </div>
                                                 </div>
                                             </ContentTemplate>
+                                            <Triggers>
+                                                <asp:PostBackTrigger ControlID="BtnUP" />
+                                            </Triggers>
                                         </asp:UpdatePanel>
                                     </div>
 

@@ -18,45 +18,9 @@
     <link id="mainCss" href="css/bluelightmain.css" rel="stylesheet" type="text/css" />
     <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />
 
-   <script src="js/exif.js" type="text/javascript"></script>
- <style type="text/css">
-     /* 修复日期选择器样式 */
-     .ajax__calendar_container {
-         z-index: 10000 !important;
-         position: fixed !important;
-     }
-
-     /* 确保弹窗内的日历正确显示 */
-     #popDetailWindow .ajax__calendar_container {
-         position: absolute !important;
-     }
-
-     /* 调整弹窗内的输入框布局 */
-     .popup-input-group {
-         position: relative;
-         width: 100%;
-     }
-
-         .popup-input-group input[type="text"] {
-             width: 100%;
-             box-sizing: border-box;
-         }
-
-     /* 日历按钮样式 */
-     .calendar-button {
-         position: absolute;
-         right: 5px;
-         top: 50%;
-         transform: translateY(-50%);
-         background: url('ImagesSkin/calendar.png') no-repeat center;
-         background-size: 16px 16px;
-         width: 20px;
-         height: 20px;
-         border: none;
-         cursor: pointer;
-         z-index: 2;
-     }
- </style>
+    <style type="text/css">
+       
+    </style>
 
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="js/allAHandler.js"></script>
