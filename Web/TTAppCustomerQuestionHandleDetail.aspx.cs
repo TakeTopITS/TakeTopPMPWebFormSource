@@ -398,7 +398,8 @@ public partial class TTAppCustomerQuestionHandleDetail : System.Web.UI.Page
             ClientScript.RegisterStartupScript(this.GetType(), "", "<script>showAlertAtMouse('" + LanguageHandle.GetWord("ZZZYSCDWJ") + "');</script>");
         }
 
-        ScriptManager.RegisterStartupScript(UpdatePanel1, GetType(), "pop", "popShow('popDetailWindow','true') ", true);
+        // 上传完成后重新打开弹窗
+        ScriptManager.RegisterStartupScript(UpdatePanel1, GetType(), "ReopenPopup",  "setTimeout(function() {popShow('popDetailWindow','true'); }, 100);", true);
     }
 
 
