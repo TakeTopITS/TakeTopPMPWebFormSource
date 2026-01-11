@@ -177,9 +177,9 @@
         }
     </script>
 </head>
-<body>
+<body class="napbac" data-disable-pullrefresh="true">
     <div id="swipeFeedback" class="swipe-feedback">
-        <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYYXXHDKSXBYM%>" />
+          <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" />
     </div>
     <!-- »¬¶¯·´À¡²ã -->
     <canvas id="myCanvas" style="display: none;"></canvas>
@@ -260,7 +260,7 @@
                                                                     <h3>
                                                                         <asp:Label ID="Label7" runat="server" Text="<%$ Resources:lang,ZongJie %>"></asp:Label></h3>
 
-                                                                    <CKEditor:CKEditorControl ID="HE_TodaySummary" runat="server" Toolbar="" Width="99%" Height="170" Visible="false" />
+                                                                    <CKEditor:CKEditorControl ID="HE_TodaySummary" runat="server" Toolbar="" Width="99%" Height="270" Visible="false" />
 
                                                                     <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional">
                                                                         <ContentTemplate>

@@ -19,7 +19,7 @@
     <title></title>
     <link id="mainCss" href="css/bluelightmain.css" rel="stylesheet" type="text/css" />
     <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />
- 
+
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="js/allAHandler.js"></script>
     <script src="js/exif.js" type="text/javascript"></script>
@@ -176,9 +176,9 @@
         }
     </script>
 </head>
-<body>
+<body class="napbac" data-disable-pullrefresh="true">
     <div id="swipeFeedback" class="swipe-feedback">
-        <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYYXXHDKSXBYM%>" />
+        <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" />
     </div>
     <!-- »¬¶¯·´À¡²ã -->
     <canvas id="myCanvas" style="display: none;"></canvas>
@@ -259,7 +259,7 @@
                                                                     <h3>
                                                                         <asp:Label ID="Label7" runat="server" Text="<%$ Resources:lang,ZongJie %>"></asp:Label></h3>
                                                                     <br />
-                                                                    <CKEditor:CKEditorControl ID="HE_TodaySummary" runat="server" Toolbar="" Width="99%" Height="170" Visible="false" />
+                                                                    <CKEditor:CKEditorControl ID="HE_TodaySummary" runat="server" Toolbar="" Width="99%" Height="270" Visible="false" />
 
                                                                     <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional">
                                                                         <ContentTemplate>
@@ -303,7 +303,7 @@
                                                                             OnClick="BT_Activity_Click" Visible="false" />
                                                                     </div>
 
-                                                                    <div style="width: 100%; text-align: center; vertical-align: bottom;">
+                                                                    <div style="width: 100%; text-align: center; vertical-align: bottom; display: none;">
                                                                         <h4>
                                                                             <br />
                                                                             <br />

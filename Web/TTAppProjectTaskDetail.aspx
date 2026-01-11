@@ -223,7 +223,6 @@
     </div>
     <!-- 滑动反馈层 -->
 
-
     <script type="text/javascript" language="javascript">
 
         var txtQrCode = '#<%=TB_QrCode.ClientID%>';

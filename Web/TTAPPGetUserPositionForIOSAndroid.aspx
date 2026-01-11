@@ -66,17 +66,11 @@
                                             <td background="ImagesSkin/main_top_bj.jpg" class="titleziAPP">
                                                 <asp:Label ID="Label8" runat="server" Text="<%$ Resources:lang,Back%>" />
                                             </td>
-
-
-
-
                                         </tr>
                                     </table>
-
                                     <img id="IMG_Waiting" src="Images/Processing.gif" alt="请稍候，处理中..." style="display: none;" />
                                 </a>
                             </td>
-
                             <td style="vertical-align: middle; text-align: center;" class="round">
                                 <asp:Button ID="BT_SavePosition" runat="server" CssClass="inpuLong" Height="30px" OnClick="BT_SavePosition_Click" Text="<%$ Resources:lang,DingWeiBingFanHuiZhuYe%>" />
 
@@ -111,12 +105,12 @@
                                 <td alight="right" style="vertical-align: middle;">
                                     <asp:Label ID="Label1" runat="server" Text="<%$ Resources:lang,Jing%>"></asp:Label>:</td>
                                 <td>
-                                    <input type="text" id="LNG_value" runat="server" style="width: 120px;" readonly></input>
+                                    <input type="text" id="LNG_value" runat="server" style="width: 125px;" readonly></input>
                                 </td>
                                 <td style="vertical-align: middle;">
                                     <asp:Label ID="Label2" runat="server" Text="<%$ Resources:lang,Wei%>"></asp:Label>:</td>
                                 <td>
-                                    <input type="text" id="LAT_value" runat="server" style="width: 120px;" readonly></input>
+                                    <input type="text" id="LAT_value" runat="server" style="width: 125px;" readonly></input>
                                 </td>
                             </tr>
                         </table>

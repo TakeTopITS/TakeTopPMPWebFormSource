@@ -42,7 +42,6 @@ public partial class TTAppProjectDetailSAAS : System.Web.UI.Page
 
         if (Page.IsPostBack == false)
         {
-
             HE_TodaySummary.Visible = true;
 
             //检查用户是否项目成员
