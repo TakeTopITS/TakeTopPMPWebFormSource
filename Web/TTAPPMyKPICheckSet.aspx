@@ -258,6 +258,80 @@
             color: #388E3C;
         }
 
+        /* 弹窗相关样式 */
+        .popup-content {
+            padding: 15px;
+        }
+
+        .score-section {
+            margin-bottom: 20px;
+        }
+
+        .comment-section {
+            margin-top: 15px;
+        }
+
+        .comment-item {
+            background: #f9f9f9;
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 12px;
+            border-left: 4px solid #1976D2;
+        }
+
+        .comment-title {
+            font-weight: bold;
+            color: #1976D2;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        .comment-meta {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .comment-content {
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* 弹窗底部按钮区域 */
+        .layui-layer-btn {
+            padding: 15px;
+            text-align: center;
+            background: white;
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .popup-button {
+            display: inline-block;
+            padding: 10px 25px;
+            background: #1976D2;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            text-align: center;
+            min-width: 120px;
+        }
+
+        .popup-button-close {
+            background: #f5f5f5;
+            color: #333;
+            border: 1px solid #ddd;
+        }
 
         /* 触摸反馈 */
         .touch-feedback {
@@ -294,6 +368,16 @@
                 opacity: 0;
             }
         }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
     </style>
 
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
@@ -314,9 +398,6 @@
         };
 
         $load(function () {
-            //// 移动端触摸优化
-            //$('.list-item, .action-button, .mobile-button, .datagrid-table a').addClass('touch-feedback');
-
             // 防止双击放大
             var lastTouchEnd = 0;
             document.addEventListener('touchend', function (event) {
@@ -326,12 +407,6 @@
                 }
                 lastTouchEnd = now;
             }, false);
-
-            // 注意：这里移除了阻止滚动的事件监听器，因为它会影响滑动刷新功能
-            // 如果页面有滚动问题，可以尝试使用更精细的控制
-            // $('.content-wrapper').on('touchmove', function (e) {
-            //     e.stopPropagation();
-            // });
 
             // 显示加载状态
             $('form').on('submit', function () {
@@ -343,18 +418,17 @@
                 window.history.back();
             });
 
-            // 弹窗适配移动端
-            adaptPopupForMobile();
-
-            // 修复弹窗显示时的高度计算
-            fixPopupHeight();
-
             // 为更新按钮添加点击事件，显示弹窗
             $('[id*="DataGrid2"] [commandname="Update"]').on('click', function (e) {
                 e.preventDefault();
                 e.stopPropagation();
                 showKPIPopup();
                 return false;
+            });
+
+            // 绑定遮罩层点击关闭事件
+            $('#popwindow_shade').on('click', function () {
+                popClose();
             });
         });
 
@@ -364,30 +438,6 @@
 
         function hideLoading() {
             $('[style*="position:fixed"][style*="background:rgba(255,255,255,0.9)"]').remove();
-        }
-
-        function adaptPopupForMobile() {
-            // 弹窗显示时调整位置
-            $(document).on('click', '[data-popup]', function () {
-                setTimeout(function () {
-                    var $popup = $('#popwindow:visible');
-                    if ($popup.length) {
-                        adjustPopupPosition($popup);
-                    }
-                }, 100);
-            });
-        }
-
-        function fixPopupHeight() {
-            // 监听弹窗显示事件，确保按钮不被遮挡
-            $(document).on('click', '[onclick*="popShow"], [onclick*="showKPIPopup"]', function () {
-                setTimeout(function () {
-                    var $popup = $('#popwindow');
-                    if ($popup.is(':visible')) {
-                        adjustPopupPosition($popup);
-                    }
-                }, 50);
-            });
         }
 
         function adjustPopupPosition($popup) {
@@ -400,15 +450,20 @@
             // 计算弹窗顶部位置（居中显示，但如果窗口太小则从顶部开始）
             var topPosition = Math.max(20, (windowHeight - popupHeight) / 2);
 
+            // 计算弹窗宽度（不超过窗口宽度的95%）
+            var popupWidth = Math.min(windowWidth * 0.95, 500);
+
             // 设置弹窗样式
             $popup.css({
                 'position': 'fixed',
                 'top': topPosition + 'px',
                 'left': '50%',
                 'transform': 'translateX(-50%)',
-                'width': Math.min(windowWidth * 0.95, 500) + 'px',
+                'width': popupWidth + 'px',
                 'height': popupHeight + 'px',
-                'display': 'block'
+                'display': 'block',
+                'max-height': popupHeight + 'px',
+                'overflow': 'hidden'
             });
 
             // 显示遮罩层
@@ -433,6 +488,9 @@
                 'max-height': contentHeight + 'px',
                 'overflow-y': 'auto'
             });
+
+            // 滚动到顶部
+            $popup.find('.layui-layer-content').scrollTop(0);
         }
 
         function showKPIPopup() {
@@ -442,22 +500,37 @@
             }
         }
 
-        // 确保popClose函数存在
-        if (typeof popClose !== 'function') {
-            function popClose() {
-                $('#popwindow').hide();
-                $('#popwindow_shade').hide();
-                return false;
-            }
+        // 弹窗关闭函数
+        function popClose() {
+            $('#popwindow').hide();
+            $('#popwindow_shade').hide();
+            return false;
         }
+
+        // 添加窗口大小变化时的调整
+        $(window).on('resize', function () {
+            var $popup = $('#popwindow');
+            if ($popup.is(':visible')) {
+                adjustPopupPosition($popup);
+            }
+        });
+
+        // 添加键盘ESC关闭弹窗
+        $(document).on('keydown', function (e) {
+            if (e.keyCode === 27) { // ESC键
+                if ($('#popwindow').is(':visible')) {
+                    popClose();
+                }
+            }
+        });
     </script>
 </head>
 <body>
-   <div id="swipeFeedback" class="swipe-feedback">
-      <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYYXXHDKSXBYM%>" />
-  </div>
-  <!-- 滑动反馈层 -->
-  <canvas id="myCanvas" style="display: none;"></canvas>
+    <div id="swipeFeedback" class="swipe-feedback">
+        <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYYXXHDKSXBYM%>" />
+    </div>
+    <!-- 滑动反馈层 -->
+    <canvas id="myCanvas" style="display: none;"></canvas>
     <!-- 移动端头部 -->
     <table cellpadding="0" cellspacing="0" width="100%">
         <tr>
@@ -497,6 +570,39 @@
 
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>
+
+
+                    <!-- KPI列表 -->
+                    <div class="mobile-card" style="text-align: center;">
+                        <div class="card-header">
+                            KPI List
+                        </div>
+                        <div class="card-body datagrid-container">
+                            <asp:DataGrid ID="DataGrid2" runat="server" AutoGenerateColumns="False" GridLines="None"
+                                OnItemCommand="DataGrid2_ItemCommand" OnPageIndexChanged="DataGrid2_PageIndexChanged"
+                                AllowCustomPaging="false" AllowPaging="true" PageSize="10" ShowHeader="False"
+                                Width="100%" CssClass="datagrid-table">
+                                <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                <EditItemStyle BackColor="#2461BF" />
+                                <SelectedItemStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                                <PagerStyle HorizontalAlign="center" Mode="NumericPages" NextPageText="" PrevPageText="" CssClass="notTab pagination" />
+
+                                <ItemStyle CssClass="itemStyle" />
+                                <Columns>
+                                    <asp:ButtonColumn ButtonType="LinkButton" CommandName="Update" Text="&lt;div&gt;&lt;img src=ImagesSkin/Update.png border=0 alt='Modify' /&gt;&lt;/div&gt;">
+                                        <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="3%" />
+                                    </asp:ButtonColumn>
+                                    <asp:BoundColumn DataField="ID" HeaderText="ID">
+                                        <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="15%" />
+                                    </asp:BoundColumn>
+                                    <asp:BoundColumn DataField="KPI" HeaderText="KPI">
+                                        <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" />
+                                    </asp:BoundColumn>
+                                </Columns>
+                            </asp:DataGrid>
+                        </div>
+                    </div>
+
                     <!-- KPI信息摘要 -->
                     <div class="mobile-card">
                         <div class="card-header">
@@ -569,54 +675,15 @@
                         </div>
                     </div>
 
-                    <!-- KPI列表 -->
-                    <div class="mobile-card">
-                        <div class="card-header">
-                            KPI List
-                        </div>
-                        <div class="card-body datagrid-container">
-                            <asp:DataGrid ID="DataGrid2" runat="server" AutoGenerateColumns="False" GridLines="None"
-                                OnItemCommand="DataGrid2_ItemCommand" OnPageIndexChanged="DataGrid2_PageIndexChanged"
-                                AllowCustomPaging="false" AllowPaging="true" PageSize="10" ShowHeader="False"
-                                Width="100%" CssClass="datagrid-table">
-                                <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                                <EditItemStyle BackColor="#2461BF" />
-                                <SelectedItemStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-                                <PagerStyle HorizontalAlign="center" Mode="NumericPages" NextPageText="" PrevPageText="" CssClass="notTab pagination" />
 
-                                <ItemStyle CssClass="itemStyle" />
-                                <Columns>
-                                    <asp:ButtonColumn ButtonType="LinkButton" CommandName="Update" Text="&lt;div&gt;&lt;img src=ImagesSkin/Update.png border=0 alt='Modify' /&gt;&lt;/div&gt;">
-                                        <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="3%" />
-                                    </asp:ButtonColumn>
-                                    <asp:BoundColumn DataField="ID" HeaderText="ID">
-                                        <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="15%" />
-                                    </asp:BoundColumn>
-                                    <asp:BoundColumn DataField="KPI" HeaderText="KPI">
-                                        <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" />
-                                    </asp:BoundColumn>
-                                </Columns>
-                            </asp:DataGrid>
-                        </div>
-                    </div>
 
-                    <!-- 图表 -->
-                    <div class="mobile-card" style="display: none;">
-                        <div class="card-header">
-                            KPI图表
-                        </div>
-                        <div class="card-body">
-                            <iframe runat="server" id="IFrame_Chart1" src="TTTakeTopAnalystChartSet.aspx" style="width: 100%; height: 250px; border: none;"></iframe>
-                        </div>
-                    </div>
-
-                    <!-- 弹窗区域 (修复后的布局) -->
+                    <!-- 修改后的弹窗区域 - 修复布局问题 -->
                     <div class="layui-layer layui-layer-iframe" id="popwindow" name="fixedDiv"
-                        style="z-index: 9999; display: none; border-radius: 10px; background: white; box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
+                        style="z-index: 9999; display: none; border-radius: 10px; background: white; box-shadow: 0 4px 20px rgba(0,0,0,0.15); position: fixed; left: 0; top: 0; margin: 0;">
                         <div class="layui-layer-title" style="background: #e7e7e8; padding: 12px 15px; font-weight: 500; border-radius: 10px 10px 0 0;" id="popwindow_title">
                             <asp:Label ID="Label172" runat="server" Text="KPI评分"></asp:Label>
                         </div>
-                        <div id="popwindow_content" class="layui-layer-content" style="overflow-y: auto; -webkit-overflow-scrolling: touch;">
+                        <div id="popwindow_content" class="layui-layer-content" style="overflow-y: auto; -webkit-overflow-scrolling: touch; max-height: calc(100% - 130px);">
                             <div class="popup-content">
                                 <!-- 评分输入区 -->
                                 <div class="score-section">
@@ -629,7 +696,6 @@
                                     <div style="margin-bottom: 15px;">
                                         <asp:Label ID="Label32" runat="server" Text="<%$ Resources:lang,YiJian%>" Style="display: block; margin-bottom: 8px; font-weight: 500; color: #333;"></asp:Label>
                                         <CKEditor:CKEditorControl ID="HE_SelfSummary" runat="server" Toolbar="" Height="150px" Width="100%" Visible="false" />
-
                                     </div>
                                 </div>
 
@@ -721,17 +787,16 @@
                             </div>
                         </div>
 
-                        <!-- 底部按钮区域 -->
-                        <div id="popwindow_footer" class="layui-layer-btn">
+                        <!-- 底部按钮区域 - 修复布局 -->
+                        <div id="popwindow_footer" class="layui-layer-btn" style="border-top: 1px solid #eee; position: absolute; bottom: 0; left: 0; right: 0; padding: 15px; background: white; border-radius: 0 0 10px 10px;">
                             <asp:LinkButton ID="BT_NewMain" runat="server"
                                 OnClick="BT_NewMain_Click"
-                                Style="display: inline-block; width: 30%; background: #1976D2; color: white; border-radius: 8px; font-size: 16px; font-weight: 500; text-decoration: none; border: none; cursor: pointer;"
                                 CssClass="popup-button">
                                 <asp:Label runat="server" Text="<%$ Resources:lang,BaoCun%>" />
                             </asp:LinkButton>
 
                             <a onclick="return popClose();"
-                                style="display: inline-block; width: 30%; height: 40px; text-align: center; line-height: 40px; background: #f5f5f5; color: #333; border: none; border-radius: 8px; font-size: 16px; font-weight: 500; cursor: pointer; text-decoration: none;">
+                                class="popup-button popup-button-close">
                                 <asp:Label ID="Label1" runat="server" Text="<%$ Resources:lang,GuanBi%>" />
                             </a>
                         </div>
@@ -743,6 +808,15 @@
 
                     <div class="layui-layer-shade" id="popwindow_shade" style="z-index: 9998; background-color: #000; opacity: 0.3; filter: alpha(opacity=30); display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;"></div>
 
+                    <!-- 图表 -->
+                    <div class="mobile-card" style="display: none;">
+                        <div class="card-header">
+                            KPI图表
+                        </div>
+                        <div class="card-body">
+                            <iframe runat="server" id="IFrame_Chart1" src="TTTakeTopAnalystChartSet.aspx" style="width: 100%; height: 250px; border: none;"></iframe>
+                        </div>
+                    </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
 

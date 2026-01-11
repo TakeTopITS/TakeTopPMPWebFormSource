@@ -486,7 +486,8 @@
                                                             </td>
                                                         </tr>
                                                     </table>
-                                                    <br />  <br />
+                                                    <br />
+                                                    <br />
                                                 </div>
                                             </ContentTemplate>
                                         </asp:UpdatePanel>
@@ -526,15 +527,22 @@
                             <br />
                         </div>
 
-                        <div id="popwindow_footer" class="layui-layer-btn" style="border-top: 1px solid #ccc;">
-                            <asp:LinkButton ID="BT_New" runat="server" class="layui-layer-btn notTab" OnClick="BT_New_Click" Text="<%$ Resources:lang,BaoCun%>"></asp:LinkButton>
-                            <a class="layui-layer-btn notTab" onclick="return popClose();">
-                                <asp:Label ID="Label41" runat="server" Text="<%$ Resources:lang,GuanBi%>" />
+                     
+                        <!-- 修改后的弹窗底部按钮 -->
+                        <div id="popwindow_footer" class="layui-layer-btn" style="border-top: 1px solid #ccc; padding: 15px; text-align: center; background: white; position: sticky; bottom: 0;">
+                            <asp:LinkButton ID="BT_New" runat="server"
+                                OnClick="BT_New_Click"
+                                Text="<%$ Resources:lang,BaoCun%>"
+                                CssClass="popup-button">
+                            </asp:LinkButton>
+                            <a onclick="return popClose();" class="popup-button cancel">
+                                <asp:Label ID="Label21" runat="server" Text="<%$ Resources:lang,GuanBi%>" />
                             </a>
                         </div>
                         <span class="layui-layer-setwin">
                             <a onclick="return popClose();" class="layui-layer-ico layui-layer-close layui-layer-close1 notTab" href="javascript:;"></a>
                         </span>
+                       
                     </div>
 
                     <div class="layui-layer-shade" id="popwindow_shade" style="z-index: 9998; background-color: #000; opacity: 0.3; filter: alpha(opacity=30); display: none;"></div>

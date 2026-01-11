@@ -104,12 +104,10 @@ public partial class TTAppProjectTaskDetail : System.Web.UI.Page
         ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "clickA", "aHandler();", true);
         if (Page.IsPostBack != true)
         {
-
             HE_FinishContent.Visible = true;
             HE_FinishContent.Text = taskAssignRecord.OperatorContent.Trim();
 
             HE_Operation.Visible = true;
-
 
             string strSystemVersionType = Session["SystemVersionType"].ToString();
             string strProductType = System.Configuration.ConfigurationManager.AppSettings["ProductType"];
@@ -203,6 +201,8 @@ public partial class TTAppProjectTaskDetail : System.Web.UI.Page
             strProjectID = projectTask.ProjectID.ToString();
             LB_ProjectID.Text = strProjectID;
 
+         
+
             strProjectStatus = ShareClass.GetProjectStatus(strProjectID);
             if (strProjectStatus == "Suspended" || strProjectStatus == "Cancel")
             {
@@ -219,7 +219,8 @@ public partial class TTAppProjectTaskDetail : System.Web.UI.Page
                 BT_ConfirmEffectPlanProgress.Visible = false;
             }
 
-            ShareClass.InitialProjectMemberTree(TreeView2, strProjectID);
+            LoadProjectMemberList(strProjectID);
+            //ShareClass.InitialProjectMemberTree(TreeView2, strProjectID);
 
             LoadChildRecord(strID);
 
@@ -337,8 +338,7 @@ public partial class TTAppProjectTaskDetail : System.Web.UI.Page
                 strUserCode = proRelatedUser.UserCode.Trim();
                 strUserName = proRelatedUser.UserName.Trim();
 
-                TB_OperatorCode.Text = strUserCode;
-                LB_OperatorManName.Text = strUserName;
+                DL_OperatorCode.SelectedValue = strUserCode;
             }
         }
         catch
@@ -457,7 +457,7 @@ public partial class TTAppProjectTaskDetail : System.Web.UI.Page
         intTaskID = int.Parse(LB_TaskID.Text.Trim());
         strType = DL_RecordType.SelectedValue.Trim();
         strTask = LB_Task.Text.Trim();
-        strOperatorCode = TB_OperatorCode.Text.Trim();
+        strOperatorCode = DL_OperatorCode.SelectedValue.Trim();
         strOperatorName = ShareClass.GetUserName(strOperatorCode);
         strAssignManCode = LB_UserCode.Text.Trim();
         strAssignManName = LB_UserName.Text.Trim();
@@ -962,7 +962,7 @@ public partial class TTAppProjectTaskDetail : System.Web.UI.Page
     {
         string strSubject, strMsg, strOperatorCode;
 
-        strOperatorCode = TB_OperatorCode.Text.Trim();
+        strOperatorCode = DL_OperatorCode.SelectedValue.Trim();
 
         Msg msg = new Msg();
 
@@ -1011,7 +1011,7 @@ public partial class TTAppProjectTaskDetail : System.Web.UI.Page
 
             LB_ID.Text = taskAssignRecord.ID.ToString();
 
-            TB_OperatorCode.Text = taskAssignRecord.OperatorCode;
+            DL_OperatorCode.SelectedValue = taskAssignRecord.OperatorCode;
 
             DL_RecordType.SelectedValue = taskAssignRecord.Type;
 
@@ -1064,8 +1064,8 @@ public partial class TTAppProjectTaskDetail : System.Web.UI.Page
 
 
         taskAssignRecord.Operation = HE_Operation.Text.Trim();
-        taskAssignRecord.OperatorCode = TB_OperatorCode.Text.Trim();
-        taskAssignRecord.OperatorName = ShareClass.GetUserName(TB_OperatorCode.Text.Trim());
+        taskAssignRecord.OperatorCode = DL_OperatorCode.SelectedValue.Trim();
+        taskAssignRecord.OperatorName = ShareClass.GetUserName(DL_OperatorCode.SelectedValue.Trim());
         taskAssignRecord.BeginDate = DateTime.Parse(DLC_BeginDate.Text);
         taskAssignRecord.EndDate = DateTime.Parse(DLC_EndDate.Text);
 
@@ -1125,6 +1125,14 @@ public partial class TTAppProjectTaskDetail : System.Web.UI.Page
         projectTask.Expense = deExpenseSum;
 
         projectTaskBLL.UpdateProjectTask(projectTask, projectTask.TaskID);
+    }
+
+    protected void LoadProjectMemberList(string strProjectID)
+    {
+       string strHQL = "Select * From T_RelatedUser Where ProjectID = " + strProjectID;
+        DataSet ds2 = ShareClass. GetDataSetFromSql(strHQL, "T_RelatedUser");
+        DL_OperatorCode.DataSource = ds2;
+        DL_OperatorCode.DataBind();
     }
 
 

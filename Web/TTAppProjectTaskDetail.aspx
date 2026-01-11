@@ -417,8 +417,8 @@
                                                                 </div>
                                                                 <div class="npbxs">
                                                                     <h3>
-                                                                        <asp:HyperLink ID="HL_StartupBusinessForm" runat="server" Text="<%$ Resources:lang,XiangGuanYeWuDan %>"></asp:HyperLink>
-                                                                        <asp:HyperLink ID="HL_GoodsApplication" runat="server" Text="<%$ Resources:lang,LiaoPingLingYong %>"></asp:HyperLink>
+                                                                        <asp:HyperLink ID="HL_StartupBusinessForm" runat="server" Text="<%$ Resources:lang,XiangGuanYeWuDan %>" Visible="false"></asp:HyperLink>
+                                                                        <asp:HyperLink ID="HL_GoodsApplication" runat="server" Text="<%$ Resources:lang,LiaoPingLingYong %>" Visible="false" ></asp:HyperLink>
                                                                         <asp:Image ID="IMG_QrCode" runat="server" CssClass="inpuQrCode" onclick="qrcode()" Width="16px" />
                                                                         <asp:Button ID="BT_SaveQrCode" runat="server" Style="display: none;" CssClass="inpuQrCode" Text="<%$ Resources:lang,BaoCun %>" OnClick="BT_SaveQrCode_Click" />
                                                                         <asp:TextBox ID="TB_QrCode" runat="server" Style="display: none;"></asp:TextBox>
@@ -556,12 +556,8 @@
                                                                         <h4>
                                                                             <asp:Label ID="Label11" runat="server" Text="<%$ Resources:lang,ShouLiRen %>"></asp:Label>
                                                                         </h4>
-                                                                        <asp:TextBox ID="TB_OperatorCode" runat="server" Width="99%"></asp:TextBox>
-
-                                                                        <cc1:ModalPopupExtender ID="TB_OperatorCode_ModalPopupExtender" runat="server" BackgroundCssClass="modalBackground" CancelControlID="IMBT_Close" DynamicServicePath="" Enabled="True" PopupControlID="Panel1" TargetControlID="TB_OperatorCode" Y="150">
-                                                                        </cc1:ModalPopupExtender>
-
-                                                                        <asp:Label ID="LB_OperatorManName" runat="server"></asp:Label>
+                                                                        <asp:DropDownList ID="DL_OperatorCode" runat="server" DataTextField="UserName" DataValueField="UserCode" Width="99%">
+                                                                        </asp:DropDownList>
                                                                     </div>
 
 
@@ -589,8 +585,7 @@
                                                                             <asp:Label ID="Label13" runat="server" Text="<%$ Resources:lang,KaiShi %>"></asp:Label>
                                                                         </h4>
 
-                                                                        <asp:TextBox ID="DLC_BeginDate" ReadOnly="false" runat="server" Width="99%">
-                                                                        </asp:TextBox>
+                                                                        <asp:TextBox ID="DLC_BeginDate" ReadOnly="false" runat="server" Width="99%"> </asp:TextBox>
                                                                         <ajaxToolkit:CalendarExtender Format="yyyy-MM-dd" ID="CalendarExtender1" runat="server"
                                                                             TargetControlID="DLC_BeginDate">
                                                                         </ajaxToolkit:CalendarExtender>
@@ -855,7 +850,7 @@
                         <div class="modalPopup-text">
                             <div class="modalPopup-content">
                                 <div class="modalPopup-header">
-                                    <asp:ImageButton ID="IMBT_Close" ImageUrl="ImagesSkin/Close4.jpg" runat="server" 
+                                    <asp:ImageButton ID="IMBT_Close" ImageUrl="ImagesSkin/Close4.jpg" runat="server"
                                         CssClass="modalPopup-close" />
                                 </div>
                                 <div class="modalPopup-tree">

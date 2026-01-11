@@ -39,10 +39,9 @@ public partial class TTPersonalSpaceModuleSetForUser : System.Web.UI.Page
         {
             LoadUserModule(strUserCode, strUserType, strLangCode);
 
-            LoadNewsTypeList(strLangCode);
-
-            if (strUserCode == "ADMIN")
+            if (ShareClass. checkUserHasModuleRight("NewsTypeSetting", strUserCode))
             {
+                LoadNewsTypeList(strLangCode);
                 DataGrid4.Visible = true;
             }
             else
