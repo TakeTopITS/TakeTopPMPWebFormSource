@@ -828,10 +828,12 @@ input#TB_Message {
     margin: 10px 0;
 }
 
-/* 强制重置所有输入框的移动端默认样式 */
-.npbxs input,
-.mline input,
-input#TB_Message {
+/* 强制重置所有输入框的移动端默认样式 - 排除submit类型 */
+.npbxs input:not([type="submit"]),
+.npbxs input:not([type="button"]),
+.mline input:not([type="submit"]),
+.mline input:not([type="button"]),
+input#TB_Message:not([type="submit"]) {
     -webkit-appearance: none !important;
     -moz-appearance: none !important;
     appearance: none !important;
@@ -842,13 +844,13 @@ input#TB_Message {
     -webkit-tap-highlight-color: transparent;
 }
 
-    .npbxs input:not([disabled]):not([readonly]),
-    .mline input:not([disabled]):not([readonly]),
-    input#TB_Message:not([disabled]):not([readonly]) {
-        background-color: #ffffff !important;
-        border: 1px solid #cccccc !important;
-        color: #ffffff !important;
-    }
+.npbxs input:not([disabled]):not([readonly]):not([type="submit"]):not([type="button"]),
+.mline input:not([disabled]):not([readonly]):not([type="submit"]):not([type="button"]),
+input#TB_Message:not([disabled]):not([readonly]):not([type="submit"]) {
+    background-color: #ffffff !important;
+    border: 1px solid #cccccc !important;
+    color: #000000 !important;
+}
 
     .npbxs input:disabled,
     .npbxs input[disabled],
@@ -872,6 +874,11 @@ input#TB_Message {
     .npbxs input[type="search"] {
         color: #000000 !important;
     }
+
+.npbxs input[type="submit"],
+.npbxs input[type="button"] {
+    color: #ffffff !important;
+}
 
     /* 占位符文字颜色 */
     .npbxs input::placeholder,
@@ -1204,7 +1211,7 @@ html {
     }
 
     /* 针对移动端浏览器的特殊处理 */
-    .npbxs input,
+    /*.npbxs input,
     .mline input,
     input#TB_Message {
         background-image: none !important;
@@ -1219,7 +1226,7 @@ html {
             background-color: #ffffff !important;
             -webkit-background-clip: padding-box !important;
             background-clip: padding-box !important;
-            color: #ffffff !important;
+            color: #000000 !important;
         }
 
         .npbxs input:disabled,
@@ -1229,7 +1236,7 @@ html {
             -webkit-background-clip: padding-box !important;
             background-clip: padding-box !important;
             color: #666666 !important;
-        }
+        }*/
 
     /* 弹窗优化 */
     .layui-layer-iframe {
