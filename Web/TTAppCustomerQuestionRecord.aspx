@@ -499,10 +499,10 @@
                             <asp:LinkButton ID="LinkButton1" runat="server" 
                                 OnClick="BT_New_Click" 
                                 Text="<%$ Resources:lang,BaoCun%>" 
-                                Style="display: inline-block; width: 30%; height: 40px; line-height: 40px; background: #1976D2; color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: 500; margin-right: 4%; cursor: pointer; text-decoration: none;">
+                                Style="display: inline-block; width: 30%; height: 40px; line-height: 40px; background: #1976D2; color: #ffffff; border: none; border-radius: 8px; font-size: 16px; font-weight: 500; margin-right: 4%; cursor: pointer; text-decoration: none;">
                             </asp:LinkButton>
                             <a  onclick="return popClose();" 
-                                Style="display: inline-block; width: 30%; height: 40px; line-height: 40px; background: #f5f5f5; color: #333; border: none; border-radius: 8px; font-size: 16px; font-weight: 500; cursor: pointer; text-decoration: none;">
+                                Style="display: inline-block; width: 30%; height: 40px; line-height: 40px;  background: #1976D2; color: #ffffff; border: none; border-radius: 8px; font-size: 16px; font-weight: 500; cursor: pointer; text-decoration: none;">
                                 <asp:Label ID="Label2" runat="server" Text="<%$ Resources:lang,GuanBi%>" />
                             </a>
                         </div>

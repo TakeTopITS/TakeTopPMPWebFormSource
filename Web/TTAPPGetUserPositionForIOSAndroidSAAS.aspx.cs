@@ -211,14 +211,14 @@ public partial class TTAPPGetUserPositionForIOSAndroidSAAS : System.Web.UI.Page
                 {
                     TD_LeaderName.Visible = false;
                     TD_LeaderList.Visible = false;
-                    BT_Attendance.Enabled = false;
+                    BT_Attendance.Visible = false;
                 }
             }
             else
             {
                 TD_LeaderName.Visible = false;
                 TD_LeaderList.Visible = false;
-                BT_Attendance.Enabled = false;
+                BT_Attendance.Visible = false;
             }
         }
     }

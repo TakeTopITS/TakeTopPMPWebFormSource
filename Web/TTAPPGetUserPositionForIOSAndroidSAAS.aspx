@@ -111,14 +111,13 @@
                                 <td alight="right" style="vertical-align: middle;">
                                     <asp:Label ID="Label1" runat="server" Text="<%$ Resources:lang,Jing%>"></asp:Label>:</td>
                                 <td>
-                                    <input type="text" id="LNG_value" runat="server" style="width: 100px;" readonly></input>
+                                    <input type="text" id="LNG_value" runat="server" style="width: 120px;" readonly></input>
                                 </td>
                                 <td style="vertical-align: middle;">
                                     <asp:Label ID="Label2" runat="server" Text="<%$ Resources:lang,Wei%>"></asp:Label>:</td>
                                 <td>
-                                    <input type="text" id="LAT_value" runat="server" style="width: 100px;" readonly></input>
+                                    <input type="text" id="LAT_value" runat="server" style="width: 120px;" readonly></input>
                                 </td>
-
                             </tr>
                         </table>
                     </td>
@@ -152,15 +151,15 @@
         wx.config({
             debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
             appId: '<%=signModel.appId %>', // 必填，公众号的唯一标识
-                timestamp: '<%=signModel.time %>', // 必填，生成签名的时间戳(随便填写)
-                nonceStr: '<%=signModel.randstr %>', // 必填，生成签名的随机串(随便填写)
-                signature: '<%=signModel.signstr %>', // 必填，签名，见附录1
+            timestamp: '<%=signModel.time %>', // 必填，生成签名的时间戳(随便填写)
+            nonceStr: '<%=signModel.randstr %>', // 必填，生成签名的随机串(随便填写)
+            signature: '<%=signModel.signstr %>', // 必填，签名，见附录1
 
-                jsApiList: [
-                    'getLocation',
-                    'openLocation'
-                ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
-            });
+            jsApiList: [
+                'getLocation',
+                'openLocation'
+            ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+        });
 
 
         wx.ready(function () {

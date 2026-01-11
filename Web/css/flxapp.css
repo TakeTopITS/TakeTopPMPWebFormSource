@@ -65,7 +65,7 @@ input, textarea, select {
     height: 40px;
 }
 
-    /* 4. 所有类型的输入框 */
+    /* 4. 所有类型的输入框 - 修复文字颜色为黑色 */
     input[type="text"],
     input[type="number"],
     input[type="tel"],
@@ -79,6 +79,7 @@ input, textarea, select {
     select {
         font-size: 16px !important;
         max-height: 44px !important;
+        color: #000000 !important;
     }
 
 /* 5. CKEditor特定修复 */
@@ -126,6 +127,7 @@ select:focus,
     text-size-adjust: 100% !important;
     outline: none !important;
     box-shadow: none !important;
+    color: #000000 !important;
 }
 
 /* 9. 表单区域特殊处理 */
@@ -142,25 +144,181 @@ form,
     min-zoom: 1 !important;
 }
 
-/* 10. iOS Safari特殊处理 /
+/* 10. iOS Safari特殊处理 */
 @supports (-webkit-touch-callout: none) {
-html, body {
--webkit-text-size-adjust: none !important;
-}
-/ iOS Safari输入框防缩放 */
-input, textarea, select {
-    font-size: 16px !important;
-    -webkit-appearance: none !important;
-    -webkit-transform: translateZ(0) !important;
-    transform: translateZ(0) !important;
-}
-/* CKEditor在iOS上的特殊处理 */
-.cke_contents iframe {
-    -webkit-overflow-scrolling: touch !important;
-    -webkit-transform: translateZ(0) !important;
-    transform: translateZ(0) !important;
+    html, body {
+        -webkit-text-size-adjust: none !important;
+    }
+    /* iOS Safari输入框防缩放 */
+    input, textarea, select {
+        font-size: 16px !important;
+        -webkit-appearance: none !important;
+        -webkit-transform: translateZ(0) !important;
+        transform: translateZ(0) !important;
+        color: #000000 !important;
+    }
+    /* CKEditor在iOS上的特殊处理 */
+    .cke_contents iframe {
+        -webkit-overflow-scrolling: touch !important;
+        -webkit-transform: translateZ(0) !important;
+        transform: translateZ(0) !important;
+    }
 }
 
+/* ===== 强制按钮文字颜色为白色 ===== */
+/* 默认状态：白色文字 */
+.inpu,
+.mobile-button,
+.popup-button,
+input[type="submit"],
+input[type="button"],
+button {
+    color: #ffffff !important;
+    font-weight: normal !important;
+}
+
+    /* 确保按钮内的所有文本元素都是白色 */
+    .inpu *,
+    .inpu span,
+    .inpu div,
+    .inpu label,
+    .mobile-button *,
+    .mobile-button span,
+    .mobile-button div,
+    .popup-button *,
+    .popup-button span,
+    .popup-button div {
+        color: #ffffff !important;
+        font-weight: normal !important;
+    }
+
+/* 修复多按钮容器中的按钮文字颜色 */
+.multi-buttons .inpu,
+.equal-buttons .inpu {
+    color: #ffffff !important;
+}
+
+/* 修复禁用状态的按钮文字颜色 - 灰色 */
+.inpu:disabled,
+.inpu[disabled],
+.mobile-button:disabled,
+.mobile-button[disabled],
+.popup-button:disabled,
+.popup-button[disabled] {
+    color: #cccccc !important;
+    opacity: 0.7;
+}
+
+/* 修复按钮伪类状态 */
+.inpu:hover,
+.inpu:active,
+.inpu:focus,
+.mobile-button:hover,
+.mobile-button:active,
+.mobile-button:focus,
+.popup-button:hover,
+.popup-button:active,
+.popup-button:focus {
+    color: #ffffff !important;
+}
+
+/* 鼠标悬停状态：红色文字 */
+.inpu:hover,
+.mobile-button:hover,
+.popup-button:hover {
+    color: #ff0000 !important;
+}
+
+/* 修复ASP.NET内联样式覆盖 */
+input[type="submit"].inpu,
+input[type="button"].inpu,
+button.inpu,
+.inpu[type="submit"],
+.inpu[type="button"],
+.inpu[style*="font-weight"],
+.inpu[style*="color"],
+.inpu[style*="color:"] {
+    color: #ffffff !important;
+    font-weight: normal !important;
+    font-size: 16px !important;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* ===== 修复所有输入框字体颜色为黑色 ===== */
+/* 修复基础输入框颜色 */
+input,
+textarea,
+select {
+    color: #000000 !important;
+}
+
+    /* 修复特定类型的输入框 */
+    input[type="text"],
+    input[type="number"],
+    input[type="tel"],
+    input[type="email"],
+    input[type="password"],
+    input[type="url"],
+    input[type="search"],
+    input[type="date"],
+    input[type="time"],
+    input[type="datetime-local"],
+    input[type="month"],
+    input[type="week"] {
+        color: #000000 !important;
+    }
+
+/* 修复特定容器的输入框颜色 */
+.npbxs input,
+.mline input,
+.mobile-input,
+.mobile-dropdown,
+.mobile-select {
+    color: #000000 !important;
+}
+
+/* 修复文件输入框的文字颜色 */
+input[type="file"] {
+    color: #000000 !important;
+}
+
+/* 修复禁用状态的颜色 */
+input:disabled,
+textarea:disabled,
+select:disabled {
+    color: #666666 !important;
+    background-color: #f5f5f5 !important;
+}
+
+/* 修复只读状态的颜色 */
+input[readonly],
+textarea[readonly] {
+    color: #000000 !important;
+    background-color: #f8f9fa !important;
+}
+
+/* 修复聚焦状态 */
+input:focus,
+textarea:focus,
+select:focus {
+    color: #000000 !important;
+    background-color: #ffffff !important;
+}
+
+/* 修复占位符文字颜色 */
+input::placeholder,
+textarea::placeholder {
+    color: #999999 !important;
+    font-size: 16px !important;
+}
+
+/* 修复CKEditor编辑器内容颜色 */
+.cke_editable {
+    color: #000000 !important;
+    font-size: 16px !important;
+    -webkit-text-size-adjust: 100% !important;
+    text-size-adjust: 100% !important;
+    line-height: 1.5 !important;
 }
 
 /* ===== 修复滚动问题 ===== */
@@ -413,6 +571,7 @@ form {
 
             .nprig.wfinfo h5 input {
                 margin: 10px 7px 0 -6px;
+                color: #000000 !important;
             }
 
         .nprig.wfinfo sub.yesno {
@@ -476,6 +635,7 @@ form {
     .npbxs input {
         border: none;
         line-height: 22px;
+        color: #000000 !important;
     }
 
 .header-back {
@@ -575,6 +735,7 @@ form {
 select {
     height: 40px;
     border: 1px solid #ccc;
+    color: #000000 !important;
 }
 
 .mobile-form-group {
@@ -619,7 +780,7 @@ select {
 }
 
     .mline input {
-        background: #f5f5f5;
+        background: #1976D2;
     }
 
     /* 修复 mline 中的 h4 样式 */
@@ -660,6 +821,7 @@ select {
 
 input#TB_Message {
     background: #f7f7f7;
+    color: #000000 !important;
 }
 
 .nmar {
@@ -685,7 +847,7 @@ input#TB_Message {
     input#TB_Message:not([disabled]):not([readonly]) {
         background-color: #ffffff !important;
         border: 1px solid #cccccc !important;
-        color: #000000 !important;
+        color: #ffffff !important;
     }
 
     .npbxs input:disabled,
@@ -760,7 +922,7 @@ input#TB_Message {
     height: 40px;
     line-height: 40px;
     background: #1976D2;
-    color: white;
+    color: white !important;
     border: none;
     border-radius: 8px;
     font-size: 16px;
@@ -773,8 +935,8 @@ input#TB_Message {
 }
 
     .popup-button.cancel {
-        background: #f5f5f5;
-        color: #333;
+        background: #1976D2;
+        color: #333 !important;
     }
 
     .popup-button:hover,
@@ -786,7 +948,12 @@ input#TB_Message {
 
     .popup-button.cancel:hover,
     .popup-button.cancel:active {
-        background: #e0e0e0;
+        background: #1976D2;
+    }
+
+    /* 鼠标悬停状态：红色文字 */
+    .popup-button:hover {
+        color: #ff0000 !important;
     }
 
 /* 弹窗底部样式 - 修复按钮换行问题 */
@@ -838,7 +1005,7 @@ input#TB_Message {
     display: block;
     width: 100%;
     background: #1976D2;
-    color: white;
+    color: white !important;
     border: none;
     border-radius: 8px;
     font-size: 16px;
@@ -865,13 +1032,18 @@ input#TB_Message {
 
     .mobile-button.yellow {
         background: #FFC107;
-        color: #333;
+        color: #ffffff !important;
     }
 
         .mobile-button.yellow:hover,
         .mobile-button.yellow:active {
             background: #FFB300;
         }
+
+    /* 鼠标悬停状态：红色文字 */
+    .mobile-button:hover {
+        color: #ff0000 !important;
+    }
 
 /* ===== 弹窗移动端适配 ===== */
 .layui-layer-iframe {
@@ -1015,7 +1187,6 @@ html {
         overflow-x: auto !important;
     }
 
-    text
     /* 内容区域允许滚动但不缩放 */
     .napbox,
     .npbx {
@@ -1048,7 +1219,7 @@ html {
             background-color: #ffffff !important;
             -webkit-background-clip: padding-box !important;
             background-clip: padding-box !important;
-            color: #000000 !important;
+            color: #ffffff !important;
         }
 
         .npbxs input:disabled,
@@ -1146,6 +1317,7 @@ html {
     .DDList, .inpuLong {
         width: 100% !important;
         box-sizing: border-box;
+        color: #000000 !important;
     }
 
     /* 修复日期输入框在移动端的显示 */
@@ -1153,6 +1325,7 @@ html {
         font-size: 16px;
         padding: 12px 15px;
         min-height: 44px;
+        color: #000000 !important;
     }
 
     /* 修复移动端滚动 */
@@ -1201,6 +1374,7 @@ html {
     #BtnUP:hover {
         background-color: #1976D2 !important;
         border-color: #1565C0 !important;
+        color: #ff0000 !important;
     }
 
     /* 按下效果 */
@@ -1220,7 +1394,7 @@ html {
 /* 修复文件选择器样式 - 确保文件路径可见 */
 input[type="file"] {
     background-color: white !important;
-    color: #333 !important;
+    color: #000000 !important;
     border: 1px solid #ccc !important;
     padding: 5px !important;
     border-radius: 4px !important;
@@ -1258,17 +1432,16 @@ input[type="file"] {
 .UpdatePanel2 input[type="file"],
 #AttachFile {
     background-color: white !important;
-    color: #333 !important;
+    color: #000000 !important;
     border: 1px solid #ccc !important;
 }
 
-/* 12. 针对Android设备的优化 /
+/* 12. 针对Android设备的优化 */
 @supports (-webkit-overflow-scrolling: touch) {
-/ 现代移动浏览器 */
-html, body {
-    -webkit-text-size-adjust: 100% !important;
-}
-
+    /* 现代移动浏览器 */
+    html, body {
+        -webkit-text-size-adjust: 100% !important;
+    }
 }
 
 /* 13. 极端情况下使用的绝对定位方法 */
@@ -1289,6 +1462,7 @@ html, body {
     -webkit-text-size-adjust: 100% !important;
     text-size-adjust: 100% !important;
     line-height: 1.5 !important;
+    color: #000000 !important;
 }
 
 /* 15. 占位符文字 */
@@ -1296,6 +1470,7 @@ input::placeholder,
 textarea::placeholder {
     font-size: 16px !important;
     -webkit-text-size-adjust: 100% !important;
+    color: #999999 !important;
 }
 
 /* 16. 防止viewport变化 */
@@ -1356,10 +1531,10 @@ iframe.cke_wysiwyg_frame {
     }
 
 /* ===== 修复display:none被覆盖的问题 ===== */
-/* 1. 保护所有的display:none状态 /
+/* 1. 保护所有的display:none状态 */
 [style="display:none"],
 [style*="display: none"] {
-display: none !important;
+    display: none !important;
 }
 
 /* 2. 保护常见的隐藏类 */
@@ -1374,12 +1549,12 @@ display: none !important;
     display: none !important;
 }
 
-/* 3. 确保visibility隐藏也有效 /
+/* 3. 确保visibility隐藏也有效 */
 .invisible,
 .visually-hidden,
 [style="visibility:hidden"],
 [style*="visibility: hidden"] {
-visibility: hidden !important;
+    visibility: hidden !important;
 }
 
 /* 4. 防止其他CSS规则覆盖隐藏状态 */
@@ -1394,19 +1569,19 @@ template {
     display: none !important;
 }
 
-/* 6. 修复表格行和单元格的隐藏状态 /
+/* 6. 修复表格行和单元格的隐藏状态 */
 tr[style="display:none"],
 tr[style*="display: none"],
 tr.hidden,
 tr.d-none {
-display: none !important;
+    display: none !important;
 }
 
 td[style="display:none"],
 td[style="display: none"],
 td.hidden,
 td.d-none {
-display: none !important;
+    display: none !important;
 }
 
 /* 7. JavaScript控制的隐藏元素 */
@@ -1433,16 +1608,16 @@ display: none !important;
     display: none !important;
 }
 
-/* 11. 确保隐藏元素不占用空间 /
-[style="display:none"] ,
+/* 11. 确保隐藏元素不占用空间 */
+[style="display:none"],
 [style="display: none"] * {
-display: none !important;
+    display: none !important;
 }
 
-/* 12. 额外的保护层，确保最高优先级 /
+/* 12. 额外的保护层，确保最高优先级 */
 html body [style="display:none"],
 html body [style*="display: none"] {
-display: none !important;
+    display: none !important;
 }
 
 /* ===== 修复所有输入框字体颜色为黑色 ===== */
@@ -1453,6 +1628,22 @@ select {
     color: #000000 !important;
 }
 
+    /* 修复特定类型的输入框 */
+    input[type="text"],
+    input[type="number"],
+    input[type="tel"],
+    input[type="email"],
+    input[type="password"],
+    input[type="url"],
+    input[type="search"],
+    input[type="date"],
+    input[type="time"],
+    input[type="datetime-local"],
+    input[type="month"],
+    input[type="week"] {
+        color: #000000 !important;
+    }
+
 /* 修复特定容器的输入框颜色 */
 .npbxs input,
 .mline input,
@@ -1462,12 +1653,9 @@ select {
     color: #000000 !important;
 }
 
-/* 修复日期输入框颜色 /
-input[id="Date"],
-input[id*="DLC_"],
-.date-input {
-color: #000000 !important;
-background-color: #ffffff !important;
+/* 修复文件输入框的文字颜色 */
+input[type="file"] {
+    color: #000000 !important;
 }
 
 /* 修复禁用状态的颜色 */
@@ -1491,4 +1679,20 @@ textarea:focus,
 select:focus {
     color: #000000 !important;
     background-color: #ffffff !important;
+}
+
+/* 修复占位符文字颜色 */
+input::placeholder,
+textarea::placeholder {
+    color: #999999 !important;
+    font-size: 16px !important;
+}
+
+/* 修复CKEditor编辑器内容颜色 */
+.cke_editable {
+    color: #000000 !important;
+    font-size: 16px !important;
+    -webkit-text-size-adjust: 100% !important;
+    text-size-adjust: 100% !important;
+    line-height: 1.5 !important;
 }

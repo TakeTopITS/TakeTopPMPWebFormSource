@@ -305,7 +305,7 @@
                                                                             OnClick="BT_Activity_Click" Visible="false" />
                                                                     </div>
 
-                                                                    <div style="width: 100%; text-align: center; vertical-align: bottom;">
+                                                                    <div style="width: 100%; text-align: center; vertical-align: bottom; display: none;">
                                                                         <h4>
                                                                             <br />
                                                                             <br />

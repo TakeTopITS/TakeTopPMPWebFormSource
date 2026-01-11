@@ -46,7 +46,8 @@
 </head>
 <body>
     <div id="swipeFeedback" class="swipe-feedback">
-        <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYYXXHDKSXBYM%>" /></div>
+        <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYYXXHDKSXBYM%>" />
+    </div>
     <!-- »¬¶¯·´À¡²ã -->
     <center>
         <form id="form1" runat="server">
@@ -118,22 +119,22 @@
 
                                                             <table cellpadding="4" cellspacing="0" width="100%">
                                                                 <tr>
-                                                                    <td colspan="2" class="ItemAlignLeft" style="color: Blue; font-style: italic; font-size: 10pt">
+                                                                    <td class="ItemAlignLeft" style="color: Blue; font-style: italic; font-size: 10pt">
                                                                         <%#DataBinder .Eval (Container .DataItem ,"WorkID") %>
                                                                         <%#DataBinder .Eval (Container .DataItem ,"UserName") %>
                                                                         <%#DataBinder .Eval (Container .DataItem ,"WorkDate","{0:yyyy/MM/dd}") %>
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td colspan="2" class="ItemAlignLeft" valign="top" style="width: 8%; padding-left: 5px" class="tdLeft">
+                                                                    <td class="ItemAlignLeft" valign="top" style="word-break: break-word !important; overflow-wrap: break-word !important; white-space: normal !important;" >
                                                                         <span style="font-size: 10pt"><b>
                                                                             <asp:Label ID="Label3" runat="server" Text="<%$ Resources:lang,MeiRiZongJie%>"></asp:Label>
                                                                         </b></span>
                                                                         <br />
-                                                                        <span style="font-size: 9pt"><%#DataBinder .Eval (Container .DataItem ,"DailySummary") %></span></td>
+                                                                        <span style="font-size: 9pt; "><%#DataBinder .Eval (Container .DataItem ,"DailySummary") %></span></td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td colspan="2" class="ItemAlignLeft" valign="top" style="width: 8%; padding-left: 5px" class="tdLeft">
+                                                                    <td class="ItemAlignLeft" valign="top"  style="word-break: break-word !important; overflow-wrap: break-word !important; white-space: normal !important;" >
                                                                         <span style="font-size: 10pt"><b>
                                                                             <asp:Label ID="Label4" runat="server" Text="<%$ Resources:lang,ChengGuo%>"></asp:Label></b></span>
                                                                         <br />
@@ -141,18 +142,18 @@
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td colspan="2" class="ItemAlignLeft" valign="top" style="width: 8%; padding-left: 5px" class="tdLeft">
+                                                                    <td class="ItemAlignLeft" valign="top"  style="word-break: break-word !important; overflow-wrap: break-word !important; white-space: normal !important;" >
                                                                         <span style="font-size: 10pt">
                                                                             <b>
                                                                                 <asp:Label ID="Label5" runat="server" Text="<%$ Resources:lang,DiZhi%>"></asp:Label>
                                                                             </b>
                                                                         </span>
 
-                                                                        <span style="font-size: 9pt"><%#DataBinder .Eval (Container .DataItem ,"Address") %></span></td>
+                                                                        <span style="font-size: 9pt"><%#DataBinder .Eval (Container .DataItem ,"Address") %></span>
+
+                                                                    </td>
                                                                 </tr>
                                                             </table>
-
-
                                                         </div>
                                                     </div>
                                                     </div>
@@ -166,8 +167,6 @@
                                     </tr>
                                 </table>
                                 <!--endprint-->
-
-
 
                             </td>
                         </tr>

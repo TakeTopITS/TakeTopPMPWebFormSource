@@ -268,7 +268,8 @@
                                                                 </td>
                                                             </tr>
                                                         </table>
-                                                        <br />  <br />
+                                                        <br />
+                                                        <br />
                                                     </div>
                                                 </ContentTemplate>
                                                 <Triggers>
@@ -295,7 +296,7 @@
                                                 <asp:Button ID="BT_Activity" runat="server" Text="<%$ Resources:lang,ChuLiZhong%>" CssClass="inpu"
                                                     OnClick="BT_Activity_Click" Visible="false" />
                                             </div>
-                                            <div style="width: 100%; text-align: center; vertical-align: bottom;">
+                                            <div style="width: 100%; text-align: center; vertical-align: bottom; display: none;">
                                                 <h4>
                                                     <br />
                                                     <br />

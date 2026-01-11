@@ -212,12 +212,12 @@ public partial class TTAPPGetUserPositionForIOSAndroid : System.Web.UI.Page
 
                 if (RBL_ShiftType.Items.Count == 0)
                 {
-                    BT_Attendance.Enabled = false;
+                    BT_Attendance.Visible = false;
                 }
             }
             else
             {
-                BT_Attendance.Enabled = false;
+                BT_Attendance.Visible = false;
             }
 
         }
