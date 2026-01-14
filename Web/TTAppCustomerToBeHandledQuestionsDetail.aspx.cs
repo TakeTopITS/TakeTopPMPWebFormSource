@@ -384,7 +384,6 @@ public partial class TTAppCustomerToBeHandledQuestionsDetail_aspx : System.Web.U
                 {
                     ClientScript.RegisterStartupScript(this.GetType(), "", "<script>showAlertAtMouse('" + LanguageHandle.GetWord("ZZSCSBJC") + "');</script>");
 
-                    ScriptManager.RegisterStartupScript(UpdatePanel1, GetType(), "pop", "popShow('popDetailWindow','false') ", true);
                 }
             }
         }
@@ -392,10 +391,10 @@ public partial class TTAppCustomerToBeHandledQuestionsDetail_aspx : System.Web.U
         {
             ClientScript.RegisterStartupScript(this.GetType(), "", "<script>showAlertAtMouse('" + LanguageHandle.GetWord("ZZZYSCDWJ") + "');</script>");
 
-            ScriptManager.RegisterStartupScript(UpdatePanel1, GetType(), "pop", "popShow('popDetailWindow','false') ", true);
         }
 
-
+        // 上传完成后重新打开弹窗
+        ScriptManager.RegisterStartupScript(UpdatePanel1, GetType(), "ReopenPopup", "setTimeout(function() {popShow('popDetailWindow','true'); }, 100);", true);
     }
 
 

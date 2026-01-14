@@ -11,9 +11,9 @@
 <head id="Head1" runat="server">
     <title></title>
     <link id="mainCss" href="css/bluelightmain.css" rel="stylesheet" type="text/css" />
-     <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />
+    <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />
 
-    
+
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="js/allAHandler.js"></script>
     <script type="text/javascript" language="javascript">
@@ -77,7 +77,7 @@
 
                     <table cellpadding="0" cellspacing="0" width="100%" class="bian">
                         <tr>
-                            <td height="31" class="page_topbj">
+                            <td height="31">
                                 <table width="96%" border="0" class="ItemAlignLeft" cellpadding="0" cellspacing="0">
                                     <tr>
                                         <td height="31" class="page_topbj">
@@ -115,40 +115,37 @@
                             <td style="padding: 5px 5px 5px 5px;">
 
                                 <br />
-                                <table cellpadding="0" cellspacing="0" width="100%">
-                                    <tr>
-                                        <td>
-                                            <asp:DataGrid ID="DataGrid2" runat="server" AllowPaging="True" AutoGenerateColumns="False"
-                                                ShowHeader="False" Height="1px" PageSize="25"
-                                                OnPageIndexChanged="DataGrid2_PageIndexChanged" Width="100%" CellPadding="4"
-                                                ForeColor="#333333" GridLines="None">
-                                                <Columns>
+                                <asp:DataGrid ID="DataGrid2" runat="server" AllowPaging="True" AutoGenerateColumns="False"
+                                    ShowHeader="False" Height="1px" PageSize="25"
+                                    OnPageIndexChanged="DataGrid2_PageIndexChanged" Width="100%" CellPadding="4"
+                                    ForeColor="#333333" GridLines="None">
+                                    <Columns>
 
-                                                    <asp:TemplateColumn HeaderText="">
-                                                        <ItemTemplate>
+                                        <asp:TemplateColumn HeaderText="">
+                                            <ItemTemplate>
 
 
-                                                            <div class="npb npbs">
-                                                                <div class="nplef">
-                                                                    <img src="ImagesSkin/napicon.png" />
-                                                                </div>
-                                                                <div class="nprig">
-                                                                    <h4><a href="TTAPPCustomerInfoView.aspx?CustomerCode=<%# DataBinder.Eval(Container.DataItem,"CustomerCode") %>"><%# DataBinder.Eval(Container.DataItem,"CustomerCode") %>  <%# DataBinder.Eval(Container.DataItem,"CustomerName") %></a></h4>
+                                                <div class="npb npbs">
+                                                    <div class="nplef">
+                                                        <img src="ImagesSkin/napicon.png" />
+                                                    </div>
+                                                    <div class="nprig">
+                                                        <h4><a href="TTAPPCustomerInfoView.aspx?CustomerCode=<%# DataBinder.Eval(Container.DataItem,"CustomerCode") %>"><%# DataBinder.Eval(Container.DataItem,"CustomerCode") %>  <%# DataBinder.Eval(Container.DataItem,"CustomerName") %></a></h4>
 
-                                                                    <h5><a href="TTAPPCustomerQuestionHandleDetailFromCustomer.aspx?CustomerCode=<%# DataBinder.Eval(Container.DataItem,"CustomerCode") %>">
-                                                                        <asp:Label ID="LB_KHFW" runat="server" Text="<%$ Resources:lang,ZZKeHuFuWu%>"></asp:Label></a><sub></sub></h5>
+                                                        <h5><a href="TTAPPCustomerQuestionHandleDetailFromCustomer.aspx?CustomerCode=<%# DataBinder.Eval(Container.DataItem,"CustomerCode") %>">
+                                                            <asp:Label ID="LB_KHFW" runat="server" Text="<%$ Resources:lang,ZZKeHuFuWu%>"></asp:Label></a><sub></sub></h5>
 
-                                                                    <h6><%# DataBinder.Eval(Container.DataItem,"createdate") %></h6>
-
-
-                                                                    <%-- <label>   </label>--%>
-                                                                </div>
-                                                            </div>
-                                                        </ItemTemplate>
-                                                    </asp:TemplateColumn>
+                                                        <h6><%# DataBinder.Eval(Container.DataItem,"createdate") %></h6>
 
 
-                                                    <%--                                                    <asp:BoundColumn DataField="CustomerCode" HeaderText="Code">
+                                                        <%-- <label>   </label>--%>
+                                                    </div>
+                                                </div>
+                                            </ItemTemplate>
+                                        </asp:TemplateColumn>
+
+
+                                        <%--                                                    <asp:BoundColumn DataField="CustomerCode" HeaderText="Code">
                                                         <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="20%" />
                                                     </asp:BoundColumn>
                                                     <asp:HyperLinkColumn DataNavigateUrlField="CustomerCode" DataNavigateUrlFormatString="TTCustomerInfoView.aspx?CustomerCode={0}"
@@ -164,17 +161,14 @@
                                                         </ItemTemplate>
                                                         <ItemStyle CssClass="itemBorder" Horizontalalign="left" />
                                                     </asp:TemplateColumn>--%>
-                                                </Columns>
+                                    </Columns>
 
-                                                <ItemStyle CssClass="itemStyle" />
-                                                <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                                                <EditItemStyle BackColor="#2461BF" />
-                                                <SelectedItemStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-                                                <PagerStyle HorizontalAlign="center" Mode="NumericPages" NextPageText="" PrevPageText="" CssClass="notTab" />
-                                            </asp:DataGrid>
-                                        </td>
-                                    </tr>
-                                </table>
+                                    <ItemStyle CssClass="itemStyle" />
+                                    <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                    <EditItemStyle BackColor="#2461BF" />
+                                    <SelectedItemStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                                    <PagerStyle HorizontalAlign="center" Mode="NumericPages" NextPageText="" PrevPageText="" CssClass="notTab" />
+                                </asp:DataGrid>
 
                                 <asp:Label ID="LB_DepartString" runat="server" Visible="False"></asp:Label>
                                 <asp:Label ID="LB_Sql2" runat="server" Visible="False"></asp:Label>
@@ -188,7 +182,7 @@
                     <div id="divToolBar" name="divTooBar" class="ToolBar" style="width: 100%; text-align: left; padding-top: 10px; padding-bottom: 10px; background-color: aliceblue;">
                         <table width="100%">
                             <tr>
-                                <td colspan="2" style="text-align: right; padding-right: 10px;" >
+                                <td colspan="2" style="text-align: right; padding-right: 10px;">
                                     <table width="100%">
                                         <tr>
                                             <td style="width: 70%;">&nbsp;
@@ -196,7 +190,7 @@
                                             <td style="width: 20%; text-align: left;" onclick="ExpendDivToolBar();">
                                                 <img src="ImagesSkin/up.png" />
                                             </td>
-                                            <td style="padding-top:7px; width: 10%; text-align: center;"  onclick="ExpendDivToolBar();">
+                                            <td style="padding-top: 7px; width: 10%; text-align: center;" onclick="ExpendDivToolBar();">
                                                 <img src="ImagesSkin/down.png" />
                                             </td>
                                         </tr>
@@ -272,7 +266,7 @@
                                     <td>&nbsp;</td>
                                 </tr>
                                 <tr>
-                                    <td  colspan="2" style="padding-top: 10px;text-align:center;">
+                                    <td colspan="2" style="padding-top: 10px; text-align: center;">
                                         <asp:Button ID="BT_Find" runat="server" CssClass="inpu" OnClick="BT_Find_Click" Text="<%$ Resources:lang,ChaXun%>" />
                                     </td>
                                 </tr>
