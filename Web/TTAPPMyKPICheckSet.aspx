@@ -378,6 +378,109 @@
                 transform: rotate(360deg);
             }
         }
+
+
+
+        /* 更新按钮样式 */
+        .action-cell {
+            padding: 12px 8px !important;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .update-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, #1976D2 0%, #1565C0 100%);
+            border-radius: 14px;
+            box-shadow: 0 4px 12px rgba(25, 118, 210, 0.25);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .update-btn:before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            }
+
+            .update-btn:hover:before,
+            .update-btn:active:before {
+                opacity: 1;
+            }
+
+            .update-btn:hover {
+                transform: translateY(-2px) scale(1.05);
+                box-shadow: 0 6px 16px rgba(25, 118, 210, 0.35);
+            }
+
+            .update-btn:active {
+                transform: translateY(0) scale(0.98);
+                box-shadow: 0 2px 6px rgba(25, 118, 210, 0.2);
+            }
+
+            .update-btn img {
+                width: 28px !important;
+                height: 28px !important;
+                filter: brightness(0) invert(1);
+                transition: transform 0.2s ease;
+            }
+
+            .update-btn:hover img {
+                transform: scale(1.1);
+            }
+
+            .update-btn:active img {
+                transform: scale(0.95);
+            }
+
+        /* 触摸设备优化 */
+        @media (hover: none) {
+            .update-btn:hover {
+                transform: none;
+                box-shadow: 0 4px 12px rgba(25, 118, 210, 0.25);
+            }
+
+            .update-btn:active {
+                transform: scale(0.95);
+                box-shadow: 0 2px 6px rgba(25, 118, 210, 0.2);
+                background: linear-gradient(135deg, #1565C0 0%, #0D47A1 100%);
+            }
+        }
+
+        /* 按钮点击涟漪效果 */
+        .update-btn:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            background-image: radial-gradient(circle, rgba(255,255,255,0.4) 10%, transparent 10.01%);
+            background-repeat: no-repeat;
+            background-position: 50%;
+            transform: scale(10, 10);
+            opacity: 0;
+            transition: transform .5s, opacity 1s;
+        }
+
+        .update-btn:active:after {
+            transform: scale(0, 0);
+            opacity: .3;
+            transition: 0s;
+        }
     </style>
 
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
@@ -525,9 +628,9 @@
         });
     </script>
 </head>
-<body>
+<body data-disable-pullrefresh="true">
     <div id="swipeFeedback" class="swipe-feedback">
-        <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYYXXHDKSXBYM%>" />
+       <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" />
     </div>
     <!-- 滑动反馈层 -->
     <canvas id="myCanvas" style="display: none;"></canvas>
@@ -585,12 +688,13 @@
                                 <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                                 <EditItemStyle BackColor="#2461BF" />
                                 <SelectedItemStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-                                <PagerStyle HorizontalAlign="center" Mode="NumericPages" NextPageText="" PrevPageText="" CssClass="notTab pagination" />
+                                <PagerStyle HorizontalAlign="center" Mode="NumericPages" NextPageText="" PrevPageText="" />
 
                                 <ItemStyle CssClass="itemStyle" />
                                 <Columns>
-                                    <asp:ButtonColumn ButtonType="LinkButton" CommandName="Update" Text="&lt;div&gt;&lt;img src=ImagesSkin/Update.png border=0 alt='Modify' /&gt;&lt;/div&gt;">
-                                        <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="3%" />
+                                    <asp:ButtonColumn ButtonType="LinkButton" CommandName="Update"
+                                        Text="&lt;div class='update-btn'&gt;&lt;img src='ImagesSkin/Update.png' alt='修改' /&gt;&lt;/div&gt;">
+                                        <ItemStyle CssClass="action-cell" Width="70px" />
                                     </asp:ButtonColumn>
                                     <asp:BoundColumn DataField="ID" HeaderText="ID">
                                         <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="15%" />

@@ -199,9 +199,10 @@ public partial class TTAppCustomerQuestionRecord : System.Web.UI.Page
         {
             IList lst;
 
-            string strID, strNow, strHandleTime;
+            string strID, strHandleTime, strNow;
 
-            strID = e.Item.Cells[2].Text.Trim();
+            strID = ((Label)(e.Item.FindControl("LB_ID"))).Text.Trim();
+
 
             if (e.CommandName == "Update" | e.CommandName == "Detail")
             {
@@ -275,69 +276,60 @@ public partial class TTAppCustomerQuestionRecord : System.Web.UI.Page
                     ScriptManager.RegisterStartupScript(UpdatePanel1, GetType(), "pop", "popShow('popDetailWindow','true') ", true);
                 }
             }
-        }
 
-        if (e.CommandName == "Delete")
-        {
-            IList lst;
 
-            string strID, strHandleTime, strNow;
-
-            strID = e.Item.Cells[2].Text.Trim();
-
-            strHQL = "from CustomerQuestion as customerQuestion where customerQuestion.ID = " + strID;
-
-            LogClass.WriteLogFile(strHQL);
-
-            CustomerQuestionBLL customerQuestionBLL = new CustomerQuestionBLL();
-            lst = customerQuestionBLL.GetAllCustomerQuestions(strHQL);
-
-            CustomerQuestion customerQuestion = (CustomerQuestion)lst[0];
-
-            try
+            if (e.CommandName == "Delete")
             {
-                strStatus = customerQuestion.Status.Trim();
-                strHandleTime = customerQuestion.SummitTime.ToString("yyyyMMdd");
-                strNow = DateTime.Now.ToString("yyyyMMdd");
+                strHQL = "from CustomerQuestion as customerQuestion where customerQuestion.ID = " + strID;
+                CustomerQuestionBLL customerQuestionBLL = new CustomerQuestionBLL();
+                lst = customerQuestionBLL.GetAllCustomerQuestions(strHQL);
+                CustomerQuestion customerQuestion = (CustomerQuestion)lst[0];
 
-                strStatus = customerQuestion.Status.Trim();
-
-                if (strNow == strHandleTime & strStatus == "New")
+                try
                 {
-                    customerQuestionBLL.DeleteCustomerQuestion(customerQuestion);
+                    strStatus = customerQuestion.Status.Trim();
+                    strHandleTime = customerQuestion.SummitTime.ToString("yyyyMMdd");
+                    strNow = DateTime.Now.ToString("yyyyMMdd");
 
-                    LB_ID.Text = "";
+                    strStatus = customerQuestion.Status.Trim();
 
-                    HT_Question.Text = "";
-
-                    DLC_AnswerTime.Text = DateTime.Now.ToString("yyyy-MM-dd");
-                    TB_Company.Text = "";
-                    TB_ContactPerson.Text = "";
-                    TB_PhoneNumber.Text = "";
-                    TB_EMail.Text = "";
-                    TB_Address.Text = "";
-                    TB_PostCode.Text = "";
-
-
-                    if (strRelatedCustomerCode == null)
+                    if (strNow == strHandleTime & strStatus == "New")
                     {
-                        InitialCustomerQuestionTree("");
+                        customerQuestionBLL.DeleteCustomerQuestion(customerQuestion);
+
+                        LB_ID.Text = "";
+
+                        HT_Question.Text = "";
+
+                        DLC_AnswerTime.Text = DateTime.Now.ToString("yyyy-MM-dd");
+                        TB_Company.Text = "";
+                        TB_ContactPerson.Text = "";
+                        TB_PhoneNumber.Text = "";
+                        TB_EMail.Text = "";
+                        TB_Address.Text = "";
+                        TB_PostCode.Text = "";
+
+
+                        if (strRelatedCustomerCode == null)
+                        {
+                            InitialCustomerQuestionTree("");
+                        }
+                        else
+                        {
+                            InitialCustomerQuestionTree(strRelatedCustomerCode);
+                        }
+
+                        ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZSCCG") + "')", true);
                     }
                     else
                     {
-                        InitialCustomerQuestionTree(strRelatedCustomerCode);
+                        ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZSBWTJLDTHMYBSLCKYSCJC") + "')", true);
                     }
-
-                    ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZSCCG") + "')", true);
                 }
-                else
+                catch
                 {
-                    ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZSBWTJLDTHMYBSLCKYSCJC") + "')", true);
+                    ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZCWSCSBJC") + "')", true);
                 }
-            }
-            catch
-            {
-                ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZCWSCSBJC") + "')", true);
             }
         }
     }

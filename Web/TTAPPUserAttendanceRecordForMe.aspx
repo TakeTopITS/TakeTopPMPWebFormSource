@@ -50,7 +50,7 @@
             
             /* 表头样式优化 */
             .grid-header {
-                background: linear-gradient(90deg, #D53E54 0%, #057BF9 100%);
+                background: linear-gradient(135deg, #4F46E5, #7C3AED);
                 color: white;
                 font-weight: bold;
                 font-size: 12px;
@@ -97,7 +97,7 @@
         
         /* DataGrid内部表头样式 */
         .datagrid-header-row {
-            background: linear-gradient(90deg, #D53E54 0%, #057BF9 100%) !important;
+            background: linear-gradient(135deg, #4F46E5, #7C3AED) !important;
             color: white !important;
             font-weight: bold !important;
         }

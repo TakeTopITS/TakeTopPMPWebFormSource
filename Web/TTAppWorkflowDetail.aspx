@@ -161,9 +161,8 @@
 
     <asp:Literal ID="LIT_AttachUserWFStepJSCode" runat="server"></asp:Literal>
 </head>
-<body data-disable-swipe="true" data-disable-pullrefresh="true">
-    
-    <%-- <div id="swipeFeedback" class="swipe-feedback">
+<body class="napbac" data-disable-pullrefresh="true">
+    <%--<div id="swipeFeedback" class="swipe-feedback">
         <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" />
     </div>--%>
     <!-- »¬¶¯·´À¡²ã -->

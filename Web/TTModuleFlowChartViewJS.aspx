@@ -108,7 +108,7 @@
         .cline {
             height: 6px;
             width: 100%;
-            background: linear-gradient(90deg, #D53E54 0%, #057BF9 100%);
+            background: linear-gradient(135deg, #4F46E5, #7C3AED);
             border-radius: 8px 8px 0px 0px;
         }
 

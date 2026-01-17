@@ -115,6 +115,35 @@ public partial class TakeTopMainSkinSelect : System.Web.UI.Page
         }
     }
 
+    protected void BT_Gradient_Click(object sender, EventArgs e)
+    {
+        string strUserCode = Session["UserCode"].ToString();
+
+        string strHQL = "from ProjectMember as projectMember where projectMember.UserCode = " + "'" + strUserCode + "'";
+        ProjectMemberBLL projectMemberBLL = new ProjectMemberBLL();
+        IList lst = projectMemberBLL.GetAllProjectMembers(strHQL);
+
+        ProjectMember projectMember = (ProjectMember)lst[0];
+
+        projectMember.CssDirectory = BT_Gradient.ToolTip;
+
+        try
+        {
+            projectMemberBLL.UpdateProjectMember(projectMember, strUserCode);
+
+            Session["CssDirectory"] = BT_Gradient.ToolTip;
+
+            //设置缓存更改标志
+            ChangePageCache("Skin");
+
+            //重新打开相应的主页，以刷新页面
+            OpenTopMDIPage(strUserType, projectMember.CssDirectory.Trim() + projectMember.LangCode.Trim());
+        }
+        catch
+        {
+        }
+    }
+
     protected void BT_Blue_Click(object sender, EventArgs e)
     {
         string strUserCode = Session["UserCode"].ToString();

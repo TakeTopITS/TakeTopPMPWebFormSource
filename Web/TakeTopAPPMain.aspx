@@ -1,6 +1,6 @@
 <%@ Page Language="C#" AutoEventWireup="true" CodeFile="TakeTopAPPMain.aspx.cs" Inherits="TakeTopAPPMain" %>
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.5;  user-scalable=1" />
 <%@ Import Namespace="System.Globalization" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -8,11 +8,11 @@
 <head id="Head1" runat="server">
     <title></title>
     <link href="css/bluelightAPPMain.css" rel="stylesheet" type="text/css" />
+    <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="lhgdialog/lhgcore.min.js"></script>
     <script type="text/javascript" src="lhgdialog/lhgdialog.min.js"> </script>
     <script type="text/javascript" src="js/allAHandler.js"></script>
-
 
     <style type="text/css">
         /* 收缩展开效果 */
@@ -274,6 +274,7 @@
             margin-top: 5px;
         }
     </style>
+
     <script type="text/javascript">
 
         // 显示等待图标的函数
@@ -291,7 +292,6 @@
         }
 
     </script>
-
 </head>
 
 <body>
@@ -337,13 +337,13 @@
 
                                     <table width="100%" border="0" cellspacing="0" cellpadding="0" align="right">
                                         <tr>
-                                            <td class="ItemAlignLeft" width="50%">
+                                            <td align="center" width="50%">
                                                 <a class="titleSpan" href="TTAPPUpdateUserInfor.aspx">
                                                     <img id="IMG_UpdateUserInfor" src="ImagesSkin/PersonalInfor.png" width="20" height="20" />
                                                 </a>
                                             </td>
 
-                                            <td class="ItemAlignLeft" width="50%">
+                                            <td align="center" width="50%">
                                                 <a href="#" class="titleSpan" onclick="javascript:return confirmExit(getExitMsgByLangCode(), this, event, 'DefaultAPP.html');">
                                                     <img id="IMG_ExitSystem" src="ImagesSkin/ExitAPP.png" width="20" height="20" />
                                                 </a>

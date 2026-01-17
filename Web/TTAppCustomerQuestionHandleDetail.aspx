@@ -315,7 +315,7 @@
         });
     </script>
 </head>
-<body>
+<body class="napbac" data-disable-pullrefresh="true">
     <div id="swipeFeedback" class="swipe-feedback">
         <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" />
     </div>
@@ -771,6 +771,7 @@
                                     <asp:Label ID="Label47" runat="server" Text="<%$ Resources:lang,GuanBi%>" />
                                 </a>
                             </div>
+                        </div>
                         </div>
                 </ContentTemplate>
             </asp:UpdatePanel>

@@ -61,16 +61,17 @@
     <script type="text/javascript" src="js/allAHandler.js"></script>
     <script type="text/javascript" language="javascript">
         $(function () {
-         /*   initSwipeBack();// 初始化滑动返回功能  initSwipeBack();// 初始化滑动返回功能*/
+               initSwipeBack();// 初始化滑动返回功能  initSwipeBack();// 初始化滑动返回功能
 
         });
     </script>
 </head>
-<body  data-disable-swipe="true" data-disable-pullrefresh="true">
-  <%--  <div id="swipeFeedback" class="swipe-feedback" >
+<body  data-disable-pullrefresh="true">
+ <%--   <div id="swipeFeedback" class="swipe-feedback">
         <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" />
     </div>--%>
     <!-- 滑动反馈层 -->
+
     <form id="form1" runat="server">
         <asp:Literal ID="LIT_AttachUserJSCode" runat="server"></asp:Literal>
         <%--  <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">--%>

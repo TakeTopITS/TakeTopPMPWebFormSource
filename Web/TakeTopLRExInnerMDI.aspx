@@ -15,7 +15,7 @@
         }
 
         #rightTopFrameID {
-            background: linear-gradient(90deg, #D53E54 0%, #057BF9 100%);
+            background: linear-gradient(135deg, #4F46E5, #7C3AED);
         }
         /* #rightTabFrameID{background: #EFF2F7;} */
     </style>

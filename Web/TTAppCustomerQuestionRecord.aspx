@@ -15,6 +15,238 @@
     <link id="mainCss" href="css/bluelightmain.css" rel="stylesheet" type="text/css" />
     <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />
 
+    <style type="text/css">
+        /* APP风格DataGrid样式 */
+        .mobile-datagrid {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            margin-bottom: 16px;
+        }
+
+        .mobile-datagrid-item {
+            display: flex;
+            align-items: center;
+            padding: 16px;
+            border-bottom: 1px solid #f0f0f0;
+            background: #fff;
+            transition: background-color 0.2s;
+            position: relative;
+            min-height: 60px;
+        }
+
+            .mobile-datagrid-item:last-child {
+                border-bottom: none;
+            }
+
+            .mobile-datagrid-item:hover {
+                background-color: #f8f9fa;
+            }
+
+            .mobile-datagrid-item.touch-active {
+                background-color: #e3f2fd !important;
+            }
+
+        .mobile-datagrid-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-shrink: 0;
+            margin-right: 12px;
+        }
+
+        .mobile-action-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f5f5f5;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+            padding: 0;
+        }
+
+            .mobile-action-btn.update-btn {
+                background: linear-gradient(135deg, #1976D2, #42A5F5);
+            }
+
+            .mobile-action-btn.delete-btn {
+                background: linear-gradient(135deg, #E53935, #EF5350);
+            }
+
+            .mobile-action-btn img {
+                width: 18px;
+                height: 18px;
+                filter: brightness(0) invert(1);
+            }
+
+            .mobile-action-btn:hover {
+                transform: translateY(-1px);
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            }
+
+        .mobile-datagrid-content {
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .mobile-datagrid-id {
+            font-size: 12px;
+            color: #666;
+            font-weight: 500;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+        }
+
+            .mobile-datagrid-id::before {
+                content: "#";
+                margin-right: 2px;
+                color: #999;
+            }
+
+        .mobile-datagrid-question {
+            font-size: 15px;
+            color: #333;
+            line-height: 1.4;
+            font-weight: 500;
+            margin: 0;
+            word-break: break-word;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+            .mobile-datagrid-question a {
+                color: #1976D2;
+                text-decoration: none;
+                display: block;
+                padding: 2px 0;
+            }
+
+                .mobile-datagrid-question a:hover {
+                    color: #1565C0;
+                    text-decoration: none;
+                }
+
+        /* 分页样式 */
+        .mobile-pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            padding: 16px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            margin-top: 16px;
+        }
+
+            .mobile-pagination a {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-width: 36px;
+                height: 36px;
+                padding: 0 12px;
+                border-radius: 8px;
+                background: #f5f5f5;
+                color: #333;
+                text-decoration: none;
+                font-size: 14px;
+                font-weight: 500;
+                transition: all 0.2s;
+            }
+
+                .mobile-pagination a:hover {
+                    background: #e0e0e0;
+                }
+
+            .mobile-pagination span {
+                min-width: 36px;
+                height: 36px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 0 12px;
+                border-radius: 8px;
+                background: #1976D2;
+                color: #fff;
+                font-size: 14px;
+                font-weight: 500;
+            }
+
+        /* 空状态 */
+        .mobile-datagrid-empty {
+            padding: 48px 16px;
+            text-align: center;
+            color: #999;
+            font-size: 14px;
+            background: #fff;
+            border-radius: 12px;
+        }
+
+        .mobile-datagrid-empty-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+            opacity: 0.5;
+        }
+
+        /* 响应式调整 */
+        @media (max-width: 480px) {
+            .mobile-datagrid-item {
+                padding: 12px;
+            }
+
+            .mobile-datagrid-actions {
+                margin-right: 8px;
+            }
+
+            .mobile-action-btn {
+                width: 32px;
+                height: 32px;
+            }
+
+                .mobile-action-btn img {
+                    width: 16px;
+                    height: 16px;
+                }
+
+            .mobile-datagrid-question {
+                font-size: 14px;
+            }
+        }
+
+        /* 加载状态 */
+        .datagrid-loading {
+            padding: 32px;
+            text-align: center;
+            color: #1976D2;
+        }
+
+            .datagrid-loading::after {
+                content: "";
+                display: inline-block;
+                width: 20px;
+                height: 20px;
+                border: 2px solid #e0e0e0;
+                border-top-color: #1976D2;
+                border-radius: 50%;
+                animation: datagrid-spin 0.8s linear infinite;
+                margin-left: 8px;
+            }
+
+        @keyframes datagrid-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
 
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="js/allAHandler.js"></script>
@@ -22,8 +254,12 @@
         $(function () {
             initSwipeBack();
 
-            //// 移动端触摸优化
-            //$('.list-item, .action-button, .mobile-button, .datagrid-table a').addClass('touch-feedback');
+            // 移动端触摸优化
+            $('.mobile-datagrid-item').on('touchstart', function () {
+                $(this).addClass('touch-active');
+            }).on('touchend touchcancel', function () {
+                $(this).removeClass('touch-active');
+            });
 
             // 防止双击放大
             var lastTouchEnd = 0;
@@ -35,16 +271,6 @@
                 lastTouchEnd = now;
             }, false);
 
-            //// 优化滚动性能
-            //$('.content-wrapper').on('touchmove', function (e) {
-            //    e.stopPropagation();
-            //});
-
-            //// 显示加载状态
-            //$('form').on('submit', function () {
-            //    showLoading();
-            //});
-
             // 返回按钮点击
             $('.header-back').on('click', function () {
                 window.history.back();
@@ -53,23 +279,65 @@
             // 弹窗适配移动端
             adaptPopupForMobile();
 
-            // 优化删除确认
-            $(document).on('click', '.custom-delete-icon', function (e) {
-                e.preventDefault();
-                e.stopPropagation();
-                var $this = $(this);
-                if (confirm('确认删除吗？')) {
-                    $this.closest('td').find('a[href*="Delete"]').click();
-                }
-                return false;
-            });
+
 
             // 优化日期选择器在移动端的显示
             enhanceDatePickers();
 
             // 修复新建按钮点击事件
             fixCreateButton();
+
+            // DataGrid初始化
+            initMobileDataGrid();
         });
+
+        function initMobileDataGrid() {
+            // 处理分页按钮样式
+            $('.pagination a').each(function () {
+                var $this = $(this);
+                if ($this.attr('href')) {
+                    $this.addClass('mobile-page-btn');
+                    // 移除原有的数字样式
+                    $this.css({
+                        'text-decoration': 'none',
+                        'display': 'inline-flex',
+                        'align-items': 'center',
+                        'justify-content': 'center',
+                        'min-width': '36px',
+                        'height': '36px',
+                        'padding': '0 12px',
+                        'border-radius': '8px',
+                        'background': '#f5f5f5',
+                        'color': '#333',
+                        'font-size': '14px',
+                        'font-weight': '500',
+                        'margin': '0 2px',
+                        'transition': 'all 0.2s'
+                    });
+                }
+            });
+
+            // 当前页样式
+            $('.pagination span').each(function () {
+                var $this = $(this);
+                if ($this.text().match(/^\d+$/)) {
+                    $this.css({
+                        'display': 'inline-flex',
+                        'align-items': 'center',
+                        'justify-content': 'center',
+                        'min-width': '36px',
+                        'height': '36px',
+                        'padding': '0 12px',
+                        'border-radius': '8px',
+                        'background': '#1976D2',
+                        'color': '#fff',
+                        'font-size': '14px',
+                        'font-weight': '500',
+                        'margin': '0 2px'
+                    });
+                }
+            });
+        }
 
         function showLoading() {
             $('<div class="loading"><div class="loading-spinner"></div></div>').appendTo('body');
@@ -107,7 +375,6 @@
                 }, 100);
             });
         }
-
 
         function enhanceDatePickers() {
             // 为日期输入框添加移动端优化
@@ -204,27 +471,24 @@
     </script>
 </head>
 <body>
-   
+
     <!-- 移动端头部 -->
-    <table style="width: 100%" cellpadding="0" cellspacing="0" class="ItemAlignLeft">
+    <table cellpadding="0" cellspacing="0" width="100%" class="bian">
         <tr>
-            <td height="31" class="page_topbj">
+            <td colspan="2" height="31" class="page_topbj">
                 <table width="96%" border="0" class="ItemAlignLeft" cellpadding="0" cellspacing="0">
                     <tr>
                         <td class="ItemAlignLeft">
-                            <a id="aAPPBackPriorPage" href="javascript:window.history.go(-1)" target="_parent" onclick="javascript:document.getElementById('IMG_Waiting').style.display = 'block';">
-
+                            <a id="aAPPBackPriorPage" href="javascript:window.history.go(-1)" target="_top" onclick="javascript:document.getElementById('IMG_Waiting').style.display = 'block';">
                                 <table width="245" border="0" class="ItemAlignLeft" cellpadding="0" cellspacing="0">
                                     <tr>
                                         <td width="29">
                                             <img src="ImagesSkin/return.png" alt="" />
                                         </td>
                                         <td background="ImagesSkin/main_top_bj.jpg" class="titleziAPP">
-                                            <asp:Label runat="server" Text="<%$ Resources:lang,Back%>" />
+                                            <asp:Label ID="Label24" runat="server" Text="<%$ Resources:lang,Back%>" />
                                         </td>
-                                        <td width="5">
-                                            <%-- <img src="ImagesSkin/main_top_r.jpg" width="5" height="31" />--%>
-                                    </td>
+                                        <td width="5"></td>
                                     </tr>
                                 </table>
                                 <img id="IMG_Waiting" src="Images/Processing.gif" alt="请稍候，处理中..." style="display: none;" />
@@ -235,6 +499,7 @@
             </td>
         </tr>
     </table>
+
     <!-- 主要内容区域 -->
     <div class="content-wrapper">
         <form id="form1" runat="server">
@@ -249,43 +514,61 @@
                             CssClass="mobile-button yellow" OnClick="BT_Create_Click" />
                     </div>
 
-                    <!-- 问题记录列表 -->
-                    <div class="mobile-card">
+                    <!-- APP风格的问题记录列表 -->
+                    <div class="mobile-datagrid">
+                        <asp:DataGrid ID="DataGrid4" runat="server" AutoGenerateColumns="False" GridLines="None"
+                            OnItemCommand="DataGrid4_ItemCommand" OnPageIndexChanged="DataGrid4_PageIndexChanged"
+                            AllowCustomPaging="false" AllowPaging="true" PageSize="10" ShowHeader="False"
+                            Width="100%" CssClass="datagrid-table">
+                            <HeaderStyle CssClass="datagrid-header" />
+                            <ItemStyle CssClass="itemStyle" />
+                            <AlternatingItemStyle CssClass="alternatingItemStyle" />
+                            <Columns>
+                                <asp:TemplateColumn>
+                                    <ItemTemplate>
+                                        <div class="mobile-datagrid-item">
+                                            <!-- 操作按钮区域 -->
+                                            <div class="mobile-datagrid-actions">
+                                                <!-- 编辑按钮 -->
+                                                <asp:LinkButton ID="LB_Update" runat="server" CommandName="Update" CssClass="mobile-action-btn update-btn" Text='<div><img src="ImagesSkin/Update.png" border="0" alt="Modify" /></div>'>
+                                                </asp:LinkButton>
 
-                        <div class="card-body datagrid-container">
-                            <asp:DataGrid ID="DataGrid4" runat="server" AutoGenerateColumns="False" GridLines="None"
-                                OnItemCommand="DataGrid4_ItemCommand" OnPageIndexChanged="DataGrid4_PageIndexChanged"
-                                AllowCustomPaging="false" AllowPaging="true" PageSize="10" ShowHeader="False"
-                                Width="100%" CssClass="datagrid-table">
-                                <ItemStyle CssClass="itemStyle" />
-                                <Columns>
+                                            </div>
 
-                                    <asp:ButtonColumn ButtonType="LinkButton" CommandName="Update" Text="&lt;div&gt;&lt;img src=ImagesSkin/Update.png border=0 alt='Modify' /&gt;&lt;/div&gt;">
-                                        <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="10%" />
-                                    </asp:ButtonColumn>
+                                            <!-- 内容区域 -->
+                                            <div class="mobile-datagrid-content">
+                                                <!-- ID -->
+                                                <div class="mobile-datagrid-id">
+                                                    <asp:Label ID="LB_ID" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "ID") %>'></asp:Label>
+                                                </div>
 
-
-                                    <asp:TemplateColumn HeaderText="Delete">
-                                        <ItemTemplate>
+                                                <!-- 问题描述 -->
+                                                <div class="mobile-datagrid-question">
+                                                    <asp:HyperLink ID="HL_Question" runat="server"
+                                                        NavigateUrl='<%# "TTAPPCustomerQuestionHandleDetailForCreate.aspx?ID=" + DataBinder.Eval(Container.DataItem, "ID") %>'
+                                                        Text='<%# DataBinder.Eval(Container.DataItem, "Question") %>'
+                                                        Target="_blank">
+                                                    </asp:HyperLink>
+                                                </div>
+                                            </div>
                                             <div onclick="return showSimpleDeleteModal(this, event);" style="cursor: pointer; display: inline-block;" class="custom-delete-icon" title="Delete">
                                                 <img src="ImagesSkin/Delete.png" border="0" alt='Delete' />
                                             </div>
                                             <asp:LinkButton ID="LBT_Delete" CommandName="Delete" runat="server" Style="display: none;"></asp:LinkButton>
-                                        </ItemTemplate>
-                                        <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="5%" />
-                                    </asp:TemplateColumn>
+                                        </div>
+                                    </ItemTemplate>
+                                </asp:TemplateColumn>
+                            </Columns>
+                            <PagerStyle HorizontalAlign="center" Mode="NumericPages" NextPageText="" PrevPageText="" />
+                        </asp:DataGrid>
 
-                                    <asp:BoundColumn DataField="ID" HeaderText="Number">
-                                        <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="10%" />
-                                    </asp:BoundColumn>
-
-                                    <asp:HyperLinkColumn DataNavigateUrlField="ID" DataNavigateUrlFormatString="TTAPPCustomerQuestionHandleDetailForCreate.aspx?ID={0}" DataTextField="Question" HeaderText="服务需求" Target="_blank">
-                                        <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" />
-                                    </asp:HyperLinkColumn>
-                                </Columns>
-                                <PagerStyle HorizontalAlign="center" Mode="NumericPages" NextPageText="" PrevPageText="" CssClass="notTab pagination" />
-                            </asp:DataGrid>
-                        </div>
+                        <!-- 空状态显示 -->
+                        <asp:Label ID="LB_EmptyMessage" runat="server" Visible="false">
+                            <div class="mobile-datagrid-empty">
+                                <div class="mobile-datagrid-empty-icon">📄</div>
+                                <div>暂无数据</div>
+                            </div>
+                        </asp:Label>
                     </div>
 
                     <!-- 统计图表 -->
@@ -420,7 +703,7 @@
                                         <asp:Label ID="Label12" runat="server" Text="<%$ Resources:lang,YIQICHENGJIAOSHIJIAN%>"></asp:Label>
                                     </div>
                                     <div style="position: relative;">
-                                        <asp:TextBox ID="DLC_ExpectedTime" runat="server" CssClass="date-input" ></asp:TextBox>
+                                        <asp:TextBox ID="DLC_ExpectedTime" runat="server" CssClass="date-input"></asp:TextBox>
                                         <cc2:CalendarExtender ID="CalendarExtender2" runat="server" Enabled="True" Format="yyyy-MM-dd" TargetControlID="DLC_ExpectedTime"></cc2:CalendarExtender>
                                     </div>
                                 </div>
@@ -496,13 +779,13 @@
                         </div>
 
                         <div id="popwindow_footer" class="layui-layer-btn" style="border-top: 1px solid #ccc; padding: 15px; text-align: center; background: white; position: sticky; bottom: 0;">
-                            <asp:LinkButton ID="LinkButton1" runat="server" 
-                                OnClick="BT_New_Click" 
-                                Text="<%$ Resources:lang,BaoCun%>" 
+                            <asp:LinkButton ID="LinkButton1" runat="server"
+                                OnClick="BT_New_Click"
+                                Text="<%$ Resources:lang,BaoCun%>"
                                 Style="display: inline-block; width: 30%; height: 40px; line-height: 40px; background: #1976D2; color: #ffffff; border: none; border-radius: 8px; font-size: 16px; font-weight: 500; margin-right: 4%; cursor: pointer; text-decoration: none;">
                             </asp:LinkButton>
-                            <a  onclick="return popClose();" 
-                                Style="display: inline-block; width: 30%; height: 40px; line-height: 40px;  background: #1976D2; color: #ffffff; border: none; border-radius: 8px; font-size: 16px; font-weight: 500; cursor: pointer; text-decoration: none;">
+                            <a onclick="return popClose();"
+                                style="display: inline-block; width: 30%; height: 40px; line-height: 40px; background: #1976D2; color: #ffffff; border: none; border-radius: 8px; font-size: 16px; font-weight: 500; cursor: pointer; text-decoration: none;">
                                 <asp:Label ID="Label2" runat="server" Text="<%$ Resources:lang,GuanBi%>" />
                             </a>
                         </div>
@@ -510,8 +793,8 @@
                     </div>
 
 
-                   <div class="layui-layer layui-layer-iframe" id="popwindow" name="fixedDiv"
-    style="z-index: 9999; width: 98%; height: auto; position: fixed; /* 改为 fixed */
+                    <div class="layui-layer layui-layer-iframe" id="popwindow" name="fixedDiv"
+                        style="z-index: 9999; width: 98%; height: auto; position: fixed; /* 改为 fixed */
            top: 20px; left: 50%; transform: translateX(-50%); /* 居中定位 */
            display: none; border-radius: 10px; max-height: 600px;">
                         <div class="layui-layer-title" style="background: #e7e7e8;" id="popwindow_title1">
