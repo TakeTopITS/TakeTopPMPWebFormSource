@@ -115,64 +115,6 @@ public partial class TakeTopMainSkinSelect : System.Web.UI.Page
         }
     }
 
-    protected void BT_Gradient_Click(object sender, EventArgs e)
-    {
-        string strUserCode = Session["UserCode"].ToString();
-
-        string strHQL = "from ProjectMember as projectMember where projectMember.UserCode = " + "'" + strUserCode + "'";
-        ProjectMemberBLL projectMemberBLL = new ProjectMemberBLL();
-        IList lst = projectMemberBLL.GetAllProjectMembers(strHQL);
-
-        ProjectMember projectMember = (ProjectMember)lst[0];
-
-        projectMember.CssDirectory = BT_Gradient.ToolTip;
-
-        try
-        {
-            projectMemberBLL.UpdateProjectMember(projectMember, strUserCode);
-
-            Session["CssDirectory"] = BT_Gradient.ToolTip;
-
-            //设置缓存更改标志
-            ChangePageCache("Skin");
-
-            //重新打开相应的主页，以刷新页面
-            OpenTopMDIPage(strUserType, projectMember.CssDirectory.Trim() + projectMember.LangCode.Trim());
-        }
-        catch
-        {
-        }
-    }
-
-    protected void BT_Blue_Click(object sender, EventArgs e)
-    {
-        string strUserCode = Session["UserCode"].ToString();
-
-        string strHQL = "from ProjectMember as projectMember where projectMember.UserCode = " + "'" + strUserCode + "'";
-        ProjectMemberBLL projectMemberBLL = new ProjectMemberBLL();
-        IList lst = projectMemberBLL.GetAllProjectMembers(strHQL);
-
-        ProjectMember projectMember = (ProjectMember)lst[0];
-
-        projectMember.CssDirectory = BT_Blue.ToolTip;
-
-        try
-        {
-            projectMemberBLL.UpdateProjectMember(projectMember, strUserCode);
-
-            Session["CssDirectory"] = BT_Blue.ToolTip;
-
-            //设置缓存更改标志
-            ChangePageCache("Skin");
-
-            //重新打开相应的主页，以刷新页面
-            OpenTopMDIPage(strUserType, projectMember.CssDirectory.Trim() + projectMember.LangCode.Trim());
-        }
-        catch
-        {
-        }
-    }
-
     protected void BT_Black_Click(object sender, EventArgs e)
     {
         string strUserCode = Session["UserCode"].ToString();
@@ -289,34 +231,92 @@ public partial class TakeTopMainSkinSelect : System.Web.UI.Page
         }
     }
 
-    protected void BT_Gold_Click(object sender, EventArgs e)
-    {
-        string strUserCode = Session["UserCode"].ToString();
+    //protected void BT_Gradient_Click(object sender, EventArgs e)
+    //{
+    //    string strUserCode = Session["UserCode"].ToString();
 
-        string strHQL = "from ProjectMember as projectMember where projectMember.UserCode = " + "'" + strUserCode + "'";
-        ProjectMemberBLL projectMemberBLL = new ProjectMemberBLL();
-        IList lst = projectMemberBLL.GetAllProjectMembers(strHQL);
+    //    string strHQL = "from ProjectMember as projectMember where projectMember.UserCode = " + "'" + strUserCode + "'";
+    //    ProjectMemberBLL projectMemberBLL = new ProjectMemberBLL();
+    //    IList lst = projectMemberBLL.GetAllProjectMembers(strHQL);
 
-        ProjectMember projectMember = (ProjectMember)lst[0];
+    //    ProjectMember projectMember = (ProjectMember)lst[0];
 
-        projectMember.CssDirectory = BT_Gold.ToolTip;
+    //    projectMember.CssDirectory = BT_Gradient.ToolTip;
 
-        try
-        {
-            projectMemberBLL.UpdateProjectMember(projectMember, strUserCode);
+    //    try
+    //    {
+    //        projectMemberBLL.UpdateProjectMember(projectMember, strUserCode);
 
-            Session["CssDirectory"] = BT_Gold.ToolTip;
+    //        Session["CssDirectory"] = BT_Gradient.ToolTip;
 
-            //设置缓存更改标志
-            ChangePageCache("Skin");
+    //        //设置缓存更改标志
+    //        ChangePageCache("Skin");
 
-            //重新打开相应的主页，以刷新页面
-            OpenTopMDIPage(strUserType, projectMember.CssDirectory.Trim() + projectMember.LangCode.Trim());
-        }
-        catch
-        {
-        }
-    }
+    //        //重新打开相应的主页，以刷新页面
+    //        OpenTopMDIPage(strUserType, projectMember.CssDirectory.Trim() + projectMember.LangCode.Trim());
+    //    }
+    //    catch
+    //    {
+    //    }
+    //}
+
+    //protected void BT_Blue_Click(object sender, EventArgs e)
+    //{
+    //    string strUserCode = Session["UserCode"].ToString();
+
+    //    string strHQL = "from ProjectMember as projectMember where projectMember.UserCode = " + "'" + strUserCode + "'";
+    //    ProjectMemberBLL projectMemberBLL = new ProjectMemberBLL();
+    //    IList lst = projectMemberBLL.GetAllProjectMembers(strHQL);
+
+    //    ProjectMember projectMember = (ProjectMember)lst[0];
+
+    //    projectMember.CssDirectory = BT_Blue.ToolTip;
+
+    //    try
+    //    {
+    //        projectMemberBLL.UpdateProjectMember(projectMember, strUserCode);
+
+    //        Session["CssDirectory"] = BT_Blue.ToolTip;
+
+    //        //设置缓存更改标志
+    //        ChangePageCache("Skin");
+
+    //        //重新打开相应的主页，以刷新页面
+    //        OpenTopMDIPage(strUserType, projectMember.CssDirectory.Trim() + projectMember.LangCode.Trim());
+    //    }
+    //    catch
+    //    {
+    //    }
+    //}
+
+    //protected void BT_Gold_Click(object sender, EventArgs e)
+    //{
+    //    string strUserCode = Session["UserCode"].ToString();
+
+    //    string strHQL = "from ProjectMember as projectMember where projectMember.UserCode = " + "'" + strUserCode + "'";
+    //    ProjectMemberBLL projectMemberBLL = new ProjectMemberBLL();
+    //    IList lst = projectMemberBLL.GetAllProjectMembers(strHQL);
+
+    //    ProjectMember projectMember = (ProjectMember)lst[0];
+
+    //    projectMember.CssDirectory = BT_Gold.ToolTip;
+
+    //    try
+    //    {
+    //        projectMemberBLL.UpdateProjectMember(projectMember, strUserCode);
+
+    //        Session["CssDirectory"] = BT_Gold.ToolTip;
+
+    //        //设置缓存更改标志
+    //        ChangePageCache("Skin");
+
+    //        //重新打开相应的主页，以刷新页面
+    //        OpenTopMDIPage(strUserType, projectMember.CssDirectory.Trim() + projectMember.LangCode.Trim());
+    //    }
+    //    catch
+    //    {
+    //    }
+    //}
 
     //复制所有左边栏模组
     protected void CopyAllLeftModuleForHomeLanguage(string strLangCode)

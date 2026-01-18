@@ -9,7 +9,7 @@
     <title>
         <asp:Literal ID="LiteralTitle" runat="server" Text="<%$ Resources:lang,WoDeDangAnSheZhi%>"></asp:Literal>
     </title>
-    <link href="css/CssPurple/TopRightMain.css" rel="stylesheet" type="text/css" />
+    <link href="css/TopRightMain.css" rel="stylesheet" type="text/css" />
 
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="js/allAHandler.js"></script>

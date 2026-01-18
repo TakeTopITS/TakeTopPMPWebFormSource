@@ -33378,4 +33378,7 @@
   <data name="XYHDKHHSYYXXHDKSXBYM" xml:space="preserve">
     <value>右にスワイプして前のページに戻る。下にスワイプしてこのページを更新</value>
   </data>
+  <data name="KaiPiaoZhuTi" xml:space="preserve">
+    <value>請求元</value>
+  </data>
 </root>

@@ -236,12 +236,12 @@
                     </div>
 
                     <div class="options-container">
-                        <asp:Button ID="BT_Gradient" runat="server" ToolTip="CssGradient" CssClass="option-button theme-button gradient" Text="" OnClick="BT_Gradient_Click" />
+                       <%-- <asp:Button ID="BT_Gradient" runat="server" ToolTip="CssGradient" CssClass="option-button theme-button gradient" Text="" OnClick="BT_Gradient_Click" />--%>
                         <asp:Button ID="BT_Grey" runat="server" ToolTip="CssGrey" CssClass="option-button theme-button grey" Text="" OnClick="BT_Grey_Click" />
                         <asp:Button ID="BT_Green" runat="server" ToolTip="CssGreen" CssClass="option-button theme-button green" Text="" OnClick="BT_Green_Click" />
-                        <asp:Button ID="BT_Blue" runat="server" ToolTip="CssBlue" CssClass="option-button theme-button blue" Text="" OnClick="BT_Blue_Click" />
+                        <%--<asp:Button ID="BT_Blue" runat="server" ToolTip="CssBlue" CssClass="option-button theme-button blue" Text="" OnClick="BT_Blue_Click" />--%>
                         <asp:Button ID="BT_Red" runat="server" ToolTip="CssRed" CssClass="option-button theme-button red" Text="" OnClick="BT_Red_Click" />
-                        <asp:Button ID="BT_Gold" runat="server" ToolTip="CssGolden" CssClass="option-button theme-button gold" Text="" OnClick="BT_Gold_Click" />
+                    <%--    <asp:Button ID="BT_Gold" runat="server" ToolTip="CssGolden" CssClass="option-button theme-button gold" Text="" OnClick="BT_Gold_Click"/>--%>
                         <asp:Button ID="BT_Black" runat="server" ToolTip="CssBlack" CssClass="option-button theme-button black" Text="" OnClick="BT_Black_Click" />
                     </div>
                 </div>

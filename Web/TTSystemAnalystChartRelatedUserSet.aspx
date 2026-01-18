@@ -7,9 +7,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
     <title>
-        <asp:Label ID="Label1" runat="server" Text="<%$ Resources:lang,WeDeYeWuFenXiTu%>"></asp:Label>
+          <asp:Literal ID="LiteralTitle" runat="server" Text="<%$ Resources:lang,WeDeYeWuFenXiTu%>"></asp:Literal>
     </title>
-    <link href="css/CssPurple/TopRightMain.css" rel="stylesheet" type="text/css" />
+   <link href="css/TopRightMain.css" rel="stylesheet" type="text/css" />
 
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="js/allAHandler.js"></script>

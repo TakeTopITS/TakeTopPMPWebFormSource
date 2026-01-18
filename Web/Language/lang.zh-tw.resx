@@ -33232,4 +33232,7 @@
   <data name="XYHDKHHSYYXXHDKSXBYM" xml:space="preserve">
     <value>向右滑動返回上一頁，向下滑動刷新本頁面</value>
   </data>
+  <data name="KaiPiaoZhuTi" xml:space="preserve">
+    <value>開票主體</value>
+  </data>
 </root>

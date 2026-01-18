@@ -33379,4 +33379,7 @@ The progress of the task affects the schedule to be confirmed</value>
   <data name="XYHDKHHSYYXXHDKSXBYM" xml:space="preserve">
     <value>Swipe right to go back. Swipe down to refresh this page</value>
   </data>
+  <data name="KaiPiaoZhuTi" xml:space="preserve">
+    <value>Billing Entity</value>
+  </data>
 </root>
