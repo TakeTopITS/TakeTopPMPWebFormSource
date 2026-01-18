@@ -9,7 +9,7 @@
     <title>
         <asp:Literal ID="LiteralTitle" runat="server" Text="<%$ Resources:lang,GeRenKongJianLanWeiSheZhi%>"></asp:Literal>
     </title>
-    <link href="css/CssPurple/TopRightMain.css" rel="stylesheet" type="text/css" />
+    <link id="mainCss" href="css/bluelightmain.css" rel="stylesheet" type="text/css" />
 
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="js/allAHandler.js"></script>
@@ -278,7 +278,14 @@
                                                             <tr>
                                                                 <td style="width: 100%; padding-right: 310px;" align="right">
                                                                     <br />
-                                                                    <asp:Button ID="BT_ModuleSave" runat="server" CssClass="inpu" Text="<%$ Resources:lang,BaoCun%>" Enabled="false" OnClick="BT_ModuleSave_Click" />
+
+                                                                    <!-- 保存按钮 -->
+                                                                    <div class="chart-btn-group">
+                                                                        <asp:Button ID="BT_ModuleSave" runat="server" CssClass="inpuLong"
+                                                                            Text="<%$ Resources:lang,BaoCun%>" OnClick="BT_ModuleSave_Click" />
+                                                                    </div>
+
+
                                                                 </td>
                                                             </tr>
                                                         </table>
@@ -413,4 +420,6 @@
         });
     }
 </script>
+<script type="text/javascript" language="javascript">var cssDirectory = '<%=Session["CssDirectory"] %>'; var oLink = document.getElementById('mainCss'); oLink.href = 'css/' + cssDirectory + '/' + 'bluelightmain.css';</script>
+
 </html>
