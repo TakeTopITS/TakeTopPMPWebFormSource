@@ -27,13 +27,12 @@
 
         .mobile-datagrid-item {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             padding: 16px;
             border-bottom: 1px solid #f0f0f0;
             background: #fff;
             transition: background-color 0.2s;
             position: relative;
-            min-height: 60px;
         }
 
             .mobile-datagrid-item:last-child {
@@ -92,6 +91,7 @@
         .mobile-datagrid-content {
             flex: 1;
             overflow: hidden;
+            min-width: 0;
         }
 
         .mobile-datagrid-id {
@@ -109,6 +109,13 @@
                 color: #999;
             }
 
+        .mobile-datagrid-question-container {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            width: 100%;
+        }
+
         .mobile-datagrid-question {
             font-size: 15px;
             color: #333;
@@ -120,6 +127,8 @@
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
+            flex: 1;
+            min-width: 0;
         }
 
             .mobile-datagrid-question a {
@@ -133,6 +142,28 @@
                     color: #1565C0;
                     text-decoration: none;
                 }
+
+        .delete-icon-wrapper {
+            flex-shrink: 0;
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            height: 24px;
+        }
+
+        .custom-delete-icon {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+        }
+
+            .custom-delete-icon img {
+                width: 18px;
+                height: 18px;
+            }
 
         /* 分页样式 */
         .mobile-pagination {
@@ -219,6 +250,16 @@
 
             .mobile-datagrid-question {
                 font-size: 14px;
+            }
+            
+            .custom-delete-icon {
+                width: 20px;
+                height: 20px;
+            }
+            
+            .custom-delete-icon img {
+                width: 16px;
+                height: 16px;
             }
         }
 
@@ -528,33 +569,39 @@
                                     <ItemTemplate>
                                         <div class="mobile-datagrid-item">
                                             <!-- 操作按钮区域 -->
-                                            <div class="mobile-datagrid-actions">
-                                                <!-- 编辑按钮 -->
-                                                <asp:LinkButton ID="LB_Update" runat="server" CommandName="Update" CssClass="mobile-action-btn update-btn" Text='<div><img src="ImagesSkin/Update.png" border="0" alt="Modify" /></div>'>
-                                                </asp:LinkButton>
-
-                                            </div>
-
                                             <!-- 内容区域 -->
                                             <div class="mobile-datagrid-content">
+                                                <!-- 编辑按钮 -->
+                                                <asp:LinkButton ID="LB_Update" runat="server" CommandName="Update" CssClass="mobile-button blue" Text='<%# DataBinder.Eval(Container.DataItem, "ID") %>' />
+
+
+
+
                                                 <!-- ID -->
-                                                <div class="mobile-datagrid-id">
+                                                <div class="mobile-datagrid-id" style="display: none;">
                                                     <asp:Label ID="LB_ID" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "ID") %>'></asp:Label>
                                                 </div>
 
-                                                <!-- 问题描述 -->
-                                                <div class="mobile-datagrid-question">
-                                                    <asp:HyperLink ID="HL_Question" runat="server"
-                                                        NavigateUrl='<%# "TTAPPCustomerQuestionHandleDetailForCreate.aspx?ID=" + DataBinder.Eval(Container.DataItem, "ID") %>'
-                                                        Text='<%# DataBinder.Eval(Container.DataItem, "Question") %>'
-                                                        Target="_blank">
-                                                    </asp:HyperLink>
+                                                <!-- 问题描述和删除按钮容器 -->
+                                                <div class="mobile-datagrid-question-container">
+                                                    <!-- 问题描述 -->
+                                                    <div class="mobile-datagrid-question">
+                                                        <asp:HyperLink ID="HL_Question" runat="server"
+                                                            NavigateUrl='<%# "TTAPPCustomerQuestionHandleDetailForCreate.aspx?ID=" + DataBinder.Eval(Container.DataItem, "ID") %>'
+                                                            Text='<%# DataBinder.Eval(Container.DataItem, "Question") %>'
+                                                            Target="_blank">
+                                                        </asp:HyperLink>
+                                                    </div>
+                                                    
+                                                    <!-- 删除按钮（放在问题描述的右侧） -->
+                                                    <div class="delete-icon-wrapper">
+                                                        <div onclick="return showSimpleDeleteModal(this, event);" class="custom-delete-icon" title="Delete">
+                                                            <img src="ImagesSkin/Delete.png" border="0" alt='Delete' />
+                                                        </div>
+                                                        <asp:LinkButton ID="LBT_Delete" CommandName="Delete" runat="server" Style="display: none;"></asp:LinkButton>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div onclick="return showSimpleDeleteModal(this, event);" style="cursor: pointer; display: inline-block;" class="custom-delete-icon" title="Delete">
-                                                <img src="ImagesSkin/Delete.png" border="0" alt='Delete' />
-                                            </div>
-                                            <asp:LinkButton ID="LBT_Delete" CommandName="Delete" runat="server" Style="display: none;"></asp:LinkButton>
                                         </div>
                                     </ItemTemplate>
                                 </asp:TemplateColumn>

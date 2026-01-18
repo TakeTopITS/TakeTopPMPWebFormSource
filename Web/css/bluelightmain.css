@@ -1,3 +1,4 @@
+/* bluelightmain.css */
 /* ===== 禁止页面缩放 ===== */
 html {
     -webkit-text-size-adjust: 100% !important;
@@ -223,7 +224,7 @@ a:hover {
 td {
     vertical-align: top;
     line-height: 23px;
-    word-break: break-all;
+    word-break: break-word; /* 修改：允许单词换行 */
 }
 
     td a {
@@ -920,32 +921,32 @@ select {
     border-top: none;
     vertical-align: middle;
     line-height: 23px;
-    word-break: break-all;
-    white-space: nowrap;
+    word-break: break-word; /* 修改：允许单词换行 */
+    white-space: normal; /* 修改：允许换行 */
     text-align: left;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    overflow: visible; /* 修改：显示完整内容 */
 }
 
 .headStyle {
     background-image: url(ImagesSkin/main_n_bj.jpg);
     padding: 5px;
     margin: 1px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    overflow: visible; /* 修改：显示完整内容 */
+    text-overflow: clip;
+    white-space: normal; /* 修改：允许换行 */
 }
 
 .itemStyle {
-    height: 23px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    height: auto; /* 修改：自动高度 */
+    overflow: visible; /* 修改：显示完整内容 */
+    text-overflow: clip;
+    white-space: normal; /* 修改：允许换行 */
+    word-break: break-word; /* 修改：允许单词换行 */
 }
 
     .itemStyle:hover {
         background: #E9E7E7;
-        height: 23px;
+        height: auto; /* 修改：自动高度 */
     }
 
 .bian_in {
@@ -957,41 +958,42 @@ select {
     .bian_in td {
         border-right: 1px solid #D6DAE2;
         border-bottom: 1px solid #D6DAE2;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        overflow: visible; /* 修改：显示完整内容 */
+        text-overflow: clip;
+        word-break: break-word; /* 修改：允许单词换行 */
     }
 /* ===== TreeView样式 ===== */
 .rootNode {
     font-size: 14px;
     color: #000000;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    overflow: visible; /* 修改：显示完整内容 */
+    text-overflow: clip;
+    white-space: normal; /* 修改：允许换行 */
 }
 
 .treeNode {
     color: #070707;
     font-size: 12px;
     font-family: "Microsoft YaHei";
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    overflow: visible; /* 修改：显示完整内容 */
+    text-overflow: clip;
+    white-space: normal; /* 修改：允许换行 */
 }
 
 .leafNode {
     padding: 2px;
     color: #5B5A5A;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    overflow: visible; /* 修改：显示完整内容 */
+    text-overflow: clip;
+    white-space: normal; /* 修改：允许换行 */
 }
 
 .selectNode {
     font-weight: bold;
     color: red;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    overflow: visible; /* 修改：显示完整内容 */
+    text-overflow: clip;
+    white-space: normal; /* 修改：允许换行 */
 }
 /* ===== 表单布局 ===== */
 .formBgStyle {
@@ -999,12 +1001,12 @@ select {
 }
 
 .ItemAlignLeft {
-    word-break: break-all;
-    white-space: nowrap;
+    word-break: break-word; /* 修改：允许单词换行 */
+    white-space: normal; /* 修改：允许换行 */
     text-align: left;
     padding-left: 5px;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    overflow: visible; /* 修改：显示完整内容 */
+    text-overflow: clip;
 }
 
 .formItemBgStyleForAlignCenter {
@@ -1016,11 +1018,11 @@ select {
     border-bottom-color: #cccccc;
     vertical-align: top;
     line-height: 23px;
-    word-break: break-all;
-    white-space: nowrap;
+    word-break: break-word; /* 修改：允许单词换行 */
+    white-space: normal; /* 修改：允许换行 */
     text-align: center;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    overflow: visible; /* 修改：显示完整内容 */
+    text-overflow: clip;
 }
 
 .formItemBgStyleForAlignLeft {
@@ -1032,12 +1034,12 @@ select {
     border-bottom-color: #cccccc;
     vertical-align: top;
     line-height: 23px;
-    word-break: break-all;
-    white-space: nowrap;
+    word-break: break-word; /* 修改：允许单词换行 */
+    white-space: normal; /* 修改：允许换行 */
     text-align: left;
     padding-left: 2px;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    overflow: visible; /* 修改：显示完整内容 */
+    text-overflow: clip;
 }
 
 .formItemBgStyleForAlignRight {
@@ -1049,11 +1051,11 @@ select {
     border-bottom-color: #cccccc;
     vertical-align: top;
     line-height: 23px;
-    word-break: break-all;
-    white-space: nowrap;
+    word-break: break-word; /* 修改：允许单词换行 */
+    white-space: normal; /* 修改：允许换行 */
     text-align: right;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    overflow: visible; /* 修改：显示完整内容 */
+    text-overflow: clip;
 }
 /* ===== 数据列表样式 ===== */
 .tdLeft, .tdRight {
@@ -1062,9 +1064,9 @@ select {
     border-bottom: dotted 0px #D8D8D8;
     border-left: dotted 1px #D8D8D8;
     border-right: dotted 1px #D8D8D8;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    overflow: visible; /* 修改：显示完整内容 */
+    text-overflow: clip;
+    white-space: normal; /* 修改：允许换行 */
 }
 
 .tdLeft3, .tdRight3 {
@@ -1072,9 +1074,9 @@ select {
     border-bottom: dotted 1px #D8D8D8;
     border-left: dotted 0px #D8D8D8;
     border-right: dotted 1px #D8D8D8;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    overflow: visible; /* 修改：显示完整内容 */
+    text-overflow: clip;
+    white-space: normal; /* 修改：允许换行 */
 }
 
 .tdTopLine {
@@ -1082,9 +1084,9 @@ select {
     border-bottom: dotted 0px #D8D8D8;
     border-left: dotted 0px #D8D8D8;
     border-right: dotted 0px #D8D8D8;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    overflow: visible; /* 修改：显示完整内容 */
+    text-overflow: clip;
+    white-space: normal; /* 修改：允许换行 */
 }
 
 .noBorder {
@@ -1099,9 +1101,9 @@ select {
     background-size: 100% 100%;
     display: block;
     width: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    white-space: normal; /* 修改：允许换行 */
+    overflow: visible; /* 修改：显示完整内容 */
+    text-overflow: clip;
     padding-left: 5px;
     padding-right: 5px;
 }
@@ -1113,9 +1115,9 @@ select {
     border-top: 1px solid #D6DAE2;
     display: block;
     width: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    white-space: normal; /* 修改：允许换行 */
+    overflow: visible; /* 修改：显示完整内容 */
+    text-overflow: clip;
     padding-left: 5px;
     padding-right: 5px;
 }
@@ -1131,9 +1133,9 @@ select {
     cursor: pointer;
     display: block;
     width: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    white-space: normal; /* 修改：允许换行 */
+    overflow: visible; /* 修改：显示完整内容 */
+    text-overflow: clip;
     padding-left: 5px;
     padding-right: 5px;
 }
@@ -1147,9 +1149,9 @@ select {
     text-align: center;
     display: block;
     width: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    white-space: normal; /* 修改：允许换行 */
+    overflow: visible; /* 修改：显示完整内容 */
+    text-overflow: clip;
     padding-left: 5px;
     padding-right: 5px;
 }
@@ -1163,9 +1165,9 @@ select {
     color: #333;
     display: block;
     width: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    white-space: normal; /* 修改：允许换行 */
+    overflow: visible; /* 修改：显示完整内容 */
+    text-overflow: clip;
     padding-left: 5px;
     padding-right: 5px;
 }
@@ -1174,7 +1176,7 @@ select {
     width: 100px;
     height: 25px;
     position: relative;
-    overflow: hidden;
+    overflow: visible; /* 修改：显示完整内容 */
 }
 
 .yellow-bg {
@@ -1188,9 +1190,9 @@ select {
     text-align: right;
     padding-right: 5px;
     line-height: 25px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    overflow: visible; /* 修改：显示完整内容 */
+    text-overflow: clip;
+    white-space: normal; /* 修改：允许换行 */
 }
 
 .green-progress {
@@ -1201,11 +1203,11 @@ select {
     background-color: yellowgreen;
     z-index: 2;
     max-width: 100px;
-    overflow: hidden;
+    overflow: visible; /* 修改：显示完整内容 */
     padding-left: 5px;
     line-height: 25px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    text-overflow: clip;
+    white-space: normal; /* 修改：允许换行 */
 }
 /* ===== 滑动反馈 ===== */
 .swipe-feedback {
@@ -1223,10 +1225,10 @@ select {
     pointer-events: none;
     font-size: 14px;
     text-align: center;
-    white-space: nowrap;
+    white-space: normal; /* 修改：允许换行 */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-    overflow: hidden;
-    text-overflow: ellipsis;
+    overflow: visible; /* 修改：显示完整内容 */
+    text-overflow: clip;
     animation: fadeInOut 3s ease-in-out forwards;
 }
 
@@ -1251,23 +1253,23 @@ select {
 /* ===== 自定义Tab系统 ===== */
 .PMBTab-bg-undertake {
     background-color: #e1f5fe;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    overflow: visible; /* 修改：显示完整内容 */
+    text-overflow: clip;
+    white-space: normal; /* 修改：允许换行 */
 }
 
 .PMBTab-bg-involved {
     background-color: #b3e5fc;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    overflow: visible; /* 修改：显示完整内容 */
+    text-overflow: clip;
+    white-space: normal; /* 修改：允许换行 */
 }
 
 .PMBTab-bg-created {
     background-color: #81d4fa;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    overflow: visible; /* 修改：显示完整内容 */
+    text-overflow: clip;
+    white-space: normal; /* 修改：允许换行 */
 }
 
 .PMBTab-radio:checked + .PMBTab-page + .PMBTab-nav.PMBTab-bg-undertake,
@@ -1287,8 +1289,8 @@ select {
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    overflow: visible; /* 修改：显示完整内容 */
+    text-overflow: clip;
 }
 
 @keyframes PMBTab-fadeInUp {
@@ -1308,20 +1310,20 @@ table input[type="radio"] {
 .aspNetDisabled tbody,
 .aspNetDisabled tr {
     display: inline !important;
-    white-space: nowrap !important;
+    white-space: normal !important; /* 修改：允许换行 */
     border-collapse: collapse !important;
     border-spacing: 0 !important;
 }
 
     .aspNetDisabled td {
         display: inline-block !important;
-        white-space: nowrap !important;
+        white-space: normal !important; /* 修改：允许换行 */
         vertical-align: middle !important;
         padding: 2px 10px 2px 0 !important;
         margin: 0 !important;
         line-height: normal !important;
-        overflow: hidden !important;
-        text-overflow: ellipsis !important;
+        overflow: visible !important; /* 修改：显示完整内容 */
+        text-overflow: clip !important;
     }
 
     .aspNetDisabled label {
@@ -1331,9 +1333,9 @@ table input[type="radio"] {
         margin: 0 !important;
         padding: 0 !important;
         line-height: 1.5 !important;
-        overflow: hidden !important;
-        text-overflow: ellipsis !important;
-        white-space: nowrap !important;
+        overflow: visible !important; /* 修改：显示完整内容 */
+        text-overflow: clip !important;
+        white-space: normal !important; /* 修改：允许换行 */
     }
 /* ===== 响应式设计 ===== */
 @media (max-width: 768px) {

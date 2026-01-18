@@ -77,40 +77,35 @@
 
                     <table cellpadding="0" cellspacing="0" width="100%" class="bian">
                         <tr>
-                            <td height="31">
+                            <td height="31" class="page_topbj">
                                 <table width="96%" border="0" class="ItemAlignLeft" cellpadding="0" cellspacing="0">
                                     <tr>
-                                        <td height="31" class="page_topbj">
-                                            <table width="96%" border="0" class="ItemAlignLeft" cellpadding="0" cellspacing="0">
-                                                <tr>
-                                                    <td class="ItemAlignLeft">
-                                                        <a id="aAPPBackPriorPage" href="TakeTopAPPMain.aspx" target="_top" onclick="javascript:document.getElementById('IMG_Waiting').style.display = 'block';">
-                                                            <table width="245" border="0" class="ItemAlignLeft" cellpadding="0" cellspacing="0">
-                                                                <tr>
-                                                                    <td width="29">
-                                                                        <img src="ImagesSkin/return.png" alt="" />
-                                                                    </td>
-                                                                    <td background="ImagesSkin/main_top_bj.jpg" class="titleziAPP">
-                                                                        <asp:Label ID="Label12" runat="server" Text="<%$ Resources:lang,Back%>" />
-                                                                    </td>
-                                                                    <td width="5">
-                                                                        <%-- <img src="ImagesSkin/main_top_r.jpg" width="5" height="31" />--%>
-                                                                    </td>
-                                                                </tr>
-                                                            </table>
-                                                            <img id="IMG_Waiting" src="Images/Processing.gif" alt="请稍候，处理中..." style="display: none;" />
-                                                        </a>
-                                                    </td>
-                                                    <td align="right" style="padding-top: 5px; padding-right: 8px;">
-                                                        <asp:Button ID="BT_Create" runat="server" Text="<%$ Resources:lang,New%>" CssClass="inpuYello" OnClick="BT_Create_Click" Visible="false" />
-                                                    </td>
-                                                </tr>
-                                            </table>
+                                        <td class="ItemAlignLeft">
+                                            <a id="aAPPBackPriorPage" href="TakeTopAPPMain.aspx" target="_top" onclick="javascript:document.getElementById('IMG_Waiting').style.display = 'block';">
+                                                <table width="145" border="0" class="ItemAlignLeft" cellpadding="0" cellspacing="0">
+                                                    <tr>
+                                                        <td width="29">
+                                                            <img src="ImagesSkin/return.png" alt="" />
+                                                        </td>
+                                                        <td background="ImagesSkin/main_top_bj.jpg" class="titleziAPP">
+                                                            <asp:Label ID="Label8" runat="server" Text="<%$ Resources:lang,Back%>" />
+                                                        </td>
+                                                        <td width="5">
+                                                            <%-- <img src="ImagesSkin/main_top_r.jpg" width="5" height="31" />--%>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                                <img id="IMG_Waiting" src="Images/Processing.gif" alt="请稍候，处理中..." style="display: none;" />
+                                            </a>
+                                        </td>
+                                        <td align="right" style="padding-top: 5px; padding-right: 8px;">
+                                            <asp:Button ID="BT_Create" runat="server" Text="<%$ Resources:lang,New%>" CssClass="inpuYello" OnClick="BT_Create_Click" Visible="false" />
                                         </td>
                                     </tr>
                                 </table>
                             </td>
                         </tr>
+                 
                         <tr>
                             <td style="padding: 5px 5px 5px 5px;">
 
