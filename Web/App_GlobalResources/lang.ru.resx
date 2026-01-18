@@ -33233,4 +33233,7 @@
   <data name="XYHDKHHSYYXXHDKSXBYM" xml:space="preserve">
     <value>Смахивайте вправо для возврата. Смахивайте вниз для обновления страницы</value>
   </data>
+  <data name="KaiPiaoZhuTi" xml:space="preserve">
+    <value>Субъект выставляющий счет</value>
+  </data>
 </root>

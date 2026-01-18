@@ -33228,6 +33228,9 @@
   <data name="ShuRuShuJiBiaoMingChengCTaoHaoFengKai" xml:space="preserve">
     <value>ป้อนชื่อตาราง คั่นด้วยเครื่องหมายจุลภาค...</value>
   </data>
+  <data name="XYHDKHHSYYXXHDKSXBYM" xml:space="preserve">
+    <value>ปัดไปทางขวาเพื่อกลับหน้าเดิม ปัดลงเพื่อรีเฟรชหน้านี้</value>
+  </data>
   <data name="DGMBSTDTB" xml:space="preserve">
     <value>การยื่นเสนอราคาที่รอซื้อเอกสารประกวดราคา</value>
   </data>
@@ -42544,7 +42547,7 @@
   <data name="QiYeJiKuaZhanRuanJian" xml:space="preserve">
     <value>ซอฟต์แวร์ขยายขนาดระดับองค์กร</value>
   </data>
-  <data name="XYHDKHHSYYXXHDKSXBYM" xml:space="preserve">
-    <value>ปัดไปทางขวาเพื่อกลับหน้าเดิม ปัดลงเพื่อรีเฟรชหน้านี้</value>
+  <data name="KaiPiaoZhuTi" xml:space="preserve">
+    <value>หน่วยออกใบแจ้งหนี้</value>
   </data>
 </root>

@@ -467,21 +467,12 @@
                                             <cc1:TabPanel ID="TabPanel1" runat="server" HeaderText="采购单明细">
                                                 <HeaderTemplate>
                                                     <asp:Label ID="Label22" runat="server" Text="<%$ Resources:lang,CaiGouDanMingXi%>"></asp:Label>
-
                                                 </HeaderTemplate>
-
-
-
-
                                                 <ContentTemplate>
                                                     <table class="ItemAlignLeft" cellpadding="0" cellspacing="0" width="99%">
                                                         <tr>
                                                             <td align="right" style="padding-bottom: 5px;">
                                                                 <asp:Button ID="BT_CreateDetail" runat="server" Text="<%$ Resources:lang,New %>" CssClass="inpuYello" OnClick="BT_CreateDetail_Click" />
-
-
-
-
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -2051,10 +2042,10 @@
                                                                 <asp:Label ID="Label127" runat="server" Text="<%$ Resources:lang,ShuiPiaoLeiXing %>"></asp:Label>
                                                             </strong></td>--%>
 
-                                                            <td class="ItemAlignLeft" width="6%"><strong>
-                                                                <asp:Label ID="Label127" runat="server" Text="收票主体"></asp:Label>
+                                                            <td class="ItemAlignLeft" width="9%"><strong>
+                                                                <asp:Label ID="Label127" runat="server" Text="<%$ Resources:lang,KaiPiaoZhuTi %>"></asp:Label>
                                                             </strong></td>
-                                                            <td class="ItemAlignLeft" width="12%"><strong>
+                                                            <td class="ItemAlignLeft" width="9%"><strong>
                                                                 <asp:Label ID="Label128" runat="server" Text="<%$ Resources:lang,FaPiaoHaoMa %>"></asp:Label>
                                                             </strong></td>
                                                             <td class="ItemAlignLeft" width="6%"><strong>
@@ -2096,10 +2087,10 @@
                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="6%" />
                                                 </asp:BoundColumn>
                                                 <asp:BoundColumn DataField="TaxType" HeaderText="税票">
-                                                    <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="6%" />
+                                                    <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="9%" />
                                                 </asp:BoundColumn>
                                                 <asp:BoundColumn DataField="InvoiceCode" HeaderText="发票号码">
-                                                    <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="12%" />
+                                                    <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="9%" />
                                                 </asp:BoundColumn>
                                                 <asp:BoundColumn DataField="Amount" HeaderText="Amount">
                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="6%" />
@@ -2146,35 +2137,23 @@
                             <table width="100%" cellpadding="3" cellspacing="0" class="formBgStyle">
                                 <tr>
                                     <td class="formItemBgStyleForAlignLeft" style="width: 15%;">
-                                        <asp:Label ID="Label121" runat="server" Text="<%$ Resources:lang,LeiXing%>"></asp:Label>
-                                        :
+                                        <asp:Label ID="LB_InvoiceID" runat="server" Visible="false"></asp:Label>
+                                        <asp:Label ID="Label121" runat="server" Text="<%$ Resources:lang,LeiXing%>"></asp:Label>  :
                                     </td>
-                                    <td class="formItemBgStyleForAlignLeft" width="35%" class="ItemAlignLeft">
+                                    <td class="formItemBgStyleForAlignLeft" width="30%" class="ItemAlignLeft">
                                         <asp:DropDownList ID="DL_InvoiceReceiveOPen" runat="server">
                                             <asp:ListItem Value="RECEIVE" Text="<%$ Resources:lang,ShouPiao%>" />
                                             <asp:ListItem Value="OPEN" Text="<%$ Resources:lang,KaiPiao%>" />
                                         </asp:DropDownList>
                                     </td>
-                                    <%--   <td class="formItemBgStyleForAlignLeft"  style="width: 15%;">
-                                        <asp:Label ID="Label122" runat="server" Text="<%$ Resources:lang,ShuiPiaoZhongLei%>"></asp:Label>:</td>
-                                    <td class="formItemBgStyleForAlignLeft" >
-                                        <asp:DropDownList ID="DL_TaxType" runat="server">
-                                            <asp:ListItem Value="NationalTax" Text="<%$ Resources:lang,GuoShui%>" />
-                                            <asp:ListItem Value="LocalTax" Text="<%$ Resources:lang,DiShui%>" />
-                                        </asp:DropDownList>
-                                        <asp:Label ID="LB_InvoiceID" runat="server"></asp:Label>
-                                    </td>--%>
-
                                     <td class="formItemBgStyleForAlignLeft" style="width: 15%;">
-                                        <asp:Label ID="Label122" runat="server" Text="收票主体"></asp:Label>
-                                        :</td>
+                                        <asp:Label ID="Label122" runat="server" Text="发票主体"></asp:Label>:
+                                    </td>
                                     <td class="formItemBgStyleForAlignLeft">
-                                        <asp:DropDownList ID="DL_TaxType" runat="server">
-                                            <asp:ListItem Value="ACompany" Text="A公司" />
-                                            <asp:ListItem Value="BCompany" Text="B公司" />
-                                            <asp:ListItem Value="CCompany" Text="C公司" />
+                                        <asp:TextBox ID="TB_InvoiceMainPart" runat="server"></asp:TextBox>
+                                        <asp:DropDownList ID="DL_TaxType" DataValueField="TaxType" DataTextField="TaxType"  AutoPostBack="true"  OnSelectedIndexChanged="DL_TaxType_SelectedIndexChanged" runat="server">
                                         </asp:DropDownList>
-                                        <asp:Label ID="LB_InvoiceID" runat="server"></asp:Label>
+
                                     </td>
                                 </tr>
                                 <tr>

@@ -33378,4 +33378,7 @@
   <data name="XYHDKHHSYYXXHDKSXBYM" xml:space="preserve">
     <value>Glissez vers la droite pour revenir en arrière. Glissez vers le bas pour actualiser cette page</value>
   </data>
+  <data name="KaiPiaoZhuTi" xml:space="preserve">
+    <value>Émetteur de facture</value>
+  </data>
 </root>

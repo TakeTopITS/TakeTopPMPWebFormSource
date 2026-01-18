@@ -33530,4 +33530,7 @@
   <data name="XYHDKHHSYYXXHDKSXBYM" xml:space="preserve">
     <value>向右滑动返回上一页，向下滑动刷新本页面</value>
   </data>
+  <data name="KaiPiaoZhuTi" xml:space="preserve">
+    <value>开票主体</value>
+  </data>
 </root>

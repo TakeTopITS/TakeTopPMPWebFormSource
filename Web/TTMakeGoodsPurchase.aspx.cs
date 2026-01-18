@@ -1,18 +1,21 @@
+using ProjectMgt.BLL;
+using ProjectMgt.DAL;
+using ProjectMgt.Model;
+
+using PushSharp.Core;
+
+using Stimulsoft.Report;
+
 using System;
 using System.Collections;
 using System.Data;
 using System.Drawing;
+using System.Security.Cryptography;
+using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Web;
-
-using ProjectMgt.BLL;
-using ProjectMgt.Model;
 
 using TakeTopCore;
-using PushSharp.Core;
-using Stimulsoft.Report;
-using System.Security.Cryptography;
 
 public partial class TTMakeGoodsPurchase : System.Web.UI.Page
 {
@@ -2585,6 +2588,8 @@ public partial class TTMakeGoodsPurchase : System.Web.UI.Page
 
             strID = e.Item.Cells[2].Text.Trim();
 
+            LoadInvoiceType();
+
             if (e.CommandName == "Update")
             {
                 for (int i = 0; i < DataGrid12.Items.Count; i++)
@@ -2601,7 +2606,8 @@ public partial class TTMakeGoodsPurchase : System.Web.UI.Page
 
                 LB_InvoiceID.Text = constractRelatedInvoice.ID.ToString();
                 DL_InvoiceReceiveOPen.SelectedValue = constractRelatedInvoice.ReceiveOpen.Trim();
-                DL_TaxType.SelectedValue = constractRelatedInvoice.TaxType.Trim();
+                TB_InvoiceMainPart.Text = constractRelatedInvoice.TaxType.Trim();
+                //DL_TaxType.SelectedValue = constractRelatedInvoice.TaxType.Trim();
                 TB_InvoiceCode.Text = constractRelatedInvoice.InvoiceCode.Trim();
                 NB_InvoiceAmount.Amount = constractRelatedInvoice.Amount;
                 NB_InvoiceTaxRate.Amount = constractRelatedInvoice.TaxRate;
@@ -2648,9 +2654,32 @@ public partial class TTMakeGoodsPurchase : System.Web.UI.Page
         }
     }
 
+    protected void DL_TaxType_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        TB_InvoiceMainPart.Text =DL_TaxType.SelectedValue.Trim();
+
+        ScriptManager.RegisterStartupScript(UpdatePanel1, GetType(), "pop", "popShow('popInvoiceWindow','true','popInvoiceDetailWindow') ", true);
+    }
+
+    protected void LoadInvoiceType()
+    {
+        string strHQL;
+       
+        strHQL = "Select distinct TaxType From T_ConstractRelatedInvoice";
+        DataSet ds = ShareClass.GetDataSetFromSql(strHQL, "T_ConstractRelatedInvoice");
+
+        DL_TaxType.DataSource = ds;
+        DL_TaxType.DataBind();
+
+        DL_TaxType.Items.Insert(0, new ListItem("--Select--", ""));
+    }
+
+
     protected void BT_OpenInvoice_Click(object sender, EventArgs e)
     {
         LB_InvoiceID.Text = "";
+
+        LoadInvoiceType();
 
         ScriptManager.RegisterStartupScript(UpdatePanel1, GetType(), "pop", "popShow('popInvoiceWindow','true','popInvoiceDetailWindow') ", true);
     }

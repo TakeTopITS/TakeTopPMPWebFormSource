@@ -33378,4 +33378,7 @@
   <data name="XYHDKHHSYYXXHDKSXBYM" xml:space="preserve">
     <value>오른쪽으로 스와이프하여 뒤로 가기. 아래로 스와이프하여 이 페이지 새로 고침</value>
   </data>
+  <data name="KaiPiaoZhuTi" xml:space="preserve">
+    <value>청구 주체</value>
+  </data>
 </root>

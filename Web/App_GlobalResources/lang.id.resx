@@ -33379,6 +33379,9 @@
   <data name="ShuRuShuJiBiaoMingChengCTaoHaoFengKai" xml:space="preserve">
     <value>Masukkan nama tabel, dipisahkan dengan koma...</value>
   </data>
+  <data name="XYHDKHHSYYXXHDKSXBYM" xml:space="preserve">
+    <value>Gesek ke kanan untuk kembali. Gesek ke bawah untuk menyegarkan halaman ini</value>
+  </data>
   <data name="BeiFenWenJianLuJian" xml:space="preserve">
     <value>Path penyimpanan file cadangan</value>
   </data>
@@ -34240,7 +34243,7 @@
   <data name="ZZZZYSCDWJ" xml:space="preserve">
     <value>Harap pilih file yang akan diunggah!</value>
   </data>
-  <data name="XYHDKHHSYYXXHDKSXBYM" xml:space="preserve">
-    <value>Gesek ke kanan untuk kembali. Gesek ke bawah untuk menyegarkan halaman ini</value>
+  <data name="KaiPiaoZhuTi" xml:space="preserve">
+    <value>Penerbit faktur</value>
   </data>
 </root>
