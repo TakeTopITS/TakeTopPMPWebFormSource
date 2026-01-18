@@ -20,7 +20,7 @@
     color: white;
 }
 
-    .box span img {
+    .box span img { /*display:none;*/
         vertical-align: middle;
     }
 
@@ -48,19 +48,21 @@
 }
 
 .box:hover {
-    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#D53E54), color-stop(100%,#057BF9));
+    background: #85a1d2; /*鼠标指向颜色皮肤*/
 }
+
 
 .content {
     padding-left: 5px;
     text-align: left;
+    background: #7094d2;
     line-height: 37px;
     margin: 0;
 }
 
     .content span {
-        padding-left: 8px;
         background: url(ImagesSkin/jiant-white.gif) 0 23px no-repeat;
+        padding-left: 8px;
     }
 
 ul li {
@@ -126,9 +128,11 @@ ul li {
     _position: absolute; /* for IE6 */
 }
 
+
 #bottomNav {
     z-index: 999;
-    background: #057BF9;
+    background: #3e526c;
+    /* border-top: 1px solid #d6dae2;*/
     height: 45px;
     line-height: 45px;
     position: fixed;
@@ -155,7 +159,7 @@ ul li {
 #box {
     position: relative;
     width: 100%;
-    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#D53E54), color-stop(100%,#057BF9));
+    background-color: #3e526c;
 }
 
 #square_one {
@@ -170,10 +174,8 @@ ul li {
 
 body {
     font-size: 12px;
-    font-family: "-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Liberation Sans", "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", "Wenquanyi Micro Hei", "WenQuanYi Zen Hei", "ST Heiti", SimHei, SimSun, "WenQuanYi Zen Hei Sharp", sans-serif;
+    font-family: "微软雅黑",Verdana,Arial;
 }
-
-
 
 
 
@@ -194,6 +196,7 @@ a:hover, button:hover, input[type="submit"]:hover {
     font-size: 14px;
     font-weight: bold;
 }
+
 
 a:active, button:active, input[type="submit"]:active {
     background: url(ImagesSkin/MouseActive.gif);
@@ -220,11 +223,13 @@ body {
     margin-top: 0px;
     margin-right: 0px;
     margin-bottom: 0px;
+    background-color: #3e526c;
 }
 
 img {
     border: none;
 }
+
 
 a {
     text-decoration: none;
@@ -272,6 +277,7 @@ a {
     padding-left: 25px;
 }
 
+
 .title12 {
     font-size: 12px;
     font-weight: bold;
@@ -283,6 +289,8 @@ a {
     font-weight: bold;
     color: #003366;
 }
+
+
 /*--------------------------------短按钮---------------------------*/
 .inpuIM {
     background-image: url(ImagesSkin/IMBackground.jpg);
@@ -297,6 +305,7 @@ a {
     font-size: 12px;
     color: #29728D;
 }
+
 /*--------------------------------短按钮---------------------------*/
 .personSpace {
     background: url(ImagesSkin/PersonSpace.png) no-repeat;
@@ -308,32 +317,32 @@ a {
     border-right-style: none;
     border-bottom-style: none;
     border-left-style: none;
+    /*font-size: 12px;*/
+    /*color: #29728D;*/
 }
 /*--------------------------------20131127---------------------------*/
 
 div.leftSet {
-    background: url(ImagesSkin/leftSetbg.png) 10px center no-repeat;
-    background-color: #D53E54;
+    background: url(ImagesSkin/leftSetbg.gif) 0 0 no-repeat;
     height: 72px;
     line-height: 72px;
+    background-color: #d74634;
 }
 
 .tabs-header, .tabs-tool {
-}
-
-#yanse {
-    background: #057BF9;
-    scrollbar-track-color: #003d76;
-    scrollbar-face-color: #699ce8;
+    background-color: #3e526c;
 }
 
 #yanse::-webkit-scrollbar {
+    background-color: #3e526c;
 }
 
 #yanse::-webkit-scrollbar-thumb {
-    background-color: #699ce8;
+    background-color: #59769C; /*滚动条颜色*/
     border-radius: 10px;
 }
 
-
-
+#yanse {
+    scrollbar-track-color: #3e526c;
+    scrollbar-face-color: #59769C; /*滚动条颜色*/
+}

@@ -10,8 +10,8 @@
 <head runat="server">
     <title></title>
     <link href="css/app.css" rel="stylesheet" type="text/css">
-    <link id="mainCss" href="css/bluelightmain.css" rel="stylesheet" type="text/css" />
-    <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />
+    <link id="mainCss" href="css/APP.css" rel="stylesheet" type="text/css" />
+    <link id="flxappCss" href="css/APPFlx.css" rel="stylesheet" type="text/css" />
 
     <style type="text/css">
         #container {

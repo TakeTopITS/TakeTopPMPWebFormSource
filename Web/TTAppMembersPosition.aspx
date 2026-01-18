@@ -11,14 +11,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
     <title></title>
-    <link id="mainCss" href="css/bluelightmain.css" rel="stylesheet" type="text/css" />
-     <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />
+    <link id="mainCss" href="css/APP.css" rel="stylesheet" type="text/css" />
+    <link id="flxappCss" href="css/APPFlx.css" rel="stylesheet" type="text/css" />
 
-  
+
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="js/allAHandler.js"></script>
     <script type="text/javascript" language="javascript">
-        $(function () { initSwipeBack();// 初始化滑动返回功能 
+        $(function () {
+            initSwipeBack();// 初始化滑动返回功能 
 
 
 
@@ -39,7 +40,10 @@
         }
     </script>
 </head>
-<body><div id="swipeFeedback" class="swipe-feedback"><asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYYXXHDKSXBYM%>" /></div> <!-- 滑动反馈层 -->
+<body>
+    <div id="swipeFeedback" class="swipe-feedback">
+        <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYYXXHDKSXBYM%>" /></div>
+    <!-- 滑动反馈层 -->
 
     <form id="form1" runat="server">
         <%--  <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">--%>
@@ -127,7 +131,8 @@
 
                                                 <div class="npb npbs">
                                                     <div class="nplef">
-                                                        <img src="ImagesSkin/napicon.png" /></div>
+                                                        <img src="ImagesSkin/napicon.png" />
+                                                    </div>
                                                     <div class="nprig">
                                                         <h4><a target="IFR_UserPositionMap" href="TTAppUserPositionView.aspx?lng=<%# DataBinder.Eval(Container.DataItem,"Longitude").ToString().Trim() %>&lat=<%# DataBinder.Eval(Container.DataItem,"Latitude").ToString().Trim() %>"><%# Eval("Address") %></a></h4>
                                                         <h5><%# Eval("UserName") %><sub></sub></h5>
@@ -181,7 +186,7 @@
                                     <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                                     <EditItemStyle BackColor="#2461BF" />
                                     <SelectedItemStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-                                    <PagerStyle Horizontalalign="center" Mode="NumericPages" NextPageText="" PrevPageText="" CssClass="notTab" />
+                                    <PagerStyle HorizontalAlign="center" Mode="NumericPages" NextPageText="" PrevPageText="" CssClass="notTab" />
                                 </asp:DataGrid>
                             </div>
 

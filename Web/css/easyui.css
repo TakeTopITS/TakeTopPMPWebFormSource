@@ -138,6 +138,7 @@
 }
 
 .panel-body {
+    background-color: #ffffff;
     color: #000000;
     font-size: 12px;
 }
@@ -564,7 +565,7 @@
     border-bottom-width: 0;
     position: relative;
     padding: 0;
-    padding-top: 0px;
+    padding-top: 2px;
     overflow: hidden;
 }
 
@@ -579,8 +580,11 @@
     top: auto;
     bottom: 0;
     width: 18px;
+    font-size: 1px;
     display: none;
-    border: 0px;
+    cursor: pointer;
+    border-width: 1px;
+    border-style: solid;
 }
 
 .tabs-scroller-left {
@@ -625,7 +629,7 @@
 
 .tabs {
     list-style-type: none;
-    height: 0px;
+    height: 2px;
     margin: 0px;
     padding: 0px;
     padding-left: 4px;
@@ -637,12 +641,13 @@
     .tabs li {
         float: left;
         display: inline-block;
-        margin: 0;
+        margin: 0 4px -1px 5px;
         padding: 0;
-        height: 0px;
+        height: 2px;
         position: relative;
         border: 0;
         background: #DDE1EA;
+        border-radius: 5px 5px 0 0;
     }
 
         .tabs li a.tabs-inner {
@@ -891,7 +896,7 @@
 }
 
 .tabs li.tabs-selected a.tabs-inner {
-    background: #2e8ded; /*皮肤*/
+    background: #FF7F50; /*皮肤*/
     color: #f00;
     height: 2px;
     display: none;

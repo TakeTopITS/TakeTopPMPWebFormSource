@@ -12,8 +12,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
     <title></title>
-    <link id="mainCss" href="css/bluelightmain.css" rel="stylesheet" type="text/css" />
-      <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />
+    <link id="mainCss" href="css/APP.css" rel="stylesheet" type="text/css" />
+      <link id="flxappCss" href="css/APPFlx.css" rel="stylesheet" type="text/css" />
     <style type="text/css">
         #AboveDiv {
             max-width: 1024px;

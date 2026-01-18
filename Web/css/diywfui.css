@@ -26,7 +26,7 @@ body {
     height: 25px;
     border-radius: 2px;
     color: #ffffff;
-    background: #2e8ded; /*Æ¤·ô*/
+    background: #7094d2; /*Æ¤·ô*/
 }
 
     .inpu:disabled {
@@ -66,24 +66,23 @@ a:hover {
     text-decoration: none;
 }
 
-
 .page_topbj {
     background: rgb(231, 231, 232); /*2*/
-    cursor: move;
-    color: black;
+    color: white;
 }
 
     .page_topbj a {
-        color: white; /*2*/
+        color: white;
         text-decoration: none;
         cursor: pointer;
         font-size: 14px;
     }
 
         .page_topbj a:hover {
-            color: white; /*2*/
+            color: #018efb;
             /*            text-decoration: underline;*/
         }
+
 
 .titlezi {
     font-size: 14px;
@@ -94,8 +93,11 @@ a:hover {
     font-weight: bold;
 }
 
+
+
+
 .submitButton {
-    background: #2e8ded; /*Æ¤·ô*/
+    background: #7094d2; /*Æ¤·ô*/
     border: none;
     color: white;
     padding: 15px 32px;
@@ -142,6 +144,7 @@ a:hover {
     BORDER-BOTTOM: #000 2px solid;
     FONT-FAMILY: tahoma,verdana,sans-serif;
     POSITION: relative;
+
 }
 
     .calendar TABLE {

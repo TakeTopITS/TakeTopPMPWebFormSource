@@ -5,8 +5,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-     <link id="mainCss" href="css/bluelightmain.css" rel="stylesheet" type="text/css" />
-      <link id="flxappCss" href="css/flxapp.css" rel="stylesheet" type="text/css" />
+     <link id="mainCss" href="css/APP.css" rel="stylesheet" type="text/css" />
+      <link id="flxappCss" href="css/APPFlx.css" rel="stylesheet" type="text/css" />
 </head>
 <body><div id="swipeFeedback" class="swipe-feedback"><asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYYXXHDKSXBYM%>" /></div> <!-- »¬¶¯·´À¡²ã -->
     <form id="form1" runat="server">
