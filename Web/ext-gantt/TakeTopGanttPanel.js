@@ -421,16 +421,20 @@ Ext.define("MyApp.DemoGanttPanel", {
     // 任务添加时记录操作
     onTaskAdd: function (store, records) {
         records.forEach(function (record) {
-            this.recordOperation({
-                type: 'add',       // 操作类型
-                taskId: record.getId(), // 任务ID
-                taskData: record.getData() // 任务数据
+            var parent = record.parentNode || (record.getParentNode && record.getParentNode());
+            var parentId = parent && parent.getId ? parent.getId() : (this.taskStore.getRootNode ? this.taskStore.getRootNode().getId() : null);
+            var index = parent && typeof parent.indexOf === 'function' ? parent.indexOf(record) : -1;
+            this.undoStack.push({
+                type: 'add',
+                taskId: record.getId(),
+                taskData: Ext.apply({}, record.getData()),
+                parentId: parentId,
+                index: index
             });
+            this.redoStack = [];
         }, this);
-
-        // 更新按钮计数
-        this.updateUndoButtonText(this.getUndoButton(), this.undoStack.length + (this.currentBatch.length > 0 ? 1 : 0));
-        this.updateRedoButtonText(this.getRedoButton(), this.redoStack.length); // 更新重做按钮计数
+        this.updateUndoButtonText(this.getUndoButton(), this.undoStack.length);
+        this.updateRedoButtonText(this.getRedoButton(), this.redoStack.length);
     },
 
     // 任务更新时记录操作
@@ -452,15 +456,19 @@ Ext.define("MyApp.DemoGanttPanel", {
 
     // 任务删除时记录操作
     onTaskRemove: function (store, record) {
-        this.recordOperation({
-            type: 'delete',       // 操作类型
-            taskId: record.getId(), // 任务ID
-            taskData: record.getData() // 任务数据
+        var parent = record.parentNode || (record.getParentNode && record.getParentNode());
+        var parentId = parent && parent.getId ? parent.getId() : (this.taskStore.getRootNode ? this.taskStore.getRootNode().getId() : null);
+        var index = parent && typeof parent.indexOf === 'function' ? parent.indexOf(record) : -1;
+        this.undoStack.push({
+            type: 'delete',
+            taskId: record.getId(),
+            taskData: Ext.apply({}, record.getData()),
+            parentId: parentId,
+            index: index
         });
-
-        // 更新按钮计数
-        this.updateUndoButtonText(this.getUndoButton(), this.undoStack.length + (this.currentBatch.length > 0 ? 1 : 0));
-        this.updateRedoButtonText(this.getRedoButton(), this.redoStack.length); // 更新重做按钮计数
+        this.redoStack = [];
+        this.updateUndoButtonText(this.getUndoButton(), this.undoStack.length);
+        this.updateRedoButtonText(this.getRedoButton(), this.redoStack.length);
     },
 
     // 记录操作到当前批次
@@ -1227,8 +1235,6 @@ Ext.define("MyApp.DemoGanttPanel", {
                             this.refreshViews();
                         }
                     },
-
-
 
 
                     //{
