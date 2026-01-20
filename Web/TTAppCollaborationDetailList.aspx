@@ -8,22 +8,22 @@
 <head id="Head1" runat="server">
     <title></title>
     <link id="mainCss" href="css/APP.css" rel="stylesheet" type="text/css" />
-      <link id="flxappCss" href="css/APPFlx.css" rel="stylesheet" type="text/css" />
+    <link id="flxappCss" href="css/APPFlx.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="js/allAHandler.js"></script>
     <script type="text/javascript" language="javascript">
-        $(function () { initSwipeBack();// 初始化滑动返回功能  initSwipeBack();// 初始化滑动返回功能
-
-            
-
+        $(function () {
+            initSwipeBack();// 初始化滑动返回功能  initSwipeBack();// 初始化滑动返回功能
         });
 
     </script>
 
 </head>
 <body>
-     <div id="swipeFeedback" class="swipe-feedback"><asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYYXXHDKSXBYM%>" /></div> <!-- 滑动反馈层 -->
-
+    <div id="swipeFeedback" class="swipe-feedback">
+        <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" />
+    </div>
+    <!-- 滑动反馈层 -->
     <center>
         <form id="form1" runat="server">
             <%--  <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">--%>
@@ -68,7 +68,7 @@
                                                     <ContentTemplate>
                                                         <asp:DataList ID="DataList1" runat="server" CellPadding="4" ForeColor="#333333" Width="98%">
                                                             <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-                                                            
+
                                                             <ItemStyle CssClass="itemStyle" />
                                                             <SelectedItemStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
                                                             <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
@@ -96,7 +96,7 @@
                                                     </ContentTemplate>
                                                 </cc2:TabPanel>
                                                 <cc2:TabPanel ID="TabPanel2" runat="server" HeaderText="相关文件" TabIndex="1" BorderWidth="0">
-                                                     <HeaderTemplate>
+                                                    <HeaderTemplate>
                                                         <asp:Label ID="Label4" runat="server" Text="<%$ Resources:lang,WenJian%>"></asp:Label>
                                                     </HeaderTemplate>
                                                     <ContentTemplate>
@@ -127,15 +127,15 @@
                                                             <Columns>
 
                                                                 <asp:HyperLinkColumn DataNavigateUrlField="Address" DataNavigateUrlFormatString="{0}"
-                                                                    DataTextField="DocName" HeaderText="文件名" >
+                                                                    DataTextField="DocName" HeaderText="文件名">
                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" />
                                                                 </asp:HyperLinkColumn>
                                                             </Columns>
                                                             <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                                                             <EditItemStyle BackColor="#2461BF" />
                                                             <SelectedItemStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-                                                            <PagerStyle Horizontalalign="center" Mode="NumericPages" NextPageText="" PrevPageText="" CssClass="notTab" />
-                                                            
+                                                            <PagerStyle HorizontalAlign="center" Mode="NumericPages" NextPageText="" PrevPageText="" CssClass="notTab" />
+
                                                             <ItemStyle CssClass="itemStyle" />
                                                         </asp:DataGrid>
                                                         <br />
@@ -175,5 +175,4 @@
     </center>
 </body>
 <%--<script type="text/javascript" language="javascript">var cssDirectory = '<%=Session["CssDirectory"] %>'; var oLink = document.getElementById('mainCss'); oLink.href = 'css/' + cssDirectory + '/' + 'bluelightmain.css';</script>--%>
-
 </html>

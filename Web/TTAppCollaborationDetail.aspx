@@ -42,9 +42,9 @@
 
 </head>
 <body class="napbac" data-disable-pullrefresh="true">
-    <div id="swipeFeedback" class="swipe-feedback">
+    <%--<div id="swipeFeedback" class="swipe-feedback">
         <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" />
-    </div>
+    </div>--%>
     <!-- »¬¶¯·´À¡²ã -->
 
     <form id="form1" runat="server">
