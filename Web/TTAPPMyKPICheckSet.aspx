@@ -481,6 +481,38 @@
             opacity: .3;
             transition: 0s;
         }
+        
+        /* 弹出层优化样式 */
+        .layui-layer-iframe {
+            max-height: 80vh !important;
+            top: 20px !important;
+            bottom: auto !important;
+        }
+        
+        .layui-layer-content {
+            max-height: calc(80vh - 130px) !important;
+            overflow-y: auto !important;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* 响应式调整 */
+        @media (max-width: 480px) {
+            .layui-layer-iframe {
+                width: 95% !important;
+                max-height: 85vh !important;
+                top: 10px !important;
+            }
+            
+            .layui-layer-content {
+                max-height: calc(85vh - 130px) !important;
+            }
+            
+            .popup-button {
+                min-width: 100px;
+                padding: 8px 15px;
+                font-size: 14px;
+            }
+        }
     </style>
 
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
@@ -533,6 +565,9 @@
             $('#popwindow_shade').on('click', function () {
                 popClose();
             });
+
+            // 初始化弹出层位置调整
+            optimizePopupPosition();
         });
 
         function showLoading() {
@@ -547,26 +582,28 @@
             var windowHeight = $(window).height();
             var windowWidth = $(window).width();
 
-            // 计算弹窗高度（不超过窗口高度的85%）
-            var popupHeight = Math.min(windowHeight * 0.85, 600);
+            // 设置弹窗始终靠近顶部
+            var topPosition = 20; // 始终距离顶部20px
 
-            // 计算弹窗顶部位置（居中显示，但如果窗口太小则从顶部开始）
-            var topPosition = Math.max(20, (windowHeight - popupHeight) / 2);
+            // 计算弹窗高度（不超过窗口高度的85%）
+            var maxPopupHeight = windowHeight - topPosition - 20; // 减去顶部和底部间距
+            var popupHeight = Math.min(maxPopupHeight, 600);
 
             // 计算弹窗宽度（不超过窗口宽度的95%）
             var popupWidth = Math.min(windowWidth * 0.95, 500);
 
-            // 设置弹窗样式
+            // 设置弹窗样式 - 使用fixed定位确保始终可见
             $popup.css({
                 'position': 'fixed',
                 'top': topPosition + 'px',
                 'left': '50%',
                 'transform': 'translateX(-50%)',
                 'width': popupWidth + 'px',
-                'height': popupHeight + 'px',
-                'display': 'block',
+                'height': 'auto',
                 'max-height': popupHeight + 'px',
-                'overflow': 'hidden'
+                'display': 'block',
+                'overflow': 'hidden',
+                'z-index': '9999'
             });
 
             // 显示遮罩层
@@ -594,6 +631,9 @@
 
             // 滚动到顶部
             $popup.find('.layui-layer-content').scrollTop(0);
+
+            // 强制刷新布局
+            $popup[0].offsetHeight;
         }
 
         function showKPIPopup() {
@@ -601,6 +641,21 @@
             if ($popup.length) {
                 adjustPopupPosition($popup);
             }
+        }
+
+        function optimizePopupPosition() {
+            // 监听窗口大小变化，重新调整弹出层位置
+            $(window).on('resize', function () {
+                var $popup = $('#popwindow');
+                if ($popup.is(':visible')) {
+                    adjustPopupPosition($popup);
+                }
+            });
+
+            // 监听触摸事件，防止弹窗内滚动传播到body
+            $('#popwindow').on('touchmove', function (e) {
+                e.stopPropagation();
+            });
         }
 
         // 弹窗关闭函数
