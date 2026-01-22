@@ -628,8 +628,10 @@
         }
     </script>
 </head>
-<body>
-
+<body class="napbac" data-disable-pullrefresh="true">
+    <div id="swipeFeedback" class="swipe-feedback">
+        <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" />
+    </div>
     <!-- 移动端头部 -->
     <table cellpadding="0" cellspacing="0" width="100%" class="bian">
         <tr>
