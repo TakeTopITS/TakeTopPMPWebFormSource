@@ -228,6 +228,18 @@
             opacity: 0.5;
         }
 
+        /* 弹出层优化样式 */
+        .layui-layer-iframe {
+            max-height: 80vh !important;
+            top: 20px !important;
+            bottom: auto !important;
+        }
+        
+        .layui-layer-content {
+            max-height: calc(80vh - 120px) !important;
+            overflow-y: auto !important;
+        }
+
         /* 响应式调整 */
         @media (max-width: 480px) {
             .mobile-datagrid-item {
@@ -251,15 +263,25 @@
             .mobile-datagrid-question {
                 font-size: 14px;
             }
-            
+
             .custom-delete-icon {
                 width: 20px;
                 height: 20px;
             }
+
+                .custom-delete-icon img {
+                    width: 16px;
+                    height: 16px;
+                }
             
-            .custom-delete-icon img {
-                width: 16px;
-                height: 16px;
+            .layui-layer-iframe {
+                width: 95% !important;
+                max-height: 85vh !important;
+                top: 10px !important;
+            }
+            
+            .layui-layer-content {
+                max-height: calc(85vh - 120px) !important;
             }
         }
 
@@ -286,6 +308,39 @@
             to {
                 transform: rotate(360deg);
             }
+        }
+        
+        /* 表单样式 */
+        .form-row {
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-label {
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .mobile-input, .mobile-select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+        
+        .required-star {
+            color: #ff4444;
+            margin-left: 2px;
+        }
+        
+        .form-input-group {
+            display: flex;
+            gap: 10px;
+            align-items: center;
         }
     </style>
 
@@ -320,8 +375,6 @@
             // 弹窗适配移动端
             adaptPopupForMobile();
 
-
-
             // 优化日期选择器在移动端的显示
             enhanceDatePickers();
 
@@ -330,7 +383,60 @@
 
             // DataGrid初始化
             initMobileDataGrid();
+
+            // 优化弹出层显示位置
+            optimizePopupPosition();
         });
+
+        function optimizePopupPosition() {
+            // 监听窗口大小变化，重新调整弹出层位置
+            $(window).on('resize', function () {
+                adjustPopupPosition();
+            });
+        }
+
+        function adjustPopupPosition() {
+            var $popup = $('#popwindow:visible');
+            if ($popup.length) {
+                var windowHeight = $(window).height();
+                var popupHeight = Math.min(windowHeight - 40, 600);
+
+                $popup.css({
+                    'top': '20px',
+                    'left': '50%',
+                    'transform': 'translateX(-50%)',
+                    'width': '95%',
+                    'height': 'auto',
+                    'max-height': popupHeight + 'px',
+                    'max-width': '500px',
+                    'position': 'fixed'
+                });
+
+                // 确保内容可滚动
+                var contentHeight = popupHeight - 120;
+                $popup.find('.layui-layer-content').css({
+                    'max-height': contentHeight + 'px',
+                    'overflow-y': 'auto'
+                });
+            }
+
+            var $popupList = $('#popwindowList:visible');
+            if ($popupList.length) {
+                var windowHeight = $(window).height();
+                var popupHeight = Math.min(windowHeight - 40, 600);
+
+                $popupList.css({
+                    'top': '20px',
+                    'height': 'auto',
+                    'max-height': popupHeight + 'px'
+                });
+
+                var contentHeight = popupHeight - 80;
+                $popupList.find('.layui-layer-content').css({
+                    'max-height': contentHeight + 'px'
+                });
+            }
+        }
 
         function initMobileDataGrid() {
             // 处理分页按钮样式
@@ -367,7 +473,7 @@
                         'align-items': 'center',
                         'justify-content': 'center',
                         'min-width': '36px',
-                        'height': '36px',
+                        'height': 36,
                         'padding': '0 12px',
                         'border-radius': '8px',
                         'background': '#1976D2',
@@ -402,12 +508,14 @@
                             'left': '50%',
                             'transform': 'translateX(-50%)',
                             'width': '95%',
-                            'height': popupHeight + 'px',
-                            'max-width': '500px'
+                            'height': 'auto',
+                            'max-height': popupHeight + 'px',
+                            'max-width': '500px',
+                            'position': 'fixed'
                         });
 
                         // 确保内容可滚动
-                        var contentHeight = popupHeight - 120; // 减去标题和底部按钮的高度
+                        var contentHeight = popupHeight - 120;
                         $popup.find('.layui-layer-content').css({
                             'max-height': contentHeight + 'px',
                             'overflow-y': 'auto'
@@ -477,8 +585,10 @@
                         'left': '50%',
                         'transform': 'translateX(-50%)',
                         'width': '95%',
-                        'height': popupHeight + 'px',
-                        'max-width': '500px'
+                        'height': 'auto',
+                        'max-height': popupHeight + 'px',
+                        'max-width': '500px',
+                        'position': 'fixed'
                     });
 
                     // 确保内容可滚动
@@ -490,6 +600,13 @@
 
                     // 滚动到顶部
                     $popup.find('.layui-layer-content').scrollTop(0);
+
+                    // 添加关闭按钮事件
+                    $popup.find('.layui-layer-close').off('click').on('click', function () {
+                        $('#popwindow_shade').hide();
+                        $popup.hide();
+                        return false;
+                    });
                 }
                 return false;
             });
@@ -592,7 +709,7 @@
                                                             Target="_blank">
                                                         </asp:HyperLink>
                                                     </div>
-                                                    
+
                                                     <!-- 删除按钮（放在问题描述的右侧） -->
                                                     <div class="delete-icon-wrapper">
                                                         <div onclick="return showSimpleDeleteModal(this, event);" class="custom-delete-icon" title="Delete">
@@ -647,7 +764,7 @@
 
                     <!-- 弹窗区域 (优化高度和按钮显示) -->
                     <div class="layui-layer layui-layer-iframe" id="popwindow" name="fixedDiv"
-                        style="z-index: 9999; width: 98%; height: auto; position: absolute; overflow: hidden; display: none; border-radius: 10px; max-height: 600px;">
+                        style="z-index: 9999; width: 98%; height: auto; position: fixed; overflow: hidden; display: none; border-radius: 10px; max-height: 600px; top: 20px; left: 50%; transform: translateX(-50%);">
                         <div class="layui-layer-title" style="background: #e7e7e8;" id="popwindow_title">
                             <asp:Label ID="Label3" runat="server" Text="&lt;div&gt;&lt;img src=ImagesSkin/Update.png border=0 width=30px height=30px alt='BusinessForm' /&gt;&lt;/div&gt;"></asp:Label>
                         </div>
@@ -840,10 +957,8 @@
                     </div>
 
 
-                    <div class="layui-layer layui-layer-iframe" id="popwindow" name="fixedDiv"
-                        style="z-index: 9999; width: 98%; height: auto; position: fixed; /* 改为 fixed */
-           top: 20px; left: 50%; transform: translateX(-50%); /* 居中定位 */
-           display: none; border-radius: 10px; max-height: 600px;">
+                    <div class="layui-layer layui-layer-iframe" id="popwindowList" name="fixedDiv"
+                        style="z-index: 9999; width: 98%; height: auto; position: fixed; top: 20px; left: 50%; transform: translateX(-50%); display: none; border-radius: 10px; max-height: 600px;">
                         <div class="layui-layer-title" style="background: #e7e7e8;" id="popwindow_title1">
                             <asp:Label ID="Label9" runat="server" Text="&lt;div&gt;&lt;img src=ImagesSkin/Update.png border=0 width=30px height=30px alt='BusinessForm' /&gt;&lt;/div&gt;"></asp:Label>
                         </div>
