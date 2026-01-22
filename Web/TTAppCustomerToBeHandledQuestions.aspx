@@ -296,7 +296,7 @@
             <div style="position: fixed; display: none; z-index: 9999;" id="progressContainer">
                 <asp:UpdateProgress ID="TakeTopUp" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
                     <ProgressTemplate>
-                        <img src="Images/Processing.gif" alt="Loading,please wait..." />
+                   <%--     <img src="Images/Processing.gif" alt="Loading,please wait..." />--%>
                     </ProgressTemplate>
                 </asp:UpdateProgress>
             </div>
