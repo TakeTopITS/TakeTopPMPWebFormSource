@@ -35,7 +35,8 @@
 </head>
 <body>
     <div id="swipeFeedback" class="swipe-feedback">
-        <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYYXXHDKSXBYM%>" /></div>
+        <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYYXXHDKSXBYM%>" />
+    </div>
     <!-- 滑动反馈层 -->
     <center>
         <form id="form1" runat="server">
@@ -44,30 +45,31 @@
             </asp:ScriptManager>
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>
-                    <table cellpadding="0" width="100%" cellspacing="0" class="bian">
+                    <table cellpadding="0" cellspacing="0" width="100%" class="bian">
                         <tr>
-                            <td height="31" class="page_topbj">
-                                <a id="aAPPBackPriorPage" href="TakeTopAPPMain.aspx" target="_top" onclick="javascript:document.getElementById('IMG_Waiting').style.display = 'block';">
-                                    <table width="96%" border="0" class="ItemAlignLeft" cellpadding="0" cellspacing="0">
-                                        <tr>
-                                            <td class="ItemAlignLeft">
-                                                <table width="345" border="0" class="ItemAlignLeft" cellpadding="0" cellspacing="0">
+                            <td colspan="2" height="31" class="page_topbj">
+                                <table width="96%" border="0" class="ItemAlignLeft" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <td class="ItemAlignLeft">
+                                            <a id="aAPPBackPriorPage" href="TakeTopAPPMain.aspx" target="_top" onclick="javascript:document.getElementById('IMG_Waiting').style.display = 'block';">
+                                                <table width="245" border="0" class="ItemAlignLeft" cellpadding="0" cellspacing="0">
                                                     <tr>
                                                         <td width="29">
                                                             <img src="ImagesSkin/return.png" alt="" />
                                                         </td>
                                                         <td background="ImagesSkin/main_top_bj.jpg" class="titleziAPP">
-                                                            <asp:Label ID="Label1" runat="server" Text="<%$ Resources:lang,Back%>" />
+                                                            <asp:Label ID="Label8" runat="server" Text="<%$ Resources:lang,Back%>" />
                                                         </td>
                                                         <td width="5">
                                                             <%-- <img src="ImagesSkin/main_top_r.jpg" width="5" height="31" />--%>
                                                         </td>
                                                     </tr>
                                                 </table>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </a>
+                                                <img id="IMG_Waiting" src="Images/Processing.gif" alt="请稍候，处理中..." style="display: none;" />
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </table>
                             </td>
                         </tr>
                         <tr>
