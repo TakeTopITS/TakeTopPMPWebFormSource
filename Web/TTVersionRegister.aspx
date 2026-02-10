@@ -55,7 +55,7 @@
                                         <table style="width: 560px; text-align: left;">
                                             <tr style="font-size: 10pt">
                                                 <td style="width: 100px; text-align: right;">
-                                                    <asp:Label ID="Label2" runat="server" Text="<%$ Resources:lang,XuLieHao%>"></asp:Label>
+                                                    <asp:Label ID="Label2" runat="server" Text="<%$ Resources:lang,XuLieHao%>"></asp:Label>:
                                                 </td>
                                                 <td>
                                                     <asp:Label ID="LB_MySN" runat="server"></asp:Label>

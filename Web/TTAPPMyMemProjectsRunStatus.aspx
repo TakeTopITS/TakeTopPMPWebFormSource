@@ -20,6 +20,122 @@
             min-width: 1700px;
             width: expression (document.body.clientWidth <= 1700? "1700px" : "auto" ));
         }
+        
+        /* 全屏弹窗样式 */
+        .fullscreen-popup {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            border-radius: 0 !important;
+            z-index: 10000 !important;
+            background: white !important;
+        }
+        
+        .fullscreen-popup .layui-layer-title {
+            height: 45px !important;
+            line-height: 45px !important;
+            background: #e7e7e8 !important;
+            border-radius: 0 !important;
+            padding: 0 15px !important;
+            font-size: 16px !important;
+            font-weight: bold !important;
+            border-bottom: 1px solid #ddd !important;
+        }
+        
+        .fullscreen-popup .layui-layer-content {
+            position: absolute !important;
+            top: 45px !important;
+            left: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+            height: calc(100% - 45px) !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            overflow: hidden !important;
+        }
+        
+        .fullscreen-popup iframe {
+            width: 100% !important;
+            height: 100% !important;
+            border: none !important;
+            display: block !important;
+        }
+        
+        .fullscreen-overlay {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+            background: rgba(0,0,0,0.5) !important;
+            z-index: 9999 !important;
+        }
+        
+        /* 自定义全屏弹窗样式 */
+        .custom-fullscreen-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            z-index: 10000;
+            display: none;
+        }
+        
+        .custom-popup-header {
+            height: 45px;
+            background: #e7e7e8;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 15px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .custom-popup-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .custom-popup-close {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #666;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.2s;
+        }
+        
+        .custom-popup-close:hover {
+            background: rgba(0,0,0,0.1);
+        }
+        
+        .custom-popup-content {
+            position: absolute;
+            top: 45px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+        }
+        
+        .custom-popup-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
     </style>
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
 
@@ -58,48 +174,224 @@
         function popShowByURL(url, title, width, height, parentWindow) {
             var w = 'auto', h = 'auto', t = url.replace('.aspx', '').replace("TT", '');
 
-            ////如果url包含文件名，则不弹窗
-            //if (urlLastSixCharsContainDot(url)) {
-            //    return;
-            //}
-
             if (title) {
                 t = title;
             }
-            if (width) {
-                w = width + 'px';
-            }
-            if (height) {
-                h = height + 'px';
-            }
+
+            // 使用全屏弹窗，顶部和底部都对齐
             layer.open({
                 type: 2,
                 title: t,
                 anim: 0,
                 fixed: true,
-                resize: true,
-                scrollbar: true,
-                moveOut: true,
-                shade: false,
-                shadeClose: false,
-                maxmin: true,
+                resize: false,
+                scrollbar: false,
+                moveOut: false,
+                shade: 0.5,
+                shadeClose: true,
+                maxmin: false,
                 content: url,
-                area: ["99%", "99%"]
-                ,
-                zIndex: layer.zIndex, //重点1
-                success: function (layero) {
-                    layer.setTop(layero); //重点2
+                area: ["100%", "100%"],
+                offset: ['0px', '0px'], // 从顶部和左侧都为0
+                zIndex: 10000,
+                success: function (layero, index) {
+                    // 添加全屏样式类
+                    layero.addClass('fullscreen-popup');
+
+                    // 设置弹窗位置和大小
+                    layero.css({
+                        'position': 'fixed',
+                        'top': '0',
+                        'left': '0',
+                        'width': '100%',
+                        'height': '100%',
+                        'margin': '0',
+                        'padding': '0',
+                        'border-radius': '0'
+                    });
+
+                    // 设置标题栏
+                    var titleBar = layero.find('.layui-layer-title');
+                    titleBar.css({
+                        'height': '45px',
+                        'line-height': '45px',
+                        'background': '#e7e7e8',
+                        'border-radius': '0',
+                        'padding': '0 15px',
+                        'font-size': '16px',
+                        'font-weight': 'bold',
+                        'border-bottom': '1px solid #ddd',
+                        'box-sizing': 'border-box'
+                    });
+
+                    // 设置内容区域 - 占据剩余全部空间
+                    var content = layero.find('.layui-layer-content');
+                    content.css({
+                        'position': 'absolute',
+                        'top': '45px',
+                        'left': '0',
+                        'right': '0',
+                        'bottom': '0',
+                        'width': '100%',
+                        'height': 'calc(100% - 45px)',
+                        'margin': '0',
+                        'padding': '0',
+                        'overflow': 'hidden',
+                        'box-sizing': 'border-box'
+                    });
+
+                    // 设置iframe
+                    var iframe = layero.find('iframe');
+                    iframe.css({
+                        'width': '100%',
+                        'height': '100%',
+                        'border': 'none',
+                        'display': 'block'
+                    });
+
+                    // 设置关闭按钮位置
+                    var closeBtn = layero.find('.layui-layer-setwin');
+                    closeBtn.css({
+                        'top': '8px',
+                        'right': '10px'
+                    });
+
+                    // 强制刷新布局
+                    setTimeout(function () {
+                        content[0].style.height = (window.innerHeight - 45) + 'px';
+                        if (iframe[0]) {
+                            iframe[0].style.height = (window.innerHeight - 45) + 'px';
+                        }
+                    }, 100);
+
+                    // 监听窗口大小变化
+                    $(window).on('resize.fullscreenpopup', function () {
+                        content.css('height', (window.innerHeight - 45) + 'px');
+                        if (iframe.length) {
+                            iframe.css('height', (window.innerHeight - 45) + 'px');
+                        }
+                    });
+                },
+                cancel: function (index, layero) {
+                    // 移除窗口大小变化监听
+                    $(window).off('resize.fullscreenpopup');
+                    return true;
                 },
                 end: function () {
-
+                    // 移除窗口大小变化监听
+                    $(window).off('resize.fullscreenpopup');
                     parentUrl = parentWindow.href;
-
-
-
                 }
             });
         }
 
+        // 自定义全屏弹窗函数
+        function showFullScreenPopup(url, title) {
+            // 创建遮罩层
+            var overlay = document.createElement('div');
+            overlay.className = 'fullscreen-overlay';
+            overlay.onclick = function () {
+                closeFullScreenPopup();
+            };
+
+            // 创建弹窗容器
+            var popup = document.createElement('div');
+            popup.className = 'custom-fullscreen-popup';
+            popup.id = 'fullscreen-popup-' + Date.now();
+
+            // 创建标题栏
+            var header = document.createElement('div');
+            header.className = 'custom-popup-header';
+
+            var titleSpan = document.createElement('span');
+            titleSpan.className = 'custom-popup-title';
+            titleSpan.textContent = title || 'Project Plan Gantt';
+
+            var closeBtn = document.createElement('button');
+            closeBtn.className = 'custom-popup-close';
+            closeBtn.innerHTML = '&times;';
+            closeBtn.onclick = function (e) {
+                e.stopPropagation();
+                closeFullScreenPopup();
+            };
+
+            header.appendChild(titleSpan);
+            header.appendChild(closeBtn);
+
+            // 创建内容区域
+            var content = document.createElement('div');
+            content.className = 'custom-popup-content';
+
+            var iframe = document.createElement('iframe');
+            iframe.className = 'custom-popup-iframe';
+            iframe.src = url;
+            iframe.frameBorder = '0';
+            iframe.allowFullscreen = true;
+
+            content.appendChild(iframe);
+            popup.appendChild(header);
+            popup.appendChild(content);
+
+            // 添加到页面
+            document.body.appendChild(overlay);
+            document.body.appendChild(popup);
+
+            // 显示弹窗
+            setTimeout(function () {
+                popup.style.display = 'block';
+
+                // 设置iframe高度
+                setTimeout(function () {
+                    iframe.style.height = (window.innerHeight - 45) + 'px';
+                }, 50);
+            }, 10);
+
+            // 禁止body滚动
+            document.body.style.overflow = 'hidden';
+
+            // 监听窗口大小变化
+            var resizeHandler = function () {
+                iframe.style.height = (window.innerHeight - 45) + 'px';
+            };
+            window.addEventListener('resize', resizeHandler);
+
+            // 保存引用以便清理
+            popup._resizeHandler = resizeHandler;
+            popup._overlay = overlay;
+
+            return false;
+        }
+
+        function closeFullScreenPopup() {
+            var popup = document.querySelector('.custom-fullscreen-popup');
+            var overlay = document.querySelector('.fullscreen-overlay');
+
+            if (popup) {
+                // 移除事件监听
+                if (popup._resizeHandler) {
+                    window.removeEventListener('resize', popup._resizeHandler);
+                }
+
+                // 移除元素
+                popup.parentNode.removeChild(popup);
+            }
+
+            if (overlay) {
+                overlay.parentNode.removeChild(overlay);
+            }
+
+            // 恢复body滚动
+            document.body.style.overflow = '';
+        }
+
+        // 增强的弹窗函数 - 主要使用自定义全屏弹窗
+        function showGanttPopup(projectId, projectName) {
+            var url = 'TTWorkPlanGanttForProjectStandardActivityCompareMain.aspx?ProjectID=' + projectId;
+            var title = 'Project Plan Gantt - ' + (projectName || '');
+
+            // 优先使用自定义全屏弹窗
+            return showFullScreenPopup(url, title);
+        }
 
     </script>
 </head>
@@ -175,7 +467,10 @@
                                                                                     </div>
                                                                                     <div class="nprig">
                                                                                         <h4>
-                                                                                            <a onclick="javascript:popShowByURL('TTWorkPlanGanttForProjectStandardActivityCompareMain.aspx?ProjectID=<%#DataBinder .Eval (Container .DataItem ,"ProjectID") %>','Project Plan Gantt',800,600,window.location)"><%# Eval("ProjectName") %>  </a>
+                                                                                            <!-- 使用自定义全屏弹窗 -->
+                                                                                            <a onclick="javascript:showGanttPopup('<%#DataBinder .Eval (Container .DataItem ,"ProjectID") %>', '<%# Server.HtmlEncode(Eval("ProjectName").ToString()) %>');return false;" style="cursor:pointer;color:#1976D2;text-decoration:none;">
+                                                                                                <%# Eval("ProjectName") %>
+                                                                                            </a>
 
                                                                                         </h4>
                                                                                         <h5>
