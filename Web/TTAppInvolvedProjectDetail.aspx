@@ -215,7 +215,7 @@
                                             </a>
                                         </td>
                                         <td class="ItemAlignLeft" style="padding-top: 3px;">
-                                            <asp:ImageButton ID="IB_ProPlanGanttNew" CssClass="inpu" ImageUrl="ImagesSkin/plan.png" Width="32px" Height="32px" runat="server" OnClick="IB_ProPlanGanttNew_Click"></asp:ImageButton>
+                                         <%--   <asp:ImageButton ID="IB_ProPlanGanttNew" CssClass="inpu" ImageUrl="ImagesSkin/plan.png" Width="32px" Height="32px" runat="server" OnClick="IB_ProPlanGanttNew_Click"></asp:ImageButton>--%>
 
                                         </td>
                                     </tr>
