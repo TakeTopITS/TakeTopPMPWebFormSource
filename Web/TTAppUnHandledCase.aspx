@@ -80,7 +80,7 @@
                                                         <img src="ImagesSkin/napicon.png" />
                                                     </div>
                                                     <div class="nprig">
-                                                        <h4><a href="<%# DataBinder.Eval(Container.DataItem,"MobileLinkAddress") %>"><%# DataBinder.Eval(Container.DataItem,"ID") %> <%# DataBinder.Eval(Container.DataItem,"InforName") %></a></h4>
+                                                        <h4><a href="<%# DataBinder.Eval(Container.DataItem,"MobileLinkAddress") %>"><%# DataBinder.Eval(Container.DataItem,"ID") %> <%# DataBinder.Eval(Container.DataItem,"HomeName") %></a></h4>
                                                         <h5><%# GetNumberCount(Eval("SQLCode").ToString()) %><sub></sub></h5>
                                                         <%--  <h6>Data:2022.01.22</h6>--%>
                                                       <%--  <label> </label>--%>

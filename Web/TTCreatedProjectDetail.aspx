@@ -444,5 +444,25 @@
         </form>
     </center>
 </body>
+
+    <script type="text/javascript">
+        // 确保在页面完全加载后执行
+        $(document).ready(function () {
+            setTimeout(function () {
+                if (typeof aHandler === 'function') {
+                    console.log('重新执行 aHandler');
+                    aHandler();
+                }
+            }, 500);
+        });
+
+        // 为UpdatePanel添加事件
+        Sys.WebForms.PageRequestManager.getInstance().add_endRequest(function () {
+            if (typeof aHandler === 'function') {
+                console.log('UpdatePanel完成后执行 aHandler');
+                aHandler();
+            }
+        });
+    </script>
 <script type="text/javascript" language="javascript">var cssDirectory = '<%=Session["CssDirectory"] %>'; var oLink = document.getElementById('mainCss'); oLink.href = 'css/' + cssDirectory + '/' + 'bluelightmain.css';</script>
 </html>

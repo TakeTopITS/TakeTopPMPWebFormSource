@@ -33,9 +33,9 @@ public partial class TTCreatedProjectDetail : System.Web.UI.Page
         CKFinder.FileBrowser _FileBrowser = new CKFinder.FileBrowser();
         _FileBrowser.BasePath = "ckfinder/"; Session["PageName"] = "TakeTopSiteContentEdit";
         _FileBrowser.SetupCKEditor(HE_AcceptStandard);
-HE_AcceptStandard.Language = Session["LangCode"].ToString();
+        HE_AcceptStandard.Language = Session["LangCode"].ToString();
         _FileBrowser.SetupCKEditor(HE_ProjectDetail);
-HE_ProjectDetail.Language = Session["LangCode"].ToString();
+        HE_ProjectDetail.Language = Session["LangCode"].ToString();
 
         strProjectID = Request.QueryString["ProjectID"];
         strProjectName = ShareClass.GetProjectName(strProjectID);
@@ -54,7 +54,7 @@ HE_ProjectDetail.Language = Session["LangCode"].ToString();
             return;
         }
 
-        ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "clickA", "aHandler();", true);
+        ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "clickA", " aHandler();", true);
         if (Page.IsPostBack == false)
         {
             try
@@ -99,7 +99,7 @@ HE_ProjectDetail.Language = Session["LangCode"].ToString();
                     Repeater2.DataSource = ds;
                     Repeater2.DataBind();
 
-                    if(strProjectID == "1")
+                    if (strProjectID == "1")
                     {
                         DL_Status.Enabled = false;
                         DL_StatusValue.Enabled = false;
@@ -356,7 +356,7 @@ HE_ProjectDetail.Language = Session["LangCode"].ToString();
         try
         {
             strType = DL_ProjectType.SelectedValue.Trim();
-            ShareClass.LoadProjectForPMStatus(strType,strLangCode,DL_Status);
+            ShareClass.LoadProjectForPMStatus(strType, strLangCode, DL_Status);
         }
         catch (Exception err)
         {
@@ -558,7 +558,7 @@ HE_ProjectDetail.Language = Session["LangCode"].ToString();
                 project.PMCode = strNewPMCode;
                 project.PMName = strNewPMName;
 
-                ShareClass.AddProjectMember(strProjectID, strNewPMCode, "ProjectManager", "ProjectManager", DL_Status.SelectedValue.Trim());   
+                ShareClass.AddProjectMember(strProjectID, strNewPMCode, "ProjectManager", "ProjectManager", DL_Status.SelectedValue.Trim());
             }
             else
             {
@@ -568,7 +568,7 @@ HE_ProjectDetail.Language = Session["LangCode"].ToString();
                 project.UserCode = strNewPMCode;
                 project.UserName = strNewPMName;
 
-                ShareClass.AddProjectMember(strProjectID, strNewPMCode, "ProjectInitiator", "ProjectInitiator", DL_Status.SelectedValue.Trim());   
+                ShareClass.AddProjectMember(strProjectID, strNewPMCode, "ProjectInitiator", "ProjectInitiator", DL_Status.SelectedValue.Trim());
             }
 
             try
@@ -751,7 +751,7 @@ HE_ProjectDetail.Language = Session["LangCode"].ToString();
         }
     }
 
-   
+
 
     protected string GetProjectStatusReviewControl(string strProjectType, string strStatus)
     {
