@@ -24,6 +24,22 @@ public partial class _default : System.Web.UI.Page
         if (strDevelopStatus == "YES")
         {
             // 开发模式代码...
+            Session["UserCode"] = "C7094";
+            Session["UserName"] = "员工C7094";
+            Session["IsMobileDevice"] = "NO";
+            Session["IsMobileDevice"] = "NO";
+            Session["SystemType"] = "WEB";
+            Session["CssDirectory"] = "css/CssBlack";
+            Session["SystemVersionType"] = "GROUP";
+            Session["ForbitModule"] = "NONE";
+            Session["MustInFrame"] = "YES";
+            Session["AutoSaveWFOperator"] = "YES";
+            Session["LangCode"] = "zh-CN";
+            Session["UserType"] = "INNER";
+            Session["LeftBarExtend"] = "NO";
+
+            Response.Redirect("TTBaseDataCommunicationInterfaceSetting.aspx");
+
         }
         else
         {

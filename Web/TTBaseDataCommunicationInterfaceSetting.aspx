@@ -149,7 +149,7 @@
     </style>
     <script type="text/javascript" language="javascript">
         $(function () {
-            if (top.location != self.location) { } else { CloseWebPage(); }
+            /* if (top.location != self.location) { } else { CloseWebPage(); }*/
         });
 
         function showModal(modalId, buttonElement) {
@@ -278,14 +278,16 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <table style="width: 100%; text-align: left;">
+                                    <!-- 主内容表格 - 9列布局 -->
+                                    <table style="width: 100%; text-align: left;" cellpadding="0" cellspacing="0">
+                                        <!-- 标题行 -->
                                         <tr>
                                             <td colspan="2">
                                                 <strong>
                                                     <asp:Label ID="Label492257" runat="server" Text="<%$ Resources:lang,WeiXinQiYeZhangHao%>"></asp:Label>
                                                 </strong>
                                             </td>
-                                            <td>&nbsp;</td>
+                                            <td style="width: 20px;">&nbsp;</td>
                                             <td colspan="2"><strong>
                                                 <asp:Label ID="Label24" runat="server" Text="<%$ Resources:lang,WeiXinGongZhongZhangHao%>"></asp:Label>
                                             </strong>
@@ -294,7 +296,8 @@
                                                     [<asp:Label ID="Label2" runat="server" Text="<%$ Resources:lang,ZSYYWXGZHDFWHBSDYH%>"></asp:Label>]
                                                 </div>
                                             </td>
-                                            <td colspan="4" width="400px">
+                                            <td style="width: 20px;"></td>
+                                            <td colspan="4" style="width: 400px;">
                                                 <table width="100%">
                                                     <tr>
                                                         <td><b>
@@ -309,8 +312,10 @@
                                                 </table>
                                             </td>
                                         </tr>
+                                        
+                                        <!-- 企业微信/微信公众号/短信接口配置行 -->
                                         <tr>
-                                            <td colspan="2" class="ItemAlignLeft">
+                                            <td colspan="2" class="ItemAlignLeft" style="width: 20%;">
                                                 <br />
                                                 <asp:Label ID="Label18" runat="server" Text="CorpID"></asp:Label>
                                                 <br />
@@ -326,7 +331,7 @@
                                                 <br />
                                                 <asp:Label ID="Label57" runat="server" Text="<%$ Resources:lang,QiYong%>"></asp:Label>
                                                 <br />
-                                                <asp:DropDownList ID="DL_WeiXinQYHStatus" runat="server">
+                                                <asp:DropDownList ID="DL_WeiXinQYHStatus" runat="server" Width="99%">
                                                     <asp:ListItem Value="NO">NO</asp:ListItem>
                                                     <asp:ListItem Value="YES">YES</asp:ListItem>
                                                 </asp:DropDownList>
@@ -334,19 +339,19 @@
                                                 <br />
                                                 <asp:Button ID="BT_WeChatQYSave" runat="server" CssClass="inpu" OnClick="BT_WeChatQYSave_Click" Text="<%$ Resources:lang,BaoCun%>" />
                                             </td>
-                                            <td>&nbsp;</td>
-                                            <td colspan="2" class="ItemAlignLeft">
+                                            <td style="width: 20px;">&nbsp;</td>
+                                            <td colspan="2" class="ItemAlignLeft" style="width: 25%;">
                                                 <br />
                                                 <asp:Label ID="Label19" runat="server" Text="AppID"></asp:Label><br />
-                                                <asp:TextBox ID="TB_WeiXinNo" runat="server" Width="350px"></asp:TextBox>
+                                                <asp:TextBox ID="TB_WeiXinNo" runat="server" Width="98%"></asp:TextBox>
                                                 <br />
                                                 <asp:Label ID="Label214" runat="server" Text="<%$ Resources:lang,MiMa%>"></asp:Label>
                                                 <br />
-                                                <asp:TextBox ID="TB_PassWord" runat="server" Width="350px"></asp:TextBox>
+                                                <asp:TextBox ID="TB_PassWord" runat="server" Width="98%"></asp:TextBox>
                                                 <br />
                                                 <asp:Label ID="Label38" runat="server" Text="<%$ Resources:lang,QiYong%>"></asp:Label>
                                                 <br />
-                                                <asp:DropDownList ID="DL_WeiXinGZHStatus" runat="server">
+                                                <asp:DropDownList ID="DL_WeiXinGZHStatus" runat="server" Width="98%">
                                                     <asp:ListItem Value="NO">NO</asp:ListItem>
                                                     <asp:ListItem Value="YES">YES</asp:ListItem>
                                                 </asp:DropDownList>
@@ -354,8 +359,10 @@
                                                 <br />
                                                 <asp:Button ID="BT_WeiXinStand" runat="server" CssClass="inpu" OnClick="BT_WeiXinStand_Click" Text="<%$ Resources:lang,BaoCun%>" />
                                             </td>
-                                            <td colspan="4" class="ItemAlignLeft">
-                                                <table background="ImagesSkin/main_n_bj.jpg" border="0" cellpadding="0" cellspacing="0" width="98%">
+                                            <td style="width: 20px;"></td>
+                                            <td colspan="4" class="ItemAlignLeft" style="width: 40%;">
+                                                <!-- 短信接口列表 -->
+                                                <table background="ImagesSkin/main_n_bj.jpg" border="0" cellpadding="0" cellspacing="0" width="100%">
                                                     <tr>
                                                         <td width="7">
                                                             <img src="ImagesSkin/main_n_l.jpg" width="7" height="26" />
@@ -367,7 +374,7 @@
                                                                     <td class="ItemAlignLeft" width="20%"><strong>
                                                                         <asp:Label ID="Label97" runat="server" Text="<%$ Resources:lang,FuWuShang%>"></asp:Label>
                                                                     </strong></td>
-                                                                    <td class="ItemAlignLeft" width="60%"><strong>
+                                                                    <td class="ItemAlignLeft" width="50%"><strong>
                                                                         <asp:Label ID="Label181" runat="server" Text="<%$ Resources:lang,JieKou%>"></asp:Label>
                                                                     </strong></td>
                                                                     <td class="ItemAlignLeft" width="10%"><strong>
@@ -384,7 +391,9 @@
                                                         </td>
                                                     </tr>
                                                 </table>
-                                                <asp:DataGrid ID="DataGrid20" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" OnItemCommand="DataGrid20_ItemCommand" PageSize="2" ShowHeader="false" Width="98%">
+                                                <asp:DataGrid ID="DataGrid20" runat="server" AutoGenerateColumns="False" CellPadding="4" 
+                                                    ForeColor="#333333" GridLines="None" OnItemCommand="DataGrid20_ItemCommand" 
+                                                    PageSize="2" ShowHeader="false" Width="100%">
                                                     <FooterStyle BackColor="#57CD1" Font-Bold="True" ForeColor="White" />
                                                     <EditItemStyle BackColor="#2461BF" />
                                                     <SelectedItemStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
@@ -401,7 +410,7 @@
                                                             <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="20%" />
                                                         </asp:BoundColumn>
                                                         <asp:BoundColumn DataField="SPInterface" HeaderText="接口">
-                                                            <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="60%" />
+                                                            <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="50%" />
                                                         </asp:BoundColumn>
                                                         <asp:TemplateColumn HeaderText="Status">
                                                             <ItemTemplate>
@@ -416,27 +425,36 @@
                                                 </asp:DataGrid>
                                             </td>
                                         </tr>
+                                        
+                                        <!-- 分隔线 -->
                                         <tr>
-                                            <td colspan="8" style="background-color: beige; height: 20px;"></td>
+                                            <td colspan="9" style="background-color: beige; height: 20px;"></td>
                                         </tr>
+                                        
+                                        <!-- 内部网段/RTX服务器/视频会议URL标题行 -->
                                         <tr>
-                                            <td colspan="2" class="ItemAlignLeft"><b>
+                                            <td colspan="3" class="ItemAlignLeft"><b>
                                                 <asp:Label ID="Label179" runat="server" Text="<%$ Resources:lang,NeiBuWangDuan%>"></asp:Label>
                                             </b></td>
-                                            <td>&nbsp;</td>
+                                            <td style="width: 20px;">&nbsp;</td>
                                             <td colspan="3" class="ItemAlignLeft">
                                                 <strong>
                                                     <asp:Label ID="Label192" runat="server" Text="<%$ Resources:lang,RTXFuWuQi%>"></asp:Label>
-                                                    &nbsp;</strong></td>
-                                            <td colspan="3" class="ItemAlignLeft">
+                                                    &nbsp;</strong>
+                                            </td>
+                                            <td style="width: 20px;"></td>
+                                            <td colspan="2" class="ItemAlignLeft">
                                                 <strong>
                                                     <asp:Label ID="Label486" runat="server" Text="<%$ Resources:lang,ShiPinHuiYiURL%>"></asp:Label>
                                                 </strong>
                                             </td>
                                         </tr>
+                                        
+                                        <!-- 内容行 - 使用rowspan让内部网段和RTX服务器占据多行 -->
                                         <tr>
-                                            <td colspan="2" rowspan="7" class="ItemAlignLeft">
-                                                <table background="ImagesSkin/main_n_bj.jpg" border="0" cellpadding="0" cellspacing="0" width="98%">
+                                            <!-- 内部网段区域 (占7行) -->
+                                            <td colspan="3" rowspan="7" class="ItemAlignLeft" style="width: 30%; vertical-align: top;">
+                                                <table background="ImagesSkin/main_n_bj.jpg" border="0" cellpadding="0" cellspacing="0" width="100%">
                                                     <tr>
                                                         <td width="7">
                                                             <img src="ImagesSkin/main_n_l.jpg" width="7" height="26" />
@@ -445,10 +463,10 @@
                                                             <table border="0" cellpadding="0" cellspacing="0" width="100%">
                                                                 <tr>
                                                                     <td class="ItemAlignLeft" width="16%"><strong>ID</strong> </td>
-                                                                    <td class="ItemAlignLeft" width="42%"><strong>
+                                                                    <td class="ItemAlignLeft" width="37%"><strong>
                                                                         <asp:Label ID="Label183" runat="server" Text="<%$ Resources:lang,KaiShiWangDuan%>"></asp:Label>
                                                                     </strong></td>
-                                                                    <td class="ItemAlignLeft" width="42%"><strong>
+                                                                    <td class="ItemAlignLeft" width="37%"><strong>
                                                                         <asp:Label ID="Label184" runat="server" Text="<%$ Resources:lang,JieShuWangDuan%>"></asp:Label>
                                                                     </strong></td>
                                                                     <td class="ItemAlignLeft" width="10%"><strong>
@@ -462,7 +480,9 @@
                                                         </td>
                                                     </tr>
                                                 </table>
-                                                <asp:DataGrid ID="DataGrid25" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" OnItemCommand="DataGrid25_ItemCommand" PageSize="2" ShowHeader="false" Width="98%">
+                                                <asp:DataGrid ID="DataGrid25" runat="server" AutoGenerateColumns="False" CellPadding="4" 
+                                                    ForeColor="#333333" GridLines="None" OnItemCommand="DataGrid25_ItemCommand" 
+                                                    PageSize="2" ShowHeader="false" Width="100%">
                                                     <FooterStyle BackColor="#57CD1" Font-Bold="True" ForeColor="White" />
                                                     <EditItemStyle BackColor="#2461BF" />
                                                     <SelectedItemStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
@@ -476,10 +496,10 @@
                                                             <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="16%" />
                                                         </asp:TemplateColumn>
                                                         <asp:BoundColumn DataField="BeginSegment" HeaderText="开始网段">
-                                                            <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="42%" />
+                                                            <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="37%" />
                                                         </asp:BoundColumn>
                                                         <asp:BoundColumn DataField="EndSegment" HeaderText="结束网段">
-                                                            <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="42%" />
+                                                            <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="37%" />
                                                         </asp:BoundColumn>
                                                         <asp:TemplateColumn>
                                                             <ItemStyle Width="10%" HorizontalAlign="Center" />
@@ -487,9 +507,13 @@
                                                     </Columns>
                                                 </asp:DataGrid>
                                             </td>
-                                            <td rowspan="7">&nbsp;</td>
-                                            <td class="ItemAlignLeft" colspan="3" rowspan="7">
-                                                <table background="ImagesSkin/main_n_bj.jpg" border="0" cellpadding="0" cellspacing="0" width="98%">
+                                            
+                                            <!-- 中间空白列 -->
+                                            <td style="width: 20px;" rowspan="7">&nbsp;</td>
+                                            
+                                            <!-- RTX服务器区域 (占7行) -->
+                                            <td colspan="3" rowspan="7" class="ItemAlignLeft" style="width: 35%; vertical-align: top;">
+                                                <table background="ImagesSkin/main_n_bj.jpg" border="0" cellpadding="0" cellspacing="0" width="100%">
                                                     <tr>
                                                         <td width="7">
                                                             <img src="ImagesSkin/main_n_l.jpg" width="7" height="26" />
@@ -502,7 +526,7 @@
                                                                     <td class="ItemAlignLeft" width="15%"><strong>
                                                                         <asp:Label ID="Label195" runat="server" Text="<%$ Resources:lang,DuanKou%>"></asp:Label>
                                                                     </strong></td>
-                                                                    <td class="ItemAlignLeft" width="40%"><strong>WebSite</strong> </td>
+                                                                    <td class="ItemAlignLeft" width="30%"><strong>WebSite</strong> </td>
                                                                     <td class="ItemAlignLeft" width="10%"><strong>
                                                                         <span class="grid-add-icon" onclick="return handleAddClick('modalRTXConfig', event)">+</span>
                                                                     </strong></td>
@@ -514,7 +538,9 @@
                                                         </td>
                                                     </tr>
                                                 </table>
-                                                <asp:DataGrid ID="DataGrid31" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" OnItemCommand="DataGrid31_ItemCommand" PageSize="2" ShowHeader="false" Width="98%">
+                                                <asp:DataGrid ID="DataGrid31" runat="server" AutoGenerateColumns="False" CellPadding="4" 
+                                                    ForeColor="#333333" GridLines="None" OnItemCommand="DataGrid31_ItemCommand" 
+                                                    PageSize="2" ShowHeader="false" Width="100%">
                                                     <FooterStyle BackColor="#57CD1" Font-Bold="True" ForeColor="White" />
                                                     <EditItemStyle BackColor="#2461BF" />
                                                     <SelectedItemStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
@@ -527,14 +553,14 @@
                                                             </ItemTemplate>
                                                             <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="15%" />
                                                         </asp:TemplateColumn>
-                                                        <asp:BoundColumn DataField="ServerIP" HeaderText="接口">
+                                                        <asp:BoundColumn DataField="ServerIP" HeaderText="ServerIP">
                                                             <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="30%" />
                                                         </asp:BoundColumn>
-                                                        <asp:BoundColumn DataField="ServerPort" HeaderText="Status">
+                                                        <asp:BoundColumn DataField="ServerPort" HeaderText="Port">
                                                             <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="15%" />
                                                         </asp:BoundColumn>
-                                                        <asp:BoundColumn DataField="WebSite" HeaderText="网址">
-                                                            <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="40%" />
+                                                        <asp:BoundColumn DataField="WebSite" HeaderText="WebSite">
+                                                            <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="30%" />
                                                         </asp:BoundColumn>
                                                         <asp:TemplateColumn>
                                                             <ItemStyle Width="10%" HorizontalAlign="Center" />
@@ -542,39 +568,146 @@
                                                     </Columns>
                                                 </asp:DataGrid>
                                             </td>
-                                            <td colspan="3" class="ItemAlignLeft">
+                                            
+                                            <!-- 右侧空白列 -->
+                                            <td style="width: 20px;" rowspan="7"></td>
+                                            
+                                            <!-- 视频会议配置区域 (第一行) -->
+                                            <td colspan="2" class="ItemAlignLeft" style="width: 25%;">
                                                 <asp:Label ID="Label487" runat="server" Text="<%$ Resources:lang,ShiPinHuiYiDiZhi%>"></asp:Label>
                                                 <br />
                                                 <asp:TextBox ID="TXT_MeetingSystemURL" runat="server" Width="98%"></asp:TextBox>
                                             </td>
                                         </tr>
+                                        
+                                        <!-- 视频会议配置区域 (第二行) -->
                                         <tr>
-                                            <td colspan="3" class="ItemAlignLeft">
+                                            <td colspan="2" class="ItemAlignLeft">
                                                 <asp:Label ID="Label488" runat="server" Text="<%$ Resources:lang,ShiPinXiTongDiZhi%>"></asp:Label>
                                                 <br />
                                                 <asp:TextBox ID="TXT_MeetingURL" runat="server" Width="98%"></asp:TextBox>
                                             </td>
                                         </tr>
+                                        
+                                        <!-- 视频会议配置区域 (第三行) -->
                                         <tr>
-                                            <td colspan="3" class="ItemAlignLeft">
+                                            <td colspan="2" class="ItemAlignLeft">
                                                 <asp:Label ID="Label489" runat="server" Text="<%$ Resources:lang,ShiPinDianShu%>"></asp:Label>
                                                 <br />
                                                 <asp:TextBox ID="TXT_MeetingCount" runat="server" Text="3" Width="98%"></asp:TextBox>
                                             </td>
                                         </tr>
+                                        
+                                        <!-- 视频会议配置区域 (第四行) -->
                                         <tr>
-                                            <td colspan="3" class="ItemAlignLeft">&nbsp;</td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="3" class="ItemAlignLeft">
+                                            <td colspan="2" class="ItemAlignLeft">
                                                 <asp:Button ID="BT_MeetingSystem" runat="server" CssClass="inpu" OnClick="BT_MeetingSystem_Click" Text="<%$ Resources:lang,BaoCun%>" />
                                             </td>
                                         </tr>
+                                        
+                                        <!-- 视频会议配置区域 (第五行 - 占位) -->
                                         <tr>
-                                            <td colspan="3">&nbsp;</td>
+                                            <td colspan="2" class="ItemAlignLeft">&nbsp;</td>
                                         </tr>
+                                        
+                                        <!-- 视频会议配置区域 (第六行 - 占位) -->
                                         <tr>
-                                            <td colspan="3">&nbsp;</td>
+                                            <td colspan="2" class="ItemAlignLeft">&nbsp;</td>
+                                        </tr>
+                                        
+                                        <!-- 视频会议配置区域 (第七行 - 占位) -->
+                                        <tr>
+                                            <td colspan="2" class="ItemAlignLeft">&nbsp;</td>
+                                        </tr>
+                                        
+                                        <!-- 分隔线 -->
+                                        <tr>
+                                            <td colspan="9" style="background-color: beige; height: 20px;"></td>
+                                        </tr>
+                                        
+                                        <!-- DingTalk 标题行 -->
+                                        <tr>
+                                            <td colspan="9" class="ItemAlignLeft"><b>
+                                                <asp:Label ID="Label5" runat="server" Text="DingTalk"></asp:Label>
+                                            </b></td>
+                                        </tr>
+                                        
+                                        <!-- 钉钉配置区域 - 使用colspan=9占据整行 -->
+                                        <tr>
+                                            <td colspan="9" style="padding-top: 20px; width: 100%;">
+                                                <!-- 钉钉列表头部 -->
+                                                <table background="ImagesSkin/main_n_bj.jpg" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                    <tr>
+                                                        <td width="7">
+                                                            <img src="ImagesSkin/main_n_l.jpg" width="7" height="26" /></td>
+                                                        <td>
+                                                            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                                <tr>
+                                                                    <td class="ItemAlignLeft" width="8%"><strong>ID</strong></td>
+                                                                    <td class="ItemAlignLeft" width="12%"><strong>ConfigurationName</strong></td>
+                                                                    <td class="ItemAlignLeft" width="12%"><strong>AppKey</strong></td>
+                                                                    <td class="ItemAlignLeft" width="18%"><strong>Appsecret</strong></td>
+                                                                    <td class="ItemAlignLeft" width="7%"><strong>AgentId</strong></td>
+                                                                    <td class="ItemAlignLeft" width="7%"><strong>AppType</strong></td>
+                                                                    <td class="ItemAlignLeft" width="8%"><strong>IsEnabled</strong></td>
+                                                                    <td class="ItemAlignLeft" width="18%"><strong>Description</strong></td>
+                                                                    <td class="ItemAlignLeft" width="10%">
+                                                                        <span class="grid-add-icon" onclick="return handleAddClick('modalDingTalk', event)">+</span>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                        <td align="right" width="6">
+                                                            <img src="ImagesSkin/main_n_r.jpg" width="6" height="26" /></td>
+                                                    </tr>
+                                                </table>
+                                                
+                                                <!-- 钉钉数据列表 -->
+                                                <asp:DataGrid ID="dgDingTalk" runat="server" AutoGenerateColumns="False" CellPadding="4"
+                                                    ForeColor="#333333" GridLines="None" OnItemCommand="dgDingTalk_ItemCommand"
+                                                    Width="100%" ShowHeader="false" CssClass="gridview">
+                                                    <FooterStyle BackColor="#57CD1" Font-Bold="True" ForeColor="White" />
+                                                    <EditItemStyle BackColor="#2461BF" />
+                                                    <SelectedItemStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                                                    <PagerStyle CssClass="notTab" HorizontalAlign="center" Mode="NumericPages" />
+                                                    <ItemStyle CssClass="itemStyle" />
+                                                    <Columns>
+                                                        <asp:TemplateColumn HeaderText="ID">
+                                                            <ItemTemplate>
+                                                                <asp:Button ID="btnEdit" runat="server" CssClass="inpu" Text='<%# Eval("Id") %>' CommandName="Edit" />
+                                                            </ItemTemplate>
+                                                            <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="8%" />
+                                                        </asp:TemplateColumn>
+                                                        <asp:BoundColumn DataField="ConfigName" HeaderText="配置名称">
+                                                            <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="12%" />
+                                                        </asp:BoundColumn>
+                                                        <asp:BoundColumn DataField="AppKey" HeaderText="AppKey">
+                                                            <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="12%" />
+                                                        </asp:BoundColumn>
+                                                        <asp:BoundColumn DataField="Appsecret" HeaderText="Appsecret">
+                                                            <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="18%" />
+                                                        </asp:BoundColumn>
+                                                        <asp:BoundColumn DataField="AgentId" HeaderText="AgentId">
+                                                            <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="7%" />
+                                                        </asp:BoundColumn>
+                                                        <asp:TemplateColumn HeaderText="应用类型">
+                                                            <ItemTemplate>
+                                                                <%# GetAppTypeName(Eval("AppType")) %>
+                                                            </ItemTemplate>
+                                                            <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="7%" />
+                                                        </asp:TemplateColumn>
+                                                        <asp:BoundColumn DataField="IsEnabled" HeaderText="IsEnabled">
+                                                            <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="8%" />
+                                                        </asp:BoundColumn>
+                                                        <asp:BoundColumn DataField="Description" HeaderText="描述">
+                                                            <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="18%" />
+                                                        </asp:BoundColumn>
+                                                        <asp:TemplateColumn>
+                                                            <ItemStyle Width="10%" HorizontalAlign="Center" />
+                                                        </asp:TemplateColumn>
+                                                    </Columns>
+                                                </asp:DataGrid>
+                                            </td>
                                         </tr>
                                     </table>
                                 </td>
@@ -582,7 +715,7 @@
                         </table>
                     </div>
 
-                    <!-- 所有模态框定义 -->
+                    <!-- 所有模态框定义保持不变 -->
                     <!-- 短信接口模态框 -->
                     <div id="modalSMSInterface" class="modal-overlay">
                         <div class="modal-content">
@@ -610,7 +743,7 @@
                             </div>
                             <div class="modal-footer">
                                 <asp:Button ID="BT_AddSPInterface" runat="server" CssClass="inpu" OnClick="BT_AddSPInterface_Click" Text="<%$ Resources:lang,BaoCun%>" />
-                                <asp:Button ID="BT_DeleteSPInterface" runat="server" CssClass="inpu" OnClick="BT_DeleteSPInterface_Click" OnClientClick="return confirmContinue(getDeleteMsgByLangCode(), this, event)"  Text="<%$ Resources:lang,ShanChu%>" />
+                                <asp:Button ID="BT_DeleteSPInterface" runat="server" CssClass="inpu" OnClick="BT_DeleteSPInterface_Click" OnClientClick="return confirmContinue(getDeleteMsgByLangCode(), this, event)" Text="<%$ Resources:lang,ShanChu%>" />
                                 <button type="button" class="close-modal" onclick="hideModal('modalSMSInterface')">
                                     <asp:Label ID="Label36745675" runat="server" Text="<%$ Resources:lang,GuanBi%>"></asp:Label>
                                 </button>
@@ -638,7 +771,7 @@
                             </div>
                             <div class="modal-footer">
                                 <asp:Button ID="BT_AddNetSegment" runat="server" CssClass="inpu" OnClick="BT_AddNetSegment_Click" Text="<%$ Resources:lang,BaoCun%>" />
-                                <asp:Button ID="BT_DeleteNetSegment" runat="server" CssClass="inpu" OnClick="BT_DeleteNetSegment_Click" OnClientClick="return confirmContinue(getDeleteMsgByLangCode(), this, event)"  Text="<%$ Resources:lang,ShanChu%>" />
+                                <asp:Button ID="BT_DeleteNetSegment" runat="server" CssClass="inpu" OnClick="BT_DeleteNetSegment_Click" OnClientClick="return confirmContinue(getDeleteMsgByLangCode(), this, event)" Text="<%$ Resources:lang,ShanChu%>" />
                                 <button type="button" class="close-modal" onclick="hideModal('modalNetSegment')">
                                     <asp:Label ID="LabelNetSegmentClose" runat="server" Text="<%$ Resources:lang,GuanBi%>"></asp:Label>
                                 </button>
@@ -669,9 +802,69 @@
                             </div>
                             <div class="modal-footer">
                                 <asp:Button ID="BT_AddRTX" runat="server" CssClass="inpu" OnClick="BT_AddRTX_Click" Text="<%$ Resources:lang,BaoCun%>" />
-                                <asp:Button ID="BT_DeleteRTX" runat="server" CssClass="inpu" OnClick="BT_DeleteRTX_Click"  OnClientClick="return confirmContinue(getDeleteMsgByLangCode(), this, event)"  Text="<%$ Resources:lang,ShanChu%>" />
+                                <asp:Button ID="BT_DeleteRTX" runat="server" CssClass="inpu" OnClick="BT_DeleteRTX_Click" OnClientClick="return confirmContinue(getDeleteMsgByLangCode(), this, event)" Text="<%$ Resources:lang,ShanChu%>" />
                                 <button type="button" class="close-modal" onclick="hideModal('modalRTXConfig')">
                                     <asp:Label ID="LabelRTXClose" runat="server" Text="<%$ Resources:lang,GuanBi%>"></asp:Label>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 钉钉配置模态框 -->
+                    <div id="modalDingTalk" class="modal-overlay">
+                        <div class="modal-content" style="width: 500px;">
+                            <div class="modal-header">
+                                <h3>DingTalk Configration</h3>
+                            </div>
+                            <div class="modal-body">
+                                <asp:HiddenField ID="hfDingTalkId" runat="server" Value="0" />
+                                <div class="form-group">
+                                    <asp:Label ID="lblConfigName" runat="server" Text="ConfigurationName：" Width="100px"></asp:Label>
+                                    <asp:TextBox ID="txtConfigName" runat="server" Width="350px"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="rfvConfigName" runat="server" ControlToValidate="txtConfigName" ErrorMessage="*" ForeColor="Red" Display="Dynamic" ValidationGroup="DingTalk" />
+                                </div>
+                                <div class="form-group">
+                                    <asp:Label ID="lblAppKey" runat="server" Text="AppKey：" Width="100px"></asp:Label>
+                                    <asp:TextBox ID="txtAppKey" runat="server" Width="350px"></asp:TextBox>
+                                </div>
+                                <div class="form-group">
+                                    <asp:Label ID="lblAppSecret" runat="server" Text="AppSecret：" Width="100px"></asp:Label>
+                                    <asp:TextBox ID="txtAppSecret" runat="server" Width="350px"></asp:TextBox>
+                                </div>
+                                <div class="form-group">
+                                    <asp:Label ID="lblAgentId" runat="server" Text="AgentId：" Width="100px"></asp:Label>
+                                    <asp:TextBox ID="txtAgentId" runat="server" Width="350px"></asp:TextBox>
+                                </div>
+                                <div class="form-group">
+                                    <asp:Label ID="lblCorpId" runat="server" Text="CorpId：" Width="100px"></asp:Label>
+                                    <asp:TextBox ID="txtCorpId" runat="server" Width="350px"></asp:TextBox>
+                                </div>
+                                <div class="form-group">
+                                    <asp:Label ID="lblRobotCode" runat="server" Text="RobotCode：" Width="100px"></asp:Label>
+                                    <asp:TextBox ID="txtRobotCode" runat="server" Width="350px"></asp:TextBox>
+                                </div>
+                                <div class="form-group">
+                                    <asp:Label ID="lblAppType" runat="server" Text="AppType：" Width="100px"></asp:Label>
+                                    <asp:DropDownList ID="ddlAppType" runat="server" Width="350px">
+                                        <asp:ListItem Value="1">Enterprise</asp:ListItem>
+                                        <asp:ListItem Value="2">Robot</asp:ListItem>
+                                        <asp:ListItem Value="3">Website</asp:ListItem>
+                                    </asp:DropDownList>
+                                </div>
+                                <div class="form-group">
+                                    <asp:Label ID="lblIsEnabled" runat="server" Text="IsEnabled：" Width="100px"></asp:Label>
+                                    <asp:CheckBox ID="chkIsEnabled" runat="server" Checked="true" />
+                                </div>
+                                <div class="form-group">
+                                    <asp:Label ID="lblDescription" runat="server" Text="Description：" Width="100px"></asp:Label>
+                                    <asp:TextBox ID="txtDescription" runat="server" Width="350px" TextMode="MultiLine" Rows="2"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <asp:Button ID="btnSaveDingTalk" runat="server" CssClass="inpu" Text="<%$ Resources:lang,BaoCun%>" OnClick="btnSaveDingTalk_Click" ValidationGroup="DingTalk" />
+                                <asp:Button ID="btnDeleteDingTalk" runat="server" CssClass="inpu" OnClientClick="return confirmContinue(getDeleteMsgByLangCode(), this, event)" Text="<%$ Resources:lang,ShanChu%>" OnClick="btnDeleteDingTalk_Click" />
+                                <button type="button" class="close-modal" onclick="hideModal('modalDingTalk')">
+                                    <asp:Label ID="Label4" runat="server" Text="<%$ Resources:lang,GuanBi%>"></asp:Label>
                                 </button>
                             </div>
                         </div>

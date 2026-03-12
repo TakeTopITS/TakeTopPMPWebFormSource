@@ -87,6 +87,16 @@ public class Msg
                     {
                     }
 
+                    try
+                    {
+                        // 假设您已知钉钉用户的 userId（例如从数据库映射得到）
+                        string message = strMsg + ",---" + LanguageHandle.GetWord("ZZZXinXiLaiZhi").ToString().Trim() + strSendUserCode + " " + strSendUserName;
+                        SendTaskNotificationByUserCode(strReceivedUserCode, LanguageHandle.GetWord("TongZhi"), message);
+                    }
+                    catch
+                    {
+                    }
+
                     ////以协作方式发消息
                     //try
                     //{
@@ -310,6 +320,16 @@ public class Msg
                                 catch
                                 {
                                 }
+                            }
+
+                            try
+                            {
+                                // 假设您已知钉钉用户的 userId（例如从数据库映射得到）
+                                SendTaskNotificationByUserCode(strUserCode, LanguageHandle.GetWord("TongZhi"), strMsg);
+
+                            }
+                            catch
+                            {
                             }
 
                             ////以协作方式发消息
@@ -975,6 +995,7 @@ public class Msg
         }
     }
 
+
     //---END 手机短信推送方式------------------------------------------------------------------------------------------------------------
 
     //--RTX操作方法BEGIN---------------------------------------------------------------------------------------------------------
@@ -1164,6 +1185,78 @@ public class Msg
     }
 
     //----RTX操作方法END-----------------------------------------------------------------------------------------------------
+
+    //----钉钉操作方法BEGIN-----------------------------------------------------------------------------------------------------
+    /// <summary>
+    /// 根据平台用户代码发送钉钉任务通知（实时通过手机号查询UserId）
+    /// </summary>
+    /// <param name="userCode">平台用户代码</param>
+    /// <param name="taskTitle">任务标题</param>
+    /// <param name="taskContent">任务内容</param>
+    public void SendTaskNotificationByUserCode(string userCode, string taskTitle, string taskContent)
+    {
+        try
+        {
+            // 1. 从人员档案表 T_ProjectMember 获取手机号
+            string phone = GetMobilePhoneByUserCode(userCode);
+            if (string.IsNullOrEmpty(phone))
+            {
+                Log($"用户 {userCode} 的手机号为空，无法发送钉钉消息。");
+                return;
+            }
+
+            // 2. 通过手机号调用钉钉接口获取 UserId
+            string dingUserId = DingTalkMsgHelper.GetUserIdByPhone(phone);
+            if (string.IsNullOrEmpty(dingUserId))
+            {
+                Log($"根据手机号 {phone} 未找到对应的钉钉用户（用户代码：{userCode}）。");
+                return;
+            }
+
+            // 3. 发送消息
+            string message = $"您有一个新任务：{taskTitle}\r\n{taskContent}";
+            bool success = DingTalkMsgHelper.SendTextMessage(dingUserId, message);
+
+            if (success)
+            {
+                Log($"任务通知已发送给用户 {userCode}（钉钉UserId：{dingUserId}）");
+            }
+            else
+            {
+                Log($"任务通知发送失败，用户 {userCode}（钉钉UserId：{dingUserId}）");
+            }
+        }
+        catch (Exception ex)
+        {
+            Log($"发送任务通知异常：{ex.Message}");
+        }
+    }
+
+    /// <summary>
+    /// 根据用户代码从 T_ProjectMember 获取手机号
+    /// </summary>
+    private string GetMobilePhoneByUserCode(string userCode)
+    {
+        // 注意：表名和字段名请根据实际数据库调整
+        string sql = "SELECT MobilePhone FROM T_ProjectMember WHERE UserCode = '" + userCode.Replace("'", "''") + "'";
+        DataSet ds = ShareClass.GetDataSetFromSql(sql, "Member");
+        if (ds != null && ds.Tables[0].Rows.Count > 0)
+        {
+            return ds.Tables[0].Rows[0]["MobilePhone"].ToString();
+        }
+        return "";
+    }
+
+    /// <summary>
+    /// 简单日志方法（可根据需要替换）
+    /// </summary>
+    private void Log(string msg)
+    {
+        // 示例：输出到页面或写入文件，请根据项目实际情况修改
+        HttpContext.Current.Response.Write("<script>console.log('" + msg.Replace("'", "\\'") + "');</script>");
+    }
+
+    //----钉钉操作方法END-----------------------------------------------------------------------------------------------------
 
     //发送邮件（基于邮件内容，邮箱地址）
     public bool SendMailByEmail(string strEmail, string strSubject, string strBody, string strSendUserCode)

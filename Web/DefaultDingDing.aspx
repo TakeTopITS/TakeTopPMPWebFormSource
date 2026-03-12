@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="DefaultWeiXinQYHSAAS.aspx.cs" Inherits="DefaultWeiXinQYHSAAS" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="DefaultDingDing.aspx.cs" Inherits="DefaultDingDing" %>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
 <%@ Import Namespace="System.Globalization" %>
@@ -80,7 +80,7 @@
         }
 
         a:hover, button:hover, input[type="submit"]:hover {
-            /*background: url(ImagesSkin/MouseHover.gif);*/
+            /*            background: url(ImagesSkin/MouseHover.gif);*/
             background: #fe3c69;
             color: #FCF8F8;
         }
@@ -98,21 +98,20 @@
             background-image: url(login.png);
             background-repeat: no-repeat;
         }
-
-           .codea {
-         display: inline-block;
-         padding-left: 0px;
-         font: 14px/34px "microsoft yahei";
-         color: #9CABC1;
-         text-align:left;
-     }
-
-            .codea img {
-                height: 34px;
-                border-radius: 5px;
-            }
     </style>
 
+    <%-- <script type="text/javascript">
+        window.onload = function () {
+            if (document.documentElement.scrollHeight <= document.documentElement.clientHeight) {
+                bodyTag = document.getElementsByTagName('body')[0];
+                bodyTag.style.height = document.documentElement.clientWidth / screen.width * screen.height + 'px';
+            }
+            setTimeout(function () {
+                window.scrollTo(0, 1)
+            }, 0);
+        };
+
+    </script>--%>
 
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="js/allAHandler.js"></script>
@@ -151,9 +150,12 @@
         }
 
         function refreshCheckCode() {
+            var img = document.getElementById('IM_CheckCode');
 
-            var img = document.getElementById('<%= IM_CheckCode.ClientID %>');
-            img.src = 'TTCheckCode.aspx?t=' + new Date().getTime();
+            if (img) {
+
+                img.src = 'TTCheckCode.aspx?t=' + new Date().getTime();
+            }
         }
 
     </script>
@@ -167,7 +169,7 @@
             </asp:ScriptManager>
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>
-                    <div id="AboveDiv" style="text-align: center;">
+                    <div id="AboveDiv">
                         <table width="70%" border="0" align="center" cellpadding="0" cellspacing="0">
                             <tr>
                                 <td style="padding-left: 0px;">
@@ -182,7 +184,6 @@
                             <tr>
                                 <td align="center">
                                     <asp:TextBox ID="TB_UserCode" runat="server" placeholder="<%$ Resources:lang,QingShuRuNiDeDaiMa%>" onFocus="javascript:this.value='';document.getElementById('LB_ErrorMsg').style.display = 'none';" ForeColor="#000000" class="dengl" Width="103%"></asp:TextBox>
-
                                 </td>
                             </tr>
                             <tr>
@@ -209,9 +210,7 @@
                                                 <asp:TextBox ID="TB_CheckCode" runat="server"  ForeColor="black" Style="width: 100px; height: 32px;"></asp:TextBox>
                                             </td>
                                             <td>
-                                                <a id="aCheckCode" href="javascript:refreshCheckCode();" class="codea">
-                                                    <asp:Image ID="IM_CheckCode" runat="server" ClientIDMode="Static" ImageUrl="TTCheckCode.aspx?refresh=<%=DateTime.Now.Ticks %>" />
-                                                </a>
+                                                <asp:Image ID="IM_CheckCode" runat="server" src="TTCheckCode.aspx" Style="width: 150px; height: 32px;" />
                                             </td>
                                         </tr>
                                     </table>
@@ -258,24 +257,13 @@
                                                 ]
                                             </td>
                                         </tr>
-                                        <tr style="display: none;">
-                                            <td align="center">
-                                                <br />
-                                                <asp:HyperLink ID="HL_UserRegister" NavigateUrl="TTUserRegisteredSAAS.aspx" Text="<%$ Resources:lang,MianFeiZhuCe%>" runat="server"></asp:HyperLink>
 
-                                                &nbsp;&nbsp;
-
-                                                <asp:HyperLink ID="HL_FindPWD" NavigateUrl="TTUserPWDFindSAAS.aspx" Text="<%$ Resources:lang,ZhaoHuiMiMa%>" runat="server"></asp:HyperLink>
-
-                                            </td>
-                                        </tr>
                                     </table>
                                 </td>
                             </tr>
                             <tr style="display: none;">
                                 <td align="center">
-                                    <asp:Label ID="LB_WeChatUserID" runat="server" Visible="false"></asp:Label>
-                                    <asp:Label ID="LB_WeChatUserDeviceID" runat="server" Visible="false"></asp:Label>
+                                    <asp:Label ID="LB_WeChatOpenID" runat="server" Visible="false"></asp:Label>
                                 </td>
                             </tr>
                         </table>

@@ -102,7 +102,7 @@ public partial class DefaultWeiXin : System.Web.UI.Page
 
     protected void LB_Login_Click(object sender, EventArgs e)
     {
-        string strUserCode, strUserName, strPassword;
+        string strUserCode, strUserName, strPassword, strMobilePhone;
         string strUserType;
         string strUserHostAddress, strAllowDevice;
         string strHQL;
@@ -135,6 +135,7 @@ public partial class DefaultWeiXin : System.Web.UI.Page
                 strUserName = ds.Tables[0].Rows[0]["UserName"].ToString().Trim();
                 strUserType = ds.Tables[0].Rows[0]["UserType"].ToString().Trim();
                 strAllowDevice = ds.Tables[0].Rows[0]["AllowDevice"].ToString().Trim();
+                strMobilePhone = ds.Tables[0].Rows[0]["MobilePhone"].ToString().Trim();
 
                 Session["UserCode"] = strUserCode;
                 Session["UserName"] = strUserName;
@@ -232,7 +233,7 @@ public partial class DefaultWeiXin : System.Web.UI.Page
                 }
 
 
-                //设置用户微信公众号OpenID
+                //设置用户微信公众号OpenID并同步到微信公众平台
                 string strWeiXinCode;
                 strWeiXinCode = Request.QueryString["code"];
                 if (CheckAndSetWXOpenID(strWeiXinCode, strUserCode) == false)

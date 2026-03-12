@@ -14,6 +14,7 @@ using System.Web.UI.HtmlControls;
 using ProjectMgt.Model;
 using ProjectMgt.DAL;
 using ProjectMgt.BLL;
+
 using Stimulsoft.Base.Gauge.GaugeGeoms;
 
 public partial class TTBaseDataCommunicationInterfaceSetting : System.Web.UI.Page
@@ -25,12 +26,16 @@ public partial class TTBaseDataCommunicationInterfaceSetting : System.Web.UI.Pag
         strUserCode = Session["UserCode"].ToString();
 
         ProjectMemberBLL projectMemberBLL = new ProjectMemberBLL();
-        Label1.Text = ShareClass.GetPageTitle(this.GetType().BaseType.Name + ".aspx"); bool blVisible = TakeTopSecurity.TakeTopLicense.GetAuthobility(this.GetType().BaseType.Name + ".aspx", strUserCode);
+        Label1.Text = ShareClass.GetPageTitle(this.GetType().BaseType.Name + ".aspx");
+        bool blVisible = TakeTopSecurity.TakeTopLicense.GetAuthobility(this.GetType().BaseType.Name + ".aspx", strUserCode);
         if (blVisible == false)
         {
             Response.Redirect("TTDisplayErrors.aspx");
             return;
         }
+
+        // 检查并创建钉钉配置表（如果不存在）- PostgreSQL 版本
+        CreateDingTalkTableIfNotExists();
 
         ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "clickA", "aHandler();", true);
         if (Page.IsPostBack == false)
@@ -41,8 +46,197 @@ public partial class TTBaseDataCommunicationInterfaceSetting : System.Web.UI.Pag
             LoadRTXConfig();
             LoadSMSNetSegment();
             LoadMeetingSystem();
+            LoadDingTalkConfig(); // 加载钉钉配置
         }
     }
+
+    #region 钉钉配置管理 - 新增方法（PostgreSQL 适配）
+
+    // 创建钉钉配置表（如果不存在）- PostgreSQL 版本
+    private void CreateDingTalkTableIfNotExists()
+    {
+        string checkTableSql = "SELECT COUNT(*) FROM information_schema.tables WHERE table_name = 't_dingtalkconfig'";
+        DataSet dsCheck = ShareClass.GetDataSetFromSql(checkTableSql, "CheckTable");
+        int tableCount = Convert.ToInt32(dsCheck.Tables[0].Rows[0][0]);
+        if (tableCount == 0)
+        {
+            string createTableSql = @"
+                CREATE TABLE t_dingtalkconfig (
+                    id SERIAL PRIMARY KEY,
+                    configname VARCHAR(100) NOT NULL,
+                    appkey VARCHAR(100) NOT NULL,
+                    appsecret VARCHAR(200) NOT NULL,
+                    agentid VARCHAR(50),
+                    corpid VARCHAR(100),
+                    robotcode VARCHAR(100),
+                    apptype INTEGER NOT NULL DEFAULT 1,
+                    isenabled BOOLEAN NOT NULL DEFAULT TRUE,
+                    description VARCHAR(500),
+                    createtime TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                    updatetime TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+                )";
+            ShareClass.RunSqlCommand(createTableSql);
+        }
+    }
+
+    // 加载钉钉配置列表
+    private void LoadDingTalkConfig()
+    {
+        string sql = "SELECT id, configname, appkey, appsecret, agentid, corpid, robotcode, apptype, isenabled, description FROM t_dingtalkconfig ORDER BY id DESC";
+        DataSet ds = ShareClass.GetDataSetFromSql(sql, "T_DingTalkConfig");
+        dgDingTalk.DataSource = ds;
+        dgDingTalk.DataBind();
+    }
+
+    // 辅助方法：应用类型转换
+    protected string GetAppTypeName(object appType)
+    {
+        int type = Convert.ToInt32(appType);
+        switch (type)
+        {
+            case 1: return "Enterprise";
+            case 2: return "Robot";
+            case 3: return "Website";
+            default: return "Unknown";
+        }
+    }
+
+    // DataGrid 行命令事件
+    protected void dgDingTalk_ItemCommand(object source, DataGridCommandEventArgs e)
+    {
+        if (e.CommandName == "Edit")
+        {
+            string id = ((Button)e.Item.FindControl("btnEdit")).Text.Trim();
+            string configName = e.Item.Cells[1].Text.Trim();
+            string appKey = e.Item.Cells[2].Text.Trim();
+            string appSecret = e.Item.Cells[3].Text.Trim();
+            string agentId = e.Item.Cells[4].Text.Trim();
+            string appTypeName = e.Item.Cells[5].Text.Trim();
+            string isEnabledText = e.Item.Cells[6].Text.Trim();
+            string description = e.Item.Cells[7].Text.Trim();
+
+            // 根据显示文本反查实际值
+            int appType = 1;
+            if (appTypeName == "Enterprise") appType = 1;
+            else if (appTypeName == "Robot") appType = 2;
+            else if (appTypeName == "Website") appType = 3;
+
+        
+
+            hfDingTalkId.Value = id;
+            txtConfigName.Text = configName;
+            txtAppKey.Text = appKey;
+            txtAppSecret.Text = appSecret;
+            txtAgentId.Text = agentId;
+            txtCorpId.Text = GetCorpIdById(id);
+            txtRobotCode.Text = GetRobotCodeById(id);
+            ddlAppType.SelectedValue = appType.ToString();
+            chkIsEnabled.Checked = isEnabledText== "True" ? true : false;
+            txtDescription.Text = description;
+
+            // 打开模态框
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "openModal", "showModal('modalDingTalk', document.getElementById('" + ((Button)e.Item.FindControl("btnEdit")).ClientID + "'));", true);
+        }
+    }
+
+    // 辅助方法：获取 CorpId
+    private string GetCorpIdById(string id)
+    {
+        string sql = "SELECT corpid FROM t_dingtalkconfig WHERE id = " + id;
+        DataSet ds = ShareClass.GetDataSetFromSql(sql, "tmp");
+        if (ds.Tables[0].Rows.Count > 0)
+            return ds.Tables[0].Rows[0]["corpid"].ToString();
+        return "";
+    }
+
+    // 辅助方法：获取 RobotCode
+    private string GetRobotCodeById(string id)
+    {
+        string sql = "SELECT robotcode FROM t_dingtalkconfig WHERE id = " + id;
+        LogClass.WriteLogFile(sql);
+        DataSet ds = ShareClass.GetDataSetFromSql(sql, "tmp");
+        if (ds.Tables[0].Rows.Count > 0)
+            return ds.Tables[0].Rows[0]["robotcode"].ToString();
+        return "";
+    }
+
+    // 保存按钮事件（PostgreSQL 版本）
+    protected void btnSaveDingTalk_Click(object sender, EventArgs e)
+    {
+        if (!Page.IsValid) return;
+
+        try
+        {
+            int id = string.IsNullOrEmpty(hfDingTalkId.Value) ? 0 : int.Parse(hfDingTalkId.Value);
+            string configName = txtConfigName.Text.Trim().Replace("'", "''"); // 转义单引号
+            string appKey = txtAppKey.Text.Trim().Replace("'", "''");
+            string appSecret = txtAppSecret.Text.Trim().Replace("'", "''");
+            string agentId = txtAgentId.Text.Trim().Replace("'", "''");
+            string corpId = txtCorpId.Text.Trim().Replace("'", "''");
+            string robotCode = txtRobotCode.Text.Trim().Replace("'", "''");
+            int appType = int.Parse(ddlAppType.SelectedValue);
+            bool isEnabled = chkIsEnabled.Checked;
+            string description = txtDescription.Text.Trim().Replace("'", "''");
+
+            if (id == 0) // 新增
+            {
+                string sql = @"INSERT INTO t_dingtalkconfig 
+                           (configname, appkey, appsecret, agentid, corpid, robotcode, apptype, isenabled, description, createtime, updatetime)
+                           VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', {6}, {7}, '{8}', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)";
+                sql = string.Format(sql, configName, appKey, appSecret, agentId, corpId, robotCode, appType, isEnabled , description);
+                ShareClass.RunSqlCommand(sql);
+            }
+            else // 编辑
+            {
+                string sql;
+                if (string.IsNullOrEmpty(txtAppSecret.Text.Trim())) // 密码框为空，不修改密码
+                {
+                    sql = @"UPDATE t_dingtalkconfig SET 
+                        configname='{0}', appkey='{1}', agentid='{2}', corpid='{3}', robotcode='{4}', 
+                        apptype={5}, isenabled={6}, description='{7}', updatetime=CURRENT_TIMESTAMP 
+                        WHERE id={8}";
+                 
+                    sql = string.Format(sql, configName, appKey, agentId, corpId, robotCode, appType, isEnabled , description, id);
+                }
+                else
+                {
+                    sql = @"UPDATE t_dingtalkconfig SET 
+                        configname='{0}', appkey='{1}', appsecret='{2}', agentid='{3}', corpid='{4}', robotcode='{5}', 
+                        apptype={6}, isenabled={7}, description='{8}', updatetime=CURRENT_TIMESTAMP 
+                        WHERE id={9}";
+                    sql = string.Format(sql, configName, appKey, appSecret, agentId, corpId, robotCode, appType, isEnabled, description, id);
+                }
+             
+
+                ShareClass.RunSqlCommand(sql);
+            }
+
+
+            LoadDingTalkConfig();
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "closeModal", "hideModal('modalDingTalk');", true);
+        }
+        catch (Exception ex)
+        {
+            LogClass.WriteLogFile(ex.Message.ToString());
+        }
+    }
+
+    // 删除按钮事件
+    protected void btnDeleteDingTalk_Click(object sender, EventArgs e)
+    {
+        int id = string.IsNullOrEmpty(hfDingTalkId.Value) ? 0 : int.Parse(hfDingTalkId.Value);
+        if (id > 0)
+        {
+            string sql = "DELETE FROM t_dingtalkconfig WHERE id = " + id;
+            ShareClass.RunSqlCommand(sql);
+            LoadDingTalkConfig();
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "closeModal", "hideModal('modalDingTalk');", true);
+        }
+    }
+
+    #endregion
+
+    #region 原有方法（完整保留）
 
     protected void DataGrid20_ItemCommand(object sender, DataGridCommandEventArgs e)
     {
@@ -159,7 +353,7 @@ public partial class TTBaseDataCommunicationInterfaceSetting : System.Web.UI.Pag
                 smsInterface.Status = strStatus;
                 smsInterfaceBLL.AddSMSInterface(smsInterface);
             }
-          
+
         }
         catch
         {
@@ -215,7 +409,7 @@ public partial class TTBaseDataCommunicationInterfaceSetting : System.Web.UI.Pag
         strBeginSegment = TB_BeginNetSegment.Text.Trim();
         strEndSegment = TB_EndNetSegment.Text.Trim();
 
-       
+
         SMSNetSegmentBLL smsNetSegmentBLL = new SMSNetSegmentBLL();
         SMSNetSegment smsNetSegment = new SMSNetSegment();
 
@@ -287,13 +481,13 @@ public partial class TTBaseDataCommunicationInterfaceSetting : System.Web.UI.Pag
         RTXConfigBLL rtxConfigBLL = new RTXConfigBLL();
         RTXConfig rtxConfig = new RTXConfig();
 
-      
+
 
         try
         {
             string strHQL = "Select * From T_RTXConfig as rtxConfig Where rtxConfig.ServerIP='" + strServerIP + "' ";
             DataSet ds = ShareClass.GetDataSetFromSql(strHQL, "T_RTXConfig");
-            if(ds.Tables[0].Rows.Count == 0)
+            if (ds.Tables[0].Rows.Count == 0)
             {
                 rtxConfig.ServerIP = strServerIP;
                 rtxConfig.ServerPort = int.Parse(strServerPort);
@@ -566,4 +760,6 @@ public partial class TTBaseDataCommunicationInterfaceSetting : System.Web.UI.Pag
         }
         return flag;
     }
+
+    #endregion
 }

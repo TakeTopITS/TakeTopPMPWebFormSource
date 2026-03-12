@@ -114,7 +114,7 @@ public partial class DefaultWeiXinQYH : System.Web.UI.Page
     {
         string strHQL;
 
-        string strUserCode, strUserName, strPassword;
+        string strUserCode, strUserName, strPassword,strMobilePhone;
         string strUserType;
         string strUserHostAddress, strAllowDevice;
 
@@ -146,6 +146,7 @@ public partial class DefaultWeiXinQYH : System.Web.UI.Page
                 strUserName = ds.Tables[0].Rows[0]["UserName"].ToString().Trim();
                 strUserType = ds.Tables[0].Rows[0]["UserType"].ToString().Trim();
                 strAllowDevice = ds.Tables[0].Rows[0]["AllowDevice"].ToString().Trim();
+                strMobilePhone = ds.Tables[0].Rows[0]["MobilePhone"].ToString().Trim();
 
                 Session["UserCode"] = strUserCode;
                 Session["UserName"] = strUserName;
@@ -241,7 +242,7 @@ public partial class DefaultWeiXinQYH : System.Web.UI.Page
                     Session["SystemVersionType"] = "SAAS";
                 }
 
-                //把用户的微信OpenID写入人员档案表
+                //把用户的微信OpenID写入人员档案表并同步到微信企业号
                 string strWeiXinQYCode;
                 strWeiXinQYCode = Request.QueryString["code"];
                 if (CheckAndSetWXUserID(strWeiXinQYCode, strUserCode) == false)

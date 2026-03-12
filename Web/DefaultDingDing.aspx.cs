@@ -1,17 +1,15 @@
+using ProjectMgt.BLL;
+using ProjectMgt.Model;
 using System;
 using System.Collections;
 using System.Data;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
-
-using ProjectMgt.BLL;
-using ProjectMgt.Model;
-
-using TakeTopCore;
 using TakeTopSecurity;
+using TakeTopCore;
 
-public partial class DefaultWeiXinQYHSAAS : System.Web.UI.Page
+public partial class DefaultDingDing : System.Web.UI.Page
 {
     //private string strToken;//与微信公众账号后台的Token设置保持一致，区分大小写。
 
@@ -19,7 +17,6 @@ public partial class DefaultWeiXinQYHSAAS : System.Web.UI.Page
     {
         //钟礼月作品(jack.erp@gmail.com)
         //泰顶拓鼎集团（TakeTop Software）2006－2026\
-
         string strVerificationCode, strSMSVerification, strIsOEMVersion;
         string strUserHostAddress = Request.UserHostAddress;
 
@@ -105,7 +102,7 @@ public partial class DefaultWeiXinQYHSAAS : System.Web.UI.Page
 
     protected void LB_Login_Click(object sender, EventArgs e)
     {
-        string strUserCode, strUserName, strPassword;
+        string strUserCode, strUserName, strPassword, strMobilePhone;
         string strUserType;
         string strUserHostAddress, strAllowDevice;
         string strHQL;
@@ -117,20 +114,20 @@ public partial class DefaultWeiXinQYHSAAS : System.Web.UI.Page
 
         if (strUserCode == "" | strPassword == "")
         {
-            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZYHMHMMDBNWKJC") + "')", true);
+            ClientScript.RegisterStartupScript(this.GetType(), "", "<script>showAlertAtMouse('" + LanguageHandle.GetWord("ZZYHMHMMDBNWKJC") + "');</script>");
             return;
         }
 
         if (ShareClass.SqlFilter(strUserCode) | ShareClass.SqlFilter(strPassword))
         {
-            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZZHHYFFZHDLSB") + "')", true);
+            ClientScript.RegisterStartupScript(this.GetType(), "", "<script>showAlertAtMouse('" + LanguageHandle.GetWord("ZZZHHYFFZHDLSB") + "');</script>");
             return;
         }
 
         try
         {
             strPassword = ShareClass.EncryptPassword(strPassword, "MD5");
-            strHQL = "Select * from T_ProjectMember where UserCode = " + "'" + strUserCode + "'" + " and " + " Password = " + "'" + strPassword + "'" + " and " + " rtrim(ltrim(Status)) not in ( 'Stop','Resign')";
+            strHQL = "Select * from T_ProjectMember where UserCode = " + "'" + strUserCode + "'" + " and Password = " + "'" + strPassword + "'" + " And rtrim(ltrim(Status)) not in ( 'Stop','Resign')";
             strHQL += " And UserCode in (Select UserCode From T_SystemActiveUser Where AppUser = 'YES')";
             DataSet ds = ShareClass.GetDataSetFromSql(strHQL, "T_ProjectMember");
             if (ds.Tables[0].Rows.Count > 0)
@@ -138,6 +135,7 @@ public partial class DefaultWeiXinQYHSAAS : System.Web.UI.Page
                 strUserName = ds.Tables[0].Rows[0]["UserName"].ToString().Trim();
                 strUserType = ds.Tables[0].Rows[0]["UserType"].ToString().Trim();
                 strAllowDevice = ds.Tables[0].Rows[0]["AllowDevice"].ToString().Trim();
+                strMobilePhone = ds.Tables[0].Rows[0]["MobilePhone"].ToString().Trim();
 
                 Session["UserCode"] = strUserCode;
                 Session["UserName"] = strUserName;
@@ -200,6 +198,7 @@ public partial class DefaultWeiXinQYHSAAS : System.Web.UI.Page
                 {
                     Session["MustInFrame"] = "YES";
                 }
+
                 //是否自动工作流申请者自选或上一步审批者自选人员
                 try
                 {
@@ -232,18 +231,16 @@ public partial class DefaultWeiXinQYHSAAS : System.Web.UI.Page
                 {
                     Session["SystemVersionType"] = "SAAS";
                 }
-
-                //第一次在微信公众号登录时，把用户的微信OpenID写入人员档案表
-                //把用户的微信OpenID写入人员档案表
-                string strWeiXinQYCode;
-                strWeiXinQYCode = Request.QueryString["code"];
-
-                if (CheckAndSetWXUserID(strWeiXinQYCode, strUserCode) == false)
+            
+                //设置用户钉钉账号信息并同步到钉钉
+                bool syncSuccess = DingTalkUserHelper.SyncUserToDingTalk(strUserCode, strUserName, strMobilePhone);
+                if (syncSuccess)
                 {
-                    LB_ErrorMsg.Visible = true;
-                    LB_ErrorMsg.Text = LanguageHandle.GetWord("ZZDLSBNDWXIDYPLYZHSY") + "（" + LB_ErrorMsg.Text + "）" + LanguageHandle.GetWord("ZZSYQLXXTGLY");
-
-                    return;
+                    // 同步成功，可选记录日志
+                }
+                else
+                {
+                    // 同步失败，但不影响登录，可以记录错误
                 }
 
                 try
@@ -269,7 +266,7 @@ public partial class DefaultWeiXinQYHSAAS : System.Web.UI.Page
                 LB_ErrorMsg.Visible = true;
                 LB_ErrorMsg.Text = LanguageHandle.GetWord("ZZSBYYKNRX1YHDMHMMCW2BSAPPYHHYBZZSY");
 
-                ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZJGSJSJSBKNSSSAMPLEYHJC") + "')", true);
+                ClientScript.RegisterStartupScript(this.GetType(), "", "<script>showAlertAtMouse('" + LanguageHandle.GetWord("ZZSBYYKNRX1YHDMHMMCW2BSAPPYHHYBZZSY") + "');</script>");
             }
         }
         catch (Exception err)
@@ -279,52 +276,49 @@ public partial class DefaultWeiXinQYHSAAS : System.Web.UI.Page
         }
     }
 
-    //把用户的微信OpenID写入人员档案表
-    public bool CheckAndSetWXUserID(string strWeiXinQYCode, string strUserCode)
+    public bool CheckAndSetWXOpenID(string strWeiXinCode, string strUserCode)
     {
-        string strHQL;
-        string strUserWXUserID, strUserWXUserDeviceID, strAccessToken;
-
         try
         {
-            strAccessToken = TakeTopCore.WXHelper.GetAccessToken();
-            strUserWXUserID = TakeTopCore.WXHelper.GetQYHUserID(strAccessToken, strWeiXinQYCode);
-            strUserWXUserDeviceID = TakeTopCore.WXHelper.GetQYHUserDeviceID(strAccessToken, strWeiXinQYCode);
+            string strHQL;
 
-            Session["DeviceID"] = strUserWXUserDeviceID;
+            //第一次在微信公众号登录时，把用户的微信OpenID写入人员档案表
+            string strUserWXOpenID;
 
-            if (strUserWXUserID == null)
+            if (!string.IsNullOrEmpty(strWeiXinCode))
             {
-                strUserWXUserID = "";
-            }
+                strUserWXOpenID = TakeTopCore.WXHelper.GetGZHOpenID(strWeiXinCode);
 
-            if (strUserWXUserDeviceID == null)
+                if (strUserWXOpenID == null)
+                {
+                    strUserWXOpenID = "";
+                }
+
+                //if (strUserWXOpenID != "")
+                //{
+                //    strHQL = "Select UserCode || UserName From T_ProjectMember Where trim(WeChatOpenID) = '" + strUserWXOpenID + "' and trim(UserCode) <> '" + strUserCode + "'";
+                //    DataSet ds = ShareClass.GetDataSetFromSql(strHQL, "T_ProjectMember");
+                //    if (ds.Tables[0].Rows.Count > 0)
+                //    {
+                //        LB_ErrorMsg.Text = ds.Tables[0].Rows[0][0].ToString();
+                //        return false;
+                //    }
+
+                strHQL = "Update T_ProjectMember Set WeChatOpenID = '" + strUserWXOpenID + "' Where UserCode = '" + strUserCode + "'";
+                ShareClass.RunSqlCommand(strHQL);
+
+                return true;
+
+                //}
+                //else
+                //{
+                //    return true;
+                //}
+            }
+            else
             {
-                strUserWXUserDeviceID = "";
+                return true;
             }
-
-            //if (strUserWXUserID != "" & strUserWXUserDeviceID != "" )
-            //{
-            //strHQL = "Select UserCode+UserName From T_ProjectMember Where (WeChatUserID = '" + strUserWXUserID + "' and WeChatDeviceID = '" + strUserWXUserDeviceID + "') and UserCode <> '" + strUserCode + "'";
-            //DataSet ds = ShareClass.GetDataSetFromSql(strHQL, "T_ProjectMember");
-            //if (ds.Tables[0].Rows.Count > 0)
-            //{
-            //    LB_ErrorMsg.Text = ds.Tables[0].Rows[0][0].ToString();
-            //    return false;
-            //}
-
-            strHQL = "Update T_ProjectMember Set WeChatUserID = '" + strUserWXUserID + "' Where UserCode = '" + strUserCode + "'";
-            ShareClass.RunSqlCommand(strHQL);
-
-            strHQL = "Update T_ProjectMember Set WeChatDeviceID = '" + strUserWXUserDeviceID + "' Where UserCode = '" + strUserCode + "'";
-            ShareClass.RunSqlCommand(strHQL);
-
-            return true;
-            //}
-            //else
-            //{
-            //    return true;
-            //}
         }
         catch (Exception err)
         {
@@ -356,22 +350,22 @@ public partial class DefaultWeiXinQYHSAAS : System.Web.UI.Page
         {
             strSMSCode = msg.CreateRandomCode(5);
 
-            strMsg =  LanguageHandle.GetWord("DuanXinYanZhengMa") +":" + strSMSCode + "," + LanguageHandle.GetWord("DangTianYouXiao");
+            strMsg =  LanguageHandle.GetWord("DuanXinYanZhengMa") + ":" + strSMSCode + "," + LanguageHandle.GetWord("DangTianYouXiao");
 
             if (msg.SendMSM("Message", strUserCode, strMsg, strUserCode))
             {
                 InsertOrUpdateSMSCode(strUserCode, strSMSCode);
 
-                ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZDXYZMYFSCS") + "')", true);
+                ClientScript.RegisterStartupScript(this.GetType(), "", "<script>showAlertAtMouse('" + LanguageHandle.GetWord("ZZDXYZMYFSCS") + "');</script>");
             }
             else
             {
-                ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZJGDXYZMFSSBJCDXJKHWLLJ") + "')", true);
+                ClientScript.RegisterStartupScript(this.GetType(), "", "<script>showAlertAtMouse('" + LanguageHandle.GetWord("ZZJGDXYZMFSSBJCDXJKHWLLJ") + "');</script>");
             }
         }
         else
         {
-            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZJGYHDMHMMCWBNDDXMJC") + "')", true);
+            ClientScript.RegisterStartupScript(this.GetType(), "", "<script>showAlertAtMouse('" + LanguageHandle.GetWord("ZZJGYHDMHMMCWBNDDXMJC") + "');</script>");
         }
     }
 
@@ -386,7 +380,7 @@ public partial class DefaultWeiXinQYHSAAS : System.Web.UI.Page
 
             // 重定向到带参数的页面
             // 新页面加载时会处理 URL 参数并调用自己的 InitializeCulture()
-            Response.Redirect("DefaultWeiXinQYHSAAS.aspx?TargetLangCode=" + selectedValue, false);
+            Response.Redirect("DefaultWeiXin.aspx?TargetLangCode=" + selectedValue, false);
         }
     }
 
@@ -473,6 +467,23 @@ public partial class DefaultWeiXinQYHSAAS : System.Web.UI.Page
             catch
             {
             }
+        }
+    }
+
+    protected int CheckUserWeChatOpenID(string strUserWXOpenID)
+    {
+        string strHQL;
+
+        try
+        {
+            strHQL = "Select * From T_ProjectMember Where WeChatOpenID = " + "'" + strUserWXOpenID + "'";
+            DataSet ds = ShareClass.GetDataSetFromSql(strHQL, "T_ProjectMember");
+
+            return ds.Tables[0].Rows.Count;
+        }
+        catch
+        {
+            return 0;
         }
     }
 
