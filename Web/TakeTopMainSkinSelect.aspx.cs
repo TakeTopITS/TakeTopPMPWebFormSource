@@ -99,9 +99,10 @@ public partial class TakeTopMainSkinSelect : System.Web.UI.Page
                 Session["CssDirectory"] = projectMember.CssDirectory.Trim();
                 Session["LangCode"] = strLangCode;
                 Response.SetCookie(new HttpCookie("LangCode", strLangCode));
+              
 
-                //预加载模组流程图数据集
-                ShareClass.PreLoadModuleFlowChartDataSet();
+                //保存模组流程图到数据库中，供模组设计或修改页面调用
+                ShareClass.SaveModuleFlowchartToDatabaseForDesignOrChangePage();
 
                 //设置缓存更改标志
                 ChangePageCache("Language");

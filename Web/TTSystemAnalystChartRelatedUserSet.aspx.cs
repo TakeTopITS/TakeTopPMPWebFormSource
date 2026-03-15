@@ -113,6 +113,9 @@ public partial class TTSystemAnalystChartRelatedUserSet : System.Web.UI.Page
 
             LoadUserSystemAnalystChart(strUserCode, strFormType);
 
+            //清空分析图字符串
+            EmptyAnalystChartString(strUserCode);
+
             ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZBCCG") + "')", true);
 
             ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click222", "reloadPrentPage();", true);
@@ -122,6 +125,15 @@ public partial class TTSystemAnalystChartRelatedUserSet : System.Web.UI.Page
         {
             ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" +LanguageHandle.GetWord("ZZCWBCSBJC")+"')", true); 
         }
+    }
+
+    //清空分析图字符串
+    protected void EmptyAnalystChartString(string strUserCode)
+    {
+        string strHQL;
+
+        strHQL= string.Format(@"Update t_memberchartstringformainpage Set AnalystChartString = '' Where UserCode = '{0}'", strUserCode);
+        ShareClass.RunSqlCommand(strHQL);
     }
 
     protected void BT_AssignToOtherMember_Click(object sender, EventArgs e)

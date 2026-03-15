@@ -1,4 +1,25 @@
+using LumiSoft.Net.Mail;
+using LumiSoft.Net.MIME;
+using LumiSoft.Net.POP3.Client;
+
+using Microsoft.CSharp;
+
+using MSXML2;
+
+using net.sf.mpxj.primavera.schema;
+
+using Npgsql;
+
+using ProjectMgt.BLL;
+using ProjectMgt.Model;
+
+using RTXSAPILib;
+
+using RTXServerApi;
+
 using System;
+using System.Activities.DurableInstancing;
+using System.Activities.Statements;
 using System.CodeDom;
 using System.CodeDom.Compiler;
 using System.Collections;
@@ -26,26 +47,14 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Xml;
 
+using TakeTopCore;
+
+using TakeTopGantt;
+
+using TakeTopWF;
+
 using ZXing;
 using ZXing.QrCode;
-
-using LumiSoft.Net.Mail;
-using LumiSoft.Net.MIME;
-using LumiSoft.Net.POP3.Client;
-
-using RTXSAPILib;
-using RTXServerApi;
-
-using Microsoft.CSharp;
-using MSXML2;
-using Npgsql;
-
-using ProjectMgt.BLL;
-using ProjectMgt.Model;
-
-using TakeTopCore;
-using TakeTopGantt;
-using TakeTopWF;
 
 /// <summary>
 /// Summary description for ShareClass
@@ -59,7 +68,7 @@ public static class ShareClass
         //
     }
 
-    public static string SystemVersionID = "V2026.3.13";
+    public static string SystemVersionID = "V2026.3.15";
 
     public static string SystemLatestLoginUser = "";
     public static string SystemDBer = "";
@@ -98,56 +107,237 @@ public static class ShareClass
     }
 
     //预加载模组流程图数据集
-    public static void PreLoadModuleFlowChartDataSet()
+    /// <summary>
+    /// 预加载模块流程图数据集，返回ModuleFlowchartXML值
+    /// </summary>
+    /// <param name="userCode">用户代码</param>
+    /// <param name="userType">用户类型</param>
+    /// <param name="langCode">语言代码</param>
+    /// <returns>ModuleFlowchartXML字符串</returns>
+    public static string PreLoadModuleFlowChartDataSet()
     {
+        string userCode = HttpContext.Current.Session["UserCode"].ToString();
+        string userType = HttpContext.Current.Session["UserType"].ToString();
+        string langCode = HttpContext.Current.Session["LangCode"].ToString();
+
         try
         {
-            DataSet dsModuleFlow = ShareClass.GetSystemModuleFlowDataSet("OperateNavigation", HttpContext.Current.Session["UserCode"].ToString(), HttpContext.Current.Session["UserType"].ToString(), HttpContext.Current.Session["LangCode"].ToString());
-            string strModuleFlowID = ShareClass.GetSystemModuleID(dsModuleFlow);
-            string strHQL = string.Format(@"SELECT DISTINCT 
-                        B.ID,
+            if (string.IsNullOrEmpty(userCode))
+            {
+                LogClass.WriteLogFile("Error in PreLoadModuleFlowChartDataSet: UserCode is null or empty");
+                return null;
+            }
+
+            // 1. 首先从 t_MemberChartStringForMainPage 表获取 ModuleFlowchartString
+            string checkFlowchartSQL = string.Format(@"
+            SELECT ModuleFlowchartString 
+            FROM public.t_MemberChartStringForMainPage 
+            WHERE TRIM(usercode) = '{0}' 
+            AND ModuleFlowchartString IS NOT NULL 
+            AND CHAR_LENGTH(ModuleFlowchartString) > 0",
+                userCode.Trim());
+
+            DataSet dsFlowchart = ShareClass.GetDataSetFromSql(checkFlowchartSQL, "t_MemberChartStringForMainPage");
+
+            // 如果找到了 ModuleFlowchartString，直接返回
+            if (dsFlowchart?.Tables.Count > 0 && dsFlowchart.Tables[0].Rows.Count > 0)
+            {
+                string moduleFlowchartString = dsFlowchart.Tables[0].Rows[0]["ModuleFlowchartString"].ToString();
+
+                if (!string.IsNullOrEmpty(moduleFlowchartString))
+                {
+                    //LogClass.WriteLogFile($"Info: Using ModuleFlowchartString from t_MemberChartStringForMainPage for user {userCode.Trim()}");
+                    return moduleFlowchartString;
+                }
+            }
+
+            // 2. 如果没有找到 ModuleFlowchartString，执行原有的逻辑
+            DataSet dsModuleFlow = ShareClass.GetSystemModuleFlowDataSet("OperateNavigation", userCode, userType, langCode);
+            if (dsModuleFlow?.Tables.Count > 0 && dsModuleFlow.Tables[0].Rows.Count > 0)
+            {
+                string strModuleFlowID = ShareClass.GetSystemModuleID(dsModuleFlow);
+
+                if (!string.IsNullOrEmpty(strModuleFlowID))
+                {
+                    string strHQL = string.Format(@"
+                    WITH target_module AS (
+                        SELECT 
+                            ID,
+                            ModuleName,
+                            ModuleType,
+                            UserType,
+                            ModuleDefinition
+                        FROM T_ProModule 
+                        WHERE ID = {0}
+                        AND CHAR_LENGTH(ModuleDefinition) > 0
+                    )
+                    SELECT DISTINCT
+                        tm.ID,
                         A.ID AS SystemModuleID,
                         A.ModuleName,
                         A.HomeModuleName,
                         A.ParentModule,
                         A.PageName,
                         A.ModuleType,
-                        B.ModuleDefinition AS UserModuleDefinition,
+                        tm.ModuleDefinition AS UserModuleDefinition,
                         A.ModuleDefinition AS SystemModuleDefinition,
                         A.UserType,
                         A.IconURL,
                         A.SortNumber,
                         A.DIYFlow
-                    FROM T_ProModuleLevel A
-                    INNER JOIN T_ProModule B ON 
-                        RTRIM(A.ModuleName) || RTRIM(A.ModuleType) || RTRIM(A.UserType) = 
-                        RTRIM(B.ModuleName) || RTRIM(B.ModuleType) || RTRIM(B.UserType)
-                    WHERE (LENGTH(B.ModuleDefinition) > 0 OR LENGTH(A.ModuleDefinition) > 0) 
-                        AND B.ID = {0}", strModuleFlowID, HttpContext.Current.Session["LangCode"].ToString());
+                    FROM target_module tm
+                    INNER JOIN T_ProModuleLevel A ON 
+                        TRIM(A.ModuleName) = TRIM(tm.ModuleName)
+                        AND TRIM(A.ModuleType) = TRIM(tm.ModuleType)
+                        AND TRIM(A.UserType) = TRIM(tm.UserType)
+                    WHERE CHAR_LENGTH(A.ModuleDefinition) > 0 
+                       OR CHAR_LENGTH(tm.ModuleDefinition) > 0
+                    ORDER BY A.SortNumber NULLS LAST",
+                        strModuleFlowID);
 
-            DataSet ds = ShareClass.GetDataSetFromSql(strHQL, "T_ProModuleLevel");
+                    DataSet ds = ShareClass.GetDataSetFromSql(strHQL, "T_ProModuleLevel");
 
-            if (ds.Tables[0].Rows.Count > 0)
-            {
-                string strID = ds.Tables[0].Rows[0]["ID"].ToString().Trim();
+                    if (ds?.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                    {
+                        string strID = ds.Tables[0].Rows[0]["ID"].ToString().Trim();
 
-                HttpContext.Current.Session["WFModuleFlowChartXML"] = WFMFFlowDefinitionHandle.GetModuleFlowDefinition(strID, "UserModule", ds);
-                HttpContext.Current.Session["iframeModuleFlowDataSet"] = ds;
+                        // 获取或生成XML数据
+                        string moduleFlowchartXML = WFMFFlowDefinitionHandle.GetModuleFlowDefinition(strID, "UserModule", ds);
+
+                        //LogClass.WriteLogFile($"Info: Loaded module flow definition for user {userCode.Trim()}");
+
+                        // 3. 将XML数据保存到 t_MemberChartStringForMainPage 表
+                        SaveModuleFlowchartToDatabase(userCode.Trim(), moduleFlowchartXML);
+
+                        return moduleFlowchartXML;
+                    }
+                }
             }
-            else
-            {
-                HttpContext.Current.Session["WFModuleFlowChartXML"] = null;
-                HttpContext.Current.Session["iframeModuleFlowDataSet"] = null;
-            }
+
+            //// 没有找到数据，返回null
+            //LogClass.WriteLogFile($"Info: No module flow definition found for user {userCode.Trim()}");
+            return null;
         }
         catch (Exception err)
         {
-            HttpContext.Current.Session["iframeModuleFlowDataSet"] = null;
-            HttpContext.Current.Session["WFModuleFlowChartXML"] = null;
-
-            LogClass.WriteLogFile("Error in PreLoadAnalystAndModuleFlowChart: " + err.Message.ToString() + "\n" + err.StackTrace);
+            LogClass.WriteLogFile("Error in PreLoadModuleFlowChartDataSet: " + err.Message + "\n" + err.StackTrace);
+            return null;
         }
     }
+
+    /// <summary>
+    /// 将模块流程图XML保存到数据库
+    /// </summary>
+    public static void SaveModuleFlowchartToDatabase(string userCode, string moduleFlowchartXML)
+    {
+        try
+        {
+            if (string.IsNullOrEmpty(userCode) || string.IsNullOrEmpty(moduleFlowchartXML))
+            {
+                LogClass.WriteLogFile("Warning in SaveModuleFlowchartToDatabase: UserCode or XML is empty");
+                return;
+            }
+
+            // 使用UPSERT (INSERT ... ON CONFLICT) 语法
+            string saveSQL = string.Format(@"
+                    INSERT INTO public.t_MemberChartStringForMainPage (usercode, ModuleFlowchartString)
+                    VALUES (TRIM('{0}'), '{1}')
+                    ON CONFLICT (usercode) 
+                    DO UPDATE SET 
+                        ModuleFlowchartString = EXCLUDED.ModuleFlowchartString",
+                        userCode,
+                        moduleFlowchartXML.Replace("'", "''")); // 处理XML中的单引号
+
+            // 执行保存操作
+
+            try
+            {
+                ShareClass.RunSqlCommand(saveSQL);
+
+                //LogClass.WriteLogFile($"Success: Saved ModuleFlowchartString to database for user {userCode}");
+            }
+            catch
+            {
+                LogClass.WriteLogFile($"Error: Failed to save ModuleFlowchartString for user {userCode}");
+            }
+        }
+        catch (Exception ex)
+        {
+            LogClass.WriteLogFile($"Error in SaveModuleFlowchartToDatabase: {ex.Message}\n{ex.StackTrace}");
+        }
+    }
+
+    /// <summary>
+    /// 将模块流程图XML保存到数据库,用于设计或修改页面调用，确保每次设计或修改后都能保存最新的流程图数据
+    /// </summary>
+    public static void SaveModuleFlowchartToDatabaseForDesignOrChangePage()
+    {
+        string userCode = HttpContext.Current.Session["UserCode"].ToString();
+        string userType = HttpContext.Current.Session["UserType"].ToString();
+        string langCode = HttpContext.Current.Session["LangCode"].ToString();
+
+        // 2. 如果没有找到 ModuleFlowchartString，执行原有的逻辑
+        DataSet dsModuleFlow = ShareClass.GetSystemModuleFlowDataSet("OperateNavigation", userCode, userType, langCode);
+        if (dsModuleFlow?.Tables.Count > 0 && dsModuleFlow.Tables[0].Rows.Count > 0)
+        {
+            string strModuleFlowID = ShareClass.GetSystemModuleID(dsModuleFlow);
+
+            if (!string.IsNullOrEmpty(strModuleFlowID))
+            {
+                string strHQL = string.Format(@"
+                    WITH target_module AS (
+                        SELECT 
+                            ID,
+                            ModuleName,
+                            ModuleType,
+                            UserType,
+                            ModuleDefinition
+                        FROM T_ProModule 
+                        WHERE ID = {0}
+                        AND CHAR_LENGTH(ModuleDefinition) > 0
+                    )
+                    SELECT DISTINCT
+                        tm.ID,
+                        A.ID AS SystemModuleID,
+                        A.ModuleName,
+                        A.HomeModuleName,
+                        A.ParentModule,
+                        A.PageName,
+                        A.ModuleType,
+                        tm.ModuleDefinition AS UserModuleDefinition,
+                        A.ModuleDefinition AS SystemModuleDefinition,
+                        A.UserType,
+                        A.IconURL,
+                        A.SortNumber,
+                        A.DIYFlow
+                    FROM target_module tm
+                    INNER JOIN T_ProModuleLevel A ON 
+                        TRIM(A.ModuleName) = TRIM(tm.ModuleName)
+                        AND TRIM(A.ModuleType) = TRIM(tm.ModuleType)
+                        AND TRIM(A.UserType) = TRIM(tm.UserType)
+                    WHERE CHAR_LENGTH(A.ModuleDefinition) > 0 
+                       OR CHAR_LENGTH(tm.ModuleDefinition) > 0
+                    ORDER BY A.SortNumber NULLS LAST",
+                    strModuleFlowID);
+
+                DataSet ds = ShareClass.GetDataSetFromSql(strHQL, "T_ProModuleLevel");
+
+                if (ds?.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                {
+                    string strID = ds.Tables[0].Rows[0]["ID"].ToString().Trim();
+
+                    // 获取或生成XML数据
+                    string moduleFlowchartXML = WFMFFlowDefinitionHandle.GetModuleFlowDefinition(strID, "UserModule", ds);
+
+                    //LogClass.WriteLogFile($"Info: Loaded module flow definition for user {userCode.Trim()}");
+
+                    // 3. 将XML数据保存到 t_MemberChartStringForMainPage 表
+                    SaveModuleFlowchartToDatabase(userCode.Trim(), moduleFlowchartXML);
+                }
+            }
+        }
+    }
+
 
     // 获取系统模组流程数据集
     public static DataSet GetSystemModuleFlowDataSet(string strModuleName, string strUserCode, string strUserType, string strLangCode)
@@ -156,9 +346,27 @@ public static class ShareClass
 
         try
         {
-            strHQL = string.Format(@"Select distinct B.ID From T_ProModuleLevel A, T_ProModule B Where rtrim(A.ModuleName)
-                ||rtrim(A.ModuleType)||rtrim(A.UserType) = rtrim(B.ModuleName) ||rtrim(B.ModuleType) 
-                ||rtrim(B.UserType) and B.ModuleName = '{0}' and B.UserCode ='{1}' and B.UserType = '{2}' and (CHAR_LENGTH(B.ModuleDefinition) > 0 Or CHAR_LENGTH(A.ModuleDefinition) > 0) ", strModuleName, strUserCode, strUserType, strLangCode);
+            strHQL = string.Format(@"-- 优化版本：使用CTE提前过滤，减少连接数据量
+                        WITH filtered_modules AS (
+                            SELECT 
+                                ID,
+                                ModuleName,
+                                ModuleType,
+                                UserType,
+                                ModuleDefinition
+                            FROM T_ProModule 
+                            WHERE ModuleName = '{0}' 
+                                AND UserCode = '{1}' 
+                                AND UserType = '{2}'
+                                AND CHAR_LENGTH(ModuleDefinition) > 0
+                        )
+                        SELECT DISTINCT fm.ID
+                        FROM filtered_modules fm
+                        INNER JOIN T_ProModuleLevel A ON 
+                            TRIM(A.ModuleName) || TRIM(A.ModuleType) || TRIM(A.UserType) = 
+                            TRIM(fm.ModuleName) || TRIM(fm.ModuleType) || TRIM(fm.UserType)
+                        WHERE CHAR_LENGTH(A.ModuleDefinition) > 0 
+                           OR CHAR_LENGTH(fm.ModuleDefinition) > 0", strModuleName, strUserCode, strUserType);
 
 
             DataSet ds = ShareClass.GetDataSetFromSql(strHQL, "T_ProModuleLevel");
@@ -9454,10 +9662,19 @@ public static class ShareClass
     public static string InitialAllProjectDocTree(TreeView TreeView1, string strUserCode, string strQueryCount, string strOperationType, string strMinProjectID, string strMaxProjectID)
     {
         string strHQL;
-        string strDepartString;
+
         string strProjectID, strProject;
 
-        strDepartString = TakeTopCore.CoreShareClass.InitialDepartmentStringByAuthoritySuperUser(strUserCode);
+        string strDepartString;
+        if (HttpContext.Current.Session["DepartString"] == null)
+        {
+            strDepartString = TakeTopCore.CoreShareClass.InitialDepartmentStringByAuthoritySuperUser(strUserCode);
+            HttpContext.Current.Session["DepartString"] = strDepartString;
+        }
+        else
+        {
+            strDepartString = HttpContext.Current.Session["DepartString"].ToString();
+        }
 
         //添加根节点
         TreeView1.Nodes.Clear();
@@ -9614,10 +9831,18 @@ public static class ShareClass
     public static string InitialAllProjectTreeForPageFind(TreeView TreeView1, string strUserCode, string strQueryCount, string strOperationType, string strMinProjectID, string strMaxProjectID)
     {
         string strHQL;
-        string strDepartString;
         string strProjectID, strProject;
 
-        strDepartString = TakeTopCore.CoreShareClass.InitialDepartmentStringByAuthoritySuperUser(strUserCode);
+        string strDepartString;
+        if (HttpContext.Current.Session["DepartString"] == null)
+        {
+            strDepartString = TakeTopCore.CoreShareClass.InitialDepartmentStringByAuthoritySuperUser(strUserCode);
+            HttpContext.Current.Session["DepartString"] = strDepartString;
+        }
+        else
+        {
+            strDepartString = HttpContext.Current.Session["DepartString"].ToString();
+        }
 
         //添加根节点
         TreeView1.Nodes.Clear();
@@ -9738,13 +9963,20 @@ public static class ShareClass
     {
         string strHQL;
         string strDepartString;
-
-        strDepartString = TakeTopCore.CoreShareClass.InitialDepartmentStringByAuthoritySuperUser(strUserCode);
+        if (HttpContext.Current.Session["DepartString"] == null)
+        {
+            strDepartString = TakeTopCore.CoreShareClass.InitialDepartmentStringByAuthoritySuperUser(strUserCode);
+            HttpContext.Current.Session["DepartString"] = strDepartString;
+        }
+        else
+        {
+            strDepartString = HttpContext.Current.Session["DepartString"].ToString();
+        }
 
         string strProjectID, strProject, strProductLineRelated;
 
         strProductLineRelated = ShareClass.GetDepartSuperUserRelatedProductLineFromUserCode(strUserCode);
-        strDepartString = TakeTopCore.CoreShareClass.InitialDepartmentStringByAuthoritySuperUser(strUserCode);
+
 
         //添加根节点
         TreeView1.Nodes.Clear();
@@ -9879,11 +10111,19 @@ public static class ShareClass
     public static string InitialAllProjectDocTree_YYUP(TreeView TreeView1, string strUserCode, string strQueryCount, string strOperationType, string strMinProjectID, string strMaxProjectID)
     {
         string strHQL;
-        string strDepartString;
         string strProjectID, strProject, strProductLineRelated;
+        string strDepartString;
+        if (HttpContext.Current.Session["DepartString"] == null)
+        {
+            strDepartString = TakeTopCore.CoreShareClass.InitialDepartmentStringByAuthoritySuperUser(strUserCode);
+            HttpContext.Current.Session["DepartString"] = strDepartString;
+        }
+        else
+        {
+            strDepartString = HttpContext.Current.Session["DepartString"].ToString();
+        }
 
         strProductLineRelated = ShareClass.GetDepartSuperUserRelatedProductLineFromUserCode(strUserCode);
-        strDepartString = TakeTopCore.CoreShareClass.InitialDepartmentStringByAuthoritySuperUser(strUserCode);
 
         //添加根节点
         TreeView1.Nodes.Clear();
@@ -10159,8 +10399,15 @@ public static class ShareClass
         string strHQL;
         string strProjectID, strProject;
         string strDepartString;
-
-        strDepartString = TakeTopCore.CoreShareClass.InitialDepartmentStringByAuthoritySuperUser(strUserCode);
+        if (HttpContext.Current.Session["DepartString"] == null)
+        {
+            strDepartString = TakeTopCore.CoreShareClass.InitialDepartmentStringByAuthoritySuperUser(strUserCode);
+            HttpContext.Current.Session["DepartString"] = strDepartString;
+        }
+        else
+        {
+            strDepartString = HttpContext.Current.Session["DepartString"].ToString();
+        }
 
         //添加根节点
         TreeView1.Nodes.Clear();
@@ -10477,7 +10724,15 @@ public static class ShareClass
         strProductLineRelated = ShareClass.GetDepartSuperUserRelatedProductLineFromUserCode(strUserCode);
 
         string strDepartString;
-        strDepartString = TakeTopCore.CoreShareClass.InitialDepartmentStringByAuthoritySuperUser(strUserCode);
+        if (HttpContext.Current.Session["DepartString"] == null)
+        {
+            strDepartString = TakeTopCore.CoreShareClass.InitialDepartmentStringByAuthoritySuperUser(strUserCode);
+            HttpContext.Current.Session["DepartString"] = strDepartString;
+        }
+        else
+        {
+            strDepartString = HttpContext.Current.Session["DepartString"].ToString();
+        }
 
         //添加根节点
         TreeView1.Nodes.Clear();
@@ -15726,6 +15981,80 @@ public static class ShareClass
 
     #region DataSet,DataGrid,DropDownList 操作函数
 
+    /// <summary>
+    /// 将DataSet序列化为XML字符串
+    /// </summary>
+    /// <param name="ds">要序列化的DataSet</param>
+    /// <returns>序列化后的XML字符串</returns>
+    public static string SerializeDataSetToString(DataSet ds)
+    {
+        if (ds == null)
+        {
+            LogClass.WriteLogFile("序列化失败：DataSet为空");
+            return string.Empty;
+        }
+
+        try
+        {
+            using (StringWriter sw = new StringWriter())
+            {
+                ds.WriteXml(sw, XmlWriteMode.IgnoreSchema);
+                string xmlString = sw.ToString();
+
+                // 记录前100个字符用于调试
+                string preview = xmlString.Length > 100 ? xmlString.Substring(0, 100) + "..." : xmlString;
+                //LogClass.WriteLogFile($"序列化成功，长度={xmlString.Length}，预览={preview}");
+
+                return xmlString;
+            }
+        }
+        catch (Exception ex)
+        {
+            LogClass.WriteLogFile("DataSet序列化失败: " + ex.Message.ToString());
+            return string.Empty;
+        }
+    }
+
+    /// <summary>
+    /// 从字符串反序列化为DataSet
+    /// </summary>
+    /// <param name="xmlString">XML字符串</param>
+    /// <returns>反序列化后的DataSet</returns>
+    public static  DataSet DeserializeStringToDataSet(string xmlString)
+    {
+        if (string.IsNullOrEmpty(xmlString))
+        {
+            //LogClass.WriteLogFile("反序列化失败：XML字符串为空");
+            return null;
+        }
+
+        try
+        {
+            // 记录前100个字符用于调试
+            string preview = xmlString.Length > 100 ? xmlString.Substring(0, 100) + "..." : xmlString;
+            //LogClass.WriteLogFile($"开始反序列化，长度={xmlString.Length}，预览={preview}");
+
+            DataSet ds = new DataSet();
+            using (StringReader sr = new StringReader(xmlString))
+            {
+                ds.ReadXml(sr);
+            }
+
+            //LogClass.WriteLogFile($"反序列化成功，表数量={ds.Tables.Count}");
+            if (ds.Tables.Count > 0)
+            {
+                //LogClass.WriteLogFile($"第一个表行数={ds.Tables[0].Rows.Count}");
+            }
+
+            return ds;
+        }
+        catch (Exception ex)
+        {
+            LogClass.WriteLogFile("字符串反序列化为DataSet失败: " + ex.Message.ToString());
+            return null;
+        }
+    }
+
     //绑定项目关联角色组
     public static void LoadProjectActorGroupForDropDownList(DropDownList DL_Visible, string strProjectID)
     {
@@ -16143,7 +16472,6 @@ public static class ShareClass
 
     #region SQL函数\XML函数\WebService调用方法
 
-
     //执行一般处理程序
     //当content-type:  application/x-www-from-urlencode时，参数格式为:name="zzzz"&id="aaaaa"
     /// <summary>
@@ -16390,8 +16718,16 @@ public static class ShareClass
     {
         string strHQL, strSql;
         string strLangCode = HttpContext.Current.Session["LangCode"].ToString();
-        string strDepartString = TakeTopCore.CoreShareClass.InitialDepartmentStringByAuthoritySuperUser(strUserCode);
-        HttpContext.Current.Session["DepartString"] = strDepartString;
+        string strDepartString;
+        if (HttpContext.Current.Session["DepartString"] == null)
+        {
+            strDepartString = TakeTopCore.CoreShareClass.InitialDepartmentStringByAuthoritySuperUser(strUserCode);
+            HttpContext.Current.Session["DepartString"] = strDepartString;
+        }
+        else
+        {
+            strDepartString = HttpContext.Current.Session["DepartString"].ToString();
+        }
 
         strHQL = string.Format(@"
             SELECT s.* 
@@ -16465,8 +16801,16 @@ public static class ShareClass
     {
         string strHQL, strSql;
         string strLangCode = HttpContext.Current.Session["LangCode"].ToString();
-        string strDepartString = TakeTopCore.CoreShareClass.InitialDepartmentStringByAuthoritySuperUser(strUserCode);
-        HttpContext.Current.Session["DepartString"] = strDepartString;
+        string strDepartString;
+        if (HttpContext.Current.Session["DepartString"] == null)
+        {
+            strDepartString = TakeTopCore.CoreShareClass.InitialDepartmentStringByAuthoritySuperUser(strUserCode);
+            HttpContext.Current.Session["DepartString"] = strDepartString;
+        }
+        else
+        {
+            strDepartString = HttpContext.Current.Session["DepartString"].ToString();
+        }
 
         strHQL = string.Format(@"
             SELECT s.* 

@@ -29,7 +29,7 @@ public partial class TTPersonalSpaceAnalysisChart : System.Web.UI.Page
 
             DataSet ds = ShareClass.GetSytemChartDataSet(Session["UserCode"].ToString(), "PersonalSpacePage");
 
-            //LogClass.WriteLogFile("DataSet行数: " + (ds.Tables.Count > 0 ? ds.Tables[0].Rows.Count.ToString() : "0"));
+            LogClass.WriteLogFile("DataSet行数: " + (ds.Tables.Count > 0 ? ds.Tables[0].Rows.Count.ToString() : "0"));
 
             // 绑定第一个Repeater
             RP_ChartList.DataSource = ds;
@@ -40,7 +40,7 @@ public partial class TTPersonalSpaceAnalysisChart : System.Web.UI.Page
         }
         else
         {
-            DataSet ds = ShareClass.DeserializeStringToDataSet(chartStringFromDb);
+            DataSet ds = DeserializeStringToDataSet(chartStringFromDb);
             if (ds != null)
             {
                 // 绑定第一个Repeater
@@ -49,7 +49,7 @@ public partial class TTPersonalSpaceAnalysisChart : System.Web.UI.Page
             }
             else
             {
-                //LogClass.WriteLogFile("反序列化失败，重新生成数据");
+                LogClass.WriteLogFile("反序列化失败，重新生成数据");
                 // 反序列化失败，重新生成
                 litSystemAnalystChartHTML.Visible = false;
                 DataSet dsNew = ShareClass.GetSytemChartDataSet(Session["UserCode"].ToString(), "PersonalSpacePage");
@@ -70,10 +70,10 @@ public partial class TTPersonalSpaceAnalysisChart : System.Web.UI.Page
         try
         {
             // 将DataSet序列化为字符串
-            string serializedDataSet = ShareClass.SerializeDataSetToString(ds);
+            string serializedDataSet = SerializeDataSetToString(ds);
 
-            //// 记录序列化后的长度，用于调试
-            //LogClass.WriteLogFile($"序列化后字符串长度: {serializedDataSet.Length}");
+            // 记录序列化后的长度，用于调试
+            LogClass.WriteLogFile($"序列化后字符串长度: {serializedDataSet.Length}");
 
             using (var conn = new NpgsqlConnection(connectionString))
             {
@@ -88,7 +88,7 @@ public partial class TTPersonalSpaceAnalysisChart : System.Web.UI.Page
                     cmd.Parameters.AddWithValue("@usercode", strUserCode);
                     int count = Convert.ToInt32(cmd.ExecuteScalar());
 
-                    //LogClass.WriteLogFile($"检查记录结果: UserCode={strUserCode}, 记录数={count}");
+                    LogClass.WriteLogFile($"检查记录结果: UserCode={strUserCode}, 记录数={count}");
 
                     if (count == 0)
                     {
@@ -104,7 +104,7 @@ public partial class TTPersonalSpaceAnalysisChart : System.Web.UI.Page
                             insertCmd.Parameters.AddWithValue("@moduleflowchartstring", "");
 
                             int rowsAffected = insertCmd.ExecuteNonQuery();
-                            //LogClass.WriteLogFile($"插入记录成功，影响行数: {rowsAffected}");
+                            LogClass.WriteLogFile($"插入记录成功，影响行数: {rowsAffected}");
                         }
                     }
                     else
@@ -120,13 +120,13 @@ public partial class TTPersonalSpaceAnalysisChart : System.Web.UI.Page
                             updateCmd.Parameters.AddWithValue("@usercode", strUserCode);
 
                             int rowsAffected = updateCmd.ExecuteNonQuery();
-                            //LogClass.WriteLogFile($"AnalystChart更新记录成功，影响行数: {rowsAffected}");
+                            LogClass.WriteLogFile($"AnalystChart更新记录成功，影响行数: {rowsAffected}");
                         }
                     }
                 }
             }
 
-            //LogClass.WriteLogFile("AnalystChart数据保存成功，UserCode: " + strUserCode);
+            LogClass.WriteLogFile("AnalystChart数据保存成功，UserCode: " + strUserCode);
         }
         catch (Exception ex)
         {
@@ -164,12 +164,12 @@ public partial class TTPersonalSpaceAnalysisChart : System.Web.UI.Page
                     if (result != null && result != DBNull.Value)
                     {
                         string resultString = result.ToString();
-                        //LogClass.WriteLogFile($"从数据库读取成功，UserCode={strUserCode}, 数据长度={resultString.Length}");
+                        LogClass.WriteLogFile($"从数据库读取成功，UserCode={strUserCode}, 数据长度={resultString.Length}");
 
                         // 检查是否有乱码（简单检查：是否包含有效的XML标签）
                         if (resultString.Contains("<NewDataSet>") && resultString.Contains("</NewDataSet>"))
                         {
-                            //LogClass.WriteLogFile("数据格式验证通过，包含有效的XML标记");
+                            LogClass.WriteLogFile("数据格式验证通过，包含有效的XML标记");
                         }
                         else
                         {
@@ -180,7 +180,7 @@ public partial class TTPersonalSpaceAnalysisChart : System.Web.UI.Page
                     }
                     else
                     {
-                        //LogClass.WriteLogFile($"数据库中没有找到UserCode={strUserCode}的记录");
+                        LogClass.WriteLogFile($"数据库中没有找到UserCode={strUserCode}的记录");
                         return string.Empty;
                     }
                 }
@@ -194,6 +194,80 @@ public partial class TTPersonalSpaceAnalysisChart : System.Web.UI.Page
                 LogClass.WriteLogFile("内部错误: " + ex.InnerException.Message.ToString());
             }
             return string.Empty;
+        }
+    }
+
+    /// <summary>
+    /// 将DataSet序列化为XML字符串
+    /// </summary>
+    /// <param name="ds">要序列化的DataSet</param>
+    /// <returns>序列化后的XML字符串</returns>
+    private string SerializeDataSetToString(DataSet ds)
+    {
+        if (ds == null)
+        {
+            LogClass.WriteLogFile("序列化失败：DataSet为空");
+            return string.Empty;
+        }
+
+        try
+        {
+            using (StringWriter sw = new StringWriter())
+            {
+                ds.WriteXml(sw, XmlWriteMode.IgnoreSchema);
+                string xmlString = sw.ToString();
+
+                // 记录前100个字符用于调试
+                string preview = xmlString.Length > 100 ? xmlString.Substring(0, 100) + "..." : xmlString;
+                LogClass.WriteLogFile($"序列化成功，长度={xmlString.Length}，预览={preview}");
+
+                return xmlString;
+            }
+        }
+        catch (Exception ex)
+        {
+            LogClass.WriteLogFile("DataSet序列化失败: " + ex.Message.ToString());
+            return string.Empty;
+        }
+    }
+
+    /// <summary>
+    /// 从字符串反序列化为DataSet
+    /// </summary>
+    /// <param name="xmlString">XML字符串</param>
+    /// <returns>反序列化后的DataSet</returns>
+    private DataSet DeserializeStringToDataSet(string xmlString)
+    {
+        if (string.IsNullOrEmpty(xmlString))
+        {
+            LogClass.WriteLogFile("反序列化失败：XML字符串为空");
+            return null;
+        }
+
+        try
+        {
+            // 记录前100个字符用于调试
+            string preview = xmlString.Length > 100 ? xmlString.Substring(0, 100) + "..." : xmlString;
+            LogClass.WriteLogFile($"开始反序列化，长度={xmlString.Length}，预览={preview}");
+
+            DataSet ds = new DataSet();
+            using (StringReader sr = new StringReader(xmlString))
+            {
+                ds.ReadXml(sr);
+            }
+
+            LogClass.WriteLogFile($"反序列化成功，表数量={ds.Tables.Count}");
+            if (ds.Tables.Count > 0)
+            {
+                LogClass.WriteLogFile($"第一个表行数={ds.Tables[0].Rows.Count}");
+            }
+
+            return ds;
+        }
+        catch (Exception ex)
+        {
+            LogClass.WriteLogFile("字符串反序列化为DataSet失败: " + ex.Message.ToString());
+            return null;
         }
     }
 }

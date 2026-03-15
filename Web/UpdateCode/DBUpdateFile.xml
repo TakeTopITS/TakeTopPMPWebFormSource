@@ -15836,4 +15836,13 @@ CREATE OR REPLACE VIEW public.v_mymember_workload
 ALTER TABLE public.v_mymember_workload
     OWNER TO postgres;</SQLText>
   </DataBaseUpgradeFile>
+  <DataBaseUpgradeFile>
+    <ID>3917</ID>
+    <SQLText>CREATE TABLE IF NOT EXISTS public.t_MemberChartStringForMainPage
+(
+    usercode character(20) COLLATE pg_catalog."default" PRIMARY KEY,
+    AnalystChartString TEXT COLLATE pg_catalog."default",
+    ModuleFlowchartString TEXT COLLATE pg_catalog."default"
+);</SQLText>
+  </DataBaseUpgradeFile>
 </DataBaseUpgradeFiles>

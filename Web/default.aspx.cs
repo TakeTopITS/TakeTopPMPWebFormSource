@@ -282,6 +282,7 @@ public partial class _default : System.Web.UI.Page
                 Session["IsMobileDevice"] = "NO";
                 Session["SystemType"] = "WEB";
 
+         
                 try
                 {
                     Session["LeftBarExtend"] = ds.Tables[0].Rows[0]["LeftBarExtend"].ToString().Trim();
@@ -392,6 +393,8 @@ public partial class _default : System.Web.UI.Page
                     Session["SystemVersionType"] = "SAAS";
                 }
 
+
+
                 try
                 {
                     if (Session["CssDirectoryChangeNumber"].ToString() != "2" & Session["CssDirectoryChangeNumber"].ToString() != "0")
@@ -412,6 +415,7 @@ public partial class _default : System.Web.UI.Page
 
                 //预加载模组流程图数据集
                 ShareClass.PreLoadModuleFlowChartDataSet();
+           
 
                 if (strUserType != "OUTER")
                 {
