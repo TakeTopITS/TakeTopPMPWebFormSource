@@ -97,8 +97,16 @@ public partial class TTAPPPersonalSpaceAnalysisChart : System.Web.UI.Page
     {
         string strHQL, strSql;
         string strLangCode = HttpContext.Current.Session["LangCode"].ToString();
-        string strDepartString = TakeTopCore.CoreShareClass.InitialDepartmentStringByAuthoritySuperUser(strUserCode);
-        HttpContext.Current.Session["DepartString"] = strDepartString;
+        string strDepartString;
+        if (HttpContext.Current.Session["DepartString"] == null)
+        {
+            strDepartString = TakeTopCore.CoreShareClass.InitialDepartmentStringByAuthoritySuperUser(strUserCode);
+            HttpContext.Current.Session["DepartString"] = strDepartString;
+        }
+        else
+        {
+            strDepartString = HttpContext.Current.Session["DepartString"].ToString();
+        }
 
         strHQL = "Select * From T_SystemAnalystChartRelatedUser Where UserCode = '" + strUserCode + "'" + " and FormType = '" + strFormType + "'";
         DataSet ds = ShareClass.GetDataSetFromSql(strHQL, "T_SystemAnalystChartManagement");
