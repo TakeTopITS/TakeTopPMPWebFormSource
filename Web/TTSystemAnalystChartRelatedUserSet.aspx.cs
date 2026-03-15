@@ -1,20 +1,22 @@
+using Npgsql;
+
+using ProjectMgt.BLL;
+using ProjectMgt.DAL;
+using ProjectMgt.Model;
+
 using System;
-using System.Resources;
-using System.Drawing;
-using System.Data;
-using System.Configuration;
 using System.Collections;
+using System.Configuration;
+using System.Data;
+using System.Drawing;
+using System.Resources;
 using System.Web;
+using System.Web.Mail;
 using System.Web.Security;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
-using System.Web.UI.HtmlControls;
-using System.Web.Mail;
-
-using ProjectMgt.Model;
-using ProjectMgt.DAL;
-using ProjectMgt.BLL;
 
 public partial class TTSystemAnalystChartRelatedUserSet : System.Web.UI.Page
 {
@@ -25,7 +27,7 @@ public partial class TTSystemAnalystChartRelatedUserSet : System.Web.UI.Page
         strUserCode = Session["UserCode"].ToString();
         strFormType = Request.QueryString["FormType"];
 
-        ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "clickA", "aHandler();", true); 
+        ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "clickA", "aHandler();", true);
         if (Page.IsPostBack != true)
         {
             LoadAllSystemAnalystChart();
@@ -111,29 +113,52 @@ public partial class TTSystemAnalystChartRelatedUserSet : System.Web.UI.Page
                 ShareClass.RunSqlCommand(strHQL);
             }
 
+            //////清空用户分析图字符串表
+            //SaveAnalystChartString(strUserCode);
+
             LoadUserSystemAnalystChart(strUserCode, strFormType);
 
-            //清空分析图字符串
-            EmptyAnalystChartString(strUserCode);
-
             ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZBCCG") + "')", true);
-
             ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click222", "reloadPrentPage();", true);
 
         }
         catch
         {
-            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" +LanguageHandle.GetWord("ZZCWBCSBJC")+"')", true); 
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZCWBCSBJC") + "')", true);
         }
     }
 
-    //清空分析图字符串
-    protected void EmptyAnalystChartString(string strUserCode)
-    {
-        string strHQL;
+    
 
-        strHQL= string.Format(@"Update t_memberchartstringformainpage Set AnalystChartString = '' Where UserCode = '{0}'", strUserCode);
-        ShareClass.RunSqlCommand(strHQL);
+    // <summary>
+    /// 将DataSet序列化为字符串并保存到数据库表t_memberchartstringformainpage的analystchartstring字段
+    /// </summary>
+    /// <param name="strUserCode">用户代码</param>
+    /// <param name="ds">要序列化的DataSet</param>
+    protected void SaveAnalystChartString(string strUserCode)
+    {
+        DataSet ds = ShareClass.GetSytemChartDataSet(Session["UserCode"].ToString(), "PersonalSpacePage");// 调用函数，将DataSet序列化并存入数据库
+                                                                                                                      
+        string serializedDataSet = ShareClass.SerializeDataSetToString(ds);// 将DataSet序列化为字符串
+
+        using (var conn = new NpgsqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["SQLCONNECTIONSTRING"].ConnectionString))
+        {
+            conn.Open();
+
+            // 记录存在，更新AnalystChartString字段
+            string updateSql = @"UPDATE public.t_memberchartstringformainpage 
+                                            SET analystchartstring = @analystchartstring
+                                            WHERE usercode = @usercode";
+
+            using (var updateCmd = new NpgsqlCommand(updateSql, conn))
+            {
+                updateCmd.Parameters.AddWithValue("@analystchartstring", NpgsqlTypes.NpgsqlDbType.Text, serializedDataSet);
+                updateCmd.Parameters.AddWithValue("@usercode", strUserCode);
+
+                int rowsAffected = updateCmd.ExecuteNonQuery();
+                //LogClass.WriteLogFile($"AnalystChart更新记录成功，影响行数: {rowsAffected}");
+            }
+        }
     }
 
     protected void BT_AssignToOtherMember_Click(object sender, EventArgs e)
@@ -147,7 +172,7 @@ public partial class TTSystemAnalystChartRelatedUserSet : System.Web.UI.Page
 
         ShareClass.RunSqlCommand(strHQL);
 
-        ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" +LanguageHandle.GetWord("ZZFenPaChengGong")+"')", true);
+        ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZFenPaChengGong") + "')", true);
     }
 
     protected void LoadAllSystemAnalystChart()
