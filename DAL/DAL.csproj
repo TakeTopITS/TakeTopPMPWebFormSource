@@ -42,7 +42,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
-    <IntermediateOutputPath>C:\Users\JackZhong\AppData\Local\Temp\vsA996.tmp\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\jackzh\AppData\Local\Temp\vsD287.tmp\Debug\</IntermediateOutputPath>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -53,7 +53,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
-    <IntermediateOutputPath>C:\Users\JackZhong\AppData\Local\Temp\vsA996.tmp\Release\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\jackzh\AppData\Local\Temp\vsD287.tmp\Release\</IntermediateOutputPath>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
