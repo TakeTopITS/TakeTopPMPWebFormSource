@@ -139,10 +139,13 @@ public static class ShareClass
 
             DataSet dsFlowchart = ShareClass.GetDataSetFromSql(checkFlowchartSQL, "t_MemberChartStringForMainPage");
 
+            //LogClass.WriteLogFile(dsFlowchart.ToString());
+
             // 如果找到了 ModuleFlowchartString，直接返回
             if (dsFlowchart?.Tables.Count > 0 && dsFlowchart.Tables[0].Rows.Count > 0)
             {
                 string moduleFlowchartString = dsFlowchart.Tables[0].Rows[0]["ModuleFlowchartString"].ToString();
+                //LogClass.WriteLogFile(moduleFlowchartString);
 
                 if (!string.IsNullOrEmpty(moduleFlowchartString))
                 {
@@ -156,6 +159,8 @@ public static class ShareClass
             if (dsModuleFlow?.Tables.Count > 0 && dsModuleFlow.Tables[0].Rows.Count > 0)
             {
                 string strModuleFlowID = ShareClass.GetSystemModuleID(dsModuleFlow);
+
+                //LogClass.WriteLogFile($"Info: Loaded system module flow dataset for user {userCode.Trim()}, ModuleFlowID: {strModuleFlowID}");  
 
                 if (!string.IsNullOrEmpty(strModuleFlowID))
                 {
@@ -179,6 +184,7 @@ public static class ShareClass
                         RTRIM(B.ModuleName) || RTRIM(B.ModuleType) || RTRIM(B.UserType)
                     WHERE (LENGTH(B.ModuleDefinition) > 0 OR LENGTH(A.ModuleDefinition) > 0) 
                         AND B.ID = {0}", strModuleFlowID, HttpContext.Current.Session["LangCode"].ToString());
+                    //LogClass.WriteLogFile(strHQL);
 
                     DataSet ds = ShareClass.GetDataSetFromSql(strHQL, "T_ProModuleLevel");
 
@@ -235,7 +241,7 @@ public static class ShareClass
             {
                 ShareClass.RunSqlCommand(saveSQL);
 
-                //LogClass.WriteLogFile($"Success: Saved ModuleFlowchartString to database for user {userCode}");
+                LogClass.WriteLogFile($"Success: Saved ModuleFlowchartString to database for user {userCode}---" + saveSQL);
             }
             catch
             {

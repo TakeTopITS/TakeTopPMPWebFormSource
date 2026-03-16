@@ -111,7 +111,7 @@ public partial class TTPersonalSpaceModuleSetForUser : System.Web.UI.Page
     protected void SavePersonalSpaceModuleList()
     {
         string strHQL;
-        string strID,strModuleName, strVisible;
+        string strModuleName, strVisible;
 
         int j = 0, intSortNumber, intEveryRowColumnNumber;
 
