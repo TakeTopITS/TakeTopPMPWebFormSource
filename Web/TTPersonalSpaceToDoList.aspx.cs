@@ -1,16 +1,18 @@
 using System;
-using System.Resources;
-using System.Drawing;
-using System.Data;
-using System.Configuration;
 using System.Collections;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Drawing;
+using System.IO;
+using System.Resources;
+using System.ServiceModel.Security;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
-using System.Web.UI.HtmlControls;
-using System.IO;
 
 public partial class TTPersonalSpaceToDoList : System.Web.UI.Page
 {
@@ -93,18 +95,71 @@ public partial class TTPersonalSpaceToDoList : System.Web.UI.Page
 
     protected void LoadFunInforDialBoxList(string strLangCode)
     {
-        string strHQL;
+        try
+        {
+            //string strHQL = string.Format(@"
+            //WITH UserAccessiblePages AS (
+            //    SELECT DISTINCT l.PageName
+            //    FROM T_ProModuleLevel l
+            //    WHERE l.LangCode = '{0}'
+            //        AND l.Visible = 'YES' 
+            //        AND l.IsDeleted = 'NO'
+            //        AND (
+            //            EXISTS (
+            //                SELECT 1 FROM T_ProModule m 
+            //                WHERE m.Visible = 'YES' 
+            //                    AND m.UserCode = '{1}'
+            //                    AND m.ModuleName = l.ModuleName
+            //            )
+            //            OR EXISTS (
+            //                SELECT 1 FROM T_ProModule m 
+            //                WHERE m.Visible = 'YES' 
+            //                    AND m.UserCode = '{1}'
+            //                    AND m.ModuleName = l.ParentModule
+            //            )
+            //            OR l.ParentModule = ''
+            //        )
+            //)
+            //SELECT f.* 
+            //FROM T_FunInforDialBox f
+            //INNER JOIN UserAccessiblePages p ON f.LinkAddress = p.PageName
+            //WHERE f.Status = 'Enabled' 
+            //    AND f.LangCode = '{0}'
+            //ORDER BY f.SortNumber ASC", strLangCode, Session["UserCode"]?.ToString());
 
-        strHQL = String.Format(@"Select * From T_FunInforDialBox Where Status = 'Enabled' 
-           and LangCode = '{0}'
-           and LinkAddress In (Select PageName From T_ProModuleLevel Where LangCode = '{0}' and ModuleName In ( Select ModuleName From T_ProModule Where Visible = 'YES' And UserCode = '{1}'))
-           and LinkAddress In (Select PageName From T_ProModuleLevel Where LangCode = '{0}' and (ParentModule In ( Select ModuleName From T_ProModule Where Visible = 'YES' And UserCode = '{1}') Or ParentModule =''))
-           and LinkAddress In (Select PageName From T_ProModuleLevel Where LangCode = '{0}' and (Visible ='YES' and IsDeleted = 'NO'))
-           Order By SortNumber Asc ", strLangCode, Session["UserCode"].ToString());
-        DataSet ds = ShareClass.GetDataSetFromSql(strHQL, "T_FunInforDialBox");
+            string strHQL = string.Format(@"
+        SELECT DISTINCT f.* 
+        FROM T_FunInforDialBox f
+        INNER JOIN T_ProModuleLevel l ON f.LinkAddress = l.PageName 
+            AND f.LangCode = l.LangCode
+        WHERE f.Status = 'Enabled' 
+            AND f.LangCode = '{0}'
+            AND l.LangCode = '{0}'
+            AND l.Visible = 'YES' 
+            AND l.IsDeleted = 'NO'
+            AND EXISTS (
+                SELECT 1 FROM T_ProModule m 
+                WHERE m.Visible = 'YES' 
+                    AND m.UserCode = '{1}'
+                    AND (
+                        m.ModuleName = l.ModuleName 
+                        OR m.ModuleName = l.ParentModule
+                    )
+            )
+        ORDER BY f.SortNumber ASC", strLangCode, Session["UserCode"]?.ToString());
 
-        RP_ToDoList.DataSource = ds;
-        RP_ToDoList.DataBind();
+            DataSet ds = ShareClass.GetDataSetFromSql(strHQL, "T_FunInforDialBox");
+
+            RP_ToDoList.DataSource = ds;
+            RP_ToDoList.DataBind();
+        }
+        catch (Exception ex)
+        {
+            // ¼ÇÂ¼ÈÕÖ¾
+            LogClass.WriteLogFile($"LoadFunInforDialBoxList Error: {ex.Message}");
+            RP_ToDoList.DataSource = null;
+            RP_ToDoList.DataBind();
+        }
     }
 
     protected string GetNumberCount(string strSQLCode)
