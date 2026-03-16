@@ -68,7 +68,7 @@ public static class ShareClass
         //
     }
 
-    public static string SystemVersionID = "V2026.3.15";
+    public static string SystemVersionID = "V2026.3.16";
 
     public static string SystemLatestLoginUser = "";
     public static string SystemDBer = "";
@@ -130,12 +130,12 @@ public static class ShareClass
 
             // 1. 首先从 t_MemberChartStringForMainPage 表获取 ModuleFlowchartString
             string checkFlowchartSQL = string.Format(@"
-            SELECT ModuleFlowchartString 
-            FROM public.t_MemberChartStringForMainPage 
-            WHERE TRIM(usercode) = '{0}' 
-            AND ModuleFlowchartString IS NOT NULL 
-            AND CHAR_LENGTH(ModuleFlowchartString) > 0",
-                userCode.Trim());
+                    SELECT ModuleFlowchartString 
+                    FROM public.t_MemberChartStringForMainPage 
+                    WHERE TRIM(usercode) = '{0}' 
+                    AND ModuleFlowchartString IS NOT NULL 
+                    AND CHAR_LENGTH(ModuleFlowchartString) > 0",
+                        userCode.Trim());
 
             DataSet dsFlowchart = ShareClass.GetDataSetFromSql(checkFlowchartSQL, "t_MemberChartStringForMainPage");
 
@@ -159,41 +159,26 @@ public static class ShareClass
 
                 if (!string.IsNullOrEmpty(strModuleFlowID))
                 {
-                    string strHQL = string.Format(@"
-                    WITH target_module AS (
-                        SELECT 
-                            ID,
-                            ModuleName,
-                            ModuleType,
-                            UserType,
-                            ModuleDefinition
-                        FROM T_ProModule 
-                        WHERE ID = {0}
-                        AND CHAR_LENGTH(ModuleDefinition) > 0
-                    )
-                    SELECT DISTINCT
-                        tm.ID,
+                    string strHQL = string.Format(@"SELECT DISTINCT 
+                        B.ID,
                         A.ID AS SystemModuleID,
                         A.ModuleName,
                         A.HomeModuleName,
                         A.ParentModule,
                         A.PageName,
                         A.ModuleType,
-                        tm.ModuleDefinition AS UserModuleDefinition,
+                        B.ModuleDefinition AS UserModuleDefinition,
                         A.ModuleDefinition AS SystemModuleDefinition,
                         A.UserType,
                         A.IconURL,
                         A.SortNumber,
                         A.DIYFlow
-                    FROM target_module tm
-                    INNER JOIN T_ProModuleLevel A ON 
-                        TRIM(A.ModuleName) = TRIM(tm.ModuleName)
-                        AND TRIM(A.ModuleType) = TRIM(tm.ModuleType)
-                        AND TRIM(A.UserType) = TRIM(tm.UserType)
-                    WHERE CHAR_LENGTH(A.ModuleDefinition) > 0 
-                       OR CHAR_LENGTH(tm.ModuleDefinition) > 0
-                    ORDER BY A.SortNumber NULLS LAST",
-                        strModuleFlowID);
+                    FROM T_ProModuleLevel A
+                    INNER JOIN T_ProModule B ON 
+                        RTRIM(A.ModuleName) || RTRIM(A.ModuleType) || RTRIM(A.UserType) = 
+                        RTRIM(B.ModuleName) || RTRIM(B.ModuleType) || RTRIM(B.UserType)
+                    WHERE (LENGTH(B.ModuleDefinition) > 0 OR LENGTH(A.ModuleDefinition) > 0) 
+                        AND B.ID = {0}", strModuleFlowID, HttpContext.Current.Session["LangCode"].ToString());
 
                     DataSet ds = ShareClass.GetDataSetFromSql(strHQL, "T_ProModuleLevel");
 
@@ -203,8 +188,6 @@ public static class ShareClass
 
                         // 获取或生成XML数据
                         string moduleFlowchartXML = WFMFFlowDefinitionHandle.GetModuleFlowDefinition(strID, "UserModule", ds);
-
-                        //LogClass.WriteLogFile($"Info: Loaded module flow definition for user {userCode.Trim()}");
 
                         // 3. 将XML数据保存到 t_MemberChartStringForMainPage 表
                         SaveModuleFlowchartToDatabase(userCode.Trim(), moduleFlowchartXML);
@@ -247,9 +230,7 @@ public static class ShareClass
                         ModuleFlowchartString = EXCLUDED.ModuleFlowchartString",
                         userCode,
                         moduleFlowchartXML.Replace("'", "''")); // 处理XML中的单引号
-
-            // 执行保存操作
-
+        
             try
             {
                 ShareClass.RunSqlCommand(saveSQL);
@@ -284,41 +265,26 @@ public static class ShareClass
 
             if (!string.IsNullOrEmpty(strModuleFlowID))
             {
-                string strHQL = string.Format(@"
-                    WITH target_module AS (
-                        SELECT 
-                            ID,
-                            ModuleName,
-                            ModuleType,
-                            UserType,
-                            ModuleDefinition
-                        FROM T_ProModule 
-                        WHERE ID = {0}
-                        AND CHAR_LENGTH(ModuleDefinition) > 0
-                    )
-                    SELECT DISTINCT
-                        tm.ID,
+                string strHQL = string.Format(@"SELECT DISTINCT 
+                        B.ID,
                         A.ID AS SystemModuleID,
                         A.ModuleName,
                         A.HomeModuleName,
                         A.ParentModule,
                         A.PageName,
                         A.ModuleType,
-                        tm.ModuleDefinition AS UserModuleDefinition,
+                        B.ModuleDefinition AS UserModuleDefinition,
                         A.ModuleDefinition AS SystemModuleDefinition,
                         A.UserType,
                         A.IconURL,
                         A.SortNumber,
                         A.DIYFlow
-                    FROM target_module tm
-                    INNER JOIN T_ProModuleLevel A ON 
-                        TRIM(A.ModuleName) = TRIM(tm.ModuleName)
-                        AND TRIM(A.ModuleType) = TRIM(tm.ModuleType)
-                        AND TRIM(A.UserType) = TRIM(tm.UserType)
-                    WHERE CHAR_LENGTH(A.ModuleDefinition) > 0 
-                       OR CHAR_LENGTH(tm.ModuleDefinition) > 0
-                    ORDER BY A.SortNumber NULLS LAST",
-                    strModuleFlowID);
+                    FROM T_ProModuleLevel A
+                    INNER JOIN T_ProModule B ON 
+                        RTRIM(A.ModuleName) || RTRIM(A.ModuleType) || RTRIM(A.UserType) = 
+                        RTRIM(B.ModuleName) || RTRIM(B.ModuleType) || RTRIM(B.UserType)
+                    WHERE (LENGTH(B.ModuleDefinition) > 0 OR LENGTH(A.ModuleDefinition) > 0) 
+                        AND B.ID = {0}", strModuleFlowID, HttpContext.Current.Session["LangCode"].ToString());
 
                 DataSet ds = ShareClass.GetDataSetFromSql(strHQL, "T_ProModuleLevel");
 
@@ -346,28 +312,9 @@ public static class ShareClass
 
         try
         {
-            strHQL = string.Format(@"-- 优化版本：使用CTE提前过滤，减少连接数据量
-                        WITH filtered_modules AS (
-                            SELECT 
-                                ID,
-                                ModuleName,
-                                ModuleType,
-                                UserType,
-                                ModuleDefinition
-                            FROM T_ProModule 
-                            WHERE ModuleName = '{0}' 
-                                AND UserCode = '{1}' 
-                                AND UserType = '{2}'
-                                AND CHAR_LENGTH(ModuleDefinition) > 0
-                        )
-                        SELECT DISTINCT fm.ID
-                        FROM filtered_modules fm
-                        INNER JOIN T_ProModuleLevel A ON 
-                            TRIM(A.ModuleName) || TRIM(A.ModuleType) || TRIM(A.UserType) = 
-                            TRIM(fm.ModuleName) || TRIM(fm.ModuleType) || TRIM(fm.UserType)
-                        WHERE CHAR_LENGTH(A.ModuleDefinition) > 0 
-                           OR CHAR_LENGTH(fm.ModuleDefinition) > 0", strModuleName, strUserCode, strUserType);
-
+            strHQL = string.Format(@"Select distinct B.ID From T_ProModuleLevel A, T_ProModule B Where rtrim(A.ModuleName)
+                ||rtrim(A.ModuleType)||rtrim(A.UserType) = rtrim(B.ModuleName) ||rtrim(B.ModuleType) 
+                ||rtrim(B.UserType) and B.ModuleName = '{0}' and B.UserCode ='{1}' and B.UserType = '{2}' and (CHAR_LENGTH(B.ModuleDefinition) > 0 Or CHAR_LENGTH(A.ModuleDefinition) > 0) ", strModuleName, strUserCode, strUserType, strLangCode);
 
             DataSet ds = ShareClass.GetDataSetFromSql(strHQL, "T_ProModuleLevel");
 
