@@ -135,7 +135,7 @@
                                 updateEChart(myChart1, chartType, formType, chartName, transresult);
                             }
                         } catch (e) {
-                            console.error("数据解析错误:", e);
+                            console.error("Data parsing error:", e);
                             showNoData(myChart1, chartType, chartName);
                         }
                     } else {
@@ -148,7 +148,7 @@
                     }
                 },
                 error: function (xhr, status, error) {
-                    console.error("加载失败:", error);
+                    console.error("Loading failed:", error);
                     showNoData(myChart1, chartType, chartName);
                     if (parent && parent.window && parent.window.chartLoaded) {
                         parent.window.chartLoaded();
@@ -159,7 +159,7 @@
 
         function showLoading(chart) {
             chart.showLoading({
-                text: '加载中...',
+                text: 'Loading...',
                 effect: 'bubble'
             });
         }
@@ -176,7 +176,7 @@
                     textStyle: { fontSize: 10 }
                 },
                 noDataLoadingOption: {
-                    text: '暂无数据',
+                    text: 'No data available',
                     effect: 'bubble'
                 }
             };
