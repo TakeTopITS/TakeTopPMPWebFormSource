@@ -252,7 +252,7 @@ public static class ShareClass
             {
                 ShareClass.RunSqlCommand(saveSQL);
 
-                LogClass.WriteLogFile($"Success: Saved ModuleFlowchartString to database for user {userCode}---" + saveSQL);
+                //LogClass.WriteLogFile($"Success: Saved ModuleFlowchartString to database for user {userCode}---" + saveSQL);
             }
             catch
             {
