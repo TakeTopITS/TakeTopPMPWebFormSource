@@ -345,6 +345,7 @@
                                     </td>
                                     <td style="width: 50px; height: 18px; text-align: left">
                                         <asp:Label ID="LB_SuperDepartString" runat="server"></asp:Label>
+                                          <asp:Label ID="LB_ModuleFlowChartString" runat="server"></asp:Label>
                                     </td>
                                 </tr>
 

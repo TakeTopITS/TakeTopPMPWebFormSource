@@ -16,6 +16,13 @@ public partial class TakeTopCSLRExInnerMDI : System.Web.UI.Page
         try
         {
             strUserCode = Session["UserCode"].ToString();
+
+            //预加载模组流程图数据集
+            if (Session["ModuleFlowChartString"] == null)
+            {
+                //预加载模组流程图数据集
+                Session["ModuleFlowChartString"] = ShareClass.PreLoadModuleFlowChartDataSet();
+            }
         }
         catch (Exception err)
         {

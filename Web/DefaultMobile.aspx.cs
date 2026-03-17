@@ -300,7 +300,7 @@ public partial class DefaultMobile : System.Web.UI.Page
                 ShareClass.RunSpecificalCodeForLogin();
 
                 //预加载模组流程图数据集
-                ShareClass.PreLoadModuleFlowChartDataSet();;
+               Session["ModuleFlowChartString"] =  ShareClass.PreLoadModuleFlowChartDataSet();;
 
                 if (strUserType != "OUTER")
                 {

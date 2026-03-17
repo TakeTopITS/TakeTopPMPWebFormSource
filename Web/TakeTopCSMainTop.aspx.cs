@@ -101,6 +101,7 @@ public partial class TakeTopCSMainTop : System.Web.UI.Page
         LB_MustInFrame.Text = strMustInFrame;
         LB_AutoSaveWFOperator.Text = strAutoSaveWFOperator;
 
+
         //执行定时器页
         ShareClass.ExecuteTakeTopTimer();
 
@@ -166,6 +167,7 @@ public partial class TakeTopCSMainTop : System.Web.UI.Page
             Session["MustInFrame"] = LB_MustInFrame.Text.Trim();
             Session["AutoSaveWFOperator"] = LB_AutoSaveWFOperator.Text.Trim();
 
+        
             //取得系统登录次数
             lbl_LogonNumber.Text = GetLogonNumber().ToString();
 

@@ -122,6 +122,17 @@ public static class ShareClass
 
         try
         {
+            // 确保表存在
+            CreateMemberChartStringTableIfNotExists();
+        }
+        catch (Exception ex)
+        {
+            LogClass.WriteLogFile("Error in PreLoadModuleFlowChartDataSet while creating table: " + ex.Message + "\n" + ex.StackTrace);
+            return null;
+        }
+
+        try
+        {
             if (string.IsNullOrEmpty(userCode))
             {
                 LogClass.WriteLogFile("Error in PreLoadModuleFlowChartDataSet: UserCode is null or empty");
@@ -348,6 +359,25 @@ public static class ShareClass
         catch
         {
             return "0";
+        }
+    }
+
+    // 创建表（如果不存在）- PostgreSQL 版本
+    public static  void CreateMemberChartStringTableIfNotExists()
+    {
+        string checkTableSql = "SELECT COUNT(*) FROM information_schema.tables WHERE table_name = 't_memberchartstringformainpage'";
+        DataSet dsCheck = ShareClass.GetDataSetFromSql(checkTableSql, "CheckTable");
+        int tableCount = Convert.ToInt32(dsCheck.Tables[0].Rows[0][0]);
+        if (tableCount == 0)
+        {
+            string createTableSql = @"
+                CREATE TABLE IF NOT EXISTS public.t_MemberChartStringForMainPage
+                (
+                    usercode character(20) COLLATE pg_catalog.""default"" PRIMARY KEY,
+                    AnalystChartString TEXT COLLATE pg_catalog.""default"",
+                    ModuleFlowchartString TEXT COLLATE pg_catalog.""default""
+                );";
+            ShareClass.RunSqlCommand(createTableSql);
         }
     }
 

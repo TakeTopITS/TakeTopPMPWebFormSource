@@ -135,9 +135,6 @@ public partial class TTModuleFlowDesignerJS : System.Web.UI.Page
             //保存模组流程图到数据库中，供模组设计或修改页面调用
             ShareClass.SaveModuleFlowchartToDatabaseForDesignOrChangePage();
 
-            ////预加载模组流程图数据集
-            //ShareClass.PreLoadModuleFlowChartDataSet();
-
             LoadModuleDEfinition();
         }
         catch (Exception err)

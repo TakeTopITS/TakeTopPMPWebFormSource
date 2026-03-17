@@ -264,7 +264,7 @@
                                                                 </a>
                                                             </td>
                                                             <td width="40px" align="center">
-                                                                <a runat="server" class="titleSpan" href="javascript:top.frames[0].frames[2].parent.frames['rightTabFrame'].popShowByURL('TTAPPQRCodeForLocalSAAS.aspx', '', 800, 600,window.location);" >
+                                                                <a runat="server" class="titleSpan" href="javascript:top.frames[0].frames[2].parent.frames['rightTabFrame'].popShowByURL('TTAPPQRCodeForLocalSAAS.aspx', '', 800, 600,window.location);">
                                                                     <img src="ImagesSkin/App.png" width="22" height="22" alt=""></a>
                                                             </td>
                                                             <td width="40px" align="center" style="padding-top: 0px; padding-bottom: 5px;">
@@ -328,6 +328,7 @@
                                     </td>
                                     <td style="width: 50px; height: 18px; text-align: left">
                                         <asp:Label ID="LB_SuperDepartString" runat="server"></asp:Label>
+                                        <asp:Label ID="LB_ModuleFlowChartString" runat="server"></asp:Label>
                                     </td>
                                 </tr>
 

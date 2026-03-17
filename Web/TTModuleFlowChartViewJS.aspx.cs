@@ -18,7 +18,7 @@ public partial class TTModuleFlowChartViewJS : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         strUserCode = Session["UserCode"].ToString();
-        strUserType = ShareClass.GetUserType(strUserCode);
+        strUserType = Session["UserType"].ToString();
 
         strID = Request.QueryString["IdentifyString"];
         strType = Request.QueryString["Type"];
@@ -31,7 +31,29 @@ public partial class TTModuleFlowChartViewJS : System.Web.UI.Page
 
     private void AsyncWork()
     {
-        TB_WFXML.Text = ShareClass.PreLoadModuleFlowChartDataSet();
+        try
+        {
+            if (Session["ModuleFlowChartString"] == null)
+            {
+                //预加载模组流程图数据集
+                Session["ModuleFlowChartString"] = ShareClass.PreLoadModuleFlowChartDataSet();
+                LogClass.WriteLogFile("TTModuleFlowChartViewJS.aspx.cs AsyncWork() Session[\"ModuleFlowChartString\"] is null, start to preload data.");
+            }
+            TB_WFXML.Text = Session["ModuleFlowChartString"].ToString();
+        }
+        catch(Exception ex) 
+        {
+            try
+            {
+                Session["ModuleFlowChartString"] = ShareClass.PreLoadModuleFlowChartDataSet();
+                TB_WFXML.Text = Session["ModuleFlowChartString"].ToString();
+            }
+            catch 
+            {
+            }
+
+            LogClass.WriteLogFile("TTModuleFlowChartViewJS.aspx.cs AsyncWork() Exception: " + ex.Message);
+        }
 
         TB_CopyRight.Text = System.Configuration.ConfigurationManager.AppSettings["CopyRight"];
         TB_WFIdentifyString.Text = "";

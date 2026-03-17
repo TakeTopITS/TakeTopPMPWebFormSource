@@ -47,7 +47,7 @@ public partial class TakeTopMainTopSAAS : System.Web.UI.Page
             //设置待处理事项
             LB_SuperDepartString.Text = TakeTopCore.CoreShareClass.InitialDepartmentStringByAuthoritySuperUser(strUserCode);
             LB_UnHandledCase.Text = GetUNHandledWorkCount(strUserCode, strLangCode).ToString() + " " + Resources.lang.ToDoList;
-
+          
             AsyncWork();
         }
     }
@@ -196,6 +196,7 @@ public partial class TakeTopMainTopSAAS : System.Web.UI.Page
         LB_ForbitModule.Text = strForbitModule;
         LB_MustInFrame.Text = strMustInFrame;
         LB_AutoSaveWFOperator.Text = strAutoSaveWFOperator;
+      
 
 
         //执行定时器页
@@ -230,6 +231,7 @@ public partial class TakeTopMainTopSAAS : System.Web.UI.Page
             Session["ForbitModule"] = LB_ForbitModule.Text.Trim();
             Session["MustInFrame"] = LB_MustInFrame.Text.Trim();
             Session["AutoSaveWFOperator"] = LB_AutoSaveWFOperator.Text.Trim();
+        
 
             //更新用户在线时间和取得最新用户数
             intIntervalTime = int.Parse(System.Configuration.ConfigurationManager.AppSettings["TimerInterval"]);

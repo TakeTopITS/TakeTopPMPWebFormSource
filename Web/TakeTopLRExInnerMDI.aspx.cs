@@ -23,6 +23,13 @@ public partial class TakeTopLRExInnerMDI : System.Web.UI.Page
                 Response.Redirect("TTDisplayErrors.aspx");
                 return;
             }
+
+            //预加载模组流程图数据集
+            if (Session["ModuleFlowChartString"] == null)
+            {
+                //预加载模组流程图数据集
+                Session["ModuleFlowChartString"] = ShareClass.PreLoadModuleFlowChartDataSet();
+            }
         }
         catch (Exception err)
         {

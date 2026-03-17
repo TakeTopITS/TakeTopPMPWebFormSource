@@ -331,9 +331,7 @@ public partial class DefaultDemo : System.Web.UI.Page
                 //运行一些特殊的代码
                 ShareClass.RunSpecificalCodeForLogin();
 
-                //预加载模组流程图数据集
-                ShareClass.PreLoadModuleFlowChartDataSet(); ;
-
+              
                 if (Session["SystemVersionType"].ToString() == "SAAS")
                 {
                     string strScript = "<script>openMDIFrom('TakeTopLRExMDISAAS.html');</script>";

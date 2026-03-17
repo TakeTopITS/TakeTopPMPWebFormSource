@@ -339,9 +339,6 @@ public partial class DefaultSAAS : System.Web.UI.Page
                 //运行一些特殊的代码
                 ShareClass.RunSpecificalCodeForLogin();
 
-                //预加载模组流程图数据集
-                ShareClass.PreLoadModuleFlowChartDataSet(); ;
-
                 string strScript = "<script>openMDIFrom('" + strMDIPageName + "');</script>";
                 ClientScript.RegisterStartupScript(GetType(), "", strScript);
 

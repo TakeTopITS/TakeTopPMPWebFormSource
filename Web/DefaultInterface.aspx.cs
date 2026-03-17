@@ -354,7 +354,7 @@ public partial class DefaultInterface : System.Web.UI.Page
 
                 //运行一些特殊的代码
                 ShareClass.RunSpecificalCodeForLogin();
-
+               
                 if (strUserType != "OUTER")
                 {
                     Session["IsMobileDevice"] = "NO";

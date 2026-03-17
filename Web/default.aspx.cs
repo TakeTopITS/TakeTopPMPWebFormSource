@@ -282,7 +282,7 @@ public partial class _default : System.Web.UI.Page
                 Session["IsMobileDevice"] = "NO";
                 Session["SystemType"] = "WEB";
 
-         
+
                 try
                 {
                     Session["LeftBarExtend"] = ds.Tables[0].Rows[0]["LeftBarExtend"].ToString().Trim();
@@ -413,10 +413,6 @@ public partial class _default : System.Web.UI.Page
                 //运行一些特殊的代码
                 ShareClass.RunSpecificalCodeForLogin();
 
-                //预加载模组流程图数据集
-                ShareClass.PreLoadModuleFlowChartDataSet();
-           
-
                 if (strUserType != "OUTER")
                 {
                     Session["IsMobileDevice"] = "NO";
@@ -504,7 +500,7 @@ public partial class _default : System.Web.UI.Page
         {
             // 只在 Session 中设置，不在这里调用 InitializeCulture()
             Session["LangCode"] = selectedValue;
-        
+
             // 重定向到带参数的页面
             // 新页面加载时会处理 URL 参数并调用自己的 InitializeCulture()
             Response.Redirect("Default.aspx?TargetLangCode=" + selectedValue, false);
