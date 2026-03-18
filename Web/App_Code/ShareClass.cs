@@ -68,7 +68,7 @@ public static class ShareClass
         //
     }
 
-    public static string SystemVersionID = "V2026.3.17";
+    public static string SystemVersionID = "V2026.3.18";
 
     public static string SystemLatestLoginUser = "";
     public static string SystemDBer = "";
@@ -268,7 +268,7 @@ public static class ShareClass
     /// <summary>
     /// 将模块流程图XML保存到数据库,用于设计或修改页面调用，确保每次设计或修改后都能保存最新的流程图数据
     /// </summary>
-    public static void SaveModuleFlowchartToDatabaseForDesignOrChangePage()
+    public static string SaveModuleFlowchartToDatabaseForDesignOrChangePage()
     {
         string userCode = HttpContext.Current.Session["UserCode"].ToString();
         string userType = HttpContext.Current.Session["UserType"].ToString();
@@ -316,8 +316,22 @@ public static class ShareClass
 
                     // 3. 将XML数据保存到 t_MemberChartStringForMainPage 表
                     SaveModuleFlowchartToDatabase(userCode.Trim(), moduleFlowchartXML);
+
+                    return moduleFlowchartXML;
+                }
+                else
+                {
+                    return null;
                 }
             }
+            else
+            {
+                return null;    
+            }
+        }
+        else
+        {
+            return null;
         }
     }
 
