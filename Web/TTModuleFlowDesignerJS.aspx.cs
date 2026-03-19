@@ -130,12 +130,12 @@ public partial class TTModuleFlowDesignerJS : System.Web.UI.Page
                 ShareClass.RunSqlCommand(strHQL);
             }
 
-            ClientScript.RegisterStartupScript(this.GetType(), "1", "<script>if(confirm('" + Resources.lang.BCCGYGBDQYMM + "')) { top.frames[0].frames[2].parent.frames[\"leftMiddleFrame\"].ReloadPage(); top.frames[0].frames[2].parent.frames[\"rightTabFrame\"].reloadPage(); }</script>");
-
             //保存模组流程图到数据库中，供模组设计或修改页面调用
-            ShareClass.SaveModuleFlowchartToDatabaseForDesignOrChangePage();
+            Session["ModuleFlowChartString"] = ShareClass.SaveModuleFlowchartToDatabaseForDesignOrChangePage();
 
             LoadModuleDEfinition();
+
+            ClientScript.RegisterStartupScript(this.GetType(), "1", "<script>if(confirm('" + Resources.lang.BCCGYGBDQYMM + "')) { top.frames[0].frames[2].parent.frames[\"leftMiddleFrame\"].ReloadPage(); top.frames[0].frames[2].parent.frames[\"rightTabFrame\"].reloadPage(); }</script>");
         }
         catch (Exception err)
         {
