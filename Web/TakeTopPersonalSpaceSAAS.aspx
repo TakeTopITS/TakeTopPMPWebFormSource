@@ -295,7 +295,7 @@
                     <ContentTemplate>
                         <ul id="navlist">
                             <li style="padding-top: 7px;">
-                                <asp:ImageButton ID="IM_Extend" ImageUrl="ImagesSkin/extend.png" Width="23" Height="20"
+                                <asp:ImageButton ID="IM_Extend" ImageUrl="ImagesSkin/news.png" Width="23" Height="20"
                                     OnClientClick="javascript: ChangeMenu(1);" runat="server" OnClick="BT_Extend_Click" />
                             </li>
                             <asp:Repeater ID="RP_NewsTypeList" runat="server">

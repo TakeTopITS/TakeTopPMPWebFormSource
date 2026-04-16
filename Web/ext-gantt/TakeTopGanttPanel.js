@@ -664,6 +664,16 @@ Ext.define("MyApp.DemoGanttPanel", {
         this.refreshViews(); // 刷新视图
     },
 
+    // 无感刷新：重新从服务器加载数据并刷新视图
+    reloadData: function () {
+        var me = this;
+        me.getTaskStore().load({
+            scope: me,
+            callback: function () {
+                me.refreshViews();
+            }
+        });
+    },
 
     createToolbar: function () {
         return [
@@ -884,6 +894,7 @@ Ext.define("MyApp.DemoGanttPanel", {
                         scope: this,
 
                         handler: function (btn) {
+                            var gantt = this;
 
                             Ext.Ajax.request({
 
@@ -892,8 +903,7 @@ Ext.define("MyApp.DemoGanttPanel", {
                                     /*   alert(msg);*/
 
                                     alert("标红所有拖期计划完成，如若不成功，说明你没有此操作权限！");
-                                    location.reload();
-                                    /*  this.refreshViews();*/
+                                    gantt.reloadData();
 
 
                                 },
@@ -915,6 +925,7 @@ Ext.define("MyApp.DemoGanttPanel", {
                         scope: this,
 
                         handler: function (btn) {
+                            var gantt = this;
 
                             Ext.Ajax.request({
 
@@ -923,8 +934,7 @@ Ext.define("MyApp.DemoGanttPanel", {
                                     /*  alert(msg);*/
 
                                     alert("取消标红所有拖期计划完成，如若不成功，说明你没有此操作权限！");
-                                    location.reload();
-                                    //this.refreshViews();
+                                    gantt.reloadData();
 
                                 },
                                 failure: function (msg) {    //这是处理后执行的函数，msg是处理页返回的数据
@@ -972,6 +982,7 @@ Ext.define("MyApp.DemoGanttPanel", {
                         scope: this,
 
                         handler: function (btn) {
+                            var gantt = this;
 
                             Ext.Ajax.request({
 
@@ -980,6 +991,7 @@ Ext.define("MyApp.DemoGanttPanel", {
                                     /* alert(msg);*/
 
                                     alert("基准时间同步完成，如若不成功，说明你没有此操作权限！");
+                                    gantt.reloadData();
 
                                 },
                                 failure: function (msg) {    //这是处理后执行的函数，msg是处理页返回的数据
@@ -989,8 +1001,6 @@ Ext.define("MyApp.DemoGanttPanel", {
 
                                 }
                             });
-
-                            location.reload();
                         }
 
                     },
@@ -1059,21 +1069,22 @@ Ext.define("MyApp.DemoGanttPanel", {
                         //iconCls: 'icon-save',
                         scope: this,
                         handler: function () {
-                            this.taskStore.sync(
-                                {
-                                    success: function () {
-
-                                        Ext.MessageBox.alert("恭喜", "数据保存成功！");
-                                    },
-                                    failure: function () {
-
-                                        Ext.MessageBox.alert("错误", "数据保存错误");
-                                    }
+                            var me = this;
+                            var modified = me.taskStore.getModifiedRecords && me.taskStore.getModifiedRecords();
+                            var hasChanges = (modified && modified.length > 0) || me.taskStore.getNewRecords && me.taskStore.getNewRecords().length > 0 || me.taskStore.getRemovedRecords && me.taskStore.getRemovedRecords().length > 0;
+                            if (!hasChanges) {
+                                Ext.MessageBox.alert("提示", "没有需要保存的更改");
+                                return;
+                            }
+                            me.taskStore.sync({
+                                success: function () {
+                                    Ext.MessageBox.alert("恭喜", "数据保存成功！");
+                                    me.refreshViews();
+                                },
+                                failure: function () {
+                                    Ext.MessageBox.alert("错误", "数据保存错误");
                                 }
-                            );
-
-                            this.refreshViews();
-
+                            });
                         }
 
                     }
@@ -1217,14 +1228,14 @@ Ext.define("MyApp.DemoGanttPanel", {
                     {
                         iconCls: 'action',
                         text: '刷新计划',
-                        enableToggle: true,
-                        pressed: false,
                         scope: this,
                         handler: function () {
-
-                            //location.reload();
-
-                            this.refreshViews();
+                            this.getTaskStore().load({
+                                scope: this,
+                                callback: function () {
+                                    this.refreshViews();
+                                }
+                            });
                         }
                     },
 

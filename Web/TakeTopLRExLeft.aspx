@@ -18,17 +18,24 @@
 
         var varLeftBarExtend = '<%=Session["LeftBarExtend"].ToString() %>'.trim();
 
-        // ����չ��Ч��
+        // 收缩展开效果
         jQuery(document).ready(function () {
 
             jQuery("span.minusSpan").show();
             jQuery("span.plusSpan").show();
 
-
+            // 根据 Session 值设置左边栏宽度和箭头方向
+            var arrowImg = document.getElementById('toggleArrow');
             if (varLeftBarExtend === "YES") {
-
+                // 展开状态：宽度180，箭头向左（表示点击后收缩）
                 window.parent.document.getElementById("TakeTopLRMDI").cols = '180,*';
                 window.parent.document.getElementById("leftMiddleFrameID").setAttribute("scrolling", "yes");
+                if (arrowImg) arrowImg.src = 'ImagesSkin/extend.png';
+            } else {
+                // 收缩状态：宽度45，箭头向右（表示点击后展开）
+                window.parent.document.getElementById("TakeTopLRMDI").cols = '45,*';
+                window.parent.document.getElementById("leftMiddleFrameID").setAttribute("scrolling", "no");
+                if (arrowImg) arrowImg.src = 'ImagesSkin/extend_right.png';
             }
 
             $('body').height($(window).height() - 30);
@@ -48,27 +55,36 @@
         function ChangeMenu(way) {
 
             if (way == 1) {
+                var cols = window.parent.document.getElementById("TakeTopLRMDI").cols;
+                var leftWidth = parseInt(cols, 10);
 
-                if (window.parent.document.getElementById("TakeTopLRMDI").cols === '45,*') {
+                if (leftWidth <= 50) {
+                    // 当前是收缩状态：展开到180，箭头向左
+                    var arrowImg = document.getElementById('toggleArrow');
+                    if (arrowImg) arrowImg.src = 'ImagesSkin/extend.png';
 
-                    window.parent.document.getElementById("TakeTopLRMDI").cols = '250,*';
-
+                    window.parent.document.getElementById("TakeTopLRMDI").cols = '180,*';
                     window.parent.document.getElementById("leftMiddleFrameID").setAttribute("scrolling", "yes");
 
                 } else {
-
+                    // 当前是展开状态：收缩到45，箭头向右
+                    var arrowImg = document.getElementById('toggleArrow');
+                    if (arrowImg) arrowImg.src = 'ImagesSkin/extend_right.png';
 
                     window.parent.document.getElementById("TakeTopLRMDI").cols = '45,*';
-
                     window.parent.document.getElementById("leftMiddleFrameID").setAttribute("scrolling", "no");
                 }
             }
 
             if (way == 3) {
 
-                window.parent.document.getElementById("TakeTopLRMDI").cols = '250,*';
+                window.parent.document.getElementById("TakeTopLRMDI").cols = '180,*';
 
                 window.parent.document.getElementById("leftMiddleFrameID").setAttribute("scrolling", "yes");
+
+                // 展开状态：箭头向左
+                var arrowImg = document.getElementById('toggleArrow');
+                if (arrowImg) arrowImg.src = 'ImagesSkin/extend.png';
             }
 
             if (way == 4) {
@@ -79,11 +95,19 @@
 
                         window.parent.document.getElementById("TakeTopLRMDI").cols = '45,*';
                         window.parent.document.getElementById("leftMiddleFrameID").setAttribute("scrolling", "no");
+
+                        // 收缩状态：箭头向右
+                        var arrowImg = document.getElementById('toggleArrow');
+                        if (arrowImg) arrowImg.src = 'ImagesSkin/extend_right.png';
                     }
                     else {
 
                         window.parent.document.getElementById("TakeTopLRMDI").cols = '180,*';
                         window.parent.document.getElementById("leftMiddleFrameID").setAttribute("scrolling", "yes");
+
+                        // 展开状态：箭头向左
+                        var arrowImg = document.getElementById('toggleArrow');
+                        if (arrowImg) arrowImg.src = 'ImagesSkin/extend.png';
                     }
 
                 }
@@ -93,11 +117,19 @@
 
                         window.parent.document.getElementById("TakeTopLRMDI").cols = '45,*';
                         window.parent.document.getElementById("leftMiddleFrameID").setAttribute("scrolling", "no");
+
+                        // 收缩状态：箭头向右
+                        var arrowImg = document.getElementById('toggleArrow');
+                        if (arrowImg) arrowImg.src = 'ImagesSkin/extend_right.png';
                     }
                     else {
 
                         window.parent.document.getElementById("TakeTopLRMDI").cols = '180,*';
                         window.parent.document.getElementById("leftMiddleFrameID").setAttribute("scrolling", "yes");
+
+                        // 展开状态：箭头向左
+                        var arrowImg = document.getElementById('toggleArrow');
+                        if (arrowImg) arrowImg.src = 'ImagesSkin/extend.png';
                     }
 
                 }
@@ -106,7 +138,7 @@
 
         }
 
-        //���������Ԫ�ص�ֵ
+        //设置左边栏元素的值
         function setExtendValue(extendStatus) {
 
             this.document.getElementById("HF_IsExtend").value = extendStatus;
@@ -270,7 +302,7 @@
 
         function opdg(id, htmlText) {
 
-            var dg = new J.dialog({ id: id, title: '��Ϣ��ʾ', width: 250, height: 300, cancelBtn: false, html: htmlText, autoPos: false, fixed: false, left: 'right', top: 'bottom' });
+            var dg = new J.dialog({ id: id, title: '信息提示', width: 250, height: 300, cancelBtn: false, html: htmlText, autoPos: false, fixed: false, left: 'right', top: 'bottom' });
 
             dg.ShowDialog();
         }
@@ -314,10 +346,76 @@
             window.location.reload();
         }
 
+        // 切换左边栏展开/收缩状态（由后端 BT_Extend_Click 调用）
+        function changeLeftBarExtend(isExtend) {
+            if (isExtend === "YES") {
+                // 展开到 180px
+                if (window.parent && window.parent.document.getElementById("TakeTopLRMDI")) {
+                    window.parent.document.getElementById("TakeTopLRMDI").cols = '180,*';
+                }
+                // 展开状态：箭头向左（表示点击后收缩）
+                var arrowImg = document.getElementById('toggleArrow');
+                if (arrowImg) arrowImg.src = 'ImagesSkin/extend.png';
+            } else {
+                // 收缩到 45px
+                if (window.parent && window.parent.document.getElementById("TakeTopLRMDI")) {
+                    window.parent.document.getElementById("TakeTopLRMDI").cols = '45,*';
+                }
+                // 收缩状态：箭头向右（表示点击后展开）
+                var arrowImg = document.getElementById('toggleArrow');
+                if (arrowImg) arrowImg.src = 'ImagesSkin/extend_right.png';
+            }
+            // 更新隐藏字段值
+            var hfIsExtend = document.getElementById('HF_IsExtend');
+            if (hfIsExtend) hfIsExtend.value = isExtend;
+        }
+
+        // 显示提示信息
+        function showAlertAtMouse(message) {
+            alert(message);
+        }
+
     </script>
 
+    <style type="text/css">
+        /* LinkButton 包裹层 */
+        .middle-toggle-link {
+            text-decoration: none;
+            display: block;
+        }
+        /* 中间展开/收缩按钮样式 */
+        #middleToggleBtn {
+            position: fixed;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 70px;
+            background-color: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-right: none;
+            border-radius: 4px 0 0 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            box-shadow: -2px 0 5px rgba(0,0,0,0.3);
+            transition: all 0.2s ease;
+        }
+        #middleToggleBtn:hover {
+            background-color: rgba(255, 255, 255, 0.25);
+            width: 24px;
+            box-shadow: -3px 0 8px rgba(0,0,0,0.4);
+        }
+        #middleToggleBtn img {
+            width: 16px;
+            height: 16px;
+        }
+    </style>
+
 </head>
-<body onmouseenter="javascript:ChangeMenu(3);" onmousemove="javascript:ChangeMenu(3);" onmouseover="javascript:ChangeMenu(3);" onmouseout="javascript:ChangeMenu(4);">
+<body>
     <form id="form1" runat="server">
         <asp:ScriptManager ID="ScriptManager1" runat="server" />
         <asp:Timer ID="Timer1" OnTick="Timer1_Tick" runat="server" Interval="1000" />
@@ -358,9 +456,9 @@
 
                     <div id="box">
                         <%--<img src="Images/color.gif" id="square_one" style="cursor: pointer" />--%>
-                        <!-- ����չ��Ч��start -->
+                        <!-- 收缩展开效果start -->
                         <asp:Literal ID="LT_Result" runat="server"></asp:Literal>
-                        <!-- ����չ��Ч��end -->
+                        <!-- 收缩展开效果end -->
                     </div>
                     <script type="text/javascript" src="js/jquery.js"></script>
                     <script type="text/javascript" src="js/jquery.colorpicker.js"></script>
@@ -378,6 +476,12 @@
                     </script>
                 </div>
 
+                <!-- 中间展开/收缩按钮 -->
+                <asp:LinkButton ID="BT_Extend" runat="server" OnClick="BT_Extend_Click" CssClass="middle-toggle-link">
+                    <div id="middleToggleBtn" title="展开/收缩" onclick="javascript: ChangeMenu(1);">
+                        <img id="toggleArrow" src="ImagesSkin/extend.png" alt="切换" />
+                    </div>
+                </asp:LinkButton>
 
                 <div id="bottomNav">
                     <table width="250" border="0" cellspacing="0" cellpadding="0" onmousemove="document.getElementById('bottomNav').style.zIndex = 999;document.getElementById('topNav').style.zIndex = -2;document.getElementById('toolNav').style.zIndex = -3;">
@@ -385,10 +489,10 @@
                             <td>
                                 <table border="0" cellpadding="0" cellspacing="0" width="100%">
                                     <tr>
-                                        <td align="center">
-                                            <table width="91%" border="0" cellspacing="0" cellpadding="0">
+                                        <td align="left">
+                                            <table width="75%" border="0" cellspacing="0" cellpadding="0">
                                                 <tr>
-                                                    <td height="45">
+                                                    <td height="45" style="padding-left:5px;">
 
                                                         <a class="titleSpan" href="javascript:CreateTabModule('MainSkinSelect','TakeTopMainSkinSelect.aspx',this)">
                                                             <%-- <img src="Images/color.gif" width="20" height="20" />--%>
@@ -398,14 +502,14 @@
 
                                                     <td height="45">
                                                         <a class="titleSpan" href="javascript:CreateTabModule('Address Book','TTContactList.aspx',this)">
-                                                            <img src="ImagesSkin/ContactList.gif" width="20" height="20"></a>
+                                                            <img src="ImagesSkin/ContactList.png" width="20" height="20"></a>
                                                     </td>
                                                     <td id="ID_MakeIM" runat="server" height="45" class="ItemAlignLeft">
 
                                                         <a class="titleSpan" href="javascript:CreateTabModule('TakeTopIM','TTTakeTopIM.aspx',this)">
                                                             <img src="ImagesSkin/IM.png" width="20" height="20"></a>
                                                         <%--
-                                                        <asp:LinkButton ID="BT_MakeIM" runat="server" ToolTip='��ʱͨ' OnClick="BT_MakeIM_Click"> <img src="Images/im.png" width="20" height="20"></asp:LinkButton>--%>
+                                                        <asp:LinkButton ID="BT_MakeIM" runat="server" ToolTip='即时通' OnClick="BT_MakeIM_Click"> <img src="Images/im.png" width="20" height="20"></asp:LinkButton>--%>
                                                     </td>
 
                                                     <td id="ID_SMSSend" runat="server" height="45">
@@ -457,7 +561,7 @@
         <div style="position: absolute; left: 40%; top: 30%;">
             <asp:UpdateProgress ID="TakeTopUp" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
                 <ProgressTemplate>
-                    <img src="Images/Processing.gif" alt="Loading,please wait..." />
+                 <%--   <img src="Images/Processing.gif" alt="Loading,please wait..." />--%>
                 </ProgressTemplate>
             </asp:UpdateProgress>
         </div>
@@ -468,46 +572,11 @@
 </html><%--***--%>
 <%--***--%>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <%--***--%>
 <%--***--%>
-
-
-
-
-
-
 <%--***--%>
-
-
-
-
-
-
-
-
-
-
+<%--***--%>
+<%--***--%>
+<%--***--%>
+<%--***--%>
+<%--***--%>

@@ -23,9 +23,9 @@ public partial class _default : System.Web.UI.Page
         string strDevelopStatus = "NO";
         if (strDevelopStatus == "YES")
         {
-            // ¿ª·¢Ä£Ê½´úÂë...
+            // å¼€å‘æ¨¡å¼ä»£ç ...
             Session["UserCode"] = "C7094";
-            Session["UserName"] = "Ô±¹¤C7094";
+            Session["UserName"] = "å‘˜å·¥C7094";
             Session["IsMobileDevice"] = "NO";
             Session["IsMobileDevice"] = "NO";
             Session["SystemType"] = "WEB";
@@ -68,7 +68,7 @@ public partial class _default : System.Web.UI.Page
                 //    ClientScript.RegisterStartupScript(this.GetType(), "1", "<script>displayBTLogin('NONE');</script>");
                 //    ClientScript.RegisterStartupScript(this.GetType(), "2", "<script>displayLBMessage('BLOCK');</script>");
 
-                //    //µÈ´ı15000ºÁÃë
+                //    //ç­‰å¾…15000æ¯«ç§’
                 //    System.Threading.Thread.Sleep(15000);
 
                 //    ClientScript.RegisterStartupScript(this.GetType(), "3", "<script>location.reload();</script>");
@@ -105,7 +105,7 @@ public partial class _default : System.Web.UI.Page
                         }
                         else
                         {
-                            // ¶¯Ì¬ÉèÖÃÑéÖ¤ÂëÍ¼Æ¬URL£¬È·±£Ã¿´Î¶¼ÊÇĞÂÇëÇó
+                            // åŠ¨æ€è®¾ç½®éªŒè¯ç å›¾ç‰‡URLï¼Œç¡®ä¿æ¯æ¬¡éƒ½æ˜¯æ–°è¯·æ±‚
                             IM_CheckCode.ImageUrl = "TTCheckCode.aspx?t=" + DateTime.Now.Ticks;
                         }
                     }
@@ -181,10 +181,10 @@ public partial class _default : System.Web.UI.Page
 
                 try
                 {
-                    //ÔËĞĞ¸üĞÂ×Ö¶ÎÖµ´úÂë
+                    //è¿è¡Œæ›´æ–°å­—æ®µå€¼ä»£ç 
                     DatabaseUpdateHandle.RunUpdateColumnValueCode();
 
-                    //ÔËĞĞÄ£×éÃû³ÆÓ¢ÎÄ»¯´úÂë
+                    //è¿è¡Œæ¨¡ç»„åç§°è‹±æ–‡åŒ–ä»£ç 
                     DatabaseUpdateHandle.RunUpdateModuleNameCode();
                 }
                 catch (Exception err)
@@ -236,16 +236,16 @@ public partial class _default : System.Web.UI.Page
                 {
                     ClientScript.RegisterStartupScript(this.GetType(), "", "<script>showAlertAtMouse('" + LanguageHandle.GetWord("ZZYZMCWSRZDYZM").ToString().Trim() + "');</script>");
                     TB_CheckCode.Text = "";
-                    Session["CheckCode"] = null; // Ğ£ÑéºóÁ¢¼´Ê§Ğ§
+                    Session["CheckCode"] = null; // æ ¡éªŒåç«‹å³å¤±æ•ˆ
                     return;
                 }
-                Session["CheckCode"] = null; // Ğ£ÑéºóÁ¢¼´Ê§Ğ§
+                Session["CheckCode"] = null; // æ ¡éªŒåç«‹å³å¤±æ•ˆ
             }
         }
 
 
 
-        // µÇÂ¼ÑéÖ¤Âß¼­±£³Ö²»±ä...
+        // ç™»å½•éªŒè¯é€»è¾‘ä¿æŒä¸å˜...
         try
         {
             strPassword = ShareClass.EncryptPassword(strPassword, "MD5");
@@ -254,7 +254,7 @@ public partial class _default : System.Web.UI.Page
             DataSet ds = ShareClass.GetDataSetFromSql(strHQL, "T_ProjectMember");
             if (ds.Tables[0].Rows.Count > 0)
             {
-                // µÇÂ¼³É¹¦Âß¼­...
+                // ç™»å½•æˆåŠŸé€»è¾‘...
                 strUserName = ds.Tables[0].Rows[0]["UserName"].ToString().Trim();
                 strUserType = ds.Tables[0].Rows[0]["UserType"].ToString().Trim();
                 strAllowDevice = ds.Tables[0].Rows[0]["AllowDevice"].ToString().Trim();
@@ -325,7 +325,7 @@ public partial class _default : System.Web.UI.Page
                 {
                 }
 
-                // ÆäËû»á»°ÉèÖÃÂß¼­...
+                // å…¶ä»–ä¼šè¯è®¾ç½®é€»è¾‘...
                 try
                 {
                     Session["MustInFrame"] = System.Configuration.ConfigurationManager.AppSettings["MustInFrame"];
@@ -350,7 +350,7 @@ public partial class _default : System.Web.UI.Page
                     Session["AutoSaveWFOperator"] = "YES";
                 }
 
-                //---ÅĞ¶ÏÓÃ»§ÄÜÓÃÀ´µÇÂ¼µÄÉè±¸ÀàĞÍ----------------------
+                //---åˆ¤æ–­ç”¨æˆ·èƒ½ç”¨æ¥ç™»å½•çš„è®¾å¤‡ç±»å‹----------------------
                 if (strAllowDevice != "ALL")
                 {
                     if (ShareClass.IsMobileDeviceCheckAgent())
@@ -371,7 +371,7 @@ public partial class _default : System.Web.UI.Page
                     }
                 }
 
-                //¼ì²é×¢²áÂëÊÇ·ñºÏ·¨
+                //æ£€æŸ¥æ³¨å†Œç æ˜¯å¦åˆæ³•
                 string strServerName = System.Configuration.ConfigurationManager.AppSettings["ServerName"];
                 try
                 {
@@ -399,19 +399,33 @@ public partial class _default : System.Web.UI.Page
                 {
                     if (Session["CssDirectoryChangeNumber"].ToString() != "2" & Session["CssDirectoryChangeNumber"].ToString() != "0")
                     {
-                        //ÉèÖÃ»º´æ¸ü¸Ä±êÖ¾
+                        //è®¾ç½®ç¼“å­˜æ›´æ”¹æ ‡å¿—
                         ShareClass.SetPageCacheMark("2");
                     }
 
-                    //²åÈëµÇÂ¼ÈÕÖ¾
+                    //æ’å…¥ç™»å½•æ—¥å¿—
                     ShareClass.InsertUserLogonLog(strUserCode, strUserName, "WEB");
                 }
                 catch
                 {
                 }
 
-                //ÔËĞĞÒ»Ğ©ÌØÊâµÄ´úÂë
+                //è¿è¡Œä¸€äº›ç‰¹æ®Šçš„ä»£ç 
                 ShareClass.RunSpecificalCodeForLogin();
+
+                // å¼‚æ­¥é¢„è®¡ç®—ä¸ªäººç©ºé—´åˆ†æå›¾æ•°æ®ï¼ˆä¸é˜»å¡ç™»å½•æµç¨‹ï¼‰
+                try
+                {
+                    System.Threading.ThreadPool.QueueUserWorkItem(state =>
+                    {
+                        try
+                        {
+                            ShareClass.PreCalculatePersonalSpaceCharts(strUserCode);
+                        }
+                        catch { }
+                    });
+                }
+                catch { }
 
                 if (strUserType != "OUTER")
                 {
@@ -498,11 +512,11 @@ public partial class _default : System.Web.UI.Page
 
         if (!string.IsNullOrEmpty(selectedValue))
         {
-            // Ö»ÔÚ Session ÖĞÉèÖÃ£¬²»ÔÚÕâÀïµ÷ÓÃ InitializeCulture()
+            // åªåœ¨ Session ä¸­è®¾ç½®ï¼Œä¸åœ¨è¿™é‡Œè°ƒç”¨ InitializeCulture()
             Session["LangCode"] = selectedValue;
 
-            // ÖØ¶¨Ïòµ½´ø²ÎÊıµÄÒ³Ãæ
-            // ĞÂÒ³Ãæ¼ÓÔØÊ±»á´¦Àí URL ²ÎÊı²¢µ÷ÓÃ×Ô¼ºµÄ InitializeCulture()
+            // é‡å®šå‘åˆ°å¸¦å‚æ•°çš„é¡µé¢
+            // æ–°é¡µé¢åŠ è½½æ—¶ä¼šå¤„ç† URL å‚æ•°å¹¶è°ƒç”¨è‡ªå·±çš„ InitializeCulture()
             Response.Redirect("Default.aspx?TargetLangCode=" + selectedValue, false);
         }
     }
@@ -513,7 +527,7 @@ public partial class _default : System.Web.UI.Page
 
         string strLangCode;
 
-        // ÓÅÏÈÊ¹ÓÃ URL ²ÎÊı
+        // ä¼˜å…ˆä½¿ç”¨ URL å‚æ•°
         string targetLang = Request.QueryString["TargetLangCode"];
         if (!string.IsNullOrEmpty(targetLang))
         {
@@ -530,7 +544,7 @@ public partial class _default : System.Web.UI.Page
             Session["LangCode"] = strLangCode;
         }
 
-        // ÉèÖÃ Cookie
+        // è®¾ç½® Cookie
         if (Response.Cookies["LangCode"] == null)
         {
             Response.Cookies.Add(new HttpCookie("LangCode", strLangCode));
@@ -540,7 +554,7 @@ public partial class _default : System.Web.UI.Page
             Response.Cookies["LangCode"].Value = strLangCode;
         }
 
-        // Ó¦ÓÃÎÄ»¯ÉèÖÃ
+        // åº”ç”¨æ–‡åŒ–è®¾ç½®
         System.Threading.Thread.CurrentThread.CurrentCulture =
             System.Globalization.CultureInfo.CreateSpecificCulture(strLangCode);
         System.Threading.Thread.CurrentThread.CurrentUICulture =

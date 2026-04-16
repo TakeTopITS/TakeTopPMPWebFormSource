@@ -15845,4 +15845,33 @@ ALTER TABLE public.v_mymember_workload
     ModuleFlowchartString TEXT COLLATE pg_catalog."default"
 );</SQLText>
   </DataBaseUpgradeFile>
+  <DataBaseUpgradeFile>
+    <ID>3918</ID>
+    <SQLText>Delete From T_ProModuleLevel Where ModuleName = '操作导航';
+Delete From T_ProModule Where ModuleName = '操作导航';</SQLText>
+  </DataBaseUpgradeFile>
+  <DataBaseUpgradeFile>
+    <ID>3919</ID>
+    <SQLText>Update T_ProModuleLevel Set HomeModuleName = 'OperationVideo' Where ModuleName = 'OperationVideo' and LangCode &lt;&gt; 'zh-CN';
+Update T_ProModuleLevel Set HomeModuleName = '操作视频' Where ModuleName = 'OperationVideo' and LangCode = 'zh-CN';
+
+Update T_ProModule Set ModuleName = 'OperationVideo' Where ModuleName = '操作视频';
+
+Delete From T_ProModuleLevel Where ModuleName = '经理手册' Or ModuleName = '成员手册';</SQLText>
+  </DataBaseUpgradeFile>
+  <DataBaseUpgradeFile>
+    <ID>3920</ID>
+    <SQLText>Delete From T_ProModule Where ModuleName = '经理手册' Or ModuleName = '成员手册';</SQLText>
+  </DataBaseUpgradeFile>
+  <DataBaseUpgradeFile>
+    <ID>3921</ID>
+    <SQLText>Update T_ProModuleLevel Set ModuleName = 'OperationVideo' Where ModuleName = '操作视频';
+Update T_ProModuleLevel Set HomeModuleName = 'OperationVideo' Where ModuleName = 'OperationVideo' and LangCode &lt;&gt; 'zh-CN';
+Update T_ProModuleLevel Set HomeModuleName = '操作视频' Where ModuleName = 'OperationVideo' and LangCode = 'zh-CN';
+
+Update T_ProModule Set ModuleName = 'OperationVideo' Where ModuleName = '操作视频';
+
+Delete From T_ProModuleLevel Where ModuleName = '经理手册' Or ModuleName = '成员手册';
+Delete From T_ProModule Where ModuleName = '经理手册' Or ModuleName = '成员手册';</SQLText>
+  </DataBaseUpgradeFile>
 </DataBaseUpgradeFiles>

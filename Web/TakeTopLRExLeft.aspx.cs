@@ -11,7 +11,7 @@ public partial class TakeTopLRExLeft : System.Web.UI.Page
     {
         if (Page.IsPostBack != true)
         {
-            //Çå¿ÕÒ³Ãæ»º´æ£¬ÓÃÓÚ¸Ä±äÆ¤·ô
+            //æ¸…ç©ºé¡µé¢ç¼“å­˜ï¼Œç”¨äºæ”¹å˜çš®è‚¤
             SetPageNoCache();
 
             intRunNumber = 0;
@@ -32,12 +32,12 @@ public partial class TakeTopLRExLeft : System.Web.UI.Page
         }
     }
 
-    //Çå¿ÕÒ³Ãæ»º´æ£¬ÓÃÓÚ¸Ä±äÆ¤·ô
+    //æ¸…ç©ºé¡µé¢ç¼“å­˜ï¼Œç”¨äºæ”¹å˜çš®è‚¤
     public void SetPageNoCache()
     {
         if (Session["CssDirectoryChangeNumber"].ToString() == "1")
         {
-            //Çå³ıÈ«²¿»º´æ
+            //æ¸…é™¤å…¨éƒ¨ç¼“å­˜
             IDictionaryEnumerator allCaches = Page.Cache.GetEnumerator();
             while (allCaches.MoveNext())
             {
@@ -57,8 +57,8 @@ public partial class TakeTopLRExLeft : System.Web.UI.Page
 
     private void AsyncWork()
     {
-        //ÖÓÀñÔÂ×÷Æ·£¨jack.erp@gmail.com)
-        //Ì©¶¥ÍØ¶¦£¨2006£­2026£©
+        //é’Ÿç¤¼æœˆä½œå“ï¼ˆjack.erp@gmail.com)
+        //æ³°é¡¶æ‹“é¼ï¼ˆ2006ï¼2026ï¼‰
 
         string strUserCode;
         string strLangCode;
@@ -122,7 +122,7 @@ public partial class TakeTopLRExLeft : System.Web.UI.Page
             ShareClass.RunSqlCommand(strHQL);
         }
 
-        //³õÊ¼»¯ÓÃ»§Ä£×é
+        //åˆå§‹åŒ–ç”¨æˆ·æ¨¡ç»„
         strSampleUserCode = "SAMPLE";
         ShareClass.InitialUserModules(strSampleUserCode, strUserCode);
 
@@ -214,7 +214,7 @@ public partial class TakeTopLRExLeft : System.Web.UI.Page
                 isFirst = true;
             }
 
-            //Ôö¼Ó¶ù×ÓÄ£×é
+            //å¢åŠ å„¿å­æ¨¡ç»„
             strHtml += "<div class=\"text\">";
             dvModule.RowFilter = "ParentModule='" + strModuleName + "'";
 
@@ -247,7 +247,7 @@ public partial class TakeTopLRExLeft : System.Web.UI.Page
                 strChildPageNameForDoubleClick = ShareClass.ObjectToString("TTModuleFlowDesignerJS.aspx?Type=UserModule&IdentifyString=" + strChildModuleID);
 
 
-                //Ôö¼ÓËï×ÓÄ£×é
+                //å¢åŠ å­™å­æ¨¡ç»„
                 dvModule.RowFilter = "ParentModule='" + strChildModuleName + "'";
 
                 if (dvModule.Count > 0)
@@ -315,6 +315,39 @@ public partial class TakeTopLRExLeft : System.Web.UI.Page
 
         strJavaScriptFuntion = "opim(" + "'" + strRandomID + "'" + "," + "'" + strMessage + "'" + ");";
         ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", strJavaScriptFuntion, true);
+    }
+
+    protected void BT_Extend_Click(object sender, EventArgs e)
+    {
+        string strUserCode;
+        string strLeftBarExtend;
+
+        strUserCode = Session["UserCode"].ToString();
+        if (Session["LeftBarExtend"].ToString() == "YES")
+        {
+            strLeftBarExtend = "NO";
+        }
+        else
+        {
+            strLeftBarExtend = "YES";
+        }
+
+        try
+        {
+            //æ›´æ–°å·¦è¾¹æ å±•å¼€çŠ¶æ€
+            ShareClass.UpdateLeftBarExtendStatus(strUserCode, strLeftBarExtend);
+
+            Session["LeftBarExtend"] = strLeftBarExtend;
+
+            ShareClass.AddSpaceLineToFile("TakeTopLRExLeft.aspx", "<%--***--%>");
+            ShareClass.AddSpaceLineToFile("TakeTopCSLRLeft.aspx", "<%--***--%>");
+
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click55", "changeLeftBarExtend('" + strLeftBarExtend + "')", true);
+        }
+        catch
+        {
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click66", "showAlertAtMouse('" + Resources.lang.ZZGGSBJC + "')", true);
+        }
     }
 
 }

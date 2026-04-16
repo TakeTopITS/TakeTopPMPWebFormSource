@@ -63,6 +63,18 @@
                 font-size: 14px;
                 color: white;
             }
+
+        /* 加载中的数字样式 */
+        .loading-number {
+            display: inline-block;
+            min-width: 20px;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 1; }
+        }
     </style>
     <script src="js/jquery-1.10.2.min.js"></script>
 </head>
@@ -90,12 +102,144 @@
         }
 
         $(function () {
-            // 显示加载状态
-            $('#m2').html('<div style="text-align:center; padding:50px;"><img src="Images/Processing.gif" alt="Loading..." /></div>');
+            var formType = GetQueryValue("FormType");
+            var chartType = GetQueryValue("ChartType");
+            var chartName = GetQueryValue("ChartName");
 
-            // 异步加载图表
-            loadChartAsync();
+            // 卡片类型图表：先显示骨架，再异步加载数据
+            if (chartType == 'HRuningProjectStatus' || chartType == 'HDelayProjectStatus' ||
+                chartType == 'HAnnualPaymentStatus' || chartType == 'HAnnualWorkHourStatus' ||
+                chartType == 'HRuningTaskStatus') {
+                // 先显示卡片骨架（带占位符）
+                showCardSkeleton(chartType);
+                // 异步加载数据
+                loadCardDataAsync(chartType, chartName);
+            } else {
+                // 其他图表类型：显示 loading 后加载
+                $('#m2').html('<div style="text-align:center; padding:50px;"><img src="Images/Processing.gif" alt="Loading..." /></div>');
+                loadChartAsync();
+            }
         });
+
+        // 显示卡片骨架（带占位符）
+        function showCardSkeleton(chartType) {
+            var cardConfig = {
+                'HRuningProjectStatus': {
+                    className: 'blue',
+                    icon: 'Running.png',
+                    title: '<%=LanguageHandle.GetWord("ZaiZiXingXiangMuZhongShu").ToString() %>',
+                    sub1: '<%=LanguageHandle.GetWord("NianDuXingZeng").ToString() %>',
+                    sub2: '<%=LanguageHandle.GetWord("NianDuWanCheng").ToString() %>'
+                },
+                'HDelayProjectStatus': {
+                    className: 'red',
+                    icon: 'Process.png',
+                    title: '<%=LanguageHandle.GetWord("NianDuYanWuXiangMuShu").ToString() %>',
+                    sub1: '<%=LanguageHandle.GetWord("JingDuZhengChang").ToString() %>',
+                    sub2: '<%=LanguageHandle.GetWord("QingDuYanWu").ToString() %>'
+                },
+                'HAnnualPaymentStatus': {
+                    className: 'green',
+                    icon: 'PaymentCollection.png',
+                    title: '<%=LanguageHandle.GetWord("XiangMuNianDuhHuiKan").ToString() %>',
+                    sub1: '<%=LanguageHandle.GetWord("NianDuChengBenHeShuan").ToString() %>',
+                    sub2: '<%=LanguageHandle.GetWord("ChengBenChaoZiXiangMuShu").ToString() %>'
+                },
+                'HAnnualWorkHourStatus': {
+                    className: 'brown',
+                    icon: 'WorkHour.png',
+                    title: '<%=LanguageHandle.GetWord("NianDuXiangMuGongShiTouRu").ToString() %>',
+                    sub1: '<%=LanguageHandle.GetWord("NianDuTeiBaoRenShu").ToString() %>',
+                    sub2: '<%=LanguageHandle.GetWord("RenGongChengBen").ToString() %>'
+                },
+                'HRuningTaskStatus': {
+                    className: 'lightblue',
+                    icon: 'RunningTask.png',
+                    title: '<%=LanguageHandle.GetWord("ZaiZhiXingRenWuZhongShu").ToString() %>',
+                    sub1: '<%=LanguageHandle.GetWord("NianDuXingZeng").ToString() %>',
+                    sub2: '<%=LanguageHandle.GetWord("NianDuWanCheng").ToString() %>'
+                }
+            };
+
+            var config = cardConfig[chartType];
+            if (!config) return;
+
+            // 先显示 "--" 占位符，不显示转圈
+            var placeholder = "<span style='color:rgba(255,255,255,0.6);'>--</span>";
+            var html = "<div class='card-container' style='padding-top:12px;'>" +
+                "<div class='card " + config.className + "'>" +
+                "<table>" +
+                "<tr>" +
+                "<td colspan='3' width='30%' align='left' style='padding-left:20px;'>" +
+                "<img src='ImagesSkin/" + config.icon + "' alt='Icon'/>" +
+                "</td>" +
+                "<td align='left'>" +
+                config.title + ": <span id='spanXNumber'>" + placeholder + "</span>" +
+                "<p>" + config.sub1 + ": <span id='spanYNumber'>" + placeholder + "</span></p>" +
+                "<p>" + config.sub2 + ": <span id='spanZNumber'>" + placeholder + "</span></p>" +
+                "</td>" +
+                "</tr>" +
+                "</table>" +
+                "</div>" +
+                "</div>";
+
+            document.getElementById('m2').innerHTML = html;
+        }
+
+        // 异步加载卡片数据
+        function loadCardDataAsync(chartType, chartName) {
+            var sqlCode = escape(unescape(GetQueryValue("SqlCode")));
+
+            $.ajax({
+                type: "post",
+                async: true,
+                timeout: 35000, // 35秒超时
+                url: "Handler/EchartHandler.ashx",
+                data: {
+                    FormType: GetQueryValue("FormType"),
+                    ChartName: chartName,
+                    SqlCode: sqlCode
+                },
+                datatype: "json",
+                contentType: "application/x-www-form-urlencoded; charset=utf-8",
+                success: function (result) {
+                    if (result && result != "") {
+                        try {
+                            eval("var transresult=" + result);
+                            updateCardNumbers(transresult);
+                        } catch (e) {
+                            console.error("Data parsing error:", e);
+                        }
+                    }
+                    // 通知父页面加载完成
+                    if (parent && parent.window && parent.window.chartLoaded) {
+                        parent.window.chartLoaded();
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.error("Loading failed:", status, error);
+                    if (parent && parent.window && parent.window.chartLoaded) {
+                        parent.window.chartLoaded();
+                    }
+                }
+            });
+        }
+
+        // 更新卡片数字
+        function updateCardNumbers(data) {
+            if (data && data.length > 0) {
+                var xNum = document.getElementById("spanXNumber");
+                var yNum = document.getElementById("spanYNumber");
+                var zNum = document.getElementById("spanZNumber");
+                
+                if (xNum) xNum.innerHTML = data[0].XName || '0';
+                if (data[0].YNumber) {
+                    var parts = data[0].YNumber.split(',');
+                    if (yNum) yNum.innerHTML = parts[0] || '0';
+                    if (zNum) zNum.innerHTML = parts[1] || '0';
+                }
+            }
+        }
 
         function loadChartAsync() {
             var myChart1 = echarts.init(document.getElementById('m2'));
@@ -112,6 +256,7 @@
             $.ajax({
                 type: "post",
                 async: true,
+                timeout: 35000, // 35秒超时（后端30秒超时 + 缓冲）
                 url: "Handler/EchartHandler.ashx",
                 data: {
                     FormType: formType,
@@ -148,11 +293,15 @@
                     }
                 },
                 error: function (xhr, status, error) {
-                    console.error("Loading failed:", error);
+                    console.error("Loading failed:", status, error);
                     showNoData(myChart1, chartType, chartName);
                     if (parent && parent.window && parent.window.chartLoaded) {
                         parent.window.chartLoaded();
                     }
+                },
+                complete: function(xhr, status) {
+                    // 无论成功失败，确保loading被隐藏
+                    myChart1.hideLoading();
                 }
             });
         }

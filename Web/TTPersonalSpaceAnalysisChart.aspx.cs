@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Web;
@@ -8,6 +9,11 @@ using System.Web.UI.WebControls;
 
 public partial class TTPersonalSpaceAnalysisChart : System.Web.UI.Page
 {
+    // 静态缓存 - 比 Session 更快，所有用户共享
+    private static readonly Dictionary<string, ChartCacheItem> _chartCache = new Dictionary<string, ChartCacheItem>();
+    private static readonly object _cacheLock = new object();
+    private const int CACHE_DURATION_MINUTES = 5; // 5分钟缓存
+
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Page.IsPostBack == false)
@@ -18,28 +24,146 @@ public partial class TTPersonalSpaceAnalysisChart : System.Web.UI.Page
 
     private void AsyncWork()
     {
-        if (Session["SystemAnalystChartHTML"] == null)
+        // Session 检查：未登录时直接返回，避免 CoreShareClass 静态初始化异常
+        if (Session["UserCode"] == null || string.IsNullOrEmpty(Session["UserCode"].ToString()))
         {
+            RP_ChartList.Visible = false;
             litSystemAnalystChartHTML.Visible = false;
+            return;
+        }
 
-            // �󶨵�һ��Repeater
-            RP_ChartList.DataSource = ShareClass.GetSytemChartDataSet(Session["UserCode"].ToString(), "PersonalSpacePage");
-            RP_ChartList.DataBind();
-
-
-            // ����һ��Repeater��HTML���ݴ洢��Session
-            StringWriter sw1 = new StringWriter();
-            HtmlTextWriter hw1 = new HtmlTextWriter(sw1);
-            RP_ChartList.RenderControl(hw1);
-
-            Session["SystemAnalystChartHTML"] = sw1.ToString();
+        string userCode = Session["UserCode"].ToString();
+        string cacheKey = userCode + "_" + Session["LangCode"].ToString();
+        
+        // 检查是否需要清除缓存（由个人空间页面设置）
+        if (Session["ClearChartCacheFlag"] != null)
+        {
+            string flagValue = Session["ClearChartCacheFlag"].ToString();
+            if (flagValue.StartsWith(userCode + "_"))
+            {
+                RemoveFromCache(cacheKey);
+                Session["ClearChartCacheFlag"] = null;
+            }
+        }
+        
+        // 尝试从静态缓存获取
+        string cachedHtml = GetCachedHtml(cacheKey);
+        
+        if (!string.IsNullOrEmpty(cachedHtml))
+        {
+            // 使用缓存的HTML
+            RP_ChartList.Visible = false;
+            litSystemAnalystChartHTML.Text = cachedHtml;
+        }
+        else if (Session["SystemAnalystChartHTML"] != null)
+        {
+            // 使用 Session 缓存
+            RP_ChartList.Visible = false;
+            litSystemAnalystChartHTML.Text = Session["SystemAnalystChartHTML"].ToString();
         }
         else
         {
-            RP_ChartList.Visible = false;
+            // 重新生成
+            litSystemAnalystChartHTML.Visible = false;
 
-            // ��HTML���ݸ���Literal
-            litSystemAnalystChartHTML.Text = Session["SystemAnalystChartHTML"].ToString();
+            try
+            {
+                // 绑定第一个Repeater
+                RP_ChartList.DataSource = ShareClass.GetSytemChartDataSet(userCode, "PersonalSpacePage");
+                RP_ChartList.DataBind();
+
+                // 将第一个Repeater的HTML内容存储
+                StringWriter sw1 = new StringWriter();
+                HtmlTextWriter hw1 = new HtmlTextWriter(sw1);
+                RP_ChartList.RenderControl(hw1);
+                string html = sw1.ToString();
+
+                // 同时存入 Session 和静态缓存
+                Session["SystemAnalystChartHTML"] = html;
+                SetCachedHtml(cacheKey, html);
+            }
+            catch (Exception ex)
+            {
+                LogClass.WriteLogFile("TTPersonalSpaceAnalysisChart AsyncWork error: " + ex.Message);
+                RP_ChartList.Visible = false;
+            }
         }
     }
+
+    /// <summary>
+    /// 从静态缓存获取HTML
+    /// </summary>
+    private string GetCachedHtml(string cacheKey)
+    {
+        lock (_cacheLock)
+        {
+            ChartCacheItem item;
+            if (_chartCache.TryGetValue(cacheKey, out item))
+            {
+                if (DateTime.Now.Subtract(item.CacheTime).TotalMinutes <= CACHE_DURATION_MINUTES)
+                {
+                    return item.HtmlContent;
+                }
+            }
+        }
+        return null;
+    }
+
+    /// <summary>
+    /// 设置静态缓存
+    /// </summary>
+    private void SetCachedHtml(string cacheKey, string html)
+    {
+        lock (_cacheLock)
+        {
+            _chartCache[cacheKey] = new ChartCacheItem
+            {
+                HtmlContent = html,
+                CacheTime = DateTime.Now
+            };
+        }
+    }
+
+    /// <summary>
+    /// 从缓存中移除指定键
+    /// </summary>
+    private void RemoveFromCache(string cacheKey)
+    {
+        lock (_cacheLock)
+        {
+            _chartCache.Remove(cacheKey);
+        }
+    }
+
+    /// <summary>
+    /// 清除缓存的公共方法
+    /// </summary>
+    public static void ClearChartCache(string userCode)
+    {
+        lock (_cacheLock)
+        {
+            List<string> keysToRemove = new List<string>();
+            foreach (string key in _chartCache.Keys)
+            {
+                if (key.StartsWith(userCode + "_"))
+                {
+                    keysToRemove.Add(key);
+                }
+            }
+            foreach (string key in keysToRemove)
+            {
+                _chartCache.Remove(key);
+            }
+        }
+    }
+}
+
+/// <summary>
+/// 缓存项
+/// </summary>
+[Serializable]
+public class ChartCacheItem
+{
+    public string HtmlContent { get; set; }
+    public DateTime CacheTime { get; set; }
 }
