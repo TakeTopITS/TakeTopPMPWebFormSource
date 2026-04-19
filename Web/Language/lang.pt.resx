@@ -532,7 +532,7 @@
     <value>Resultados da inspeção</value>
   </data>
   <data name="BaoJiaoFei" xml:space="preserve">
-    <value>Taxa de Yasunori</value>
+    <value>Taxa educacional</value>
   </data>
   <data name="BaoJiaPingTai" xml:space="preserve">
     <value>Citação Platform</value>
@@ -8587,7 +8587,7 @@
     <value>Estado de mídia</value>
   </data>
   <data name="MeiXueQiBaoJiaoFei" xml:space="preserve">
-    <value>Taxa de Yasunori por semestre</value>
+    <value>Taxa educacional por semestre</value>
   </data>
   <data name="MeiYuan" xml:space="preserve">
     <value>Dólar</value>
@@ -28774,7 +28774,7 @@
     <value>Falha ao excluir! Apenas registros de hoje podem ser deletados.</value>
   </data>
   <data name="ZZDiShiChuKuLiangChaoChuXuQiuL" xml:space="preserve">
-    <value>インポート失敗、小分類:" + strSmallType + " が存在しません。まず【基本データ（外部）】モジュールで設定してください！</value>
+    <value>Aviso, a quantidade de saída excede a demanda, verifique!</value>
   </data>
   <data name="WuLiaoChuHuo" xml:space="preserve">
     <value>xpedição de materiais</value>
@@ -28927,7 +28927,7 @@
     <value>Código do material</value>
   </data>
   <data name="ZZDiShiCaiGouLiangChaoChuXuQiu" xml:space="preserve">
-    <value>インポート失敗、小分類:" + strSmallType + " が存在しません。まず【基本データ（外部）】モジュールで設定してください！</value>
+    <value>Aviso, a quantidade de compra excede a demanda, verifique!</value>
   </data>
   <data name="WuLiaoCaiGouChan" xml:space="preserve">
     <value>Código do material pai</value>

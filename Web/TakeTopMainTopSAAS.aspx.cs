@@ -28,7 +28,7 @@ public partial class TakeTopMainTopSAAS : System.Web.UI.Page
         {
             if (!ShareClass.checkModuleIsVisible("AIAnalyst", strLangCode))
             {
-                tdAI.Visible = false;
+                //tdAI.Visible = false;
             }
             else
             {     //…Ë÷√AIΩ”ø⁄URL

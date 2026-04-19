@@ -34,7 +34,7 @@ public partial class TakeTopSystemOtherCodeRunPage : System.Web.UI.Page
 
             try
             {
-                // Ö´ĞĞÌØÊâ´úÂë
+                // æ‰§è¡Œç‰¹æ®Šä»£ç 
                 RunSpecialCode(strUserCode, strUserName);
 
             }
@@ -43,12 +43,12 @@ public partial class TakeTopSystemOtherCodeRunPage : System.Web.UI.Page
                 LogClass.WriteLogFile("Error page: " + "\n" + err.Message.ToString() + "\n" + err.StackTrace);
             }
 
-            //×îºóµÇÂ¼ÓÃ»§
+            //æœ€åç™»å½•ç”¨æˆ·
             ShareClass.SystemLatestLoginUser = "";
         }
     }
- 
-    //Ö´ĞĞÌØÊâ´úÂë
+
+    //æ‰§è¡Œç‰¹æ®Šä»£ç 
     public static void RunSpecialCode(string strUserCode, string strUserName)
     {
         int intUserNumber, intRunMarkInDB;
@@ -56,15 +56,15 @@ public partial class TakeTopSystemOtherCodeRunPage : System.Web.UI.Page
         intUserNumber = getUserNumber();
         intRunMarkInDB = GetNormalOtherCodeRunMark();
 
-        //ÉèÖÃÕâ¸öÖµ£¬¿ÉÒÔ¾ö¶¨ÊÇ·ñÖ´ĞĞÏÂÃæµÄ´úÂë
-        int intRunMark = 3;
+        //è®¾ç½®è¿™ä¸ªå€¼ï¼Œå¯ä»¥å†³å®šæ˜¯å¦æ‰§è¡Œä¸‹é¢çš„ä»£ç 
+        int intRunMark = 6;
 
         if (intRunMarkInDB < intRunMark)
         {
-            //Ôö¼ÓÔ¤¾¯ÃüÁîÖÖÀà
+            //å¢åŠ é¢„è­¦å‘½ä»¤ç§ç±»
             AddEarlyWarningOrder("DefectToHandle");
 
-            //¸ü¸ÄÔ¤¾¯ÃüÁî
+            //æ›´æ”¹é¢„è­¦å‘½ä»¤
             UpdateEaryWarningOrder("TasksToHandle");
             UpdateEaryWarningOrder("RequirementsToHandle");
             UpdateEaryWarningOrder("BidsToHandle");
@@ -77,60 +77,66 @@ public partial class TakeTopSystemOtherCodeRunPage : System.Web.UI.Page
 
             runAlterWarningCode();
 
-            //Ôö¼ÓÏµÍ³·ÖÎöÍ¼ÖÖÀà
+            //å¢åŠ ç³»ç»Ÿåˆ†æå›¾ç§ç±»
             AddSystemAnalystChart("Active project status");
             AddSystemAnalystChart("Annual project collection status");
             AddSystemAnalystChart("Delayed project status");
             AddSystemAnalystChart("Annual project hours status");
             AddSystemAnalystChart("Active task status");
 
-            //¸üĞÂÏµÍ³·ÖÎöÍ¼SqlCode´úÂë
+            //æ›´æ–°ç³»ç»Ÿåˆ†æå›¾SqlCodeä»£ç 
             UpdateSystemAnalystChart("Active project status");
             UpdateSystemAnalystChart("Annual project collection status");
             UpdateSystemAnalystChart("Delayed project status");
             UpdateSystemAnalystChart("Annual project hours status");
             UpdateSystemAnalystChart("Active task status");
 
-            //¸ø»î¶¯ÓÃ»§·ÖÅäÏîÄ¿ºáÏò·ÖÎöÍ¼
+            //ç»™æ´»åŠ¨ç”¨æˆ·åˆ†é…é¡¹ç›®æ¨ªå‘åˆ†æå›¾
             addSystemHAnalystChartToActiveUser();
 
-            //¸üĞÂÏµÍ³·ÖÎöÍ¼±íÖĞµÄÖĞÎÄÃû³ÆÎªÓ¢ÎÄÃû³Æ
+            //æ›´æ–°ç³»ç»Ÿåˆ†æå›¾è¡¨ä¸­çš„ä¸­æ–‡åç§°ä¸ºè‹±æ–‡åç§°
             updateSystemAnalystChartChineseNameToEnglishName();
 
-            //¸üĞÂÏµÍ³·ÖÎöÍ¼¹ØÁªÓÃ»§±íÖĞµÄÖĞÎÄÃû³ÆÎªÓ¢ÎÄÃû³Æ
+            //æ›´æ–°ç³»ç»Ÿåˆ†æå›¾å…³è”ç”¨æˆ·è¡¨ä¸­çš„ä¸­æ–‡åç§°ä¸ºè‹±æ–‡åç§°
             updateSystemAnalystChartChineseNameToEnglishNameForRelatedUserCode();
 
-            //ÎªÏîÄ¿±¦°æ±¾¸üĞÂÏµÍ³·ÖÎöÍ¼Ãû³Æ´íÎó
+            //ä¸ºé¡¹ç›®å®ç‰ˆæœ¬æ›´æ–°ç³»ç»Ÿåˆ†æå›¾åç§°é”™è¯¯
             updateSystemAnalystChartNameForXMBError();
 
-            //É¾³ıÏµÍ³·ÖÎöÍ¼ÓÃ»§¹ØÁª±íÖĞµÄ²»¿ÉÓÃºÍ¶àÓàµÄÊı¾İ
+            //åˆ é™¤ç³»ç»Ÿåˆ†æå›¾ç”¨æˆ·å…³è”è¡¨ä¸­çš„ä¸å¯ç”¨å’Œå¤šä½™çš„æ•°æ®
             deleteSystemAnalystChartRelatedUserInvalidData();
 
-            //Ôö¼ÓºáÏò·ÖÎöÍ¼¸øÖ¸¶¨ÓÃ»§
+            //å¢åŠ æ¨ªå‘åˆ†æå›¾ç»™æŒ‡å®šç”¨æˆ·
             addHChartToSpecialUser(strUserCode);
 
-            //¸üĞÂÏµÍ³·ÖÎöÍ¼ÓÃ»§¹ØÁª±íÖĞ·ÖÎöÍ¼µÄÅÅĞòºÅ
+            //æ›´æ–°ç³»ç»Ÿåˆ†æå›¾ç”¨æˆ·å…³è”è¡¨ä¸­åˆ†æå›¾çš„æ’åºå·
             updateSystemAnalystChartSortNumberForRelatedUser();
 
-            //³õÊ¼»¯Ä£¿é²Ù×÷µ¼º½µÄÂ·Ïß¶¨Òå
-            UpdateModuleFlowDefinition();
+            //åˆ é™¤ç³»ç»Ÿåˆ†æå›¾ç”¨æˆ·å…³è”è¡¨ä¸­çš„ä¸å¯ç”¨å’Œå¤šä½™çš„æ•°æ®
+            deleteSystemAnalystChartRelatedUserInvalidData();
 
-            //ÉèÖÃÊı¾İ¿âÖ»¶ÁÓÃ»§µÄÖ»¶ÁÃÜÂë£¬Ò»°ãÓÚ±¨±íÉè¼ÆÕß
+            //å¢åŠ æ¨¡å—æ“ä½œå¯¼èˆªå›¾æ¨¡å—
+            ShareClass.InitializeOperateNavigationModuleForAllUserTypes();
+
+            //åˆå§‹åŒ–æ¨¡å—æ“ä½œå¯¼èˆªçš„è·¯çº¿å®šä¹‰
+            ShareClass.UpdateModuleFlowDefinition();
+
+            //è®¾ç½®æ•°æ®åº“åªè¯»ç”¨æˆ·çš„åªè¯»å¯†ç ï¼Œä¸€èˆ¬äºæŠ¥è¡¨è®¾è®¡è€…
             SetDBUserIDPasswordForDBOnlyReadUser();
 
-            //Éè¶îÍâ´úÂëÔËĞĞ±ê¼Ç
+            //è®¾é¢å¤–ä»£ç è¿è¡Œæ ‡è®°
             SetNormalOtherCodeMark(intRunMark);
 
-            ////ÅĞ¶ÏÏÖÓĞÏµÍ³ÊÇ·ñÒÑ¾­ÔÚÊ¹ÓÃ£¬ÕıÊ½Ê¹ÓÃÁËÔòÖ´ĞĞÏÂÃæ´úÂë
+            ////åˆ¤æ–­ç°æœ‰ç³»ç»Ÿæ˜¯å¦å·²ç»åœ¨ä½¿ç”¨ï¼Œæ­£å¼ä½¿ç”¨äº†åˆ™æ‰§è¡Œä¸‹é¢ä»£ç 
             //if (intUserNumber > 2)
             //{
-            //    //½ûÓÃÊµÊ©½×¶ÎµÄ»ù´¡Êı¾İÉ¾³ı¹¦ÄÜ
+            //    //ç¦ç”¨å®æ–½é˜¶æ®µçš„åŸºç¡€æ•°æ®åˆ é™¤åŠŸèƒ½
             //    UpdateIsCanClearBaseData(strUserCode, strUserName);
             //}
         }
     }
 
-    //È¡ÆÕÍ¨¶îÍâ´úÂëÔËĞĞ±ê¼Ç
+    //å–æ™®é€šé¢å¤–ä»£ç è¿è¡Œæ ‡è®°
     public static int GetNormalOtherCodeRunMark()
     {
         string strHQL;
@@ -149,7 +155,7 @@ public partial class TakeTopSystemOtherCodeRunPage : System.Web.UI.Page
         return intMark;
     }
 
-    //Éè¶îÍâ´úÂëÔËĞĞ±ê¼Ç
+    //è®¾é¢å¤–ä»£ç è¿è¡Œæ ‡è®°
     public static void SetNormalOtherCodeMark(int intMark)
     {
         string strHQL;
@@ -157,7 +163,7 @@ public partial class TakeTopSystemOtherCodeRunPage : System.Web.UI.Page
         ShareClass.RunSqlCommand(strHQL);
     }
 
-    //Ôö¼ÓÏµÍ³·ÖÎöÍ¼ÖÖÀà
+    //å¢åŠ ç³»ç»Ÿåˆ†æå›¾ç§ç±»
     protected static void AddSystemAnalystChart(string strChartName)
     {
         string strHQL;
@@ -377,7 +383,7 @@ SELECT
         }
     }
 
-    //¸üĞÂÏµÍ³·ÖÎöÍ¼SqlCode´úÂë
+    //æ›´æ–°ç³»ç»Ÿåˆ†æå›¾SqlCodeä»£ç 
     public static void UpdateSystemAnalystChart(string strChartName)
     {
         string strHQL;
@@ -559,7 +565,7 @@ SELECT
     }
 
 
-    //Ôö¼ÓºáÏò·ÖÎöÍ¼¸øÖ¸¶¨ÓÃ»§
+    //å¢åŠ æ¨ªå‘åˆ†æå›¾ç»™æŒ‡å®šç”¨æˆ·
     public static void addHChartToSpecialUser(string strUserCode)
     {
         string strHQL;
@@ -580,7 +586,7 @@ SELECT
     }
 
 
-    //Ôö¼ÓÔ¤¾¯ÃüÁî
+    //å¢åŠ é¢„è­¦å‘½ä»¤
     public static void AddEarlyWarningOrder(string strFunName)
     {
         string strHQL, strUpdateHQL;
@@ -632,7 +638,7 @@ SELECT
     }
 
 
-    //¸ü¸ÄÔ¤¾¯ÃüÁî
+    //æ›´æ”¹é¢„è­¦å‘½ä»¤
     public static void UpdateEaryWarningOrder(string strFunName)
     {
         string strHQL, strUpdateHQL;
@@ -777,36 +783,36 @@ SELECT
 
                 intID = funInforDialBox.ID;
 
-                strUpdateHQL = @"------------------------±¾ÈËµÄÏîÄ¿¼Æ»®------------------ 
+                strUpdateHQL = @"------------------------æœ¬äººçš„é¡¹ç›®è®¡åˆ’------------------ 
                     select distinct PlanID,PlanDetail,BeginTime,EndTime,Budget,ExpireDay,Status,ParentIDGantt,LeaderCode,Leader,
 	                    PriorID,Type,VerID,Percent_Done,DefaultSchedule,Expense,DefaultCost,ProjectID,ProjectName,PMCode,PMName  
 	                    from V_ProjectPlanList
 	                    where PMCode =  '[TAKETOPUSERCODE]'
-	                    and Expireday > 1  --ÍÏÑÓÌìÊı£¬¸Ä³ÉÄãĞèÒªµÄÌìÊı 
+	                    and Expireday > 1  --æ‹–å»¶å¤©æ•°ï¼Œæ”¹æˆä½ éœ€è¦çš„å¤©æ•° 
 	
 	                    and ParentIDGantt > 0
 	                    and Percent_Done < 100
 	                    and PlanID not In (Select ParentIDGantt From T_ImplePlan)
 	
                      UNION
-                     ------------------------Ö÷¹ÜµÄÖ±½Ó³ÉÔ±µÄÏîÄ¿¼Æ»®------------------ 
+                     ------------------------ä¸»ç®¡çš„ç›´æ¥æˆå‘˜çš„é¡¹ç›®è®¡åˆ’------------------ 
                      select distinct PlanID,PlanDetail,BeginTime,EndTime,Budget,ExpireDay,Status,ParentIDGantt,LeaderCode,Leader,
 	                    PriorID,Type,VerID,Percent_Done,DefaultSchedule,Expense,DefaultCost,ProjectID,ProjectName,PMCode,PMName 
 	                    from V_ProjectPlanList
 	                    where PMCode in (Select UserCode From T_MemberLevel Where UserCode = '[TAKETOPUSERCODE]'  and ProjectVisible = 'YES' )  
-                        and Expireday > 5   --ÍÏÑÓÌìÊı£¬¸Ä³ÉÄãĞèÒªµÄÌìÊı 
+                        and Expireday > 5   --æ‹–å»¶å¤©æ•°ï¼Œæ”¹æˆä½ éœ€è¦çš„å¤©æ•° 
 	   
 	                    and ParentIDGantt > 0
 	                    and Percent_Done < 100
 	                    and PlanID not In (Select ParentIDGantt From T_ImplePlan)
            
                      UNION
-                     ------------------------Ö÷¹ÜµÄËùÓĞ³ÉÔ±µÄÏîÄ¿¼Æ»®------------------ 
+                     ------------------------ä¸»ç®¡çš„æ‰€æœ‰æˆå‘˜çš„é¡¹ç›®è®¡åˆ’------------------ 
                     select distinct PlanID,PlanDetail,BeginTime,EndTime,Budget,ExpireDay,Status,ParentIDGantt,LeaderCode,Leader,
 	                    PriorID,Type,VerID,Percent_Done,DefaultSchedule,Expense,DefaultCost,ProjectID,ProjectName,PMCode,PMName 
 	                    from V_ProjectPlanList
 	                    Where PMCode in (Select UserCode From T_ProjectMember Where DepartCode in (''))
-                        and Expireday > 5   --ÍÏÑÓÌìÊı£¬¸Ä³ÉÄãĞèÒªµÄÌìÊı 
+                        and Expireday > 5   --æ‹–å»¶å¤©æ•°ï¼Œæ”¹æˆä½ éœ€è¦çš„å¤©æ•° 
 	   
 	                    and ParentIDGantt > 0
 	                    and Percent_Done < 100
@@ -917,7 +923,7 @@ SELECT
     }
 
 
-    //ÉèÖÃÊı¾İ¿âÖ»¶ÁÓÃ»§µÄÖ»¶ÁÃÜÂë£¬Ò»°ãÓÚ±¨±íÉè¼ÆÕß
+    //è®¾ç½®æ•°æ®åº“åªè¯»ç”¨æˆ·çš„åªè¯»å¯†ç ï¼Œä¸€èˆ¬äºæŠ¥è¡¨è®¾è®¡è€…
     protected static void SetDBUserIDPasswordForDBOnlyReadUser()
     {
         string strHQL1, strHQL2;
@@ -942,90 +948,8 @@ SELECT
         }
     }
 
-    //³õÊ¼»¯Ä£¿é²Ù×÷µ¼º½µÄÂ·Ïß¶¨Òå
-    public static void UpdateModuleFlowDefinition()
-    {
-        string strMFXML;
-        string strSystemProductType;
 
-        try
-        {
-            strSystemProductType = System.Configuration.ConfigurationManager.AppSettings["ProductType"];
-
-            //³õÊ¼»¯ÊµÊ©µ¼º½µÄÊµÊ©Â·Ïß¶¨Òå
-            strMFXML = @"{states:{rect1:{type:'start',text:{text:'¿ªÊ¼'}, attr:{ x:141, y:12, width:50, height:50}, props:{guid:{value:'4af6bc4b-7ed9-0b0b-e3a0-91c9d8fd92d1'},text:{value:'¿ªÊ¼'}}},rect2:{type:'task',text:{text:'»ù´¡Êı¾İ(ÍâÖÃ)'}, attr:{ x:267, y:62, width:100, height:50}, props:{guid:{value:'330ea6c7-33f5-e8e4-882a-c2e7b5763e84'},text:{value:'»ù´¡Êı¾İ(ÍâÖÃ)',url:'TTBaseDataOuter.aspx'}}},rect3:{type:'task',text:{text:'»ù´¡Êı¾İ(ÄÚÖÃ)'}, attr:{ x:496, y:62, width:100, height:50}, props:{guid:{value:'39ecc8b3-039f-f13b-7b56-b380c8eb2d3d'},text:{value:'»ù´¡Êı¾İ(ÄÚÖÃ)',url:'TTBaseDataInner.aspx'}}},rect4:{type:'task',text:{text:'×éÖ¯¼Ü¹¹ÉèÖÃ'}, attr:{ x:691, y:62, width:100, height:50}, props:{guid:{value:'0a6fd6c1-c2a6-b674-6a38-b407ac819f76'},text:{value:'×éÖ¯¼Ü¹¹ÉèÖÃ',url:'TTDepartment.aspx'}}},rect5:{type:'task',text:{text:'Ô±¹¤µµ°¸ÉèÖÃ'}, attr:{ x:886, y:63, width:100, height:50}, props:{guid:{value:'fcf442a4-3711-d09c-ffee-b8a6fcdcdac9'},text:{value:'Ô±¹¤µµ°¸ÉèÖÃ',url:'TTUserInfor.aspx'}}},rect6:{type:'task',text:{text:'Ô±¹¤×ÊÁÏµ¼Èë'}, attr:{ x:271, y:154, width:100, height:50}, props:{guid:{value:'85f9b02d-84c6-b9d9-9b22-4831788ae50e'},text:{value:'Ô±¹¤×ÊÁÏµ¼Èë',url:'TTUserInforImport.aspx'}}},rect7:{type:'task',text:{text:'ÓÃ»§È¨ÏŞ¹ÜÀí'}, attr:{ x:270, y:250, width:100, height:50}, props:{guid:{value:'4ca043ad-3c84-c0af-4e7b-0c749ccb1c3d'},text:{value:'ÓÃ»§È¨ÏŞ¹ÜÀí',url:'TTProModuleAuthority.aspx'}}},rect8:{type:'task',text:{text:'ÏµÍ³ÓÃ»§ÉèÖÃ'}, attr:{ x:494, y:253, width:100, height:50}, props:{guid:{value:'01517ae8-e172-149d-359e-5ff6afc87603'},text:{value:'ÏµÍ³ÓÃ»§ÉèÖÃ',url:'TTSystemActiveUserSet.aspx'}}},rect9:{type:'task',text:{text:'Ö±½Ó³ÉÔ±²ã´ÎÉèÖÃ'}, attr:{ x:692, y:253, width:100, height:50}, props:{guid:{value:'18faee71-5273-0cbd-7bd3-1fc624e2253f'},text:{value:'Ö±½Ó³ÉÔ±²ã´ÎÉèÖÃ',url:'TTMemberLevelSet.aspx'}}},rect10:{type:'task',text:{text:'Á÷³ÌÄ£°åÉèÖÃ'}, attr:{ x:887, y:255, width:100, height:50}, props:{guid:{value:'b84f2f71-fd7b-5c3f-78aa-8e79021683ba'},text:{value:'Á÷³ÌÄ£°åÉèÖÃ',url:'TTWorkFlowTemplate.aspx'}}},rect11:{type:'task',text:{text:'ÎÄµµÀàĞÍÉèÖÃ'}, attr:{ x:272, y:332, width:100, height:50}, props:{guid:{value:'7291f992-1ad8-b3b6-1eff-be100785b975'},text:{value:'ÎÄµµÀàĞÍÉèÖÃ',url:'TTDocumentTypeSet.aspx'}}},rect12:{type:'task',text:{text:'½ÇÉ«×éÉèÖÃ'}, attr:{ x:272, y:456, width:100, height:50}, props:{guid:{value:'6c73074a-58f7-f5c7-62ce-a5aba9142648'},text:{value:'½ÇÉ«×éÉèÖÃ',url:'TTActorGroup.aspx'}}},rect13:{type:'task',text:{text:'ĞÂÎÅÀàĞÍÉèÖÃ'}, attr:{ x:491, y:457, width:100, height:50}, props:{guid:{value:'f0d6623c-39ab-fdca-cf64-3c507371a429'},text:{value:'ĞÂÎÅÀàĞÍÉèÖÃ',url:'TTPersonalSpaceNewsTypeEdit.aspx'}}},rect14:{type:'end',text:{text:'½áÊø(End)'}, attr:{ x:698, y:456, width:50, height:50}, props:{guid:{value:'718652a3-5724-2781-786b-abe937bd574b'},text:{value:'½áÊø(End)'}}}},paths:{path15:{from:'rect1',to:'rect2', dots:[],text:{text:'TO ²½Öè(Step)'},textPos:{x:0,y:-10}, props:{text:{value:''}}},path16:{from:'rect2',to:'rect3', dots:[],text:{text:'TO ²½Öè(Step)'},textPos:{x:0,y:-10}, props:{text:{value:''}}},path17:{from:'rect3',to:'rect4', dots:[],text:{text:'TO ×éÖ¯¼Ü¹¹ÉèÖÃ'},textPos:{x:0,y:-10}, props:{text:{value:''}}},path18:{from:'rect4',to:'rect5', dots:[],text:{text:'TO Ô±¹¤×ÊÁÏµ¼Èë'},textPos:{x:0,y:-10}, props:{text:{value:''}}},path19:{from:'rect7',to:'rect8', dots:[],text:{text:'TO ÏµÍ³ÓÃ»§ÉèÖÃ'},textPos:{x:0,y:-10}, props:{text:{value:''}}},path20:{from:'rect8',to:'rect9', dots:[],text:{text:'TO Ö±½Ó³ÉÔ±²ã´ÎÉèÖÃ'},textPos:{x:0,y:-10}, props:{text:{value:''}}},path21:{from:'rect12',to:'rect13', dots:[],text:{text:'TO ĞÂÎÅÀàĞÍÉèÖÃ'},textPos:{x:0,y:-10}, props:{text:{value:''}}},path22:{from:'rect9',to:'rect10', dots:[],text:{text:'TO Á÷³ÌÄ£°åÉèÖÃ'},textPos:{x:0,y:-10}, props:{text:{value:''}}},path23:{from:'rect13',to:'rect14', dots:[],text:{text:'TO ½áÊø(End)'},textPos:{x:0,y:-10}, props:{text:{value:''}}},path24:{from:'rect5',to:'rect6', dots:[{x:935,y:179}],text:{text:'TO Ô±¹¤µµ°¸ÉèÖÃ'},textPos:{x:0,y:-10}, props:{text:{value:'TO Ô±¹¤µµ°¸ÉèÖÃ'}}},path25:{from:'rect6',to:'rect7', dots:[],text:{text:'TO ÓÃ»§È¨ÏŞ¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:''}}},path26:{from:'rect10',to:'rect11', dots:[{x:937,y:357}],text:{text:'TO ÎÄµµÀàĞÍÉèÖÃ'},textPos:{x:-12,y:-10}, props:{text:{value:'TO ÎÄµµÀàĞÍÉèÖÃ'}}},path27:{from:'rect11',to:'rect12', dots:[],text:{text:'TO ½ÇÉ«×éÉèÖÃ'},textPos:{x:0,y:-10}, props:{text:{value:''}}}},props:{props:{name:{value:'ĞÂ½¨Á÷³Ì'},key:{value:''},desc:{value:''}}}}";
-            SaveModuleFlowDefinition("ÊµÊ©µ¼º½", strMFXML, 1, "INNER");
-
-            if ("ECMP,DEMO".IndexOf(strSystemProductType) > -1)
-            {
-                strMFXML = @"{states:{rect1:{type:'task',text:{text:'ÏîÄ¿Á¢Ïî'}, attr:{ x:105, y:127, width:100, height:50}, props:{guid:{value:'02899d0f-472c-063f-f67e-c6b9d45c8d29'},text:{value:'ÏîÄ¿Á¢Ïî',url:'TTMakeProject.aspx'}}},rect2:{type:'task',text:{text:'ÏîÄ¿¹ÜÀí'}, attr:{ x:313, y:127, width:100, height:50}, props:{guid:{value:'5fe585ee-cf14-5681-46eb-e0f32e23b369'},text:{value:'ÏîÄ¿¹ÜÀí',url:'TTProjectManage.aspx'}}},rect3:{type:'task',text:{text:'ÏîÄ¿ÈÎÎñ¹ÜÀí'}, attr:{ x:313, y:8, width:100, height:50}, props:{guid:{value:'e2637d3e-2cdb-2369-c06d-febd974c8af5'},text:{value:'ÏîÄ¿ÈÎÎñ¹ÜÀí',url:'TTProjectTaskManageMain.aspx'}}},rect4:{type:'task',text:{text:'¹¤×÷Á÷¹ÜÀí'}, attr:{ x:541, y:128, width:100, height:50}, props:{guid:{value:'7c6325be-8337-ec12-76ed-1a03b86afab4'},text:{value:'¹¤×÷Á÷¹ÜÀí',url:'TTWLManage.aspx'}}},rect5:{type:'task',text:{text:'ÏîÄ¿ĞèÇó¹ÜÀí'}, attr:{ x:313, y:243, width:100, height:50}, props:{guid:{value:'54404d63-2600-e15e-81e4-d73382f0c4be'},text:{value:'ÏîÄ¿ĞèÇó¹ÜÀí',url:'TTProjectReqManageMain.aspx'}}},rect6:{type:'task',text:{text:'¹©Ó¦Á´¹ÜÀí'}, attr:{ x:733, y:130, width:100, height:50}, props:{guid:{value:'1c96be8a-74f3-4245-8410-1e644295853b'},text:{value:'¹©Ó¦Á´¹ÜÀí',url:'TTGoodsManage.aspx'}}},rect7:{type:'task',text:{text:'ÖªÊ¶¹ÜÀí'}, attr:{ x:1142, y:132, width:100, height:50}, props:{guid:{value:'5d7924f1-d30f-8e77-f9c2-bbff046fc474'},text:{value:'ÖªÊ¶¹ÜÀí',url:'TTDocumentManage.aspx'}}},rect8:{type:'task',text:{text:'²ÆÎñ¹ÜÀí'}, attr:{ x:940, y:131, width:100, height:50}, props:{guid:{value:'1d88fb65-7ead-3211-578a-ca3f51f6d5c4'},text:{value:'²ÆÎñ¹ÜÀí',url:'TTReceivablesPayableAlert.aspx'}}},rect9:{type:'task',text:{text:'Èë¿âµ¥'}, attr:{ x:733, y:7, width:100, height:50}, props:{guid:{value:'7f67e5bf-6b78-d79c-9ef3-b2858f7293b0'},text:{value:'Èë¿âµ¥',url:'TTMakeGoods.aspx'}}},rect10:{type:'task',text:{text:'³ö¿âµ¥'}, attr:{ x:733, y:244, width:100, height:50}, props:{guid:{value:'ca55c30d-c204-9183-baea-4629fb52ef33'},text:{value:'³ö¿âµ¥',url:'TTGoodsShipmentOrder.aspx'}}},rect11:{type:'task',text:{text:'ÊÕ¿î'}, attr:{ x:940, y:6, width:100, height:50}, props:{guid:{value:'bb49d768-afb5-6148-bad3-a10a1f4e47db'},text:{value:'ÊÕ¿î',url:'TTAccountReceivablesRecord.aspx'}}},rect12:{type:'task',text:{text:'¸¶¿î'}, attr:{ x:940, y:243, width:100, height:50}, props:{guid:{value:'40067ae4-3ada-306f-0e3a-33f00532c494'},text:{value:'¸¶¿î',url:'TTAccountPayableRecord.aspx'}}}},paths:{path13:{from:'rect1',to:'rect2', dots:[],text:{text:'TO ÏîÄ¿¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ÏîÄ¿¹ÜÀí'}}},path14:{from:'rect2',to:'rect3', dots:[],text:{text:'TO ÏîÄ¿ÈÎÎñ¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ÏîÄ¿ÈÎÎñ¹ÜÀí'}}},path15:{from:'rect2',to:'rect4', dots:[],text:{text:'TO ¹¤×÷Á÷¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ¹¤×÷Á÷¹ÜÀí'}}},path16:{from:'rect2',to:'rect5', dots:[],text:{text:'TO ÏîÄ¿ĞèÇó¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ÏîÄ¿ĞèÇó¹ÜÀí'}}},path17:{from:'rect4',to:'rect6', dots:[],text:{text:'TO ¹©Ó¦Á´¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ¹©Ó¦Á´¹ÜÀí'}}},path18:{from:'rect6',to:'rect8', dots:[],text:{text:'TO ²ÆÎñ¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ²ÆÎñ¹ÜÀí'}}},path19:{from:'rect8',to:'rect7', dots:[],text:{text:'TO ÖªÊ¶¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ÖªÊ¶¹ÜÀí'}}},path20:{from:'rect9',to:'rect6', dots:[],text:{text:'TO ¹©Ó¦Á´¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ¹©Ó¦Á´¹ÜÀí'}}},path21:{from:'rect10',to:'rect6', dots:[],text:{text:'TO ¹©Ó¦Á´¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ¹©Ó¦Á´¹ÜÀí'}}},path22:{from:'rect11',to:'rect8', dots:[],text:{text:'TO ²ÆÎñ¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ²ÆÎñ¹ÜÀí'}}},path23:{from:'rect12',to:'rect8', dots:[],text:{text:'TO ²ÆÎñ¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ²ÆÎñ¹ÜÀí'}}}},props:{props:{name:{value:'ĞÂ½¨Á÷³Ì'},key:{value:''},desc:{value:''}}}}";
-                SaveModuleFlowDefinition("²Ù×÷µ¼º½", strMFXML, 3, "INNER");
-            }
-
-            if (strSystemProductType == "EDPMP")
-            {
-                strMFXML = @"{states:{rect1:{type:'task',text:{text:'ÏîÄ¿Á¢Ïî'}, attr:{ x:105, y:127, width:100, height:50}, props:{guid:{value:'02899d0f-472c-063f-f67e-c6b9d45c8d29'},text:{value:'ÏîÄ¿Á¢Ïî',url:'TTMakeProject.aspx'}}},rect2:{type:'task',text:{text:'ÏîÄ¿¹ÜÀí'}, attr:{ x:313, y:127, width:100, height:50}, props:{guid:{value:'5fe585ee-cf14-5681-46eb-e0f32e23b369'},text:{value:'ÏîÄ¿¹ÜÀí',url:'TTProjectManage.aspx'}}},rect3:{type:'task',text:{text:'ÏîÄ¿ÈÎÎñ¹ÜÀí'}, attr:{ x:539, y:30, width:100, height:50}, props:{guid:{value:'e2637d3e-2cdb-2369-c06d-febd974c8af5'},text:{value:'ÏîÄ¿ÈÎÎñ¹ÜÀí',url:'TTProjectTaskManageMain.aspx'}}},rect4:{type:'task',text:{text:'¹¤×÷Á÷¹ÜÀí'}, attr:{ x:541, y:128, width:100, height:50}, props:{guid:{value:'7c6325be-8337-ec12-76ed-1a03b86afab4'},text:{value:'¹¤×÷Á÷¹ÜÀí',url:'TTWLManage.aspx'}}},rect5:{type:'task',text:{text:'ÖªÊ¶¹ÜÀí'}, attr:{ x:1150, y:129, width:100, height:50}, props:{guid:{value:'cc37c28e-3f87-c548-408e-c5404815c2f6'},text:{value:'ÖªÊ¶¹ÜÀí',url:'TTDocumentManage.aspx'}}},rect6:{type:'task',text:{text:'Í¶±ê¹ÜÀí'}, attr:{ x:741, y:128, width:100, height:50}, props:{guid:{value:'7afdc1c7-86a7-86f0-f1f4-27080c5a5e12'},text:{value:'Í¶±ê¹ÜÀí',url:'TTTenderUNHandleList.aspx'}}},rect7:{type:'task',text:{text:'Í¶±êµÇ¼Ç'}, attr:{ x:741, y:32, width:100, height:50}, props:{guid:{value:'a156bfcc-cc20-8067-f531-88166371239c'},text:{value:'Í¶±êµÇ¼Ç',url:'TTTenderList.aspx'}}},rect8:{type:'task',text:{text:'Í¶±êÈ·ÈÏ'}, attr:{ x:742, y:234, width:100, height:50}, props:{guid:{value:'ed594496-0b83-c6d3-5922-8efad984eee1'},text:{value:'Í¶±êÈ·ÈÏ',url:'TTTenderFinanceList.aspx'}}},rect9:{type:'task',text:{text:'ËùÓĞ³ÉÔ±ÏîÄ¿×´Ì¬'}, attr:{ x:935, y:130, width:120, height:50}, props:{guid:{value:'016de4e1-1aa6-e650-cd13-261b951d2066'},text:{value:'ËùÓĞ³ÉÔ±ÏîÄ¿×´Ì¬',url:'TTAllProjectsRunStatus.aspx'}}},rect10:{type:'task',text:{text:'ÏîÄ¿·çÏÕ¹ÜÀí'}, attr:{ x:542, y:234, width:100, height:50}, props:{guid:{value:'273b9704-371f-e2aa-41ae-d3a94c29ae6c'},text:{value:'ÏîÄ¿·çÏÕ¹ÜÀí',url:'TTProjectRiskManageMain.aspx'}}}},paths:{path11:{from:'rect1',to:'rect2', dots:[],text:{text:'TO ÏîÄ¿¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ÏîÄ¿¹ÜÀí'}}},path12:{from:'rect2',to:'rect3', dots:[],text:{text:'TO ÏîÄ¿ÈÎÎñ¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ÏîÄ¿ÈÎÎñ¹ÜÀí'}}},path13:{from:'rect2',to:'rect4', dots:[],text:{text:'TO ¹¤×÷Á÷¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ¹¤×÷Á÷¹ÜÀí'}}},path14:{from:'rect4',to:'rect6', dots:[],text:{text:'TO Í¶±ê¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO Í¶±ê¹ÜÀí'}}},path15:{from:'rect7',to:'rect6', dots:[],text:{text:'TO Í¶±ê¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO Í¶±ê¹ÜÀí'}}},path16:{from:'rect8',to:'rect6', dots:[],text:{text:'TO Í¶±ê¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO Í¶±ê¹ÜÀí'}}},path17:{from:'rect6',to:'rect9', dots:[],text:{text:'TO ËùÓĞ³ÉÔ±ÏîÄ¿×´Ì¬'},textPos:{x:0,y:-10}, props:{text:{value:'TO ËùÓĞ³ÉÔ±ÏîÄ¿×´Ì¬'}}},path18:{from:'rect9',to:'rect5', dots:[],text:{text:'TO ÖªÊ¶¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ÖªÊ¶¹ÜÀí'}}},path19:{from:'rect2',to:'rect10', dots:[],text:{text:'TO ÏîÄ¿·çÏÕ¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:''}}}},props:{props:{name:{value:'ĞÂ½¨Á÷³Ì'},key:{value:''},desc:{value:''}}}}";
-                SaveModuleFlowDefinition("²Ù×÷µ¼º½", strMFXML, 3, "INNER");
-            }
-
-            if (strSystemProductType == "RDPMP")
-            {
-                strMFXML = @"{states:{rect1:{type:'task',text:{text:'ÏîÄ¿Á¢Ïî'}, attr:{ x:146, y:125, width:100, height:50}, props:{guid:{value:'02899d0f-472c-063f-f67e-c6b9d45c8d29'},text:{value:'ÏîÄ¿Á¢Ïî',url:'TTMakeProject.aspx'}}},rect2:{type:'task',text:{text:'ÏîÄ¿¹ÜÀí'}, attr:{ x:405, y:126, width:100, height:50}, props:{guid:{value:'5fe585ee-cf14-5681-46eb-e0f32e23b369'},text:{value:'ÏîÄ¿¹ÜÀí',url:'TTProjectManage.aspx'}}},rect3:{type:'task',text:{text:'ÏîÄ¿ÈÎÎñ¹ÜÀí'}, attr:{ x:320, y:18, width:100, height:50}, props:{guid:{value:'e2637d3e-2cdb-2369-c06d-febd974c8af5'},text:{value:'ÏîÄ¿ÈÎÎñ¹ÜÀí',url:'TTProjectTaskManageMain.aspx'}}},rect4:{type:'task',text:{text:'¹©Ó¦Á´¹ÜÀí'}, attr:{ x:795, y:127, width:100, height:50}, props:{guid:{value:'2c43e892-71ba-f826-f0df-5393bdd20173'},text:{value:'¹©Ó¦Á´¹ÜÀí',url:'TTGoodsManage.aspx'}}},rect5:{type:'task',text:{text:'ÁìÁÏµ¥'}, attr:{ x:795, y:11, width:100, height:50}, props:{guid:{value:'ee0e9c61-2ba9-f307-2ca5-45ca1e58345f'},text:{value:'ÁìÁÏµ¥',url:'TTGoodsApplicationOrder.aspx'}}},rect6:{type:'task',text:{text:'³ö¿âµ¥'}, attr:{ x:795, y:244, width:100, height:50}, props:{guid:{value:'d0018ba6-ef5d-b0ba-5e9c-97e001e698c5'},text:{value:'³ö¿âµ¥',url:'TTGoodsShipmentOrder.aspx'}}},rect7:{type:'task',text:{text:'¹¤×÷Á÷¹ÜÀí'}, attr:{ x:607, y:127, width:100, height:50}, props:{guid:{value:'39e45ece-447c-72ff-eb5f-bd5d40217313'},text:{value:'¹¤×÷Á÷¹ÜÀí',url:'TTWLManage.aspx'}}},rect8:{type:'task',text:{text:'ÏîÄ¿ĞèÇó¹ÜÀí'}, attr:{ x:323, y:241, width:100, height:50}, props:{guid:{value:'77cdd84c-a60a-7777-2611-114303e65439'},text:{value:'ÏîÄ¿ĞèÇó¹ÜÀí',url:'TTProjectReqManageMain.aspx'}}},rect9:{type:'task',text:{text:'ÖªÊ¶¹ÜÀí'}, attr:{ x:1040, y:128, width:100, height:50}, props:{guid:{value:'ed1042f6-938a-dbc6-d876-5b0adbeffecc'},text:{value:'ÖªÊ¶¹ÜÀí',url:'TTDocumentManage.aspx'}}},rect10:{type:'task',text:{text:'ÏîÄ¿È±Ïİ¹ÜÀí'}, attr:{ x:498, y:243, width:100, height:50}, props:{guid:{value:'e7016fa9-7391-8ca2-4f7d-d528cf302d8d'},text:{value:'ÏîÄ¿È±Ïİ¹ÜÀí',url:'TTProjectDefectManageMain.aspx'}}},rect11:{type:'task',text:{text:'ÏîÄ¿·çÏÕ¹ÜÀí'}, attr:{ x:496, y:19, width:100, height:50}, props:{guid:{value:'960e6089-9bbb-4f27-a14f-acc8acc0fce4'},text:{value:'ÏîÄ¿·çÏÕ¹ÜÀí',url:'TTProjectRiskManageMain.aspx'}}}},paths:{path12:{from:'rect1',to:'rect2', dots:[],text:{text:'TO ÏîÄ¿¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ÏîÄ¿¹ÜÀí'}}},path13:{from:'rect5',to:'rect4', dots:[],text:{text:'TO ¹©Ó¦Á´¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ¹©Ó¦Á´¹ÜÀí'}}},path14:{from:'rect6',to:'rect4', dots:[],text:{text:'TO ¹©Ó¦Á´¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ¹©Ó¦Á´¹ÜÀí'}}},path15:{from:'rect2',to:'rect7', dots:[],text:{text:'TO ¹¤×÷Á÷¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ¹¤×÷Á÷¹ÜÀí'}}},path16:{from:'rect7',to:'rect4', dots:[],text:{text:'TO ¹©Ó¦Á´¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ¹©Ó¦Á´¹ÜÀí'}}},path17:{from:'rect3',to:'rect2', dots:[],text:{text:'TO ÏîÄ¿¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ÏîÄ¿¹ÜÀí'}}},path18:{from:'rect8',to:'rect2', dots:[],text:{text:'TO ÏîÄ¿¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ÏîÄ¿¹ÜÀí'}}},path19:{from:'rect4',to:'rect9', dots:[],text:{text:'TO ÖªÊ¶¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ÖªÊ¶¹ÜÀí'}}},path20:{from:'rect10',to:'rect2', dots:[],text:{text:'TO ÏîÄ¿¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ÏîÄ¿¹ÜÀí'}}},path21:{from:'rect11',to:'rect2', dots:[],text:{text:'TO ÏîÄ¿¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:''}}}},props:{props:{name:{value:'ĞÂ½¨Á÷³Ì'},key:{value:''},desc:{value:''}}}}";
-                SaveModuleFlowDefinition("²Ù×÷µ¼º½", strMFXML, 3, "INNER");
-            }
-
-            if (strSystemProductType == "SIPMP")
-            {
-                strMFXML = @"{states:{rect1:{type:'task',text:{text:'ÏîÄ¿Á¢Ïî'}, attr:{ x:105, y:127, width:100, height:50}, props:{guid:{value:'02899d0f-472c-063f-f67e-c6b9d45c8d29'},text:{value:'ÏîÄ¿Á¢Ïî',url:'TTMakeProject.aspx'}}},rect2:{type:'task',text:{text:'ÏîÄ¿¹ÜÀí'}, attr:{ x:313, y:127, width:100, height:50}, props:{guid:{value:'5fe585ee-cf14-5681-46eb-e0f32e23b369'},text:{value:'ÏîÄ¿¹ÜÀí',url:'TTProjectManage.aspx'}}},rect3:{type:'task',text:{text:'ÏîÄ¿ÈÎÎñ¹ÜÀí'}, attr:{ x:539, y:32, width:100, height:50}, props:{guid:{value:'e2637d3e-2cdb-2369-c06d-febd974c8af5'},text:{value:'ÏîÄ¿ÈÎÎñ¹ÜÀí',url:'TTProjectTaskManageMain.aspx'}}},rect4:{type:'task',text:{text:'ÊÕ¿îÃ÷Ï¸»ã×Ü±í'}, attr:{ x:972, y:32, width:100, height:50}, props:{guid:{value:'6f8c99c9-3fcd-297d-1fa8-19811a07312b'},text:{value:'ÊÕ¿îÃ÷Ï¸»ã×Ü±í',url:'TTAccountReceiveRecordSummary.aspx'}}},rect5:{type:'task',text:{text:'¸¶¿îÃ÷Ï¸»ã×Ü±í'}, attr:{ x:971, y:233, width:100, height:50}, props:{guid:{value:'5a1f8b2b-c6f3-ce0b-7604-f7a986a65be7'},text:{value:'¸¶¿îÃ÷Ï¸»ã×Ü±í',url:'TTAccountPayRecordSummary.aspx'}}},rect6:{type:'task',text:{text:'¹¤×÷Á÷¹ÜÀí'}, attr:{ x:541, y:128, width:100, height:50}, props:{guid:{value:'7c6325be-8337-ec12-76ed-1a03b86afab4'},text:{value:'¹¤×÷Á÷¹ÜÀí',url:'TTWLManage.aspx'}}},rect7:{type:'task',text:{text:'ÏîÄ¿ĞèÇó¹ÜÀí'}, attr:{ x:539, y:233, width:100, height:50}, props:{guid:{value:'cc37c28e-3f87-c548-408e-c5404815c2f6'},text:{value:'ÏîÄ¿ĞèÇó¹ÜÀí',url:'TTProjectReqManageMain.aspx'}}},rect8:{type:'task',text:{text:'ÖªÊ¶¹ÜÀí'}, attr:{ x:1192, y:127, width:100, height:50}, props:{guid:{value:'28fad06e-abdf-9e5c-5dcc-83cf8e31b868'},text:{value:'ÖªÊ¶¹ÜÀí',url:'TTDocumentManage.aspx'}}},rect9:{type:'task',text:{text:'¹©Ó¦Á´¹ÜÀí'}, attr:{ x:734, y:126, width:100, height:50}, props:{guid:{value:'97a9836e-9bfd-0785-186c-82b045d4c045'},text:{value:'¹©Ó¦Á´¹ÜÀí',url:'TTGoodsManage.aspx'}}},rect10:{type:'task',text:{text:'²É¹º¶©µ¥'}, attr:{ x:681, y:35, width:100, height:50}, props:{guid:{value:'2885595e-3090-94cf-dcbb-eeec21743fd1'},text:{value:'²É¹º¶©µ¥',url:'TTMakeGoodsPurchase.aspx'}}},rect11:{type:'task',text:{text:'Èë¿âµ¥'}, attr:{ x:831, y:33, width:100, height:50}, props:{guid:{value:'ff012f74-eb6a-ece7-07d0-802a93ac8630'},text:{value:'Èë¿âµ¥',url:'TTMakeGoods.aspx'}}},rect12:{type:'task',text:{text:'ÁìÁÏµ¥'}, attr:{ x:681, y:232, width:100, height:50}, props:{guid:{value:'d6a96f3c-4232-b23a-5d98-851660ee72e3'},text:{value:'ÁìÁÏµ¥',url:'TTGoodsApplicationOrder.aspx'}}},rect13:{type:'task',text:{text:'³ö¿âµ¥'}, attr:{ x:831, y:231, width:100, height:50}, props:{guid:{value:'8552f52f-2566-d548-b15d-b482a47f9c59'},text:{value:'³ö¿âµ¥',url:'TTGoodsShipmentOrder.aspx'}}},rect14:{type:'task',text:{text:'²ÆÎñ¹ÜÀí'}, attr:{ x:972, y:126, width:100, height:50}, props:{guid:{value:'fdfcecbb-2f46-87c3-73ba-3264fee27d42'},text:{value:'²ÆÎñ¹ÜÀí',url:'TTReceivablesPayableAlert.aspx'}}}},paths:{path15:{from:'rect1',to:'rect2', dots:[],text:{text:'TO ÏîÄ¿¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ÏîÄ¿¹ÜÀí'}}},path16:{from:'rect2',to:'rect3', dots:[],text:{text:'TO ÏîÄ¿ÈÎÎñ¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ÏîÄ¿ÈÎÎñ¹ÜÀí'}}},path17:{from:'rect2',to:'rect6', dots:[],text:{text:'TO ¹¤×÷Á÷¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ¹¤×÷Á÷¹ÜÀí'}}},path18:{from:'rect6',to:'rect9', dots:[],text:{text:'TO ¹©Ó¦Á´¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ¹©Ó¦Á´¹ÜÀí'}}},path19:{from:'rect9',to:'rect14', dots:[],text:{text:'TO ²ÆÎñ¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ²ÆÎñ¹ÜÀí'}}},path20:{from:'rect10',to:'rect9', dots:[],text:{text:'TO ¹©Ó¦Á´¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ¹©Ó¦Á´¹ÜÀí'}}},path21:{from:'rect11',to:'rect9', dots:[],text:{text:'TO ¹©Ó¦Á´¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ¹©Ó¦Á´¹ÜÀí'}}},path22:{from:'rect12',to:'rect9', dots:[],text:{text:'TO ¹©Ó¦Á´¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ¹©Ó¦Á´¹ÜÀí'}}},path23:{from:'rect13',to:'rect9', dots:[],text:{text:'TO ¹©Ó¦Á´¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ¹©Ó¦Á´¹ÜÀí'}}},path24:{from:'rect4',to:'rect14', dots:[],text:{text:'TO ²ÆÎñ¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ²ÆÎñ¹ÜÀí'}}},path25:{from:'rect5',to:'rect14', dots:[],text:{text:'TO ²ÆÎñ¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ²ÆÎñ¹ÜÀí'}}},path26:{from:'rect2',to:'rect7', dots:[],text:{text:'TO ÏîÄ¿ĞèÇó¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ÏîÄ¿ĞèÇó¹ÜÀí'}}},path27:{from:'rect14',to:'rect8', dots:[],text:{text:'TO ÖªÊ¶¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:''}}}},props:{props:{name:{value:'ĞÂ½¨Á÷³Ì'},key:{value:''},desc:{value:''}}}}";
-                SaveModuleFlowDefinition("²Ù×÷µ¼º½", strMFXML, 3, "INNER");
-            }
-
-            if (strSystemProductType == "SOPMP")
-            {
-                strMFXML = @"{states:{rect1:{type:'task',text:{text:'ÏîÄ¿Á¢Ïî'}, attr:{ x:105, y:127, width:100, height:50}, props:{guid:{value:'02899d0f-472c-063f-f67e-c6b9d45c8d29'},text:{value:'ÏîÄ¿Á¢Ïî',url:'TTMakeProject.aspx'}}},rect2:{type:'task',text:{text:'ÏîÄ¿¹ÜÀí'}, attr:{ x:313, y:127, width:100, height:50}, props:{guid:{value:'5fe585ee-cf14-5681-46eb-e0f32e23b369'},text:{value:'ÏîÄ¿¹ÜÀí',url:'TTProjectManage.aspx'}}},rect3:{type:'task',text:{text:'ÏîÄ¿ÈÎÎñ¹ÜÀí'}, attr:{ x:539, y:30, width:100, height:50}, props:{guid:{value:'e2637d3e-2cdb-2369-c06d-febd974c8af5'},text:{value:'ÏîÄ¿ÈÎÎñ¹ÜÀí',url:'TTProjectTaskManageMain.aspx'}}},rect4:{type:'task',text:{text:'ÊÕ¸¶¿îÔ¤¾¯'}, attr:{ x:752, y:131, width:100, height:50}, props:{guid:{value:'cf2796ca-6729-11cd-5270-5a691941fe8b'},text:{value:'ÊÕ¸¶¿îÔ¤¾¯',url:'TTReceivablesPayableAlert.aspx'}}},rect5:{type:'task',text:{text:'ÊÕ¿îÃ÷Ï¸»ã×Ü±í'}, attr:{ x:961, y:69, width:100, height:50}, props:{guid:{value:'6f8c99c9-3fcd-297d-1fa8-19811a07312b'},text:{value:'ÊÕ¿îÃ÷Ï¸»ã×Ü±í',url:'TTAccountReceiveRecordSummary.aspx'}}},rect6:{type:'task',text:{text:'¸¶¿îÃ÷Ï¸»ã×Ü±í'}, attr:{ x:961, y:180, width:100, height:50}, props:{guid:{value:'5a1f8b2b-c6f3-ce0b-7604-f7a986a65be7'},text:{value:'¸¶¿îÃ÷Ï¸»ã×Ü±í',url:'TTAccountPayRecordSummary.aspx'}}},rect7:{type:'task',text:{text:'¹¤×÷Á÷¹ÜÀí'}, attr:{ x:541, y:128, width:100, height:50}, props:{guid:{value:'7c6325be-8337-ec12-76ed-1a03b86afab4'},text:{value:'¹¤×÷Á÷¹ÜÀí',url:'TTWLManage.aspx'}}},rect8:{type:'task',text:{text:'ÏîÄ¿ĞèÇó¹ÜÀí'}, attr:{ x:540, y:236, width:100, height:50}, props:{guid:{value:'cc37c28e-3f87-c548-408e-c5404815c2f6'},text:{value:'ÏîÄ¿ĞèÇó¹ÜÀí',url:'TTProjectReqManageMain.aspx'}}},rect21:{type:'task',text:{text:'ÖªÊ¶¹ÜÀí'}, attr:{ x:1174, y:131, width:100, height:50}, props:{guid:{value:'3801c149-8a75-9414-4a66-2dd13c668cd1'},text:{value:'ÖªÊ¶¹ÜÀí',url:'TTDocumentManage.aspx'}}}},paths:{path10:{from:'rect1',to:'rect2', dots:[],text:{text:'TO ÏîÄ¿¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ÏîÄ¿¹ÜÀí'}}},path11:{from:'rect2',to:'rect3', dots:[],text:{text:'TO ÏîÄ¿ÈÎÎñ¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ÏîÄ¿ÈÎÎñ¹ÜÀí'}}},path12:{from:'rect3',to:'rect4', dots:[],text:{text:'TO ÊÕ¸¶¿îÔ¤¾¯'},textPos:{x:0,y:-10}, props:{text:{value:'TO ÊÕ¸¶¿îÔ¤¾¯'}}},path13:{from:'rect4',to:'rect5', dots:[],text:{text:'TO ÊÕ¿îÃ÷Ï¸»ã×Ü±í'},textPos:{x:0,y:-10}, props:{text:{value:'TO ÊÕ¿îÃ÷Ï¸»ã×Ü±í'}}},path14:{from:'rect4',to:'rect6', dots:[],text:{text:'TO ¸¶¿îÃ÷Ï¸»ã×Ü±í'},textPos:{x:0,y:-10}, props:{text:{value:''}}},path15:{from:'rect2',to:'rect7', dots:[],text:{text:'TO ¹¤×÷Á÷¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ¹¤×÷Á÷¹ÜÀí'}}},path16:{from:'rect7',to:'rect4', dots:[],text:{text:'TO ÊÕ¸¶¿îÔ¤¾¯'},textPos:{x:0,y:-10}, props:{text:{value:'TO ÊÕ¸¶¿îÔ¤¾¯'}}},path18:{from:'rect8',to:'rect4', dots:[],text:{text:'TO ÊÕ¸¶¿îÔ¤¾¯'},textPos:{x:0,y:-10}, props:{text:{value:''}}},path22:{from:'rect2',to:'rect8', dots:[],text:{text:'TO ÏîÄ¿ĞèÇó¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ÏîÄ¿ĞèÇó¹ÜÀí'}}},path23:{from:'rect4',to:'rect21', dots:[],text:{text:'TO ÖªÊ¶¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ÖªÊ¶¹ÜÀí'}}}},props:{props:{name:{value:'ĞÂ½¨Á÷³Ì'},key:{value:''},desc:{value:''}}}}";
-                SaveModuleFlowDefinition("²Ù×÷µ¼º½", strMFXML, 3, "INNER");
-            }
-
-            if (strSystemProductType == "GAPMP")
-            {
-                strMFXML = @"{states:{rect1:{type:'task',text:{text:'ÏîÄ¿Á¢Ïî'}, attr:{ x:105, y:127, width:100, height:50}, props:{guid:{value:'02899d0f-472c-063f-f67e-c6b9d45c8d29'},text:{value:'ÏîÄ¿Á¢Ïî',url:'TTMakeProject.aspx'}}},rect2:{type:'task',text:{text:'ÏîÄ¿¹ÜÀí'}, attr:{ x:313, y:127, width:100, height:50}, props:{guid:{value:'5fe585ee-cf14-5681-46eb-e0f32e23b369'},text:{value:'ÏîÄ¿¹ÜÀí',url:'TTProjectManage.aspx'}}},rect3:{type:'task',text:{text:'ÏîÄ¿ÈÎÎñ¹ÜÀí'}, attr:{ x:538, y:29, width:100, height:50}, props:{guid:{value:'e2637d3e-2cdb-2369-c06d-febd974c8af5'},text:{value:'ÏîÄ¿ÈÎÎñ¹ÜÀí',url:'TTProjectTaskManageMain.aspx'}}},rect4:{type:'task',text:{text:'¹¤×÷Á÷¹ÜÀí'}, attr:{ x:541, y:127, width:100, height:50}, props:{guid:{value:'7c6325be-8337-ec12-76ed-1a03b86afab4'},text:{value:'¹¤×÷Á÷¹ÜÀí',url:'TTWLManage.aspx'}}},rect5:{type:'task',text:{text:'³ÉÔ±¸ººÉ'}, attr:{ x:740, y:130, width:100, height:50}, props:{guid:{value:'f1e0ed67-edc6-c121-6483-f8c659a50981'},text:{value:'³ÉÔ±¸ººÉ',url:'TTMyMemWorkLoad.aspx'}}},rect6:{type:'task',text:{text:'ËùÓĞ³ÉÔ±ÏîÄ¿×´Ì¬'}, attr:{ x:938, y:131, width:129, height:50}, props:{guid:{value:'b38dbce8-3d0f-59c2-254c-eed1be874be4'},text:{value:'ËùÓĞ³ÉÔ±ÏîÄ¿×´Ì¬',url:'TTAllProjectsRunStatus.aspx'}}},rect7:{type:'task',text:{text:'ÏîÄ¿ĞèÇó¹ÜÀí'}, attr:{ x:541, y:240, width:100, height:50}, props:{guid:{value:'05017a00-1673-af9b-376a-4910161fabdb'},text:{value:'ÏîÄ¿ĞèÇó¹ÜÀí',url:'TTProjectReqManageMain.aspx'}}},rect8:{type:'task',text:{text:'ÖªÊ¶¹ÜÀí'}, attr:{ x:1169, y:132, width:100, height:50}, props:{guid:{value:'aa579bd1-56e0-6b13-0f2f-0cc3f2bcba5c'},text:{value:'ÖªÊ¶¹ÜÀí',url:'TTDocumentManage.aspx'}}}},paths:{path9:{from:'rect1',to:'rect2', dots:[],text:{text:'TO ÏîÄ¿¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ÏîÄ¿¹ÜÀí'}}},path10:{from:'rect2',to:'rect3', dots:[],text:{text:'TO ÏîÄ¿ÈÎÎñ¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ÏîÄ¿ÈÎÎñ¹ÜÀí'}}},path11:{from:'rect2',to:'rect4', dots:[],text:{text:'TO ¹¤×÷Á÷¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ¹¤×÷Á÷¹ÜÀí'}}},path12:{from:'rect2',to:'rect7', dots:[],text:{text:'TO ÏîÄ¿ĞèÇó¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ÏîÄ¿ĞèÇó¹ÜÀí'}}},path13:{from:'rect4',to:'rect5', dots:[],text:{text:'TO ³ÉÔ±¸ººÉ'},textPos:{x:0,y:-10}, props:{text:{value:'TO ³ÉÔ±¸ººÉ'}}},path14:{from:'rect5',to:'rect6', dots:[],text:{text:'TO ËùÓĞ³ÉÔ±ÏîÄ¿×´Ì¬'},textPos:{x:0,y:-10}, props:{text:{value:'TO ËùÓĞ³ÉÔ±ÏîÄ¿×´Ì¬'}}},path15:{from:'rect6',to:'rect8', dots:[],text:{text:'TO ÖªÊ¶¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ÖªÊ¶¹ÜÀí'}}}},props:{props:{name:{value:'ĞÂ½¨Á÷³Ì'},key:{value:''},desc:{value:''}}}}";
-                SaveModuleFlowDefinition("²Ù×÷µ¼º½", strMFXML, 3, "INNER");
-            }
-
-            if (strSystemProductType == "ERP")
-            {
-                strMFXML = @"{states:{rect1:{type:'task',text:{text:'ÏîÄ¿Á¢Ïî'}, attr:{ x:105, y:127, width:100, height:50}, props:{guid:{value:'02899d0f-472c-063f-f67e-c6b9d45c8d29'},text:{value:'ÏîÄ¿Á¢Ïî',url:'TTMakeProject.aspx'}}},rect2:{type:'task',text:{text:'ÏîÄ¿¹ÜÀí'}, attr:{ x:313, y:127, width:100, height:50}, props:{guid:{value:'5fe585ee-cf14-5681-46eb-e0f32e23b369'},text:{value:'ÏîÄ¿¹ÜÀí',url:'TTProjectManage.aspx'}}},rect3:{type:'task',text:{text:'ÏîÄ¿ÈÎÎñ¹ÜÀí'}, attr:{ x:539, y:30, width:100, height:50}, props:{guid:{value:'e2637d3e-2cdb-2369-c06d-febd974c8af5'},text:{value:'ÏîÄ¿ÈÎÎñ¹ÜÀí',url:'TTProjectTaskManageMain.aspx'}}},rect4:{type:'task',text:{text:'¹¤×÷Á÷¹ÜÀí'}, attr:{ x:541, y:128, width:100, height:50}, props:{guid:{value:'7c6325be-8337-ec12-76ed-1a03b86afab4'},text:{value:'¹¤×÷Á÷¹ÜÀí',url:'TTWLManage.aspx'}}},rect5:{type:'task',text:{text:'¿â´æ¹ÜÀí'}, attr:{ x:751, y:129, width:100, height:50}, props:{guid:{value:'82e392bd-eacd-e39b-6c04-20b6b557fb8d'},text:{value:'¿â´æ¹ÜÀí',url:'TTGoodsManage.aspx'}}},rect6:{type:'task',text:{text:'Èë¿âµ¥'}, attr:{ x:806, y:32, width:100, height:50}, props:{guid:{value:'220f25e9-5536-da10-cf76-df87209bdd57'},text:{value:'Èë¿âµ¥',url:'TTMakeGoods.aspx'}}},rect7:{type:'task',text:{text:'³ö¿âµ¥'}, attr:{ x:750, y:232, width:100, height:50}, props:{guid:{value:'c35a73a7-7760-0515-9cb4-c819a205e156'},text:{value:'³ö¿âµ¥',url:'TTGoodsShipmentOrder.aspx'}}},rect8:{type:'task',text:{text:'ÖªÊ¶¹ÜÀí'}, attr:{ x:1140, y:130, width:100, height:50}, props:{guid:{value:'7493182a-8965-2821-127c-307cf283d679'},text:{value:'ÖªÊ¶¹ÜÀí',url:'TTDocumentManage.aspx'}}},rect9:{type:'task',text:{text:'ÏîÄ¿È±Ïİ¹ÜÀí'}, attr:{ x:541, y:232, width:100, height:50}, props:{guid:{value:'ee665fc9-3bf7-6e8f-6258-ac32f63aeb21'},text:{value:'ÏîÄ¿È±Ïİ¹ÜÀí',url:'TTProjectDefectManageMain.aspx'}}},rect10:{type:'task',text:{text:'×÷Òµ¹ÜÀí'}, attr:{ x:941, y:130, width:100, height:50}, props:{guid:{value:'a1db5803-1780-e0c5-2c57-6a69a7ef579d'},text:{value:'×÷Òµ¹ÜÀí',url:'TTGoodsProductionManagement.aspx'}}},rect11:{type:'task',text:{text:'Éú²ú×÷Òµµ¥'}, attr:{ x:940, y:32, width:100, height:50}, props:{guid:{value:'5df740b5-bc9c-d182-e1ef-dd6c2602838b'},text:{value:'Éú²ú×÷Òµµ¥',url:'TTGoodsProductionOrder.aspx'}}},rect12:{type:'task',text:{text:'×÷ÒµÁìÁÏÉêÇë'}, attr:{ x:940, y:233, width:100, height:50}, props:{guid:{value:'5d11af4b-6483-4d3f-078b-21877023f95f'},text:{value:'×÷ÒµÁìÁÏÉêÇë',url:'TTGoodsApplicationOrderForProduction.aspx'}}},rect13:{type:'task',text:{text:'²É¹º¶©µ¥'}, attr:{ x:681, y:32, width:100, height:50}, props:{guid:{value:'101a03f5-091f-8d2d-e3a0-3a4053d40323'},text:{value:'²É¹º¶©µ¥',url:'TTMakeGoodsPurchase.aspx'}}}},paths:{path14:{from:'rect1',to:'rect2', dots:[],text:{text:'TO ÏîÄ¿¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ÏîÄ¿¹ÜÀí'}}},path15:{from:'rect2',to:'rect3', dots:[],text:{text:'TO ÏîÄ¿ÈÎÎñ¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ÏîÄ¿ÈÎÎñ¹ÜÀí'}}},path16:{from:'rect2',to:'rect4', dots:[],text:{text:'TO ¹¤×÷Á÷¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ¹¤×÷Á÷¹ÜÀí'}}},path17:{from:'rect4',to:'rect5', dots:[],text:{text:'TO ¿â´æ¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ¿â´æ¹ÜÀí'}}},path18:{from:'rect6',to:'rect5', dots:[],text:{text:'TO ¿â´æ¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ¿â´æ¹ÜÀí'}}},path19:{from:'rect7',to:'rect5', dots:[],text:{text:'TO ¿â´æ¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ¿â´æ¹ÜÀí'}}},path20:{from:'rect2',to:'rect9', dots:[],text:{text:'TO ÏîÄ¿È±Ïİ¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ÏîÄ¿È±Ïİ¹ÜÀí'}}},path21:{from:'rect5',to:'rect10', dots:[],text:{text:'TO ×÷Òµ¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ×÷Òµ¹ÜÀí'}}},path22:{from:'rect10',to:'rect8', dots:[],text:{text:'TO ÖªÊ¶¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ÖªÊ¶¹ÜÀí'}}},path23:{from:'rect10',to:'rect11', dots:[],text:{text:'TO Éú²ú×÷Òµµ¥'},textPos:{x:0,y:-10}, props:{text:{value:'TO Éú²ú×÷Òµµ¥'}}},path24:{from:'rect10',to:'rect12', dots:[],text:{text:'TO ×÷ÒµÁìÁÏÉêÇë'},textPos:{x:0,y:-10}, props:{text:{value:''}}},path25:{from:'rect13',to:'rect5', dots:[],text:{text:'TO ¿â´æ¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:''}}}},props:{props:{name:{value:'ĞÂ½¨Á÷³Ì'},key:{value:''},desc:{value:''}}}}";
-                SaveModuleFlowDefinition("²Ù×÷µ¼º½", strMFXML, 3, "INNER");
-            }
-
-            if (strSystemProductType == "CMP")
-            {
-                strMFXML = @"{states:{rect1:{type:'task',text:{text:'ÖªÊ¶¹ÜÀí'}, attr:{ x:1160, y:122, width:100, height:50}, props:{guid:{value:'a7881a76-7a03-bbb7-acb5-a0b3c9798e5d'},text:{value:'ÖªÊ¶¹ÜÀí',url:'TTDocumentManage.aspx'}}},rect2:{type:'task',text:{text:'¹¤×÷Á÷¹ÜÀí'}, attr:{ x:336, y:118, width:115, height:50}, props:{guid:{value:'9070892c-92e7-a7ba-6a9e-eabbb579c872'},text:{value:'¹¤×÷Á÷¹ÜÀí',url:'TTWLManage.aspx'}}},rect3:{type:'task',text:{text:'³£ÓÃ¹¤×÷Á÷ÉêÇë'}, attr:{ x:118, y:117, width:114, height:50}, props:{guid:{value:'e4ea0ce0-ef2b-704c-b200-7b8fa1f73673'},text:{value:'³£ÓÃ¹¤×÷Á÷ÉêÇë',url:'TTRegularWLMain.aspx'}}},rect4:{type:'task',text:{text:'ºÏÍ¬¹ÜÀí'}, attr:{ x:569, y:118, width:100, height:50}, props:{guid:{value:'cadbd16e-60c2-9a78-469b-303d94aada59'},text:{value:'ºÏÍ¬¹ÜÀí',url:'TTConstractManagement.aspx'}}},rect5:{type:'task',text:{text:'×Ê²ú¹ÜÀí'}, attr:{ x:768, y:119, width:100, height:50}, props:{guid:{value:'ff18fe05-f7f6-a480-bf89-aee77f83738b'},text:{value:'×Ê²ú¹ÜÀí',url:'TTAssetManage.aspx'}}},rect6:{type:'task',text:{text:'»áÒé¹ÜÀí'}, attr:{ x:959, y:121, width:100, height:50}, props:{guid:{value:'78df5ac9-4c70-d0fc-6b5d-c05c64e9eda0'},text:{value:'»áÒé¹ÜÀí',url:'TTMeetingManage.aspx'}}},rect7:{type:'task',text:{text:'ÖÆ¶¨ºÏÍ¬'}, attr:{ x:569, y:13, width:100, height:50}, props:{guid:{value:'2e4ba6ce-eaaf-707c-af98-1f6de5f4bbd2'},text:{value:'ÖÆ¶¨ºÏÍ¬',url:'TTMakeConstract.aspx'}}},rect8:{type:'task',text:{text:'ºÏÍ¬ÊÕ¸¶¿îÔ¤¾¯'}, attr:{ x:570, y:244, width:100, height:50}, props:{guid:{value:'43c3f25a-f5b7-1240-bfd7-fe9a72565e62'},text:{value:'ºÏÍ¬ÊÕ¸¶¿îÔ¤¾¯',url:'TTConstractUnHandleReceivePay.aspx'}}},rect9:{type:'task',text:{text:'×Ê²úµÇ¼ÇÈë¿â'}, attr:{ x:768, y:13, width:100, height:50}, props:{guid:{value:'f3a168f0-0754-c806-8335-6f43083cd1c3'},text:{value:'×Ê²úµÇ¼ÇÈë¿â',url:'TTMakeAsset.aspx'}}},rect10:{type:'task',text:{text:'¹©Ó¦ÉÌµµ°¸'}, attr:{ x:768, y:244, width:100, height:50}, props:{guid:{value:'e9763179-5c7f-b63e-3f28-27dc57403adc'},text:{value:'¹©Ó¦ÉÌµµ°¸',url:'TTMakeVendor.aspx'}}}},paths:{path11:{from:'rect3',to:'rect2', dots:[],text:{text:'TO ¹¤×÷Á÷¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ¹¤×÷Á÷¹ÜÀí'}}},path12:{from:'rect2',to:'rect4', dots:[],text:{text:'TO ºÏÍ¬¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ºÏÍ¬¹ÜÀí'}}},path13:{from:'rect4',to:'rect5', dots:[],text:{text:'TO ×Ê²ú¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ×Ê²ú¹ÜÀí'}}},path14:{from:'rect5',to:'rect6', dots:[],text:{text:'TO »áÒé¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO »áÒé¹ÜÀí'}}},path15:{from:'rect6',to:'rect1', dots:[],text:{text:'TO ÖªÊ¶¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:''}}},path16:{from:'rect7',to:'rect4', dots:[],text:{text:'TO ºÏÍ¬¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ºÏÍ¬¹ÜÀí'}}},path17:{from:'rect4',to:'rect8', dots:[],text:{text:'TO ºÏÍ¬ÊÕ¸¶¿îÔ¤¾¯'},textPos:{x:0,y:-10}, props:{text:{value:'TO ºÏÍ¬ÊÕ¸¶¿îÔ¤¾¯'}}},path19:{from:'rect10',to:'rect5', dots:[],text:{text:'TO ×Ê²ú¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ×Ê²ú¹ÜÀí'}}},path20:{from:'rect9',to:'rect5', dots:[],text:{text:'TO ×Ê²ú¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ×Ê²ú¹ÜÀí'}}}},props:{props:{name:{value:'ĞÂ½¨Á÷³Ì'},key:{value:''},desc:{value:''}}}}";
-                SaveModuleFlowDefinition("²Ù×÷µ¼º½", strMFXML, 3, "INNER");
-            }
-
-            if (strSystemProductType == "CRM")
-            {
-                strMFXML = @"{states:{rect1:{type:'task',text:{text:'¹¤×÷Á÷¹ÜÀí'}, attr:{ x:1033, y:114, width:100, height:50}, props:{guid:{value:'a7881a76-7a03-bbb7-acb5-a0b3c9798e5d'},text:{value:'¹¤×÷Á÷¹ÜÀí',url:'TTWLManage.aspx'}}},rect2:{type:'task',text:{text:'¿Í»§µµ°¸'}, attr:{ x:60, y:109, width:100, height:50}, props:{guid:{value:'3952c5e4-0d25-add9-8021-ad5f7f334d98'},text:{value:'¿Í»§µµ°¸',url:'TTMakeCustomer.aspx'}}},rect3:{type:'task',text:{text:'¿Í»§¹ÜÀí'}, attr:{ x:229, y:110, width:100, height:50}, props:{guid:{value:'f7543276-c8df-37e4-5e85-e1b37a22529a'},text:{value:'¿Í»§¹ÜÀí',url:'TTCustomerManagement.aspx'}}},rect4:{type:'task',text:{text:'¼ÇÂ¼¿Í»§ĞèÇó'}, attr:{ x:394, y:111, width:100, height:50}, props:{guid:{value:'b72692cc-6050-cd8c-d6ad-151b700ce96a'},text:{value:'¼ÇÂ¼¿Í»§ĞèÇó',url:'TTCustomerQuestionRecord.aspx'}}},rect5:{type:'task',text:{text:'¿Í»§·şÎñ'}, attr:{ x:566, y:110, width:100, height:50}, props:{guid:{value:'3f24ae23-e9e7-747f-a131-3226f27a8650'},text:{value:'¿Í»§·şÎñ',url:'TTCustomerQuestionManage.aspx'}}},rect6:{type:'task',text:{text:'Ö±½Ó³ÉÔ±¿Í»§·şÎñ'}, attr:{ x:719, y:20, width:100, height:50}, props:{guid:{value:'5be02d4d-4885-de29-ff36-af24bc36c22c'},text:{value:'Ö±½Ó³ÉÔ±¿Í»§·şÎñ',url:'TTMyMemberCustomerQuestions.aspx'}}},rect7:{type:'task',text:{text:'Ö±½Ó³ÉÔ±¿Í»§'}, attr:{ x:720, y:216, width:100, height:50}, props:{guid:{value:'623ae48d-2495-f612-6a49-69c00ad4dd8f'},text:{value:'Ö±½Ó³ÉÔ±¿Í»§',url:'TTMyMemberCustomers.aspx'}}},rect8:{type:'task',text:{text:'ºÏÍ¬¹ÜÀí'}, attr:{ x:854, y:113, width:100, height:50}, props:{guid:{value:'d7b0d005-9fce-a047-8aec-b67aa39d69fd'},text:{value:'ºÏÍ¬¹ÜÀí',url:'TTConstractManagement.aspx'}}},rect9:{type:'task',text:{text:'ÖªÊ¶¹ÜÀí'}, attr:{ x:1208, y:114, width:100, height:50}, props:{guid:{value:'0f72603f-0b40-f129-608a-168a9284654e'},text:{value:'ÖªÊ¶¹ÜÀí',url:'TTDocumentManage.aspx'}}}},paths:{path10:{from:'rect2',to:'rect3', dots:[],text:{text:'TO ¿Í»§¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ¿Í»§¹ÜÀí'}}},path11:{from:'rect3',to:'rect4', dots:[],text:{text:'TO ¼ÇÂ¼¿Í»§ĞèÇó'},textPos:{x:0,y:-10}, props:{text:{value:'TO ¼ÇÂ¼¿Í»§ĞèÇó'}}},path12:{from:'rect4',to:'rect5', dots:[],text:{text:'TO ¿Í»§·şÎñ'},textPos:{x:0,y:-10}, props:{text:{value:'TO ¿Í»§·şÎñ'}}},path13:{from:'rect5',to:'rect6', dots:[],text:{text:'TO Ö±½Ó³ÉÔ±¿Í»§·şÎñ'},textPos:{x:0,y:-10}, props:{text:{value:'TO Ö±½Ó³ÉÔ±¿Í»§·şÎñ'}}},path14:{from:'rect5',to:'rect7', dots:[],text:{text:'TO Ö±½Ó³ÉÔ±¿Í»§'},textPos:{x:0,y:-10}, props:{text:{value:'TO Ö±½Ó³ÉÔ±¿Í»§'}}},path15:{from:'rect5',to:'rect8', dots:[],text:{text:'TO ºÏÍ¬¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ºÏÍ¬¹ÜÀí'}}},path16:{from:'rect8',to:'rect1', dots:[],text:{text:'TO ¹¤×÷Á÷¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ¹¤×÷Á÷¹ÜÀí'}}},path17:{from:'rect1',to:'rect9', dots:[],text:{text:'TO ÖªÊ¶¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ÖªÊ¶¹ÜÀí'}}},path18:{from:'rect6',to:'rect8', dots:[],text:{text:'TO ºÏÍ¬¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ºÏÍ¬¹ÜÀí'}}},path19:{from:'rect7',to:'rect8', dots:[],text:{text:'TO ºÏÍ¬¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:''}}}},props:{props:{name:{value:'ĞÂ½¨Á÷³Ì'},key:{value:''},desc:{value:''}}}}";
-                SaveModuleFlowDefinition("²Ù×÷µ¼º½", strMFXML, 3, "INNER");
-            }
-
-            if (strSystemProductType.IndexOf("SAAS") > -1)
-            {
-                strMFXML = @"{states:{rect1:{type:'task',text:{text:'ÏîÄ¿Á¢Ïî'}, attr:{ x:105, y:127, width:100, height:50}, props:{guid:{value:'02899d0f-472c-063f-f67e-c6b9d45c8d29'},text:{value:'ÏîÄ¿Á¢Ïî',url:'TTMakeProject.aspx'}}},rect2:{type:'task',text:{text:'ÏîÄ¿¹ÜÀí'}, attr:{ x:313, y:127, width:100, height:50}, props:{guid:{value:'5fe585ee-cf14-5681-46eb-e0f32e23b369'},text:{value:'ÏîÄ¿¹ÜÀí',url:'TTProjectManageSAAS.aspx'}}},rect3:{type:'task',text:{text:'ÏîÄ¿ÈÎÎñ¹ÜÀí'}, attr:{ x:539, y:27, width:100, height:50}, props:{guid:{value:'e2637d3e-2cdb-2369-c06d-febd974c8af5'},text:{value:'ÏîÄ¿ÈÎÎñ¹ÜÀí',url:'TTProjectTaskManageMain.aspx'}}},rect4:{type:'task',text:{text:'ÊÕ¿îÃ÷Ï¸»ã×Ü±í'}, attr:{ x:952, y:26, width:100, height:50}, props:{guid:{value:'6f8c99c9-3fcd-297d-1fa8-19811a07312b'},text:{value:'ÊÕ¿îÃ÷Ï¸»ã×Ü±í',url:'TTAccountReceiveRecordSummarySAAS.aspx'}}},rect5:{type:'task',text:{text:'¸¶¿îÃ÷Ï¸»ã×Ü±í'}, attr:{ x:952, y:221, width:100, height:50}, props:{guid:{value:'5a1f8b2b-c6f3-ce0b-7604-f7a986a65be7'},text:{value:'¸¶¿îÃ÷Ï¸»ã×Ü±í',url:'TTAccountPayRecordSummarySAAS.aspx'}}},rect6:{type:'task',text:{text:'²ÆÎñ¹ÜÀí'}, attr:{ x:711, y:130, width:100, height:50}, props:{guid:{value:'a5861d1c-845e-3475-5fb0-c194c3325bbb'},text:{value:'²ÆÎñ¹ÜÀí',url:'TTReceivablesPayableAlert.aspx'}}},rect7:{type:'task',text:{text:'ËùÓĞ³ÉÔ±µÄÏîÄ¿'}, attr:{ x:1165, y:133, width:100, height:50}, props:{guid:{value:'1402c8e9-c44c-d59b-5f95-2448f73144ec'},text:{value:'ËùÓĞ³ÉÔ±µÄÏîÄ¿',url:'TTAllProject.aspx'}}},rect8:{type:'task',text:{text:'ÏîÄ¿ÎÄµµ¹ÜÀí'}, attr:{ x:540, y:221, width:100, height:50}, props:{guid:{value:'4c9dcf45-06d3-a292-1516-57d02b2a61e0'},text:{value:'ÏîÄ¿ÎÄµµ¹ÜÀí',url:'TTProjectDocManageMain.aspx'}}}},paths:{path9:{from:'rect1',to:'rect2', dots:[],text:{text:'TO ÏîÄ¿¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ÏîÄ¿¹ÜÀí'}}},path10:{from:'rect2',to:'rect3', dots:[],text:{text:'TO ÏîÄ¿ÈÎÎñ¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ÏîÄ¿ÈÎÎñ¹ÜÀí'}}},path11:{from:'rect6',to:'rect4', dots:[],text:{text:'TO ÊÕ¿îÃ÷Ï¸»ã×Ü±í'},textPos:{x:0,y:-10}, props:{text:{value:'TO ÊÕ¿îÃ÷Ï¸»ã×Ü±í'}}},path12:{from:'rect6',to:'rect5', dots:[],text:{text:'TO ¸¶¿îÃ÷Ï¸»ã×Ü±í'},textPos:{x:0,y:-10}, props:{text:{value:'TO ¸¶¿îÃ÷Ï¸»ã×Ü±í'}}},path13:{from:'rect2',to:'rect6', dots:[],text:{text:'TO ²ÆÎñ¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:''}}},path14:{from:'rect2',to:'rect8', dots:[],text:{text:'TO ÏîÄ¿ÎÄµµ¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ÏîÄ¿ÎÄµµ¹ÜÀí'}}},path15:{from:'rect6',to:'rect7', dots:[],text:{text:'TO ËùÓĞ³ÉÔ±µÄÏîÄ¿'},textPos:{x:0,y:-10}, props:{text:{value:''}}}},props:{props:{name:{value:'ĞÂ½¨Á÷³Ì'},key:{value:''},desc:{value:''}}}}";
-                SaveModuleFlowDefinition("²Ù×÷µ¼º½", strMFXML, 3, "INNER");
-            }
-
-            strMFXML = @"{states:{rect1:{type:'task',text:{text:'ÎÒµÄĞ­×÷'}, attr:{ x:89, y:114, width:100, height:50}, props:{guid:{value:'9cf167e5-eaa0-2a0a-d046-f9b95f20a18f'},text:{value:'ÎÒµÄĞ­×÷',url:'TTCollaborationManage.aspx'}}},rect2:{type:'task',text:{text:'ÎÒµÄÁ÷³Ì'}, attr:{ x:292, y:114, width:100, height:50}, props:{guid:{value:'d453b354-38bd-d4f2-5bd2-d052ce6757d0'},text:{value:'ÎÒµÄÁ÷³Ì',url:'TTWLManage.aspx'}}},rect3:{type:'task',text:{text:'ÏîÄ¿¹ÜÀí'}, attr:{ x:486, y:116, width:100, height:50}, props:{guid:{value:'4d13368a-8662-46bb-2302-30f0ec9ab00b'},text:{value:'ÏîÄ¿¹ÜÀí',url:'TTProjectManageOuter.aspx'}}},rect4:{type:'task',text:{text:'ÎÒµÄ¿Í·ş'}, attr:{ x:677, y:116, width:100, height:50}, props:{guid:{value:'97c25bff-5352-fc37-8ae7-cb421fcdf7cc'},text:{value:'ÎÒµÄ¿Í·ş',url:'TTCustomerQuestionManage.aspx'}}},rect5:{type:'task',text:{text:'ÎÒµÄÈ±Ïİ'}, attr:{ x:386, y:225, width:100, height:50}, props:{guid:{value:'7bfb19b8-ba4b-9be7-9af6-a3037cd27a1c'},text:{value:'ÎÒµÄÈ±Ïİ',url:'TTDefectHandlePageThirdPart.aspx'}}},rect6:{type:'task',text:{text:'ÎÒµÄĞèÇó'}, attr:{ x:583, y:223, width:100, height:50}, props:{guid:{value:'463cef82-59b2-a9ad-134c-3b446afe71a9'},text:{value:'ÎÒµÄĞèÇó',url:'TTReqHandlePageThirdPart.aspx'}}},rect7:{type:'task',text:{text:'ÎÒµÄ¿¼ÇÚ'}, attr:{ x:873, y:117, width:100, height:50}, props:{guid:{value:'c6ab08dc-af3e-84c8-b0d6-094f352580cc'},text:{value:'ÎÒµÄ¿¼ÇÚ',url:'TTUserAttendanceRecordForMe.aspx'}}},rect8:{type:'task',text:{text:'ÏîÄ¿ÈÎÎñ'}, attr:{ x:486, y:11, width:100, height:50}, props:{guid:{value:'907e7f31-cd94-309a-bdf6-95313362f7c1'},text:{value:'ÏîÄ¿ÈÎÎñ',url:'TTProjectTaskManageMain.aspx'}}}},paths:{path9:{from:'rect2',to:'rect3', dots:[],text:{text:'TO ÏîÄ¿¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ÏîÄ¿¹ÜÀí'}}},path10:{from:'rect3',to:'rect4', dots:[],text:{text:'TO ÎÒµÄ¿Í·ş'},textPos:{x:0,y:-10}, props:{text:{value:'TO ÎÒµÄ¿Í·ş'}}},path11:{from:'rect4',to:'rect7', dots:[],text:{text:'TO ÎÒµÄ¿¼ÇÚ'},textPos:{x:0,y:-10}, props:{text:{value:'TO ÎÒµÄ¿¼ÇÚ'}}},path12:{from:'rect6',to:'rect3', dots:[],text:{text:'TO ÏîÄ¿¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ÏîÄ¿¹ÜÀí'}}},path13:{from:'rect5',to:'rect3', dots:[],text:{text:'TO ÏîÄ¿¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ÏîÄ¿¹ÜÀí'}}},path14:{from:'rect1',to:'rect2', dots:[],text:{text:'TO ÎÒµÄÁ÷³Ì'},textPos:{x:0,y:-10}, props:{text:{value:''}}},path15:{from:'rect8',to:'rect3', dots:[],text:{text:'TO ÏîÄ¿¹ÜÀí'},textPos:{x:0,y:-10}, props:{text:{value:'TO ÏîÄ¿¹ÜÀí'}}}},props:{props:{name:{value:'ĞÂ½¨Á÷³Ì'},key:{value:''},desc:{value:''}}}}";
-            SaveModuleFlowDefinition("²Ù×÷µ¼º½", strMFXML, 3, "OUTER");
-        }
-        catch (Exception err)
-        {
-            LogClass.WriteLogFile("Error page: " + "\n" + err.Message.ToString() + "\n" + err.StackTrace);
-        }
-    }
-
-    //½ûÓÃÊµÊ©½×¶ÎµÄ»ù´¡Êı¾İÉ¾³ı¹¦ÄÜ
+    //ç¦ç”¨å®æ–½é˜¶æ®µçš„åŸºç¡€æ•°æ®åˆ é™¤åŠŸèƒ½
     public static void UpdateIsCanClearBaseData(string strUserCode, string strUserName)
     {
         string strHQL1, strHQL2;
@@ -1048,50 +972,9 @@ SELECT
         }
     }
 
-    //³õÊ¼»¯Ä£×éµÄ²Ù×÷µ¼º½Á÷³Ì¶¨Òå
-    public static void SaveModuleFlowDefinition(string strModuleName, string strMFXML, int intUpdateMark, string strUserType)
-    {
-        string strHQL;
-        IList lst;
-
-        string strID;
-        int i;
-
-        try
-        {
-            if (GetProModuleUpdateMark(strModuleName, strUserType) != intUpdateMark)
-            {
-                ProModuleLevelBLL proModuleLevelBLL = new ProModuleLevelBLL();
-                strHQL = string.Format(@"from ProModuleLevel as proModuleLevel where proModuleLevel.ModuleName = '{0}' and proModuleLevel.UserType ='{1}' and proModuleLevel.ModuleType = 'SYSTEM'", strModuleName, strUserType);
-                lst = proModuleLevelBLL.GetAllProModuleLevels(strHQL);
-
-                ProModuleLevel proModuleLevel;
-
-                for (i = 0; i < lst.Count; i++)
-                {
-                    proModuleLevel = (ProModuleLevel)lst[i];
-
-                    strID = proModuleLevel.ID.ToString();
-                    proModuleLevel.ModuleDefinition = strMFXML;
-                    proModuleLevelBLL.UpdateProModuleLevel(proModuleLevel, int.Parse(strID));
-                }
-
-                strHQL = string.Format(@"Update T_ProModuleLevel Set UpdateMark = {0} Where ModuleName = '{1}' and UserType ='{2}' and ModuleType = 'SYSTEM'", intUpdateMark, strModuleName, strUserType);
-                ShareClass.RunSqlCommand(strHQL);
 
 
-                //ÉèÖÃ»º´æ¸ü¸Ä±êÖ¾£¬²¢Ë¢ĞÂÒ³Ãæ»º´æ
-                ShareClass.ChangePageCache();
-            }
-        }
-        catch (Exception err)
-        {
-            LogClass.WriteLogFile("Error page: " + "\n" + err.Message.ToString() + "\n" + err.StackTrace);
-        }
-    }
-
-
-    //¸ø»î¶¯ÓÃ»§·ÖÅä·ÖÎöÍ¼  
+    //ç»™æ´»åŠ¨ç”¨æˆ·åˆ†é…åˆ†æå›¾  
     private static void addSystemHAnalystChartToActiveUser()
     {
         string strHQL;
@@ -1110,90 +993,90 @@ SELECT
         string strHQL;
         strHQL = @"UPDATE t_funinfordialbox
 			SET inforname = CASE
-			WHEN inforname = 'ÒªÉóºËµÄÉêÇë' THEN 'ApplicationToBeReviewed'
-			WHEN inforname = 'Òª´¦ÀíµÄĞ­×÷' THEN 'CollaborationToHandle'
-			WHEN inforname = 'ÍÏÆÚµÄÏîÄ¿¼Æ»®' THEN 'DelayedProjectPlan'
-			WHEN inforname = '´ı´¦ÀíµÄÈ±Ïİ' THEN 'DefectsToHandle'
-			WHEN inforname = 'Î´Ğ´±¾ÖÜ¼Æ»®' THEN 'WeeklyPlanNotWritten'
-			WHEN inforname = 'Òª²Î¼ÓµÄ»áÒé' THEN 'MeetingToAttend'
-			WHEN inforname = '´ıÔÄ¶ÁµÄ±¨±í' THEN 'ReportsToRead'
-			WHEN inforname = '´ıÅú×¼µÄ¼Æ»®' THEN 'PlansForApproval'
-			WHEN inforname = '´ıÅúºËµÄ¼¨Ğ§' THEN 'PerformanceForApproval'
-			WHEN inforname = 'ºÏÍ¬Ô¤¸¶Ô¤¾¯' THEN 'ContractPrepaymentWarning'
-			WHEN inforname = '´ı´¦ÀíµÄÏîÄ¿' THEN 'ProjectsToHandle'
-			WHEN inforname = '´ı´¦ÀíµÄ·çÏÕ' THEN 'RisksToHandle'
-			WHEN inforname = '´ı´¦ÀíµÄĞèÇó' THEN 'RequirementsToHandle'
-			WHEN inforname = '´ı´¦ÀíµÄÈÎÎñ' THEN 'TasksToHandle'
-			WHEN inforname = 'Î´ÔÄ¶ÁµÄÓÊ¼ş' THEN 'EmailsUnread'
-			WHEN inforname = 'Òª´¦ÀíµÄÍ¶±ê' THEN 'BidsToHandle'
-			ELSE inforname -- Èç¹ûÃ»ÓĞÆ¥Åä£¬Ôò±£ÁôÔ­Öµ
+			WHEN inforname = 'è¦å®¡æ ¸çš„ç”³è¯·' THEN 'ApplicationToBeReviewed'
+			WHEN inforname = 'è¦å¤„ç†çš„åä½œ' THEN 'CollaborationToHandle'
+			WHEN inforname = 'æ‹–æœŸçš„é¡¹ç›®è®¡åˆ’' THEN 'DelayedProjectPlan'
+			WHEN inforname = 'å¾…å¤„ç†çš„ç¼ºé™·' THEN 'DefectsToHandle'
+			WHEN inforname = 'æœªå†™æœ¬å‘¨è®¡åˆ’' THEN 'WeeklyPlanNotWritten'
+			WHEN inforname = 'è¦å‚åŠ çš„ä¼šè®®' THEN 'MeetingToAttend'
+			WHEN inforname = 'å¾…é˜…è¯»çš„æŠ¥è¡¨' THEN 'ReportsToRead'
+			WHEN inforname = 'å¾…æ‰¹å‡†çš„è®¡åˆ’' THEN 'PlansForApproval'
+			WHEN inforname = 'å¾…æ‰¹æ ¸çš„ç»©æ•ˆ' THEN 'PerformanceForApproval'
+			WHEN inforname = 'åˆåŒé¢„ä»˜é¢„è­¦' THEN 'ContractPrepaymentWarning'
+			WHEN inforname = 'å¾…å¤„ç†çš„é¡¹ç›®' THEN 'ProjectsToHandle'
+			WHEN inforname = 'å¾…å¤„ç†çš„é£é™©' THEN 'RisksToHandle'
+			WHEN inforname = 'å¾…å¤„ç†çš„éœ€æ±‚' THEN 'RequirementsToHandle'
+			WHEN inforname = 'å¾…å¤„ç†çš„ä»»åŠ¡' THEN 'TasksToHandle'
+			WHEN inforname = 'æœªé˜…è¯»çš„é‚®ä»¶' THEN 'EmailsUnread'
+			WHEN inforname = 'è¦å¤„ç†çš„æŠ•æ ‡' THEN 'BidsToHandle'
+			ELSE inforname -- å¦‚æœæ²¡æœ‰åŒ¹é…ï¼Œåˆ™ä¿ç•™åŸå€¼
 			END;";
         ShareClass.RunSqlCommand(strHQL);
     }
 
-    //¸üĞÂ·ÖÎöÍ¼Ãû³Æ
+    //æ›´æ–°åˆ†æå›¾åç§°
     protected static void updateSystemAnalystChartChineseNameToEnglishName()
     {
         string strHQL;
 
-        strHQL = @"Update public.t_systemanalystchartmanagement Set ChartName = 'Plan status' Where ChartName = '¼Æ»®×´Ì¬';
-                    Update public.t_systemanalystchartmanagement Set ChartName = 'Task status' Where ChartName = 'ÈÎÎñ×´Ì¬';
-                    Update public.t_systemanalystchartmanagement Set ChartName = 'My sales order status' Where ChartName = 'ÎÒµÄÏúÊÛµ¥×´Ì¬';
-                    Update public.t_systemanalystchartmanagement Set ChartName = 'My purchase order status' Where ChartName = 'ÎÒµÄ²É¹ºµ¥×´Ì¬';
-                    Update public.t_systemanalystchartmanagement Set ChartName = 'The status of the project I initiated' Where ChartName = 'ÎÒÁ¢ÏîµÄÏîÄ¿×´Ì¬';
-                    Update public.t_systemanalystchartmanagement Set ChartName = 'Direct members project status' Where ChartName = 'Ö±½Ó³ÉÔ±µÄÏîÄ¿×´Ì¬';
-                    Update public.t_systemanalystchartmanagement Set ChartName = 'All member project status' Where ChartName = 'ËùÓĞ³ÉÔ±µÄÏîÄ¿×´Ì¬';
-                    Update public.t_systemanalystchartmanagement Set ChartName = 'My production order status' Where ChartName = 'ÎÒµÄÉú²úµ¥×´Ì¬';
-                    Update public.t_systemanalystchartmanagement Set ChartName = 'Direct member production order status' Where ChartName = 'Ö±½Ó³ÉÔ±µÄÉú²úµ¥×´Ì¬';
-                    Update public.t_systemanalystchartmanagement Set ChartName = 'Project status I am involved in' Where ChartName = 'ÎÒ²ÎÓëµÄÏîÄ¿×´Ì¬';
-                    Update public.t_systemanalystchartmanagement Set ChartName = 'Direct member opportunity status' Where ChartName = 'Ö±½Ó³ÉÔ±µÄÉÌ»ú×´Ì¬';
-                    Update public.t_systemanalystchartmanagement Set ChartName = 'All member opportunity status' Where ChartName = 'ËùÓĞ³ÉÔ±µÄÉÌ»ú×´Ì¬';
-                    Update public.t_systemanalystchartmanagement Set ChartName = 'My recorded opportunity status' Where ChartName = 'ÎÒ¼ÇÂ¼µÄÉÌ»ú×´Ì¬';
-                    Update public.t_systemanalystchartmanagement Set ChartName = 'Contract status' Where ChartName = 'ºÏÍ¬×´Ì¬';
-                    Update public.t_systemanalystchartmanagement Set ChartName = 'Contract Type' Where ChartName = 'ºÏÍ¬ÀàĞÍ';
-                    Update public.t_systemanalystchartmanagement Set ChartName = 'Direct member sales order status' Where ChartName = 'Ö±½Ó³ÉÔ±µÄÏúÊÛµ¥×´Ì¬';
-                    Update public.t_systemanalystchartmanagement Set ChartName = 'My opportunity status' Where ChartName = 'ÎÒµÄÉÌ»ú×´Ì¬';
-                    Update public.t_systemanalystchartmanagement Set ChartName = 'Project status I lead' Where ChartName = 'ÎÒÖ÷µ¼µÄÏîÄ¿×´Ì¬';
-                    Update public.t_systemanalystchartmanagement Set ChartName = 'Workflow status' Where ChartName = '¹¤×÷Á÷×´Ì¬';
-                    Update public.t_systemanalystchartmanagement Set ChartName = 'Direct member purchase order status' Where ChartName = 'Ö±½Ó³ÉÔ±µÄ²É¹ºµ¥×´Ì¬';
-                    Update public.t_systemanalystchartmanagement Set ChartName = 'Delayed project status' Where ChartName = 'ÑÓÎóÏîÄ¿×´Ì¬';
-                    Update public.t_systemanalystchartmanagement Set ChartName = 'Annual project hours status' Where ChartName = 'Äê¶ÈÏîÄ¿¹¤Ê±×´Ì¬';
-                    Update public.t_systemanalystchartmanagement Set ChartName = 'Active project status' Where ChartName = 'ÔÚÖ´ĞĞÏîÄ¿×´Ì¬';
-                    Update public.t_systemanalystchartmanagement Set ChartName = 'Annual project collection status' Where ChartName = 'ÏîÄ¿Äê¶È»Ø¿î×´Ì¬';
-                    Update public.t_systemanalystchartmanagement Set ChartName = 'Active task status' Where ChartName = 'ÔÚÖ´ĞĞÈÎÎñ×´Ì¬';";
+        strHQL = @"Update public.t_systemanalystchartmanagement Set ChartName = 'Plan status' Where ChartName = 'è®¡åˆ’çŠ¶æ€';
+                    Update public.t_systemanalystchartmanagement Set ChartName = 'Task status' Where ChartName = 'ä»»åŠ¡çŠ¶æ€';
+                    Update public.t_systemanalystchartmanagement Set ChartName = 'My sales order status' Where ChartName = 'æˆ‘çš„é”€å”®å•çŠ¶æ€';
+                    Update public.t_systemanalystchartmanagement Set ChartName = 'My purchase order status' Where ChartName = 'æˆ‘çš„é‡‡è´­å•çŠ¶æ€';
+                    Update public.t_systemanalystchartmanagement Set ChartName = 'The status of the project I initiated' Where ChartName = 'æˆ‘ç«‹é¡¹çš„é¡¹ç›®çŠ¶æ€';
+                    Update public.t_systemanalystchartmanagement Set ChartName = 'Direct members project status' Where ChartName = 'ç›´æ¥æˆå‘˜çš„é¡¹ç›®çŠ¶æ€';
+                    Update public.t_systemanalystchartmanagement Set ChartName = 'All member project status' Where ChartName = 'æ‰€æœ‰æˆå‘˜çš„é¡¹ç›®çŠ¶æ€';
+                    Update public.t_systemanalystchartmanagement Set ChartName = 'My production order status' Where ChartName = 'æˆ‘çš„ç”Ÿäº§å•çŠ¶æ€';
+                    Update public.t_systemanalystchartmanagement Set ChartName = 'Direct member production order status' Where ChartName = 'ç›´æ¥æˆå‘˜çš„ç”Ÿäº§å•çŠ¶æ€';
+                    Update public.t_systemanalystchartmanagement Set ChartName = 'Project status I am involved in' Where ChartName = 'æˆ‘å‚ä¸çš„é¡¹ç›®çŠ¶æ€';
+                    Update public.t_systemanalystchartmanagement Set ChartName = 'Direct member opportunity status' Where ChartName = 'ç›´æ¥æˆå‘˜çš„å•†æœºçŠ¶æ€';
+                    Update public.t_systemanalystchartmanagement Set ChartName = 'All member opportunity status' Where ChartName = 'æ‰€æœ‰æˆå‘˜çš„å•†æœºçŠ¶æ€';
+                    Update public.t_systemanalystchartmanagement Set ChartName = 'My recorded opportunity status' Where ChartName = 'æˆ‘è®°å½•çš„å•†æœºçŠ¶æ€';
+                    Update public.t_systemanalystchartmanagement Set ChartName = 'Contract status' Where ChartName = 'åˆåŒçŠ¶æ€';
+                    Update public.t_systemanalystchartmanagement Set ChartName = 'Contract Type' Where ChartName = 'åˆåŒç±»å‹';
+                    Update public.t_systemanalystchartmanagement Set ChartName = 'Direct member sales order status' Where ChartName = 'ç›´æ¥æˆå‘˜çš„é”€å”®å•çŠ¶æ€';
+                    Update public.t_systemanalystchartmanagement Set ChartName = 'My opportunity status' Where ChartName = 'æˆ‘çš„å•†æœºçŠ¶æ€';
+                    Update public.t_systemanalystchartmanagement Set ChartName = 'Project status I lead' Where ChartName = 'æˆ‘ä¸»å¯¼çš„é¡¹ç›®çŠ¶æ€';
+                    Update public.t_systemanalystchartmanagement Set ChartName = 'Workflow status' Where ChartName = 'å·¥ä½œæµçŠ¶æ€';
+                    Update public.t_systemanalystchartmanagement Set ChartName = 'Direct member purchase order status' Where ChartName = 'ç›´æ¥æˆå‘˜çš„é‡‡è´­å•çŠ¶æ€';
+                    Update public.t_systemanalystchartmanagement Set ChartName = 'Delayed project status' Where ChartName = 'å»¶è¯¯é¡¹ç›®çŠ¶æ€';
+                    Update public.t_systemanalystchartmanagement Set ChartName = 'Annual project hours status' Where ChartName = 'å¹´åº¦é¡¹ç›®å·¥æ—¶çŠ¶æ€';
+                    Update public.t_systemanalystchartmanagement Set ChartName = 'Active project status' Where ChartName = 'åœ¨æ‰§è¡Œé¡¹ç›®çŠ¶æ€';
+                    Update public.t_systemanalystchartmanagement Set ChartName = 'Annual project collection status' Where ChartName = 'é¡¹ç›®å¹´åº¦å›æ¬¾çŠ¶æ€';
+                    Update public.t_systemanalystchartmanagement Set ChartName = 'Active task status' Where ChartName = 'åœ¨æ‰§è¡Œä»»åŠ¡çŠ¶æ€';";
         ShareClass.RunSqlCommand(strHQL);
     }
 
-    //¸üĞÂÏµÍ³·ÖÎöÍ¼¹ØÁªÓÃ»§±íÖĞµÄÖĞÎÄÃû³ÆÎªÓ¢ÎÄÃû³Æ
+    //æ›´æ–°ç³»ç»Ÿåˆ†æå›¾å…³è”ç”¨æˆ·è¡¨ä¸­çš„ä¸­æ–‡åç§°ä¸ºè‹±æ–‡åç§°
     protected static void updateSystemAnalystChartChineseNameToEnglishNameForRelatedUserCode()
     {
         string strHQL;
 
-        strHQL = @"Update public.t_systemanalystchartrelateduser Set ChartName = 'Plan status' Where ChartName = '¼Æ»®×´Ì¬';
-                    Update public.t_systemanalystchartrelateduser Set ChartName = 'Task status' Where ChartName = 'ÈÎÎñ×´Ì¬';
-                    Update public.t_systemanalystchartrelateduser Set ChartName = 'My sales order status' Where ChartName = 'ÎÒµÄÏúÊÛµ¥×´Ì¬';
-                    Update public.t_systemanalystchartrelateduser Set ChartName = 'My purchase order status' Where ChartName = 'ÎÒµÄ²É¹ºµ¥×´Ì¬';
-                    Update public.t_systemanalystchartrelateduser Set ChartName = 'The status of the project I initiated' Where ChartName = 'ÎÒÁ¢ÏîµÄÏîÄ¿×´Ì¬';
-                    Update public.t_systemanalystchartrelateduser Set ChartName = 'Direct members project status' Where ChartName = 'Ö±½Ó³ÉÔ±µÄÏîÄ¿×´Ì¬';
-                    Update public.t_systemanalystchartrelateduser Set ChartName = 'All member project status' Where ChartName = 'ËùÓĞ³ÉÔ±µÄÏîÄ¿×´Ì¬';
-                    Update public.t_systemanalystchartrelateduser Set ChartName = 'My production order status' Where ChartName = 'ÎÒµÄÉú²úµ¥×´Ì¬';
-                    Update public.t_systemanalystchartrelateduser Set ChartName = 'Direct member production order status' Where ChartName = 'Ö±½Ó³ÉÔ±µÄÉú²úµ¥×´Ì¬';
-                    Update public.t_systemanalystchartrelateduser Set ChartName = 'Project status I am involved in' Where ChartName = 'ÎÒ²ÎÓëµÄÏîÄ¿×´Ì¬';
-                    Update public.t_systemanalystchartrelateduser Set ChartName = 'Direct member opportunity status' Where ChartName = 'Ö±½Ó³ÉÔ±µÄÉÌ»ú×´Ì¬';
-                    Update public.t_systemanalystchartrelateduser Set ChartName = 'All member opportunity status' Where ChartName = 'ËùÓĞ³ÉÔ±µÄÉÌ»ú×´Ì¬';
-                    Update public.t_systemanalystchartrelateduser Set ChartName = 'My recorded opportunity status' Where ChartName = 'ÎÒ¼ÇÂ¼µÄÉÌ»ú×´Ì¬';
-                    Update public.t_systemanalystchartrelateduser Set ChartName = 'Contract status' Where ChartName = 'ºÏÍ¬×´Ì¬';
-                    Update public.t_systemanalystchartrelateduser Set ChartName = 'Contract Type' Where ChartName = 'ºÏÍ¬ÀàĞÍ';
-                    Update public.t_systemanalystchartrelateduser Set ChartName = 'Direct member sales order status' Where ChartName = 'Ö±½Ó³ÉÔ±µÄÏúÊÛµ¥×´Ì¬';
-                    Update public.t_systemanalystchartrelateduser Set ChartName = 'My opportunity status' Where ChartName = 'ÎÒµÄÉÌ»ú×´Ì¬';
-                    Update public.t_systemanalystchartrelateduser Set ChartName = 'Project status I lead' Where ChartName = 'ÎÒÖ÷µ¼µÄÏîÄ¿×´Ì¬';
-                    Update public.t_systemanalystchartrelateduser Set ChartName = 'Workflow status' Where ChartName = '¹¤×÷Á÷×´Ì¬';
-                    Update public.t_systemanalystchartrelateduser Set ChartName = 'Direct member purchase order status' Where ChartName = 'Ö±½Ó³ÉÔ±µÄ²É¹ºµ¥×´Ì¬';
-                    Update public.t_systemanalystchartrelateduser Set ChartName = 'Delayed project status' Where ChartName = 'ÑÓÎóÏîÄ¿×´Ì¬';
-                    Update public.t_systemanalystchartrelateduser Set ChartName = 'Annual project hours status' Where ChartName = 'Äê¶ÈÏîÄ¿¹¤Ê±×´Ì¬';
-                    Update public.t_systemanalystchartrelateduser Set ChartName = 'Active project status' Where ChartName = 'ÔÚÖ´ĞĞÏîÄ¿×´Ì¬';
-                    Update public.t_systemanalystchartrelateduser Set ChartName = 'Annual project collection status' Where ChartName = 'ÏîÄ¿Äê¶È»Ø¿î×´Ì¬';
-                    Update public.t_systemanalystchartrelateduser Set ChartName = 'Active task status' Where ChartName = 'ÔÚÖ´ĞĞÈÎÎñ×´Ì¬';";
+        strHQL = @"Update public.t_systemanalystchartrelateduser Set ChartName = 'Plan status' Where ChartName = 'è®¡åˆ’çŠ¶æ€';
+                    Update public.t_systemanalystchartrelateduser Set ChartName = 'Task status' Where ChartName = 'ä»»åŠ¡çŠ¶æ€';
+                    Update public.t_systemanalystchartrelateduser Set ChartName = 'My sales order status' Where ChartName = 'æˆ‘çš„é”€å”®å•çŠ¶æ€';
+                    Update public.t_systemanalystchartrelateduser Set ChartName = 'My purchase order status' Where ChartName = 'æˆ‘çš„é‡‡è´­å•çŠ¶æ€';
+                    Update public.t_systemanalystchartrelateduser Set ChartName = 'The status of the project I initiated' Where ChartName = 'æˆ‘ç«‹é¡¹çš„é¡¹ç›®çŠ¶æ€';
+                    Update public.t_systemanalystchartrelateduser Set ChartName = 'Direct members project status' Where ChartName = 'ç›´æ¥æˆå‘˜çš„é¡¹ç›®çŠ¶æ€';
+                    Update public.t_systemanalystchartrelateduser Set ChartName = 'All member project status' Where ChartName = 'æ‰€æœ‰æˆå‘˜çš„é¡¹ç›®çŠ¶æ€';
+                    Update public.t_systemanalystchartrelateduser Set ChartName = 'My production order status' Where ChartName = 'æˆ‘çš„ç”Ÿäº§å•çŠ¶æ€';
+                    Update public.t_systemanalystchartrelateduser Set ChartName = 'Direct member production order status' Where ChartName = 'ç›´æ¥æˆå‘˜çš„ç”Ÿäº§å•çŠ¶æ€';
+                    Update public.t_systemanalystchartrelateduser Set ChartName = 'Project status I am involved in' Where ChartName = 'æˆ‘å‚ä¸çš„é¡¹ç›®çŠ¶æ€';
+                    Update public.t_systemanalystchartrelateduser Set ChartName = 'Direct member opportunity status' Where ChartName = 'ç›´æ¥æˆå‘˜çš„å•†æœºçŠ¶æ€';
+                    Update public.t_systemanalystchartrelateduser Set ChartName = 'All member opportunity status' Where ChartName = 'æ‰€æœ‰æˆå‘˜çš„å•†æœºçŠ¶æ€';
+                    Update public.t_systemanalystchartrelateduser Set ChartName = 'My recorded opportunity status' Where ChartName = 'æˆ‘è®°å½•çš„å•†æœºçŠ¶æ€';
+                    Update public.t_systemanalystchartrelateduser Set ChartName = 'Contract status' Where ChartName = 'åˆåŒçŠ¶æ€';
+                    Update public.t_systemanalystchartrelateduser Set ChartName = 'Contract Type' Where ChartName = 'åˆåŒç±»å‹';
+                    Update public.t_systemanalystchartrelateduser Set ChartName = 'Direct member sales order status' Where ChartName = 'ç›´æ¥æˆå‘˜çš„é”€å”®å•çŠ¶æ€';
+                    Update public.t_systemanalystchartrelateduser Set ChartName = 'My opportunity status' Where ChartName = 'æˆ‘çš„å•†æœºçŠ¶æ€';
+                    Update public.t_systemanalystchartrelateduser Set ChartName = 'Project status I lead' Where ChartName = 'æˆ‘ä¸»å¯¼çš„é¡¹ç›®çŠ¶æ€';
+                    Update public.t_systemanalystchartrelateduser Set ChartName = 'Workflow status' Where ChartName = 'å·¥ä½œæµçŠ¶æ€';
+                    Update public.t_systemanalystchartrelateduser Set ChartName = 'Direct member purchase order status' Where ChartName = 'ç›´æ¥æˆå‘˜çš„é‡‡è´­å•çŠ¶æ€';
+                    Update public.t_systemanalystchartrelateduser Set ChartName = 'Delayed project status' Where ChartName = 'å»¶è¯¯é¡¹ç›®çŠ¶æ€';
+                    Update public.t_systemanalystchartrelateduser Set ChartName = 'Annual project hours status' Where ChartName = 'å¹´åº¦é¡¹ç›®å·¥æ—¶çŠ¶æ€';
+                    Update public.t_systemanalystchartrelateduser Set ChartName = 'Active project status' Where ChartName = 'åœ¨æ‰§è¡Œé¡¹ç›®çŠ¶æ€';
+                    Update public.t_systemanalystchartrelateduser Set ChartName = 'Annual project collection status' Where ChartName = 'é¡¹ç›®å¹´åº¦å›æ¬¾çŠ¶æ€';
+                    Update public.t_systemanalystchartrelateduser Set ChartName = 'Active task status' Where ChartName = 'åœ¨æ‰§è¡Œä»»åŠ¡çŠ¶æ€';";
         ShareClass.RunSqlCommand(strHQL);
     }
 
@@ -1239,7 +1122,7 @@ SELECT
         ShareClass.RunSqlCommand(strHQL);
     }
 
-    //¸üĞÂÏµÍ³·ÖÎöÍ¼ÓÃ»§¹ØÁª±íÖĞ·ÖÎöÍ¼µÄÅÅĞòºÅ
+    //æ›´æ–°ç³»ç»Ÿåˆ†æå›¾ç”¨æˆ·å…³è”è¡¨ä¸­åˆ†æå›¾çš„æ’åºå·
     protected static void updateSystemAnalystChartSortNumberForRelatedUser()
     {
         try
@@ -1259,7 +1142,7 @@ SELECT
         }
     }
 
-    //É¾³ıÏµÍ³·ÖÎöÍ¼ÓÃ»§¹ØÁª±íÖĞµÄ²»¿ÉÓÃºÍ¶àÓàµÄÊı¾İ
+    //åˆ é™¤ç³»ç»Ÿåˆ†æå›¾ç”¨æˆ·å…³è”è¡¨ä¸­çš„ä¸å¯ç”¨å’Œå¤šä½™çš„æ•°æ®
     protected static void deleteSystemAnalystChartRelatedUserInvalidData()
     {
         string strHQL;
@@ -1270,10 +1153,14 @@ SELECT
         strHQL = @"Delete From T_SystemAnalystChartRelatedUser Where ID Not In 
                   (Select max(ID) From T_SystemAnalystChartRelatedUser Group By UserCode, ChartName, FormType)";
         ShareClass.RunSqlCommand(strHQL);
+
+        strHQL = @"Delete From t_systemanalystchartmanagement Where ID Not In 
+                  (Select max(ID) From t_systemanalystchartmanagement Group By ChartName)";
+        ShareClass.RunSqlCommand(strHQL);
     }
 
 
-    //È¡µÃÄ£×éĞĞ¸üĞÂ±êÖ¾
+    //å–å¾—æ¨¡ç»„è¡Œæ›´æ–°æ ‡å¿—
     protected static int GetProModuleUpdateMark(string strModuleName, string strUserType)
     {
         string strHQL;
@@ -1291,7 +1178,7 @@ SELECT
         }
     }
 
-    //È¡µÃÏµÍ³Ô±¹¤ÊıÁ¿
+    //å–å¾—ç³»ç»Ÿå‘˜å·¥æ•°é‡
     public static int getUserNumber()
     {
         string strHQL1;

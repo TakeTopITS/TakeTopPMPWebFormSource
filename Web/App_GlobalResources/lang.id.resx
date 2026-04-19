@@ -22949,7 +22949,7 @@
     <value>Penambahan gagal, kemungkinan sudah ada nomor versi ini dalam proyek ini, harap periksa!</value>
   </data>
   <data name="ZZXZSBCYHBCZJC" xml:space="preserve">
-    <value>Penambahan gagal, pengguna ini tidak?存在，请检查? (Catatan: bagian ini rusak dalam teks asli, kemungkinan maksudnya "pengguna ini tidak ada, harap periksa!")</value>
+    <value>Penambahan gagal, pengguna ini tidak ada, harap periksa!</value>
   </data>
   <data name="ZZXZSBCYSZKNCZCBBHJC" xml:space="preserve">
     <value>Penambahan gagal, kemungkinan sudah ada nomor versi ini dalam elemen ini, harap periksa!</value>
@@ -34004,7 +34004,7 @@
     <value>Berhasil ditentukan!</value>
   </data>
   <data name="ZZZZDFYCLFBXRYTODODDCWEXMESSAGE" xml:space="preserve">
-    <value>Biaya hiburan, biaya perjalanan dinas, personel reimbursement TODO待定 , kesalahan: " + ex.Message + "!</value>
+    <value>Biaya hiburan, biaya perjalanan dinas, personel reimbursement, kesalahan: " + ex.Message + "!</value>
   </data>
   <data name="ZZZZDSBJC" xml:space="preserve">
     <value>Gagal menentukan, harap periksa!</value>

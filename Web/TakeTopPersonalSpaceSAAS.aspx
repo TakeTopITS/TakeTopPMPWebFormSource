@@ -295,7 +295,7 @@
                     <ContentTemplate>
                         <ul id="navlist">
                             <li style="padding-top: 7px;">
-                                <asp:ImageButton ID="IM_Extend" ImageUrl="ImagesSkin/extend.png" Width="23" Height="20"
+                                <asp:ImageButton ID="IM_Extend" ImageUrl="ImagesSkin/news.png" Width="23" Height="20"
                                     OnClientClick="javascript: ChangeMenu(1);" runat="server" OnClick="BT_Extend_Click" />
                             </li>
                             <asp:Repeater ID="RP_NewsTypeList" runat="server">
@@ -340,7 +340,7 @@
                         </td>
                         <td id="tdAI" runat="server" width="40px" align="center" style="padding-top: 7px; padding-bottom: 5px;">
 
-                            <a id="a_AIURL" runat="server" class="titleSpan" href="javascript:top.frames[0].frames[2].parent.frames['rightTabFrame'].openRightLayer('TTAIHandlerByDeepSeek.aspx','TakeTopAI');" visible="false">
+                            <a id="a_AIURL" runat="server" class="titleSpan" href="javascript:top.frames[0].frames[2].parent.frames['rightTabFrame'].openRightLayer('TTAIHandlerByDeepSeek.aspx','TakeTopAI');">
                                 <img src="ImagesSkin/AI.png" width="22" height="22" alt="">
                             </a>
                         </td>

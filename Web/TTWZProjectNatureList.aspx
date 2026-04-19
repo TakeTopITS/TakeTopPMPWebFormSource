@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTWZProjectNatureList.aspx.cs" Inherits="TTWZProjectNatureList" %>
+ï»¿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTWZProjectNatureList.aspx.cs" Inherits="TTWZProjectNatureList" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -50,28 +50,7 @@
                                         <tr>
                                             <td valign="top" style="padding-top: 5px;">
                                                 <div style="width: 50%;">
-                                                    <table width="100%" border="0" cellpadding="0" cellspacing="0" background="ImagesSkin/main_n_bj.jpg">
-                                                        <tr>
-                                                            <td width="7">
-                                                                <img src="ImagesSkin/main_n_l.jpg" width="7" height="26" />
-                                                            </td>
-                                                            <td>
-                                                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                                                    <tr>
-                                                                        <td width="14%" class="ItemAlignLeft">
-                                                                            <strong>
-                                                                                <asp:Label ID="Label2" runat="server" Text="<%$ Resources:lang,CaoZuo%>"></asp:Label></strong>
-                                                                        </td>
-                                                                        <td width="14%" class="ItemAlignLeft">
-                                                                            <strong>
-                                                                                <asp:Label ID="Label3" runat="server" Text="<%$ Resources:lang,XiangMuXingZhi%>"></asp:Label></strong>
-                                                                        </td>
-                                                                        <td width="72%" class="ItemAlignLeft">
-                                                                            <strong>
-                                                                                <asp:Label ID="Label4" runat="server" Text="<%$ Resources:lang,XingZhiShuoMing%>"></asp:Label></strong>
-                                                                        </td>
-                                                                    </tr>
-                                                                </table>
+                                                    
                                                             </td>
                                                             <td width="6" align="right">
                                                                 <img src="ImagesSkin/main_n_r.jpg" width="6" alt="" height="26" />
@@ -79,8 +58,8 @@
                                                         </tr>
                                                     </table>
                                                     <asp:DataGrid ID="DG_List" runat="server" AllowPaging="true" AutoGenerateColumns="False"
-                                                        CellPadding="4" ForeColor="#333333" GridLines="None" Height="1px" PageSize="20" ShowHeader="false"
-                                                        Width="100%" OnItemCommand="DG_List_ItemCommand" OnPageIndexChanged="DG_List_PageIndexChanged">
+                                                        CellPadding="4" ForeColor="#333333" GridLines="None" Height="1px" PageSize="20" ShowHeader="true"
+                                                        Width="100%" OnItemCommand="DG_List_ItemCommand" OnPageIndexChanged="DG_List_PageIndexChanged" HeaderStyle-BackColor="#f5f5f5" HeaderStyle-Font-Bold="true" HeaderStyle-Height="26px">
                                                         <Columns>
                                                             <asp:TemplateColumn>
                                                                 <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="14%" />
@@ -91,11 +70,11 @@
                                                                     <a href='TTWZProjectNatureEdit.aspx?id=<%# DataBinder.Eval(Container.DataItem,"ID") %>' class="notTab">
                                                                         <asp:Label ID="Label6" runat="server" Text="<%$ Resources:lang,BianJi%>"></asp:Label></a>
                                                                     <asp:LinkButton ID="LinkButton1" runat="server" CommandArgument='<%# DataBinder.Eval(Container.DataItem,"ID") %>' CommandName="del" CssClass="notTab" Visible='<%# Eval("IsMark").ToString()=="0" ? true : false %>'>Delete</asp:LinkButton>
-                                                                    <%--<asp:Button ID="Button1" CssClass="inpu" runat="server" CommandArgument='<%# DataBinder.Eval(Container.DataItem,"ID") %>' CommandName="del" Text="É¾³ý" />--%>
+                                                                    <%--<asp:Button ID="Button1" CssClass="inpu" runat="server" CommandArgument='<%# DataBinder.Eval(Container.DataItem,"ID") %>' CommandName="del" Text="åˆ é™¤" />--%>
                                                                     
                                                                 </ItemTemplate>
                                                             </asp:TemplateColumn>
-                                                            <%--<asp:BoundColumn DataField="NatureCode" HeaderText="ÏîÄ¿ÐÔÖÊ">
+                                                            <%--<asp:BoundColumn DataField="NatureCode" HeaderText="é¡¹ç›®æ€§è´¨">
                                                                 <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" Width="14%" />
                                                             </asp:BoundColumn>--%>
                                                             <asp:TemplateColumn>
@@ -107,7 +86,7 @@
                                                                     <%# ShareClass.StringCutByRequire(Eval("NatureCode").ToString(), 192) %>
                                                                 </ItemTemplate>
                                                             </asp:TemplateColumn>
-                                                            <%--<asp:BoundColumn DataField="NatureDesc" HeaderText="ÐÔÖÊËµÃ÷">
+                                                            <%--<asp:BoundColumn DataField="NatureDesc" HeaderText="æ€§è´¨è¯´æ˜Ž">
                                                                 <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" Width="82%" />
                                                             </asp:BoundColumn>--%>
                                                             <asp:TemplateColumn>

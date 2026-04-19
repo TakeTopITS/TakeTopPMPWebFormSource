@@ -532,7 +532,7 @@
     <value>Risultati delle ispezioni</value>
   </data>
   <data name="BaoJiaoFei" xml:space="preserve">
-    <value>Tassa Yasunori</value>
+    <value>Tassa educativa</value>
   </data>
   <data name="BaoJiaPingTai" xml:space="preserve">
     <value>Citazione Piattaforma</value>
@@ -8587,7 +8587,7 @@
     <value>Stato dei media</value>
   </data>
   <data name="MeiXueQiBaoJiaoFei" xml:space="preserve">
-    <value>Tassa Yasunori per semestre</value>
+    <value>Tassa educativa per semestre</value>
   </data>
   <data name="MeiYuan" xml:space="preserve">
     <value>Dollaro</value>

@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTTransferProjectRecord.aspx.cs"
+ï»¿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTTransferProjectRecord.aspx.cs"
     Inherits="TTTransferProjectRecord" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -64,7 +64,7 @@
                             <tr>
                                 <td style="height: 16px; padding: 5px 5px 5px 5px;" align="right">
                                     <a href="#" onclick="preview1()">
-                                        <img src="ImagesSkin/print.gif" alt="´òÓ¡" border="0" />
+                                        <img src="ImagesSkin/print.gif" alt="æ‰“å°" border="0" />
                                     </a></td>
                             </tr>
                         </table>
@@ -83,40 +83,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <table width="90%" border="0" cellpadding="0" cellspacing="0" background="ImagesSkin/main_n_bj.jpg">
-                                        <tr>
-                                            <td width="7">
-                                                <img src="ImagesSkin/main_n_l.jpg" width="7" height="26" />
-                                            </td>
-                                            <td>
-                                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                                    <tr>
-                                                        <td width="10%" class="ItemAlignLeft">
-                                                            <strong>
-                                                                <asp:Label ID="Label2" runat="server" Text="<%$ Resources:lang,XuHao%>"></asp:Label></strong>
-                                                        </td>
-                                                        <td width="10%" class="ItemAlignLeft">
-                                                            <strong>
-                                                                <asp:Label ID="Label3" runat="server" Text="<%$ Resources:lang,XiangMuHao%>"></asp:Label></strong>
-                                                        </td>
-                                                        <td width="15%" class="ItemAlignLeft">
-                                                            <strong>
-                                                                <asp:Label ID="Label4" runat="server" Text="<%$ Resources:lang,JueSe%>"></asp:Label></strong>
-                                                        </td>
-                                                        <td width="20%" class="ItemAlignLeft">
-                                                            <strong>
-                                                                <asp:Label ID="Label5" runat="server" Text="<%$ Resources:lang,YuanXiangMuJingLi%>"></asp:Label></strong>
-                                                        </td>
-                                                        <td width="20%" class="ItemAlignLeft">
-                                                            <strong>
-                                                                <asp:Label ID="Label6" runat="server" Text="<%$ Resources:lang,XianXiangMuJingLi%>"></asp:Label></strong>
-                                                        </td>
-                                                        <td width="25%" class="ItemAlignLeft">
-                                                            <strong>
-                                                                <asp:Label ID="Label7" runat="server" Text="<%$ Resources:lang,BianGengShiJian%>"></asp:Label></strong>
-                                                        </td>
-                                                    </tr>
-                                                </table>
+                                    
                                             </td>
                                             <td width="6" align="right">
                                                 <img src="ImagesSkin/main_n_r.jpg" width="6" alt="" height="26" />
@@ -124,8 +91,8 @@
                                         </tr>
                                     </table>
                                     <asp:DataGrid ID="DataGrid1" runat="server" AutoGenerateColumns="False" Height="1px"
-                                        PageSize="5" Width="90%" ShowHeader="false" CellPadding="4" ForeColor="#333333"
-                                        GridLines="None">
+                                        PageSize="5" Width="90%" ShowHeader="true" CellPadding="4" ForeColor="#333333"
+                                        GridLines="None" HeaderStyle-BackColor="#f5f5f5" HeaderStyle-Font-Bold="true" HeaderStyle-Height="26px">
                                         <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                                         <EditItemStyle BackColor="#2461BF" />
                                         <SelectedItemStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
@@ -139,18 +106,18 @@
                                             <asp:BoundColumn DataField="ProjectID" HeaderText="ProjectNumber">
                                                 <ItemStyle CssClass="itemBorder" Width="10%" />
                                             </asp:BoundColumn>
-                                            <asp:BoundColumn DataField="Actor" HeaderText="½ÇÉ«">
+                                            <asp:BoundColumn DataField="Actor" HeaderText="è§’è‰²">
                                                 <ItemStyle CssClass="itemBorder" Width="15%" />
                                             </asp:BoundColumn>
                                             <asp:HyperLinkColumn DataNavigateUrlField="OldPMCode" DataNavigateUrlFormatString="TTUserInforSimple.aspx?UserCode={0}"
-                                                DataTextField="OldPMName" HeaderText="Ô­ÏîÄ¿¾­Àí" Target="_blank">
+                                                DataTextField="OldPMName" HeaderText="åŽŸé¡¹ç›®ç»ç†" Target="_blank">
                                                 <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="20%" />
                                             </asp:HyperLinkColumn>
                                             <asp:HyperLinkColumn DataNavigateUrlField="NewPMCode" DataNavigateUrlFormatString="TTUserInforSimple.aspx?UserCode={0}"
-                                                DataTextField="NewPMName" HeaderText="ÏÖÏîÄ¿¾­Àí" Target="_blank">
+                                                DataTextField="NewPMName" HeaderText="çŽ°é¡¹ç›®ç»ç†" Target="_blank">
                                                 <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="20%" />
                                             </asp:HyperLinkColumn>
-                                            <asp:BoundColumn DataField="ChangeTime" HeaderText="±ä¸üÊ±¼ä">
+                                            <asp:BoundColumn DataField="ChangeTime" HeaderText="å˜æ›´æ—¶é—´">
                                                 <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="25%" />
                                             </asp:BoundColumn>
                                         </Columns>

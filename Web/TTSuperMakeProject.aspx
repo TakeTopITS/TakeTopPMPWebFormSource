@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" EnableEventValidation="false" CodeFile="TTSuperMakeProject.aspx.cs"
+Ôªø<%@ Page Language="C#" AutoEventWireup="true" EnableEventValidation="false" CodeFile="TTSuperMakeProject.aspx.cs"
     Inherits="TTSuperMakeProject" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
@@ -8,7 +8,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
-    <title>∏¯≥…‘±Ω®¡¢∫Õ∑÷≈…œÓƒø</title>
+    <title>ÁªôÊàêÂëòÂª∫Á´ãÂíåÂàÜÊ¥æÈ°πÁõÆ</title>
     <link id="mainCss" href="css/bluelightmain.css" rel="stylesheet" type="text/css" />
     <style type="text/css">
         #AboveDiv {
@@ -92,20 +92,7 @@
                                                     </tr>
                                                     <tr>
                                                         <td style="padding-top: 5px" valign="top">
-                                                            <table width="100%" border="0" cellpadding="0" cellspacing="0" background="ImagesSkin/main_n_bj.jpg">
-                                                                <tr>
-                                                                    <td width="7">
-                                                                        <img src="ImagesSkin/main_n_l.jpg" width="7" height="26" />
-                                                                    </td>
-                                                                    <td>
-                                                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                                                            <tr>
-                                                                                <td class="ItemAlignLeft">
-                                                                                    <strong>
-                                                                                        <asp:Label ID="Label2" runat="server" Text="<%$ Resources:lang,BuMenChengYuan%>"></asp:Label></strong>
-                                                                                </td>
-                                                                            </tr>
-                                                                        </table>
+                                                            
                                                                     </td>
                                                                     <td width="6" align="right">
                                                                         <img src="ImagesSkin/main_n_r.jpg" width="6" alt="" height="26" />
@@ -113,7 +100,7 @@
                                                                 </tr>
                                                             </table>
                                                             <asp:DataGrid ID="DataGrid1" runat="server" AutoGenerateColumns="False" OnItemCommand="DataGrid1_ItemCommand"
-                                                                ShowHeader="false" Width="100%" ForeColor="#333333" GridLines="None">
+                                                                ShowHeader="true" Width="100%" ForeColor="#333333" GridLines="None" HeaderStyle-BackColor="#f5f5f5" HeaderStyle-Font-Bold="true" HeaderStyle-Height="26px">
                                                                 <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                                                                 <EditItemStyle BackColor="#2461BF" />
                                                                 <SelectedItemStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
@@ -121,7 +108,7 @@
 
                                                                 <ItemStyle CssClass="itemStyle" />
                                                                 <Columns>
-                                                                    <asp:TemplateColumn HeaderText="≤ø√≈≥…‘±:">
+                                                                    <asp:TemplateColumn HeaderText="ÈÉ®Èó®ÊàêÂëò:">
                                                                         <ItemStyle CssClass="itemBorder" HorizontalAlign="left" />
                                                                         <ItemTemplate>
                                                                             <asp:Button ID="BT_UnderlingCode" runat="server" Text='<%# DataBinder.Eval(Container.DataItem,"UserCode") %>'
@@ -678,16 +665,16 @@
                                                     </ItemTemplate>
                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="10%" />
                                                 </asp:TemplateColumn>
-                                                <asp:BoundColumn DataField="ProjectName" HeaderText="œÓƒø√˚≥∆">
+                                                <asp:BoundColumn DataField="ProjectName" HeaderText="È°πÁõÆÂêçÁß∞">
                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" Width="33%" />
                                                 </asp:BoundColumn>
-                                                <asp:BoundColumn DataField="BeginDate" DataFormatString="{0:yyyy/MM/dd}" HeaderText="ø™ º»’∆⁄">
+                                                <asp:BoundColumn DataField="BeginDate" DataFormatString="{0:yyyy/MM/dd}" HeaderText="ÂºÄÂßãÊó•Êúü">
                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="13%" />
                                                 </asp:BoundColumn>
-                                                <asp:BoundColumn DataField="EndDate" DataFormatString="{0:yyyy/MM/dd}" HeaderText="Ω· ¯»’∆⁄">
+                                                <asp:BoundColumn DataField="EndDate" DataFormatString="{0:yyyy/MM/dd}" HeaderText="ÁªìÊùüÊó•Êúü">
                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="13%" />
                                                 </asp:BoundColumn>
-                                                <asp:BoundColumn DataField="MakeDate" DataFormatString="{0:yyyy/MM/dd}" HeaderText="¡¢œÓ»’∆⁄">
+                                                <asp:BoundColumn DataField="MakeDate" DataFormatString="{0:yyyy/MM/dd}" HeaderText="Á´ãÈ°πÊó•Êúü">
                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="13%" />
                                                 </asp:BoundColumn>
                                                 <asp:TemplateColumn HeaderText="Status">

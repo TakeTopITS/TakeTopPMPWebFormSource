@@ -23389,7 +23389,7 @@
     <value>Указывает успех!</value>
   </data>
   <data name="ZZZDFYCLFBXRYTODODDCWEXMESSAGE" xml:space="preserve">
-    <value>Расходы на прием, командировочные расходы, возмещение персонала TODO待定, ошибка: " + ex.Message + "!</value>
+    <value>Расходы на прием, командировочные расходы, возмещение персонала, ошибка: " + ex.Message + "!</value>
   </data>
   <data name="ZZZDSBJC" xml:space="preserve">
     <value>Указывает не удается, проверьте!</value>

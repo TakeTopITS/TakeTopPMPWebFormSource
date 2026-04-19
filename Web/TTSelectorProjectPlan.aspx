@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTSelectorProjectPlan.aspx.cs" Inherits="TTSelectorProjectPlan" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTSelectorProjectPlan.aspx.cs" Inherits="TTSelectorProjectPlan" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -49,29 +49,7 @@
                                             <tr>
                                                 <td class="formItemBgStyleForAlignLeft" width="100%">
                                                     <div>
-                                                        <table width="100%" border="0" cellpadding="0" cellspacing="0" background="ImagesSkin/main_n_bj.jpg">
-                                                            <tr>
-                                                                <td width="7">
-                                                                    <img src="ImagesSkin/main_n_l.jpg" width="7" height="26" />
-                                                                </td>
-                                                                <td>
-                                                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                                                        <tr>
-                                                                 
-                                                                            <td width="20%" class="ItemAlignLeft">
-                                                                                <strong>
-                                                                                    <asp:Label ID="Label2" runat="server" Text="<%$ Resources:lang,XiangMuHao%>"></asp:Label></strong>
-                                                                            </td>
-                                                                            <td width="40%" class="ItemAlignLeft">
-                                                                                <strong>
-                                                                                    <asp:Label ID="Label3" runat="server" Text="<%$ Resources:lang,XiangMuMing%>"></asp:Label></strong>
-                                                                            </td>
-                                                                            <td width="30%" class="ItemAlignLeft">
-                                                                                <strong>
-                                                                                    <asp:Label ID="Label4" runat="server" Text="<%$ Resources:lang,CaoZuo%>"></asp:Label></strong>
-                                                                            </td>
-                                                                        </tr>
-                                                                    </table>
+                                                        
                                                                 </td>
                                                                 <td width="6" align="right">
                                                                     <img src="ImagesSkin/main_n_r.jpg" width="6" alt="" height="26" />
@@ -79,8 +57,8 @@
                                                             </tr>
                                                         </table>
                                                         <asp:DataGrid ID="DG_List" runat="server" AllowPaging="False" AutoGenerateColumns="False"
-                                                            CellPadding="4" ForeColor="#333333" GridLines="None" Height="1px" PageSize="5" ShowHeader="false"
-                                                            Width="100%" OnItemCommand="DG_List_ItemCommand">
+                                                            CellPadding="4" ForeColor="#333333" GridLines="None" Height="1px" PageSize="5" ShowHeader="true"
+                                                            Width="100%" OnItemCommand="DG_List_ItemCommand" HeaderStyle-BackColor="#f5f5f5" HeaderStyle-Font-Bold="true" HeaderStyle-Height="26px">
                                                             <Columns>
                                                                
                                                                 <asp:BoundColumn DataField="ProjectID" HeaderText="ProjectNumber">
@@ -119,7 +97,7 @@
 
                                                     </div>
 
-                                                     <%--��Ŀ:<asp:DropDownList ID="DDL_Project" runat="server"></asp:DropDownList>--%>
+                                                     <%--项目:<asp:DropDownList ID="DDL_Project" runat="server"></asp:DropDownList>--%>
 
                                                 </td>
                                             </tr>

@@ -37,16 +37,14 @@ public partial class TTPersonalSpaceModuleSetForUser : System.Web.UI.Page
         ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "clickA", "aHandler();", true);
         if (Page.IsPostBack == false)
         {
+            // 加载个人空间模块列表（所有用户都可见）
             LoadUserModule(strUserCode, strUserType, strLangCode);
+            DataGrid4.Visible = true;
 
-            if (ShareClass. checkUserHasModuleRight("NewsTypeSetting", strUserCode))
+            // 加载新闻类型列表（仅NewsTypeSetting权限用户可见）
+            if (ShareClass.checkUserHasModuleRight("NewsTypeSetting", strUserCode))
             {
                 LoadNewsTypeList(strLangCode);
-                DataGrid4.Visible = true;
-            }
-            else
-            {
-                DataGrid4.Visible = false;
             }
         }
     }
@@ -61,10 +59,10 @@ public partial class TTPersonalSpaceModuleSetForUser : System.Web.UI.Page
             Session["IsUpdatePersonalSpace"] = "YES";
 
 
-            ////Ϊˢ�¸��˿ռ仺�棬���ӿ���
+            ////为刷新个人空间缓存，添加空行
             //ShareClass.AddSpaceLineToPersonalSpaceForRefreshCache();
 
-            //���û�����ı�־����ˢ��ҳ�滺��
+            //设置缓存更改标志，并刷新页面缓存
             ShareClass.ChangePageCache();
 
             ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click111", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZBCCG") + "')", true);

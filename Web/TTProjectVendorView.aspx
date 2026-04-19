@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTProjectVendorView.aspx.cs"
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTProjectVendorView.aspx.cs"
     Inherits="TTProjectVendorView" %>
 
 <%@ Register Assembly="NickLee.Web.UI" Namespace="NickLee.Web.UI" TagPrefix="NickLee" %>
@@ -55,32 +55,15 @@
                                 <table width="90%" cellpadding="3" cellspacing="0" class="formBgStyle">
                                     <tr>
                                         <td class="formItemBgStyleForAlignLeft" rowspan="2">
-                                            <table width="100%" border="0" cellpadding="0" cellspacing="0" background="ImagesSkin/main_n_bj.jpg">
-                                                <tr>
-                                                    <td width="7">
-                                                        <img src="ImagesSkin/main_n_l.jpg" width="7" height="26" /></td>
-                                                    <td>
-                                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                                            <tr>
-                                                                <td width="10%" class="ItemAlignLeft">
-                                                                    <strong>
-                                                                        <asp:Label ID="Label27" runat="server" Text="<%$ Resources:lang,DaiMa%>"></asp:Label></strong>
-                                                                </td>
-                                                                <td width="30%" class="ItemAlignLeft">
-                                                                    <strong>
-                                                                        <asp:Label ID="Label28" runat="server" Text="<%$ Resources:lang,MingCheng%>"></asp:Label></strong>
-                                                                </td>
-
-                                                            </tr>
-                                                        </table>
+                                            
                                                     </td>
                                                     <td width="6" align="right">
                                                         <img src="ImagesSkin/main_n_r.jpg" width="6" alt="" height="26" /></td>
                                                 </tr>
                                             </table>
-                                            <asp:DataGrid ID="DataGrid2" runat="server" AutoGenerateColumns="False" Height="1px" ShowHeader="false"
+                                            <asp:DataGrid ID="DataGrid2" runat="server" AutoGenerateColumns="False" Height="1px" ShowHeader="true"
                                                 OnItemCommand="DataGrid2_ItemCommand" Width="100%" PageSize="5" GridLines="None"
-                                                CellPadding="4" ForeColor="#333333">
+                                                CellPadding="4" ForeColor="#333333" HeaderStyle-BackColor="#f5f5f5" HeaderStyle-Font-Bold="true" HeaderStyle-Height="26px">
                                                 <Columns>
                                                     <asp:TemplateColumn HeaderText="Code">
                                                         <ItemTemplate>

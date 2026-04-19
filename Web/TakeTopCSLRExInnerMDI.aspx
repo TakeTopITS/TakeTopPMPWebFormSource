@@ -20,7 +20,7 @@
         /* #rightTabFrameID{background: #EFF2F7;} */
     </style>
 </head>
-<frameset id="TakeTopLRMDI" cols="45,*" rows="*" frameborder="no" border="0" framespacing="0">
+<frameset id="TakeTopLRMDI" cols="<%=leftBarWidth %>,*" rows="*" frameborder="no" border="0" framespacing="0">
 
     <frameset rows="43,*,1" name="leftFrame" id="leftFrame" frameborder="no" border="0" framespacing="0">
         <frame src='TakeTopLRTop.aspx?UserCode=<%=strUserCode%>&Flag=<%=Session["SkinFlag"].ToString()%>' id="leftTopFrameID" name="lefTopFrame" scrolling="no" noresize />
@@ -38,11 +38,6 @@
 </frameset>
 
 <noframes>
-    <body>ÄãµÄä¯ÀÀÆ÷²»Ö§³Ö¿ò¼Ü£¡</body>
+    <body>ä½ çš„æµè§ˆå™¨ä¸æ”¯æŒæ¡†æ¶ï¼</body>
 </noframes>
-<script type="text/javascript" language="javascript">
-    var cssDirectory = '<%=Session["CssDirectory"] %>';
-    var oLink = document.getElementById('mainCss');
-    oLink.href = 'css/' + cssDirectory + '/' + 'bluelightmain.css';
-</script>
 </html>

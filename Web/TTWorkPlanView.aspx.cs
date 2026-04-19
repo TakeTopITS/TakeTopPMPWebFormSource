@@ -110,7 +110,16 @@ public partial class TTWorkPlanView : System.Web.UI.Page
 
             NB_DefaultSchedule.Amount = workPlan.DefaultSchedule;
             NB_DefaultCost.Amount = workPlan.DefaultCost;
-            DL_LockStatus.SelectedValue = workPlan.LockStatus.Trim();
+            // 检查LockStatus值是否在DL_LockStatus列表中，如果不在则使用默认值"NO"
+            string lockStatus = workPlan.LockStatus != null ? workPlan.LockStatus.Trim() : "NO";
+            if (DL_LockStatus.Items.FindByValue(lockStatus) != null)
+            {
+                DL_LockStatus.SelectedValue = lockStatus;
+            }
+            else
+            {
+                DL_LockStatus.SelectedValue = "NO";
+            }
 
             NB_SortNumber.Amount = workPlan.SortNumber;
 

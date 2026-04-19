@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTProjectWorkFlowManageForAlone.aspx.cs" Inherits="TTProjectWorkFlowManageForAlone" %>
+ï»¿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTProjectWorkFlowManageForAlone.aspx.cs" Inherits="TTProjectWorkFlowManageForAlone" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -89,56 +89,15 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <td style="width: 100%; height: 1px">
-                                                                        <table width="100%" border="0" cellpadding="0" cellspacing="0" background="ImagesSkin/main_n_bj.jpg">
-                                                                            <tr>
-                                                                                <td width="7">
-                                                                                    <img height="26" src="ImagesSkin/main_n_l.jpg" width="7" /></td>
-                                                                                <td>
-                                                                                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                                                                                        <tr>
-                                                                                            <td class="ItemAlignLeft" width="5%"><strong>
-                                                                                                <asp:Label ID="Label7" runat="server" Text="<%$ Resources:lang,BianHao %>"></asp:Label>
-                                                                                            </strong></td>
-
-                                                                                            <td class="ItemAlignLeft" width="25%"><strong>
-                                                                                                <asp:Label ID="Label3" runat="server" Text="<%$ Resources:lang,GongZuoLiuMingCheng %>"></asp:Label>
-                                                                                            </strong></td>
-
-                                                                                            <td class="ItemAlignLeft" width="10%"><strong>
-                                                                                                <asp:Label ID="Label54" runat="server" Text="<%$ Resources:lang,QianBuShenQingRen %>"></asp:Label>
-                                                                                            </strong></td>
-
-                                                                                            <td class="ItemAlignLeft" width="15%"><strong>
-                                                                                                <asp:Label ID="Label8" runat="server" Text="<%$ Resources:lang,YaoShenHeDegongZuoLiu %>"></asp:Label>
-                                                                                            </strong></td>
-                                                                                            <td class="ItemAlignLeft" width="6%"><strong>
-                                                                                                <asp:Label ID="Label4" runat="server" Text="<%$ Resources:lang,BiXu %>"></asp:Label>
-                                                                                            </strong></td>
-                                                                                            <td class="ItemAlignLeft" width="8%"><strong>
-                                                                                                <asp:Label ID="Label5" runat="server" Text="<%$ Resources:lang,DongZuo %>"></asp:Label>
-                                                                                            </strong></td>
-                                                                                            <td class="ItemAlignLeft" width="10%"><strong>
-                                                                                                <asp:Label ID="Label56" runat="server" Text="<%$ Resources:lang,JianLiShiJian %>"></asp:Label>
-                                                                                            </strong></td>
-
-                                                                                            <td class="ItemAlignLeft" width="10%"><strong>
-                                                                                                <asp:Label ID="Label12" runat="server" Text="<%$ Resources:lang,FaQiRen %>"></asp:Label>
-                                                                                            </strong></td>
-
-                                                                                            <td class="ItemAlignLeft" width="8%"><strong>
-                                                                                                <asp:Label ID="Label13" runat="server" Text="<%$ Resources:lang,ZhuangTai %>"></asp:Label>
-                                                                                            </strong></td>
-                                                                                            <td class="ItemAlignLeft" width="4%"><strong></strong></td>
-                                                                                        </tr>
-                                                                                    </table>
+                                                                        
                                                                                 </td>
                                                                                 <td width="6" align="right">
                                                                                     <img src="ImagesSkin/main_n_r.jpg" width="6" alt="" height="26" /></td>
                                                                             </tr>
                                                                         </table>
                                                                         <asp:DataGrid ID="DataGrid4" runat="server" AllowPaging="True" AutoGenerateColumns="False"
-                                                                            ShowHeader="False" CellPadding="4" ForeColor="#333333" GridLines="None" Height="1px"
-                                                                            OnPageIndexChanged="DataGrid4_PageIndexChanged" PageSize="5" Width="100%">
+                                                                            ShowHeader="true" CellPadding="4" ForeColor="#333333" GridLines="None" Height="1px"
+                                                                            OnPageIndexChanged="DataGrid4_PageIndexChanged" PageSize="5" Width="100%" HeaderStyle-BackColor="#f5f5f5" HeaderStyle-Font-Bold="true" HeaderStyle-Height="26px">
 
                                                                             <Columns>
                                                                                 <asp:BoundColumn DataField="ID" HeaderText="Number">
@@ -146,11 +105,11 @@
                                                                                 </asp:BoundColumn>
 
                                                                                 <asp:HyperLinkColumn DataNavigateUrlField="ID" DataNavigateUrlFormatString="TTWorkFlowDetailMain.aspx?ID={0}"
-                                                                                    DataTextField="WLName" HeaderText="ÒªÉóºËµÄ¹¤×÷" Target="_blank">
+                                                                                    DataTextField="WLName" HeaderText="è¦å®¡æ ¸çš„å·¥ä½œ" Target="_blank">
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" Width="25%" />
                                                                                 </asp:HyperLinkColumn>
 
-                                                                                <asp:TemplateColumn HeaderText="Ç°²½ÉóÅúÈË">
+                                                                                <asp:TemplateColumn HeaderText="å‰æ­¥å®¡æ‰¹äºº">
                                                                                     <ItemTemplate>
                                                                                         <asp:Label ID="Label58" runat="server" ToolTip='<%# ShareClass. GetPriorStepLastestOperator(Eval("WLID").ToString(),Eval("StepID").ToString(),Eval("ID").ToString()) %>'>
                                                                                                         <%# ShareClass.StringCutByRequire(ShareClass. GetPriorStepLastestOperator(Eval("WLID").ToString(),Eval("StepID").ToString(),Eval("ID").ToString()),18) %>
@@ -159,16 +118,16 @@
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" Width="10%" />
                                                                                 </asp:TemplateColumn>
                                                                                 <asp:HyperLinkColumn DataNavigateUrlField="ID" DataNavigateUrlFormatString="TTWorkFlowDetailMain.aspx?ID={0}"
-                                                                                    DataTextField="WorkDetail" HeaderText="ÒªÉóºËµÄ¹¤×÷" Target="_blank">
+                                                                                    DataTextField="WorkDetail" HeaderText="è¦å®¡æ ¸çš„å·¥ä½œ" Target="_blank">
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" Width="15%" />
                                                                                 </asp:HyperLinkColumn>
-                                                                                <asp:BoundColumn DataField="Requisite" HeaderText="±ØÐè">
+                                                                                <asp:BoundColumn DataField="Requisite" HeaderText="å¿…éœ€">
                                                                                     <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="6%" />
                                                                                 </asp:BoundColumn>
-                                                                                <asp:BoundColumn DataField="Operation" HeaderText="¶¯×÷">
+                                                                                <asp:BoundColumn DataField="Operation" HeaderText="åŠ¨ä½œ">
                                                                                     <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="8%" />
                                                                                 </asp:BoundColumn>
-                                                                                <asp:BoundColumn DataField="CheckingTime" DataFormatString="{0:yyyy/MM/dd HH:mm:ss}" HeaderText="ÉóºËÊ±¼ä">
+                                                                                <asp:BoundColumn DataField="CheckingTime" DataFormatString="{0:yyyy/MM/dd HH:mm:ss}" HeaderText="å®¡æ ¸æ—¶é—´">
                                                                                     <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="10%" />
                                                                                 </asp:BoundColumn>
 
@@ -260,26 +219,26 @@
                                                                                     <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="5%" />
                                                                                 </asp:BoundColumn>
                                                                                 <asp:HyperLinkColumn DataNavigateUrlField="ID" DataNavigateUrlFormatString="TTWorkFlowDetailMain.aspx?ID={0}"
-                                                                                    DataTextField="WorkDetail" HeaderText="ÒÑÉóºËµÄ¹¤×÷" Target="_blank">
+                                                                                    DataTextField="WorkDetail" HeaderText="å·²å®¡æ ¸çš„å·¥ä½œ" Target="_blank">
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" Width="20%" />
                                                                                 </asp:HyperLinkColumn>
-                                                                                <asp:BoundColumn DataField="Requisite" HeaderText="±ØÐè">
+                                                                                <asp:BoundColumn DataField="Requisite" HeaderText="å¿…éœ€">
                                                                                     <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="6%" />
                                                                                 </asp:BoundColumn>
-                                                                                <asp:BoundColumn DataField="Operation" HeaderText="¶¯×÷">
+                                                                                <asp:BoundColumn DataField="Operation" HeaderText="åŠ¨ä½œ">
                                                                                     <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="8%" />
                                                                                 </asp:BoundColumn>
-                                                                                <asp:BoundColumn DataField="CheckingTime" HeaderText="ÉóºËÊ±¼ä">
+                                                                                <asp:BoundColumn DataField="CheckingTime" HeaderText="å®¡æ ¸æ—¶é—´">
                                                                                     <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="11%" />
                                                                                 </asp:BoundColumn>
-                                                                                <asp:BoundColumn DataField="WLName" HeaderText="¹¤×÷Á÷Ãû³Æ">
+                                                                                <asp:BoundColumn DataField="WLName" HeaderText="å·¥ä½œæµåç§°">
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" Width="15%" />
                                                                                 </asp:BoundColumn>
                                                                                 <asp:HyperLinkColumn DataNavigateUrlField="CreatorCode" DataNavigateUrlFormatString="TTUserInforSimple.aspx?UserCode={0}"
                                                                                     DataTextField="CreatorName" HeaderText="Applicant" Target="_blank">
                                                                                     <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="10%" />
                                                                                 </asp:HyperLinkColumn>
-                                                                                <asp:TemplateColumn HeaderText="ÏÂ²½ÉóÅúÈË">
+                                                                                <asp:TemplateColumn HeaderText="ä¸‹æ­¥å®¡æ‰¹äºº">
                                                                                     <ItemTemplate>
                                                                                         <asp:Label ID="Label31" runat="server" ToolTip='<%# ShareClass. GetNextStepLastestOperator(Eval("WLID").ToString(),Eval("StepID").ToString(),Eval("ID").ToString()) %>'>
                                                                                                         <%# ShareClass.StringCutByRequire(ShareClass. GetNextStepLastestOperator(Eval("WLID").ToString(),Eval("StepID").ToString(),Eval("ID").ToString()),18) %>
@@ -390,7 +349,7 @@
                                                                                     HeaderText="Workflow" Target="_blank" Text="<%$ Resources:lang,JinDu%>">
                                                                                     <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="5%" />
                                                                                 </asp:HyperLinkColumn>
-                                                                                <asp:TemplateColumn HeaderText=" ×îÐÂÉóºËÕß">
+                                                                                <asp:TemplateColumn HeaderText=" æœ€æ–°å®¡æ ¸è€…">
                                                                                     <ItemTemplate>
                                                                                         <%# ShareClass.GetLastestStepLastestOperator(Eval("WLID").ToString()) %>
                                                                                     </ItemTemplate>
@@ -402,10 +361,10 @@
                                                                                     </ItemTemplate>
                                                                                     <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="10%" />
                                                                                 </asp:TemplateColumn>
-                                                                                <asp:BoundColumn DataField="TemName" HeaderText="Ä£°å">
+                                                                                <asp:BoundColumn DataField="TemName" HeaderText="æ¨¡æ¿">
                                                                                     <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="16%" />
                                                                                 </asp:BoundColumn>
-                                                                                <asp:BoundColumn DataField="CreateTime" HeaderText="ÉêÇëÊ±¼ä">
+                                                                                <asp:BoundColumn DataField="CreateTime" HeaderText="ç”³è¯·æ—¶é—´">
                                                                                     <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="10%" />
                                                                                 </asp:BoundColumn>
 

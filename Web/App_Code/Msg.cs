@@ -1,4 +1,4 @@
-using LANZ;
+﻿using LANZ;
 
 using LumiSoft.Net.POP3.Client;
 

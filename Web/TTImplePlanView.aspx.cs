@@ -25,7 +25,7 @@ public partial class TTImplePlanView : System.Web.UI.Page
         IList lst;
         int intPlanID;
 
-        //this.Title = LanguageHandle.GetWord("Project") + strProjectID + " " + strProjectName + "��ʵʩ�ƻ���";
+        //this.Title = LanguageHandle.GetWord("Project") + strProjectID + " " + strProjectName + "的实施计划！";
 
 
         HL_ProPlanGanttRight.NavigateUrl = "TTWorkPlanGanttForProject.aspx?pid=" + strProjectID;
@@ -139,7 +139,16 @@ public partial class TTImplePlanView : System.Web.UI.Page
         TB_PriorID.Amount = GetProjectPlanID(workPlan.PriorID.ToString());
         NB_DefaultSchedule.Amount = workPlan.DefaultSchedule;
         NB_DefaultCost.Amount = workPlan.DefaultCost;
-        DL_LockStatus.SelectedValue = workPlan.LockStatus.Trim();
+        // 检查LockStatus值是否在DL_LockStatus列表中，如果不在则使用默认值"NO"
+        string lockStatus = workPlan.LockStatus != null ? workPlan.LockStatus.Trim() : "NO";
+        if (DL_LockStatus.Items.FindByValue(lockStatus) != null)
+        {
+            DL_LockStatus.SelectedValue = lockStatus;
+        }
+        else
+        {
+            DL_LockStatus.SelectedValue = "NO";
+        }
 
         strLockStatus = workPlan.LockStatus.Trim();
         strProjectCreatorCode = ShareClass . GetProjectCreatorCode(strProjectID);
