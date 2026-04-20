@@ -299,9 +299,6 @@ public partial class DefaultMobile : System.Web.UI.Page
                 //运行一些特殊的代码
                 ShareClass.RunSpecificalCodeForLogin();
 
-                //预加载模组流程图数据集
-               Session["ModuleFlowChartString"] =  ShareClass.PreLoadModuleFlowChartDataSet();;
-
                 if (strUserType != "OUTER")
                 {
                     Session["IsMobileDevice"] = "YES";

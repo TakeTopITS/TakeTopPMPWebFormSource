@@ -11,10 +11,16 @@ using System.Text;
 using System.Collections.Generic;
 using System.Web.Script.Serialization;
 using System.Web.SessionState;
+using Npgsql;
 
 
 public class EchartHandler : IHttpHandler, IRequiresSessionState
 {
+    // 静态缓存 - 比数据库查询快得多
+    private static readonly Dictionary<string, CacheItem> _dataCache = new Dictionary<string, CacheItem>();
+    private static readonly object _cacheLock = new object();
+    private const int CACHE_DURATION_MINUTES = 3; // 3分钟缓存
+
     JavaScriptSerializer jsS = new JavaScriptSerializer();
     List<object> lists = new List<object>();
     //Series seriesObj = new Series();
@@ -44,71 +50,104 @@ public class EchartHandler : IHttpHandler, IRequiresSessionState
         string strFormType = context.Request["FormType"];
         string strChartName = context.Request["ChartName"];
 
+        // 构建缓存键
+        string cacheKey = strUserCode + "_" + strLangCode + "_" + strFormType + "_" + strChartName;
 
+        // 1. 优先检查预加载数据（登录时计算）
+        List<ShareClass.ChartPreloadData> preloadedData = HttpContext.Current.Session["PreloadedChartData"] as List<ShareClass.ChartPreloadData>;
+        if (preloadedData != null)
+        {
+            ShareClass.ChartPreloadData matchedChart = null;
+            foreach (ShareClass.ChartPreloadData item in preloadedData)
+            {
+                if (item.ChartName == strChartName && item.FormType == strFormType)
+                {
+                    matchedChart = item;
+                    break;
+                }
+            }
+            
+            if (matchedChart != null && !string.IsNullOrEmpty(matchedChart.JsonData))
+            {
+                // 同时存入内存缓存供后续使用
+                SetCachedData(cacheKey, matchedChart.JsonData);
+                context.Response.Write(matchedChart.JsonData);
+                return;
+            }
+        }
+
+        // 2. 尝试从内存缓存获取
+        string cachedResult = GetCachedData(cacheKey);
+        if (!string.IsNullOrEmpty(cachedResult))
+        {
+            context.Response.Write(cachedResult);
+            return;
+        }
+
+        // 3. 使用快速查询（30秒超时）
+        DataSet ds = null;
         try
         {
             string strSqlCode = context.Request["SqlCode"].Trim();
 
-            sql = ShareClass.UnEscape(strSqlCode);
-            sql = sql.Replace("[TAKETOPUSERCODE]", strUserCode).Replace("[TAKETOPDEPARTSTRING]", strDepartString).Replace("[TAKETOPLANGCODE]", strLangCode);
-
-            //LogClass.WriteLogFile(sql);
-
-            DataSet ds = ShareClass.GetDataSetFromSql(sql, "T_Project");
-
-            //LogClass.WriteLogFile(ds.Tables[0].Rows.Count.ToString());
-
-            if (ds.Tables[0].Rows.Count > 0)
+            if (!string.IsNullOrEmpty(strSqlCode))
             {
-                lists = new List<object>();
+                sql = ShareClass.UnEscape(strSqlCode);
+                sql = sql.Replace("[TAKETOPUSERCODE]", strUserCode).Replace("[TAKETOPDEPARTSTRING]", strDepartString).Replace("[TAKETOPLANGCODE]", strLangCode);
 
+                // 使用快速查询（30秒超时）
+                ds = GetDataSetFast(sql, "T_Project", 30);
 
-
-                foreach (DataRow dr in ds.Tables[0].Rows)
+                if (ds != null && ds.Tables[0].Rows.Count > 0)
                 {
-                    if (strFormType == "Column1" || strFormType == "Bar1")
+                    lists = new List<object>();
+
+                    foreach (DataRow dr in ds.Tables[0].Rows)
                     {
-                        var obj1 = new { XName = dr["XName"], YNumber = dr["YNumber"] };
-                        lists.Add(obj1);
+                        if (strFormType == "Column1" || strFormType == "Bar1")
+                        {
+                            var obj1 = new { XName = dr["XName"], YNumber = dr["YNumber"] };
+                            lists.Add(obj1);
+                        }
+                        else if (strFormType == "Column2" || strFormType == "Bar2")
+                        {
+                            var obj2 = new { XName = dr["XName"], YNumber = dr["YNumber"], ZNumber = dr["ZNumber"] };
+                            lists.Add(obj2);
+                        }
+                        else if (strFormType == "Column3" || strFormType == "Bar3")
+                        {
+                            var obj3 = new { XName = dr["XName"], YNumber = dr["YNumber"], ZNumber = dr["ZNumber"], HNumber = dr["HNumber"] };
+                            lists.Add(obj3);
+                        }
+                        else if (strFormType == "Column4" || strFormType == "Bar4")
+                        {
+                            var obj4 = new { XName = dr["XName"], YNumber = dr["YNumber"], ZNumber = dr["ZNumber"], HNumber = dr["HNumber"], KNumber = dr["KNumber"] };
+                            lists.Add(obj4);
+                        }
+                        else
+                        {
+                            var obj = new { XName = dr["XName"], YNumber = dr["YNumber"] };
+                            lists.Add(obj);
+                        }
                     }
-                    else if (strFormType == "Column2" || strFormType == "Bar2")
-                    {
-                        var obj2 = new { XName = dr["XName"], YNumber = dr["YNumber"], ZNumber = dr["ZNumber"] };
-                        lists.Add(obj2);
-                    }
-                    else if (strFormType == "Column3" || strFormType == "Bar3")
-                    {
-                        var obj3 = new { XName = dr["XName"], YNumber = dr["YNumber"], ZNumber = dr["ZNumber"], HNumber = dr["HNumber"] };
-                        lists.Add(obj3);
-                    }
-                    else if (strFormType == "Column4" || strFormType == "Bar4")
-                    {
-                        var obj4 = new { XName = dr["XName"], YNumber = dr["YNumber"], ZNumber = dr["ZNumber"], HNumber = dr["HNumber"], KNumber = dr["KNumber"] };
-                        lists.Add(obj4);
-                    }
-                    else
-                    {
-                        var obj = new { XName = dr["XName"], YNumber = dr["YNumber"] };
-                        lists.Add(obj);
-                    }
+
+                    jsS = new JavaScriptSerializer();
+                    result = jsS.Serialize(lists);
+
+                    // 存入缓存
+                    SetCachedData(cacheKey, result);
+
+                    context.Response.Write(result);
+                    return;
                 }
-
-                jsS = new JavaScriptSerializer();
-                result = jsS.Serialize(lists);
-
-                context.Response.Write(result);
-                return;
-            }
-            else
-            {
-                context.Response.Write("");
             }
         }
         catch (Exception err)
         {
-            LogClass.WriteLogFile(err.Message.ToString());
+            LogClass.WriteLogFile("EchartHandler FastQuery Error: " + err.Message.ToString());
         }
 
+        // 4. 备用查询（从配置表获取SQL）
         try
         {
             if (strFormType == "Management")
@@ -121,24 +160,52 @@ public class EchartHandler : IHttpHandler, IRequiresSessionState
                 strHQL += " Where A.UserCode = '" + strUserCode + "' and A.FormType = '" + strFormType + "' and A.ChartName = '" + strChartName + "'";
                 strHQL += " Order By A.SortNumber ASC";
             }
-            DataSet dsSqlCode = ShareClass.GetDataSetFromSql(strHQL, "T_SystemAnalystChartRelatedUser");
-            if (dsSqlCode.Tables[0].Rows.Count > 0)
+            DataSet dsSqlCode = GetDataSetFast(strHQL, "T_SystemAnalystChartRelatedUser", 30);
+            if (dsSqlCode != null && dsSqlCode.Tables[0].Rows.Count > 0)
             {
                 sql = dsSqlCode.Tables[0].Rows[0]["SqlCode"].ToString();
                 sql = sql.Replace("[TAKETOPUSERCODE]", strUserCode).Replace("[TAKETOPDEPARTSTRING]", strDepartString).Replace("[TAKETOPLANGCODE]", strLangCode);
 
-                DataSet ds = ShareClass.GetDataSetFromSql(sql, "T_Project");
-                lists = new List<object>();
-                foreach (DataRow dr in ds.Tables[0].Rows)
+                ds = GetDataSetFast(sql, "T_Project", 30);
+                if (ds != null && ds.Tables[0].Rows.Count > 0)
                 {
-                    var obj = new { XName = dr["XName"], YNumber = dr["YNumber"] };
-                    lists.Add(obj);
+                    lists = new List<object>();
+                    foreach (DataRow dr in ds.Tables[0].Rows)
+                    {
+                        if (strFormType == "Column2" || strFormType == "Bar2")
+                        {
+                            var obj2 = new { XName = dr["XName"], YNumber = dr["YNumber"], ZNumber = dr["ZNumber"] };
+                            lists.Add(obj2);
+                        }
+                        else if (strFormType == "Column3" || strFormType == "Bar3")
+                        {
+                            var obj3 = new { XName = dr["XName"], YNumber = dr["YNumber"], ZNumber = dr["ZNumber"], HNumber = dr["HNumber"] };
+                            lists.Add(obj3);
+                        }
+                        else if (strFormType == "Column4" || strFormType == "Bar4")
+                        {
+                            var obj4 = new { XName = dr["XName"], YNumber = dr["YNumber"], ZNumber = dr["ZNumber"], HNumber = dr["HNumber"], KNumber = dr["KNumber"] };
+                            lists.Add(obj4);
+                        }
+                        else
+                        {
+                            var obj = new { XName = dr["XName"], YNumber = dr["YNumber"] };
+                            lists.Add(obj);
+                        }
+                    }
+
+                    jsS = new JavaScriptSerializer();
+                    result = jsS.Serialize(lists);
+
+                    // 存入缓存
+                    SetCachedData(cacheKey, result);
+
+                    context.Response.Write(result);
                 }
-
-                jsS = new JavaScriptSerializer();
-                result = jsS.Serialize(lists);
-
-                context.Response.Write(result);
+                else
+                {
+                    context.Response.Write("");
+                }
             }
             else
             {
@@ -151,6 +218,86 @@ public class EchartHandler : IHttpHandler, IRequiresSessionState
         }
     }
 
+    /// <summary>
+    /// 快速查询方法（带超时控制）
+    /// </summary>
+    private DataSet GetDataSetFast(string sql, string tableName, int timeoutSeconds)
+    {
+        DataSet dataSet = new DataSet();
+        
+        using (var connection = new Npgsql.NpgsqlConnection(
+            System.Configuration.ConfigurationManager.ConnectionStrings["SQLCONNECTIONSTRING"].ConnectionString))
+        {
+            connection.Open();
+            using (var command = new Npgsql.NpgsqlCommand(sql, connection))
+            {
+                command.CommandTimeout = timeoutSeconds;
+                using (var adapter = new Npgsql.NpgsqlDataAdapter(command))
+                {
+                    adapter.Fill(dataSet, tableName);
+                }
+            }
+        }
+        
+        return dataSet;
+    }
+
+    /// <summary>
+    /// 从缓存获取数据
+    /// </summary>
+    private string GetCachedData(string cacheKey)
+    {
+        lock (_cacheLock)
+        {
+            CacheItem item;
+            if (_dataCache.TryGetValue(cacheKey, out item))
+            {
+                if (DateTime.Now.Subtract(item.CacheTime).TotalMinutes <= CACHE_DURATION_MINUTES)
+                {
+                    return item.Data;
+                }
+            }
+        }
+        return null;
+    }
+
+    /// <summary>
+    /// 设置缓存数据
+    /// </summary>
+    private void SetCachedData(string cacheKey, string data)
+    {
+        lock (_cacheLock)
+        {
+            _dataCache[cacheKey] = new CacheItem
+            {
+                Data = data,
+                CacheTime = DateTime.Now
+            };
+        }
+    }
+
+    /// <summary>
+    /// 清除指定用户的缓存
+    /// </summary>
+    public static void ClearUserCache(string userCode)
+    {
+        lock (_cacheLock)
+        {
+            var keysToRemove = new List<string>();
+            foreach (var key in _dataCache.Keys)
+            {
+                if (key.StartsWith(userCode + "_"))
+                {
+                    keysToRemove.Add(key);
+                }
+            }
+            foreach (var key in keysToRemove)
+            {
+                _dataCache.Remove(key);
+            }
+        }
+    }
+
     public bool IsReusable
     {
         get
@@ -158,5 +305,14 @@ public class EchartHandler : IHttpHandler, IRequiresSessionState
             return false;
         }
     }
+}
 
+/// <summary>
+/// 缓存项
+/// </summary>
+[Serializable]
+public class CacheItem
+{
+    public string Data { get; set; }
+    public DateTime CacheTime { get; set; }
 }

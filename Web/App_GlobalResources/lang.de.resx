@@ -532,7 +532,7 @@
     <value>Prüfergebnisse</value>
   </data>
   <data name="BaoJiaoFei" xml:space="preserve">
-    <value>Yasunori Gebühr</value>
+    <value>Bildungsgebühr</value>
   </data>
   <data name="BaoJiaPingTai" xml:space="preserve">
     <value>Zitat Platform</value>
@@ -8587,7 +8587,7 @@
     <value>Medienstatus</value>
   </data>
   <data name="MeiXueQiBaoJiaoFei" xml:space="preserve">
-    <value>Yasunori Gebühr pro Semester</value>
+    <value>Bildungsgebühr pro Semester</value>
   </data>
   <data name="MeiYuan" xml:space="preserve">
     <value>Dollar</value>

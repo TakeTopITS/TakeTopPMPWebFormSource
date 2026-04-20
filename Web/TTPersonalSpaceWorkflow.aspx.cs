@@ -28,14 +28,29 @@ public partial class TTPersonalSpaceWorkflow : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        // Session æœªç™»å½•ä¿æŠ¤
+        if (Session["UserCode"] == null)
+        {
+            Response.End();
+            return;
+        }
+
         strUserCode = Session["UserCode"].ToString();
 
         ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "clickParentA", "aHandlerForSpecialPopWindow();", true);
         if (Page.IsPostBack == false)
         {
-            LB_DepartString.Text = TakeTopCore.CoreShareClass.InitialDepartmentStringByAuthority(strUserCode);
+            try
+            {
+                LB_DepartString.Text = TakeTopCore.CoreShareClass.InitialDepartmentStringByAuthority(strUserCode);
+            }
+            catch (Exception ex)
+            {
+                LogClass.WriteLogFile("TTPersonalSpaceWorkflow InitialDepartmentString error: " + ex.Message);
+                LB_DepartString.Text = "('')";
+            }
 
-            //Çå¿ÕÒ³Ãæ»º´æ£¬ÓÃÓÚ¸Ä±äÆ¤·ô
+            //æ¸…ç©ºé¡µé¢ç¼“å­˜ï¼Œç”¨äºæ”¹å˜çš®è‚¤
             SetPageNoCache();
          
             intRunNumber = 0;
@@ -44,12 +59,12 @@ public partial class TTPersonalSpaceWorkflow : System.Web.UI.Page
         }
     }
 
-    //Çå¿ÕÒ³Ãæ»º´æ£¬ÓÃÓÚ¸Ä±äÆ¤·ô
+    //æ¸…ç©ºé¡µé¢ç¼“å­˜ï¼Œç”¨äºæ”¹å˜çš®è‚¤
     public void SetPageNoCache()
     {
         if (Session["CssDirectoryChangeNumber"].ToString() == "1")
         {
-            //Çå³ıÈ«²¿»º´æ
+            //æ¸…é™¤å…¨éƒ¨ç¼“å­˜
             IDictionaryEnumerator allCaches = Page.Cache.GetEnumerator();
             while (allCaches.MoveNext())
             {

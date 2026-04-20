@@ -1092,40 +1092,43 @@
             }
 
             if (chartType == 'HDelayProjectStatus') {
+                // 初始显示转圈图标
+                document.getElementById('m2').innerHTML = "<div class='card-container' style='padding-top:12px;'><div class='card red' > <table><tr><td colpan='3' width='30%' align='left' style='padding-left:20px;'><img src = 'ImagesSkin/ProjectDelay.png' alt = 'Delay Warning Icon'/> </td><td align='left'>" + "<%=LanguageHandle.GetWord("NianDuYanWuXiangMuShu").ToString() %>" + ":<span id='spanXNumber'><img src='ImagesSkin/LoadingSpinner.png' style='width:16px;height:16px;vertical-align:middle;'/></span></h3> <p>" + "<%=LanguageHandle.GetWord("JingDuZhengChang").ToString() %>" + ": <span id='spanYNumber'><img src='ImagesSkin/LoadingSpinner.png' style='width:16px;height:16px;vertical-align:middle;'/></span></p> <p>" + "<%=LanguageHandle.GetWord("QingDuYanWu").ToString() %>" + ": <span id='spanZNumber'><img src='ImagesSkin/LoadingSpinner.png' style='width:16px;height:16px;vertical-align:middle;'/></span></p></td></tr></table> </div> </div>";
 
-                document.getElementById('m2').innerHTML = "<div class='card-container' style='padding-top:12px;'><div class='card red' > <table><tr><td colpan='3' width='30%' align='left' style='padding-left:20px;'><img src = 'ImagesSkin/Process.png' alt = 'Clock Icon'/> </td><td align='left'>" + "<%=LanguageHandle.GetWord("NianDuYanWuXiangMuShu").ToString() %>" + ":<span id='spanXNumber'></span></h3> <p>" + "<%=LanguageHandle.GetWord("JingDuZhengChang").ToString() %>" + ": <span id='spanYNumber'></span></p> <p>" + "<%=LanguageHandle.GetWord("QingDuYanWu").ToString() %>" + ": <span id='spanZNumber'></span></p></td></tr></table> </div> </div>";
-
+                // 10秒超时处理
+                var delayTimeout = setTimeout(function() {
+                    if (document.getElementById("spanXNumber").innerHTML.indexOf("LoadingSpinner") > -1) {
+                        document.getElementById("spanXNumber").innerHTML = "--";
+                        document.getElementById("spanYNumber").innerHTML = "--";
+                        document.getElementById("spanZNumber").innerHTML = "--";
+                    }
+                }, 10000);
 
                 $.ajax({
                     type: "post",
-                    async: false,
+                    async: true,
                     url: "Handler/EchartHandler.ashx",
-                    data: { FormType: formType, ChartName: chartName, SqlCode: sqlCode }, //发送到服务器的参数
+                    data: { FormType: formType, ChartName: chartName, SqlCode: sqlCode },
                     datatype: "json",
-                    contentType: "application/x-www-form-urlencoded; charset=utf-8", // 添加这行
+                    contentType: "application/x-www-form-urlencoded; charset=utf-8",
                     success: function (result) {
+                        clearTimeout(delayTimeout);
                         if (result) {
                             eval("var transresult=" + result);
-
-                            /*  alert(result);*/
-
                             for (var i = 0; i < transresult.length; i++) {
-
-                                /*   eLegend.push(transresult[i].XName);*/
                                 document.getElementById("spanXNumber").innerHTML = transresult[i].XName;
-
-
                                 let str = transresult[i].YNumber;
                                 let parts = str.split(',');
-
                                 document.getElementById("spanYNumber").innerHTML = parts[0];
                                 document.getElementById("spanZNumber").innerHTML = parts[1];
-
                             }
                         }
                     },
                     error: function (errorMsg) {
-                        /* alert("Error");*/
+                        clearTimeout(delayTimeout);
+                        document.getElementById("spanXNumber").innerHTML = "--";
+                        document.getElementById("spanYNumber").innerHTML = "--";
+                        document.getElementById("spanZNumber").innerHTML = "--";
                     }
                 });
             }

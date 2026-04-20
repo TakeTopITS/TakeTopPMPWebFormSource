@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
 using System.Web;
@@ -7,15 +8,17 @@ using System.Xml;
 
 public static class LanguageHandle
 {
-    private static readonly ConcurrentDictionary<string, XmlDocument> languageDocCache = new ConcurrentDictionary<string, XmlDocument>();
+    // 缓存：语言代码 -> 关键词字典，直接查字典比 XPath 快 10-100 倍
+    private static readonly ConcurrentDictionary<string, Dictionary<string, string>> languageCache = 
+        new ConcurrentDictionary<string, Dictionary<string, string>>(StringComparer.OrdinalIgnoreCase);
+    
+    // 缓存文件最后修改时间，用于检测文件变化
+    private static readonly ConcurrentDictionary<string, DateTime> fileLastWriteCache = 
+        new ConcurrentDictionary<string, DateTime>();
+    
     private static readonly string DefaultLangCode = ConfigurationManager.AppSettings["DefaultLang"] ?? "en";
     private static readonly object initLock = new object();
-    private static bool isInitialized = false;
-
-    static LanguageHandle()
-    {
-        // 延迟初始化，避免在静态构造函数中执行IO操作
-    }
+    private static volatile bool isInitialized = false;
 
     // 确保初始化只执行一次
     private static void EnsureInitialized()
@@ -36,101 +39,150 @@ public static class LanguageHandle
     // 取得语言文件的关键词的值
     public static string GetWord(string strKeyword)
     {
-        EnsureInitialized();
-
         if (string.IsNullOrEmpty(strKeyword))
             return string.Empty;
 
+        EnsureInitialized();
+
         // 获取当前会话的语言代码
         var context = HttpContext.Current;
-        string systemLangCode = context.Session != null && context.Session["LangCode"] != null
-            ? context.Session["LangCode"].ToString()
-            : null;
+        string systemLangCode = context?.Session?["LangCode"]?.ToString();
 
         if (string.IsNullOrEmpty(systemLangCode))
         {
             systemLangCode = DefaultLangCode;
         }
 
-        // 尝试获取指定语言的翻译
-        string result = GetTranslation(systemLangCode, strKeyword);
+        // 尝试获取指定语言的翻译（使用字典直接查找，O(1)复杂度）
+        string result = GetTranslationFromCache(systemLangCode, strKeyword);
 
         // 如果未找到且当前语言不是默认语言，则尝试默认语言
-        if (string.IsNullOrEmpty(result) && !systemLangCode.Equals(DefaultLangCode, StringComparison.OrdinalIgnoreCase))
+        if (result == null && !systemLangCode.Equals(DefaultLangCode, StringComparison.OrdinalIgnoreCase))
         {
-            result = GetTranslation(DefaultLangCode, strKeyword);
+            result = GetTranslationFromCache(DefaultLangCode, strKeyword);
         }
 
         return result ?? string.Empty;
     }
 
-    // 获取特定语言的翻译
-    private static string GetTranslation(string langCode, string keyword)
+    // 从缓存字典中获取翻译，O(1) 复杂度
+    private static string GetTranslationFromCache(string langCode, string keyword)
     {
-        XmlDocument doc = GetLanguageDoc(langCode);
-        if (doc.DocumentElement == null)
-            return null;
+        // 检查文件是否已更新，如果是则刷新缓存
+        CheckAndRefreshCacheIfNeeded(langCode);
 
-        // 使用XPath选择器定位到指定节点
-        XmlNode dataNode = doc.SelectSingleNode("/root/data[@name='" + keyword + "']/value");
-        return dataNode != null ? dataNode.InnerText : null;
-    }
-
-    // 从缓存中获取语言文件，如果缓存中没有则加载
-    private static XmlDocument GetLanguageDoc(string langCode)
-    {
-        // 首先尝试从缓存获取
-        XmlDocument cachedDoc;
-        if (languageDocCache.TryGetValue(langCode, out cachedDoc))
+        // 直接查字典，比 XPath 快得多
+        Dictionary<string, string> dict;
+        if (languageCache.TryGetValue(langCode, out dict))
         {
-            return cachedDoc;
+            string value;
+            if (dict.TryGetValue(keyword, out value))
+                return value;
         }
 
-        // 同步加载并缓存
-        return languageDocCache.GetOrAdd(langCode, code =>
-        {
-            string resxFile = GetResxFilePath(code);
+        return null;
+    }
 
-            // 如果指定的语言文件不存在，则使用默认语言文件
+    // 检查文件是否变化，必要时刷新缓存
+    private static void CheckAndRefreshCacheIfNeeded(string langCode)
+    {
+        string resxFile = GetResxFilePath(langCode);
+        
+        // 如果缓存不存在，直接加载
+        if (!languageCache.ContainsKey(langCode))
+        {
+            LoadLanguageIntoCache(langCode, resxFile);
+            return;
+        }
+
+            // 检查文件是否已更新
+            if (File.Exists(resxFile))
+            {
+                DateTime lastWrite = File.GetLastWriteTime(resxFile);
+                DateTime cachedTime;
+                if (fileLastWriteCache.TryGetValue(langCode, out cachedTime))
+                {
+                    if (lastWrite > cachedTime)
+                    {
+                        // 文件已更新，刷新缓存
+                        LoadLanguageIntoCache(langCode, resxFile);
+                    }
+                }
+            }
+    }
+
+    // 加载语言文件到缓存字典
+    private static void LoadLanguageIntoCache(string langCode, string resxFile)
+    {
+        // 如果文件不存在，尝试默认语言
+        if (!File.Exists(resxFile))
+        {
+            resxFile = GetResxFilePath(DefaultLangCode);
             if (!File.Exists(resxFile))
             {
-                resxFile = GetResxFilePath(DefaultLangCode);
+                languageCache[langCode] = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+                return;
+            }
+        }
 
-                // 如果默认语言文件也不存在，返回空的 XmlDocument
-                if (!File.Exists(resxFile))
+        try
+        {
+            var dict = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+            
+            // 使用 XmlReader 流式读取，内存效率更高
+            var settings = new XmlReaderSettings
+            {
+                IgnoreComments = true,
+                IgnoreWhitespace = true,
+                DtdProcessing = DtdProcessing.Prohibit // 安全：禁止 DTD 解析
+            };
+
+            using (var reader = XmlReader.Create(resxFile, settings))
+            {
+                string currentName = null;
+                bool inValue = false;
+
+                while (reader.Read())
                 {
-                    return new XmlDocument();
+                    if (reader.NodeType == XmlNodeType.Element)
+                    {
+                        if (reader.Name == "data")
+                        {
+                            currentName = reader.GetAttribute("name");
+                        }
+                        else if (reader.Name == "value" && currentName != null)
+                        {
+                            inValue = true;
+                        }
+                    }
+                    else if (reader.NodeType == XmlNodeType.Text && inValue && currentName != null)
+                    {
+                        dict[currentName] = reader.Value;
+                        currentName = null;
+                        inValue = false;
+                    }
+                    else if (reader.NodeType == XmlNodeType.EndElement && reader.Name == "value")
+                    {
+                        inValue = false;
+                    }
                 }
             }
 
-            try
-            {
-                XmlDocument doc = new XmlDocument();
-                // 使用XmlReaderSettings优化XML加载
-                XmlReaderSettings settings = new XmlReaderSettings
-                {
-                    IgnoreComments = true,
-                    IgnoreWhitespace = true
-                };
-
-                using (XmlReader reader = XmlReader.Create(resxFile, settings))
-                {
-                    doc.Load(reader);
-                }
-
-                return doc;
-            }
-            catch
-            {
-                return new XmlDocument();
-            }
-        });
+            // 更新缓存
+            languageCache[langCode] = dict;
+            fileLastWriteCache[langCode] = File.GetLastWriteTime(resxFile);
+        }
+        catch
+        {
+            // 出错时使用空字典，避免重复加载失败文件
+            languageCache.TryAdd(langCode, new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase));
+        }
     }
 
     // 获取resx文件路径
     private static string GetResxFilePath(string langCode)
     {
-        return HttpContext.Current.Server.MapPath("Language/lang." + langCode + ".resx");
+        return HttpContext.Current?.Server.MapPath("Language/lang." + langCode + ".resx");
     }
 
     // 复制语言文件（如果需要）
@@ -144,20 +196,16 @@ public static class LanguageHandle
             string sourceDirectory = context.Server.MapPath("App_GlobalResources");
             string targetDirectory = context.Server.MapPath("Language");
 
-            // 确保源目录存在
             if (!Directory.Exists(sourceDirectory))
                 return;
 
-            // 确保目标目录存在，如果不存在则创建
             if (!Directory.Exists(targetDirectory))
             {
                 Directory.CreateDirectory(targetDirectory);
             }
 
-            // 获取源目录下的所有扩展名为 .resx 的文件
-            string[] files = Directory.GetFiles(sourceDirectory, "*.resx");
-
-            foreach (string file in files)
+            // 只复制 .resx 文件
+            foreach (string file in Directory.EnumerateFiles(sourceDirectory, "*.resx"))
             {
                 string fileName = Path.GetFileName(file);
                 string destFile = Path.Combine(targetDirectory, fileName);
@@ -169,10 +217,35 @@ public static class LanguageHandle
                 }
             }
         }
-        catch (Exception ex)
+        catch
         {
-            // 记录日志或处理异常
-            // 在实际应用中应该记录日志
+            // 静默处理异常，避免影响页面加载
         }
+    }
+
+    // 预加载指定语言到缓存（可用于启动时预热）
+    public static void PreloadLanguage(string langCode)
+    {
+        string resxFile = GetResxFilePath(langCode);
+        if (!string.IsNullOrEmpty(resxFile))
+        {
+            LoadLanguageIntoCache(langCode, resxFile);
+        }
+    }
+
+    // 清除指定语言的缓存（用于文件更新后强制刷新）
+    public static void ClearCache(string langCode)
+    {
+        Dictionary<string, string> temp1;
+        DateTime temp2;
+        languageCache.TryRemove(langCode, out temp1);
+        fileLastWriteCache.TryRemove(langCode, out temp2);
+    }
+
+    // 清除所有缓存
+    public static void ClearAllCache()
+    {
+        languageCache.Clear();
+        fileLastWriteCache.Clear();
     }
 }

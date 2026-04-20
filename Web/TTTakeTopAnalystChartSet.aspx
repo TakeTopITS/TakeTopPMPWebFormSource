@@ -63,14 +63,45 @@
                 font-size: 14px;
                 color: white;
             }
+
+        /* 加载中的数字样式 */
+        .loading-number {
+            display: inline-block;
+            min-width: 20px;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 1; }
+        }
+
+        /* 转圈加载动画 */
+        @keyframes tt-spin {
+            to { transform: rotate(360deg); }
+        }
     </style>
     <script src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript">
+        // 全局变量
+        var _loadTimeoutId = null;
+        var _isDataLoaded = false;
+        var _timeoutMs = 10000; // 10秒超时
+    </script>
 </head>
 
 <body>
     <form id="form1" runat="server">
         <div style="width: 100%; text-align: center;">
-            <div id="m2" style="width: 100%; height: 270px; overflow: hidden;"></div>
+            <div id="m2" style="width: 100%; height: 270px; overflow: hidden; position: relative;">
+                <!-- 默认显示 loading，JS 加载后会替换 -->
+                <div id="initialLoading" style="position:absolute; top:0; left:0; width:100%; height:100%; display:flex; align-items:center; justify-content:center; background:#f5f5f5;">
+                    <div style="text-align:center;">
+                        <div class="tt-loading-spinner" style="display:inline-block; width:40px; height:40px; border:4px solid #ddd; border-top-color:#367E7F; border-radius:50%; animation:tt-spin 1s linear infinite;"></div>
+                        <div style="margin-top:10px; color:#666; font-size:12px;">加载中...</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </form>
 
@@ -90,12 +121,200 @@
         }
 
         $(function () {
-            // 显示加载状态
-            $('#m2').html('<div style="text-align:center; padding:50px;"><img src="Images/Processing.gif" alt="Loading..." /></div>');
+            var formType = GetQueryValue("FormType");
+            var chartType = GetQueryValue("ChartType");
+            var chartName = GetQueryValue("ChartName");
 
-            // 异步加载图表
-            loadChartAsync();
+            // 卡片类型图表：先显示骨架，再异步加载数据
+            if (chartType == 'HRuningProjectStatus' || chartType == 'HDelayProjectStatus' ||
+                chartType == 'HAnnualPaymentStatus' || chartType == 'HAnnualWorkHourStatus' ||
+                chartType == 'HRuningTaskStatus') {
+                // 先显示卡片骨架（带占位符），会自动替换 initialLoading
+                showCardSkeleton(chartType);
+                // 异步加载数据
+                loadCardDataAsync(chartType, chartName);
+            } else {
+                // 其他图表类型：显示 loading 后加载
+                $('#m2').html('<div style="text-align:center; padding:50px;"><img src="Images/Processing.gif" alt="Loading..." /></div>');
+                loadChartAsync();
+            }
         });
+
+        // 小加载图标 HTML - 纯白色CSS动画转圈，尺寸8px
+        var _cardLoadingIconHtml = "<span class='tt-loading-spinner' style='display:inline-block;width:8px;height:8px;border:2px solid rgba(255,255,255,0.3);border-top-color:#ffffff;border-radius:50%;animation:tt-spin 0.8s linear infinite;vertical-align:middle;margin-left:4px;'></span>";
+
+        // 显示超时占位符 --
+        function showTimeoutPlaceholder() {
+            var xEl = document.getElementById("spanXNumber");
+            var yEl = document.getElementById("spanYNumber");
+            var zEl = document.getElementById("spanZNumber");
+            var placeholder = "<span style='color:rgba(255,255,255,0.6);'>--</span>";
+            if (xEl) xEl.innerHTML = placeholder;
+            if (yEl) yEl.innerHTML = placeholder;
+            if (zEl) zEl.innerHTML = placeholder;
+        }
+
+        // 显示卡片骨架（带转圈加载图标）
+        function showCardSkeleton(chartType) {
+            var cardConfig = {
+                'HRuningProjectStatus': {
+                    className: 'blue',
+                    icon: 'Running.png',
+                    title: '<%=LanguageHandle.GetWord("ZaiZiXingXiangMuZhongShu").ToString() %>',
+                    sub1: '<%=LanguageHandle.GetWord("NianDuXingZeng").ToString() %>',
+                    sub2: '<%=LanguageHandle.GetWord("NianDuWanCheng").ToString() %>'
+                },
+                'HDelayProjectStatus': {
+                    className: 'red',
+                    icon: 'ProjectDelay.png',
+                    title: '<%=LanguageHandle.GetWord("NianDuYanWuXiangMuShu").ToString() %>',
+                    sub1: '<%=LanguageHandle.GetWord("JingDuZhengChang").ToString() %>',
+                    sub2: '<%=LanguageHandle.GetWord("QingDuYanWu").ToString() %>'
+                },
+                'HAnnualPaymentStatus': {
+                    className: 'green',
+                    icon: 'PaymentCollection.png',
+                    title: '<%=LanguageHandle.GetWord("XiangMuNianDuhHuiKan").ToString() %>',
+                    sub1: '<%=LanguageHandle.GetWord("NianDuChengBenHeShuan").ToString() %>',
+                    sub2: '<%=LanguageHandle.GetWord("ChengBenChaoZiXiangMuShu").ToString() %>'
+                },
+                'HAnnualWorkHourStatus': {
+                    className: 'brown',
+                    icon: 'WorkHour.png',
+                    title: '<%=LanguageHandle.GetWord("NianDuXiangMuGongShiTouRu").ToString() %>',
+                    sub1: '<%=LanguageHandle.GetWord("NianDuTeiBaoRenShu").ToString() %>',
+                    sub2: '<%=LanguageHandle.GetWord("RenGongChengBen").ToString() %>'
+                },
+                'HRuningTaskStatus': {
+                    className: 'lightblue',
+                    icon: 'RunningTask.png',
+                    title: '<%=LanguageHandle.GetWord("ZaiZhiXingRenWuZhongShu").ToString() %>',
+                    sub1: '<%=LanguageHandle.GetWord("NianDuXingZeng").ToString() %>',
+                    sub2: '<%=LanguageHandle.GetWord("NianDuWanCheng").ToString() %>'
+                }
+            };
+
+            var config = cardConfig[chartType];
+            if (!config) return;
+
+            // 显示转圈加载图标
+            var html = "<div class='card-container' style='padding-top:12px;'>" +
+                "<div class='card " + config.className + "'>" +
+                "<table>" +
+                "<tr>" +
+                "<td colspan='3' width='30%' align='left' style='padding-left:20px;'>" +
+                "<img src='ImagesSkin/" + config.icon + "' alt='Icon'/>" +
+                "</td>" +
+                "<td align='left'>" +
+                config.title + ": <span id='spanXNumber'>" + _cardLoadingIconHtml + "</span>" +
+                "<p>" + config.sub1 + ": <span id='spanYNumber'>" + _cardLoadingIconHtml + "</span></p>" +
+                "<p>" + config.sub2 + ": <span id='spanZNumber'>" + _cardLoadingIconHtml + "</span></p>" +
+                "</td>" +
+                "</tr>" +
+                "</table>" +
+                "</div>" +
+                "</div>";
+
+            document.getElementById('m2').innerHTML = html;
+        }
+
+        // 异步加载卡片数据
+        function loadCardDataAsync(chartType, chartName) {
+            var sqlCode = escape(unescape(GetQueryValue("SqlCode")));
+
+            // 重置状态
+            _isDataLoaded = false;
+            if (_loadTimeoutId) {
+                clearTimeout(_loadTimeoutId);
+                _loadTimeoutId = null;
+            }
+
+            // 启动10秒超时计时器
+            _loadTimeoutId = setTimeout(function() {
+                if (!_isDataLoaded) {
+                    // 超时：显示 -- 而不是错误
+                    showTimeoutPlaceholder();
+                    _isDataLoaded = true;
+                    // 通知父页面加载完成（超时也算完成）
+                    if (parent && parent.window && parent.window.chartLoaded) {
+                        parent.window.chartLoaded();
+                    }
+                }
+            }, _timeoutMs);
+
+            $.ajax({
+                type: "post",
+                async: true,
+                timeout: 35000, // 35秒超时（后端30秒 + 缓冲）
+                url: "Handler/EchartHandler.ashx",
+                data: {
+                    FormType: GetQueryValue("FormType"),
+                    ChartName: chartName,
+                    SqlCode: sqlCode
+                },
+                datatype: "json",
+                contentType: "application/x-www-form-urlencoded; charset=utf-8",
+                success: function (result) {
+                    // 清除超时计时器
+                    if (_loadTimeoutId) {
+                        clearTimeout(_loadTimeoutId);
+                        _loadTimeoutId = null;
+                    }
+                    // 如果已经超时处理了，不再更新
+                    if (_isDataLoaded) return;
+                    _isDataLoaded = true;
+
+                    if (result && result != "") {
+                        try {
+                            eval("var transresult=" + result);
+                            updateCardNumbers(transresult);
+                        } catch (e) {
+                            console.error("Data parsing error:", e);
+                            showTimeoutPlaceholder();
+                        }
+                    } else {
+                        // 无数据时显示 --
+                        showTimeoutPlaceholder();
+                    }
+                    // 通知父页面加载完成
+                    if (parent && parent.window && parent.window.chartLoaded) {
+                        parent.window.chartLoaded();
+                    }
+                },
+                error: function (xhr, status, error) {
+                    // 清除超时计时器
+                    if (_loadTimeoutId) {
+                        clearTimeout(_loadTimeoutId);
+                        _loadTimeoutId = null;
+                    }
+                    // 如果已经超时处理了，不再更新
+                    if (_isDataLoaded) return;
+                    _isDataLoaded = true;
+
+                    // 错误时显示 -- 而不是错误信息
+                    showTimeoutPlaceholder();
+                    if (parent && parent.window && parent.window.chartLoaded) {
+                        parent.window.chartLoaded();
+                    }
+                }
+            });
+        }
+
+        // 更新卡片数字
+        function updateCardNumbers(data) {
+            if (data && data.length > 0) {
+                var xNum = document.getElementById("spanXNumber");
+                var yNum = document.getElementById("spanYNumber");
+                var zNum = document.getElementById("spanZNumber");
+                
+                if (xNum) xNum.innerHTML = data[0].XName || '0';
+                if (data[0].YNumber) {
+                    var parts = data[0].YNumber.split(',');
+                    if (yNum) yNum.innerHTML = parts[0] || '0';
+                    if (zNum) zNum.innerHTML = parts[1] || '0';
+                }
+            }
+        }
 
         function loadChartAsync() {
             var myChart1 = echarts.init(document.getElementById('m2'));
@@ -112,6 +331,7 @@
             $.ajax({
                 type: "post",
                 async: true,
+                timeout: 35000, // 35秒超时（后端30秒超时 + 缓冲）
                 url: "Handler/EchartHandler.ashx",
                 data: {
                     FormType: formType,
@@ -148,11 +368,15 @@
                     }
                 },
                 error: function (xhr, status, error) {
-                    console.error("Loading failed:", error);
+                    console.error("Loading failed:", status, error);
                     showNoData(myChart1, chartType, chartName);
                     if (parent && parent.window && parent.window.chartLoaded) {
                         parent.window.chartLoaded();
                     }
+                },
+                complete: function(xhr, status) {
+                    // 无论成功失败，确保loading被隐藏
+                    myChart1.hideLoading();
                 }
             });
         }
@@ -872,7 +1096,7 @@
                 },
                 'HDelayProjectStatus': {
                     className: 'red',
-                    icon: 'Process.png',
+                    icon: 'ProjectDelay.png',
                     title: '<%=LanguageHandle.GetWord("NianDuYanWuXiangMuShu").ToString() %>',
                     sub1: '<%=LanguageHandle.GetWord("JingDuZhengChang").ToString() %>',
                     sub2: '<%=LanguageHandle.GetWord("QingDuYanWu").ToString() %>'

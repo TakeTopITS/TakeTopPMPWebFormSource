@@ -64,7 +64,7 @@
 
             if (error.IndexOf("System.Web.HttpApplication.IExecutionStep.Execute()") < 0)
             {
-                LogClass.WriteLogFile(error);
+                //LogClass.WriteLogFile(error);
             }
         }
         catch (Exception err)

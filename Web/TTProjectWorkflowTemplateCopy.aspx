@@ -1,11 +1,11 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTProjectWorkflowTemplateCopy.aspx.cs" Inherits="TTProjectWorkflowTemplateCopy" %>
+ï»¿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTProjectWorkflowTemplateCopy.aspx.cs" Inherits="TTProjectWorkflowTemplateCopy" %>
 
 <%@ Register Assembly="NickLee.Web.UI" Namespace="NickLee.Web.UI" TagPrefix="NickLee" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
-    <title>ÏîÄ¿¹¤×÷¼Æ»®</title>
+    <title>é¡¹ç›®å·¥ä½œè®¡åˆ’</title>
     <link id="mainCss" href="css/bluelightmain.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="js/allAHandler.js"></script>
@@ -63,31 +63,15 @@
                                     </td>
                                     <td valign="top" style="text-align: left; border-right: solid 1px #D8D8D8"
                                         width="400px">
-                                        <table width="100%" border="0" cellpadding="0" cellspacing="0" background="ImagesSkin/main_n_bj.jpg">
-                                            <tr>
-                                                <td width="7">
-                                                    <img src="ImagesSkin/main_n_l.jpg" width="7" height="26" /></td>
-                                                <td>
-                                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                                        <tr>
-                                                            <td width="20%" class="ItemAlignLeft">
-                                                                <strong></strong>
-                                                            </td>
-                                                            <td width="45%" class="ItemAlignLeft">
-                                                                <strong>
-                                                                    <asp:Label ID="Label7" runat="server" Text="<%$ Resources:lang,MuBanMingCheng%>"></asp:Label></strong>
-                                                            </td>
-
-                                                        </tr>
-                                                    </table>
+                                        
                                                 </td>
                                                 <td width="6" align="right">
                                                     <img src="ImagesSkin/main_n_r.jpg" width="6" alt="" height="26" /></td>
                                             </tr>
                                         </table>
-                                        <asp:DataGrid ID="DataGrid1" runat="server" AutoGenerateColumns="False" Height="1px" ShowHeader="false"
+                                        <asp:DataGrid ID="DataGrid1" runat="server" AutoGenerateColumns="False" Height="1px" ShowHeader="true"
                                             Width="100%" CellPadding="4" ForeColor="#333333"
-                                            GridLines="None">
+                                            GridLines="None" HeaderStyle-BackColor="#f5f5f5" HeaderStyle-Font-Bold="true" HeaderStyle-Height="26px">
 
                                             <Columns>
 
@@ -98,7 +82,7 @@
                                                     </ItemTemplate>
                                                 </asp:TemplateColumn>
                                                 <asp:HyperLinkColumn DataNavigateUrlField="IdentifyString" DataNavigateUrlFormatString="TTWorkFlowTemplateView.aspx?IdentifyString={0}"
-                                                    HeaderText="Ä£°åÃû³Æ" Target="_blank" Text="Ä£°åÄÚÈÝ">
+                                                    HeaderText="æ¨¡æ¿åç§°" Target="_blank" Text="æ¨¡æ¿å†…å®¹">
                                                     <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="45%" />
                                                 </asp:HyperLinkColumn>
 
@@ -160,7 +144,7 @@
                                                     <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="20%" />
                                                 </asp:BoundColumn>
                                                 <asp:HyperLinkColumn DataNavigateUrlField="IdentifyString" DataNavigateUrlFormatString="TTWorkFlowTemplateView.aspx?IdentifyString={0}"
-                                                    DataTextField="WFTemplateName" HeaderText="Ä£°åÃû³Æ" Target="_blank">
+                                                    DataTextField="WFTemplateName" HeaderText="æ¨¡æ¿åç§°" Target="_blank">
                                                     <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="65%" />
                                                 </asp:HyperLinkColumn>
                                                 <asp:ButtonColumn CommandName="Delete"

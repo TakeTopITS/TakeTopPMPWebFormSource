@@ -532,7 +532,7 @@
     <value>Resultados de Inspección</value>
   </data>
   <data name="BaoJiaoFei" xml:space="preserve">
-    <value>Cargo por Yasunori</value>
+    <value>Cargo educativo</value>
   </data>
   <data name="BaoJiaPingTai" xml:space="preserve">
     <value>Cita Plataforma</value>
@@ -8587,7 +8587,7 @@
     <value>Estado de Medios</value>
   </data>
   <data name="MeiXueQiBaoJiaoFei" xml:space="preserve">
-    <value>Cargo por Yasunori por semestre</value>
+    <value>Cargo educativo por semestre</value>
   </data>
   <data name="MeiYuan" xml:space="preserve">
     <value>Dólar</value>

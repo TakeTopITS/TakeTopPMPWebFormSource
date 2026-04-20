@@ -26,7 +26,7 @@
 </script>
 
 </head>
-<frameset id="TakeTopLRMDI" cols="45,*" rows="*" frameborder="no" border="0" framespacing="0">
+<frameset id="TakeTopLRMDI" cols="<%=leftBarWidth %>,*" rows="*" frameborder="no" border="0" framespacing="0">
 
 
     <frameset rows="45,*" name="leftFrame" id="leftFrame" frameborder="no" border="0" framespacing="0">
@@ -48,7 +48,7 @@
 
 
 <noframes>
-    <body>����������֧�ֿ�ܣ�</body>
+    <body>你的浏览器不支持框架！</body>
 </noframes>
 <script type="text/javascript" language="javascript">
 

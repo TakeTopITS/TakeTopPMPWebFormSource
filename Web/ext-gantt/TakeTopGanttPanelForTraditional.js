@@ -664,6 +664,17 @@ Ext.define("MyApp.DemoGanttPanel", {
         this.refreshViews(); // 刷新视图
     },
 
+    // 無感刷新：重新從服務器載入資料並刷新視圖
+    reloadData: function () {
+        var me = this;
+        me.getTaskStore().load({
+            scope: me,
+            callback: function () {
+                me.refreshViews();
+            }
+        });
+    },
+
 
     createToolbar: function () {
         return [
@@ -885,6 +896,7 @@ Ext.define("MyApp.DemoGanttPanel", {
                         scope: this,
 
                         handler: function (btn) {
+                            var gantt = this;
 
                             Ext.Ajax.request({
 
@@ -892,8 +904,7 @@ Ext.define("MyApp.DemoGanttPanel", {
                                 success: function (msg) {    //這是處理後執行的函數，msg是處理頁返回的資料
 
                                     alert("標紅所有拖期計畫完成，如若不成功，說明你沒有此操作許可權！");
-                                    location.reload();
-                                    //this.refreshViews();
+                                    gantt.reloadData();
 
                                 },
                                 failure: function (msg) {    //这是处理后执行的函数，msg是处理页返回的数据
@@ -914,6 +925,7 @@ Ext.define("MyApp.DemoGanttPanel", {
                         scope: this,
 
                         handler: function (btn) {
+                            var gantt = this;
 
                             Ext.Ajax.request({
 
@@ -922,8 +934,7 @@ Ext.define("MyApp.DemoGanttPanel", {
                                     /* alert(msg);*/
 
                                     alert("取消標紅所有拖期計畫完成，如若不成功，說明你沒有此操作許可權！");
-                                    location.reload();
-                                    //this.refreshViews();
+                                    gantt.reloadData();
 
                                 },
                                 failure: function (msg) {    //这是处理后执行的函数，msg是处理页返回的数据
@@ -970,6 +981,7 @@ Ext.define("MyApp.DemoGanttPanel", {
                         scope: this,
 
                         handler: function (btn) {
+                            var gantt = this;
 
                             Ext.Ajax.request({
 
@@ -978,6 +990,7 @@ Ext.define("MyApp.DemoGanttPanel", {
                                     /*     alert(msg);*/
 
                                     alert("基準時間同步完成，如若不成功，說明你沒有此操作許可權！");
+                                    gantt.reloadData();
 
                                 },
                                 failure: function (msg) {    //这是处理后执行的函数，msg是处理页返回的数据
@@ -987,8 +1000,6 @@ Ext.define("MyApp.DemoGanttPanel", {
                                 }
 
                             });
-
-                            location.reload();
 
                         }
 
@@ -1058,18 +1069,22 @@ Ext.define("MyApp.DemoGanttPanel", {
                         //iconCls: 'icon-save',
                         scope: this,
                         handler: function () {
-                            this.taskStore.sync({
+                            var me = this;
+                            var modified = me.taskStore.getModifiedRecords && me.taskStore.getModifiedRecords();
+                            var hasChanges = (modified && modified.length > 0) || me.taskStore.getNewRecords && me.taskStore.getNewRecords().length > 0 || me.taskStore.getRemovedRecords && me.taskStore.getRemovedRecords().length > 0;
+                            if (!hasChanges) {
+                                Ext.MessageBox.alert("提示", "沒有需要保存的更改");
+                                return;
+                            }
+                            me.taskStore.sync({
                                 success: function () {
-
                                     Ext.MessageBox.alert("恭喜", "資料保存成功！");
+                                    me.refreshViews();
                                 },
                                 failure: function () {
-
                                     Ext.MessageBox.alert("錯誤", "資料保存錯誤");
                                 }
                             });
-
-                            this.refreshViews();
                         }
                     }
 
@@ -1214,11 +1229,14 @@ Ext.define("MyApp.DemoGanttPanel", {
                     {
                         iconCls: 'action',
                         text: '刷新計畫',
-                        enableToggle: true,
-                        pressed: false,
                         scope: this,
                         handler: function () {
-                            this.refreshViews();
+                            this.getTaskStore().load({
+                                scope: this,
+                                callback: function () {
+                                    this.refreshViews();
+                                }
+                            });
                         }
                     },
 

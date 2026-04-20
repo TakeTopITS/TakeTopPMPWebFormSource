@@ -532,7 +532,7 @@
     <value>Résultats d'inspection</value>
   </data>
   <data name="BaoJiaoFei" xml:space="preserve">
-    <value>Taxe Yasunori</value>
+    <value>Frais éducatifs</value>
   </data>
   <data name="BaoJiaPingTai" xml:space="preserve">
     <value>Citer Platform</value>
@@ -8587,7 +8587,7 @@
     <value>Médias Statut</value>
   </data>
   <data name="MeiXueQiBaoJiaoFei" xml:space="preserve">
-    <value>Yasunori frais par semestre</value>
+    <value>Frais éducatifs par semestre</value>
   </data>
   <data name="MeiYuan" xml:space="preserve">
     <value>Dollar</value>

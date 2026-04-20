@@ -1,4 +1,4 @@
-using DayPilot.Utils;
+﻿using DayPilot.Utils;
 
 using System;
 using System.Data;

@@ -32783,7 +32783,7 @@
   </data>
   <data name="XYHDKHHSYY" xml:space="preserve">
     <value>向右滑动返回上一页</value>
-    <comment>向右滑动返回上一页，向下滑动刷新本页面</comment>
+    <comment>向右滑动返回上一页</comment>
   </data>
   <data name="ZZSJSJKSHSFZQXH" xml:space="preserve">
     <value>正在升级数据库，大概需要15秒钟，请稍候...</value>
@@ -33523,14 +33523,18 @@
   </data>
   <data name="ShuRuNiDeFenXiXuQiu" xml:space="preserve">
     <value>输入你的分析需求...</value>
+    <comment>输入你的分析需求...</comment>
   </data>
   <data name="ShuRuShuJiBiaoMingChengCTaoHaoFengKai" xml:space="preserve">
     <value>输入数据表名称，以逗号分隔...</value>
+    <comment>输入数据表名称，以逗号分隔...</comment>
   </data>
   <data name="XYHDKHHSYYXXHDKSXBYM" xml:space="preserve">
     <value>向右滑动返回上一页，向下滑动刷新本页面</value>
+    <comment>向右滑动返回上一页，向下滑动刷新本页面</comment>
   </data>
   <data name="KaiPiaoZhuTi" xml:space="preserve">
     <value>开票主体</value>
+    <comment>开票主体</comment>
   </data>
 </root>

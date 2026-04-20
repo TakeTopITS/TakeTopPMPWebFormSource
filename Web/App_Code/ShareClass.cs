@@ -1,4 +1,4 @@
-using LumiSoft.Net.Mail;
+ï»¿using LumiSoft.Net.Mail;
 using LumiSoft.Net.MIME;
 using LumiSoft.Net.POP3.Client;
 
@@ -68,15 +68,15 @@ public static class ShareClass
         //
     }
 
-    public static string SystemVersionID = "V2026.3.18";
+    public static string SystemVersionID = "V2026.4.19";
 
     public static string SystemLatestLoginUser = "";
     public static string SystemDBer = "";
     public static DateTime systemStartupTime = DateTime.Now;
 
-    #region ÓÃ»§µÇÂ¼»úÖÆ
+    #region ç”¨æˆ·ç™»å½•æœºåˆ¶
 
-    //¼ì²éÓÃ»§ÊÇ·ñÓĞÊ¹ÓÃÄ£×éµÄÈ¨ÏŞ
+    //æ£€æŸ¥ç”¨æˆ·æ˜¯å¦æœ‰ä½¿ç”¨æ¨¡ç»„çš„æƒé™
     public static bool checkUserHasModuleRight(string strModuleName, string strUserCode)
     {
         string strHQL = "Select * From T_ProModule B Where UserCode='" + strUserCode + "' And ModuleName='" + strModuleName + "' and Visible = 'YES'";
@@ -91,7 +91,7 @@ public static class ShareClass
         }
     }
 
-    //¼ì²éÄ£×éµÄÊÇ·ñ¿ÉÓÃ
+    //æ£€æŸ¥æ¨¡ç»„çš„æ˜¯å¦å¯ç”¨
     public static bool checkModuleIsVisible(string strModuleName, string strLangCode)
     {
         string strHQL = "Select * From T_ProModuleLevel B Where LangCode='" + strLangCode + "' And ModuleName='" + strModuleName + "' and Visible = 'YES' and IsDeleted = 'NO'";
@@ -106,14 +106,14 @@ public static class ShareClass
         }
     }
 
-    //Ô¤¼ÓÔØÄ£×éÁ÷³ÌÍ¼Êı¾İ¼¯
+    //é¢„åŠ è½½æ¨¡ç»„æµç¨‹å›¾æ•°æ®é›†
     /// <summary>
-    /// Ô¤¼ÓÔØÄ£¿éÁ÷³ÌÍ¼Êı¾İ¼¯£¬·µ»ØModuleFlowchartXMLÖµ
+    /// é¢„åŠ è½½æ¨¡å—æµç¨‹å›¾æ•°æ®é›†ï¼Œè¿”å›ModuleFlowchartXMLå€¼
     /// </summary>
-    /// <param name="userCode">ÓÃ»§´úÂë</param>
-    /// <param name="userType">ÓÃ»§ÀàĞÍ</param>
-    /// <param name="langCode">ÓïÑÔ´úÂë</param>
-    /// <returns>ModuleFlowchartXML×Ö·û´®</returns>
+    /// <param name="userCode">ç”¨æˆ·ä»£ç </param>
+    /// <param name="userType">ç”¨æˆ·ç±»å‹</param>
+    /// <param name="langCode">è¯­è¨€ä»£ç </param>
+    /// <returns>ModuleFlowchartXMLå­—ç¬¦ä¸²</returns>
     public static string PreLoadModuleFlowChartDataSet()
     {
         string userCode = HttpContext.Current.Session["UserCode"].ToString();
@@ -122,7 +122,7 @@ public static class ShareClass
 
         try
         {
-            // È·±£±í´æÔÚ
+            // ç¡®ä¿è¡¨å­˜åœ¨
             CreateMemberChartStringTableIfNotExists();
         }
         catch (Exception ex)
@@ -139,7 +139,7 @@ public static class ShareClass
                 return null;
             }
 
-            // 1. Ê×ÏÈ´Ó t_MemberChartStringForMainPage ±í»ñÈ¡ ModuleFlowchartString
+            // 1. é¦–å…ˆä» t_MemberChartStringForMainPage è¡¨è·å– ModuleFlowchartString
             string checkFlowchartSQL = string.Format(@"
                     SELECT ModuleFlowchartString 
                     FROM public.t_MemberChartStringForMainPage 
@@ -152,7 +152,7 @@ public static class ShareClass
 
             //LogClass.WriteLogFile(dsFlowchart.ToString());
 
-            // Èç¹ûÕÒµ½ÁË ModuleFlowchartString£¬Ö±½Ó·µ»Ø
+            // å¦‚æœæ‰¾åˆ°äº† ModuleFlowchartStringï¼Œç›´æ¥è¿”å›
             if (dsFlowchart?.Tables.Count > 0 && dsFlowchart.Tables[0].Rows.Count > 0)
             {
                 string moduleFlowchartString = dsFlowchart.Tables[0].Rows[0]["ModuleFlowchartString"].ToString();
@@ -165,7 +165,7 @@ public static class ShareClass
                 }
             }
 
-            // 2. Èç¹ûÃ»ÓĞÕÒµ½ ModuleFlowchartString£¬Ö´ĞĞÔ­ÓĞµÄÂß¼­
+            // 2. å¦‚æœæ²¡æœ‰æ‰¾åˆ° ModuleFlowchartStringï¼Œæ‰§è¡ŒåŸæœ‰çš„é€»è¾‘
             DataSet dsModuleFlow = ShareClass.GetSystemModuleFlowDataSet("OperateNavigation", userCode, userType, langCode);
             if (dsModuleFlow?.Tables.Count > 0 && dsModuleFlow.Tables[0].Rows.Count > 0)
             {
@@ -203,10 +203,10 @@ public static class ShareClass
                     {
                         string strID = ds.Tables[0].Rows[0]["ID"].ToString().Trim();
 
-                        // »ñÈ¡»òÉú³ÉXMLÊı¾İ
+                        // è·å–æˆ–ç”ŸæˆXMLæ•°æ®
                         string moduleFlowchartXML = WFMFFlowDefinitionHandle.GetModuleFlowDefinition(strID, "UserModule", ds);
 
-                        // 3. ½«XMLÊı¾İ±£´æµ½ t_MemberChartStringForMainPage ±í
+                        // 3. å°†XMLæ•°æ®ä¿å­˜åˆ° t_MemberChartStringForMainPage è¡¨
                         SaveModuleFlowchartToDatabase(userCode.Trim(), moduleFlowchartXML);
 
                         return moduleFlowchartXML;
@@ -214,7 +214,7 @@ public static class ShareClass
                 }
             }
 
-            //// Ã»ÓĞÕÒµ½Êı¾İ£¬·µ»Ønull
+            //// æ²¡æœ‰æ‰¾åˆ°æ•°æ®ï¼Œè¿”å›null
             //LogClass.WriteLogFile($"Info: No module flow definition found for user {userCode.Trim()}");
             return null;
         }
@@ -226,7 +226,7 @@ public static class ShareClass
     }
 
     /// <summary>
-    /// ½«Ä£¿éÁ÷³ÌÍ¼XML±£´æµ½Êı¾İ¿â
+    /// å°†æ¨¡å—æµç¨‹å›¾XMLä¿å­˜åˆ°æ•°æ®åº“
     /// </summary>
     public static void SaveModuleFlowchartToDatabase(string userCode, string moduleFlowchartXML)
     {
@@ -238,7 +238,7 @@ public static class ShareClass
                 return;
             }
 
-            // Ê¹ÓÃUPSERT (INSERT ... ON CONFLICT) Óï·¨
+            // ä½¿ç”¨UPSERT (INSERT ... ON CONFLICT) è¯­æ³•
             string saveSQL = string.Format(@"
                     INSERT INTO public.t_MemberChartStringForMainPage (usercode, ModuleFlowchartString)
                     VALUES (TRIM('{0}'), '{1}')
@@ -246,7 +246,7 @@ public static class ShareClass
                     DO UPDATE SET 
                         ModuleFlowchartString = EXCLUDED.ModuleFlowchartString",
                         userCode,
-                        moduleFlowchartXML.Replace("'", "''")); // ´¦ÀíXMLÖĞµÄµ¥ÒıºÅ
+                        moduleFlowchartXML.Replace("'", "''")); // å¤„ç†XMLä¸­çš„å•å¼•å·
         
             try
             {
@@ -266,7 +266,7 @@ public static class ShareClass
     }
 
     /// <summary>
-    /// ½«Ä£¿éÁ÷³ÌÍ¼XML±£´æµ½Êı¾İ¿â,ÓÃÓÚÉè¼Æ»òĞŞ¸ÄÒ³Ãæµ÷ÓÃ£¬È·±£Ã¿´ÎÉè¼Æ»òĞŞ¸Äºó¶¼ÄÜ±£´æ×îĞÂµÄÁ÷³ÌÍ¼Êı¾İ
+    /// å°†æ¨¡å—æµç¨‹å›¾XMLä¿å­˜åˆ°æ•°æ®åº“,ç”¨äºè®¾è®¡æˆ–ä¿®æ”¹é¡µé¢è°ƒç”¨ï¼Œç¡®ä¿æ¯æ¬¡è®¾è®¡æˆ–ä¿®æ”¹åéƒ½èƒ½ä¿å­˜æœ€æ–°çš„æµç¨‹å›¾æ•°æ®
     /// </summary>
     public static string SaveModuleFlowchartToDatabaseForDesignOrChangePage()
     {
@@ -274,7 +274,7 @@ public static class ShareClass
         string userType = HttpContext.Current.Session["UserType"].ToString();
         string langCode = HttpContext.Current.Session["LangCode"].ToString();
 
-        // 2. Èç¹ûÃ»ÓĞÕÒµ½ ModuleFlowchartString£¬Ö´ĞĞÔ­ÓĞµÄÂß¼­
+        // 2. å¦‚æœæ²¡æœ‰æ‰¾åˆ° ModuleFlowchartStringï¼Œæ‰§è¡ŒåŸæœ‰çš„é€»è¾‘
         DataSet dsModuleFlow = ShareClass.GetSystemModuleFlowDataSet("OperateNavigation", userCode, userType, langCode);
         if (dsModuleFlow?.Tables.Count > 0 && dsModuleFlow.Tables[0].Rows.Count > 0)
         {
@@ -309,12 +309,12 @@ public static class ShareClass
                 {
                     string strID = ds.Tables[0].Rows[0]["ID"].ToString().Trim();
 
-                    // »ñÈ¡»òÉú³ÉXMLÊı¾İ
+                    // è·å–æˆ–ç”ŸæˆXMLæ•°æ®
                     string moduleFlowchartXML = WFMFFlowDefinitionHandle.GetModuleFlowDefinition(strID, "UserModule", ds);
 
                     //LogClass.WriteLogFile($"Info: Loaded module flow definition for user {userCode.Trim()}");
 
-                    // 3. ½«XMLÊı¾İ±£´æµ½ t_MemberChartStringForMainPage ±í
+                    // 3. å°†XMLæ•°æ®ä¿å­˜åˆ° t_MemberChartStringForMainPage è¡¨
                     SaveModuleFlowchartToDatabase(userCode.Trim(), moduleFlowchartXML);
 
                     return moduleFlowchartXML;
@@ -336,26 +336,405 @@ public static class ShareClass
     }
 
 
-    // »ñÈ¡ÏµÍ³Ä£×éÁ÷³ÌÊı¾İ¼¯
+    // è·å–ç³»ç»Ÿæ¨¡ç»„æµç¨‹æ•°æ®é›†
     public static DataSet GetSystemModuleFlowDataSet(string strModuleName, string strUserCode, string strUserType, string strLangCode)
     {
         string strHQL;
 
         try
         {
+            // 0. é¦–å…ˆæ£€æŸ¥T_ProModuleLevelä¸­æ˜¯å¦æœ‰è¯¥æ¨¡ç»„è®°å½•ï¼Œå¦‚æœæ²¡æœ‰åˆ™åˆå§‹åŒ–
+            EnsureModuleLevelExists(strModuleName, strUserType);
+
+            // 1. å…ˆæŸ¥è¯¢ç”¨æˆ·æ˜¯å¦æœ‰è¯¥æ¨¡ç»„è®°å½•ï¼ˆä¸ç®¡ModuleDefinitionæ˜¯å¦æœ‰å€¼ï¼‰
+            string checkUserSQL = string.Format(@"
+                SELECT B.ID, CHAR_LENGTH(RTRIM(COALESCE(B.ModuleDefinition, ''))) as DefLength
+                FROM T_ProModule B 
+                INNER JOIN T_ProModuleLevel A ON 
+                    RTRIM(A.ModuleName) || RTRIM(A.ModuleType) || RTRIM(A.UserType) = 
+                    RTRIM(B.ModuleName) || RTRIM(B.ModuleType) || RTRIM(B.UserType)
+                WHERE RTRIM(B.ModuleName) = '{0}' 
+                AND RTRIM(B.UserCode) = '{1}' 
+                AND RTRIM(B.UserType) = '{2}'",
+                strModuleName.Trim(), strUserCode.Trim(), strUserType.Trim());
+
+            DataSet dsUser = ShareClass.GetDataSetFromSql(checkUserSQL, "T_ProModule");
+            bool hasUserRecord = dsUser != null && dsUser.Tables.Count > 0 && dsUser.Tables[0].Rows.Count > 0;
+            bool hasModuleDefinition = false;
+            string userModuleID = "";
+
+            if (hasUserRecord)
+            {
+                int defLength = Convert.ToInt32(dsUser.Tables[0].Rows[0]["DefLength"]);
+                hasModuleDefinition = defLength > 0;
+                userModuleID = dsUser.Tables[0].Rows[0]["ID"].ToString().Trim();
+            }
+
+            // 2. å¦‚æœç”¨æˆ·æ²¡æœ‰è®°å½•ï¼Œæˆ–è€…ModuleDefinitionä¸ºç©ºï¼Œéœ€è¦ä»T_ProModuleLevelå¤åˆ¶
+            if (!hasUserRecord || !hasModuleDefinition)
+            {
+                // æ£€æŸ¥T_ProModuleLevelä¸­æ˜¯å¦æœ‰è¯¥æ¨¡ç»„çš„å®šä¹‰
+                string checkLevelSQL = string.Format(@"
+                    SELECT ModuleName, ModuleType, UserType, ModuleDefinition
+                    FROM T_ProModuleLevel 
+                    WHERE RTRIM(ModuleName) = '{0}' AND RTRIM(UserType) = '{1}'
+                    AND CHAR_LENGTH(ModuleDefinition) > 0",
+                    strModuleName.Trim(), strUserType.Trim());
+
+                DataSet dsLevel = ShareClass.GetDataSetFromSql(checkLevelSQL, "T_ProModuleLevel");
+
+                if (dsLevel != null && dsLevel.Tables.Count > 0 && dsLevel.Tables[0].Rows.Count > 0)
+                {
+                    if (!hasUserRecord)
+                    {
+                        // ç”¨æˆ·æ²¡æœ‰è®°å½•ï¼Œæ’å…¥æ–°è®°å½•
+                        string insertSQL = string.Format(@"
+                            INSERT INTO T_ProModule (ModuleName, UserCode, Visible, ModuleType, UserType, ModuleDefinition)
+                            SELECT ModuleName, '{2}', 'YES', ModuleType, UserType, ModuleDefinition
+                            FROM T_ProModuleLevel 
+                            WHERE RTRIM(ModuleName) = '{0}' AND RTRIM(UserType) = '{1}'",
+                            strModuleName.Trim(), strUserType.Trim(), strUserCode.Trim());
+
+                        try
+                        {
+                            ShareClass.RunSqlCommand(insertSQL);
+                        }
+                        catch (Exception ex)
+                        {
+                            LogClass.WriteLogFile("Error in GetSystemModuleFlowDataSet while inserting to T_ProModule: " + ex.Message);
+                        }
+                    }
+                    else if (!hasModuleDefinition)
+                    {
+                        // ç”¨æˆ·æœ‰è®°å½•ä½†ModuleDefinitionä¸ºç©ºï¼Œæ›´æ–°ModuleDefinition
+                        // ä½¿ç”¨ LIMIT 1 ç¡®ä¿å­æŸ¥è¯¢åªè¿”å›ä¸€è¡Œ
+                        string updateSQL = string.Format(@"
+                            UPDATE T_ProModule 
+                            SET ModuleDefinition = (
+                                SELECT ModuleDefinition 
+                                FROM T_ProModuleLevel 
+                                WHERE RTRIM(ModuleName) = '{0}' AND RTRIM(UserType) = '{1}'
+                                AND CHAR_LENGTH(ModuleDefinition) > 0
+                                LIMIT 1
+                            )
+                            WHERE ID = {2}",
+                            strModuleName.Trim(), strUserType.Trim(), userModuleID);
+
+                        try
+                        {
+                            ShareClass.RunSqlCommand(updateSQL);
+                        }
+                        catch (Exception ex)
+                        {
+                            LogClass.WriteLogFile("Error in GetSystemModuleFlowDataSet while updating T_ProModule: " + ex.Message);
+                        }
+                    }
+                }
+            }
+
+            // 3. æœ€ç»ˆæŸ¥è¯¢è¿”å›ç»“æœ
             strHQL = string.Format(@"Select distinct B.ID From T_ProModuleLevel A, T_ProModule B Where rtrim(A.ModuleName)
                 ||rtrim(A.ModuleType)||rtrim(A.UserType) = rtrim(B.ModuleName) ||rtrim(B.ModuleType) 
-                ||rtrim(B.UserType) and B.ModuleName = '{0}' and B.UserCode ='{1}' and B.UserType = '{2}' and (CHAR_LENGTH(B.ModuleDefinition) > 0 Or CHAR_LENGTH(A.ModuleDefinition) > 0) ", strModuleName, strUserCode, strUserType, strLangCode);
+                ||rtrim(B.UserType) and B.ModuleName = '{0}' and B.UserCode ='{1}' and B.UserType = '{2}' and CHAR_LENGTH(B.ModuleDefinition) > 0", strModuleName, strUserCode, strUserType, strLangCode);
 
             DataSet ds = ShareClass.GetDataSetFromSql(strHQL, "T_ProModuleLevel");
-
             return ds;
         }
-        catch
+        catch (Exception ex)
         {
+            LogClass.WriteLogFile("Error in GetSystemModuleFlowDataSet: " + ex.Message + "\n" + ex.StackTrace);
             return null;
         }
     }
+
+    /// <summary>
+    /// ç¡®ä¿T_ProModuleLevelä¸­å­˜åœ¨æŒ‡å®šçš„æ¨¡ç»„è®°å½•ï¼Œå¦‚æœä¸å­˜åœ¨åˆ™åˆå§‹åŒ–
+    /// </summary>
+    private static void EnsureModuleLevelExists(string strModuleName, string strUserType)
+    {
+        try
+        {
+            // æ£€æŸ¥T_ProModuleLevelä¸­æ˜¯å¦æœ‰è¯¥æ¨¡ç»„è®°å½•
+            string checkSQL = string.Format(@"
+                SELECT ID, CHAR_LENGTH(RTRIM(COALESCE(ModuleDefinition, ''))) as DefLength
+                FROM T_ProModuleLevel 
+                WHERE RTRIM(ModuleName) = '{0}' AND RTRIM(UserType) = '{1}'",
+                strModuleName.Trim(), strUserType.Trim());
+
+            DataSet ds = ShareClass.GetDataSetFromSql(checkSQL, "T_ProModuleLevel");
+            bool hasLevelRecord = ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0;
+            bool hasLevelDefinition = false;
+
+            if (hasLevelRecord)
+            {
+                int defLength = Convert.ToInt32(ds.Tables[0].Rows[0]["DefLength"]);
+                hasLevelDefinition = defLength > 0;
+            }
+
+            // å¦‚æœæ˜¯OperateNavigationæ¨¡ç»„ä¸”æ²¡æœ‰è®°å½•æˆ–æ²¡æœ‰å®šä¹‰ï¼Œéœ€è¦åˆå§‹åŒ–
+            if (strModuleName.Trim() == "OperateNavigation" && (!hasLevelRecord || !hasLevelDefinition))
+            {
+                InitializeOperateNavigationModule(strUserType);
+            }
+        }
+        catch (Exception ex)
+        {
+            LogClass.WriteLogFile("Error in EnsureModuleLevelExists: " + ex.Message);
+        }
+    }
+
+    /// <summary>
+    /// åˆå§‹åŒ–OperateNavigationæ¨¡ç»„ï¼ˆæ’å…¥è®°å½•å¹¶è®¾ç½®æµç¨‹å›¾å®šä¹‰ï¼‰
+    /// </summary>
+    private static void InitializeOperateNavigationModule(string strUserType)
+    {
+        try
+        {
+            string strSystemProductType = System.Configuration.ConfigurationManager.AppSettings["ProductType"];
+            string strMFXML = GetOperateNavigationFlowDefinition(strSystemProductType, strUserType);
+
+            if (string.IsNullOrEmpty(strMFXML))
+            {
+                LogClass.WriteLogFile("InitializeOperateNavigationModule: No flow definition found for ProductType=" + strSystemProductType + ", UserType=" + strUserType);
+                return;
+            }
+
+            // æ£€æŸ¥æ˜¯å¦å·²å­˜åœ¨è®°å½•
+            string checkSQL = string.Format(@"
+                SELECT ID FROM T_ProModuleLevel 
+                WHERE RTRIM(ModuleName) = 'OperateNavigation' AND RTRIM(UserType) = '{0}'",
+                strUserType.Trim());
+
+            DataSet ds = ShareClass.GetDataSetFromSql(checkSQL, "T_ProModuleLevel");
+            bool hasRecord = ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0;
+
+            if (!hasRecord)
+            {
+                // æ’å…¥æ–°è®°å½•
+                string insertSQL = string.Format(@"
+                    INSERT INTO T_ProModuleLevel(ModuleName, HomeModuleName, ParentModule, PageName, ModuleType, UserType, LangCode, IconURL, ModuleDefinition, DiyFlow, UpdateMark, SortNumber, IsDeleted, Visible)
+                    VALUES('OperateNavigation', 'OperateNavigation', '', '', 'SYSTEM', '{0}', 'en', 'ImagesSkin/OperateGuide.png', '{1}', 'YES', 3, 0, 'NO', 'YES')",
+                    strUserType.Trim(), strMFXML.Replace("'", "''"));
+
+                ShareClass.RunSqlCommand(insertSQL);
+                LogClass.WriteLogFile("InitializeOperateNavigationModule: Inserted new record for UserType=" + strUserType);
+            }
+            else
+            {
+                // æ›´æ–°ç°æœ‰è®°å½•çš„ModuleDefinition
+                string updateSQL = string.Format(@"
+                    UPDATE T_ProModuleLevel 
+                    SET ModuleDefinition = '{1}', UpdateMark = 3
+                    WHERE RTRIM(ModuleName) = 'OperateNavigation' AND RTRIM(UserType) = '{0}'",
+                    strUserType.Trim(), strMFXML.Replace("'", "''"));
+
+                ShareClass.RunSqlCommand(updateSQL);
+                LogClass.WriteLogFile("InitializeOperateNavigationModule: Updated ModuleDefinition for UserType=" + strUserType);
+            }
+
+            // åŒæ—¶åˆå§‹åŒ–T_ProModuleä¸­çš„SAMPLEç”¨æˆ·è®°å½•
+            InitializeSampleUserModule(strUserType);
+        }
+        catch (Exception ex)
+        {
+            LogClass.WriteLogFile("Error in InitializeOperateNavigationModule: " + ex.Message + "\n" + ex.StackTrace);
+        }
+    }
+
+    /// <summary>
+    /// åˆå§‹åŒ–SAMPLEç”¨æˆ·çš„OperateNavigationæ¨¡ç»„è®°å½•
+    /// </summary>
+    private static void InitializeSampleUserModule(string strUserType)
+    {
+        try
+        {
+            string checkSQL = string.Format(@"
+                SELECT ID FROM T_ProModule 
+                WHERE RTRIM(ModuleName) = 'OperateNavigation' AND RTRIM(UserCode) = 'SAMPLE' AND RTRIM(UserType) = '{0}'",
+                strUserType.Trim());
+
+            DataSet ds = ShareClass.GetDataSetFromSql(checkSQL, "T_ProModule");
+            bool hasRecord = ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0;
+
+            if (!hasRecord)
+            {
+                string insertSQL = string.Format(@"
+                    INSERT INTO T_ProModule(UserCode, ModuleName, ModuleType, UserType, ModuleDefinition, DiyFlow, Visible)
+                    VALUES('SAMPLE', 'OperateNavigation', 'SYSTEM', '{0}', '', 'YES', 'YES')",
+                    strUserType.Trim());
+
+                ShareClass.RunSqlCommand(insertSQL);
+            }
+        }
+        catch (Exception ex)
+        {
+            LogClass.WriteLogFile("Error in InitializeSampleUserModule: " + ex.Message);
+        }
+    }
+
+    /// <summary>
+    /// åˆå§‹åŒ–æ‰€æœ‰ç”¨æˆ·ç±»å‹çš„OperateNavigationæ¨¡ç»„ï¼ˆä¾›TakeTopSystemOtherCodeRunPageè°ƒç”¨ï¼‰
+    /// æ’å…¥åŸºç¡€è®°å½•ï¼ˆModuleDefinitionä¸ºç©ºï¼‰ï¼Œç”±UpdateModuleFlowDefinitionå¡«å……æµç¨‹å›¾å®šä¹‰
+    /// </summary>
+    public static void InitializeOperateNavigationModuleForAllUserTypes()
+    {
+        try
+        {
+            string strSystemProductType = System.Configuration.ConfigurationManager.AppSettings["ProductType"];
+
+            // æ£€æŸ¥T_ProModuleLevelä¸­æ˜¯å¦å·²æœ‰OperateNavigationè®°å½•
+            string checkSQL = "SELECT COUNT(*) FROM T_ProModuleLevel WHERE RTRIM(ModuleName) = 'OperateNavigation'";
+            DataSet ds = ShareClass.GetDataSetFromSql(checkSQL, "T_ProModuleLevel");
+            int count = 0;
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                count = Convert.ToInt32(ds.Tables[0].Rows[0][0]);
+            }
+
+            if (count > 0)
+            {
+                LogClass.WriteLogFile("OperateNavigation module already exists in T_ProModuleLevel.");
+                return;
+            }
+
+            // åˆ é™¤æ—§è®°å½•ï¼ˆå¦‚æœæœ‰ï¼‰
+            ShareClass.RunSqlCommand("Delete From T_ProModuleLevel Where ModuleName = 'OperateNavigation'");
+
+            // æ’å…¥INNERç”¨æˆ·ç±»å‹è®°å½•
+            string insertInnerSQL = @"
+                Insert Into T_ProModuleLevel(ModuleName, HomeModuleName, ParentModule, PageName, ModuleType, UserType, LangCode, IconURL, ModuleDefinition, DiyFlow, UpdateMark, SortNumber, IsDeleted, Visible)
+                values('OperateNavigation', 'æ“ä½œå¯¼èˆª', '', '', 'SYSTEM', 'INNER', 'zh-CN', 'ImagesSkin/OperateGuide.png', '', 'YES', 0, 0, 'NO', 'YES');";
+            ShareClass.RunSqlCommand(insertInnerSQL);
+
+            // æ’å…¥OUTERç”¨æˆ·ç±»å‹è®°å½•
+            string insertOuterSQL = @"
+                Insert Into T_ProModuleLevel(ModuleName, HomeModuleName, ParentModule, PageName, ModuleType, UserType, LangCode, IconURL, ModuleDefinition, DiyFlow, UpdateMark, SortNumber, IsDeleted, Visible)
+                values('OperateNavigation', 'OperateNavigation', '', '', 'SYSTEM', 'OUTER', 'en', 'ImagesSkin/OperateGuide.png', '', 'YES', 0, 0, 'NO', 'YES');";
+            ShareClass.RunSqlCommand(insertOuterSQL);
+
+            // æ’å…¥SAMPLEç”¨æˆ·è®°å½•
+            InitializeSampleUserModule("INNER");
+            InitializeSampleUserModule("OUTER");
+
+            LogClass.WriteLogFile("InitializeOperateNavigationModuleForAllUserTypes: Inserted OperateNavigation records for INNER and OUTER.");
+        }
+        catch (Exception ex)
+        {
+            LogClass.WriteLogFile("Error in InitializeOperateNavigationModuleForAllUserTypes: " + ex.Message + "\n" + ex.StackTrace);
+        }
+    }
+
+    /// <summary>
+    /// è·å–OperateNavigationçš„æµç¨‹å›¾å®šä¹‰
+    /// </summary>
+    private static string GetOperateNavigationFlowDefinition(string strSystemProductType, string strUserType)
+    {
+        // OUTERç”¨æˆ·ç±»å‹çš„å®šä¹‰ï¼ˆæ‰€æœ‰äº§å“ç±»å‹å…±ç”¨ï¼‰
+        if (strUserType.Trim().ToUpper() == "OUTER")
+        {
+            return @"{states:{rect1:{type:'task',text:{text:'æˆ‘çš„åä½œ'}, attr:{ x:89, y:114, width:100, height:50}, props:{guid:{value:'9cf167e5-eaa0-2a0a-d046-f9b95f20a18f'},text:{value:'æˆ‘çš„åä½œ',url:'TTCollaborationManage.aspx'}}},rect2:{type:'task',text:{text:'æˆ‘çš„æµç¨‹'}, attr:{ x:292, y:114, width:100, height:50}, props:{guid:{value:'d453b354-38bd-d4f2-5bd2-d052ce6757d0'},text:{value:'æˆ‘çš„æµç¨‹',url:'TTWLManage.aspx'}}},rect3:{type:'task',text:{text:'é¡¹ç›®ç®¡ç†'}, attr:{ x:486, y:116, width:100, height:50}, props:{guid:{value:'4d13368a-8662-46bb-2302-30f0ec9ab00b'},text:{value:'é¡¹ç›®ç®¡ç†',url:'TTProjectManageOuter.aspx'}}},rect4:{type:'task',text:{text:'æˆ‘çš„å®¢æœ'}, attr:{ x:677, y:116, width:100, height:50}, props:{guid:{value:'97c25bff-5352-fc37-8ae7-cb421fcdf7cc'},text:{value:'æˆ‘çš„å®¢æœ',url:'TTCustomerQuestionManage.aspx'}}},rect5:{type:'task',text:{text:'æˆ‘çš„ç¼ºé™·'}, attr:{ x:386, y:225, width:100, height:50}, props:{guid:{value:'7bfb19b8-ba4b-9be7-9af6-a3037cd27a1c'},text:{value:'æˆ‘çš„ç¼ºé™·',url:'TTDefectHandlePageThirdPart.aspx'}}},rect6:{type:'task',text:{text:'æˆ‘çš„éœ€æ±‚'}, attr:{ x:583, y:223, width:100, height:50}, props:{guid:{value:'463cef82-59b2-a9ad-134c-3b446afe71a9'},text:{value:'æˆ‘çš„éœ€æ±‚',url:'TTReqHandlePageThirdPart.aspx'}}},rect7:{type:'task',text:{text:'æˆ‘çš„è€ƒå‹¤'}, attr:{ x:873, y:117, width:100, height:50}, props:{guid:{value:'c6ab08dc-af3e-84c8-b0d6-094f352580cc'},text:{value:'æˆ‘çš„è€ƒå‹¤',url:'TTUserAttendanceRecordForMe.aspx'}}},rect8:{type:'task',text:{text:'é¡¹ç›®ä»»åŠ¡'}, attr:{ x:486, y:11, width:100, height:50}, props:{guid:{value:'907e7f31-cd94-309a-bdf6-95313362f7c1'},text:{value:'é¡¹ç›®ä»»åŠ¡',url:'TTProjectTaskManageMain.aspx'}}}},paths:{path9:{from:'rect2',to:'rect3', dots:[],text:{text:'TO é¡¹ç›®ç®¡ç†'},textPos:{x:0,y:-10}, props:{text:{value:'TO é¡¹ç›®ç®¡ç†'}}},path10:{from:'rect3',to:'rect4', dots:[],text:{text:'TO æˆ‘çš„å®¢æœ'},textPos:{x:0,y:-10}, props:{text:{value:'TO æˆ‘çš„å®¢æœ'}}},path11:{from:'rect4',to:'rect7', dots:[],text:{text:'TO æˆ‘çš„è€ƒå‹¤'},textPos:{x:0,y:-10}, props:{text:{value:'TO æˆ‘çš„è€ƒå‹¤'}}},path12:{from:'rect6',to:'rect3', dots:[],text:{text:'TO é¡¹ç›®ç®¡ç†'},textPos:{x:0,y:-10}, props:{text:{value:'TO é¡¹ç›®ç®¡ç†'}}},path13:{from:'rect5',to:'rect3', dots:[],text:{text:'TO é¡¹ç›®ç®¡ç†'},textPos:{x:0,y:-10}, props:{text:{value:'TO é¡¹ç›®ç®¡ç†'}}},path14:{from:'rect1',to:'rect2', dots:[],text:{text:'TO æˆ‘çš„æµç¨‹'},textPos:{x:0,y:-10}, props:{text:{value:''}}},path15:{from:'rect8',to:'rect3', dots:[],text:{text:'TO é¡¹ç›®ç®¡ç†'},textPos:{x:0,y:-10}, props:{text:{value:'TO é¡¹ç›®ç®¡ç†'}}}},props:{props:{name:{value:'æ–°å»ºæµç¨‹'},key:{value:''},desc:{value:''}}}}";
+        }
+
+        // INNERç”¨æˆ·ç±»å‹çš„å®šä¹‰ï¼ˆæ ¹æ®ProductTypeè¿”å›ä¸åŒå®šä¹‰ï¼‰
+        if (strUserType.Trim().ToUpper() == "INNER")
+        {
+            // ECMP, DEMO äº§å“ç±»å‹
+            if ("ECMP,DEMO".IndexOf(strSystemProductType) > -1)
+            {
+                return @"{states:{rect1:{type:'task',text:{text:'é¡¹ç›®ç«‹é¡¹'}, attr:{ x:105, y:127, width:100, height:50}, props:{guid:{value:'02899d0f-472c-063f-f67e-c6b9d45c8d29'},text:{value:'é¡¹ç›®ç«‹é¡¹',url:'TTMakeProject.aspx'}}},rect2:{type:'task',text:{text:'é¡¹ç›®ç®¡ç†'}, attr:{ x:313, y:127, width:100, height:50}, props:{guid:{value:'5fe585ee-cf14-5681-46eb-e0f32e23b369'},text:{value:'é¡¹ç›®ç®¡ç†',url:'TTProjectManage.aspx'}}},rect3:{type:'task',text:{text:'é¡¹ç›®ä»»åŠ¡ç®¡ç†'}, attr:{ x:313, y:8, width:100, height:50}, props:{guid:{value:'e2637d3e-2cdb-2369-c06d-febd974c8af5'},text:{value:'é¡¹ç›®ä»»åŠ¡ç®¡ç†',url:'TTProjectTaskManageMain.aspx'}}},rect4:{type:'task',text:{text:'å·¥ä½œæµç®¡ç†'}, attr:{ x:541, y:128, width:100, height:50}, props:{guid:{value:'7c6325be-8337-ec12-76ed-1a03b86afab4'},text:{value:'å·¥ä½œæµç®¡ç†',url:'TTWLManage.aspx'}}},rect5:{type:'task',text:{text:'é¡¹ç›®éœ€æ±‚ç®¡ç†'}, attr:{ x:313, y:243, width:100, height:50}, props:{guid:{value:'54404d63-2600-e15e-81e4-d73382f0c4be'},text:{value:'é¡¹ç›®éœ€æ±‚ç®¡ç†',url:'TTProjectReqManageMain.aspx'}}},rect6:{type:'task',text:{text:'ä¾›åº”é“¾ç®¡ç†'}, attr:{ x:733, y:130, width:100, height:50}, props:{guid:{value:'1c96be8a-74f3-4245-8410-1e644295853b'},text:{value:'ä¾›åº”é“¾ç®¡ç†',url:'TTGoodsManage.aspx'}}},rect7:{type:'task',text:{text:'çŸ¥è¯†ç®¡ç†'}, attr:{ x:1142, y:132, width:100, height:50}, props:{guid:{value:'5d7924f1-d30f-8e77-f9c2-bbff046fc474'},text:{value:'çŸ¥è¯†ç®¡ç†',url:'TTDocumentManage.aspx'}}},rect8:{type:'task',text:{text:'è´¢åŠ¡ç®¡ç†'}, attr:{ x:940, y:131, width:100, height:50}, props:{guid:{value:'1d88fb65-7ead-3211-578a-ca3f51f6d5c4'},text:{value:'è´¢åŠ¡ç®¡ç†',url:'TTReceivablesPayableAlert.aspx'}}},rect9:{type:'task',text:{text:'å…¥åº“å•'}, attr:{ x:733, y:7, width:100, height:50}, props:{guid:{value:'7f67e5bf-6b78-d79c-9ef3-b2858f7293b0'},text:{value:'å…¥åº“å•',url:'TTMakeGoods.aspx'}}},rect10:{type:'task',text:{text:'å‡ºåº“å•'}, attr:{ x:733, y:244, width:100, height:50}, props:{guid:{value:'ca55c30d-c204-9183-baea-4629fb52ef33'},text:{value:'å‡ºåº“å•',url:'TTGoodsShipmentOrder.aspx'}}},rect11:{type:'task',text:{text:'æ”¶æ¬¾'}, attr:{ x:940, y:6, width:100, height:50}, props:{guid:{value:'bb49d768-afb5-6148-bad3-a10a1f4e47db'},text:{value:'æ”¶æ¬¾',url:'TTAccountReceivablesRecord.aspx'}}},rect12:{type:'task',text:{text:'ä»˜æ¬¾'}, attr:{ x:940, y:243, width:100, height:50}, props:{guid:{value:'40067ae4-3ada-306f-0e3a-33f00532c494'},text:{value:'ä»˜æ¬¾',url:'TTAccountPayableRecord.aspx'}}}},paths:{path13:{from:'rect1',to:'rect2', dots:[],text:{text:'TO é¡¹ç›®ç®¡ç†'},textPos:{x:0,y:-10}, props:{text:{value:'TO é¡¹ç›®ç®¡ç†'}}},path14:{from:'rect2',to:'rect3', dots:[],text:{text:'TO é¡¹ç›®ä»»åŠ¡ç®¡ç†'},textPos:{x:0,y:-10}, props:{text:{value:'TO é¡¹ç›®ä»»åŠ¡ç®¡ç†'}}},path15:{from:'rect2',to:'rect4', dots:[],text:{text:'TO å·¥ä½œæµç®¡ç†'},textPos:{x:0,y:-10}, props:{text:{value:'TO å·¥ä½œæµç®¡ç†'}}},path16:{from:'rect2',to:'rect5', dots:[],text:{text:'TO é¡¹ç›®éœ€æ±‚ç®¡ç†'},textPos:{x:0,y:-10}, props:{text:{value:'TO é¡¹ç›®éœ€æ±‚ç®¡ç†'}}},path17:{from:'rect4',to:'rect6', dots:[],text:{text:'TO ä¾›åº”é“¾ç®¡ç†'},textPos:{x:0,y:-10}, props:{text:{value:'TO ä¾›åº”é“¾ç®¡ç†'}}},path18:{from:'rect6',to:'rect8', dots:[],text:{text:'TO è´¢åŠ¡ç®¡ç†'},textPos:{x:0,y:-10}, props:{text:{value:'TO è´¢åŠ¡ç®¡ç†'}}},path19:{from:'rect8',to:'rect7', dots:[],text:{text:'TO çŸ¥è¯†ç®¡ç†'},textPos:{x:0,y:-10}, props:{text:{value:'TO çŸ¥è¯†ç®¡ç†'}}},path20:{from:'rect9',to:'rect6', dots:[],text:{text:'TO ä¾›åº”é“¾ç®¡ç†'},textPos:{x:0,y:-10}, props:{text:{value:'TO ä¾›åº”é“¾ç®¡ç†'}}},path21:{from:'rect10',to:'rect6', dots:[],text:{text:'TO ä¾›åº”é“¾ç®¡ç†'},textPos:{x:0,y:-10}, props:{text:{value:'TO ä¾›åº”é“¾ç®¡ç†'}}},path22:{from:'rect11',to:'rect8', dots:[],text:{text:'TO è´¢åŠ¡ç®¡ç†'},textPos:{x:0,y:-10}, props:{text:{value:'TO è´¢åŠ¡ç®¡ç†'}}},path23:{from:'rect12',to:'rect8', dots:[],text:{text:'TO è´¢åŠ¡ç®¡ç†'},textPos:{x:0,y:-10}, props:{text:{value:'TO è´¢åŠ¡ç®¡ç†'}}}},props:{props:{name:{value:'æ–°å»ºæµç¨‹'},key:{value:''},desc:{value:''}}}}";
+            }
+
+            // EDPMP äº§å“ç±»å‹
+            if (strSystemProductType == "EDPMP")
+            {
+                return @"{states:{rect1:{type:'task',text:{text:'é¡¹ç›®ç«‹é¡¹'}, attr:{ x:105, y:127, width:100, height:50}, props:{guid:{value:'02899d0f-472c-063f-f67e-c6b9d45c8d29'},text:{value:'é¡¹ç›®ç«‹é¡¹',url:'TTMakeProject.aspx'}}},rect2:{type:'task',text:{text:'é¡¹ç›®ç®¡ç†'}, attr:{ x:313, y:127, width:100, height:50}, props:{guid:{value:'5fe585ee-cf14-5681-46eb-e0f32e23b369'},text:{value:'é¡¹ç›®ç®¡ç†',url:'TTProjectManage.aspx'}}},rect3:{type:'task',text:{text:'é¡¹ç›®ä»»åŠ¡ç®¡ç†'}, attr:{ x:539, y:30, width:100, height:50}, props:{guid:{value:'e2637d3e-2cdb-2369-c06d-febd974c8af5'},text:{value:'é¡¹ç›®ä»»åŠ¡ç®¡ç†',url:'TTProjectTaskManageMain.aspx'}}},rect4:{type:'task',text:{text:'å·¥ä½œæµç®¡ç†'}, attr:{ x:541, y:128, width:100, height:50}, props:{guid:{value:'7c6325be-8337-ec12-76ed-1a03b86afab4'},text:{value:'å·¥ä½œæµç®¡ç†',url:'TTWLManage.aspx'}}},rect5:{type:'task',text:{text:'çŸ¥è¯†ç®¡ç†'}, attr:{ x:1150, y:129, width:100, height:50}, props:{guid:{value:'cc37c28e-3f87-c548-408e-c5404815c2f6'},text:{value:'çŸ¥è¯†ç®¡ç†',url:'TTDocumentManage.aspx'}}},rect6:{type:'task',text:{text:'æŠ•æ ‡ç®¡ç†'}, attr:{ x:741, y:128, width:100, height:50}, props:{guid:{value:'7afdc1c7-86a7-86f0-f1f4-27080c5a5e12'},text:{value:'æŠ•æ ‡ç®¡ç†',url:'TTTenderUNHandleList.aspx'}}},rect7:{type:'task',text:{text:'æŠ•æ ‡ç™»è®°'}, attr:{ x:741, y:32, width:100, height:50}, props:{guid:{value:'a156bfcc-cc20-8067-f531-88166371239c'},text:{value:'æŠ•æ ‡ç™»è®°',url:'TTTenderList.aspx'}}},rect8:{type:'task',text:{text:'æŠ•æ ‡ç¡®è®¤'}, attr:{ x:742, y:234, width:100, height:50}, props:{guid:{value:'ed594496-0b83-c6d3-5922-8efad984eee1'},text:{value:'æŠ•æ ‡ç¡®è®¤',url:'TTTenderFinanceList.aspx'}}},rect9:{type:'task',text:{text:'æ‰€æœ‰æˆå‘˜é¡¹ç›®çŠ¶æ€'}, attr:{ x:935, y:130, width:120, height:50}, props:{guid:{value:'016de4e1-1aa6-e650-cd13-261b951d2066'},text:{value:'æ‰€æœ‰æˆå‘˜é¡¹ç›®çŠ¶æ€',url:'TTAllProjectsRunStatus.aspx'}}},rect10:{type:'task',text:{text:'é¡¹ç›®é£é™©ç®¡ç†'}, attr:{ x:542, y:234, width:100, height:50}, props:{guid:{value:'273b9704-371f-e2aa-41ae-d3a94c29ae6c'},text:{value:'é¡¹ç›®é£é™©ç®¡ç†',url:'TTProjectRiskManageMain.aspx'}}}},paths:{path11:{from:'rect1',to:'rect2', dots:[],text:{text:'TO é¡¹ç›®ç®¡ç†'},textPos:{x:0,y:-10}, props:{text:{value:'TO é¡¹ç›®ç®¡ç†'}}},path12:{from:'rect2',to:'rect3', dots:[],text:{text:'TO é¡¹ç›®ä»»åŠ¡ç®¡ç†'},textPos:{x:0,y:-10}, props:{text:{value:'TO é¡¹ç›®ä»»åŠ¡ç®¡ç†'}}},path13:{from:'rect2',to:'rect4', dots:[],text:{text:'TO å·¥ä½œæµç®¡ç†'},textPos:{x:0,y:-10}, props:{text:{value:'TO å·¥ä½œæµç®¡ç†'}}},path14:{from:'rect4',to:'rect6', dots:[],text:{text:'TO æŠ•æ ‡ç®¡ç†'},textPos:{x:0,y:-10}, props:{text:{value:'TO æŠ•æ ‡ç®¡ç†'}}},path15:{from:'rect7',to:'rect6', dots:[],text:{text:'TO æŠ•æ ‡ç®¡ç†'},textPos:{x:0,y:-10}, props:{text:{value:'TO æŠ•æ ‡ç®¡ç†'}}},path16:{from:'rect8',to:'rect6', dots:[],text:{text:'TO æŠ•æ ‡ç®¡ç†'},textPos:{x:0,y:-10}, props:{text:{value:'TO æŠ•æ ‡ç®¡ç†'}}},path17:{from:'rect6',to:'rect9', dots:[],text:{text:'TO æ‰€æœ‰æˆå‘˜é¡¹ç›®çŠ¶æ€'},textPos:{x:0,y:-10}, props:{text:{value:'TO æ‰€æœ‰æˆå‘˜é¡¹ç›®çŠ¶æ€'}}},path18:{from:'rect9',to:'rect5', dots:[],text:{text:'TO çŸ¥è¯†ç®¡ç†'},textPos:{x:0,y:-10}, props:{text:{value:'TO çŸ¥è¯†ç®¡ç†'}}},path19:{from:'rect2',to:'rect10', dots:[],text:{text:'TO é¡¹ç›®é£é™©ç®¡ç†'},textPos:{x:0,y:-10}, props:{text:{value:''}}}},props:{props:{name:{value:'æ–°å»ºæµç¨‹'},key:{value:''},desc:{value:''}}}}";
+            }
+
+            // RDPMP äº§å“ç±»å‹
+            if (strSystemProductType == "RDPMP")
+            {
+                return @"{states:{rect1:{type:'task',text:{text:'é¡¹ç›®ç«‹é¡¹'}, attr:{ x:146, y:125, width:100, height:50}, props:{guid:{value:'02899d0f-472c-063f-f67e-c6b9d45c8d29'},text:{value:'é¡¹ç›®ç«‹é¡¹',url:'TTMakeProject.aspx'}}},rect2:{type:'task',text:{text:'é¡¹ç›®ç®¡ç†'}, attr:{ x:405, y:126, width:100, height:50}, props:{guid:{value:'5fe585ee-cf14-5681-46eb-e0f32e23b369'},text:{value:'é¡¹ç›®ç®¡ç†',url:'TTProjectManage.aspx'}}},rect3:{type:'task',text:{text:'é¡¹ç›®ä»»åŠ¡ç®¡ç†'}, attr:{ x:320, y:18, width:100, height:50}, props:{guid:{value:'e2637d3e-2cdb-2369-c06d-febd974c8af5'},text:{value:'é¡¹ç›®ä»»åŠ¡ç®¡ç†',url:'TTProjectTaskManageMain.aspx'}}},rect4:{type:'task',text:{text:'ä¾›åº”é“¾ç®¡ç†'}, attr:{ x:795, y:127, width:100, height:50}, props:{guid:{value:'2c43e892-71ba-f826-f0df-5393bdd20173'},text:{value:'ä¾›åº”é“¾ç®¡ç†',url:'TTGoodsManage.aspx'}}},rect5:{type:'task',text:{text:'é¢†æ–™å•'}, attr:{ x:795, y:11, width:100, height:50}, props:{guid:{value:'ee0e9c61-2ba9-f307-2ca5-45ca1e58345f'},text:{value:'é¢†æ–™å•',url:'TTGoodsApplicationOrder.aspx'}}},rect6:{type:'task',text:{text:'å‡ºåº“å•'}, attr:{ x:795, y:244, width:100, height:50}, props:{guid:{value:'d0018ba6-ef5d-b0ba-5e9c-97e001e698c5'},text:{value:'å‡ºåº“å•',url:'TTGoodsShipmentOrder.aspx'}}},rect7:{type:'task',text:{text:'å·¥ä½œæµç®¡ç†'}, attr:{ x:607, y:127, width:100, height:50}, props:{guid:{value:'39e45ece-447c-72ff-eb5f-bd5d40217313'},text:{value:'å·¥ä½œæµç®¡ç†',url:'TTWLManage.aspx'}}},rect8:{type:'task',text:{text:'é¡¹ç›®éœ€æ±‚ç®¡ç†'}, attr:{ x:323, y:241, width:100, height:50}, props:{guid:{value:'77cdd84c-a60a-7777-2611-114303e65439'},text:{value:'é¡¹ç›®éœ€æ±‚ç®¡ç†',url:'TTProjectReqManageMain.aspx'}}},rect9:{type:'task',text:{text:'çŸ¥è¯†ç®¡ç†'}, attr:{ x:1040, y:128, width:100, height:50}, props:{guid:{value:'ed1042f6-938a-dbc6-d876-5b0adbeffecc'},text:{value:'çŸ¥è¯†ç®¡ç†',url:'TTDocumentManage.aspx'}}},rect10:{type:'task',text:{text:'é¡¹ç›®ç¼ºé™·ç®¡ç†'}, attr:{ x:498, y:243, width:100, height:50}, props:{guid:{value:'e7016fa9-7391-8ca2-4f7d-d528cf302d8d'},text:{value:'é¡¹ç›®ç¼ºé™·ç®¡ç†',url:'TTProjectDefectManageMain.aspx'}}},rect11:{type:'task',text:{text:'é¡¹ç›®é£é™©ç®¡ç†'}, attr:{ x:496, y:19, width:100, height:50}, props:{guid:{value:'960e6089-9bbb-4f27-a14f-acc8acc0fce4'},text:{value:'é¡¹ç›®é£é™©ç®¡ç†',url:'TTProjectRiskManageMain.aspx'}}}},paths:{path12:{from:'rect1',to:'rect2', dots:[],text:{text:'TO é¡¹ç›®ç®¡ç†'},textPos:{x:0,y:-10}, props:{text:{value:'TO é¡¹ç›®ç®¡ç†'}}},path13:{from:'rect5',to:'rect4', dots:[],text:{text:'TO ä¾›åº”é“¾ç®¡ç†'},textPos:{x:0,y:-10}, props:{text:{value:'TO ä¾›åº”é“¾ç®¡ç†'}}},path14:{from:'rect6',to:'rect4', dots:[],text:{text:'TO ä¾›åº”é“¾ç®¡ç†'},textPos:{x:0,y:-10}, props:{text:{value:'TO ä¾›åº”é“¾ç®¡ç†'}}},path15:{from:'rect2',to:'rect7', dots:[],text:{text:'TO å·¥ä½œæµç®¡ç†'},textPos:{x:0,y:-10}, props:{text:{value:'TO å·¥ä½œæµç®¡ç†'}}},path16:{from:'rect7',to:'rect4', dots:[],text:{text:'TO ä¾›åº”é“¾ç®¡ç†'},textPos:{x:0,y:-10}, props:{text:{value:'TO ä¾›åº”é“¾ç®¡ç†'}}},path17:{from:'rect3',to:'rect2', dots:[],text:{text:'TO é¡¹ç›®ç®¡ç†'},textPos:{x:0,y:-10}, props:{text:{value:'TO é¡¹ç›®ç®¡ç†'}}},path18:{from:'rect8',to:'rect2', dots:[],text:{text:'TO é¡¹ç›®ç®¡ç†'},textPos:{x:0,y:-10}, props:{text:{value:'TO é¡¹ç›®ç®¡ç†'}}},path19:{from:'rect4',to:'rect9', dots:[],text:{text:'TO çŸ¥è¯†ç®¡ç†'},textPos:{x:0,y:-10}, props:{text:{value:'TO çŸ¥è¯†ç®¡ç†'}}},path20:{from:'rect10',to:'rect2', dots:[],text:{text:'TO é¡¹ç›®ç®¡ç†'},textPos:{x:0,y:-10}, props:{text:{value:'TO é¡¹ç›®ç®¡ç†'}}},path21:{from:'rect11',to:'rect2', dots:[],text:{text:'TO é¡¹ç›®ç®¡ç†'},textPos:{x:0,y:-10}, props:{text:{value:''}}}},props:{props:{name:{value:'æ–°å»ºæµç¨‹'},key:{value:''},desc:{value:''}}}}";
+            }
+
+            // SIPMP äº§å“ç±»å‹
+            if (strSystemProductType == "SIPMP")
+            {
+                return @"{states:{rect1:{type:'task',text:{text:'é¡¹ç›®ç«‹é¡¹'}, attr:{ x:105, y:127, width:100, height:50}, props:{guid:{value:'02899d0f-472c-063f-f67e-c6b9d45c8d29'},text:{value:'é¡¹ç›®ç«‹é¡¹',url:'TTMakeProject.aspx'}}},rect2:{type:'task',text:{text:'é¡¹ç›®ç®¡ç†'}, attr:{ x:313, y:127, width:100, height:50}, props:{guid:{value:'5fe585ee-cf14-5681-46eb-e0f32e23b369'},text:{value:'é¡¹ç›®ç®¡ç†',url:'TTProjectManage.aspx'}}},rect3:{type:'task',text:{text:'é¡¹ç›®ä»»åŠ¡ç®¡ç†'}, attr:{ x:539, y:32, width:100, height:50}, props:{guid:{value:'e2637d3e-2cdb-2369-c06d-febd974c8af5'},text:{value:'é¡¹ç›®ä»»åŠ¡ç®¡ç†',url:'TTProjectTaskManageMain.aspx'}}},rect4:{type:'task',text:{text:'æ”¶æ¬¾æ˜ç»†æ±‡æ€»è¡¨'}, attr:{ x:972, y:32, width:100, height:50}, props:{guid:{value:'6f8c99c9-3fcd-297d-1fa8-19811a07312b'},text:{value:'æ”¶æ¬¾æ˜ç»†æ±‡æ€»è¡¨',url:'TTAccountReceiveRecordSummary.aspx'}}},rect5:{type:'task',text:{text:'ä»˜æ¬¾æ˜ç»†æ±‡æ€»è¡¨'}, attr:{ x:971, y:233, width:100, height:50}, props:{guid:{value:'5a1f8b2b-c6f3-ce0b-7604-f7a986a65be7'},text:{value:'ä»˜æ¬¾æ˜ç»†æ±‡æ€»è¡¨',url:'TTAccountPayRecordSummary.aspx'}}},rect6:{type:'task',text:{text:'å·¥ä½œæµç®¡ç†'}, attr:{ x:541, y:128, width:100, height:50}, props:{guid:{value:'7c6325be-8337-ec12-76ed-1a03b86afab4'},text:{value:'å·¥ä½œæµç®¡ç†',url:'TTWLManage.aspx'}}},rect7:{type:'task',text:{text:'é¡¹ç›®éœ€æ±‚ç®¡ç†'}, attr:{ x:539, y:233, width:100, height:50}, props:{guid:{value:'cc37c28e-3f87-c548-408e-c5404815c2f6'},text:{value:'é¡¹ç›®éœ€æ±‚ç®¡ç†',url:'TTProjectReqManageMain.aspx'}}},rect8:{type:'task',text:{text:'çŸ¥è¯†ç®¡ç†'}, attr:{ x:1192, y:127, width:100, height:50}, props:{guid:{value:'28fad06e-abdf-9e5c-5dcc-83cf8e31b868'},text:{value:'çŸ¥è¯†ç®¡ç†',url:'TTDocumentManage.aspx'}}},rect9:{type:'task',text:{text:'ä¾›åº”é“¾ç®¡ç†'}, attr:{ x:734, y:126, width:100, height:50}, props:{guid:{value:'97a9836e-9bfd-0785-186c-82b045d4c045'},text:{value:'ä¾›åº”é“¾ç®¡ç†',url:'TTGoodsManage.aspx'}}},rect10:{type:'task',text:{text:'é‡‡è´­è®¢å•'}, attr:{ x:681, y:35, width:100, height:50}, props:{guid:{value:'2885595e-3090-94cf-dcbb-eeec21743fd1'},text:{value:'é‡‡è´­è®¢å•',url:'TTMakeGoodsPurchase.aspx'}}},rect11:{type:'task',text:{text:'å…¥åº“å•'}, attr:{ x:831, y:33, width:100, height:50}, props:{guid:{value:'ff012f74-eb6a-ece7-07d0-802a93ac8630'},text:{value:'å…¥åº“å•',url:'TTMakeGoods.aspx'}}},rect12:{type:'task',text:{text:'é¢†æ–™å•'}, attr:{ x:681, y:232, width:100, height:50}, props:{guid:{value:'d6a96f3c-4232-b23a-5d98-851660ee72e3'},text:{value:'é¢†æ–™å•',url:'TTGoodsApplicationOrder.aspx'}}},rect13:{type:'task',text:{text:'å‡ºåº“å•'}, attr:{ x:831, y:231, width:100, height:50}, props:{guid:{value:'8552f52f-2566-d548-b15d-b482a47f9c59'},text:{value:'å‡ºåº“å•',url:'TTGoodsShipmentOrder.aspx'}}},rect14:{type:'task',text:{text:'è´¢åŠ¡ç®¡ç†'}, attr:{ x:972, y:126, width:100, height:50}, props:{guid:{value:'fdfcecbb-2f46-87c3-73ba-3264fee27d42'},text:{value:'è´¢åŠ¡ç®¡ç†',url:'TTReceivablesPayableAlert.aspx'}}}},paths:{path15:{from:'rect1',to:'rect2', dots:[],text:{text:'TO é¡¹ç›®ç®¡ç†'},textPos:{x:0,y:-10}, props:{text:{value:'TO é¡¹ç›®ç®¡ç†'}}},path16:{from:'rect2',to:'rect3', dots:[],text:{text:'TO é¡¹ç›®ä»»åŠ¡ç®¡ç†'},textPos:{x:0,y:-10}, props:{text:{value:'TO é¡¹ç›®ä»»åŠ¡ç®¡ç†'}}},path17:{from:'rect2',to:'rect6', dots:[],text:{text:'TO å·¥ä½œæµç®¡ç†'},textPos:{x:0,y:-10}, props:{text:{value:'TO å·¥ä½œæµç®¡ç†'}}},path18:{from:'rect6',to:'rect9', dots:[],text:{text:'TO ä¾›åº”é“¾ç®¡ç†'},textPos:{x:0,y:-10}, props:{text:{value:'TO ä¾›åº”é“¾ç®¡ç†'}}},path19:{from:'rect9',to:'rect14', dots:[],text:{text:'TO è´¢åŠ¡ç®¡ç†'},textPos:{x:0,y:-10}, props:{text:{value:'TO è´¢åŠ¡ç®¡ç†'}}},path20:{from:'rect10',to:'rect9', dots:[],text:{text:'TO ä¾›åº”é“¾ç®¡ç†'},textPos:{x:0,y:-10}, props:{text:{value:'TO ä¾›åº”é“¾ç®¡ç†'}}},path21:{from:'rect11',to:'rect9', dots:[],text:{text:'TO ä¾›åº”é“¾ç®¡ç†'},textPos:{x:0,y:-10}, props:{text:{value:'TO ä¾›åº”é“¾ç®¡ç†'}}},path22:{from:'rect12',to:'rect9', dots:[],text:{text:'TO ä¾›åº”é“¾ç®¡ç†'},textPos:{x:0,y:-10}, props:{text:{value:'TO ä¾›åº”é“¾ç®¡ç†'}}},path23:{from:'rect13',to:'rect9', dots:[],text:{text:'TO ä¾›åº”é“¾ç®¡ç†'},textPos:{x:0,y:-10}, props:{text:{value:'TO ä¾›åº”é“¾ç®¡ç†'}}},path24:{from:'rect4',to:'rect14', dots:[],text:{text:'TO è´¢åŠ¡ç®¡ç†'},textPos:{x:0,y:-10}, props:{text:{value:'TO è´¢åŠ¡ç®¡ç†'}}},path25:{from:'rect5',to:'rect14', dots:[],text:{text:'TO è´¢åŠ¡ç®¡ç†'},textPos:{x:0,y:-10}, props:{text:{value:'TO è´¢åŠ¡ç®¡ç†'}}},path26:{from:'rect2',to:'rect7', dots:[],text:{text:'TO é¡¹ç›®éœ€æ±‚ç®¡ç†'},textPos:{x:0,y:-10}, props:{text:{value:'TO é¡¹ç›®éœ€æ±‚ç®¡ç†'}}},path27:{from:'rect14',to:'rect8', dots:[],text:{text:'TO çŸ¥è¯†ç®¡ç†'},textPos:{x:0,y:-10}, props:{text:{value:''}}}},props:{props:{name:{value:'æ–°å»ºæµç¨‹'},key:{value:''},desc:{value:''}}}}";
+            }
+
+            // å…¶ä»–äº§å“ç±»å‹å¯ä»¥ç»§ç»­æ·»åŠ ...
+            // SOPMP, GAPMP, ERP, CMP, CRM, SAASç­‰
+        }
+
+        return null;
+    }
+
+
+        /// <summary>
+    /// åˆå§‹åŒ–æ¨¡å—æ“ä½œå¯¼èˆªçš„è·¯çº¿å®šä¹‰
+    /// æ ¹æ®ProductTypeä¸ºT_ProModuleLevelä¸­çš„OperateNavigationæ¨¡ç»„å¡«å……æµç¨‹å›¾å®šä¹‰
+    /// </summary>
+    public static void UpdateModuleFlowDefinition()
+    {
+        try
+        {
+            // ä¸ºINNERç”¨æˆ·ç±»å‹åˆå§‹åŒ–ï¼ˆæ ¹æ®ProductTypeè·å–å¯¹åº”æµç¨‹å›¾ï¼‰
+            InitializeOperateNavigationModule("INNER");
+
+            // ä¸ºOUTERç”¨æˆ·ç±»å‹åˆå§‹åŒ–ï¼ˆæ‰€æœ‰äº§å“ç±»å‹å…±ç”¨åŒä¸€å¥—OUTERæµç¨‹å›¾ï¼‰
+            InitializeOperateNavigationModule("OUTER");
+        }
+        catch (Exception err)
+        {
+            LogClass.WriteLogFile("Error in UpdateModuleFlowDefinition: " + err.Message + "\n" + err.StackTrace);
+        }
+    }
+
+    /// <summary>
+    /// ä¿å­˜æ¨¡ç»„æµç¨‹å›¾å®šä¹‰
+    /// </summary>
+    /// <param name="strModuleName">æ¨¡ç»„åç§°</param>
+    /// <param name="strMFXML">æµç¨‹å›¾XMLå®šä¹‰</param>
+    /// <param name="intUpdateMark">æ›´æ–°æ ‡è®°</param>
+    /// <param name="strUserType">ç”¨æˆ·ç±»å‹</param>
+    public static void SaveModuleFlowDefinition(string strModuleName, string strMFXML, int intUpdateMark, string strUserType)
+    {
+        string strHQL;
+        IList lst;
+
+        string strID;
+        int i;
+
+        try
+        {
+            ProModuleLevelBLL proModuleLevelBLL = new ProModuleLevelBLL();
+            strHQL = string.Format(@"from ProModuleLevel as proModuleLevel where proModuleLevel.ModuleName = '{0}' and proModuleLevel.UserType ='{1}' and proModuleLevel.ModuleType = 'SYSTEM'", strModuleName, strUserType);
+            lst = proModuleLevelBLL.GetAllProModuleLevels(strHQL);
+
+            ProModuleLevel proModuleLevel;
+
+            for (i = 0; i < lst.Count; i++)
+            {
+                proModuleLevel = (ProModuleLevel)lst[i];
+
+                strID = proModuleLevel.ID.ToString();
+                proModuleLevel.ModuleDefinition = strMFXML;
+                proModuleLevelBLL.UpdateProModuleLevel(proModuleLevel, int.Parse(strID));
+            }
+
+            strHQL = string.Format(@"Update T_ProModuleLevel Set UpdateMark = {0} Where ModuleName = '{1}' and UserType ='{2}' and ModuleType = 'SYSTEM'", intUpdateMark, strModuleName, strUserType);
+            ShareClass.RunSqlCommand(strHQL);
+
+            //è®¾ç½®ç¼“å­˜æ›´æ”¹æ ‡å¿—ï¼Œå¹¶åˆ·æ–°é¡µé¢ç¼“å­˜
+            ShareClass.ChangePageCache();
+        }
+        catch (Exception err)
+        {
+            LogClass.WriteLogFile("Error page: " + "\n" + err.Message.ToString() + "\n" + err.StackTrace);
+        }
+    }
+
+
 
     public static string GetSystemModuleID(DataSet ds)
     {
@@ -376,7 +755,7 @@ public static class ShareClass
         }
     }
 
-    // ´´½¨±í£¨Èç¹û²»´æÔÚ£©- PostgreSQL °æ±¾
+    // åˆ›å»ºè¡¨ï¼ˆå¦‚æœä¸å­˜åœ¨ï¼‰- PostgreSQL ç‰ˆæœ¬
     public static  void CreateMemberChartStringTableIfNotExists()
     {
         string checkTableSql = "SELECT COUNT(*) FROM information_schema.tables WHERE table_name = 't_memberchartstringformainpage'";
@@ -395,17 +774,17 @@ public static class ShareClass
         }
     }
 
-    //ÔËĞĞÒ»Ğ©ÌØÊâµÄ´úÂë
+    //è¿è¡Œä¸€äº›ç‰¹æ®Šçš„ä»£ç 
     public static void RunSpecificalCodeForLogin()
     {
-        //¸´ÖÆADMINÓÃ»§µÄ¹ØÁª·ÖÎöÍ¼¸øÓÃ»§
+        //å¤åˆ¶ADMINç”¨æˆ·çš„å…³è”åˆ†æå›¾ç»™ç”¨æˆ·
         copyChartToUserFromADMIN(HttpContext.Current.Session["UserCode"].ToString());
 
-        //¸üĞÂÒ³Ãæ¹ØÁªÄ£×é¸öÈË¿Õ¼äÀïµÄÀàĞÍÎªWorkGuideµÄÃ¿ĞĞÁĞÊı
+        //æ›´æ–°é¡µé¢å…³è”æ¨¡ç»„ä¸ªäººç©ºé—´é‡Œçš„ç±»å‹ä¸ºWorkGuideçš„æ¯è¡Œåˆ—æ•°
         UpdateEveryRowColumnNumberForWorkGuide();
     }
 
-    //Copy ¹ÜÀíÔ±ADMINÓÃ»§µÄ·ÖÎöÍ¼¸øÆäËüÓÃ»§
+    //Copy ç®¡ç†å‘˜ADMINç”¨æˆ·çš„åˆ†æå›¾ç»™å…¶å®ƒç”¨æˆ·
     public static void copyChartToUserFromADMIN(string strUserCode)
     {
         string strHQL;
@@ -425,7 +804,7 @@ public static class ShareClass
         }
     }
 
-    //¸üĞÂÒ³Ãæ¹ØÁªÄ£×é¸öÈË¿Õ¼äÀïµÄÀàĞÍÎªWorkGuideµÄÃ¿ĞĞÁĞÊı
+    //æ›´æ–°é¡µé¢å…³è”æ¨¡ç»„ä¸ªäººç©ºé—´é‡Œçš„ç±»å‹ä¸ºWorkGuideçš„æ¯è¡Œåˆ—æ•°
     public static void UpdateEveryRowColumnNumberForWorkGuide()
     {
         if (HttpContext.Current.Session["UserType"].ToString() == "INNER")
@@ -468,7 +847,7 @@ public static class ShareClass
     }
 
 
-    //»ñÈ¡×ó±ßÀ¸Õ¹¿ª×´Ì¬
+    //è·å–å·¦è¾¹æ å±•å¼€çŠ¶æ€
     public static string GetLeftBarExtendStatus(string strUserCode)
     {
         string strHQL;
@@ -485,7 +864,7 @@ public static class ShareClass
         }
     }
 
-    //¸üĞÂ×ó±ßÀ¸Õ¹¿ª×´Ì¬
+    //æ›´æ–°å·¦è¾¹æ å±•å¼€çŠ¶æ€
     public static void UpdateLeftBarExtendStatus(string strUserCode, string strLeftBarExtend)
     {
         string strHQL;
@@ -494,7 +873,7 @@ public static class ShareClass
         ShareClass.RunSqlCommand(strHQL);
     }
 
-    //ÖØ¶¨ÏòÒ³Ãæµ½Ö¸¶¨¿ò¼Ü
+    //é‡å®šå‘é¡µé¢åˆ°æŒ‡å®šæ¡†æ¶
     public static void Redirect(this HttpResponse response, string url, string target, string windowFeatures)
     {
         if ((String.IsNullOrEmpty(target) ||
@@ -527,7 +906,7 @@ public static class ShareClass
     }
 
 
-    //Ö´ĞĞ¶¨Ê±Æ÷Ò³
+    //æ‰§è¡Œå®šæ—¶å™¨é¡µ
     public static void ExecuteTakeTopTimer()
     {
         if (ShareClass.SystemLatestLoginUser == "")
@@ -542,9 +921,9 @@ public static class ShareClass
 
                 System.Net.HttpWebRequest _HttpWebRequest = (System.Net.HttpWebRequest)System.Net.WebRequest.Create(strUrl);
                 System.Net.HttpWebResponse _HttpWebResponse = (System.Net.HttpWebResponse)_HttpWebRequest.GetResponse();
-                System.IO.Stream _Stream = _HttpWebResponse.GetResponseStream();//µÃµ½»ØĞ´µÄ×Ö½ÚÁ÷ 
+                System.IO.Stream _Stream = _HttpWebResponse.GetResponseStream();//å¾—åˆ°å›å†™çš„å­—èŠ‚æµ 
 
-                //Ö´ĞĞ AnotherPage.aspx£¬²¢½«ÆäÊä³ö°üº¬ÔÚµ±Ç°Ò³ÃæÖĞ
+                //æ‰§è¡Œ AnotherPage.aspxï¼Œå¹¶å°†å…¶è¾“å‡ºåŒ…å«åœ¨å½“å‰é¡µé¢ä¸­
 
 
                 HttpContext.Current.Server.Execute(strUrl);
@@ -554,26 +933,26 @@ public static class ShareClass
                 //LogClass.WriteLogFile(err.Message.ToString());
             }
 
-            //×îºóµÇÂ¼ÓÃ»§
+            //æœ€åç™»å½•ç”¨æˆ·
             ShareClass.SystemLatestLoginUser = "";
         }
     }
 
-    //Ö´ĞĞÊı¾İ¿âÉı¼¶Ò³
+    //æ‰§è¡Œæ•°æ®åº“å‡çº§é¡µ
     public static void ExecuteTakeTopDBUpgrade()
     {
         try
         {
             string strUrl = ShareClass.GetCurrentSiteRootPath() + "TakeTopDBUpgrade.aspx";
 
-            // Ö»Ê¹ÓÃHttpWebRequest·½Ê½£¬±ÜÃâServer.Executeµ¼ÖÂµÄÏß³Ì³åÍ»
+            // åªä½¿ç”¨HttpWebRequestæ–¹å¼ï¼Œé¿å…Server.Executeå¯¼è‡´çš„çº¿ç¨‹å†²çª
             System.Net.HttpWebRequest _HttpWebRequest = (System.Net.HttpWebRequest)System.Net.WebRequest.Create(strUrl);
-            _HttpWebRequest.Timeout = 300000; // 5·ÖÖÓ³¬Ê±
+            _HttpWebRequest.Timeout = 300000; // 5åˆ†é’Ÿè¶…æ—¶
             _HttpWebRequest.ReadWriteTimeout = 300000;
 
             using (System.Net.HttpWebResponse _HttpWebResponse = (System.Net.HttpWebResponse)_HttpWebRequest.GetResponse())
             {
-                // ¶ÁÈ¡ÏìÓ¦È·±£ÇëÇóÍê³É
+                // è¯»å–å“åº”ç¡®ä¿è¯·æ±‚å®Œæˆ
                 using (System.IO.StreamReader reader = new System.IO.StreamReader(_HttpWebResponse.GetResponseStream()))
                 {
                     string responseText = reader.ReadToEnd();
@@ -582,7 +961,7 @@ public static class ShareClass
         }
         catch (ThreadAbortException)
         {
-            // ºöÂÔÏß³ÌÖĞÖ¹Òì³£
+            // å¿½ç•¥çº¿ç¨‹ä¸­æ­¢å¼‚å¸¸
             Thread.ResetAbort();
         }
         catch (Exception err)
@@ -592,7 +971,7 @@ public static class ShareClass
     }
 
 
-    //³õÊ¼»¯ÓÃ»§Ä£×é
+    //åˆå§‹åŒ–ç”¨æˆ·æ¨¡ç»„
     public static void InitialUserModules(string strSampleUserCode, string strCurrentUserCode)
     {
         string strHQL;
@@ -611,12 +990,12 @@ public static class ShareClass
         ShareClass.RunSqlCommand(strHQL);
     }
 
-    //È¡µÃ·şÎñÆ÷²Ù×÷ÏµÍ³ÀàĞÍ:UNIX Or WIN
+    //å–å¾—æœåŠ¡å™¨æ“ä½œç³»ç»Ÿç±»å‹:UNIX Or WIN
     public static string GetSystemType()
     {
-        //»ñÈ¡ÏµÍ³ĞÅÏ¢
+        //è·å–ç³»ç»Ÿä¿¡æ¯
         System.OperatingSystem osInfo = System.Environment.OSVersion;
-        //»ñÈ¡²Ù×÷ÏµÍ³ID
+        //è·å–æ“ä½œç³»ç»ŸID
         System.PlatformID platformID = osInfo.Platform;
 
         return platformID.ToString();
@@ -632,7 +1011,7 @@ public static class ShareClass
         return System.Web.HttpUtility.UrlDecode(strURL);
     }
 
-    //È¡µÃµ±Ç°Ä£×éµÄµ±Ç°ÓïÑÔÃû³Æ
+    //å–å¾—å½“å‰æ¨¡ç»„çš„å½“å‰è¯­è¨€åç§°
     public static string GetPageTitle(string strPageName)
     {
         string strHQL;
@@ -672,23 +1051,23 @@ public static class ShareClass
         }
     }
 
-    //ÉèÖÃ»º´æ¸ü¸Ä±êÖ¾£¬²¢Ë¢ĞÂÒ³Ãæ»º´æ
+    //è®¾ç½®ç¼“å­˜æ›´æ”¹æ ‡å¿—ï¼Œå¹¶åˆ·æ–°é¡µé¢ç¼“å­˜
     public static void ChangePageCache()
     {
-        //ÉèÖÃ»º´æ¸ü¸Ä±êÖ¾
+        //è®¾ç½®ç¼“å­˜æ›´æ”¹æ ‡å¿—
         ShareClass.SetPageCacheMark("1");
         HttpContext.Current.Session["CssDirectoryChangeNumber"] = "1";
     }
 
-    //¸øÖ¸¶¨Ò³ÃæÌí¼Ó¿ÕĞĞÒÔË¢ĞÂÒ³Ãæ»º´æ
+    //ç»™æŒ‡å®šé¡µé¢æ·»åŠ ç©ºè¡Œä»¥åˆ·æ–°é¡µé¢ç¼“å­˜
     public static void AddSpaceLineToPageRefreshCache(string strPageName)
     {
-        //Ò³ÃæÎÄ¼ş¼Ó×¢ÊÍ×Ö·û£¬ÒÔË¢ĞÂ»º´æ
+        //é¡µé¢æ–‡ä»¶åŠ æ³¨é‡Šå­—ç¬¦ï¼Œä»¥åˆ·æ–°ç¼“å­˜
         ShareClass.AddSpaceLineToFile(strPageName, "");
     }
 
 
-    //ÉèÖÃ»º´æ¸ü¸Ä±êÖ¾
+    //è®¾ç½®ç¼“å­˜æ›´æ”¹æ ‡å¿—
     public static void SetPageCacheMark(string strMark)
     {
         string strHQL;
@@ -696,10 +1075,10 @@ public static class ShareClass
         ShareClass.RunSqlCommand(strHQL);
     }
 
-    //¸øÏà¹ØÒ³ÃæÎÄ¼şÌí¼Ó¿ÕĞĞÒÔË¢ĞÂÒ³Ãæ»º´æ
+    //ç»™ç›¸å…³é¡µé¢æ–‡ä»¶æ·»åŠ ç©ºè¡Œä»¥åˆ·æ–°é¡µé¢ç¼“å­˜
     public static void AddSpaceLineToFileForRefreshCache()
     {
-        //ÔÚÆ½Ì¨×ó±ßÀ¸Ôö¼ÓÒ»ĞĞ×¢ÊÍ
+        //åœ¨å¹³å°å·¦è¾¹æ å¢åŠ ä¸€è¡Œæ³¨é‡Š
         ShareClass.AddSpaceLineToFile("TakeTopLRTop.aspx", "");
         ShareClass.AddSpaceLineToFile("TakeTopLRExLeft.aspx", "");
         ShareClass.AddSpaceLineToFile("TakeTopCSLRLeft.aspx", "");
@@ -731,25 +1110,25 @@ public static class ShareClass
         ShareClass.AddSpaceLineToFile("TTPersonalSpaceWorkflowForOuter.aspx", "");
     }
 
-    //¸øÖ÷½çÃæ¸öÈË¿Õ¼äÏà¹ØÒ³ÃæÎÄ¼şÌí¼Ó¿ÕĞĞÒÔË¢ĞÂÒ³Ãæ»º´æ
+    //ç»™ä¸»ç•Œé¢ä¸ªäººç©ºé—´ç›¸å…³é¡µé¢æ–‡ä»¶æ·»åŠ ç©ºè¡Œä»¥åˆ·æ–°é¡µé¢ç¼“å­˜
     public static void AddSpaceLineToPersonalSpaceForRefreshCache()
     {
-        //Ò³ÃæÎÄ¼ş¼Ó×¢ÊÍ×Ö·û£¬ÒÔË¢ĞÂ»º´æ
+        //é¡µé¢æ–‡ä»¶åŠ æ³¨é‡Šå­—ç¬¦ï¼Œä»¥åˆ·æ–°ç¼“å­˜
         ShareClass.AddSpaceLineToFile("TakeTopPersonalSpace.aspx", "");
         ShareClass.AddSpaceLineToFile("TakeTopPersonalSpaceForOuterUser.aspx", "");
         ShareClass.AddSpaceLineToFile("TakeTopPersonalSpaceSAAS.aspx", "");
     }
 
-    //¸øÖ÷½çÃæ×ó±ßÀ¸Ïà¹ØÒ³ÃæÎÄ¼şÌí¼Ó¿ÕĞĞÒÔË¢ĞÂÒ³Ãæ»º´æ
+    //ç»™ä¸»ç•Œé¢å·¦è¾¹æ ç›¸å…³é¡µé¢æ–‡ä»¶æ·»åŠ ç©ºè¡Œä»¥åˆ·æ–°é¡µé¢ç¼“å­˜
     public static void AddSpaceLineToLeftColumnForRefreshCache()
     {
-        ////ÔÚÆ½Ì¨×ó±ßÀ¸Ôö¼ÓÒ»ĞĞ×¢ÊÍ
+        ////åœ¨å¹³å°å·¦è¾¹æ å¢åŠ ä¸€è¡Œæ³¨é‡Š
         //ShareClass.AddSpaceLineToFile("TakeTopLRExLeft.aspx", "");
         //ShareClass.AddSpaceLineToFile("TakeTopCSLRLeft.aspx", "");
         //ShareClass.AddSpaceLineToFile("TakeTopLRTop.aspx", "");
     }
 
-    //³õÊ¼»¯ÊµÌåÀà£¬ÒÔ¼Ó¿ìºóĞøµÄ²Ù×÷ËÙ¶È
+    //åˆå§‹åŒ–å®ä½“ç±»ï¼Œä»¥åŠ å¿«åç»­çš„æ“ä½œé€Ÿåº¦
     public static void InitialNhibernateEntryClass()
     {
         try
@@ -764,10 +1143,10 @@ public static class ShareClass
         }
     }
 
-    //¸ù¾İÓÃ»§µÇÂ¼IPºÍÓÃ»§ÃûÅĞ¶ÏÊÇ·ñ×èÖ¹´ËÓÃ»§µÇÂ¼ÏµÍ³
+    //æ ¹æ®ç”¨æˆ·ç™»å½•IPå’Œç”¨æˆ·ååˆ¤æ–­æ˜¯å¦é˜»æ­¢æ­¤ç”¨æˆ·ç™»å½•ç³»ç»Ÿ
     public static bool CheckUserLoginManage(string strUserCode, string strUserName)
     {
-        //¸ù¾İÓÃ»§µÇÂ¼IPÅĞ¶ÏÊÇ·ñ×èÖ¹ÓÃ»§µÇÂ¼ÏµÍ³
+        //æ ¹æ®ç”¨æˆ·ç™»å½•IPåˆ¤æ–­æ˜¯å¦é˜»æ­¢ç”¨æˆ·ç™»å½•ç³»ç»Ÿ
         string strHQL;
         string strLoginID, strIsAllMember, strIsForbidLogin, strLoginUserCode;
         string strMsg, strIP, strUserHostAddress;
@@ -853,7 +1232,7 @@ public static class ShareClass
         }
     }
 
-    //³õÊ¼»¯Ò³ÃæÁ´½ÓÄ£×é
+    //åˆå§‹åŒ–é¡µé¢é“¾æ¥æ¨¡ç»„
     public static void CopyAllModuleForHomeLanguage()
     {
         string strHQL, strLangHQL;
@@ -888,7 +1267,7 @@ public static class ShareClass
         }
     }
 
-    //ÅĞ¶ÏÓÃ»§ÊÇ·ñÓĞ´ËÄ£×é
+    //åˆ¤æ–­ç”¨æˆ·æ˜¯å¦æœ‰æ­¤æ¨¡ç»„
     public static bool IsExistModuleByUserCode(string strUserCode, string strModuleName, string strModuleType, string strUserType)
     {
         string strHQL = "Select * From T_ProModule Where UserCode = " + "'" + strUserCode + "'" + " and ModuleName = " + "'" + strModuleName + "'" + " and ModuleType = " + "'" + strModuleType + "'";
@@ -905,7 +1284,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃÄ£×éHOMEÃû³Æ
+    //å–å¾—æ¨¡ç»„HOMEåç§°
     public static string GetHomeModuleName(string strModuleName, string strLangCode)
     {
         string strHQL;
@@ -923,7 +1302,7 @@ public static class ShareClass
         }
     }
 
-    //¸ù¾İÓÃ»§´úÂëºÍµÇÂ¼IPÅĞ¶ÏÊÇ·ñ×èÖ¹ÓÃ»§µÇÂ¼ÏµÍ³
+    //æ ¹æ®ç”¨æˆ·ä»£ç å’Œç™»å½•IPåˆ¤æ–­æ˜¯å¦é˜»æ­¢ç”¨æˆ·ç™»å½•ç³»ç»Ÿ
     public static DataSet GetUserLoginManageDataSet(string strUserCode)
     {
         string strHQL;
@@ -940,7 +1319,7 @@ public static class ShareClass
         return ds;
     }
 
-    //È¡ÓÃ»§µÇÂ¼¶¨ÖÆÏûÏ¢
+    //å–ç”¨æˆ·ç™»å½•å®šåˆ¶æ¶ˆæ¯
     public static string GetUserLoginMessage(string strUserCode)
     {
         string strHQL;
@@ -968,7 +1347,7 @@ public static class ShareClass
         }
     }
 
-    //²åÈëÓÃ»§ÈÕÖ¾
+    //æ’å…¥ç”¨æˆ·æ—¥å¿—
     public static void InsertUserLogonLog(string strUserCode, string strUserName, string strDeviceType)
     {
         string strUserHostAddress = HttpContext.Current.Request.UserHostAddress.Trim();
@@ -985,7 +1364,7 @@ public static class ShareClass
         }
         catch
         {
-            //ClientScript.RegisterStartupScript(this.GetType(), "", "<script>showAlertAtMouse('¾¯¸æ£¬ÓÃ»§µÇÂ¼ÈÕÖ¾»òÏêÏ¸²Ù×÷ÈÕÖ¾¼ÇÂ¼ÒÑ³¬¹ı21ÒÚ£¬Çë¼°Ê±Çå¿ÕµÇÂ¼ÈÕÖ¾±í£¡');</script>");
+            //ClientScript.RegisterStartupScript(this.GetType(), "", "<script>showAlertAtMouse('è­¦å‘Šï¼Œç”¨æˆ·ç™»å½•æ—¥å¿—æˆ–è¯¦ç»†æ“ä½œæ—¥å¿—è®°å½•å·²è¶…è¿‡21äº¿ï¼Œè¯·åŠæ—¶æ¸…ç©ºç™»å½•æ—¥å¿—è¡¨ï¼');</script>");
         }
     }
 
@@ -1009,7 +1388,7 @@ public static class ShareClass
         }
         catch
         {
-            //ClientScript.RegisterStartupScript(this.GetType(), "", "<script>showAlertAtMouse('¾¯¸æ£¬ÓÃ»§µÇÂ¼ÈÕÖ¾»òÏêÏ¸²Ù×÷ÈÕÖ¾¼ÇÂ¼ÒÑ³¬¹ı21ÒÚ£¬Çë¼°Ê±Çå¿ÕµÇÂ¼ÈÕÖ¾±í£¡');</script>");
+            //ClientScript.RegisterStartupScript(this.GetType(), "", "<script>showAlertAtMouse('è­¦å‘Šï¼Œç”¨æˆ·ç™»å½•æ—¥å¿—æˆ–è¯¦ç»†æ“ä½œæ—¥å¿—è®°å½•å·²è¶…è¿‡21äº¿ï¼Œè¯·åŠæ—¶æ¸…ç©ºç™»å½•æ—¥å¿—è¡¨ï¼');</script>");
         }
     }
 
@@ -1086,64 +1465,64 @@ public static class ShareClass
         string strDirectory, strDocSavePath, strYearMonth;
         int intResult;
 
-        //´´½¨Ë½ÈËÎÄ¼şÄ¿Â¼
+        //åˆ›å»ºç§äººæ–‡ä»¶ç›®å½•
         strDocSavePath = HttpContext.Current.Server.MapPath("Doc");
         strYearMonth = DateTime.Now.ToString("yyyyMM");
 
         strDirectory = strDocSavePath + "\\" + strYearMonth + "\\" + strUserCode + "\\Doc";
         intResult = CreateDirectory(strDirectory);
         //if (intResult == 2)
-        //    ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('Failed to create Doc Director £¡')", true);
+        //    ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('Failed to create Doc Director ï¼')", true);
 
         strDirectory = strDocSavePath + "\\" + strYearMonth + "\\" + strUserCode + "\\Images";
         intResult = CreateDirectory(strDirectory);
         //if (intResult == 2)
-        //    ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('Failed to create Images Director £¡')", true);
+        //    ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('Failed to create Images Director ï¼')", true);
 
         strDirectory = strDocSavePath + "\\" + strYearMonth + "\\" + strUserCode + "\\MailAttachments";
         intResult = CreateDirectory(strDirectory);
         //if (intResult == 2)
-        //    ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('Failed to create  MailAttachments Director £¡')", true);
+        //    ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('Failed to create  MailAttachments Director ï¼')", true);
 
         strDirectory = strDocSavePath + "\\XML";
         intResult = CreateDirectory(strDirectory);
         //if (intResult == 2)
-        //    ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('Failed to create  XML Director £¡')", true);
+        //    ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('Failed to create  XML Director ï¼')", true);
 
         strDirectory = strDocSavePath + "\\Log";
         intResult = CreateDirectory(strDirectory);
         //if (intResult == 2)
-        //    ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('Failed to create  XML Director £¡')", true);
+        //    ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('Failed to create  XML Director ï¼')", true);
 
         strDirectory = strDocSavePath + "\\WorkFlowTemplate";
         intResult = CreateDirectory(strDirectory);
         //if (intResult == 2)
-        //    ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('Failed to create  WorkFlowTemplate Director £¡')", true);
+        //    ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('Failed to create  WorkFlowTemplate Director ï¼')", true);
 
         strDirectory = strDocSavePath + "\\UserPhoto";
         intResult = CreateDirectory(strDirectory);
         //if (intResult == 2)
-        //    ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('Failed to create  UserPhoto Director £¡')", true);
+        //    ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('Failed to create  UserPhoto Director ï¼')", true);
 
         strDirectory = strDocSavePath + "\\Report";
         intResult = CreateDirectory(strDirectory);
         //if (intResult == 2)
-        //    ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('Failed to create  Report Director £¡')", true);
+        //    ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('Failed to create  Report Director ï¼')", true);
 
         strDirectory = strDocSavePath + "\\RTXAccount";
         intResult = CreateDirectory(strDirectory);
         //if (intResult == 2)
-        //    ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('Failed to create RTXAccount Director £¡')", true);
+        //    ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('Failed to create RTXAccount Director ï¼')", true);
 
         strDirectory = strDocSavePath + "\\BackupDB";
         intResult = CreateDirectory(strDirectory);
         //if (intResult == 2)
-        //    ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('Failed to create RTXAccount Director £¡')", true);
+        //    ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('Failed to create RTXAccount Director ï¼')", true);
 
         //strDirectory = strDocSavePath + "\\" + strYearMonth + "\\BackupDB";
         //intResult = CreateDirectory(strDirectory);
         ////if (intResult == 2)
-        ////    ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('Failed to create  BackupDB Director £¡')", true);
+        ////    ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('Failed to create  BackupDB Director ï¼')", true);
     }
 
     public static int CreateDirectory(string strDirectory)
@@ -1171,17 +1550,17 @@ public static class ShareClass
     }
 
     //   /****************************************
-    // * º¯ÊıÃû³Æ:GetDirectoryLength(string dirPath)
-    // * ¹¦ÄÜËµÃ÷:»ñÈ¡ÎÄ¼ş¼Ğ´óĞ¡
-    // * ²Î    Êı:dirPath:ÎÄ¼ş¼ĞÏêÏ¸Â·¾¶
-    // * µ÷ÓÃÊ¾ÁĞ:
+    // * å‡½æ•°åç§°:GetDirectoryLength(string dirPath)
+    // * åŠŸèƒ½è¯´æ˜:è·å–æ–‡ä»¶å¤¹å¤§å°
+    // * å‚    æ•°:dirPath:æ–‡ä»¶å¤¹è¯¦ç»†è·¯å¾„
+    // * è°ƒç”¨ç¤ºåˆ—:
     // *           string Path = Server.MapPath("templates");
     // *           Response.Write(EC.FileObj.GetDirectoryLength(Path));
     //*****************************************/
     /// <summary>
-    /// »ñÈ¡ÎÄ¼ş¼Ğ´óĞ¡
+    /// è·å–æ–‡ä»¶å¤¹å¤§å°
     /// </summary>
-    /// <param name="dirPath">ÎÄ¼ş¼ĞÂ·¾¶</param>
+    /// <param name="dirPath">æ–‡ä»¶å¤¹è·¯å¾„</param>
     /// <returns></returns>
     public static long GetDirectoryLength(string dirPath)
     {
@@ -1204,7 +1583,7 @@ public static class ShareClass
         return len;
     }
 
-    //»ñÈ¡Ä³¸öÎÄ¼ş¼ĞµÄ´óĞ¡£¨·½·¨Ò»£©
+    //è·å–æŸä¸ªæ–‡ä»¶å¤¹çš„å¤§å°ï¼ˆæ–¹æ³•ä¸€ï¼‰
     public static long GetFoldSize(string dirPath)
     {
         FileInfo info = new FileInfo(dirPath);
@@ -1212,7 +1591,7 @@ public static class ShareClass
         return info.Length;
     }
 
-    //Éú³ÉÊı¾İ¿âÖ»¶ÁÓÃ»§ID£¬Ò»°ãÓÚ±¨±íÉè¼ÆÕß
+    //ç”Ÿæˆæ•°æ®åº“åªè¯»ç”¨æˆ·IDï¼Œä¸€èˆ¬äºæŠ¥è¡¨è®¾è®¡è€…
     public static string getDBReadOnlyUserID()
     {
         string[] strConnectStringList;
@@ -1221,7 +1600,7 @@ public static class ShareClass
         return (strConnectStringList[1].Replace(".aspx", "") + "DBReadOnlyUser").ToLower();
     }
 
-    //ÃÜÂëÉú³ÉÆ÷
+    //å¯†ç ç”Ÿæˆå™¨
     public static string genernalPassword()
     {
         string chars = "0123456789ABCDEFGHIJKLMNOPQSTUVWXYZabcdefghijklmnpqrstuvwxyz@*";
@@ -1233,9 +1612,9 @@ public static class ShareClass
             str = "";
             for (int i = 0; i < 8; i++)
             {
-                str += chars[randrom.Next(chars.Length)];//randrom.Next(int i)·µ»ØÒ»¸öĞ¡ÓÚËùÖ¸¶¨×î´óÖµµÄ·Ç¸ºËæ»úÊı
+                str += chars[randrom.Next(chars.Length)];//randrom.Next(int i)è¿”å›ä¸€ä¸ªå°äºæ‰€æŒ‡å®šæœ€å¤§å€¼çš„éè´Ÿéšæœºæ•°
             }
-            //²»·ûºÏÕıÔò£¬ÖØĞÂÉú³É
+            //ä¸ç¬¦åˆæ­£åˆ™ï¼Œé‡æ–°ç”Ÿæˆ
             if (!Regex.IsMatch(str, @"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$"))
             {
                 continue;
@@ -1257,24 +1636,24 @@ public static class ShareClass
         return BitConverter.ToInt32(rndBytes, 0);
     }
 
-    #endregion ÓÃ»§µÇÂ¼»úÖÆ
+    #endregion ç”¨æˆ·ç™»å½•æœºåˆ¶
 
-    #region Ô±¹¤µµ°¸²Ù×÷
+    #region å‘˜å·¥æ¡£æ¡ˆæ“ä½œ
 
     /// <summary>
-    /// ÅĞ¶ÏÊäÈëµÄÃÜÂëÊÇ·ñÊÇ×ÖÄ¸ÓëÊı×ÖµÄ½áºÏ By LiuJianping 2013-09-03
+    /// åˆ¤æ–­è¾“å…¥çš„å¯†ç æ˜¯å¦æ˜¯å­—æ¯ä¸æ•°å­—çš„ç»“åˆ By LiuJianping 2013-09-03
     /// </summary>
     /// <param name="str"></param>
     /// <returns></returns>
     public static bool IsPassword(string str)
     {
-        //×ÖÄ¸£¬Êı×Ö£¬·Ç×ÖÄ¸×Ö·û(ÀıÈç !¡¢$¡¢#¡¢%) ^(?:(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])|(?=.*[A-Z])(?=.*[a-z])(?=.*[^A-Za-z0-9])|(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])|(?=.*[a-z])(?=.*[0-9])(?=.*[^A-Za-z0-9])).{8,}
+        //å­—æ¯ï¼Œæ•°å­—ï¼Œéå­—æ¯å­—ç¬¦(ä¾‹å¦‚ !ã€$ã€#ã€%) ^(?:(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])|(?=.*[A-Z])(?=.*[a-z])(?=.*[^A-Za-z0-9])|(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])|(?=.*[a-z])(?=.*[0-9])(?=.*[^A-Za-z0-9])).{8,}
         System.Text.RegularExpressions.Regex reg
             = new System.Text.RegularExpressions.Regex("^(?:(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])|(?=.*[A-Z])(?=.*[0-9])|(?=.*[a-z])(?=.*[0-9])).{8,}");
         return reg.IsMatch(str);
     }
 
-    //ÃÜÂë¼ÓÃÜº¯Êı
+    //å¯†ç åŠ å¯†å‡½æ•°
     public static string EncryptPassword(string strPassword, string strFormat)
     {
         string strNewPassword;
@@ -1293,20 +1672,20 @@ public static class ShareClass
     }
 
     /// <summary>
-    ///  É¢ÁĞ¼ÓÃÜ
+    ///  æ•£åˆ—åŠ å¯†
     /// </summary>
     public static string EncryptPasswordShal(string strPlaintext)
     {
         byte[] srcBuffer = System.Text.Encoding.UTF8.GetBytes(strPlaintext);
 
-        System.Security.Cryptography.HashAlgorithm hash = System.Security.Cryptography.HashAlgorithm.Create("SHA1"); //½«²ÎÊı»»³É¡°MD5¡±£¬ÔòÖ´ĞĞ MD5 ¼ÓÃÜ¡£²»Çø·Ö´óĞ¡Ğ´¡£
+        System.Security.Cryptography.HashAlgorithm hash = System.Security.Cryptography.HashAlgorithm.Create("SHA1"); //å°†å‚æ•°æ¢æˆâ€œMD5â€ï¼Œåˆ™æ‰§è¡Œ MD5 åŠ å¯†ã€‚ä¸åŒºåˆ†å¤§å°å†™ã€‚
         byte[] destBuffer = hash.ComputeHash(srcBuffer);
 
         string strHashedText = BitConverter.ToString(destBuffer).Replace("-", "");
         return strHashedText.ToLower();
     }
 
-    //ÅĞ¶ÏÓÃ»§ÊÇ·ñ»¹ÔÚ´æÔÚÈËÊÂµµ°¸
+    //åˆ¤æ–­ç”¨æˆ·æ˜¯å¦è¿˜åœ¨å­˜åœ¨äººäº‹æ¡£æ¡ˆ
     public static bool CheckUserIsExist(string strUserCode)
     {
         string strHQL;
@@ -1324,7 +1703,7 @@ public static class ShareClass
         }
     }
 
-    //ÅĞ¶ÏÓÃ»§ÊÇ·ñ»¹ÔÚ´æÔÚÈËÊÂµµ°¸
+    //åˆ¤æ–­ç”¨æˆ·æ˜¯å¦è¿˜åœ¨å­˜åœ¨äººäº‹æ¡£æ¡ˆ
     public static bool CheckUserIsExistByUserCodeAndName(string strUserCode, string strUserName)
     {
         string strHQL;
@@ -1461,7 +1840,7 @@ public static class ShareClass
         return deTotalPoint;
     }
 
-    //È¡µÃ´ËÔ±¹¤µ±ÄêµÄ´ËÀàĞÍµÄÇë¼ÙÌìÊı
+    //å–å¾—æ­¤å‘˜å·¥å½“å¹´çš„æ­¤ç±»å‹çš„è¯·å‡å¤©æ•°
     public static string GetTotalLeaveDayNumberInCurrentYear(string strLeaveType, string strApplicantCode, string strLeaveTime)
     {
         string strHQL;
@@ -1481,7 +1860,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃ´ËÔ±¹¤µ±ÔÂµÄ´ËÀàĞÍµÄÇë¼ÙÌìÊı
+    //å–å¾—æ­¤å‘˜å·¥å½“æœˆçš„æ­¤ç±»å‹çš„è¯·å‡å¤©æ•°
     public static string GetTotalLeaveDayNumberInCurrentMonth(string strLeaveType, string strApplicantCode, string strLeaveTime)
     {
         string strHQL;
@@ -1501,7 +1880,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃ´ËÔ±¹¤µ±ÄêµÄËùÓĞÀàĞÍµÄÇë¼ÙÌìÊı
+    //å–å¾—æ­¤å‘˜å·¥å½“å¹´çš„æ‰€æœ‰ç±»å‹çš„è¯·å‡å¤©æ•°
     public static string GetTotalAllLeaveDayNumberInCurrentYear(string strLeaveType, string strApplicantCode, string strLeaveTime)
     {
         string strHQL;
@@ -1520,7 +1899,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃ´ËÔ±¹¤µ±ÔÂµÄËùÓĞÀàĞÍµÄÇë¼ÙÌìÊı
+    //å–å¾—æ­¤å‘˜å·¥å½“æœˆçš„æ‰€æœ‰ç±»å‹çš„è¯·å‡å¤©æ•°
     public static string GetTotalAllLeaveDayNumberInCurrentMonth(string strLeaveType, string strApplicantCode, string strLeaveTime)
     {
         string strHQL;
@@ -1539,7 +1918,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃ´ËÔ±¹¤µ±ÄêµÄ´ËÀàĞÍµÄÇë¼ÙÌìÊı
+    //å–å¾—æ­¤å‘˜å·¥å½“å¹´çš„æ­¤ç±»å‹çš„è¯·å‡å¤©æ•°
     public static string GetTotalOvertimeDayNumberInCurrentYear(string strOvertimeType, string strApplicantCode, string strOvertimeTime)
     {
         string strHQL;
@@ -1559,7 +1938,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃ´ËÔ±¹¤µ±ÔÂµÄ´ËÀàĞÍµÄÇë¼ÙÌìÊı
+    //å–å¾—æ­¤å‘˜å·¥å½“æœˆçš„æ­¤ç±»å‹çš„è¯·å‡å¤©æ•°
     public static string GetTotalOvertimeDayNumberInCurrentMonth(string strOvertimeType, string strApplicantCode, string strOvertimeTime)
     {
         string strHQL;
@@ -1579,7 +1958,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃ´ËÔ±¹¤µ±ÄêµÄËùÓĞÀàĞÍµÄÇë¼ÙÌìÊı
+    //å–å¾—æ­¤å‘˜å·¥å½“å¹´çš„æ‰€æœ‰ç±»å‹çš„è¯·å‡å¤©æ•°
     public static string GetTotalAllOvertimeDayNumberInCurrentYear(string strOvertimeType, string strApplicantCode, string strOvertimeTime)
     {
         string strHQL;
@@ -1598,7 +1977,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃ´ËÔ±¹¤µ±ÔÂµÄËùÓĞÀàĞÍµÄÇë¼ÙÌìÊı
+    //å–å¾—æ­¤å‘˜å·¥å½“æœˆçš„æ‰€æœ‰ç±»å‹çš„è¯·å‡å¤©æ•°
     public static string GetTotalAllOvertimeDayNumberInCurrentMonth(string strOvertimeType, string strApplicantCode, string strOvertimeTime)
     {
         string strHQL;
@@ -1617,7 +1996,7 @@ public static class ShareClass
         }
     }
 
-    //¼ÆËãKPIµÄÏµÍ³ÆÀ·Ö
+    //è®¡ç®—KPIçš„ç³»ç»Ÿè¯„åˆ†
     public static decimal CalculateSystemPoint(string strKPICheckID)
     {
         string strHQL1, strHQL2;
@@ -1719,11 +2098,11 @@ public static class ShareClass
         return decimal.Parse(strTotalSqlPoint);
     }
 
-    #endregion Ô±¹¤µµ°¸²Ù×÷
+    #endregion å‘˜å·¥æ¡£æ¡ˆæ“ä½œ
 
-    #region ²ÆÎñ»òÎïÁÏ²Ù×÷º¯Êı
+    #region è´¢åŠ¡æˆ–ç‰©æ–™æ“ä½œå‡½æ•°
 
-    //È¡µÃÎïÁÏÀàĞÍ
+    //å–å¾—ç‰©æ–™ç±»å‹
     public static string GetItemType(string strItemCode)
     {
         string strHQL;
@@ -1757,7 +2136,7 @@ public static class ShareClass
         return flag;
     }
 
-    //ÎïÁÏÈë¿â²Ù×÷
+    //ç‰©æ–™å…¥åº“æ“ä½œ
     public static void addOrUpdateGoods(string strCountMethod, string strGoodsID, string strCIOID, string strGoodsCode, string strGoodsName, string strSN, decimal deNumber, string strUnitName,
        string strOwnerCode, string strType, string strSpec, string strModelNumber, string strPosition, string strWHPosition, decimal dePrice, string strIsTaxPrice, string strCurrencyType, DateTime dtBuyTime, int intWarrantyPeriod,
        string strManufacturer, string strMemo, string strCheckInDetailID, string strPhotoURL, decimal deOldCheckInNumber, decimal deOldCheckInPrice,
@@ -1819,7 +2198,7 @@ public static class ShareClass
 
                 strGoodsID = ShareClass.GetMyCreatedMaxGoodsID().ToString();
 
-                //¼ÇÂ¼Èë¿âÎïÁÏ´æÈëµÄIDºÅ
+                //è®°å½•å…¥åº“ç‰©æ–™å­˜å…¥çš„IDå·
                 try
                 {
                     strHQL = "Update T_GoodsCheckInOrderDetail Set ToGoodsID = " + strGoodsID;
@@ -1906,7 +2285,7 @@ public static class ShareClass
                     ShareClass.CountGoodsStockByMWAM(strGoodsID, deNumber, dePrice, deOldCheckInNumber, deOldCheckInPrice);
                 }
 
-                //¼ÇÂ¼Èë¿âÎïÁÏ´æÈëµÄIDºÅ
+                //è®°å½•å…¥åº“ç‰©æ–™å­˜å…¥çš„IDå·
                 try
                 {
                     strHQL = "Update T_GoodsCheckInOrderDetail Set ToGoodsID = " + strGoodsID;
@@ -1925,7 +2304,7 @@ public static class ShareClass
     }
 
 
-    //ÅĞ¶ÏÊÇ·ñ´æÔÚÏàÍ¬µÄÎïÁÏ¿â´æ
+    //åˆ¤æ–­æ˜¯å¦å­˜åœ¨ç›¸åŒçš„ç‰©æ–™åº“å­˜
     public static string CheckSameGoodsExistInStock(string strGoodsCode, string strType, string strModelNumber, string strSpecification, string strManufacture, string strWareHouse, string strWHPosition)
     {
         string strHQL;
@@ -1945,7 +2324,7 @@ public static class ShareClass
     }
 
 
-    //ÒÀÏà¹ØÀàĞÍ£¬¸ü¸ÄÏà¹ØÒµÎñ±íµ¥µÄÊıÁ¿
+    //ä¾ç›¸å…³ç±»å‹ï¼Œæ›´æ”¹ç›¸å…³ä¸šåŠ¡è¡¨å•çš„æ•°é‡
     public static void UpdateGoodsRelatedBusinessNubmer(string strRelatedType, string strRelatedID, string strGoodsCode, string strSourceType, string strSourceID, DataGrid DataGrid1)
     {
         string strHQL;
@@ -2038,13 +2417,13 @@ public static class ShareClass
             ShareClass.RunSqlCommand(strHQL);
         }
 
-        //¸ü¸ÄÏîÄ¿¹ØÁªÎï×ÊÏÂµ¥Á¿
+        //æ›´æ”¹é¡¹ç›®å…³è”ç‰©èµ„ä¸‹å•é‡
         if (strSourceType == "GoodsPJRecord")
         {
             UpdatProjectRelatedItemNumber(strSourceType, strSourceID);
         }
 
-        //ÒÀµ¥¾İÖ÷Ìå¹ØÁªÀàĞÍ¸üĞÂÏîÄ¿Îï×ÊÔ¤ËãµÄÎïÁÏ´úÂëµÄÔ¤ËãÊ¹ÓÃÁ¿
+        //ä¾å•æ®ä¸»ä½“å…³è”ç±»å‹æ›´æ–°é¡¹ç›®ç‰©èµ„é¢„ç®—çš„ç‰©æ–™ä»£ç çš„é¢„ç®—ä½¿ç”¨é‡
         if (strRelatedType == "Project")
         {
             UpdateProjectRelatedItemNumberByBudgetBusinessType("CHECKIN", strRelatedType, strRelatedID, strGoodsCode);
@@ -2053,7 +2432,7 @@ public static class ShareClass
     }
 
 
-    //ÒÀµ¥¾İÖ÷Ìå¹ØÁªÀàĞÍ¸üĞÂÏîÄ¿Îï×ÊÔ¤ËãµÄÎïÁÏ´úÂëµÄÔ¤ËãÊ¹ÓÃÁ¿
+    //ä¾å•æ®ä¸»ä½“å…³è”ç±»å‹æ›´æ–°é¡¹ç›®ç‰©èµ„é¢„ç®—çš„ç‰©æ–™ä»£ç çš„é¢„ç®—ä½¿ç”¨é‡
     public static void UpdateProjectRelatedItemNumberByBudgetBusinessType(string strBusinessType, string strRelatedType, string strRelatedID, string strGoodsCode)
     {
         string strHQL;
@@ -2174,7 +2553,7 @@ public static class ShareClass
         }
     }
 
-    //ÅĞ¶ÏĞèÇóÁ¿ÊÇ·ñ´óÓÚÔ¤ËãÁ¿£¬ÊÊÓÃÓÚÏîÄ¿Îï×ÊÔ¤Ëã
+    //åˆ¤æ–­éœ€æ±‚é‡æ˜¯å¦å¤§äºé¢„ç®—é‡ï¼Œé€‚ç”¨äºé¡¹ç›®ç‰©èµ„é¢„ç®—
     public static bool checkRequireNumberIsMoreHaveNumberForProjectRelatedItemNumber(string strProjectRelatedItemID, string strAleadyNumberColumnName, decimal deNumber)
     {
         string strHQL;
@@ -2216,7 +2595,7 @@ public static class ShareClass
         DataGrid1.DataBind();
     }
 
-    //¼ÓÈ¨Æ½¾ù·¨¼ÆËã¿â´æ
+    //åŠ æƒå¹³å‡æ³•è®¡ç®—åº“å­˜
     public static void CountGoodsStockByMWAM(string strGoodsID, decimal deCheckInNumber, decimal deCheckInPrice, decimal deOldCheckInNumber, decimal deOldCheckInPrice)
     {
         string strHQL;
@@ -2247,7 +2626,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃÎïÁÏ¿â´æ³öÈëËã·¨
+    //å–å¾—ç‰©æ–™åº“å­˜å‡ºå…¥ç®—æ³•
     public static string GetGoodsStockCountMethod(string strWHName)
     {
         string strHQL;
@@ -2290,7 +2669,7 @@ public static class ShareClass
     }
 
     /// <summary>
-    /// Liujp 2013-07-17 ¸üĞÂÎïÁÏµÇ¼ÇÈë¿â±íÊ±£¬¸üĞÂÎïÁÏ±íÖĞ²Ö¿â×Ö¶Î
+    /// Liujp 2013-07-17 æ›´æ–°ç‰©æ–™ç™»è®°å…¥åº“è¡¨æ—¶ï¼Œæ›´æ–°ç‰©æ–™è¡¨ä¸­ä»“åº“å­—æ®µ
     /// </summary>
     /// <param name="goodsCheckInOrderId"></param>
     /// <param name="strPosition"></param>
@@ -2303,7 +2682,7 @@ public static class ShareClass
         ShareClass.RunSqlCommand(strHQL);
     }
 
-    //»ñÈ¡±¾±ÒÃû³Æ
+    //è·å–æœ¬å¸åç§°
     public static string GetHomeCurrencyType()
     {
         string strHQL;
@@ -2322,7 +2701,7 @@ public static class ShareClass
     }
 
     /// <summary>
-    /// ÅĞ¶ÏÊÇ·ñÒÑÉèÖÃ±ê×¼½ğ¶î
+    /// åˆ¤æ–­æ˜¯å¦å·²è®¾ç½®æ ‡å‡†é‡‘é¢
     /// </summary>
     /// <param name="strID"></param>
     /// <param name="strDepartCode"></param>
@@ -2355,7 +2734,7 @@ public static class ShareClass
     }
 
     /// <summary>
-    /// È¡µÃÔ¤ËãÓà¶î
+    /// å–å¾—é¢„ç®—ä½™é¢
     /// </summary>
     /// <param name="strID"></param>
     /// <param name="strDepartCode"></param>
@@ -2399,7 +2778,7 @@ public static class ShareClass
         return deBalance;
     }
 
-    //È¡µÃ²¿ÃÅÔ¤Ëã¼ÇÂ¼ID
+    //å–å¾—éƒ¨é—¨é¢„ç®—è®°å½•ID
     public static int GetBMBaseDataID(string strDepartCode, string strAccountCode, string strAccountName, int strYearNum, int strMonthNum, string strType)
     {
         string strHQL = "From BDBaseData as bDBaseData where bDBaseData.DepartCode = '" + strDepartCode + "' and bDBaseData.AccountCode = '" + strAccountCode + "' and bDBaseData.AccountName='" + strAccountName + "' and " +
@@ -2418,7 +2797,7 @@ public static class ShareClass
         }
     }
 
-    //°Ñ±¨Ïú·ÑÓÃÁĞÈëÔ¤Ëã·ÑÓÃ
+    //æŠŠæŠ¥é”€è´¹ç”¨åˆ—å…¥é¢„ç®—è´¹ç”¨
     public static void AddClaimExpenseToBudget(string strAccountCode, string strAccountName, int intBDBaseDataID, string strUserCode, decimal deAmount, int intYear, int intMonth)
     {
         string strDepartCode, strDepartName;
@@ -2456,7 +2835,7 @@ public static class ShareClass
         }
     }
 
-    //°´ÀàĞÍÈ¡´úÂë¹æÔòµÄ×´Ì¬
+    //æŒ‰ç±»å‹å–ä»£ç è§„åˆ™çš„çŠ¶æ€
     public static string GetCodeRuleStatusByType(string strCodeType)
     {
         string strHQL;
@@ -2473,7 +2852,7 @@ public static class ShareClass
         }
     }
 
-    //°´´úÂë¹æÔòÈ¡µÃÏà¹Ø´úÂë
+    //æŒ‰ä»£ç è§„åˆ™å–å¾—ç›¸å…³ä»£ç 
     public static string GetCodeByRule(string strCodeType, string strObjectType, string strID)
     {
         string strHQL;
@@ -2567,13 +2946,13 @@ public static class ShareClass
         }
     }
 
-    //Éú³É²Ö¿âÊ÷£¨¸ù¾İÈ¨ÏŞºÍ²¿ÃÅ×Ê²ú¹ÜÀíÔ±£©
+    //ç”Ÿæˆä»“åº“æ ‘ï¼ˆæ ¹æ®æƒé™å’Œéƒ¨é—¨èµ„äº§ç®¡ç†å‘˜ï¼‰
     public static void InitialWarehouseTreeByAuthorityAsset(TreeView TreeView, String strUserCode, string strDepartString)
     {
         string strHQL, strWareHouse;
         IList lst;
 
-        //Ìí¼Ó¸ù½Úµã
+        //æ·»åŠ æ ¹èŠ‚ç‚¹
         TreeView.Nodes.Clear();
 
         TreeNode node1 = new TreeNode();
@@ -2646,7 +3025,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃÈ¨ÏŞÄÚ²Ö¿âÁĞ±í
+    //å–å¾—æƒé™å†…ä»“åº“åˆ—è¡¨
     public static void LoadWareHouseListByAuthorityForDropDownList(string strUserCode, DropDownList DL_WareHouse)
     {
         string strHQL;
@@ -2667,7 +3046,7 @@ public static class ShareClass
         DL_WareHouse.Items.Insert(0, new ListItem("--Select--", ""));
     }
 
-    //È¡µÃ²Ö¿â²ÖÎ»ÁĞ±í
+    //å–å¾—ä»“åº“ä»“ä½åˆ—è¡¨
     public static void LoadWareHousePositions(string strWHName, DropDownList DL_WHPosition)
     {
         string strHQL;
@@ -2713,7 +3092,7 @@ public static class ShareClass
         return flag;
     }
 
-    //È¡µÃ·ÑÓÃÀà¿ÆÄ¿ÁĞ±í
+    //å–å¾—è´¹ç”¨ç±»ç§‘ç›®åˆ—è¡¨
     public static void LoadCostAccountForDDL(DropDownList DL_Account)
     {
         DataTable dt = GetCostAccountList(string.Empty);
@@ -2730,7 +3109,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃ·ÑÓÃÀà¿ÆÄ¿ÁĞ±í
+    //å–å¾—è´¹ç”¨ç±»ç§‘ç›®åˆ—è¡¨
     public static DataTable GetCostAccountList(string strParentID)
     {
         string strHQL = "Select * From T_Account Where accounttype = 'Cost'  ";
@@ -2745,7 +3124,7 @@ public static class ShareClass
 
     public static void SetIntervalCost(DropDownList DDL, string strParentID, string interval)
     {
-        interval += "©À";
+        interval += "|-";
 
         DataTable list = GetCostAccountList(strParentID);
         if (list.Rows.Count > 0 && list != null)
@@ -2754,7 +3133,7 @@ public static class ShareClass
             {
                 DDL.Items.Add(new ListItem(string.Format("{0}{1}", interval, list.Rows[i]["AccountType"].ToString().Trim() + "-" + list.Rows[i]["AccountName"].ToString().Trim()), list.Rows[i]["AccountCode"].ToString().Trim()));
 
-                ///µİ¹é
+                ///é€’å½’
                 SetInterval(DDL, list.Rows[i]["ID"].ToString().Trim(), interval);
             }
         }
@@ -2762,7 +3141,7 @@ public static class ShareClass
 
 
 
-    //È¡µÃËùÓĞÀà¿ÆÄ¿ÁĞ±í
+    //å–å¾—æ‰€æœ‰ç±»ç§‘ç›®åˆ—è¡¨
     public static void LoadAccountForDDL(DropDownList DL_Account)
     {
         DataTable dt = GetAccountList(string.Empty);
@@ -2793,7 +3172,7 @@ public static class ShareClass
 
     public static void SetInterval(DropDownList DDL, string strParentID, string interval)
     {
-        interval += "©À";
+        interval += "|-";
 
         DataTable list = GetAccountList(strParentID);
         if (list.Rows.Count > 0 && list != null)
@@ -2802,7 +3181,7 @@ public static class ShareClass
             {
                 DDL.Items.Add(new ListItem(string.Format("{0}{1}", interval, list.Rows[i]["AccountType"].ToString().Trim() + "-" + list.Rows[i]["AccountName"].ToString().Trim()), list.Rows[i]["AccountCode"].ToString().Trim()));
 
-                ///µİ¹é
+                ///é€’å½’
                 SetInterval(DDL, list.Rows[i]["ID"].ToString().Trim(), interval);
             }
         }
@@ -2922,7 +3301,7 @@ public static class ShareClass
 
         string strReOrPay, strRelatedAccount, strRelatedAccountCode, strReceivableID, strPayableID;
 
-        //Èç¹ûÒµÎñµ¥¹ØÁªÁËºÏÍ¬£¬¾Í²»×÷Ó¦¸¶»òÓ¦ÊÕ
+        //å¦‚æœä¸šåŠ¡å•å…³è”äº†åˆåŒï¼Œå°±ä¸ä½œåº”ä»˜æˆ–åº”æ”¶
         if (IsBusinessFormRelatedConstract(strRelatedType, strRelatedID))
         {
             return 0;
@@ -3304,7 +3683,7 @@ public static class ShareClass
         }
     }
 
-    //²åÈëÊÕ¸¶¿î¼ÇÂ¼
+    //æ’å…¥æ”¶ä»˜æ¬¾è®°å½•
     public static void InsertReceivablesOrPayableRecord(string strReOrPay, int intRelatedID, Decimal deAmount, string strCurrencyType, string strReOrPayerType, string strReOrPayer, string strOperatorCode, int intRelatedProjectID)
     {
         if (strReOrPay == "Receivables")
@@ -3379,7 +3758,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃ»ãÂÊ
+    //å–å¾—æ±‡ç‡
     public static decimal GetExchangeRateByCurrencyType(string strCurrencyType)
     {
         string strHQL;
@@ -3397,11 +3776,11 @@ public static class ShareClass
         }
     }
 
-    #endregion ²ÆÎñ»òÎïÁÏ²Ù×÷º¯Êı
+    #endregion è´¢åŠ¡æˆ–ç‰©æ–™æ“ä½œå‡½æ•°
 
-    #region ÏîÄ¿Ïà¹Ø²Ù×÷º¯Êı
+    #region é¡¹ç›®ç›¸å…³æ“ä½œå‡½æ•°
 
-    //ÁĞ³ö¿ÉÓÃµÄ¹¤×÷Á÷Ä£°å
+    //åˆ—å‡ºå¯ç”¨çš„å·¥ä½œæµæ¨¡æ¿
     public static void LoadProjectPlanStartupRelatedWorkflowTemplate(string strUserCode, DropDownList DL_TemName)
     {
         string strHQL;
@@ -3422,7 +3801,7 @@ public static class ShareClass
         DL_TemName.Items.Insert(0, new ListItem("--Select--", ""));
     }
 
-    //ÅĞ¶Ïµ±Ç°ÓÃ»§ÓĞÃ»ÓĞĞŞ¸ÄÓÃ»§¼Æ»®µÄÈ¨ÏŞ
+    //åˆ¤æ–­å½“å‰ç”¨æˆ·æœ‰æ²¡æœ‰ä¿®æ”¹ç”¨æˆ·è®¡åˆ’çš„æƒé™
     public static string CheckUserIsCanUpdatePlan(string strProjectID, string strVerID)
     {
         string strHQL;
@@ -3435,13 +3814,13 @@ public static class ShareClass
             return "False";
         }
 
-        //ÒÀÏîÄ¿ÊôĞÔÊÇ·ñËø¶¨ÒÑÆô¶¯µÄÏîÄ¿¼Æ»®ÅĞ¶ÏÄÜ·ñĞŞ¸Ä¼Æ»®
+        //ä¾é¡¹ç›®å±æ€§æ˜¯å¦é”å®šå·²å¯åŠ¨çš„é¡¹ç›®è®¡åˆ’åˆ¤æ–­èƒ½å¦ä¿®æ”¹è®¡åˆ’
         if (CheckProjectPlanCanBeUpdate(strProjectID) == "NO")
         {
             return "False";
         }
 
-        //Èç¹ûÏîÄ¿ÒÑ¾­ÑéÊÕ\½á°¸\¹éµµ£¬ÄÇÃ´²»ÄÜ¸ü¸Ä¼Æ»®ĞÅÏ¢
+        //å¦‚æœé¡¹ç›®å·²ç»éªŒæ”¶\ç»“æ¡ˆ\å½’æ¡£ï¼Œé‚£ä¹ˆä¸èƒ½æ›´æ”¹è®¡åˆ’ä¿¡æ¯
         if (CheckProjectIsFinish(strProjectID))
         {
             return "False";
@@ -3495,10 +3874,10 @@ public static class ShareClass
         }
     }
 
-    //ÒÀÏîÄ¿ÊôĞÔÊÇ·ñËø¶¨ÒÑÆô¶¯µÄÏîÄ¿¼Æ»®ÅĞ¶ÏÄÜ·ñĞŞ¸Ä¼Æ»®
+    //ä¾é¡¹ç›®å±æ€§æ˜¯å¦é”å®šå·²å¯åŠ¨çš„é¡¹ç›®è®¡åˆ’åˆ¤æ–­èƒ½å¦ä¿®æ”¹è®¡åˆ’
     public static string CheckProjectPlanCanBeUpdate(string strProjectID)
     {
-        //ÅĞ¶ÏÄÜ·ñ¸ü¸Ä¼Æ»®
+        //åˆ¤æ–­èƒ½å¦æ›´æ”¹è®¡åˆ’
         if (ShareClass.CheckStartupPlanIsLock(strProjectID) == "YES" & ShareClass.CheckProjectPlanIsStartup(strProjectID) == "YES")
         {
             return "NO";
@@ -3509,7 +3888,7 @@ public static class ShareClass
         }
     }
 
-    //ÅĞ¶ÏÄÜ·ñ¸ü¸ÄÏîÄ¿¼Æ»®
+    //åˆ¤æ–­èƒ½å¦æ›´æ”¹é¡¹ç›®è®¡åˆ’
     public static string CheckProjectPlanIsStartup(string strProjectID)
     {
         string strHQL;
@@ -3527,7 +3906,7 @@ public static class ShareClass
         }
     }
 
-    //ÅĞ¶ÏÊÇ·ñËø¶¨ÒÑÆô¶¯µÄÏîÄ¿¼Æ»®
+    //åˆ¤æ–­æ˜¯å¦é”å®šå·²å¯åŠ¨çš„é¡¹ç›®è®¡åˆ’
     public static string CheckStartupPlanIsLock(string strProjectID)
     {
         string strHQL;
@@ -3545,7 +3924,7 @@ public static class ShareClass
         }
     }
 
-    //¼ì²éÏîÄ¿³ÉÔ±ÊÇ·ñÒÑ´æÔÚ
+    //æ£€æŸ¥é¡¹ç›®æˆå‘˜æ˜¯å¦å·²å­˜åœ¨
     public static int CheckProjectMemberIsExisted(string strProjectID, string strUserCode)
     {
         string strHQL;
@@ -3556,7 +3935,7 @@ public static class ShareClass
         return ds.Tables[0].Rows.Count;
     }
 
-    //ÉèÖÃ·çÏÕÎÄ±¾ÑÕÉ«
+    //è®¾ç½®é£é™©æ–‡æœ¬é¢œè‰²
     public static void SetRiskLabelColor(DataGrid dataGrid, int intCellNumber)
     {
         string strProjectID;
@@ -3573,7 +3952,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃÃ»ÓĞ°´Ê±Íê³ÉµÄ·çÏÕÊıÁ¿
+    //å–å¾—æ²¡æœ‰æŒ‰æ—¶å®Œæˆçš„é£é™©æ•°é‡
     public static int GetRiskUnFinishNumber(string strProjectID)
     {
         string strHQL;
@@ -3584,7 +3963,7 @@ public static class ShareClass
         return ds.Tables[0].Rows.Count;
     }
 
-    //ÉèÖÃÈ±ÏİÎÄ±¾ÑÕÉ«
+    //è®¾ç½®ç¼ºé™·æ–‡æœ¬é¢œè‰²
     public static void SetDefectLabelColor(DataGrid dataGrid, int intCellNumber)
     {
         string strProjectID;
@@ -3601,7 +3980,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃÃ»ÓĞ°´Ê±Íê³ÉµÄÈ±ÏİÊıÁ¿
+    //å–å¾—æ²¡æœ‰æŒ‰æ—¶å®Œæˆçš„ç¼ºé™·æ•°é‡
     public static int GetDefectUnFinishNumber(string strProjectID)
     {
         string strHQL;
@@ -3613,7 +3992,7 @@ public static class ShareClass
     }
 
 
-    //È¡µÃÏîÄ¿×ÜÈ·ÈÏ¹¤Ê±
+    //å–å¾—é¡¹ç›®æ€»ç¡®è®¤å·¥æ—¶
     public static string GetProjectTotalConfirmWorkHour(string strProjectID)
     {
         string strHQL;
@@ -3626,7 +4005,7 @@ public static class ShareClass
         return ds.Tables[0].Rows[0][0].ToString();
     }
 
-    //È¡µÃÏîÄ¿Î´½â¾ö·çÏÕ×ÜÊı
+    //å–å¾—é¡¹ç›®æœªè§£å†³é£é™©æ€»æ•°
     public static string GetProjectTotalUNFinishRiskNumber(string strProjectID)
     {
         string strCmdText;
@@ -3640,7 +4019,7 @@ public static class ShareClass
         return ds.Tables[0].Rows[0][0].ToString();
     }
 
-    //È¡µÃÏîÄ¿·çÏÕ×ÜÊı
+    //å–å¾—é¡¹ç›®é£é™©æ€»æ•°
     public static string GetProjectTotalRiskNumber(string strProjectID)
     {
         string strCmdText;
@@ -3653,13 +4032,13 @@ public static class ShareClass
         return ds.Tables[0].Rows[0][0].ToString();
     }
 
-    //È¡µÃÏîÄ¿Î´½â¾ö·çÏÕ×ÜÊı/ÏîÄ¿·çÏÕ×ÜÊı
+    //å–å¾—é¡¹ç›®æœªè§£å†³é£é™©æ€»æ•°/é¡¹ç›®é£é™©æ€»æ•°
     public static string GetProjectRiskUnFinishAndFinishNumber(string strProjectID)
     {
         return GetProjectTotalUNFinishRiskNumber(strProjectID) + "/" + GetProjectTotalRiskNumber(strProjectID);
     }
 
-    //È¡µÃÏîÄ¿Î´¹Ø±ÕÈ±Ïİ×ÜÊı
+    //å–å¾—é¡¹ç›®æœªå…³é—­ç¼ºé™·æ€»æ•°
     public static string GetProjectTotalUNFinishDefectNumber(string strProjectID)
     {
         string strCmdText;
@@ -3673,7 +4052,7 @@ public static class ShareClass
         return ds.Tables[0].Rows[0][0].ToString();
     }
 
-    //È¡µÃÏîÄ¿È±Ïİ×ÜÊı
+    //å–å¾—é¡¹ç›®ç¼ºé™·æ€»æ•°
     public static string GetProjectTotalDefectNumber(string strProjectID)
     {
         string strCmdText;
@@ -3686,13 +4065,13 @@ public static class ShareClass
         return ds.Tables[0].Rows[0][0].ToString();
     }
 
-    //È¡µÃÏîÄ¿Î´¹Ø±ÕÈ±Ïİ×ÜÊı/ÏîÄ¿È±Ïİ×ÜÊı
+    //å–å¾—é¡¹ç›®æœªå…³é—­ç¼ºé™·æ€»æ•°/é¡¹ç›®ç¼ºé™·æ€»æ•°
     public static string GetProjectDefectUnFinishAndFinishNumber(string strProjectID)
     {
         return GetProjectTotalUNFinishDefectNumber(strProjectID) + "/" + GetProjectTotalDefectNumber(strProjectID);
     }
 
-    //È¡µÃÏîÄ¿ÎÄµµ×ÜÊı
+    //å–å¾—é¡¹ç›®æ–‡æ¡£æ€»æ•°
     public static string GetProjectDocumentNumber(string strProjectID)
     {
         string strHQL;
@@ -3703,11 +4082,11 @@ public static class ShareClass
         strHQL = string.Format(@"Select  DocName  from T_Document as document where ((document.RelatedType = 'Project' and document.RelatedID = {0})
                    or (((document.RelatedType = 'Requirement' and document.RelatedID in (select relatedReq.ReqID from T_RelatedReq as relatedReq where relatedReq.ProjectID = {0}))
                    or (document.RelatedType = 'Workflow' and document.RelatedID in (Select workFlow.WLID From T_WorkFlow as workFlow Where workFlow.RelatedType = 'Project' and workFlow.RelatedID = {0}))
-                   or (document.RelatedType = '·çÏÕ' and document.RelatedID in (select projectRisk.ID from T_ProjectRisk as projectRisk where projectRisk.ProjectID = {0}))
+                   or (document.RelatedType = 'é£é™©' and document.RelatedID in (select projectRisk.ID from T_ProjectRisk as projectRisk where projectRisk.ProjectID = {0}))
                    or (document.RelatedType = 'Task' and document.RelatedID in (select projectTask.TaskID from T_ProjectTask as projectTask where projectTask.ProjectID = {0}))
                    or (document.RelatedType = 'Plan' and document.RelatedID in (select workPlan.ID From T_ImplePlan as workPlan where workPlan.ProjectID = {0}))
                    or (document.RelatedType = 'Workflow' and document.RelatedID in (Select workFlow.WLID From T_WorkFlow as workFlow Where workFlow.RelatedType = 'Plan' and workFlow.RelatedID in (select workPlan.ID From T_ImplePlan as workPlan where workPlan.ProjectID = {0})))
-                   or (document.RelatedType = '»áÒé' and document.RelatedID in (select meeting.ID from T_Meeting as meeting where meeting.RelatedID = {0}))
+                   or (document.RelatedType = 'ä¼šè®®' and document.RelatedID in (select meeting.ID from T_Meeting as meeting where meeting.RelatedID = {0}))
                    )))
                    and rtrim(ltrim(document.Status)) <> 'Deleted'", strProjectID, strUserCode, strDepartCode);
 
@@ -3718,7 +4097,7 @@ public static class ShareClass
         return ds1.Tables[0].Rows.Count.ToString();
     }
 
-    //È¡µÃÏîÄ¿¼Æ»®°´Ä£°åÊµ¼ÊÌá½»µÄÎÄµµÊıºÍÄ£°å¹æ¶¨Ó¦Ìá½»µÄÎÄµµÊı
+    //å–å¾—é¡¹ç›®è®¡åˆ’æŒ‰æ¨¡æ¿å®é™…æäº¤çš„æ–‡æ¡£æ•°å’Œæ¨¡æ¿è§„å®šåº”æäº¤çš„æ–‡æ¡£æ•°
     public static string GetProjectDocmentNumberAndRequiseDocument(string strProjectID)
     {
         string strHQL1, strHQL2;
@@ -3738,7 +4117,7 @@ public static class ShareClass
     }
 
 
-    //ÁĞ³öÏîÄ¿Àï³Ì±®×´Ì¬Í¼
+    //åˆ—å‡ºé¡¹ç›®é‡Œç¨‹ç¢‘çŠ¶æ€å›¾
     public static void DisplayRelatedMileStoneStepDump(string strProjectID, string strVerID, Repeater Repeater1)
     {
         string strHQL;
@@ -3781,7 +4160,7 @@ public static class ShareClass
 
 
 
-    //ÁĞ³öÏîÄ¿ÀàĞÍ 
+    //åˆ—å‡ºé¡¹ç›®ç±»å‹ 
     public static void LoadProjectType(DropDownList DL_ProjectType)
     {
         string strHQL;
@@ -3794,7 +4173,7 @@ public static class ShareClass
         DL_ProjectType.DataBind();
     }
 
-    //ÁĞ³öÏîÄ¿×´Ì¬
+    //åˆ—å‡ºé¡¹ç›®çŠ¶æ€
     public static void LoadProjectForPMStatus(string strProjectType, string strLangCode, DropDownList DL_Status)
     {
         string strHQL;
@@ -3826,7 +4205,7 @@ public static class ShareClass
         }
     }
 
-    //ÁĞ³öÏîÄ¿×´Ì¬
+    //åˆ—å‡ºé¡¹ç›®çŠ¶æ€
     public static void LoadProjectStatusForDataGrid(string strLangCode, DataGrid dataGrid)
     {
         string strHQL;
@@ -3841,7 +4220,7 @@ public static class ShareClass
         dataGrid.DataBind();
     }
 
-    //ÁĞ³ö²ÎÓëµÄÏîÄ¿×´Ì¬
+    //åˆ—å‡ºå‚ä¸çš„é¡¹ç›®çŠ¶æ€
     public static void LoadInvolvedProjectStatusForDataGrid(string strLangCode, DataGrid dataGrid)
     {
         string strHQL;
@@ -3856,7 +4235,7 @@ public static class ShareClass
         dataGrid.DataBind();
     }
 
-    //ÁĞ³öÏîÄ¿×´Ì¬
+    //åˆ—å‡ºé¡¹ç›®çŠ¶æ€
     public static void LoadProjectStatusForDropDownList(string strLangCode, DropDownList DL_Status)
     {
         string strHQL;
@@ -3873,7 +4252,7 @@ public static class ShareClass
         DL_Status.Items.Insert(0, new ListItem("--Select--", ""));
     }
 
-    //Ìí¼ÓÏîÄ¿³ÉÔ±
+    //æ·»åŠ é¡¹ç›®æˆå‘˜
     public static void AddProjectMember(string strProjectID, string strActorCode, string strActor, string strWorkDetail, string strStatus)
     {
         string strProjectName = ShareClass.GetProjectName(strProjectID);
@@ -3884,7 +4263,7 @@ public static class ShareClass
 
         string strJoinDate = DateTime.Now.ToString("yyyy-MM-dd");
         string strLeaveDate = DateTime.Now.ToString("yyyy-MM-dd");
-        string strSalaryMethod = "¹¤Ê±";
+        string strSalaryMethod = "å·¥æ—¶";
         decimal dePromissionScale = 0;
         decimal deHourSalary = 0;
         string strCanUpdatePlan = "YES";
@@ -3927,7 +4306,7 @@ public static class ShareClass
     }
 
 
-    //ÒÀ¼Æ»®IDÈ¡µÃÏîÄ¿ÀàĞÍ
+    //ä¾è®¡åˆ’IDå–å¾—é¡¹ç›®ç±»å‹
     public static string GetProjectTypeByPlanID(string strPlanID)
     {
         string strHQL;
@@ -3945,7 +4324,7 @@ public static class ShareClass
         }
     }
 
-    //ÒÀ¼Æ»®IDÈ¡µÃÏîÄ¿ID
+    //ä¾è®¡åˆ’IDå–å¾—é¡¹ç›®ID
     public static string GetProjectIDByPlanID(string strPlanID)
     {
         string strHQL;
@@ -3963,7 +4342,7 @@ public static class ShareClass
         }
     }
 
-    //ÅĞ¶ÏÊÇ·ñÒª¼Æ»®Ô±È·ÈÏÈÎÎñÊ±¶È²ÅÄÜÓ°Ïì¼Æ»®½ø¶È
+    //åˆ¤æ–­æ˜¯å¦è¦è®¡åˆ’å‘˜ç¡®è®¤ä»»åŠ¡æ—¶åº¦æ‰èƒ½å½±å“è®¡åˆ’è¿›åº¦
     public static string GetPlanProgressNeedPlanerConfirmByProject(string strProjectID)
     {
         string strHQL = "Select PlanProgressNeedPlanerConfirm From T_Project Where ProjectID = " + strProjectID;
@@ -3979,7 +4358,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃÏîÄ¿¼Æ»®µÄKEY ID
+    //å–å¾—é¡¹ç›®è®¡åˆ’çš„KEY ID
     public static string GetProjectPlanKeyIDByVerID(string strProjectID, string strVerID)
     {
         string strHQL;
@@ -4001,7 +4380,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃÏîÄ¿×´Ì¬Öµ
+    //å–å¾—é¡¹ç›®çŠ¶æ€å€¼
     public static string GetProjectStatusValue(string strProjectID)
     {
         string strHQL = "from Project as project where project.ProjectID = " + strProjectID;
@@ -4012,7 +4391,7 @@ public static class ShareClass
         return project.StatusValue.Trim();
     }
 
-    //È¡µÃÏîÄ¿´óÀà
+    //å–å¾—é¡¹ç›®å¤§ç±»
     public static string GetProjectClass(string strProjectID)
     {
         string strHQL = "from Project as project where project.ProjectID = " + strProjectID;
@@ -4023,7 +4402,7 @@ public static class ShareClass
         return strProjectClass;
     }
 
-    //È¡×òÁ¢ÏîÕß´úÂë
+    //å–æ˜¨ç«‹é¡¹è€…ä»£ç 
     public static string GetProjectCreatorCode(string strProjectID)
     {
         string strHQL = "from Project as project where project.ProjectID = " + strProjectID;
@@ -4034,7 +4413,7 @@ public static class ShareClass
         return project.UserCode.Trim();
     }
 
-    //Èç¹ûÏîÄ¿ÒÑ¾­ÑéÊÕ\½á°¸\¹éµµ£¬ÄÇÃ´²»ÄÜ¸ü¸Ä¼Æ»®ĞÅÏ¢
+    //å¦‚æœé¡¹ç›®å·²ç»éªŒæ”¶\ç»“æ¡ˆ\å½’æ¡£ï¼Œé‚£ä¹ˆä¸èƒ½æ›´æ”¹è®¡åˆ’ä¿¡æ¯
     public static bool CheckProjectIsFinish(string strProjectID)
     {
         string strHQL;
@@ -4051,7 +4430,7 @@ public static class ShareClass
         }
     }
 
-    //¼ì²éÓÃ»§ÊÇ·ñ¼Æ»®Ô±
+    //æ£€æŸ¥ç”¨æˆ·æ˜¯å¦è®¡åˆ’å‘˜
     public static bool CheckMemberIsProjectPlanOperator(string strProjectID, string strUserCode)
     {
         string strHQL;
@@ -4071,7 +4450,7 @@ public static class ShareClass
         }
     }
 
-    //¸üĞÂÁ÷³ÌµÄ¹¤Ê±
+    //æ›´æ–°æµç¨‹çš„å·¥æ—¶
     public static void UpdateWorkFlowManHour(string strRelatedType, string strRelatedID, string strWLID, string strID, decimal deManHour)
     {
         string strHQL;
@@ -4099,7 +4478,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃÁ÷³ÌµÄ¹¤Ê±×Ü¶î
+    //å–å¾—æµç¨‹çš„å·¥æ—¶æ€»é¢
     public static decimal GetWorkflowTotalManHour(string strWLID)
     {
         string strHQL;
@@ -4117,7 +4496,7 @@ public static class ShareClass
         }
     }
 
-    //¸üĞÂÁ÷³ÌµÄ¹¤Ê±
+    //æ›´æ–°æµç¨‹çš„å·¥æ—¶
     public static void UpdateWorkFlowExpense(string strRelatedType, string strRelatedID, string strWLID, string strID)
     {
         string strHQL;
@@ -4147,7 +4526,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃÁ÷³ÌÉóÅú¼ÇÂ¼µÄ·ÑÓÃ×Ü¶î
+    //å–å¾—æµç¨‹å®¡æ‰¹è®°å½•çš„è´¹ç”¨æ€»é¢
     public static decimal GetWorkflowStepDetailTotalExpense(string strID)
     {
         string strHQL;
@@ -4165,7 +4544,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃÁ÷³ÌµÄ·ÑÓÃ×Ü¶î
+    //å–å¾—æµç¨‹çš„è´¹ç”¨æ€»é¢
     public static decimal GetWorkflowTotalExpense(string strWLID)
     {
         string strHQL;
@@ -4201,7 +4580,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃ¼Æ»®¸ºÔğÈËÃû³Æ
+    //å–å¾—è®¡åˆ’è´Ÿè´£äººåç§°
     public static string getProjectPlanLeaderName(string strPlanID)
     {
         string strHQL;
@@ -4226,7 +4605,7 @@ public static class ShareClass
         }
     }
 
-    //°Ñ¸ºÔğÈË´úÂëÎª¿Õ¸üĞÂÎª²»Îª¿Õ
+    //æŠŠè´Ÿè´£äººä»£ç ä¸ºç©ºæ›´æ–°ä¸ºä¸ä¸ºç©º
     public static void UpdateProjectWorkPlanLeaderCodeToNotNull(string strProjectID, string strVerID)
     {
         string strHQL;
@@ -4242,7 +4621,7 @@ public static class ShareClass
         ShareClass.RunSqlCommand(strHQL);
     }
 
-    //Ö»ÓĞÁ¢ÏîÕß£¬ÏîÄ¿¾­Àí£¬¼Æ»®´´½¨Ô±£¬²ÅÄÜ·ÖÅÉ¼Æ»®×ÊÔ´
+    //åªæœ‰ç«‹é¡¹è€…ï¼Œé¡¹ç›®ç»ç†ï¼Œè®¡åˆ’åˆ›å»ºå‘˜ï¼Œæ‰èƒ½åˆ†æ´¾è®¡åˆ’èµ„æº
     public static bool CheckUserCanAssignRecourceForPlan(string strPlanID, string strCurrentUserCode)
     {
         string strHQL;
@@ -4303,7 +4682,7 @@ public static class ShareClass
         }
     }
 
-    //Ö»ÓĞÁ¢ÏîÕß£¬ÏîÄ¿¾­Àí£¬¼Æ»®´´½¨Ô±£¬ÏîÄ¿¸ºÔğÈË£¬¼Æ»®¸ºÔğÈË²ÅÄÜ·¢ÆğÁ÷³ÌºÍÈÎÎñ
+    //åªæœ‰ç«‹é¡¹è€…ï¼Œé¡¹ç›®ç»ç†ï¼Œè®¡åˆ’åˆ›å»ºå‘˜ï¼Œé¡¹ç›®è´Ÿè´£äººï¼Œè®¡åˆ’è´Ÿè´£äººæ‰èƒ½å‘èµ·æµç¨‹å’Œä»»åŠ¡
     public static bool CheckUserCanControlProjectPlan(string strPlanID, string strCurrentUserCode)
     {
         string strHQL;
@@ -4376,7 +4755,7 @@ public static class ShareClass
         }
     }
 
-    //Ö»ÓĞÁ¢ÏîÕß£¬ÏîÄ¿¾­Àí£¬¼Æ»®´´½¨Ô±£¬ÏîÄ¿¸ºÔğÈË£¬¼Æ»®¸ºÔğÈË²ÅÄÜä¯ÀÀ¼Æ»®Êı¾İ
+    //åªæœ‰ç«‹é¡¹è€…ï¼Œé¡¹ç›®ç»ç†ï¼Œè®¡åˆ’åˆ›å»ºå‘˜ï¼Œé¡¹ç›®è´Ÿè´£äººï¼Œè®¡åˆ’è´Ÿè´£äººæ‰èƒ½æµè§ˆè®¡åˆ’æ•°æ®
     public static bool CheckUserCanViewProjectPlan(string strPlanID, string strCurrentUserCode)
     {
         string strHQL;
@@ -4449,7 +4828,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃ¼Æ»®´´½¨Õß
+    //å–å¾—è®¡åˆ’åˆ›å»ºè€…
     public static string GetProjectPlanCreatorCode(string strPlanID)
     {
         string strHQL;
@@ -4464,7 +4843,7 @@ public static class ShareClass
         return workPlan.CreatorCode.Trim();
     }
 
-    //È¡µÃÈÎÎñ¹ØÁª¼Æ»®µÄ¼Æ»®µÄ¸ºÔğÈË´úÂë
+    //å–å¾—ä»»åŠ¡å…³è”è®¡åˆ’çš„è®¡åˆ’çš„è´Ÿè´£äººä»£ç 
     public static string GetProjectPlanLeaderCode(string strPlanID)
     {
         string strHQL;
@@ -4485,7 +4864,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃÈÎÎñÄÚÈİ
+    //å–å¾—ä»»åŠ¡å†…å®¹
     public static string GetProjectPlanDetail(string strPlanID)
     {
         string strHQL;
@@ -4506,7 +4885,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃÈÎÎñ¹ØÁª¼Æ»®µÄ¼Æ»®µÄ¸ºÔğÈËÃû³Æ
+    //å–å¾—ä»»åŠ¡å…³è”è®¡åˆ’çš„è®¡åˆ’çš„è´Ÿè´£äººåç§°
     public static string GetProjectPlanLeaderName(string strPlanID)
     {
         string strHQL;
@@ -4527,7 +4906,7 @@ public static class ShareClass
         }
     }
 
-    //ÒÀ¼Æ»®ºÅÈ¡µÃ´Ë¼Æ»®µÄ°æ±¾ºÅ
+    //ä¾è®¡åˆ’å·å–å¾—æ­¤è®¡åˆ’çš„ç‰ˆæœ¬å·
     public static string getProjectWorkPlanVerIDByPlanID(string strPlanID)
     {
         string strHQL;
@@ -4538,7 +4917,7 @@ public static class ShareClass
         return ds.Tables[0].Rows[0][0].ToString().Trim();
     }
 
-    //È¡µÃÏîÄ¿¼Æ»®×î´óµÄ°æ±¾ºÅ
+    //å–å¾—é¡¹ç›®è®¡åˆ’æœ€å¤§çš„ç‰ˆæœ¬å·
     public static string GetLargestProjectPlanVerID(string strProjectID)
     {
         string strHQL;
@@ -4549,7 +4928,7 @@ public static class ShareClass
         return ds.Tables[0].Rows[0][0].ToString();
     }
 
-    //È¡µÃ°æ±¾ºÅID
+    //å–å¾—ç‰ˆæœ¬å·ID
     public static int GetProjectPlanVersionID(string strProjectID, string strType)
     {
         string strHQL;
@@ -4571,7 +4950,7 @@ public static class ShareClass
         }
     }
 
-    //ÒÀ¼Æ»®ÀàĞÍÈ¡µÃ°æ±¾ºÅ
+    //ä¾è®¡åˆ’ç±»å‹å–å¾—ç‰ˆæœ¬å·
     public static int GetProjectPlanVersionIDByType(string strProjectID, string strType)
     {
         string strHQL;
@@ -4593,7 +4972,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃ°æ±¾ºÅ
+    //å–å¾—ç‰ˆæœ¬å·
     public static int GetProjectPlanVerID(string strProjectID, string strType)
     {
         string strHQL;
@@ -4615,7 +4994,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃÏîÄ¿¼Æ»®Ïà¹ØµÄÏîÄ¿IDºÅ
+    //å–å¾—é¡¹ç›®è®¡åˆ’ç›¸å…³çš„é¡¹ç›®IDå·
     public static string getProjectIDByPlanID(string strPlanID)
     {
         string strHQL;
@@ -4626,7 +5005,7 @@ public static class ShareClass
         return ds.Tables[0].Rows[0][0].ToString().Trim();
     }
 
-    //¸üĞÂÈÎÎñµÄ¹¤Ê±ºÍ·ÑÓÃ
+    //æ›´æ–°ä»»åŠ¡çš„å·¥æ—¶å’Œè´¹ç”¨
     public static void UpdateTaskExpenseManHourSummary(string strTaskID)
     {
         string strHQL;
@@ -4658,7 +5037,7 @@ public static class ShareClass
         projectTaskBLL.UpdateProjectTask(projectTask, projectTask.TaskID);
     }
 
-    //µ±¸ü¸ÄÈÎÎñ½ø¶È
+    //å½“æ›´æ”¹ä»»åŠ¡è¿›åº¦
     public static decimal UpdateTaskProgress(string strTaskID)
     {
         string strHQL;
@@ -4689,7 +5068,7 @@ public static class ShareClass
         return deProgress;
     }
 
-    //¸üĞÂ¹¤×÷Á÷¹ØÁªÏîÄ¿¼Æ»®Íê³É³Ì¶È
+    //æ›´æ–°å·¥ä½œæµå…³è”é¡¹ç›®è®¡åˆ’å®Œæˆç¨‹åº¦
     public static void UpdateProjectPlanSchedule(string strRelatedType, string strRelatedID)
     {
         try
@@ -4704,7 +5083,7 @@ public static class ShareClass
         }
     }
 
-    //ÒÀ¼Æ»®Ïà¹Ø¹¤×÷Á÷ºÍÈÎÎñ£¬¸üĞÂÏîÄ¿´Ë¼Æ»®½ø¶ÈºÍ×Ü½ø¶È
+    //ä¾è®¡åˆ’ç›¸å…³å·¥ä½œæµå’Œä»»åŠ¡ï¼Œæ›´æ–°é¡¹ç›®æ­¤è®¡åˆ’è¿›åº¦å’Œæ€»è¿›åº¦
     public static void UpdateTaskOrWorkflowPlanProgressAndExpenseWorkHour(string strPlanID)
     {
         string strHQL;
@@ -4732,7 +5111,7 @@ public static class ShareClass
             strHQL += " Where Parent_ID = 0 and ProjectID =" + strProjectID + " and VerID = " + strVerID;
             ShareClass.RunSqlCommand(strHQL);
 
-            //Èç¹ûÈÎÎñÊÇÏîÄ¿¼Æ»®²úÉúµÄ£¬ÄÇÃ´¸ü¸Ä¼Æ»®¹¤Ê±ºÍ·ÑÓÃ
+            //å¦‚æœä»»åŠ¡æ˜¯é¡¹ç›®è®¡åˆ’äº§ç”Ÿçš„ï¼Œé‚£ä¹ˆæ›´æ”¹è®¡åˆ’å·¥æ—¶å’Œè´¹ç”¨
             strHQL = "update T_ImplePlan Set ActualHour = " + ShareClass.GetTotalRealManHourByPlan(strPlanID);
             strHQL += ",Expense = " + ShareClass.GetTotalRealExpenseByPlan(strPlanID);
             strHQL += " Where ID = " + strPlanID;
@@ -4744,7 +5123,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃ¹ØÁªÈÎÎñµÄÎ´Íê³ÉÁ¿
+    //å–å¾—å…³è”ä»»åŠ¡çš„æœªå®Œæˆé‡
     public static decimal GetTaskUnFinishedNumber(string strTaskID)
     {
         string strHQL;
@@ -4762,7 +5141,7 @@ public static class ShareClass
         }
     }
 
-    //µ±¸ü¸ÄÈÎÎñÍê³ÉÁ¿
+    //å½“æ›´æ”¹ä»»åŠ¡å®Œæˆé‡
     public static decimal UpdateTaskFinishedNumber(string strTaskID)
     {
         string strHQL;
@@ -4793,7 +5172,7 @@ public static class ShareClass
         return deFinishedNumber;
     }
 
-    //¸üĞÂ¹¤×÷Á÷¹ØÁªÏîÄ¿¼Æ»®ÒÑÍê³ÉÁ¿
+    //æ›´æ–°å·¥ä½œæµå…³è”é¡¹ç›®è®¡åˆ’å·²å®Œæˆé‡
     public static void UpdateProjectPlanFinishedNumber(string strRelatedType, string strRelatedID)
     {
         try
@@ -4808,7 +5187,7 @@ public static class ShareClass
         }
     }
 
-    //ÒÀ¼Æ»®Ïà¹ØÈÎÎñ£¬¸üĞÂÏîÄ¿´Ë¼Æ»®µÄÒÑÍê³ÉÁ¿
+    //ä¾è®¡åˆ’ç›¸å…³ä»»åŠ¡ï¼Œæ›´æ–°é¡¹ç›®æ­¤è®¡åˆ’çš„å·²å®Œæˆé‡
     public static void UpdateTaskPlanFinishedNumber(string strPlanID)
     {
         string strHQL;
@@ -4837,7 +5216,7 @@ public static class ShareClass
     }
 
 
-    //Èç¹ûÁ÷³ÌÊÇÓÉÏîÄ¿»òÏîÄ¿¼Æ»®·¢ÆğµÄ£¬ÄÇÃ´Ôö¼ÓÏîÄ¿ÈÕÖ¾µ½ÏîÄ¿ÖĞ
+    //å¦‚æœæµç¨‹æ˜¯ç”±é¡¹ç›®æˆ–é¡¹ç›®è®¡åˆ’å‘èµ·çš„ï¼Œé‚£ä¹ˆå¢åŠ é¡¹ç›®æ—¥å¿—åˆ°é¡¹ç›®ä¸­
     public static void UpdateProjectDaiyWorkByWorkflow(string strRelatedType, string strRelatedID, string strWLID, string strContent, string strUserCode)
     {
         if (strRelatedType == "Project" || strRelatedType == "Plan")
@@ -4871,7 +5250,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃ¹ØÁªÈÎÎñºÍÁ÷³ÌµÄ¼Æ»®×Ü½ø¶È
+    //å–å¾—å…³è”ä»»åŠ¡å’Œæµç¨‹çš„è®¡åˆ’æ€»è¿›åº¦
     public static decimal GetTaskOrWorkflowPlanProgress(string strPlanID)
     {
         decimal deProgress, deTaskProgress, deWorkflowProgress;
@@ -4891,7 +5270,7 @@ public static class ShareClass
         return deProgress;
     }
 
-    //È¡µÃ¼Æ»®Ïà¹ØÈÎÎñ½ø¶È
+    //å–å¾—è®¡åˆ’ç›¸å…³ä»»åŠ¡è¿›åº¦
     public static decimal GetTaskPlanProgress(string strPlanID)
     {
         string strHQL;
@@ -4920,7 +5299,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃ¼Æ»®Ïà¹Ø¹¤×÷Á÷µÄÆ½¾ù½ø¶È
+    //å–å¾—è®¡åˆ’ç›¸å…³å·¥ä½œæµçš„å¹³å‡è¿›åº¦
     public static decimal GetWorkflowtPlanProgress(string strPlanID)
     {
         string strHQL1, strHQL;
@@ -4969,19 +5348,19 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃÏîÄ¿½ø¶È£¬¹¤Ê±£¬·ÑÓÃµÄÏà¹ØÊı¾İ£¬ÓÃÓÚÏîÄ¿¾­Àí
+    //å–å¾—é¡¹ç›®è¿›åº¦ï¼Œå·¥æ—¶ï¼Œè´¹ç”¨çš„ç›¸å…³æ•°æ®ï¼Œç”¨äºé¡¹ç›®ç»ç†
     public static string getCurrentDateTaskTotalForPM(string strProjectID, string strUserCode, string strWorkDate)
     {
         return LanguageHandle.GetWord("DangRiRenWu").ToString().Trim() + ":" + LanguageHandle.GetWord("JingDu").ToString().Trim() + ":" + getCurrentDateTotalProgressForPM(strProjectID) + "%," + LanguageHandle.GetWord("ManHour").ToString().Trim() + ":" + getCurrentDateTotalManHourByOneOperator(strProjectID, strUserCode, strWorkDate) + "," + LanguageHandle.GetWord("FeiYong").ToString().Trim() + ":" + getCurrentDateTotalExpenseByOneOperator(strProjectID, strUserCode, strWorkDate);
     }
 
-    //È¡µÃÏîÄ¿½ø¶È£¬¹¤Ê±£¬·ÑÓÃµÄÏà¹ØÊı¾İ£¬ÓÃÓÚÏîÄ¿³ÉÔ±
+    //å–å¾—é¡¹ç›®è¿›åº¦ï¼Œå·¥æ—¶ï¼Œè´¹ç”¨çš„ç›¸å…³æ•°æ®ï¼Œç”¨äºé¡¹ç›®æˆå‘˜
     public static string getCurrentDateTaskTotalForMember(string strProjectID, string strUserCode, string strWorkDate)
     {
         return LanguageHandle.GetWord("DangRiRenWu").ToString().Trim() + ":" + LanguageHandle.GetWord("JingDu").ToString().Trim() + ":" + getCurrentDateTotalProgressForMember(strProjectID, strUserCode) + "%," + LanguageHandle.GetWord("ManHour").ToString().Trim() + ":" + getCurrentDateTotalManHourByOneOperator(strProjectID, strUserCode, strWorkDate) + "," + LanguageHandle.GetWord("FeiYong").ToString().Trim() + ":" + getCurrentDateTotalExpenseByOneOperator(strProjectID, strUserCode, strWorkDate);
     }
 
-    //È¡µÃÏîÄ¿ÖÁµ±ÈÕÊ±µÄ×Ü½ø¶È£¬ÓÃÓÚÏîÄ¿¾­Àí
+    //å–å¾—é¡¹ç›®è‡³å½“æ—¥æ—¶çš„æ€»è¿›åº¦ï¼Œç”¨äºé¡¹ç›®ç»ç†
     public static string getCurrentDateTotalProgressForPM(string strProjectID)
     {
         if (decimal.Parse(getCurrentDateTaskTotalProgressForPM(strProjectID)) == 0 || decimal.Parse(getCurrentDateWorkflowTotalProgressForPM(strProjectID)) == 0)
@@ -4994,7 +5373,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃÏîÄ¿ÖÁµ±ÈÕÊ±µÄ×Ü½ø¶È£¬ÓÃÓÚÏîÄ¿³ÉÔ±
+    //å–å¾—é¡¹ç›®è‡³å½“æ—¥æ—¶çš„æ€»è¿›åº¦ï¼Œç”¨äºé¡¹ç›®æˆå‘˜
     public static string getCurrentDateTotalProgressForMember(string strProjectID, string strUserCode)
     {
         if (decimal.Parse(getCurrentDateTaskTotalProgressForMember(strProjectID, strUserCode)) == 0 || decimal.Parse(getCurrentDateWorkflowTotalProgressForMember(strProjectID, strUserCode)) == 0)
@@ -5007,7 +5386,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃµ±ÈÕÊµÊ©ÏîÄ¿×Ü¹¤Ê±
+    //å–å¾—å½“æ—¥å®æ–½é¡¹ç›®æ€»å·¥æ—¶
     public static string getCurrentDateTotalManHourByOneOperator(string strProjectID, string strUserCode, string strWorkDate)
     {
         string strHQL;
@@ -5036,7 +5415,7 @@ public static class ShareClass
         return (decimal.Parse(ds1.Tables[0].Rows[0][0].ToString()) + decimal.Parse(ds2.Tables[0].Rows[0][0].ToString())).ToString();
     }
 
-    //È¡µÃµ±ÈÕÊµÊ©ÏîÄ¿×Ü·ÑÓÃ
+    //å–å¾—å½“æ—¥å®æ–½é¡¹ç›®æ€»è´¹ç”¨
     public static string getCurrentDateTotalExpenseByOneOperator(string strProjectID, string strUserCode, string strWorkDate)
     {
         string strHQL;
@@ -5064,7 +5443,7 @@ public static class ShareClass
         return (decimal.Parse(ds1.Tables[0].Rows[0][0].ToString()) + decimal.Parse(ds2.Tables[0].Rows[0][0].ToString())).ToString();
     }
 
-    //È¡µÃµ±ÈÕÊµÊ©ÏîÄ¿ÈÎÎñ×Ü½ø¶È£¬ÓÃÓÚÏîÄ¿¾­Àí
+    //å–å¾—å½“æ—¥å®æ–½é¡¹ç›®ä»»åŠ¡æ€»è¿›åº¦ï¼Œç”¨äºé¡¹ç›®ç»ç†
     public static string getCurrentDateTaskTotalProgressForPM(string strProjectID)
     {
         string strHQL;
@@ -5089,7 +5468,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃµ±ÈÕÊµÊ©ÏîÄ¿×Ü½ø¶È£¬ÓÃÓÚÏîÄ¿³ÉÔ±
+    //å–å¾—å½“æ—¥å®æ–½é¡¹ç›®æ€»è¿›åº¦ï¼Œç”¨äºé¡¹ç›®æˆå‘˜
     public static string getCurrentDateTaskTotalProgressForMember(string strProjectID, string strUserCode)
     {
         string strHQL;
@@ -5115,7 +5494,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃ¼Æ»®Ïà¹Ø¹¤×÷Á÷µÄÆ½¾ù½ø¶È£¬ÓÃÓÚÏîÄ¿¾­Àí
+    //å–å¾—è®¡åˆ’ç›¸å…³å·¥ä½œæµçš„å¹³å‡è¿›åº¦ï¼Œç”¨äºé¡¹ç›®ç»ç†
     public static string getCurrentDateWorkflowTotalProgressForPM(string strProjectID)
     {
         string strHQL1, strHQL;
@@ -5168,7 +5547,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃ¼Æ»®Ïà¹Ø¹¤×÷Á÷µÄÆ½¾ù½ø¶È£¬ÓÃÓÚÏîÄ¿³ÉÔ±
+    //å–å¾—è®¡åˆ’ç›¸å…³å·¥ä½œæµçš„å¹³å‡è¿›åº¦ï¼Œç”¨äºé¡¹ç›®æˆå‘˜
     public static string getCurrentDateWorkflowTotalProgressForMember(string strProjectID, string strUserCode)
     {
         string strHQL1, strHQL;
@@ -5232,7 +5611,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃÖÜÄ©¿ªÊ¼Ê±¼ä
+    //å–å¾—å‘¨æœ«å¼€å§‹æ—¶é—´
     public static string GetWeekendFirstDay()
     {
         string strHQL;
@@ -5250,7 +5629,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃÖÜÄ©½áÊøÊ±¼ä
+    //å–å¾—å‘¨æœ«ç»“æŸæ—¶é—´
     public static string GetWeekendSecondDay()
     {
         string strHQL;
@@ -5268,7 +5647,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃÖÜÄ©ÊÇ·ñ¹¤×÷ÈÕ
+    //å–å¾—å‘¨æœ«æ˜¯å¦å·¥ä½œæ—¥
     public static string GetWeekendsAreWorkdays()
     {
         string strHQL;
@@ -5286,7 +5665,7 @@ public static class ShareClass
         }
     }
 
-    //ÒÀÕĞ±êÀàĞÍÌí¼Ó¹ØÁªµÄ¹¤×÷Á÷Ä£°å
+    //ä¾æ‹›æ ‡ç±»å‹æ·»åŠ å…³è”çš„å·¥ä½œæµæ¨¡æ¿
     public static string AddRelatedWorkFlowTemplateByBMBidType(string strBMBidType, string strBMBidPlanID)
     {
         string strHQL;
@@ -5300,7 +5679,7 @@ public static class ShareClass
         return strHQL;
     }
 
-    //ÒÀÏîÄ¿ÀàĞÍÌí¼Ó¹ØÁªµÄ¹¤×÷Á÷Ä£°å
+    //ä¾é¡¹ç›®ç±»å‹æ·»åŠ å…³è”çš„å·¥ä½œæµæ¨¡æ¿
     public static void AddRelatedWorkFlowTemplateByProjectType(string strRelatedType, string strRelatedID, string strKeyWord, string strKeyType, string strKeyRelatedType)
     {
         string strHQL;
@@ -5321,7 +5700,7 @@ public static class ShareClass
         }
     }
 
-    //ÒÀÏîÄ¿ÀàĞÍÌí¼Ó¹ØÁªµÄÎÄµµÄ£°å
+    //ä¾é¡¹ç›®ç±»å‹æ·»åŠ å…³è”çš„æ–‡æ¡£æ¨¡æ¿
     public static void AddRelatedDocumentTemplateByProjectType(string strRelatedType, string strRelatedID, string strKeyWord, string strKeyType)
     {
         string strHQL;
@@ -5345,7 +5724,7 @@ public static class ShareClass
 
     }
 
-    //È¡µÃMRP¼Æ»®µ¥¾İÀàĞÍ
+    //å–å¾—MRPè®¡åˆ’å•æ®ç±»å‹
     public static string GetRelatedBusinessTypeAndName(string strRelatedType, string strRelatedID)
     {
         string strHQL;
@@ -5406,7 +5785,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃMRP¼Æ»®µ¥¾İÀàĞÍ
+    //å–å¾—MRPè®¡åˆ’å•æ®ç±»å‹
     public static string GetMRPFormTypeAndName(string strSourceType, string strSourceRecordID)
     {
         string strHQL;
@@ -5467,7 +5846,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃÆäËü¹²ÓÃ×´Ì¬µÄ±¾Óï
+    //å–å¾—å…¶å®ƒå…±ç”¨çŠ¶æ€çš„æœ¬è¯­
     public static string GetStatusHomeNameByOtherStatus(string strStatus)
     {
         string strHQL;
@@ -5490,7 +5869,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃ¼Æ»®×´Ì¬µÄ±¾Óï
+    //å–å¾—è®¡åˆ’çŠ¶æ€çš„æœ¬è¯­
     public static string GetStatusHomeNameByPlanStatus(string strStatus)
     {
         string strHQL;
@@ -5513,7 +5892,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃĞèÇó×´Ì¬µÄ±¾Óï
+    //å–å¾—éœ€æ±‚çŠ¶æ€çš„æœ¬è¯­
     public static string GetStatusHomeNameByRequirementStatus(string strStatus)
     {
         string strHQL;
@@ -5536,7 +5915,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃĞèÇó×´Ì¬µÄ±¾Óï
+    //å–å¾—éœ€æ±‚çŠ¶æ€çš„æœ¬è¯­
     public static string GetStatusHomeNameByDefectmentStatus(string strStatus)
     {
         string strHQL;
@@ -5559,7 +5938,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃ¹¤×÷Á÷×´Ì¬µÄ±¾Óï
+    //å–å¾—å·¥ä½œæµçŠ¶æ€çš„æœ¬è¯­
     public static string GetStatusHomeNameByTaskStatus(string strStatus)
     {
         string strHQL;
@@ -5582,7 +5961,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃ¹¤×÷Á÷×´Ì¬µÄ±¾Óï
+    //å–å¾—å·¥ä½œæµçŠ¶æ€çš„æœ¬è¯­
     public static string GetStatusHomeNameByWorkflowStatus(string strStatus)
     {
         string strHQL;
@@ -5606,7 +5985,7 @@ public static class ShareClass
         }
     }
 
-    //ÅĞ¶ÏÊÇ·ñÊ±ÊÇ³¬Ê±×Ô¶¯ÉóÅúÍ¨¹ıµÄ²½Öè
+    //åˆ¤æ–­æ˜¯å¦æ—¶æ˜¯è¶…æ—¶è‡ªåŠ¨å®¡æ‰¹é€šè¿‡çš„æ­¥éª¤
     public static string GetWorkflowStepStatusByAuto(string strStepID)
     {
         string strHQL;
@@ -5624,7 +6003,7 @@ public static class ShareClass
         }
     }
 
-    //ÅĞ¶ÏÊÇ·ñÊ±ÊÇ³¬Ê±×Ô¶¯ÉóÅúÍ¨¹ıµÄ¹¤×÷Á÷
+    //åˆ¤æ–­æ˜¯å¦æ—¶æ˜¯è¶…æ—¶è‡ªåŠ¨å®¡æ‰¹é€šè¿‡çš„å·¥ä½œæµ
     public static string GetWorkflowStatusByAuto(string strWLID)
     {
         string strHQL;
@@ -5642,7 +6021,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃÏîÄ¿×´Ì¬µÄ±¾Óï
+    //å–å¾—é¡¹ç›®çŠ¶æ€çš„æœ¬è¯­
     public static string GetStatusHomeNameByProjectStatus(string strStatus, string strProjectType)
     {
         string strHQL;
@@ -5663,7 +6042,7 @@ public static class ShareClass
         }
     }
 
-    //¼ì²éÓÃ»§ÊÇ·ñÊÇÏîÄ¿ÏîÄ¿³ÉÔ±
+    //æ£€æŸ¥ç”¨æˆ·æ˜¯å¦æ˜¯é¡¹ç›®é¡¹ç›®æˆå‘˜
     public static bool CheckUserIsProjectMember(string strProjectID, string strUserCode)
     {
         string strHQL;
@@ -5680,7 +6059,7 @@ public static class ShareClass
         }
     }
 
-    //¼ì²éÓÃ»§ÊÇ·ñÊÇÏîÄ¿¾­Àí
+    //æ£€æŸ¥ç”¨æˆ·æ˜¯å¦æ˜¯é¡¹ç›®ç»ç†
     public static bool CheckUserIsProjectManager(string strProjectID, string strUserCode)
     {
         string strHQL;
@@ -5697,7 +6076,7 @@ public static class ShareClass
         }
     }
 
-    //¼ì²éÓÃ»§ÊÇ·ñÊÇÁ¢ÏîÕß
+    //æ£€æŸ¥ç”¨æˆ·æ˜¯å¦æ˜¯ç«‹é¡¹è€…
     public static bool CheckUserIsProjectCreator(string strProjectID, string strUserCode)
     {
         string strHQL;
@@ -5714,7 +6093,7 @@ public static class ShareClass
         }
     }
 
-    //¼ì²éÓÃ»§ÊÇ·ñÄÜ¸ÄÏîÄ¿¼Æ»®
+    //æ£€æŸ¥ç”¨æˆ·æ˜¯å¦èƒ½æ”¹é¡¹ç›®è®¡åˆ’
     public static bool CheckMemberCanUpdatePlanByUserCode(string strProjectID, string strUserCode)
     {
         string strHQL;
@@ -5735,7 +6114,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃÏîÄ¿³ÉÔ±ÁĞ±í
+    //å–å¾—é¡¹ç›®æˆå‘˜åˆ—è¡¨
     public static void LoadProjectMember(string strProjectID, DropDownList DL_OperatorCode)
     {
         string strHQL;
@@ -5749,7 +6128,7 @@ public static class ShareClass
         DL_OperatorCode.Items.Insert(0, new ListItem("--Select--", ""));
     }
 
-    //È¡µÃÏîÄ¿³ÉÔ±ºÍÏÂÊô³ÉÔ±µÄÁĞ±í
+    //å–å¾—é¡¹ç›®æˆå‘˜å’Œä¸‹å±æˆå‘˜çš„åˆ—è¡¨
     public static void LoadProjectMemberAndDirectMember(string strProjectID, string strUserCode, DropDownList DL_OperatorCode)
     {
         string strHQL;
@@ -5771,7 +6150,7 @@ public static class ShareClass
         DL_OperatorCode.Items.Insert(0, new ListItem(strOperatorName, strOperatorCode));
     }
 
-    //È¡µÃÏÂÊô³ÉÔ±ÁĞ±í
+    //å–å¾—ä¸‹å±æˆå‘˜åˆ—è¡¨
     public static void LoadMemberList(string strUserCode, DropDownList DL_OperatorCode)
     {
         string strHQL;
@@ -5844,7 +6223,7 @@ public static class ShareClass
         DL_WorkRequest.Items.Insert(0, new ListItem("--Select--", ""));
     }
 
-    //È¡µÃÈÎÎñ¼ÇÂ¼ÀàĞÍÁĞ±í
+    //å–å¾—ä»»åŠ¡è®°å½•ç±»å‹åˆ—è¡¨
     public static void LoadTaskRecordType(DropDownList DL_RecordType)
     {
         string strHQL;
@@ -5858,7 +6237,7 @@ public static class ShareClass
         //DL_RecordType.Items.Insert(0, new ListItem("--Select--", ""));
     }
 
-    //È¡µÃµ±Ç°Ê±¼äÏîÄ¿Ó¦Íê³ÉµÄ½ø¶È
+    //å–å¾—å½“å‰æ—¶é—´é¡¹ç›®åº”å®Œæˆçš„è¿›åº¦
     public static int GetProjectDefaultFinishPercent(string strProjectID)
     {
         string strHQL;
@@ -5930,7 +6309,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃµ±Ç°Ê±¼äÏîÄ¿Ó¦Íê³ÉµÄ³É±¾
+    //å–å¾—å½“å‰æ—¶é—´é¡¹ç›®åº”å®Œæˆçš„æˆæœ¬
     public static Decimal GetProjectDefaultFinishCost(string strProjectID)
     {
         string strHQL;
@@ -5956,7 +6335,7 @@ public static class ShareClass
                 }
                 catch (OverflowException e)
                 {
-                    // decimal Öµ³¬³öintÖµ·¶Î§
+                    // decimal å€¼è¶…å‡ºintå€¼èŒƒå›´
                     return 0;
                 }
             }
@@ -5971,7 +6350,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃÏîÄ¿»î¶¯¼Æ»®°æ±¾µÄ°æ±¾ºÅ
+    //å–å¾—é¡¹ç›®æ´»åŠ¨è®¡åˆ’ç‰ˆæœ¬çš„ç‰ˆæœ¬å·
     public static int GetProjectPlanVersionVerID(string strProjectID, string strType)
     {
         string strHQL;
@@ -5993,7 +6372,7 @@ public static class ShareClass
         }
     }
 
-    //ÅĞ¶ÏÊÇ·ñ´æÔÚÍ¬´úÂëÏîÄ¿
+    //åˆ¤æ–­æ˜¯å¦å­˜åœ¨åŒä»£ç é¡¹ç›®
     public static int GetProjecCountByProjectCodeAndID(string strProjectCode, string strProjectID)
     {
         string strHQL;
@@ -6004,7 +6383,7 @@ public static class ShareClass
         return ds.Tables[0].Rows.Count;
     }
 
-    //È¡µÃÏîÄ¿Ö±½Ó·¢ÆğµÄ¹¤×÷Á÷µÄÊµ¼Ê¹¤Ê±
+    //å–å¾—é¡¹ç›®ç›´æ¥å‘èµ·çš„å·¥ä½œæµçš„å®é™…å·¥æ—¶
     public static string GetTotalRealManHourByProjectWorkflowStepDetail(string strWLID, string strWorkDate)
     {
         string strHQL;
@@ -6017,7 +6396,7 @@ public static class ShareClass
         return decimal.Parse(ds2.Tables[0].Rows[0][0].ToString()).ToString();
     }
 
-    //È¡µÃÏîÄ¿Ö±½Ó·¢ÆğµÄ¹¤×÷Á÷µÄÊµ¼Ê·ÑÓÃ
+    //å–å¾—é¡¹ç›®ç›´æ¥å‘èµ·çš„å·¥ä½œæµçš„å®é™…è´¹ç”¨
     public static string GetTotalRealExpenseByProjectWorkflowStepDetail(string strWLID, string strWorkDate)
     {
         string strHQL;
@@ -6030,7 +6409,7 @@ public static class ShareClass
         return decimal.Parse(ds2.Tables[0].Rows[0][0].ToString()).ToString();
     }
 
-    //È¡µÃ¼Æ»®Ïà¹ØÈÎÎñºÍ¹¤×÷Á÷µÄÊµ¼Ê¹¤Ê±
+    //å–å¾—è®¡åˆ’ç›¸å…³ä»»åŠ¡å’Œå·¥ä½œæµçš„å®é™…å·¥æ—¶
     public static string GetTotalRealManHourByPlan(string strPlanID)
     {
         string strHQL;
@@ -6046,7 +6425,7 @@ public static class ShareClass
         return (decimal.Parse(ds1.Tables[0].Rows[0][0].ToString()) + decimal.Parse(ds2.Tables[0].Rows[0][0].ToString())).ToString();
     }
 
-    //È¡µÃ¼Æ»®Ïà¹ØÈÎÎñºÍ¹¤×÷Á÷µÄÊµ¼Ê·ÑÓÃ
+    //å–å¾—è®¡åˆ’ç›¸å…³ä»»åŠ¡å’Œå·¥ä½œæµçš„å®é™…è´¹ç”¨
     public static string GetTotalRealExpenseByPlan(string strPlanID)
     {
         string strHQL;
@@ -6137,11 +6516,11 @@ public static class ShareClass
         }
     }
 
-    #endregion ÏîÄ¿Ïà¹Ø²Ù×÷º¯Êı
+    #endregion é¡¹ç›®ç›¸å…³æ“ä½œå‡½æ•°
 
-    #region ÏîÄ¿·ÑÓÃ¼ÆËã
+    #region é¡¹ç›®è´¹ç”¨è®¡ç®—
 
-    //É¾³ı¸ü¶àÎÄµµ
+    //åˆ é™¤æ›´å¤šæ–‡æ¡£
     public static void DeleteMoreDocByDataGrid(DataGrid dataGrid1)
     {
         string strHQL;
@@ -6166,7 +6545,7 @@ public static class ShareClass
         }
     }
 
-    //¼ì²éÏàÓ¦¿ÆÄ¿ÏîÄ¿Ô¤ËãÓĞÃ»ÓĞ³¬Ö§
+    //æ£€æŸ¥ç›¸åº”ç§‘ç›®é¡¹ç›®é¢„ç®—æœ‰æ²¡æœ‰è¶…æ”¯
     public static bool CheckProjectExpenseBudget(string strProjectID, string strAccount, decimal deExpense)
     {
         string strHQL;
@@ -6232,7 +6611,7 @@ public static class ShareClass
         }
     }
 
-    //¼ì²éÏîÄ¿Îï×Ê¸¶¿îÉêÇëµ¥Ïà¶ÔÓ¦¿ÆÄ¿ÏîÄ¿Ô¤ËãÓĞÃ»ÓĞ³¬Ö§
+    //æ£€æŸ¥é¡¹ç›®ç‰©èµ„ä»˜æ¬¾ç”³è¯·å•ç›¸å¯¹åº”ç§‘ç›®é¡¹ç›®é¢„ç®—æœ‰æ²¡æœ‰è¶…æ”¯
     public static bool CheckProjectExpenseBudgetByProjectMaterialPayApplicant(string strProjectID, string strAccount, decimal deExpense)
     {
         string strHQL;
@@ -6300,7 +6679,7 @@ public static class ShareClass
     }
 
 
-    //ÒÀÔÚÓÃ°æÏîÄ¿¼Æ»®½ø¶È¸ü¸Äµ±Ç°Ê±¼äÏîÄ¿Íê³É½ø¶È
+    //ä¾åœ¨ç”¨ç‰ˆé¡¹ç›®è®¡åˆ’è¿›åº¦æ›´æ”¹å½“å‰æ—¶é—´é¡¹ç›®å®Œæˆè¿›åº¦
     public static void UpdateProjectScheduleByActivityPlanSchedule(string strProjectID)
     {
         string strHQL;
@@ -6346,7 +6725,7 @@ public static class ShareClass
 
     }
 
-    //¼ÆËãÏîÄ¿½ø¶È
+    //è®¡ç®—é¡¹ç›®è¿›åº¦
     public static void FinishPercentPicture(DataGrid dataGrid, int intCellNumber)
     {
         string strProjectID;
@@ -6392,7 +6771,7 @@ public static class ShareClass
         }
     }
 
-    //¼ÆËãÏîÄ¿·ÑÓÃÓëÔ¤Ëã½ø¶È
+    //è®¡ç®—é¡¹ç›®è´¹ç”¨ä¸é¢„ç®—è¿›åº¦
     public static void FinChargePercentByRow(DataGrid dataGrid, int intCellNumber)
     {
         string strProjectID;
@@ -6420,7 +6799,7 @@ public static class ShareClass
 
                 deBudget = project.Budget;
 
-                //Êµ¼Ê·ÑÓÃºÍÔ¤Ëã¶Ô±È
+                //å®é™…è´¹ç”¨å’Œé¢„ç®—å¯¹æ¯”
                 strHQL = "from ProRealCharge as proRealCharge where proRealCharge.ProjectID = " + strProjectID;
                 lst = proRealChargeBLL.GetAllProRealCharges(strHQL);
                 if (lst.Count == 0)
@@ -6443,16 +6822,16 @@ public static class ShareClass
                     }
                 }
 
-                // ÉèÖÃ½ø¶ÈÌõ¿í¶È - Ö±½ÓÊ¹ÓÃÊµ¼Ê°Ù·Ö±È
+                // è®¾ç½®è¿›åº¦æ¡å®½åº¦ - ç›´æ¥ä½¿ç”¨å®é™…ç™¾åˆ†æ¯”
                 System.Web.UI.HtmlControls.HtmlGenericControl progressContainer =
                     (System.Web.UI.HtmlControls.HtmlGenericControl)dataGrid.Items[i].FindControl("ProgressContainer");
 
-                // Ö±½ÓÊ¹ÓÃÊµ¼Ê·ÑÓÃ°Ù·Ö±È£¬ÏŞÖÆÔÚ0-100%Ö®¼ä
+                // ç›´æ¥ä½¿ç”¨å®é™…è´¹ç”¨ç™¾åˆ†æ¯”ï¼Œé™åˆ¶åœ¨0-100%ä¹‹é—´
                 decimal widthPercent = deChargePercent;
                 if (widthPercent < 0) widthPercent = 0;
                 if (widthPercent > 100) widthPercent = 100;
 
-                // ÉèÖÃ½ø¶ÈÌõ¿í¶È
+                // è®¾ç½®è¿›åº¦æ¡å®½åº¦
                 if (widthPercent > 0)
                 {
                     progressContainer.Style["width"] = widthPercent + "%";
@@ -6464,12 +6843,12 @@ public static class ShareClass
                     progressContainer.Style["display"] = "none";
                 }
 
-                // ÉèÖÃÔ­ÓĞLabelµÄÎÄ×ÖºÍÑùÊ½ - ±£³ÖÔ­ÓĞÂß¼­
+                // è®¾ç½®åŸæœ‰Labelçš„æ–‡å­—å’Œæ ·å¼ - ä¿æŒåŸæœ‰é€»è¾‘
                 Label lbRealCharge = (Label)dataGrid.Items[i].FindControl("LB_RealChargePercent");
                 Label lbBudget = (Label)dataGrid.Items[i].FindControl("LB_BudgetPercent");
                 lbBudget.Width = (Unit)100;
 
-                // ±£³ÖÔ­ÓĞµÄÎÄ×ÖÉèÖÃÂß¼­
+                // ä¿æŒåŸæœ‰çš„æ–‡å­—è®¾ç½®é€»è¾‘
                 decimal displayPercent = deChargePercent;
                 if (deChargePercent > 100)
                 {
@@ -6490,7 +6869,7 @@ public static class ShareClass
 
                 lbBudget.ToolTip = LanguageHandle.GetWord("Expense") + ":" + deRealCharge.ToString("#0.00") + "--" + LanguageHandle.GetWord("Budget") + ":" + deBudget.ToString("#0.00");
 
-                // ÉèÖÃ³¬Ô¤ËãµÄÑÕÉ«
+                // è®¾ç½®è¶…é¢„ç®—çš„é¢œè‰²
                 if (deRealCharge > deBudget)
                 {
                     if (deBudget == 0)
@@ -6526,7 +6905,7 @@ public static class ShareClass
         }
     }
 
-    //ÉèÖÃÏîÄ¿Ê±¼äºÍ³¬ÆÚÌìÊı
+    //è®¾ç½®é¡¹ç›®æ—¶é—´å’Œè¶…æœŸå¤©æ•°
     public static void SetProjectStartAndEndTime(DataGrid dataGrid, int intCellNumber)
     {
         int i;
@@ -6597,13 +6976,13 @@ public static class ShareClass
         }
     }
 
-    //Ìæ»»HTML±ê¼Ç
+    //æ›¿æ¢HTMLæ ‡è®°
     public static string NoHTML(string Htmlstring)
     {
-        //É¾³ı½Å±¾
+        //åˆ é™¤è„šæœ¬
         Htmlstring = Regex.Replace(Htmlstring, @"<script[^>]*?>.*?</script>", "", RegexOptions.IgnoreCase);
 
-        //É¾³ıHTML
+        //åˆ é™¤HTML
         Htmlstring = Regex.Replace(Htmlstring, @"<(.[^>]*)>", "", RegexOptions.IgnoreCase);
         Htmlstring = Regex.Replace(Htmlstring, @"([\r\n])[\s]+", "", RegexOptions.IgnoreCase);
         Htmlstring = Regex.Replace(Htmlstring, @"-->", "", RegexOptions.IgnoreCase);
@@ -6626,7 +7005,7 @@ public static class ShareClass
         return Htmlstring;
     }
 
-    //µÃµ½ÏîÄ¿ÈÕÖ¾³¤¶È(³¬¹ıÉÏÏŞÖµÉèÎªÉÏÏŞÖµ£©
+    //å¾—åˆ°é¡¹ç›®æ—¥å¿—é•¿åº¦(è¶…è¿‡ä¸Šé™å€¼è®¾ä¸ºä¸Šé™å€¼ï¼‰
     public static int GetDailyWorkLogLength(string strWorkLog)
     {
         int intLength, intCharUpper;
@@ -6643,7 +7022,7 @@ public static class ShareClass
         return intLength;
     }
 
-    //µÃµ½ÓÃ»§Ã¿ÈÕÉÏ´«µÄÏîÄ¿ÎÄµµÊı(³¬¹ıÉÏÏŞÖµÉèÎªÉÏÏŞÖµ£©
+    //å¾—åˆ°ç”¨æˆ·æ¯æ—¥ä¸Šä¼ çš„é¡¹ç›®æ–‡æ¡£æ•°(è¶…è¿‡ä¸Šé™å€¼è®¾ä¸ºä¸Šé™å€¼ï¼‰
     public static int GetDailyUploadDocNumber(string strUserCode, string strProjectID)
     {
         string strHQL;
@@ -6657,11 +7036,11 @@ public static class ShareClass
         strHQL += " and ((document.UploadManCode = " + "'" + strUserCode + "'" + " and document.DepartCode = " + "'" + strDepartCode + "'" + ")";
         strHQL += " or (document.Visible in ( 'Department','Entire'))))";
         strHQL += " or (((document.RelatedType = 'Requirement' and document.RelatedID in (select relatedDefect.DefectID from RelatedDefect as relatedDefect where relatedDefect.ProjectID = " + strProjectID + "))";
-        strHQL += " or (document.RelatedType = '·çÏÕ' and document.RelatedID in (select projectRisk.ID from ProjectRisk as projectRisk where projectRisk.ProjectID = " + strProjectID + "))";
+        strHQL += " or (document.RelatedType = 'é£é™©' and document.RelatedID in (select projectRisk.ID from ProjectRisk as projectRisk where projectRisk.ProjectID = " + strProjectID + "))";
         strHQL += " or (document.RelatedType = 'Task' and document.RelatedID in (select projectTask.TaskID from ProjectTask as projectTask where projectTask.ProjectID = " + strProjectID + "))";
         strHQL += " or (document.RelatedType = 'Plan' and document.RelatedID in (select workPlan.ID from WorkPlan as workPlan where workPlan.ProjectID = " + strProjectID + "))";
-        strHQL += " or (document.RelatedType = '»áÒé' and document.RelatedID in (select meeting.ID from Meeting as meeting where meeting.RelatedType='Project' and  meeting.RelatedID = " + strProjectID + "))";
-        strHQL += " and ((document.Visible in ('»áÒé','Department') and document.DepartCode = " + "'" + strDepartCode + "'" + " ) ";
+        strHQL += " or (document.RelatedType = 'ä¼šè®®' and document.RelatedID in (select meeting.ID from Meeting as meeting where meeting.RelatedType='Project' and  meeting.RelatedID = " + strProjectID + "))";
+        strHQL += " and ((document.Visible in ('ä¼šè®®','Department') and document.DepartCode = " + "'" + strDepartCode + "'" + " ) ";
         strHQL += " or (document.Visible = 'Entire' )))))";
         strHQL += " and to_char(document.UploadTime,'yyyymmdd') = " + "'" + strCurrentDate + "'";
         strHQL += " and rtrim(ltrim(document.Status)) <> 'Deleted' Order by document.DocID DESC";
@@ -6773,7 +7152,7 @@ public static class ShareClass
         return intDocUpper;
     }
 
-    //È¡µÃÏîÄ¿ÀàĞÍÃû³Æ
+    //å–å¾—é¡¹ç›®ç±»å‹åç§°
     public static string GetDocTypeName(string strDocTypeID)
     {
         DocTypeBLL docTypeBLL = new DocTypeBLL();
@@ -6786,11 +7165,11 @@ public static class ShareClass
         return docType.Type.Trim();
     }
 
-    #endregion ÏîÄ¿·ÑÓÃ¼ÆËã
+    #endregion é¡¹ç›®è´¹ç”¨è®¡ç®—
 
-    #region ¹¤×÷Á÷Ïà¹Ø²Ù×÷º¯Êı
+    #region å·¥ä½œæµç›¸å…³æ“ä½œå‡½æ•°
 
-    //ÉèÖÃÈ±Ê¡µÄÎÄ¼şÀàĞÍ
+    //è®¾ç½®ç¼ºçœçš„æ–‡ä»¶ç±»å‹
     public static void SetDefaultDocType(string strDocType, Label LB_DocTypeID, TextBox TB_DocType)
     {
         string strHQL;
@@ -6813,7 +7192,7 @@ public static class ShareClass
         }
     }
 
-    //ÉèÖÃÈ±Ê¡µÄ¹¤×÷Á÷Ä£°åÊ÷
+    //è®¾ç½®ç¼ºçœçš„å·¥ä½œæµæ¨¡æ¿æ ‘
     public static void SetDefaultWorkflowTemplate(string strDocType, DropDownList DL_TemName)
     {
         string strHQL;
@@ -6828,7 +7207,7 @@ public static class ShareClass
         DL_TemName.DataBind();
     }
 
-    //ÉèÖÃ¶ÔÏóÏà¹ØÈ±Ê¡µÄ¹¤×÷Á÷Ä£°å
+    //è®¾ç½®å¯¹è±¡ç›¸å…³ç¼ºçœçš„å·¥ä½œæµæ¨¡æ¿
     public static void SetDefaultWorkflowTemplateByRelateName(string strRelatedType, string strRelatedID, string strRelateName, DropDownList DL_WorkFlowTemName)
     {
         string strHQL;
@@ -6855,7 +7234,7 @@ public static class ShareClass
 
     }
 
-    //¸ù¾İÎÄµµÓĞÎŞ¹¤×÷Á÷Çé¿öÒş²ØÉ¾³ı°´Å¥
+    //æ ¹æ®æ–‡æ¡£æœ‰æ— å·¥ä½œæµæƒ…å†µéšè—åˆ é™¤æŒ‰é’®
     public static void HideDataGridDeleteButtonForDocUploadPage(DataGrid dataGrid1)
     {
         string strHQL;
@@ -6890,7 +7269,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃÎÄµµÏà¹Ø¹¤×÷Á÷ÊıÁ¿
+    //å–å¾—æ–‡æ¡£ç›¸å…³å·¥ä½œæµæ•°é‡
     public static int GetRelatedWorkflowCountForDoc(string strRelatedType, string strRelatedID, string strRelatedName)
     {
         string strHQL;
@@ -6903,7 +7282,7 @@ public static class ShareClass
         return ds.Tables[0].Rows.Count;
     }
 
-    //È¡µÃÎÄµµ
+    //å–å¾—æ–‡æ¡£
     public static Document GetDocumentByDocID(string strDocID)
     {
         string strHQL;
@@ -6919,7 +7298,7 @@ public static class ShareClass
     }
 
 
-    //È¡µÃ¹¤×÷Á÷Ä£°åÊÇ·ñÊÇ×Ô¶¯¼¤»î×´Ì¬
+    //å–å¾—å·¥ä½œæµæ¨¡æ¿æ˜¯å¦æ˜¯è‡ªåŠ¨æ¿€æ´»çŠ¶æ€
     public static string GetWorkflowTemplateIsAutoActiveStatus(string strTemName)
     {
         string strHQL;
@@ -6937,7 +7316,7 @@ public static class ShareClass
     }
 
 
-    //×Ô¶¯¸½¼ÓÆäËüÒÑÑ¡ÔñµÄÒªÆÀÉóµÄ¹¤×÷Á÷ÎÄ¼ş
+    //è‡ªåŠ¨é™„åŠ å…¶å®ƒå·²é€‰æ‹©çš„è¦è¯„å®¡çš„å·¥ä½œæµæ–‡ä»¶
     public static void AddMoreWLSelectedDocumentForUploadDocPage(DataGrid dataGrid1, int intRelatedID, string strExcludeID)
     {
         string strDocID;
@@ -6963,7 +7342,7 @@ public static class ShareClass
         }
     }
 
-    //×Ô¶¯¸½¼ÓÒªÆÀÉóµÄ¹¤×÷Á÷ÎÄ¼ş
+    //è‡ªåŠ¨é™„åŠ è¦è¯„å®¡çš„å·¥ä½œæµæ–‡ä»¶
     public static void AddWLDocumentForUploadDocPage(string strFromDocID, int intRelatedID)
     {
         string strHQL;
@@ -6992,7 +7371,7 @@ public static class ShareClass
         }
     }
 
-    //¸ü¸ÄÎÄµµ¹ØÁªÀàĞÍºÍID
+    //æ›´æ”¹æ–‡æ¡£å…³è”ç±»å‹å’ŒID
     public static void UpdateDocumentRelatedTypeAndRelatedID(string strDocID, string strRelatedType, int intRelatedID)
     {
         string strHQL;
@@ -7016,7 +7395,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃ¹ØÁª¹¤×÷Á÷µÄ×´Ì¬
+    //å–å¾—å…³è”å·¥ä½œæµçš„çŠ¶æ€
     public static string GetRelatedWorkflowStatus(string strRelatedType, string strRelatedID)
     {
         string strHQL;
@@ -7033,7 +7412,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃ¹ØÁª¹¤×÷Á÷µÄ×´Ì¬
+    //å–å¾—å…³è”å·¥ä½œæµçš„çŠ¶æ€
     public static string GetRelatedWorkflowStatusForDocUploadPage(string strDocName, string strDocID1)
     {
         string strHQL;
@@ -7051,7 +7430,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃÇ°²½ÉóÅúÈË
+    //å–å¾—å‰æ­¥å®¡æ‰¹äºº
     public static string GetPriorStepLastestOperator(string strWLID, string strStepID, string strStepDetailID)
     {
         string strHQL1, strHQL2, strHQL3;
@@ -7122,7 +7501,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃÏÂÒ»²½ÉóÅúÈË
+    //å–å¾—ä¸‹ä¸€æ­¥å®¡æ‰¹äºº
     public static string GetNextStepLastestOperator(string strWLID, string strStepID, string strStepDetailID)
     {
         string strHQL1, strHQL2, strHQL3;
@@ -7194,7 +7573,7 @@ public static class ShareClass
     }
 
 
-    //È¡µÃ×îĞÂÒ»²½ÉóÅúÈË
+    //å–å¾—æœ€æ–°ä¸€æ­¥å®¡æ‰¹äºº
     public static string GetLastestStepLastestOperator(string strWLID)
     {
         string strHQL1;
@@ -7233,7 +7612,7 @@ public static class ShareClass
     }
 
 
-    //È¡µÃÒµÎñ±íµ¥¹ØÁªµÄÁ÷³ÌID
+    //å–å¾—ä¸šåŠ¡è¡¨å•å…³è”çš„æµç¨‹ID
     public static string GetBusinessRelatedWorkFlowID(string strWLType, string strRelatedType, string strRelatedID)
     {
         string strHQL;
@@ -7254,7 +7633,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃÒµÎñ±íµ¥¹ØÁªµÄÁ÷³Ì²½ÖèÄ£°åÊÇ·ñ¿ÉÒÔÈ«±í±à¼­
+    //å–å¾—ä¸šåŠ¡è¡¨å•å…³è”çš„æµç¨‹æ­¥éª¤æ¨¡æ¿æ˜¯å¦å¯ä»¥å…¨è¡¨ç¼–è¾‘
     public static string GetWorkflowTemplateStepFullAllowEditValue(string strWLType, string strRelatedType, string strRelatedID, string strStepSortNumber)
     {
         string strTemName, strAllowFullEdit;
@@ -7296,7 +7675,7 @@ public static class ShareClass
         return strAllowFullEdit;
     }
 
-    //È¡µÃ¹¤×÷Á÷Ãû³Æ
+    //å–å¾—å·¥ä½œæµåç§°
     public static string GetWorkFlowName(string strWLID)
     {
         string strHQL;
@@ -7312,7 +7691,7 @@ public static class ShareClass
         return ds.Tables[0].Rows[0]["WLName"].ToString().Trim();
     }
 
-    //È¡µÃ¹¤×÷Á÷ÀàĞÍ
+    //å–å¾—å·¥ä½œæµç±»å‹
     public static string GetWorkFlowType(string strWLID)
     {
         string strHQL;
@@ -7329,7 +7708,7 @@ public static class ShareClass
         return ds.Tables[0].Rows[0]["WLType"].ToString().Trim();
     }
 
-    //È¡µÃ¹¤×÷Á÷¹ØÁªÀàĞÍ
+    //å–å¾—å·¥ä½œæµå…³è”ç±»å‹
     public static string GetWorkFlowRelatedType(string strWLID)
     {
         string strHQL;
@@ -7346,7 +7725,7 @@ public static class ShareClass
         return ds.Tables[0].Rows[0]["RelatedType"].ToString().Trim();
     }
 
-    //È¡µÃ¹¤×÷Á÷¹ØÁªID
+    //å–å¾—å·¥ä½œæµå…³è”ID
     public static string GetWorkFlowRelatedID(string strWLID)
     {
         string strHQL;
@@ -7363,7 +7742,7 @@ public static class ShareClass
         return ds.Tables[0].Rows[0]["RelatedID"].ToString().Trim();
     }
 
-    //È¡µÃ¹¤×÷Á÷µ±Ç°²½ÖèÄ£°åÊÇ·ñÔÊĞí¼ÓÇ©
+    //å–å¾—å·¥ä½œæµå½“å‰æ­¥éª¤æ¨¡æ¿æ˜¯å¦å…è®¸åŠ ç­¾
     public static string GetWorkflowTemplateStepAllowCurrentStepAddApprover(string strStepID)
     {
         string strHQL;
@@ -7381,7 +7760,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃ¹¤×÷Á÷ÏÂÒ»²½ÖèÄ£°åÊÇ·ñÔÊĞí¼ÓÇ©
+    //å–å¾—å·¥ä½œæµä¸‹ä¸€æ­¥éª¤æ¨¡æ¿æ˜¯å¦å…è®¸åŠ ç­¾
     public static string GetWorkflowTemplateStepAllowNextStepAddApprover(string strStepID)
     {
         string strHQL;
@@ -7399,7 +7778,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃ´ËÁ÷³ÌµÄÉÏ¼¶Á÷³ÌID
+    //å–å¾—æ­¤æµç¨‹çš„ä¸Šçº§æµç¨‹ID
     public static string GetParentWorklowID(string strWLID)
     {
         string strHQL;
@@ -7417,7 +7796,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃ´ËÁ÷³ÌµÄÉÏ¼¶Á÷³Ì²½ÖèID
+    //å–å¾—æ­¤æµç¨‹çš„ä¸Šçº§æµç¨‹æ­¥éª¤ID
     public static string GetParentWorklowStepID(string strWLID)
     {
         string strHQL;
@@ -7435,7 +7814,7 @@ public static class ShareClass
         }
     }
 
-    //ÒÀ²½ÖèID£¬È¡µÃ´ËÁ÷³ÌµÄÏÂ¼¶Á÷³ÌID
+    //ä¾æ­¥éª¤IDï¼Œå–å¾—æ­¤æµç¨‹çš„ä¸‹çº§æµç¨‹ID
     public static string GetChildWorklowIDByStepID(string strWLID, string strStepID)
     {
         string strHQL;
@@ -7452,7 +7831,7 @@ public static class ShareClass
         }
     }
 
-    //BusinessForm,×°ÔØ¹ØÁªĞÅÏ¢
+    //BusinessForm,è£…è½½å…³è”ä¿¡æ¯
     public static void LoadBusinessForm(string strRelatedType, string strRelatedID, string strTemName, System.Web.UI.HtmlControls.HtmlIframe IFrame_RelatedInformation)
     {
         string strURL;
@@ -7469,7 +7848,7 @@ public static class ShareClass
         IFrame_RelatedInformation.Attributes.Add("src", strURL);
     }
 
-    //BusinessForm,ÒÀÀàĞÍºÍIDÈ¡µÃÁ÷³ÌÄ£°åÃû³Æ
+    //BusinessForm,ä¾ç±»å‹å’ŒIDå–å¾—æµç¨‹æ¨¡æ¿åç§°
     public static string getBusinessFormTemName(string strRelatedType, string strRelatedID)
     {
         string strHQL;
@@ -7489,7 +7868,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃ¹¤×÷Á÷ÀàĞÍµÄ±¾µØ»¯Ãû³Æ
+    //å–å¾—å·¥ä½œæµç±»å‹çš„æœ¬åœ°åŒ–åç§°
     public static string GetWorkflowTypeHomeName(string strWLType)
     {
         string strHQL;
@@ -7507,7 +7886,7 @@ public static class ShareClass
         }
     }
 
-    //BusinessForm,ÁĞ³öÒµÎñ±íµ¥ÀàĞÍ
+    //BusinessForm,åˆ—å‡ºä¸šåŠ¡è¡¨å•ç±»å‹
     public static void LoadWorkflowType(DropDownList DL_WLType, string strLangCode)
     {
         string strHQL;
@@ -7524,7 +7903,7 @@ public static class ShareClass
         DL_WLType.Items.Insert(0, new ListItem("--Select--", "0"));
     }
 
-    //BusinessForm,È¡ÒµÎñ±íµ¥Ä£°åÃû³Æ
+    //BusinessForm,å–ä¸šåŠ¡è¡¨å•æ¨¡æ¿åç§°
     public static string GetWorkTemplateType(string strTemName)
     {
         IList lst;
@@ -7548,7 +7927,7 @@ public static class ShareClass
         return strTemType;
     }
 
-    //¸ü¸Ä¹¤×÷Á÷¹ØÁªµÄÊı¾İÎÄ¼ş
+    //æ›´æ”¹å·¥ä½œæµå…³è”çš„æ•°æ®æ–‡ä»¶
     //strCmdText = "select * from T_AssetPurchaseOrder where POID = " + strPOID;
     public static void UpdateWokflowRelatedXMLFile(string strTableType, string strWLID, string strWLStepDetailID, string strCmdText)
     {
@@ -7582,7 +7961,7 @@ public static class ShareClass
         }
     }
 
-    //BusinessForm£¬¹ØÁªÏàÓ¦µÄÒµÎñ±íµ¥Ä£°å
+    //BusinessFormï¼Œå…³è”ç›¸åº”çš„ä¸šåŠ¡è¡¨å•æ¨¡æ¿
     public static void SaveRelatedBusinessForm(string strRelatedType, string strRelatedID, string strTemName, string strAllowUpdate, string strUserCode)
     {
         string strHQL;
@@ -7620,7 +7999,7 @@ public static class ShareClass
         }
     }
 
-    //BusinessForm,È¡µÃÒµÎñ±íµ¥Ä£°åÃû³Æ
+    //BusinessForm,å–å¾—ä¸šåŠ¡è¡¨å•æ¨¡æ¿åç§°
     public static string getRelatedBusinessFormTemName(string strRelatedType, string strRelatedID)
     {
         string strHQL;
@@ -7638,7 +8017,7 @@ public static class ShareClass
         }
     }
 
-    //BusinessForm,´¦Àí¹ØÁªµÄÒµÎñ±íµ¥Êı¾İ
+    //BusinessForm,å¤„ç†å…³è”çš„ä¸šåŠ¡è¡¨å•æ•°æ®
     public static void InsertOrUpdateTaskAssignRecordWFXMLData(string strRelatedType, string strRelatedID, string strAssignType, string strAssignID, string strUserCode)
     {
         string strHQL;
@@ -7666,7 +8045,7 @@ public static class ShareClass
         }
     }
 
-    //ÁĞ³öÁ÷³Ì¹ØÁªÄ£×é
+    //åˆ—å‡ºæµç¨‹å…³è”æ¨¡ç»„
     public static void LoadWorkFlowTStepRelatedModule(Repeater RP_RelatedModule, string strWorkflowID, string strWorkflowStepID, string strWorkflowStepDetailID, string strStepGUID, string strLangCode, string strUserCode)
     {
         string strHQL;
@@ -7687,10 +8066,10 @@ public static class ShareClass
         RP_RelatedModule.DataBind();
     }
 
-    //ÈçÁ÷³ÌÏà¹ØÄ£×é£¬³õÊ¼»¯
+    //å¦‚æµç¨‹ç›¸å…³æ¨¡ç»„ï¼Œåˆå§‹åŒ–
     public static void InitialWorkflowRelatedModule(string strRelatedWorkflowID, string strRelatedWorkflowStepID, Button BT_CreateMain, LinkButton BT_NewMain, Button BT_CreateDetail, LinkButton BT_NewDetail, string strMainTableCanAdd, string strDetailTableCanAdd, string strMainTableCanEdit, string strDetailTableCanEdit)
     {
-        //WorkFlow,Èç¹ûÊÇÓÉ¹¤×÷Á÷Æô¶¯µÄÒµÎñ£¬ÄÇÃ´Òş²ØÄ£ºı²éÑ¯¹¦ÄÜ
+        //WorkFlow,å¦‚æœæ˜¯ç”±å·¥ä½œæµå¯åŠ¨çš„ä¸šåŠ¡ï¼Œé‚£ä¹ˆéšè—æ¨¡ç³ŠæŸ¥è¯¢åŠŸèƒ½
         if (strRelatedWorkflowID != null)
         {
             if (strMainTableCanAdd == "YES")
@@ -7731,13 +8110,13 @@ public static class ShareClass
         }
     }
 
-    //ÈçÁ÷³ÌÏà¹ØÄ£×é£¬Ö÷±í³õÊ¼»¯
+    //å¦‚æµç¨‹ç›¸å…³æ¨¡ç»„ï¼Œä¸»è¡¨åˆå§‹åŒ–
     public static void MainTableChangeWorkflowRelatedModule(string strCurrentUserCode, string strRelatedBusinessType, string strRelatedBusinessID, string strRelatedBusinessCreatorCode, string strRelatedWorkflowID, string strRelatedWorkflowStepID, string strRelatedWorkflowStepDetailID, Button BT_CreateMain, LinkButton BT_NewMain, Button BT_CreateDetail, LinkButton BT_NewDetail, string strMainTableCanEdit)
     {
-        //WorkFlow,Èç¹û´Ëµ¥ºÍ¹¤×÷Á÷Ïà¹Ø£¬ÄÇÃ´ÒÀ¹¤×÷Á÷×´Ì¬¾ö¶¨ÄÜ·ñ±£´æµ¥¾İÊı¾İ
+        //WorkFlow,å¦‚æœæ­¤å•å’Œå·¥ä½œæµç›¸å…³ï¼Œé‚£ä¹ˆä¾å·¥ä½œæµçŠ¶æ€å†³å®šèƒ½å¦ä¿å­˜å•æ®æ•°æ®
         string strWFStatus, strStepStatus;
 
-        //²»´ÓÁ÷³ÌÆô¶¯Ê±£¬ÅĞ¶ÏÓĞÃ»ÓĞÏà¹ØµÄÁ÷³Ì¼ÇÂ¼
+        //ä¸ä»æµç¨‹å¯åŠ¨æ—¶ï¼Œåˆ¤æ–­æœ‰æ²¡æœ‰ç›¸å…³çš„æµç¨‹è®°å½•
         if (strRelatedWorkflowID == null)
         {
             WorkFlowRelatedModule workFlowRelatedModule = ShareClass.getModuleToRelatedWorkflow(strRelatedBusinessType, strRelatedBusinessID);
@@ -7772,10 +8151,10 @@ public static class ShareClass
         }
     }
 
-    //ÈçÁ÷³ÌÏà¹ØÄ£×é£¬Ö÷±íÉ¾³ı
+    //å¦‚æµç¨‹ç›¸å…³æ¨¡ç»„ï¼Œä¸»è¡¨åˆ é™¤
     public static bool MainTableDeleteWorkflowRelatedModule(string strCurrentUserCode, string strRelatedBusinessCreatorCode, string strRelatedWorkflowID, string strRelatedWorkflowStepID, string strRelatedWorkflowStepDetailID, string strMainTableCanDelete)
     {
-        //Workflow,Èç¹û´æÔÚ¹ØÁª¹¤×÷Á÷£¬ÄÇÃ´ÒªÖ´ĞĞÏÂÃæµÄ´úÂë
+        //Workflow,å¦‚æœå­˜åœ¨å…³è”å·¥ä½œæµï¼Œé‚£ä¹ˆè¦æ‰§è¡Œä¸‹é¢çš„ä»£ç 
         string strWFStatus, strStepStatus;
 
         if (strRelatedWorkflowID != null)
@@ -7798,13 +8177,13 @@ public static class ShareClass
         return true;
     }
 
-    //ÈçÁ÷³ÌÏà¹ØÄ£×é£¬Ã÷Ï¸±í³õÊ¼»¯
+    //å¦‚æµç¨‹ç›¸å…³æ¨¡ç»„ï¼Œæ˜ç»†è¡¨åˆå§‹åŒ–
     public static void DetailTableChangeWorkflowRelatedModule(string strCurrentUserCode, string strRelatedBusinessType, string strRelatedBusinessID, string strRelatedWorkflowID, string strRelatedWorkflowStepID, string strRelatedWorkflowStepDetailID, Button BT_CreateMain, LinkButton BT_NewMain, Button BT_CreateDetail, LinkButton BT_NewDetail, string strDetailTableCanAdd, string strDetailTableCanEdit)
     {
-        //WorkFlow,Èç¹û´Ëµ¥ºÍ¹¤×÷Á÷Ïà¹Ø£¬ÄÇÃ´ÒÀ¹¤×÷Á÷×´Ì¬¾ö¶¨ÄÜ·ñ±£´æµ¥¾İÊı¾İ
+        //WorkFlow,å¦‚æœæ­¤å•å’Œå·¥ä½œæµç›¸å…³ï¼Œé‚£ä¹ˆä¾å·¥ä½œæµçŠ¶æ€å†³å®šèƒ½å¦ä¿å­˜å•æ®æ•°æ®
         string strWFStatus, strStepStatus;
 
-        //²»´ÓÁ÷³ÌÆô¶¯Ê±£¬ÅĞ¶ÏÓĞÃ»ÓĞÏà¹ØµÄÁ÷³Ì¼ÇÂ¼
+        //ä¸ä»æµç¨‹å¯åŠ¨æ—¶ï¼Œåˆ¤æ–­æœ‰æ²¡æœ‰ç›¸å…³çš„æµç¨‹è®°å½•
         if (strRelatedWorkflowID == null)
         {
             WorkFlowRelatedModule workFlowRelatedModule = ShareClass.getModuleToRelatedWorkflow(strRelatedBusinessType, strRelatedBusinessID);
@@ -7847,7 +8226,7 @@ public static class ShareClass
         }
     }
 
-    //ÈçÁ÷³ÌÏà¹ØÄ£×é£¬Ã÷Ï¸±íÉ¾³ı
+    //å¦‚æµç¨‹ç›¸å…³æ¨¡ç»„ï¼Œæ˜ç»†è¡¨åˆ é™¤
     public static bool DetailTableDeleteWorkflowRelatedModule(string strCurrentUserCode, string strRelatedBusinessCreatorCode, string strRelatedWorkflowID, string strRelatedWorkflowStepID, string strRelatedWorkflowStepDetailID, string strDetailTableCanDelete)
     {
         string strWFStatus, strStepStatus;
@@ -7878,7 +8257,7 @@ public static class ShareClass
         return true;
     }
 
-    //È¡µÃÁ÷³Ì²Ù×÷Ã÷Ï¸±í
+    //å–å¾—æµç¨‹æ“ä½œæ˜ç»†è¡¨
     public static WorkFlowStepDetail GetWorkFlowStepDetail(string strWorkflowStepDetailID)
     {
         string strHQL;
@@ -7898,7 +8277,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃÁ÷³ÌÄ£°å²½Öè
+    //å–å¾—æµç¨‹æ¨¡æ¿æ­¥éª¤
     public static WorkFlowTStep GetWorkFlowTStep(string strTemName, int intSortNumber)
     {
         string strHQL;
@@ -7913,7 +8292,7 @@ public static class ShareClass
         return workFlowTStep;
     }
 
-    //È¡µÃÁ÷³Ì²½Öè
+    //å–å¾—æµç¨‹æ­¥éª¤
     public static WorkFlowStep GetWorkFlowStep(string strStepID)
     {
         string strHQL;
@@ -7989,7 +8368,7 @@ public static class ShareClass
         }
     }
 
-    //Ìí¼ÓÄ£×é¹ØÁªÁ÷³Ì¼ÇÂ¼
+    //æ·»åŠ æ¨¡ç»„å…³è”æµç¨‹è®°å½•
     public static void AddModuleToRelatedWorkflow(string strWorkflowID, string strWorkflowStepID, string strWorkflowStepDetailID, string strRelatedModuleName, string strRelatedID)
     {
         if (strWorkflowID != null)
@@ -8013,7 +8392,7 @@ public static class ShareClass
         }
     }
 
-    //É¾³ıÄ£×é¹ØÁªÁ÷³Ì¼ÇÂ¼
+    //åˆ é™¤æ¨¡ç»„å…³è”æµç¨‹è®°å½•
     public static void DeleteModuleToRelatedWorkflow(string strWorkflowID, string strWorkflowStepID, string strWorkflowStepDetailID, string strRelatedModuleName, string strRelatedID)
     {
         if (strWorkflowID != null)
@@ -8033,7 +8412,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃÄ£×éÏà¹ØÁ÷³Ì¼ÇÂ¼
+    //å–å¾—æ¨¡ç»„ç›¸å…³æµç¨‹è®°å½•
     public static WorkFlowRelatedModule getModuleToRelatedWorkflow(string strRelatedModuleName, string strRelatedID)
     {
         string strHQL;
@@ -8053,7 +8432,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃÊÇ·ñ×Ô¶¯¼¤»î¹¤×÷Á÷
+    //å–å¾—æ˜¯å¦è‡ªåŠ¨æ¿€æ´»å·¥ä½œæµ
     public static string GetWorkflowTemplateAutoActive(string strTemName)
     {
         string strHQL;
@@ -8064,7 +8443,7 @@ public static class ShareClass
         return ds.Tables[0].Rows[0][0].ToString().Trim();
     }
 
-    //È¡µÃ¹¤×÷Á÷¹ØÁªµÄMainTableID
+    //å–å¾—å·¥ä½œæµå…³è”çš„MainTableID
     public static int GetWorkflowMainTableID(string strWFID)
     {
         string strHQL;
@@ -8082,7 +8461,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃ¹¤×÷Á÷XMLÎÄ¼ş
+    //å–å¾—å·¥ä½œæµXMLæ–‡ä»¶
     public static string GetWorkflowXMLFile(string strWFID)
     {
         string strHQL;
@@ -8105,7 +8484,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃ¹¤×÷Á÷Ä£°åÉè¼ÆÀàĞÍ
+    //å–å¾—å·¥ä½œæµæ¨¡æ¿è®¾è®¡ç±»å‹
     public static string GetWLTemplateDesignType(string strTemName)
     {
         string strHQL;
@@ -8120,7 +8499,7 @@ public static class ShareClass
         return workFlowTemplate.DesignType.Trim();
     }
 
-    //È¡µÃ¹¤×÷Á÷Ä£°å´®
+    //å–å¾—å·¥ä½œæµæ¨¡æ¿ä¸²
     public static string GetWLTemplateIdentifyString(string strTemName)
     {
         string strHQL;
@@ -8142,7 +8521,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃ¹¤×÷Á÷Ä£°åÃû
+    //å–å¾—å·¥ä½œæµæ¨¡æ¿å
     public static string GetWLTemplateNameByIdentifyString(string strIdentifyString)
     {
         string strHQL;
@@ -8354,7 +8733,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃÁ÷³Ì²½ĞòºÅ
+    //å–å¾—æµç¨‹æ­¥åºå·
     public static int GetWorkFlowCurrentStepSortNumber(string strStepID)
     {
         string strHQL;
@@ -8373,7 +8752,7 @@ public static class ShareClass
         return intSortNumber;
     }
 
-    //¸ü¸ÄÁ÷³ÌÏà¹Ø¶ÔÏó×´Ì¬
+    //æ›´æ”¹æµç¨‹ç›¸å…³å¯¹è±¡çŠ¶æ€
     public static bool UpdateRelatedBusinessStatus(string strWFType, string strRelatedID, string strOperation)
     {
         string strHQL;
@@ -8441,11 +8820,11 @@ public static class ShareClass
         return strWFDefinition;
     }
 
-    #endregion ¹¤×÷Á÷Ïà¹Ø²Ù×÷º¯Êı
+    #endregion å·¥ä½œæµç›¸å…³æ“ä½œå‡½æ•°
 
-    #region ¶¨Òå¸÷ÖÖÒµÎñÊ÷
+    #region å®šä¹‰å„ç§ä¸šåŠ¡æ ‘
 
-    //¶¨ÒåºÏÍ¬Ê÷
+    //å®šä¹‰åˆåŒæ ‘
     public static void InitialConstractTree(TreeView ConstractTreeView)
     {
         string strHQL;
@@ -8453,7 +8832,7 @@ public static class ShareClass
 
         string strConstractID, strConstractCode, strConstractName;
 
-        //Ìí¼Ó¸ù½Úµã
+        //æ·»åŠ æ ¹èŠ‚ç‚¹
         ConstractTreeView.Nodes.Clear();
 
         TreeNode node1 = new TreeNode();
@@ -8540,7 +8919,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃºÏÍ¬Ãû³Æ
+    //å–å¾—åˆåŒåç§°
     public static string GetConstractName(string strConstractCode)
     {
         string strHQL;
@@ -8561,7 +8940,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃºÏÍ¬IDºÅ
+    //å–å¾—åˆåŒIDå·
     public static int GetConstractID(string strConstractCode)
     {
         string strHQL;
@@ -8583,13 +8962,13 @@ public static class ShareClass
     }
 
 
-    //¶¨ÒåËùÓĞÎÄµµÀàĞÍÊ÷
+    //å®šä¹‰æ‰€æœ‰æ–‡æ¡£ç±»å‹æ ‘
     public static void InitialAllDocTypeTree(TreeView TreeView3)
     {
         string strHQL, strDocTypeID, strDocType;
         IList lst;
 
-        //Ìí¼Ó¸ù½Úµã
+        //æ·»åŠ æ ¹èŠ‚ç‚¹
         TreeView3.Nodes.Clear();
 
         TreeNode node1 = new TreeNode();
@@ -8670,7 +9049,7 @@ public static class ShareClass
         string strHQL, strDocTypeID, strDocType, strDepartCode;
         IList lst;
 
-        //Ìí¼Ó¸ù½Úµã
+        //æ·»åŠ æ ¹èŠ‚ç‚¹
         TreeView3.Nodes.Clear();
 
         TreeNode node1 = new TreeNode();
@@ -8760,7 +9139,7 @@ public static class ShareClass
         string strHQL, strDocTypeID, strDocType, strDepartCode;
         IList lst;
 
-        //Ìí¼Ó¸ù½Úµã
+        //æ·»åŠ æ ¹èŠ‚ç‚¹
         TreeView3.Nodes.Clear();
 
         TreeNode node1 = new TreeNode();
@@ -8789,7 +9168,7 @@ public static class ShareClass
                  or (docType.SaveType = 'Department' and docType.UserCode in (Select projectMember.UserCode from ProjectMember as projectMember where projectMember.DepartCode = '{1}'))
                  or (docType.SaveType not in ('All','Group','Company','Individual','Department') and docType.SaveType in (select actorGroupDetail.GroupName from ActorGroupDetail as actorGroupDetail where actorGroupDetail.UserCode = '{0}')))
                  and docType.ParentID not in (select docType.ID from DocType as docType)
-                 and docType.Type not in ('ÈÎÎñ¿â','ÖªÊ¶¿â')
+                 and docType.Type not in ('ä»»åŠ¡åº“','çŸ¥è¯†åº“')
                  order by docType.SortNumber ASC", strUserCode, strDepartCode);
         }
 
@@ -8843,7 +9222,7 @@ public static class ShareClass
             strHQL += " or (docType.SaveType = 'Department' and docType.UserCode in (Select projectMember.UserCode from ProjectMember as projectMember where projectMember.DepartCode = " + "'" + strDepartCode + "'" + "))";
             strHQL += " or (docType.SaveType not in ('All','Group','Company','Individual','Department') and docType.SaveType in (select actorGroupDetail.GroupName from ActorGroupDetail as actorGroupDetail where actorGroupDetail.UserCode = " + "'" + strUserCode + "'" + ")))";
             strHQL += " and docType.ParentID = " + strParentID;
-            //strHQL += " and docType.Type not in ('ÈÎÎñ¿â','ÖªÊ¶¿â')";  
+            //strHQL += " and docType.Type not in ('ä»»åŠ¡åº“','çŸ¥è¯†åº“')";  
             strHQL += " order by docType.SortNumber ASC";
         }
         lst1 = docTypeBLL.GetAllDocTypes(strHQL);
@@ -8870,7 +9249,7 @@ public static class ShareClass
         }
     }
 
-    //ÒÀÏà¹ØÀàĞÍ¶¨ÒåÎÄµµÀàĞÍÊ÷
+    //ä¾ç›¸å…³ç±»å‹å®šä¹‰æ–‡æ¡£ç±»å‹æ ‘
     public static void InitialDocTypeTree(TreeView TreeView1, string strUserCode, string strRelatedType, string strRelatedID, string strRelatedName)
     {
         string strHQL;
@@ -8880,7 +9259,7 @@ public static class ShareClass
 
         int j = 1;
 
-        //Ìí¼Ó¸ù½Úµã
+        //æ·»åŠ æ ¹èŠ‚ç‚¹
         TreeView1.Nodes.Clear();
 
         TreeNode node1 = new TreeNode();
@@ -8988,7 +9367,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃÎÄ¼şÀàĞÍÁĞ±í
+    //å–å¾—æ–‡ä»¶ç±»å‹åˆ—è¡¨
     public static IList GetDocTypeList(string strUserCode)
     {
         string strHQL, strDepartCode;
@@ -9021,7 +9400,7 @@ public static class ShareClass
         return lst;
     }
 
-    //È¡µÃÎÄµµÀàĞÍµÄÉÏ¼¶ÀàĞÍ
+    //å–å¾—æ–‡æ¡£ç±»å‹çš„ä¸Šçº§ç±»å‹
     public static string getDocParentTypeByID(string strTypeID)
     {
         string strHQL;
@@ -9046,7 +9425,7 @@ public static class ShareClass
     }
 
     /// <summary>
-    /// ¶¨Òå¿¢¹¤×ÊÁÏÏÔÊ¾µÄÏîÄ¿Ê÷½á¹¹ By LiuJianping 2013-09-13
+    /// å®šä¹‰ç«£å·¥èµ„æ–™æ˜¾ç¤ºçš„é¡¹ç›®æ ‘ç»“æ„ By LiuJianping 2013-09-13
     /// </summary>
     /// <param name="TreeView1"></param>
     /// <param name="strUserCode"></param>
@@ -9054,7 +9433,7 @@ public static class ShareClass
     {
         string strHQL, strProjectID, strProject;
         string strProjectIDString = "";
-        //Ìí¼Ó¸ù½Úµã
+        //æ·»åŠ æ ¹èŠ‚ç‚¹
         TreeView1.Nodes.Clear();
 
         TreeNode node1 = new TreeNode();
@@ -9093,14 +9472,14 @@ public static class ShareClass
     }
 
     /// <summary>
-    /// ¸ù¾İ¼ìË÷Ìõ¼ş»ñÈ¡Ô¤Ëã·ÑÓÃ  2013-11-15  By LiuJianping
+    /// æ ¹æ®æ£€ç´¢æ¡ä»¶è·å–é¢„ç®—è´¹ç”¨  2013-11-15  By LiuJianping
     /// </summary>
-    /// <param name="dg">DataGrid¿Ø¼ş</param>
-    /// <param name="strDepartCode">²¿ÃÅ±àÂë-·Ç¿Õ</param>
-    /// <param name="strAccountName">»á¼Æ¿ÆÄ¿-¿É¿Õ</param>
-    /// <param name="strYearNum">Äê·İ-·Ç¿Õ Îª¿ÕµÄ»°£¬ÓÃ0´ú±í</param>
-    /// <param name="strMonthNum">ÔÂ·İ-·Ç¿Õ£¬0´ú±í¿Õ</param>
-    /// <param name="strType">·ÑÓÃÀàĞÍ »ù´¡¡¢²Ù×÷Á½ÖÖ£¬»ù´¡¼´ÎªÔ¤Ëã·ÑÓÃÉèÖÃµÄ±ê×¼¶î¶È£»²Ù×÷¼´ÎªÊµ¼ÊÔ¤Ëã·ÑÓÃ¼ÇÂ¼µÄÉêÇë¶î¶È</param>
+    /// <param name="dg">DataGridæ§ä»¶</param>
+    /// <param name="strDepartCode">éƒ¨é—¨ç¼–ç -éç©º</param>
+    /// <param name="strAccountName">ä¼šè®¡ç§‘ç›®-å¯ç©º</param>
+    /// <param name="strYearNum">å¹´ä»½-éç©º ä¸ºç©ºçš„è¯ï¼Œç”¨0ä»£è¡¨</param>
+    /// <param name="strMonthNum">æœˆä»½-éç©ºï¼Œ0ä»£è¡¨ç©º</param>
+    /// <param name="strType">è´¹ç”¨ç±»å‹ åŸºç¡€ã€æ“ä½œä¸¤ç§ï¼ŒåŸºç¡€å³ä¸ºé¢„ç®—è´¹ç”¨è®¾ç½®çš„æ ‡å‡†é¢åº¦ï¼›æ“ä½œå³ä¸ºå®é™…é¢„ç®—è´¹ç”¨è®°å½•çš„ç”³è¯·é¢åº¦</param>
     public static void GetBMBaseDataList(ref DataGrid dg, string strDepartCode, string strAccountName, int strYearNum, int strMonthNum, string strType)
     {
         string strHQL = "From BDBaseData as bDBaseData where bDBaseData.DepartCode = '" + strDepartCode + "' and bDBaseData.AccountName='" + strAccountName + "' and " +
@@ -9117,7 +9496,7 @@ public static class ShareClass
         dg.DataBind();
     }
 
-    //È«¾ÖÏîÄ¿Ê÷£¬»¹ÓĞÉ¾³ıÏßµÄ
+    //å…¨å±€é¡¹ç›®æ ‘ï¼Œè¿˜æœ‰åˆ é™¤çº¿çš„
     public static void InitialPrjectTreeWithDeleteLine(TreeView TreeView1)
     {
         string strHQL;
@@ -9125,7 +9504,7 @@ public static class ShareClass
 
         string strProjectID, strProject;
 
-        //Ìí¼Ó¸ù½Úµã
+        //æ·»åŠ æ ¹èŠ‚ç‚¹
         TreeView1.Nodes.Clear();
 
         TreeNode node1 = new TreeNode();
@@ -9149,7 +9528,7 @@ public static class ShareClass
             project = (Project)lst[i];
 
             strProjectID = project.ProjectID.ToString();
-            if (project.ProjectClass.Trim() == "Ä£°åÏîÄ¿")
+            if (project.ProjectClass.Trim() == "æ¨¡æ¿é¡¹ç›®")
             {
                 strProject = "[<font size='2'  color='#FF0000'>" + LanguageHandle.GetWord("MoBan").ToString().Trim() + "</font>]" + project.ProjectName.Trim();
             }
@@ -9192,7 +9571,7 @@ public static class ShareClass
         {
             project = (Project)lst1[i];
             strProjectID = project.ProjectID.ToString();
-            if (project.ProjectClass.Trim() == "Ä£°åÏîÄ¿")
+            if (project.ProjectClass.Trim() == "æ¨¡æ¿é¡¹ç›®")
             {
                 strProject = "[<font size='2'  color='#FF0000'>" + LanguageHandle.GetWord("MoBan").ToString().Trim() + "</font>]" + project.ProjectName.Trim();
             }
@@ -9226,7 +9605,7 @@ public static class ShareClass
         }
     }
 
-    //¶¨ÒåËùÓĞÏîÄ¿Ê÷
+    //å®šä¹‰æ‰€æœ‰é¡¹ç›®æ ‘
     public static void InitialAllProjectTree(TreeView TreeView1, string strDepartString)
     {
         string strHQL;
@@ -9235,7 +9614,7 @@ public static class ShareClass
         string strProjectID, strProject;
         String strUserCode = HttpContext.Current.Session["UserCode"].ToString().Trim();
 
-        //Ìí¼Ó¸ù½Úµã
+        //æ·»åŠ æ ¹èŠ‚ç‚¹
         TreeView1.Nodes.Clear();
 
         TreeNode node1 = new TreeNode();
@@ -9311,7 +9690,7 @@ public static class ShareClass
         }
     }
 
-    //¶¨ÒåËùÓĞÏîÄ¿Ê÷ FOR YYUP
+    //å®šä¹‰æ‰€æœ‰é¡¹ç›®æ ‘ FOR YYUP
     public static void InitialAllProjectTree_YYUP(TreeView TreeView1, string strDepartString)
     {
         string strHQL;
@@ -9322,7 +9701,7 @@ public static class ShareClass
 
         strProductLineRelated = ShareClass.GetDepartSuperUserRelatedProductLineFromUserCode(strUserCode);
 
-        //Ìí¼Ó¸ù½Úµã
+        //æ·»åŠ æ ¹èŠ‚ç‚¹
         TreeView1.Nodes.Clear();
 
         TreeNode node1 = new TreeNode();
@@ -9405,7 +9784,7 @@ public static class ShareClass
         }
     }
 
-    //¶¨ÒåÖ±½Ó³ÉÔ±µÄÏîÄ¿Ê÷
+    //å®šä¹‰ç›´æ¥æˆå‘˜çš„é¡¹ç›®æ ‘
     public static void InitialMembersProjectTree(TreeView TreeView1, string strUserCode)
     {
         string strHQL;
@@ -9416,7 +9795,7 @@ public static class ShareClass
         strProductLineRelated = ShareClass.GetDepartRelatedProductLineFromUserCode(strUserCode);
         strOperatorDepartCode = ShareClass.GetDepartCodeFromUserCode(strUserCode);
 
-        //Ìí¼Ó¸ù½Úµã
+        //æ·»åŠ æ ¹èŠ‚ç‚¹
         TreeView1.Nodes.Clear();
 
         TreeNode node1 = new TreeNode();
@@ -9488,7 +9867,7 @@ public static class ShareClass
         }
     }
 
-    //¶¨ÒåÖ±½Ó³ÉÔ±µÄÏîÄ¿Ê÷ FOR YYUP
+    //å®šä¹‰ç›´æ¥æˆå‘˜çš„é¡¹ç›®æ ‘ FOR YYUP
     public static void InitialMembersProjectTree_YYUP(TreeView TreeView1, string strUserCode)
     {
         string strHQL;
@@ -9499,7 +9878,7 @@ public static class ShareClass
         strProductLineRelated = ShareClass.GetDepartRelatedProductLineFromUserCode(strUserCode);
         strOperatorDepartCode = ShareClass.GetDepartCodeFromUserCode(strUserCode);
 
-        //Ìí¼Ó¸ù½Úµã
+        //æ·»åŠ æ ¹èŠ‚ç‚¹
         TreeView1.Nodes.Clear();
 
         TreeNode node1 = new TreeNode();
@@ -9578,13 +9957,13 @@ public static class ShareClass
         }
     }
 
-    //¶¨ÒåÎÒµÄµÄÏîÄ¿Ê÷
+    //å®šä¹‰æˆ‘çš„çš„é¡¹ç›®æ ‘
     public static void InitialMyProjectTree(TreeView TreeView1, string strUserCode)
     {
         string strHQL, strProjectID, strProject;
         IList lst;
 
-        //Ìí¼Ó¸ù½Úµã
+        //æ·»åŠ æ ¹èŠ‚ç‚¹
         TreeView1.Nodes.Clear();
 
         TreeNode node1 = new TreeNode();
@@ -9655,7 +10034,7 @@ public static class ShareClass
         }
     }
 
-    //¶¨ÒåËùÓĞÏîÄ¿ÎÄµµÊ÷
+    //å®šä¹‰æ‰€æœ‰é¡¹ç›®æ–‡æ¡£æ ‘
     public static string InitialAllProjectDocTree(TreeView TreeView1, string strUserCode, string strQueryCount, string strOperationType, string strMinProjectID, string strMaxProjectID)
     {
         string strHQL;
@@ -9673,7 +10052,7 @@ public static class ShareClass
             strDepartString = HttpContext.Current.Session["DepartString"].ToString();
         }
 
-        //Ìí¼Ó¸ù½Úµã
+        //æ·»åŠ æ ¹èŠ‚ç‚¹
         TreeView1.Nodes.Clear();
 
         TreeNode node1 = new TreeNode();
@@ -9730,7 +10109,7 @@ public static class ShareClass
             if (getChildProjectNumber(strProjectID, strDepartString) > 0)
             {
                 node4 = new TreeNode();
-                node4.Text = "×ÓÏîÄ¿";
+                node4.Text = LanguageHandle.GetWord("ChildProjectTree");
                 node4.Target = strProjectID + "_ChildrenProject";
                 node4.Expanded = false;
                 node3.ChildNodes.Add(node4);
@@ -9761,7 +10140,7 @@ public static class ShareClass
         }
     }
 
-    //¼ì²éÏîÄ¿ÊÇ·ñ°üº¬×ÓÏîÄ¿
+    //æ£€æŸ¥é¡¹ç›®æ˜¯å¦åŒ…å«å­é¡¹ç›®
     public static int getChildProjectNumber(string strParentProjectID, string strDepartString)
     {
         string strHQL;
@@ -9815,7 +10194,7 @@ public static class ShareClass
             if (getChildProjectNumber(strProjectID, strDepartString) > 0)
             {
                 node4 = new TreeNode();
-                node4.Text = "×ÓÏîÄ¿";
+                node4.Text = LanguageHandle.GetWord("ChildProjectTree");
                 node4.Target = strProjectID + "_ChildrenProject";
                 node4.Expanded = false;
                 node.ChildNodes.Add(node4);
@@ -9824,7 +10203,7 @@ public static class ShareClass
         }
     }
 
-    //¶¨ÒåËùÓĞÏîÄ¿£¨·­Ò³²éÑ¯£©
+    //å®šä¹‰æ‰€æœ‰é¡¹ç›®ï¼ˆç¿»é¡µæŸ¥è¯¢ï¼‰
     public static string InitialAllProjectTreeForPageFind(TreeView TreeView1, string strUserCode, string strQueryCount, string strOperationType, string strMinProjectID, string strMaxProjectID)
     {
         string strHQL;
@@ -9841,7 +10220,7 @@ public static class ShareClass
             strDepartString = HttpContext.Current.Session["DepartString"].ToString();
         }
 
-        //Ìí¼Ó¸ù½Úµã
+        //æ·»åŠ æ ¹èŠ‚ç‚¹
         TreeView1.Nodes.Clear();
 
         TreeNode node1 = new TreeNode();
@@ -9955,7 +10334,7 @@ public static class ShareClass
         }
     }
 
-    //¶¨ÒåËùÓĞÏîÄ¿£¨·­Ò³²éÑ¯£© For YYUP
+    //å®šä¹‰æ‰€æœ‰é¡¹ç›®ï¼ˆç¿»é¡µæŸ¥è¯¢ï¼‰ For YYUP
     public static string InitialAllProjectTreeForPageFind_YYUP(TreeView TreeView1, string strUserCode, string strQueryCount, string strOperationType, string strMinProjectID, string strMaxProjectID)
     {
         string strHQL;
@@ -9975,7 +10354,7 @@ public static class ShareClass
         strProductLineRelated = ShareClass.GetDepartSuperUserRelatedProductLineFromUserCode(strUserCode);
 
 
-        //Ìí¼Ó¸ù½Úµã
+        //æ·»åŠ æ ¹èŠ‚ç‚¹
         TreeView1.Nodes.Clear();
 
         TreeNode node1 = new TreeNode();
@@ -10104,7 +10483,7 @@ public static class ShareClass
         }
     }
 
-    //¶¨ÒåËùÓĞÏîÄ¿ÎÄµµÊ÷ FOR YYUP
+    //å®šä¹‰æ‰€æœ‰é¡¹ç›®æ–‡æ¡£æ ‘ FOR YYUP
     public static string InitialAllProjectDocTree_YYUP(TreeView TreeView1, string strUserCode, string strQueryCount, string strOperationType, string strMinProjectID, string strMaxProjectID)
     {
         string strHQL;
@@ -10122,7 +10501,7 @@ public static class ShareClass
 
         strProductLineRelated = ShareClass.GetDepartSuperUserRelatedProductLineFromUserCode(strUserCode);
 
-        //Ìí¼Ó¸ù½Úµã
+        //æ·»åŠ æ ¹èŠ‚ç‚¹
         TreeView1.Nodes.Clear();
 
         TreeNode node1 = new TreeNode();
@@ -10197,7 +10576,7 @@ public static class ShareClass
             if (getChildProjectNumber(strProjectID, strDepartString) > 0)
             {
                 node4 = new TreeNode();
-                node4.Text = "×ÓÏîÄ¿";
+                node4.Text = LanguageHandle.GetWord("ChildProjectTree");
                 node4.Target = strProjectID + "_ChildrenProject";
                 node4.Expanded = false;
                 node3.ChildNodes.Add(node4);
@@ -10262,7 +10641,7 @@ public static class ShareClass
             if (getChildProjectNumber(strProjectID, strDepartString) > 0)
             {
                 node4 = new TreeNode();
-                node4.Text = "×ÓÏîÄ¿";
+                node4.Text = LanguageHandle.GetWord("ChildProjectTree");
                 node4.Target = strProjectID + "_ChildrenProject";
                 node4.Expanded = false;
                 node.ChildNodes.Add(node4);
@@ -10271,7 +10650,7 @@ public static class ShareClass
         }
     }
 
-    //ÏîÄ¿ÎÄµµ£¨°üº¬ÈÎÎñ£¬Á÷³Ì£¬ĞèÇó£¬·çÏÕµÈËùÓĞÏîÄ¿Ïà¹ØµÄÎÄµµ£©
+    //é¡¹ç›®æ–‡æ¡£ï¼ˆåŒ…å«ä»»åŠ¡ï¼Œæµç¨‹ï¼Œéœ€æ±‚ï¼Œé£é™©ç­‰æ‰€æœ‰é¡¹ç›®ç›¸å…³çš„æ–‡æ¡£ï¼‰
     public static void AllProjectDocTreeShowIncludeAll(string strUserCode, string strProjectID, TreeNode treeNode)
     {
         string strHQL;
@@ -10283,14 +10662,14 @@ public static class ShareClass
         TreeNode treeNode1 = new TreeNode();
 
         treeNode1 = new TreeNode();
-        treeNode1.Text = "<A href=TTAllProjectDocuments.aspx?TargetID=ProjectPlan_0&ProjectID=" + strProjectID + " Target=Right>¼Æ»®</a>";
+        treeNode1.Text = "<A href=TTAllProjectDocuments.aspx?TargetID=ProjectPlan_0&ProjectID=" + strProjectID + " Target=Right>è®¡åˆ’</a>";
         treeNode1.Target = "ProjectPlan" + "_" + "0";
         treeNode1.Expanded = false;
         treeNode.ChildNodes.Add(treeNode1);
         TakeTopPlan.InitialProjectPlanTreeOnTreeNode(treeNode1, strProjectID, GetProjectPlanVersion(strProjectID, "InUse").ToString());
 
         treeNode1 = new TreeNode();
-        treeNode1.Text = "<A href=TTAllProjectDocuments.aspx?TargetID=ProjectTask_0&ProjectID=" + strProjectID + " Target=Right>ÈÎÎñ</a>";
+        treeNode1.Text = "<A href=TTAllProjectDocuments.aspx?TargetID=ProjectTask_0&ProjectID=" + strProjectID + " Target=Right>ä»»åŠ¡</a>";
         treeNode1.Target = "ProjectTask_0";
         treeNode1.Expanded = false;
         treeNode.ChildNodes.Add(treeNode1);
@@ -10314,7 +10693,7 @@ public static class ShareClass
         }
 
         treeNode1 = new TreeNode();
-        treeNode1.Text = "<A href=TTAllProjectDocuments.aspx?TargetID=Defect_0&ProjectID=" + strProjectID + " Target=Right>ĞèÇó</a>";
+        treeNode1.Text = "<A href=TTAllProjectDocuments.aspx?TargetID=Defect_0&ProjectID=" + strProjectID + " Target=Right>éœ€æ±‚</a>";
         treeNode1.Target = "Defect_0";
         treeNode1.Expanded = false;
         treeNode.ChildNodes.Add(treeNode1);
@@ -10337,7 +10716,7 @@ public static class ShareClass
             node.Expanded = false;
         }
         treeNode1 = new TreeNode();
-        treeNode1.Text = "<A href=TTAllProjectDocuments.aspx?TargetID=WorkFlow_0&ProjectID=" + strProjectID + " Target=Right>¹¤×÷Á÷</a>";
+        treeNode1.Text = "<A href=TTAllProjectDocuments.aspx?TargetID=WorkFlow_0&ProjectID=" + strProjectID + " Target=Right>å·¥ä½œæµ</a>";
         treeNode1.Target = "WorkFlow_0";
         treeNode1.Expanded = false;
         treeNode.ChildNodes.Add(treeNode1);
@@ -10345,7 +10724,7 @@ public static class ShareClass
         strHQL = "from WorkFlow as workFlow where";
         strHQL += " ((workFlow.RelatedType = 'Project' and workFlow.RelatedID = " + strProjectID + ")";
         strHQL += " or (workFlow.RelatedType = 'Task' and workFlow.RelatedID in (select projectTask.TaskID from ProjectTask as projectTask where projectTask.ProjectID = " + strProjectID + "))";
-        strHQL += " or (workFlow.RelatedType = '·çÏÕ' and workFlow.RelatedID in (select projectRisk.ID from ProjectRisk as projectRisk where projectRisk.ProjectID = " + strProjectID + "))";
+        strHQL += " or (workFlow.RelatedType = 'é£é™©' and workFlow.RelatedID in (select projectRisk.ID from ProjectRisk as projectRisk where projectRisk.ProjectID = " + strProjectID + "))";
         strHQL += " or (workFlow.RelatedType = 'Requirement' and workFlow.RelatedID in (select relatedDefect from RelatedDefect as relatedDefect where relatedDefect.ProjectID = " + strProjectID + ")))";
         strHQL += " and workFlow.WLID in (Select document.RelatedID from Document as document where document.RelatedType = 'Workflow' and document.Status <> 'Deleted')";
         strHQL += " Order by workFlow.WLID DESC";
@@ -10366,12 +10745,12 @@ public static class ShareClass
         }
 
         treeNode1 = new TreeNode();
-        treeNode1.Text = "<A href=TTAllProjectDocuments.aspx?TargetID=Risk_0&ProjectID=" + strProjectID + " Target=Right>·çÏÕ</a>";
+        treeNode1.Text = "<A href=TTAllProjectDocuments.aspx?TargetID=Risk_0&ProjectID=" + strProjectID + " Target=Right>é£é™©</a>";
         treeNode1.Target = "Risk_0";
         treeNode1.Expanded = false;
         treeNode.ChildNodes.Add(treeNode1);
         strHQL = "From ProjectRisk as projectRisk where projectRisk.ProjectID = " + strProjectID;
-        strHQL += " and projectRisk.ID in (Select document.RelatedID from Document as document where document.RelatedType = '·çÏÕ' and document.Status <> 'Deleted')";
+        strHQL += " and projectRisk.ID in (Select document.RelatedID from Document as document where document.RelatedType = 'é£é™©' and document.Status <> 'Deleted')";
         strHQL += " Order by projectRisk.ID DESC";
         ProjectRiskBLL projectRiskBLL = new ProjectRiskBLL();
         lst = projectRiskBLL.GetAllProjectRisks(strHQL);
@@ -10390,7 +10769,7 @@ public static class ShareClass
         }
     }
 
-    //¶¨ÒåËùÓĞÏîÄ¿µÄÏîÄ¿Ê÷(¹ØÁªÒ³ÃæÁ´½Ó£©
+    //å®šä¹‰æ‰€æœ‰é¡¹ç›®çš„é¡¹ç›®æ ‘(å…³è”é¡µé¢é“¾æ¥ï¼‰
     public static string InitialAllProjectRelatedPageTree(TreeView TreeView1, string strUserCode, string strRelatedType, string strQueryCount, string strOperationType, string strMinProjectID, string strMaxProjectID)
     {
         string strHQL;
@@ -10406,7 +10785,7 @@ public static class ShareClass
             strDepartString = HttpContext.Current.Session["DepartString"].ToString();
         }
 
-        //Ìí¼Ó¸ù½Úµã
+        //æ·»åŠ æ ¹èŠ‚ç‚¹
         TreeView1.Nodes.Clear();
 
         TreeNode node1 = new TreeNode();
@@ -10471,7 +10850,7 @@ public static class ShareClass
 
         if (strRelatedType == "MaterialExpenseApply")
         {
-            node1.Text = "<B>ÏîÄ¿Îï×Ê·ÑÓÃÉêÇë</B>";
+            node1.Text = "<B>é¡¹ç›®ç‰©èµ„è´¹ç”¨ç”³è¯·</B>";
         }
 
         node1.Target = "0";
@@ -10711,7 +11090,7 @@ public static class ShareClass
         }
     }
 
-    //¶¨ÒåËùÓĞÏîÄ¿µÄÏîÄ¿Ê÷(¹ØÁªÒ³ÃæÁ´½Ó£©--FOR YYUP
+    //å®šä¹‰æ‰€æœ‰é¡¹ç›®çš„é¡¹ç›®æ ‘(å…³è”é¡µé¢é“¾æ¥ï¼‰--FOR YYUP
     public static string InitialAllProjectRelatedPageTree_YYUP(TreeView TreeView1, string strUserCode, string strRelatedType, string strQueryCount, string strOperationType, string strMinProjectID, string strMaxProjectID)
     {
         string strHQL;
@@ -10731,7 +11110,7 @@ public static class ShareClass
             strDepartString = HttpContext.Current.Session["DepartString"].ToString();
         }
 
-        //Ìí¼Ó¸ù½Úµã
+        //æ·»åŠ æ ¹èŠ‚ç‚¹
         TreeView1.Nodes.Clear();
 
         TreeNode node1 = new TreeNode();
@@ -10994,7 +11373,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃ×î´óÏîÄ¿IDºÅ
+    //å–å¾—æœ€å¤§é¡¹ç›®IDå·
     public static int GetMaxProjectIDForAllProjectList(int intProjectID, int intProjectCount, string strDepartString)
     {
         string strHQL;
@@ -11015,7 +11394,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃ×îĞ¡ÏîÄ¿IDºÅ
+    //å–å¾—æœ€å°é¡¹ç›®IDå·
     public static int GetMinProjectIDForAllProjectList(string strDepartString, int intProjectCount)
     {
         string strHQL;
@@ -11034,14 +11413,14 @@ public static class ShareClass
         }
     }
 
-    //¶¨Òå²ÎÓëÏîÄ¿ÎÄµµÊ÷
+    //å®šä¹‰å‚ä¸é¡¹ç›®æ–‡æ¡£æ ‘
     public static void InitialInvolvedProjectDocTree(TreeView TreeView1, string strUserCode)
     {
         string strHQL, strProjectID, strProject;
         IList lst;
         string strProjectIDString = "";
 
-        //Ìí¼Ó¸ù½Úµã
+        //æ·»åŠ æ ¹èŠ‚ç‚¹
         TreeView1.Nodes.Clear();
 
         TreeNode node1 = new TreeNode();
@@ -11083,7 +11462,7 @@ public static class ShareClass
         }
     }
 
-    //ÏîÄ¿ÎÄµµ£¨°üº¬ÈÎÎñ£¬ĞèÇó£¬¼Æ»®£¬·çÏÕµÈÏîÄ¿Ïà¹ØµÄÎÄµµ£©
+    //é¡¹ç›®æ–‡æ¡£ï¼ˆåŒ…å«ä»»åŠ¡ï¼Œéœ€æ±‚ï¼Œè®¡åˆ’ï¼Œé£é™©ç­‰é¡¹ç›®ç›¸å…³çš„æ–‡æ¡£ï¼‰
     public static void InvolvedProjectDocTreeShowIncludeAll(string strUserCode, string strProjectID, TreeNode treeNode)
     {
         string strHQL;
@@ -11094,17 +11473,17 @@ public static class ShareClass
         TreeNode node = new TreeNode();
         TreeNode treeNode1 = new TreeNode();
 
-        //Éú³É¼Æ»®½Úµã
+        //ç”Ÿæˆè®¡åˆ’èŠ‚ç‚¹
         treeNode1 = new TreeNode();
-        treeNode1.Text = "<A href=TTProjectDocManage.aspx?TargetID=ProjectPlan_0&ProjectID=" + strProjectID + " Target=Right>¼Æ»®</a>";
+        treeNode1.Text = "<A href=TTProjectDocManage.aspx?TargetID=ProjectPlan_0&ProjectID=" + strProjectID + " Target=Right>è®¡åˆ’</a>";
         treeNode1.Target = "ProjectPlan" + "_" + "0";
         treeNode1.Expanded = false;
         treeNode.ChildNodes.Add(treeNode1);
         TakeTopPlan.InitialProjectPlanTreeOnTreeNode(treeNode1, strProjectID, GetProjectPlanVersion(strProjectID, "InUse").ToString());
 
-        //Éú³ÉÈÎÎñ½Úµã
+        //ç”Ÿæˆä»»åŠ¡èŠ‚ç‚¹
         treeNode1 = new TreeNode();
-        treeNode1.Text = "<A href=TTProjectDocManage.aspx?TargetID=ProjectTask_0&ProjectID=" + strProjectID + " Target=Right>ÈÎÎñ</a>";
+        treeNode1.Text = "<A href=TTProjectDocManage.aspx?TargetID=ProjectTask_0&ProjectID=" + strProjectID + " Target=Right>ä»»åŠ¡</a>";
         treeNode1.Target = "ProjectTask_0";
         treeNode1.Expanded = false;
         treeNode.ChildNodes.Add(treeNode1);
@@ -11127,9 +11506,9 @@ public static class ShareClass
             node.Expanded = false;
         }
 
-        //Éú³ÉĞèÇó½Úµã
+        //ç”Ÿæˆéœ€æ±‚èŠ‚ç‚¹
         treeNode1 = new TreeNode();
-        treeNode1.Text = "<A href=TTProjectDocManage.aspx?TargetID=Req_0&ProjectID=" + strProjectID + " Target=Right>ĞèÇó</a>";
+        treeNode1.Text = "<A href=TTProjectDocManage.aspx?TargetID=Req_0&ProjectID=" + strProjectID + " Target=Right>éœ€æ±‚</a>";
         treeNode1.Target = "Defect_0";
         treeNode1.Expanded = false;
         treeNode.ChildNodes.Add(treeNode1);
@@ -11152,9 +11531,9 @@ public static class ShareClass
             node.Expanded = false;
         }
 
-        //Éú³ÉÈ±Ïİ½Úµã
+        //ç”Ÿæˆç¼ºé™·èŠ‚ç‚¹
         treeNode1 = new TreeNode();
-        treeNode1.Text = "<A href=TTProjectDocManage.aspx?TargetID=Defect_0&ProjectID=" + strProjectID + " Target=Right>È±Ïİ</a>";
+        treeNode1.Text = "<A href=TTProjectDocManage.aspx?TargetID=Defect_0&ProjectID=" + strProjectID + " Target=Right>ç¼ºé™·</a>";
         treeNode1.Target = "Defect_0";
         treeNode1.Expanded = false;
         treeNode.ChildNodes.Add(treeNode1);
@@ -11177,11 +11556,11 @@ public static class ShareClass
             node.Expanded = false;
         }
 
-        //Éú³É¹¤×÷Á÷½Úµã
+        //ç”Ÿæˆå·¥ä½œæµèŠ‚ç‚¹
         strHQL = "from WorkFlow as workFlow where";
         strHQL += " ((workFlow.RelatedType = 'Project' and workFlow.RelatedID = " + strProjectID + ")";
         strHQL += " or (workFlow.RelatedType = 'Task' and workFlow.RelatedID in (select projectTask.TaskID from ProjectTask as projectTask where projectTask.ProjectID = " + strProjectID + "))";
-        strHQL += " or (workFlow.RelatedType = '·çÏÕ' and workFlow.RelatedID in (select projectRisk.ID from ProjectRisk as projectRisk where projectRisk.ProjectID = " + strProjectID + "))";
+        strHQL += " or (workFlow.RelatedType = 'é£é™©' and workFlow.RelatedID in (select projectRisk.ID from ProjectRisk as projectRisk where projectRisk.ProjectID = " + strProjectID + "))";
         strHQL += " or (workFlow.RelatedType = 'Requirement' and workFlow.RelatedID in (select relatedDefect from RelatedDefect as relatedDefect where relatedDefect.ProjectID = " + strProjectID + ")))";
         strHQL += " and workFlow.WLID in (Select document.RelatedID from Document as document where document.RelatedType = 'Workflow' and document.Status <> 'Deleted')";
         strHQL += " Order by workFlow.WLID DESC";
@@ -11201,14 +11580,14 @@ public static class ShareClass
             node.Expanded = false;
         }
 
-        //Éú³É·çÏÕ½Úµã
+        //ç”Ÿæˆé£é™©èŠ‚ç‚¹
         treeNode1 = new TreeNode();
-        treeNode1.Text = "<A href=TTProjectDocManage.aspx?TargetID=Risk_0&ProjectID=" + strProjectID + " Target=Right>·çÏÕ</a>";
+        treeNode1.Text = "<A href=TTProjectDocManage.aspx?TargetID=Risk_0&ProjectID=" + strProjectID + " Target=Right>é£é™©</a>";
         treeNode1.Target = "Risk_0";
         treeNode1.Expanded = false;
         treeNode.ChildNodes.Add(treeNode1);
         strHQL = "From ProjectRisk as projectRisk where projectRisk.ProjectID = " + strProjectID; ;
-        strHQL += " and projectRisk.ID in (Select document.RelatedID from Document as document where document.RelatedType = '·çÏÕ' and document.Status <> 'Deleted')";
+        strHQL += " and projectRisk.ID in (Select document.RelatedID from Document as document where document.RelatedType = 'é£é™©' and document.Status <> 'Deleted')";
         strHQL += " Order by projectRisk.ID DESC";
         ProjectRiskBLL projectRiskBLL = new ProjectRiskBLL();
         lst = projectRiskBLL.GetAllProjectRisks(strHQL);
@@ -11227,7 +11606,7 @@ public static class ShareClass
         }
     }
 
-    //¶¨Òå²ÎÓëÏîÄ¿µÄÏîÄ¿Ê÷(¹ØÁªÒ³ÃæÁ´½Ó£©
+    //å®šä¹‰å‚ä¸é¡¹ç›®çš„é¡¹ç›®æ ‘(å…³è”é¡µé¢é“¾æ¥ï¼‰
     public static void InitialInvolvedProjectRelatedPageTree(TreeView TreeView1, string strUserCode, string strRelatedType)
     {
         string strHQL, strProjectID, strProject;
@@ -11235,7 +11614,7 @@ public static class ShareClass
 
         string strProjectIDString = "";
 
-        //Ìí¼Ó¸ù½Úµã
+        //æ·»åŠ æ ¹èŠ‚ç‚¹
         TreeView1.Nodes.Clear();
 
         TreeNode node1 = new TreeNode();
@@ -11455,13 +11834,13 @@ public static class ShareClass
 
 
 
-    //¶¨Òå²ÎÓëÏîÄ¿µÄÏîÄ¿Ê÷
+    //å®šä¹‰å‚ä¸é¡¹ç›®çš„é¡¹ç›®æ ‘
     public static void InitialInvolvedProjectTree(TreeView TreeView1, string strUserCode)
     {
         string strHQL, strProjectID, strProject;
         IList lst;
 
-        //Ìí¼Ó¸ù½Úµã
+        //æ·»åŠ æ ¹èŠ‚ç‚¹
         TreeView1.Nodes.Clear();
 
         TreeNode node1 = new TreeNode();
@@ -11531,13 +11910,13 @@ public static class ShareClass
         }
     }
 
-    //¶¨ÒåÎÒÖ÷µ¼µÄºÍÎÒ²ÎÓëÏîÄ¿µÄÏîÄ¿Ê÷
+    //å®šä¹‰æˆ‘ä¸»å¯¼çš„å’Œæˆ‘å‚ä¸é¡¹ç›®çš„é¡¹ç›®æ ‘
     public static void InitialMyUnderTakeAndInvolvedProjectTree(TreeView TreeView1, string strUserCode)
     {
         string strHQL, strProjectID, strProject;
         IList lst;
 
-        //Ìí¼Ó¸ù½Úµã
+        //æ·»åŠ æ ¹èŠ‚ç‚¹
         TreeView1.Nodes.Clear();
 
         TreeNode node1 = new TreeNode();
@@ -11607,13 +11986,13 @@ public static class ShareClass
         }
     }
 
-    //¶¨ÒåÏîÄ¿Ê÷£¨¸ù¾İÈ¨ÏŞ£©
+    //å®šä¹‰é¡¹ç›®æ ‘ï¼ˆæ ¹æ®æƒé™ï¼‰
     public static void InitialPrjectTreeByAuthority(TreeView TreeView1, string strUserCode)
     {
         string strHQL, strProjectID, strProjectName;
         //string strUserCode;
 
-        //Ìí¼Ó¸ù½Úµã
+        //æ·»åŠ æ ¹èŠ‚ç‚¹
         TreeView1.Nodes.Clear();
 
         TreeNode node1 = new TreeNode();
@@ -11677,13 +12056,13 @@ public static class ShareClass
         }
     }
 
-    //¶¨Òå×Ô¼º½¨Á¢µÄÏîÄ¿µÄÏîÄ¿Ê÷
+    //å®šä¹‰è‡ªå·±å»ºç«‹çš„é¡¹ç›®çš„é¡¹ç›®æ ‘
     public static void InitialMyCreateProjectTree(TreeView TreeView1, string strUserCode)
     {
         string strHQL, strProjectID, strProject;
         IList lst;
 
-        //Ìí¼Ó¸ù½Úµã
+        //æ·»åŠ æ ¹èŠ‚ç‚¹
         TreeView1.Nodes.Clear();
 
         TreeNode node1 = new TreeNode();
@@ -11754,14 +12133,14 @@ public static class ShareClass
         }
     }
 
-    //ÎÒ¸ºÔğµÄÏîÄ¿µÄÏîÄ¿Ê÷(ÓÃÓÚÏîÄ¿·çÏÕ¹ÜÀí£©
+    //æˆ‘è´Ÿè´£çš„é¡¹ç›®çš„é¡¹ç›®æ ‘(ç”¨äºé¡¹ç›®é£é™©ç®¡ç†ï¼‰
     public static void InitialMyTakeOverProjectTree(TreeView TreeView1, string strUserCode)
     {
         string strHQL, strProjectID, strProject;
         IList lst;
         string strProjectIDString = "";
 
-        //Ìí¼Ó¸ù½Úµã
+        //æ·»åŠ æ ¹èŠ‚ç‚¹
         TreeView1.Nodes.Clear();
 
         TreeNode node1 = new TreeNode();
@@ -11855,14 +12234,14 @@ public static class ShareClass
         }
     }
 
-    //ÎÒ¸ºÔğµÄÏîÄ¿µÄÏîÄ¿Ê÷(ÓÃÓÚÏîÄ¿·çÏÕ¹ÜÀí£©
+    //æˆ‘è´Ÿè´£çš„é¡¹ç›®çš„é¡¹ç›®æ ‘(ç”¨äºé¡¹ç›®é£é™©ç®¡ç†ï¼‰
     public static void InitialAllProjectTree(TreeView TreeView1, string strUserCode, string strDepartString)
     {
         string strHQL, strProjectID, strProject;
         IList lst;
         string strProjectIDString = "";
 
-        //Ìí¼Ó¸ù½Úµã
+        //æ·»åŠ æ ¹èŠ‚ç‚¹
         TreeView1.Nodes.Clear();
 
         TreeNode node1 = new TreeNode();
@@ -11911,7 +12290,7 @@ public static class ShareClass
         }
     }
 
-    //Î¬»¤ÏîÄ¿ÈÕÖ¾
+    //ç»´æŠ¤é¡¹ç›®æ—¥å¿—
     public static void UpdateDailyWork(string strUserCode, string strProjectID, string strRelatedType, string strRelatedID, string strRelatedName, string strWorkDetail)
     {
         string strHQL;
@@ -11951,7 +12330,7 @@ public static class ShareClass
                 dailyWork.ManHour = decimal.Parse(ShareClass.getCurrentDateTotalManHourByOneOperator(strProjectID, strUserCode, DateTime.Now.ToString("yyyyMMdd")));
                 dailyWork.ConfirmManHour = dailyWork.ManHour;
 
-                //¸ü¸Ä¸ºÔğµÄ¹¤×÷½ø¶È
+                //æ›´æ”¹è´Ÿè´£çš„å·¥ä½œè¿›åº¦
                 if (strImpactByDetail == "YES")
                 {
                     dailyWork.FinishPercent = decimal.Parse(ShareClass.getCurrentDateTotalProgressForMember(strProjectID, strUserCode));
@@ -11998,14 +12377,14 @@ public static class ShareClass
                 }
                 else
                 {
-                    dailyWork.Type = "²ÎÓë";
+                    dailyWork.Type = "å‚ä¸";
                 }
 
                 dailyWork.Charge = decimal.Parse(ShareClass.getCurrentDateTotalExpenseByOneOperator(strProjectID, strUserCode, DateTime.Now.ToString("yyyyMMdd")));
                 dailyWork.ManHour = decimal.Parse(ShareClass.getCurrentDateTotalManHourByOneOperator(strProjectID, strUserCode, DateTime.Now.ToString("yyyyMMdd")));
                 dailyWork.ConfirmManHour = dailyWork.ManHour;
 
-                //¸ü¸Ä¸ºÔğµÄ¹¤×÷½ø¶È
+                //æ›´æ”¹è´Ÿè´£çš„å·¥ä½œè¿›åº¦
                 if (strImpactByDetail == "YES")
                 {
                     dailyWork.FinishPercent = decimal.Parse(ShareClass.getCurrentDateTotalProgressForMember(strProjectID, strUserCode));
@@ -12032,7 +12411,7 @@ public static class ShareClass
         }
     }
 
-    //Î¬»¤ÏîÄ¿¾­ÀíÏîÄ¿ÈÕÖ¾
+    //ç»´æŠ¤é¡¹ç›®ç»ç†é¡¹ç›®æ—¥å¿—
     public static void UpdateDailyWorkForPM(string strProjectID, string strRelatedType, string strRelatedID, string strWorkDetail)
     {
         string strHQL;
@@ -12065,7 +12444,7 @@ public static class ShareClass
                 dailyWork.ManHour = decimal.Parse(ShareClass.getCurrentDateTotalManHourByOneOperator(strProjectID, strPMCode, DateTime.Now.ToString("yyyyMMdd")));
                 dailyWork.ConfirmManHour = dailyWork.ManHour;
 
-                //¸ü¸Ä¸ºÔğµÄ¹¤×÷½ø¶È
+                //æ›´æ”¹è´Ÿè´£çš„å·¥ä½œè¿›åº¦
                 if (strImpactByDetail == "YES")
                 {
                     dailyWork.FinishPercent = decimal.Parse(ShareClass.getCurrentDateTotalProgressForPM(strProjectID));
@@ -12096,7 +12475,7 @@ public static class ShareClass
                 {
                     dailyWorkBLL.AddDailyWork(dailyWork);
 
-                    //¸ü¸Ä¸ºÔğµÄÏîÄ¿×Ü½ø¶È
+                    //æ›´æ”¹è´Ÿè´£çš„é¡¹ç›®æ€»è¿›åº¦
                     if (strImpactByDetail == "YES")
                     {
                         UpdateProjectCompleteDegree(strProjectID, dailyWork.FinishPercent);
@@ -12118,7 +12497,7 @@ public static class ShareClass
                 dailyWork.ManHour = decimal.Parse(ShareClass.getCurrentDateTotalManHourByOneOperator(strProjectID, strPMCode, DateTime.Now.ToString("yyyyMMdd")));
                 dailyWork.ConfirmManHour = dailyWork.ManHour;
 
-                //¸ü¸Ä¸ºÔğµÄ¹¤×÷½ø¶È
+                //æ›´æ”¹è´Ÿè´£çš„å·¥ä½œè¿›åº¦
                 if (strImpactByDetail == "YES")
                 {
                     dailyWork.FinishPercent = decimal.Parse(ShareClass.getCurrentDateTotalProgressForPM(strProjectID));
@@ -12134,7 +12513,7 @@ public static class ShareClass
                 {
                     dailyWorkBLL.UpdateDailyWork(dailyWork, intID);
 
-                    //¸ü¸Ä¸ºÔğµÄÏîÄ¿×Ü½ø¶È
+                    //æ›´æ”¹è´Ÿè´£çš„é¡¹ç›®æ€»è¿›åº¦
                     if (strImpactByDetail == "YES")
                     {
                         UpdateProjectCompleteDegree(strProjectID, dailyWork.FinishPercent);
@@ -12171,7 +12550,7 @@ public static class ShareClass
         }
     }
 
-    //¶¨ÒåÒÀ²¿ÃÅÖ°³ÆÔ±¹¤KPI¿¼ºËÊ÷
+    //å®šä¹‰ä¾éƒ¨é—¨èŒç§°å‘˜å·¥KPIè€ƒæ ¸æ ‘
     public static void InitialKPICheckTreeByDepartPosition(TreeView TreeView1, String strDepartCode, string strPosition)
     {
         string strHQL1, strHQL2;
@@ -12180,7 +12559,7 @@ public static class ShareClass
         string strDepartName;
         string strUserCode, strUserName;
 
-        //Ìí¼Ó¸ù½Úµã
+        //æ·»åŠ æ ¹èŠ‚ç‚¹
         TreeView1.Nodes.Clear();
 
         TreeNode node1 = new TreeNode();
@@ -12244,7 +12623,7 @@ public static class ShareClass
         TreeView1.DataBind();
     }
 
-    //¶¨ÒåÔ±¹¤KPI¿¼ºËÊ÷
+    //å®šä¹‰å‘˜å·¥KPIè€ƒæ ¸æ ‘
     public static void InitialKPICheckTreeByUserCode(TreeView TreeView1, String strUserCode)
     {
         string strHQL1;
@@ -12252,7 +12631,7 @@ public static class ShareClass
 
         string strUserName;
 
-        //Ìí¼Ó¸ù½Úµã
+        //æ·»åŠ æ ¹èŠ‚ç‚¹
         TreeView1.Nodes.Clear();
 
         TreeNode node1 = new TreeNode();
@@ -12288,7 +12667,7 @@ public static class ShareClass
         TreeView1.DataBind();
     }
 
-    //¶¨ÒåÔ±¹¤KPI¿¼ºËÊ÷
+    //å®šä¹‰å‘˜å·¥KPIè€ƒæ ¸æ ‘
     public static void InitialKPICheckTreeByDepartCode(TreeView TreeView1, String strDepartCode, string strDepartString)
     {
         string strHQL1;
@@ -12296,7 +12675,7 @@ public static class ShareClass
 
         string strDepartName;
 
-        //Ìí¼Ó¸ù½Úµã
+        //æ·»åŠ æ ¹èŠ‚ç‚¹
         TreeView1.Nodes.Clear();
 
         TreeNode node1 = new TreeNode();
@@ -12332,7 +12711,7 @@ public static class ShareClass
         TreeView1.DataBind();
     }
 
-    //¶¨ÒåÏîÄ¿³ÉÔ±Ê÷
+    //å®šä¹‰é¡¹ç›®æˆå‘˜æ ‘
     public static void InitialProjectMemberTree(TreeView TreeView, string strProjectID)
     {
         string strHQL;
@@ -12348,7 +12727,7 @@ public static class ShareClass
         ProRelatedUser proRelatedUser = new ProRelatedUser();
         RelatedUser relatedUser = new RelatedUser();
 
-        //Ìí¼Ó¸ù½Úµã
+        //æ·»åŠ æ ¹èŠ‚ç‚¹
         TreeView.Nodes.Clear();
 
         TreeNode node1 = new TreeNode();
@@ -12435,13 +12814,13 @@ public static class ShareClass
         TreeView.DataBind();
     }
 
-    //¶¨ÒåÏîÄ¿Î¯Ô±¹ÜÀíµÄÏîÄ¿Ê÷£¨¸ù¾İÏîÄ¿Î¯Ô±»á£©
+    //å®šä¹‰é¡¹ç›®å§”å‘˜ç®¡ç†çš„é¡¹ç›®æ ‘ï¼ˆæ ¹æ®é¡¹ç›®å§”å‘˜ä¼šï¼‰
     public static void InitialPrjectTreeByAuthorityProjectLeader(TreeView TreeView1, string strUserCode, string strDepartString)
     {
         string strHQL, strProjectID, strProject;
         IList lst;
 
-        //Ìí¼Ó¸ù½Úµã
+        //æ·»åŠ æ ¹èŠ‚ç‚¹
         TreeView1.Nodes.Clear();
 
         TreeNode node1 = new TreeNode();
@@ -12513,7 +12892,7 @@ public static class ShareClass
         }
     }
 
-    //¶¨ÒåÈË¸ö¼Æ»®Ê÷
+    //å®šä¹‰äººä¸ªè®¡åˆ’æ ‘
     public static void InitialPlanTreeByUserCode(TreeView TreeView1, String strUserCode, string strRelatedType)
     {
         string strHQL;
@@ -12525,7 +12904,7 @@ public static class ShareClass
 
         string strPlanID, strPlanName, strBackupPlanID;
 
-        //Ìí¼Ó¸ù½Úµã
+        //æ·»åŠ æ ¹èŠ‚ç‚¹
         TreeView1.Nodes.Clear();
 
         TreeNode node1 = new TreeNode();
@@ -12569,7 +12948,7 @@ public static class ShareClass
         }
     }
 
-    //¶¨ÒåÈË¸ö¼Æ»®Ê÷
+    //å®šä¹‰äººä¸ªè®¡åˆ’æ ‘
     public static void InitialPlanTreeByUserCode(TreeView TreeView1, String strUserCode, String strRelatedType, String strRelatedID, String strRelatedCode)
     {
         string strHQL;
@@ -12580,7 +12959,7 @@ public static class ShareClass
 
         strUserName = ShareClass.GetUserName(strUserCode);
 
-        //Ìí¼Ó¸ù½Úµã
+        //æ·»åŠ æ ¹èŠ‚ç‚¹
         TreeView1.Nodes.Clear();
 
         TreeNode node1 = new TreeNode();
@@ -12688,7 +13067,7 @@ public static class ShareClass
         }
     }
 
-    //¶¨ÒåKPI¿âÊ÷
+    //å®šä¹‰KPIåº“æ ‘
     public static void InitialKPITree(TreeView TreeView1)
     {
         string strHQL;
@@ -12696,7 +13075,7 @@ public static class ShareClass
 
         string strKPIType;
 
-        //Ìí¼Ó¸ù½Úµã
+        //æ·»åŠ æ ¹èŠ‚ç‚¹
         TreeView1.Nodes.Clear();
 
         TreeNode node1 = new TreeNode();
@@ -12762,11 +13141,11 @@ public static class ShareClass
         }
     }
 
-    #endregion ¶¨Òå¸÷ÖÖÒµÎñÊ÷
+    #endregion å®šä¹‰å„ç§ä¸šåŠ¡æ ‘
 
-    #region È¡µÃÓÃ»§´´½¨µÄ¶ÔÏóµÄ×î´óIDºÅ
+    #region å–å¾—ç”¨æˆ·åˆ›å»ºçš„å¯¹è±¡çš„æœ€å¤§IDå·
 
-    //È¡µÃÓÃ»§´´½¨µÄÄ£×é×î´óÄ£×éºÅ
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„æ¨¡ç»„æœ€å¤§æ¨¡ç»„å·
     public static string GetMyCreatedMaxModuleID()
     {
         string strHQL;
@@ -12778,7 +13157,7 @@ public static class ShareClass
         return ds.Tables[0].Rows[0][0].ToString();
     }
 
-    //È¡µÃÓÃ»§´´½¨µÄÏîÄ¿×î´óÏîÄ¿ºÅ
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„é¡¹ç›®æœ€å¤§é¡¹ç›®å·
     public static string GetMyCreatedMaxUserLoginManageID()
     {
         string strHQL;
@@ -12790,7 +13169,7 @@ public static class ShareClass
         return ds.Tables[0].Rows[0][0].ToString();
     }
 
-    //È¡µÃÓÃ»§´´½¨µÄ×î´ó·ÖÎöÍ¼ĞÎºÅ
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„æœ€å¤§åˆ†æå›¾å½¢å·
     public static string GetMyCreatedMaxSystemAnalystChartID()
     {
         string strHQL;
@@ -12802,7 +13181,7 @@ public static class ShareClass
         return ds.Tables[0].Rows[0][0].ToString();
     }
 
-    //È¡µÃÓÃ»§´´½¨µÄÏîÄ¿×î´óÏîÄ¿ºÅ
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„é¡¹ç›®æœ€å¤§é¡¹ç›®å·
     public static string GetMyCreatedMaxProjectID(string strUserCode)
     {
         string strHQL;
@@ -12817,7 +13196,7 @@ public static class ShareClass
         return project.ProjectID.ToString();
     }
 
-    //È¡µÃÓÃ»§´´½¨µÄĞèÇó×î´óĞèÇóºÅ
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„éœ€æ±‚æœ€å¤§éœ€æ±‚å·
     public static string GetMyCreatedMaxDefectID(string strUserCode)
     {
         string strHQL;
@@ -12832,7 +13211,7 @@ public static class ShareClass
         return defectment.DefectID.ToString();
     }
 
-    //È¡µÃÓÃ»§´´½¨µÄĞèÇó×î´óĞèÇóºÅ
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„éœ€æ±‚æœ€å¤§éœ€æ±‚å·
     public static string GetMyCreatedMaxReqID(string strUserCode)
     {
         string strHQL;
@@ -12847,7 +13226,7 @@ public static class ShareClass
         return requirement.ReqID.ToString();
     }
 
-    //È¡µÃÓÃ»§´´½¨µÄ»áÒé×î´ó»áÒéºÅ
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„ä¼šè®®æœ€å¤§ä¼šè®®å·
     public static string GetMyCreatedMaxMeetingID(string strUserCode)
     {
         string strHQL;
@@ -12862,7 +13241,7 @@ public static class ShareClass
         return meeting.ID.ToString();
     }
 
-    //È¡µÃÓÃ»§´´½¨µÄ×î´ó»áÒéÊÒ±àºÅ
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„æœ€å¤§ä¼šè®®å®¤ç¼–å·
     public static string GetMyCreatedMaxMeetingRoomID()
     {
         string strHQL;
@@ -12877,7 +13256,7 @@ public static class ShareClass
         return meetingRoom.ID.ToString();
     }
 
-    //È¡µÃÓÃ»§´´½¨µÄ×î´óÏîÄ¿ÈÎÎñºÅ:
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„æœ€å¤§é¡¹ç›®ä»»åŠ¡å·:
     public static string GetMyCreatedMaxTaskID(string strProjectID, string strUserCode)
     {
         string strHQL = "from ProjectTask as projectTask where projectTask.ProjectID = " + strProjectID + " Order by projectTask.TaskID DESC";
@@ -12890,7 +13269,7 @@ public static class ShareClass
         return projectTask.TaskID.ToString();
     }
 
-    //È¡µÃÓÃ»§´´½¨µÄ×î´óÏîÄ¿·çÏÕºÅ:
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„æœ€å¤§é¡¹ç›®é£é™©å·:
     public static string GetMyCreatedMaxRiskID(string strProjectID)
     {
         string strHQL;
@@ -12905,7 +13284,7 @@ public static class ShareClass
         return projectRisk.ID.ToString();
     }
 
-    //È¡µÃÓÃ»§´´½¨µÄ×î´óÏîÄ¿·ÖÅÉ¼ÇÂ¼ºÅ:
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„æœ€å¤§é¡¹ç›®åˆ†æ´¾è®°å½•å·:
     public static string GetMyCreatedMaxTaskAssignRecordID(string strTaskID, string strUserCode)
     {
         string strHQL = "from TaskAssignRecord as taskAssignRecord where taskAssignRecord.TaskID = " + strTaskID + " and taskAssignRecord.AssignManCode = " + "'" + strUserCode + "'" + " Order by taskAssignRecord.ID Desc";
@@ -12917,7 +13296,7 @@ public static class ShareClass
         return taskAssignRecord.ID.ToString();
     }
 
-    //È¡µÃÓÃ»§´´½¨µÄ×î´óÈ±Ïİ·ÖÅÉ¼ÇÂ¼ºÅ:
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„æœ€å¤§ç¼ºé™·åˆ†æ´¾è®°å½•å·:
     public static string GetMyCreatedMaxDefectAssignRecordID(string strDefectID, string strUserCode)
     {
         string strHQL = "from DefectAssignRecord as defectAssignRecord where defectAssignRecord.DefectID = " + strDefectID + " and defectAssignRecord.AssignManCode = " + "'" + strUserCode + "'" + " Order by defectAssignRecord.ID Desc";
@@ -12929,7 +13308,7 @@ public static class ShareClass
         return defectAssignRecord.ID.ToString();
     }
 
-    //È¡µÃÓÃ»§´´½¨µÄ×î´óĞèÇó·ÖÅÉ¼ÇÂ¼ºÅ:
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„æœ€å¤§éœ€æ±‚åˆ†æ´¾è®°å½•å·:
     public static string GetMyCreatedMaxReqAssignRecordID(string strReqID, string strUserCode)
     {
         string strHQL = "from ReqAssignRecord as reqAssignRecord where reqAssignRecord.ReqID = " + strReqID + " and reqAssignRecord.AssignManCode = " + "'" + strUserCode + "'" + " Order by reqAssignRecord.ID Desc";
@@ -12941,7 +13320,7 @@ public static class ShareClass
         return reqAssignRecord.ID.ToString();
     }
 
-    //È¡µÃÓÃ»§´´½¨µÄ×î´óºÏÍ¬ºÅ
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„æœ€å¤§åˆåŒå·
     public static string GetMyCreatedMaxConstractID(string strUserCode)
     {
         string strHQL;
@@ -12956,7 +13335,7 @@ public static class ShareClass
         return constract.ConstractID.ToString();
     }
 
-    //È¡µÃÓÃ»§´´½¨µÄºÏÍ¬ÒµÎñÔ±×î´óµÄIDºÅ
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„åˆåŒä¸šåŠ¡å‘˜æœ€å¤§çš„IDå·
     public static string GetMyCreatedMaxConstractSalesID(string strConstractCode)
     {
         string strHQL;
@@ -12967,7 +13346,7 @@ public static class ShareClass
         return ds.Tables[0].Rows[0][0].ToString();
     }
 
-    //È¡µÃÓÃ»§´´½¨µÄºÏÍ¬±ä¸üºó×î´óµÄIDºÅ
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„åˆåŒå˜æ›´åæœ€å¤§çš„IDå·
     public static string GetMyCreatedMaxConstractChangeRecordID(string strConstractCode)
     {
         string strHQL;
@@ -12978,7 +13357,7 @@ public static class ShareClass
         return ds.Tables[0].Rows[0][0].ToString();
     }
 
-    //È¡µÃÓÃ»§´´½¨µÄºÏÍ¬±¨¹Øµ¥×î´óµÄIDºÅ
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„åˆåŒæŠ¥å…³å•æœ€å¤§çš„IDå·
     public static string GetMyCreatedMaxConstractEntryID(string strConstractCode)
     {
         string strHQL;
@@ -12989,7 +13368,7 @@ public static class ShareClass
         return ds.Tables[0].Rows[0][0].ToString();
     }
 
-    //È¡µÃÓÃ»§´´½¨µÄ×î´óµÄºÏÍ¬¸¶¿îºÅ
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„æœ€å¤§çš„åˆåŒä»˜æ¬¾å·
     public static string GetMyCreatedMaxConstractPayableID(string strConstractCode)
     {
         string strHQL;
@@ -13004,7 +13383,7 @@ public static class ShareClass
         return constractPayable.ID.ToString();
     }
 
-    //È¡µÃÓÃ»§´´½¨µÄ×î´óµÄºÏÍ¬¸¶¿îºÅ
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„æœ€å¤§çš„åˆåŒä»˜æ¬¾å·
     public static string GetMyCreatedMaxConstractPayablePlanID(string strRelatedType, string strRelatedID)
     {
         string strHQL;
@@ -13020,7 +13399,7 @@ public static class ShareClass
         return constractPayable.ID.ToString();
     }
 
-    //È¡µÃÓÃ»§´´½¨µÄ×î´óµÄºÏÍ¬¸¶¿î¼ÇÂ¼ºÅ
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„æœ€å¤§çš„åˆåŒä»˜æ¬¾è®°å½•å·
     public static string GetMyCreatedMaxConstractPayableRecordID(string strPayableID)
     {
         string strHQL;
@@ -13035,7 +13414,7 @@ public static class ShareClass
         return constractPayableRecord.ID.ToString();
     }
 
-    //È¡µÃÓÃ»§´´½¨µÄ×î´óµÄºÏÍ¬ÊÕ¿îºÅ
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„æœ€å¤§çš„åˆåŒæ”¶æ¬¾å·
     public static string GetMyCreatedMaxConstractReceivableID(string strConstractCode)
     {
         string strHQL;
@@ -13050,7 +13429,7 @@ public static class ShareClass
         return constractReceivables.ID.ToString();
     }
 
-    //È¡µÃÓÃ»§´´½¨µÄ×î´óµÄºÏÍ¬ÊÕ¿îºÅ
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„æœ€å¤§çš„åˆåŒæ”¶æ¬¾å·
     public static string GetMyCreatedMaxConstractReceivablePlanID(string strRelatedType, string strRelatedID)
     {
         string strHQL;
@@ -13066,7 +13445,7 @@ public static class ShareClass
         return constractReceivables.ID.ToString();
     }
 
-    //È¡µÃÓÃ»§´´½¨µÄ×î´óµÄºÏÍ¬ÊÕ¿î¼ÇÂ¼ºÅ
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„æœ€å¤§çš„åˆåŒæ”¶æ¬¾è®°å½•å·
     public static string GetMyCreatedMaxConstractReceivableRecordID(string strReceivablesID)
     {
         string strHQL;
@@ -13081,7 +13460,7 @@ public static class ShareClass
         return constractReceivablesRecord.ID.ToString();
     }
 
-    //È¡µÃÓÃ»§´´½¨µÄ×î´óĞ­×÷ºÅ
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„æœ€å¤§åä½œå·
     public static string GetMyCreatedMaxColloaborationID(string strUserCode)
     {
         string strHQL;
@@ -13092,7 +13471,7 @@ public static class ShareClass
         return ds.Tables[0].Rows[0][0].ToString().Trim();
     }
 
-    //È¡µÃÓÃ»§´´½¨µÄ¶ÌĞÅ±àºÅ
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„çŸ­ä¿¡ç¼–å·
     public static string GetMyCreatedMaxSMSID(string strUserCode)
     {
         string strHQL;
@@ -13103,7 +13482,7 @@ public static class ShareClass
         return ds.Tables[0].Rows[0][0].ToString();
     }
 
-    //È¡µÃ×éÖ¯¼¶ĞÅÏ¢ÍÆËÍµÄ±àºÅ
+    //å–å¾—ç»„ç»‡çº§ä¿¡æ¯æ¨é€çš„ç¼–å·
     public static string GetMyCreatedMaxDepartmentMsgPushID(string strUserCode)
     {
         string strHQL;
@@ -13114,7 +13493,7 @@ public static class ShareClass
         return ds.Tables[0].Rows[0][0].ToString();
     }
 
-    //È¡µÃÓÃ»§´´½¨µÄ×î´ó¹¤×÷Á÷±àºÅ
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„æœ€å¤§å·¥ä½œæµç¼–å·
     public static string GetMyCreatedWorkFlowID(string strUserCode)
     {
         string strHQL;
@@ -13129,7 +13508,7 @@ public static class ShareClass
         return workFlow.WLID.ToString();
     }
 
-    //È¡µÃÓÃ»§´´½¨µÄ×î´ó¹¤×÷Á÷²½Öè±àºÅ
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„æœ€å¤§å·¥ä½œæµæ­¥éª¤ç¼–å·
     public static string GetMyCreatedWorkFlowStepID(string strWLID)
     {
         string strHQL;
@@ -13147,7 +13526,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃÓÃ»§´´½¨µÄ×î´ó¹¤×÷Á÷Ä£°å²½ÖèºÅ
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„æœ€å¤§å·¥ä½œæµæ¨¡æ¿æ­¥éª¤å·
     public static string GetMyCreatedWorkFlowTStepID(string strTemName)
     {
         string strHQL;
@@ -13162,7 +13541,7 @@ public static class ShareClass
         return workFlowTStep.StepID.ToString();
     }
 
-    //È¡µÃÓÃ»§´´½¨µÄ×î´ó¹¤×÷Á÷²½ÖèÏ¸½ÚºÅ
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„æœ€å¤§å·¥ä½œæµæ­¥éª¤ç»†èŠ‚å·
     public static string GetMyCreatedMaxWorkFlowTStepOperatorID(string strStepID)
     {
         string strHQL;
@@ -13177,7 +13556,7 @@ public static class ShareClass
         return workFlowTStepOperator.ID.ToString();
     }
 
-    ////È¡µÃÓÃ»§´´½¨µÄ×î´ó¹¤×÷Á÷²½Öè²Ù×÷ºÅ
+    ////å–å¾—ç”¨æˆ·åˆ›å»ºçš„æœ€å¤§å·¥ä½œæµæ­¥éª¤æ“ä½œå·
     //public static string GetMyCreatedMaxWorkFlowTStepOperationID(string strStepID)
     //{
     //    string strHQL = "from WorkFlowTStepOperation as workFlowTStepOperation where workFlowTStepOperation.StepID = " + strStepID + " Order by workFlowTStepOperation.OperationID DESC";
@@ -13189,7 +13568,7 @@ public static class ShareClass
     //    return workFlowTStepOperation.OperationID.ToString();
     //}
 
-    //È¡µÃÓÃ»§´´½¨µÄ×î´ó¹¤×÷Á÷Ä£°åXML½Úµã¹ØÁª±äÁ¿IDºÅ
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„æœ€å¤§å·¥ä½œæµæ¨¡æ¿XMLèŠ‚ç‚¹å…³è”å˜é‡IDå·
     public static string GetMyCreatedMaxWFTemplateXMLNodeGlobalVariableID()
     {
         string strHQL;
@@ -13200,7 +13579,7 @@ public static class ShareClass
         return ds.Tables[0].Rows[0][0].ToString();
     }
 
-    //È¡µÃÓÃ»§´´½¨µÄ×î´ó¹¤×÷Á÷²½ÖèÌõ¼şºÅ
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„æœ€å¤§å·¥ä½œæµæ­¥éª¤æ¡ä»¶å·
     public static string GetMyCreatedMaxWorkFlowTStepConditionID()
     {
         string strHQL;
@@ -13215,7 +13594,7 @@ public static class ShareClass
         return wlTStepCondition.ConID.ToString();
     }
 
-    //È¡µÃÓÃ»§´´½¨µÄ×î´ó¹¤×÷Á÷²½ÖèÌõ¼ş±í´ïÊ½ºÅ
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„æœ€å¤§å·¥ä½œæµæ­¥éª¤æ¡ä»¶è¡¨è¾¾å¼å·
     public static string GetMyCreatedMaxWorkFlowTStepConditionExpressionID()
     {
         string strHQL;
@@ -13230,7 +13609,7 @@ public static class ShareClass
         return wlTStepConditionExpression.ID.ToString();
     }
 
-    //È¡µÃÓÃ»§´´½¨µÄ×î´ó¹¤×÷Á÷²½ÖèÌõ¼ş±í´ïÊ½ºÅ
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„æœ€å¤§å·¥ä½œæµæ­¥éª¤æ¡ä»¶è¡¨è¾¾å¼å·
     public static string GetMyCreatedMaxWFTStepRelatedTem(string strStepID)
     {
         string strHQL;
@@ -13241,7 +13620,7 @@ public static class ShareClass
         return ds.Tables[0].Rows[0][0].ToString();
     }
 
-    //È¡µÃÓÃ»§´´½¨µÄ×î´ó½ÇÉ«×é³ÉÔ±ºÅ
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„æœ€å¤§è§’è‰²ç»„æˆå‘˜å·
     public static string GetMyCreatedMaxActorGroupDetailID(string strGroupName)
     {
         string strHQL;
@@ -13267,7 +13646,7 @@ public static class ShareClass
         return ds.Tables[0].Rows[0][0].ToString();
     }
 
-    //È¡µÃÓÃ»§´´½¨µÄ×î´óÏîÄ¿³ÉÔ±IDºÅ
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„æœ€å¤§é¡¹ç›®æˆå‘˜IDå·
     public static string GetMyCreatedMaxProjectRelatedUserID(string strProjectID)
     {
         string strHQL;
@@ -13278,7 +13657,7 @@ public static class ShareClass
         return ds.Tables[0].Rows[0][0].ToString();
     }
 
-    //È¡µÃÓÃ»§´´½¨µÄ×î´óÏîÄ¿·ÑÓÃºÅ
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„æœ€å¤§é¡¹ç›®è´¹ç”¨å·
     public static string GetMyCreatedMaxProExpenseID(string strProjectID, string strUserCode)
     {
         string strHQL;
@@ -13293,7 +13672,7 @@ public static class ShareClass
         return proExpense.ID.ToString();
     }
 
-    //È¡µÃÓÃ»§´´½¨µÄ×î´óÏîÄ¿·ÑÓÃºÅ
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„æœ€å¤§é¡¹ç›®è´¹ç”¨å·
     public static string GetMyCreatedMaxProBudgetID(string strProjectID)
     {
         string strHQL;
@@ -13308,7 +13687,7 @@ public static class ShareClass
         return projectBudget.ID.ToString();
     }
 
-    //È¡µÃÓÃ»§´´½¨µÄ×î´óÏîÄ¿·ÑÓÃºÅ
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„æœ€å¤§é¡¹ç›®è´¹ç”¨å·
     public static string GetMyCreatedMaxAllProBudgetID(string strProjectID)
     {
         string strHQL;
@@ -13320,7 +13699,7 @@ public static class ShareClass
         return ds.Tables[0].Rows[0][0].ToString();
     }
 
-    //È¡µÃÓÃ»§´´½¨µÄ×î´óÏîÄ¿¼Æ»®ºÅ
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„æœ€å¤§é¡¹ç›®è®¡åˆ’å·
     public static string GetMyCreatedMaxProPlanID(string strProjectID, string strVerID)
     {
         string strHQL;
@@ -13335,7 +13714,7 @@ public static class ShareClass
         return workPlan.ID.ToString();
     }
 
-    //È¡µÃÓÃ»§´´½¨µÄÏîÄ¿¼Æ»®³ÉÔ±µÄ×î´óIDºÅ
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„é¡¹ç›®è®¡åˆ’æˆå‘˜çš„æœ€å¤§IDå·
     public static string GetMyCreatedMaxPlanMemberID(string strPlanID)
     {
         string strHQL;
@@ -13350,7 +13729,7 @@ public static class ShareClass
         return planMember.ID.ToString();
     }
 
-    //È¡µÃÓÃ»§´´½¨µÄ·ÑÓÃÉêÇë×î´óIDºÅ
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„è´¹ç”¨ç”³è¯·æœ€å¤§IDå·
     public static string GetMyCreatedMaxExpenseApplyWLID(string strUserCode)
     {
         string strHQL;
@@ -13365,7 +13744,7 @@ public static class ShareClass
         return expenseApplyWL.ID.ToString();
     }
 
-    //È¡µÃÓÃ»§´´½¨µÄ·ÑÓÃ±¨Ïú×î´óIDºÅ
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„è´¹ç”¨æŠ¥é”€æœ€å¤§IDå·
     public static string GetMyCreatedMaxExpenseClaimWLID(string strUserCode)
     {
         string strHQL;
@@ -13380,7 +13759,7 @@ public static class ShareClass
         return expenseClaim.ECID.ToString();
     }
 
-    //È¡µÃÓÃ»§´´½¨µÄ·ÑÓÃ±¨ÏúÃûÏ¸µÄ×î´óIDºÅ
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„è´¹ç”¨æŠ¥é”€åç»†çš„æœ€å¤§IDå·
     public static string GetMyCreatedMaxExpenseClaimDetailID(string strUserCode)
     {
         string strHQL;
@@ -13398,7 +13777,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃ×î´óµÄ²âÊÔÓÃÀıºÅ
+    //å–å¾—æœ€å¤§çš„æµ‹è¯•ç”¨ä¾‹å·
     public static string GetMyCreatedMaxTaskTestCaseID()
     {
         string strHQL;
@@ -13413,7 +13792,7 @@ public static class ShareClass
         return taskTestCase.ID.ToString();
     }
 
-    //È¡µÃÓÃ»§´´½¨µÄ×Ê²ú²É¹ºµ¥×î´óIDºÅ
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„èµ„äº§é‡‡è´­å•æœ€å¤§IDå·
     public static string GetMyCreatedMaxAssetPurchaseOrderID(string strUserCode)
     {
         string strHQL;
@@ -13428,7 +13807,7 @@ public static class ShareClass
         return assetPurchaseOrder.POID.ToString();
     }
 
-    //È¡µÃÓÃ»§´´½¨µÄÏîÄ¿Îï×Ê·ÑÓÃÉêÇëµ¥×î´óIDºÅ
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„é¡¹ç›®ç‰©èµ„è´¹ç”¨ç”³è¯·å•æœ€å¤§IDå·
     public static string GetMyCreatedMaxProjectMaterialPaymentApplicantID(string strUserCode)
     {
         string strHQL;
@@ -13443,7 +13822,7 @@ public static class ShareClass
         return projectMaterialPaymentApplicant.AOID.ToString();
     }
 
-    //È¡µÃÓÃ»§´´½¨µÄÏîÄ¿Îï×Ê·ÑÓÃÉêÇëµ¥Ã÷Ï¸×î´óIDºÅ
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„é¡¹ç›®ç‰©èµ„è´¹ç”¨ç”³è¯·å•æ˜ç»†æœ€å¤§IDå·
     public static string GetMyCreatedMaxProjectMaterialPaymentApplicantDetailID(string strAOID)
     {
         string strHQL;
@@ -13458,7 +13837,7 @@ public static class ShareClass
         return projectMaterialPaymentApplicantDetail.ID.ToString();
     }
 
-    //È¡µÃÓÃ»§´´½¨µÄ×Ê²ú·ÑÓÃÉêÇëµ¥×î´óIDºÅ
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„èµ„äº§è´¹ç”¨ç”³è¯·å•æœ€å¤§IDå·
     public static string GetMyCreatedMaxSupplierAssetPaymentApplicantID(string strUserCode)
     {
         string strHQL;
@@ -13473,7 +13852,7 @@ public static class ShareClass
         return supplierAssetPaymentApplicant.AOID.ToString();
     }
 
-    //È¡µÃÓÃ»§´´½¨µÄ×Ê²ú·ÑÓÃÉêÇëµ¥Ã÷Ï¸×î´óIDºÅ
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„èµ„äº§è´¹ç”¨ç”³è¯·å•æ˜ç»†æœ€å¤§IDå·
     public static string GetMyCreatedMaxSupplierAssetPaymentApplicantDetailID(string strAOID)
     {
         string strHQL;
@@ -13488,7 +13867,7 @@ public static class ShareClass
         return supplierAssetPaymentApplicantDetail.ID.ToString();
     }
 
-    //È¡µÃÓÃ»§´´½¨µÄÎïÁÏ²É¹ºµ¥×î´óIDºÅ
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„ç‰©æ–™é‡‡è´­å•æœ€å¤§IDå·
     public static string GetMyCreatedMaxGoodsPurchaseOrderID(string strUserCode)
     {
         string strHQL;
@@ -13503,7 +13882,7 @@ public static class ShareClass
         return goodsPurchaseOrder.POID.ToString();
     }
 
-    //È¡µÃÎïÁÏ¹©»õµ¥µÄ×î´óID
+    //å–å¾—ç‰©æ–™ä¾›è´§å•çš„æœ€å¤§ID
     public static string GetMyCreatedMaxGoodsSupplyOrderID(string strUserCode)
     {
         string strHQL;
@@ -13514,7 +13893,7 @@ public static class ShareClass
         return ds.Tables[0].Rows[0][0].ToString();
     }
 
-    //È¡µÃÎïÁÏÉú²úµ¥µÄ×î´óID
+    //å–å¾—ç‰©æ–™ç”Ÿäº§å•çš„æœ€å¤§ID
     public static string GetMyCreatedMaxGoodsProductionOrderID(string strUserCode)
     {
         string strHQL;
@@ -13525,7 +13904,7 @@ public static class ShareClass
         return ds.Tables[0].Rows[0][0].ToString();
     }
 
-    //È¡µÃÎïÁÏÉú²úµ¥Ã÷Ï¸µÄ×î´óID
+    //å–å¾—ç‰©æ–™ç”Ÿäº§å•æ˜ç»†çš„æœ€å¤§ID
     public static string GetMyCreatedMaxGoodsProductionOrderDetailID(string strPDID)
     {
         string strHQL;
@@ -13536,7 +13915,7 @@ public static class ShareClass
         return ds.Tables[0].Rows[0][0].ToString();
     }
 
-    //È¡µÃ×Ê²úÈë¿âµ¥µÄ×î´óID
+    //å–å¾—èµ„äº§å…¥åº“å•çš„æœ€å¤§ID
     public static string GetMyCreatedMaxAssetCheckInID(string strUserCode)
     {
         string strHQL;
@@ -13547,7 +13926,7 @@ public static class ShareClass
         return ds.Tables[0].Rows[0][0].ToString();
     }
 
-    //È¡µÃÓÃ»§´´½¨µÄ×Ê²ú²É¹ºÃ÷Ï¸×î´óIDºÅ
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„èµ„äº§é‡‡è´­æ˜ç»†æœ€å¤§IDå·
     public static string GetMyCreatedMaxAssetPurRecordID(string strPOID)
     {
         string strHQL;
@@ -13562,7 +13941,7 @@ public static class ShareClass
         return assetPurRecord.ID.ToString();
     }
 
-    //È¡µÃÓÃ»§´´½¨µÄÎïÁÏ²É¹ºÃ÷Ï¸×î´óIDºÅ
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„ç‰©æ–™é‡‡è´­æ˜ç»†æœ€å¤§IDå·
     public static string GetMyCreatedMaxGoodsPurRecordID(string strPOID)
     {
         string strHQL;
@@ -13577,7 +13956,7 @@ public static class ShareClass
         return goodsPurRecord.ID.ToString();
     }
 
-    //È¡µÃÎïÁÏ¹©»õµ¥Ã÷Ï¸µÄ×î´óID
+    //å–å¾—ç‰©æ–™ä¾›è´§å•æ˜ç»†çš„æœ€å¤§ID
     public static string GetMyCreatedMaxGoodsSupplyOrderDetailID(string strSUID)
     {
         string strHQL;
@@ -13588,7 +13967,7 @@ public static class ShareClass
         return ds.Tables[0].Rows[0][0].ToString();
     }
 
-    //È¡µÃÓÃ»§´´½¨µÄºÏÍ¬ÎïÁÏÃ÷Ï¸±í×î´óIDºÅ
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„åˆåŒç‰©æ–™æ˜ç»†è¡¨æœ€å¤§IDå·
     public static string GetMyCreatedMaxConstractRelatedGoodsID(string strConstractCode)
     {
         string strHQL;
@@ -13603,7 +13982,7 @@ public static class ShareClass
         return constractRelatedGoods.ID.ToString();
     }
 
-    //È¡µÃÓÃ»§´´½¨µÄ¿Í»§ÎïÁÏÃ÷Ï¸±í×î´óIDºÅ
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„å®¢æˆ·ç‰©æ–™æ˜ç»†è¡¨æœ€å¤§IDå·
     public static string GetMyCreatedMaxCustomerRelatedGoodsInforID(string strCustomerCode)
     {
         string strHQL;
@@ -13618,7 +13997,7 @@ public static class ShareClass
         return customerRelatedGoodsInfor.ID.ToString();
     }
 
-    //È¡µÃÓÃ»§´´½¨µÄ¹©Ó¦ÉÌÎïÁÏÃ÷Ï¸±í×î´óIDºÅ
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„ä¾›åº”å•†ç‰©æ–™æ˜ç»†è¡¨æœ€å¤§IDå·
     public static string GetMyCreatedMaxVendorRelatedGoodsInforID(string strVendorCode)
     {
         string strHQL;
@@ -13633,7 +14012,7 @@ public static class ShareClass
         return vendorRelatedGoodsInfor.ID.ToString();
     }
 
-    //È¡µÃÓÃ»§´´½¨µÄºÏÍ¬ÊÕ»õ¼Æ»®Ã÷Ï¸±í×î´óIDºÅ
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„åˆåŒæ”¶è´§è®¡åˆ’æ˜ç»†è¡¨æœ€å¤§IDå·
     public static string GetMyCreatedMaxConstractGoodsReceiptPlanID(string strConstractCode)
     {
         string strHQL;
@@ -13648,7 +14027,7 @@ public static class ShareClass
         return constractGoodsReceiptPlan.ID.ToString();
     }
 
-    //È¡µÃÓÃ»§´´½¨µÄºÏÍ¬ÊÕ»õ¼ÇÂ¼Ã÷Ï¸±í×î´óIDºÅ
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„åˆåŒæ”¶è´§è®°å½•æ˜ç»†è¡¨æœ€å¤§IDå·
     public static string GetMyCreatedMaxConstractGoodsReceiptRecordID(string strReceiptPlanID)
     {
         string strHQL;
@@ -13663,7 +14042,7 @@ public static class ShareClass
         return constractGoodsReceiptRecord.ID.ToString();
     }
 
-    //È¡µÃÓÃ»§´´½¨µÄºÏÍ¬·¢»õ¼Æ»®Ã÷Ï¸±í×î´óIDºÅ
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„åˆåŒå‘è´§è®¡åˆ’æ˜ç»†è¡¨æœ€å¤§IDå·
     public static string GetMyCreatedMaxConstractGoodsDeliveryPlanID(string strConstractCode)
     {
         string strHQL;
@@ -13678,7 +14057,7 @@ public static class ShareClass
         return constractGoodsDeliveryPlan.ID.ToString();
     }
 
-    //È¡µÃÓÃ»§´´½¨µÄºÏÍ¬·¢»õ¼ÇÂ¼Ã÷Ï¸±í×î´óIDºÅ
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„åˆåŒå‘è´§è®°å½•æ˜ç»†è¡¨æœ€å¤§IDå·
     public static string GetMyCreatedMaxConstractGoodsDeliveryRecordID(string strDeliveryPlanID)
     {
         string strHQL;
@@ -13693,7 +14072,7 @@ public static class ShareClass
         return constractGoodsDeliveryRecord.ID.ToString();
     }
 
-    //È¡µÃÓÃ»§´´½¨µÄ×Ê²úÉêÇë±í×î´óIDºÅ
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„èµ„äº§ç”³è¯·è¡¨æœ€å¤§IDå·
     public static string GetMyCreatedMaxAssetApplicationID(string strUserCode)
     {
         string strHQL;
@@ -13708,7 +14087,7 @@ public static class ShareClass
         return assetApplication.AAID.ToString();
     }
 
-    //È¡µÃÓÃ»§´´½¨µÄ×Ê²úÉêÇë±íÃ÷Ï¸×î´óIDºÅ
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„èµ„äº§ç”³è¯·è¡¨æ˜ç»†æœ€å¤§IDå·
     public static string GetMyCreatedMaxAssetApplicationDetailID(string strAAID)
     {
         string strHQL;
@@ -13723,7 +14102,7 @@ public static class ShareClass
         return assetApplicationDetail.ID.ToString();
     }
 
-    //È¡µÃ×Ê²úÈë¿âµ¥×î´óµÄµ¥ºÅ
+    //å–å¾—èµ„äº§å…¥åº“å•æœ€å¤§çš„å•å·
     public static int GetMyCreatedMaxAssetCheckInDetailID(string strCIOID)
     {
         string strHQL;
@@ -13734,7 +14113,7 @@ public static class ShareClass
         return int.Parse(ds.Tables[0].Rows[0][0].ToString());
     }
 
-    //È¡µÃ×Ê²ú³ö¿âµ¥×î´óµÄµ¥ºÅ
+    //å–å¾—èµ„äº§å‡ºåº“å•æœ€å¤§çš„å•å·
     public static int GetMyCreatedMaxAssetShipmentNO(string strUserCode)
     {
         string strHQL;
@@ -13745,7 +14124,7 @@ public static class ShareClass
         return int.Parse(ds.Tables[0].Rows[0][0].ToString());
     }
 
-    //È¡µÃ×Ê²ú³ö¿âµ¥Ã÷Ï¸µÄ×î´óID
+    //å–å¾—èµ„äº§å‡ºåº“å•æ˜ç»†çš„æœ€å¤§ID
     public static int GetMyCreatedMaxAssetShipmentDetailID()
     {
         string strHQL;
@@ -13756,7 +14135,7 @@ public static class ShareClass
         return int.Parse(ds.Tables[0].Rows[0][0].ToString());
     }
 
-    //È¡µÃÓÃ»§½¨Á¢µÄ×îĞÂµÄ×Ê²ú
+    //å–å¾—ç”¨æˆ·å»ºç«‹çš„æœ€æ–°çš„èµ„äº§
     public static string GetMyCreatedMaxAssetCode(string strUserCode)
     {
         string strHQL;
@@ -13771,7 +14150,7 @@ public static class ShareClass
         return asset.AssetCode.Trim();
     }
 
-    //È¡µÃÓÃ»§½¨Á¢µÄ×Ê²ú×îĞÂµ÷Åä¼ÇÂ¼ID
+    //å–å¾—ç”¨æˆ·å»ºç«‹çš„èµ„äº§æœ€æ–°è°ƒé…è®°å½•ID
     public static string GetMyCreatedMaxAssetuserRecordID(string strAssetCode)
     {
         string strHQL = "from AssetUserRecord as assetUserRecord where assetUserRecord.AssetCode = " + "'" + strAssetCode + "'" + " Order by assetUserRecord.ID DESC";
@@ -13782,7 +14161,7 @@ public static class ShareClass
         return assetUserRecord.ID.ToString();
     }
 
-    //È¡µÃÓÃ»§½¨Á¢µÄ×Ê²úÎ¬»¤×îĞÂ¼ÇÂ¼ID
+    //å–å¾—ç”¨æˆ·å»ºç«‹çš„èµ„äº§ç»´æŠ¤æœ€æ–°è®°å½•ID
     public static string GetMyCreatedMaxAssetMtRecordID(string strAssetCode)
     {
         string strHQL = "from AssetMTRecord as assetMTRecord where assetMTRecord.AssetCode = " + "'" + strAssetCode + "'" + " Order by assetMTRecord.ID DESC";
@@ -13795,7 +14174,7 @@ public static class ShareClass
         return assetMTRecord.ID.ToString();
     }
 
-    //È¡µÃÎïÁÏÏúÊÛµ¥×î´óµÄ¼ÇÂ¼ºÅ
+    //å–å¾—ç‰©æ–™é”€å”®å•æœ€å¤§çš„è®°å½•å·
     public static string GetMyCreatedMaxScheduleDailyWorkID()
     {
         string strHQL;
@@ -13806,7 +14185,7 @@ public static class ShareClass
         return ds.Tables[0].Rows[0][0].ToString();
     }
 
-    //È¡µÃÁÔÆ¸ÈËÔ±µÄ×î´óID
+    //å–å¾—çŒè˜äººå‘˜çš„æœ€å¤§ID
     public static string GetMyCreatedMaxCandidateID(string strUserCode)
     {
         string strHQL;
@@ -13817,7 +14196,7 @@ public static class ShareClass
         return ds.Tables[0].Rows[0][0].ToString();
     }
 
-    //È¡µÃÎïÁÏÈë¿âµ¥µÄ×î´óID
+    //å–å¾—ç‰©æ–™å…¥åº“å•çš„æœ€å¤§ID
     public static string GetMyCreatedMaxGoodsCheckInID(string strUserCode)
     {
         string strHQL;
@@ -13828,7 +14207,7 @@ public static class ShareClass
         return ds.Tables[0].Rows[0][0].ToString();
     }
 
-    //È¡µÃÎïÁÏÏúÊÛµ¥µÄ×î´óID
+    //å–å¾—ç‰©æ–™é”€å”®å•çš„æœ€å¤§ID
     public static string GetMyCreatedMaxGoodsSaleOrderID(string strUserCode)
     {
         string strHQL;
@@ -13839,7 +14218,7 @@ public static class ShareClass
         return ds.Tables[0].Rows[0][0].ToString();
     }
 
-    //È¡µÃÎïÁÏÏúÊÛµ¥×î´óµÄ¼ÇÂ¼ºÅ
+    //å–å¾—ç‰©æ–™é”€å”®å•æœ€å¤§çš„è®°å½•å·
     public static string GetMyCreatedMaxGoodsSaleRecordID(string strSOID)
     {
         string strHQL;
@@ -13850,7 +14229,7 @@ public static class ShareClass
         return ds.Tables[0].Rows[0][0].ToString();
     }
 
-    //È¡µÃÎïÁÏÏúÊÛ±¨¼Ûµ¥µÄ×î´óID
+    //å–å¾—ç‰©æ–™é”€å”®æŠ¥ä»·å•çš„æœ€å¤§ID
     public static string GetMyCreatedMaxGoodsSaleQuotationOrderID(string strUserCode)
     {
         string strHQL;
@@ -13861,7 +14240,7 @@ public static class ShareClass
         return ds.Tables[0].Rows[0][0].ToString();
     }
 
-    //È¡µÃÎïÁÏÏúÊÛµ¥×î´óµÄ¼ÇÂ¼ºÅ
+    //å–å¾—ç‰©æ–™é”€å”®å•æœ€å¤§çš„è®°å½•å·
     public static string GetMyCreatedMaxGoodsSaleQuotationOrderDetailID(string strQOID)
     {
         string strHQL;
@@ -13872,7 +14251,7 @@ public static class ShareClass
         return ds.Tables[0].Rows[0][0].ToString();
     }
 
-    //È¡µÃÓÃ»§´´½¨µÄÎïÁÏ³ö»õÍ¨Öª±í×î´óIDºÅ
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„ç‰©æ–™å‡ºè´§é€šçŸ¥è¡¨æœ€å¤§IDå·
     public static string GetMyCreatedMaxGoodsCheckOutNoticeOrderID(string strUserCode)
     {
         string strHQL;
@@ -13887,7 +14266,7 @@ public static class ShareClass
         return goodsCheckOutNoticeOrder.COOID.ToString();
     }
 
-    //È¡µÃÓÃ»§´´½¨µÄÎïÁÏ³ö»õÍ¨Öª±íÃ÷Ï¸×î´óIDºÅ
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„ç‰©æ–™å‡ºè´§é€šçŸ¥è¡¨æ˜ç»†æœ€å¤§IDå·
     public static string GetMyCreatedMaxGoodsCheckOutNoticeOrderDetailID(string strAAID)
     {
         string strHQL;
@@ -13902,7 +14281,7 @@ public static class ShareClass
         return goodsCheckOutNoticeOrderDetail.ID.ToString();
     }
 
-    //È¡µÃÓÃ»§´´½¨µÄÎïÁÏÉêÇë±í×î´óIDºÅ
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„ç‰©æ–™ç”³è¯·è¡¨æœ€å¤§IDå·
     public static string GetMyCreatedMaxGoodsApplicationID(string strUserCode)
     {
         string strHQL;
@@ -13917,7 +14296,7 @@ public static class ShareClass
         return goodsApplication.AAID.ToString();
     }
 
-    //È¡µÃÓÃ»§´´½¨µÄÎïÁÏÉêÇë±íÃ÷Ï¸×î´óIDºÅ
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„ç‰©æ–™ç”³è¯·è¡¨æ˜ç»†æœ€å¤§IDå·
     public static string GetMyCreatedMaxGoodsApplicationDetailID(string strAAID)
     {
         string strHQL;
@@ -13932,7 +14311,7 @@ public static class ShareClass
         return goodsApplicationDetail.ID.ToString();
     }
 
-    //È¡µÃÎïÁÏMRP¼Æ»®×î´óµÄµ¥ºÅ
+    //å–å¾—ç‰©æ–™MRPè®¡åˆ’æœ€å¤§çš„å•å·
     public static int GetMyCreatedMaxGoodsMrpMainPlanVerID(string strCreatorCode)
     {
         string strHQL;
@@ -13943,7 +14322,7 @@ public static class ShareClass
         return int.Parse(ds.Tables[0].Rows[0][0].ToString());
     }
 
-    //È¡µÃÎïÁÏMRP¼Æ»®Ã÷Ï¸×î´óµÄµ¥ºÅ
+    //å–å¾—ç‰©æ–™MRPè®¡åˆ’æ˜ç»†æœ€å¤§çš„å•å·
     public static int GetMyCreatedMaxGoodsMrpMainPlanVerDetailID(string strPlanVerID)
     {
         string strHQL;
@@ -13954,7 +14333,7 @@ public static class ShareClass
         return int.Parse(ds.Tables[0].Rows[0][0].ToString());
     }
 
-    //È¡µÃÎïÁÏÈë¿âµ¥×î´óµÄµ¥ºÅ
+    //å–å¾—ç‰©æ–™å…¥åº“å•æœ€å¤§çš„å•å·
     public static int GetMyCreatedMaxGoodsCheckInDetailID(string strCIOID)
     {
         string strHQL;
@@ -13965,7 +14344,7 @@ public static class ShareClass
         return int.Parse(ds.Tables[0].Rows[0][0].ToString());
     }
 
-    //È¡µÃÈë¿â´æÎïÁÏ×î´óµÄID
+    //å–å¾—å…¥åº“å­˜ç‰©æ–™æœ€å¤§çš„ID
     public static int GetMyCreatedMaxGoodsID()
     {
         string strHQL;
@@ -13976,7 +14355,7 @@ public static class ShareClass
         return int.Parse(ds.Tables[0].Rows[0][0].ToString());
     }
 
-    //È¡µÃÎïÁÏ³ö¿âµ¥×î´óµÄµ¥ºÅ
+    //å–å¾—ç‰©æ–™å‡ºåº“å•æœ€å¤§çš„å•å·
     public static int GetMyCreatedMaxGoodsShipmentNO(string strUserCode)
     {
         string strHQL;
@@ -13987,7 +14366,7 @@ public static class ShareClass
         return int.Parse(ds.Tables[0].Rows[0][0].ToString());
     }
 
-    //È¡µÃÎïÁÏ³ö¿âµ¥×î´óµÄµ¥ºÅ
+    //å–å¾—ç‰©æ–™å‡ºåº“å•æœ€å¤§çš„å•å·
     public static int GetMyCreatedMaxGoodsBorrowNO(string strUserCode)
     {
         string strHQL;
@@ -13998,7 +14377,7 @@ public static class ShareClass
         return int.Parse(ds.Tables[0].Rows[0][0].ToString());
     }
 
-    //È¡µÃÎïÁÏÍË»õµ¥×î´óµÄµ¥ºÅ
+    //å–å¾—ç‰©æ–™é€€è´§å•æœ€å¤§çš„å•å·
     public static int GetMyCreatedMaxGoodsROID(string strUserCode)
     {
         string strHQL;
@@ -14009,7 +14388,7 @@ public static class ShareClass
         return int.Parse(ds.Tables[0].Rows[0][0].ToString());
     }
 
-    //È¡µÃÎïÁÏËÍ»õµ¥×î´óµÄµ¥ºÅ
+    //å–å¾—ç‰©æ–™é€è´§å•æœ€å¤§çš„å•å·
     public static int GetMyCreatedMaxGoodsDeliveryOrderID(string strUserCode)
     {
         string strHQL;
@@ -14020,7 +14399,7 @@ public static class ShareClass
         return int.Parse(ds.Tables[0].Rows[0][0].ToString());
     }
 
-    //È¡µÃÎïÁÏËÍ»õµ¥Ã÷Ï¸±í×î´óµÄ¼ÇÂ¼ºÅ
+    //å–å¾—ç‰©æ–™é€è´§å•æ˜ç»†è¡¨æœ€å¤§çš„è®°å½•å·
     public static int GetMyCreatedMaxGoodsDeliveryOrderDetailID(string strUserCode)
     {
         string strHQL;
@@ -14031,7 +14410,7 @@ public static class ShareClass
         return int.Parse(ds.Tables[0].Rows[0][0].ToString());
     }
 
-    //È¡µÃ×Ê²úÍË»õµ¥×î´óµÄµ¥ºÅ
+    //å–å¾—èµ„äº§é€€è´§å•æœ€å¤§çš„å•å·
     public static int GetMyCreatedMaxAssetROID(string strUserCode)
     {
         string strHQL;
@@ -14042,7 +14421,7 @@ public static class ShareClass
         return int.Parse(ds.Tables[0].Rows[0][0].ToString());
     }
 
-    //È¡µÃÎïÁÏÍË»õµ¥Ã÷Ï¸µÄ×î´óID
+    //å–å¾—ç‰©æ–™é€€è´§å•æ˜ç»†çš„æœ€å¤§ID
     public static int GetMyCreatedMaxGoodsReturnDetailID()
     {
         string strHQL;
@@ -14053,7 +14432,7 @@ public static class ShareClass
         return int.Parse(ds.Tables[0].Rows[0][0].ToString());
     }
 
-    //È¡µÃ×Ê²úÍË¿âµ¥Ã÷Ï¸µÄ×î´óID
+    //å–å¾—èµ„äº§é€€åº“å•æ˜ç»†çš„æœ€å¤§ID
     public static int GetMyCreatedMaxAssetReturnDetailID()
     {
         string strHQL;
@@ -14064,7 +14443,7 @@ public static class ShareClass
         return int.Parse(ds.Tables[0].Rows[0][0].ToString());
     }
 
-    //È¡µÃÎïÁÏ³ö¿âµ¥Ã÷Ï¸µÄ×î´óID
+    //å–å¾—ç‰©æ–™å‡ºåº“å•æ˜ç»†çš„æœ€å¤§ID
     public static int GetMyCreatedMaxGoodsShipmentDetailID()
     {
         string strHQL;
@@ -14075,7 +14454,7 @@ public static class ShareClass
         return int.Parse(ds.Tables[0].Rows[0][0].ToString());
     }
 
-    //È¡µÃÎïÁÏ³ö¿âµ¥Ã÷Ï¸µÄ×î´óID
+    //å–å¾—ç‰©æ–™å‡ºåº“å•æ˜ç»†çš„æœ€å¤§ID
     public static int GetMyCreatedMaxGoodsBorrowOrderDetailID()
     {
         string strHQL;
@@ -14086,7 +14465,7 @@ public static class ShareClass
         return int.Parse(ds.Tables[0].Rows[0][0].ToString());
     }
 
-    //È¡µÃÓÃ»§½¨Á¢µÄ×îĞÂµÄÎïÁÏ
+    //å–å¾—ç”¨æˆ·å»ºç«‹çš„æœ€æ–°çš„ç‰©æ–™
     public static string GetMyCreatedMaxGoodsCode(string strUserCode)
     {
         string strHQL;
@@ -14101,7 +14480,7 @@ public static class ShareClass
         return goods.GoodsCode.Trim();
     }
 
-    //È¡µÃÓÃ»§½¨Á¢µÄÎïÁÏ×îĞÂµ÷Åä¼ÇÂ¼ID
+    //å–å¾—ç”¨æˆ·å»ºç«‹çš„ç‰©æ–™æœ€æ–°è°ƒé…è®°å½•ID
     public static string GetMyCreatedMaxGoodsuserRecordID(string strGoodsCode)
     {
         string strHQL = "from GoodsUserRecord as goodsUserRecord where goodsUserRecord.GoodsCode = " + "'" + strGoodsCode + "'" + " Order by goodsUserRecord.ID DESC";
@@ -14112,7 +14491,7 @@ public static class ShareClass
         return goodsUserRecord.ID.ToString();
     }
 
-    //È¡µÃÓÃ»§½¨Á¢µÄÎïÁÏÎ¬»¤×îĞÂ¼ÇÂ¼ID
+    //å–å¾—ç”¨æˆ·å»ºç«‹çš„ç‰©æ–™ç»´æŠ¤æœ€æ–°è®°å½•ID
     public static string GetMyCreatedMaxGoodsMtRecordID(string strGoodsCode)
     {
         string strHQL = "from GoodsMTRecord as goodsMTRecord where goodsMTRecord.GoodsCode = " + "'" + strGoodsCode + "'" + " Order by goodsMTRecord.ID DESC";
@@ -14125,7 +14504,7 @@ public static class ShareClass
         return goodsMTRecord.ID.ToString();
     }
 
-    //È¡µÃÓÃ»§½¨Á¢µÄ×î´óµÄ¿Í»§ÎÊÌâºÅ
+    //å–å¾—ç”¨æˆ·å»ºç«‹çš„æœ€å¤§çš„å®¢æˆ·é—®é¢˜å·
     public static string GetMyCreatedMaxCustomerQuestionID(string strUserCode)
     {
         string strHQL;
@@ -14140,7 +14519,7 @@ public static class ShareClass
         return customerQuestion.ID.ToString();
     }
 
-    //È¡µÃÓÃ»§½¨Á¢µÄ¿Í»§ÎÊÌâ¼ÇÂ¼×î´óµÄ¼ÇÂ¼ºÅ
+    //å–å¾—ç”¨æˆ·å»ºç«‹çš„å®¢æˆ·é—®é¢˜è®°å½•æœ€å¤§çš„è®°å½•å·
     public static string GetMyCreatedMaxcustomerQuestionDetailID(string strQuestionID)
     {
         string strHQL;
@@ -14155,7 +14534,7 @@ public static class ShareClass
         return customerQuestionHandleRecord.ID.ToString();
     }
 
-    //È¡µÃÓÃ»§½¨Á¢µÄÔ±¹¤×ÊÁÏ½ÌÓı¾­Àú×î´ó¼ÇÂ¼ºÅ
+    //å–å¾—ç”¨æˆ·å»ºç«‹çš„å‘˜å·¥èµ„æ–™æ•™è‚²ç»å†æœ€å¤§è®°å½•å·
     public static string GetMyCreatedMaxEducationExpericenceID(string strUserCode)
     {
         string strHQL;
@@ -14170,7 +14549,7 @@ public static class ShareClass
         return educationExperience.ID.ToString();
     }
 
-    //È¡µÃÓÃ»§½¨Á¢µÄÔ±¹¤×ÊÁÏ¹¤×÷¾­Àú×î´ó¼ÇÂ¼ºÅ
+    //å–å¾—ç”¨æˆ·å»ºç«‹çš„å‘˜å·¥èµ„æ–™å·¥ä½œç»å†æœ€å¤§è®°å½•å·
     public static string GetMyCreatedMaxWorkExperienceID(string strUserCode)
     {
         string strHQL;
@@ -14186,7 +14565,7 @@ public static class ShareClass
         return workExperience.ID.ToString();
     }
 
-    //È¡µÃÓÃ»§½¨Á¢µÄÔ±¹¤×ÊÁÏ¼ÒÍ¥³ÉÔ±×î´óIDºÅ
+    //å–å¾—ç”¨æˆ·å»ºç«‹çš„å‘˜å·¥èµ„æ–™å®¶åº­æˆå‘˜æœ€å¤§IDå·
     public static string GetMyCreatedMaxFamilyMemberID(string strUserCode)
     {
         string strHQL;
@@ -14201,7 +14580,7 @@ public static class ShareClass
         return familyMember.ID.ToString();
     }
 
-    //È¡µÃÓÃ»§½¨Á¢µÄÔ±¹¤×ÊÁÏÒì¶¯¼ÇÂ¼×î´óIDºÅ
+    //å–å¾—ç”¨æˆ·å»ºç«‹çš„å‘˜å·¥èµ„æ–™å¼‚åŠ¨è®°å½•æœ€å¤§IDå·
     public static string GetMyCreatedMaxUserTransactionRecordID(string strUserCode)
     {
         string strHQL;
@@ -14212,7 +14591,7 @@ public static class ShareClass
         return ds.Tables[0].Rows[0][0].ToString();
     }
 
-    //È¡µÃÓÃ»§¿¼ÇÚ¹æÔò×î´óIDºÅ
+    //å–å¾—ç”¨æˆ·è€ƒå‹¤è§„åˆ™æœ€å¤§IDå·
     public static string GetMyCreatedMaxUserAttendanceRule(string strUserCode)
     {
         string strHQL;
@@ -14228,7 +14607,7 @@ public static class ShareClass
         return userAttendanceRule.ID.ToString();
     }
 
-    //È¡µÃÓÃ»§½¨Á¢µÄÈÕ³Ì×î´óIDºÅ
+    //å–å¾—ç”¨æˆ·å»ºç«‹çš„æ—¥ç¨‹æœ€å¤§IDå·
     public static string GetMyCreatedMaxScheduleID(string strUserCode)
     {
         string strHQL;
@@ -14243,7 +14622,7 @@ public static class ShareClass
         return schedule.ID.ToString();
     }
 
-    // È¡µÃÓÃ»§´´½¨µÄ×î´óĞÂÎÅIDºÅ
+    // å–å¾—ç”¨æˆ·åˆ›å»ºçš„æœ€å¤§æ–°é—»IDå·
     public static string GetMyCreatedMaxHeadLineID(string strUserCode)
     {
         string strHQL;
@@ -14258,7 +14637,7 @@ public static class ShareClass
         return headLine.ID.ToString();
     }
 
-    // È¡µÃÓÃ»§´´½¨µÄ×î´ó¹«ÎÄIDºÅ
+    // å–å¾—ç”¨æˆ·åˆ›å»ºçš„æœ€å¤§å…¬æ–‡IDå·
     public static string GetMyCreatedMaxOfficialDocumentID(string strUserCode)
     {
         string strHQL;
@@ -14273,7 +14652,7 @@ public static class ShareClass
         return officialDocument.ID.ToString();
     }
 
-    // È¡µÃÓÃ»§´´½¨µÄ×î´óĞÂÎÅIDºÅ
+    // å–å¾—ç”¨æˆ·åˆ›å»ºçš„æœ€å¤§æ–°é—»IDå·
     public static string GetMyCreatedMaxMailSignInfoID(string strUserCode)
     {
         string strHQL;
@@ -14284,7 +14663,7 @@ public static class ShareClass
         return ds.Tables[0].Rows[0][0].ToString();
     }
 
-    //È¡µÃÓÃ»§´´½¨µÄ×î´óÁªÏµÈË±àºÅ
+    //å–å¾—ç”¨æˆ·åˆ›å»ºçš„æœ€å¤§è”ç³»äººç¼–å·
     public static string GetMyCreatedMaxContactInforID(string strUserCode)
     {
         string strHQL;
@@ -14299,7 +14678,7 @@ public static class ShareClass
         return contactInfor.ID.ToString();
     }
 
-    //È¡µÃÓÃ»§²ã´ÎµÄ×î´óµÄIDºÅ
+    //å–å¾—ç”¨æˆ·å±‚æ¬¡çš„æœ€å¤§çš„IDå·
     public static string GetMyCreatedMaxMemberLevelID()
     {
         string strHQL;
@@ -14314,7 +14693,7 @@ public static class ShareClass
         return memberLevel.ID.ToString();
     }
 
-    //È¡µÃ³µÁ¾ÉêÇëµÄ×î´óµÄIDºÅ
+    //å–å¾—è½¦è¾†ç”³è¯·çš„æœ€å¤§çš„IDå·
     public static string GetMyCreatedMaxCarApplyFormID()
     {
         string strHQL;
@@ -14325,7 +14704,7 @@ public static class ShareClass
         return ds.Tables[0].Rows[0][0].ToString();
     }
 
-    //È¡µÃ³µÁ¾ÉêÇëµÄ×î´óµÄIDºÅ
+    //å–å¾—è½¦è¾†ç”³è¯·çš„æœ€å¤§çš„IDå·
     public static string GetMyCreatedMaxCarAssignFormID()
     {
         string strHQL;
@@ -14336,7 +14715,7 @@ public static class ShareClass
         return ds.Tables[0].Rows[0][0].ToString();
     }
 
-    //È¡µÃÔ±¹¤¼æÖ°×î´óµÄIDºÅ
+    //å–å¾—å‘˜å·¥å…¼èŒæœ€å¤§çš„IDå·
     public static string GetMyCreatedMaxPartTimeJobID()
     {
         string strHQL;
@@ -14347,7 +14726,7 @@ public static class ShareClass
         return ds.Tables[0].Rows[0][0].ToString();
     }
 
-    //È¡µÃ¼Æ»®×î´óµÄIDºÅ
+    //å–å¾—è®¡åˆ’æœ€å¤§çš„IDå·
     public static string GetMyCreatedMaxPlanID(string strUserCode)
     {
         string strHQL;
@@ -14358,7 +14737,7 @@ public static class ShareClass
         return ds.Tables[0].Rows[0][0].ToString();
     }
 
-    //È¡µÃ¼Æ»®Ä¿±ê×î´óµÄIDºÅ
+    //å–å¾—è®¡åˆ’ç›®æ ‡æœ€å¤§çš„IDå·
     public static string GetMyCreatedMaxPlanTargetID(string strPlanID)
     {
         string strHQL;
@@ -14369,7 +14748,7 @@ public static class ShareClass
         return ds.Tables[0].Rows[0][0].ToString();
     }
 
-    //È¡µÃ¼Æ»®Áìµ¼×î´óµÄIDºÅ
+    //å–å¾—è®¡åˆ’é¢†å¯¼æœ€å¤§çš„IDå·
     public static string GetMyCreatedMaxPlanRelatedLeaderID(string strPlanID)
     {
         string strHQL;
@@ -14380,7 +14759,7 @@ public static class ShareClass
         return ds.Tables[0].Rows[0][0].ToString();
     }
 
-    //È¡µÃ¼Æ»®Áìµ¼ÆÀÂÛ×î´óµÄIDºÅ
+    //å–å¾—è®¡åˆ’é¢†å¯¼è¯„è®ºæœ€å¤§çš„IDå·
     public static string GetMyCreatedMaxPlanLeaderReviewID(string strPlanID)
     {
         string strHQL;
@@ -14391,7 +14770,7 @@ public static class ShareClass
         return ds.Tables[0].Rows[0][0].ToString();
     }
 
-    //È¡µÃ¼Æ»®ÈÕÖ¾µÄ×î´óµÄIDºÅ
+    //å–å¾—è®¡åˆ’æ—¥å¿—çš„æœ€å¤§çš„IDå·
     public static string GetMyCreatedMaxPlanWorkLogID(string strPlanID)
     {
         string strHQL;
@@ -14402,7 +14781,7 @@ public static class ShareClass
         return ds.Tables[0].Rows[0][0].ToString();
     }
 
-    //È¡µÃKPI×î´óµÄIDºÅ
+    //å–å¾—KPIæœ€å¤§çš„IDå·
     public static string GetMyCreatedMaxKPIID()
     {
         string strHQL;
@@ -14413,7 +14792,7 @@ public static class ShareClass
         return ds.Tables[0].Rows[0][0].ToString();
     }
 
-    //È¡µÃKPIÖ°³ÆÄ£°å×î´óµÄIDºÅ
+    //å–å¾—KPIèŒç§°æ¨¡æ¿æœ€å¤§çš„IDå·
     public static string GetMyCreatedMaxKPIDepartPositionTemplateID()
     {
         string strHQL;
@@ -14424,7 +14803,7 @@ public static class ShareClass
         return ds.Tables[0].Rows[0][0].ToString();
     }
 
-    //È¡µÃÔ±¹¤KPI¿¼ºË×î´óµÄIDºÅ
+    //å–å¾—å‘˜å·¥KPIè€ƒæ ¸æœ€å¤§çš„IDå·
     public static string GetMyCreatedMaxUserKPICheckID()
     {
         string strHQL;
@@ -14435,7 +14814,7 @@ public static class ShareClass
         return ds.Tables[0].Rows[0][0].ToString();
     }
 
-    //È¡µÃÔ±¹¤KPI¿¼ºË×î´óµÄIDºÅ
+    //å–å¾—å‘˜å·¥KPIè€ƒæ ¸æœ€å¤§çš„IDå·
     public static string GetMyCreatedMaxUserKPICheckDetailID()
     {
         string strHQL;
@@ -14446,7 +14825,7 @@ public static class ShareClass
         return ds.Tables[0].Rows[0][0].ToString();
     }
 
-    //È¡µÃÓÃÍøÕ¾µØÖ·µÄ±àºÅ
+    //å–å¾—ç”¨ç½‘ç«™åœ°å€çš„ç¼–å·
     public static string GetMyCreatedMaxWebSiteID(string strUserCode)
     {
         string strHQL;
@@ -14457,7 +14836,7 @@ public static class ShareClass
         return ds.Tables[0].Rows[0][0].ToString();
     }
 
-    //È¡µÃ±¨±íÄ£°åµÄ×î´óIDºÅ
+    //å–å¾—æŠ¥è¡¨æ¨¡æ¿çš„æœ€å¤§IDå·
     public static string GetMyCreatedMaxReportTemplateID(string strUserCode)
     {
         string strHQL;
@@ -14468,7 +14847,7 @@ public static class ShareClass
         return ds.Tables[0].Rows[0][0].ToString();
     }
 
-    //È¡µÃÉÏ´«ÎÄµµµÄ×î´óIDºÅ
+    //å–å¾—ä¸Šä¼ æ–‡æ¡£çš„æœ€å¤§IDå·
     public static string GetMyCreatedMaxDocID(string strUserCode)
     {
         string strHQL;
@@ -14479,7 +14858,7 @@ public static class ShareClass
         return ds.Tables[0].Rows[0][0].ToString();
     }
 
-    //È¡µÃÊı¾İ½»ÃüÁîµÄ×î´óIDºÅ
+    //å–å¾—æ•°æ®äº¤å‘½ä»¤çš„æœ€å¤§IDå·
     public static string GetMyCreatedSystemExchangeDBSqlOrderID()
     {
         string strHQL;
@@ -14490,11 +14869,11 @@ public static class ShareClass
         return ds.Tables[0].Rows[0][0].ToString();
     }
 
-    #endregion È¡µÃÓÃ»§´´½¨µÄ¶ÔÏóµÄ×î´óIDºÅ
+    #endregion å–å¾—ç”¨æˆ·åˆ›å»ºçš„å¯¹è±¡çš„æœ€å¤§IDå·
 
-    #region È¡µÃ¸÷ÖÖ¶ÔÏóIDºÅ»òÃû³Æ
+    #region å–å¾—å„ç§å¯¹è±¡IDå·æˆ–åç§°
 
-    //È¡µÃÏîÄ¿ID£¨¸ù¾İÏîÄ¿Ãû³Æ£©
+    //å–å¾—é¡¹ç›®IDï¼ˆæ ¹æ®é¡¹ç›®åç§°ï¼‰
     public static string GetProjectID(string strProjectName)
     {
         string strHQL;
@@ -14509,7 +14888,7 @@ public static class ShareClass
         return project.ProjectID.ToString();
     }
 
-    //È¡µÃÏîÄ¿Ãû³Æ£¨¸ù¾İÏîÄ¿ºÅ£©
+    //å–å¾—é¡¹ç›®åç§°ï¼ˆæ ¹æ®é¡¹ç›®å·ï¼‰
     public static string GetProjectName(string strProjectID)
     {
         string strHQL = "from Project as project where project.ProjectID = " + strProjectID;
@@ -14521,7 +14900,7 @@ public static class ShareClass
         return strProjectName;
     }
 
-    //È¡µÃÏîÄ¿ÊµÊ©£¨¸ù¾İÏîÄ¿ºÅ£©
+    //å–å¾—é¡¹ç›®å®æ–½ï¼ˆæ ¹æ®é¡¹ç›®å·ï¼‰
     public static Project GetProject(string strProjectID)
     {
         string strHQL = "from Project as project where project.ProjectID = " + strProjectID;
@@ -14532,7 +14911,7 @@ public static class ShareClass
         return project;
     }
 
-    //È¡ÊÇÏîÄ¿×´Ì¬£¨¸ù¾İÏîÄ¿ºÅ£©
+    //å–æ˜¯é¡¹ç›®çŠ¶æ€ï¼ˆæ ¹æ®é¡¹ç›®å·ï¼‰
     public static string GetProjectStatus(string strProjectID)
     {
         string strHQL;
@@ -14547,7 +14926,7 @@ public static class ShareClass
         return project.Status.Trim();
     }
 
-    //È¡µÃÏîÄ¿¾­Àí´úÂë£¨¸ù¾İÏîÄ¿ºÅ£©
+    //å–å¾—é¡¹ç›®ç»ç†ä»£ç ï¼ˆæ ¹æ®é¡¹ç›®å·ï¼‰
     public static string GetProjectPMCode(string strProjectID)
     {
         string strHQL = "from Project as project where project.ProjectID = " + strProjectID;
@@ -14558,7 +14937,7 @@ public static class ShareClass
         return project.PMCode.Trim();
     }
 
-    //È¡µÃÏîÄ¿¼Æ»®°æ±¾
+    //å–å¾—é¡¹ç›®è®¡åˆ’ç‰ˆæœ¬
     public static int GetProjectPlanVersion(string strProjectID, string strType)
     {
         string strHQL;
@@ -14579,7 +14958,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃ´ËÏîÄ¿ÀàĞÍµÄÏîÄ¿ÊÇ·ñÊÜÏ¸½Ú£¨¼Æ»®£¬ÈÎÎñ£¬¹¤×÷Á÷£©Ó°Ïì
+    //å–å¾—æ­¤é¡¹ç›®ç±»å‹çš„é¡¹ç›®æ˜¯å¦å—ç»†èŠ‚ï¼ˆè®¡åˆ’ï¼Œä»»åŠ¡ï¼Œå·¥ä½œæµï¼‰å½±å“
     public static string GetProjectTypeImpactByDetail(string strProjectID)
     {
         string strHQL;
@@ -14599,7 +14978,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃÏîÄ¿ÈÎÎñÃû³Æ
+    //å–å¾—é¡¹ç›®ä»»åŠ¡åç§°
     public static string GetProjectTaskName(string strTaskID)
     {
         string strHQL;
@@ -14613,7 +14992,7 @@ public static class ShareClass
         return projectTask.Task.Trim();
     }
 
-    //È¡µÃĞèÇó¶ÔÏó£¨¸ù¾İĞèÇóºÅ£©
+    //å–å¾—éœ€æ±‚å¯¹è±¡ï¼ˆæ ¹æ®éœ€æ±‚å·ï¼‰
     public static Defectment GetDefectment(string strDefectID)
     {
         string strHQL = "from Defectment as defectment where defectment.DefectID = " + strDefectID;
@@ -14626,7 +15005,7 @@ public static class ShareClass
         return defectment;
     }
 
-    //È¡µÃĞèÇó¶ÔÏó£¨¸ù¾İĞèÇóºÅ£©
+    //å–å¾—éœ€æ±‚å¯¹è±¡ï¼ˆæ ¹æ®éœ€æ±‚å·ï¼‰
     public static Requirement GetRequirement(string strReqID)
     {
         string strHQL = "from Requirement as requirement where requirement.ReqID = " + strReqID;
@@ -14639,7 +15018,7 @@ public static class ShareClass
         return requirement;
     }
 
-    //È¡µÃ²¿ÃÅÃû³Æ
+    //å–å¾—éƒ¨é—¨åç§°
     public static string GetDepartName(string strDepartCode)
     {
         string strHQL;
@@ -14651,7 +15030,7 @@ public static class ShareClass
         return ds.Tables[0].Rows[0][0].ToString();
     }
 
-    //È¡µÃÓÃ»§²¿ÃÅ´úÂë(¸ù¾İÓÃ»§´úÂë£©
+    //å–å¾—ç”¨æˆ·éƒ¨é—¨ä»£ç (æ ¹æ®ç”¨æˆ·ä»£ç ï¼‰
     public static string GetParentDepartCodeFromDepartCode(string strDepartCode)
     {
         string strHQL;
@@ -14666,7 +15045,7 @@ public static class ShareClass
         return department.ParentCode.Trim();
     }
 
-    //È¡µÃÓÃ»§²¿ÃÅ´úÂë(¸ù¾İÓÃ»§´úÂë£©
+    //å–å¾—ç”¨æˆ·éƒ¨é—¨ä»£ç (æ ¹æ®ç”¨æˆ·ä»£ç ï¼‰
     public static string GetDepartCodeFromUserCode(string strUserCode)
     {
         string strDepartCode, strHQL;
@@ -14679,7 +15058,7 @@ public static class ShareClass
         return strDepartCode.Trim();
     }
 
-    //È¡µÃ¿Í»§¹éÊô²¿ÃÅ´úÂë(¸ù¾İ¿Í»§´úÂë£©
+    //å–å¾—å®¢æˆ·å½’å±éƒ¨é—¨ä»£ç (æ ¹æ®å®¢æˆ·ä»£ç ï¼‰
     public static string GetDepartCodeFromCustomerCode(string strCustomerCode)
     {
         string strHQL;
@@ -14693,7 +15072,7 @@ public static class ShareClass
         return customer.BelongDepartCode.Trim();
     }
 
-    //È¡µÃÓÃ»§²¿ÃÅ²úÆ·ÏßÏà¹Ø(¸ù¾İÓÃ»§´úÂë£©
+    //å–å¾—ç”¨æˆ·éƒ¨é—¨äº§å“çº¿ç›¸å…³(æ ¹æ®ç”¨æˆ·ä»£ç ï¼‰
     public static string GetDepartRelatedProductLineFromUserCode(string strUserCode)
     {
         string strHQL;
@@ -14717,7 +15096,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃÓÃ»§²¿ÃÅ³¬¼¶ÓÃ»§²úÆ·ÏßÏà¹Ø(¸ù¾İÓÃ»§´úÂë£©
+    //å–å¾—ç”¨æˆ·éƒ¨é—¨è¶…çº§ç”¨æˆ·äº§å“çº¿ç›¸å…³(æ ¹æ®ç”¨æˆ·ä»£ç ï¼‰
     public static string GetDepartSuperUserRelatedProductLineFromUserCode(string strUserCode)
     {
         string strHQL;
@@ -14795,7 +15174,7 @@ public static class ShareClass
         return strUserName;
     }
 
-    //ÒÀÓÃ»§´úÂëÈ¡µÃÓÃ»§Ãû
+    //ä¾ç”¨æˆ·ä»£ç å–å¾—ç”¨æˆ·å
     public static string GetUserCodeByUserName(string strUserName)
     {
         string strHQL;
@@ -14976,7 +15355,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃÉÌÆ·¶ÔÏó
+    //å–å¾—å•†å“å¯¹è±¡
     public static Goods GetGoods(string strGoodsCode)
     {
         string strHQL;
@@ -15007,7 +15386,7 @@ public static class ShareClass
         return strGoodsName;
     }
 
-    //È¡µÃÎïÁÏ¿â´æÁ¿
+    //å–å¾—ç‰©æ–™åº“å­˜é‡
     public static string GetMaterialsStockNumber(string strGoodsCode)
     {
         string strHQL;
@@ -15018,11 +15397,11 @@ public static class ShareClass
         return ds.Tables[0].Rows[0][0].ToString();
     }
 
-    #endregion È¡µÃ¸÷ÖÖ¶ÔÏóIDºÅ»òÃû³Æ
+    #endregion å–å¾—å„ç§å¯¹è±¡IDå·æˆ–åç§°
 
-    #region RTX²Ù×÷·½·¨
+    #region RTXæ“ä½œæ–¹æ³•
 
-    //Ìí¼ÓÓÃ»§¸øRTX,¼òµ¥·½·¨
+    //æ·»åŠ ç”¨æˆ·ç»™RTX,ç®€å•æ–¹æ³•
     public static bool AddRTXUser(string strUser, string strDepart)
     {
         string strHQL;
@@ -15032,7 +15411,7 @@ public static class ShareClass
         string strServerPort;
         string strWebSite;
 
-        RTXSAPILib.RTXSAPIRootObj RootObj;  //ÉùÃ÷Ò»¸ö¸ù¶ÔÏó
+        RTXSAPILib.RTXSAPIRootObj RootObj;  //å£°æ˜ä¸€ä¸ªæ ¹å¯¹è±¡
 
         strHQL = "From RTXConfig as rtxConfig";
         RTXConfigBLL rtxConfigBLL = new RTXConfigBLL();
@@ -15053,11 +15432,11 @@ public static class ShareClass
                 return false;
             }
 
-            RootObj = new RTXSAPIRootObj();     //´´½¨¸ù¶ÔÏó
-            RootObj.ServerIP = strServerIP; //ÉèÖÃ·şÎñÆ÷IP
-            RootObj.ServerPort = Convert.ToInt16(strServerPort); //ÉèÖÃ·şÎñÆ÷¶Ë¿Ú
+            RootObj = new RTXSAPIRootObj();     //åˆ›å»ºæ ¹å¯¹è±¡
+            RootObj.ServerIP = strServerIP; //è®¾ç½®æœåŠ¡å™¨IP
+            RootObj.ServerPort = Convert.ToInt16(strServerPort); //è®¾ç½®æœåŠ¡å™¨ç«¯å£
 
-            //·¢ËÍĞÅÏ¢
+            //å‘é€ä¿¡æ¯
             try
             {
                 RootObj.UserManager.AddUser(strUser, 0);
@@ -15074,7 +15453,7 @@ public static class ShareClass
         return true;
     }
 
-    //É¾³ıÓÃ»§RTX£¬¼òµ¥·½·¨
+    //åˆ é™¤ç”¨æˆ·RTXï¼Œç®€å•æ–¹æ³•
     public static bool DeleteRTXUser(string strUser)
     {
         string strHQL;
@@ -15084,7 +15463,7 @@ public static class ShareClass
         string strServerPort;
         string strWebSite;
 
-        RTXSAPILib.RTXSAPIRootObj RootObj;  //ÉùÃ÷Ò»¸ö¸ù¶ÔÏó
+        RTXSAPILib.RTXSAPIRootObj RootObj;  //å£°æ˜ä¸€ä¸ªæ ¹å¯¹è±¡
 
         strHQL = "From RTXConfig as rtxConfig";
         RTXConfigBLL rtxConfigBLL = new RTXConfigBLL();
@@ -15105,11 +15484,11 @@ public static class ShareClass
                 return false;
             }
 
-            RootObj = new RTXSAPIRootObj();     //´´½¨¸ù¶ÔÏó
-            RootObj.ServerIP = strServerIP; //ÉèÖÃ·şÎñÆ÷IP
-            RootObj.ServerPort = Convert.ToInt16(strServerPort); //ÉèÖÃ·şÎñÆ÷¶Ë¿Ú
+            RootObj = new RTXSAPIRootObj();     //åˆ›å»ºæ ¹å¯¹è±¡
+            RootObj.ServerIP = strServerIP; //è®¾ç½®æœåŠ¡å™¨IP
+            RootObj.ServerPort = Convert.ToInt16(strServerPort); //è®¾ç½®æœåŠ¡å™¨ç«¯å£
 
-            //·¢ËÍĞÅÏ¢
+            //å‘é€ä¿¡æ¯
             try
             {
                 RootObj.UserManager.DeleteUser(strUser);
@@ -15124,7 +15503,7 @@ public static class ShareClass
         return true;
     }
 
-    //Ìí¼Ó²¿ÃÅ¸øRTX,¼òµ¥·½·¨
+    //æ·»åŠ éƒ¨é—¨ç»™RTX,ç®€å•æ–¹æ³•
     public static bool AddRTXDepartment(string strDepart, string strParentDepart)
     {
         string strHQL;
@@ -15134,7 +15513,7 @@ public static class ShareClass
         string strServerPort;
         string strWebSite;
 
-        RTXSAPILib.RTXSAPIRootObj RootObj;  //ÉùÃ÷Ò»¸ö¸ù¶ÔÏó
+        RTXSAPILib.RTXSAPIRootObj RootObj;  //å£°æ˜ä¸€ä¸ªæ ¹å¯¹è±¡
 
         strHQL = "From RTXConfig as rtxConfig";
         RTXConfigBLL rtxConfigBLL = new RTXConfigBLL();
@@ -15155,11 +15534,11 @@ public static class ShareClass
                 return false;
             }
 
-            RootObj = new RTXSAPIRootObj();     //´´½¨¸ù¶ÔÏó
-            RootObj.ServerIP = strServerIP; //ÉèÖÃ·şÎñÆ÷IP
-            RootObj.ServerPort = Convert.ToInt16(strServerPort); //ÉèÖÃ·şÎñÆ÷¶Ë¿Ú
+            RootObj = new RTXSAPIRootObj();     //åˆ›å»ºæ ¹å¯¹è±¡
+            RootObj.ServerIP = strServerIP; //è®¾ç½®æœåŠ¡å™¨IP
+            RootObj.ServerPort = Convert.ToInt16(strServerPort); //è®¾ç½®æœåŠ¡å™¨ç«¯å£
 
-            //·¢ËÍĞÅÏ¢
+            //å‘é€ä¿¡æ¯
             try
             {
                 RootObj.DeptManager.AddDept(strDepart, strParentDepart);
@@ -15175,7 +15554,7 @@ public static class ShareClass
         return true;
     }
 
-    //É¾³ıRTX²¿ÃÅ£¬¼òµ¥·½·¨
+    //åˆ é™¤RTXéƒ¨é—¨ï¼Œç®€å•æ–¹æ³•
     public static bool DeleteRTXDepartment(string strDepart)
     {
         string strHQL;
@@ -15185,7 +15564,7 @@ public static class ShareClass
         string strServerPort;
         string strWebSite;
 
-        RTXSAPILib.RTXSAPIRootObj RootObj;  //ÉùÃ÷Ò»¸ö¸ù¶ÔÏó
+        RTXSAPILib.RTXSAPIRootObj RootObj;  //å£°æ˜ä¸€ä¸ªæ ¹å¯¹è±¡
 
         strHQL = "From RTXConfig as rtxConfig";
         RTXConfigBLL rtxConfigBLL = new RTXConfigBLL();
@@ -15206,11 +15585,11 @@ public static class ShareClass
                 return false;
             }
 
-            RootObj = new RTXSAPIRootObj();     //´´½¨¸ù¶ÔÏó
-            RootObj.ServerIP = strServerIP; //ÉèÖÃ·şÎñÆ÷IP
-            RootObj.ServerPort = Convert.ToInt16(strServerPort); //ÉèÖÃ·şÎñÆ÷¶Ë¿Ú
+            RootObj = new RTXSAPIRootObj();     //åˆ›å»ºæ ¹å¯¹è±¡
+            RootObj.ServerIP = strServerIP; //è®¾ç½®æœåŠ¡å™¨IP
+            RootObj.ServerPort = Convert.ToInt16(strServerPort); //è®¾ç½®æœåŠ¡å™¨ç«¯å£
 
-            //·¢ËÍĞÅÏ¢
+            //å‘é€ä¿¡æ¯
             try
             {
                 RootObj.DeptManager.DelDept(strDepart, true);
@@ -15225,13 +15604,13 @@ public static class ShareClass
         return true;
     }
 
-    public static bool RTXADDDEPT(int Pdeptid, string Deptid, string name, string info)//Ìí¼Ó²¿ÃÅ
+    public static bool RTXADDDEPT(int Pdeptid, string Deptid, string name, string info)//æ·»åŠ éƒ¨é—¨
     {
-        //×÷ÓÃ:Ìí¼Ó²¿ÃÅ
-        //²ÎÊıËµÃ÷:Pdeptid:ËùÊô²¿ÃÅ()ÉÏ¼¶²¿ÃÅµÄID
-        //deptid:Ôö¼ÓµÄ¸Ã²¿ÃÅµÄID
-        //name:¸ÃÔö¼Ó²¿ÃÅµÄÃû³Æ
-        //info:¸ÃÔö¼Ó²¿ÃÅµÄÏà¹ØĞÅÏ¢
+        //ä½œç”¨:æ·»åŠ éƒ¨é—¨
+        //å‚æ•°è¯´æ˜:Pdeptid:æ‰€å±éƒ¨é—¨()ä¸Šçº§éƒ¨é—¨çš„ID
+        //deptid:å¢åŠ çš„è¯¥éƒ¨é—¨çš„ID
+        //name:è¯¥å¢åŠ éƒ¨é—¨çš„åç§°
+        //info:è¯¥å¢åŠ éƒ¨é—¨çš„ç›¸å…³ä¿¡æ¯
 
         try
         {
@@ -15253,12 +15632,12 @@ public static class ShareClass
         }
     }
 
-    public static bool RTXDelDEPT(string dpmtid, string delall)//É¾³ı²¿ÃÅ
+    public static bool RTXDelDEPT(string dpmtid, string delall)//åˆ é™¤éƒ¨é—¨
     {
-        //×÷ÓÃ:É¾³ı²¿ÃÅ
-        //²ÎÊıËµÃ÷:
-        //dpmtid:ÒªÉ¾³ı²¿ÃÅµÄIDºÅ
-        //delall:É¾³ı²¿ÃÅµÄÏÂÊô²¿ÃÅµÄÑ¡Ôñ(0Îª²»É¾³ı,ÎªÉ¾³ı)
+        //ä½œç”¨:åˆ é™¤éƒ¨é—¨
+        //å‚æ•°è¯´æ˜:
+        //dpmtid:è¦åˆ é™¤éƒ¨é—¨çš„IDå·
+        //delall:åˆ é™¤éƒ¨é—¨çš„ä¸‹å±éƒ¨é—¨çš„é€‰æ‹©(0ä¸ºä¸åˆ é™¤,ä¸ºåˆ é™¤)
         try
         {
             RTXObjectClass RTXObj = new RTXObjectClass();
@@ -15277,16 +15656,16 @@ public static class ShareClass
         }
     }
 
-    public static bool RTXADDUSER(string Dpmid, string Nick, string pwd, string name, string rtxnumber, string mobile)//Ìí¼ÓÓÃ»§
+    public static bool RTXADDUSER(string Dpmid, string Nick, string pwd, string name, string rtxnumber, string mobile)//æ·»åŠ ç”¨æˆ·
     {
-        //×÷ÓÃ:Ìí¼ÓÓÃ»§
-        //²ÎÊıËµÃ÷:
-        //Dpmid:ÓÃ»§ËùÊôÓÚµÄIDºÅ
-        //Nick:ÓÃ»§µÄµÇÂ½Ãû
-        //pwd:ÓÃ»§µÄµÇÂ½ÃÜÂë
-        //name:ÓÃ»§Ãû
-        //rtxnumber:ÓÃ»§µÄRTXºÅÂë
-        //mobile:ÓÃ»§µÄÊÖ»úºÅÂë
+        //ä½œç”¨:æ·»åŠ ç”¨æˆ·
+        //å‚æ•°è¯´æ˜:
+        //Dpmid:ç”¨æˆ·æ‰€å±äºçš„IDå·
+        //Nick:ç”¨æˆ·çš„ç™»é™†å
+        //pwd:ç”¨æˆ·çš„ç™»é™†å¯†ç 
+        //name:ç”¨æˆ·å
+        //rtxnumber:ç”¨æˆ·çš„RTXå·ç 
+        //mobile:ç”¨æˆ·çš„æ‰‹æœºå·ç 
         try
         {
             RTXObjectClass RTXObj = new RTXObjectClass();
@@ -15309,10 +15688,10 @@ public static class ShareClass
         }
     }
 
-    public static bool RTXDelUSR(string unick)//É¾³ıÓÃ»§
+    public static bool RTXDelUSR(string unick)//åˆ é™¤ç”¨æˆ·
     {
-        //×÷ÓÃ:É¾³ıÓÃ»§
-        //²ÎÊıËµÃ÷:unick:ÓÃ»§µÄµÇÂ½Ãû»òÓÃ»§µÄRTXºÅÂë¶¼¿É
+        //ä½œç”¨:åˆ é™¤ç”¨æˆ·
+        //å‚æ•°è¯´æ˜:unick:ç”¨æˆ·çš„ç™»é™†åæˆ–ç”¨æˆ·çš„RTXå·ç éƒ½å¯
         try
         {
             RTXObjectClass RTXObj = new RTXObjectClass();
@@ -15329,11 +15708,11 @@ public static class ShareClass
         }
     }
 
-    #endregion RTX²Ù×÷·½·¨
+    #endregion RTXæ“ä½œæ–¹æ³•
 
-    #region ÓÊ¼ş²Ù×÷·½·¨
+    #region é‚®ä»¶æ“ä½œæ–¹æ³•
 
-    //·¢ËÍĞÅÏ¢ºÍÓÊ¼ş
+    //å‘é€ä¿¡æ¯å’Œé‚®ä»¶
     public static void SendInstantMessage(string strSubject, string strMsg, string strSentUserCode, string strReciverUserCode)
     {
         Msg msg = new Msg();
@@ -15354,7 +15733,7 @@ public static class ShareClass
         //}
     }
 
-    //½ÓÊÕÓÊ¼ş·½·¨
+    //æ¥æ”¶é‚®ä»¶æ–¹æ³•
     public static void ReceiveMail(string POP3Server, string strUserCode, string strLoginName, string strPassword, int intPort, string strDocSavePath)
     {
         string file1, file2;
@@ -15377,7 +15756,7 @@ public static class ShareClass
             _POP3Client.Authenticate(strLoginName, strPassword, true);
 
             var q = (from POP3_ClientMessage x in _POP3Client.Messages select x).OrderBy(x => -x.SequenceNumber);
-            foreach (POP3_ClientMessage message in q)//µ¹Ğò¶ÔÓÚĞÂÓÊ¼ş±È½Ï¿ì
+            foreach (POP3_ClientMessage message in q)//å€’åºå¯¹äºæ–°é‚®ä»¶æ¯”è¾ƒå¿«
             {
                 try
                 {
@@ -15390,7 +15769,7 @@ public static class ShareClass
 
                 try
                 {
-                    ///±£´æÊÕÈ¡ÓÊ¼şµÄ¸½¼ş
+                    ///ä¿å­˜æ”¶å–é‚®ä»¶çš„é™„ä»¶
                     mime = Mail_Message.ParseFromByte(message.MessageToByte());
 
                     if (mime.BodyHtmlText != null)
@@ -15418,16 +15797,16 @@ public static class ShareClass
                         }
                     }
 
-                    //ÊÕÈ¡ÓÊ¼ş
+                    //æ”¶å–é‚®ä»¶
                     if (nMailID > 0)
                     {
                         for (n = 0; n < mime.Attachments.Length; n++)
                         {
-                            ///Ìí¼Óµ¥¸ö¸½¼ş
+                            ///æ·»åŠ å•ä¸ªé™„ä»¶
                             ///
                             try
                             {
-                                //ÏÂÃæÊÇ½ÓÊÕ¸½¼şµÄ·½·¨
+                                //ä¸‹é¢æ˜¯æ¥æ”¶é™„ä»¶çš„æ–¹æ³•
                                 decodedDataStream = ((MIME_b_SinglepartBase)mime.Attachments[n].Body).GetDataStream();
                                 file1 = mime.Attachments[n].ContentType.Param_Name;
 
@@ -15440,7 +15819,7 @@ public static class ShareClass
                                     intMailAttachmentContain = int.Parse(fs.Length.ToString());
                                 }
 
-                                ///±£´æÊÕÈ¡ÓÊ¼şµÄ¸½¼ş
+                                ///ä¿å­˜æ”¶å–é‚®ä»¶çš„é™„ä»¶
                                 imail.SaveAsMailAttachment(
                                     file1,
                                     "Doc\\" + DateTime.Now.ToString("yyyyMM") + "\\" + strUserCode + "\\MailAttachments\\" + file1,
@@ -15454,7 +15833,7 @@ public static class ShareClass
                         }
                     }
 
-                    //É¾³ıÒÑÊÕÈ¡µÄÓÊ¼ş
+                    //åˆ é™¤å·²æ”¶å–çš„é‚®ä»¶
                     message.MarkForDeletion();
                 }
                 catch (Exception err)
@@ -15473,7 +15852,7 @@ public static class ShareClass
         }
     }
 
-    //·¢ËÍÓÊ¼ş·½·¨£¨ÎŞ¸½¼ş£¬ÄÚ²¿³ÉÔ±¼äÏà»¥·¢ËÍ£©
+    //å‘é€é‚®ä»¶æ–¹æ³•ï¼ˆæ— é™„ä»¶ï¼Œå†…éƒ¨æˆå‘˜é—´ç›¸äº’å‘é€ï¼‰
     public static bool SendMail(string strUserCode, string strSubject, string strBody, string strSendUserCode)
     {
         int nContain = 0;
@@ -15514,7 +15893,7 @@ public static class ShareClass
         if (mailProfile.Email == null)
             return false;
 
-        ///Ìí¼Ó·¢¼şÈËµØÖ·
+        ///æ·»åŠ å‘ä»¶äººåœ°å€
         string strFrom = mailProfile.Email.Trim();
 
         if (strFrom == "")
@@ -15529,11 +15908,11 @@ public static class ShareClass
         mailMsg.CC.Add(strTo);
         nContain += strTo.Length;
 
-        ///Ìí¼ÓÓÊ¼şÖ÷Ìâ
+        ///æ·»åŠ é‚®ä»¶ä¸»é¢˜
         mailMsg.Subject = strSubject;
         nContain += strSubject.Length;
 
-        ///Ìí¼ÓÓÊ¼şÄÚÈİ
+        ///æ·»åŠ é‚®ä»¶å†…å®¹
         mailMsg.Body = strBody;
         mailMsg.BodyEncoding = Encoding.UTF8;
         mailMsg.IsBodyHtml = true;
@@ -15545,21 +15924,21 @@ public static class ShareClass
         try
         {
             //mailMsg.Fields.Add("http://schemas.microsoft.com/cdo/configuration/smtpauthenticate", "1");
-            ////ÓÃ»§Ãû
+            ////ç”¨æˆ·å
             //mailMsg.Fields.Add("http://schemas.microsoft.com/cdo/configuration/sendusername", mailProfile.AliasName.Trim());
-            ////ÃÜÂë
+            ////å¯†ç 
             //mailMsg.Fields.Add("http://schemas.microsoft.com/cdo/configuration/sendpassword", mailProfile.Password.Trim());
 
             IMail mail = new Mail();
             SmtpClient smtpClient = new SmtpClient(mailProfile.SmtpServerIP, mailProfile.SmtpServerPort);
             smtpClient.UseDefaultCredentials = false;
             smtpClient.Credentials = new NetworkCredential(mailProfile.AliasName.Trim(), mailProfile.Password.Trim());
-            /*Ö¸¶¨ÈçºÎ´¦Àí´ı·¢µÄÓÊ¼ş*/
+          
             smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
 
             try
             {
-                //·¢ËÍÓÊ¼ş
+                //å‘é€é‚®ä»¶
                 smtpClient.Send(mailMsg);
 
                 nMailID = mail.SaveAsMail(mailMsg.Subject, mailMsg.Body, strFrom,
@@ -15583,11 +15962,11 @@ public static class ShareClass
         }
     }
 
-    #endregion ÓÊ¼ş²Ù×÷·½·¨
+    #endregion é‚®ä»¶æ“ä½œæ–¹æ³•
 
-    #region ÎÄ¼ş¼ĞCOPY¡¢Í¼Æ¬Ëõ·Å¡¢ÌõÂë¡¢¶şÎ¬Âë¹¦ÄÜ
+    #region æ–‡ä»¶å¤¹COPYã€å›¾ç‰‡ç¼©æ”¾ã€æ¡ç ã€äºŒç»´ç åŠŸèƒ½
 
-    //²åÈëÎÄµµÀà±ğ
+    //æ’å…¥æ–‡æ¡£ç±»åˆ«
     public static void InsertDocType(string strType)
     {
         string strHQL;
@@ -15608,7 +15987,7 @@ public static class ShareClass
         }
     }
 
-    //¸ù¾İÎÄµµÀà±ğ»ñÈ¡ID
+    //æ ¹æ®æ–‡æ¡£ç±»åˆ«è·å–ID
     public static int getDocTypeIDByType(string strType)
     {
         string strHQL;
@@ -15632,7 +16011,7 @@ public static class ShareClass
         }
     }
 
-    //¸´ÖÆÎÄ¼ş¼Ğ
+    //å¤åˆ¶æ–‡ä»¶å¤¹
     //bool copy = CopyDirectory("c:\\temp\\index\\", "c:\\temp\\newindex\\", true);
     public static bool CopyDirectory(string SourcePath, string DestinationPath, bool overwriteexisting)
     {
@@ -15671,12 +16050,12 @@ public static class ShareClass
 
 
 
-    //ÔÚÎÄ¼şÉÏÔö¼ÓÒ»ĞĞÊı¾İ
+    //åœ¨æ–‡ä»¶ä¸Šå¢åŠ ä¸€è¡Œæ•°æ®
     public static void AddSpaceLineToFile(string strFileName, string strString)
     {
         try
         {
-            string path = HttpContext.Current.Server.MapPath(strFileName);//ÎÄ¼şµÄÂ·¾¶£¬±£Ö¤ÎÄ¼ş´æÔÚ¡£
+            string path = HttpContext.Current.Server.MapPath(strFileName);//æ–‡ä»¶çš„è·¯å¾„ï¼Œä¿è¯æ–‡ä»¶å­˜åœ¨ã€‚
             FileStream fs = new FileStream(path, FileMode.Append);
             StreamWriter sw = new StreamWriter(fs);
             sw.WriteLine(strString);
@@ -15688,7 +16067,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃ¶şÎ¬ÂëÍ¼Æ¬ÎÄ¼şURL
+    //å–å¾—äºŒç»´ç å›¾ç‰‡æ–‡ä»¶URL
     public static string GetQRCodeURLByZXingNet(String strURL, int intWidth, int intHeight)
     {
         try
@@ -15702,7 +16081,7 @@ public static class ShareClass
 
             if (Directory.Exists(strDocSavePath) == false)
             {
-                //Èç¹û²»´æÔÚ¾Í´´½¨fileÎÄ¼ş¼Ğ{
+                //å¦‚æœä¸å­˜åœ¨å°±åˆ›å»ºfileæ–‡ä»¶å¤¹{
                 Directory.CreateDirectory(strDocSavePath);
             }
 
@@ -15712,12 +16091,12 @@ public static class ShareClass
         }
         catch (Exception ex)
         {
-            //Òì³£Êä³ö
+            //å¼‚å¸¸è¾“å‡º
             return ex.Message.ToString();
         }
     }
 
-    //ÌõĞÎÂë:BarCode, ¶şÎ¬Âë ²»´øÍ¼:NoLogoQrCode,´øÍ¼:HaveLogoQrCode
+    //æ¡å½¢ç :BarCode, äºŒç»´ç  ä¸å¸¦å›¾:NoLogoQrCode,å¸¦å›¾:HaveLogoQrCode
     public static string ShowQrCodeForTaskAssignRecord(string strAssignID, int intWidth, int intHight)
     {
         string strHQL;
@@ -15743,17 +16122,17 @@ public static class ShareClass
 
                 if (strBarType == "NoLogoQrCode")
                 {
-                    //²»´øÍ¼¶şÎ¬Âë
+                    //ä¸å¸¦å›¾äºŒç»´ç 
                     imgTemp = BarcodeHelper.GenerateNoLogoQrCode(strQrCodeString, intWidth, intHight);
                 }
                 else if (strBarType == "HaveLogoQrCode")
                 {
-                    //´øÍ¼¶şÎ¬Âë
+                    //å¸¦å›¾äºŒç»´ç 
                     imgTemp = BarcodeHelper.GenerateHaveLogoQrCode(strQrCodeString, intWidth, intHight);
                 }
                 else if (strBarType == "BarCode")
                 {
-                    //ÌõĞÎÂë
+                    //æ¡å½¢ç 
                     imgTemp = BarcodeHelper.GenerateBarCode(strQrCodeString, 260, 50);
                 }
                 else
@@ -15761,7 +16140,7 @@ public static class ShareClass
                     return "";
                 }
 
-                ////´øÍ¼¶şÎ¬Âë
+                ////å¸¦å›¾äºŒç»´ç 
                 //System.Drawing.Bitmap imgTemp = BarcodeHelper.GenerateHaveLogoQrCode(strQrCodeString, 240, 240);
 
                 string strFileName = strQrCodeString + "BarCode" + DateTime.Now.ToString("yyyyMMddHHmmsssssfffffff") + ".gif";
@@ -15770,7 +16149,7 @@ public static class ShareClass
 
                 if (Directory.Exists(strDocSavePath) == false)
                 {
-                    //Èç¹û²»´æÔÚ¾Í´´½¨fileÎÄ¼ş¼Ğ{
+                    //å¦‚æœä¸å­˜åœ¨å°±åˆ›å»ºfileæ–‡ä»¶å¤¹{
                     Directory.CreateDirectory(strDocSavePath);
                 }
 
@@ -15808,13 +16187,13 @@ public static class ShareClass
     }
 
     /// <summary>
-    /// Í¼Æ¬Ëõ·Å
+    /// å›¾ç‰‡ç¼©æ”¾
     /// </summary>
-    /// <param name="savePath">Í¼Æ¬Ïà¶ÔÂ·¾¶</param>
-    /// <param name="fileName">Í¼Æ¬Ãû³Æ</param>
-    /// <param name="destWidth">Ëõ·Å¿í¶È</param>
-    /// <param name="destHeight">¸ß¶È</param>
-    /// <param name="type">1--¹Ì¶¨Ëõ·Å£»2--°´±ÈÀıËõ·Å£»3--Ö¸¶¨¿í¶È,¿í¶È´óÓÚÖ¸¶¨¿í¶È°´Ö¸¶¨¿í¶È½øĞĞµÈ±ÈËõ·Å£¬Ğ¡ÓÚÖ¸¶¨¿í¶È°´Ô­Í¼´óĞ¡ÉÏ´«£»4--Ô­Í¼Ö±½ÓÉÏ´«</param>
+    /// <param name="savePath">å›¾ç‰‡ç›¸å¯¹è·¯å¾„</param>
+    /// <param name="fileName">å›¾ç‰‡åç§°</param>
+    /// <param name="destWidth">ç¼©æ”¾å®½åº¦</param>
+    /// <param name="destHeight">é«˜åº¦</param>
+    /// <param name="type">1--å›ºå®šç¼©æ”¾ï¼›2--æŒ‰æ¯”ä¾‹ç¼©æ”¾ï¼›3--æŒ‡å®šå®½åº¦,å®½åº¦å¤§äºæŒ‡å®šå®½åº¦æŒ‰æŒ‡å®šå®½åº¦è¿›è¡Œç­‰æ¯”ç¼©æ”¾ï¼Œå°äºæŒ‡å®šå®½åº¦æŒ‰åŸå›¾å¤§å°ä¸Šä¼ ï¼›4--åŸå›¾ç›´æ¥ä¸Šä¼ </param>
     /// <returns></returns>
     public static void ReducesPic(string savePath, string fileName, int destWidth, int destHeight, int type)
     {
@@ -15824,7 +16203,7 @@ public static class ShareClass
 
             string Allpath = savePath;
 
-            //Éú³ÉÔ­Í¼
+            //ç”ŸæˆåŸå›¾
             System.IO.Stream stream = System.IO.File.OpenRead(Allpath + fileName);
             System.Drawing.Image oImage = System.Drawing.Image.FromStream(stream);
             stream.Close();
@@ -15836,16 +16215,16 @@ public static class ShareClass
             int oWidth = oImage.Width;
             int oHeight = oImage.Height;
 
-            int tWidth = destWidth; //ÉèÖÃËõÂÔÍ¼³õÊ¼¿í¶È
-            int tHeight = destHeight; //ÉèÖÃËõÂÔÍ¼³õÊ¼¸ß¶È
+            int tWidth = destWidth; //è®¾ç½®ç¼©ç•¥å›¾åˆå§‹å®½åº¦
+            int tHeight = destHeight; //è®¾ç½®ç¼©ç•¥å›¾åˆå§‹é«˜åº¦
 
-            //°´Ö¸¶¨¿í¸ßËõ·Å
+            //æŒ‰æŒ‡å®šå®½é«˜ç¼©æ”¾
             if (type == 1)
             {
                 tWidth = destWidth;
                 tHeight = destHeight;
             }
-            //°´±ÈÀı¼ÆËã³öËõÂÔÍ¼µÄ¿í¶ÈºÍ¸ß¶È
+            //æŒ‰æ¯”ä¾‹è®¡ç®—å‡ºç¼©ç•¥å›¾çš„å®½åº¦å’Œé«˜åº¦
             else if (type == 2)
             {
                 if (oWidth > tWidth || oHeight > tHeight)
@@ -15861,11 +16240,11 @@ public static class ShareClass
                 }
                 else
                 {
-                    tWidth = oWidth; //Ô­Í¼¿í¶È
-                    tHeight = oHeight; //Ô­Í¼¸ß¶È
+                    tWidth = oWidth; //åŸå›¾å®½åº¦
+                    tHeight = oHeight; //åŸå›¾é«˜åº¦
                 }
             }
-            //Ö¸¶¨¿í¶È,¿í¶È´óÓÚÖ¸¶¨¿í¶È°´Ö¸¶¨¿í¶È½øĞĞµÈ±ÈËõ·Å£¬Ğ¡ÓÚÖ¸¶¨¿í¶È°´Ô­Í¼´óĞ¡ÉÏ´«
+            //æŒ‡å®šå®½åº¦,å®½åº¦å¤§äºæŒ‡å®šå®½åº¦æŒ‰æŒ‡å®šå®½åº¦è¿›è¡Œç­‰æ¯”ç¼©æ”¾ï¼Œå°äºæŒ‡å®šå®½åº¦æŒ‰åŸå›¾å¤§å°ä¸Šä¼ 
             else if (type == 3)
             {
                 if (oWidth >= tWidth)
@@ -15881,16 +16260,16 @@ public static class ShareClass
                 }
                 else
                 {
-                    tWidth = oWidth; //Ô­Í¼¿í¶È
-                    tHeight = oHeight; //Ô­Í¼¸ß¶È
+                    tWidth = oWidth; //åŸå›¾å®½åº¦
+                    tHeight = oHeight; //åŸå›¾é«˜åº¦
                 }
             }
             else
             {
-                tWidth = oWidth; //Ô­Í¼¿í¶È
-                tHeight = oHeight; //Ô­Í¼¸ß¶È
+                tWidth = oWidth; //åŸå›¾å®½åº¦
+                tHeight = oHeight; //åŸå›¾é«˜åº¦
             }
-            //Éú³ÉËõÂÔÔ­Í¼
+            //ç”Ÿæˆç¼©ç•¥åŸå›¾
             oImage = oImage.GetThumbnailImage(tWidth, tHeight, callb, IntPtr.Zero);
             oImage.Save(Allpath + fileName);
         }
@@ -15902,13 +16281,13 @@ public static class ShareClass
     }
 
     /// <summary>
-    /// Éú³ÉËõÂÔÍ¼
+    /// ç”Ÿæˆç¼©ç•¥å›¾
     /// </summary>
-    /// <param name="originalImagePath">Ô´Í¼Â·¾¶£¨ÎïÀíÂ·¾¶£©</param>
-    /// <param name="thumbnailPath">ËõÂÔÍ¼Â·¾¶£¨ÎïÀíÂ·¾¶£©</param>
-    /// <param name="width">ËõÂÔÍ¼¿í¶È</param>
-    /// <param name="height">ËõÂÔÍ¼¸ß¶È</param>
-    /// <param name="mode">Éú³ÉËõÂÔÍ¼µÄ·½Ê½</param>
+    /// <param name="originalImagePath">æºå›¾è·¯å¾„ï¼ˆç‰©ç†è·¯å¾„ï¼‰</param>
+    /// <param name="thumbnailPath">ç¼©ç•¥å›¾è·¯å¾„ï¼ˆç‰©ç†è·¯å¾„ï¼‰</param>
+    /// <param name="width">ç¼©ç•¥å›¾å®½åº¦</param>
+    /// <param name="height">ç¼©ç•¥å›¾é«˜åº¦</param>
+    /// <param name="mode">ç”Ÿæˆç¼©ç•¥å›¾çš„æ–¹å¼</param>
     public static void MakeThumbnail(string originalImagePath, string thumbnailPath, int width, int height, string mode)
     {
         System.Drawing.Image originalImage = System.Drawing.Image.FromFile(originalImagePath);
@@ -15919,18 +16298,18 @@ public static class ShareClass
         int ow = originalImage.Width;
         int oh = originalImage.Height; switch (mode)
         {
-            case "HW"://Ö¸¶¨¸ß¿íËõ·Å£¨¿ÉÄÜ±äĞÎ£©
+            case "HW"://æŒ‡å®šé«˜å®½ç¼©æ”¾ï¼ˆå¯èƒ½å˜å½¢ï¼‰
                 break;
 
-            case "W"://Ö¸¶¨¿í£¬¸ß°´±ÈÀı
+            case "W"://æŒ‡å®šå®½ï¼Œé«˜æŒ‰æ¯”ä¾‹
                 toheight = originalImage.Height * width / originalImage.Width;
                 break;
 
-            case "H"://Ö¸¶¨¸ß£¬¿í°´±ÈÀı
+            case "H"://æŒ‡å®šé«˜ï¼Œå®½æŒ‰æ¯”ä¾‹
                 towidth = originalImage.Width * height / originalImage.Height;
                 break;
 
-            case "Cut"://Ö¸¶¨¸ß¿í²Ã¼õ£¨²»±äĞÎ£©
+            case "Cut"://æŒ‡å®šé«˜å®½è£å‡ï¼ˆä¸å˜å½¢ï¼‰
                 if ((double)originalImage.Width / (double)originalImage.Height > (double)towidth / (double)toheight)
                 {
                     oh = originalImage.Height;
@@ -15949,17 +16328,17 @@ public static class ShareClass
 
             default:
                 break;
-        } //ĞÂ½¨Ò»¸öbmpÍ¼Æ¬
-        System.Drawing.Image bitmap = new System.Drawing.Bitmap(towidth, toheight); //ĞÂ½¨Ò»¸ö»­°å
-        System.Drawing.Graphics g = System.Drawing.Graphics.FromImage(bitmap); //ÉèÖÃ¸ßÖÊÁ¿²åÖµ·¨
-        g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High; //ÉèÖÃ¸ßÖÊÁ¿,µÍËÙ¶È³ÊÏÖÆ½»¬³Ì¶È
-        g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality; //Çå¿Õ»­²¼²¢ÒÔÍ¸Ã÷±³¾°É«Ìî³ä
-        g.Clear(System.Drawing.Color.Transparent); //ÔÚÖ¸¶¨Î»ÖÃ²¢ÇÒ°´Ö¸¶¨´óĞ¡»æÖÆÔ­Í¼Æ¬µÄÖ¸¶¨²¿·Ö
+        } //æ–°å»ºä¸€ä¸ªbmpå›¾ç‰‡
+        System.Drawing.Image bitmap = new System.Drawing.Bitmap(towidth, toheight); //æ–°å»ºä¸€ä¸ªç”»æ¿
+        System.Drawing.Graphics g = System.Drawing.Graphics.FromImage(bitmap); //è®¾ç½®é«˜è´¨é‡æ’å€¼æ³•
+        g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High; //è®¾ç½®é«˜è´¨é‡,ä½é€Ÿåº¦å‘ˆç°å¹³æ»‘ç¨‹åº¦
+        g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality; //æ¸…ç©ºç”»å¸ƒå¹¶ä»¥é€æ˜èƒŒæ™¯è‰²å¡«å……
+        g.Clear(System.Drawing.Color.Transparent); //åœ¨æŒ‡å®šä½ç½®å¹¶ä¸”æŒ‰æŒ‡å®šå¤§å°ç»˜åˆ¶åŸå›¾ç‰‡çš„æŒ‡å®šéƒ¨åˆ†
         g.DrawImage(originalImage, new System.Drawing.Rectangle(0, 0, towidth, toheight),
         new System.Drawing.Rectangle(x, y, ow, oh),
         System.Drawing.GraphicsUnit.Pixel); try
         {
-            //ÒÔjpg¸ñÊ½±£´æËõÂÔÍ¼
+            //ä»¥jpgæ ¼å¼ä¿å­˜ç¼©ç•¥å›¾
             bitmap.Save(thumbnailPath, System.Drawing.Imaging.ImageFormat.Jpeg);
         }
         catch (Exception e)
@@ -15974,20 +16353,20 @@ public static class ShareClass
         }
     }
 
-    #endregion ÎÄ¼ş¼ĞCOPY¡¢Í¼Æ¬Ëõ·Å¡¢ÌõÂë¡¢¶şÎ¬Âë¹¦ÄÜ
+    #endregion æ–‡ä»¶å¤¹COPYã€å›¾ç‰‡ç¼©æ”¾ã€æ¡ç ã€äºŒç»´ç åŠŸèƒ½
 
-    #region DataSet,DataGrid,DropDownList ²Ù×÷º¯Êı
+    #region DataSet,DataGrid,DropDownList æ“ä½œå‡½æ•°
 
     /// <summary>
-    /// ½«DataSetĞòÁĞ»¯ÎªXML×Ö·û´®
+    /// å°†DataSetåºåˆ—åŒ–ä¸ºXMLå­—ç¬¦ä¸²
     /// </summary>
-    /// <param name="ds">ÒªĞòÁĞ»¯µÄDataSet</param>
-    /// <returns>ĞòÁĞ»¯ºóµÄXML×Ö·û´®</returns>
+    /// <param name="ds">è¦åºåˆ—åŒ–çš„DataSet</param>
+    /// <returns>åºåˆ—åŒ–åçš„XMLå­—ç¬¦ä¸²</returns>
     public static string SerializeDataSetToString(DataSet ds)
     {
         if (ds == null)
         {
-            LogClass.WriteLogFile("ĞòÁĞ»¯Ê§°Ü£ºDataSetÎª¿Õ");
+            LogClass.WriteLogFile("åºåˆ—åŒ–å¤±è´¥ï¼šDataSetä¸ºç©º");
             return string.Empty;
         }
 
@@ -15998,38 +16377,38 @@ public static class ShareClass
                 ds.WriteXml(sw, XmlWriteMode.IgnoreSchema);
                 string xmlString = sw.ToString();
 
-                // ¼ÇÂ¼Ç°100¸ö×Ö·ûÓÃÓÚµ÷ÊÔ
+                // è®°å½•å‰100ä¸ªå­—ç¬¦ç”¨äºè°ƒè¯•
                 string preview = xmlString.Length > 100 ? xmlString.Substring(0, 100) + "..." : xmlString;
-                //LogClass.WriteLogFile($"ĞòÁĞ»¯³É¹¦£¬³¤¶È={xmlString.Length}£¬Ô¤ÀÀ={preview}");
+                //LogClass.WriteLogFile($"åºåˆ—åŒ–æˆåŠŸï¼Œé•¿åº¦={xmlString.Length}ï¼Œé¢„è§ˆ={preview}");
 
                 return xmlString;
             }
         }
         catch (Exception ex)
         {
-            LogClass.WriteLogFile("DataSetĞòÁĞ»¯Ê§°Ü: " + ex.Message.ToString());
+            LogClass.WriteLogFile("DataSetåºåˆ—åŒ–å¤±è´¥: " + ex.Message.ToString());
             return string.Empty;
         }
     }
 
     /// <summary>
-    /// ´Ó×Ö·û´®·´ĞòÁĞ»¯ÎªDataSet
+    /// ä»å­—ç¬¦ä¸²ååºåˆ—åŒ–ä¸ºDataSet
     /// </summary>
-    /// <param name="xmlString">XML×Ö·û´®</param>
-    /// <returns>·´ĞòÁĞ»¯ºóµÄDataSet</returns>
+    /// <param name="xmlString">XMLå­—ç¬¦ä¸²</param>
+    /// <returns>ååºåˆ—åŒ–åçš„DataSet</returns>
     public static  DataSet DeserializeStringToDataSet(string xmlString)
     {
         if (string.IsNullOrEmpty(xmlString))
         {
-            //LogClass.WriteLogFile("·´ĞòÁĞ»¯Ê§°Ü£ºXML×Ö·û´®Îª¿Õ");
+            //LogClass.WriteLogFile("ååºåˆ—åŒ–å¤±è´¥ï¼šXMLå­—ç¬¦ä¸²ä¸ºç©º");
             return null;
         }
 
         try
         {
-            // ¼ÇÂ¼Ç°100¸ö×Ö·ûÓÃÓÚµ÷ÊÔ
+            // è®°å½•å‰100ä¸ªå­—ç¬¦ç”¨äºè°ƒè¯•
             string preview = xmlString.Length > 100 ? xmlString.Substring(0, 100) + "..." : xmlString;
-            //LogClass.WriteLogFile($"¿ªÊ¼·´ĞòÁĞ»¯£¬³¤¶È={xmlString.Length}£¬Ô¤ÀÀ={preview}");
+            //LogClass.WriteLogFile($"å¼€å§‹ååºåˆ—åŒ–ï¼Œé•¿åº¦={xmlString.Length}ï¼Œé¢„è§ˆ={preview}");
 
             DataSet ds = new DataSet();
             using (StringReader sr = new StringReader(xmlString))
@@ -16037,22 +16416,22 @@ public static class ShareClass
                 ds.ReadXml(sr);
             }
 
-            //LogClass.WriteLogFile($"·´ĞòÁĞ»¯³É¹¦£¬±íÊıÁ¿={ds.Tables.Count}");
+            //LogClass.WriteLogFile($"ååºåˆ—åŒ–æˆåŠŸï¼Œè¡¨æ•°é‡={ds.Tables.Count}");
             if (ds.Tables.Count > 0)
             {
-                //LogClass.WriteLogFile($"µÚÒ»¸ö±íĞĞÊı={ds.Tables[0].Rows.Count}");
+                //LogClass.WriteLogFile($"ç¬¬ä¸€ä¸ªè¡¨è¡Œæ•°={ds.Tables[0].Rows.Count}");
             }
 
             return ds;
         }
         catch (Exception ex)
         {
-            LogClass.WriteLogFile("×Ö·û´®·´ĞòÁĞ»¯ÎªDataSetÊ§°Ü: " + ex.Message.ToString());
+            LogClass.WriteLogFile("å­—ç¬¦ä¸²ååºåˆ—åŒ–ä¸ºDataSetå¤±è´¥: " + ex.Message.ToString());
             return null;
         }
     }
 
-    //°ó¶¨ÏîÄ¿¹ØÁª½ÇÉ«×é
+    //ç»‘å®šé¡¹ç›®å…³è”è§’è‰²ç»„
     public static void LoadProjectActorGroupForDropDownList(DropDownList DL_Visible, string strProjectID)
     {
         string strHQL;
@@ -16093,7 +16472,7 @@ public static class ShareClass
         DL_Visible.DataBind();
     }
 
-    //°ó¶¨½ÇÉ«×é£¬È«ÌåÊÊÓÃ
+    //ç»‘å®šè§’è‰²ç»„ï¼Œå…¨ä½“é€‚ç”¨
     public static void LoadActorGroupDropDownList(DropDownList DL_Visible, string strUserCode)
     {
         string strHQL;
@@ -16115,7 +16494,7 @@ public static class ShareClass
         DL_Visible.DataBind();
     }
 
-    //°ó¶¨½ÇÉ«×é£¬È«ÌåÊÊÓÃ
+    //ç»‘å®šè§’è‰²ç»„ï¼Œå…¨ä½“é€‚ç”¨
     public static void LoadWorkflowActorGroupDropDownList(DropDownList DL_Visible, string strUserCode)
     {
         string strHQL;
@@ -16137,7 +16516,7 @@ public static class ShareClass
         DL_Visible.DataBind();
     }
 
-    //°ó¶¨ÒøĞĞ
+    //ç»‘å®šé“¶è¡Œ
     public static void LoadBankForDropDownList(DropDownList DL_Bank)
     {
         string strHQL;
@@ -16153,7 +16532,7 @@ public static class ShareClass
         DL_Bank.Items.Insert(0, new ListItem("--Select--", ""));
     }
 
-    //°ó¶¨±Ò±ğ
+    //ç»‘å®šå¸åˆ«
     public static void LoadCurrencyForDropDownList(DropDownList DL_Currency)
     {
         string strHQL;
@@ -16168,7 +16547,7 @@ public static class ShareClass
         DL_Currency.Items.Insert(0, new ListItem("--Select--", ""));
     }
 
-    //°ó¶¨ÊÕ¸¶¿î·½Ê½
+    //ç»‘å®šæ”¶ä»˜æ¬¾æ–¹å¼
     public static void LoadReceivePayWayForDropDownList(DropDownList DL_ReAndPayType)
     {
         string strHQL;
@@ -16182,7 +16561,7 @@ public static class ShareClass
         //DL_ReAndPayType.Items.Insert(0, new ListItem("--Select--", ""));
     }
 
-    //ÒÀÈ¨ÏŞÁĞ³ö¿Í»§
+    //ä¾æƒé™åˆ—å‡ºå®¢æˆ·
     public static void LoadCustomer(DropDownList DL_Customer, string strUserCode)
     {
         string strHQL;
@@ -16205,7 +16584,7 @@ public static class ShareClass
         DL_Customer.Items.Insert(0, new ListItem("--Select--", ""));
     }
 
-    //ÒÀÈ¨ÏŞÁĞ³ö¹©Ó¦ÉÌºÍ³Ğ°üÉÌ
+    //ä¾æƒé™åˆ—å‡ºä¾›åº”å•†å’Œæ‰¿åŒ…å•†
     public static void LoadVendorList(DropDownList DL_VendorList, string strUserCode)
     {
         string strHQL;
@@ -16227,7 +16606,7 @@ public static class ShareClass
         DL_VendorList.Items.Insert(0, new ListItem("--Select--", ""));
     }
 
-    //°ó¶¨DataGrid
+    //ç»‘å®šDataGrid
     public static void DataGridBindingDataSet(string strHQL, DataGrid dataGrid)
     {
         DataSet ds = ShareClass.GetDataSetFromSql(strHQL, "T_TakeTopTable");
@@ -16236,7 +16615,7 @@ public static class ShareClass
         dataGrid.DataBind();
     }
 
-    //°ó¶¨DataList
+    //ç»‘å®šDataList
     public static void DataGridBindingDataSet(string strHQL, DataList dataList)
     {
         DataSet ds = ShareClass.GetDataSetFromSql(strHQL, "T_TakeTopTable");
@@ -16245,7 +16624,7 @@ public static class ShareClass
         dataList.DataBind();
     }
 
-    //»ùÓÚ²¿ÃÅÁĞ±íÔ±¹¤µ½DATAGRID
+    //åŸºäºéƒ¨é—¨åˆ—è¡¨å‘˜å·¥åˆ°DATAGRID
     public static int LoadUserByDepartCodeForDataGrid(string strDepartCode, DataGrid dataGrid)
     {
         string strHQL;
@@ -16260,7 +16639,7 @@ public static class ShareClass
         return lst.Count;
     }
 
-    //»ùÓÚ²¿ÃÅÁĞ±íÔ±¹¤KIPµ½DATAGRID
+    //åŸºäºéƒ¨é—¨åˆ—è¡¨å‘˜å·¥KIPåˆ°DATAGRID
     public static int LoadUserKPIByDepartCodeForDataGrid(string strDepartString, DataGrid dataGrid)
     {
         string strHQL;
@@ -16275,7 +16654,7 @@ public static class ShareClass
         return ds.Tables[0].Rows.Count;
     }
 
-    //»ùÓÚ²¿ÃÅÁĞ±íÔ±¹¤µ½DATAGRID
+    //åŸºäºéƒ¨é—¨åˆ—è¡¨å‘˜å·¥åˆ°DATAGRID
     public static int LoadUserByDepartStringForDataGrid(string strDepartString, DataGrid dataGrid)
     {
         string strHQL;
@@ -16309,7 +16688,7 @@ public static class ShareClass
         DL_Duty.Items.Insert(0, new ListItem("--Select--", ""));
     }
 
-    //»ùÓÚÏîÄ¿³ÉÔ±ÁĞ±íµ½DATAGRID
+    //åŸºäºé¡¹ç›®æˆå‘˜åˆ—è¡¨åˆ°DATAGRID
     public static void LoadProjectMemberByProjectIDForDataGrid(string strProjectID, DataGrid dataGrid)
     {
         string strHQL;
@@ -16323,7 +16702,7 @@ public static class ShareClass
         dataGrid.DataBind();
     }
 
-    //»ùÓÚÖ±½Ó³ÉÔ±ÁĞ±íµ½DATAGRID
+    //åŸºäºç›´æ¥æˆå‘˜åˆ—è¡¨åˆ°DATAGRID
     public static void LoadMemberByUserCodeForDataGrid(string strUserCode, string strAuthorityType, DataGrid dataGrid)
     {
         string strHQL;
@@ -16392,7 +16771,7 @@ public static class ShareClass
         dataGrid.DataBind();
     }
 
-    //»ùÓÚÖ±½Ó³ÉÔ±ÁĞ±íµ½DropDownList
+    //åŸºäºç›´æ¥æˆå‘˜åˆ—è¡¨åˆ°DropDownList
     public static void LoadMemberByUserCodeForDropDownList(string strUserCode, DropDownList dropDownList)
     {
         string strHQL;
@@ -16415,7 +16794,7 @@ public static class ShareClass
         dropDownList.Items.Insert(0, new ListItem("--Select--", ""));
     }
 
-    //µ¥Î»ÁĞ±íµ½DropDownList
+    //å•ä½åˆ—è¡¨åˆ°DropDownList
     public static void LoadUnitForDropDownList(DropDownList DL_Unit)
     {
         string strHQL;
@@ -16430,7 +16809,7 @@ public static class ShareClass
         DL_Unit.Items.Insert(0, new ListItem("--Select--", ""));
     }
 
-    //»ùÓÚÖ±½Ó³ÉÔ±ÁĞ±íµ½DropDownList
+    //åŸºäºç›´æ¥æˆå‘˜åˆ—è¡¨åˆ°DropDownList
     public static void LoadPMByUserCodeForDropDownList(string strUserCode, string strDepartString, DropDownList dropDownList)
     {
         string strHQL;
@@ -16454,7 +16833,7 @@ public static class ShareClass
         dropDownList.DataBind();
     }
 
-    //±ê¼Ç±»Ñ¡È¡µÄDATAGRIDĞĞÎªºìÉ«
+    //æ ‡è®°è¢«é€‰å–çš„DATAGRIDè¡Œä¸ºçº¢è‰²
     public static void ColorDataGridSelectRow(DataGrid dataGrid, DataGridCommandEventArgs e)
     {
         for (int i = 0; i < dataGrid.Items.Count; i++)
@@ -16465,15 +16844,15 @@ public static class ShareClass
         e.Item.ForeColor = Color.Red;
     }
 
-    #endregion DataSet,DataGrid,DropDownList ²Ù×÷º¯Êı
+    #endregion DataSet,DataGrid,DropDownList æ“ä½œå‡½æ•°
 
-    #region SQLº¯Êı\XMLº¯Êı\WebServiceµ÷ÓÃ·½·¨
+    #region SQLå‡½æ•°\XMLå‡½æ•°\WebServiceè°ƒç”¨æ–¹æ³•
 
-    //Ö´ĞĞÒ»°ã´¦Àí³ÌĞò
-    //µ±content-type:  application/x-www-from-urlencodeÊ±£¬²ÎÊı¸ñÊ½Îª:name="zzzz"&id="aaaaa"
+    //æ‰§è¡Œä¸€èˆ¬å¤„ç†ç¨‹åº
+    //å½“content-type:  application/x-www-from-urlencodeæ—¶ï¼Œå‚æ•°æ ¼å¼ä¸º:name="zzzz"&id="aaaaa"
     /// <summary>
-    /// Ö´ĞĞÒ»°ã´¦Àí³ÌĞò
-    /// µ÷ÓÃ·½·¨:string strResult = GetPostDataPage("http://localhost:16422/Web/Handler/test.ashx", "");
+    /// æ‰§è¡Œä¸€èˆ¬å¤„ç†ç¨‹åº
+    /// è°ƒç”¨æ–¹æ³•:string strResult = GetPostDataPage("http://localhost:16422/Web/Handler/test.ashx", "");
     /// </summary>
     /// <param name="posturl"></param>
     /// <param name="postData"></param>
@@ -16487,10 +16866,10 @@ public static class ShareClass
         HttpWebRequest defectuest = null;
         Encoding encoding = Encoding.UTF8;
         byte[] data = encoding.GetBytes(postData);
-        // ×¼±¸ÇëÇó...
+        // å‡†å¤‡è¯·æ±‚...
         try
         {
-            // ÉèÖÃ²ÎÊı
+            // è®¾ç½®å‚æ•°
             defectuest = WebRequest.Create(posturl) as HttpWebRequest;
             CookieContainer cookieContainer = new CookieContainer();
             defectuest.CookieContainer = cookieContainer;
@@ -16502,7 +16881,7 @@ public static class ShareClass
             outstream = defectuest.GetRequestStream();
             outstream.Write(data, 0, data.Length);
             outstream.Close();
-            //·¢ËÍÇëÇó²¢»ñÈ¡ÏàÓ¦»ØÓ¦Êı¾İ
+            //å‘é€è¯·æ±‚å¹¶è·å–ç›¸åº”å›åº”æ•°æ®
 
             //response = defectuest.GetResponse() as HttpWebResponse;
             HttpWebResponse res;
@@ -16515,10 +16894,10 @@ public static class ShareClass
                 res = (HttpWebResponse)ex.Response;
             }
 
-            //Ö±µ½defectuest.GetResponse()³ÌĞò²Å¿ªÊ¼ÏòÄ¿±êÍøÒ³·¢ËÍPostÇëÇó
+            //ç›´åˆ°defectuest.GetResponse()ç¨‹åºæ‰å¼€å§‹å‘ç›®æ ‡ç½‘é¡µå‘é€Postè¯·æ±‚
             instream = res.GetResponseStream();
             sr = new StreamReader(instream, encoding);
-            //·µ»Ø½á¹ûÍøÒ³£¨html£©´úÂë
+            //è¿”å›ç»“æœç½‘é¡µï¼ˆhtmlï¼‰ä»£ç 
             string content = sr.ReadToEnd();
             string err = string.Empty;
 
@@ -16531,7 +16910,7 @@ public static class ShareClass
         }
     }
 
-    //ĞòÁĞ»¯SQL
+    //åºåˆ—åŒ–SQL
     public static string Escape(string str)
     {
         StringBuilder sb = new StringBuilder();
@@ -16544,7 +16923,7 @@ public static class ShareClass
         return sb.ToString();
     }
 
-    //·´ĞòÁĞ»¯SQL
+    //ååºåˆ—åŒ–SQL
     public static string UnEscape(string str)
     {
         StringBuilder sb = new StringBuilder();
@@ -16560,14 +16939,14 @@ public static class ShareClass
         return sb.ToString();
     }
 
-    //´´½¨Êı¾İ¿âÓÃ»§
+    //åˆ›å»ºæ•°æ®åº“ç”¨æˆ·
     public static bool CreateDBUserAccount(string loginUser, string password, string strIsSecurityadmin)
     {
         string cmdText1, cmdText2;
 
         try
         {
-            ////´´½¨µÇÂ½ÕÊ»§£¨create login£©
+            ////åˆ›å»ºç™»é™†å¸æˆ·ï¼ˆcreate loginï¼‰
             cmdText1 = string.Format(@"create user {0} with password '{1}';", loginUser, password);
             ShareClass.RunSqlCommand(cmdText1);
         }
@@ -16590,7 +16969,7 @@ public static class ShareClass
         return true;
     }
 
-    //ÊÚÓèÓÃ»§Êı¾İ¿âÈ¨ÏŞ
+    //æˆäºˆç”¨æˆ·æ•°æ®åº“æƒé™
     public static bool AuthorizationDBToUser(string loginUser, string password, string databasename, string strIsSecurityadmin)
     {
         string cmdText1;
@@ -16598,7 +16977,7 @@ public static class ShareClass
         {
             if (strIsSecurityadmin == "NO")
             {
-                ////½«Êı¾İ¿âÖ»¶ÁÈ¨ÏŞ¸³Óèloginuser
+                ////å°†æ•°æ®åº“åªè¯»æƒé™èµ‹äºˆloginuser
                 cmdText1 = string.Format(@"REVOKE CREATE ON SCHEMA public from public;
                     GRANT SELECT ON ALL TABLES IN SCHEMA public TO {0};
                     ALTER DEFAULT PRIVILEGES IN SCHEMA public grant select on tables to {0}; ", loginUser, password);
@@ -16606,14 +16985,14 @@ public static class ShareClass
             }
             else
             {
-                ////½«Êı¾İ¿âµÄËùÓĞÈ¨ÏŞ¸³Óèloginuser£¬·ñÔòÖ»ÄÜµÇÂ¼psql£¬Ã»ÓĞÈÎºÎÊı¾İ¿â²Ù×÷È¨ÏŞ
+                ////å°†æ•°æ®åº“çš„æ‰€æœ‰æƒé™èµ‹äºˆloginuserï¼Œå¦åˆ™åªèƒ½ç™»å½•psqlï¼Œæ²¡æœ‰ä»»ä½•æ•°æ®åº“æ“ä½œæƒé™
                 cmdText1 = string.Format(@"REVOKE ALL PRIVILEGES ON ALL TABLES IN SCHEMA public FROM {1};
                                  grant all privileges on database {2}{0}{2} to {1};
                                  alter database {2}{0}{2} owner to {1};
                                  ", databasename, loginUser, "\"");
                 ShareClass.RunSqlCommand(cmdText1);
 
-                //ÊÚÓè×Ô½¨Õ¾µãÓÃ»§ËùÓĞÈ¨ÏŞ
+                //æˆäºˆè‡ªå»ºç«™ç‚¹ç”¨æˆ·æ‰€æœ‰æƒé™
                 GanttAllPrivilegesToSiteUser(databasename, loginUser);
             }
         }
@@ -16625,19 +17004,19 @@ public static class ShareClass
         return true;
     }
 
-    //ÊÚÓè×Ô½¨Õ¾µãÓÃ»§ËùÓĞÈ¨ÏŞ
+    //æˆäºˆè‡ªå»ºç«™ç‚¹ç”¨æˆ·æ‰€æœ‰æƒé™
     public static void GanttAllPrivilegesToSiteUser(string strSiteDBName, string strSiteUser)
     {
         string strConnectString;
 
         try
         {
-            // »ñÈ¡Á¬½Ó×Ö·û´®
+            // è·å–è¿æ¥å­—ç¬¦ä¸²
             strConnectString = ShareClass.GetSiteConnectString(strSiteDBName);
             var conn = new NpgsqlConnection(strConnectString);
             conn.Open();
 
-            // ÔËĞĞ SQL ÃüÁî
+            // è¿è¡Œ SQL å‘½ä»¤
             string sql = string.Format(@"ALTER USER {0} WITH CREATEROLE;GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO {0};ALTER USER {0} WITH SUPERUSER;", strSiteUser);
             var cmd = new NpgsqlCommand(sql, conn);
             cmd.ExecuteNonQuery();
@@ -16649,7 +17028,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃ×Ô½¨Õ¾µãµÄÊı¾İ¿âÁ¬½Ó´®
+    //å–å¾—è‡ªå»ºç«™ç‚¹çš„æ•°æ®åº“è¿æ¥ä¸²
     public static string GetSiteConnectString(string strSiteDBName)
     {
         string strConnectString, strDBName;
@@ -16663,20 +17042,20 @@ public static class ShareClass
     }
 
 
-    //Ö±½ÓÉ¾³ıÖ¸¶¨Ä¿Â¼ÏÂµÄËùÓĞÎÄ¼ş
+    //ç›´æ¥åˆ é™¤æŒ‡å®šç›®å½•ä¸‹çš„æ‰€æœ‰æ–‡ä»¶
     public static void DeleteFileUnderDirectory(string strDirectory)
     {
         try
         {
-            //È¥³ıÎÄ¼ş¼ĞºÍ×ÓÎÄ¼şµÄÖ»¶ÁÊôĞÔ
-            //È¥³ıÎÄ¼ş¼ĞµÄÖ»¶ÁÊôĞÔ
+            //å»é™¤æ–‡ä»¶å¤¹å’Œå­æ–‡ä»¶çš„åªè¯»å±æ€§
+            //å»é™¤æ–‡ä»¶å¤¹çš„åªè¯»å±æ€§
             System.IO.DirectoryInfo fileInfo = new DirectoryInfo(strDirectory);
             fileInfo.Attributes = FileAttributes.Normal & FileAttributes.Directory;
 
-            //È¥³ıÎÄ¼şµÄÖ»¶ÁÊôĞÔ
+            //å»é™¤æ–‡ä»¶çš„åªè¯»å±æ€§
             System.IO.File.SetAttributes(strDirectory, System.IO.FileAttributes.Normal);
 
-            //ÅĞ¶ÏÎÄ¼ş¼ĞÊÇ·ñ»¹´æÔÚ
+            //åˆ¤æ–­æ–‡ä»¶å¤¹æ˜¯å¦è¿˜å­˜åœ¨
             if (Directory.Exists(strDirectory))
             {
                 foreach (string f in Directory.GetFileSystemEntries(strDirectory))
@@ -16685,7 +17064,7 @@ public static class ShareClass
                     {
                         try
                         {
-                            //Èç¹ûÓĞ×ÓÎÄ¼şÉ¾³ıÎÄ¼ş
+                            //å¦‚æœæœ‰å­æ–‡ä»¶åˆ é™¤æ–‡ä»¶
                             File.Delete(f);
                         }
                         catch
@@ -16696,7 +17075,7 @@ public static class ShareClass
                     {
                         try
                         {
-                            //Ñ­»·µİ¹éÉ¾³ı×ÓÎÄ¼ş¼Ğ
+                            //å¾ªç¯é€’å½’åˆ é™¤å­æ–‡ä»¶å¤¹
                             DeleteFileUnderDirectory(f);
                         }
                         catch
@@ -16706,7 +17085,7 @@ public static class ShareClass
                 }
             }
         }
-        catch (Exception ex) // Òì³£´¦Àí
+        catch (Exception ex) // å¼‚å¸¸å¤„ç†
         {
         }
     }
@@ -16793,7 +17172,7 @@ public static class ShareClass
         return ds;
     }
 
-    //È¡µÃĞÎ³É·ÖÎöÍ¼µÄDataSet
+    //å–å¾—å½¢æˆåˆ†æå›¾çš„DataSet
     public static DataSet GetSytemChartDataSet(string strUserCode, string strFormType)
     {
         string strHQL, strSql;
@@ -16871,9 +17250,143 @@ public static class ShareClass
         return ds;
     }
 
+    /// <summary>
+    /// é¢„è®¡ç®—ä¸ªäººç©ºé—´åˆ†æå›¾æ•°æ® - ç™»å½•æ—¶è°ƒç”¨
+    /// </summary>
+    public static void PreCalculatePersonalSpaceCharts(string strUserCode)
+    {
+        try
+        {
+            string strLangCode = HttpContext.Current.Session["LangCode"].ToString();
+            string strDepartString;
+            if (HttpContext.Current.Session["DepartString"] == null)
+            {
+                strDepartString = TakeTopCore.CoreShareClass.InitialDepartmentStringByAuthoritySuperUser(strUserCode);
+                HttpContext.Current.Session["DepartString"] = strDepartString;
+            }
+            else
+            {
+                strDepartString = HttpContext.Current.Session["DepartString"].ToString();
+            }
 
+            // è·å–ç”¨æˆ·çš„åˆ†æå›¾é…ç½®
+            DataSet dsConfig = GetSytemChartDataSet(strUserCode, "PersonalSpacePage");
+            if (dsConfig == null || dsConfig.Tables[0].Rows.Count == 0)
+            {
+                return;
+            }
 
-    //×Ô¶¯±¸·İÏµÍ³Êı¾İ
+            // é¢„è®¡ç®—æ¯ä¸ªå›¾è¡¨çš„æ•°æ®å¹¶ç¼“å­˜åˆ° Session
+            List<ChartPreloadData> preloadedData = new List<ChartPreloadData>();
+            
+            foreach (DataRow row in dsConfig.Tables[0].Rows)
+            {
+                try
+                {
+                    string chartName = row["ChartName"].ToString().Trim();
+                    string chartType = row["ChartType"].ToString().Trim();
+                    string sqlCode = row["SqlCode"].ToString();
+                    string formType = row["FormType"].ToString().Trim();
+                    
+                    if (string.IsNullOrEmpty(sqlCode))
+                    {
+                        continue;
+                    }
+                    
+                    // æ‰§è¡Œ SQL è·å–æ•°æ®
+                    string strSql = sqlCode.Replace("[TAKETOPUSERCODE]", strUserCode)
+                                           .Replace("[TAKETOPDEPARTSTRING]", strDepartString)
+                                           .Replace("[TAKETOPLANGCODE]", strLangCode);
+                    
+                    DataSet dsData = GetDataSetFromSql(strSql, "T_ChartData");
+                    
+                    if (dsData != null && dsData.Tables[0].Rows.Count > 0)
+                    {
+                        // æ„å»ºæ•°æ®å¯¹è±¡
+                        List<object> dataList = new List<object>();
+                        foreach (DataRow dataRow in dsData.Tables[0].Rows)
+                        {
+                            if (formType == "Column2" || formType == "Bar2")
+                            {
+                                dataList.Add(new { 
+                                    XName = dataRow["XName"].ToString(), 
+                                    YNumber = dataRow["YNumber"].ToString(), 
+                                    ZNumber = dataRow["ZNumber"].ToString() 
+                                });
+                            }
+                            else if (formType == "Column3" || formType == "Bar3")
+                            {
+                                dataList.Add(new { 
+                                    XName = dataRow["XName"].ToString(), 
+                                    YNumber = dataRow["YNumber"].ToString(), 
+                                    ZNumber = dataRow["ZNumber"].ToString(),
+                                    HNumber = dataRow["HNumber"].ToString()
+                                });
+                            }
+                            else if (formType == "Column4" || formType == "Bar4")
+                            {
+                                dataList.Add(new { 
+                                    XName = dataRow["XName"].ToString(), 
+                                    YNumber = dataRow["YNumber"].ToString(), 
+                                    ZNumber = dataRow["ZNumber"].ToString(),
+                                    HNumber = dataRow["HNumber"].ToString(),
+                                    KNumber = dataRow["KNumber"].ToString()
+                                });
+                            }
+                            else
+                            {
+                                // å¡ç‰‡ç±»å‹æˆ–å…¶ä»– - YNumber å¯èƒ½åŒ…å«é€—å·åˆ†éš”çš„å¤šä¸ªå€¼
+                                dataList.Add(new { 
+                                    XName = dataRow["XName"].ToString(), 
+                                    YNumber = dataRow["YNumber"].ToString() 
+                                });
+                            }
+                        }
+                        
+                        // åºåˆ—åŒ–ä¸º JSON
+                        System.Web.Script.Serialization.JavaScriptSerializer serializer = 
+                            new System.Web.Script.Serialization.JavaScriptSerializer();
+                        string jsonData = serializer.Serialize(dataList);
+                        
+                        preloadedData.Add(new ChartPreloadData
+                        {
+                            ChartName = chartName,
+                            ChartType = chartType,
+                            FormType = formType,
+                            JsonData = jsonData
+                        });
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // å•ä¸ªå›¾è¡¨å¤±è´¥ä¸å½±å“å…¶ä»–å›¾è¡¨
+                    LogClass.WriteLogFile("PreCalculate chart error: " + ex.Message);
+                }
+            }
+            
+            // å­˜å…¥ Session - ä¸ªäººç©ºé—´é¡µé¢ä¼šä½¿ç”¨è¿™ä¸ªç¼“å­˜
+            HttpContext.Current.Session["PreloadedChartData"] = preloadedData;
+            HttpContext.Current.Session["PreloadedChartTime"] = DateTime.Now;
+        }
+        catch (Exception err)
+        {
+            LogClass.WriteLogFile("PreCalculatePersonalSpaceCharts error: " + err.Message);
+        }
+    }
+
+    /// <summary>
+    /// é¢„åŠ è½½çš„å›¾è¡¨æ•°æ®é¡¹
+    /// </summary>
+    [Serializable]
+    public class ChartPreloadData
+    {
+        public string ChartName { get; set; }
+        public string ChartType { get; set; }
+        public string FormType { get; set; }
+        public string JsonData { get; set; }
+    }
+
+    //è‡ªåŠ¨å¤‡ä»½ç³»ç»Ÿæ•°æ®
     public static void AutoBackupDataBySystem()
     {
         string strHQL1, strHQL2;
@@ -16883,7 +17396,7 @@ public static class ShareClass
         {
             try
             {
-                //±¸·İÊı¾İ¿â
+                //å¤‡ä»½æ•°æ®åº“
                 ShareClass.BackupCurrentSiteDB(ShareClass.GetSystemDBName(), ShareClass.GetSystemDBBackupSaveDir(), "Timer", "SELF");
             }
             catch (Exception err)
@@ -16898,7 +17411,7 @@ public static class ShareClass
         {
             try
             {
-                //±¸·İÎÄµµ
+                //å¤‡ä»½æ–‡æ¡£
                 ShareClass.BackupCurrentSiteDoc("Timer");
             }
             catch (Exception err)
@@ -16909,7 +17422,7 @@ public static class ShareClass
     }
 
 
-    //±¸·İÆ½Ì¨ÎÄµµ
+    //å¤‡ä»½å¹³å°æ–‡æ¡£
     public static int BackupCurrentSiteDoc(string strBackupUser)
     {
         string strDirectory, strBackupPeriodDay, strBackupDirectorySavePath, strBackupDirectory;
@@ -16956,7 +17469,7 @@ public static class ShareClass
             intResult = ShareClass.CreateDirectory(strBackupDirectorySavePath);
             if (intResult == 2)
             {
-                //ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('¾¯¸æ£¬±¸·İÄ¿Â¼´´½¨"+LanguageHandle.GetWord("ZZSBJC").ToString().Trim()+"')", true);
+                //ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('è­¦å‘Šï¼Œå¤‡ä»½ç›®å½•åˆ›å»º"+LanguageHandle.GetWord("ZZSBJC").ToString().Trim()+"')", true);
                 return -1;
             }
         }
@@ -16974,7 +17487,7 @@ public static class ShareClass
         {
             try
             {
-                //ÅĞ¶Ïµ±ÔÂÊÇ²»ÊÇµÚÒ»´Î±¸·İ
+                //åˆ¤æ–­å½“æœˆæ˜¯ä¸æ˜¯ç¬¬ä¸€æ¬¡å¤‡ä»½
                 if (GetCurrentMonthBackupNumber() == 0)
                 {
                     strDocDirectory = DateTime.Now.AddMonths(-1).ToString("yyyyMM");
@@ -17085,7 +17598,7 @@ public static class ShareClass
                 strErrorMsg += "Copy Log directory Error: " + err.Message.ToString() + ";";
             }
 
-            //Ğ´ÈÕÖ¾
+            //å†™æ—¥å¿—
             string strInsertBackLogHQL = string.Format(@"insert into T_BackDocLog(BackTime,BackDocUrl,UserCode,UserName,IsSucc) values(now(),'{0}','{1}','{2}',1)",
                  strBackupDirectorySavePath, strBackupUser, strBackupUser);
             ShareClass.RunSqlCommand(strInsertBackLogHQL);
@@ -17103,7 +17616,7 @@ public static class ShareClass
         }
         catch (Exception err)
         {
-            //Ğ´ÈÕÖ¾
+            //å†™æ—¥å¿—
             string strInsertBackLogHQL = string.Format(@"insert into T_BackDocLog(BackTime,BackDocUrl,UserCode,UserName,IsSucc) values(now(),'{0}','{2}','{2}',0)",
                  strBackupDirectorySavePath, strBackupUser, strBackupUser);
             ShareClass.RunSqlCommand(strInsertBackLogHQL);
@@ -17113,7 +17626,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃµ±ÔÂ±¸·İ´ÎÊı
+    //å–å¾—å½“æœˆå¤‡ä»½æ¬¡æ•°
     public static int GetCurrentMonthBackupNumber()
     {
         string strHQL;
@@ -17123,7 +17636,7 @@ public static class ShareClass
         return ds.Tables[0].Rows.Count;
     }
 
-    //È¡µÃ×îĞÂ±¸·İÎÄµµÊ±¼ä
+    //å–å¾—æœ€æ–°å¤‡ä»½æ–‡æ¡£æ—¶é—´
     public static string GetAllreadyBackupDocLastestTime()
     {
         string strHQL;
@@ -17140,7 +17653,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃ×îĞÂ±¸·İÎÄµµÊ±¼ä
+    //å–å¾—æœ€æ–°å¤‡ä»½æ–‡æ¡£æ—¶é—´
     public static string GetAllreadyBackupDBLastestTime()
     {
         string strHQL;
@@ -17157,7 +17670,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃÉÏ´Î±¸·İÊ±¼äµ½ÏÖÔÚµÄÔÂ·İ
+    //å–å¾—ä¸Šæ¬¡å¤‡ä»½æ—¶é—´åˆ°ç°åœ¨çš„æœˆä»½
     public static int GetBackupDBLastestTimeDifferMonth()
     {
         string strHQL;
@@ -17181,7 +17694,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃÓïÑÔ×ÊÔ´ÎÄ¼şµÄKEYÖµ
+    //å–å¾—è¯­è¨€èµ„æºæ–‡ä»¶çš„KEYå€¼
     public static string GetLanguageResourceKeyValue(string strLangCode, string strKey)
     {
         string strResouceFile = "lang." + strLangCode.Trim() + ".resx";
@@ -17195,7 +17708,7 @@ public static class ShareClass
         }
     }
 
-    //Òì²½Ö´ĞĞÒ³Ãæ
+    //å¼‚æ­¥æ‰§è¡Œé¡µé¢
     public static void SyncProjectPlanSchedule(string strURL)
     {
         string strSPInterfaceURL;
@@ -17210,7 +17723,7 @@ public static class ShareClass
             {
                 using (WebResponse wr = req.GetResponse())
                 {
-                    //ÔÚÕâÀï¶Ô½ÓÊÕµ½µÄÒ³ÃæÄÚÈİ½øĞĞ´¦Àí
+                    //åœ¨è¿™é‡Œå¯¹æ¥æ”¶åˆ°çš„é¡µé¢å†…å®¹è¿›è¡Œå¤„ç†
                 }
             }
             catch
@@ -17221,17 +17734,17 @@ public static class ShareClass
     }
 
 
-    /*  ¶¯Ì¬µ÷ÓÃWebServiceÊ¾Àı
+    /*  åŠ¨æ€è°ƒç”¨WebServiceç¤ºä¾‹
         //string url = "http://www.webxml.com.cn/WebServices/WeatherWebservice.asmx";
         //string[] args = new string[1];
-        //args[0] = "º¼Öİ";
+        //args[0] = "æ­å·";
         //object result = ShareClass.InvokeWebService(url, "getWeatherbyCityName", args);
         //Response.Write(result.ToString());
-        //ClientScript.RegisterStartupScript(this.GetType(), "", "<script>showAlertAtMouse('" + result.ToString() + "£¡');</script>");
+        //ClientScript.RegisterStartupScript(this.GetType(), "", "<script>showAlertAtMouse('" + result.ToString() + "ï¼');</script>");
     */
 
-    //Ö´ĞĞÒ»°ã´¦Àí³ÌĞò
-    //µ±content-type:  application/x-www-from-urlencodeÊ±£¬²ÎÊı¸ñÊ½Îª:name="zzzz"&id="aaaaa"
+    //æ‰§è¡Œä¸€èˆ¬å¤„ç†ç¨‹åº
+    //å½“content-type:  application/x-www-from-urlencodeæ—¶ï¼Œå‚æ•°æ ¼å¼ä¸º:name="zzzz"&id="aaaaa"
     public static string GetResponseByPost(string apiUrl, string queryString)
     {
         string responseString = string.Empty;
@@ -17284,11 +17797,11 @@ public static class ShareClass
     #region InvokeWebService
 
     /// < summary>
-    /// ¶¯Ì¬µ÷ÓÃweb·şÎñ
+    /// åŠ¨æ€è°ƒç”¨webæœåŠ¡
     /// < /summary>
-    /// < param name="url">WSDL·şÎñµØÖ·< /param>
-    /// < param name="methodname">·½·¨Ãû< /param>
-    /// < param name="args">²ÎÊı< /param>
+    /// < param name="url">WSDLæœåŠ¡åœ°å€< /param>
+    /// < param name="methodname">æ–¹æ³•å< /param>
+    /// < param name="args">å‚æ•°< /param>
     /// < returns>< /returns>
     public static object InvokeWebService(string url, string methodname, object[] args)
     {
@@ -17296,12 +17809,12 @@ public static class ShareClass
     }
 
     /// < summary>
-    /// ¶¯Ì¬µ÷ÓÃweb·şÎñ
+    /// åŠ¨æ€è°ƒç”¨webæœåŠ¡
     /// < /summary>
-    /// < param name="url">WSDL·şÎñµØÖ·< /param>
-    /// < param name="classname">ÀàÃû< /param>
-    /// < param name="methodname">·½·¨Ãû< /param>
-    /// < param name="args">²ÎÊı< /param>
+    /// < param name="url">WSDLæœåŠ¡åœ°å€< /param>
+    /// < param name="classname">ç±»å< /param>
+    /// < param name="methodname">æ–¹æ³•å< /param>
+    /// < param name="args">å‚æ•°< /param>
     /// < returns>< /returns>
     public static object InvokeWebService(string url, string classname, string methodname, object[] args)
     {
@@ -17313,7 +17826,7 @@ public static class ShareClass
 
         try
         {
-            //»ñÈ¡WSDL
+            //è·å–WSDL
             WebClient wc = new WebClient();
             Stream stream = wc.OpenRead(url + "?WSDL");
             ServiceDescription sd = ServiceDescription.Read(stream);
@@ -17321,13 +17834,13 @@ public static class ShareClass
             sdi.AddServiceDescription(sd, "", "");
             CodeNamespace cn = new CodeNamespace(@namespace);
 
-            //Éú³É¿Í»§¶Ë´úÀíÀà´úÂë
+            //ç”Ÿæˆå®¢æˆ·ç«¯ä»£ç†ç±»ä»£ç 
             CodeCompileUnit ccu = new CodeCompileUnit();
             ccu.Namespaces.Add(cn);
             sdi.Import(cn, ccu);
             CSharpCodeProvider icc = new CSharpCodeProvider();
 
-            //Éè¶¨±àÒë²ÎÊı
+            //è®¾å®šç¼–è¯‘å‚æ•°
             CompilerParameters cplist = new CompilerParameters();
             cplist.GenerateExecutable = false;
             cplist.GenerateInMemory = true;
@@ -17336,7 +17849,7 @@ public static class ShareClass
             cplist.ReferencedAssemblies.Add("System.Web.Services.dll");
             cplist.ReferencedAssemblies.Add("System.Data.dll");
 
-            //±àÒë´úÀíÀà
+            //ç¼–è¯‘ä»£ç†ç±»
             CompilerResults cr = icc.CompileAssemblyFromDom(cplist, ccu);
             if (true == cr.Errors.HasErrors)
             {
@@ -17349,7 +17862,7 @@ public static class ShareClass
                 throw new Exception(sb.ToString());
             }
 
-            //Éú³É´úÀíÊµÀı£¬²¢µ÷ÓÃ·½·¨
+            //ç”Ÿæˆä»£ç†å®ä¾‹ï¼Œå¹¶è°ƒç”¨æ–¹æ³•
             System.Reflection.Assembly assembly = cr.CompiledAssembly;
             Type t = assembly.GetType(@namespace + "." + classname, true, true);
             object obj = Activator.CreateInstance(t);
@@ -17378,7 +17891,7 @@ public static class ShareClass
 
     #endregion InvokeWebService
 
-    //±£´æ¹¤×÷Á÷XMLÊı¾İµ½¹¤×÷Á÷±í
+    //ä¿å­˜å·¥ä½œæµXMLæ•°æ®åˆ°å·¥ä½œæµè¡¨
     public static bool UpdateWFXMLData(string strXMLName, string strWFID)
     {
         string strHQL;
@@ -17389,7 +17902,7 @@ public static class ShareClass
 
         try
         {
-            //°ÑÁ÷³ÌXMLÊı¾İ±£´æÔÚWFXMLDataÁĞ
+            //æŠŠæµç¨‹XMLæ•°æ®ä¿å­˜åœ¨WFXMLDataåˆ—
             XmlDocument document = new XmlDocument();
             document.Load(strXMLName);
 
@@ -17426,7 +17939,7 @@ public static class ShareClass
         }
     }
 
-    //°ÑXMLÎÄµµ×ª³É×Ö·û´®
+    //æŠŠXMLæ–‡æ¡£è½¬æˆå­—ç¬¦ä¸²
     public static string xmlDocument2String(XmlDocument doc)
     {
         MemoryStream stream = new MemoryStream();
@@ -17440,31 +17953,31 @@ public static class ShareClass
         stream.Close();
         return xmlstring;
     }
-    // SQLÈ¡µÃÊı¾İ¼¯
+    // SQLå–å¾—æ•°æ®é›†
     public static DataSet GetDataSetFromSql(string strHQL, string strTableName)
     {
         return GetDataSetInternal(strHQL, strTableName, true);
     }
 
-    // SQLÈ¡µÃÊı¾İ¼¯,Ö´ĞĞ²Ù×÷ÈÕÖ¾²»´æÈëÈÕÖ¾±í
+    // SQLå–å¾—æ•°æ®é›†,æ‰§è¡Œæ“ä½œæ—¥å¿—ä¸å­˜å…¥æ—¥å¿—è¡¨
     public static DataSet GetDataSetFromSqlNOOperateLog(string strHQL, string strTableName)
     {
         return GetDataSetInternal(strHQL, strTableName, false);
     }
 
-    // ÔËĞĞSQLÓï¾ä
+    // è¿è¡ŒSQLè¯­å¥
     public static void RunSqlCommand(string strCmdText)
     {
         RunSqlCommandInternal(strCmdText, true);
     }
 
-    // ÔËĞĞSQLÓï¾ä,Ö´ĞĞ²Ù×÷ÈÕÖ¾²»´æÈëÈÕÖ¾±í
+    // è¿è¡ŒSQLè¯­å¥,æ‰§è¡Œæ“ä½œæ—¥å¿—ä¸å­˜å…¥æ—¥å¿—è¡¨
     public static void RunSqlCommandForNOOperateLog(string strCmdText)
     {
         RunSqlCommandInternal(strCmdText, false);
     }
 
-    // ÄÚ²¿ÊµÏÖ·½·¨ - Êı¾İ¼¯²éÑ¯
+    // å†…éƒ¨å®ç°æ–¹æ³• - æ•°æ®é›†æŸ¥è¯¢
     private static DataSet GetDataSetInternal(string sql, string tableName, bool writeOperateLog)
     {
         DataSet dataSet = new DataSet();
@@ -17501,7 +18014,7 @@ public static class ShareClass
         return dataSet;
     }
 
-    // ÄÚ²¿ÊµÏÖ·½·¨ - Ö´ĞĞÃüÁî
+    // å†…éƒ¨å®ç°æ–¹æ³• - æ‰§è¡Œå‘½ä»¤
     private static void RunSqlCommandInternal(string sql, bool writeOperateLog)
     {
         using (var connection = CreateConnection())
@@ -17534,17 +18047,17 @@ public static class ShareClass
     }
 
 
-    //ÔËĞĞSQLÓï¾ä,Ö´ĞĞ²Ù×÷ÈÕÖ¾²»´æÈëÈÕÖ¾±í
+    //è¿è¡ŒSQLè¯­å¥,æ‰§è¡Œæ“ä½œæ—¥å¿—ä¸å­˜å…¥æ—¥å¿—è¡¨
     public static void RunSqlCommandForNOOperateLogCommon(string strCmdText)
     {
         NpgsqlConnection myConnection = new NpgsqlConnection(
                ConfigurationManager.ConnectionStrings["SQLCONNECTIONSTRING"].ConnectionString);
 
-        ///´´½¨Command
+        ///åˆ›å»ºCommand
         NpgsqlCommand myCommand = new NpgsqlCommand(strCmdText, myConnection);
         myCommand.CommandTimeout = 600;
 
-        ///´ò¿ªÁ´½Ó
+        ///æ‰“å¼€é“¾æ¥
         myConnection.Open();
 
         myCommand.ExecuteNonQuery();
@@ -17557,7 +18070,7 @@ public static class ShareClass
         }
     }
 
-    // ´´½¨Êı¾İ¿âÁ¬½Ó
+    // åˆ›å»ºæ•°æ®åº“è¿æ¥
     private static NpgsqlConnection CreateConnection()
     {
         var connection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["SQLCONNECTIONSTRING"].ConnectionString);
@@ -17565,7 +18078,7 @@ public static class ShareClass
         return connection;
     }
 
-    // ´´½¨ÃüÁî¶ÔÏó
+    // åˆ›å»ºå‘½ä»¤å¯¹è±¡
     private static NpgsqlCommand CreateCommand(string sql, NpgsqlConnection connection, NpgsqlTransaction transaction, Dictionary<string, object> parameters)
     {
         var command = new NpgsqlCommand(sql, connection, transaction);
@@ -17574,7 +18087,7 @@ public static class ShareClass
         {
             foreach (var param in parameters)
             {
-                // ĞŞ¸´£ºÕıÈ·´¦Àí null Öµ
+                // ä¿®å¤ï¼šæ­£ç¡®å¤„ç† null å€¼
                 command.Parameters.AddWithValue(param.Key, param.Value ?? DBNull.Value);
             }
         }
@@ -17582,22 +18095,22 @@ public static class ShareClass
         return command;
     }
 
-    // Òì³£´¦ÀíÍ³Ò»·½·¨
+    // å¼‚å¸¸å¤„ç†ç»Ÿä¸€æ–¹æ³•
     private static void HandleException(Exception ex, string sql)
     {
         LogClass.WriteLogFile($"Error page: {ex.Message}\n{ex.StackTrace}\nAn error occurred while executing the query: {ex.Message}, Sql: \n{sql}");
     }
 
-    // ²ÎÊıÌáÈ¡ÓÅ»¯°æ±¾
+    // å‚æ•°æå–ä¼˜åŒ–ç‰ˆæœ¬
     private static Dictionary<string, object> ExtractParametersFromSql(ref string sql)
     {
-        // ¿ìËÙ¼ì²é£ºÈç¹ûSQLÖĞÃ»ÓĞµ¥ÒıºÅ£¬Ö±½Ó·µ»Ø
+        // å¿«é€Ÿæ£€æŸ¥ï¼šå¦‚æœSQLä¸­æ²¡æœ‰å•å¼•å·ï¼Œç›´æ¥è¿”å›
         if (string.IsNullOrEmpty(sql) || sql.IndexOf('\'') == -1)
         {
             return null;
         }
 
-        // Ê¹ÓÃ±àÒëµÄÕıÔò±í´ïÊ½£¨¾²Ì¬×Ö¶Î£¬±ÜÃâÖØ¸´±àÒë£©
+        // ä½¿ç”¨ç¼–è¯‘çš„æ­£åˆ™è¡¨è¾¾å¼ï¼ˆé™æ€å­—æ®µï¼Œé¿å…é‡å¤ç¼–è¯‘ï¼‰
         var matches = SqlParameterRegex.Matches(sql);
         if (matches.Count == 0)
         {
@@ -17615,11 +18128,11 @@ public static class ShareClass
                 string fieldName = match.Groups[1].Value.Trim();
                 string paramValue = match.Groups[2].Value;
 
-                // ÓÅ»¯£º±ÜÃâ²»±ØÒªµÄTrim²Ù×÷
+                // ä¼˜åŒ–ï¼šé¿å…ä¸å¿…è¦çš„Trimæ“ä½œ
                 string processedValue = ProcessMultiLineValueFast(paramValue);
                 string paramName = "@autoParam" + i;
 
-                // ĞŞ¸´£ºÕıÈ·´¦Àí null Öµ
+                // ä¿®å¤ï¼šæ­£ç¡®å¤„ç† null å€¼
                 parameters[paramName] = processedValue != null ? processedValue : (object)DBNull.Value;
 
                 replacements.Add(new SqlReplacement
@@ -17631,7 +18144,7 @@ public static class ShareClass
             }
         }
 
-        // Ö´ĞĞÌæ»»
+        // æ‰§è¡Œæ›¿æ¢
         if (replacements.Count > 0)
         {
             sql = ReplaceSqlFragments(sql, replacements);
@@ -17640,43 +18153,43 @@ public static class ShareClass
         return parameters.Count > 0 ? parameters : null;
     }
 
-    // ±àÒëµÄÕıÔò±í´ïÊ½£¬Ìá¸ßĞÔÄÜ
+    // ç¼–è¯‘çš„æ­£åˆ™è¡¨è¾¾å¼ï¼Œæé«˜æ€§èƒ½
     private static readonly System.Text.RegularExpressions.Regex SqlParameterRegex =
         new System.Text.RegularExpressions.Regex(
             @"(\w+)\s*=\s*'([\s\S]*?)'",
             System.Text.RegularExpressions.RegexOptions.Multiline |
             System.Text.RegularExpressions.RegexOptions.Compiled);
 
-    // ÓÅ»¯µÄ¶àĞĞÖµ´¦Àí·½·¨
+    // ä¼˜åŒ–çš„å¤šè¡Œå€¼å¤„ç†æ–¹æ³•
     private static string ProcessMultiLineValueFast(string value)
     {
         if (string.IsNullOrEmpty(value))
             return value;
 
-        // ¿ìËÙ¼ì²éÊÇ·ñĞèÒªTrim
+        // å¿«é€Ÿæ£€æŸ¥æ˜¯å¦éœ€è¦Trim
         int start = 0;
         int end = value.Length - 1;
 
-        // Ìø¹ıÇ°µ¼¿Õ°×
+        // è·³è¿‡å‰å¯¼ç©ºç™½
         while (start <= end && char.IsWhiteSpace(value[start]))
             start++;
 
-        // Ìø¹ıÎ²²¿¿Õ°×
+        // è·³è¿‡å°¾éƒ¨ç©ºç™½
         while (end >= start && char.IsWhiteSpace(value[end]))
             end--;
 
-        // Èç¹û²»ĞèÒªTrim£¬Ö±½Ó·µ»ØÔ­×Ö·û´®
+        // å¦‚æœä¸éœ€è¦Trimï¼Œç›´æ¥è¿”å›åŸå­—ç¬¦ä¸²
         if (start == 0 && end == value.Length - 1)
             return value;
 
-        // ĞèÒªTrim£¬´´½¨ĞÂ×Ö·û´®
+        // éœ€è¦Trimï¼Œåˆ›å»ºæ–°å­—ç¬¦ä¸²
         return value.Substring(start, end - start + 1);
     }
 
-    // ÓÅ»¯µÄ×Ö·û´®Ìæ»»·½·¨
+    // ä¼˜åŒ–çš„å­—ç¬¦ä¸²æ›¿æ¢æ–¹æ³•
     private static string ReplaceSqlFragments(string sql, List<SqlReplacement> replacements)
     {
-        // Èç¹ûÖ»ÓĞÒ»¸öÌæ»»£¬Ö±½ÓÊ¹ÓÃReplace
+        // å¦‚æœåªæœ‰ä¸€ä¸ªæ›¿æ¢ï¼Œç›´æ¥ä½¿ç”¨Replace
         if (replacements.Count == 1)
         {
             var replacement = replacements[0];
@@ -17684,7 +18197,7 @@ public static class ShareClass
                       .Insert(replacement.Index, replacement.NewText);
         }
 
-        // ¶à¸öÌæ»»Ê¹ÓÃStringBuilder£¬´ÓºóÍùÇ°Ìæ»»±ÜÃâË÷Òı±ä»¯
+        // å¤šä¸ªæ›¿æ¢ä½¿ç”¨StringBuilderï¼Œä»åå¾€å‰æ›¿æ¢é¿å…ç´¢å¼•å˜åŒ–
         var sqlBuilder = new System.Text.StringBuilder(sql);
         for (int i = replacements.Count - 1; i >= 0; i--)
         {
@@ -17695,7 +18208,7 @@ public static class ShareClass
         return sqlBuilder.ToString();
     }
 
-    // ×Ô¶¨ÒåÀàÀ´´æ´¢Ìæ»»ĞÅÏ¢
+    // è‡ªå®šä¹‰ç±»æ¥å­˜å‚¨æ›¿æ¢ä¿¡æ¯
     private class SqlReplacement
     {
         public int Index { get; set; }
@@ -17703,7 +18216,7 @@ public static class ShareClass
         public string NewText { get; set; }
     }
 
-    ////SQLÈ¡µÃÊı¾İ¼¯
+    ////SQLå–å¾—æ•°æ®é›†
     //public static DataSet GetDataSetFromSql(string strHQL, string strTableName)
     //{
     //    NpgsqlConnection myConnection = new NpgsqlConnection(
@@ -17718,7 +18231,7 @@ public static class ShareClass
     //    sda.Fill(ds, strTableName);
     //    myConnection.Close();
 
-    //    //---±£´æÓÃ»§²Ù×÷ÈÕÖ¾µ½ÈÕÖ¾±í-------
+    //    //---ä¿å­˜ç”¨æˆ·æ“ä½œæ—¥å¿—åˆ°æ—¥å¿—è¡¨-------
     //    InsertUserOperateLog(strHQL);
 
     //    if (myCommand != null)
@@ -17729,7 +18242,7 @@ public static class ShareClass
     //    return ds;
     //}
 
-    ////SQLÈ¡µÃÊı¾İ¼¯,Ö´ĞĞ²Ù×÷ÈÕÖ¾²»´æÈëÈÕÖ¾±í
+    ////SQLå–å¾—æ•°æ®é›†,æ‰§è¡Œæ“ä½œæ—¥å¿—ä¸å­˜å…¥æ—¥å¿—è¡¨
     //public static DataSet GetDataSetFromSqlNOOperateLog(string strHQL, string strTableName)
     //{
     //    NpgsqlConnection myConnection = new NpgsqlConnection(
@@ -17753,24 +18266,24 @@ public static class ShareClass
     //    return ds;
     //}
 
-    ////ÔËĞĞSQLÓï¾ä
+    ////è¿è¡ŒSQLè¯­å¥
     //public static void RunSqlCommand(string strCmdText)
     //{
     //    NpgsqlConnection myConnection = new NpgsqlConnection(
     //           ConfigurationManager.ConnectionStrings["SQLCONNECTIONSTRING"].ConnectionString);
 
-    //    ///´´½¨Command
+    //    ///åˆ›å»ºCommand
     //    NpgsqlCommand myCommand = new NpgsqlCommand(strCmdText, myConnection);
     //    myCommand.CommandTimeout = 600;
 
-    //    ///´ò¿ªÁ´½Ó
+    //    ///æ‰“å¼€é“¾æ¥
     //    myConnection.Open();
 
     //    myCommand.ExecuteNonQuery();
 
     //    myConnection.Close();
 
-    //    //---±£´æÓÃ»§²Ù×÷ÈÕÖ¾µ½ÈÕÖ¾±í-------
+    //    //---ä¿å­˜ç”¨æˆ·æ“ä½œæ—¥å¿—åˆ°æ—¥å¿—è¡¨-------
     //    InsertUserOperateLog(strCmdText);
 
     //    if (myCommand != null)
@@ -17779,17 +18292,17 @@ public static class ShareClass
     //    }
     //}
 
-    ////ÔËĞĞSQLÓï¾ä,Ö´ĞĞ²Ù×÷ÈÕÖ¾²»´æÈëÈÕÖ¾±í
+    ////è¿è¡ŒSQLè¯­å¥,æ‰§è¡Œæ“ä½œæ—¥å¿—ä¸å­˜å…¥æ—¥å¿—è¡¨
     //public static void RunSqlCommandForNOOperateLog(string strCmdText)
     //{
     //    NpgsqlConnection myConnection = new NpgsqlConnection(
     //           ConfigurationManager.ConnectionStrings["SQLCONNECTIONSTRING"].ConnectionString);
 
-    //    ///´´½¨Command
+    //    ///åˆ›å»ºCommand
     //    NpgsqlCommand myCommand = new NpgsqlCommand(strCmdText, myConnection);
     //    myCommand.CommandTimeout = 600;
 
-    //    ///´ò¿ªÁ´½Ó
+    //    ///æ‰“å¼€é“¾æ¥
     //    myConnection.Open();
 
     //    myCommand.ExecuteNonQuery();
@@ -17802,7 +18315,7 @@ public static class ShareClass
     //    }
     //}
 
-    //ÔËĞĞ´ø·µ»Ø²ÎÊıµÄ´æ´¢¹ı³Ì
+    //è¿è¡Œå¸¦è¿”å›å‚æ•°çš„å­˜å‚¨è¿‡ç¨‹
     public static void RunSQLProcedure(string pro, List<NpgsqlParameter> values, ref Hashtable htReturn)
     {
         NpgsqlConnection myConnection = null;
@@ -17810,33 +18323,33 @@ public static class ShareClass
 
         try
         {
-            // ´´½¨Á¬½Ó
+            // åˆ›å»ºè¿æ¥
             myConnection = new NpgsqlConnection(
                 ConfigurationManager.ConnectionStrings["SQLCONNECTIONSTRING"].ConnectionString);
             myConnection.Open();
 
-            // ¿ªÊ¼ÊÂÎñ
+            // å¼€å§‹äº‹åŠ¡
             transaction = myConnection.BeginTransaction();
 
-            // ´´½¨ÃüÁî²¢¹ØÁªÊÂÎñ
+            // åˆ›å»ºå‘½ä»¤å¹¶å…³è”äº‹åŠ¡
             using (NpgsqlCommand myCommand = new NpgsqlCommand(pro, myConnection, transaction))
             {
                 myCommand.CommandTimeout = 600;
-                myCommand.CommandType = CommandType.StoredProcedure; // ÉèÖÃÎª´æ´¢¹ı³Ì
+                myCommand.CommandType = CommandType.StoredProcedure; // è®¾ç½®ä¸ºå­˜å‚¨è¿‡ç¨‹
 
-                // Ìí¼Ó²ÎÊı
+                // æ·»åŠ å‚æ•°
                 foreach (NpgsqlParameter sp in values)
                 {
                     myCommand.Parameters.Add(sp);
                 }
 
-                // Ö´ĞĞ´æ´¢¹ı³Ì
+                // æ‰§è¡Œå­˜å‚¨è¿‡ç¨‹
                 myCommand.ExecuteNonQuery();
 
-                // Ìá½»ÊÂÎñ
+                // æäº¤äº‹åŠ¡
                 transaction.Commit();
 
-                // »ñÈ¡Êä³ö²ÎÊıµÄÖµ
+                // è·å–è¾“å‡ºå‚æ•°çš„å€¼
                 List<string> keys = new List<string>();
                 foreach (string key in htReturn.Keys)
                 {
@@ -17853,23 +18366,23 @@ public static class ShareClass
         }
         catch (Exception ex)
         {
-            // »Ø¹öÊÂÎñ
+            // å›æ»šäº‹åŠ¡
             transaction?.Rollback();
-            // ¼ÇÂ¼´íÎóÈÕÖ¾»òÅ×³öÒì³£
+            // è®°å½•é”™è¯¯æ—¥å¿—æˆ–æŠ›å‡ºå¼‚å¸¸
             throw new Exception("An error occurred while executing the stored procedure.", ex);
         }
         finally
         {
-            // ¹Ø±ÕÁ¬½Ó
+            // å…³é—­è¿æ¥
             myConnection?.Close();
-            // ÊÍ·ÅÊÂÎñ×ÊÔ´
+            // é‡Šæ”¾äº‹åŠ¡èµ„æº
             transaction?.Dispose();
             myConnection?.Dispose();
         }
     }
 
 
-    //ÔËĞĞ´ø·µ»Ø²ÎÊıµÄ´æ´¢¹ı³Ì
+    //è¿è¡Œå¸¦è¿”å›å‚æ•°çš„å­˜å‚¨è¿‡ç¨‹
     public static DataSet RunSQLProcedure(string pro, List<NpgsqlParameter> values)
     {
         DataSet ds = new DataSet();
@@ -17878,49 +18391,49 @@ public static class ShareClass
 
         try
         {
-            // ´´½¨Á¬½Ó
+            // åˆ›å»ºè¿æ¥
             myConnection = new NpgsqlConnection(
                 ConfigurationManager.ConnectionStrings["SQLCONNECTIONSTRING"].ConnectionString);
             myConnection.Open();
 
-            // ¿ªÊ¼ÊÂÎñ
+            // å¼€å§‹äº‹åŠ¡
             transaction = myConnection.BeginTransaction();
 
-            // ´´½¨ÃüÁî²¢¹ØÁªÊÂÎñ
+            // åˆ›å»ºå‘½ä»¤å¹¶å…³è”äº‹åŠ¡
             using (NpgsqlCommand myCommand = new NpgsqlCommand(pro, myConnection, transaction))
             {
                 myCommand.CommandTimeout = 600;
-                myCommand.CommandType = CommandType.StoredProcedure; // ÉèÖÃÎª´æ´¢¹ı³Ì
+                myCommand.CommandType = CommandType.StoredProcedure; // è®¾ç½®ä¸ºå­˜å‚¨è¿‡ç¨‹
 
-                // Ìí¼Ó²ÎÊı
+                // æ·»åŠ å‚æ•°
                 foreach (NpgsqlParameter sp in values)
                 {
                     myCommand.Parameters.Add(sp);
                 }
 
-                // ´´½¨Êı¾İÊÊÅäÆ÷
+                // åˆ›å»ºæ•°æ®é€‚é…å™¨
                 using (NpgsqlDataAdapter sda = new NpgsqlDataAdapter(myCommand))
                 {
-                    sda.SelectCommand.CommandTimeout = 600; // ÉèÖÃ³¬Ê±Ê±¼ä
-                    sda.Fill(ds); // Ìî³äÊı¾İ¼¯
+                    sda.SelectCommand.CommandTimeout = 600; // è®¾ç½®è¶…æ—¶æ—¶é—´
+                    sda.Fill(ds); // å¡«å……æ•°æ®é›†
                 }
 
-                // Ìá½»ÊÂÎñ
+                // æäº¤äº‹åŠ¡
                 transaction.Commit();
             }
         }
         catch (Exception ex)
         {
-            // »Ø¹öÊÂÎñ
+            // å›æ»šäº‹åŠ¡
             transaction?.Rollback();
-            // ¼ÇÂ¼´íÎóÈÕÖ¾»òÅ×³öÒì³£
+            // è®°å½•é”™è¯¯æ—¥å¿—æˆ–æŠ›å‡ºå¼‚å¸¸
             throw new Exception("An error occurred while executing the stored procedure.", ex);
         }
         finally
         {
-            // ¹Ø±ÕÁ¬½Ó
+            // å…³é—­è¿æ¥
             myConnection?.Close();
-            // ÊÍ·ÅÊÂÎñ×ÊÔ´
+            // é‡Šæ”¾äº‹åŠ¡èµ„æº
             transaction?.Dispose();
             myConnection?.Dispose();
         }
@@ -17930,24 +18443,24 @@ public static class ShareClass
 
 
 
-    //±£´æÓÃ»§²Ù×÷ÈÕÖ¾µ½ÈÕÖ¾±í
+    //ä¿å­˜ç”¨æˆ·æ“ä½œæ—¥å¿—åˆ°æ—¥å¿—è¡¨
     public static void InsertUserOperateLog(string strHQL)
     {
         try
         {
-            // ¼ì²éÊÇ·ñÆôÓÃÈÕÖ¾¼ÇÂ¼
+            // æ£€æŸ¥æ˜¯å¦å¯ç”¨æ—¥å¿—è®°å½•
             if (System.Configuration.ConfigurationManager.AppSettings["SaveOperateLog"] != "YES")
             {
                 return;
             }
 
-            // ¼ì²éÊÇ·ñÎªÏµÍ³²Ù×÷
+            // æ£€æŸ¥æ˜¯å¦ä¸ºç³»ç»Ÿæ“ä½œ
             if (strHQL.IndexOf("BySystem") != -1)
             {
                 return;
             }
 
-            // »ñÈ¡ÓÃ»§ĞÅÏ¢
+            // è·å–ç”¨æˆ·ä¿¡æ¯
             if (HttpContext.Current.Session["UserCode"] == null || HttpContext.Current.Session["UserName"] == null)
             {
                 return;
@@ -17957,15 +18470,15 @@ public static class ShareClass
             string strUserName = HttpContext.Current.Session["UserName"].ToString();
             string strUserIP = HttpContext.Current.Request.UserHostAddress.Trim();
 
-            // ×ªÒå SQL ÖĞµÄµ¥ÒıºÅ
+            // è½¬ä¹‰ SQL ä¸­çš„å•å¼•å·
             string escapedHQL = strHQL.Replace("'", "''");
 
-            // Ê¹ÓÃ Task Òì²½Ö´ĞĞÈÕÖ¾²åÈë²Ù×÷
+            // ä½¿ç”¨ Task å¼‚æ­¥æ‰§è¡Œæ—¥å¿—æ’å…¥æ“ä½œ
             Task.Run(() => InsertLogAsync(strUserCode, strUserName, strUserIP, escapedHQL));
         }
         catch (Exception ex)
         {
-            // ¼ÇÂ¼ÈÕÖ¾²åÈëÊ§°ÜµÄ´íÎó
+            // è®°å½•æ—¥å¿—æ’å…¥å¤±è´¥çš„é”™è¯¯
             LogError("Failed to insert user operate log.", ex);
         }
     }
@@ -17974,12 +18487,12 @@ public static class ShareClass
     {
         try
         {
-            // Ê¹ÓÃ²ÎÊı»¯²éÑ¯±ÜÃâ SQL ×¢Èë
+            // ä½¿ç”¨å‚æ•°åŒ–æŸ¥è¯¢é¿å… SQL æ³¨å…¥
             string strSQL = @"
             INSERT INTO T_UserOperateLog (UserCode, UserName, UserIP, OperateContent, OperateTime)
             VALUES (@UserCode, @UserName, @UserIP, @OperateContent, NOW())";
 
-            // ´´½¨²ÎÊıÁĞ±í
+            // åˆ›å»ºå‚æ•°åˆ—è¡¨
             var parameters = new List<NpgsqlParameter>
         {
             new NpgsqlParameter("@UserCode", userCode),
@@ -17988,12 +18501,12 @@ public static class ShareClass
             new NpgsqlParameter("@OperateContent", operateContent)
         };
 
-            // Ö´ĞĞ SQL ÃüÁî
+            // æ‰§è¡Œ SQL å‘½ä»¤
             RunSqlCommandForNOOperateLog(strSQL, parameters);
         }
         catch (Exception ex)
         {
-            // ¼ÇÂ¼ÈÕÖ¾²åÈëÊ§°ÜµÄ´íÎó
+            // è®°å½•æ—¥å¿—æ’å…¥å¤±è´¥çš„é”™è¯¯
             LogError("Failed to insert user operate log asynchronously.", ex);
         }
     }
@@ -18019,12 +18532,12 @@ public static class ShareClass
 
     private static void LogError(string message, Exception ex)
     {
-        // ÕâÀï¿ÉÒÔÊµÏÖÈÕÖ¾¼ÇÂ¼Âß¼­£¬ÀıÈçĞ´ÈëÎÄ¼ş¡¢Êı¾İ¿â»òÈÕÖ¾ÏµÍ³
+        // è¿™é‡Œå¯ä»¥å®ç°æ—¥å¿—è®°å½•é€»è¾‘ï¼Œä¾‹å¦‚å†™å…¥æ–‡ä»¶ã€æ•°æ®åº“æˆ–æ—¥å¿—ç³»ç»Ÿ
         Console.Error.WriteLine($"[ERROR] {DateTime.Now}: {message} - {ex.Message}");
     }
 
 
-    //¹ıÂË·Ç·¨×Ö·û£¬·ÀÖ¹×¢ÈëÊ½¹¥¹¥»÷
+    //è¿‡æ»¤éæ³•å­—ç¬¦ï¼Œé˜²æ­¢æ³¨å…¥å¼æ”»æ”»å‡»
     public static bool SqlFilter(string InText)
     {
         string word = "and|exec|insert|select|delete|update|chr|mid|master|or|truncate|char|declare|join|or|;|-|+|*|%|";
@@ -18041,7 +18554,7 @@ public static class ShareClass
         return false;
     }
 
-    //´ÓEXCEL¶ÁÈ¡µ½Êı¾İ¼¯
+    //ä»EXCELè¯»å–åˆ°æ•°æ®é›†
     public static DataSet ExcelToDataSet(string filenameurl, string table)
     {
         string strConn;
@@ -18049,7 +18562,7 @@ public static class ShareClass
 
         if (extension.ToLower() == ".xlsx")
         {
-            //2013°æ¼°ÒÔÉÏ°æ±¾µ¼Èë
+            //2013ç‰ˆåŠä»¥ä¸Šç‰ˆæœ¬å¯¼å…¥
             strConn = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + filenameurl + ";Extended Properties='Excel 12.0;IMEX=1'";
         }
         else
@@ -18063,7 +18576,7 @@ public static class ShareClass
         return ds;
     }
 
-    //µ¹³öEXCELÎÄ¼ş
+    //å€’å‡ºEXCELæ–‡ä»¶
     public static void CreateExcel(string strHQL, string fileName, Page page)
     {
         int i = 0, j = 0;
@@ -18097,7 +18610,7 @@ public static class ShareClass
         HttpContext.Current.Response.End();
     }
 
-    //DataGridµ¼³öÎªEXCEL
+    //DataGridå¯¼å‡ºä¸ºEXCEL
     public static void DataGridExportToExecl(DataGrid dataGrid, string strTableTitle, string strFileName, DataSet ds)
     {
         dataGrid.AllowPaging = false;
@@ -18123,7 +18636,7 @@ public static class ShareClass
     }
 
 
-    //ModifyWebConfigDBConnectionString ĞŞ¸Äweb.configµÄÁ¬½ÓÊı¾İ¿âµÄ×Ö·û´®¡¢Æ½Ì¨Ãû³ÆºÍÊÇ·ñOEM°æ
+    //ModifyWebConfigDBConnectionString ä¿®æ”¹web.configçš„è¿æ¥æ•°æ®åº“çš„å­—ç¬¦ä¸²ã€å¹³å°åç§°å’Œæ˜¯å¦OEMç‰ˆ
     public static bool ModifyWebConfigDBConnectionStringAndSystemName(string strSiteDirectory, string NhibernateConnectionString, string SQLConnectionString, string GanttSQLConnectionString, string strDBOwerID, string strPassword, string strDBName, string strSysteName, string strSiteAppURL, string strRentProductType, string strRentProductVersionType, string strIsOEM)
     {
         try
@@ -18142,7 +18655,7 @@ public static class ShareClass
 
             bool FoundIt = false;
 
-            //ĞŞ¸ÄNHibernateÊı¾İ¿âÁ¬½Ó²ÎÊı
+            //ä¿®æ”¹NHibernateæ•°æ®åº“è¿æ¥å‚æ•°
             strDBServerName = GetDBServerName("connection.connection_string");
             foreach (System.Xml.XmlNode Node in xmlDocument["configuration"]["hibernate-configuration"]["session-factory"])
             {
@@ -18162,7 +18675,7 @@ public static class ShareClass
 
 
 
-            //ĞŞ¸ÄÆ½Ì¨Ãû³Æ
+            //ä¿®æ”¹å¹³å°åç§°
             foreach (System.Xml.XmlNode Node in xmlDocument["configuration"]["appSettings"])
             {
                 if (Node.Name == "add")
@@ -18179,7 +18692,7 @@ public static class ShareClass
                 //throw new InstallException("Error when writing the config file: web.config");
             }
 
-            //ĞŞ¸ÄÆ½Ì¨URL
+            //ä¿®æ”¹å¹³å°URL
             foreach (System.Xml.XmlNode Node in xmlDocument["configuration"]["appSettings"])
             {
                 if (Node.Name == "add")
@@ -18196,7 +18709,7 @@ public static class ShareClass
                 //throw new InstallException("Error when writing the config file: web.config");
             }
 
-            //ĞŞ¸Ä²úÆ·ÀàĞÍ
+            //ä¿®æ”¹äº§å“ç±»å‹
             foreach (System.Xml.XmlNode Node in xmlDocument["configuration"]["appSettings"])
             {
                 if (Node.Name == "add")
@@ -18213,7 +18726,7 @@ public static class ShareClass
                 //throw new InstallException("Error when writing the config file: web.config");
             }
 
-            //ĞŞ¸Ä²úÆ·°æ±¾
+            //ä¿®æ”¹äº§å“ç‰ˆæœ¬
             foreach (System.Xml.XmlNode Node in xmlDocument["configuration"]["appSettings"])
             {
                 if (Node.Name == "add")
@@ -18230,7 +18743,7 @@ public static class ShareClass
                 //throw new InstallException("Error when writing the config file: web.config");
             }
 
-            //ĞŞ¸ÄIdentity½ÚµãADMINISTRATOR ÃÜÂë
+            //ä¿®æ”¹IdentityèŠ‚ç‚¹ADMINISTRATOR å¯†ç 
             string strIdentityPassword = GetIdentityUserPassword();
             foreach (System.Xml.XmlNode Node in xmlDocument["configuration"]["system.web"])
             {
@@ -18245,7 +18758,7 @@ public static class ShareClass
                 //throw new InstallException("Error when writing the config file: web.config");
             }
 
-            //ĞŞ¸ÄOEM°æ±¾ÀàĞÍ
+            //ä¿®æ”¹OEMç‰ˆæœ¬ç±»å‹
             if (strIsOEM == "YES")
             {
                 foreach (System.Xml.XmlNode Node in xmlDocument["configuration"]["appSettings"])
@@ -18269,7 +18782,7 @@ public static class ShareClass
             xmlDocument.Save(FileInfo.FullName);
 
 
-            //ĞŞ¸ÄSQlÊı¾İ¿âÁ¬½Ó²ÎÊı
+            //ä¿®æ”¹SQlæ•°æ®åº“è¿æ¥å‚æ•°
             strDBServerName = GetDBServerName("connectionString");
             foreach (System.Xml.XmlNode Node in xmlDocument["configuration"]["connectionStrings"])
             {
@@ -18307,7 +18820,7 @@ public static class ShareClass
         }
     }
 
-    //ÅäÖÃPOSTGRESQL
+    //é…ç½®POSTGRESQL
     public static void ConfigPostgreSqlPGPassFile(string strDBName)
     {
         try
@@ -18331,7 +18844,7 @@ public static class ShareClass
         }
     }
 
-    //±¸·İOEMÕ¾µãÊı¾İ¿â
+    //å¤‡ä»½OEMç«™ç‚¹æ•°æ®åº“
     public static void BackupOEMSiteDB(string strSiteDBName, string strBackupDBSavePath, string strBackupOperatorName)
     {
         int intResult;
@@ -18352,7 +18865,7 @@ public static class ShareClass
         }
     }
 
-    //±¸·İÆ½Ì¨Êı¾İ¿â
+    //å¤‡ä»½å¹³å°æ•°æ®åº“
     public static int BackupCurrentSiteDB(string strDBName, string strBackupDirectory, string strBackupOperatorName, string strBackupType)
     {
         string strBackupDBName, strBackupDBSavePathName, strBackupDirectorySavePath, strAppDBServer, strAppDBPort, strAppDBPassword;
@@ -18379,7 +18892,7 @@ public static class ShareClass
             intResult = ShareClass.CreateDirectory(strBackupDirectorySavePath);
             if (intResult == 2)
             {
-                //ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('¾¯¸æ£¬±¸·İÄ¿Â¼´´½¨"+LanguageHandle.GetWord("ZZSBJC").ToString().Trim()+"')", true);
+                //ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('è­¦å‘Šï¼Œå¤‡ä»½ç›®å½•åˆ›å»º"+LanguageHandle.GetWord("ZZSBJC").ToString().Trim()+"')", true);
                 return 2;
             }
         }
@@ -18389,7 +18902,7 @@ public static class ShareClass
             return -4;
         }
 
-        //Éú³ÉÅú´¦Àí
+        //ç”Ÿæˆæ‰¹å¤„ç†
         string bat = string.Format("set PGPASSWORD={5}\r\necho on\r\n{0} -h {1} -p {2} -U postgres -F c -b -v -f \"{3}\" {4}",
            HttpContext.Current.Server.MapPath("PGTools") + "\\pg_dump.exe",
             strAppDBServer,
@@ -18405,10 +18918,10 @@ public static class ShareClass
         theProcess.StartInfo.FileName = strBackupDirectorySavePath + "\\backup.bat";
         //theProcess.StartInfo.Arguments = arguments;
         theProcess.StartInfo.CreateNoWindow = true;
-        theProcess.Start();//Æô¶¯³ÌĞò
+        theProcess.Start();//å¯åŠ¨ç¨‹åº
         theProcess.WaitForExit();
 
-        //Ğ´ÈÕÖ¾
+        //å†™æ—¥å¿—
         string strInsertBackLogHQL = string.Format(@"insert into T_BackDBLog(BackTime,BackDBUrl,UserCode,UserName,IsSucc) values(now(),'{0}','{1}','{2}',1)",
             strBackupDBSavePathName, strBackupOperatorName, strBackupOperatorName);
         ShareClass.RunSqlCommand(strInsertBackLogHQL);
@@ -18416,7 +18929,7 @@ public static class ShareClass
         return 0;
     }
 
-    //È¡µÃÊı¾İ¿â±¸·İÂ·¾¶
+    //å–å¾—æ•°æ®åº“å¤‡ä»½è·¯å¾„
     public static string GetSystemDBBackupSaveDir()
     {
         string strDirectory = "";
@@ -18441,19 +18954,19 @@ public static class ShareClass
         return strDirectory;
     }
 
-    //-------------´ÓÄ£°åÕ¾µã»Ö¸´Êı¾İ¿â--------------------------------------------------------------------
+    //-------------ä»æ¨¡æ¿ç«™ç‚¹æ¢å¤æ•°æ®åº“--------------------------------------------------------------------
     public static bool RestoreDatabaseFromTemplateDB(string strDBName, string strDBRestoreFile)
     {
         return RestoreDatabase(strDBName, strDBRestoreFile);
     }
 
-    //-------------´ÓOEMÓÃ»§Õ¾µã»Ö¸´Êı¾İ¿â--------------------------------------------------------------------
+    //-------------ä»OEMç”¨æˆ·ç«™ç‚¹æ¢å¤æ•°æ®åº“--------------------------------------------------------------------
     public static bool RestoreDatabaseFromOEMUserDB(string strDBName, string strDBRestoreFile)
     {
         return RestoreDatabase(strDBName, strDBRestoreFile);
     }
 
-    //-------------´ÓÄ£°åÕ¾µã»Ö¸´Êı¾İ¿â(±¸ÓÃ£©--------------------------------------------------------------------
+    //-------------ä»æ¨¡æ¿ç«™ç‚¹æ¢å¤æ•°æ®åº“(å¤‡ç”¨ï¼‰--------------------------------------------------------------------
     public static bool RestoreDatabase(string strDBName, string strDBRestoreFile)
     {
         string strAppDBPasswd, strAppDBServer, strAppDBPort;
@@ -18464,7 +18977,7 @@ public static class ShareClass
 
         string strDirectory = strDBRestoreFile.Substring(0, strDBRestoreFile.LastIndexOf("\\"));
 
-        //Éú³ÉÅú´¦Àí
+        //ç”Ÿæˆæ‰¹å¤„ç†
         string bat = string.Format("set PGPASSWORD={0}\r\necho on\r\n{5} -h {1} -p {2} -U postgres -w -d {3} -v {4}",
             strAppDBPasswd,
             strAppDBServer,
@@ -18478,7 +18991,7 @@ public static class ShareClass
         try
         {
             string strHQL;
-            //ÅĞ¶ÏÊÇ·ñ´æÔÚÍ¬ÃûÊı¾İ¿â
+            //åˆ¤æ–­æ˜¯å¦å­˜åœ¨åŒåæ•°æ®åº“
             strHQL = "SELECT u.datname  FROM pg_catalog.pg_database u where u.datname='" + strDBName.ToLower() + "'";
             if (!IsExistedSqlServerInstanceOrDB(strHQL))
             {
@@ -18491,7 +19004,7 @@ public static class ShareClass
             theProcess.StartInfo.FileName = strDirectory + @"\restore.bat";
             //theProcess.StartInfo.Arguments = arguments;
             theProcess.StartInfo.CreateNoWindow = true;
-            theProcess.Start();//Æô¶¯³ÌĞò
+            theProcess.Start();//å¯åŠ¨ç¨‹åº
             theProcess.WaitForExit();
 
             return true;
@@ -18504,7 +19017,7 @@ public static class ShareClass
         }
     }
 
-    //ÅĞ¶ÏÊÇ·ñ´æÔÚÊı¾İ¿âÊµÀı»òÊı¾İ¿â
+    //åˆ¤æ–­æ˜¯å¦å­˜åœ¨æ•°æ®åº“å®ä¾‹æˆ–æ•°æ®åº“
     public static bool IsExistedSqlServerInstanceOrDB(string strHQL)
     {
         try
@@ -18558,7 +19071,7 @@ public static class ShareClass
         }
     }
 
-    //È¡µÃµ±Ç°Êı¾İ¿â·şÎñÆ÷ÊµÀıÃû³Æ
+    //å–å¾—å½“å‰æ•°æ®åº“æœåŠ¡å™¨å®ä¾‹åç§°
     public static string GetDBServerName(string strConfigKeyType)
     {
         string strConfigKeyValue;
@@ -18578,7 +19091,7 @@ public static class ShareClass
 
         if (strConfigKeyType == "connection.connection_string")
         {
-            //ĞŞ¸ÄÊı¾İ¿âÁ¬½Ó²ÎÊı
+            //ä¿®æ”¹æ•°æ®åº“è¿æ¥å‚æ•°
             foreach (System.Xml.XmlNode Node in xmlDocument["configuration"]["hibernate-configuration"]["session-factory"])
             {
                 if (Node.Name == "property")
@@ -18619,7 +19132,7 @@ public static class ShareClass
         return strDBServerName.Trim();
     }
 
-    //È¡µÃIdentity½ÚADMINISTRATOR PASSWORD
+    //å–å¾—IdentityèŠ‚ADMINISTRATOR PASSWORD
     public static string GetIdentityUserPassword()
     {
         string strIdentityUserPassword = "";
@@ -18633,7 +19146,7 @@ public static class ShareClass
         System.Xml.XmlDocument xmlDocument = new System.Xml.XmlDocument();
         xmlDocument.Load(FileInfo.FullName);
 
-        //ĞŞ¸ÄÊı¾İ¿âÁ¬½Ó²ÎÊı
+        //ä¿®æ”¹æ•°æ®åº“è¿æ¥å‚æ•°
         foreach (System.Xml.XmlNode Node in xmlDocument["configuration"]["system.web"])
         {
             if (Node.Name == "identity")
@@ -18646,7 +19159,7 @@ public static class ShareClass
     }
 
 
-    //È¡µÃÊı¾İ¿âÃû
+    //å–å¾—æ•°æ®åº“å
     public static string GetSystemDBName()
     {
         string strConnectString, strDBName;
@@ -18661,7 +19174,7 @@ public static class ShareClass
         return strDBName;
     }
 
-    //È¡µÃÊı¾İ¿âÓÃ»§
+    //å–å¾—æ•°æ®åº“ç”¨æˆ·
     public static string GetSystemDBUser()
     {
         string strConnectString, strDBUser;
@@ -18676,7 +19189,7 @@ public static class ShareClass
         return strDBUser;
     }
 
-    //È¡µÃÊı¾İ¿âÃÜÂë
+    //å–å¾—æ•°æ®åº“å¯†ç 
     public static string GetSystemDBPassword()
     {
         string strConnectString, strDBPassword;
@@ -18691,7 +19204,7 @@ public static class ShareClass
         return strDBPassword;
     }
 
-    //È¡µÃÊı¾İ¿â·şÎñÆ÷Ãû³Æ
+    //å–å¾—æ•°æ®åº“æœåŠ¡å™¨åç§°
     public static string GetSystemDBServer()
     {
         string strConnectString, strDBServer;
@@ -18706,7 +19219,7 @@ public static class ShareClass
         return strDBServer;
     }
 
-    //È¡µÃÊı¾İ¿â·şÎñÆ÷¶Ë¿Ú
+    //å–å¾—æ•°æ®åº“æœåŠ¡å™¨ç«¯å£
     public static string GetSystemDBServerPort()
     {
         string strConnectString, strDBServerPort;
@@ -18721,7 +19234,7 @@ public static class ShareClass
         return strDBServerPort;
     }
 
-    //È¡µÃ×âÓÃÕ¾µãµÄÊı¾İ¿âÁ¬½Ó´®
+    //å–å¾—ç§Ÿç”¨ç«™ç‚¹çš„æ•°æ®åº“è¿æ¥ä¸²
     public static string GetRentSiteConnecting(string strRentSiteDBName)
     {
         string strConnectString, strDBName;
@@ -18734,19 +19247,19 @@ public static class ShareClass
         return strConnectString;
     }
 
-    //ÊÚÓè×âÓÃÕ¾µãÓÃ»§ËùÓĞÈ¨ÏŞ
+    //æˆäºˆç§Ÿç”¨ç«™ç‚¹ç”¨æˆ·æ‰€æœ‰æƒé™
     public static void GanttAllPrivilegesToUser(string strRentSiteDBName, string strRentSiteUser)
     {
         string strConnectString;
 
         try
         {
-            // »ñÈ¡Á¬½Ó×Ö·û´®
+            // è·å–è¿æ¥å­—ç¬¦ä¸²
             strConnectString = GetRentSiteConnecting(strRentSiteDBName);
             var conn = new NpgsqlConnection(strConnectString);
             conn.Open();
 
-            // ÔËĞĞ SQL ÃüÁî
+            // è¿è¡Œ SQL å‘½ä»¤
             string sql = "GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO " + strRentSiteUser;
             var cmd = new NpgsqlCommand(sql, conn);
             cmd.ExecuteNonQuery();
@@ -18759,12 +19272,12 @@ public static class ShareClass
     }
 
 
-    #endregion SQLº¯Êı\XMLº¯Êı\WebServiceµ÷ÓÃ·½·¨
+    #endregion SQLå‡½æ•°\XMLå‡½æ•°\WebServiceè°ƒç”¨æ–¹æ³•
 
-    #region IP¡¢MACµØÖ·ºÍÒÆ¶¯Éè±¸º¯Êı
+    #region IPã€MACåœ°å€å’Œç§»åŠ¨è®¾å¤‡å‡½æ•°
 
     /// <summary>
-    /// µÃµ½µ±Ç°ÍøÕ¾µÄ¸ùµØÖ·
+    /// å¾—åˆ°å½“å‰ç½‘ç«™çš„æ ¹åœ°å€
     /// </summary>
     /// <returns></returns>
     /// <summary>
@@ -18775,7 +19288,7 @@ public static class ShareClass
 
         if (context != null)
         {
-            // ÓĞHTTPÉÏÏÂÎÄµÄÇé¿ö
+            // æœ‰HTTPä¸Šä¸‹æ–‡çš„æƒ…å†µ
             var request = context.Request;
             string url = request.Url.GetLeftPart(UriPartial.Authority) + request.ApplicationPath;
             if (!url.EndsWith("/"))
@@ -18784,7 +19297,7 @@ public static class ShareClass
         }
         else
         {
-            // ¶¨Ê±Æ÷Ïß³ÌµÄÇé¿ö
+            // å®šæ—¶å™¨çº¿ç¨‹çš„æƒ…å†µ
             return GetSiteUrlForTimerSimple();
         }
     }
@@ -18793,31 +19306,31 @@ public static class ShareClass
     {
         try
         {
-            // ·½·¨1£º´Ó»º´æÖĞ»ñÈ¡£¨Ê×´ÎÇëÇóÊ±ÉèÖÃ£©
+            // æ–¹æ³•1ï¼šä»ç¼“å­˜ä¸­è·å–ï¼ˆé¦–æ¬¡è¯·æ±‚æ—¶è®¾ç½®ï¼‰
             if (HttpRuntime.Cache["SiteBaseUrl"] != null)
             {
                 return HttpRuntime.Cache["SiteBaseUrl"].ToString();
             }
 
-            // ·½·¨2£º´Óweb.config¶ÁÈ¡
+            // æ–¹æ³•2ï¼šä»web.configè¯»å–
             string siteUrl = ConfigurationManager.AppSettings["SiteBaseUrl"];
             if (!string.IsNullOrEmpty(siteUrl))
             {
                 if (!siteUrl.EndsWith("/"))
                     siteUrl += "/";
 
-                // »º´æÆğÀ´
+                // ç¼“å­˜èµ·æ¥
                 HttpRuntime.Cache.Insert("SiteBaseUrl", siteUrl, null,
                     DateTime.Now.AddHours(24), Cache.NoSlidingExpiration);
 
                 return siteUrl;
             }
 
-            // ·½·¨3£º¶¯Ì¬¹¹½¨£¨ÊÊÓÃÓÚ´ó¶àÊı³¡¾°£©
+            // æ–¹æ³•3ï¼šåŠ¨æ€æ„å»ºï¼ˆé€‚ç”¨äºå¤§å¤šæ•°åœºæ™¯ï¼‰
             string appVirtualPath = HttpRuntime.AppDomainAppVirtualPath ?? "";
             string machineName = Environment.MachineName.ToLower();
 
-            // Èç¹ûÊÇ±¾µØ»·¾³
+            // å¦‚æœæ˜¯æœ¬åœ°ç¯å¢ƒ
             if (machineName.Contains("localhost") ||
                 machineName.Contains("dev") ||
                 machineName.Contains("test") ||
@@ -18831,7 +19344,7 @@ public static class ShareClass
             }
             else
             {
-                // Éú²ú»·¾³
+                // ç”Ÿäº§ç¯å¢ƒ
                 string url = $"http://{machineName}{appVirtualPath}";
                 if (!url.EndsWith("/"))
                     url += "/";
@@ -18840,22 +19353,22 @@ public static class ShareClass
         }
         catch (Exception ex)
         {
-            LogClass.WriteLogFile($"»ñÈ¡¶¨Ê±Æ÷Õ¾µãURL´íÎó: {ex.Message}");
-            return "http://localhost/"; // Ä¬ÈÏÖµ
+            LogClass.WriteLogFile($"è·å–å®šæ—¶å™¨ç«™ç‚¹URLé”™è¯¯: {ex.Message}");
+            return "http://localhost/"; // é»˜è®¤å€¼
         }
     }
 
 
-    //µÃµ½µ±Ç°ÍøÕ¾µÄ¸ùµØÖ·,²»°üº¬Õ¾µãÃû,
+    //å¾—åˆ°å½“å‰ç½‘ç«™çš„æ ¹åœ°å€,ä¸åŒ…å«ç«™ç‚¹å,
     public static string GetCurrentSiteRootPathNoSiteName()
     {
-        // ÊÇ·ñÎªSSLÈÏÖ¤Õ¾µã
+        // æ˜¯å¦ä¸ºSSLè®¤è¯ç«™ç‚¹
         string secure = HttpContext.Current.Request.ServerVariables["HTTPS"];
         string httpProtocol = (secure == "on" ? "https://" : "http://");
-        // ·şÎñÆ÷Ãû³Æ
+        // æœåŠ¡å™¨åç§°
         string serverName = HttpContext.Current.Request.ServerVariables["Server_Name"];
         string port = HttpContext.Current.Request.ServerVariables["SERVER_PORT"];
-        // Ó¦ÓÃ·şÎñÃû³Æ
+        // åº”ç”¨æœåŠ¡åç§°
         string applicationName = HttpContext.Current.Request.ApplicationPath;
 
         if (applicationName.Substring(applicationName.Length - 1, 1) != "/")
@@ -18869,7 +19382,7 @@ public static class ShareClass
     }
 
     // <summary>
-    /// »ñµÃä¯ÀÀÆ÷ÀàĞÍ×Ö·û 
+    /// è·å¾—æµè§ˆå™¨ç±»å‹å­—ç¬¦ 
     /// </summary>
     /// <param name="browser"></param>
     /// <returns>FF(Firfox) SF(Safari) OE(Opera) IE</returns>
@@ -18906,7 +19419,7 @@ public static class ShareClass
     }
 
     /// <summary>
-    /// ¸ù¾İ Agent ÅĞ¶ÏÊÇ·ñÊÇÖÇÄÜÊÖ»ú
+    /// æ ¹æ® Agent åˆ¤æ–­æ˜¯å¦æ˜¯æ™ºèƒ½æ‰‹æœº
     /// </summary>
     /// <returns></returns>
     public static bool IsMobileDeviceCheckAgent()
@@ -18915,7 +19428,7 @@ public static class ShareClass
         string agent = HttpContext.Current.Request.UserAgent;
         string[] keywords = { "Android", "iPhone", "iPod", "iPad", "Windows Phone", "MQQBrowser" };
 
-        //ÅÅ³ıWindow ×ÀÃæÏµÍ³ ºÍ Æ»¹û×ÀÃæÏµÍ³
+        //æ’é™¤Window æ¡Œé¢ç³»ç»Ÿ å’Œ è‹¹æœæ¡Œé¢ç³»ç»Ÿ
         if (!agent.Contains("Windows NT") && !agent.Contains("Macintosh"))
         {
             return true;
@@ -18926,7 +19439,7 @@ public static class ShareClass
         }
     }
 
-    //ÅĞ¶ÏÊÇ·ñÊÇIOSÉè±¸
+    //åˆ¤æ–­æ˜¯å¦æ˜¯IOSè®¾å¤‡
     public static bool isIOSDevice()
     {
         bool isIPhone = HttpContext.Current.Request.UserAgent.Contains("iPhone");
@@ -18943,7 +19456,7 @@ public static class ShareClass
         }
     }
 
-    /// ¸ù¾İ Agent ÅĞ¶ÏÊÇ·ñÊÇIOSÉè±¸
+    /// æ ¹æ® Agent åˆ¤æ–­æ˜¯å¦æ˜¯IOSè®¾å¤‡
     ///
     ///
     public static bool CheckAgentIsIOSDevice()
@@ -18951,7 +19464,7 @@ public static class ShareClass
         bool flag = false;
         string agent = HttpContext.Current.Request.UserAgent;
         string[] keywords = { "iPhone", "iPod", "iPad" };
-        //ÅÅ³ıWindow ×ÀÃæÏµÍ³ ºÍ Æ»¹û×ÀÃæÏµÍ³
+        //æ’é™¤Window æ¡Œé¢ç³»ç»Ÿ å’Œ è‹¹æœæ¡Œé¢ç³»ç»Ÿ
         if (!agent.Contains("Windows NT") && !agent.Contains("Macintosh"))
         {
             foreach (string item in keywords)
@@ -18966,7 +19479,7 @@ public static class ShareClass
         return flag;
     }
 
-    //È¡µÃIPËùÔÚµØÖ·Ãû
+    //å–å¾—IPæ‰€åœ¨åœ°å€å
     public static string GetUserLocation(string userIP)
     {
         try
@@ -18974,7 +19487,7 @@ public static class ShareClass
             WebClient webGetting = new WebClient();
             //string userIP = HttpContext.Current.Request.ServerVariables["REMOTE_ADDR"].ToString();
             string ipQueryResult = webGetting.DownloadString("http://www.ip.cn/getip.php?action=queryip&ip_url=" + userIP);
-            string startString = @"À´×Ô:";
+            string startString = @"æ¥è‡ª:";
             int startIndex = ipQueryResult.LastIndexOf(startString) + startString.Length;
             int endIndex = ipQueryResult.LastIndexOf(@" ", startIndex);
             return ipQueryResult.Substring(startIndex, ipQueryResult.Length - startIndex);
@@ -18992,7 +19505,7 @@ public static class ShareClass
             WebClient webGetting = new WebClient();
             string userIP = HttpContext.Current.Request.ServerVariables["REMOTE_ADDR"].ToString();
             string ipQueryResult = webGetting.DownloadString("http://www.ip.cn/getip.php?action=queryip&ip_url=" + userIP);
-            string startString = @"À´×Ô:";
+            string startString = @"æ¥è‡ª:";
             int startIndex = ipQueryResult.LastIndexOf(startString) + startString.Length;
             int endIndex = ipQueryResult.LastIndexOf(@" ", startIndex);
             return ipQueryResult.Substring(startIndex, ipQueryResult.Length - startIndex);
@@ -19003,7 +19516,7 @@ public static class ShareClass
         }
     }
 
-    public static string GetIPinArea(string strIP)//strIPÎªIP
+    public static string GetIPinArea(string strIP)//strIPä¸ºIP
     {
         string stringIpAddress = "";
 
@@ -19011,16 +19524,16 @@ public static class ShareClass
 
         //try
         //{
-        //    using (XmlReader read = XmlReader.Create(sURL))//»ñÈ¡·µ»ØµÄxml¸ñÊ½ÎÄ¼şÄÚÈİ
+        //    using (XmlReader read = XmlReader.Create(sURL))//è·å–è¿”å›çš„xmlæ ¼å¼æ–‡ä»¶å†…å®¹
         //    {
         //        while (read.Read())
         //        {
         //            switch (read.NodeType)
         //            {
-        //                case XmlNodeType.Text://È¡xml¸ñÊ½ÎÄ¼şµ±ÖĞµÄÎÄ±¾ÄÚÈİ
-        //                    if (string.Format("{0}", read.Value).ToString().Trim() != strIP)//youdao·µ»ØµÄxml¸ñÊ½ÎÄ¼şÄÚÈİÒ»¸öÊÇIP£¬ÁíÒ»¸öÊÇIPµØÖ·
+        //                case XmlNodeType.Text://å–xmlæ ¼å¼æ–‡ä»¶å½“ä¸­çš„æ–‡æœ¬å†…å®¹
+        //                    if (string.Format("{0}", read.Value).ToString().Trim() != strIP)//youdaoè¿”å›çš„xmlæ ¼å¼æ–‡ä»¶å†…å®¹ä¸€ä¸ªæ˜¯IPï¼Œå¦ä¸€ä¸ªæ˜¯IPåœ°å€
         //                    {
-        //                        stringIpAddress = string.Format("{0}", read.Value).ToString().Trim();//¸³Öµ
+        //                        stringIpAddress = string.Format("{0}", read.Value).ToString().Trim();//èµ‹å€¼
         //                    }
         //                    break;
         //                //other
@@ -19034,7 +19547,7 @@ public static class ShareClass
 
             if (stringIpAddress == "")
             {
-                return "ÄÚÍø:" + strIP;
+                return "å†…ç½‘:" + strIP;
             }
             else
             {
@@ -19069,7 +19582,7 @@ public static class ShareClass
     }
 
     /// <summary>
-    /// ¾­Î³¶È×ø±ê
+    /// ç»çº¬åº¦åæ ‡
     /// </summary>
     public class Degree
     {
@@ -19098,10 +19611,10 @@ public static class ShareClass
 
     public class CoordDispose
     {
-        private const double EARTH_RADIUS = 6378137.0;//µØÇò°ë¾¶(Ã×)
+        private const double EARTH_RADIUS = 6378137.0;//åœ°çƒåŠå¾„(ç±³)
 
         /// <summary>
-        /// ½Ç¶ÈÊı×ª»»Îª»¡¶È¹«Ê½
+        /// è§’åº¦æ•°è½¬æ¢ä¸ºå¼§åº¦å…¬å¼
         /// </summary>
         /// <param name="d"></param>
         /// <returns></returns>
@@ -19111,7 +19624,7 @@ public static class ShareClass
         }
 
         /// <summary>
-        /// »¡¶È×ª»»Îª½Ç¶ÈÊı¹«Ê½
+        /// å¼§åº¦è½¬æ¢ä¸ºè§’åº¦æ•°å…¬å¼
         /// </summary>
         /// <param name="d"></param>
         /// <returns></returns>
@@ -19121,7 +19634,7 @@ public static class ShareClass
         }
 
         /// <summary>
-        /// ¼ÆËãÁ½¸ö¾­Î³¶ÈÖ®¼äµÄÖ±½Ó¾àÀë
+        /// è®¡ç®—ä¸¤ä¸ªç»çº¬åº¦ä¹‹é—´çš„ç›´æ¥è·ç¦»
         /// </summary>
         public static double GetDistance(Degree Degree1, Degree Degree2)
         {
@@ -19137,7 +19650,7 @@ public static class ShareClass
         }
 
         /// <summary>
-        /// ¼ÆËãÁ½¸ö¾­Î³¶ÈÖ®¼äµÄÖ±½Ó¾àÀë(google Ëã·¨)
+        /// è®¡ç®—ä¸¤ä¸ªç»çº¬åº¦ä¹‹é—´çš„ç›´æ¥è·ç¦»(google ç®—æ³•)
         /// </summary>
         public static double GetDistanceGoogle(Degree Degree1, Degree Degree2)
         {
@@ -19152,16 +19665,16 @@ public static class ShareClass
         }
 
         /// <summary>
-        /// ÒÔÒ»¸ö¾­Î³¶ÈÎªÖĞĞÄ¼ÆËã³öËÄ¸ö¶¥µã
+        /// ä»¥ä¸€ä¸ªç»çº¬åº¦ä¸ºä¸­å¿ƒè®¡ç®—å‡ºå››ä¸ªé¡¶ç‚¹
         /// </summary>
-        /// <param name="distance">°ë¾¶(Ã×)</param>
+        /// <param name="distance">åŠå¾„(ç±³)</param>
         /// <returns></returns>
         public static Degree[] GetDegreeCoordinates(Degree Degree1, double distance)
         {
             double dlng = 2 * Math.Asin(Math.Sin(distance / (2 * EARTH_RADIUS)) / Math.Cos(Degree1.X));
-            dlng = degrees(dlng);//Ò»¶¨×ª»»³É½Ç¶ÈÊı  Ô­PHPÎÄÕÂÕâ¸öµØ·½ËµµÄ²»Çå³ş¸ù±¾²»ÕıÈ· ºóÀ´lzÓÖ²éÁËºÜ¶à×ÊÁÏÖÕÓÚ¸ã¶¨ÁË
+            dlng = degrees(dlng);//ä¸€å®šè½¬æ¢æˆè§’åº¦æ•°  åŸPHPæ–‡ç« è¿™ä¸ªåœ°æ–¹è¯´çš„ä¸æ¸…æ¥šæ ¹æœ¬ä¸æ­£ç¡® åæ¥lzåˆæŸ¥äº†å¾ˆå¤šèµ„æ–™ç»ˆäºæå®šäº†
             double dlat = distance / EARTH_RADIUS;
-            dlat = degrees(dlat);//Ò»¶¨×ª»»³É½Ç¶ÈÊı
+            dlat = degrees(dlat);//ä¸€å®šè½¬æ¢æˆè§’åº¦æ•°
             return new Degree[] { new Degree(Math.Round(Degree1.X + dlat,6), Math.Round(Degree1.Y - dlng,6)),//left-top
                                   new Degree(Math.Round(Degree1.X - dlat,6), Math.Round(Degree1.Y - dlng,6)),//left-bottom
                                   new Degree(Math.Round(Degree1.X + dlat,6), Math.Round(Degree1.Y + dlng,6)),//right-top
@@ -19170,7 +19683,7 @@ public static class ShareClass
         }
 
         /// <summary>
-        /// ²âÊÔ·½·¨
+        /// æµ‹è¯•æ–¹æ³•
         /// </summary>
         private static void Main(string[] args)
         {
@@ -19314,14 +19827,14 @@ public static class ShareClass
         }
     }
 
-    #endregion IP¡¢MACµØÖ·ºÍÒÆ¶¯Éè±¸º¯Êı
+    #endregion IPã€MACåœ°å€å’Œç§»åŠ¨è®¾å¤‡å‡½æ•°
 
-    #region Êı¾İ±íºÍ×Ô¶¨Òå±íµ¥µÄ¹¦ÄÜ
+    #region æ•°æ®è¡¨å’Œè‡ªå®šä¹‰è¡¨å•çš„åŠŸèƒ½
 
-    //¼ÓÉÏ¹ØÁªRelatedID,RelatedType,RelatedCode TODO:CAOJIAN(²Ü½¡)
+    //åŠ ä¸Šå…³è”RelatedID,RelatedType,RelatedCode TODO:CAOJIAN(æ›¹å¥)
 
     /// <summary>
-    ///  È«²¿ÎªÊı×Ö
+    ///  å…¨éƒ¨ä¸ºæ•°å­—
     /// </summary>
     public static bool CheckIsAllNumber(string strValue)
     {
@@ -19331,12 +19844,12 @@ public static class ShareClass
         if (ma.Success)
         {
             IsBool = true;
-            //¶¼ÎªÊı×Ö
+            //éƒ½ä¸ºæ•°å­—
         }
         return IsBool;
     }
 
-    //½«DataSet×ª»»Îªxml¶ÔÏó×Ö·û´®
+    //å°†DataSetè½¬æ¢ä¸ºxmlå¯¹è±¡å­—ç¬¦ä¸²
     public static string ConvertDataSetToXML(DataSet xmlDS)
     {
         MemoryStream stream = null;
@@ -19345,10 +19858,10 @@ public static class ShareClass
         try
         {
             stream = new MemoryStream();
-            //´Óstream×°ÔØµ½XmlTextReader
+            //ä»streamè£…è½½åˆ°XmlTextReader
             writer = new XmlTextWriter(stream, Encoding.Unicode);
 
-            //ÓÃWriteXml·½·¨Ğ´ÈëÎÄ¼ş.
+            //ç”¨WriteXmlæ–¹æ³•å†™å…¥æ–‡ä»¶.
             xmlDS.WriteXml(writer);
             int count = (int)stream.Length;
             byte[] arr = new byte[count];
@@ -19369,7 +19882,7 @@ public static class ShareClass
         }
     }
 
-    //½«xml¶ÔÏóÄÚÈİ×Ö·û´®×ª»»ÎªDataSet
+    //å°†xmlå¯¹è±¡å†…å®¹å­—ç¬¦ä¸²è½¬æ¢ä¸ºDataSet
     public static DataSet ConvertXMLToDataSet(string xmlData)
     {
         StringReader stream = null;
@@ -19378,7 +19891,7 @@ public static class ShareClass
         {
             DataSet xmlDS = new DataSet();
             stream = new StringReader(xmlData);
-            //´Óstream×°ÔØµ½XmlTextReader
+            //ä»streamè£…è½½åˆ°XmlTextReader
             reader = new XmlTextReader(stream);
             xmlDS.ReadXml(reader);
             return xmlDS;
@@ -19395,10 +19908,10 @@ public static class ShareClass
     }
 
     /// <summary>
-    /// Ğ´XMLµ½ÎÄ¼ş¼ĞÖĞ
+    /// å†™XMLåˆ°æ–‡ä»¶å¤¹ä¸­
     /// </summary>
-    /// <param name="xml">xml×Ö·û´®</param>
-    /// <param name="filePath">Â·¾¶</param>
+    /// <param name="xml">xmlå­—ç¬¦ä¸²</param>
+    /// <param name="filePath">è·¯å¾„</param>
     /// <returns></returns>
     private static void InsertXML(string xml, string filePath)
     {
@@ -19420,9 +19933,9 @@ public static class ShareClass
     }
 
     /// <summary>
-    ///  ¶ÁÈ¡XMLÎÄ¼ş
+    ///  è¯»å–XMLæ–‡ä»¶
     /// </summary>
-    /// <param name="filePath">Â·¾¶</param>
+    /// <param name="filePath">è·¯å¾„</param>
     /// <returns></returns>
     public static string ReadXML(string filePath)
     {
@@ -19432,7 +19945,7 @@ public static class ShareClass
     }
 
     /// <summary>
-    ///  ¼ì²éÊı¾İ¿â±¸·İÊ±¼äÊÇ·ñ³¬Ê±
+    ///  æ£€æŸ¥æ•°æ®åº“å¤‡ä»½æ—¶é—´æ˜¯å¦è¶…æ—¶
     /// </summary>
     public static string CheckBackDBOverTime()
     {
@@ -19445,18 +19958,18 @@ public static class ShareClass
             int.TryParse(dtBackDB.Rows[0]["DayPeriod"] == DBNull.Value ? "0" : dtBackDB.Rows[0]["DayPeriod"].ToString(), out intDay);
             if (intDay > 0)
             {
-                strResult = "±¸·İ¼ä¸ôÊ±¼äÒÑµ½£¬ĞèÒªÖØĞÂ±¸·İ£¡";
+                strResult = "The backup interval time has arrived, a backup needs to be done again!";
             }
             else
             {
-                strResult = "±¸·İ¼ä¸ôÊ±¼äÎ´µ½£¡";
+                strResult = "The backup interval time has not been reached!";
             }
         }
         return strResult;
     }
 
     /// <summary>
-    ///  ÑéÖ¤ÊÇ·ñÎªÊı×Ö
+    ///  éªŒè¯æ˜¯å¦ä¸ºæ•°å­—
     /// </summary>
     public static bool CheckIsNumber(string strValue)
     {
@@ -19471,7 +19984,7 @@ public static class ShareClass
     }
 
     /// <summary>
-    /// objectĞÍ×ª»»ÎªstringĞÍ
+    /// objectå‹è½¬æ¢ä¸ºstringå‹
     /// </summary>
     /// <param name="value"></param>
     /// <returns></returns>
@@ -19481,7 +19994,7 @@ public static class ShareClass
     }
 
     /// <summary>
-    /// objectĞÍ×ª»»ÎªstringĞÍ
+    /// objectå‹è½¬æ¢ä¸ºstringå‹
     /// </summary>
     /// <param name="value"></param>
     /// <param name="defaultValue"></param>
@@ -19491,7 +20004,7 @@ public static class ShareClass
         return (null == value || value == DBNull.Value) ? defaultValue : value.ToString();
     }
 
-    //ÅĞ¶Ï·Ç·¨×Ö·û
+    //åˆ¤æ–­éæ³•å­—ç¬¦
     public static bool CheckStringRight(string str_char)
     {
         if (str_char.IndexOf("'") >= 0)
@@ -19592,14 +20105,14 @@ public static class ShareClass
         }
     }
 
-    //Îï×ÊÏµÍ³Í¨ÓÃ¹¦ÄÜ
+    //ç‰©èµ„ç³»ç»Ÿé€šç”¨åŠŸèƒ½
     public static void UpdateXLCodeStatus(string strXLCode)
     {
         string strUpdateXLCodeHQL = "update T_WZMaterialXL set IsMark = -1 where XLCode = '" + strXLCode + "'";
         ShareClass.RunSqlCommand(strUpdateXLCodeHQL);
     }
 
-    //°Ñ·ûºÏÌõ¼şµÄÈÕÆÚÉèÎª¿Õ
+    //æŠŠç¬¦åˆæ¡ä»¶çš„æ—¥æœŸè®¾ä¸ºç©º
     public static string SetDateStringToEmpty(string strDateString)
     {
         if (strDateString.IndexOf("0001") >= 0)
@@ -19612,7 +20125,7 @@ public static class ShareClass
         }
     }
 
-    //½ØÈ¡ÏàÓ¦µÄ×ÖÊı
+    //æˆªå–ç›¸åº”çš„å­—æ•°
     public static string StringCutByRequire(string strString, int intShowCount)
     {
         string strResult = string.Empty;
@@ -19656,49 +20169,49 @@ public static class ShareClass
         return strResult;
     }
 
-    //È¡µÃµ±ÔÂ¿ªÊ¼ÈÕÆÚ
+    //å–å¾—å½“æœˆå¼€å§‹æ—¥æœŸ
     public static DateTime getCurrentMonthStartDay()
     {
         DateTime dt = DateTime.Now;
-        //±¾ÔÂµÚÒ»ÌìÊ±¼ä      
+        //æœ¬æœˆç¬¬ä¸€å¤©æ—¶é—´      
         DateTime dt_First = dt.AddDays(1 - (dt.Day));
-        //»ñµÃÄ³ÄêÄ³ÔÂµÄÌìÊı    
+        //è·å¾—æŸå¹´æŸæœˆçš„å¤©æ•°    
         int year = dt.Date.Year;
         int month = dt.Date.Month;
         int dayCount = DateTime.DaysInMonth(year, month);
-        //±¾ÔÂ×îºóÒ»ÌìÊ±¼ä    
+        //æœ¬æœˆæœ€åä¸€å¤©æ—¶é—´    
         DateTime dt_Last = dt_First.AddDays(dayCount - 1);
 
         return dt_First;
     }
 
-    //È¡µÃµ±ÔÂ½áÊøÈÕÆÚ
+    //å–å¾—å½“æœˆç»“æŸæ—¥æœŸ
     public static DateTime getCurrentMonthEndDay()
     {
         DateTime dt = DateTime.Now;
-        //±¾ÔÂµÚÒ»ÌìÊ±¼ä      
+        //æœ¬æœˆç¬¬ä¸€å¤©æ—¶é—´      
         DateTime dt_First = dt.AddDays(1 - (dt.Day));
-        //»ñµÃÄ³ÄêÄ³ÔÂµÄÌìÊı    
+        //è·å¾—æŸå¹´æŸæœˆçš„å¤©æ•°    
         int year = dt.Date.Year;
         int month = dt.Date.Month;
         int dayCount = DateTime.DaysInMonth(year, month);
-        //±¾ÔÂ×îºóÒ»ÌìÊ±¼ä    
+        //æœ¬æœˆæœ€åä¸€å¤©æ—¶é—´    
         DateTime dt_Last = dt_First.AddDays(dayCount - 1);
 
         return dt_Last;
     }
 
-    //Ìî³äÄêÔÂºÍÔÂ·İ·½±ãÓÃ»§Ñ¡Ôñ
+    //å¡«å……å¹´æœˆå’Œæœˆä»½æ–¹ä¾¿ç”¨æˆ·é€‰æ‹©
     public static void InitYearMonthList(DropDownList DDL_YearList, DropDownList DDL_MonthList)
     {
-        //Äê·İ
+        //å¹´ä»½
         DateTime dt = DateTime.Now;
         for (int i = dt.Year - 15; i < dt.Year + 85; i++)
         {
             DDL_YearList.Items.Add(new ListItem(i.ToString()));
         }
         DDL_YearList.SelectedValue = dt.Year.ToString();
-        //ÔÂ·İ
+        //æœˆä»½
         for (int i = 1; i <= 12; i++)
         {
             DDL_MonthList.Items.Add(new ListItem(i.ToString()));
@@ -19706,7 +20219,7 @@ public static class ShareClass
         DDL_MonthList.SelectedValue = dt.Month.ToString();
     }
 
-    //»ñÈ¡Äê·İ×Ö·û´®£¨201601±íÊ¾2016Äê1ÔÂ£©
+    //è·å–å¹´ä»½å­—ç¬¦ä¸²ï¼ˆ201601è¡¨ç¤º2016å¹´1æœˆï¼‰
     public static string GetYearMonthString(DropDownList DDL_YearList, DropDownList DDL_MonthList)
     {
         int month = Convert.ToInt32(DDL_MonthList.Text);
@@ -19715,7 +20228,7 @@ public static class ShareClass
         return DDL_YearList.Text + str;
     }
 
-    //ÅĞ¶ÏÊÕÈëµÄ×Ö·û´®ÊÇ·ñºÏ·¨
+    //åˆ¤æ–­æ”¶å…¥çš„å­—ç¬¦ä¸²æ˜¯å¦åˆæ³•
     public static bool IsValidYearMonth(string ymstr)
     {
         if (ymstr.Trim().Length != 6)
@@ -19738,34 +20251,34 @@ public static class ShareClass
 
     //// <summary>
 
-    /// ÈËÃñ±Ò´óĞ¡Ğ´½ğ¶î×ª»»
+    /// äººæ°‘å¸å¤§å°å†™é‡‘é¢è½¬æ¢
     /// </summary>
     public static class RMBCapitalization
     {
-        private const string DXSZ = "ÁãÒ¼·¡ÈşËÁÎéÂ½Æâ°Æ¾Á";
-        private const string DXDW = "ºÁÀå·Ö½ÇÔªÊ°°ÛÇªÈfÊ°°ÛÇªÒÚÊ°°ÛÇªÈfÕ×Ê°°ÛÇªÈfÒÚ¾©Ê°°ÛÇªÈfÒÚÕ×Ûò";
-        private const string SCDW = "ÔªÊ°°ÛÇªÈfÒÚ¾©Õ×Ûò";
+        private const string DXSZ = "é›¶å£¹è´°åè‚†ä¼é™†æŸ’æŒç–";
+        private const string DXDW = "æ¯«å˜åˆ†è§’å…ƒæ‹¾ä½°ä»Ÿè¬æ‹¾ä½°ä»Ÿäº¿æ‹¾ä½°ä»Ÿè¬å…†æ‹¾ä½°ä»Ÿè¬äº¿äº¬æ‹¾ä½°ä»Ÿè¬äº¿å…†å“";
+        private const string SCDW = "å…ƒæ‹¾ä½°ä»Ÿè¬äº¿äº¬å…†å“";
 
         /// <summary>
-        /// ×ª»»ÕûÊıÎª´óĞ´½ğ¶î
-        /// ×î¸ß¾«¶ÈÎªÛò£¬±£ÁôĞ¡Êıµãºó4Î»£¬Êµ¼Ê¾«¶ÈÎªÒÚÕ×ÒÑ¾­×ã¹»ÁË£¬ÀíÂÛÉÏ¾«¶ÈÎŞÏŞÖÆ£¬ÈçÏÂËùÊ¾:
-        /// ĞòºÅ:...30.29.28.27.26.25.24  23.22.21.20.19.18  17.16.15.14.13  12.11.10.9   8 7.6.5.4  . 3.2.1.0
-        /// µ¥Î»:...ÛòÕ×ÒÚÈfÇª°ÛÊ°        ¾©ÒÚÈfÇª°ÛÊ°       Õ×ÈfÇª°ÛÊ°      ÒÚÇª°ÛÊ°     ÈfÇª°ÛÊ°Ôª . ½Ç·ÖÀåºÁ
-        /// ÊıÖµ:...1000000               000000             00000           0000         00000      . 0000
-        /// ÏÂÃæÁĞ³öÍøÉÏËÑË÷µ½µÄÊı´Êµ¥Î»:
-        /// Ôª¡¢Ê®¡¢°Ù¡¢Ç§¡¢Íò¡¢ÒÚ¡¢Õ×¡¢¾©¡¢Ûò¡¢ïö¡¢ğ¦¡¢¹µ¡¢½§¡¢Õı¡¢ÔØ¡¢¼«
+        /// è½¬æ¢æ•´æ•°ä¸ºå¤§å†™é‡‘é¢
+        /// æœ€é«˜ç²¾åº¦ä¸ºå“ï¼Œä¿ç•™å°æ•°ç‚¹å4ä½ï¼Œå®é™…ç²¾åº¦ä¸ºäº¿å…†å·²ç»è¶³å¤Ÿäº†ï¼Œç†è®ºä¸Šç²¾åº¦æ— é™åˆ¶ï¼Œå¦‚ä¸‹æ‰€ç¤º:
+        /// åºå·:...30.29.28.27.26.25.24  23.22.21.20.19.18  17.16.15.14.13  12.11.10.9   8 7.6.5.4  . 3.2.1.0
+        /// å•ä½:...å“å…†äº¿è¬ä»Ÿä½°æ‹¾        äº¬äº¿è¬ä»Ÿä½°æ‹¾       å…†è¬ä»Ÿä½°æ‹¾      äº¿ä»Ÿä½°æ‹¾     è¬ä»Ÿä½°æ‹¾å…ƒ . è§’åˆ†å˜æ¯«
+        /// æ•°å€¼:...1000000               000000             00000           0000         00000      . 0000
+        /// ä¸‹é¢åˆ—å‡ºç½‘ä¸Šæœç´¢åˆ°çš„æ•°è¯å•ä½:
+        /// å…ƒã€åã€ç™¾ã€åƒã€ä¸‡ã€äº¿ã€å…†ã€äº¬ã€å“ã€ç§­ã€ç©°ã€æ²Ÿã€æ¶§ã€æ­£ã€è½½ã€æ
         /// </summary>
-        /// <param name="capValue">ÕûÊıÖµ</param>
-        /// <returns>·µ»Ø´óĞ´½ğ¶î</returns>
+        /// <param name="capValue">æ•´æ•°å€¼</param>
+        /// <returns>è¿”å›å¤§å†™é‡‘é¢</returns>
         public static string ConvertIntToUppercaseAmount(string capValue)
         {
-            string currCap = "";    //µ±Ç°½ğ¶î
-            string capResult = "";  //½á¹û½ğ¶î
-            string currentUnit = "";//µ±Ç°µ¥Î»
-            string resultUnit = ""; //½á¹ûµ¥Î»
-            int prevChar = -1;      //ÉÏÒ»Î»µÄÖµ
-            int currChar = 0;       //µ±Ç°Î»µÄÖµ
-            int posIndex = 4;       //Î»ÖÃË÷Òı£¬´Ó"Ôª"¿ªÊ¼
+            string currCap = "";    //å½“å‰é‡‘é¢
+            string capResult = "";  //ç»“æœé‡‘é¢
+            string currentUnit = "";//å½“å‰å•ä½
+            string resultUnit = ""; //ç»“æœå•ä½
+            int prevChar = -1;      //ä¸Šä¸€ä½çš„å€¼
+            int currChar = 0;       //å½“å‰ä½çš„å€¼
+            int posIndex = 4;       //ä½ç½®ç´¢å¼•ï¼Œä»"å…ƒ"å¼€å§‹
 
             if (Convert.ToDouble(capValue) == 0) return "";
             for (int i = capValue.Length - 1; i >= 0; i--)
@@ -19773,40 +20286,40 @@ public static class ShareClass
                 currChar = Convert.ToInt16(capValue.Substring(i, 1));
                 if (posIndex > 30)
                 {
-                    //ÒÑ³¬³ö×î´ó¾«¶È"Ûò"¡£×¢:¿ÉÒÔ½«30¸Ä³É22£¬Ê¹Ö®¾«È·µ½Õ×ÒÚ¾Í×ã¹»ÁË
+                    //å·²è¶…å‡ºæœ€å¤§ç²¾åº¦"å“"ã€‚æ³¨:å¯ä»¥å°†30æ”¹æˆ22ï¼Œä½¿ä¹‹ç²¾ç¡®åˆ°å…†äº¿å°±è¶³å¤Ÿäº†
                     break;
                 }
                 else if (currChar != 0)
                 {
-                    //µ±Ç°Î»Îª·ÇÁãÖµ£¬ÔòÖ±½Ó×ª»»³É´óĞ´½ğ¶î
+                    //å½“å‰ä½ä¸ºéé›¶å€¼ï¼Œåˆ™ç›´æ¥è½¬æ¢æˆå¤§å†™é‡‘é¢
                     currCap = DXSZ.Substring(currChar, 1) + DXDW.Substring(posIndex, 1);
                 }
                 else
                 {
-                    //·ÀÖ¹×ª»»ºó³öÏÖ¶àÓàµÄÁã,ÀıÈç:3000020
+                    //é˜²æ­¢è½¬æ¢åå‡ºç°å¤šä½™çš„é›¶,ä¾‹å¦‚:3000020
                     switch (posIndex)
                     {
-                        case 4: currCap = "Ôª"; break;
-                        case 8: currCap = "Èf"; break;
-                        case 12: currCap = "ÒÚ"; break;
-                        case 17: currCap = "Õ×"; break;
-                        case 23: currCap = "¾©"; break;
-                        case 30: currCap = "Ûò"; break;
+                        case 4: currCap = "å…ƒ"; break;
+                        case 8: currCap = "è¬"; break;
+                        case 12: currCap = "äº¿"; break;
+                        case 17: currCap = "å…†"; break;
+                        case 23: currCap = "äº¬"; break;
+                        case 30: currCap = "å“"; break;
                         default: break;
                     }
                     if (prevChar != 0)
                     {
                         if (currCap != "")
                         {
-                            if (currCap != "Ôª") currCap += "Áã";
+                            if (currCap != "å…ƒ") currCap += "é›¶";
                         }
                         else
                         {
-                            currCap = "Áã";
+                            currCap = "é›¶";
                         }
                     }
                 }
-                //¶Ô½á¹û½øĞĞÈİ´í´¦Àí
+                //å¯¹ç»“æœè¿›è¡Œå®¹é”™å¤„ç†
                 if (capResult.Length > 0)
                 {
                     resultUnit = capResult.Substring(0, 1);
@@ -19828,11 +20341,11 @@ public static class ShareClass
         }
 
         /// <summary>
-        /// ×ª»»Ğ¡ÊıÎª´óĞ´½ğ¶î
+        /// è½¬æ¢å°æ•°ä¸ºå¤§å†™é‡‘é¢
         /// </summary>
-        /// <param name="capValue">Ğ¡ÊıÖµ</param>
-        /// <param name="addZero">ÊÇ·ñÔö¼ÓÁãÎ»</param>
-        /// <returns>·µ»Ø´óĞ´½ğ¶î</returns>
+        /// <param name="capValue">å°æ•°å€¼</param>
+        /// <param name="addZero">æ˜¯å¦å¢åŠ é›¶ä½</param>
+        /// <returns>è¿”å›å¤§å†™é‡‘é¢</returns>
         public static string ConvertDecToUppercaseAmount(string capValue, bool addZero)
         {
             string currCap = "";
@@ -19857,7 +20370,7 @@ public static class ShareClass
                     }
                     else if (prevChar != 0)
                     {
-                        currCap = "Áã";
+                        currCap = "é›¶";
                     }
                 }
                 capResult += currCap;
@@ -19869,20 +20382,20 @@ public static class ShareClass
         }
 
         /// <summary>
-        /// ÈËÃñ±Ò´óĞ´½ğ¶î
+        /// äººæ°‘å¸å¤§å†™é‡‘é¢
         /// </summary>
-        /// <param name="value">ÈËÃñ±ÒÊı×Ö½ğ¶îÖµ</param>
-        /// <returns>·µ»ØÈËÃñ±Ò´óĞ´½ğ¶î</returns>
+        /// <param name="value">äººæ°‘å¸æ•°å­—é‡‘é¢å€¼</param>
+        /// <returns>è¿”å›äººæ°‘å¸å¤§å†™é‡‘é¢</returns>
         public static string RMBAmount(double value)
         {
             string capResult = "";
-            string capValue = string.Format("{0:f4}", value);       //¸ñÊ½»¯
-            int dotPos = capValue.IndexOf(".");                     //Ğ¡ÊıµãÎ»ÖÃ
-            bool addInt = (Convert.ToInt32(capValue.Substring(dotPos + 1)) == 0);//ÊÇ·ñÔÚ½á¹ûÖĞ¼Ó"Õû"
-            bool addMinus = (capValue.Substring(0, 1) == "-");      //ÊÇ·ñÔÚ½á¹ûÖĞ¼Ó"¸º"
-            int beginPos = addMinus ? 1 : 0;                        //¿ªÊ¼Î»ÖÃ
-            string capInt = capValue.Substring(beginPos, dotPos);   //ÕûÊı
-            string capDec = capValue.Substring(dotPos + 1);         //Ğ¡Êı
+            string capValue = string.Format("{0:f4}", value);       //æ ¼å¼åŒ–
+            int dotPos = capValue.IndexOf(".");                     //å°æ•°ç‚¹ä½ç½®
+            bool addInt = (Convert.ToInt32(capValue.Substring(dotPos + 1)) == 0);//æ˜¯å¦åœ¨ç»“æœä¸­åŠ "æ•´"
+            bool addMinus = (capValue.Substring(0, 1) == "-");      //æ˜¯å¦åœ¨ç»“æœä¸­åŠ "è´Ÿ"
+            int beginPos = addMinus ? 1 : 0;                        //å¼€å§‹ä½ç½®
+            string capInt = capValue.Substring(beginPos, dotPos);   //æ•´æ•°
+            string capDec = capValue.Substring(dotPos + 1);         //å°æ•°
 
             if (dotPos > 0)
             {
@@ -19893,11 +20406,11 @@ public static class ShareClass
             {
                 capResult = ConvertIntToUppercaseAmount(capDec);
             }
-            if (addMinus) capResult = "¸º" + capResult;
-            if (addInt) capResult += "Õû";
+            if (addMinus) capResult = "è´Ÿ" + capResult;
+            if (addInt) capResult += "æ•´";
             return capResult;
         }
     }
 
-    #endregion Êı¾İ±íºÍ×Ô¶¨Òå±íµ¥µÄ¹¦ÄÜ
+    #endregion æ•°æ®è¡¨å’Œè‡ªå®šä¹‰è¡¨å•çš„åŠŸèƒ½
 }

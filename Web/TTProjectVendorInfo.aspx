@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTProjectVendorInfo.aspx.cs"
+ï»¿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTProjectVendorInfo.aspx.cs"
     Inherits="TTProjectVendorInfo" %>
 
 <%@ Register Assembly="NickLee.Web.UI" Namespace="NickLee.Web.UI" TagPrefix="NickLee" %>
@@ -59,52 +59,7 @@
                         <tr>
                             <td class="ItemAlignLeft">
 
-                                <table width="100%" border="0" cellpadding="0" cellspacing="0" background="ImagesSkin/main_n_bj.jpg">
-                                    <tr>
-                                        <td width="7">
-                                            <img src="ImagesSkin/main_n_l.jpg" width="7" height="26" />
-                                        </td>
-                                        <td>
-                                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                                <tr>
-                                                  <td width="5%" class="ItemAlignLeft">
-                                                                        <strong>
-                                                                            <asp:Label ID="Label30" runat="server" Text="<%$ Resources:lang,BianJi %>" /></strong>
-                                                                    </td>
-                                                                    <td width="5%" class="ItemAlignLeft">
-                                                                        <strong>
-                                                                            <asp:Label ID="Label63" runat="server" Text="<%$ Resources:lang,ShanChu %>" /></strong>
-                                                                    </td>
-                                                                   
-                                                    <td width="10%" class="ItemAlignLeft">
-                                                        <strong>
-                                                            <asp:Label ID="Label3" runat="server" Text="<%$ Resources:lang,DaiMa%>"></asp:Label></strong>
-                                                    </td>
-                                                    <td width="20%" class="ItemAlignLeft">
-                                                        <strong>
-                                                            <asp:Label ID="Label2" runat="server" Text="<%$ Resources:lang,MingCheng%>"></asp:Label></strong>
-                                                    </td>
-                                                    <td width="10%" class="ItemAlignLeft">
-                                                        <strong>
-                                                            <asp:Label ID="Label77" runat="server" Text="<%$ Resources:lang,LianXiRen%>"></asp:Label></strong>
-                                                    </td>
-                                                    <td width="10%" class="ItemAlignLeft">
-                                                        <strong>
-                                                            <asp:Label ID="Label78" runat="server" Text="<%$ Resources:lang,DianHua%>"></asp:Label></strong>
-                                                    </td>
-                                                    <td width="10%" class="ItemAlignLeft">
-                                                        <strong>EMail</strong>
-                                                    </td>
-                                                    <td width="20%" class="ItemAlignLeft">
-                                                        <strong>
-                                                            <asp:Label ID="Label79" runat="server" Text="<%$ Resources:lang,DiZhi%>"></asp:Label></strong>
-                                                    </td>
-                                                    <td width="10%" class="ItemAlignLeft">
-                                                        <strong>
-                                                            <asp:Label ID="Label80" runat="server" Text="<%$ Resources:lang,JianLiRiQi%>"></asp:Label></strong>
-                                                    </td>
-                                                </tr>
-                                            </table>
+                                
                                         </td>
                                         <td width="6" align="right">
                                             <img src="ImagesSkin/main_n_r.jpg" width="6" alt="" height="26" />
@@ -112,9 +67,9 @@
                                     </tr>
                                 </table>
                                 <asp:DataGrid ID="DataGrid2" runat="server" AllowPaging="True" AutoGenerateColumns="False"
-                                    ShowHeader="false" Height="1px" OnItemCommand="DataGrid2_ItemCommand" PageSize="25"
+                                    ShowHeader="true" Height="1px" OnItemCommand="DataGrid2_ItemCommand" PageSize="25"
                                     OnPageIndexChanged="DataGrid2_PageIndexChanged" Width="100%" CellPadding="4"
-                                    ForeColor="#333333" GridLines="None">
+                                    ForeColor="#333333" GridLines="None" HeaderStyle-BackColor="#f5f5f5" HeaderStyle-Font-Bold="true" HeaderStyle-Height="26px">
                                     <Columns>
                                         <asp:ButtonColumn ButtonType="LinkButton" CommandName="Update" Text="&lt;div&gt;&lt;img src=ImagesSkin/Update.png border=0 alt='Modify' /&gt;&lt;/div&gt;">
                                             <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="5%" />
@@ -129,10 +84,10 @@
                                             <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="10%" />
                                         </asp:BoundColumn>
                                         <asp:HyperLinkColumn DataNavigateUrlField="VendorCode" DataNavigateUrlFormatString="TTVendorInfoView.aspx?VendorCode={0}"
-                                            DataTextField="VendorName" HeaderText="¹©Ó¦ÉÌÃû³Æ" Target="_blank">
+                                            DataTextField="VendorName" HeaderText="ä¾›åº”å•†åç§°" Target="_blank">
                                             <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" Width="20%" />
                                         </asp:HyperLinkColumn>
-                                        <asp:BoundColumn DataField="ContactName" HeaderText="ÁªÏµÈË">
+                                        <asp:BoundColumn DataField="ContactName" HeaderText="è”ç³»äºº">
                                             <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" Width="10%" />
                                         </asp:BoundColumn>
                                         <asp:BoundColumn DataField="Tel1" HeaderText="Telephone">
@@ -141,10 +96,10 @@
                                         <asp:BoundColumn DataField="EmailAddress" HeaderText="EMail">
                                             <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" Width="10%" />
                                         </asp:BoundColumn>
-                                        <asp:BoundColumn DataField="RegistrationAddressCN" HeaderText="µØÖ·">
+                                        <asp:BoundColumn DataField="RegistrationAddressCN" HeaderText="åœ°å€">
                                             <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" Width="20%" />
                                         </asp:BoundColumn>
-                                        <asp:BoundColumn DataField="CreateDate" DataFormatString="{0:yyyy/MM/dd}" HeaderText="½¨Á¢ÈÕÆÚ">
+                                        <asp:BoundColumn DataField="CreateDate" DataFormatString="{0:yyyy/MM/dd}" HeaderText="å»ºç«‹æ—¥æœŸ">
                                             <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="10%" />
                                         </asp:BoundColumn>
                                     </Columns>

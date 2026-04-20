@@ -576,11 +576,11 @@
                                                                     <asp:Button ID="BT_New" runat="server" CssClass="inpu" Enabled="False" OnClick="BT_New_Click" Text="<%$ Resources:lang,AddChildPlan%>" />
 
                                                                     &nbsp; &nbsp; &nbsp; &nbsp; 
-          <asp:Button ID="BT_Update" runat="server" Enabled="False" CssClass="inpu" OnClick="BT_Update_Click"
-              Text="<%$ Resources:lang,BaoCun%>" />
-                                                                    &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;
-          <asp:Button ID="BT_Delete" runat="server" Enabled="False" OnClick="BT_Delete_Click"
-              CssClass="inpu" Text="<%$ Resources:lang,Delete%>" OnClientClick="return confirmContinue(getDeleteMsgByLangCode(), this, event)" />
+                                                                      <asp:Button ID="BT_Update" runat="server" Enabled="False" CssClass="inpu" OnClick="BT_Update_Click"
+                                                                          Text="<%$ Resources:lang,BaoCun%>" />
+                                                                                                                                &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;
+                                                                      <asp:Button ID="BT_Delete" runat="server" Enabled="False" OnClick="BT_Delete_Click"
+                                                                          CssClass="inpu" Text="<%$ Resources:lang,Delete%>" OnClientClick="return confirmContinue(getDeleteMsgByLangCode(), this, event)" />
 
                                                                 </td>
                                                             </tr>
