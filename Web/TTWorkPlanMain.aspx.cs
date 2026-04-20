@@ -6,10 +6,23 @@ public partial class TTWorkPlanMain : System.Web.UI.Page
     {
         string strProjectID, strProjectName, strUserCode;
 
-        strProjectID = Request.QueryString["ProjectID"];
-        strProjectName = ShareClass.GetProjectName(strProjectID);
+        // æ£€æŸ¥ Session æ˜¯å¦ä¸º nullï¼Œé˜²æ­¢ç¬¬ä¸€æ¬¡è®¿é—®æ—¶å‡ºé”™
+        if (Session["UserCode"] == null)
+        {
+            Response.Redirect("Default.aspx");
+            return;
+        }
 
         strUserCode = Session["UserCode"].ToString();
+
+        strProjectID = Request.QueryString["ProjectID"];
+        if (string.IsNullOrEmpty(strProjectID))
+        {
+            Response.Redirect("Default.aspx");
+            return;
+        }
+
+        strProjectName = ShareClass.GetProjectName(strProjectID);
 
         Session["ProjectIDForGantt"] = strProjectID;
         Session["VerIDForGantt"] = null;
@@ -18,19 +31,19 @@ public partial class TTWorkPlanMain : System.Web.UI.Page
         {
             if (Session["WeekendFirstDay"] == null)
             {
-                //È¡µÃÖÜÄ©¿ªÊ¼ÈÕ
+                //å–å¾—å‘¨æœ«å¼€å§‹æ—¥
                 Session["WeekendFirstDay"] = ShareClass.GetWeekendFirstDay();
             }
 
             if (Session["WeekendSecondDay"] == null)
             {
-                //È¡µÃÖÜÄ©½áÊøÈÕ
+                //å–å¾—å‘¨æœ«ç»“æŸæ—¥
                 Session["WeekendSecondDay"] = ShareClass.GetWeekendSecondDay();
             }
 
             if (Session["WeekendsAreWorkdays"] == null)
             {
-                //È¡µÃÖÜÄ©ÊÇ·ñ¹¤×÷ÈÕ
+                //å–å¾—å‘¨æœ«æ˜¯å¦å·¥ä½œæ—¥
                 Session["WeekendsAreWorkdays"] = ShareClass.GetWeekendsAreWorkdays();
             }
         }

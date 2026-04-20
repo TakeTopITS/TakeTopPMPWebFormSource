@@ -30,9 +30,17 @@ public partial class TTWorkPlan : System.Web.UI.Page
     {
         try
         {
+            // 检查 Session 是否为 null，防止第一次访问时出错
+            if (Session["LangCode"] == null || Session["UserCode"] == null)
+            {
+                // Session 未初始化，重定向到登录页或返回
+                Response.Redirect("Default.aspx");
+                return;
+            }
+            
             strLangCode = Session["LangCode"].ToString();
             strUserCode = Session["UserCode"].ToString();
-            strUserName = Session["UserName"] != null ? Session["UserName"].ToString() : "";
+            strUserName = Session["UserName"].ToString();
 
             strProjectID = Request.QueryString["ProjectID"];
             strProjectName = ShareClass.GetProjectName(strProjectID);
@@ -45,11 +53,11 @@ public partial class TTWorkPlan : System.Web.UI.Page
             HL_ProPlanGanttNew.NavigateUrl = "TTWorkPlanGanttForProject.aspx?pid=" + strProjectID;
             LB_ProjectID.Text = strProjectID;
 
-            //ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "clickParentA", "aHandler();", true);
-            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "clickParentA", "aHandlerForSpecialPopWindow();", true);
-            ScriptManager.RegisterOnSubmitStatement(this.Page, this.Page.GetType(), "SavePanelScroll", "SaveScroll();");
             if (Page.IsPostBack != true)
             {
+                //ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "clickParentA", "aHandler();", true);
+                ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "clickParentA", "aHandlerForSpecialPopWindow();", true);
+                ScriptManager.RegisterOnSubmitStatement(this.Page, this.Page.GetType(), "SavePanelScroll", "SaveScroll();");
                 ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "SetPanelScroll", "RestoreScroll();", true);
 
                 DLC_BeginDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
@@ -130,6 +138,13 @@ public partial class TTWorkPlan : System.Web.UI.Page
                         DL_ChangeVersionType.SelectedValue = strVerType;
                     }
 
+                    // 检查 SelectedItem 是否为 null，防止第一次加载时出错
+                    if (DL_VersionID.SelectedItem == null)
+                    {
+                        // 项目没有任何计划版本，清空Session并返回
+                        Session["VerIDForGantt"] = null;
+                        return;
+                    }
                     strVerID = DL_VersionID.SelectedItem.Text.Trim();
                     Session["VerIDForGantt"] = strVerID;
 
@@ -229,9 +244,9 @@ public partial class TTWorkPlan : System.Web.UI.Page
                         BT_StartUp.Enabled = false;
                     }
 
-                    string strSystemVersionType = Session["SystemVersionType"].ToString();
+                    string strSystemVersionType = Session["SystemVersionType"] != null ? Session["SystemVersionType"].ToString() : "";
                     string strProductType = System.Configuration.ConfigurationManager.AppSettings["ProductType"];
-                    if (strSystemVersionType == "SAAS" || strProductType.IndexOf("SAAS") > -1)
+                    if (strSystemVersionType == "SAAS" || (strProductType != null && strProductType.IndexOf("SAAS") > -1))
                     {
                         HL_ProjectPlanReviewWL.Visible = false;
                         BT_StartUp.Visible = false;
@@ -605,9 +620,9 @@ public partial class TTWorkPlan : System.Web.UI.Page
             strVerType = GetProjectPlanVersionType(strProjectID, strID);
 
             strProjectCreatorCode = ShareClass.GetProjectCreatorCode(strProjectID);
-            string strSystemVersionType = Session["SystemVersionType"].ToString();
+            string strSystemVersionType = Session["SystemVersionType"] != null ? Session["SystemVersionType"].ToString() : "";
 
-            if (strStatusValue == "Passed" | strSystemVersionType == "SAAS")
+            if (strStatusValue == "Passed" || strSystemVersionType == "SAAS")
             {
                 if (strVerType == "Baseline" & strUserCode != strProjectCreatorCode)
                 {
@@ -1632,18 +1647,25 @@ public partial class TTWorkPlan : System.Web.UI.Page
         string strHQL;
         IList lst;
 
-        strHQL = "from ProjectPlanVersion as projectPlanVersion where projectPlanVersion.ProjectID = " + strProjectID + " Order by projectPlanVersion.VerID DESC";
-        ProjectPlanVersionBLL projectPlanVersionBLL = new ProjectPlanVersionBLL();
-        lst = projectPlanVersionBLL.GetAllProjectPlanVersions(strHQL);
+        try
+        {
+            strHQL = "from ProjectPlanVersion as projectPlanVersion where projectPlanVersion.ProjectID = " + strProjectID + " Order by projectPlanVersion.VerID DESC";
+            ProjectPlanVersionBLL projectPlanVersionBLL = new ProjectPlanVersionBLL();
+            lst = projectPlanVersionBLL.GetAllProjectPlanVersions(strHQL);
 
-        DL_VersionID.DataSource = lst;
-        DL_VersionID.DataBind();
+            DL_VersionID.DataSource = lst;
+            DL_VersionID.DataBind();
 
-        DL_OldVersionID.DataSource = lst;
-        DL_OldVersionID.DataBind();
+            DL_OldVersionID.DataSource = lst;
+            DL_OldVersionID.DataBind();
 
-        DL_NewVersionID.DataSource = lst;
-        DL_NewVersionID.DataBind();
+            DL_NewVersionID.DataSource = lst;
+            DL_NewVersionID.DataBind();
+        }
+        catch (Exception ex)
+        {
+            LogClass.WriteLogFile("Error page: " + Request.Url.ToString() + "\n" + ex.Message.ToString() + "\n" + ex.StackTrace);
+        }
     }
 
     //取得任务关联计划的计划的负责人
