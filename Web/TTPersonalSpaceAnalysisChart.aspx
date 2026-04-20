@@ -85,6 +85,8 @@
         var totalCharts = 0;
         var reloadTimer = null;
         var initialCheckTimer = null;
+        var hasReloaded = false; // 标记是否已经刷新过，防止重复刷新
+        var allChartsLoaded = false; // 标记所有图表是否已加载完成
 
         $(function () {
             if (top.location != self.location) { } else { CloseWebPage(); }
@@ -95,10 +97,11 @@
                 totalCharts += 1;
             }
 
-            // 如果总图表数为0，隐藏loading，并启动重载定时器
+            // 如果总图表数为0，隐藏loading，10秒后刷新一次
             if (totalCharts === 0) {
                 document.getElementById("loading").style.display = "none";
-                startReloadTimer();
+                allChartsLoaded = true;
+                startReloadAfterLoaded();
             } else {
                 // 启动初始检查定时器：5秒后检查是否所有图表都加载完成
                 initialCheckTimer = setTimeout(function() {
@@ -109,6 +112,18 @@
                 forceCheckAfterDelay();
             }
         });
+
+        // 图表加载完成后10秒刷新一次
+        function startReloadAfterLoaded() {
+            if (hasReloaded) return;
+            console.log("图表加载完成，10秒后自动刷新...");
+            setTimeout(function() {
+                if (!hasReloaded) {
+                    hasReloaded = true;
+                    reloadCharts();
+                }
+            }, 10000);
+        }
 
         function chartLoaded(iframe, loadingId) {
             chartLoadCount++;
@@ -124,8 +139,9 @@
             
             if (chartLoadCount >= totalCharts) {
                 document.getElementById("loading").style.display = "none";
-                // 所有图表加载完成，检查数据完整性
-                setTimeout(checkChartData, 500);
+                allChartsLoaded = true;
+                // 所有图表加载完成后10秒刷新一次
+                startReloadAfterLoaded();
             }
         }
 
@@ -136,7 +152,9 @@
                 // 强制完成加载计数
                 chartLoadCount = totalCharts;
                 document.getElementById("loading").style.display = "none";
-                checkChartData();
+                allChartsLoaded = true;
+                // 强制加载完成后10秒刷新一次
+                startReloadAfterLoaded();
             }
         }
 
@@ -168,8 +186,14 @@
                 }
             }
             
-            if (hasEmptyData) {
+            if (hasEmptyData && !hasReloaded) {
                 console.log("检测到数据不完整（包含 '--'），10秒后自动重载...");
+                hasReloaded = true;
+                startReloadTimer();
+            } else if (!hasReloaded && allChartsLoaded) {
+                // 数据完整且图表已加载完成，10秒后刷新一次
+                console.log("图表数据完整，10秒后自动刷新...");
+                hasReloaded = true;
                 startReloadTimer();
             } else {
                 console.log("所有图表数据完整，无需刷新");
@@ -178,11 +202,14 @@
 
         // 启动重载定时器
         function startReloadTimer() {
-            if (reloadTimer) {
-                clearTimeout(reloadTimer);
+            if (reloadTimer || hasReloaded) {
+                return; // 已经刷新过就不再启动定时器
             }
             reloadTimer = setTimeout(function() {
-                reloadCharts();
+                if (!hasReloaded) {
+                    hasReloaded = true;
+                    reloadCharts();
+                }
             }, 10000); // 10秒后重载
         }
 
