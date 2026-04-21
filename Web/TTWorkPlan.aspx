@@ -1,5 +1,32 @@
 <%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTWorkPlan.aspx.cs" Inherits="TTWorkPlan" %>
 
+<%@ Import Namespace="System" %>
+<script runat="server">
+    // 页面???处理 - 在最早?段捕???
+    protected override void OnError(EventArgs e)
+    {
+        Exception ex = Server.GetLastError();
+        if (ex != null)
+        {
+            Response.Clear();
+            Response.Write("<!DOCTYPE html><html><head><title>????信息</title></head><body>");
+            Response.Write("<div style='background:#fff3cd;border:3px solid red;padding:30px;margin:20px;font-family:monospace;font-size:14px;word-break:break-all;'>");
+            Response.Write("<h2 style='color:red;margin-top:0'>【页面???捕?】</h2>");
+            Response.Write("<b>发生?间:</b> " + DateTime.Now.ToString() + "<br/><br/>");
+            Response.Write("<b>Message:</b> " + System.Web.HttpUtility.HtmlEncode(ex.Message) + "<br/><br/>");
+            Response.Write("<b>Type:</b> " + System.Web.HttpUtility.HtmlEncode(ex.GetType().FullName) + "<br/><br/>");
+            Response.Write("<b>StackTrace:</b><br/><pre style='background:#f5f5f5;padding:10px;overflow:auto;max-height:400px;'>" + System.Web.HttpUtility.HtmlEncode(ex.StackTrace) + "</pre><br/>");
+            if (ex.InnerException != null)
+            {
+                Response.Write("<b>InnerException:</b><br/><pre style='background:#ffe0e0;padding:10px;'>" + System.Web.HttpUtility.HtmlEncode(ex.InnerException.ToString()) + "</pre><br/>");
+            }
+            Response.Write("</div></body></html>");
+            Response.End();
+        }
+        base.OnError(e);
+    }
+</script>
+
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 <%@ Register Assembly="NickLee.Web.UI" Namespace="NickLee.Web.UI" TagPrefix="NickLee" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
@@ -8,7 +35,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
-    <title>????1�����????</title>
+    <title>????1∟℅¯????</title>
     <link id="mainCss" href="css/bluelightmain.css" rel="stylesheet" type="text/css" />
 
     <style type="text/css">
@@ -269,7 +296,7 @@
                                                         <hr />
                                                         <div id="PlanTreeDivID" style="width: 300px; height: 600px; overflow: auto; vertical-align: top;">
                                                             <asp:TreeView ID="TreeView1" runat="server" NodeWrap="True" OnSelectedNodeChanged="TreeView1_SelectedNodeChanged"
-                                                                ShowLines="True" Font-Bold="False" Font-Names="??��?" Style="width: 300px; height: 100%;">
+                                                                ShowLines="True" Font-Bold="False" Font-Names="??足?" Style="width: 300px; height: 100%;">
                                                                 <RootNodeStyle CssClass="rootNode" />
                                                                 <NodeStyle CssClass="treeNode" />
                                                                 <LeafNodeStyle CssClass="leafNode" />
@@ -578,7 +605,7 @@
                                                                     &nbsp; &nbsp; &nbsp; &nbsp; 
                                                                       <asp:Button ID="BT_Update" runat="server" Enabled="False" CssClass="inpu" OnClick="BT_Update_Click"
                                                                           Text="<%$ Resources:lang,BaoCun%>" />
-                                                                                                                                &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;
+                                                                    &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;
                                                                       <asp:Button ID="BT_Delete" runat="server" Enabled="False" OnClick="BT_Delete_Click"
                                                                           CssClass="inpu" Text="<%$ Resources:lang,Delete%>" OnClientClick="return confirmContinue(getDeleteMsgByLangCode(), this, event)" />
 
@@ -620,7 +647,7 @@
                                                             Target="_blank" Text="<%$ Resources:lang,ShiShiWenDangTuiSong%>"></asp:HyperLink>
                                                         &nbsp;
                                                          <asp:HyperLink ID="HL_RunProjectPlanByWF" runat="server" Enabled="False" Target="_blank" Visible="false"
-                                                             Text="<%$ Resources:lang,hlRunProjectPlanByWF%>">��?</asp:HyperLink>
+                                                             Text="<%$ Resources:lang,hlRunProjectPlanByWF%>">㏒?</asp:HyperLink>
                                                         &nbsp;
                                                           <asp:HyperLink ID="HL_RelatedWorkFlowTemplate" runat="server" Target="_blank" Visible="false"
                                                               Enabled="false" Text="<%$ Resources:lang,RelatedWFTemplate%>"></asp:HyperLink>

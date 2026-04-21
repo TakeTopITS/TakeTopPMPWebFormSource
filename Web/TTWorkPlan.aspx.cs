@@ -30,14 +30,7 @@ public partial class TTWorkPlan : System.Web.UI.Page
     {
         try
         {
-            // 检查 Session 是否为 null，防止第一次访问时出错
-            if (Session["LangCode"] == null || Session["UserCode"] == null)
-            {
-                // Session 未初始化，重定向到登录页或返回
-                Response.Redirect("Default.aspx");
-                return;
-            }
-            
+
             strLangCode = Session["LangCode"].ToString();
             strUserCode = Session["UserCode"].ToString();
             strUserName = Session["UserName"].ToString();
@@ -80,13 +73,21 @@ public partial class TTWorkPlan : System.Web.UI.Page
                 {
                 }
 
-                strHQL = "from PlanStatus as planStatus";
-                strHQL += " Where planStatus.LangCode = " + "'" + strLangCode + "'";
-                strHQL += " order by planStatus.SortNumber Asc";
-                PlanStatusBLL planStautsBLL = new PlanStatusBLL();
-                lst = planStautsBLL.GetAllPlanStatuss(strHQL);
-                DL_Status.DataSource = lst;
-                DL_Status.DataBind();
+
+                try
+                {
+                    strHQL = "from PlanStatus as planStatus";
+                    strHQL += " Where planStatus.LangCode = " + "'" + strLangCode + "'";
+                    strHQL += " order by planStatus.SortNumber Asc";
+                    PlanStatusBLL planStautsBLL = new PlanStatusBLL();
+                    lst = planStautsBLL.GetAllPlanStatuss(strHQL);
+                    DL_Status.DataSource = lst;
+                    DL_Status.DataBind();
+                }
+                catch (Exception ex)
+                {
+                    LogClass.WriteLogFile("Error page: " + Request.Url.ToString() + "\n" + ex.Message.ToString() + "\n" + ex.StackTrace);
+                }
 
                 LoadProjectPlanVersion(strProjectID);
 
@@ -254,10 +255,20 @@ public partial class TTWorkPlan : System.Web.UI.Page
                 }
             }
         }
-        catch(Exception ex) 
+        catch (Exception __ex)
         {
-            LogClass.WriteLogFile(ex.Message.ToString() + "\n" + ex.StackTrace.ToString());
+            Response.Write("<div style='background:#fff3cd;border:2px solid red;padding:20px;font-family:monospace;font-size:13px;word-break:break-all;'>");
+            Response.Write("<b style='color:red'>【调试错误信息】</b><br/><br/>");
+            Response.Write("<b>Message:</b> " + System.Web.HttpUtility.HtmlEncode(__ex.Message) + "<br/><br/>");
+            Response.Write("<b>Type:</b> " + System.Web.HttpUtility.HtmlEncode(__ex.GetType().FullName) + "<br/><br/>");
+            Response.Write("<b>StackTrace:</b><br/>" + System.Web.HttpUtility.HtmlEncode(__ex.StackTrace).Replace("\n", "<br/>") + "<br/>");
+            if (__ex.InnerException != null)
+            {
+                Response.Write("<br/><b>InnerException:</b> " + System.Web.HttpUtility.HtmlEncode(__ex.InnerException.Message));
+            }
+            Response.Write("</div>");
         }
+
     }
 
     protected void TreeView2_SelectedNodeChanged(object sender, EventArgs e)
