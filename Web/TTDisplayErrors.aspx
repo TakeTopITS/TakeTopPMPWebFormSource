@@ -28,7 +28,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <table width="697" height="220" border="0" align="center" cellpadding="0" cellspacing="0" background="Images/error.jpg">
+      <%--  <table width="697" height="220" border="0" align="center" cellpadding="0" cellspacing="0" background="Images/error.jpg">
             <tr>
                 <td valign="top">
                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -52,12 +52,6 @@
                             <td width="76%" class="huizi">，<asp:Label ID="Label2222" runat="server" Text="<%$ Resources:lang,KNSHHGQQTCXTBCXJRSY %>"></asp:Label>;</td>
                         </tr>
 
-                       <%-- <tr>
-                            <td width="76%" class="huizi">，<asp:Label ID="Label2" runat="server" Text="<%$ Resources:lang,QJCNDSQYHSCSKJYXRQYMYCC %>"></asp:Label>;</td>
-                        </tr>--%>
-                      <%--  <tr>
-                            <td width="76%" class="huizi">，<asp:Label ID="Label3" runat="server" Text="<%$ Resources:lang,QJCNSYDBBSHYBHCGNHMK %>"></asp:Label>;</td>
-                        </tr>--%>
                         <tr>
                             <td width="76%" class="huizi">，<asp:Label ID="Label6" runat="server" Text="<%$ Resources:lang,PZWJCWNZZSYDBBKNSBHGBB %>"></asp:Label>;</td>
                         </tr>
@@ -67,7 +61,7 @@
                     </table>
                 </td>
             </tr>
-        </table>
+        </table>--%>
     </form>
 </body>
 <script type="text/javascript" language="javascript">var cssDirectory = '<%=Session["CssDirectory"] %>'; var oLink = document.getElementById('mainCss'); oLink.href = 'css/' + cssDirectory + '/' + 'bluelightmain.css';</script></html>
