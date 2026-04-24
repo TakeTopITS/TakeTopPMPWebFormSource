@@ -144,7 +144,7 @@ HE_Description.Language = Session["LangCode"].ToString();
             TemplateProjectTreeView.DataBind();
         }
 
-        strHQL = "from Project as project where project.ProjectClass = 'RegularProject' and  project.PMCode = " + "'" + strUserCode + "'";   
+        strHQL = "from Project as project where project.ProjectClass = 'NormalProject' and  project.PMCode = " + "'" + strUserCode + "'";   
         strHQL += "  and project.Status not in ('Deleted','Archived') order by project.ProjectID DESC";
 
         lst = projectBLL.GetAllProjects(strHQL);

@@ -15970,4 +15970,58 @@ SET type = w.type
 FROM T_WLType w
 WHERE t.type = w.homename;</SQLText>
   </DataBaseUpgradeFile>
+  <DataBaseUpgradeFile>
+    <ID>3929</ID>
+    <SQLText>DROP VIEW public.v_projectplanlist;</SQLText>
+  </DataBaseUpgradeFile>
+  <DataBaseUpgradeFile>
+    <ID>3930</ID>
+    <SQLText>ALTER TABLE public.t_project 
+ALTER COLUMN ProjectClass TYPE character(100);</SQLText>
+  </DataBaseUpgradeFile>
+  <DataBaseUpgradeFile>
+    <ID>3931</ID>
+    <SQLText>Update T_Project Set ProjectClass = 'NormalProject' Where ProjectClass = '常规项目';
+Update T_Project Set ProjectClass = 'TemplateProject' Where ProjectClass = '模板项目';</SQLText>
+  </DataBaseUpgradeFile>
+  <DataBaseUpgradeFile>
+    <ID>3932</ID>
+    <SQLText>-- View: public.v_projectplanlist
+
+-- DROP VIEW public.v_projectplanlist;
+
+CREATE OR REPLACE VIEW public.v_projectplanlist
+ AS
+ SELECT a.verid,
+    a.planid,
+    a.parentidgantt,
+    a.workid,
+    a.plandetail,
+    a.type,
+    a.begintime,
+    a.endtime,
+    a.expireday,
+    a.leadercode,
+    a.leader,
+    a.resource,
+    a.budget,
+    a.makedate,
+    a.parentid,
+    a.priorid,
+    a.defaultschedule,
+    a.defaultcost,
+    a.percent_done,
+    a.expense,
+    a.status,
+    b.projectid,
+    b.projectname,
+    b.pmcode,
+    b.pmname
+   FROM v_projectplanforwanring a,
+    t_project b
+  WHERE a.projectid = b.projectid AND (a.status &lt;&gt; ALL (ARRAY['完成'::bpchar, '取消'::bpchar])) AND b.projectid &gt; 1 AND b.projectclass &lt;&gt; '模板项目'::bpchar AND (b.status &lt;&gt; ALL (ARRAY['验收'::bpchar, '结案'::bpchar, '归档'::bpchar, '删除'::bpchar, '挂起'::bpchar, '取消'::bpchar]));
+
+ALTER TABLE public.v_projectplanlist
+    OWNER TO postgres;</SQLText>
+  </DataBaseUpgradeFile>
 </DataBaseUpgradeFiles>
