@@ -1,0 +1,20 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <T_GoodsApplication>
+    <detailaaid>30</detailaaid>
+    <otheraaid>30</otheraaid>
+    <aaid>30</aaid>
+    <gaaname>AO2020030030</gaaname>
+    <type>AfterSale</type>
+    <applicantcode>C7094               </applicantcode>
+    <applicantname>员工C7094</applicantname>
+    <applytime>2020-03-04T00:00:00+08:00</applytime>
+    <finishtime>2020-03-04T00:00:00+08:00</finishtime>
+    <applyreason />
+    <status>InProgress</status>
+    <relatedtype>AfterSale</relatedtype>
+    <relatedid>955</relatedid>
+    <amount>276000.000</amount>
+    <currencytype>人民币</currencytype>
+  </T_GoodsApplication>
+</NewDataSet>
