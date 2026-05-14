@@ -8,19 +8,21 @@ using System.Xml;
 
 public static class LanguageHandle
 {
-    // 缓存：语言代码 -> 关键词字典，直接查字典比 XPath 快 10-100 倍
-    private static readonly ConcurrentDictionary<string, Dictionary<string, string>> languageCache = 
+    private static readonly ConcurrentDictionary<string, Dictionary<string, string>> languageCache =
         new ConcurrentDictionary<string, Dictionary<string, string>>(StringComparer.OrdinalIgnoreCase);
-    
-    // 缓存文件最后修改时间，用于检测文件变化
-    private static readonly ConcurrentDictionary<string, DateTime> fileLastWriteCache = 
+
+    private static readonly ConcurrentDictionary<string, DateTime> fileLastWriteCache =
         new ConcurrentDictionary<string, DateTime>();
-    
+
+    private static readonly ConcurrentDictionary<string, DateTime> lastCheckTime =
+        new ConcurrentDictionary<string, DateTime>();
+
     private static readonly string DefaultLangCode = ConfigurationManager.AppSettings["DefaultLang"] ?? "en";
     private static readonly object initLock = new object();
     private static volatile bool isInitialized = false;
+    private static string _languageDirectoryPath = null;
+    private static readonly TimeSpan FileCheckInterval = TimeSpan.FromSeconds(60);
 
-    // 确保初始化只执行一次
     private static void EnsureInitialized()
     {
         if (!isInitialized)
@@ -30,6 +32,8 @@ public static class LanguageHandle
                 if (!isInitialized)
                 {
                     CopyLanguageFilesToLanguageDirectory();
+                    _languageDirectoryPath = HttpContext.Current?.Server.MapPath("Language");
+                    PreloadLanguage(DefaultLangCode);
                     isInitialized = true;
                 }
             }
@@ -83,32 +87,36 @@ public static class LanguageHandle
         return null;
     }
 
-    // 检查文件是否变化，必要时刷新缓存
     private static void CheckAndRefreshCacheIfNeeded(string langCode)
     {
+        DateTime lastChecked;
+        if (lastCheckTime.TryGetValue(langCode, out lastChecked) &&
+            DateTime.UtcNow - lastChecked < FileCheckInterval)
+        {
+            return;
+        }
+        lastCheckTime[langCode] = DateTime.UtcNow;
+
         string resxFile = GetResxFilePath(langCode);
-        
-        // 如果缓存不存在，直接加载
+
         if (!languageCache.ContainsKey(langCode))
         {
             LoadLanguageIntoCache(langCode, resxFile);
             return;
         }
 
-            // 检查文件是否已更新
-            if (File.Exists(resxFile))
+        if (File.Exists(resxFile))
+        {
+            DateTime lastWrite = File.GetLastWriteTime(resxFile);
+            DateTime cachedTime;
+            if (fileLastWriteCache.TryGetValue(langCode, out cachedTime))
             {
-                DateTime lastWrite = File.GetLastWriteTime(resxFile);
-                DateTime cachedTime;
-                if (fileLastWriteCache.TryGetValue(langCode, out cachedTime))
+                if (lastWrite > cachedTime)
                 {
-                    if (lastWrite > cachedTime)
-                    {
-                        // 文件已更新，刷新缓存
-                        LoadLanguageIntoCache(langCode, resxFile);
-                    }
+                    LoadLanguageIntoCache(langCode, resxFile);
                 }
             }
+        }
     }
 
     // 加载语言文件到缓存字典
@@ -172,17 +180,22 @@ public static class LanguageHandle
             languageCache[langCode] = dict;
             fileLastWriteCache[langCode] = File.GetLastWriteTime(resxFile);
         }
-        catch
+        catch (Exception ex)
         {
-            // 出错时使用空字典，避免重复加载失败文件
+            LogClass.WriteLogFile("LoadLanguageIntoCache Error: " + ex.Message + " langCode=" + langCode);
             languageCache.TryAdd(langCode, new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase));
         }
     }
 
-    // 获取resx文件路径
     private static string GetResxFilePath(string langCode)
     {
-        return HttpContext.Current?.Server.MapPath("Language/lang." + langCode + ".resx");
+        string dir = _languageDirectoryPath;
+        if (dir == null)
+        {
+            dir = HttpContext.Current?.Server.MapPath("Language");
+            _languageDirectoryPath = dir;
+        }
+        return dir + "\\lang." + langCode + ".resx";
     }
 
     // 复制语言文件（如果需要）
@@ -217,9 +230,9 @@ public static class LanguageHandle
                 }
             }
         }
-        catch
+        catch (Exception ex)
         {
-            // 静默处理异常，避免影响页面加载
+            LogClass.WriteLogFile("CopyLanguageFilesToLanguageDirectory Error: " + ex.Message);
         }
     }
 

@@ -27,6 +27,8 @@ public partial class TakeTopMainTop : System.Web.UI.Page
     int intRunNumber;
 
     string strHQL;
+    private IList _cachedFunList = null;
+    private string _cachedFunCounts = "";
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -44,7 +46,7 @@ public partial class TakeTopMainTop : System.Web.UI.Page
                 //tdAI.Visible = false;
             }
             else
-            {     //ÉèÖÃAI½Ó¿ÚURL
+            {     //ï¿½ï¿½ï¿½ï¿½AIï¿½Ó¿ï¿½URL
                 SetAIURL();
             }
 
@@ -55,14 +57,14 @@ public partial class TakeTopMainTop : System.Web.UI.Page
 
             strUserName = ShareClass.GetUserName(strUserCode);
             LB_UserName.Text = strUserName;
-            LB_SystemMsg.Text = Resources.lang.NiHao + "£¬" + Resources.lang.HuanYingNiShiYong + " " + System.Configuration.ConfigurationManager.AppSettings["SystemName"];
+            LB_SystemMsg.Text = Resources.lang.NiHao + "ï¿½ï¿½" + Resources.lang.HuanYingNiShiYong + " " + System.Configuration.ConfigurationManager.AppSettings["SystemName"];
 
-            //Çå¿ÕÒ³Ãæ»º´æ£¬ÓÃÓÚ¸Ä±äÆ¤·ô
+            //ï¿½ï¿½ï¿½Ò³ï¿½æ»ºï¿½æ£¬ï¿½ï¿½ï¿½Ú¸Ä±ï¿½Æ¤ï¿½ï¿½
             SetPageNoCache();
 
             intRunNumber = 0;
 
-            //ÉèÖÃ´ý´¦ÀíÊÂÏî
+            //ï¿½ï¿½ï¿½Ã´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             LB_SuperDepartString.Text = TakeTopCore.CoreShareClass.InitialDepartmentStringByAuthoritySuperUser(strUserCode);
             LB_UnHandledCase.Text = GetUNHandledWorkCount(strUserCode, strLangCode).ToString() + " " + Resources.lang.ToDoList;
          
@@ -70,7 +72,7 @@ public partial class TakeTopMainTop : System.Web.UI.Page
         }
     }
 
-    //ÉèÖÃAI½Ó¿ÚURL
+    //ï¿½ï¿½ï¿½ï¿½AIï¿½Ó¿ï¿½URL
     public void SetAIURL()
     {
         string strAIType, strAIURL;
@@ -108,7 +110,7 @@ public partial class TakeTopMainTop : System.Web.UI.Page
 
         try
         {
-            //¸üÐÂ×ó±ßÀ¸Õ¹¿ª×´Ì¬
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ¹ï¿½ï¿½×´Ì¬
             ShareClass.UpdateLeftBarExtendStatus(strUserCode, strLeftBarExtend);
 
             Session["LeftBarExtend"] = strLeftBarExtend;
@@ -125,12 +127,12 @@ public partial class TakeTopMainTop : System.Web.UI.Page
     }
 
 
-    //Çå¿ÕÒ³Ãæ»º´æ£¬ÓÃÓÚ¸Ä±äÆ¤·ô
+    //ï¿½ï¿½ï¿½Ò³ï¿½æ»ºï¿½æ£¬ï¿½ï¿½ï¿½Ú¸Ä±ï¿½Æ¤ï¿½ï¿½
     public void SetPageNoCache()
     {
         if (Session["CssDirectoryChangeNumber"].ToString() == "1")
         {
-            //Çå³ýÈ«²¿»º´æ
+            //ï¿½ï¿½ï¿½È«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             IDictionaryEnumerator allCaches = Page.Cache.GetEnumerator();
             while (allCaches.MoveNext())
             {
@@ -187,7 +189,7 @@ public partial class TakeTopMainTop : System.Web.UI.Page
 
         if (strLangCode == "zh-CN")
         {
-            LB_Copyright.Text = "Copyright ? 2006-2036 " + " <a href=https://www.taketopits.com  target=_blank style='text-decoration:none;'>&nbsp;Ì©¶¥ÍØ¶¦</a>";
+            LB_Copyright.Text = "Copyright ? 2006-2036 " + " <a href=https://www.taketopits.com  target=_blank style='text-decoration:none;'>&nbsp;Ì©ï¿½ï¿½ï¿½Ø¶ï¿½</a>";
         }
         else
         {
@@ -216,10 +218,10 @@ public partial class TakeTopMainTop : System.Web.UI.Page
         LB_MustInFrame.Text = strMustInFrame;
         LB_AutoSaveWFOperator.Text = strAutoSaveWFOperator;
 
-        //Ö´ÐÐ¶¨Ê±Æ÷Ò³
+        //Ö´ï¿½Ð¶ï¿½Ê±ï¿½ï¿½Ò³
         ShareClass.ExecuteTakeTopTimer();
 
-        //ÍÆËÍÓÃ»§µÄÏµÍ³ÏûÏ¢
+        //ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ÏµÍ³ï¿½ï¿½Ï¢
         SetUserSystemMsg();
     }
 
@@ -237,7 +239,7 @@ public partial class TakeTopMainTop : System.Web.UI.Page
             strUserName = LB_CurrentUserName.Text.Trim();
             strIsMobileDevice = LB_IsMobileDevice.Text.Trim();
 
-            //Ó¦ÓÃ»á»°¶ÔÏó£¬ÒÔ±£³ÖÔÚÏßÁ¬½Ó
+            //Ó¦ï¿½Ã»á»°ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             Session["UserCode"] = LB_CurrentUserCode.Text.Trim();
             Session["UserName"] = LB_CurrentUserName.Text.Trim();
             Session["UserType"] = LB_CurrentUserType.Text.Trim();
@@ -251,7 +253,7 @@ public partial class TakeTopMainTop : System.Web.UI.Page
 
         
 
-            //¸üÐÂÓÃ»§ÔÚÏßÊ±¼äºÍÈ¡µÃ×îÐÂÓÃ»§Êý
+            //ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½
             intIntervalTime = int.Parse(System.Configuration.ConfigurationManager.AppSettings["TimerInterval"]);
             SetLastestUseTime(intIntervalTime);
 
@@ -263,21 +265,21 @@ public partial class TakeTopMainTop : System.Web.UI.Page
             HL_ActiveUserCount.Text = intActiveUserNumber.ToString();
             HL_ActiveUserCount.NavigateUrl = "TTTakeTopIM.aspx";
 
-            //È¡µÃÏµÍ³µÇÂ¼´ÎÊý
+            //È¡ï¿½ï¿½ÏµÍ³ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½
             lbl_LogonNumber.Text = GetLogonNumber().ToString();
 
-            ////¼´Ê±Í¨Ô¤¾¯
+            ////ï¿½ï¿½Ê±Í¨Ô¤ï¿½ï¿½
             //OpenIMMessage();
 
             try
             {
-                //µ¯³ö×éÖ¯¼¶ÐÅÏ¢
+                //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¯ï¿½ï¿½ï¿½ï¿½Ï¢
                 PushDeartmentMsg(strUserCode);
 
-                //µ¯³öÐÅÏ¢¿ò
+                //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½
                 OpenMessageWindow(strUserCode);
 
-                //¼´Ê±Í¨Ô¤¾¯
+                //ï¿½ï¿½Ê±Í¨Ô¤ï¿½ï¿½
                 OpenIMMessage();
             }
             catch
@@ -307,19 +309,19 @@ public partial class TakeTopMainTop : System.Web.UI.Page
 
         strVerType = LB_VerType.Text.Trim();
 
-        #region ×·¼ÓÐÅÏ¢ÌáÊ¾¿òÐÅÏ¢  By LiuJianping 2014-02-12
-        if (lbl_FunInfoDialBoxNum.Text.Trim() != "ÎÞ×·¼ÓµÄÐÅÏ¢ÌáÊ¾¿ò")
+        #region ×·ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½Ï¢  By LiuJianping 2014-02-12
+        if (lbl_FunInfoDialBoxNum.Text.Trim() != "ï¿½ï¿½×·ï¿½Óµï¿½ï¿½ï¿½Ï¢ï¿½ï¿½Ê¾ï¿½ï¿½")
         {
             string[] tempOldNumList = lbl_FunInfoDialBoxNum.Text.Trim().Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-            StringBuilder NewNumList = new StringBuilder();//ÊýÁ¿
-            StringBuilder NewInforNameList = new StringBuilder();//ÌáÊ¾Ô¤¾¯Ãû³Æ
-            StringBuilder NewIsSendMsgList = new StringBuilder();//ÊÇ·ñ¶ÌÐÅÍ¨Öª
-            StringBuilder NewIsSendEmailList = new StringBuilder();//ÊÇ·ñÓÊ¼þÍ¨Öª
-            StringBuilder NewPageNameList = new StringBuilder();//¹ØÁªÒ³Ãæ
+            StringBuilder NewNumList = new StringBuilder();//ï¿½ï¿½ï¿½ï¿½
+            StringBuilder NewInforNameList = new StringBuilder();//ï¿½ï¿½Ê¾Ô¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+            StringBuilder NewIsSendMsgList = new StringBuilder();//ï¿½Ç·ï¿½ï¿½ï¿½ï¿½Í¨Öª
+            StringBuilder NewIsSendEmailList = new StringBuilder();//ï¿½Ç·ï¿½ï¿½Ê¼ï¿½Í¨Öª
+            StringBuilder NewPageNameList = new StringBuilder();//ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½
 
             FunInforDialBoxBLL funInforDialBoxBLL = new FunInforDialBoxBLL();
             string strHQL_Fun = lbl_sql.Text.Trim();
-            IList lst_Fun = funInforDialBoxBLL.GetAllFunInforDialBoxs(strHQL_Fun);
+            IList lst_Fun = _cachedFunList ?? funInforDialBoxBLL.GetAllFunInforDialBoxs(strHQL_Fun);
             if (lst_Fun.Count > 0 && lst_Fun != null)
             {
                 for (int k = 0; k < lst_Fun.Count; k++)
@@ -340,7 +342,7 @@ public partial class TakeTopMainTop : System.Web.UI.Page
                         NewIsSendEmailList.AppendFormat("{0},", funInforDialBox.IsSendEmail.ToString().Trim());
                         NewPageNameList.AppendFormat("{0},", funInforDialBox.LinkAddress.ToString().Trim());
 
-                        //Ç¿ÖÆÍ¨Öª BY JackZhong 20140917
+                        //Ç¿ï¿½ï¿½Í¨Öª BY JackZhong 20140917
                         strIsForceInfor = funInforDialBox.IsForceInfor.Trim();
                         if (strIsForceInfor == "YES")
                         {
@@ -354,7 +356,7 @@ public partial class TakeTopMainTop : System.Web.UI.Page
                                 }
 
                                 strMessageType = random.Next(1, 100).ToString();
-                                strMessage = "Ç¿ÖÆÍ¨Öª:" + funInforDialBox.InforName.Trim() + ": " + ds.Tables[0].Rows.Count.ToString();
+                                strMessage = "Ç¿ï¿½ï¿½Í¨Öª:" + funInforDialBox.InforName.Trim() + ": " + ds.Tables[0].Rows.Count.ToString();
 
                                 strURL = funInforDialBox.LinkAddress.Trim() + "&URLType=POP";
                                 strJavaScriptFuntion = "opAdvert('" + strMessageType + "'," + "'TTDisplayPOPMessage.aspx?URL=" + strURL + "&Msg=" + strMessage + "');";
@@ -392,20 +394,20 @@ public partial class TakeTopMainTop : System.Web.UI.Page
 
                         if (int.Parse(tempNewNumList[m]) > int.Parse(tempOldNumList[m]))
                         {
-                            strMessage += tempNewInforNameList[m] + ":" + (int.Parse(tempNewNumList[m]) - int.Parse(tempOldNumList[m])).ToString() + " ÌõÒª´¦Àí£¡";
+                            strMessage += tempNewInforNameList[m] + ":" + (int.Parse(tempNewNumList[m]) - int.Parse(tempOldNumList[m])).ToString() + " ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½";
 
                             strMessageType = tempNewInforNameList[m] + random.Next(1, 100).ToString();
 
                             if (tempNewIsSendMsgList[m].ToString().Trim() == "YES")
                             {
                                 Msg msg = new Msg();
-                                msg.SendMSM("Message", strUserCode, tempNewInforNameList[m] + ":" + (int.Parse(tempNewNumList[m]) - int.Parse(tempOldNumList[m])).ToString() + " ÌõÒª´¦Àí£¡", strUserCode);
+                                msg.SendMSM("Message", strUserCode, tempNewInforNameList[m] + ":" + (int.Parse(tempNewNumList[m]) - int.Parse(tempOldNumList[m])).ToString() + " ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", strUserCode);
                             }
 
                             if (tempNewIsSendEmailList[m].ToString().Trim() == "YES")
                             {
                                 Msg msg = new Msg();
-                                msg.SendMail(strUserCode, tempNewInforNameList[m], tempNewInforNameList[m] + ":" + (int.Parse(tempNewNumList[m]) - int.Parse(tempOldNumList[m])).ToString() + " ÌõÒª´¦Àí£¡", strUserCode);
+                                msg.SendMail(strUserCode, tempNewInforNameList[m], tempNewInforNameList[m] + ":" + (int.Parse(tempNewNumList[m]) - int.Parse(tempOldNumList[m])).ToString() + " ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", strUserCode);
                             }
 
                             ////Updated 20160123
@@ -439,7 +441,7 @@ public partial class TakeTopMainTop : System.Web.UI.Page
 
     protected int GetUNHandledWorkCount(string strUserCode, string strlangCode)
     {
-        #region ×·¼ÓÐÅÏ¢ÌáÊ¾¿òÐÅÏ¢  By LiuJianping 2014-02-12
+        #region ×·ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½Ï¢  By LiuJianping 2014-02-12
 
         int i = 0;
 
@@ -456,12 +458,12 @@ public partial class TakeTopMainTop : System.Web.UI.Page
 
         lbl_sql.Text = strHQL_Fun;
 
-        IList lst_Fun = funInforDialBoxBLL.GetAllFunInforDialBoxs(strHQL_Fun);
-        if (lst_Fun.Count > 0 && lst_Fun != null)
+        _cachedFunList = funInforDialBoxBLL.GetAllFunInforDialBoxs(strHQL_Fun);
+        if (_cachedFunList.Count > 0 && _cachedFunList != null)
         {
-            for (int k = 0; k < lst_Fun.Count; k++)
+            for (int k = 0; k < _cachedFunList.Count; k++)
             {
-                FunInforDialBox funInforDialBox = (FunInforDialBox)lst_Fun[k];
+                FunInforDialBox funInforDialBox = (FunInforDialBox)_cachedFunList[k];
 
                 try
                 {
@@ -482,9 +484,10 @@ public partial class TakeTopMainTop : System.Web.UI.Page
 
             if (!string.IsNullOrEmpty(OldNumList.ToString().Trim()))
             {
-                lbl_FunInfoDialBoxNum.Text = OldNumList.ToString().Substring(0, OldNumList.ToString().Length - 1);
+                _cachedFunCounts = OldNumList.ToString().Substring(0, OldNumList.ToString().Length - 1);
+                lbl_FunInfoDialBoxNum.Text = _cachedFunCounts;
 
-                string[] tempOldNumList = lbl_FunInfoDialBoxNum.Text.Trim().Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                string[] tempOldNumList = _cachedFunCounts.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
 
                 for (int L = 0; L < tempOldNumList.Length; L++)
                 {
@@ -703,7 +706,7 @@ public partial class TakeTopMainTop : System.Web.UI.Page
 
                     try
                     {
-                        //·¢¹ØÏûÏ¢¸øRTX
+                        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½RTX
                         Msg msg = new Msg();
                         msg.SendRTXMsg(strUserCode, strMsg);
                     }
@@ -739,7 +742,7 @@ public partial class TakeTopMainTop : System.Web.UI.Page
 
 
 
-    //È¡µÃÏµÍ³µÇÂ¼´ÎÊý
+    //È¡ï¿½ï¿½ÏµÍ³ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½
     protected int GetLogonNumber()
     {
         string strHQL;

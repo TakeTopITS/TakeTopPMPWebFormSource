@@ -49,18 +49,15 @@ namespace ProjectMgt.DAL
 
                 transaction.Commit();
 
-
-                //---±£´æÓÃ»§²Ù×÷ÈÕÖ¾µ½ÈÕÖ¾±í----
                 InsertUserOperateLog("Add Record " + entity.ToString());
-
-
-
             }
             catch (Exception ex)
             {
                 transaction.Rollback();
 
-                throw ex;
+                WriteLogFile("AddEntity Error: " + ex.Message + "\n" + ex.StackTrace);
+
+                throw;
             }
             finally
             {
@@ -78,17 +75,17 @@ namespace ProjectMgt.DAL
             {
                 session.Update(entity, key);
 
-
                 transaction.Commit();
 
-                //---±£´æÓÃ»§²Ù×÷ÈÕÖ¾µ½ÈÕÖ¾±í----
                 InsertUserOperateLog("Update Record " + entity.ToString() + "," + " The Key is " + key.ToString());
             }
             catch (Exception ex)
             {
                 transaction.Rollback();
 
-                throw ex;
+                WriteLogFile("UpdateEntity Error: " + ex.Message + "\n" + ex.StackTrace);
+
+                throw;
             }
             finally
             {
@@ -108,14 +105,15 @@ namespace ProjectMgt.DAL
 
                 transaction.Commit();
 
-                //---±£´æÓÃ»§²Ù×÷ÈÕÖ¾µ½ÈÕÖ¾±í----
                 InsertUserOperateLog("Delete Record " + entity.ToString());
             }
             catch (Exception ex)
             {
                 transaction.Rollback();
 
-                throw ex;
+                WriteLogFile("DeleteEntity Error: " + ex.Message + "\n" + ex.StackTrace);
+
+                throw;
             }
             finally
             {
@@ -131,14 +129,14 @@ namespace ProjectMgt.DAL
 
             try
             {
-                // ¶à²ã·À»¤
+                // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 string safeHQL = ApplyHQLSecurity(strHQL);
 
                 lst = session.CreateQuery(safeHQL).List();
             }
             catch (NHibernate.Hql.Ast.ANTLR.QuerySyntaxException ex)
             {
-                // Èç¹û×ªÒåµ¼ÖÂÓï·¨´íÎó£¬¼ÇÂ¼²¢Å×³ö°²È«Òì³£
+                // ï¿½ï¿½ï¿½×ªï¿½åµ¼ï¿½ï¿½ï¿½ï·¨ï¿½ï¿½ï¿½ó£¬¼ï¿½Â¼ï¿½ï¿½ï¿½×³ï¿½ï¿½ï¿½È«ï¿½ì³£
                 WriteLogFile("Error page: " + "\n" + ex.Message.ToString() + "\n" + ex.StackTrace + ",\n HQL syntax security validation failed" + ex.Message.ToString() + ",Sql: \n" + strHQL);
                 throw new SecurityException("HQL syntax security validation failed", ex);
 
@@ -152,32 +150,32 @@ namespace ProjectMgt.DAL
             return lst;
         }
 
-        // ×ÛºÏ°²È«´¦Àí
+        // ï¿½ÛºÏ°ï¿½È«ï¿½ï¿½ï¿½ï¿½
         private string ApplyHQLSecurity(string hql)
         {
             if (string.IsNullOrEmpty(hql))
                 return hql;
 
-            // 1. »ù´¡ÑéÖ¤
-            if (hql.Length > 10000) // ·ÀÖ¹³¬³¤²éÑ¯
+            // 1. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤
+            if (hql.Length > 10000) // ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯
             {
                 WriteLogFile("ErrorMsg =" + "HQL Statement Is Too Long,Hql:" + hql);
                 throw new SecurityException("HQL Statement Is Too Long");
             }
 
-            // 2. Î£ÏÕ²Ù×÷¼ì²â
+            // 2. Î£ï¿½Õ²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             ValidateDangerousOperations(hql);
 
-            // 3. ×Ö·û´®×ªÒå
+            // 3. ï¿½Ö·ï¿½ï¿½ï¿½×ªï¿½ï¿½
             string safeHql = EscapeStringLiterals(hql);
 
-            // 4. ×¢ÊÍÇåÀí
+            // 4. ×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             safeHql = RemoveSqlComments(safeHql);
 
             return safeHql;
         }
 
-        // ×ªÒå×Ö·û´®³£Á¿
+        // ×ªï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         private string EscapeStringLiterals(string hql)
         {
             return System.Text.RegularExpressions.Regex.Replace(hql,
@@ -185,18 +183,18 @@ namespace ProjectMgt.DAL
                 match =>
                 {
                     string innerValue = match.Groups[1].Value;
-                    // ¶à²ã×ªÒå·À»¤
+                    // ï¿½ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½ï¿½
                     string escaped = innerValue
-                        .Replace("'", "''")  // ×ªÒåµ¥ÒýºÅ
-                        .Replace(";", "")    // ÒÆ³ý·ÖºÅ
-                        .Replace("--", "")   // ÒÆ³ýSQL×¢ÊÍ
-                        .Replace("/*", "")   // ÒÆ³ý¶àÐÐ×¢ÊÍ¿ªÊ¼
-                        .Replace("*/", "");  // ÒÆ³ý¶àÐÐ×¢ÊÍ½áÊø
+                        .Replace("'", "''")  // ×ªï¿½åµ¥ï¿½ï¿½ï¿½ï¿½
+                        .Replace(";", "")    // ï¿½Æ³ï¿½ï¿½Öºï¿½
+                        .Replace("--", "")   // ï¿½Æ³ï¿½SQL×¢ï¿½ï¿½
+                        .Replace("/*", "")   // ï¿½Æ³ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½Í¿ï¿½Ê¼
+                        .Replace("*/", "");  // ï¿½Æ³ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½Í½ï¿½ï¿½ï¿½
                     return $"'{escaped}'";
                 });
         }
 
-        // ÒÆ³ýSQL×¢ÊÍ
+        // ï¿½Æ³ï¿½SQL×¢ï¿½ï¿½
         private string RemoveSqlComments(string hql)
         {
             string noComments = System.Text.RegularExpressions.Regex.Replace(hql, @"--.*$", "",
@@ -206,7 +204,7 @@ namespace ProjectMgt.DAL
             return noComments;
         }
 
-        // ÑéÖ¤Î£ÏÕ²Ù×÷
+        // ï¿½ï¿½Ö¤Î£ï¿½Õ²ï¿½ï¿½ï¿½
         private void ValidateDangerousOperations(string hql)
         {
             string upperHql = hql.ToUpper();
@@ -228,9 +226,9 @@ namespace ProjectMgt.DAL
             }
         }
 
-        #region ---×Ô¼Ó´úÂë-----------------------------------------------------------
+        #region ---ï¿½Ô¼Ó´ï¿½ï¿½ï¿½-----------------------------------------------------------
 
-        //±£´æÓÃ»§²Ù×÷ÈÕÖ¾µ½ÈÕÖ¾±í
+        //ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ï¿½
         public void InsertUserOperateLog(string strHQL)
         {
             string strSQL, strHQL1, strHQL2;
@@ -259,7 +257,7 @@ namespace ProjectMgt.DAL
                                 {
                                     strHQL = strHQL.Replace("'", "''");
 
-                                    new System.Threading.Thread(delegate ()
+                                    System.Threading.Tasks.Task.Run(() =>
                                     {
                                         try
                                         {
@@ -268,38 +266,40 @@ namespace ProjectMgt.DAL
 
                                             RunSqlCommand(strSQL);
                                         }
-                                        catch
+                                        catch (Exception ex)
                                         {
+                                            WriteLogFile("InsertUserOperateLog Task Error: " + ex.Message);
                                         }
-                                    }).Start();
+                                    });
 
                                 }
                             }
                         }
                     }
-                    catch
+                    catch (Exception ex)
                     {
+                        WriteLogFile("InsertUserOperateLog Inner Error: " + ex.Message);
                     }
                 }
             }
-            catch
+            catch (Exception ex)
             {
-
+                WriteLogFile("InsertUserOperateLog Outer Error: " + ex.Message);
             }
         }
 
-        //ÔËÐÐSQLÓï¾ä
+        //ï¿½ï¿½ï¿½ï¿½SQLï¿½ï¿½ï¿½
         public static void RunSqlCommand(string strCmdText)
         {
             using (NpgsqlConnection myConnection = new NpgsqlConnection(
                    ConfigurationManager.ConnectionStrings["SQLCONNECTIONSTRING"].ConnectionString))
             {
 
-                ///´´½¨Command
+                ///ï¿½ï¿½ï¿½ï¿½Command
                 NpgsqlCommand myCommand = new NpgsqlCommand(strCmdText, myConnection);
                 myCommand.CommandTimeout = 600;
 
-                ///´ò¿ªÁ´½Ó
+                ///ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 myConnection.Open();
 
                 myCommand.ExecuteNonQuery();
@@ -313,13 +313,13 @@ namespace ProjectMgt.DAL
             }
         }
 
-        #endregion ---×Ô¼Ó´úÂë-----------------------------------------------------------
+        #endregion ---ï¿½Ô¼Ó´ï¿½ï¿½ï¿½-----------------------------------------------------------
 
 
         public static void WriteLogFile(string input)
         {
             /**/
-            ///Ö¸¶¨ÈÕÖ¾ÎÄ¼þµÄÄ¿Â¼
+            ///Ö¸ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½Ä¼ï¿½ï¿½ï¿½Ä¿Â¼
             ///
 
             //string strLogDirectory = HttpContext.Current.Server.MapPath(HttpContext.Current.Server.MapPath("Doc") + "\\Log");
@@ -330,7 +330,7 @@ namespace ProjectMgt.DAL
 
             fname = HttpContext.Current.Server.MapPath("Doc") + "\\Log\\LogFile.txt";
             /**/
-            ///¶¨ÒåÎÄ¼þÐÅÏ¢¶ÔÏó
+            ///ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½
 
             FileInfo finfo = new FileInfo(fname);
             if (!finfo.Exists)
@@ -346,15 +346,15 @@ namespace ProjectMgt.DAL
             try
             {
                 /**/
-                ///ÅÐ¶ÏÎÄ¼þÊÇ·ñ´æÔÚÒÔ¼°ÊÇ·ñ´óÓÚ2K
+                ///ï¿½Ð¶ï¿½ï¿½Ä¼ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½2K
                 if (finfo.Length > 1024 * 1024 * 10)
                 {
                     /**/
-                    ///ÎÄ¼þ³¬¹ý10MBÔòÖØÃüÃû
+                    ///ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½10MBï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                     File.Move(fname, HttpContext.Current.Server.MapPath("Doc") + "\\Log\\" + "BackupLogFile" + DateTime.Now.ToString("yyyyMMddHHMMssff") + ".txt");
 
                     /**/
-                    ///É¾³ý¸ÃÎÄ¼þ
+                    ///É¾ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½
                     //finfo.Delete();
                 }
             }
@@ -363,41 +363,41 @@ namespace ProjectMgt.DAL
             }
             //finfo.AppendText();
             /**/
-            ///´´½¨Ö»Ð´ÎÄ¼þÁ÷
+            ///ï¿½ï¿½ï¿½ï¿½Ö»Ð´ï¿½Ä¼ï¿½ï¿½ï¿½
 
             using (FileStream fs = finfo.OpenWrite())
             {
                 /**/
-                ///¸ù¾ÝÉÏÃæ´´½¨µÄÎÄ¼þÁ÷´´½¨Ð´Êý¾ÝÁ÷
+                ///ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½æ´´ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 StreamWriter w = new StreamWriter(fs);
 
                 /**/
-                ///ÉèÖÃÐ´Êý¾ÝÁ÷µÄÆðÊ¼Î»ÖÃÎªÎÄ¼þÁ÷µÄÄ©Î²
+                ///ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼Î»ï¿½ï¿½Îªï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½Ä©Î²
                 w.BaseStream.Seek(0, SeekOrigin.End);
 
                 /**/
-                ///Ð´Èë¡°Log Entry : ¡±
+                ///Ð´ï¿½ë¡°Log Entry : ï¿½ï¿½
                 w.Write("\n\rLog Entry : ");
 
                 /**/
-                ///Ð´Èëµ±Ç°ÏµÍ³Ê±¼ä²¢»»ÐÐ
+                ///Ð´ï¿½ëµ±Ç°ÏµÍ³Ê±ï¿½ä²¢ï¿½ï¿½ï¿½ï¿½
                 w.Write("{0} {1} \n\r", DateTime.Now.ToLongTimeString(),
                     DateTime.Now.ToLongDateString());
 
                 /**/
-                ///Ð´ÈëÈÕÖ¾ÄÚÈÝ²¢»»ÐÐ
+                ///Ð´ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½Ý²ï¿½ï¿½ï¿½ï¿½ï¿½
                 w.Write(input + "\n\r");
 
                 /**/
-                ///Ð´Èë------------------------------------¡°²¢»»ÐÐ
+                ///Ð´ï¿½ï¿½------------------------------------ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 w.Write("\n\r------------------------------------\n\r");
 
                 /**/
-                ///Çå¿Õ»º³åÇøÄÚÈÝ£¬²¢°Ñ»º³åÇøÄÚÈÝÐ´Èë»ù´¡Á÷
+                ///ï¿½ï¿½Õ»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½ï¿½ï¿½ï¿½Ñ»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 w.Flush();
 
                 /**/
-                ///¹Ø±ÕÐ´Êý¾ÝÁ÷
+                ///ï¿½Ø±ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 w.Close();
             }
         }

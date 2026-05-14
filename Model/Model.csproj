@@ -1193,7 +1193,6 @@
     <EmbeddedResource Include="ConstractGoodsDeliveryRecord.hbm.xml" />
     <EmbeddedResource Include="ConstractGoodsReceiptPlan.hbm.xml" />
     <EmbeddedResource Include="ConstractGoodsReciptRecord.hbm.xml" />
-    <EmbeddedResource Include="GoodsBorrowOrder.bhm.xml" />
     <EmbeddedResource Include="GoodsBorrowOrder.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>

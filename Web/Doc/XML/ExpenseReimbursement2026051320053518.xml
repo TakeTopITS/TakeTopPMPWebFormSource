@@ -1,0 +1,17 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <T_ExpenseClaim>
+    <detailecid>30</detailecid>
+    <ecid>30</ecid>
+    <expensename>项目153 晶盛工业控制自动化研发项目费用报销申请</expensename>
+    <purpose />
+    <amount>2461.54</amount>
+    <currencytype>瑞士法郎</currencytype>
+    <applicantcode>C7094               </applicantcode>
+    <applicantname>员工C7094             </applicantname>
+    <applytime>2026-05-13T20:28:22.529102+08:00</applytime>
+    <status>InProgress</status>
+    <relatedtype>Project</relatedtype>
+    <relatedid>153</relatedid>
+  </T_ExpenseClaim>
+</NewDataSet>

@@ -21,20 +21,24 @@ public partial class TakeTopLRExInnerMDI : System.Web.UI.Page
         try
         {
             strUserCode = Session["UserCode"].ToString();
-            strUserType = ShareClass.GetUserType(strUserCode);
+            strUserType = Session["UserType"] != null ? Session["UserType"].ToString() : ShareClass.GetUserType(strUserCode);
             if (strUserType == "OUTER")
             {
                 Response.Redirect("TTDisplayErrors.aspx");
                 return;
             }
 
-            // 读取左边栏展开状态
-            leftBarExtendStatus = ShareClass.GetLeftBarExtendStatus(strUserCode);
+            // 读取左边栏展开状态（优先从Session缓存读取）
+            leftBarExtendStatus = Session["LeftBarExtend"] != null ? Session["LeftBarExtend"].ToString() : null;
             if (string.IsNullOrEmpty(leftBarExtendStatus))
             {
-                leftBarExtendStatus = "NO";
+                leftBarExtendStatus = ShareClass.GetLeftBarExtendStatus(strUserCode);
+                if (string.IsNullOrEmpty(leftBarExtendStatus))
+                {
+                    leftBarExtendStatus = "NO";
+                }
+                Session["LeftBarExtend"] = leftBarExtendStatus;
             }
-            Session["LeftBarExtend"] = leftBarExtendStatus;
             
             // 根据状态设置左边栏宽度
             if (leftBarExtendStatus == "YES")

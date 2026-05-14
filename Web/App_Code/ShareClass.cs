@@ -74,6 +74,10 @@ public static class ShareClass
     public static string SystemDBer = "";
     public static DateTime systemStartupTime = DateTime.Now;
 
+    private static readonly Dictionary<string, DataSet> _chartDataSetCache = new Dictionary<string, DataSet>();
+    private static readonly object _chartCacheLock = new object();
+    private const int CHART_CACHE_MINUTES = 5;
+
     #region 用户登录机制
 
     //检查用户是否有使用模组的权限
@@ -915,25 +919,19 @@ public static class ShareClass
 
             try
             {
-                System.Threading.Thread.Sleep(5000);
-
                 string strUrl = ShareClass.GetCurrentSiteRootPath() + "TakeTopTimer.aspx";
 
                 System.Net.HttpWebRequest _HttpWebRequest = (System.Net.HttpWebRequest)System.Net.WebRequest.Create(strUrl);
-                System.Net.HttpWebResponse _HttpWebResponse = (System.Net.HttpWebResponse)_HttpWebRequest.GetResponse();
-                System.IO.Stream _Stream = _HttpWebResponse.GetResponseStream();//得到回写的字节流 
-
-                //执行 AnotherPage.aspx，并将其输出包含在当前页面中
-
-
-                HttpContext.Current.Server.Execute(strUrl);
+                _HttpWebRequest.Timeout = 30000;
+                using (System.Net.HttpWebResponse _HttpWebResponse = (System.Net.HttpWebResponse)_HttpWebRequest.GetResponse())
+                using (System.IO.Stream _Stream = _HttpWebResponse.GetResponseStream())
+                {
+                }
             }
             catch (Exception err)
             {
-                //LogClass.WriteLogFile(err.Message.ToString());
             }
 
-            //最后登录用户
             ShareClass.SystemLatestLoginUser = "";
         }
     }
@@ -17175,7 +17173,18 @@ public static class ShareClass
     //取得形成分析图的DataSet
     public static DataSet GetSytemChartDataSet(string strUserCode, string strFormType)
     {
-        string strHQL, strSql;
+        string cacheKey = strUserCode + "_" + strFormType;
+
+        lock (_chartCacheLock)
+        {
+            DataSet cached;
+            if (_chartDataSetCache.TryGetValue(cacheKey, out cached))
+            {
+                return cached;
+            }
+        }
+
+        string strHQL;
         string strLangCode = HttpContext.Current.Session["LangCode"].ToString();
         string strDepartString;
         if (HttpContext.Current.Session["DepartString"] == null)
@@ -17215,36 +17224,9 @@ public static class ShareClass
         }
         ds = ShareClass.GetDataSetFromSql(strHQL, "T_SystemAnalystChartManagement");
 
-        DataSet dsBackup = ds;
-
-        for (int i = 0; i < dsBackup.Tables[0].Rows.Count; i++)
+        lock (_chartCacheLock)
         {
-            strSql = dsBackup.Tables[0].Rows[i]["SqlCode"].ToString();
-            strSql = strSql.Replace("[TAKETOPUSERCODE]", strUserCode).Replace("[TAKETOPDEPARTSTRING]", strDepartString).Replace("[TAKETOPLANGCODE]", strLangCode);
-            if (strSql.Trim() != "")
-            {
-                DataSet dsSql = ShareClass.GetDataSetFromSql(strSql, "T_Sql");
-                if (dsSql.Tables[0].Rows.Count == 0)
-                {
-                    try
-                    {
-                        ds.Tables[0].Rows[i].Delete();
-                    }
-                    catch
-                    {
-                    }
-                }
-            }
-            else
-            {
-                try
-                {
-                    ds.Tables[0].Rows[i].Delete();
-                }
-                catch
-                {
-                }
-            }
+            _chartDataSetCache[cacheKey] = ds;
         }
 
         return ds;
