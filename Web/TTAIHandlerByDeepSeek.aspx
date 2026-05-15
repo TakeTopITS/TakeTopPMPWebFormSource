@@ -615,7 +615,7 @@
         }
 
         function endRequest(sender, args) {
-            // Hide waiting icon
+            // Hide waiting icon next to button
             var waitingImg = document.getElementById('IMG_Waiting');
             if (waitingImg) {
                 waitingImg.style.display = 'none';
