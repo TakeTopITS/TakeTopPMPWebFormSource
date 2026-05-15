@@ -1,0 +1,1987 @@
+using System;
+using System.Collections;
+using System.Data;
+using System.Drawing;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+using ProjectMgt.BLL;
+using ProjectMgt.Model;
+
+
+public partial class TTBaseDataInner : System.Web.UI.Page
+{
+    private string strLangCode;
+
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        //钟礼月作品（jack.erp@gmail.com)
+        //泰顶软件2006－2012
+
+        string strUserCode = Session["UserCode"].ToString();
+        LB_UserCode.Text = strUserCode;
+        strLangCode = ddlLangSwitcher.SelectedValue;
+
+        ProjectMemberBLL projectMemberBLL = new ProjectMemberBLL();
+        Label1.Text = ShareClass.GetPageTitle(this.GetType().BaseType.Name + ".aspx");
+        bool blVisible = TakeTopSecurity.TakeTopLicense.GetAuthobility(this.GetType().BaseType.Name + ".aspx", strUserCode);
+        if (blVisible == false)
+        {
+            Response.Redirect("TTDisplayErrors.aspx");
+            return;
+        }
+
+        ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "clickA", "aHandler();", true);
+        if (Page.IsPostBack == false)
+        {
+            strLangCode = Session["LangCode"].ToString();
+            LB_SelectedProjectType.Text = "";
+
+            LoadProjectType();
+            LoadProjectStatus("", strLangCode);
+
+            LoadWLStatus(strLangCode);
+            LoadWLType(strLangCode);
+
+            LoadTestStatus(strLangCode);
+            LoadPlanStatus(strLangCode);
+            LoadTaskStatus(strLangCode);
+            LoadReqStatus(strLangCode);
+
+            LoadActorGroup(strLangCode);
+
+            LoadOtherStatus(strLangCode);
+            LoadFunInforDialBoxList(strLangCode);
+
+            LoadRentProductType(strLangCode);
+            LoadRentProductVertype(strLangCode);
+            LoadTryProductResontype(strLangCode);
+
+            ShareClass.LoadLanguageForDropList(ddlLangSwitcher);
+            ddlLangSwitcher.SelectedValue = strLangCode;
+        }
+    }
+
+    protected void ddlLangSwitcher_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        strLangCode = ddlLangSwitcher.SelectedValue;
+
+        LoadWLType(strLangCode);
+        LoadProjectStatus("", strLangCode);
+        LoadWLStatus(strLangCode);
+
+        LoadTestStatus(strLangCode);
+        LoadPlanStatus(strLangCode);
+        LoadTaskStatus(strLangCode);
+        LoadReqStatus(strLangCode);
+        LoadActorGroup(strLangCode);
+        LoadOtherStatus(strLangCode);
+        LoadFunInforDialBoxList(strLangCode);
+
+        LoadRentProductType(strLangCode);
+        LoadRentProductVertype(strLangCode);
+        LoadTryProductResontype(strLangCode);
+    }
+
+    protected void BT_CopyForHomeLanguage_Click(object sender, EventArgs e)
+    {
+        string strHQL;
+
+        string strFromLangCode = System.Configuration.ConfigurationManager.AppSettings["DefaultLang"];
+
+        strLangCode = ddlLangSwitcher.SelectedValue.Trim();
+        try
+        {
+            strHQL = "Insert Into T_WLType(Type,SortNumber ,MakeType,LangCode,HomeName )";
+            strHQL += " SELECT Type,SortNumber ,MakeType ," + "'" + strLangCode + "'" + ",HomeName FROM T_WLType";
+            strHQL += " Where LangCode = '" + strFromLangCode + "' and ltrim(rtrim(Type)) || " + "'" + strLangCode + "'" + " Not in (Select ltrim(rtrim(Type)) || ltrim(rtrim(LangCode))  From T_WLType Where LangCode = " + "'" + strLangCode + "'" + ")";
+            ShareClass.RunSqlCommand(strHQL);
+
+            strHQL = "Insert Into T_ProjectStatus(Status,SortNumber ,ReviewControl ,ProjectType ,IdentityString ,MakeType,LangCode,HomeName )";
+            strHQL += " SELECT Status,SortNumber ,ReviewControl ,ProjectType ,IdentityString,MakeType ," + "'" + strLangCode + "'" + ",HomeName FROM T_ProjectStatus";
+            strHQL += " Where LangCode = '" + strFromLangCode + "' and ltrim(rtrim(Status)) || " + "'" + strLangCode + "'" + " || ltrim(rtrim(ProjectType)) Not in (Select ltrim(rtrim(Status)) || ltrim(rtrim(LangCode)) || ltrim(rtrim(ProjectType)) From T_ProjectStatus Where LangCode = " + "'" + strLangCode + "'" + ")";
+            ShareClass.RunSqlCommand(strHQL);
+
+            strHQL = "Insert Into T_ReqStatus(Status,SortNumber ,MakeType,LangCode,HomeName )";
+            strHQL += " SELECT Status,SortNumber ,MakeType ," + "'" + strLangCode + "'" + ",HomeName FROM T_ReqStatus";
+            strHQL += " Where LangCode = '" + strFromLangCode + "' and ltrim(rtrim(Status)) || " + "'" + strLangCode + "'" + " Not in (Select ltrim(rtrim(Status)) || ltrim(rtrim(LangCode))  From T_ReqStatus Where LangCode = " + "'" + strLangCode + "'" + ")";
+            ShareClass.RunSqlCommand(strHQL);
+
+            strHQL = "Insert Into T_PlanStatus(Status,SortNumber ,MakeType,LangCode,HomeName )";
+            strHQL += " SELECT Status,SortNumber ,MakeType ," + "'" + strLangCode + "'" + ",HomeName FROM T_PlanStatus";
+            strHQL += " Where LangCode = '" + strFromLangCode + "' and ltrim(rtrim(Status)) || " + "'" + strLangCode + "'" + " Not in (Select ltrim(rtrim(Status)) || ltrim(rtrim(LangCode))  From T_PlanStatus Where LangCode = " + "'" + strLangCode + "'" + ")";
+            ShareClass.RunSqlCommand(strHQL);
+
+            strHQL = "Insert Into T_TaskStatus(Status,SortNumber ,MakeType,LangCode,HomeName )";
+            strHQL += " SELECT Status,SortNumber ,MakeType ," + "'" + strLangCode + "'" + ",HomeName FROM T_TaskStatus";
+            strHQL += " Where LangCode = '" + strFromLangCode + "' and ltrim(rtrim(Status)) || " + "'" + strLangCode + "'" + " Not in (Select ltrim(rtrim(Status)) || ltrim(rtrim(LangCode))  From T_TaskStatus Where LangCode = " + "'" + strLangCode + "'" + ")";
+            ShareClass.RunSqlCommand(strHQL);
+
+            strHQL = "Insert Into T_TestStatus(Status,SortNumber ,MakeType,LangCode,HomeName )";
+            strHQL += " SELECT Status,SortNumber ,MakeType ," + "'" + strLangCode + "'" + ",HomeName FROM T_TestStatus";
+            strHQL += " Where LangCode = '" + strFromLangCode + "' and ltrim(rtrim(Status)) || " + "'" + strLangCode + "'" + " Not in (Select ltrim(rtrim(Status)) || ltrim(rtrim(LangCode))  From T_TestStatus Where LangCode = " + "'" + strLangCode + "'" + ")";
+            ShareClass.RunSqlCommand(strHQL);
+
+            strHQL = "Insert Into T_WLStatus(Status,SortNumber ,MakeType,LangCode,HomeName )";
+            strHQL += " SELECT Status,SortNumber ,MakeType ," + "'" + strLangCode + "'" + ",HomeName FROM T_WLStatus";
+            strHQL += " Where LangCode = '" + strFromLangCode + "' and ltrim(rtrim(Status)) || " + "'" + strLangCode + "'" + " Not in (Select ltrim(rtrim(Status)) || ltrim(rtrim(LangCode))  From T_WLStatus Where LangCode = " + "'" + strLangCode + "'" + ")";
+            ShareClass.RunSqlCommand(strHQL);
+
+            strHQL = "Insert Into T_ActorGroup(GroupName,MakeUserCode,Type,IdentifyString,BelongDepartCode,BelongDepartName,SortNumber ,MakeType,LangCode,HomeName )";
+            strHQL += " SELECT GroupName,MakeUserCode,Type,IdentifyString,BelongDepartCode,BelongDepartName,SortNumber ,MakeType ," + "'" + strLangCode + "'" + ",HomeName FROM T_ActorGroup";
+            strHQL += " Where LangCode = '" + strFromLangCode + "' and ltrim(rtrim(GroupName)) || " + "'" + strLangCode + "'" + " Not in (Select ltrim(rtrim(GroupName)) || ltrim(rtrim(LangCode))  From T_ActorGroup Where LangCode = " + "'" + strLangCode + "'" + ")";
+            ShareClass.RunSqlCommand(strHQL);
+
+            strHQL = "Insert Into T_OtherStatus(Status,SortNumber ,MakeType,LangCode,HomeName )";
+            strHQL += " SELECT Status,SortNumber ,MakeType ," + "'" + strLangCode + "'" + ",HomeName FROM T_OtherStatus";
+            strHQL += " Where LangCode = '" + strFromLangCode + "' and ltrim(rtrim(Status)) || " + "'" + strLangCode + "'" + " Not in (Select ltrim(rtrim(Status)) || ltrim(rtrim(LangCode))  From T_OtherStatus Where LangCode = " + "'" + strLangCode + "'" + ")";
+            ShareClass.RunSqlCommand(strHQL);
+
+            strHQL = "Insert Into T_FunInforDialBox(InforName,SQLCode ,Status,CreateTime,BoxType,LinkAddress ,IsSendMsg ,IsSendEmail,SortNumber,MobileLinkAddress ,IsForceInfor,UserType,HomeName,LangCode)";
+            strHQL += " Select InforName,SQLCode ,Status,CreateTime,BoxType,LinkAddress ,IsSendMsg ,IsSendEmail,SortNumber,MobileLinkAddress ,IsForceInfor,UserType,HomeName," + "'" + strLangCode + "'" + " From T_FunInforDialBox";
+            strHQL += " Where LangCode = '" + strFromLangCode + "' and ltrim(rtrim(InforName)) || " + "'" + strLangCode + "'" + " Not in (Select ltrim(rtrim(InforName)) || ltrim(rtrim(LangCode))  From T_FunInforDialBox Where LangCode = " + "'" + strLangCode + "'" + ")";
+            ShareClass.RunSqlCommand(strHQL);
+
+            strHQL = string.Format(@"INSERT INTO T_RentProductType(Type, ENType, HomeTypeName, DemoURL, SortNumber,LangCode) 
+                SELECT Type ,ENType ,HomeTypeName,DemoURL,SortNumber,'{1}' From T_RentProductType
+                   Where LangCode = '{0}'", strFromLangCode, strLangCode);
+            ShareClass.RunSqlCommand(strHQL);
+
+            strHQL = string.Format(@"INSERT INTO t_rentproductvertype(Type, HomeTypeName, SortNumber,LangCode) 
+                SELECT Type ,HomeTypeName,SortNumber,'{1}' From t_rentproductvertype
+                   Where LangCode = '{0}'", strFromLangCode, strLangCode);
+            ShareClass.RunSqlCommand(strHQL);
+
+            strHQL = string.Format(@"INSERT INTO T_TryProductResontype(Type, HomeTypeName,  SortNumber,LangCode) 
+                SELECT Type ,HomeTypeName,SortNumber,'{1}' From T_TryProductResontype
+                   Where LangCode = '{0}'", strFromLangCode, strLangCode);
+            ShareClass.RunSqlCommand(strHQL);
+
+            LoadWLType(strLangCode);
+            LoadProjectStatus("", strLangCode);
+            LoadWLStatus(strLangCode);
+
+            LoadTestStatus(strLangCode);
+            LoadPlanStatus(strLangCode);
+            LoadTaskStatus(strLangCode);
+            LoadReqStatus(strLangCode);
+            LoadActorGroup(strLangCode);
+            LoadOtherStatus(strLangCode);
+            LoadFunInforDialBoxList(strLangCode);
+
+            LoadRentProductType(strLangCode);
+            LoadRentProductVertype(strLangCode);
+            LoadTryProductResontype(strLangCode);
+
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZFZCG") + "')", true);
+        }
+        catch
+        {
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZFZSBJC") + "')", true);
+        }
+    }
+  
+
+    protected void DataGrid3_ItemCommand(object sender, DataGridCommandEventArgs e)
+    {
+        if (e.CommandName == "Edit")
+        {
+            string strID = ((Button)e.Item.FindControl("BT_StatusID")).Text;
+            string strStatus = e.Item.Cells[1].Text.Trim();
+            string strMakeType = e.Item.Cells[6].Text.Trim();
+            string strReviewConstrol = e.Item.Cells[5].Text.Trim();
+
+            for (int i = 0; i < DataGrid3.Items.Count; i++)
+            {
+                DataGrid3.Items[i].ForeColor = Color.Black;
+            }
+            e.Item.ForeColor = Color.Red;
+
+            LB_ID.Text = strID;
+            TB_ProjectStatus.Text = strStatus;
+            DL_ReviewControl.SelectedValue = strReviewConstrol;
+
+            if (strMakeType == "SYS")
+            {
+                BT_ProjectStatusDelete.Enabled = false;
+            }
+            else
+            {
+                BT_ProjectStatusDelete.Enabled = true;
+            }
+
+            // 打开编辑模态框
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "openModal", "showModal('modalProjectStatus', document.getElementById('" + ((Button)e.Item.FindControl("BT_StatusID")).ClientID + "'));", true);
+        }
+    }
+
+    protected void DataGrid20_ItemCommand(object sender, DataGridCommandEventArgs e)
+    {
+        if (e.CommandName == "Edit")
+        {
+            string strProjectType = ((Button)e.Item.FindControl("BT_ProjectType")).Text.Trim();
+
+            string strHQL = "From ProjectType as projectType Where projectType = '" + strProjectType + "'";
+            ProjectTypeBLL projectTypeBLL = new ProjectTypeBLL();
+            IList lst = projectTypeBLL.GetAllProjectTypes(strHQL);
+            ProjectType projectType = (ProjectType)lst[0];
+
+            string strKeyWord = projectType.KeyWord.Trim();
+            string strAllowPMChangeStatus = projectType.AllowPMChangeStatus.Trim();
+            string strAutoRunWFAfterMakeProject = projectType.AutoRunWFAfterMakeProject.Trim();
+            string strProgressByDetailImpact = projectType.ProgressByDetailImpact.Trim();
+            string strPlanProgressNeedPlanerConfirm = projectType.PlanProgressNeedPlanerConfirm.Trim();
+            string strSortNumber = projectType.SortNumber.ToString();
+
+            for (int i = 0; i < DataGrid20.Items.Count; i++)
+            {
+                DataGrid20.Items[i].ForeColor = Color.Black;
+            }
+            e.Item.ForeColor = Color.Red;
+
+            TB_ProjectType.Text = strProjectType;
+            TB_KeyWord.Text = strKeyWord;
+            DL_AllowPMChangeStatus.SelectedValue = strAllowPMChangeStatus;
+            DL_AutoRunWFAfterMakeProject.SelectedValue = strAutoRunWFAfterMakeProject;
+            DL_ImpactByDetail.SelectedValue = strProgressByDetailImpact;
+            DL_PlanProgressNeedPlanerConfirm.SelectedValue = strPlanProgressNeedPlanerConfirm;
+            DL_ProjectStartupNeedSupperConfirm.SelectedValue = projectType.ProjectStartupNeedSupperConfirm.Trim();
+            TB_ProjectTypeSort.Text = strSortNumber;
+
+            LB_SelectedProjectType.Text = strProjectType;
+
+            BT_ProjectTypeDelete.Enabled = true;
+
+            strLangCode = ddlLangSwitcher.SelectedValue.Trim();
+            LoadProjectStatus(strProjectType, strLangCode);
+
+            if (strProjectType == "Other Projects")
+            {
+                BT_ProjectTypeDelete.Enabled = false;
+            }
+
+            // 打开编辑模态框
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "openModal", "showModal('modalProjectType', document.getElementById('" + ((Button)e.Item.FindControl("BT_ProjectType")).ClientID + "'));", true);
+        }
+    }
+
+    protected void DataGrid5_ItemCommand(object sender, DataGridCommandEventArgs e)
+    {
+        if (e.CommandName == "Edit")
+        {
+            string strStatus = ((Button)e.Item.FindControl("BT_Status")).Text;
+            string strSortNumber = e.Item.Cells[3].Text.Trim();
+            string strMakeType = e.Item.Cells[4].Text.Trim();
+
+            TB_ReqStatus.Text = strStatus;
+            TB_ReqSortNumber.Text = strSortNumber;
+
+            if (strMakeType == "SYS")
+            {
+                BT_ReqStatusDelete.Enabled = false;
+            }
+            else
+            {
+                BT_ReqStatusDelete.Enabled = true;
+            }
+
+            // 打开编辑模态框
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "openModal", "showModal('modalReqStatus', document.getElementById('" + ((Button)e.Item.FindControl("BT_Status")).ClientID + "'));", true);
+        }
+    }
+
+    protected void DataGrid6_ItemCommand(object sender, DataGridCommandEventArgs e)
+    {
+        if (e.CommandName == "Edit")
+        {
+            string strStatus = ((Button)e.Item.FindControl("BT_Status")).Text;
+            string strSortNumber = e.Item.Cells[3].Text.Trim();
+            string strMakeType = e.Item.Cells[4].Text.Trim();
+
+            TB_TaskStatus.Text = strStatus;
+            TB_TaskSortNumber.Text = strSortNumber;
+
+            if (strMakeType == "SYS")
+            {
+                BT_TaskStatusDelete.Enabled = false;
+            }
+            else
+            {
+                BT_TaskStatusDelete.Enabled = true;
+            }
+
+            // 打开编辑模态框
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "openModal", "showModal('modalTaskStatus', document.getElementById('" + ((Button)e.Item.FindControl("BT_Status")).ClientID + "'));", true);
+        }
+    }
+
+    protected void DataGrid8_ItemCommand(object sender, DataGridCommandEventArgs e)
+    {
+        if (e.CommandName == "Edit")
+        {
+            string strOperation = ((Button)e.Item.FindControl("BT_Status")).Text;
+            string strSortNumber = e.Item.Cells[3].Text.Trim();
+            string strMakeType = e.Item.Cells[4].Text.Trim();
+
+            TB_PlanStatus.Text = strOperation;
+            TB_PlanStatusSort.Text = strSortNumber;
+
+            if (strMakeType == "SYS")
+            {
+                BT_PlanStatusDelete.Enabled = false;
+            }
+            else
+            {
+                BT_PlanStatusDelete.Enabled = true;
+            }
+
+            // 打开编辑模态框
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "openModal", "showModal('modalPlanStatus', document.getElementById('" + ((Button)e.Item.FindControl("BT_Status")).ClientID + "'));", true);
+        }
+    }
+
+    protected void DataGrid12_ItemCommand(object sender, DataGridCommandEventArgs e)
+    {
+        if (e.CommandName == "Edit")
+        {
+            string strStatus = ((Button)e.Item.FindControl("BT_Status")).Text;
+            string strSortNumber = e.Item.Cells[3].Text.Trim();
+            string strMakeType = e.Item.Cells[4].Text.Trim();
+
+            TB_WLStatus.Text = strStatus;
+            TB_WLStatusSort.Text = strSortNumber;
+
+            if (strMakeType == "SYS")
+            {
+                BT_WorkflowStatusDelete.Enabled = false;
+            }
+            else
+            {
+                BT_WorkflowStatusDelete.Enabled = true;
+            }
+
+            // 打开编辑模态框
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "openModal", "showModal('modalWLStatus', document.getElementById('" + ((Button)e.Item.FindControl("BT_Status")).ClientID + "'));", true);
+        }
+    }
+
+    protected void DataGrid13_ItemCommand(object sender, DataGridCommandEventArgs e)
+    {
+        if (e.CommandName == "Edit")
+        {
+            string strWLType = ((Button)e.Item.FindControl("BT_Type")).Text.Trim();
+            string strSortNumber = e.Item.Cells[3].Text.Trim();
+            string strMakeType = e.Item.Cells[4].Text.Trim();
+
+            TB_WLType.Text = strWLType;
+            TB_WLTypeSort.Text = strSortNumber;
+
+            // 打开编辑模态框
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "openModal", "showModal('modalWLType', document.getElementById('" + ((Button)e.Item.FindControl("BT_Type")).ClientID + "'));", true);
+        }
+    }
+
+    protected void DataGrid16_ItemCommand(object sender, DataGridCommandEventArgs e)
+    {
+        if (e.CommandName == "Edit")
+        {
+            string strStatus = ((Button)e.Item.FindControl("BT_Status")).Text;
+            string strSortNumber = e.Item.Cells[3].Text.Trim();
+            string strMakeType = e.Item.Cells[4].Text.Trim();
+
+            TB_TestStatus.Text = strStatus;
+            TB_TestStatusSort.Text = strSortNumber;
+
+            if (strMakeType == "SYS")
+            {
+                BT_TestStatusDelete.Enabled = false;
+            }
+            else
+            {
+                BT_TestStatusDelete.Enabled = true;
+            }
+
+            // 打开编辑模态框
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "openModal", "showModal('modalTestStatus', document.getElementById('" + ((Button)e.Item.FindControl("BT_Status")).ClientID + "'));", true);
+        }
+    }
+
+    protected void DataGrid1_ItemCommand(object sender, DataGridCommandEventArgs e)
+    {
+        if (e.CommandName == "Edit")
+        {
+            string strStatus = ((Button)e.Item.FindControl("BT_Status")).Text;
+            string strSortNumber = e.Item.Cells[3].Text.Trim();
+            string strMakeType = e.Item.Cells[4].Text.Trim();
+
+            TB_OtherStatus.Text = strStatus;
+            TB_OtherStatusSort.Text = strSortNumber;
+
+            if (strMakeType == "SYS")
+            {
+                BT_OtherStatusDelete.Enabled = false;
+            }
+            else
+            {
+                BT_OtherStatusDelete.Enabled = true;
+            }
+
+            // 打开编辑模态框
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "openModal", "showModal('modalOtherStatus', document.getElementById('" + ((Button)e.Item.FindControl("BT_Status")).ClientID + "'));", true);
+        }
+    }
+
+    protected void DataGrid21_ItemCommand(object sender, DataGridCommandEventArgs e)
+    {
+        if (e.CommandName == "Edit")
+        {
+            string strGroupName = ((Button)e.Item.FindControl("BT_GroupName")).Text;
+            string strHomeName = ((TextBox)(e.Item.FindControl("TB_HomeName"))).Text.Trim();
+            string strID = e.Item.Cells[5].Text.Trim();
+
+            // 打开编辑模态框
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "openModal", "showModal('modalActorGroup', document.getElementById('" + ((Button)e.Item.FindControl("BT_GroupName")).ClientID + "'));", true);
+        }
+    }
+
+    protected void DataGrid2_ItemCommand(object sender, DataGridCommandEventArgs e)
+    {
+        if (e.CommandName == "Edit")
+        {
+            string strOrderName = ((Button)e.Item.FindControl("BT_OrderName")).Text;
+            string strHomeName = ((TextBox)(e.Item.FindControl("TB_HomeName"))).Text.Trim();
+            string strID = e.Item.Cells[4].Text.Trim();
+
+            // 预警命令编辑逻辑
+        }
+    }
+
+    protected void DataGrid4_ItemCommand(object sender, DataGridCommandEventArgs e)
+    {
+        if (e.CommandName == "Edit")
+        {
+            string strID = ((Button)e.Item.FindControl("BT_ID")).Text;
+            string strType = e.Item.Cells[1].Text.Trim();
+            string strENType = e.Item.Cells[2].Text.Trim();
+            string strHomeType = e.Item.Cells[3].Text.Trim();
+            string strDemoURL = e.Item.Cells[4].Text.Trim();
+            string strSortNumber = e.Item.Cells[5].Text.Trim();
+
+            LB_RentProductTypeID.Text = strID;
+            TB_RentProductType.Text = strType;
+            TB_RentProductENType.Text = strENType;
+            TB_HomeRentProductType.Text = strHomeType;
+            TB_RentProductDemoURL.Text = strDemoURL;
+            TB_RentProductTypeSort.Text = strSortNumber;
+
+            // 打开编辑模态框
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "openModal", "showModal('modalRentProductType', document.getElementById('" + ((Button)e.Item.FindControl("BT_ID")).ClientID + "'));", true);
+        }
+    }
+
+    protected void DataGrid25_ItemCommand(object sender, DataGridCommandEventArgs e)
+    {
+        if (e.CommandName == "Edit")
+        {
+            string strID = ((Button)e.Item.FindControl("BT_ID")).Text;
+            string strType = e.Item.Cells[1].Text.Trim();
+            string strHomeType = e.Item.Cells[2].Text.Trim();
+            string strSortNumber = e.Item.Cells[3].Text.Trim();
+
+            LB_RentProductVersionTypeID.Text = strID;
+            TB_RentProductVersionType.Text = strType;
+            TB_HomeRentProductVersionType.Text = strHomeType;
+            TB_RentProductVersionSort.Text = strSortNumber;
+
+            // 打开编辑模态框
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "openModal", "showModal('modalRentProductVersionType', document.getElementById('" + ((Button)e.Item.FindControl("BT_ID")).ClientID + "'));", true);
+        }
+    }
+
+    protected void DataGrid31_ItemCommand(object sender, DataGridCommandEventArgs e)
+    {
+        if (e.CommandName == "Edit")
+        {
+            string strID = ((Button)e.Item.FindControl("BT_ID")).Text;
+            string strType = e.Item.Cells[1].Text.Trim();
+            string strHomeType = e.Item.Cells[2].Text.Trim();
+            string strSortNumber = e.Item.Cells[3].Text.Trim();
+
+            LB_TryProductResonTypeID.Text = strID;
+            TB_TryProductResonType.Text = strType;
+            TB_HomeTryProductResonType.Text = strHomeType;
+            TB_TryProductResonSort.Text = strSortNumber;
+
+            // 打开编辑模态框
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "openModal", "showModal('modalTryProductResonType', document.getElementById('" + ((Button)e.Item.FindControl("BT_ID")).ClientID + "'));", true);
+        }
+    }
+
+    protected void BT_ProjectStatusNew_Click(object sender, EventArgs e)
+    {
+        string strStatus = TB_ProjectStatus.Text.Trim();
+
+        string strReviewControl = DL_ReviewControl.SelectedValue.Trim();
+        string strProjectType = LB_SelectedProjectType.Text.Trim();
+        strLangCode = ddlLangSwitcher.SelectedValue.Trim();
+
+        ProjectStatusBLL projectStatusBLL = new ProjectStatusBLL();
+        ProjectStatus projectStatus = new ProjectStatus();
+
+        try
+        {
+            string strHQL = "From ProjectStatus as projectStatus Where projectStatus.Status = " + "'" + strStatus + "' and projectStatus.LangCode = " + "'" + strLangCode + "'" + " and projectStatus.ProjectType = " + "'" + strProjectType + "'";
+            IList lst = projectStatusBLL.GetAllProjectStatuss(strHQL);
+            if (lst.Count == 0)
+            {
+                projectStatus.Status = strStatus;
+                projectStatus.LangCode = strLangCode;
+                projectStatus.SortNumber = 1;
+                projectStatus.ProjectType = strProjectType;
+                projectStatus.ReviewControl = strReviewControl;
+                projectStatus.IdentityString = DateTime.Now.ToString("yyyyMMddHHMMssff");
+                projectStatus.LangCode = strLangCode;
+                projectStatus.HomeName = strStatus;
+                projectStatus.MakeType = "DIY";
+
+                projectStatusBLL.AddProjectStatus(projectStatus);
+            }
+        }
+        catch
+        {
+            try
+            {
+                projectStatus.Status = strStatus;
+                projectStatus.LangCode = strLangCode;
+                projectStatus.SortNumber = 1;
+                projectStatus.ProjectType = strProjectType;
+                projectStatus.ReviewControl = strReviewControl;
+                projectStatus.IdentityString = DateTime.Now.ToString("yyyyMMddHHMMssff");
+                projectStatus.LangCode = strLangCode;
+                projectStatus.HomeName = strStatus;
+                projectStatus.MakeType = "DIY";
+
+                projectStatusBLL.UpdateProjectStatus(projectStatus, int.Parse(LB_ID.Text));
+            }
+            catch
+            {
+
+            }
+        }
+
+        LoadProjectStatus(strProjectType, strLangCode);
+        ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "closeModal", "hideModal('modalProjectStatus');", true);
+    }
+
+    protected void BT_ProjectStatusDelete_Click(object sender, EventArgs e)
+    {
+        string strHQL;
+
+        string strID = LB_ID.Text.Trim();
+        string strStatus = TB_ProjectStatus.Text.Trim();
+        string strProjectType = LB_SelectedProjectType.Text.Trim();
+
+        strHQL = "Delete From T_ProjectStatus Where ID =" + strID;
+
+        try
+        {
+            ShareClass.RunSqlCommand(strHQL);
+
+            LoadProjectStatus(strProjectType, strLangCode);
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "closeModal", "hideModal('modalProjectStatus');", true);
+        }
+        catch
+        {
+        }
+    }
+
+    protected void BT_ProjectStatusSave_Click(object sender, EventArgs e)
+    {
+        string strHQL;
+        string strID, strHomeName, strSortNumber;
+
+        int j = 0;
+
+        try
+        {
+            for (j = 0; j < DataGrid3.Items.Count; j++)
+            {
+                strID = ((Button)DataGrid3.Items[j].FindControl("BT_StatusID")).Text;
+
+                strHomeName = ((TextBox)(DataGrid3.Items[j].FindControl("TB_HomeName"))).Text.Trim();
+
+                strHQL = "Update T_ProjectStatus Set HomeName = " + "'" + strHomeName + "'" + "  Where ID = " + strID;
+                ShareClass.RunSqlCommand(strHQL);
+
+                strSortNumber = ((TextBox)(DataGrid3.Items[j].FindControl("TB_SortNumber"))).Text.Trim();
+
+                strHQL = "Update T_ProjectStatus Set SortNumber = " + strSortNumber + " Where ID = " + strID;
+                ShareClass.RunSqlCommand(strHQL);
+            }
+
+            string strProjectType = LB_SelectedProjectType.Text.Trim();
+            LoadProjectStatus(strProjectType, strLangCode);
+
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZBCCG") + "')", true);
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "closeModal", "hideModal('modalProjectStatus');", true);
+        }
+        catch
+        {
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZBCSBJC") + "')", true);
+        }
+    }
+
+    protected void DL_ReviewControl_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        string strStatusID, strControl;
+        string strHQL;
+
+        string strProjectType = LB_SelectedProjectType.Text.Trim();
+
+        strStatusID = LB_ID.Text.Trim();
+        strControl = DL_ReviewControl.SelectedValue.Trim();
+
+        strHQL = "Update T_ProjectStatus Set ReviewControl = " + "'" + strControl + "'" + " Where ID = " + strStatusID;
+
+        try
+        {
+            ShareClass.RunSqlCommand(strHQL);
+            LoadProjectStatus(strProjectType, strLangCode);
+
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZGGCG") + "')", true);
+        }
+        catch
+        {
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZGGSBJC") + "')", true);
+
+            if (strControl == "YES")
+            {
+                DL_ReviewControl.SelectedValue = "NO";
+            }
+            else
+            {
+                DL_ReviewControl.SelectedValue = "YES";
+            }
+        }
+    }
+
+    protected void BT_ProejctTypeNew_Click(object sender, EventArgs e)
+    {
+        string strHQL;
+        string strType, strKeyWord, strAllowPMChangeStatus, strAutoRunWFAfterMakeProject, strProgressByDetailImpact, strPlanProgressNeedPlanerConfirm, strSortNumber;
+        string strProjectStartupNeedSupperConfirm;
+
+        strType = TB_ProjectType.Text.Trim();
+        strKeyWord = TB_KeyWord.Text.Trim();
+        strAllowPMChangeStatus = DL_AllowPMChangeStatus.SelectedValue.Trim();
+        strAutoRunWFAfterMakeProject = DL_AutoRunWFAfterMakeProject.SelectedValue.Trim();
+        strProgressByDetailImpact = DL_ImpactByDetail.SelectedValue.Trim();
+        strPlanProgressNeedPlanerConfirm = DL_PlanProgressNeedPlanerConfirm.SelectedValue.Trim();
+
+        strProjectStartupNeedSupperConfirm = DL_ProjectStartupNeedSupperConfirm.SelectedValue.Trim();
+
+        strSortNumber = TB_ProjectTypeSort.Text.Trim();
+
+        ProjectTypeBLL projectTypeBLL = new ProjectTypeBLL();
+        ProjectType projectType = new ProjectType();
+
+        projectType.Type = strType;
+        projectType.KeyWord = strKeyWord;
+        projectType.AllowPMChangeStatus = strAllowPMChangeStatus;
+        projectType.AutoRunWFAfterMakeProject = strAutoRunWFAfterMakeProject;
+        projectType.ProgressByDetailImpact = strProgressByDetailImpact;
+        projectType.PlanProgressNeedPlanerConfirm = strPlanProgressNeedPlanerConfirm;
+        projectType.ProjectStartupNeedSupperConfirm = strProjectStartupNeedSupperConfirm;
+
+        try
+        {
+            projectType.SortNumber = 1;
+            projectType.SortNumber = int.Parse(strSortNumber);
+        }
+        catch
+        {
+
+        }
+
+        try
+        {
+            projectTypeBLL.AddProjectType(projectType);
+            LoadProjectType();
+
+            strHQL = "insert into T_ProjectStatus(Status,SortNumber,ReviewControl,IdentityString,ProjectType,HomeName,LangCode,MakeType)";
+            strHQL += " select Status,SortNumber,ReviewControl,IdentityString," + "'" + strType + "',HomeName,LangCode,MakeType";
+            strHQL += " from T_ProjectStatus where ProjectType = 'Other Projects'";
+            ShareClass.RunSqlCommand(strHQL);
+
+            BT_ProjectTypeDelete.Enabled = true;
+        }
+        catch
+        {
+            Save_ProjectType();
+        }
+
+        LoadProjectStatus(strType, strLangCode);
+        ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "closeModal", "hideModal('modalProjectType');", true);
+    }
+
+    protected void Save_ProjectType()
+    {
+        string strHQL;
+
+        string strType, strSelectedType, strKeyWord, strAllowPMChangeStatus, strAutoRunWFAfterMakeProject, strProgressByDetailImpact, strPlanProgressNeedPlanerConfirm, strSortNumber;
+        string strProjectStartupNeedSupperConfirm;
+
+        strSelectedType = LB_SelectedProjectType.Text.Trim();
+        strType = TB_ProjectType.Text.Trim();
+        strKeyWord = TB_KeyWord.Text.Trim();
+        strAllowPMChangeStatus = DL_AllowPMChangeStatus.SelectedValue.Trim();
+        strAutoRunWFAfterMakeProject = DL_AutoRunWFAfterMakeProject.SelectedValue.Trim();
+        strProgressByDetailImpact = DL_ImpactByDetail.SelectedValue.Trim();
+        strPlanProgressNeedPlanerConfirm = DL_PlanProgressNeedPlanerConfirm.SelectedValue.Trim();
+        strProjectStartupNeedSupperConfirm = DL_ProjectStartupNeedSupperConfirm.SelectedValue.Trim();
+        strSortNumber = TB_ProjectTypeSort.Text.Trim();
+
+        strHQL = "From ProjectType as projectType Where projectType = " + "'" + strSelectedType + "'";
+        ProjectTypeBLL projectTypeBLL = new ProjectTypeBLL();
+        IList lst = projectTypeBLL.GetAllProjectTypes(strHQL);
+        ProjectType projectType = (ProjectType)lst[0];
+
+        if (projectType.Type.Trim() != "Other Projects")
+        {
+            projectType.Type = strType;
+        }
+        projectType.KeyWord = strKeyWord;
+        projectType.AllowPMChangeStatus = strAllowPMChangeStatus;
+        projectType.AutoRunWFAfterMakeProject = strAutoRunWFAfterMakeProject;
+        projectType.ProgressByDetailImpact = strProgressByDetailImpact;
+        projectType.PlanProgressNeedPlanerConfirm = strPlanProgressNeedPlanerConfirm;
+        projectType.ProjectStartupNeedSupperConfirm = strProjectStartupNeedSupperConfirm;
+
+        projectType.SortNumber = int.Parse(strSortNumber);
+
+        try
+        {
+            projectTypeBLL.UpdateProjectType(projectType, strSelectedType);
+
+            LoadProjectType();
+            LoadProjectStatus(strType, strLangCode);
+
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "closeModal", "hideModal('modalProjectType');", true);
+        }
+        catch
+        {
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZBCSBJC") + "')", true);
+        }
+    }
+
+    protected void BT_ProjectTypeDelete_Click(object sender, EventArgs e)
+    {
+        string strHQL;
+        string strType;
+
+        strType = TB_ProjectType.Text.Trim();
+
+        strHQL = "Select * From T_Project Where ProjectType = '" + strType + "'";
+        DataSet ds = ShareClass.GetDataSetFromSql(strHQL, "T_Project");
+
+        if (ds.Tables[0].Rows.Count > 0)
+        {
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZJGYJYXMSYZLXBNSCHXGQJC") + "')", true);
+            return;
+        }
+
+        try
+        {
+            strHQL = "Delete From T_ProjectType Where Type = '" + strType + "'";
+            ShareClass.RunSqlCommand(strHQL); ;
+            LoadProjectType();
+
+            strHQL = " Delete from T_ProjectStatus where ProjectType = " + "'" + strType + "'";
+            ShareClass.RunSqlCommand(strHQL);
+
+
+            BT_ProjectTypeDelete.Enabled = false;
+
+            LoadProjectStatus(strType, strLangCode);
+
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZSCCG") + "')", true);
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "closeModal", "hideModal('modalProjectType');", true);
+        }
+        catch (Exception err)
+        {
+            LogClass.WriteLogFile("Error page: " + Request.Url.ToString() + "\n" + err.Message.ToString() + "\n" + err.StackTrace);
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZSCSBJC") + "')", true);
+        }
+    }
+
+    protected void BT_ReqStatusNew_Click(object sender, EventArgs e)
+    {
+        string strStatus = TB_ReqStatus.Text.Trim();
+        string strSortNumber = TB_ReqSortNumber.Text.Trim();
+
+        ReqStatusBLL reqStatusBLL = new ReqStatusBLL();
+        ReqStatus reqStatus = new ReqStatus();
+
+        try
+        {
+            string strHQL = "From ReqStatus as reqStatus Where reqStatus.Status = " + "'" + strStatus + "' and reqStatus.LangCode = " + "'" + strLangCode + "'";
+            IList lst = reqStatusBLL.GetAllReqStatuss(strHQL);
+            if (lst.Count == 0)
+            {
+                reqStatus.Status = strStatus;
+                reqStatus.LangCode = strLangCode;
+                reqStatus.MakeType = "DIY";
+                reqStatus.Status = strStatus;
+                reqStatus.SortNumber = int.Parse(strSortNumber);
+
+                reqStatusBLL.AddReqStatus(reqStatus);
+            }
+        }
+        catch
+        {
+            try
+            {
+                reqStatus.Status = strStatus;
+                reqStatus.LangCode = strLangCode;
+                reqStatus.MakeType = "DIY";
+                reqStatus.Status = strStatus;
+                reqStatus.SortNumber = int.Parse(strSortNumber);
+
+                reqStatusBLL.UpdateReqStatus(reqStatus, strStatus);
+            }
+            catch
+            {
+            }
+        }
+
+        LoadReqStatus(strLangCode);
+        ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "closeModal", "hideModal('modalReqStatus');", true);
+    }
+
+    protected void BT_ReqStatusDelete_Click(object sender, EventArgs e)
+    {
+        string strStatus = TB_ReqStatus.Text.Trim();
+        string strSortNumber = TB_ReqSortNumber.Text.Trim();
+
+        string strHQL = "Delete From T_ReqStatus Where Status = " + "'" + strStatus + "'";
+
+        try
+        {
+            ShareClass.RunSqlCommand(strHQL);
+
+            LoadReqStatus(strLangCode);
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "closeModal", "hideModal('modalReqStatus');", true);
+        }
+        catch
+        {
+        }
+    }
+
+    protected void BT_ReqStatusSave_Click(object sender, EventArgs e)
+    {
+        string strHQL;
+        string strStatus, strHomeName, strID, strSortNumber;
+
+        int j = 0;
+
+        try
+        {
+            for (j = 0; j < DataGrid5.Items.Count; j++)
+            {
+                strStatus = ((Button)DataGrid5.Items[j].FindControl("BT_Status")).Text;
+
+                strHomeName = ((TextBox)(DataGrid5.Items[j].FindControl("TB_HomeName"))).Text.Trim();
+                strID = DataGrid5.Items[j].Cells[5].Text.Trim();
+
+                strHQL = "Update T_ReqStatus Set HomeName = " + "'" + strHomeName + "'" + " Where ID = " + strID;
+                ShareClass.RunSqlCommand(strHQL);
+            }
+
+            try
+            {
+                strStatus = TB_ReqStatus.Text.Trim();
+                strSortNumber = TB_ReqSortNumber.Text.Trim();
+
+                strHQL = "Update T_ReqStatus Set SortNumber = " + strSortNumber + " Where Status = '" + strStatus + "'";
+                ShareClass.RunSqlCommand(strHQL);
+            }
+            catch
+            {
+            }
+
+            LoadReqStatus(strLangCode);
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZBCCG") + "')", true);
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "closeModal", "hideModal('modalReqStatus');", true);
+        }
+        catch
+        {
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZBCSBJC") + "')", true);
+        }
+    }
+
+    protected void BT_TaskStatusNew_Click(object sender, EventArgs e)
+    {
+        string strStatus = TB_TaskStatus.Text.Trim();
+        string strSortNumber = TB_TaskSortNumber.Text.Trim();
+
+        TaskStatusBLL taskStatusBLL = new TaskStatusBLL();
+        TaskStatus taskStatus = new TaskStatus();
+
+        try
+        {
+
+            taskStatus.Status = strStatus;
+            taskStatus.LangCode = strLangCode;
+            taskStatus.MakeType = "DIY";
+            taskStatus.Status = strStatus;
+            taskStatus.SortNumber = int.Parse(strSortNumber);
+
+            taskStatusBLL.AddTaskStatus(taskStatus);
+
+        }
+        catch
+        {
+            try
+            {
+                taskStatus.Status = strStatus;
+                taskStatus.LangCode = strLangCode;
+                taskStatus.MakeType = "DIY";
+                taskStatus.Status = strStatus;
+                taskStatus.SortNumber = int.Parse(strSortNumber);
+
+                taskStatusBLL.UpdateTaskStatus(taskStatus, strStatus);
+            }
+            catch
+            {
+            }
+        }
+
+        LoadTaskStatus(strLangCode);
+        ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "closeModal", "hideModal('modalTaskStatus');", true);
+    }
+
+    protected void BT_TaskStatusDelete_Click(object sender, EventArgs e)
+    {
+        string strStatus = TB_TaskStatus.Text.Trim();
+        string strSortNumber = TB_TaskSortNumber.Text.Trim();
+
+        string strHQL = "Delete From T_TaskStatus Where Status = " + "'" + strStatus + "'";
+
+        try
+        {
+            ShareClass.RunSqlCommand(strHQL);
+
+            LoadTaskStatus(strLangCode);
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "closeModal", "hideModal('modalTaskStatus');", true);
+        }
+        catch
+        {
+        }
+    }
+
+    protected void BT_TaskStatusSave_Click(object sender, EventArgs e)
+    {
+        string strHQL;
+        string strStatus, strHomeName, strID, strSortNumber;
+
+        int j = 0;
+
+        try
+        {
+            for (j = 0; j < DataGrid6.Items.Count; j++)
+            {
+                strStatus = ((Button)DataGrid6.Items[j].FindControl("BT_Status")).Text;
+                strHomeName = ((TextBox)(DataGrid6.Items[j].FindControl("TB_HomeName"))).Text.Trim();
+                strID = DataGrid6.Items[j].Cells[5].Text.Trim();
+
+                strHQL = "Update T_TaskStatus Set HomeName = " + "'" + strHomeName + "'" + " Where ID = " + strID;
+                ShareClass.RunSqlCommand(strHQL);
+            }
+
+            try
+            {
+                strStatus = TB_TaskStatus.Text.Trim();
+                strSortNumber = TB_TaskSortNumber.Text.Trim();
+
+                strHQL = "Update T_TaskStatus Set SortNumber = " + strSortNumber + " Where Status = '" + strStatus + "'";
+                ShareClass.RunSqlCommand(strHQL);
+            }
+            catch
+            {
+            }
+
+            LoadTaskStatus(strLangCode);
+
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZBCCG") + "')", true);
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "closeModal", "hideModal('modalTaskStatus');", true);
+        }
+        catch
+        {
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZBCSBJC") + "')", true);
+        }
+    }
+
+    protected void BT_PlanStatusNew_Click(object sender, EventArgs e)
+    {
+        string strStatus = TB_PlanStatus.Text.Trim();
+        string strSortNumber = TB_PlanStatusSort.Text.Trim();
+
+        PlanStatusBLL planStatusBLL = new PlanStatusBLL();
+        PlanStatus planStatus = new PlanStatus();
+
+        try
+        {
+
+            planStatus.Status = strStatus;
+            planStatus.LangCode = strLangCode;
+            planStatus.MakeType = "DIY";
+            planStatus.Status = strStatus;
+            planStatus.SortNumber = int.Parse(strSortNumber);
+
+            planStatusBLL.AddPlanStatus(planStatus);
+
+        }
+        catch
+        {
+            try
+            {
+                planStatus.Status = strStatus;
+                planStatus.LangCode = strLangCode;
+                planStatus.MakeType = "DIY";
+                planStatus.Status = strStatus;
+                planStatus.SortNumber = int.Parse(strSortNumber);
+
+                planStatusBLL.UpdatePlanStatus(planStatus, strStatus);
+            }
+            catch
+            {
+            }
+        }
+
+        LoadPlanStatus(strLangCode);
+        ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "closeModal", "hideModal('modalPlanStatus');", true);
+    }
+
+    protected void BT_PlanStatusDelete_Click(object sender, EventArgs e)
+    {
+        string strStatus = TB_PlanStatus.Text.Trim();
+        string strSortNumber = TB_PlanStatusSort.Text.Trim();
+
+        string strHQL = "Delete From T_PlanStatus Where Status = " + "'" + strStatus + "'";
+
+        try
+        {
+            ShareClass.RunSqlCommand(strHQL);
+
+            LoadPlanStatus(strLangCode);
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "closeModal", "hideModal('modalPlanStatus');", true);
+        }
+        catch
+        {
+        }
+    }
+
+    protected void BT_PlanStatusSave_Click(object sender, EventArgs e)
+    {
+        string strHQL;
+        string strStatus, strHomeName, strID;
+
+        int j = 0;
+
+        try
+        {
+            for (j = 0; j < DataGrid8.Items.Count; j++)
+            {
+                strStatus = ((Button)DataGrid8.Items[j].FindControl("BT_Status")).Text;
+                strHomeName = ((TextBox)(DataGrid8.Items[j].FindControl("TB_HomeName"))).Text.Trim();
+                strID = DataGrid8.Items[j].Cells[5].Text.Trim();
+
+                strHQL = "Update T_PlanStatus Set HomeName = " + "'" + strHomeName + "'" + " Where ID = " + strID;
+                ShareClass.RunSqlCommand(strHQL);
+            }
+
+            try
+            {
+                strStatus = TB_PlanStatus.Text.Trim();
+                string strSortNumber = TB_PlanStatusSort.Text.Trim();
+
+                strHQL = "Update T_PlanStatus Set SortNumber = " + strSortNumber + " Where Status = '" + strStatus + "'";
+                ShareClass.RunSqlCommand(strHQL);
+            }
+            catch
+            {
+            }
+
+            LoadPlanStatus(strLangCode);
+
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZBCCG") + "')", true);
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "closeModal", "hideModal('modalPlanStatus');", true);
+        }
+        catch
+        {
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZBCSBJC") + "')", true);
+        }
+    }
+
+    protected void BT_WorkflowStatusNew_Click(object sender, EventArgs e)
+    {
+        string strStatus = TB_WLStatus.Text.Trim();
+        string strSortNumber = TB_WLStatusSort.Text.Trim();
+
+        WLStatusBLL wlStatusBLL = new WLStatusBLL();
+        WLStatus wlStatus = new WLStatus();
+
+        try
+        {
+            wlStatus.Status = strStatus;
+            wlStatus.LangCode = strLangCode;
+            wlStatus.MakeType = "DIY";
+            wlStatus.Status = strStatus;
+            wlStatus.SortNumber = int.Parse(strSortNumber);
+
+            wlStatusBLL.AddWLStatus(wlStatus);
+
+        }
+        catch
+        {
+            try
+            {
+                wlStatus.Status = strStatus;
+                wlStatus.LangCode = strLangCode;
+                wlStatus.MakeType = "DIY";
+                wlStatus.Status = strStatus;
+                wlStatus.SortNumber = int.Parse(strSortNumber);
+
+                wlStatusBLL.UpdateWLStatus(wlStatus, strStatus);
+            }
+            catch
+            {
+            }
+        }
+
+        LoadWLStatus(strLangCode);
+        ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "closeModal", "hideModal('modalWLStatus');", true);
+    }
+
+    protected void BT_WorkflowStatusDelete_Click(object sender, EventArgs e)
+    {
+        string strStatus = TB_WLStatus.Text.Trim();
+        string strSortNumber = TB_WLStatusSort.Text.Trim();
+
+        string strHQL = "Delete From T_WLStatus Where Status = " + "'" + strStatus + "'";
+
+        try
+        {
+            ShareClass.RunSqlCommand(strHQL);
+
+            LoadWLStatus(strLangCode);
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "closeModal", "hideModal('modalWLStatus');", true);
+        }
+        catch
+        {
+        }
+    }
+
+    protected void BT_WorkflowStatusSave_Click(object sender, EventArgs e)
+    {
+        string strHQL;
+        string strStatus, strHomeName, strID;
+
+        int j = 0;
+
+        try
+        {
+            for (j = 0; j < DataGrid12.Items.Count; j++)
+            {
+                strStatus = ((Button)DataGrid12.Items[j].FindControl("BT_Status")).Text;
+                strHomeName = ((TextBox)(DataGrid12.Items[j].FindControl("TB_HomeName"))).Text.Trim();
+                strID = DataGrid12.Items[j].Cells[5].Text.Trim();
+
+                strHQL = "Update T_WLStatus Set HomeName = " + "'" + strHomeName + "'" + " Where ID = " + strID;
+                ShareClass.RunSqlCommand(strHQL);
+            }
+
+            try
+            {
+                strStatus = TB_WLStatus.Text.Trim();
+                string strSortNumber = TB_WLStatusSort.Text.Trim();
+
+                strHQL = "Update T_WLStatus Set SortNumber = " + strSortNumber + " Where Status = '" + strStatus + "'";
+                ShareClass.RunSqlCommand(strHQL);
+            }
+            catch
+            {
+            }
+
+            LoadWLStatus(strLangCode);
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZBCCG") + "')", true);
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "closeModal", "hideModal('modalWLStatus');", true);
+        }
+        catch
+        {
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZBCSBJC") + "')", true);
+        }
+    }
+
+    protected void TB_WLTypeNew_Click(object sender, EventArgs e)
+    {
+        string strType, strSortNumber;
+
+        strType = TB_WLType.Text.Trim();
+        strSortNumber = TB_WLTypeSort.Text.Trim();
+
+        WLTypeBLL wlTypeBLL = new WLTypeBLL();
+        WLType wlType = new WLType();
+
+
+
+        try
+        {
+
+            wlType.Type = strType;
+            wlType.LangCode = strLangCode;
+            wlType.MakeType = "DIY";
+            wlType.HomeName = strType;
+            wlType.SortNumber = int.Parse(strSortNumber);
+            wlTypeBLL.AddWLType(wlType);
+
+        }
+        catch
+        {
+            try
+            {
+                wlType.Type = strType;
+                wlType.LangCode = strLangCode;
+                wlType.MakeType = "DIY";
+                wlType.HomeName = strType;
+                wlType.SortNumber = int.Parse(strSortNumber);
+                wlTypeBLL.UpdateWLType(wlType, strType);
+            }
+            catch
+            {
+            }
+        }
+
+        LoadWLType(strLangCode);
+        ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "closeModal", "hideModal('modalWLType');", true);
+    }
+
+    protected void BT_WLTypeDelete_Click(object sender, EventArgs e)
+    {
+        string strHQL;
+        string strType, strSortNumber;
+
+        strType = TB_WLType.Text.Trim();
+        strSortNumber = TB_WLTypeSort.Text.Trim();
+
+        strHQL = "Select * From T_WorkFlow Where WLType = '" + strType + "'";
+        DataSet ds = ShareClass.GetDataSetFromSql(strHQL, "T_WorkFlow");
+        if (ds.Tables[0].Rows.Count > 0)
+        {
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZJGYJYLCSYZLCBNSCHXGQJC") + "')", true);
+            return;
+        }
+
+        try
+        {
+            strHQL = "Delete From T_WLType Where Type = " + "'" + strType + "'";
+
+            ShareClass.RunSqlCommand(strHQL);
+            LoadWLType(strLangCode);
+
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZSCCG") + "')", true);
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "closeModal", "hideModal('modalWLType');", true);
+        }
+        catch (Exception err)
+        {
+            LogClass.WriteLogFile("Error page: " + Request.Url.ToString() + "\n" + err.Message.ToString() + "\n" + err.StackTrace);
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZSCSBJC") + "')", true);
+        }
+    }
+
+    protected void BT_WFTypeSave_Click(object sender, EventArgs e)
+    {
+        string strHQL;
+        string strType, strHomeName, strID, strSortNumber;
+
+        int j = 0;
+
+        try
+        {
+            for (j = 0; j < DataGrid13.Items.Count; j++)
+            {
+                strType = ((Button)DataGrid13.Items[j].FindControl("BT_Type")).Text;
+                strHomeName = ((TextBox)(DataGrid13.Items[j].FindControl("TB_HomeName"))).Text.Trim();
+                strID = DataGrid13.Items[j].Cells[5].Text.Trim();
+
+                strSortNumber = TB_WLTypeSort.Text;
+
+                strHQL = "Update T_WLType Set HomeName = " + "'" + strHomeName + "'" + " Where ID = " + strID;
+                ShareClass.RunSqlCommand(strHQL);
+            }
+
+            try
+            {
+                strType = TB_WLType.Text.Trim();
+                strSortNumber = TB_WLTypeSort.Text.Trim();
+
+                strHQL = "Update T_WLType Set SortNumber = " + strSortNumber + " Where Type = '" + strType + "'";
+                ShareClass.RunSqlCommand(strHQL);
+            }
+            catch
+            {
+            }
+
+            LoadWLType(strLangCode);
+
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZBCCG") + "')", true);
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "closeModal", "hideModal('modalWLType');", true);
+        }
+        catch
+        {
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZBCSBJC") + "')", true);
+        }
+    }
+
+    protected void BT_TestStatusNew_Click(object sender, EventArgs e)
+    {
+        string strStatus;
+        int intSortNumber;
+
+        strStatus = TB_TestStatus.Text.Trim();
+        intSortNumber = int.Parse(TB_TestStatusSort.Text);
+
+        TestStatusBLL testStatusBLL = new TestStatusBLL();
+        TestStatus testStatus = new TestStatus();
+
+        try
+        {
+
+            testStatus.Status = strStatus;
+            testStatus.LangCode = strLangCode;
+            testStatus.MakeType = "DIY";
+            testStatus.HomeName = strStatus;
+            testStatus.SortNumber = intSortNumber;
+
+            testStatusBLL.AddTestStatus(testStatus);
+        }
+        catch
+        {
+            try
+            {
+                testStatus.Status = strStatus;
+                testStatus.LangCode = strLangCode;
+                testStatus.MakeType = "DIY";
+                testStatus.HomeName = strStatus;
+                testStatus.SortNumber = intSortNumber;
+
+                testStatusBLL.UpdateTestStatus(testStatus, strStatus);
+            }
+            catch
+            {
+            }
+        }
+
+        LoadTestStatus(strLangCode);
+        ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "closeModal", "hideModal('modalTestStatus');", true);
+    }
+
+    protected void BT_TestStatusDelete_Click(object sender, EventArgs e)
+    {
+        string strStatus;
+        int intSortNumber;
+
+        strStatus = TB_TestStatus.Text.Trim();
+        intSortNumber = int.Parse(TB_TestStatusSort.Text);
+
+        string strHQL = "Delete From T_TestStatus Where Status = " + "'" + strStatus + "'";
+
+        try
+        {
+            ShareClass.RunSqlCommand(strHQL);
+
+            LoadTestStatus(strLangCode);
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "closeModal", "hideModal('modalTestStatus');", true);
+        }
+        catch
+        {
+        }
+    }
+
+    protected void BT_TestStatusSave_Click(object sender, EventArgs e)
+    {
+        string strHQL;
+        string strStatus, strHomeName, strID;
+
+        int j = 0;
+
+        try
+        {
+            for (j = 0; j < DataGrid16.Items.Count; j++)
+            {
+                strStatus = ((Button)DataGrid16.Items[j].FindControl("BT_Status")).Text;
+                strHomeName = ((TextBox)(DataGrid16.Items[j].FindControl("TB_HomeName"))).Text.Trim();
+                strID = DataGrid16.Items[j].Cells[5].Text.Trim();
+
+                strHQL = "Update T_TestStatus Set HomeName = " + "'" + strHomeName + "'" + " Where ID = " + strID;
+                ShareClass.RunSqlCommand(strHQL);
+            }
+
+            try
+            {
+                strStatus = TB_TestStatus.Text.Trim();
+                string strSortNumber = TB_TestStatusSort.Text.Trim();
+
+                strHQL = "Update T_TestStatus Set SortNumber = " + strSortNumber + " Where Status = '" + strStatus + "'";
+                ShareClass.RunSqlCommand(strHQL);
+            }
+            catch
+            {
+            }
+
+            LoadTestStatus(strLangCode);
+            LoadReqStatus(strLangCode);
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZBCCG") + "')", true);
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "closeModal", "hideModal('modalTestStatus');", true);
+        }
+        catch
+        {
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZBCSBJC") + "')", true);
+        }
+    }
+
+    protected void BT_OtherStatusNew_Click(object sender, EventArgs e)
+    {
+        string strHQL;
+
+        string strStatus;
+        int intSortNumber;
+
+        strStatus = TB_OtherStatus.Text.Trim();
+
+        intSortNumber = int.Parse(TB_OtherStatusSort.Text);
+
+
+        try
+        {
+            strHQL = "Insert Into T_OtherStatus(STatus,SortNumber,HomeName,LangCode,MakeType)";
+            strHQL += " Values('" + strStatus + "'," + intSortNumber.ToString() + ",'" + strStatus + "','" + strLangCode + "','DIY')";
+
+            ShareClass.RunSqlCommand(strHQL);
+
+
+        }
+        catch
+        {
+            try
+            {
+                strHQL = "Update T_OtherStatus Set SortNumber = " + intSortNumber.ToString() + " Where Status = '" + strStatus + "'";
+                ShareClass.RunSqlCommand(strHQL);
+            }
+            catch
+            {
+
+            }
+        }
+
+        LoadOtherStatus(strLangCode);
+        ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "closeModal", "hideModal('modalOtherStatus');", true);
+    }
+
+    protected void BT_OtherStatusDelete_Click(object sender, EventArgs e)
+    {
+        string strStatus;
+        int intSortNumber;
+
+        strStatus = TB_OtherStatus.Text.Trim();
+        intSortNumber = int.Parse(TB_OtherStatusSort.Text);
+
+        string strHQL = "Delete From T_OtherStatus Where Status = " + "'" + strStatus + "'";
+
+        try
+        {
+            ShareClass.RunSqlCommand(strHQL);
+
+            LoadOtherStatus(strLangCode);
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "closeModal", "hideModal('modalOtherStatus');", true);
+        }
+        catch
+        {
+        }
+    }
+
+    protected void BT_OtherStatusSave_Click(object sender, EventArgs e)
+    {
+        string strHQL;
+        string strStatus, strHomeName, strID, strSortNumber;
+
+        int j = 0;
+
+        try
+        {
+            for (j = 0; j < DataGrid1.Items.Count; j++)
+            {
+                strStatus = ((Button)DataGrid1.Items[j].FindControl("BT_Status")).Text;
+                strHomeName = ((TextBox)(DataGrid1.Items[j].FindControl("TB_HomeName"))).Text.Trim();
+                strID = DataGrid1.Items[j].Cells[5].Text.Trim();
+
+                strHQL = "Update T_OtherStatus Set HomeName = " + "'" + strHomeName + "'" + " Where ID = " + strID;
+                ShareClass.RunSqlCommand(strHQL);
+            }
+
+            try
+            {
+                strStatus = TB_OtherStatus.Text.Trim();
+                strSortNumber = TB_OtherStatusSort.Text.Trim();
+
+                strHQL = "Update T_OtherStatus Set SortNumber = " + strSortNumber + " Where Status = '" + strStatus + "'";
+                ShareClass.RunSqlCommand(strHQL);
+            }
+            catch
+            {
+            }
+
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZBCCG") + "')", true);
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "closeModal", "hideModal('modalOtherStatus');", true);
+        }
+        catch
+        {
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZBCSBJC") + "')", true);
+        }
+    }
+
+    protected void BT_ActorGroupSave_Click(object sender, EventArgs e)
+    {
+        string strHQL;
+        string strGroupName, strHomeName, strID;
+
+        int j = 0;
+
+        try
+        {
+            for (j = 0; j < DataGrid21.Items.Count; j++)
+            {
+                strGroupName = ((Button)DataGrid21.Items[j].FindControl("BT_GroupName")).Text;
+
+                strHomeName = ((TextBox)(DataGrid21.Items[j].FindControl("TB_HomeName"))).Text.Trim();
+                strID = DataGrid21.Items[j].Cells[5].Text.Trim();
+
+                strHQL = "Update T_ActorGroup Set HomeName = " + "'" + strHomeName + "'" + " Where ID = " + strID;
+                ShareClass.RunSqlCommand(strHQL);
+            }
+
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZBCCG") + "')", true);
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "closeModal", "hideModal('modalActorGroup');", true);
+        }
+        catch
+        {
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZBCSBJC") + "')", true);
+        }
+    }
+
+    protected void BT_EarlyOrderNameSave_Click(object sender, EventArgs e)
+    {
+        string strHQL;
+        string strOrderName, strHomeName, strID;
+
+        int j = 0;
+
+        try
+        {
+            for (j = 0; j < DataGrid2.Items.Count; j++)
+            {
+                strOrderName = ((Button)DataGrid2.Items[j].FindControl("BT_OrderName")).Text;
+                strHomeName = ((TextBox)(DataGrid2.Items[j].FindControl("TB_HomeName"))).Text.Trim();
+                strID = DataGrid2.Items[j].Cells[4].Text.Trim();
+
+                strHQL = "Update T_FunInforDialBox Set HomeName = " + "'" + strHomeName + "'" + " Where ID = " + strID;
+                ShareClass.RunSqlCommand(strHQL);
+            }
+
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZBCCG") + "')", true);
+        }
+        catch
+        {
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZBCSBJC") + "')", true);
+        }
+    }
+
+    protected void BT_RentProductTypeNew_Click(object sender, EventArgs e)
+    {
+        string strType = TB_RentProductType.Text.Trim();
+        string strENType = TB_RentProductENType.Text.Trim();
+        string strHomeType = TB_HomeRentProductType.Text.Trim();
+        string strDemoURL = TB_RentProductDemoURL.Text.Trim();
+        string strSortNo = TB_RentProductTypeSort.Text.Trim();
+
+        string strHQL;
+        try
+        {
+            strHQL = string.Format(@"Select * From T_RentProductType 
+                          WHERE Type = '{0}' AND LangCode = '{1}'", strType, strLangCode);
+            DataSet ds = ShareClass.GetDataSetFromSql(strHQL, "T_RentProductType");
+            if (ds.Tables[0].Rows.Count == 0)
+            {
+
+                strHQL = string.Format(@"INSERT INTO T_RentProductType(Type, ENType, HomeTypeName, DemoURL, SortNumber,LangCode) 
+                  VALUES ('{0}', '{1}', '{2}', '{3}', '{4}','{5}')", strType, strENType, strHomeType, strDemoURL, strSortNo, strLangCode);
+                ShareClass.RunSqlCommand(strHQL);
+            }
+            else
+            {
+                strHQL = string.Format(@"UPDATE T_RentProductType SET ENType = '{0}', HomeTypeName = '{1}', DemoURL = '{2}', SortNumber = '{3}' 
+                          WHERE Type = '{4}' AND LangCode = '{5}'", strENType, strHomeType, strDemoURL, strSortNo, strType, strLangCode);
+                ShareClass.RunSqlCommand(strHQL);
+            }
+        }
+        catch
+        {
+            try
+            {
+                strHQL = string.Format(@"UPDATE T_RentProductType SET ENType = '{0}', HomeTypeName = '{1}', DemoURL = '{2}', SortNumber = '{3}' 
+                          WHERE Type = '{4}' AND LangCode = '{5}'", strENType, strHomeType, strDemoURL, strSortNo, strType, strLangCode);
+                ShareClass.RunSqlCommand(strHQL);
+            }
+            catch
+            {
+            }
+        }
+
+        LoadRentProductType(strLangCode);
+        ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "closeModal", "hideModal('modalRentProductType');", true);
+    }
+
+    protected void BT_RentProductTypeDelete_Click(object sender, EventArgs e)
+    {
+        string strID = LB_RentProductTypeID.Text;
+        string strType = TB_RentProductType.Text.Trim();
+        string strSortNo = TB_RentProductTypeSort.Text.Trim();
+
+        string strHQL = "Delete From T_RentProductType Where ID =  " + strID;
+        try
+        {
+            ShareClass.RunSqlCommand(strHQL);
+            LoadRentProductType(strLangCode);
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "closeModal", "hideModal('modalRentProductType');", true);
+        }
+        catch
+        {
+        }
+    }
+
+    protected void BT_RentProductTypeSave_Click(object sender, EventArgs e)
+    {
+        // 租用产品类型的保存逻辑
+        ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZBCCG") + "')", true);
+        ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "closeModal", "hideModal('modalRentProductType');", true);
+    }
+
+    protected void BT_RentProductVersionTypeNew_Click(object sender, EventArgs e)
+    {
+        string strType = TB_RentProductVersionType.Text.Trim();
+        string strHomeType = TB_HomeRentProductVersionType.Text.Trim();
+        string strSortNo = TB_RentProductVersionSort.Text.Trim();
+
+        string strHQL;
+      
+        try
+        {
+            strHQL = string.Format(@"Select * From t_RentProductVerType Where Type ='{0}' and LangCode ='{1}'", strType, strLangCode);
+            DataSet ds = ShareClass.GetDataSetFromSql(strHQL, "t_RentProductVerType");
+            if (ds.Tables[0].Rows.Count == 0)
+            {
+                strHQL = string.Format(@"INSERT INTO t_RentProductVerType(Type,HomeTypeName, SortNumber,LangCode)  
+                   VALUES ('{0}', '{1}','{2}','{3}')", strType, strHomeType, strSortNo, strLangCode);
+                ShareClass.RunSqlCommand(strHQL);
+            }
+            else
+            {
+                strHQL = string.Format(@"Update t_RentProductVerType Set Type ='{0}',HomeTypeName='{1}',SortNumber ={2} Where ID = {3}",
+                    strType, strHomeType, strSortNo, LB_RentProductVersionTypeID.Text.Trim());
+                ShareClass.RunSqlCommand(strHQL);
+            }
+        }
+        catch
+        {
+            try
+            {
+                strHQL = string.Format(@"Update t_RentProductVerType Set Type ='{0}',HomeTypeName='{1}',SortNumber ={2} Where ID = {3}",
+                   strType, strHomeType, strSortNo, LB_RentProductVersionTypeID.Text.Trim());
+                ShareClass.RunSqlCommand(strHQL);
+            }
+            catch
+            {
+            }
+        }
+
+        LoadRentProductVertype(strLangCode);
+        ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "closeModal", "hideModal('modalRentProductVersionType');", true);
+    }
+
+    protected void BT_RentProductVersionTypeDelete_Click(object sender, EventArgs e)
+    {
+        string strID = LB_RentProductVersionTypeID.Text;
+        string strType = TB_RentProductVersionType.Text.Trim();
+        string strSortNo = TB_RentProductVersionSort.Text.Trim();
+
+        string strHQL = "Delete From t_RentProductVerType Where ID =  " + strID;
+
+        try
+        {
+            ShareClass.RunSqlCommand(strHQL);
+            LoadRentProductVertype(strLangCode);
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "closeModal", "hideModal('modalRentProductVersionType');", true);
+        }
+        catch
+        {
+        }
+    }
+
+    protected void BT_RentProductVersionTypeSave_Click(object sender, EventArgs e)
+    {
+        // 租用产品版本类型的保存逻辑
+        ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZBCCG") + "')", true);
+        ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "closeModal", "hideModal('modalRentProductVersionType');", true);
+    }
+
+    protected void BT_TryProductResonTypeNew_Click(object sender, EventArgs e)
+    {
+        string strType = TB_TryProductResonType.Text.Trim();
+        string strHomeType = TB_HomeTryProductResonType.Text.Trim();
+        string strSortNo = TB_TryProductResonSort.Text.Trim();
+
+        string strHQL;
+      
+        try
+        {
+            strHQL = string.Format(@"Select * From t_TryProductResontype Where Type = '{0}' and LangCode = '{1}'", strType, strLangCode);
+            DataSet ds = ShareClass.GetDataSetFromSql(strHQL, "t_TryProductResontype");
+            if (ds.Tables[0].Rows.Count == 0)
+            {
+                strHQL = string.Format(@"INSERT INTO t_TryProductResontype(Type,HomeTypeName, SortNumber,LangCode) 
+                VALUES ('{0}', '{1}','{2}','{3}')", strType, strHomeType, strSortNo, strLangCode);
+                ShareClass.RunSqlCommand(strHQL);
+            }
+            else
+            {
+                strHQL = string.Format(@"UPDATE t_TryProductResontype SET HomeTypeName = '{0}', SortNumber = '{1}' 
+                          WHERE Type = '{2}' AND LangCode = '{3}'", strHomeType, strSortNo, strType, strLangCode);
+                ShareClass.RunSqlCommand(strHQL);
+            }
+        }
+        catch
+        {
+            try
+            {
+                strHQL = string.Format(@"UPDATE t_TryProductResontype SET HomeTypeName = '{0}', SortNumber = '{1}' 
+                          WHERE Type = '{2}' AND LangCode = '{3}'", strHomeType, strSortNo, strType, strLangCode);
+                ShareClass.RunSqlCommand(strHQL);
+            }
+            catch
+            {
+            }
+        }
+
+        LoadTryProductResontype(strLangCode);
+        ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "closeModal", "hideModal('modalTryProductResonType');", true);
+    }
+
+    protected void BT_TryProductResonTypeDelete_Click(object sender, EventArgs e)
+    {
+        string strID = LB_TryProductResonTypeID.Text.Trim();
+        string strSortNo = TB_TryProductResonSort.Text.Trim();
+
+        string strHQL = "Delete From t_TryProductResontype Where ID = " + strID;
+
+        try
+        {
+            ShareClass.RunSqlCommand(strHQL);
+            LoadTryProductResontype(strLangCode);
+            ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "closeModal", "hideModal('modalTryProductResonType');", true);
+        }
+        catch
+        {
+        }
+    }
+
+    protected void BT_TryProductResonTypeSave_Click(object sender, EventArgs e)
+    {
+        // 试用产品原因类型的保存逻辑
+        ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZBCCG") + "')", true);
+        ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "closeModal", "hideModal('modalTryProductResonType');", true);
+    }
+
+    // 数据加载方法
+    protected void LoadReqStatus(string strLangCode)
+    {
+        string strHQL = "from ReqStatus as reqStatus ";
+        strHQL += " Where reqStatus.LangCode = " + "'" + strLangCode + "'";
+        strHQL += " order by reqStatus.SortNumber ASC";
+        ReqStatusBLL ReqStatusBLL = new ReqStatusBLL();
+        IList lst = ReqStatusBLL.GetAllReqStatuss(strHQL);
+
+        DataGrid5.DataSource = lst;
+        DataGrid5.DataBind();
+    }
+
+    protected void LoadTaskStatus(string strLangCode)
+    {
+        string strHQL = "from TaskStatus as taskStatus ";
+        strHQL += " Where taskStatus.LangCode = " + "'" + strLangCode + "'";
+        strHQL += " order by taskStatus.SortNumber ASC";
+
+        TaskStatusBLL taskStatusBLL = new TaskStatusBLL();
+        IList lst = taskStatusBLL.GetAllTaskStatuss(strHQL);
+
+        DataGrid6.DataSource = lst;
+        DataGrid6.DataBind();
+    }
+
+    protected void LoadPlanStatus(string strLangCode)
+    {
+        string strHQL = "from PlanStatus as planStatus ";
+        strHQL += " Where planStatus.LangCode = " + "'" + strLangCode + "'";
+        strHQL += " order by planStatus.SortNumber ASC";
+
+        PlanStatusBLL planStatusBLL = new PlanStatusBLL();
+        IList lst = planStatusBLL.GetAllPlanStatuss(strHQL);
+
+        DataGrid8.DataSource = lst;
+        DataGrid8.DataBind();
+    }
+
+    protected void LoadProjectStatus(string strProjectType, string strLangCode)
+    {
+        string strHQL;
+        IList lst;
+
+        strHQL = "from ProjectStatus as projectStatus where projectStatus.ProjectType = " + "'" + strProjectType + "'";
+        strHQL += " And projectStatus.LangCode = " + "'" + strLangCode + "'";
+        strHQL += " order by projectStatus.SortNumber ASC";
+        ProjectStatusBLL projectStatusBLL = new ProjectStatusBLL();
+        lst = projectStatusBLL.GetAllProjectStatuss(strHQL);
+
+        DataGrid3.DataSource = lst;
+        DataGrid3.DataBind();
+    }
+
+    protected void LoadProjectType()
+    {
+        string strHQL = "from ProjectType as projectType order by projectType.SortNumber ASC";
+        ProjectTypeBLL projectTypeBLL = new ProjectTypeBLL();
+        IList lst = projectTypeBLL.GetAllProjectTypes(strHQL);
+
+        DataGrid20.DataSource = lst;
+        DataGrid20.DataBind();
+    }
+
+    protected void LoadWLStatus(string strLangCode)
+    {
+        string strHQL = "from WLStatus as wlStatus ";
+        strHQL += " Where wlStatus.LangCode = " + "'" + strLangCode + "'";
+        strHQL += " order by wlStatus.SortNumber ASC";
+
+        WLStatusBLL wlStatusBLL = new WLStatusBLL();
+        IList lst = wlStatusBLL.GetAllWLStatuss(strHQL);
+
+        DataGrid12.DataSource = lst;
+        DataGrid12.DataBind();
+    }
+
+    protected void LoadWLType(string strLangCode)
+    {
+        string strHQL = " from WLType as wlType";
+        strHQL += " Where wlType.LangCode = " + "'" + strLangCode + "'";
+        strHQL += " Order by wlType.SortNumber ASC";
+        WLTypeBLL wlTypeBLL = new WLTypeBLL();
+        IList lst = wlTypeBLL.GetAllWLTypes(strHQL);
+
+        DataGrid13.DataSource = lst;
+        DataGrid13.DataBind();
+    }
+
+    protected void LoadTestStatus(string strLangCode)
+    {
+        string strHQL = "From TestStatus as testStatus ";
+        strHQL += " Where testStatus.LangCode = " + "'" + strLangCode + "'";
+        strHQL += " order by testStatus.SortNumber ASC";
+
+        TestStatusBLL testStatusBLL = new TestStatusBLL();
+        IList lst = testStatusBLL.GetAllTestStatuss(strHQL);
+
+        DataGrid16.DataSource = lst;
+        DataGrid16.DataBind();
+    }
+
+    protected void LoadOtherStatus(string strLangCode)
+    {
+        string strHQL;
+
+        strHQL = "Select * From T_OtherStatus ";
+        strHQL += " Where LangCode = " + "'" + strLangCode + "'";
+        strHQL += " Order By SortNumber ASC";
+        DataSet ds = ShareClass.GetDataSetFromSql(strHQL, "T_OtherStatus");
+
+        DataGrid1.DataSource = ds;
+        DataGrid1.DataBind();
+    }
+
+    protected void LoadActorGroup(string strLangCode)
+    {
+        string strHQL;
+        IList lst;
+
+        ActorGroupBLL actorGroupBLL = new ActorGroupBLL();
+        strHQL = "from ActorGroup as actorGroup";
+        strHQL += " Where actorGroup.LangCode = " + "'" + strLangCode + "'";
+        strHQL += " order by actorGroup.SortNumber ASC";
+        lst = actorGroupBLL.GetAllActorGroups(strHQL);
+
+        DataGrid21.DataSource = lst;
+        DataGrid21.DataBind();
+    }
+
+    protected void LoadFunInforDialBoxList(string strLangCode)
+    {
+        string strHQL = "Select * From T_FunInforDialBox  Where LangCode = " + "'" + strLangCode + "'";
+        strHQL += " Order By SortNumber ASC";
+
+        DataSet ds = ShareClass.GetDataSetFromSql(strHQL, "T_FunInforDialBox");
+
+        DataGrid2.DataSource = ds;
+        DataGrid2.DataBind();
+    }
+
+    protected void LoadRentProductType(string strLangCode)
+    {
+        string strHQL;
+
+        strHQL = "Select ID,trim(Type) as Type,trim(ENType) as ENType,trim(HomeTypeName) as HomeTypeName,DemoURL,SortNumber,LangCode From T_RentProductType Where LangCode = '" + strLangCode + "' Order By SortNumber ASC";
+        DataSet ds = ShareClass.GetDataSetFromSql(strHQL, "T_RentProductType");
+
+        DataGrid4.DataSource = ds;
+        DataGrid4.DataBind();
+    }
+
+    protected void LoadRentProductVertype(string strLangCode)
+    {
+        string strHQL;
+
+        strHQL = "Select * From T_RentProductVertype where LangCode = '" + strLangCode + "' Order By SortNumber ASC";
+        DataSet ds = ShareClass.GetDataSetFromSql(strHQL, "RentProductVertype");
+
+        DataGrid25.DataSource = ds;
+        DataGrid25.DataBind();
+    }
+
+    protected void LoadTryProductResontype(string strLangCode)
+    {
+        string strHQL;
+
+        strHQL = "Select * From T_TryProductResontype where LangCode = '" + strLangCode + "' Order By SortNumber ASC";
+        DataSet ds = ShareClass.GetDataSetFromSql(strHQL, "TryProductResontype");
+
+        DataGrid31.DataSource = ds;
+        DataGrid31.DataBind();
+    }
+}

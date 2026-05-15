@@ -57,7 +57,7 @@ public partial class TakeTopMainTop : System.Web.UI.Page
 
             strUserName = ShareClass.GetUserName(strUserCode);
             LB_UserName.Text = strUserName;
-            LB_SystemMsg.Text = Resources.lang.NiHao + "��" + Resources.lang.HuanYingNiShiYong + " " + System.Configuration.ConfigurationManager.AppSettings["SystemName"];
+            LB_SystemMsg.Text = Resources.lang.NiHao + "," + Resources.lang.HuanYingNiShiYong + " " + System.Configuration.ConfigurationManager.AppSettings["SystemName"];
 
             //���ҳ�滺�棬���ڸı�Ƥ��
             SetPageNoCache();

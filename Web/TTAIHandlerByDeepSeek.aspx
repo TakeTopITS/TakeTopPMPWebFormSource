@@ -615,6 +615,12 @@
         }
 
         function endRequest(sender, args) {
+            // Hide waiting icon
+            var waitingImg = document.getElementById('IMG_Waiting');
+            if (waitingImg) {
+                waitingImg.style.display = 'none';
+            }
+
             // Rebind table selection events
             const checkboxes = document.querySelectorAll('#<%= cblTables.ClientID %> input[type="checkbox"]');
             if (checkboxes && checkboxes.length > 0) {
@@ -681,11 +687,9 @@
                                         <td>
                                             <asp:ImageButton ID="btnGenerateText" ImageUrl="ImagesSkin/AIGenerate.png"
                                                 runat="server" Text="<%$ Resources:lang,DSeekGenerate%>" OnClick="btnGenerateText_Click"
-                                                OnClientClick="javascript:document.getElementById('IMG_Waiting').style.display = 'block';" />
-                                        </td>
-                                        <td>
+                                                OnClientClick="javascript:document.getElementById('IMG_Waiting').style.display = 'inline';" />
                                             <img id="IMG_Waiting" src="Images/Processing.gif" alt="LoadingPleaseWait"
-                                                style="text-align: center; display: none;" />
+                                                style="display: none; vertical-align: middle; margin-left: 8px;" />
                                         </td>
                                         <td>
                                             <asp:ImageButton ID="btnStopSeek" ImageUrl="ImagesSkin/AIStop.png"
@@ -891,10 +895,10 @@
             </div>
         </div>
         
-        <div style="position: fixed; display: none; z-index: 9999;" id="progressContainer">
-            <asp:UpdateProgress ID="TakeTopUp" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
+        <div style="display: none;" id="progressContainer">
+            <asp:UpdateProgress ID="TakeTopUp" runat="server" AssociatedUpdatePanelID="UpdatePanel1" DisplayAfter="0">
                 <ProgressTemplate>
-                    <img src="Images/Processing.gif" alt="Loading,please wait..." />
+                    <span></span>
                 </ProgressTemplate>
             </asp:UpdateProgress>
         </div>

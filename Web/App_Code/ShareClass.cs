@@ -68,15 +68,46 @@ public static class ShareClass
         //
     }
 
-    public static string SystemVersionID = "V2026.4.24";
+    public static string SystemVersionID = "V2026.5.15";
 
     public static string SystemLatestLoginUser = "";
     public static string SystemDBer = "";
     public static DateTime systemStartupTime = DateTime.Now;
 
-    private static readonly Dictionary<string, DataSet> _chartDataSetCache = new Dictionary<string, DataSet>();
-    private static readonly object _chartCacheLock = new object();
     private const int CHART_CACHE_MINUTES = 5;
+
+    // 使用 HttpRuntime.Cache 进行图表配置缓存（滑动过期，自动内存管理）
+    private static void SetChartCache(string cacheKey, DataSet ds)
+    {
+        HttpRuntime.Cache.Insert(
+            cacheKey,
+            ds,
+            null,
+            Cache.NoAbsoluteExpiration,
+            TimeSpan.FromMinutes(CHART_CACHE_MINUTES),
+            CacheItemPriority.Normal,
+            new CacheItemRemovedCallback(OnChartCacheRemoved)
+        );
+    }
+
+    private static void OnChartCacheRemoved(string key, object value, CacheItemRemovedReason reason)
+    {
+        try
+        {
+            LogClass.WriteLogFile("Chart cache removed: " + key + ", Reason: " + reason);
+        }
+        catch { }
+    }
+
+    private static DataSet GetChartCache(string cacheKey)
+    {
+        return HttpRuntime.Cache.Get(cacheKey) as DataSet;
+    }
+
+    private static void RemoveChartCache(string cacheKey)
+    {
+        HttpRuntime.Cache.Remove(cacheKey);
+    }
 
     #region 用户登录机制
 
@@ -17173,18 +17204,15 @@ public static class ShareClass
     //取得形成分析图的DataSet
     public static DataSet GetSytemChartDataSet(string strUserCode, string strFormType)
     {
-        string cacheKey = strUserCode + "_" + strFormType;
+        string cacheKey = "ChartConfig_" + strUserCode + "_" + strFormType;
 
-        lock (_chartCacheLock)
+        // 尝试从 HttpRuntime.Cache 获取
+        DataSet cached = GetChartCache(cacheKey);
+        if (cached != null)
         {
-            DataSet cached;
-            if (_chartDataSetCache.TryGetValue(cacheKey, out cached))
-            {
-                return cached;
-            }
+            return cached;
         }
 
-        string strHQL;
         string strLangCode = HttpContext.Current.Session["LangCode"].ToString();
         string strDepartString;
         if (HttpContext.Current.Session["DepartString"] == null)
@@ -17197,37 +17225,25 @@ public static class ShareClass
             strDepartString = HttpContext.Current.Session["DepartString"].ToString();
         }
 
-        strHQL = string.Format(@"
-            SELECT s.* 
-            FROM T_SystemAnalystChartRelatedUser s 
-            INNER JOIN t_systemanalystchartmanagement c ON s.ChartName = c.ChartName 
-            WHERE s.UserCode = '{0}' 
-                AND s.FormType = '{1}' 
-                AND c.Status = 'YES'",
+        // 优化：合并两次查询为一次，直接获取最终结果
+        string strHQL = string.Format(@"
+            SELECT 
+                TRIM(A.FormType) as FormType,
+                TRIM(A.ChartName) as ChartName,
+                TRIM(C.SqlCode) as SqlCode,
+                TRIM(C.ChartType) as ChartType
+            FROM T_SystemAnalystChartRelatedUser A
+            INNER JOIN T_SystemAnalystChartManagement C ON A.ChartName = C.ChartName
+            WHERE A.UserCode = '{0}' 
+                AND A.FormType = '{1}' 
+                AND C.Status = 'YES'
+            ORDER BY A.SortNumber ASC",
                strUserCode, strFormType);
+        
         DataSet ds = ShareClass.GetDataSetFromSql(strHQL, "T_SystemAnalystChartManagement");
-        if (ds.Tables[0].Rows.Count > 0)
-        {
-            strHQL = string.Format(@"
-                SELECT 
-                    TRIM(A.FormType) as FormType,
-                    TRIM(A.ChartName) as ChartName,
-                    TRIM(C.SqlCode) as SqlCode,
-                    TRIM(C.ChartType) as ChartType
-                FROM T_SystemAnalystChartRelatedUser A
-                INNER JOIN T_SystemAnalystChartManagement C ON A.ChartName = C.ChartName
-                WHERE A.UserCode = '{0}' 
-                    AND A.FormType = '{1}' 
-                    AND C.Status = 'YES'
-                ORDER BY A.SortNumber ASC",
-                   strUserCode, strFormType);
-        }
-        ds = ShareClass.GetDataSetFromSql(strHQL, "T_SystemAnalystChartManagement");
 
-        lock (_chartCacheLock)
-        {
-            _chartDataSetCache[cacheKey] = ds;
-        }
+        // 存入 HttpRuntime.Cache（滑动过期 5 分钟）
+        SetChartCache(cacheKey, ds);
 
         return ds;
     }

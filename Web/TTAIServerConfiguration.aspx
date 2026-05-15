@@ -483,11 +483,9 @@
                             </div>
                             <div>
                                 <asp:TextBox ID="txtApiKey" runat="server" CssClass="config-input"
-                                    TextMode="Password" placeholder="AI API Key"></asp:TextBox>
+                                    placeholder="AI API Key"></asp:TextBox>
                                 <div class="hint-text">
-                                    <asp:Literal ID="LiteralAPIKeyHint" runat="server" Text="<%$ Resources:lang,AIAPIKeyHint%>"></asp:Literal><br />
-                                    <asp:CheckBox ID="chkShowKey" runat="server" Text="<%$ Resources:lang,AIShowAPIKey%>" 
-                                        onchange="toggleApiKeyVisibility(this)" />
+                                    <asp:Literal ID="LiteralAPIKeyHint" runat="server" Text="<%$ Resources:lang,AIAPIKeyHint%>"></asp:Literal>
                                 </div>
                             </div>
                         </div>
@@ -649,14 +647,6 @@
     </form>
 
     <script type="text/javascript">
-        // Toggle API Key visibility
-        function toggleApiKeyVisibility(checkbox) {
-            var txtApiKey = document.getElementById('<%= txtApiKey.ClientID %>');
-            if (txtApiKey) {
-                txtApiKey.type = checkbox.checked ? 'text' : 'password';
-            }
-        }
-
         // Set model from preset
         function setModel(modelName) {
             var txtModel = document.getElementById('<%= txtModel.ClientID %>');

@@ -44,20 +44,18 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
 
         if (!IsPostBack)
         {
-            //检查用户是否可以用AI分析功能
+            //检查用户是否可以用 AI 分析功能
             if (!ShareClass.checkUserHasModuleRight("AIAnalyst", strUserCode))
             {
                 divModeSwitcher.Visible = false;
             }
 
-            // 检查AI服务器状态
-            _aiServerAvailable = CheckAIServerAvailable();
-
-            // 更新服务器状态显示
-            UpdateAIServerStatusDisplay();
-
             txtPrompt.Focus();
         }
+
+        // 每次请求都检查 AI 服务器状态（PostBack 时也需要）
+        _aiServerAvailable = CheckAIServerAvailable();
+        UpdateAIServerStatusDisplay();
     }
 
     // 更新AI服务器状态显示
@@ -104,19 +102,13 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
             _aiServerType = strAIType;
             _aiApiKey = strAIKey;
 
-            if (strAIType == "Local")
+            // 只要数据库有有效配置就认为可用（不做连接测试，避免页面加载慢）
+            if (strAIType == "Local" || strAIType == "Outer")
             {
-                // 测试本地Ollama服务器连接
-                return TestOllamaConnection(strAIURL, strAIModel);
-            }
-            else if (strAIType == "Outer")
-            {
-                // 测试外部AI服务器连接
-                return TestExternalAIConnection(strAIURL, strAIKey, strAIModel);
+                return !string.IsNullOrEmpty(strAIURL) && !string.IsNullOrEmpty(strAIModel);
             }
             else
             {
-                // 不支持的类型
                 return false;
             }
         }
@@ -453,14 +445,11 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
         if (string.IsNullOrEmpty(jsonString))
             return jsonString;
 
+        // 移除 DeepSeek 的 think 标签（保持 JSON 结构完整）
         return jsonString.Replace("\\u003cthink\\u003e", "")
                          .Replace("\\u003c/think\\u003e", "")
-                         .Replace("\\u003c", "<")
-                         .Replace("\\u003e", ">")
-                         .Replace("\\\"", "\"")
-                         .Replace("\\n", "\n")
-                         .Replace("\\t", "\t")
-                         .Replace("\\r", "\r");
+                         .Replace("<think>", "")
+                         .Replace("</think>", "");
     }
 
     // 清理和格式化结果
@@ -781,7 +770,7 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
                 long rowCount = 0;
                 try
                 {
-                    string countSql = $"SELECT COUNT(*) FROM \"{table}\"";
+                    string countSql = $"SELECT COUNT(*) FROM {table}";
                     DataSet countDs = ShareClass.GetDataSetFromSql(countSql, "Count");
                     if (countDs.Tables.Count > 0 && countDs.Tables[0].Rows.Count > 0)
                     {
@@ -1030,7 +1019,7 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
             {
                 // 基础统计查询
                 queries.Add("-- " + $"{table} " + LanguageHandle.GetWord("DSeekTableBasicStatistics"));
-                queries.Add("SELECT COUNT(*) as TotalRecords FROM \"" + $"{table}" + "\";");
+                queries.Add("SELECT COUNT(*) as TotalRecords FROM " + $"{table}" + ";");
 
                 // 获取表格字段信息
                 string columnSql = $@"
@@ -1051,7 +1040,7 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
                         columnName.Contains("create") || columnName.Contains("update"))
                     {
                         queries.Add("-- " + $"{table}.{columnName} " + LanguageHandle.GetWord("DSeekTimeAnalysis"));
-                        queries.Add("SELECT MIN(\"" + $"{columnName}" + "\") as EarliestRecord, MAX(\"" + $"{columnName}" + "\") as LatestRecord FROM \"" + $"{table}" + "\";");
+                        queries.Add("SELECT MIN(" + $"{columnName}" + ") as EarliestRecord, MAX(" + $"{columnName}" + ") as LatestRecord FROM " + $"{table}" + ";");
                     }
 
                     // 检查是否是数字字段
@@ -1060,7 +1049,7 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
                         dataType.Contains("float") || dataType.Contains("double"))
                     {
                         queries.Add("-- " + $"{table}.{columnName} " + LanguageHandle.GetWord("DSeekNumericStatistics"));
-                        queries.Add("SELECT MIN(\"" + $"{columnName}" + "\") as MinValue, MAX(\"" + $"{columnName}" + "\") as MaxValue, AVG(\"" + $"{columnName}" + "\") as Average FROM \"" + $"{table}" + "\";");
+                        queries.Add("SELECT MIN(" + $"{columnName}" + ") as MinValue, MAX(" + $"{columnName}" + ") as MaxValue, AVG(" + $"{columnName}" + ") as Average FROM " + $"{table}" + ";");
                     }
                 }
             }

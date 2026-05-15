@@ -19,7 +19,7 @@ EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Web", "Web\", "{26DE7C11-44E9-4A26-8115-F16BEDB7F0E2}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.7.2"
-		ProjectReferences = "{6E8439C0-06C0-4AFD-971F-ADC64A3A911B}|ProjectMgt.BLL.dll;{3A609853-286E-4182-B68E-ADBD9FE2C230}|ProjectMgt.DAL.dll;{FF877E98-DC25-46DB-9D31-C2FBE82FDF42}|ProjectMgt.Model.dll;{2cec8844-cc70-402a-b70e-79a3558d5312}|TakeTopSecurity.dll;{83c67156-893d-4aff-9169-db34771989cb}|PushSharp.Apple.dll;{836F225F-6CD9-48DE-910C-70F8A7CF54AA}|PushSharp.Core.dll;{6770495c-d4d1-4132-8f8b-955acb0b58fb}|TakeTopCore.dll;{3effdf9f-e5b2-4453-8377-73222fd6134e}|TakeTopWF.dll;"
+		ProjectReferences = "{6E8439C0-06C0-4AFD-971F-ADC64A3A911B}|ProjectMgt.BLL.dll;{3A609853-286E-4182-B68E-ADBD9FE2C230}|ProjectMgt.DAL.dll;{FF877E98-DC25-46DB-9D31-C2FBE82FDF42}|ProjectMgt.Model.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/Web"
 		Debug.AspNetCompiler.PhysicalPath = "Web\"
 		Debug.AspNetCompiler.TargetPath = "..\PrecompiledWeb\Web\"
@@ -38,18 +38,6 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Web", "Web\", "{26DE7C11-44
 		SlnRelativePath = "Web\"
 		ProjOutputReferences = ""
 	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TakeTopWF", "ENComponent\TakeTopWF\TakeTopWF.csproj", "{6770495C-D4D1-4132-8F8B-955ACB0B58FB}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TakeTopSecurity", "ENComponent\TakeTopSecurity\TakeTopSecurity.csproj", "{2946F36A-2B63-43D8-A8CC-379EC82ED204}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TakeTopInfoPathSoft.Service", "ENComponent\TakeTopInfoPathSoft.Service\TakeTopInfoPathSoft.Service.csproj", "{E0AA1E89-4314-44E6-BAE5-457B66976B7D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TakeTopInfoPathSoft.JS", "ENComponent\TakeTopInfoPathSoft.JS\TakeTopInfoPathSoft.JS.csproj", "{C3DA7252-AC6C-4232-8C05-2B4FEDA2E07D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TakeTopCore", "ENComponent\TakeTopCore\TakeTopCore.csproj", "{767A6C21-7E8F-4E6B-A2A4-4514032CC6DA}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TakeTopGanttNew", "ENComponent\TakeTopGantt\TakeTopGantt\TakeTopGanttNew.csproj", "{360D64FC-07C0-4473-A40E-2056BF693DED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
