@@ -86,7 +86,7 @@
         // 全局变量
         var _loadTimeoutId = null;
         var _isDataLoaded = false;
-        var _timeoutMs = 10000; // 10秒超时
+        var _timeoutMs = 30000; // 30秒超时
     </script>
 </head>
 
@@ -109,13 +109,17 @@
 
     <script type="text/javascript">
 
-        //取得URL参数的值
+        //取得URL参数的值（正确处理值中包含 = 的情况）
         function GetQueryValue(queryName) {
-            var query = decodeURI(window.location.search.substring(1));
+            var query = window.location.search.substring(1);
             var vars = query.split('&');
             for (var i = 0; i < vars.length; i++) {
-                var pair = vars[i].split('=');
-                if (pair[0] == queryName) { return pair[1]; }
+                var idx = vars[i].indexOf('=');
+                if (idx < 0) continue;
+                var name = decodeURIComponent(vars[i].substring(0, idx));
+                if (name == queryName) {
+                    return decodeURIComponent(vars[i].substring(idx + 1));
+                }
             }
             return null;
         }
@@ -143,12 +147,12 @@
         // 小加载图标 HTML - 纯白色CSS动画转圈，尺寸8px
         var _cardLoadingIconHtml = "<span class='tt-loading-spinner' style='display:inline-block;width:8px;height:8px;border:2px solid rgba(255,255,255,0.3);border-top-color:#ffffff;border-radius:50%;animation:tt-spin 0.8s linear infinite;vertical-align:middle;margin-left:4px;'></span>";
 
-        // 显示超时占位符 --
+        // 超时时显示占位符 --
         function showTimeoutPlaceholder() {
             var xEl = document.getElementById("spanXNumber");
             var yEl = document.getElementById("spanYNumber");
             var zEl = document.getElementById("spanZNumber");
-            var placeholder = "<span style='color:rgba(255,255,255,0.6);'>--</span>";
+            var placeholder = "--";
             if (xEl) xEl.innerHTML = placeholder;
             if (yEl) yEl.innerHTML = placeholder;
             if (zEl) zEl.innerHTML = placeholder;
@@ -222,6 +226,8 @@
         function loadCardDataAsync(chartType, chartName) {
             var sqlCode = escape(unescape(GetQueryValue("SqlCode")));
 
+            console.log("Loading card data:", chartType, chartName);
+
             // 重置状态
             _isDataLoaded = false;
             if (_loadTimeoutId) {
@@ -229,9 +235,10 @@
                 _loadTimeoutId = null;
             }
 
-            // 启动10秒超时计时器
+            // 启动30秒超时计时器
             _loadTimeoutId = setTimeout(function() {
                 if (!_isDataLoaded) {
+                    console.log("Card data load timeout:", chartType);
                     // 超时：显示 -- 而不是错误
                     showTimeoutPlaceholder();
                     _isDataLoaded = true;
@@ -255,6 +262,7 @@
                 datatype: "json",
                 contentType: "application/x-www-form-urlencoded; charset=utf-8",
                 success: function (result) {
+                    console.log("Card data received:", chartType, result);
                     // 清除超时计时器
                     if (_loadTimeoutId) {
                         clearTimeout(_loadTimeoutId);
@@ -266,14 +274,22 @@
 
                     if (result && result != "") {
                         try {
-                            eval("var transresult=" + result);
+                            // 处理 result 可能是字符串或对象
+                            var transresult;
+                            if (typeof result === 'string') {
+                                eval("transresult=" + result);
+                            } else {
+                                transresult = result;
+                            }
+                            console.log("Parsed data:", transresult);
                             updateCardNumbers(transresult);
                         } catch (e) {
-                            console.error("Data parsing error:", e);
+                            console.error("Data parsing error:", e, "result:", result);
                             showTimeoutPlaceholder();
                         }
                     } else {
                         // 无数据时显示 --
+                        console.log("No data received for:", chartType);
                         showTimeoutPlaceholder();
                     }
                     // 通知父页面加载完成
@@ -282,6 +298,7 @@
                     }
                 },
                 error: function (xhr, status, error) {
+                    console.error("Card data load error:", chartType, status, error);
                     // 清除超时计时器
                     if (_loadTimeoutId) {
                         clearTimeout(_loadTimeoutId);
@@ -291,7 +308,7 @@
                     if (_isDataLoaded) return;
                     _isDataLoaded = true;
 
-                    // 错误时显示 -- 而不是错误信息
+                    // 错误时显示 --
                     showTimeoutPlaceholder();
                     if (parent && parent.window && parent.window.chartLoaded) {
                         parent.window.chartLoaded();
@@ -343,7 +360,13 @@
                 success: function (result) {
                     if (result && result != "") {
                         try {
-                            eval("var transresult=" + result);
+                            // 处理 result 可能是字符串或对象
+                            var transresult;
+                            if (typeof result === 'string') {
+                                eval("transresult=" + result);
+                            } else {
+                                transresult = result;
+                            }
 
                             // 卡片类型图表
                             if (chartType == 'HRuningProjectStatus' || chartType == 'HDelayProjectStatus' ||
