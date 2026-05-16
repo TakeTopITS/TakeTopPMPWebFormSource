@@ -32825,6 +32825,10 @@
     <value>生成</value>
     <comment>生成</comment>
   </data>
+  <data name="DSeekQueryInProgress" xml:space="preserve">
+    <value>查询中...</value>
+    <comment>查询中...</comment>
+  </data>
   <data name="DSeekStop" xml:space="preserve">
     <value>停止</value>
     <comment>停止</comment>

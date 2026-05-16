@@ -420,6 +420,7 @@
             color: white;
             text-decoration: none;
         }
+
     </style>
 
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
@@ -523,9 +524,10 @@
 
             // Add Enter key functionality to textboxes
             document.addEventListener('keydown', function (event) {
-                if (event.key === 'Enter') {
+                if (event.key === 'Enter' && !event.shiftKey) {
                     const txtPrompt = document.getElementById('<%= txtPrompt.ClientID %>');
                     if (txtPrompt && document.activeElement === txtPrompt) {
+                        event.preventDefault();
                         document.getElementById('<%= btnGenerateText.ClientID %>').click();
                     }
                 }
@@ -615,12 +617,6 @@
         }
 
         function endRequest(sender, args) {
-            // Hide waiting icon next to button
-            var waitingImg = document.getElementById('IMG_Waiting');
-            if (waitingImg) {
-                waitingImg.style.display = 'none';
-            }
-
             // Rebind table selection events
             const checkboxes = document.querySelectorAll('#<%= cblTables.ClientID %> input[type="checkbox"]');
             if (checkboxes && checkboxes.length > 0) {
@@ -638,6 +634,7 @@
                 showResultSection();
             }
         }
+
     </script>
 </head>
 <body>
@@ -664,11 +661,8 @@
         
             <!-- 模式切换器 -->
             <div id="divModeSwitcher" runat="server" class="mode-switcher">
-                <asp:Button ID="BT_Simple" runat="server" CssClass="mode-button active" OnClick="BT_Simple_Click" Text="<%$ Resources:lang,DSeekSmartChat%>" OnClientClick="javascript:document.getElementById('loadingContainer').style.display = 'block';" />
-                <div id="loadingContainer" style="display: none; text-align: center; margin: 2px 0;">
-                    <img id="IMG_Waiting" src="Images/Processing.gif" alt="Loading,please wait..." />
-                </div>
-                <asp:Button ID="BT_DataAnalysis" runat="server" CssClass="mode-button" OnClick="BT_DataAnalysis_Click" Text="<%$ Resources:lang,DSeekDataAnalysis%>" OnClientClick="javascript:document.getElementById('loadingContainer').style.display = 'block';" />
+                <asp:Button ID="BT_Simple" runat="server" CssClass="mode-button active" OnClick="BT_Simple_Click" Text="<%$ Resources:lang,DSeekSmartChat%>" />
+                <asp:Button ID="BT_DataAnalysis" runat="server" CssClass="mode-button" OnClick="BT_DataAnalysis_Click" Text="<%$ Resources:lang,DSeekDataAnalysis%>" />
             </div>
 
             <!-- UpdatePanel包含所有内容区域 -->
@@ -678,23 +672,20 @@
                     <div id="divSimpleMode" class="content-area" runat="server">
                         <div class="simple-prompt-area">
                             <center>
-                                <table style="text-align: center;">
+                                <table style="text-align: center; width: 100%;">
                                     <tr>
-                                        <td>
-                                            <asp:TextBox ID="txtPrompt" runat="server" Width="250px" Height="80px"
+                                        <td style="width: 100%;">
+                                            <asp:TextBox ID="txtPrompt" runat="server" Width="98%" Height="80px"
                                                 TextMode="MultiLine" placeholder="<%$ Resources:lang,DSeekEnterYourQuestion%>"></asp:TextBox>
                                         </td>
                                         <td>
                                             <asp:ImageButton ID="btnGenerateText" ImageUrl="ImagesSkin/AIGenerate.png"
                                                 runat="server" Text="<%$ Resources:lang,DSeekGenerate%>" OnClick="btnGenerateText_Click"
-                                                OnClientClick="javascript:document.getElementById('IMG_Waiting').style.display = 'inline';" />
-                                            <img id="IMG_Waiting" src="Images/Processing.gif" alt="LoadingPleaseWait"
-                                                style="display: none; vertical-align: middle; margin-left: 8px;" />
+                                                OnClientClick="this.src='Images/Processing.gif';" />
                                         </td>
                                         <td>
                                             <asp:ImageButton ID="btnStopSeek" ImageUrl="ImagesSkin/AIStop.png"
-                                                runat="server" Text="<%$ Resources:lang,DSeekStop%>" OnClick="btnStopAI_Click"
-                                                OnClientClick="javascript:document.getElementById('IMG_Waiting').style.display = 'none';" />
+                                                runat="server" Text="<%$ Resources:lang,DSeekStop%>" OnClick="btnStopAI_Click" />
                                         </td>
                                     </tr>
                                 </table>
@@ -895,13 +886,6 @@
             </div>
         </div>
         
-        <div style="display: none;" id="progressContainer">
-            <asp:UpdateProgress ID="TakeTopUp" runat="server" AssociatedUpdatePanelID="UpdatePanel1" DisplayAfter="0">
-                <ProgressTemplate>
-                    <span></span>
-                </ProgressTemplate>
-            </asp:UpdateProgress>
-        </div>
     </form>
     <script type="text/javascript" language="javascript">var cssDirectory = '<%=Session["CssDirectory"] %>'; var oLink = document.getElementById('mainCss'); oLink.href = 'css/' + cssDirectory + '/' + 'bluelightmain.css';</script>
 </body>

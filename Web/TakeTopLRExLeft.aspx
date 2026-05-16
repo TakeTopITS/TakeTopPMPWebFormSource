@@ -7,6 +7,7 @@
 <html id="yanse" xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
     <title></title>
+    <meta charset="utf-8" />
     <link id="mainCss" href="css/bluelightleftEx.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="lhgdialog/lhgcore.min.js"></script>
@@ -373,6 +374,16 @@
             if (hfIsExtend) hfIsExtend.value = isExtend;
         }
 
+        // 左边栏悬停时显示/隐藏展开按钮
+        function showToggleBtn() {
+            var btn = document.getElementById('middleToggleBtn');
+            if (btn) btn.style.opacity = '1';
+        }
+        function hideToggleBtn() {
+            var btn = document.getElementById('middleToggleBtn');
+            if (btn) btn.style.opacity = '0';
+        }
+
         // 前端控制左边栏展开/收缩（立即响应，同时触发后端保存）
         function toggleLeftBar() {
             var cols = window.parent.document.getElementById("TakeTopLRMDI").cols;
@@ -436,7 +447,8 @@
             justify-content: center;
             z-index: 100;
             box-shadow: -2px 0 5px rgba(0,0,0,0.3);
-            transition: all 0.2s ease;
+            transition: opacity 0.3s ease;
+            opacity: 0;
         }
         #middleToggleBtn:hover {
             background-color: rgba(255, 255, 255, 0.25);
@@ -460,7 +472,7 @@
             </Triggers>
             <ContentTemplate>
 
-                <div id="divBody" style="height: 100%; width: 100%; overflow-y: auto;">
+                <div id="divBody" style="height: 100%; width: 100%; overflow-y: auto;" onmouseenter="showToggleBtn()" onmouseleave="hideToggleBtn()">
                     <div class="leftSet" style="overflow: hidden;">
                         <table width="181px" border="0" cellspacing="0" cellpadding="0">
                             <tr>
@@ -512,8 +524,9 @@
                 </div>
 
                 <!-- 中间展开/收缩按钮 -->
-                <div id="middleToggleBtn" title="展开/收缩" onclick="javascript: toggleLeftBar();" class="middle-toggle-link">
-                    <img id="toggleArrow" src='<%=Session["LeftBarExtend"].ToString()=="YES" ? "ImagesSkin/extend.png" : "ImagesSkin/extend_right.png" %>' alt="切换" />
+                <div id="middleToggleBtn" title="" onclick="javascript: toggleLeftBar();" class="middle-toggle-link"
+                    onmouseenter="showToggleBtn()" onmouseleave="hideToggleBtn()">
+                    <img id="toggleArrow" src='<%=Session["LeftBarExtend"].ToString()=="YES" ? "ImagesSkin/extend.png" : "ImagesSkin/extend_right.png" %>' alt="" />
                 </div>
                 <!-- 隐藏的后端按钮，用于异步保存状态 -->
                 <asp:LinkButton ID="BT_Extend" runat="server" OnClick="BT_Extend_Click" CssClass="middle-toggle-link" style="display:none;">
@@ -607,125 +620,6 @@
 </body>
 <script type="text/javascript" language="javascript">var cssDirectory = '<%=Session["CssDirectory"] %>'; var oLink = document.getElementById('mainCss'); if ((/Safari/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent))) { oLink.href = 'css/' + cssDirectory + '/' + 'bluelightleftEx.css'; } else { oLink.href = 'css/' + cssDirectory + '/' + 'bluelightleftEx.css'; };</script>
 </html><%--***--%>
-<%--***--%>
-
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-
-
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-
-<%--***--%>
-
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
-<%--***--%>
 <%--***--%>
 <%--***--%>
 <%--***--%>

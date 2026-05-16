@@ -1,4 +1,5 @@
-using System; using System.Resources;
+using System;
+using System.Resources;
 using System.Drawing;
 using System.Data;
 using System.Configuration;
@@ -28,7 +29,7 @@ public partial class TTTakeTopIM : System.Web.UI.Page
 
         if (Page.IsPostBack != true)
         {
-            TakeTopCore.CoreShareClass.InitialDepartmentTreeByAuthority(LanguageHandle.GetWord("ZZJGT"),TreeView1, strUserCode);
+            TakeTopCore.CoreShareClass.InitialDepartmentTreeByAuthority(LanguageHandle.GetWord("ZZJGT"), TreeView1, strUserCode);
 
             LoadActiveUserList();
 
@@ -77,7 +78,7 @@ public partial class TTTakeTopIM : System.Web.UI.Page
             strIMTitle = "TakeTopIM---" + strUserName;
             strMessage = "TTTakeTopIMMain.aspx?CoID=0&ChatterCode=" + strUserCode;
 
-            strJavaScriptFuntion = "opim(" + "'" + strRandomID + "'" + "," + "'" + strIMTitle + "'" + "," + "'" + strMessage + "'" + ");";
+            strJavaScriptFuntion = "opim(" + "'" + HttpUtility.JavaScriptStringEncode(strRandomID) + "'" + "," + "'" + HttpUtility.JavaScriptStringEncode(strIMTitle) + "'" + "," + "'" + HttpUtility.JavaScriptStringEncode(strMessage) + "'" + ");";
             ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", strJavaScriptFuntion, true);
         }
     }
@@ -122,7 +123,7 @@ public partial class TTTakeTopIM : System.Web.UI.Page
         DataGrid1.DataBind();
 
         LB_Sql1.Text = strHQL;
-    }   
+    }
 
 }
 

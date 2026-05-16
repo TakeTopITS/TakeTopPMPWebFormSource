@@ -63,12 +63,8 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
     {
         if (_aiServerAvailable)
         {
-            // AI服务器可用，显示成功状态
-            aiServerStatusContainer.Visible = true;
-            aiServerStatusContainer.Attributes["class"] = "ai-server-status success";
-            lblAIServerStatus.Text = _aiServerType == "Local" ?
-                LanguageHandle.GetWord("DSeekAIServerAvailable") :
-                LanguageHandle.GetWord("DSeekExternalAIServerAvailable");
+            // AI服务器可用时不显示
+            aiServerStatusContainer.Visible = false;
         }
         else
         {
@@ -753,7 +749,7 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
                     AND table_schema = 'public'
                     ORDER BY ordinal_position";
 
-                DataSet columnDs = ShareClass.GetDataSetFromSql(columnSql, "Columns");
+                DataSet columnDs = ExecuteReadOnlyQuery(columnSql, "Columns");
 
                 var columns = new List<ColumnInfo>();
                 foreach (DataRow row in columnDs.Tables[0].Rows)
@@ -771,7 +767,7 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
                 try
                 {
                     string countSql = $"SELECT COUNT(*) FROM {table}";
-                    DataSet countDs = ShareClass.GetDataSetFromSql(countSql, "Count");
+                    DataSet countDs = ExecuteReadOnlyQuery(countSql, "Count");
                     if (countDs.Tables.Count > 0 && countDs.Tables[0].Rows.Count > 0)
                     {
                         rowCount = Convert.ToInt64(countDs.Tables[0].Rows[0][0]);
@@ -1027,7 +1023,7 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
                     FROM information_schema.columns
                     WHERE table_name = '{EscapeSql(table)}'";
 
-                DataSet columnDs = ShareClass.GetDataSetFromSql(columnSql, "Columns");
+                    DataSet columnDs = ExecuteReadOnlyQuery(columnSql, "Columns");
 
                 foreach (DataRow row in columnDs.Tables[0].Rows)
                 {
@@ -1199,6 +1195,38 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
     private string GetCurrentUser()
     {
         return User.Identity?.Name ?? "System";
+    }
+
+    // 安全校验：SQL必须是只读查询（所有生成和分析按钮都只允许SELECT）
+    private static bool IsReadOnlySql(string sql)
+    {
+        if (string.IsNullOrWhiteSpace(sql))
+            return false;
+
+        string trimmed = sql.TrimStart().ToUpperInvariant();
+
+        if (!trimmed.StartsWith("SELECT") && !trimmed.StartsWith("WITH"))
+            return false;
+
+        string[] dangerous = { "INSERT ", "UPDATE ", "DELETE ", "DROP ", "ALTER ", "CREATE ", "TRUNCATE ", "EXEC ", "EXECUTE ", "GRANT ", "REVOKE " };
+        foreach (string keyword in dangerous)
+        {
+            if (trimmed.Contains(keyword))
+                return false;
+        }
+
+        return true;
+    }
+
+    // 安全执行只读查询
+    private DataSet ExecuteReadOnlyQuery(string sql, string tableName)
+    {
+        if (!IsReadOnlySql(sql))
+        {
+            LogClass.WriteLogFile("SECURITY: Blocked non-SELECT query from AI page: " + sql);
+            throw new Exception(LanguageHandle.GetWord("DSeekOnlySelectQueriesAllowed"));
+        }
+        return ShareClass.GetDataSetFromSql(sql, tableName);
     }
 
     // 显示消息

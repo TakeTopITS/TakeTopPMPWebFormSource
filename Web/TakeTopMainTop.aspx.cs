@@ -556,7 +556,7 @@ public partial class TakeTopMainTop : System.Web.UI.Page
 
                 try
                 {
-                    strJavaScriptFuntion = "opim(" + "'" + strRandomID + "'" + "," + "'" + strIMTitle + "'" + "," + "'" + strMessage + "'" + ");";
+                    strJavaScriptFuntion = "opim(" + "'" + HttpUtility.JavaScriptStringEncode(strRandomID) + "'" + "," + "'" + HttpUtility.JavaScriptStringEncode(strIMTitle) + "'" + "," + "'" + HttpUtility.JavaScriptStringEncode(strMessage) + "'" + ");";
                     ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), strCoID, strJavaScriptFuntion, true);
                 }
                 catch
@@ -608,7 +608,7 @@ public partial class TakeTopMainTop : System.Web.UI.Page
 
                 try
                 {
-                    strJavaScriptFuntion = "opim(" + "'" + strRandomID + "'" + "," + "'" + strIMTitle + "'" + "," + "'" + strMessage + "'" + ");";
+                    strJavaScriptFuntion = "opim(" + "'" + HttpUtility.JavaScriptStringEncode(strRandomID) + "'" + "," + "'" + HttpUtility.JavaScriptStringEncode(strIMTitle) + "'" + "," + "'" + HttpUtility.JavaScriptStringEncode(strMessage) + "'" + ");";
                     ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), strCoID, strJavaScriptFuntion, true);
                 }
                 catch

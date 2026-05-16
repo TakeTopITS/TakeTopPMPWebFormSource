@@ -32,7 +32,8 @@
             justify-content: center;
             z-index: 100;
             box-shadow: -2px 0 5px rgba(0,0,0,0.3);
-            transition: all 0.2s ease;
+            transition: opacity 0.3s ease;
+            opacity: 0;
         }
         #middleToggleBtn:hover {
             background-color: rgba(255, 255, 255, 0.25);
@@ -218,6 +219,16 @@
         // 显示提示信息
         function showAlertAtMouse(message) {
             alert(message);
+        }
+
+        // 左边栏悬停时显示/隐藏展开按钮
+        function showToggleBtn() {
+            var btn = document.getElementById('middleToggleBtn');
+            if (btn) btn.style.opacity = '1';
+        }
+        function hideToggleBtn() {
+            var btn = document.getElementById('middleToggleBtn');
+            if (btn) btn.style.opacity = '0';
         }
 
         // 前端控制左边栏展开/收缩（立即响应，同时触发后端保存）
@@ -478,7 +489,7 @@
             </Triggers>
             <ContentTemplate>
 
-                <div id="divBody" style="height: 100%; width: 100%; overflow-y: auto;">
+                <div id="divBody" style="height: 100%; width: 100%; overflow-y: auto;" onmouseenter="showToggleBtn()" onmouseleave="hideToggleBtn()">
 
                     <div class="leftSet" style="overflow: hidden;">
                         <table width="181px" border="0" cellspacing="0" cellpadding="0">
@@ -584,7 +595,8 @@
                 </div>
 
                             <!-- 中间展开/收缩按钮 -->
-                <div id="middleToggleBtn" title="展开/收缩" onclick="javascript: toggleLeftBar();" class="middle-toggle-link">
+                <div id="middleToggleBtn" title="展开/收缩" onclick="javascript: toggleLeftBar();" class="middle-toggle-link"
+                    onmouseenter="showToggleBtn()" onmouseleave="hideToggleBtn()">
                     <img id="toggleArrow" src='<%=(Session["LeftBarExtend"] != null && Session["LeftBarExtend"].ToString()=="YES") ? "ImagesSkin/extend.png" : "ImagesSkin/extend_right.png" %>' alt="切换" />
                 </div>
                 <!-- 隐藏的后端按钮，用于异步保存状态 -->
@@ -942,6 +954,36 @@
 
 <%--***--%>
 
+<%--***--%>
+<%--***--%>
+<%--***--%>
+<%--***--%>
+<%--***--%>
+<%--***--%>
+<%--***--%>
+<%--***--%>
+<%--***--%>
+<%--***--%>
+<%--***--%>
+<%--***--%>
+<%--***--%>
+<%--***--%>
+<%--***--%>
+<%--***--%>
+<%--***--%>
+<%--***--%>
+<%--***--%>
+<%--***--%>
+<%--***--%>
+<%--***--%>
+<%--***--%>
+<%--***--%>
+<%--***--%>
+<%--***--%>
+<%--***--%>
+<%--***--%>
+<%--***--%>
+<%--***--%>
 <%--***--%>
 <%--***--%>
 <%--***--%>

@@ -32616,6 +32616,10 @@ The progress of the task affects the schedule to be confirmed</value>
     <value>Generate</value>
     <comment>Generate</comment>
   </data>
+  <data name="DSeekQueryInProgress" xml:space="preserve">
+    <value>Querying...</value>
+    <comment>Querying...</comment>
+  </data>
   <data name="DSeekStop" xml:space="preserve">
     <value>Stop</value>
     <comment>Stop</comment>
