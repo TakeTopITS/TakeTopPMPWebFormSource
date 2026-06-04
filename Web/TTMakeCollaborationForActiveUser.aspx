@@ -181,7 +181,7 @@
                                         </asp:TreeView>
                                     </td>
 
-                                    <td width="170px" style="border-right: solid 1px #D8D8D8; padding: 5px 5px 5px 5px; text-align: center; vertical-align: top;">
+                                    <td width="170px" style="border-right: solid 1px #d0d0d0; padding: 5px 5px 5px 5px; text-align: center; vertical-align: top;">
                                         <table style="width: 100%;" cellpadding="0" cellspacing="0">
                                             <tr>
                                                 <td>
@@ -236,7 +236,7 @@
                                         </table>
                                     </td>
 
-                                    <td valign="top" class="ItemAlignLeft" style="padding: 5px 5px 5px 5px; border-right: solid 1px #D8D8D8;">
+                                    <td valign="top" class="ItemAlignLeft" style="padding: 5px 5px 5px 5px; border-right: solid 1px #d0d0d0;">
                                         <table style="width: 100%;" class="ItemAlignLeft" cellpadding="2" cellspacing="0" class="formBgStyle">
                                             <tr>
                                                 <td class="formItemBgStyleForAlignLeft" style="width: 15%; height: 24px">

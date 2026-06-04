@@ -67,7 +67,7 @@
                                                 <Columns>
                                                     <asp:TemplateColumn HeaderText="Code">
                                                         <ItemTemplate>
-                                                            <asp:Button ID="BT_VendorCode" runat="server" Text='<%# DataBinder.Eval(Container.DataItem,"VendorCode") %>' CssClass="inpu" />
+                                                            <asp:Button ID="BT_VendorCode" runat="server" Text='<%# DataBinder.Eval(Container.DataItem,"VendorCode") %>' CssClass="tt-sms-btn" />
                                                         </ItemTemplate>
                                                         <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="10%" />
                                                     </asp:TemplateColumn>

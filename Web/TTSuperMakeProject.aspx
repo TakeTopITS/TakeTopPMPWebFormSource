@@ -70,7 +70,7 @@
                                 <td>
                                     <table style="width: 100%" cellpadding="0" cellspacing="0">
                                         <tr>
-                                            <td style="width: 220px; border-right: solid 1px #D8D8D8; padding: 5px 0px 0px 5px"
+                                            <td style="width: 220px; border-right: solid 1px #d0d0d0; padding: 5px 0px 0px 5px"
                                                 valign="top" class="ItemAlignLeft">
                                                 <asp:TreeView ID="TreeView2" runat="server" NodeWrap="True" OnSelectedNodeChanged="TreeView2_SelectedNodeChanged"
                                                     ShowLines="True" Width="220px">
@@ -81,7 +81,7 @@
                                                 </asp:TreeView>
                                             </td>
 
-                                            <td style="width: 165px; border-right: solid 1px #D8D8D8; padding: 5px 5px 5px 5px"
+                                            <td style="width: 165px; border-right: solid 1px #d0d0d0; padding: 5px 5px 5px 5px"
                                                 valign="top" class="ItemAlignLeft">
                                                 <table style="width: 100%; height: 50px;">
                                                     <tr>
@@ -125,7 +125,7 @@
                                                 </table>
                                             </td>
 
-                                            <td style="width: 220px; border-right: solid 1px #D8D8D8; padding: 5px 0px 0px 5px"
+                                            <td style="width: 220px; border-right: solid 1px #d0d0d0; padding: 5px 0px 0px 5px"
                                                 valign="top" class="ItemAlignLeft">
 
                                                 <asp:TreeView ID="TreeView1" runat="server" OnSelectedNodeChanged="TreeView1_SelectedNodeChanged"
@@ -137,7 +137,7 @@
                                                 </asp:TreeView>
                                             </td>
 
-                                            <td style="text-align: left; border-right: solid 1px #D8D8D8;" valign="top">
+                                            <td style="text-align: left; border-right: solid 1px #d0d0d0;" valign="top">
                                                 <table width="100%" cellpadding="0" cellspacing="0">
                                                     <tr>
                                                         <td>
@@ -661,7 +661,7 @@
                                                 <asp:TemplateColumn HeaderText="Number">
                                                     <ItemTemplate>
                                                         <asp:Button ID="BT_ProjectID" runat="server" Text='<%# DataBinder.Eval(Container.DataItem,"ProjectID") %>'
-                                                            CssClass="inpu" />
+                                                            CssClass="tt-sms-btn" />
                                                     </ItemTemplate>
                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="10%" />
                                                 </asp:TemplateColumn>

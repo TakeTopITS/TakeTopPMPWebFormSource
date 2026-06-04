@@ -15,7 +15,7 @@
         }
 
         .auto-style3 {
-            /*border-bottom:dotted  1px #C6CFD4;
+            /*border-bottom:dotted  1px #d0d0d0;
         height: 19px;
         line-height: 18px;*/
             border-bottom: 1px dotted #cccccc;
@@ -27,7 +27,7 @@
         }
 
         .auto-style4 {
-            /*border-bottom:dotted  1px #C6CFD4;
+            /*border-bottom:dotted  1px #d0d0d0;
         height: 19px;
         line-height: 18px;*/
             border-bottom: 1px dotted #cccccc;

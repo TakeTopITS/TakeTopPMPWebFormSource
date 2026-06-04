@@ -55,7 +55,7 @@ td {
 	border-bottom-style: none;
 	border-left-style: none;
 	/*font-size: 12px;*/
-	/*color: #29728D;*/	
+	/*color: #607d8b;*/	
 }
 
 /*--------------------------------¶Ì°´Å¥---------------------------*/
@@ -70,7 +70,7 @@ td {
 	border-bottom-style: none;
 	border-left-style: none;
 	/*font-size: 12px;*/
-	/*color: #29728D;*/	
+	/*color: #607d8b;*/	
 }
 
 
@@ -110,7 +110,7 @@ td {
 	WIDTH: 100px;
 	HEIGHT: 23px;
 	TEXT-ALIGN: center;
-	color: #FFFFFF;
+	color: #333;
 	text-decoration: none;
 	line-height: 22px;
 	font-size: 14px;
@@ -150,7 +150,7 @@ td {
 	BACKGROUND-REPEAT: no-repeat;
 	BACKGROUND-POSITION: center bottom;
 	HEIGHT: 27px;
-	COLOR: #006699;
+	COLOR: #607d8b;
 	TEXT-DECORATION: none;
 	font-size: 14px;
 	font-weight: normal;
@@ -161,13 +161,13 @@ td {
 	BACKGROUND-REPEAT: no-repeat;
 	BACKGROUND-POSITION: center bottom;
 	HEIGHT: 27px;
-	COLOR: #003366;
+	COLOR: #455a64;
 	TEXT-DECORATION: none;
 	PADDING-TOP: 2px;
 	width: 94px;
 }
 .leftnav UL LI.thisclass A {
-	BACKGROUND-IMAGE: url(ImagesSkin/on.jpg); LINE-HEIGHT: 27px; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: center bottom; HEIGHT: 27px; COLOR: #003366; TEXT-DECORATION: none; PADDING-TOP: 0px;font-weight: bold;
+	BACKGROUND-IMAGE: url(ImagesSkin/on.jpg); LINE-HEIGHT: 27px; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: center bottom; HEIGHT: 27px; COLOR: #455a64; TEXT-DECORATION: none; PADDING-TOP: 0px;font-weight: bold;
 }
 .leftnav UL LI.thisclass A:hover {
 	BACKGROUND-IMAGE: url(ImagesSkin/on.jpg);
@@ -175,7 +175,7 @@ td {
 	BACKGROUND-REPEAT: no-repeat;
 	BACKGROUND-POSITION: center bottom;
 	HEIGHT: 27px;
-	COLOR: #003366;
+	COLOR: #455a64;
 	TEXT-DECORATION: none;
 	PADDING-TOP: 0px;
 	font-size: 14px;
@@ -206,7 +206,7 @@ td {
 	BACKGROUND-REPEAT: no-repeat;
 	BACKGROUND-POSITION: center bottom;
 	HEIGHT: 27px;
-	COLOR: #006699;
+	COLOR: #607d8b;
 	TEXT-DECORATION: none;
 	font-size: 14px;
 	font-weight: normal;
@@ -217,13 +217,13 @@ td {
 	BACKGROUND-REPEAT: no-repeat;
 	BACKGROUND-POSITION: center bottom;
 	HEIGHT: 27px;
-	COLOR: #003366;
+	COLOR: #455a64;
 	TEXT-DECORATION: none;
 	PADDING-TOP: 2px;
 	width: 94px;
 }
 .leftnavl UL LI.thisclass A {
-	BACKGROUND-IMAGE: url(ImagesSkin/on.jpg); LINE-HEIGHT: 27px; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: center bottom; HEIGHT: 27px; COLOR: #003366; TEXT-DECORATION: none; PADDING-TOP: 0px;font-weight: bold;
+	BACKGROUND-IMAGE: url(ImagesSkin/on.jpg); LINE-HEIGHT: 27px; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: center bottom; HEIGHT: 27px; COLOR: #455a64; TEXT-DECORATION: none; PADDING-TOP: 0px;font-weight: bold;
 }
 .leftnavl UL LI.thisclass A:hover {
 	BACKGROUND-IMAGE: url(ImagesSkin/on.jpg);
@@ -231,7 +231,7 @@ td {
 	BACKGROUND-REPEAT: no-repeat;
 	BACKGROUND-POSITION: center bottom;
 	HEIGHT: 27px;
-	COLOR: #003366;
+	COLOR: #455a64;
 	TEXT-DECORATION: none;
 	PADDING-TOP: 0px;
 	font-size: 14px;
@@ -241,5 +241,5 @@ td {
 	WIDTH: 22px; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: right bottom; HEIGHT: 27px
 }
 #topTD{
-	background-color:#3e526c;
+	background-color:#f5f5f5;
 }

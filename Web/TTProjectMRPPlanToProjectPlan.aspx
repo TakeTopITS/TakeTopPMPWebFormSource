@@ -94,7 +94,7 @@
                         <td valign="top" class="ItemAlignLeft">
                             <table style="width: 100%;" cellpadding="0" cellspacing="0">
                                 <tr>
-                                    <td rowspan="4" width="300px" valign="top" style="text-align: left; border-right: solid 1px #D8D8D8;">
+                                    <td rowspan="4" width="300px" valign="top" style="text-align: left; border-right: solid 1px #d0d0d0;">
                                         <asp:TreeView ID="TreeView2" runat="server" NodeWrap="True" OnSelectedNodeChanged="TreeView2_SelectedNodeChanged"
                                             ShowLines="True" Width="300px">
                                             <RootNodeStyle CssClass="rootNode" />
@@ -103,7 +103,7 @@
                                             <SelectedNodeStyle CssClass="selectNode" ForeColor="Red" />
                                         </asp:TreeView>
                                     </td>
-                                    <td rowspan="4" valign="top" style="text-align: left; border-right: solid 1px #D8D8D8"
+                                    <td rowspan="4" valign="top" style="text-align: left; border-right: solid 1px #d0d0d0"
                                         width="360px">
                                         <div style="width: 360px; text-align: right;">
                                             &nbsp;&nbsp;<asp:HyperLink ID="HL_ProPlanGanttOld" runat="server" Target="_blank">
@@ -118,7 +118,7 @@
                                             <SelectedNodeStyle CssClass="selectNode" ForeColor="Red" />
                                         </asp:TreeView>
                                     </td>
-                                 <td rowspan="4" valign="top" style="text-align: left; border-right: solid 1px #D8D8D8;padding-top:5px;"
+                                 <td rowspan="4" valign="top" style="text-align: left; border-right: solid 1px #d0d0d0;padding-top:5px;"
                                         width="360px">
                                      <asp:Button ID="BT_TransferPlan" runat="server" CssClass="inpu" Text="<%$ Resources:lang,ZhuaiJiHua%>" OnClick="BT_TransferPlan_Click" OnClientClick="displayWaitingImg('img_processing');return confirm('操作会覆盖原来的计划结构，您确定要覆盖吗(transfer operation will cover old plan data,Are you sure you want to cover it)？');"/>
                                      <img id="img_processing" src="img/Processing.gif" alt="Loading,please wait..." style="display: none;" />

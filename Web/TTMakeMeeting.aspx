@@ -214,7 +214,7 @@
 
                             <table width="120%" cellpadding="0" cellspacing="0">
                                 <tr>
-                                    <td class="tdMain" class="ItemAlignLeft" valign="top" style="border-right: solid 1px #D8D8D8;">
+                                    <td class="tdMain" class="ItemAlignLeft" valign="top" style="border-right: solid 1px #d0d0d0;">
                                         <table cellpadding="0" cellspacing="0" width="100%">
                                             <tr>
                                                 <td style="padding-left: 20px; font-weight: bold; height: 24px; text-align: center; color: #000000; background-image: url('ImagesSkin/titleBG.jpg')">

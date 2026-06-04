@@ -66,18 +66,18 @@
 
         .tdLeft {
             padding: 5px 5px 5px 5px;
-            border-top: dotted 1px #D8D8D8;
-            border-bottom: dotted 0px #D8D8D8;
-            border-left: dotted 1px #D8D8D8;
-            border-right: dotted 1px #D8D8D8;
+            border-top: dotted 1px #d0d0d0;
+            border-bottom: dotted 0px #d0d0d0;
+            border-left: dotted 1px #d0d0d0;
+            border-right: dotted 1px #d0d0d0;
         }
 
         .tdRight {
             padding 5px 5px 5px 5px:;
-            border-top: dotted 1px #D8D8D8;
-            border-bottom: dotted 0px #D8D8D8;
-            border-left: dotted 1px #D8D8D8;
-            border-right: dotted 1px #D8D8D8;
+            border-top: dotted 1px #d0d0d0;
+            border-bottom: dotted 0px #d0d0d0;
+            border-left: dotted 1px #d0d0d0;
+            border-right: dotted 1px #d0d0d0;
         }
 
         #DIV_Container {
@@ -691,7 +691,7 @@
                 <ItemTemplate>
                     <table style="width: 100%;" cellpadding="0" cellspacing="0" s>
                         <tr>
-                            <td valign="middle" style="width: 50%; border-right: solid 1px #D8D8D8; padding: 2px 2px 2px 2px;">
+                            <td valign="middle" style="width: 50%; border-right: solid 1px #d0d0d0; padding: 2px 2px 2px 2px;">
                                 <table class="formBgStyle" cellpadding="3" cellspacing="0" style="width: 98%; margin-top: 2px; background-color: white;"
                                     class="ItemAlignLeft">
                                     <tr>

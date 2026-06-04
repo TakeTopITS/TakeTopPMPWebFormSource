@@ -121,7 +121,7 @@
                         <td valign="top" class="ItemAlignLeft">
                             <table style="width: 100%;" cellpadding="0" cellspacing="0">
                                 <tr>
-                                    <td rowspan="4" width="300px" valign="top" style="text-align: left; border-right: solid 1px #D8D8D8;">
+                                    <td rowspan="4" width="300px" valign="top" style="text-align: left; border-right: solid 1px #d0d0d0;">
                                         <asp:TreeView ID="TreeView2" runat="server" NodeWrap="True" OnSelectedNodeChanged="TreeView2_SelectedNodeChanged"
                                             ShowLines="True" Width="300px">
                                             <RootNodeStyle CssClass="rootNode" />
@@ -130,7 +130,7 @@
                                             <SelectedNodeStyle CssClass="selectNode" ForeColor="Red" />
                                         </asp:TreeView>
                                     </td>
-                                    <td rowspan="4" valign="top" style="text-align: left; border-right: solid 1px #D8D8D8"
+                                    <td rowspan="4" valign="top" style="text-align: left; border-right: solid 1px #d0d0d0"
                                         width="360px">
                                         <div style="width: 360px; text-align: right;">
                                             &nbsp;&nbsp;<asp:HyperLink ID="HL_ProPlanGanttOld" runat="server" Target="_blank">
@@ -145,7 +145,7 @@
                                             <SelectedNodeStyle CssClass="selectNode" ForeColor="Red" />
                                         </asp:TreeView>
                                     </td>
-                                    <td rowspan="4" valign="top" style="text-align: left; border-right: solid 1px #D8D8D8;">
+                                    <td rowspan="4" valign="top" style="text-align: left; border-right: solid 1px #d0d0d0;">
                                         <table style="width: 360px;">
                                             <tr>
                                                 <td class="ItemAlignLeft" width="80px">

@@ -22,7 +22,7 @@
 
     <style type="text/css">
         .auto-style1 {
-            /*border-bottom:dotted  1px #C6CFD4;
+            /*border-bottom:dotted  1px #d0d0d0;
         height: 19px;
         line-height: 18px;*/
             background-color: #fff;
@@ -102,7 +102,7 @@
                                                             <Columns>
                                                                 <asp:TemplateColumn HeaderText="Code">
                                                                     <ItemTemplate>
-                                                                        <asp:Button ID="BT_CustomerCode" runat="server" CssClass="inpu" Text='<%# DataBinder.Eval(Container.DataItem,"CustomerCode") %>' />
+                                                                        <asp:Button ID="BT_CustomerCode" runat="server" CssClass="tt-sms-btn" Text='<%# DataBinder.Eval(Container.DataItem,"CustomerCode") %>' />
                                                                     </ItemTemplate>
                                                                     <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="10%" />
                                                                 </asp:TemplateColumn>

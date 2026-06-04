@@ -52,7 +52,7 @@
                         <td valign="top" class="ItemAlignLeft">
                             <table style="width: 100%;" cellpadding="0" cellspacing="0">
                                 <tr>
-                                    <td width="300px" valign="top" style="text-align: left; border-right: solid 1px #D8D8D8;">
+                                    <td width="300px" valign="top" style="text-align: left; border-right: solid 1px #d0d0d0;">
                                         <asp:TreeView ID="TreeView2" runat="server" NodeWrap="True" OnSelectedNodeChanged="TreeView2_SelectedNodeChanged"
                                             ShowLines="True" Width="300px">
                                             <RootNodeStyle CssClass="rootNode" />
@@ -61,7 +61,7 @@
                                             <SelectedNodeStyle CssClass="selectNode" ForeColor="Red" />
                                         </asp:TreeView>
                                     </td>
-                                    <td valign="top" style="text-align: left; border-right: solid 1px #D8D8D8"
+                                    <td valign="top" style="text-align: left; border-right: solid 1px #d0d0d0"
                                         width="400px">
                                         
                                                 </td>
@@ -96,7 +96,7 @@
                                             <ItemStyle CssClass="itemStyle" />
                                         </asp:DataGrid>
                                     </td>
-                                    <td valign="top" style="width: 80px; text-align: center; border-right: solid 1px #D8D8D8;">
+                                    <td valign="top" style="width: 80px; text-align: center; border-right: solid 1px #d0d0d0;">
                                         <asp:Button ID="BT_CopyWorkflowTemplate" runat="server" CssClass="ButtonCss" Enabled="False" Height="25px" OnClick="BT_CopyWorkflowTemplate_Click" Text="<%$ Resources:lang,FuZhi%>" />
 
                                         <br />
@@ -107,7 +107,7 @@
 
 
                                     </td>
-                                    <td valign="top" style="text-align: left; border-right: solid 1px #D8D8D8;">
+                                    <td valign="top" style="text-align: left; border-right: solid 1px #d0d0d0;">
                                         <table width="100%" border="0" cellpadding="0" cellspacing="0" background="ImagesSkin/main_n_bj.jpg">
                                             <tr>
                                                 <td width="7">

@@ -59,7 +59,7 @@
                                 <td>
                                     <table width="100%" cellpadding="0" cellspacing="0">
                                         <tr>
-                                            <td class="ItemAlignLeft" colspan="2" style="padding: 5px 5px 0px 5px; border-right: solid 1px #D8D8D8; width: 80%;">
+                                            <td class="ItemAlignLeft" colspan="2" style="padding: 5px 5px 0px 5px; border-right: solid 1px #d0d0d0; width: 80%;">
                                                 <table width="98%" cellpadding="3" cellspacing="0" class="formBgStyle">
                                                     <tr>
                                                         <td class="formItemBgStyleForAlignLeft" style="width: 15%; ">
@@ -175,7 +175,7 @@
                                                                 <Columns>
                                                                     <asp:TemplateColumn HeaderText="Operation">
                                                                         <ItemTemplate>
-                                                                            <asp:Button ID="BT_ID" runat="server" CssClass="inpu" Text="Return" />
+                                                                            <asp:Button ID="BT_ID" runat="server" CssClass="tt-sms-btn" Text="Return" />
                                                                             <asp:HiddenField runat="server" ID="hfStatus" Value='<%#Eval("Status")%>' />
                                                                         </ItemTemplate>
                                                                         <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="8%" />
@@ -467,7 +467,7 @@
                                                 <SelectedNodeStyle CssClass="selectNode" ForeColor="Red" />
                                             </asp:TreeView>
                                         </td>
-                                        <td style="border-right: solid 1px #D8D8D8;" valign="top" >
+                                        <td style="border-right: solid 1px #d0d0d0;" valign="top" >
 
                                             <table background="ImagesSkin/main_n_bj.jpg" border="0" cellpadding="0" cellspacing="0"
                                                 width="170px">

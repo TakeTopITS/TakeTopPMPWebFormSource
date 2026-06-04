@@ -26,7 +26,7 @@
                 <ContentTemplate>
                     <table style="width: 410px;" cellpadding="0" cellspacing="0">
                         <tr>
-                            <td style="width: 210px; padding: 0px 5px 0px 5px; border-right: solid 1px #D8D8D8;"
+                            <td style="width: 210px; padding: 0px 5px 0px 5px; border-right: solid 1px #d0d0d0;"
                                 valign="top" class="ItemAlignLeft">
                                 <asp:TreeView ID="TreeView1" runat="server" BorderColor="Transparent" NodeWrap="True"
                                     OnSelectedNodeChanged="TreeView1_SelectedNodeChanged" ShowLines="True" Width="100%">
@@ -39,7 +39,7 @@
                                 <asp:Label ID="LB_Sql1" runat="server" Visible="False"></asp:Label>
                                 <asp:Label ID="LB_UserCode" runat="server" Visible="False"></asp:Label>
                             </td>
-                            <td style="width: 200px; padding: 5px 5px 5px 5px; border-right: solid 1px #D8D8D8; text-align: center; vertical-align: top;">
+                            <td style="width: 200px; padding: 5px 5px 5px 5px; border-right: solid 1px #d0d0d0; text-align: center; vertical-align: top;">
                                 <table style="width: 100%;" cellpadding="0" cellspacing="0">
                                     <tr>
                                         <td>

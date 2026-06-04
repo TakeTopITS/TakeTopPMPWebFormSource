@@ -228,7 +228,7 @@ td {
 }
 
     td a {
-        color: #2a2e34;
+        color: #333333;
         text-decoration: none;
         cursor: pointer;
         font-size: 14px;
@@ -248,19 +248,19 @@ td {
 }
 /* ===== 边框和布局 ===== */
 .bianTable {
-    border: 1px solid #D8D8D8;
+    border: 1px solid #d0d0d0;
 }
 
 .bianNoBottom {
-    border-left: 1px solid #8AB2E5;
-    border-right: 1px solid #8AB2E5;
-    border-top: 1px solid #8AB2E5;
-    border-bottom: 0px solid #8AB2E5;
+    border-left: 1px solid #d0d0d0;
+    border-right: 1px solid #d0d0d0;
+    border-top: 1px solid #d0d0d0;
+    border-bottom: 0px solid #d0d0d0;
 }
 
 .tdMain {
     padding: 5px 5px 0px 5px;
-    border-right: solid 1px #D8D8D8;
+    border-right: solid 1px #d0d0d0;
     vertical-align: top;
 }
 /* ===== 标题样式 ===== */
@@ -339,7 +339,7 @@ td {
     text-overflow: ellipsis !important;
     border: none !important;
     border-radius: 8px !important;
-    background: linear-gradient(135deg, #2e8ded 0%, #1a6dc1 100%) !important;
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
     cursor: pointer !important;
     transition: all 0.3s ease !important;
@@ -445,11 +445,11 @@ td {
 
         /* 多按钮随机颜色 */
         .multi-buttons .inpu:nth-child(6n+1) {
-            background: linear-gradient(135deg, #2e8ded 0%, #1a6dc1 100%) !important;
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
         }
 
         .multi-buttons .inpu:nth-child(6n+2) {
-            background: linear-gradient(135deg, #4CAF50 0%, #388E3C 100%) !important;
+            background: linear-gradient(135deg, #d44446 0%, #c62828 100%) !important;
         }
 
         .multi-buttons .inpu:nth-child(6n+3) {
@@ -504,11 +504,11 @@ td {
 
         /* 等宽按钮随机颜色 */
         .equal-buttons .inpu:nth-child(6n+1):not(:disabled):not([disabled]) {
-            background: linear-gradient(135deg, #2e8ded 0%, #1a6dc1 100%) !important;
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
         }
 
         .equal-buttons .inpu:nth-child(6n+2):not(:disabled):not([disabled]) {
-            background: linear-gradient(135deg, #4CAF50 0%, #388E3C 100%) !important;
+            background: linear-gradient(135deg, #d44446 0%, #c62828 100%) !important;
         }
 
         .equal-buttons .inpu:nth-child(6n+3):not(:disabled):not([disabled]) {
@@ -704,7 +704,7 @@ td {
     height: 25px;
     border-radius: 2px;
     color: #ffffff !important;
-    background: #2e8ded;
+    background: #3b82f6;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -902,7 +902,7 @@ select {
 }
 
 .shuru {
-    border: 1px solid #BCC6C9;
+    border: 1px solid #d0d0d0;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 12px;
     color: #666666;
@@ -945,19 +945,19 @@ select {
 }
 
     .itemStyle:hover {
-        background: #E9E7E7;
+        background: #f0f0f0;
         height: auto; /* 修改：自动高度 */
     }
 
 .bian_in {
     border-collapse: collapse;
-    border-left: 1px solid #D6DAE2;
-    border-top: 1px solid #D6DAE2;
+    border-left: 1px solid #d0d0d0;
+    border-top: 1px solid #d0d0d0;
 }
 
     .bian_in td {
-        border-right: 1px solid #D6DAE2;
-        border-bottom: 1px solid #D6DAE2;
+        border-right: 1px solid #d0d0d0;
+        border-bottom: 1px solid #d0d0d0;
         overflow: visible; /* 修改：显示完整内容 */
         text-overflow: clip;
         word-break: break-word; /* 修改：允许单词换行 */
@@ -997,7 +997,7 @@ select {
 }
 /* ===== 表单布局 ===== */
 .formBgStyle {
-    background-color: #D8D8D8;
+    background-color: #d0d0d0;
 }
 
 .ItemAlignLeft {
@@ -1060,30 +1060,30 @@ select {
 /* ===== 数据列表样式 ===== */
 .tdLeft, .tdRight {
     padding: 5px;
-    border-top: dotted 1px #D8D8D8;
-    border-bottom: dotted 0px #D8D8D8;
-    border-left: dotted 1px #D8D8D8;
-    border-right: dotted 1px #D8D8D8;
+    border-top: dotted 1px #d0d0d0;
+    border-bottom: dotted 0px #d0d0d0;
+    border-left: dotted 1px #d0d0d0;
+    border-right: dotted 1px #d0d0d0;
     overflow: visible; /* 修改：显示完整内容 */
     text-overflow: clip;
     white-space: normal; /* 修改：允许换行 */
 }
 
 .tdLeft3, .tdRight3 {
-    border-top: dotted 0px #D8D8D8;
-    border-bottom: dotted 1px #D8D8D8;
-    border-left: dotted 0px #D8D8D8;
-    border-right: dotted 1px #D8D8D8;
+    border-top: dotted 0px #d0d0d0;
+    border-bottom: dotted 1px #d0d0d0;
+    border-left: dotted 0px #d0d0d0;
+    border-right: dotted 1px #d0d0d0;
     overflow: visible; /* 修改：显示完整内容 */
     text-overflow: clip;
     white-space: normal; /* 修改：允许换行 */
 }
 
 .tdTopLine {
-    border-top: dotted 1px #D8D8D8;
-    border-bottom: dotted 0px #D8D8D8;
-    border-left: dotted 0px #D8D8D8;
-    border-right: dotted 0px #D8D8D8;
+    border-top: dotted 1px #d0d0d0;
+    border-bottom: dotted 0px #d0d0d0;
+    border-left: dotted 0px #d0d0d0;
+    border-right: dotted 0px #d0d0d0;
     overflow: visible; /* 修改：显示完整内容 */
     text-overflow: clip;
     white-space: normal; /* 修改：允许换行 */
@@ -1112,7 +1112,7 @@ select {
     font-family: 宋体;
     font-size: 12px;
     border-top: 0;
-    border-top: 1px solid #D6DAE2;
+    border-top: 1px solid #d0d0d0;
     display: block;
     width: 100%;
     white-space: normal; /* 修改：允许换行 */

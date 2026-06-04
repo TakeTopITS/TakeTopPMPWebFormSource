@@ -82,14 +82,14 @@
                                 <td valign="top">
                                     <table width="100%" cellpadding="0" cellspacing="0">
                                         <tr>
-                                            <td colspan="3" style="width: 100%; padding: 5px 5px 5px 10px; text-align: left; border-bottom: solid 1px #D8D8D8" valign="top">
+                                            <td colspan="3" style="width: 100%; padding: 5px 5px 5px 10px; text-align: left; border-bottom: solid 1px #d0d0d0" valign="top">
                                                 <asp:Label ID="LB_ProjectMemberOwner" runat="server"></asp:Label>
                                                 &nbsp;
                                                                          <asp:Label ID="LB_UserNumber" runat="server"></asp:Label>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td style="width: 180px; padding: 5px 0px 0px 5px; border-left: solid 1px #D8D8D8"
+                                            <td style="width: 180px; padding: 5px 0px 0px 5px; border-left: solid 1px #d0d0d0"
                                                 valign="top" class="ItemAlignLeft">
                                                 <asp:TreeView ID="TreeView1" runat="server" NodeWrap="True" OnSelectedNodeChanged="TreeView1_SelectedNodeChanged"
                                                     ShowLines="True" Width="180px">
@@ -99,7 +99,7 @@
                                                     <SelectedNodeStyle CssClass="selectNode" ForeColor="Red" />
                                                 </asp:TreeView>
                                             </td>
-                                            <td style="width: 180px; padding: 5px 0px 0px 5px; border-left: solid 1px #D8D8D8"
+                                            <td style="width: 180px; padding: 5px 0px 0px 5px; border-left: solid 1px #d0d0d0"
                                                 valign="top" class="ItemAlignLeft">
                                                 <asp:TreeView ID="TreeView2" runat="server" NodeWrap="True" OnSelectedNodeChanged="TreeView2_SelectedNodeChanged"
                                                     ShowLines="True" Width="180px">

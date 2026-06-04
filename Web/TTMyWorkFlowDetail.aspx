@@ -369,7 +369,7 @@
                                                                     <asp:TemplateColumn>
                                                                         <ItemTemplate>
                                                                             <asp:Button ID="BT_StepID" runat="server" Text="<%$ Resources:lang,GengDuXinXi %>"
-                                                                                CssClass="inpu" OnClientClick="window.parent.document.getElementById('bodyFrame').rows = '175,*';" />
+                                                                                CssClass="tt-sms-btn" OnClientClick="window.parent.document.getElementById('bodyFrame').rows = '175,*';" />
                                                                         </ItemTemplate>
                                                                         <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="10%" />
                                                                     </asp:TemplateColumn>
@@ -391,7 +391,7 @@
                                             <ContentTemplate>
                                                 <table width="100%" cellpadding="0" cellspacing="0">
                                                     <tr>
-                                                        <td style="width: 200px; border-right: solid 1px #D8D8D8; padding: 5px 0px 0px 5px"
+                                                        <td style="width: 200px; border-right: solid 1px #d0d0d0; padding: 5px 0px 0px 5px"
                                                             valign="top" class="ItemAlignLeft">
                                                             <asp:TreeView ID="TreeView1" runat="server" OnSelectedNodeChanged="TreeView1_SelectedNodeChanged"
                                                                 ShowLines="True" Width="220px" NodeWrap="True">

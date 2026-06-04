@@ -189,7 +189,7 @@
 
                             <table style="width: 100%; height: 1px;" cellpadding="0" cellspacing="0">
                                 <tr>
-                                    <td rowspan="2" width="220px" style="border-right: solid 1px #D8D8D8; padding: 5px 5px 5px 5px"
+                                    <td rowspan="2" width="220px" style="border-right: solid 1px #d0d0d0; padding: 5px 5px 5px 5px"
                                         valign="top" class="ItemAlignLeft">
                                         <div id="PlanTreeDivID" style="width: 300px; height: 400px; overflow: auto; vertical-align: top;">
                                             <asp:TreeView ID="TreeView1" runat="server" OnSelectedNodeChanged="TreeView1_SelectedNodeChanged"

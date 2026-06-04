@@ -416,7 +416,7 @@
                                             <asp:TemplateColumn HeaderText="Resources.lang.ZZXMZY">
                                                 <ItemStyle CssClass="itemBorder" HorizontalAlign="left" />
                                                 <ItemTemplate>
-                                                    <asp:Button ID="BT_UserCode" runat="server" CssClass="inpu" Text='<%# DataBinder.Eval(Container.DataItem,"UserCode") %>' />
+                                                    <asp:Button ID="BT_UserCode" runat="server" CssClass="tt-sms-btn" Text='<%# DataBinder.Eval(Container.DataItem,"UserCode") %>' />
                                                     <asp:Button ID="BT_UserName" runat="server" CssClass="inpu" Text='<%# DataBinder.Eval(Container.DataItem,"UserName") %>' />
                                                 </ItemTemplate>
                                             </asp:TemplateColumn>

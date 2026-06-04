@@ -166,7 +166,7 @@
                                                         </asp:BoundColumn>
                                                         <asp:TemplateColumn HeaderText="ISBN±àÂë">
                                                             <ItemTemplate>
-                                                                <asp:Button CssClass="inpu" ID="BT_ISBNNo" runat="server" Text='<%# DataBinder.Eval(Container.DataItem,"ISBNNo").ToString().Trim() %>' />
+                                                                <asp:Button CssClass="tt-sms-btn" ID="BT_ISBNNo" runat="server" Text='<%# DataBinder.Eval(Container.DataItem,"ISBNNo").ToString().Trim() %>' />
                                                             </ItemTemplate>
                                                             <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="20%" />
                                                         </asp:TemplateColumn>

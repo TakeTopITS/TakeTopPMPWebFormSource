@@ -133,7 +133,7 @@
                                         <td>
                                             <table style="width: 100%;" cellpadding="0" cellspacing="0">
                                                 <tr>
-                                                    <td width="300px" valign="top" style="text-align: left; border-right: solid 1px #D8D8D8">
+                                                    <td width="300px" valign="top" style="text-align: left; border-right: solid 1px #d0d0d0">
                                                         <table width="300px" class="formBgStyle">
                                                             <tr>
                                                                 <td style="width: 15%;" class="formItemBgStyleForAlignLeft">
@@ -203,7 +203,7 @@
                                                         <asp:ListBox ID="LB_ItemCode" runat="server" Width="100%" Height="800px" OnSelectedIndexChanged="LB_ItemCode_SelectedIndexChanged"
                                                             DataTextField="ProjectItemName" DataValueField="ItemCode" AutoPostBack="True"></asp:ListBox>
                                                     </td>
-                                                    <td style="padding: 5px 5px 0px 5px; text-align: left; vertical-align: top; border-right: solid 1px #D8D8D8">
+                                                    <td style="padding: 5px 5px 0px 5px; text-align: left; vertical-align: top; border-right: solid 1px #d0d0d0">
                                                         <table style="width: 500px;" cellpadding="2" cellspacing="0" class="formBgStyle">
                                                             <tr>
                                                                 <td style="width: 150px; " class="formItemBgStyleForAlignLeft">
@@ -429,7 +429,7 @@
                                                         </table>
                                                     </td>
 
-                                                    <td style="width: 600px; padding: 0px 1px 0px 1px; text-align: left; vertical-align: top; border-right: solid 1px #D8D8D8;">
+                                                    <td style="width: 600px; padding: 0px 1px 0px 1px; text-align: left; vertical-align: top; border-right: solid 1px #d0d0d0;">
                                                         <table width="600px">
                                                             <tr>
                                                                 <td class="formItemBgStyleForAlignLeft" colspan="4" style="height: 1px;">
@@ -843,7 +843,7 @@
                                                             </tr>
                                                         </table>
                                                     </td>
-                                                    <td style="padding: 5px 5px 0px 5px; vertical-align: top; border-right: solid 1px #D8D8D8;" class="formItemBgStyleForAlignLeft">
+                                                    <td style="padding: 5px 5px 0px 5px; vertical-align: top; border-right: solid 1px #d0d0d0;" class="formItemBgStyleForAlignLeft">
                                                         <table width="500px" cellpadding="2" cellspacing="0">
                                                             <tr>
                                                                 <td>

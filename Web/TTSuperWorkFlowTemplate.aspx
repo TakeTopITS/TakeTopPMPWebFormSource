@@ -79,7 +79,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td width="200px" style="padding: 0px 5px 5px 5px; border-right: solid 1px #D8D8D8" valign="top">
+                                <td width="200px" style="padding: 0px 5px 5px 5px; border-right: solid 1px #d0d0d0" valign="top">
 
                                     <div id="divTreeView" style="height: 800px; width: 100%; overflow-y: auto;">
 
@@ -371,7 +371,7 @@
                                                     <Columns>
                                                         <asp:TemplateColumn>
                                                             <ItemTemplate>
-                                                                <asp:Button ID="BT_StepID" runat="server" CssClass="inpu" Text='<%# DataBinder.Eval(Container.DataItem,"StepID") %>' />
+                                                                <asp:Button ID="BT_StepID" runat="server" CssClass="tt-sms-btn" Text='<%# DataBinder.Eval(Container.DataItem,"StepID") %>' />
                                                             </ItemTemplate>
                                                             <ItemStyle CssClass="itemBorder" HorizontalAlign="Center" Width="6%" />
                                                         </asp:TemplateColumn>

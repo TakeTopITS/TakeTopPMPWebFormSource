@@ -990,7 +990,7 @@
                                                                         <Columns>
                                                                             <asp:TemplateColumn HeaderText="Number">
                                                                                 <ItemTemplate>
-                                                                                    <asp:Button ID="BT_ID" runat="server" CssClass="inpu" Text='<%# DataBinder.Eval(Container.DataItem,"ID") %>' />
+                                                                                    <asp:Button ID="BT_ID" runat="server" CssClass="tt-sms-btn" Text='<%# DataBinder.Eval(Container.DataItem,"ID") %>' />
                                                                                 </ItemTemplate>
                                                                                 <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="15%" />
                                                                             </asp:TemplateColumn>

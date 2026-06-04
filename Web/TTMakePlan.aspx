@@ -73,7 +73,7 @@
                                 <td valign="top">
                                     <table cellpadding="0" cellspacing="0" width="100%">
                                         <tr>
-                                            <td style="border-right: solid 1px #D8D8D8; padding: 5px 0px 0px 5px; overflow: auto; width: 200px;"
+                                            <td style="border-right: solid 1px #d0d0d0; padding: 5px 0px 0px 5px; overflow: auto; width: 200px;"
                                                valign="top" class="ItemAlignLeft">
                                                 <asp:TreeView ID="TreeView1" runat="server" NodeWrap="True" OnSelectedNodeChanged="TreeView1_SelectedNodeChanged"
                                                     ShowLines="True" Width="200px">
@@ -867,7 +867,7 @@
                                         </table>
                                     </td>
 
-                                    <td style="width: 170px; border-right: solid 1px #D8D8D8;" class="ItemAlignLeft">
+                                    <td style="width: 170px; border-right: solid 1px #d0d0d0;" class="ItemAlignLeft">
 
                                         <table width="170px" border="0" cellpadding="0" cellspacing="0" background="ImagesSkin/main_n_bj.jpg">
 
@@ -931,7 +931,7 @@
                                         </asp:DataGrid>
                                     </td>
 
-                                    <td style="width: 220px; border-right: solid 1px #D8D8D8;" valign="top" class="ItemAlignLeft">
+                                    <td style="width: 220px; border-right: solid 1px #d0d0d0;" valign="top" class="ItemAlignLeft">
 
                                         <asp:TreeView ID="TreeView3" runat="server" NodeWrap="True" OnSelectedNodeChanged="TreeView3_SelectedNodeChanged"
                                             ShowLines="True" Width="220px">

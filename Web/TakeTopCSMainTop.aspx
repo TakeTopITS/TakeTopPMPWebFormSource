@@ -26,7 +26,7 @@
             border-bottom-style: none;
             border-left-style: none;
             font-size: 12px;
-            color: #29728D;
+            color: #607d8b;
         }
 
         .inpuIMClose {
@@ -40,7 +40,7 @@
             border-bottom-style: none;
             border-left-style: none;
             font-size: 12px;
-            color: #29728D;
+            color: #607d8b;
         }
 
         #divGuide {
@@ -62,18 +62,18 @@
             }
 
                 #navlist li a:hover {
-                    color: red;
+                    color: #d44446;
                 }
 
             #navlist a:link, #navlist a:visited {
                 display: block;
                 font: 14px/33px "Î¢ÈíÑÅºÚ", "ºÚÌå";
-                color: #ffffff;
+                color: #333;
             }
 
             #navlist a.current:link, #nav a.current:visited {
-                color: red;
-                background: #017afb;
+                color: #d44446;
+                background: #d44446;
                 padding: 3px;
             }
 
@@ -84,7 +84,7 @@
         #div_username {
             /*  display: flex;*/
             align-items: center; /* ´¹Ö±¾ÓÖÐ */
-            color: white;
+            color: #333;
             font-size: 12px;
         }
 
@@ -241,7 +241,7 @@
                                                                 <asp:ImageButton ID="IM_Extend" ImageUrl="ImagesSkin/news.png" Width="23" Height="20" runat="server" OnClick="BT_Extend_Click" />
                                                             </td>
 
-                                                            <td style="color: white; text-align: left; font-size: small;">
+                                                            <td style="color: #333; text-align: left; font-size: small;">
                                                                 <asp:Label ID="LB_SystemMsg" runat="server"></asp:Label>
                                                             </td>
                                                         </tr>
@@ -268,7 +268,7 @@
                                                                     <img src="ImagesSkin/App.png" width="22" height="22" alt=""></a>
                                                             </td>
                                                             <td width="40px" align="center" style="padding-top: 0px; padding-bottom: 5px;">
-                                                                <asp:ImageButton ID="IM_ExitSystem" ImageUrl="ImagesSkin/exit.png" Width="25" Height="23" OnClientClick="javascript:return confirmExit(getExitMsgByLangCode(), this, event, 'Default.aspx');" runat="server" />
+                                                                <asp:ImageButton ID="IM_ExitSystem" ImageUrl="ImagesSkin/ExitAPP.png" Width="25" Height="23" OnClientClick="javascript:return confirmExit(getExitMsgByLangCode(), this, event, 'Default.aspx');" runat="server" />
                                                             </td>
                                                         </tr>
                                                     </table>

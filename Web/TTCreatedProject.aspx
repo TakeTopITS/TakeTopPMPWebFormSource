@@ -507,12 +507,12 @@
 
 
 
-                                                                                    <div style="position: absolute; top: 0; left: 0; width: 100px; height: 25px; background-color: yellow; z-index: 1;"></div>
+                                                                                    <div style="position: absolute; top: 0; left: 0; width: 100px; height: 25px; background-color: #eceff1; z-index: 1;"></div>
 
 
 
 
-                                                                                    <div style='position: absolute; top: 0; left: 0; width: <%# Eval("FinishPercent") %>%; height: 25px; background-color: yellowgreen; z-index: 2; max-width: 100px;'></div>
+                                                                                    <div style='position: absolute; top: 0; left: 0; width: <%# Eval("FinishPercent") %>%; height: 25px; background-color: #78909c; z-index: 2; max-width: 100px;'></div>
 
 
 
@@ -682,7 +682,7 @@
 
 
 
-                                                                                    <div class="yellow" style="position: absolute; top: 0; left: 0; width: 100px; height: 25px; background-color: yellow; z-index: 1;"></div>
+                                                                                    <div class="yellow" style="position: absolute; top: 0; left: 0; width: 100px; height: 25px; background-color: #eceff1; z-index: 1;"></div>
 
 
 
@@ -697,7 +697,7 @@
 
 
 
-                                                                                    <div id="ProgressContainer" runat="server" style="position: absolute; top: 0; left: 0; height: 25px; background-color: yellowgreen; z-index: 2; max-width: 100px; overflow: hidden;"></div>
+                                                                                    <div id="ProgressContainer" runat="server" style="position: absolute; top: 0; left: 0; height: 25px; background-color: #78909c; z-index: 2; max-width: 100px; overflow: hidden;"></div>
 
 
 
@@ -3677,7 +3677,7 @@
 
 
 
-                                            <td width="165px" valign="top" style="border-left: solid 1px #D8D8D8;">
+                                            <td width="165px" valign="top" style="border-left: solid 1px #d0d0d0;">
 
 
 
@@ -3697,7 +3697,7 @@
 
 
 
-                                                            <asp:Button ID="BT_AllProject" runat="server" CssClass="inpuLong" OnClick="BT_AllProject_Click"
+                                                            <asp:Button ID="BT_AllProject" runat="server" CssClass="tt-sms-btn" OnClick="BT_AllProject_Click"
 
 
 
@@ -3887,7 +3887,7 @@
 
 
 
-                                                                                CssClass="inpu" Visible="false" />
+                                                                                CssClass="tt-sms-btn" Visible="false" />
 
 
 
@@ -3897,7 +3897,7 @@
 
 
 
-                                                                                CssClass="inpu" />
+                                                                                CssClass="tt-sms-btn" />
 
 
 
@@ -3972,7 +3972,7 @@
 
 
 
-                                            <%--  <td width="230" class="ItemAlignLeft" style="padding: 5px 5px 5px 5px; border-left: solid 1px #D8D8D8; border-right: solid 1px #D8D8D8;" valign="top">
+                                            <%--  <td width="230" class="ItemAlignLeft" style="padding: 5px 5px 5px 5px; border-left: solid 1px #d0d0d0; border-right: solid 1px #d0d0d0;" valign="top">
 
 
 

@@ -327,7 +327,7 @@
 
                             <table style="width: 1200px;" cellpadding="0" cellspacing="0">
                                 <tr>
-                                    <td style="width: 220px; border-right: solid 1px #D8D8D8; padding: 5px 0px 0px 5px"
+                                    <td style="width: 220px; border-right: solid 1px #d0d0d0; padding: 5px 0px 0px 5px"
                                         valign="top" class="ItemAlignLeft">
                                         <div id="Div_TreeView1" style="overflow: auto; height: 800px;">
                                             <asp:TreeView ID="TreeView1" runat="server" NodeWrap="True" OnSelectedNodeChanged="TreeView1_SelectedNodeChanged"
@@ -339,7 +339,7 @@
                                             </asp:TreeView>
                                         </div>
                                     </td>
-                                    <td width="180px" style="padding: 5px 5px 0px 5px; border-right: solid 1px #D8D8D8; vertical-align: top;">
+                                    <td width="180px" style="padding: 5px 5px 0px 5px; border-right: solid 1px #d0d0d0; vertical-align: top;">
                                         <table>
                                             <tr>
                                                 <td>

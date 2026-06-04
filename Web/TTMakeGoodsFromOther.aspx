@@ -1023,7 +1023,7 @@
                                                 <asp:TemplateColumn HeaderText="µ¥ºÅ">
                                                     <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="10%" />
                                                     <ItemTemplate>
-                                                        <asp:Button ID="BT_POID" runat="server" CssClass="inpu" Text='<%# DataBinder.Eval(Container.DataItem,"POID") %>' />
+                                                        <asp:Button ID="BT_POID" runat="server" CssClass="tt-sms-btn" Text='<%# DataBinder.Eval(Container.DataItem,"POID") %>' />
                                                     </ItemTemplate>
                                                 </asp:TemplateColumn>
                                                 <asp:BoundColumn DataField="GPOName" HeaderText="Name">

@@ -193,7 +193,7 @@
                             <td>
                                 <table width="100%" cellpadding="5px" cellspacing="0">
                                     <tr>
-                                        <td width="18%" class="ItemAlignLeft" valign="top" rowspan="5" style="border-right: solid 1px #D8D8D8;">
+                                        <td width="18%" class="ItemAlignLeft" valign="top" rowspan="5" style="border-right: solid 1px #d0d0d0;">
                                             <asp:UpdatePanel ID="UpdatePanel3" runat="server" UpdateMode="Conditional">
                                                 <ContentTemplate>
                                                     <asp:TreeView ID="TreeView1" runat="server" Font-Bold="False" Font-Names="ËÎÌו" Font-Size="10pt"

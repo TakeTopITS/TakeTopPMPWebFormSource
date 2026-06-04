@@ -672,7 +672,7 @@
                                                     </tr>
                                                 </table>
                                             </td>
-                                            <td valign="top" width="165" style="padding: 5px 5px 0px 5px; border-left: solid 1px #D8D8D8">
+                                            <td valign="top" width="165" style="padding: 5px 5px 0px 5px; border-left: solid 1px #d0d0d0">
                                                 <table width="100%" cellpadding="0" cellspacing="0">
                                                     <tr>
                                                         <td style="width: 165; text-align: center; padding-top: 5px">

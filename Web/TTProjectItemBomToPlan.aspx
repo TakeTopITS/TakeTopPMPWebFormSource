@@ -142,7 +142,7 @@
                                         <td>
                                             <table style="width: 100%;" cellpadding="0" cellspacing="0">
                                                 <tr>
-                                                    <td style="width: 300px; padding: 5px 5px 0px 5px; text-align: left; vertical-align: top; border-right: solid 1px #D8D8D8"
+                                                    <td style="width: 300px; padding: 5px 5px 0px 5px; text-align: left; vertical-align: top; border-right: solid 1px #d0d0d0"
                                                         class="formItemBgStyleForAlignLeft">
                                                         <table width="100%" cellpadding="2" cellspacing="0">
                                                             <tr>

@@ -353,7 +353,7 @@
                                                     <EditItemStyle BackColor="#2461BF" />
                                                     <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                                                     <HeaderStyle Horizontalalign="left" Font-Bold="true" />
-                                                    <ItemStyle BackColor="#EFF3FB" Font-Bold="False" Horizontalalign="left" />
+                                                    <ItemStyle BackColor="#f5f7fa" Font-Bold="False" Horizontalalign="left" />
                                                     <PagerStyle Horizontalalign="center" Mode="NumericPages" NextPageText="" PrevPageText="" CssClass="notTab" />
                                                     <SelectedItemStyle BackColor="#D1DDF1" ForeColor="#333333" />
                                                 </asp:DataGrid>

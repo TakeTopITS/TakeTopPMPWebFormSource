@@ -88,7 +88,7 @@
                                             <td valign="top" style="padding: 5px 5px 5px 5px;">
                                                 <table width="100%">
                                                     <tr>
-                                                        <td width="400px" style="border-right: solid 1px #D8D8D8; padding: 5px 5px 5px 5px;">
+                                                        <td width="400px" style="border-right: solid 1px #d0d0d0; padding: 5px 5px 5px 5px;">
                                                             <div id="CarAssignListDivID" style="width: 100%; height: 550px; overflow: auto;">
                                                                 <table width="100%" border="0" cellpadding="0" cellspacing="0" background="ImagesSkin/main_n_bj.jpg">
                                                                     <tr>

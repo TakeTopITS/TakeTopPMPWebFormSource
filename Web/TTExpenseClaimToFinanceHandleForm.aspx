@@ -152,7 +152,7 @@
                                                                                 <asp:TemplateColumn HeaderText="Number">
                                                                                     <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="10%" />
                                                                                     <ItemTemplate>
-                                                                                        <asp:Button ID="BT_ID" runat="server" CssClass="inpu" Text='<%# DataBinder.Eval(Container.DataItem,"ECID") %>' />
+                                                                                        <asp:Button ID="BT_ID" runat="server" CssClass="tt-sms-btn" Text='<%# DataBinder.Eval(Container.DataItem,"ECID") %>' />
                                                                                     </ItemTemplate>
                                                                                 </asp:TemplateColumn>
                                                                                 <asp:BoundColumn DataField="RelatedType" HeaderText="相关类型">
@@ -372,7 +372,7 @@
                                                     </tr>
                                                 </table>
                                             </td>
-                                            <td valign="top" width="170" style="padding: 5px 5px 5px 5px; border-right: solid 1px #D8D8D8; border-left: solid 1px #D8D8D8">
+                                            <td valign="top" width="170" style="padding: 5px 5px 5px 5px; border-right: solid 1px #d0d0d0; border-left: solid 1px #d0d0d0">
                                                 <table style="width: 170px;">
                                                     <tr>
                                                         <td style="width: 170px; text-align: left">

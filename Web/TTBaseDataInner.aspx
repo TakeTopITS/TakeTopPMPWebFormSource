@@ -478,7 +478,7 @@
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td colspan="6" style="background-color: yellow;">
+                                                        <td colspan="6" style="background-color: #eceff1;">
                                                             <br />
                                                         </td>
                                                     </tr>
@@ -899,7 +899,7 @@
                                                                     <td rowspan="4">&nbsp;</td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td colspan="6" style="background-color: yellow;">
+                                                                    <td colspan="6" style="background-color: #eceff1;">
                                                                         <br />
                                                                     </td>
                                                                 </tr>
@@ -1221,7 +1221,7 @@
 
                                                                 </tr>
                                                                 <tr>
-                                                                    <td colspan="6" style="background-color: yellow;">WebSite
+                                                                    <td colspan="6" style="background-color: #eceff1;">WebSite
                                                                     </td>
                                                                 </tr>
                                                                 <tr>

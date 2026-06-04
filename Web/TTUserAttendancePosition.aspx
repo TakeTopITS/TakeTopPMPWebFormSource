@@ -75,7 +75,7 @@
 
                                     <table width="100%" cellpadding="0" cellspacing="0">
                                         <tr>
-                                            <td width="1200px" style="padding: 5px 5px 0px 5px; border-right: solid 1px #D8D8D8;" valign="top">
+                                            <td width="1200px" style="padding: 5px 5px 0px 5px; border-right: solid 1px #d0d0d0;" valign="top">
                                                 <table width="100%" border="0" cellpadding="0" cellspacing="0" background="ImagesSkin/main_n_bj.jpg">
                                                     <tr>
                                                         <td width="7">
@@ -164,7 +164,7 @@
                                                     <PagerStyle Horizontalalign="center" Mode="NumericPages" NextPageText="" PrevPageText="" CssClass="notTab" />
                                                 </asp:DataGrid>
                                             </td>
-                                            <td style="padding: 5px 5px 0px 5px; border-right: solid 1px #D8D8D8;" valign="top">
+                                            <td style="padding: 5px 5px 0px 5px; border-right: solid 1px #d0d0d0;" valign="top">
                                                 <%--<iframe id="IFR_UserPositionMap" name="IFR_UserPositionMap" src="TTUserPositionView.aspx" style="width: 100%; height: 800px;"></iframe>--%>
                                             </td>
                                         </tr>

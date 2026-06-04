@@ -118,7 +118,7 @@
                                 <td>
                                     <table style="width: 100%;" cellpadding="0" cellspacing="0">
                                         <tr>
-                                            <td valign="middle" style="width: 98%; border-right: solid 1px #D8D8D8; padding: 5px 5px 5px 5px;">
+                                            <td valign="middle" style="width: 98%; border-right: solid 1px #d0d0d0; padding: 5px 5px 5px 5px;">
                                                 <table class="formBgStyle" cellpadding="3" cellspacing="0" style="width: 98%; margin-top: 5px"
                                                     class="ItemAlignLeft">
                                                     <tr>
@@ -225,7 +225,7 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td style="width: 98%; border-right: solid 1px #D8D8D8;" valign="top">
+                                            <td style="width: 98%; border-right: solid 1px #d0d0d0;" valign="top">
                                                 <table width="98%" class="ItemAlignLeft" cellpadding="0" cellspacing="0">
                                                     <tr>
                                                         <td class="ItemAlignLeft" style="height: 6px">

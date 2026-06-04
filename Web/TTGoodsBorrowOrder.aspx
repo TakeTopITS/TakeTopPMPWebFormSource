@@ -696,7 +696,7 @@
                                                                 </asp:BoundColumn>
                                                                 <asp:TemplateColumn HeaderText="Code">
                                                                     <ItemTemplate>
-                                                                        <asp:Button ID="BT_GoodsCode" runat="server" CssClass="inpu" Text='<%# DataBinder.Eval(Container.DataItem,"GoodsCode") %>' />
+                                                                        <asp:Button ID="BT_GoodsCode" runat="server" CssClass="tt-sms-btn" Text='<%# DataBinder.Eval(Container.DataItem,"GoodsCode") %>' />
                                                                     </ItemTemplate>
                                                                     <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="12%" />
                                                                 </asp:TemplateColumn>

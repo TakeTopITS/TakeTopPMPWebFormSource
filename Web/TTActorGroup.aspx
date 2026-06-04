@@ -272,11 +272,11 @@
 
                             <table cellpadding="0" cellspacing="0" width="100%" class="bian">
                                 <tr>
-                                    <td style="border-right: solid 1px #D8D8D8; padding: 5px 0px 0px 5px"
+                                    <td style="border-right: solid 1px #d0d0d0; padding: 5px 0px 0px 5px"
                                         valign="top" class="ItemAlignLeft" colspan="3"></td>
                                 </tr>
                                 <tr>
-                                    <td class="ItemAlignLeft" style="width: 220px; border-right: solid 1px #D8D8D8; padding: 5px 0px 0px 5px" valign="top">
+                                    <td class="ItemAlignLeft" style="width: 220px; border-right: solid 1px #d0d0d0; padding: 5px 0px 0px 5px" valign="top">
                                         <div id="Div_TreeView" style="overflow: auto; height: 800px;">
                                             <asp:TreeView ID="TreeView1" runat="server" NodeWrap="True" OnSelectedNodeChanged="TreeView1_SelectedNodeChanged"
                                                 ShowLines="True" Width="220" Style="height: 183px">
@@ -287,7 +287,7 @@
                                             </asp:TreeView>
                                         </div>
                                     </td>
-                                    <td style="width: 165px; border-right: solid 1px #D8D8D8; padding: 5px 5px 5px 5px;" valign="top">
+                                    <td style="width: 165px; border-right: solid 1px #d0d0d0; padding: 5px 5px 5px 5px;" valign="top">
                                         <table cellpadding="0" cellspacing="0" style="width: 100%;">
                                             <tr>
                                                 <td style="width: 165px;">

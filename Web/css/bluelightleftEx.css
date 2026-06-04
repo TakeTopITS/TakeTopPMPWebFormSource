@@ -1,6 +1,6 @@
 ﻿/* CSS Document */
 #leftMiddleFrameID {
-    background-color: #2a2e34;
+    background-color: #f5f5f5;
 }
 /* 收缩展开效果 */
 .text {
@@ -17,7 +17,7 @@
     font-family: "microsoft yahei";
     font-size: 14px;
     line-height: 50px;
-    color: white;
+    color: #333;
 }
 
     .box span img { /*display:none;*/
@@ -26,7 +26,7 @@
 
 .box {
     position: relative;
-    /*border-bottom: 2px solid #e7e7e7;*/
+    /*border-bottom: 2px solid #d0d0d0;*/
     cursor: pointer;
     width: 100%;
     line-height: 50px;
@@ -38,30 +38,33 @@
 
 .box1 {
     position: relative;
-    border-bottom: 1px solid #0e3860;
+    border-bottom: 1px solid #e4e5e6;
     cursor: pointer;
     width: 100%;
     height: 100%;
-    background: #002b66 -10px 0px no-repeat;
+    background: #f5f5f5 -10px 0px no-repeat;
     white-space: nowrap;
     overflow: hidden;
 }
 
 .box:hover {
-    background: #85a1d2; /*鼠标指向颜色皮肤*/
+    background: #607d8b;
 }
 
 
 .content {
     padding-left: 5px;
     text-align: left;
-    background: #7094d2;
+    background: #ffffff;
     line-height: 37px;
     margin: 0;
+    color: #333;
 }
+.content a { color: #333; }
+.content a:hover { color: #455a64; }
 
     .content span {
-        background: url(ImagesSkin/jiant-white.gif) 0 23px no-repeat;
+        background: url(ImagesSkin/jiant.gif) 0 23px no-repeat;
         padding-left: 8px;
     }
 
@@ -98,7 +101,7 @@ ul li {
     height: 37px;
     text-align: left;
     background-repeat: no-repeat;
-    color: #022c56;
+    color: #455a64;
     text-decoration: none;
     font-weight: bold;
     line-height: 37px;
@@ -131,8 +134,8 @@ ul li {
 
 #bottomNav {
     z-index: 999;
-    background: #3e526c;
-    /* border-top: 1px solid #d6dae2;*/
+    background: #f5f5f5;
+    /* border-top: 1px solid #d0d0d0;*/
     height: 45px;
     line-height: 45px;
     position: fixed;
@@ -159,7 +162,7 @@ ul li {
 #box {
     position: relative;
     width: 100%;
-    background-color: #3e526c;
+    background-color: #f5f5f5;
 }
 
 #square_one {
@@ -190,7 +193,7 @@ a:visited {
 a:hover, button:hover, input[type="submit"]:hover {
     BACKGROUND-REPEAT: no-repeat;
     BACKGROUND-POSITION: center bottom;
-    COLOR: #003366;
+    COLOR: #455a64;
     TEXT-DECORATION: none;
     PADDING-TOP: 0px;
     font-size: 14px;
@@ -223,7 +226,7 @@ body {
     margin-top: 0px;
     margin-right: 0px;
     margin-bottom: 0px;
-    background-color: #3e526c;
+    background-color: #f5f5f5;
 }
 
 img {
@@ -238,7 +241,7 @@ a {
 
     a:link {
         font-size: 16px;
-        color: #fff;
+        color: #333;
         text-decoration: none;
         font-family: "microsoft yahei";
     }
@@ -250,13 +253,13 @@ a {
 
     a:active {
         font-size: 16px;
-        color: #fff;
+        color: #333;
         text-decoration: none;
     }
 
     a:visited {
         font-size: 16px;
-        color: #fff;
+        color: #333;
         text-decoration: none;
     }
 
@@ -273,7 +276,7 @@ a {
 .zi {
     font-size: 12px;
     font-weight: bold;
-    color: #FFFFFF;
+    color: #2c3e50;
     padding-left: 25px;
 }
 
@@ -281,13 +284,13 @@ a {
 .title12 {
     font-size: 12px;
     font-weight: bold;
-    color: #003366;
+    color: #455a64;
 }
 
 .title14 {
     font-size: 14px;
     font-weight: bold;
-    color: #003366;
+    color: #455a64;
 }
 
 
@@ -303,7 +306,7 @@ a {
     border-bottom-style: none;
     border-left-style: none;
     font-size: 12px;
-    color: #29728D;
+    color: #607d8b;
 }
 
 /*--------------------------------短按钮---------------------------*/
@@ -318,7 +321,7 @@ a {
     border-bottom-style: none;
     border-left-style: none;
     /*font-size: 12px;*/
-    /*color: #29728D;*/
+    /*color: #607d8b;*/
 }
 /*--------------------------------20131127---------------------------*/
 
@@ -326,23 +329,23 @@ div.leftSet {
     background: url(ImagesSkin/leftSetbg.gif) 0 0 no-repeat;
     height: 72px;
     line-height: 72px;
-    background-color: #d74634;
+    background-color: #d44446;
 }
 
 .tabs-header, .tabs-tool {
-    background-color: #3e526c;
+    background-color: #f5f5f5;
 }
 
 #yanse::-webkit-scrollbar {
-    background-color: #3e526c;
+    background-color: #f5f5f5;
 }
 
 #yanse::-webkit-scrollbar-thumb {
-    background-color: #59769C; /*滚动条颜色*/
+    background-color: rgba(0,0,0,0.2); /*滚动条颜色*/
     border-radius: 10px;
 }
 
 #yanse {
-    scrollbar-track-color: #3e526c;
-    scrollbar-face-color: #59769C; /*滚动条颜色*/
+    scrollbar-track-color: #f5f5f5;
+    scrollbar-face-color: rgba(0,0,0,0.2); /*滚动条颜色*/
 }

@@ -1,0 +1,19 @@
+body {
+	margin: 0px;
+	font-size: 12px;
+}
+.right {
+	background-image: url(ImagesSkin/top_right.jpg);
+	background-repeat: no-repeat;
+	background-position: right;
+}
+.zi {
+	font-size: 12px;
+	color: #EEFAFD;
+}
+.huangzi {
+	font-size: 12px;
+	color: #FFFF00;
+}
+/*---------------------ԭImagesSkin--------------------------------*/
+

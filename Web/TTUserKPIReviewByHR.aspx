@@ -70,7 +70,7 @@
                                             <td valign="top">
                                                 <table width="100%" cellpadding="0" cellspacing="0">
                                                     <tr>
-                                                        <td style="width: 220px; border-right: solid 1px #D8D8D8; padding: 5px 0px 0px 5px"
+                                                        <td style="width: 220px; border-right: solid 1px #d0d0d0; padding: 5px 0px 0px 5px"
                                                             valign="top" class="ItemAlignLeft">
                                                             <asp:TreeView ID="TreeView1" runat="server" NodeWrap="True" OnSelectedNodeChanged="TreeView1_SelectedNodeChanged"
                                                                 ShowLines="True" Width="220">
@@ -80,7 +80,7 @@
                                                                 <SelectedNodeStyle CssClass="selectNode" ForeColor ="Red" />
                                                             </asp:TreeView>
                                                         </td>
-                                                        <td valign="top" width="180px" style="padding: 5px 5px 0px 5px; border-left: solid 1px #D8D8D8; border-right: solid 1px #D8D8D8;">
+                                                        <td valign="top" width="180px" style="padding: 5px 5px 0px 5px; border-left: solid 1px #d0d0d0; border-right: solid 1px #d0d0d0;">
                                                             <table width="100%" border="0" cellpadding="0" cellspacing="0" background="ImagesSkin/main_n_bj.jpg">
                                                                 <tr>
                                                                     <td width="7">
@@ -131,7 +131,7 @@
                                                             <asp:Label ID="LB_DepartName" runat="server" Visible="False"></asp:Label>
                                                             <asp:Label ID="LB_Sql" runat="server" Visible="False"></asp:Label>
                                                         </td>
-                                                        <td class="ItemAlignLeft" rowspan="2" style="padding: 5px 5px 0px 5px; border-right: solid 1px #D8D8D8"
+                                                        <td class="ItemAlignLeft" rowspan="2" style="padding: 5px 5px 0px 5px; border-right: solid 1px #d0d0d0"
                                                             valign="top" width="200px">
                                                             <asp:TreeView ID="TreeView2" runat="server" NodeWrap="True" OnSelectedNodeChanged="TreeView2_SelectedNodeChanged"
                                                                 ShowLines="True" Width="200px">
@@ -141,7 +141,7 @@
                                                                 <SelectedNodeStyle CssClass="selectNode" ForeColor ="Red" />
                                                             </asp:TreeView>
                                                         </td>
-                                                        <td valign="top" style="padding: 5px 5px 0px 5px; border-right: solid 1px #D8D8D8"
+                                                        <td valign="top" style="padding: 5px 5px 0px 5px; border-right: solid 1px #d0d0d0"
                                                             class="ItemAlignLeft">
                                                             <table style="width: 100%; text-align: left;" cellpadding="3" cellspacing="0" class="formBgStyle">
                                                                 <tr>

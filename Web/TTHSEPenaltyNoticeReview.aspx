@@ -139,7 +139,7 @@
                                                         <asp:TemplateColumn HeaderText="Number">
                                                             <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="8%" />
                                                             <ItemTemplate>
-                                                                <asp:Button ID="BT_Code" runat="server" CssClass="inpu" Text='<%# DataBinder.Eval(Container.DataItem,"Code").ToString().Trim() %>' />
+                                                                <asp:Button ID="BT_Code" runat="server" CssClass="tt-sms-btn" Text='<%# DataBinder.Eval(Container.DataItem,"Code").ToString().Trim() %>' />
                                                             </ItemTemplate>
                                                             <HeaderStyle BorderColor="#394f66" BorderStyle="Solid" BorderWidth="1px" Font-Bold="true"
                                                                 Horizontalalign="left" />

@@ -87,7 +87,7 @@
                                                                 </tr>
 
                                                                 <tr>
-                                                                    <td colspan="2" style="text-align: left; background-color: #EFF3FB;">
+                                                                    <td colspan="2" style="text-align: left; background-color: #f5f7fa;">
                                                                         <div style="width: 100%; height: 100px; overflow-y: auto;">
                                                                             <asp:DataList ID="DataList2" runat="server" CellPadding="0" ForeColor="#333333" Height="1px" Width="100%">
                                                                                 <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
@@ -151,7 +151,7 @@
                                                                                         </tr>
                                                                                     </table>
                                                                                 </ItemTemplate>
-                                                                                <ItemStyle BackColor="#EFF3FB" />
+                                                                                <ItemStyle BackColor="#f5f7fa" />
                                                                                 <SelectedItemStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
                                                                                 <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                                                                             </asp:DataList>

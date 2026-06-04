@@ -171,7 +171,7 @@
                                                                                     </table>
                                                                                 </ItemTemplate>
 
-                                                                                <ItemStyle BackColor="#EFF3FB" />
+                                                                                <ItemStyle BackColor="#f5f7fa" />
                                                                                 <SelectedItemStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
                                                                                 <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                                                                             </asp:DataList>

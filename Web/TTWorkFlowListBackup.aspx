@@ -236,7 +236,7 @@
                                                     <asp:TemplateColumn>
                                                         <ItemTemplate>
                                                             <asp:Button ID="BT_StepID" runat="server" OnClientClick="javascript: window.parent.document.getElementById('bodyFrame').rows = '175,*';" Text='<%# DataBinder.Eval(Container.DataItem,"StepID") %>'
-                                                                CssClass="inpu" />
+                                                                CssClass="tt-sms-btn" />
                                                         </ItemTemplate>
                                                         <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="10%" />
                                                     </asp:TemplateColumn>

@@ -353,7 +353,7 @@
                                                                             <Columns>
                                                                                 <asp:TemplateColumn>
                                                                                     <ItemTemplate>
-                                                                                        <asp:Button ID="BT_StepID" runat="server" CssClass="inpu" Text='<%# DataBinder.Eval(Container.DataItem,"StepID") %>' />
+                                                                                        <asp:Button ID="BT_StepID" runat="server" CssClass="tt-sms-btn" Text='<%# DataBinder.Eval(Container.DataItem,"StepID") %>' />
                                                                                     </ItemTemplate>
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="6%" />
                                                                                 </asp:TemplateColumn>

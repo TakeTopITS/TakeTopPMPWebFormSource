@@ -105,7 +105,7 @@
                                             <td width="950px" class="ItemAlignLeft">
                                                 <table width="100%">
                                                     <tr>
-                                                        <td style="width: 220px; padding: 5px 0px 0px 5px; border-left: solid 1px #D8D8D8"
+                                                        <td style="width: 220px; padding: 5px 0px 0px 5px; border-left: solid 1px #d0d0d0"
                                                             valign="top" class="ItemAlignLeft">
                                                             <asp:TreeView ID="TreeView1" runat="server" NodeWrap="True" OnSelectedNodeChanged="TreeView1_SelectedNodeChanged"
                                                                 ShowLines="True" Width="220px">
@@ -222,7 +222,7 @@
                                                     </tr>
                                                 </table>
                                             </td>
-                                            <%-- <td style="padding: 5px 5px 0px 5px; border-right: solid 1px #D8D8D8;" valign="top">
+                                            <%-- <td style="padding: 5px 5px 0px 5px; border-right: solid 1px #d0d0d0;" valign="top">
                                                 <iframe id="IFR_UserPositionMap" name="IFR_UserPositionMap" style="width: 100%; height:800px"></iframe>
                                             </td>--%>
                                         </tr>

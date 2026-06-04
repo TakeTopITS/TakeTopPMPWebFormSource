@@ -91,7 +91,7 @@
                                             <asp:DataList ID="DataList2" runat="server" Width="100%" CellPadding="0" ForeColor="#333333">
                                                 <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
 
-                                                <ItemStyle BackColor="#EFF3FB" />
+                                                <ItemStyle BackColor="#f5f7fa" />
                                                 <SelectedItemStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
                                                 <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                                                 <ItemTemplate>

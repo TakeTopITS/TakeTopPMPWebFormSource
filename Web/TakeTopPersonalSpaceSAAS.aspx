@@ -50,7 +50,7 @@
 
             #navlist a.current:link, #nav a.current:visited {
                 color: red;
-                background: #017afb;
+                background: #d44446;
                 padding: 3px;
             }
 
@@ -325,28 +325,28 @@
                             </a>
                         </td>
                         <td width="40px" align="center" style="padding-top: 7px; padding-bottom: 5px;">
-                            <a runat="server" class="titleSpan" href="javascript:top.frames[0].frames[2].parent.frames['rightTabFrame'].popShowByURL('TTSystemAnalystChartRelatedUserSet.aspx?FormType=PersonalSpacePage', 'AnalysisChartSelect', 800, 600, window.location);">
+                            <a runat="server" class="titleSpan tt-topbar-icon-link" href="javascript:top.frames[0].frames[2].parent.frames['rightTabFrame'].popShowByURL('TTSystemAnalystChartRelatedUserSet.aspx?FormType=PersonalSpacePage', 'AnalysisChartSelect', 800, 600, window.location);">
                                 <img src="ImagesSkin/AnalystChart.png" width="22" height="22"></a>
                         </td>
 
                         <td width="40px" align="center" style="padding-top: 7px; padding-bottom: 5px;">
-                            <a runat="server" class="titleSpan" href="javascript:top.frames[0].frames[2].parent.frames['rightTabFrame'].popShowByURL('TTPersonalSpaceModuleSetForUser.aspx', 'ModuleSelect', 800, 600, window.location);">
+                            <a runat="server" class="titleSpan tt-topbar-icon-link" href="javascript:top.frames[0].frames[2].parent.frames['rightTabFrame'].popShowByURL('TTPersonalSpaceModuleSetForUser.aspx', 'ModuleSelect', 800, 600, window.location);">
                                 <img src="ImagesSkin/ModuleSelect.png" width="22" height="22"></a>
                         </td>
 
                         <td width="40px" align="center" style="padding-top: 7px; padding-bottom: 5px;">
-                            <a runat="server" class="titleSpan" href="javascript:top.frames[0].frames[2].parent.frames['rightTabFrame'].popShowByURL('TTAPPQRCodeForLocalSAAS.aspx', '', 800, 600,window.location);">
+                            <a runat="server" class="titleSpan tt-topbar-icon-link" href="javascript:top.frames[0].frames[2].parent.frames['rightTabFrame'].popShowByURL('TTAPPQRCodeForLocalSAAS.aspx', '', 800, 600,window.location);">
                                 <img src="ImagesSkin/App.png" width="22" height="22"></a>
                         </td>
                         <td id="tdAI" runat="server" width="40px" align="center" style="padding-top: 7px; padding-bottom: 5px;">
 
-                            <a id="a_AIURL" runat="server" class="titleSpan" href="javascript:top.frames[0].frames[2].parent.frames['rightTabFrame'].openRightLayer('TTAIHandlerByDeepSeek.aspx','TakeTopAI');">
+                            <a id="a_AIURL" runat="server" class="titleSpan tt-topbar-icon-link" href="javascript:top.frames[0].frames[2].parent.frames['rightTabFrame'].openRightLayer('TTAIHandlerByDeepSeek.aspx','TakeTopAI');">
                                 <img src="ImagesSkin/AI.png" width="22" height="22" alt="">
                             </a>
                         </td>
 
                         <td width="40px" align="center" style="padding-top: 7px; padding-bottom: 5px;">
-                            <asp:ImageButton ID="IM_ExitSystem" ImageUrl="ImagesSkin/exit.png" Width="25" Height="23"
+                            <asp:ImageButton ID="IM_ExitSystem" ImageUrl="ImagesSkin/ExitAPP.png" Width="25" Height="23"
                                 OnClientClick="javascript:return confirmExit(getExitMsgByLangCode(), this, event, 'Default.aspx');"
                                 runat="server" />
                         </td>

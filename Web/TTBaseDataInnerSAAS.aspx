@@ -342,7 +342,7 @@
                                                                 <Columns>
                                                                     <asp:TemplateColumn HeaderText="Type">
                                                                         <ItemTemplate>
-                                                                            <asp:Button ID="BT_ProjectType" runat="server" CssClass="inpu" Width="150px" Text='<%# DataBinder.Eval(Container.DataItem,"Type") %>' ToolTip='<%# DataBinder.Eval(Container.DataItem,"Type") %>' CommandName="Edit" />
+                                                                            <asp:Button ID="BT_ProjectType" runat="server" CssClass="tt-sms-btn" Width="150px" Text='<%# DataBinder.Eval(Container.DataItem,"Type") %>' ToolTip='<%# DataBinder.Eval(Container.DataItem,"Type") %>' CommandName="Edit" />
                                                                         </ItemTemplate>
                                                                         <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="30%" />
                                                                     </asp:TemplateColumn>

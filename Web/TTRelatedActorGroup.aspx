@@ -75,7 +75,7 @@
                             <td>
                                 <table style="width: 100%" cellpadding="0" cellspacing="0">
                                     <tr>
-                                        <td style="border-right: solid 1px #D8D8D8; padding: 5px 0px 0px 5px;"
+                                        <td style="border-right: solid 1px #d0d0d0; padding: 5px 0px 0px 5px;"
                                             valign="top" class="ItemAlignLeft" colspan="3">
                                             <table class="ItemAlignLeft" cellpadding="2" cellspacing="0" class="formBgStyle" style="width: 98%;">
                                                 <tr style="font-size: 12pt; padding-top: 5px">
@@ -219,7 +219,7 @@
 
                             <table style="width: 100%" cellpadding="0" cellspacing="0">
                                 <tr>
-                                    <td class="ItemAlignLeft" style="width: 230px; border-right: solid 1px #D8D8D8; padding: 5px 0px 0px 5px;" valign="top">
+                                    <td class="ItemAlignLeft" style="width: 230px; border-right: solid 1px #d0d0d0; padding: 5px 0px 0px 5px;" valign="top">
                                         <asp:Button ID="BT_AllRelatedMember" runat="server" CssClass="inpuLong" OnClick="BT_AllRelatedMember_Click" Text="<%$ Resources:lang,SuoYouXiangGuanChengYuan%>" />
                                         <div id="Div_TreeView" style="overflow: auto; height: 800px;">
                                             <asp:TreeView ID="TreeView1" runat="server" NodeWrap="True" OnSelectedNodeChanged="TreeView1_SelectedNodeChanged"
@@ -231,7 +231,7 @@
                                             </asp:TreeView>
                                         </div>
                                     </td>
-                                    <td style="width: 165px; border-right: solid 1px #D8D8D8; padding: 5px 5px 5px 5px;" valign="top">
+                                    <td style="width: 165px; border-right: solid 1px #d0d0d0; padding: 5px 5px 5px 5px;" valign="top">
                                         <table background="ImagesSkin/main_n_bj.jpg" border="0" cellpadding="0" cellspacing="0" width="160">
                                             <tr>
                                                 <td width="7">

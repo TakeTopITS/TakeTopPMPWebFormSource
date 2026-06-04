@@ -57,7 +57,7 @@
                     <div id="AboveDiv">
                         <table id="AboveTable" cellpadding="0" width="100%" cellspacing="0" class="bian">
                             <tr>
-                                <td height="31" class="page_topbj" style="border-right: solid 1px #D8D8D8;">
+                                <td height="31" class="page_topbj" style="border-right: solid 1px #d0d0d0;">
                                     <table width="96%" border="0" class="ItemAlignLeft" cellpadding="0" cellspacing="0">
                                         <tr>
                                             <td class="ItemAlignLeft">
@@ -113,7 +113,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td style="width: 70%; text-align: left; padding: 5px 5px 5px 5px; vertical-align: top; border-right: solid 1px #D8D8D8;">
+                                <td style="width: 70%; text-align: left; padding: 5px 5px 5px 5px; vertical-align: top; border-right: solid 1px #d0d0d0;">
                                     <div id="PlanTreeDivID" style="width: 100%; height: 800px; overflow: auto; vertical-align: top;">
                                         <table width="100%" border="0" cellpadding="0" cellspacing="0" background="ImagesSkin/main_n_bj.jpg">
                                             <tr>
@@ -583,7 +583,7 @@
 
                                                                 <ItemTemplate>
 
-                                                                    <asp:Button ID="BT_DeleteClaimDetail" runat="server" CssClass="inpu" Text="<%$ Resources:lang,Delete%>" />
+                                                                    <asp:Button ID="BT_DeleteClaimDetail" runat="server" CssClass="tt-sms-btn" Text="<%$ Resources:lang,Delete%>" />
                                                                 </ItemTemplate>
 
                                                                 <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="8%" />
@@ -737,7 +737,7 @@
 
                                             <PagerStyle HorizontalAlign="center" Mode="NumericPages" NextPageText="" PrevPageText="" CssClass="notTab" />
 
-                                            <ItemStyle CssClass="itemStyle" BackColor="#EFF3FB" />
+                                            <ItemStyle CssClass="itemStyle" BackColor="#f5f7fa" />
 
                                             <Columns>
 

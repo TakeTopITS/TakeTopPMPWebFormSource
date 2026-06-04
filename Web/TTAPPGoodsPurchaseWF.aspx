@@ -984,7 +984,7 @@
                                                             </tr>
                                                         </table>
                                                         <asp:DataGrid ID="DataGrid11" runat="server" AutoGenerateColumns="False" OnItemCommand="DataGrid11_ItemCommand"
-                                                            Width="200%" ShowHeader="False" BorderColor="#7FC4ED" BorderStyle="Solid" BorderWidth="1px">
+                                                            Width="200%" ShowHeader="False" BorderColor="#d0d0d0" BorderStyle="Solid" BorderWidth="1px">
                                                             <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                                                             <EditItemStyle BackColor="#2461BF" />
                                                             <SelectedItemStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
@@ -1101,7 +1101,7 @@
                                                             <Columns>
                                                                 <asp:TemplateColumn HeaderText="Number">
                                                                     <ItemTemplate>
-                                                                        <asp:Button ID="BT_ID" runat="server" CssClass="inpu" Text='<%# DataBinder.Eval(Container.DataItem,"ID") %>' />
+                                                                        <asp:Button ID="BT_ID" runat="server" CssClass="tt-sms-btn" Text='<%# DataBinder.Eval(Container.DataItem,"ID") %>' />
                                                                     </ItemTemplate>
                                                                     <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="7%" />
                                                                 </asp:TemplateColumn>
@@ -1896,7 +1896,7 @@
                                             <SelectedNodeStyle CssClass="selectNode" ForeColor="Red" />
                                         </asp:TreeView>
                                     </td>
-                                    <td style="border-right: solid 1px #D8D8D8;" valign="top" width="170">
+                                    <td style="border-right: solid 1px #d0d0d0;" valign="top" width="170">
                                         <table background="ImagesSkin/main_n_bj.jpg" border="0" cellpadding="0" cellspacing="0"
                                             width="170px">
                                             <tr>

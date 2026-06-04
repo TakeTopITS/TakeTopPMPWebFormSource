@@ -190,7 +190,7 @@
 
                             <table width="100%" cellpadding="0" cellspacing="0">
                                 <tr>
-                                    <td style="padding: 5px 5px 5px 5px; border-right: solid 1px #D8D8D8; vertical-align: top;">
+                                    <td style="padding: 5px 5px 5px 5px; border-right: solid 1px #d0d0d0; vertical-align: top;">
                                         <table width="98%">
                                             <tr>
                                                 <td class="ItemAlignLeft">
@@ -356,7 +356,7 @@
                                         </table>
                                         <asp:Label ID="LB_Sql" runat="server" Visible="False"></asp:Label>
                                     </td>
-                                    <td width="165" style="padding: 10px 5px 5px 5px; border-right: solid 1px #D8D8D8; vertical-align: top;">
+                                    <td width="165" style="padding: 10px 5px 5px 5px; border-right: solid 1px #d0d0d0; vertical-align: top;">
                                         <table width="100%" border="0" cellpadding="0" cellspacing="0" background="ImagesSkin/main_n_bj.jpg">
                                             <tr>
                                                 <td width="7">

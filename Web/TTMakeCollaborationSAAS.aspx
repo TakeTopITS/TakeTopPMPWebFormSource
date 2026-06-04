@@ -178,7 +178,7 @@
                             <table class="ItemAlignLeft" style="width: 100%" cellpadding="0" cellspacing="0">
                                 <tr>
 
-                                    <td class="auto-style1" style="padding: 5px 5px 5px 5px; text-align: center; vertical-align: top; border-right: solid 1px #D8D8D8">
+                                    <td class="auto-style1" style="padding: 5px 5px 5px 5px; text-align: center; vertical-align: top; border-right: solid 1px #d0d0d0">
                                         <table background="ImagesSkin/main_n_bj.jpg" border="0" cellpadding="0" cellspacing="0" width="100%">
                                             <tr>
                                                 <td width="7">
@@ -224,7 +224,7 @@
                                         </asp:DataGrid>
                                     </td>
                                     <td>
-                                        <td class="ItemAlignLeft" style="padding: 5px 5px 5px 5px; vertical-align: top; border-right: solid 1px #D8D8D8">
+                                        <td class="ItemAlignLeft" style="padding: 5px 5px 5px 5px; vertical-align: top; border-right: solid 1px #d0d0d0">
                                             <table cellpadding="5" cellspacing="0" class="formBgStyle" width="99%">
                                                 <tr>
                                                      <td colspan="2" style="font-weight: bold; font-size: 15px; height: 22px;" class="formItemBgStyleForAlignCenter">

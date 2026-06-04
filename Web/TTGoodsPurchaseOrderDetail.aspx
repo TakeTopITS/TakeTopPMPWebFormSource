@@ -532,7 +532,7 @@
                                                                     <td class="formItemBgStyleForAlignLeft">
                                                                         <table cellpadding="0" cellspacing="0">
                                                                             <tr>
-                                                                                <td style="border-right: solid 1px #D8D8D8;" valign="top" width="170">
+                                                                                <td style="border-right: solid 1px #d0d0d0;" valign="top" width="170">
                                                                                     <table background="ImagesSkin/main_n_bj.jpg" border="0" cellpadding="0" cellspacing="0"
                                                                                         width="170px">
                                                                                         <tr>

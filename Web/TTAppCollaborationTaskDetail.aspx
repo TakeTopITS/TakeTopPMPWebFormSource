@@ -562,7 +562,7 @@
                                                                             <div class="npb npbs">
                                                                                 <div class="nplef">
                                                                                     <asp:Button ID="BT_ID" runat="server" Text='<%# DataBinder.Eval(Container.DataItem,"ID") %>'
-                                                                                        CssClass="inpu" />
+                                                                                        CssClass="tt-sms-btn" />
                                                                                 </div>
                                                                                 <div class="nprig">
                                                                                     <h5><%# DataBinder.Eval(Container.DataItem,"OperatorName") %>  <sub></sub></h5>
@@ -710,12 +710,12 @@
                                             </tr>
                                         </table>
                                     </ItemTemplate>
-                                    <ItemStyle BackColor="#EFF3FB" />
+                                    <ItemStyle BackColor="#f5f7fa" />
                                     <SelectedItemStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
                                     <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                                 </asp:DataList>
                             </td>
-                            <td width="35%" style="text-align: left; background-color: #EFF3FB;">
+                            <td width="35%" style="text-align: left; background-color: #f5f7fa;">
                                 <asp:DataList ID="DataList3" runat="server" CellPadding="0" ForeColor="#333333" Height="1px"
                                     Width="100%">
                                     <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
@@ -733,7 +733,7 @@
                                             </tr>
                                         </table>
                                     </ItemTemplate>
-                                    <ItemStyle BackColor="#EFF3FB" />
+                                    <ItemStyle BackColor="#f5f7fa" />
                                     <SelectedItemStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
                                     <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                                 </asp:DataList>

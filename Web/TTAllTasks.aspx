@@ -151,7 +151,7 @@
                                                     <SelectedNodeStyle CssClass="selectNode" ForeColor="Red" />
                                                 </asp:TreeView>
                                             </td>
-                                            <td valign="top" width="165" style="padding: 5px 5px 0px 5px; border-right: solid 1px #D8D8D8;">
+                                            <td valign="top" width="165" style="padding: 5px 5px 0px 5px; border-right: solid 1px #d0d0d0;">
                                                 <table style="width: 100%;">
                                                     <tr>
                                                         <td style="width: 100%; text-align: center;">
@@ -215,7 +215,7 @@
                                                     </tr>
                                                 </table>
                                             </td>
-                                            <td class="ItemAlignLeft" style="border-left: solid 1px #D8D8D8">
+                                            <td class="ItemAlignLeft" style="border-left: solid 1px #d0d0d0">
                                                 <table width="98%" style="margin-top: 5px">
                                                     <tr>
                                                         <td style="width: 100%; vertical-align: top;">
@@ -292,7 +292,7 @@
                                                             <div id="Div_Handling" style="overflow-y: auto;">
                                                                 <asp:DataList ID="DataList_Handling" runat="server" Width="100%" CellPadding="0">
                                                                     <ItemTemplate>
-                                                                        <div id="div_task" class="bian" style="border-collapse: collapse; width: 97%; border: dotted; border-radius: 3px 4px; border-color: lightcoral;">
+                                                                        <div id="div_task" class="bian" style="border-collapse: collapse; width: 97%; border: dotted; border-radius: 3px 4px; border-color: #f5f7fa;">
                                                                             <a href='TTTaskDetail.aspx?ID=<%#DataBinder.Eval(Container.DataItem, "ID")%>' target="_blank">
                                                                                 <span style="color: lightgreen;">#<%#DataBinder.Eval(Container.DataItem, "ID")%> </span>&nbsp;&nbsp;<asp:Label ID="Label2" runat="server" Text="<%$ Resources:lang,MingCheng%>"></asp:Label>: <%#DataBinder.Eval(Container.DataItem, "Operation")%><br />
                                                                                <asp:Label ID="Label3" runat="server" Text="<%$ Resources:lang,FenPaiRen%>"></asp:Label>:  <a href="TTUserInforSimple.aspx?UserCode=<%#DataBinder.Eval(Container.DataItem, "AssignManCode")%>" target="_blank" style="font-size: smaller"><%#DataBinder.Eval(Container.DataItem, "AssignManCode")%>&nbsp;<%#DataBinder.Eval(Container.DataItem, "AssignManName")%>  </a>

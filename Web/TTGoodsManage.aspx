@@ -124,7 +124,7 @@
 
                                                 <table style="width: 100%; vertical-align: top;">
                                                     <tr>
-                                                        <td style="width: 220px; border-left: solid 1px #D8D8D8; padding: 5px 0px 0px 5px"
+                                                        <td style="width: 220px; border-left: solid 1px #d0d0d0; padding: 5px 0px 0px 5px"
                                                             valign="top" class="ItemAlignLeft">
                                                             <asp:TreeView ID="TreeView1" runat="server" NodeWrap="True" OnSelectedNodeChanged="TreeView1_SelectedNodeChanged"
                                                                 ShowLines="True" Width="220px">
@@ -134,7 +134,7 @@
                                                                 <SelectedNodeStyle CssClass="selectNode" ForeColor="Red" />
                                                             </asp:TreeView>
                                                         </td>
-                                                        <td valign="top" width="160" style="padding: 5px 2px  0px 5px; border-left: solid 1px #D8D8D8; text-align: center;">
+                                                        <td valign="top" width="160" style="padding: 5px 2px  0px 5px; border-left: solid 1px #d0d0d0; text-align: center;">
 
                                                             <table width="100%" border="0" cellpadding="0" cellspacing="0" background="ImagesSkin/main_n_bj.jpg">
                                                                 <tr>

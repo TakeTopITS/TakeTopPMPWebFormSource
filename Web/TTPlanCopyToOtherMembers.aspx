@@ -64,7 +64,7 @@
                                 <td valign="top">
                                     <table cellpadding="0" cellspacing="0" width="100%">
                                         <tr>
-                                            <td style="width: 220px; border-right: solid 1px #D8D8D8; padding: 5px 0px 0px 5px"
+                                            <td style="width: 220px; border-right: solid 1px #d0d0d0; padding: 5px 0px 0px 5px"
                                                 valign="top" class="ItemAlignLeft">
                                                 <asp:TreeView ID="TreeView1" runat="server" NodeWrap="True" OnSelectedNodeChanged="TreeView1_SelectedNodeChanged"
                                                     ShowLines="True" Width="220">
@@ -306,7 +306,7 @@
                                                                             <Columns>
                                                                                 <asp:TemplateColumn HeaderText="Number">
                                                                                     <ItemTemplate>
-                                                                                        <asp:Button ID="BT_LeaderID" runat="server" CssClass="inpu" Text='<%# DataBinder.Eval(Container.DataItem,"ID") %>' />
+                                                                                        <asp:Button ID="BT_LeaderID" runat="server" CssClass="tt-sms-btn" Text='<%# DataBinder.Eval(Container.DataItem,"ID") %>' />
                                                                                     </ItemTemplate>
                                                                                     <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="10%"></ItemStyle>
                                                                                 </asp:TemplateColumn>
@@ -480,7 +480,7 @@
                                             <SelectedNodeStyle CssClass="selectNode" ForeColor="Red" />
                                         </asp:TreeView>
                                     </td>
-                                    <td style="width: 170px; padding: 5px 5px 5px 5px; text-align: center; vertical-align: top; border-right: solid 1px #D8D8D8">
+                                    <td style="width: 170px; padding: 5px 5px 5px 5px; text-align: center; vertical-align: top; border-right: solid 1px #d0d0d0">
                                         <table background="ImagesSkin/main_n_bj.jpg" border="0" cellpadding="0" cellspacing="0"
                                             width="100%">
                                             <tr>
@@ -566,7 +566,7 @@
                         <div id="popwindow_content" class="layui-layer-content" style="overflow: auto; padding: 0px 5px 0px 5px;">
                             <table width="100%">
                                 <tr>
-                                    <td style="width: 220px; border-right: solid 1px #D8D8D8;" valign="top" class="ItemAlignLeft">
+                                    <td style="width: 220px; border-right: solid 1px #d0d0d0;" valign="top" class="ItemAlignLeft">
                                         <asp:TreeView ID="TreeView3" runat="server" NodeWrap="True" OnSelectedNodeChanged="TreeView3_SelectedNodeChanged"
                                             ShowLines="True" Width="220px">
                                             <RootNodeStyle CssClass="rootNode" />
@@ -575,7 +575,7 @@
                                             <SelectedNodeStyle CssClass="selectNode" ForeColor="Red" />
                                         </asp:TreeView>
                                     </td>
-                                    <td style="width: 170px; border-right: solid 1px #D8D8D8;" class="ItemAlignLeft">
+                                    <td style="width: 170px; border-right: solid 1px #d0d0d0;" class="ItemAlignLeft">
                                         <table width="170px" border="0" cellpadding="0" cellspacing="0" background="ImagesSkin/main_n_bj.jpg">
                                             <tr>
                                                 <td width="7">

@@ -17,7 +17,7 @@
         }
 
         .auto-style1 {
-            background-color: #D8D8D8;
+            background-color: #d0d0d0;
             width: 100%;
         }
     </style>
@@ -144,7 +144,7 @@
                                 <td valign="top">
                                     <table cellpadding="0" cellspacing="0" width="100%">
                                         <tr>
-                                            <td style="width: 220px; border-right: solid 1px #D8D8D8; padding: 5px 0px 0px 5px"
+                                            <td style="width: 220px; border-right: solid 1px #d0d0d0; padding: 5px 0px 0px 5px"
                                                 valign="top" class="ItemAlignLeft">
                                                 <div id="Div_TreeView1" style="overflow: auto; height: 800px;">
                                                     <asp:TreeView ID="TreeView1" runat="server" NodeWrap="True" OnSelectedNodeChanged="TreeView1_SelectedNodeChanged"

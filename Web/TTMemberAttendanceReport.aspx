@@ -241,7 +241,7 @@
                                                                 </tr>
                                                             </table>
                                                         </td>
-                                                        <td style="width: 220px; padding: 5px 0px 0px 5px; border-left: solid 1px #D8D8D8"
+                                                        <td style="width: 220px; padding: 5px 0px 0px 5px; border-left: solid 1px #d0d0d0"
                                                             valign="top" class="ItemAlignLeft">
                                                             <table width="100%" border="0" cellpadding="0" cellspacing="0" background="ImagesSkin/main_n_bj.jpg">
                                                                 <tr>
@@ -271,7 +271,7 @@
                                                                 <Columns>
                                                                     <asp:TemplateColumn HeaderText="部门成员:">
                                                                         <ItemTemplate>
-                                                                            <asp:Button ID="BT_UserCode" runat="server" CssClass="inpu" Text='<%# DataBinder.Eval(Container.DataItem,"UserCode") %>'
+                                                                            <asp:Button ID="BT_UserCode" runat="server" CssClass="tt-sms-btn" Text='<%# DataBinder.Eval(Container.DataItem,"UserCode") %>'
                                                                                 Style="text-align: center" />
                                                                             <asp:Button ID="BT_UserName" runat="server" CssClass="inpu" Text='<%# DataBinder.Eval(Container.DataItem,"UserName") %>'
                                                                                 Style="text-align: center" />

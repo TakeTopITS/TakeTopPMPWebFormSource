@@ -63,7 +63,7 @@
                     <td>
                         <table width="100%" cellpadding="0" cellspacing="0">
                             <tr>
-                                <td width="200px" style="border-right: solid 1px #D8D8D8; text-align: left;" valign="top">
+                                <td width="200px" style="border-right: solid 1px #d0d0d0; text-align: left;" valign="top">
                                     <asp:Button ID="BT_AllMember" runat="server" Width="220px" OnClick="BT_AllMember_Click"
                                         Text="<%$ Resources:lang,SuoYouXiangMuFeiYong%>" />
                                     <asp:TreeView ID="TreeView1" runat="server" NodeWrap="True" OnSelectedNodeChanged="TreeView1_SelectedNodeChanged"
@@ -152,7 +152,7 @@
                                                                         <asp:Label ID="LB_Member" runat="server"></asp:Label>
                                                                         &nbsp;
 
-                                                                                    <asp:Label ID="Label19" runat="server" BackColor="#FF7F50" Text="<%$ Resources:lang,QueRenFeiYong%>"></asp:Label>:<asp:Label ID="LB_ConfirmAmount" runat="server"></asp:Label>
+                                                                                    <asp:Label ID="Label19" runat="server" BackColor="#d44446" Text="<%$ Resources:lang,QueRenFeiYong%>"></asp:Label>:<asp:Label ID="LB_ConfirmAmount" runat="server"></asp:Label>
                                                                     </td>
                                                                 </tr>
                                                             </table>

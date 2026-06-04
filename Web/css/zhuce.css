@@ -56,16 +56,16 @@ select#ddlLangSwitcher{
 }
 input#BT_Add{
 /*	width:90%;*/
-	color: #29728D;
-    background:#cbe5fe;
+	color: #607d8b;
+    background:#fde8e8;
 	border-radius:5px;
 	margin-top:10px;
 	margin-left:-70px;
 }
 input#BT_UpdatePWD{
 	/*width:90%;*/
-	color: #29728D;
-    background:#cbe5fe;
+	color: #607d8b;
+    background:#fde8e8;
 	border-radius:5px;
 	margin-top:10px;
 	margin-left:-70px;

@@ -55,7 +55,7 @@
                             <td>
                                 <table style="width: 98%; margin-top:5px">
                                     <tr>
-                                        <td valign="top" class="ItemAlignLeft" style="width: 25%; text-align: left; padding: 5px 5px 0px 5px; border-right: solid 1px #D8D8D8; vertical-align: top;">
+                                        <td valign="top" class="ItemAlignLeft" style="width: 25%; text-align: left; padding: 5px 5px 0px 5px; border-right: solid 1px #d0d0d0; vertical-align: top;">
                                             <asp:TreeView ID="TreeView1" runat="server" Font-Bold="False" Font-Names="ËÎÌו" Font-Size="10pt" NodeWrap="True" OnSelectedNodeChanged="TreeView1_SelectedNodeChanged" ShowLines="True" Width="100%">
                                                 <RootNodeStyle CssClass="rootNode" /><NodeStyle CssClass="treeNode" /><LeafNodeStyle CssClass="leafNode" /><SelectedNodeStyle CssClass="selectNode" ForeColor ="Red" />
                                             </asp:TreeView>

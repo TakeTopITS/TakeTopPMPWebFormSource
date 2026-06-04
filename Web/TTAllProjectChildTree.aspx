@@ -52,7 +52,7 @@
                         <td valign="top">
                             <table width="100%" cellpadding="0" cellspacing="0">
                                 <tr>
-                                    <td valign="top" width="220" style="padding: 5px 5px 0px 5px; border-right: solid 1px #D8D8D8" class="ItemAlignLeft">
+                                    <td valign="top" width="220" style="padding: 5px 5px 0px 5px; border-right: solid 1px #d0d0d0" class="ItemAlignLeft">
                                         <asp:TreeView ID="TreeView1" runat="server" NodeWrap="True" OnSelectedNodeChanged="TreeView1_SelectedNodeChanged"
                                             ShowLines="True" Width="220px">
                                             <RootNodeStyle CssClass="rootNode" /><NodeStyle CssClass="treeNode" /><LeafNodeStyle CssClass="leafNode" /><SelectedNodeStyle CssClass="selectNode" ForeColor ="Red" />
@@ -284,7 +284,7 @@
                                                             </table>
                                                         </ItemTemplate>
                                                         
-                                                        <ItemStyle BackColor="#EFF3FB" />
+                                                        <ItemStyle BackColor="#f5f7fa" />
                                                         <SelectedItemStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
                                                         <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                                                     </asp:DataList>

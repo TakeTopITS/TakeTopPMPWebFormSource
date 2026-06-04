@@ -1411,7 +1411,7 @@
                                                         <tr>
 
 
-                                                            <td style="width: 220px; border-right: solid 1px #D8D8D8; padding: 5px 0px 0px 5px"
+                                                            <td style="width: 220px; border-right: solid 1px #d0d0d0; padding: 5px 0px 0px 5px"
                                                                 valign="top" class="ItemAlignLeft">
 
 
@@ -1437,7 +1437,7 @@
                                                             </td>
 
 
-                                                            <td width="165px" style="padding: 5px 5px 0px 5px; border-right: solid 1px #D8D8D8; vertical-align: top;">
+                                                            <td width="165px" style="padding: 5px 5px 0px 5px; border-right: solid 1px #d0d0d0; vertical-align: top;">
 
 
                                                                 <table style="width: 165px; height: 53px">
@@ -1565,7 +1565,7 @@
                                                             </td>
 
 
-                                                            <td class="ItemAlignLeft" style="padding: 5px 5px 0px 5px; border-right: solid 1px #D8D8D8; vertical-align: top;">
+                                                            <td class="ItemAlignLeft" style="padding: 5px 5px 0px 5px; border-right: solid 1px #d0d0d0; vertical-align: top;">
 
 
                                                                 <asp:Repeater ID="RP_CustomerMember" runat="server" OnItemCommand="RP_CustomerMember_ItemCommand">

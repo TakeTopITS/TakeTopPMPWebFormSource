@@ -165,7 +165,7 @@
                             <td>
                                 <table style="width: 100%;" cellpadding="0" cellspacing="0">
                                     <tr>
-                                        <td width="400px" valign="top" style="padding: 5px 5px 0px 5px; text-align: left; border-right: solid 1px #D8D8D8">
+                                        <td width="400px" valign="top" style="padding: 5px 5px 0px 5px; text-align: left; border-right: solid 1px #d0d0d0">
                                             <table width="400px" class="formBgStyle">
                                                 <tr>
                                                     <td class="formItemBgStyleForAlignLeft">
@@ -343,7 +343,7 @@
                                                 </tr>
                                             </table>
                                         </td>
-                                        <td style="width: 680px; padding: 5px 5px 0px 5px; text-align: left; vertical-align: top; border-right: solid 1px #D8D8D8">
+                                        <td style="width: 680px; padding: 5px 5px 0px 5px; text-align: left; vertical-align: top; border-right: solid 1px #d0d0d0">
                                             <table style="width: 680px;" cellpadding="2" cellspacing="0" class="formBgStyle">
                                                 <tr>
                                                     <td style="width: 100px;" class="formItemBgStyleForAlignLeft">
@@ -742,7 +742,7 @@
 
                                             </table>
                                         </td>
-                                        <td style="width: 400px; padding: 5px 5px 0px 5px; text-align: left; vertical-align: top; border-right: solid 1px #D8D8D8;">
+                                        <td style="width: 400px; padding: 5px 5px 0px 5px; text-align: left; vertical-align: top; border-right: solid 1px #d0d0d0;">
                                             <table width="100%" cellpadding="2" cellspacing="0">
                                                 <tr>
                                                     <td class="formItemBgStyleForAlignLeft">

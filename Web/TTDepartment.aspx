@@ -113,7 +113,7 @@
                                 <td>
                                     <table width="100%" cellpadding="0" cellspacing="0">
                                         <tr>
-                                            <td width="220px" style="padding: 5px 5px 0px 5px; border-right: solid 1px #D8D8D8"
+                                            <td width="220px" style="padding: 5px 5px 0px 5px; border-right: solid 1px #d0d0d0"
                                                 class="ItemAlignLeft" rowspan="2" valign="top">
                                                 <div id="Div_TreeView1" style="overflow: auto; height: 800px;">
                                                     <asp:TreeView ID="TreeView1" runat="server" NodeWrap="True" OnSelectedNodeChanged="TreeView1_SelectedNodeChanged"
@@ -125,7 +125,7 @@
                                                     </asp:TreeView>
                                                 </div>
                                             </td>
-                                            <td valign="top" style="padding: 5px 5px 0px 5px; border-right: solid 1px #D8D8D8; width: 550px;"
+                                            <td valign="top" style="padding: 5px 5px 0px 5px; border-right: solid 1px #d0d0d0; width: 550px;"
                                                 class="ItemAlignLeft">
                                                 <table style="width: 100%; text-align: left;" cellpadding="3" cellspacing="0" class="formBgStyle">
                                                     <tr>
@@ -1039,7 +1039,7 @@
                                                     </Columns>
                                                 </asp:DataGrid>
                                             </td>
-                                            <td valign="top" style="width: 220px; border-left: solid 1px #D8D8D8; text-align: left;"
+                                            <td valign="top" style="width: 220px; border-left: solid 1px #d0d0d0; text-align: left;"
                                                 rowspan="2">
                                                 <div id="Div_TreeView2" style="overflow: auto; height: 800px;">
                                                     <asp:TreeView ID="TreeView2" runat="server" NodeWrap="True" OnSelectedNodeChanged="TreeView2_SelectedNodeChanged"

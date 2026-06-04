@@ -74,7 +74,7 @@
                         <td>
                             <table cellpadding="0" cellspacing="0" width="100%">
                                 <tr>
-                                    <td width="200" style="padding: 5px 5px 0px 5px; border-right: solid 1px #D8D8D8; vertical-align: top; text-align: left;">
+                                    <td width="200" style="padding: 5px 5px 0px 5px; border-right: solid 1px #d0d0d0; vertical-align: top; text-align: left;">
                                         <asp:TreeView ID="TreeView1" runat="server" NodeWrap="True" OnSelectedNodeChanged="TreeView1_SelectedNodeChanged"
                                             ShowLines="True" Width="220px">
                                             <RootNodeStyle CssClass="rootNode" />
@@ -84,7 +84,7 @@
                                         </asp:TreeView>
                                         <br />
                                     </td>
-                                    <td width="100px" style="padding: 5px 5px 0px 5px; border-right: solid 1px #D8D8D8; vertical-align: top;">
+                                    <td width="100px" style="padding: 5px 5px 0px 5px; border-right: solid 1px #d0d0d0; vertical-align: top;">
                                         <table cellpadding="0" cellspacing="0" width="100%">
                                             <tr>
                                                 <td width="100px" class="ItemAlignLeft" style="padding: 5px 5px 5px 5px;">
@@ -126,7 +126,7 @@
                                                         <Columns>
                                                             <asp:TemplateColumn HeaderText="Status">
                                                                 <ItemTemplate>
-                                                                    <asp:Button ID="BT_Status" runat="server" CssClass="inpu" Text='<%# DataBinder.Eval(Container.DataItem,"Status") %>' /><br />
+                                                                    <asp:Button ID="BT_Status" runat="server" CssClass="tt-sms-btn" Text='<%# DataBinder.Eval(Container.DataItem,"Status") %>' /><br />
                                                                 </ItemTemplate>
                                                                 <ItemStyle CssClass="itemBorder" HorizontalAlign="left" />
                                                             </asp:TemplateColumn>
@@ -345,10 +345,10 @@
                                                                                         <ItemTemplate>
                                                                                             <div style="position: relative; height: 25px; width: 100px; overflow: hidden;">
                                                                                                 <!-- 黄色底层背景 -->
-                                                                                                <div style="position: absolute; top: 0; left: 0; width: 100px; height: 25px; background-color: yellow; z-index: 1;"></div>
+                                                                                                <div style="position: absolute; top: 0; left: 0; width: 100px; height: 25px; background-color: #eceff1; z-index: 1;"></div>
 
                                                                                                 <!-- 绿色进度条背景 - 新增控件 -->
-                                                                                                <div id="ProgressBar3" runat="server" style="position: absolute; top: 0; left: 0; height: 25px; background-color: yellowgreen; z-index: 2; max-width: 100px; overflow: hidden;"></div>
+                                                                                                <div id="ProgressBar3" runat="server" style="position: absolute; top: 0; left: 0; height: 25px; background-color: #78909c; z-index: 2; max-width: 100px; overflow: hidden;"></div>
 
                                                                                                 <!-- 绿色文字 - 显示百分比数据 -->
                                                                                                 <div style="position: absolute; top: 0; left: 5px; height: 25px; line-height: 25px; z-index: 3;">

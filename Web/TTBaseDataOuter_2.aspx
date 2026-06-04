@@ -515,7 +515,7 @@
                                         <Columns>
                                             <asp:TemplateColumn HeaderText="Type">
                                                 <ItemTemplate>
-                                                    <asp:Button ID="BT_IndustryType" runat="server" CssClass="inpu" Text='<%# DataBinder.Eval(Container.DataItem,"Type") %>' CommandName="Edit" />
+                                                    <asp:Button ID="BT_IndustryType" runat="server" CssClass="tt-sms-btn" Text='<%# DataBinder.Eval(Container.DataItem,"Type") %>' CommandName="Edit" />
                                                 </ItemTemplate>
                                                 <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="60%" />
                                             </asp:TemplateColumn>

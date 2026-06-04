@@ -70,7 +70,7 @@
                                             <td valign="top">
                                                 <table width="100%" cellpadding="0" cellspacing="0">
                                                     <tr>
-                                                        <td valign="top" style="padding: 5px 5px 0px 5px; border-right: solid 1px #D8D8D8"
+                                                        <td valign="top" style="padding: 5px 5px 0px 5px; border-right: solid 1px #d0d0d0"
                                                             class="ItemAlignLeft">
                                                             <table style="width: 100%; text-align: left;" cellpadding="3" cellspacing="0" class="formBgStyle">
                                                                 <tr>

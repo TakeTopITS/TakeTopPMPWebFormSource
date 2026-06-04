@@ -51,7 +51,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td class="ItemAlignLeft" style="padding: 5px 5px 5px 5px; vertical-align: top; border-right: solid 1px #D8D8D8;">
+                            <td class="ItemAlignLeft" style="padding: 5px 5px 5px 5px; vertical-align: top; border-right: solid 1px #d0d0d0;">
                                 <table width="100%" border="0" cellpadding="0" cellspacing="0">
                                     <tr>
                                         <td>

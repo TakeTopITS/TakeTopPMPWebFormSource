@@ -9,7 +9,7 @@
     <link href="css/liucheng.css" rel="stylesheet" type="text/css" />
     <style>
         :root {
-            --primary-color: #3e526c;
+            --primary-color: #f5f5f5;
             --secondary-color: #f5f7fa;
             --accent-color: #057BF9;
             --text-color: #333;
@@ -132,7 +132,7 @@
         }
 
         .theme-button.red {
-            background-color: #e53935;
+            background-color: #d44446;
         }
 
         .theme-button.gold {

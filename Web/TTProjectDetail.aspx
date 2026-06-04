@@ -82,7 +82,7 @@
                                                                 <li>
                                                                     <div style="padding-top: 10px; text-align: center; width: 100%;">
                                                                         <a href='<%# DataBinder.Eval(Container.DataItem,"ModulePage") %>' target="iframe" style="display: block; width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                                                                            <b style="color: white;"><%# DataBinder.Eval(Container.DataItem,"HomeModuleName") %></b>
+                                                                            <b style="color: #333;"><%# DataBinder.Eval(Container.DataItem,"HomeModuleName") %></b>
                                                                         </a>
                                                                     </div>
                                                                 </li>
@@ -97,7 +97,7 @@
                                                             <li>
                                                                 <div style="padding-top: 10px; text-align: center; width: 100%;">
                                                                     <a href='<%# DataBinder.Eval(Container.DataItem,"ModulePage") %>' target="iframe" style="display: block; width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                                                                        <b style="color: white;"><%# DataBinder.Eval(Container.DataItem,"HomeModuleName") %></b>
+                                                                        <b style="color: #333;"><%# DataBinder.Eval(Container.DataItem,"HomeModuleName") %></b>
                                                                     </a>
                                                                 </div>
                                                             </li>

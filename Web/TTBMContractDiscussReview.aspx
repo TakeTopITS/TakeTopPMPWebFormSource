@@ -133,7 +133,7 @@
                                                         <asp:TemplateColumn HeaderText="Number">
                                                             <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="10%" />
                                                             <ItemTemplate>
-                                                                <asp:Button ID="BT_ID" runat="server" CssClass="inpu" Text='<%# DataBinder.Eval(Container.DataItem,"ID") %>' />
+                                                                <asp:Button ID="BT_ID" runat="server" CssClass="tt-sms-btn" Text='<%# DataBinder.Eval(Container.DataItem,"ID") %>' />
                                                             </ItemTemplate>
                                                         </asp:TemplateColumn>
                                                         <asp:BoundColumn DataField="Name" HeaderText="Name">

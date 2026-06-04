@@ -101,7 +101,7 @@
                                                                     <EditItemStyle BackColor="#2461BF" />
                                                                     <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                                                                     <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" Horizontalalign="left" />
-                                                                    <ItemStyle BackColor="#EFF3FB" CssClass="dg_item" />
+                                                                    <ItemStyle BackColor="#f5f7fa" CssClass="dg_item" />
                                                                     <PagerStyle BackColor="#2461BF" ForeColor="White" Horizontalalign="left" />
                                                                     <SelectedItemStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
                                                                 </asp:DataGrid>

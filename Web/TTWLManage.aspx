@@ -793,7 +793,7 @@
                                                     </tr>
                                                 </table>
                                             </td>
-                                            <td width="170px" style="padding: 5px 5px 0px 5px; border-left: solid 1px #D8D8D8"
+                                            <td width="170px" style="padding: 5px 5px 0px 5px; border-left: solid 1px #d0d0d0"
                                                 valign="top">
                                                 <table style="width: 100%;">
                                                     <tr>
@@ -837,9 +837,9 @@
                                                                     <asp:TemplateColumn HeaderText="°´×´Ì¬·ÖÀà:">
                                                                         <ItemTemplate>
                                                                             <asp:Button ID="BT_Status" runat="server" Text='<%# DataBinder.Eval(Container.DataItem,"Status") %>'
-                                                                                CssClass="inpu" Visible="false" />
+                                                                                CssClass="tt-sms-btn" Visible="false" />
                                                                             <asp:Button ID="BT_HomeName" runat="server" Text='<%# DataBinder.Eval(Container.DataItem,"HomeName") %>'
-                                                                                CssClass="inpu" />
+                                                                                CssClass="tt-sms-btn" />
                                                                         </ItemTemplate>
                                                                         <ItemStyle CssClass="itemBorder" Horizontalalign="left" />
                                                                     </asp:TemplateColumn>

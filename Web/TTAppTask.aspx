@@ -70,7 +70,7 @@
                                         </a>
                                     </td>
                                     <td align="right" style="padding-top: 5px; padding-right: 8px;">
-                                        <asp:Button ID="BT_CreateTask" runat="server" CssClass="inpu" Text="<%$ Resources:lang,MakeTask%>" OnClick="BT_CreateTask_Click" Visible="false" />
+                                        <asp:Button ID="BT_CreateTask" runat="server" CssClass="tt-sms-btn" Text="<%$ Resources:lang,MakeTask%>" OnClick="BT_CreateTask_Click" Visible="false" />
                                     </td>
                                 </tr>
                             </table>

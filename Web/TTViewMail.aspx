@@ -88,7 +88,7 @@
                                     GridLines="None">
                                     <%-- <FooterStyle ForeColor="White" BackColor="#507CD1" Font-Bold="True"></FooterStyle>--%>
                                     <SelectedRowStyle BorderColor="CornflowerBlue" />
-                                    <RowStyle BackColor="#EFF3FB" />
+                                    <RowStyle BackColor="#f5f7fa" />
                                     <Columns>
                                         <asp:TemplateField>
                                             <ItemTemplate>

@@ -236,7 +236,7 @@
                                                 </asp:UpdatePanel>
 
                                             </td>
-                                            <td style="width: 18%; text-align: left; padding: 5px 5px 0px 5px; border-right: solid 1px #D8D8D8; vertical-align: top; display: none;"
+                                            <td style="width: 18%; text-align: left; padding: 5px 5px 0px 5px; border-right: solid 1px #d0d0d0; vertical-align: top; display: none;"
                                                 rowspan="5">
                                                 <asp:UpdatePanel ID="UpdatePanel3" runat="server" UpdateMode="Conditional">
                                                     <ContentTemplate>

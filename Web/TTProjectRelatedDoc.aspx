@@ -293,7 +293,7 @@
                                             <ContentTemplate>
                                                 <table style="width: 100%;">
                                                     <tr>
-                                                        <td valign="top" style="width: 18%; text-align: left; padding: 5px 5px 0px 5px; border-right: solid 1px #D8D8D8;"
+                                                        <td valign="top" style="width: 18%; text-align: left; padding: 5px 5px 0px 5px; border-right: solid 1px #d0d0d0;"
                                                             rowspan="5">
                                                             <asp:UpdatePanel ID="UpdatePanel5" runat="server" UpdateMode="Conditional">
                                                                 <ContentTemplate>
@@ -791,7 +791,7 @@
                                             <ContentTemplate>
                                                 <table style="width: 100%;">
                                                     <tr>
-                                                        <td valign="top" style="width: 18%; text-align: left; padding: 5px 5px 0px 5px; border-right: solid 1px #D8D8D8;"
+                                                        <td valign="top" style="width: 18%; text-align: left; padding: 5px 5px 0px 5px; border-right: solid 1px #d0d0d0;"
                                                             rowspan="5">
                                                             <asp:UpdatePanel ID="UpdatePanel11" runat="server" UpdateMode="Conditional">
                                                                 <ContentTemplate>
@@ -914,7 +914,7 @@
                                             <ContentTemplate>
                                                 <table style="width: 100%;">
                                                     <tr>
-                                                        <td style="width: 20%; text-align: left; padding: 5px 5px 0px 5px; border-right: solid 1px #D8D8D8;"
+                                                        <td style="width: 20%; text-align: left; padding: 5px 5px 0px 5px; border-right: solid 1px #d0d0d0;"
                                                             valign="top">
                                                             <asp:UpdatePanel ID="UpdatePanel3" runat="server" UpdateMode="Conditional">
                                                                 <ContentTemplate>

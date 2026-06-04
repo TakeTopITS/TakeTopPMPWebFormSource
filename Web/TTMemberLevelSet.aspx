@@ -90,7 +90,7 @@
                                 <td>
                                     <table cellpadding="0" cellspacing="0" width="100%">
                                         <tr>
-                                            <td valign="top" style="width: 220px; border-right: solid 1px #D8D8D8; padding: 5px 5px 5px 5px;"
+                                            <td valign="top" style="width: 220px; border-right: solid 1px #d0d0d0; padding: 5px 5px 5px 5px;"
                                                 class="ItemAlignLeft">
                                                 <div id="Div_TreeView3" style="overflow: auto; height: 800px;">
                                                     <asp:TreeView ID="TreeView3" runat="server" NodeWrap="True" OnSelectedNodeChanged="TreeView3_SelectedNodeChanged"
@@ -102,7 +102,7 @@
                                                     </asp:TreeView>
                                                 </div>
                                             </td>
-                                            <td valign="top" style="width: 220px; border-right: solid 1px #D8D8D8; padding: 5px 5px 5px 5px;"
+                                            <td valign="top" style="width: 220px; border-right: solid 1px #d0d0d0; padding: 5px 5px 5px 5px;"
                                                 class="ItemAlignLeft">
                                                 <asp:TreeView ID="TreeView1" runat="server" NodeWrap="True" OnSelectedNodeChanged="TreeView1_SelectedNodeChanged"
                                                     ShowLines="True" Width="220px">
@@ -112,7 +112,7 @@
                                                     <SelectedNodeStyle CssClass="selectNode" ForeColor="Red" />
                                                 </asp:TreeView>
                                             </td>
-                                            <td style="width: 300px; border-right: solid 1px #D8D8D8; padding: 10px 5px 5px 5px;" class="ItemAlignLeft"
+                                            <td style="width: 300px; border-right: solid 1px #d0d0d0; padding: 10px 5px 5px 5px;" class="ItemAlignLeft"
                                                 valign="top">
                                                 <table style="width: 100%;" cellpadding="3" cellspacing="0" class="formBgStyle">
                                                     <tr>
@@ -297,7 +297,7 @@
                                                     <ItemStyle CssClass="itemStyle" />
                                                 </asp:DataGrid>
                                             </td>
-                                            <td style="padding: 5px 0px 0px 5px; border-left: solid 1px #D8D8D8;"
+                                            <td style="padding: 5px 0px 0px 5px; border-left: solid 1px #d0d0d0;"
                                                 valign="top" class="ItemAlignLeft">
                                                 <div id="Div_TreeView2" style="overflow: auto; height: 800px;">
                                                     <asp:TreeView ID="TreeView2" runat="server" NodeWrap="True" OnSelectedNodeChanged="TreeView2_SelectedNodeChanged"

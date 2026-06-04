@@ -5,7 +5,7 @@
 {
 	BACKGROUND-REPEAT: no-repeat;
 	BACKGROUND-POSITION: center bottom;
-	COLOR: #003366;
+	COLOR: #455a64;
 	TEXT-DECORATION: none;
 	PADDING-TOP: 0px;
 	font-size: 14px;
@@ -94,14 +94,14 @@ a {
 .title12 {
     font-size: 12px;
     font-weight: bold;
-   /* color: #003366;*/
+   /* color: #455a64;*/
    color:#FCFCFC;
 }
 
 .title14 {
     font-size: 14px;
     font-weight: bold;
-    color: #003366;
+    color: #455a64;
 }
 
 
@@ -117,7 +117,7 @@ a {
     border-bottom-style: none;
     border-left-style: none;
     font-size: 12px;
-    color: #29728D;
+    color: #607d8b;
 }
 
 /*--------------------------------短按钮---------------------------*/
@@ -132,7 +132,7 @@ a {
 	border-bottom-style: none;
 	border-left-style: none;
 	/*font-size: 12px;*/
-	/*color: #29728D;*/	
+	/*color: #607d8b;*/	
 }
 /*--------------------------------20131127---------------------------*/
 

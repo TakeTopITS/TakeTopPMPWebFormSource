@@ -38,7 +38,7 @@
                     <td>
                         <table width="100%" cellpadding="0" cellspacing="0">
                             <tr>
-                                <td valign="top" width="170px" style="padding: 5px 5px 5px 5px; border-right: solid 1px #D8D8D8">
+                                <td valign="top" width="170px" style="padding: 5px 5px 5px 5px; border-right: solid 1px #d0d0d0">
                                     <table width="100%" border="0" cellpadding="0" cellspacing="0" background="ImagesSkin/main_n_bj.jpg">
                                         <tr>
                                             <td width="7">
@@ -247,7 +247,7 @@
                                                                             <Columns>
                                                                                 <asp:TemplateColumn>
                                                                                     <ItemTemplate>
-                                                                                        <asp:Button ID="BT_WLID" runat="server" CssClass="inpu" Text='<%# DataBinder.Eval(Container.DataItem,"WLID") %>' />
+                                                                                        <asp:Button ID="BT_WLID" runat="server" CssClass="tt-sms-btn" Text='<%# DataBinder.Eval(Container.DataItem,"WLID") %>' />
                                                                                     </ItemTemplate>
                                                                                     <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="8%" />
                                                                                 </asp:TemplateColumn>

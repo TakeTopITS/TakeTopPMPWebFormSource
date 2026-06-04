@@ -86,7 +86,7 @@
                             <td valign="top">
                                 <table width="100%">
                                     <tr>
-                                        <td style="width: 220px; border-right: solid 1px #D8D8D8; padding: 5px 5px 5px 5px;"
+                                        <td style="width: 220px; border-right: solid 1px #d0d0d0; padding: 5px 5px 5px 5px;"
                                             valign="top" class="ItemAlignLeft">
                                             <asp:TreeView ID="TreeView2" runat="server" NodeWrap="True" OnSelectedNodeChanged="TreeView2_SelectedNodeChanged"
                                                 ShowLines="True" Width="220px">
@@ -96,7 +96,7 @@
                                                 <SelectedNodeStyle CssClass="selectNode" ForeColor="Red" />
                                             </asp:TreeView>
                                         </td>
-                                        <td width="170px" style="padding: 5px 5px 5px 5px; border-right: solid 1px #D8D8D8; vertical-align: top;">
+                                        <td width="170px" style="padding: 5px 5px 5px 5px; border-right: solid 1px #d0d0d0; vertical-align: top;">
                                             <table width="170px" cellpadding="0" cellspacing="0">
                                                 <tr>
                                                     <td style="width: 170px; height: 2px; text-align: left">
@@ -128,7 +128,7 @@
                                                             <Columns>
                                                                 <asp:TemplateColumn HeaderText="部门成员:">
                                                                     <ItemTemplate>
-                                                                        <asp:Button ID="BT_UserCode" runat="server" CssClass="inpu" Text='<%# DataBinder.Eval(Container.DataItem,"UserCode") %>'
+                                                                        <asp:Button ID="BT_UserCode" runat="server" CssClass="tt-sms-btn" Text='<%# DataBinder.Eval(Container.DataItem,"UserCode") %>'
                                                                             Style="text-align: center" />
                                                                         <asp:Button ID="BT_UserName" runat="server" CssClass="inpu" Text='<%# DataBinder.Eval(Container.DataItem,"UserName") %>'
                                                                             Style="text-align: center" />
@@ -185,7 +185,7 @@
                                             </table>
                                         </td>
 
-                                        <td valign="top" style="padding: 5px 5px 5px 5px; border-right: solid 1px #D8D8D8; vertical-align: top;">
+                                        <td valign="top" style="padding: 5px 5px 5px 5px; border-right: solid 1px #d0d0d0; vertical-align: top;">
                                             <table style="width: 100%;">
                                                 <tr>
                                                     <td>

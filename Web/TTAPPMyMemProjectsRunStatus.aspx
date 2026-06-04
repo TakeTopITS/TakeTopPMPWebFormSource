@@ -437,7 +437,7 @@
                                 <td>
                                     <table cellpadding="0" cellspacing="0" width="100%">
                                         <tr>
-                                            <td class="ItemAlignLeft" style="border-left: solid 1px #D8D8D8">
+                                            <td class="ItemAlignLeft" style="border-left: solid 1px #d0d0d0">
                                                 <table width="100%" style="margin-top: 5px">
                                                     <tr>
                                                         <td>
@@ -570,11 +570,11 @@
                                                                                                 <table cellpadding="0" cellspacing="0" width="100%">
                                                                                                     <tr>
 
-                                                                                                        <td valign="top" width="165" style="padding: 5px 5px 0px 5px; border-left: solid 1px #D8D8D8">
+                                                                                                        <td valign="top" width="165" style="padding: 5px 5px 0px 5px; border-left: solid 1px #d0d0d0">
                                                                                                             <table width="100%">
                                                                                                                 <tr>
                                                                                                                     <td style="width: 100%; text-align: left;">
-                                                                                                                        <asp:Button ID="BT_AllProject" runat="server" CssClass="inpuLong" OnClick="BT_AllProject_Click"
+                                                                                                                        <asp:Button ID="BT_AllProject" runat="server" CssClass="tt-sms-btn" OnClick="BT_AllProject_Click"
                                                                                                                             Text="<%$ Resources:lang,MyMemberProject%>" />
                                                                                                                     </td>
                                                                                                                 </tr>
@@ -661,9 +661,9 @@
                                                                                                                                 <asp:TemplateColumn HeaderText="ÏîÄ¿×´Ì¬:">
                                                                                                                                     <ItemTemplate>
                                                                                                                                         <asp:Button ID="BT_Status" runat="server" Text='<%# DataBinder.Eval(Container.DataItem,"Status") %>'
-                                                                                                                                            CssClass="inpu" Visible="false" />
+                                                                                                                                            CssClass="tt-sms-btn" Visible="false" />
                                                                                                                                         <asp:Button ID="BT_HomeName" runat="server" Text='<%# DataBinder.Eval(Container.DataItem,"HomeName") %>'
-                                                                                                                                            CssClass="inpu" />
+                                                                                                                                            CssClass="tt-sms-btn" />
                                                                                                                                     </ItemTemplate>
                                                                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" />
                                                                                                                                 </asp:TemplateColumn>

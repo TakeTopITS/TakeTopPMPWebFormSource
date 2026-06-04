@@ -189,7 +189,7 @@
 
                             <table style="width: 200%" cellpadding="0" cellspacing="0">
                                 <tr>
-                                    <td style="padding: 5px 5px 5px 5px; vertical-align: top; border-right: solid 1px #D8D8D8"
+                                    <td style="padding: 5px 5px 5px 5px; vertical-align: top; border-right: solid 1px #d0d0d0"
                                         class="ItemAlignLeft">
                                         <table width="95%" cellpadding="5" cellspacing="0" class="formBgStyle">
                                             <tr>
@@ -269,7 +269,7 @@
                                         <br />
 
                                     </td>
-                                    <td style="width: 170px; padding: 5px 5px 5px 5px; text-align: center; vertical-align: top; border-right: solid 1px #D8D8D8">
+                                    <td style="width: 170px; padding: 5px 5px 5px 5px; text-align: center; vertical-align: top; border-right: solid 1px #d0d0d0">
                                         <table width="100%" border="0" cellpadding="0" cellspacing="0" background="ImagesSkin/main_n_bj.jpg">
                                             <tr>
                                                 <td width="7">

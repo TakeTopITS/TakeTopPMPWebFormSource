@@ -60,7 +60,7 @@
                                                         <asp:TextBox ID="TB_ProjectCode" runat="server" Width="70%"></asp:TextBox>
                                                 </td>
                                                 <td>
-                                                    <asp:Button ID="BT_AddProject" CssClass="inpu" runat="server" Text="<%$ Resources:lang,JiaRu%>" OnClick="BT_AddProject_Click" />
+                                                    <asp:Button ID="BT_AddProject" CssClass="tt-sms-btn" runat="server" Text="<%$ Resources:lang,JiaRu%>" OnClick="BT_AddProject_Click" />
                                                 </td>
                                             </tr>
                                         </table>

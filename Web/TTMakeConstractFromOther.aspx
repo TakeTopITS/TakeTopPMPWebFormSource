@@ -821,7 +821,7 @@
                                                 <ContentTemplate>
                                                     <table width="100%" cellpadding="0" cellspacing="0">
                                                         <tr>
-                                                            <td style="width: 220px; border-right: solid 1px #D8D8D8; padding: 5px 0px 0px 5px"
+                                                            <td style="width: 220px; border-right: solid 1px #d0d0d0; padding: 5px 0px 0px 5px"
                                                                 valign="top" class="ItemAlignLeft">
                                                                 <asp:TreeView ID="TreeView2" runat="server" NodeWrap="True" OnSelectedNodeChanged="TreeView2_SelectedNodeChanged"
                                                                     ShowLines="True" Width="220px">
@@ -831,7 +831,7 @@
                                                                     <SelectedNodeStyle CssClass="selectNode" ForeColor="Red" />
                                                                 </asp:TreeView>
                                                             </td>
-                                                            <td width="165px" style="padding: 5px 5px 0px 5px; border-right: solid 1px #D8D8D8; vertical-align: top;">
+                                                            <td width="165px" style="padding: 5px 5px 0px 5px; border-right: solid 1px #d0d0d0; vertical-align: top;">
                                                                 <table style="width: 165px; height: 53px">
                                                                     <tr>
                                                                         <td style="width: 165; text-align: center;" valign="top">
@@ -876,7 +876,7 @@
                                                                     </tr>
                                                                 </table>
                                                             </td>
-                                                            <td class="ItemAlignLeft" style="padding: 5px 5px 0px 5px; border-right: solid 1px #D8D8D8; vertical-align: top;">
+                                                            <td class="ItemAlignLeft" style="padding: 5px 5px 0px 5px; border-right: solid 1px #d0d0d0; vertical-align: top;">
                                                                 <table background="ImagesSkin/main_n_bj.jpg" border="0" cellpadding="0" cellspacing="0" width="500px">
                                                                     <tr>
                                                                         <td width="7">
@@ -1092,7 +1092,7 @@
                                                 <ContentTemplate>
                                                     <table width="100%" cellpadding="0" cellspacing="0">
                                                         <tr>
-                                                            <td style="width: 200px; border-right: solid 1px #D8D8D8; padding: 5px 0px 0px 5px"
+                                                            <td style="width: 200px; border-right: solid 1px #d0d0d0; padding: 5px 0px 0px 5px"
                                                                 valign="top" class="ItemAlignLeft">
                                                                 <asp:TreeView ID="TreeView1" runat="server" OnSelectedNodeChanged="TreeView1_SelectedNodeChanged"
                                                                     ShowLines="True" Width="220px" NodeWrap="True">
@@ -1188,7 +1188,7 @@
                                                 <ContentTemplate>
                                                     <table width="100%" cellpadding="0" cellspacing="0">
                                                         <tr>
-                                                            <td style="width: 400px; border-right: solid 1px #D8D8D8; padding: 10px 5px 5px 5px"
+                                                            <td style="width: 400px; border-right: solid 1px #d0d0d0; padding: 10px 5px 5px 5px"
                                                                 valign="top" class="ItemAlignLeft">
                                                                 <div id="GoodsListDivID" style="width: 100%; height: 300px; overflow: auto;">
                                                                     <table background="ImagesSkin/main_n_bj.jpg" border="0" cellpadding="0" cellspacing="0"
@@ -1317,7 +1317,7 @@
                                                     <div id="Div1" style="width: 100%; height: 300px; overflow: auto;">
                                                         <table width="200%" cellpadding="0" cellspacing="0">
                                                             <tr>
-                                                                <td style="width: 400px; border-right: solid 1px #D8D8D8; padding: 10px 5px 5px 5px" valign="top" class="ItemAlignLeft">
+                                                                <td style="width: 400px; border-right: solid 1px #d0d0d0; padding: 10px 5px 5px 5px" valign="top" class="ItemAlignLeft">
 
                                                                     <table background="ImagesSkin/main_n_bj.jpg" border="0" cellpadding="0" cellspacing="0"
                                                                         width="100%">
@@ -1445,7 +1445,7 @@
                                                 <ContentTemplate>
                                                     <table width="100%" cellpadding="0" cellspacing="0">
                                                         <tr>
-                                                            <td style="width: 400px; border-right: solid 1px #D8D8D8; padding: 10px 5px 5px 5px"
+                                                            <td style="width: 400px; border-right: solid 1px #d0d0d0; padding: 10px 5px 5px 5px"
                                                                 valign="top" class="ItemAlignLeft">
                                                                 <div id="Div2" style="width: 100%; height: 300px; overflow: auto;">
                                                                     <table background="ImagesSkin/main_n_bj.jpg" border="0" cellpadding="0" cellspacing="0"
@@ -1578,7 +1578,7 @@
                                                     <div id="Div2" style="width: 100%; height: 300px; overflow: auto;">
                                                         <table width="200%" cellpadding="0" cellspacing="0">
                                                             <tr>
-                                                                <td style="width: 40%; border-right: solid 1px #D8D8D8; padding: 10px 5px 5px 5px"
+                                                                <td style="width: 40%; border-right: solid 1px #d0d0d0; padding: 10px 5px 5px 5px"
                                                                     valign="top" class="ItemAlignLeft">
                                                                     <table width="100%" border="0" cellpadding="0" cellspacing="0" background="ImagesSkin/main_n_bj.jpg">
                                                                         <tr>

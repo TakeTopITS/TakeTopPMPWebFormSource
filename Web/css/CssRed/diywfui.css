@@ -26,7 +26,7 @@ body {
     height: 25px;
     border-radius: 2px;
     color: #ffffff;
-    background: #FF7F50; /*Æ¤·ô*/
+    background: #3b82f6; /*Æ¤·ô*/
 }
 
     .inpu:disabled {
@@ -95,7 +95,7 @@ a:hover {
 
 
 .submitButton {
-    background: #FF7F50; /*Æ¤·ô*/
+    background: #3b82f6; /*Æ¤·ô*/
     border: none;
     color: white;
     padding: 15px 32px;
@@ -112,7 +112,7 @@ a:hover {
 
 
 .submitButtonLong {
-    background: #2e8ded; /*Æ¤·ô*/
+    background: #3b82f6; /*Æ¤·ô*/
     border: none;
     border-radius: 5px;
     color: white;

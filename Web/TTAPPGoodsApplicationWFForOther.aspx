@@ -442,7 +442,7 @@
                         <div id="popwindow_content2" class="layui-layer-content" style="overflow: auto; padding: 0px 5px 0px 5px;">
                             <table style="width: 100%;" cellpadding="0" cellspacing="0">
                                 <tr>
-                                    <td style="width: 60%; border-right: solid 1px #D8D8D8;" valign="top">
+                                    <td style="width: 60%; border-right: solid 1px #d0d0d0;" valign="top">
                                         <table width="98%" class="ItemAlignLeft" cellpadding="0" cellspacing="0">
                                             <tr>
                                                 <td class="ItemAlignLeft" colspan="2" style="height: 6px">
@@ -587,7 +587,7 @@
                                             </tr>
                                         </table>
                                     </td>
-                                    <td style="width: 40%; border-right: solid 1px #D8D8D8; padding: 5px 5px 5px 5px;"
+                                    <td style="width: 40%; border-right: solid 1px #d0d0d0; padding: 5px 5px 5px 5px;"
                                         valign="top" class="ItemAlignLeft">
                                         <asp:Label ID="Label43" runat="server" Text="<%$ Resources:lang,QingXuanQuYaoLingYongDeLiaoPin%>"></asp:Label>:<asp:Label ID="LB_Sql3" runat="server" Visible="False"></asp:Label>
                                         <asp:Label ID="LB_GoodsOwner" runat="server" Visible="False"></asp:Label>

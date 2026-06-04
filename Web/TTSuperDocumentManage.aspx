@@ -61,7 +61,7 @@
                                 <td>
                                     <table width="100%" cellpadding="0" cellspacing="0">
                                         <tr>
-                                            <td width="220px" valign="top" style="padding: 5px 5px 5px 5px; border-right: solid 1px #D8D8D8"
+                                            <td width="220px" valign="top" style="padding: 5px 5px 5px 5px; border-right: solid 1px #d0d0d0"
                                                 class="ItemAlignLeft">
                                                 <table width="220px" cellpadding="0" cellspacing="0">
                                                     <tr>

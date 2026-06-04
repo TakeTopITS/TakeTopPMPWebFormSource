@@ -526,7 +526,7 @@
 
                                                 <tr>
 
-                                                    <td style="width: 20%; text-align: left; border-right: solid 1px #D8D8D8;" valign="top">
+                                                    <td style="width: 20%; text-align: left; border-right: solid 1px #d0d0d0;" valign="top">
                                                         <asp:UpdatePanel ID="UpdatePanel3" runat="server" UpdateMode="Conditional">
                                                             <ContentTemplate>
                                                                 <asp:TreeView ID="TreeView2" runat="server" NodeWrap="True" OnSelectedNodeChanged="TreeView2_SelectedNodeChanged"

@@ -4181,7 +4181,7 @@
                                         <ItemTemplate>
                                             <table style="width: 100%;" cellpadding="0" cellspacing="0">
                                                 <tr>
-                                                    <td valign="middle" style="width: 50%; border-right: solid 1px #D8D8D8; padding: 2px 2px 2px 2px;">
+                                                    <td valign="middle" style="width: 50%; border-right: solid 1px #d0d0d0; padding: 2px 2px 2px 2px;">
                                                         <table class="formBgStyle" cellpadding="3" cellspacing="0" style="width: 98%; margin-top: 2px; background-color: white;"
                                                             align="left">
                                                             <tr>

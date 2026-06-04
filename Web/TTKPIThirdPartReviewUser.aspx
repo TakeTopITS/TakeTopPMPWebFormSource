@@ -30,14 +30,14 @@
                 <contenttemplate>
             <table width="98%" cellpadding="0" cellspacing="0">
                 <tr>
-                    <td style="width: 220px; border-right: solid 1px #D8D8D8; padding: 5px 0px 0px 5px"
+                    <td style="width: 220px; border-right: solid 1px #d0d0d0; padding: 5px 0px 0px 5px"
                         valign="top" class="ItemAlignLeft">
                         <asp:TreeView ID="TreeView2" runat="server" NodeWrap="True" OnSelectedNodeChanged="TreeView2_SelectedNodeChanged"
                             ShowLines="True" Width="220px">
                             <RootNodeStyle CssClass="rootNode" /><NodeStyle CssClass="treeNode" /><LeafNodeStyle CssClass="leafNode" /><SelectedNodeStyle CssClass="selectNode" ForeColor ="Red" />
                         </asp:TreeView>
                     </td>
-                    <td width="165px" style="padding: 5px 5px 0px 5px; border-right: solid 1px #D8D8D8;
+                    <td width="165px" style="padding: 5px 5px 0px 5px; border-right: solid 1px #d0d0d0;
                         vertical-align: top;">
                         <table style="width: 165px; height: 53px">
                             <tr>
@@ -90,7 +90,7 @@
                             </tr>
                         </table>
                     </td>
-                    <td class="ItemAlignLeft" width="415px" style="padding: 5px 5px 0px 5px; border-right: solid 1px #D8D8D8;
+                    <td class="ItemAlignLeft" width="415px" style="padding: 5px 5px 0px 5px; border-right: solid 1px #d0d0d0;
                         vertical-align: top;">
                         <asp:Repeater ID="RP_KPIThirdPartReview" runat="server" OnItemCommand="Repeater1_ItemCommand">
                             <ItemTemplate>

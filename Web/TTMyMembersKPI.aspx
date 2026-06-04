@@ -69,7 +69,7 @@
                                             <td valign="top">
                                                 <table width="100%" cellpadding="0" cellspacing="0">
                                                     <tr>
-                                                        <td valign="top" width="165px" style="padding: 5px 5px 0px 5px; border-left: solid 1px #D8D8D8; border-right: solid 1px #D8D8D8;">
+                                                        <td valign="top" width="165px" style="padding: 5px 5px 0px 5px; border-left: solid 1px #d0d0d0; border-right: solid 1px #d0d0d0;">
                                                             <table width="100%" cellpadding="0" cellspacing="0">
                                                                 <tr>
                                                                     <td style="height: 2px; text-align: left">
@@ -128,7 +128,7 @@
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td style="border-right: solid 1px #D8D8D8; text-align: left">
+                                                                    <td style="border-right: solid 1px #d0d0d0; text-align: left">
                                                                         <asp:Label ID="LB_DepartCode" runat="server" Font-Bold="True"
                                                                             Visible="False"></asp:Label>
                                                                         <asp:Label ID="LB_DepartName" runat="server"
@@ -139,7 +139,7 @@
                                                                 </tr>
                                                             </table>
                                                         </td>
-                                                        <td class="ItemAlignLeft" rowspan="2" style="padding: 5px 5px 0px 5px; border-right: solid 1px #D8D8D8"
+                                                        <td class="ItemAlignLeft" rowspan="2" style="padding: 5px 5px 0px 5px; border-right: solid 1px #d0d0d0"
                                                             valign="top" width="200px">
                                                             <asp:TreeView ID="TreeView2" runat="server" NodeWrap="True" OnSelectedNodeChanged="TreeView2_SelectedNodeChanged"
                                                                 ShowLines="True" Width="200px">
@@ -149,7 +149,7 @@
                                                                 <SelectedNodeStyle CssClass="selectNode" ForeColor="Red" />
                                                             </asp:TreeView>
                                                         </td>
-                                                        <td valign="top" style="padding: 5px 5px 0px 5px; border-right: solid 1px #D8D8D8"
+                                                        <td valign="top" style="padding: 5px 5px 0px 5px; border-right: solid 1px #d0d0d0"
                                                             class="ItemAlignLeft">
                                                             <table style="width: 100%; text-align: left;" cellpadding="3" cellspacing="0" class="formBgStyle">
                                                                 <tr>
@@ -298,7 +298,7 @@
                                                                                 <asp:TemplateColumn>
                                                                                     <ItemStyle HorizontalAlign="left" Width="7%" CssClass="itemBorder" />
                                                                                     <ItemTemplate>
-                                                                                        <asp:Button ID="BT_ID" runat="server" CssClass="inpu" Text='<%# DataBinder.Eval(Container.DataItem,"ID") %>' />
+                                                                                        <asp:Button ID="BT_ID" runat="server" CssClass="tt-sms-btn" Text='<%# DataBinder.Eval(Container.DataItem,"ID") %>' />
                                                                                     </ItemTemplate>
                                                                                 </asp:TemplateColumn>
                                                                                 <asp:BoundColumn DataField="KPI" HeaderText="KPI">

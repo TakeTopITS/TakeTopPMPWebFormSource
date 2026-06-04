@@ -32,7 +32,7 @@
             font-family: 宋体;
             font-size: 12px;
             border-top: 0;
-            border-top: 1px dotted #8AB2E5;
+            border-top: 1px dotted #d0d0d0;
         }
 
         .ajax_tab_menu .ajax__tab_tab /*预设样式*/ {
@@ -146,7 +146,7 @@
                                 <td valign="top">
                                     <table cellpadding="0" cellspacing="0" width="100%">
                                         <tr>
-                                            <td style="width: 220px; border-right: solid 1px #D8D8D8; padding: 5px 0px 0px 5px"
+                                            <td style="width: 220px; border-right: solid 1px #d0d0d0; padding: 5px 0px 0px 5px"
                                                 valign="top" class="ItemAlignLeft">
                                                 <asp:TreeView ID="TreeView1" runat="server" NodeWrap="True" OnSelectedNodeChanged="TreeView1_SelectedNodeChanged"
                                                     ShowLines="True" Width="220">

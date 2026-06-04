@@ -76,7 +76,7 @@
                                                     <ContentTemplate>
                                                         <table width="98%" style="margin-top: 5px">
                                                             <tr>
-                                                                <td valign="top" style="width: 230px; text-align: left; padding: 5px 5px 0px 5px; border-right: solid 1px #D8D8D8; vertical-align: top;"
+                                                                <td valign="top" style="width: 230px; text-align: left; padding: 5px 5px 0px 5px; border-right: solid 1px #d0d0d0; vertical-align: top;"
                                                                     rowspan="5">
                                                                     <asp:TreeView ID="TreeView1" runat="server" Font-Bold="False" Font-Names="ËÎÌו" Font-Size="10pt"
                                                                         NodeWrap="True" OnSelectedNodeChanged="TreeView1_SelectedNodeChanged" ShowLines="True"
@@ -234,7 +234,7 @@
                                                                                 </asp:BoundColumn>
                                                                                 <asp:TemplateColumn HeaderText="SerialNumber">
                                                                                     <ItemTemplate>
-                                                                                        <asp:Button ID="BT_ID" runat="server" CssClass="inpu" CommandName="View" Text='<%# DataBinder.Eval(Container.DataItem,"ID") %>' />
+                                                                                        <asp:Button ID="BT_ID" runat="server" CssClass="tt-sms-btn" CommandName="View" Text='<%# DataBinder.Eval(Container.DataItem,"ID") %>' />
                                                                                     </ItemTemplate>
                                                                                     <HeaderStyle BorderColor="#394F66" BorderStyle="Solid" BorderWidth="1px" Font-Bold="True" Horizontalalign="left" />
                                                                                     <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="8%" />

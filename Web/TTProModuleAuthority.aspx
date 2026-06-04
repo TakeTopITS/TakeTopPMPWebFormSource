@@ -87,7 +87,7 @@
                                 <td valign="top">
                                     <table cellpadding="0" cellspacing="0" width="100%">
                                         <tr>
-                                            <td style="width: 230px; border-right: solid 1px #D8D8D8; padding: 5px 0px 0px 5px"
+                                            <td style="width: 230px; border-right: solid 1px #d0d0d0; padding: 5px 0px 0px 5px"
                                                 valign="top" class="ItemAlignLeft">
                                                 <div id="Div_TreeView" style="overflow: auto; height: 800px;">
                                                     <asp:TreeView ID="TreeView1" runat="server" NodeWrap="True" OnSelectedNodeChanged="TreeView1_SelectedNodeChanged"
@@ -99,7 +99,7 @@
                                                     </asp:TreeView>
                                                 </div>
                                             </td>
-                                            <td width="165px" valign="top" style="padding: 5px 5px 0px 5px; border-right: solid 1px #D8D8D8">
+                                            <td width="165px" valign="top" style="padding: 5px 5px 0px 5px; border-right: solid 1px #d0d0d0">
                                                 <table style="width: 100%;">
                                                     <tr>
                                                         <td style="height: 14px; text-align: center">
@@ -124,7 +124,7 @@
                                                                     </td>
                                                                 </tr>
                                                             </table>
-                                                            <table width="100%" valign="top" style="padding: 5px 5px 0px 5px; border-right: solid 1px #D8D8D8">
+                                                            <table width="100%" valign="top" style="padding: 5px 5px 0px 5px; border-right: solid 1px #d0d0d0">
                                                                 <tr>
                                                                     <td>
                                                                         <asp:TextBox ID="TB_FindUserName" runat="server" Width="70px"></asp:TextBox>
@@ -144,7 +144,7 @@
                                                                     <asp:TemplateColumn HeaderText="Resources.lang.ZZXMZY">
                                                                         <ItemStyle CssClass="itemBorder" Horizontalalign="left" />
                                                                         <ItemTemplate>
-                                                                            <asp:Button ID="BT_UserCode" runat="server" CssClass="inpu" Text='<%# DataBinder.Eval(Container.DataItem,"UserCode") %>' />
+                                                                            <asp:Button ID="BT_UserCode" runat="server" CssClass="tt-sms-btn" Text='<%# DataBinder.Eval(Container.DataItem,"UserCode") %>' />
                                                                             <asp:Button ID="BT_UserName" runat="server" CssClass="inpu" Text='<%# DataBinder.Eval(Container.DataItem,"UserName") %>' />
                                                                         </ItemTemplate>
                                                                     </asp:TemplateColumn>
@@ -154,7 +154,7 @@
                                                     </tr>
                                                 </table>
                                             </td>
-                                            <%--  <td style="width: 230px; border-right: solid 1px #D8D8D8; padding: 5px 0px 0px 5px"
+                                            <%--  <td style="width: 230px; border-right: solid 1px #d0d0d0; padding: 5px 0px 0px 5px"
                                                 valign="top" class="ItemAlignLeft">
                                                 <asp:TreeView ID="TreeView2" runat="server" NodeWrap="True" 
                                                     ShowLines="True" Width="220px">
@@ -299,7 +299,7 @@
                                                                                                 <table style="width: 98%; margin-top: 5px; padding: 3px 0px 3px 0px;"
                                                                                                     cellpadding="0" cellspacing="0">
                                                                                                     <tr style="display: none;">
-                                                                                                        <td style="height: 20px; text-align: right; background-color: #EFF3FB" class="tdLeft3">
+                                                                                                        <td style="height: 20px; text-align: right; background-color: #f5f7fa" class="tdLeft3">
                                                                                                             <asp:Label ID="LB_DepartString" runat="server" Visible="False"></asp:Label>
                                                                                                             <asp:Label ID="LB_Index" runat="server" Visible="False"></asp:Label>
                                                                                                             <asp:Label ID="LB_AuthorityUserCode" runat="server"></asp:Label>

@@ -57,7 +57,7 @@
                             <td>
                                 <table cellpadding="0" cellspacing="0" width="100%">
                                     <tr>
-                                        <td width="200" valign="top" style="padding: 5px 5px 0px 5px; border-right: solid 1px #D8D8D8; text-align: left;">
+                                        <td width="200" valign="top" style="padding: 5px 5px 0px 5px; border-right: solid 1px #d0d0d0; text-align: left;">
                                             <asp:TreeView ID="TreeView1" runat="server"
                                                 NodeWrap="True" OnSelectedNodeChanged="TreeView1_SelectedNodeChanged" ShowLines="True"
                                                 Width="220px">
@@ -156,7 +156,7 @@
                                                                                         <asp:TemplateColumn HeaderText="Number">
                                                                                             <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="8%" />
                                                                                             <ItemTemplate>
-                                                                                                <asp:Button ID="BT_ID" runat="server" CssClass="inpu" Text='<%# DataBinder.Eval(Container.DataItem,"ID") %>' />
+                                                                                                <asp:Button ID="BT_ID" runat="server" CssClass="tt-sms-btn" Text='<%# DataBinder.Eval(Container.DataItem,"ID") %>' />
                                                                                             </ItemTemplate>
                                                                                         </asp:TemplateColumn>
                                                                                         <asp:BoundColumn DataField="RelatedType" HeaderText="相关类型">

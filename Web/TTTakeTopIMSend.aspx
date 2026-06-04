@@ -126,7 +126,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td style="border-top: solid 1px #D8D8D8; padding-top: 5px;">
+                        <td style="border-top: solid 1px #d0d0d0; padding-top: 5px;">
 
                             <table width="100%">
                                 <tr>

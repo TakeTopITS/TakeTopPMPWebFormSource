@@ -189,7 +189,7 @@
 
                             <table width="100%" cellpadding="0" cellspacing="0">
                                 <tr>
-                                    <td style="border-right: solid 1px #D8D8D8;">
+                                    <td style="border-right: solid 1px #d0d0d0;">
                                         <table class="ItemAlignLeft" cellpadding="3" cellspacing="0" style="width: 98%; margin-top: 5px;"
                                             class="formBgStyle">
                                             <tr>
@@ -342,7 +342,7 @@
                                         </table>
 
                                     </td>
-                                    <td style="width: 170px; text-align: left; vertical-align: top; border-right: solid 1px #D8D8D8; padding: 5px 5px 0px 5px">
+                                    <td style="width: 170px; text-align: left; vertical-align: top; border-right: solid 1px #d0d0d0; padding: 5px 5px 0px 5px">
                                         <table width="100%" border="0" cellpadding="0" cellspacing="0" background="ImagesSkin/main_n_bj.jpg">
                                             <tr>
                                                 <td width="7">

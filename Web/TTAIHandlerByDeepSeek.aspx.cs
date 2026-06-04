@@ -50,6 +50,9 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
                 divModeSwitcher.Visible = false;
             }
 
+            // 自动加载所有数据库表并全选
+            AutoLoadAllTablesAndSelect();
+
             txtPrompt.Focus();
         }
 
@@ -575,7 +578,7 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
                 cblTables.Items.Add(new ListItem(text, tableName));
             }
 
-            pnlTableList.Visible = true;
+            // pnlTableList stays hidden
 
             // 注册脚本更新选择显示
             string script = "updateSelectedTables();";
@@ -585,6 +588,64 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
         {
             ShowMessage(LanguageHandle.GetWord("DSeekLoadFailed") + $"{ex.Message}", "error");
         }
+    }
+
+    // 自动扫描所有数据库表并加入AI存储表，全部选上
+    private void AutoLoadAllTablesAndSelect()
+    {
+        try
+        {
+            CreateTablesIfNotExist();
+
+            // 从PostgreSQL获取所有public schema下的用户表
+            string sql = @"SELECT table_name FROM information_schema.tables
+                          WHERE table_schema = 'public'
+                            AND table_type = 'BASE TABLE'
+                            AND table_name NOT LIKE 'T_DBTablesForAI%'
+                            AND table_name NOT LIKE 'T_AnalysisHistory%'
+                          ORDER BY table_name";
+            DataSet ds = ShareClass.GetDataSetFromSql(sql, "AllTables");
+
+            string currentUser = GetCurrentUser();
+            DateTime now = DateTime.Now;
+
+            foreach (DataRow row in ds.Tables[0].Rows)
+            {
+                string tableName = row["table_name"].ToString();
+                try
+                {
+                    // 检查是否已存在
+                    string checkSql = $"SELECT COUNT(*) FROM T_DBTablesForAI WHERE TableName = '{EscapeSql(tableName)}' AND IsActive = true";
+                    DataSet checkDs = ShareClass.GetDataSetFromSql(checkSql, "Check");
+                    int exists = checkDs.Tables[0].Rows.Count > 0 ? Convert.ToInt32(checkDs.Tables[0].Rows[0][0]) : 0;
+
+                    if (exists == 0)
+                    {
+                        string insertSql = $"INSERT INTO T_DBTablesForAI (TableName, Description, CreatedBy, CreatedAt, IsActive) VALUES ('{EscapeSql(tableName)}', 'Auto-loaded {now:yyyy-MM-dd}', '{EscapeSql(currentUser)}', '{now:yyyy-MM-dd HH:mm:ss}', true)";
+                        ShareClass.RunSqlCommand(insertSql);
+                    }
+                }
+                catch { }
+            }
+
+            // Load all tables into checkbox list and select all
+            string loadSql = "SELECT TableName, Description FROM T_DBTablesForAI WHERE IsActive = true ORDER BY TableName";
+            DataSet loadDs = ShareClass.GetDataSetFromSql(loadSql, "T_DBTablesForAI");
+
+            cblTables.Items.Clear();
+            foreach (DataRow row in loadDs.Tables[0].Rows)
+            {
+                string tName = row["TableName"].ToString();
+                string desc = row["Description"].ToString();
+                string text = tName + (string.IsNullOrEmpty(desc) ? "" : " - " + desc);
+                cblTables.Items.Add(new ListItem(text, tName));
+                cblTables.Items[cblTables.Items.Count - 1].Selected = true; // 全选
+            }
+
+            // pnlTableList stays hidden - tables auto-loaded in background
+            ScriptManager.RegisterStartupScript(this, GetType(), "AutoSelect", "", true);
+        }
+        catch { }
     }
 
     // 开始数据分析

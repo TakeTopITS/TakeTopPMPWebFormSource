@@ -68,7 +68,7 @@
                                 <td>
                                     <table width="100%" cellpadding="0" cellspacing="0">
                                         <tr>
-                                            <td valign="top" style="padding: 5px 5px 0px 5px; border-right: solid 1px #D8D8D8"
+                                            <td valign="top" style="padding: 5px 5px 0px 5px; border-right: solid 1px #d0d0d0"
                                                 class="ItemAlignLeft">
                                                 <table style="width: 100%; text-align: left;" cellpadding="3" cellspacing="0" class="formBgStyle">
                                                     <tr>
@@ -228,7 +228,7 @@
                                                                     <%--  <asp:TemplateColumn>
                                                                         <ItemStyle Horizontalalign="left" Width="7%" CssClass="itemBorder" />
                                                                         <ItemTemplate>
-                                                                            <asp:Button ID="BT_ID" runat="server" CssClass="inpu" Text='<%# DataBinder.Eval(Container.DataItem,"ID") %>' />
+                                                                            <asp:Button ID="BT_ID" runat="server" CssClass="tt-sms-btn" Text='<%# DataBinder.Eval(Container.DataItem,"ID") %>' />
                                                                         </ItemTemplate>
                                                                     </asp:TemplateColumn>--%>
                                                                     <asp:BoundColumn DataField="KPI" HeaderText="KPI">

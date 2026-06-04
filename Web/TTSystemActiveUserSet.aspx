@@ -13,7 +13,7 @@
         }
 
         .auto-style1 {
-            background-color: #D8D8D8;
+            background-color: #d0d0d0;
             width: 350px;
             margin-bottom: 0px;
         }
@@ -95,7 +95,7 @@
                                 <td>
                                     <table cellpadding="0" cellspacing="0" width="100%">
                                         <tr>
-                                            <td style="width: 230px; padding: 5px 0px 0px 5px; border-left: solid 1px #D8D8D8; border-right: solid 1px #D8D8D8;"
+                                            <td style="width: 230px; padding: 5px 0px 0px 5px; border-left: solid 1px #d0d0d0; border-right: solid 1px #d0d0d0;"
                                                 valign="top" class="ItemAlignLeft">
                                                 <div id="Div_TreeView" style="overflow: auto; height: 800px;">
                                                     <asp:TreeView ID="TreeView2" runat="server" NodeWrap="True" OnSelectedNodeChanged="TreeView2_SelectedNodeChanged"
@@ -108,7 +108,7 @@
                                                     <asp:Label ID="LB_SelectedDepartCode" runat="server" Visible="false"></asp:Label>
                                                 </div>
                                             </td>
-                                            <td style="width: 170px; padding: 5px 5px 5px 5px; border-right: solid 1px #D8D8D8;" valign="top" class="ItemAlignLeft">
+                                            <td style="width: 170px; padding: 5px 5px 5px 5px; border-right: solid 1px #d0d0d0;" valign="top" class="ItemAlignLeft">
                                                 <table width="100%" cellpadding="0" cellspacing="0" background="ImagesSkin/main_n_bj.jpg">
                                                     <tr>
                                                         <td width="7">
@@ -154,7 +154,7 @@
                                                     <ItemStyle CssClass="itemStyle" />
                                                 </asp:DataGrid>
                                             </td>
-                                            <td style="width: 350px; border-right: solid 1px #D8D8D8; padding: 5px 5px 5px 5px;" class="ItemAlignLeft"
+                                            <td style="width: 350px; border-right: solid 1px #d0d0d0; padding: 5px 5px 5px 5px;" class="ItemAlignLeft"
                                                 valign="top">
                                                 <table style="width: 100%;" cellpadding="3" cellspacing="0" class="formBgStyle">
                                                     <tr>
@@ -282,7 +282,7 @@
                                                 </table>
                                                 <br />
                                             </td>
-                                            <td valign="top" style="width: 400px; border-right: solid 1px #D8D8D8; padding: 5px 5px 5px 5px;" class="ItemAlignLeft">
+                                            <td valign="top" style="width: 400px; border-right: solid 1px #d0d0d0; padding: 5px 5px 5px 5px;" class="ItemAlignLeft">
                                                
                                                 <table width="100%" cellpadding="0" cellspacing="0" background="ImagesSkin/main_n_bj.jpg">
                                                     <tr>

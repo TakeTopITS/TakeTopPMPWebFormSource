@@ -57,7 +57,7 @@
                                             <td>
                                                 <table cellpadding="0" cellspacing="0" width="100%">
                                                     <tr>
-                                                        <td style="border-right: solid 1px #D8D8D8; width: 18%" valign="top" class="ItemAlignLeft">
+                                                        <td style="border-right: solid 1px #d0d0d0; width: 18%" valign="top" class="ItemAlignLeft">
                                                             <asp:TreeView ID="TreeView1" runat="server" NodeWrap="True" ShowLines="True"
                                                                 OnSelectedNodeChanged="TreeView1_SelectedNodeChanged">
                                                                 <RootNodeStyle CssClass="rootNode" />
@@ -97,7 +97,7 @@
                                                                     <asp:TemplateColumn HeaderText="Resources.lang.ZZXMZY">
                                                                         <ItemStyle CssClass="itemBorder" Horizontalalign="left" />
                                                                         <ItemTemplate>
-                                                                            <asp:Button ID="BT_UserCode" runat="server" CssClass="inpu" Style="text-align: center"
+                                                                            <asp:Button ID="BT_UserCode" runat="server" CssClass="tt-sms-btn" Style="text-align: center"
                                                                                 Text='<%# DataBinder.Eval(Container.DataItem,"UserCode") %>' />
                                                                             <asp:Button ID="BT_UserName" runat="server" CssClass="inpu" Style="text-align: center"
                                                                                 Text='<%# DataBinder.Eval(Container.DataItem,"UserName") %>' />

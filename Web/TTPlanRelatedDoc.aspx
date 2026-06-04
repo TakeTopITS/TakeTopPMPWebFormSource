@@ -60,7 +60,7 @@
                             <td>
                                 <table width="100%" cellpadding="0" cellspacing="0">
                                     <tr>
-                                        <td style="width: 200px; text-align: left; padding: 5px 5px 0px 5px; border-right: solid 1px #D8D8D8; vertical-align: top;"
+                                        <td style="width: 200px; text-align: left; padding: 5px 5px 0px 5px; border-right: solid 1px #d0d0d0; vertical-align: top;"
                                             rowspan="5">
                                             <asp:TreeView ID="TreeView1" runat="server" Font-Bold="False" Font-Names="ËÎÌו" Font-Size="10pt"
                                                 NodeWrap="True" OnSelectedNodeChanged="TreeView1_SelectedNodeChanged" ShowLines="True"

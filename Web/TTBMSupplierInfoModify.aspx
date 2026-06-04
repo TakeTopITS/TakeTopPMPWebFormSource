@@ -131,7 +131,7 @@
                                 <td>
                                     <table style="width: 100%;" cellpadding="0" cellspacing="0">
                                         <tr>
-                                            <td valign="middle" style="width: 100%; border-right: solid 1px #D8D8D8; padding: 5px 5px 5px 5px;" colspan="2">
+                                            <td valign="middle" style="width: 100%; border-right: solid 1px #d0d0d0; padding: 5px 5px 5px 5px;" colspan="2">
                                                 <table class="formBgStyle" cellpadding="3" cellspacing="0" style="width: 98%; margin-top: 5px"
                                                     class="ItemAlignLeft">
                                                     <tr>
@@ -447,7 +447,7 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td style="border-right: solid 1px #D8D8D8;" valign="top">
+                                            <td style="border-right: solid 1px #d0d0d0;" valign="top">
                                                 <table width="98%" class="ItemAlignLeft" cellpadding="0" cellspacing="0">
                                                     <tr>
                                                         <td class="ItemAlignLeft" colspan="2" style="height: 6px">
@@ -539,7 +539,7 @@
                                                     </tr>
                                                 </table>
                                             </td>
-                                            <td style="width: 50%; border-right: solid 1px #D8D8D8;" valign="top">
+                                            <td style="width: 50%; border-right: solid 1px #d0d0d0;" valign="top">
                                                 <table width="98%" class="ItemAlignLeft" cellpadding="0" cellspacing="0">
                                                     <tr>
                                                         <td class="ItemAlignLeft" colspan="2" style="height: 6px">

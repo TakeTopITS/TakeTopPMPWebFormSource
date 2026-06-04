@@ -79,7 +79,7 @@
                                 <td>
                                     <table style="width: 100%;" cellpadding="0" cellspacing="0">
                                         <tr>
-                                            <td style="width: 98%; border-right: solid 1px #D8D8D8;" valign="top">
+                                            <td style="width: 98%; border-right: solid 1px #d0d0d0;" valign="top">
                                                 <table width="98%" class="ItemAlignLeft" cellpadding="0" cellspacing="0">
                                                     <tr>
                                                         <td class="ItemAlignLeft" style="height: 6px">

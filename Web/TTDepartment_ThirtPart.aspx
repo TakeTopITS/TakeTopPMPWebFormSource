@@ -71,7 +71,7 @@
                                             <td>
                                                 <table width="100%" cellpadding="0" cellspacing="0">
                                                     <tr>
-                                                        <td width="220" style="padding: 5px 5px 0px 5px; border-right: solid 1px #D8D8D8; vertical-align: top;"
+                                                        <td width="220" style="padding: 5px 5px 0px 5px; border-right: solid 1px #d0d0d0; vertical-align: top;"
                                                             class="ItemAlignLeft" rowspan="2">
                                                             <div id="Div_TreeView1" style="overflow: auto; height: 800px;">
                                                                 <asp:TreeView ID="TreeView1" runat="server"
@@ -84,7 +84,7 @@
                                                                 </asp:TreeView>
                                                             </div>
                                                         </td>
-                                                        <td width="550px;" style="padding: 5px 5px 5px 5px; border-right: solid 1px #D8D8D8;"
+                                                        <td width="550px;" style="padding: 5px 5px 5px 5px; border-right: solid 1px #d0d0d0;"
                                                             class="ItemAlignLeft">
                                                             <table style="width: 94%; text-align: left;" cellpadding="2" cellspacing="0" class="formBgStyle">
                                                                 <tr>
@@ -412,7 +412,7 @@
                                                                 </tr>
                                                             </table>
                                                         </td>
-                                                        <td style="width: 180px; border-right: solid 1px #D8D8D8; vertical-align: top; padding-top: 5px;"
+                                                        <td style="width: 180px; border-right: solid 1px #d0d0d0; vertical-align: top; padding-top: 5px;"
                                                             class="ItemAlignLeft">
                                                             <table width="98%" border="0" cellpadding="0" cellspacing="0" background="ImagesSkin/main_n_bj.jpg">
                                                                 <tr>

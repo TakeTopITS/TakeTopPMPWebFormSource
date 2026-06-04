@@ -194,7 +194,7 @@
                                                     <ContentTemplate>
                                                         <table width="98%" style="margin-top: 5px">
                                                             <tr>
-                                                                <td valign="top" style="width: 230; text-align: left; padding: 5px 5px 0px 5px; border-right: solid 1px #D8D8D8; vertical-align: top;"
+                                                                <td valign="top" style="width: 230; text-align: left; padding: 5px 5px 0px 5px; border-right: solid 1px #d0d0d0; vertical-align: top;"
                                                                     rowspan="5">
 
                                                                     <asp:UpdatePanel ID="UpdatePanel5" runat="server" UpdateMode="Conditional">
@@ -647,7 +647,7 @@
                                                     <ContentTemplate>
                                                         <table style="width: 98%;">
                                                             <tr>
-                                                                <td valign="top" style="width: 230px; text-align: left; padding: 5px 5px 0px 5px; border-right: solid 1px #D8D8D8;">
+                                                                <td valign="top" style="width: 230px; text-align: left; padding: 5px 5px 0px 5px; border-right: solid 1px #d0d0d0;">
 
                                                                     <asp:UpdatePanel ID="UpdatePanel6" runat="server" UpdateMode="Conditional">
                                                                         <ContentTemplate>

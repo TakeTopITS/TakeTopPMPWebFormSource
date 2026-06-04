@@ -49,7 +49,7 @@
 
     <style type="text/css">
         .auto-style1 {
-            /*border-bottom:dotted  1px #C6CFD4;
+            /*border-bottom:dotted  1px #d0d0d0;
         height: 19px;
         line-height: 18px;*/
             border-bottom: 1px dotted #cccccc;
@@ -101,7 +101,7 @@
                                         <td>
                                             <table cellpadding="0" cellspacing="0" width="100%">
                                                 <tr>
-                                                    <td width="220" style="border-right: solid 1px #D8D8D8;" valign="top" class="ItemAlignLeft">
+                                                    <td width="220" style="border-right: solid 1px #d0d0d0;" valign="top" class="ItemAlignLeft">
                                                         <div id="Div_TreeView" style="overflow: auto; height:800px; ">
                                                             <asp:TreeView ID="TreeView1" runat="server" NodeWrap="True" ShowLines="True" Width="220"
                                                                 OnSelectedNodeChanged="TreeView1_SelectedNodeChanged">
@@ -113,7 +113,7 @@
 
                                                         </div>
                                                     </td>
-                                                    <td class="ItemAlignLeft" style="border-right: solid 1px #D8D8D8;" valign="top">
+                                                    <td class="ItemAlignLeft" style="border-right: solid 1px #d0d0d0;" valign="top">
                                                         <table style="width: 100%; height: 53px; text-align: left;">
                                                             <tr>
                                                                 <td class="ItemAlignLeft" style="padding: 5px 5px 5px 5px;">

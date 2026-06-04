@@ -65,7 +65,7 @@
                                 <td>
                                     <table width="100%" cellpadding="0" cellspacing="0" style="padding-bottom: 5px;">
                                         <tr>
-                                            <td width="100%" style="padding: 10px 5px 5px 5px; border-right: solid 1px #D8D8D8"
+                                            <td width="100%" style="padding: 10px 5px 5px 5px; border-right: solid 1px #d0d0d0"
                                                 valign="top">
 
                                                 <table width="100%" border="0" cellpadding="0" cellspacing="0" style="padding-bottom: 5px;">
@@ -854,7 +854,7 @@
 
                                                         <tr>
 
-                                                            <td style="width: 220px; border-right: solid 1px #D8D8D8; padding: 5px 0px 0px 5px"
+                                                            <td style="width: 220px; border-right: solid 1px #d0d0d0; padding: 5px 0px 0px 5px"
                                                                 valign="top" class="ItemAlignLeft">
 
                                                                 <asp:TreeView ID="TreeView2" runat="server" NodeWrap="True" OnSelectedNodeChanged="TreeView2_SelectedNodeChanged"
@@ -870,7 +870,7 @@
                                                                 </asp:TreeView>
                                                             </td>
 
-                                                            <td width="165px" style="padding: 5px 5px 0px 5px; border-right: solid 1px #D8D8D8; vertical-align: top;">
+                                                            <td width="165px" style="padding: 5px 5px 0px 5px; border-right: solid 1px #d0d0d0; vertical-align: top;">
 
                                                                 <table style="width: 165px; height: 53px">
 
@@ -951,7 +951,7 @@
                                                                 </table>
                                                             </td>
 
-                                                            <td width="500px" class="ItemAlignLeft" style="padding: 5px 5px 0px 5px; border-right: solid 1px #D8D8D8; vertical-align: top;">
+                                                            <td width="500px" class="ItemAlignLeft" style="padding: 5px 5px 0px 5px; border-right: solid 1px #d0d0d0; vertical-align: top;">
 
                                                                 <asp:Repeater ID="RP_VendorMember" runat="server" OnItemCommand="RP_VendorMember_ItemCommand">
 
@@ -1201,7 +1201,7 @@
 
                                                         <tr>
 
-                                                            <td style="border-right: solid 1px #D8D8D8; padding: 10px 5px 5px 5px"
+                                                            <td style="border-right: solid 1px #d0d0d0; padding: 10px 5px 5px 5px"
                                                                 valign="top" class="ItemAlignLeft">
 
                                                                 <table background="ImagesSkin/main_n_bj.jpg" border="0" cellpadding="0" cellspacing="0"

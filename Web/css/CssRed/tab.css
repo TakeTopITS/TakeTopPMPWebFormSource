@@ -92,7 +92,7 @@ body {
     margin-left: auto;
     border-bottom-width: 1px;
     border-bottom-style: solid;
-    border-bottom-color: #E1E1E1;
+    border-bottom-color: #d0d0d0;
 }
 
     .nTabr .TabTitle {
@@ -136,7 +136,7 @@ body {
             FONT-WEIGHT: bold;
             MARGIN-RIGHT: 0px;
             color: #FF7F50; /*皮肤*/
-            border-bottom: 2px solid #0079c2;
+            border-bottom: 2px solid #d44446;
             font-size: 18px;
         }
 
@@ -158,8 +158,8 @@ body {
         border-left-width: 1px;
         /*	border-right-style: solid;
 	border-left-style: solid;*/
-        border-right-color: #E1E1E1;
-        border-left-color: #E1E1E1;
+        border-right-color: #d0d0d0;
+        border-left-color: #d0d0d0;
     }
 
 
@@ -189,7 +189,7 @@ body {
         }
 
 .itemBorder {
-    border: solid 1px #7FC4ED;
+    border: solid 1px #d0d0d0;
     line-height: 24px;
 }
 

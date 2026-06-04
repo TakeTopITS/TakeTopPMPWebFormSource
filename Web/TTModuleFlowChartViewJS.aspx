@@ -67,7 +67,7 @@
 
             #navlist a.current:link, #nav a.current:visited {
                 color: red;
-                background: #017afb;
+                background: #d44446;
                 padding: 3px;
             }
 
@@ -136,7 +136,7 @@
 
         #div_username {
             align-items: center;
-            color: white;
+            color: #333;
             font-size: 12px;
         }
 

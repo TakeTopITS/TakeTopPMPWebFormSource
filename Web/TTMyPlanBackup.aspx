@@ -69,7 +69,7 @@
                                             <td valign="top">
                                                 <table width="100%" cellpadding="0" cellspacing="0">
                                                     <tr>
-                                                        <td style="padding: 5px 5px 0px 5px; border-right: solid 1px #D8D8D8;" valign="top"
+                                                        <td style="padding: 5px 5px 0px 5px; border-right: solid 1px #d0d0d0;" valign="top"
                                                             width="220px">
                                                             <asp:TreeView ID="TreeView2" runat="server" NodeWrap="True" OnSelectedNodeChanged="TreeView2_SelectedNodeChanged"
                                                                 ShowLines="True" Width="220">
@@ -92,7 +92,7 @@
                                                             <asp:Label ID="LB_Sql" runat="server" Visible="False"></asp:Label>
 
                                                         </td>
-                                                        <td style="padding: 5px 5px 0px 5px; border-right: solid 1px #D8D8D8;" valign="top">
+                                                        <td style="padding: 5px 5px 0px 5px; border-right: solid 1px #d0d0d0;" valign="top">
                                                             <table style="width: 100%;" cellpadding="0" cellspacing="0">
                                                                 <tr>
                                                                     <td valign="top">

@@ -48,7 +48,7 @@
 
                     <table width="100%" cellpadding="0" cellspacing="0">
                         <tr>
-                            <td width="200px" style="padding: 5px 5px 0px 5px; border-right: solid 1px #D8D8D8; vertical-align: top; text-align: left;">
+                            <td width="200px" style="padding: 5px 5px 0px 5px; border-right: solid 1px #d0d0d0; vertical-align: top; text-align: left;">
                                 <asp:TreeView ID="TreeView1" runat="server" NodeWrap="True" OnSelectedNodeChanged="TreeView1_SelectedNodeChanged"
                                     ShowLines="True" Width="220px">
                                     <RootNodeStyle CssClass="rootNode" />

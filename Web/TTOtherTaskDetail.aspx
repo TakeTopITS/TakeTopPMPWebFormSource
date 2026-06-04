@@ -171,7 +171,7 @@
                                                                                     </table>
                                                                                 </ItemTemplate>
 
-                                                                                <ItemStyle BackColor="#EFF3FB" />
+                                                                                <ItemStyle BackColor="#f5f7fa" />
                                                                                 <SelectedItemStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
                                                                                 <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                                                                             </asp:DataList>
@@ -668,7 +668,7 @@
                                                                                                         <asp:TemplateColumn HeaderText="Number">
                                                                                                             <ItemTemplate>
                                                                                                                 <asp:Button ID="BT_ID" runat="server" Text='<%# DataBinder.Eval(Container.DataItem,"ID") %>'
-                                                                                                                    CssClass="inpu" />
+                                                                                                                    CssClass="tt-sms-btn" />
                                                                                                             </ItemTemplate>
                                                                                                             <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="9%" />
                                                                                                         </asp:TemplateColumn>

@@ -402,7 +402,7 @@
                                                     <Columns>
                                                         <asp:TemplateColumn HeaderText="ID">
                                                             <ItemTemplate>
-                                                                <asp:Button ID="BT_ID" runat="server" CssClass="inpu" Text='<%# DataBinder.Eval(Container.DataItem,"ID") %>' CommandName="Edit" />
+                                                                <asp:Button ID="BT_ID" runat="server" CssClass="tt-sms-btn" Text='<%# DataBinder.Eval(Container.DataItem,"ID") %>' CommandName="Edit" />
                                                             </ItemTemplate>
                                                             <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="10%" />
                                                         </asp:TemplateColumn>

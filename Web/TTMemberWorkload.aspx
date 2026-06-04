@@ -73,7 +73,7 @@
                     <td valign="top">
                         <table width="100%">
                             <tr>
-                                <td valign="top" style="padding: 5px 5px 5px 5px; border-right: solid 1px #D8D8D8; vertical-align: top;">
+                                <td valign="top" style="padding: 5px 5px 5px 5px; border-right: solid 1px #d0d0d0; vertical-align: top;">
                                     <div id="toolbar">
                                         <table>
                                             <tr>

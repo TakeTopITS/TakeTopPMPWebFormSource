@@ -24,7 +24,7 @@
         }
 
         .auto-style2 {
-            /*border-bottom:dotted  1px #C6CFD4;
+            /*border-bottom:dotted  1px #d0d0d0;
         height: 19px;
         line-height: 18px;*/
             background-color: #fff;
@@ -91,7 +91,7 @@
                                 <td>
                                     <table width="100%" cellpadding="0" cellspacing="0">
                                         <tr>
-                                            <td style="padding: 5px 5px 5px 5px; border-right: solid 1px #D8D8D8; vertical-align: top;"
+                                            <td style="padding: 5px 5px 5px 5px; border-right: solid 1px #d0d0d0; vertical-align: top;"
                                                 class="ItemAlignLeft">
                                                 <table style="width: 100%;">
 
@@ -494,7 +494,7 @@
                                     <td class="formItemBgStyleForAlignLeft">
                                         <table width="100%" cellpadding="3" cellspacing="0" class="formBgStyle">
                                             <tr>
-                                                <td style="width: 220px; border-right: solid 1px #D8D8D8; padding: 5px 5px 5px 5px;"
+                                                <td style="width: 220px; border-right: solid 1px #d0d0d0; padding: 5px 5px 5px 5px;"
                                                     valign="top"  class="formItemBgStyleForAlignLeft">
                                                     <asp:TreeView ID="TreeView1" runat="server" NodeWrap="True" OnSelectedNodeChanged="TreeView1_SelectedNodeChanged"
                                                         ShowLines="True" Width="220px">
@@ -504,7 +504,7 @@
                                                         <SelectedNodeStyle CssClass="selectNode" ForeColor="Red" />
                                                     </asp:TreeView>
                                                 </td>
-                                                <td style="width: 170px; text-align: center; padding-right: 5px; border-right: solid 1px #D8D8D8;" class="formItemBgStyleForAlignLeft">
+                                                <td style="width: 170px; text-align: center; padding-right: 5px; border-right: solid 1px #d0d0d0;" class="formItemBgStyleForAlignLeft">
                                                     <table width="170px" border="0" cellpadding="0" cellspacing="0" background="ImagesSkin/main_n_bj.jpg">
                                                         <tr>
                                                             <td width="7">

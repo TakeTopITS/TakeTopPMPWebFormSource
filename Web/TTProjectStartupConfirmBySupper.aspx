@@ -96,11 +96,11 @@
                                                                         </asp:TreeView>
                                                                     </td>
 
-                                                                    <td valign="top" width="165" style="padding: 5px 5px 0px 5px; border-right: solid 1px #D8D8D8;">
+                                                                    <td valign="top" width="165" style="padding: 5px 5px 0px 5px; border-right: solid 1px #d0d0d0;">
                                                                         <table style="width: 100%;">
                                                                             <tr>
                                                                                 <td style="width: 100%; text-align: left;">
-                                                                                    <asp:Button ID="BT_AllProject" runat="server" CssClass="inpuLong" OnClick="BT_AllProject_Click"
+                                                                                    <asp:Button ID="BT_AllProject" runat="server" CssClass="tt-sms-btn" OnClick="BT_AllProject_Click"
                                                                                         Text="<%$ Resources:lang,AllProjects%>" />
                                                                                 </td>
                                                                             </tr>
@@ -187,9 +187,9 @@
                                                                                             <asp:TemplateColumn HeaderText="项目状态:">
                                                                                                 <ItemTemplate>
                                                                                                     <asp:Button ID="BT_Status" runat="server" Text='<%# DataBinder.Eval(Container.DataItem,"Status") %>'
-                                                                                                        CssClass="inpu" Visible="false" />
+                                                                                                        CssClass="tt-sms-btn" Visible="false" />
                                                                                                     <asp:Button ID="BT_HomeName" runat="server" Text='<%# DataBinder.Eval(Container.DataItem,"HomeName") %>'
-                                                                                                        CssClass="inpu" />
+                                                                                                        CssClass="tt-sms-btn" />
                                                                                                 </ItemTemplate>
                                                                                                 <ItemStyle CssClass="itemBorder" HorizontalAlign="left" />
                                                                                             </asp:TemplateColumn>
@@ -317,8 +317,8 @@
                                                                                                         target="_blank">
                                                                                                         <div style="position: relative; height: 25px; width: 100px; overflow: hidden;">
                                                                                                             <!-- 背景颜色层 -->
-                                                                                                            <div style="position: absolute; top: 0; left: 0; width: 100px; height: 25px; background-color: yellow; z-index: 1;"></div>
-                                                                                                            <div style='position: absolute; top: 0; left: 0; width: <%# Eval("FinishPercent") %>%; height: 25px; background-color: yellowgreen; z-index: 2; max-width: 100px;'></div>
+                                                                                                            <div style="position: absolute; top: 0; left: 0; width: 100px; height: 25px; background-color: #eceff1; z-index: 1;"></div>
+                                                                                                            <div style='position: absolute; top: 0; left: 0; width: <%# Eval("FinishPercent") %>%; height: 25px; background-color: #78909c; z-index: 2; max-width: 100px;'></div>
 
                                                                                                             <!-- 绿色文字 - 绝对定位左对齐 -->
                                                                                                             <div style="position: absolute; top: 0; left: 5px; height: 25px; line-height: 25px; z-index: 3;">

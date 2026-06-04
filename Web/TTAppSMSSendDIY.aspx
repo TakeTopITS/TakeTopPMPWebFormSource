@@ -64,7 +64,7 @@
                                 <td>
                                     <table style="width: 100%" cellpadding="0" cellspacing="0">
                                         <tr>
-                                            <td class="ItemAlignLeft" style="padding: 2px 2px 2px 2px; vertical-align: top; border-right: solid 1px #D8D8D8">
+                                            <td class="ItemAlignLeft" style="padding: 2px 2px 2px 2px; vertical-align: top; border-right: solid 1px #d0d0d0">
                                                 <table cellpadding="5" cellspacing="0" class="formBgStyle" width="99%">
                                                      <tr>
                                                         <td align="right" width="60px" class="formItemBgStyleForAlignLeft" ><asp:Label ID="Label1" runat="server" Text="<%$ Resources:lang,JieShouRen%>"></asp:Label>
@@ -154,7 +154,7 @@
                                                         </td>
                                                     </tr>
                                                 </table>
-                                                <td style="width: 150px; padding: 2px 2px 2px 2px; text-align: center; vertical-align: top; border-right: solid 1px #D8D8D8">
+                                                <td style="width: 150px; padding: 2px 2px 2px 2px; text-align: center; vertical-align: top; border-right: solid 1px #d0d0d0">
                                                     <table background="ImagesSkin/main_n_bj.jpg" border="0" cellpadding="0" cellspacing="0"
                                                         width="100%">
                                                         <tr>

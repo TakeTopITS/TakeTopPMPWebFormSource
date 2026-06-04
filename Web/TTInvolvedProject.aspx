@@ -494,12 +494,12 @@
 
 
 
-                                                                                    <div style="position: absolute; top: 0; left: 0; width: 100px; height: 25px; background-color: yellow; z-index: 1;"></div>
+                                                                                    <div style="position: absolute; top: 0; left: 0; width: 100px; height: 25px; background-color: #eceff1; z-index: 1;"></div>
 
 
 
 
-                                                                                    <div style='position: absolute; top: 0; left: 0; width: <%# Eval("FinishPercent") %>%; height: 25px; background-color: yellowgreen; z-index: 2; max-width: 100px;'></div>
+                                                                                    <div style='position: absolute; top: 0; left: 0; width: <%# Eval("FinishPercent") %>%; height: 25px; background-color: #78909c; z-index: 2; max-width: 100px;'></div>
 
 
 
@@ -3444,7 +3444,7 @@
 
 
 
-                                <td valign="top" style="border-left: solid 1px #D8D8D8; padding: 5px 0px 0px 5px; width: 165px">
+                                <td valign="top" style="border-left: solid 1px #d0d0d0; padding: 5px 0px 0px 5px; width: 165px">
 
 
 
@@ -3654,7 +3654,7 @@
 
 
 
-                                                                    CssClass="inpu" Visible="false" />
+                                                                    CssClass="tt-sms-btn" Visible="false" />
 
 
 
@@ -3664,7 +3664,7 @@
 
 
 
-                                                                    CssClass="inpu" />
+                                                                    CssClass="tt-sms-btn" />
 
 
 
@@ -3714,7 +3714,7 @@
 
 
 
-                                <%-- <td width="250" valign="top" style="padding: 5px 5px 5px 5px; border-left: solid 1px #D8D8D8; border-right: solid 1px #D8D8D8;"
+                                <%-- <td width="250" valign="top" style="padding: 5px 5px 5px 5px; border-left: solid 1px #d0d0d0; border-right: solid 1px #d0d0d0;"
 
 
 

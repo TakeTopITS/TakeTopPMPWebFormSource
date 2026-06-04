@@ -202,7 +202,7 @@
                                                 <asp:Label ID="LB_Sql4" runat="server" Visible="False"></asp:Label>
                                             </td>
 
-                                            <%-- <td style="width: 220px; border-right: solid 1px #D8D8D8; padding: 5px 0px 0px 5px; display :none;"
+                                            <%-- <td style="width: 220px; border-right: solid 1px #d0d0d0; padding: 5px 0px 0px 5px; display :none;"
                                                 valign="top" class="ItemAlignLeft">
                                                 <div id="DivID" style="width: 100%; height: 800px; overflow: auto;">
                                                    

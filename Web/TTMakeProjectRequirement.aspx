@@ -237,7 +237,7 @@
                                         <asp:Label ID="Label42" runat="server" Text="<%$ Resources:lang,JiBenXinXi%>"></asp:Label>
                                     </HeaderTemplate>
                                     <ContentTemplate>
-                                        <table width="100%" class="ItemAlignLeft" cellpadding="0" cellspacing="0" style="border-left: solid 1px #D6DAE2;">
+                                        <table width="100%" class="ItemAlignLeft" cellpadding="0" cellspacing="0" style="border-left: solid 1px #d0d0d0;">
 
                                             <tr>
                                                 <td style="width: 20%;" class="formItemBgStyleForAlignLeft">

@@ -176,7 +176,7 @@
                                             <SelectedNodeStyle CssClass="selectNode" ForeColor="Red" />
                                         </asp:TreeView>
                                     </td>
-                                    <td style="width: 170px; padding: 5px 5px 5px 5px; text-align: center; vertical-align: top; border-right: solid 1px #D8D8D8">
+                                    <td style="width: 170px; padding: 5px 5px 5px 5px; text-align: center; vertical-align: top; border-right: solid 1px #d0d0d0">
                                         <table background="ImagesSkin/main_n_bj.jpg" border="0" cellpadding="0" cellspacing="0"
                                             width="100%">
                                             <tr>
@@ -220,7 +220,7 @@
                                             <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" HorizontalAlign="Left" />
                                         </asp:DataGrid>
                                     </td>
-                                    <td class="ItemAlignLeft" style="padding: 5px 5px 5px 5px; vertical-align: top; border-right: solid 1px #D8D8D8">
+                                    <td class="ItemAlignLeft" style="padding: 5px 5px 5px 5px; vertical-align: top; border-right: solid 1px #d0d0d0">
                                         <table cellpadding="5" cellspacing="0" class="formBgStyle" width="95%">
                                             <tr>
                                                 <td class="formItemBgStyleForAlignCenter" colspan="2" style="font-weight: bold; font-size: 15px; height: 22px;">

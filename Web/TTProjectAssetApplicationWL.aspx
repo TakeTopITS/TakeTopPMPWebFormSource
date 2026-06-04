@@ -179,7 +179,7 @@
 
                             <table style="width: 100%;" cellpadding="0" cellspacing="0">
                                 <tr>
-                                    <td valign="middle" colspan="2" style="width: 60%; border-right: solid 1px #D8D8D8; vertical-align: middle; padding: 5px 5px 5px 5px;">
+                                    <td valign="middle" colspan="2" style="width: 60%; border-right: solid 1px #d0d0d0; vertical-align: middle; padding: 5px 5px 5px 5px;">
                                         <table class="formBgStyle" cellpadding="3" cellspacing="0" style="width: 98%; margin-top: 5px"
                                             class="ItemAlignLeft">
                                             <tr>
@@ -448,7 +448,7 @@
                                             </tr>
                                         </table>
                                     </td>
-                                    <td style="width: 40%; border-right: solid 1px #D8D8D8; padding: 5px 5px 5px 5px;"
+                                    <td style="width: 40%; border-right: solid 1px #d0d0d0; padding: 5px 5px 5px 5px;"
                                         valign="top" class="ItemAlignLeft">
                                         <asp:Label ID="Label36" runat="server" Text="<%$ Resources:lang,QXQYLYDZC %>"></asp:Label>:<asp:Label ID="LB_Sql3" runat="server" Visible="False"></asp:Label>
                                         <div id="AssetListDivID" style="width: 100%; height: 300px; overflow: auto;">

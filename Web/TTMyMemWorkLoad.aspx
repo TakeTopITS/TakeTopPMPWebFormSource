@@ -87,7 +87,7 @@
                             <td valign="top">
                                 <table width="100%">
                                     <tr>
-                                        <td width="170px" style="padding: 5px 5px 5px 5px; border-right: solid 1px #D8D8D8; vertical-align: top;">
+                                        <td width="170px" style="padding: 5px 5px 5px 5px; border-right: solid 1px #d0d0d0; vertical-align: top;">
                                             <table width="170px" cellpadding="0" cellspacing="0">
                                                 <tr>
                                                     <td style="width: 170px; height: 2px; text-align: left">
@@ -119,7 +119,7 @@
                                                             <Columns>
                                                                 <asp:TemplateColumn HeaderText="部门成员:">
                                                                     <ItemTemplate>
-                                                                        <asp:Button ID="BT_UserCode" runat="server" CssClass="inpu" Text='<%# DataBinder.Eval(Container.DataItem,"UserCode") %>'
+                                                                        <asp:Button ID="BT_UserCode" runat="server" CssClass="tt-sms-btn" Text='<%# DataBinder.Eval(Container.DataItem,"UserCode") %>'
                                                                             Style="text-align: center" />
                                                                         <asp:Button ID="BT_UserName" runat="server" CssClass="inpu" Text='<%# DataBinder.Eval(Container.DataItem,"UserName") %>'
                                                                             Style="text-align: center" />
@@ -137,7 +137,7 @@
                                                 </tr>
                                             </table>
                                         </td>
-                                        <td width="170px" style="padding: 5px 5px 5px 5px; border-right: solid 1px #D8D8D8; vertical-align: top;">
+                                        <td width="170px" style="padding: 5px 5px 5px 5px; border-right: solid 1px #d0d0d0; vertical-align: top;">
                                             <table width="170px" cellpadding="0" cellspacing="0">
                                                 <tr>
                                                     <td style="width: 370px; height: 2px; text-align: left">
@@ -182,7 +182,7 @@
                                             </table>
                                         </td>
 
-                                        <td valign="top" style="padding: 5px 5px 5px 5px; border-right: solid 1px #D8D8D8; vertical-align: top;">
+                                        <td valign="top" style="padding: 5px 5px 5px 5px; border-right: solid 1px #d0d0d0; vertical-align: top;">
 
                                             <table style="width: 100%;">
                                                

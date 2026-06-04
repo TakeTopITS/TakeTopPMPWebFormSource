@@ -53,7 +53,7 @@
             background: white;
             padding: 12px;
             margin-bottom: 10px;
-            border-left: 4px solid #4CAF50 !important;
+            border-left: 4px solid #d44446 !important;
             border-radius: 6px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
             transition: all 0.2s ease;

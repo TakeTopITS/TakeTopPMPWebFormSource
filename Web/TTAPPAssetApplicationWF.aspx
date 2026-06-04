@@ -267,7 +267,7 @@
                             </td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2" style="width: 100%; border-right: solid 1px #D8D8D8;" valign="top">
+                                    <td colspan="2" style="width: 100%; border-right: solid 1px #d0d0d0;" valign="top">
 
                                         <table width="100%" class="ItemAlignLeft" cellpadding="0" cellspacing="0">
                                             <tr>
@@ -477,7 +477,7 @@
                                         </table>
                                     </td>
 
-                                    <td style="width: 50%; border-right: solid 1px #D8D8D8; padding: 5px 5px 5px 5px;"
+                                    <td style="width: 50%; border-right: solid 1px #d0d0d0; padding: 5px 5px 5px 5px;"
                                         valign="top" class="ItemAlignLeft">
                                         <asp:Label ID="Label37" runat="server" Text="<%$ Resources:lang,QingXuanZeYaoLingYongDeShangPin %>"></asp:Label>:<asp:Label ID="Label1" runat="server" Visible="False"></asp:Label>
                                         <cc1:TabContainer CssClass="ajax_tab_menu" ID="TabContainer2" runat="server" ActiveTabIndex="0"

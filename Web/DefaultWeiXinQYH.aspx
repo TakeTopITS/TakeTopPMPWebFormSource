@@ -50,8 +50,8 @@
             border-bottom-style: none;
             border-left-style: none;
             /*font-size: 12px;*/
-            color: #29728D;
-            background: #cbe5fe;
+            color: #607d8b;
+            background: #fde8e8;
             border-radius: 5px;
         }
 
@@ -66,7 +66,7 @@
             border-bottom-style: none;
             border-left-style: none;
             /*font-size: 12px;*/
-            color: #29728D;
+            color: #607d8b;
         }
 
         a:link {

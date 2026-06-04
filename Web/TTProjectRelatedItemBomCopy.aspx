@@ -98,14 +98,14 @@
                                         <td>
                                             <table cellpadding="0" cellspacing="0" style="width: 100%;">
                                                 <tr>
-                                                    <td style="padding: 5px 5px 0px 5px; text-align: left; border-right: solid 1px #D8D8D8"
+                                                    <td style="padding: 5px 5px 0px 5px; text-align: left; border-right: solid 1px #d0d0d0"
                                                         valign="top" width="300px">
                                                         <asp:TreeView ID="TreeView2" runat="server" NodeWrap="True" OnSelectedNodeChanged="TreeView2_SelectedNodeChanged"
                                                             ShowLines="True" Width="300px">
                                                             <RootNodeStyle CssClass="rootNode" /><NodeStyle CssClass="treeNode" /><LeafNodeStyle CssClass="leafNode" /><SelectedNodeStyle CssClass="selectNode" ForeColor ="Red" />
                                                         </asp:TreeView>
                                                     </td>
-                                                    <td style="width: 300px; padding: 5px 5px 0px 5px; text-align: left; vertical-align: top; border-right: solid 1px #D8D8D8">
+                                                    <td style="width: 300px; padding: 5px 5px 0px 5px; text-align: left; vertical-align: top; border-right: solid 1px #d0d0d0">
                                                         <asp:TreeView ID="TreeView3" runat="server" Font-Bold="False" Font-Names="ËÎÌו" Font-Size="10pt"
                                                             NodeWrap="True" ShowLines="True" Width="300px">
                                                             <RootNodeStyle CssClass="rootNode" /><NodeStyle CssClass="treeNode" /><LeafNodeStyle CssClass="leafNode" /><SelectedNodeStyle CssClass="selectNode" ForeColor ="Red" />

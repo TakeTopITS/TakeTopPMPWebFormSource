@@ -173,7 +173,7 @@
                                 <td valign="top">
                                     <table cellpadding="0" cellspacing="0" width="100%">
                                         <tr>
-                                            <td valign="top" style="width: 200px; border-right: solid 1px #D8D8D8" border="1">
+                                            <td valign="top" style="width: 200px; border-right: solid 1px #d0d0d0" border="1">
                                                 <table width="100%">
                                                     <tr style="display: none;">
                                                         <td class="ItemAlignLeft">
@@ -212,7 +212,7 @@
                                                                         <table style="width: 100%; margin-top: 5px; padding: 3px 0px 3px 0px;" class="tableBorder"
                                                                             cellpadding="0" cellspacing="0">
                                                                             <tr>
-                                                                                <td class="tdLeft3" style="width: 80px; text-align: right; background-color: #EFF3FB">
+                                                                                <td class="tdLeft3" style="width: 80px; text-align: right; background-color: #f5f7fa">
                                                                                     <asp:Label ID="Label11" runat="server" Text="<%$ Resources:lang,FuMoKuai%>"></asp:Label>:
                                                                                 </td>
                                                                                 <td class="tdLeft3" style="text-align: left;">
@@ -226,7 +226,7 @@
                                                                                     <asp:Label ID="LB_HomeParentName" runat="server"></asp:Label>
                                                                                 </td>
 
-                                                                                <td style="width: 80px; text-align: right; background-color: #EFF3FB" class="tdLeft3">
+                                                                                <td style="width: 80px; text-align: right; background-color: #f5f7fa" class="tdLeft3">
                                                                                     <asp:Label ID="Label5" runat="server" Text="<%$ Resources:lang,LeiXing%>"></asp:Label>:
                                                                                 </td>
                                                                                 <td style="width: 80px; height: 20px; text-align: left;" class="tdRight3">
@@ -242,13 +242,13 @@
                                                                                 <td style="text-align: right;" class="tdLeft3" colspan="2">
                                                                                     <table width="100%">
                                                                                         <tr>
-                                                                                            <td width="90px;" style="text-align: right; background-color: #EFF3FB">
+                                                                                            <td width="90px;" style="text-align: right; background-color: #f5f7fa">
                                                                                                 <asp:Label ID="Label6" runat="server" Text="<%$ Resources:lang,MingChengZhongWen%>"></asp:Label></td>
                                                                                             <td class="ItemAlignLeft">
                                                                                                 <asp:TextBox ID="TB_ModuleName" runat="server" Width="200px"></asp:TextBox></td>
                                                                                         </tr>
                                                                                         <tr>
-                                                                                            <td width="90px;" style="text-align: right; background-color: #EFF3FB">
+                                                                                            <td width="90px;" style="text-align: right; background-color: #f5f7fa">
                                                                                                 <asp:Label ID="Label7" runat="server" Text="<%$ Resources:lang,MingChengBenYu%>"></asp:Label></td>
                                                                                             <td class="ItemAlignLeft">
                                                                                                 <asp:TextBox ID="TB_HomeModuleName" runat="server" Width="200px"></asp:TextBox>
@@ -256,7 +256,7 @@
                                                                                         </tr>
                                                                                     </table>
                                                                                 </td>
-                                                                                <td style="width: 80px; text-align: right; background-color: #EFF3FB" class="tdLeft3">
+                                                                                <td style="width: 80px; text-align: right; background-color: #f5f7fa" class="tdLeft3">
                                                                                     <asp:Label ID="Label8" runat="server" Text="<%$ Resources:lang,YeMian%>"></asp:Label>:
                                                                                 </td>
                                                                                 <td style="text-align: left; width: 300px; padding-left: 3px;" class="tdRight3">
@@ -265,7 +265,7 @@
                                                                             </tr>
                                                                             <tr>
 
-                                                                                <td style="text-align: right; background-color: #EFF3FB" class="tdLeft3">
+                                                                                <td style="text-align: right; background-color: #f5f7fa" class="tdLeft3">
                                                                                     <asp:Label ID="Label13" runat="server" Text="<%$ Resources:lang,KeYong%>"></asp:Label>:
                                                                                 </td>
                                                                                 <td style="text-align: left;" class="tdRight3">
@@ -274,7 +274,7 @@
                                                                                         <asp:ListItem>YES</asp:ListItem>
                                                                                     </asp:DropDownList>
                                                                                 </td>
-                                                                                <td class="tdLeft3" style="text-align: right; background-color: #EFF3FB">
+                                                                                <td class="tdLeft3" style="text-align: right; background-color: #f5f7fa">
                                                                                     <asp:Label ID="Label12" runat="server" Text="<%$ Resources:lang,ShunXuHao%>"></asp:Label>:
                                                                                 </td>
                                                                                 <td style="text-align: left;" class="tdRight3">
@@ -284,7 +284,7 @@
                                                                                 <td colspan="4" style="text-align: left;">
                                                                                     <table>
                                                                                         <tr>
-                                                                                            <td style="text-align: left; background-color: #EFF3FB; padding-left: 10px;">
+                                                                                            <td style="text-align: left; background-color: #f5f7fa; padding-left: 10px;">
                                                                                                 <asp:Label ID="Label25" runat="server" Text="<%$ Resources:lang,TuBiao%>"></asp:Label>:
                                                                                 
                                                                                             </td>

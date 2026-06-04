@@ -14,7 +14,7 @@
             overflow-y: auto;
         }
 
-        /*--------------------------------¼´Ê±Í¨Ìá---------------------------*/
+        /*--------------------------------ï¿½ï¿½Ê±Í¨ï¿½ï¿½---------------------------*/
         .inpuIMOpen {
             background: url("ImagesSkin/TakeTopIMRunning.gif");
             margin: 0px;
@@ -26,7 +26,7 @@
             border-bottom-style: none;
             border-left-style: none;
             font-size: 12px;
-            color: #29728D;
+            color: #607d8b;
         }
 
         .inpuIMClose {
@@ -40,7 +40,7 @@
             border-bottom-style: none;
             border-left-style: none;
             font-size: 12px;
-            color: #29728D;
+            color: #607d8b;
         }
 
         #divGuide {
@@ -62,18 +62,18 @@
             }
 
                 #navlist li a:hover {
-                    color: red;
+                    color: #d44446;
                 }
 
             #navlist a:link, #navlist a:visited {
                 display: block;
-                font: 14px/33px "Î¢ÈíÑÅºÚ", "ºÚÌå";
-                color: #ffffff;
+                font: 14px/33px "Î¢ï¿½ï¿½ï¿½Åºï¿½", "ï¿½ï¿½ï¿½ï¿½";
+                color: #333;
             }
 
             #navlist a.current:link, #nav a.current:visited {
-                color: red;
-                background: #017afb;
+                color: #fff;
+                background: #d44446;
                 padding: 3px;
             }
 
@@ -83,8 +83,8 @@
 
         #div_username {
             /*  display: flex;*/
-            align-items: center; /* ´¹Ö±¾ÓÖÐ */
-            color: white;
+            align-items: center; /* ï¿½ï¿½Ö±ï¿½ï¿½ï¿½ï¿½ */
+            color: #333;
             font-size: 12px;
         }
 
@@ -92,7 +92,7 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%); /* ÈÃÍ¼±êÏà¶ÔÓÚÆä×ÔÉíÖÐÐÄµã¶¨Î» */
+            transform: translate(-50%, -50%); /* ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Äµã¶¨Î» */
         }
     </style>
 
@@ -124,7 +124,7 @@
             dg.ShowDialog();
         }
 
-        //¹ØÁªËùÓÐ×Ó²ã
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó²ï¿½
         function reloadPage(url) {
 
             /*  url = url.replace("?", "&");*/
@@ -178,7 +178,7 @@
 
         }
 
-        //ÉèÖÃ×ó±ßÀ¸ÔªËØµÄÖµ
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½Øµï¿½Öµ
         function setExtendValue(isFalse) {
 
             top.frames[0].frames[2].parent.frames["leftMiddleFrame"].setExtendValue(isFalse);
@@ -206,7 +206,7 @@
 
         });
 
-        //µ¯³öÏûÏ¢¿ò
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½
         function clickPopMsgWindow() {
 
             /* alert(this.document.getElementById("BT_PopMsg"));*/
@@ -241,7 +241,7 @@
                                                                 <asp:ImageButton ID="IM_Extend" ImageUrl="ImagesSkin/news.png" Width="23" Height="20" runat="server" OnClick="BT_Extend_Click" />
                                                             </td>
 
-                                                            <td style="color: white; text-align: left; font-size: small;">
+                                                            <td style="color: #333; text-align: left; font-size: small;">
                                                                 <asp:Label ID="LB_SystemMsg" runat="server"></asp:Label>
                                                             </td>
                                                         </tr>
@@ -268,7 +268,7 @@
                                                                 <a runat="server" class="titleSpan" href="javascript:top.frames[0].frames[2].parent.frames['rightTabFrame'].popShowByURL('TTUpdateUserInfor.aspx', 'UserInformation', 800, 600, window.location);">
                                                                     <div class="container">
                                                                         <div id="div_username">
-                                                                            <asp:Label ID="LB_UserName" runat="server"></asp:Label>
+                                                                            <span style="font-size:14px;">&#x1F464;</span> <asp:Label ID="LB_UserName" runat="server"></asp:Label>
                                                                         </div>
                                                                         <div id="div_updatepersoninfor">
                                                                             <img src="ImagesSkin/UpdatePersonInfor.png" width="22" height="22">
@@ -278,12 +278,12 @@
                                                             </td>
                                                             <td id="tdAI" runat="server" width="40px" align="center">
                                                                
-                                                                <a id="a_AIURL" runat="server" class="titleSpan" href="javascript:top.frames[0].frames[2].parent.frames['rightTabFrame'].openRightLayer('TTAIHandlerByDeepSeek.aspx','TakeTopAI');">
+                                                                <a id="a_AIURL" runat="server" class="titleSpan tt-topbar-icon-link" href="javascript:top.frames[0].frames[2].parent.frames['rightTabFrame'].openRightLayer('TTAIHandlerByDeepSeek.aspx','TakeTopAI');">
                                                                     <img src="ImagesSkin/AI.png" width="22" height="22" alt="">
                                                                 </a>
                                                             </td>
                                                             <td width="40px" align="center" style="padding-top: 0px; padding-bottom: 5px;">
-                                                                <asp:ImageButton ID="IM_ExitSystem" ImageUrl="ImagesSkin/exit.png" Width="25" Height="23" OnClientClick="javascript:return confirmExit(getExitMsgByLangCode(), this, event, 'Default.aspx');" runat="server" />
+                                                                <a href="#" onclick="return confirmExit(getExitMsgByLangCode(), this, event, 'Default.aspx');" class="tt-logout-btn" style="display:inline-flex;align-items:center;gap:4px;padding:4px 10px;font-size:12px;text-decoration:none;white-space:nowrap;">&#x23FB; ÍË³ö</a>
                                                             </td>
                                                         </tr>
                                                     </table>

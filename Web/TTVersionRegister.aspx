@@ -83,7 +83,7 @@
                                                 <td style="text-align: right;">
                                                     <asp:Label ID="Label5" runat="server" Text="<%$ Resources:lang,ZhuCeMa%>"></asp:Label>
                                                 </td>
-                                                <td style="height: 1px; color: #006699; text-decoration: underline;">
+                                                <td style="height: 1px; color: #607d8b; text-decoration: underline;">
                                                     <asp:TextBox ID="TB_RegisterCode" runat="server" Style="width: 80%;"></asp:TextBox>
                                                 </td>
                                             </tr>

@@ -59,7 +59,7 @@
                             <td>
                                 <table style="width: 100%;" cellpadding="0" cellspacing="0">
                                     <tr>
-                                        <td width="180" style="padding: 5px 5px 0px 5px; border-right: solid 1px #D8D8D8; vertical-align: top;">
+                                        <td width="180" style="padding: 5px 5px 0px 5px; border-right: solid 1px #d0d0d0; vertical-align: top;">
                                             <table style="width: 170px;">
                                                 <tr>
                                                     <td style="width: 100%; text-align: center">

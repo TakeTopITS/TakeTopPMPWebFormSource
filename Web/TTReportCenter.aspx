@@ -69,7 +69,7 @@
                                 <td valign="top">
                                     <table width="100%" cellpadding="0" cellspacing="0">
                                         <tr>
-                                            <td width="300" style="border-right: 1px solid #8AB2E5; padding: 5px 5px 5px 5px;">
+                                            <td width="300" style="border-right: 1px solid #d0d0d0; padding: 5px 5px 5px 5px;">
                                                 <table width="100%" cellpadding="0" cellspacing="0">
                                                     <tr>
                                                         <td colspan="2">

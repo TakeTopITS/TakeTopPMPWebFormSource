@@ -107,7 +107,7 @@
                                                                 <SelectedNodeStyle CssClass="selectNode" ForeColor="Red" />
                                                             </asp:TreeView>
                                                         </td>
-                                                        <td valign="top" width="165" style="padding: 5px 2px  0px 5px; border-left: solid 1px #D8D8D8; border-right: solid 1px #D8D8D8;">
+                                                        <td valign="top" width="165" style="padding: 5px 2px  0px 5px; border-left: solid 1px #d0d0d0; border-right: solid 1px #d0d0d0;">
                                                             <table cellpadding="0" cellspacing="0" style="width: 170px;">
                                                                 <tr>
                                                                     <td>

@@ -50,7 +50,7 @@
                         <td>
                             <table width="100%" cellpadding="0" cellspacing="0">
                                 <tr>
-                                    <td width="300" class="ItemAlignLeft" valign="top" style="border-right: solid 1px #D8D8D8">
+                                    <td width="300" class="ItemAlignLeft" valign="top" style="border-right: solid 1px #d0d0d0">
                                         <asp:TreeView ID="TreeView1" runat="server" OnSelectedNodeChanged="TreeView1_SelectedNodeChanged"
                                             ShowLines="True" Width="300px" NodeWrap="True">
                                             <RootNodeStyle CssClass="rootNode" /><NodeStyle CssClass="treeNode" /><LeafNodeStyle CssClass="leafNode" /><SelectedNodeStyle CssClass="selectNode" ForeColor ="Red" />

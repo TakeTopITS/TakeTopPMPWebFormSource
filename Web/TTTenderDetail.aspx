@@ -79,7 +79,7 @@
                             <td>
                                 <table style="width: 100%;" cellpadding="0" cellspacing="0">
                                     <tr>
-                                        <td valign="middle" style="width: 50%; border-right: solid 1px #D8D8D8; padding: 2px 2px 2px 2px;">
+                                        <td valign="middle" style="width: 50%; border-right: solid 1px #d0d0d0; padding: 2px 2px 2px 2px;">
                                             <table class="formBgStyle" cellpadding="3" cellspacing="0" style="width: 98%; margin-top: 2px; background-color: white;"
                                                 class="ItemAlignLeft">
                                                 <tr>
@@ -360,7 +360,7 @@
 
                                     </tr>
                                     <tr>
-                                        <td style="border-right: solid 1px #D8D8D8;" valign="top">
+                                        <td style="border-right: solid 1px #d0d0d0;" valign="top">
                                             <cc1:TabContainer CssClass="ajax_tab_menu" ID="TabContainer1" runat="server" ActiveTabIndex="0" Width="100%">
                                                 <cc1:TabPanel ID="TabPanel1" runat="server" HeaderText="Expense" TabIndex="0">
                                                     <HeaderTemplate>

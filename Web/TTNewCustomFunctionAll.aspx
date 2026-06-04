@@ -162,8 +162,8 @@
                                                             </tr>
                                                         </table>
                                                     </td>
-                                                    <td valign="top" width="165px" style="padding: 5px 5px 0px 5px; border-left: solid 1px #D8D8D8;
-                                                        border-right: solid 1px #D8D8D8;">
+                                                    <td valign="top" width="165px" style="padding: 5px 5px 0px 5px; border-left: solid 1px #d0d0d0;
+                                                        border-right: solid 1px #d0d0d0;">
                                                         <table width="100%" cellpadding="0" cellspacing="0">
                                                             <tr>
                                                                 <td style="height: 2px; text-align: left">
@@ -220,7 +220,7 @@
                                                                 </td>
                                                             </tr>
                                                             <tr>
-                                                                <td style="border-right: solid 1px #D8D8D8; text-align: left">
+                                                                <td style="border-right: solid 1px #d0d0d0; text-align: left">
                                                                     <asp:Label ID="LB_DepartCode" runat="server" Font-Bold="True" 
                          Visible="False"></asp:Label>
                                                                     <asp:Label ID="LB_DepartName" runat="server"  

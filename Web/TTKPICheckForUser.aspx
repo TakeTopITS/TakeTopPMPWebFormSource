@@ -81,7 +81,7 @@
                                 <td>
                                     <table width="100%" cellpadding="0" cellspacing="0">
                                         <tr>
-                                            <td width="220px" style="padding: 5px 5px 0px 5px; border-right: solid 1px #D8D8D8"
+                                            <td width="220px" style="padding: 5px 5px 0px 5px; border-right: solid 1px #d0d0d0"
                                                 class="ItemAlignLeft" rowspan="2" valign="top">
                                                 <asp:TreeView ID="TreeView1" runat="server" NodeWrap="True" OnSelectedNodeChanged="TreeView1_SelectedNodeChanged"
                                                     ShowLines="True" Width="220px">
@@ -91,7 +91,7 @@
                                                     <SelectedNodeStyle CssClass="selectNode" ForeColor="Red" />
                                                 </asp:TreeView>
                                             </td>
-                                            <td class="ItemAlignLeft" rowspan="2" style="padding: 5px 5px 0px 5px; border-right: solid 1px #D8D8D8"
+                                            <td class="ItemAlignLeft" rowspan="2" style="padding: 5px 5px 0px 5px; border-right: solid 1px #d0d0d0"
                                                 valign="top" width="200px">
                                                 <asp:TreeView ID="TreeView2" runat="server" NodeWrap="True" OnSelectedNodeChanged="TreeView2_SelectedNodeChanged"
                                                     ShowLines="True" Width="200px">
@@ -101,7 +101,7 @@
                                                     <SelectedNodeStyle CssClass="selectNode" ForeColor="Red" />
                                                 </asp:TreeView>
                                             </td>
-                                            <td valign="top" style="padding: 5px 5px 0px 5px; border-right: solid 1px #D8D8D8"
+                                            <td valign="top" style="padding: 5px 5px 0px 5px; border-right: solid 1px #d0d0d0"
                                                 class="ItemAlignLeft">
                                                 <table style="width: 100%; text-align: left;" cellpadding="3" cellspacing="0" class="formBgStyle">
                                                     <tr>
@@ -350,7 +350,7 @@
                                                     </tr>
                                                 </table>
                                             </td>
-                                            <td valign="top" style="width: 220px; border-left: solid 1px #D8D8D8; text-align: left;"
+                                            <td valign="top" style="width: 220px; border-left: solid 1px #d0d0d0; text-align: left;"
                                                 rowspan="2">
 
                                                 <cc1:TabContainer CssClass="ajax_tab_menu" ID="TabContainer2" runat="server" ActiveTabIndex="0" Width="100%">

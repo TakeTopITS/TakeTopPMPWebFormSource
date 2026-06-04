@@ -100,7 +100,7 @@
                                                     <Columns>
                                                         <asp:TemplateColumn HeaderText="Currency">
                                                             <ItemTemplate>
-                                                                <asp:Button CssClass="inpu" ID="BT_Type" runat="server" Text='<%# DataBinder.Eval(Container.DataItem,"Type").ToString().Trim() %>' />
+                                                                <asp:Button CssClass="tt-sms-btn" ID="BT_Type" runat="server" Text='<%# DataBinder.Eval(Container.DataItem,"Type").ToString().Trim() %>' />
                                                             </ItemTemplate>
                                                             <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="40%" />
                                                         </asp:TemplateColumn>

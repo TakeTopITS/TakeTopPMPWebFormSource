@@ -67,7 +67,7 @@
                                 <td>
                                     <table style="width: 100%;" cellpadding="0" cellspacing="0">
                                         <tr>
-                                            <td valign="top" style="width: 65%; padding: 10px 5px 5px 5px; border-right: solid 1px #D8D8D8; border-bottom: solid 1px #D8D8D8;">
+                                            <td valign="top" style="width: 65%; padding: 10px 5px 5px 5px; border-right: solid 1px #d0d0d0; border-bottom: solid 1px #d0d0d0;">
                                                 <table width="100%" border="0" class="formBgStyle" cellpadding="2" cellspacing="0">
                                                     <tr>
                                                         <td height="23"  class="formItemBgStyleForAlignLeft">
@@ -277,7 +277,7 @@
                                                     </tr>
                                                 </table>
                                             </td>
-                                            <td valign="top" style="width: 35%; padding: 10px 5px 5px 5px; border-bottom: solid 1px #D8D8D8;">
+                                            <td valign="top" style="width: 35%; padding: 10px 5px 5px 5px; border-bottom: solid 1px #d0d0d0;">
                                                 <div id="mess_box" style="width: 100%; height: 410px; overflow: auto;">
                                                     <table class="formBgStyle" style="width: 100%;" cellpadding="3" cellspacing="0">
                                                         <tr>
@@ -319,7 +319,7 @@
                                                                                     <tr>
                                                                                         <td class="ItemAlignLeft" width="50%">
                                                                                             <asp:Button ID="BT_UserCode" runat="server" Text='<%# DataBinder.Eval(Container.DataItem,"UserCode") %>'
-                                                                                                CssClass="inpu" />
+                                                                                                CssClass="tt-sms-btn" />
 
                                                                                         </td>
                                                                                         <td class="ItemAlignLeft">

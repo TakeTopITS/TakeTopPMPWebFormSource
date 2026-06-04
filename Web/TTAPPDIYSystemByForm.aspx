@@ -33,7 +33,7 @@
         }
 
         .modalPopup {
-            background-color: #EFF3FB;
+            background-color: #f5f7fa;
             border-width: 3px;
             border-style: solid;
             border-color: Gray;
@@ -55,7 +55,7 @@
             height: 25px;
             border-radius: 2px;
             color: #ffffff;
-            background: #2e8ded; /*Æ¤·ô*/
+            background: #3b82f6; /*Æ¤·ô*/
         }
 
             .inpu:disabled {
@@ -526,7 +526,7 @@
                                 </tr>
 
                                 <tr>
-                                    <td class="tdLeft" style="padding: 1px 1px 1px 1px; border-bottom: solid 1px #D8D8D8; border-right: solid 1px #D8D8D8;">
+                                    <td class="tdLeft" style="padding: 1px 1px 1px 1px; border-bottom: solid 1px #d0d0d0; border-right: solid 1px #d0d0d0;">
                                         <table style="width: 100%;" cellpadding="3" cellspacing="0">
 
 
@@ -562,7 +562,7 @@
                                                 </td>
                                             </tr>
                                             <tr style="display: none;">
-                                                <td colspan="3" class="tdRight" style="text-align: center; padding: 2px 0px 2px 5px; border-bottom: solid 1px  #D8D8D8;">
+                                                <td colspan="3" class="tdRight" style="text-align: center; padding: 2px 0px 2px 5px; border-bottom: solid 1px  #d0d0d0;">
                                                     <asp:HyperLink ID="HL_WFXSNFile" runat="server"
                                                         Target="_blank" Font-Names="ËÎÌå" Font-Size="10pt">
                                                         <asp:Label ID="Label9" runat="server" Text="<%$ Resources:lang,XGYWBGMBXZ%>"></asp:Label>

@@ -681,7 +681,7 @@
                                                 <asp:TemplateColumn HeaderText="Number">
                                                     <itemtemplate>
                                                         <asp:Button ID="BT_ID" runat="server" Text='<%# DataBinder.Eval(Container.DataItem,"ID") %>'
-                                                            CssClass="inpu" />
+                                                            CssClass="tt-sms-btn" />
                                                     </itemtemplate>
                                                     <itemstyle cssclass="itemBorder" horizontalalign="left" width="9%" />
                                                 </asp:TemplateColumn>

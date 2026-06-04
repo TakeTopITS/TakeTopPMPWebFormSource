@@ -71,7 +71,7 @@
                                 <td>
                                     <table width="100%" cellpadding="0" cellspacing="0">
                                         <tr>
-                                            <td style="width: 220px; border-left: solid 1px #D8D8D8; padding: 5px 0px 0px 5px"
+                                            <td style="width: 220px; border-left: solid 1px #d0d0d0; padding: 5px 0px 0px 5px"
                                                 valign="top" class="ItemAlignLeft">
                                                 <asp:TreeView ID="TreeView1" runat="server" NodeWrap="True" OnSelectedNodeChanged="TreeView1_SelectedNodeChanged"
                                                     ShowLines="True" Width="220px">
@@ -81,7 +81,7 @@
                                                     <SelectedNodeStyle CssClass="selectNode" ForeColor="Red" />
                                                 </asp:TreeView>
                                             </td>
-                                            <td valign="top" width="170" style="padding: 5px 2px  0px 5px; border-left: solid 1px #D8D8D8">
+                                            <td valign="top" width="170" style="padding: 5px 2px  0px 5px; border-left: solid 1px #d0d0d0">
                                                 <table cellpadding="0" cellspacing="0" style="width: 170px;">
                                                     <tr>
                                                         <td>
@@ -128,7 +128,7 @@
                                                 </table>
                                             </td>
 
-                                            <td rowspan="2" style="width: 100%; padding: 0px 5px 0px 5px; border-right: solid 1px #D8D8D8;">
+                                            <td rowspan="2" style="width: 100%; padding: 0px 5px 0px 5px; border-right: solid 1px #d0d0d0;">
                                                 <cc2:TabContainer CssClass="ajax_tab_menu" ID="TabContainer1" runat="server" ActiveTabIndex="0" Width="100%">
                                                     <cc2:TabPanel ID="TabPanel1" runat="server" HeaderText="" TabIndex="0" BorderWidth="0">
                                                         <HeaderTemplate>

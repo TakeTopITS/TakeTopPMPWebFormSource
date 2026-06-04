@@ -870,7 +870,7 @@
                                     </tr>--%>
                                         </table>
                                     </td>
-                                    <td class="formItemBgStyleForAlignLeft" style="width: 40%; border-right: solid 1px #D8D8D8; padding: 5px 5px 5px 5px;">
+                                    <td class="formItemBgStyleForAlignLeft" style="width: 40%; border-right: solid 1px #d0d0d0; padding: 5px 5px 5px 5px;">
                                         valign="top" class="ItemAlignLeft">
                                         <cc1:TabContainer CssClass="ajax_tab_menu" ID="TabContainer2" runat="server" ActiveTabIndex="0"
                                             Width="100%">

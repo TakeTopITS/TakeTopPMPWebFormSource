@@ -60,7 +60,7 @@
                                 <td valign="top">
                                     <table style="width: 100%;" cellpadding="0" cellspacing="0">
                                         <tr>
-                                            <td class="ItemAlignLeft" style="padding: 5px 5px 5px 5px; font-weight: bold; font-size: 10pt; border-left: solid 1px #D8D8D8;">
+                                            <td class="ItemAlignLeft" style="padding: 5px 5px 5px 5px; font-weight: bold; font-size: 10pt; border-left: solid 1px #d0d0d0;">
                                                 <table width="100%" border="0" cellpadding="0" cellspacing="0" background="ImagesSkin/main_n_bj.jpg">
                                                     <tr>
                                                         <td width="7">

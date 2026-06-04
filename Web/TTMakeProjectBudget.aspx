@@ -29,7 +29,7 @@
                 <ContentTemplate>
                     <table id="AboveTable" cellpadding="0" width="100%" cellspacing="0" class="bian">
                         <tr>
-                            <td height="31" class="page_topbj" style="border-right: solid 1px #D8D8D8;">
+                            <td height="31" class="page_topbj" style="border-right: solid 1px #d0d0d0;">
                                 <table width="96%" border="0" class="ItemAlignLeft" cellpadding="0" cellspacing="0">
                                     <tr>
                                         <td class="ItemAlignLeft">
@@ -52,7 +52,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td class="ItemAlignLeft" style="padding: 5px 5px 5px 5px; vertical-align: top; border-right: solid 1px #D8D8D8;">
+                            <td class="ItemAlignLeft" style="padding: 5px 5px 5px 5px; vertical-align: top; border-right: solid 1px #d0d0d0;">
                                 <table width="100%" border="0" cellpadding="0" cellspacing="0">
                                     <tr>
                                         <td align="right" style="padding-bottom: 5px;">
@@ -162,10 +162,10 @@
                                                             <!-- 第一行：费用进度条 -->
                                                             <div style="position: relative; height: 20px; width: 205px; margin-bottom: 2px;">
                                                                 <!-- 黄色底层背景 -->
-                                                                <div style="position: absolute; top: 0; left: 0; width: 205px; height: 20px; background-color: yellow; z-index: 1;"></div>
+                                                                <div style="position: absolute; top: 0; left: 0; width: 205px; height: 20px; background-color: #eceff1; z-index: 1;"></div>
 
                                                                 <!-- 绿色进度条背景 -->
-                                                                <div id="ProgressBar" runat="server" style="position: absolute; top: 0; left: 0; height: 20px; background-color: yellowgreen; z-index: 2; max-width: 205px; overflow: hidden;"></div>
+                                                                <div id="ProgressBar" runat="server" style="position: absolute; top: 0; left: 0; height: 20px; background-color: #78909c; z-index: 2; max-width: 205px; overflow: hidden;"></div>
 
                                                                 <!-- 费用文字 -->
                                                                 <div style="position: absolute; top: 0; left: 5px; height: 20px; line-height: 20px; z-index: 3;">

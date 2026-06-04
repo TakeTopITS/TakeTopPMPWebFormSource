@@ -249,7 +249,7 @@
                                 <td>
                                     <table width="100%" cellpadding="0" cellspacing="0">
                                         <tr>
-                                            <td class="ItemAlignLeft" style="padding: 5px 5px 0px 5px; border-right: solid 1px #D8D8D8; width: 90%;">
+                                            <td class="ItemAlignLeft" style="padding: 5px 5px 0px 5px; border-right: solid 1px #d0d0d0; width: 90%;">
                                                 <table class="ItemAlignLeft" cellpadding="0" cellspacing="0" width="100%">
                                                     <tr>
                                                         <td class="ItemAlignLeft" class="page_topbj" colspan="6">

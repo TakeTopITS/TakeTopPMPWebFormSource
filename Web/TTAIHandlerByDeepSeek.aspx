@@ -488,39 +488,8 @@
         }
 
         // Update selected tables display
-        function updateSelectedTables() {
-            const checkboxes = document.querySelectorAll('#<%= cblTables.ClientID %> input[type="checkbox"]');
-            const selectedTags = document.getElementById('selectedTableTags');
-            let selectedTables = [];
-
-            checkboxes.forEach(checkbox => {
-                if (checkbox.checked) {
-                    const label = checkbox.nextElementSibling;
-                    selectedTables.push(label.textContent);
-                }
-            });
-
-            var panel = document.getElementById('selectedTablesPanel');
-            if (selectedTables.length > 0) {
-                panel.style.display = 'block';
-                selectedTags.innerHTML = selectedTables.map(table =>
-                    `<span class="table-tag">${table}</span>`
-                ).join('');
-            } else {
-                panel.style.display = 'none';
-            }
-        }
-
         // Page initialization
         function initializePage() {
-            // Bind table selection events
-            const checkboxes = document.querySelectorAll('#<%= cblTables.ClientID %> input[type="checkbox"]');
-            if (checkboxes && checkboxes.length > 0) {
-                checkboxes.forEach(checkbox => {
-                    checkbox.addEventListener('change', updateSelectedTables);
-                });
-                updateSelectedTables();
-            }
 
             // Add Enter key functionality to textboxes
             document.addEventListener('keydown', function (event) {
@@ -601,14 +570,6 @@
                 txtAnalysisRequirement.value = '';
             }
 
-            // Deselect all tables
-            const checkboxes = document.querySelectorAll('#<%= cblTables.ClientID %> input[type="checkbox"]');
-            if (checkboxes) {
-                checkboxes.forEach(checkbox => {
-                    checkbox.checked = false;
-                });
-                updateSelectedTables();
-            }
         }
 
         // ASP.NET AJAX end request handling
@@ -701,57 +662,10 @@
 
                     <!-- 数据分析模式 -->
                     <div id="divDataAnalysisMode" class="content-area" runat="server" visible="false">
-                        <!-- 表格管理区域 -->
-                        <div class="config-section">
-                            <div class="config-title">
-                                📊
-                                <asp:Literal ID="LiteralAnalysisTableManagement" runat="server" Text="<%$ Resources:lang,DSeekAnalysisTableManagement%>"></asp:Literal>
-                            </div>
-
-                            <div class="table-management">
-                                <!-- 表格名称输入 -->
-                                <div style="margin-bottom: 15px;">
-                                    <div style="font-weight: 600; margin-bottom: 8px;">
-                                        <asp:Literal ID="LiteralAddTableNames" runat="server" Text="<%$ Resources:lang,DSeekAddTableNames%>"></asp:Literal>
-                                    </div>
-                                    <div class="table-input-area">
-                                        <asp:TextBox ID="txtTableNames" runat="server"
-                                            CssClass="config-input"
-                                            placeholder="<%$ Resources:lang,ShuRuShuJiBiaoMingChengCTaoHaoFengKai%>"></asp:TextBox>
-                                        <asp:Button ID="btnSaveTables" runat="server"
-                                            Text="<%$ Resources:lang,DSeekSaveToDB%>"
-                                            CssClass="btn btn-success"
-                                            OnClick="btnSaveTables_Click" />
-                                    </div>
-                                    <div class="hint-text">
-                                        <asp:Literal ID="LiteralTableNamesSaved" runat="server" Text="<%$ Resources:lang,DSeekTableNamesSaved%>"></asp:Literal>
-                                    </div>
-                                </div>
-
-                                <!-- 已保存表格列表 -->
-                                <div style="margin-top: 20px;">
-                                    <div style="font-weight: 600; margin-bottom: 8px;">
-                                        <asp:Literal ID="LiteralSelectTablesForAnalysis" runat="server" Text="<%$ Resources:lang,DSeekSelectTablesForAnalysis%>"></asp:Literal>
-                                    </div>
-                                    <asp:Button ID="btnLoadTables" runat="server"
-                                        Text="<%$ Resources:lang,DSeekLoadSavedTables%>"
-                                        CssClass="btn btn-primary"
-                                        OnClick="btnLoadTables_Click" />
-
-                                    <asp:Panel ID="pnlTableList" runat="server" Visible="false" CssClass="table-list-container">
-                                        <asp:CheckBoxList ID="cblTables" runat="server" CssClass="table-checkbox-list">
-                                        </asp:CheckBoxList>
-                                    </asp:Panel>
-
-                                    <div id="selectedTablesPanel" class="selected-tables">
-                                        <div style="font-weight: 600; color: #4F46E5; margin-bottom: 10px;">
-                                            <asp:Literal ID="LiteralSelectedTables" runat="server" Text="<%$ Resources:lang,DSeekSelectedTables%>"></asp:Literal>
-                                        </div>
-                                        <div id="selectedTableTags" class="selected-table-tags"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <asp:TextBox ID="txtTableNames" runat="server" Style="display:none;"></asp:TextBox>
+                        <asp:Button ID="btnSaveTables" runat="server" Style="display:none;" OnClick="btnSaveTables_Click" />
+                        <asp:Button ID="btnLoadTables" runat="server" Style="display:none;" OnClick="btnLoadTables_Click" />
+                        <div style="display:none;"><asp:Panel ID="pnlTableList" runat="server" Visible="false"><asp:CheckBoxList ID="cblTables" runat="server"></asp:CheckBoxList></asp:Panel></div>
 
                         <!-- 分析需求区域 -->
                         <div class="config-section">
@@ -760,7 +674,7 @@
                                 <asp:Literal ID="LiteralAnalysisRequirementDescription" runat="server" Text="<%$ Resources:lang,DSeekAnalysisRequirementDescription%>"></asp:Literal>
                             </div>
 
-                            <div class="analysis-tips">
+                            <div class="analysis-tips" style="display:none;">
                                 <strong>
                                     <asp:Literal ID="LiteralAnalysisRequirementExamples" runat="server" Text="<%$ Resources:lang,DSeekAnalysisRequirementExamples%>"></asp:Literal></strong>
                                 <ul>
@@ -886,7 +800,8 @@
             </div>
         </div>
         
-    </form>
+    
+</form>
     <script type="text/javascript" language="javascript">var cssDirectory = '<%=Session["CssDirectory"] %>'; var oLink = document.getElementById('mainCss'); oLink.href = 'css/' + cssDirectory + '/' + 'bluelightmain.css';</script>
 </body>
 </html>

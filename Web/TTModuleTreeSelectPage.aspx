@@ -22,7 +22,7 @@
         
         .modalPopup
         {
-            background-color: #EFF3FB;
+            background-color: #f5f7fa;
             border-width: 10px;
             border-style: solid;
             border-color: Gray;

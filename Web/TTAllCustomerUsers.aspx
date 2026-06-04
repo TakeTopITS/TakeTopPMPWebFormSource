@@ -59,7 +59,7 @@
                                 <td valign="top">
                                     <table cellpadding="0" cellspacing="0" width="100%">
                                         <tr>
-                                            <td style="width: 180px; border-right: solid 1px #D8D8D8; padding: 5px 0px 0px 5px"
+                                            <td style="width: 180px; border-right: solid 1px #d0d0d0; padding: 5px 0px 0px 5px"
                                                 valign="top" class="ItemAlignLeft">
                                                 <asp:TreeView ID="TreeView1" runat="server" NodeWrap="True" OnSelectedNodeChanged="TreeView1_SelectedNodeChanged"
                                                     ShowLines="True" Width="180">
@@ -69,7 +69,7 @@
                                                     <SelectedNodeStyle CssClass="selectNode" ForeColor ="Red" />
                                                 </asp:TreeView>
                                             </td>
-                                            <td class="ItemAlignLeft" style="width: 165px; border-right: solid 1px #D8D8D8; padding: 5px 0px 0px 5px"
+                                            <td class="ItemAlignLeft" style="width: 165px; border-right: solid 1px #d0d0d0; padding: 5px 0px 0px 5px"
                                                 valign="top">
                                                 <table style="width: 100%; text-align: left;">
                                                     <tr>
@@ -100,7 +100,7 @@
                                                                     <asp:TemplateColumn HeaderText="部门人员:">
                                                                         <ItemTemplate>
                                                                             <asp:Button ID="BT_UserCode" runat="server" Text='<%# DataBinder.Eval(Container.DataItem,"UserCode") %>'
-                                                                                CssClass="inpu" />
+                                                                                CssClass="tt-sms-btn" />
                                                                             <asp:Button ID="BT_UserName" runat="server" Text='<%# DataBinder.Eval(Container.DataItem,"UserName") %>'
                                                                                 CssClass="inpu" />
                                                                         </ItemTemplate>

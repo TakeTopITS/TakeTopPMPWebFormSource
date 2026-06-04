@@ -97,7 +97,7 @@
                 <div style="z-index: -2;width:100%;" onclick="avascript:ChangeMenu(1);">
                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
                             <tr>
-                                <td id="topTD" style="display: block;" height="45" valign="bottom">
+                                <td id="topTD" style="display: block; background-color: #f5f5f5;" height="45" valign="bottom">
                                     <table width="100%" border="0" class="ItemAlignLeft" cellpadding="0" cellspacing="0">
                                         <tr>
                                             <td height="45" valign="top" style="text-align: center;">
@@ -109,9 +109,9 @@
                                 </td>
                             </tr>
                         </table>
-                  
+
                 </div>
-                <div style="position: absolute; top: 10px; left: 2%; color: red; font-size: larger;">
+                <div style="position: absolute; top: 10px; left: 2%; color: #d44446; font-size: larger;">
                     <asp:Label ID="LB_Message" runat="server"></asp:Label>
                 </div>
             </ContentTemplate>

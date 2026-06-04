@@ -1146,7 +1146,7 @@
                                                             </tr>
                                                         </table>
                                                         <asp:DataGrid ID="DataGrid11" runat="server" AutoGenerateColumns="False" OnItemCommand="DataGrid11_ItemCommand"
-                                                            Width="200%" ShowHeader="False" BorderColor="#7FC4ED" BorderStyle="Solid" BorderWidth="1px">
+                                                            Width="200%" ShowHeader="False" BorderColor="#d0d0d0" BorderStyle="Solid" BorderWidth="1px">
                                                             <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                                                             <EditItemStyle BackColor="#2461BF" />
                                                             <SelectedItemStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
@@ -1941,7 +1941,7 @@
                                                 <asp:TemplateColumn HeaderText="µ¥ºÅ">
                                                     <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="10%" />
                                                     <ItemTemplate>
-                                                        <asp:Button ID="BT_SOID" runat="server" CssClass="inpu" Text='<%# DataBinder.Eval(Container.DataItem,"SOID") %>' />
+                                                        <asp:Button ID="BT_SOID" runat="server" CssClass="tt-sms-btn" Text='<%# DataBinder.Eval(Container.DataItem,"SOID") %>' />
                                                     </ItemTemplate>
                                                 </asp:TemplateColumn>
                                                 <asp:HyperLinkColumn DataNavigateUrlField="SOID" DataNavigateUrlFormatString="TTGoodsSaleOrderDetail.aspx?SOID={0}"

@@ -55,7 +55,7 @@
                             <td>
                                 <table style="width: 100%;" cellpadding="0" cellspacing="0">
                                     <tr>
-                                        <td valign="top" width="170" style="padding: 5px 5px 0px 5px; border-right: solid 1px #D8D8D8">
+                                        <td valign="top" width="170" style="padding: 5px 5px 0px 5px; border-right: solid 1px #d0d0d0">
                                             <table style="width: 100%;">
                                                 <tr>
                                                     <td style="width: 100%">
@@ -220,7 +220,7 @@
                                                                 </asp:BoundColumn>
                                                                 <asp:TemplateColumn>
                                                                     <ItemTemplate>
-                                                                        <asp:Button ID="BT_ID" runat="server" CssClass="inpu" Text='<%# DataBinder.Eval(Container.DataItem,"ID") %>' />
+                                                                        <asp:Button ID="BT_ID" runat="server" CssClass="tt-sms-btn" Text='<%# DataBinder.Eval(Container.DataItem,"ID") %>' />
                                                                     </ItemTemplate>
                                                                     <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="8%" />
                                                                 </asp:TemplateColumn>

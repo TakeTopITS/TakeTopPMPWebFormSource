@@ -104,7 +104,7 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="tdLeft" colspan="2" style="padding: 1px 1px 1px 1px; border-bottom: solid 1px #D8D8D8; border-right: solid 1px #D8D8D8;">
+                                                    <td class="tdLeft" colspan="2" style="padding: 1px 1px 1px 1px; border-bottom: solid 1px #d0d0d0; border-right: solid 1px #d0d0d0;">
                                                         <table style="width: 300px;" cellpadding="3" cellspacing="0">
                                                             <tr>
                                                                 <td class="tdLeft" width="50px">
@@ -291,7 +291,7 @@
 
                         <table width="100%">
                             <tr>
-                                <td style="width: 220px; border-right: solid 1px #D8D8D8; padding: 5px 0px 0px 5px"
+                                <td style="width: 220px; border-right: solid 1px #d0d0d0; padding: 5px 0px 0px 5px"
                                     valign="top" class="ItemAlignLeft">
                                     <asp:TreeView ID="TreeView2" runat="server" NodeWrap="True" OnSelectedNodeChanged="TreeView2_SelectedNodeChanged"
                                         ShowLines="True" Width="220px">
@@ -301,7 +301,7 @@
                                         <SelectedNodeStyle CssClass="selectNode" ForeColor="Red" />
                                     </asp:TreeView>
                                 </td>
-                                <td width="165px" style="padding: 5px 5px 0px 5px; border-right: solid 1px #D8D8D8; vertical-align: top;">
+                                <td width="165px" style="padding: 5px 5px 0px 5px; border-right: solid 1px #d0d0d0; vertical-align: top;">
                                     <table style="width: 165px; height: 53px">
                                         <tr>
                                             <td style="width: 165; text-align: center;" valign="top">
@@ -396,7 +396,7 @@
                         <hr />
                         <table width="600px" cellpadding="0" cellspacing="0" class="bian">
                             <tr>
-                                <td class="ItemAlignLeft" style="padding: 5px 5px 0px 5px; border-right: solid 1px #D8D8D8; vertical-align: top;" width="500px">
+                                <td class="ItemAlignLeft" style="padding: 5px 5px 0px 5px; border-right: solid 1px #d0d0d0; vertical-align: top;" width="500px">
                                     <table width="100%">
                                         <tr>
                                             <td width="90%">

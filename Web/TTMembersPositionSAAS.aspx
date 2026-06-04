@@ -69,7 +69,7 @@
                                             <td valign="top">
                                                 <table width="100%" cellpadding="0" cellspacing="0">
                                                     <tr>
-                                                        <td valign="top" width="185px" style="padding: 5px 5px 0px 5px; border-left: solid 1px #D8D8D8; border-right: solid 1px #D8D8D8;">
+                                                        <td valign="top" width="185px" style="padding: 5px 5px 0px 5px; border-left: solid 1px #d0d0d0; border-right: solid 1px #d0d0d0;">
                                                             <table width="100%" cellpadding="0" cellspacing="0">
                                                                 <tr>
                                                                     <td style="height: 2px; text-align: left">
@@ -129,7 +129,7 @@
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td style="border-right: solid 1px #D8D8D8; text-align: left">
+                                                                    <td style="border-right: solid 1px #d0d0d0; text-align: left">
                                                                         <asp:Label ID="LB_DepartCode" runat="server"
                                                                             Visible="False"></asp:Label>
                                                                         <asp:Label ID="LB_DepartName" runat="server"
@@ -140,7 +140,7 @@
                                                                 </tr>
                                                             </table>
                                                         </td>
-                                                        <td width="750px" style="padding: 5px 5px 0px 5px; border-right: solid 1px #D8D8D8;" valign="top">
+                                                        <td width="750px" style="padding: 5px 5px 0px 5px; border-right: solid 1px #d0d0d0;" valign="top">
                                                             <table width="750px" border="0" cellpadding="0" cellspacing="0" background="ImagesSkin/main_n_bj.jpg">
                                                                 <tr>
                                                                     <td width="7">
@@ -205,7 +205,7 @@
                                                                 <PagerStyle Horizontalalign="center" Mode="NumericPages" NextPageText="" PrevPageText="" CssClass="notTab" />
                                                             </asp:DataGrid>
                                                         </td>
-                                                        <td style="padding: 5px 5px 0px 5px; border-right: solid 1px #D8D8D8;" valign="top">
+                                                        <td style="padding: 5px 5px 0px 5px; border-right: solid 1px #d0d0d0;" valign="top">
                                                             <%--<iframe id="IFR_UserPositionMap" name="IFR_UserPositionMap" src="TTUserPositionView.aspx" style="width: 100%; height: 800px;"></iframe>--%>
                                                         </td>
                                                     </tr>

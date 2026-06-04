@@ -170,7 +170,7 @@
                                             <ContentTemplate>
                                                 <table width="100%" cellpadding="0" cellspacing="0">
                                                     <tr>
-                                                        <td class="tdMain" class="ItemAlignLeft" valign="top" style="border-right: solid 1px #D8D8D8;">
+                                                        <td class="tdMain" class="ItemAlignLeft" valign="top" style="border-right: solid 1px #d0d0d0;">
                                                             <table cellpadding="0" cellspacing="0" width="100%">
                                                                 <tr>
                                                                     <td style="padding-left: 20px; font-weight: bold; height: 24px; text-align: center; color: #000000; background-image: url('ImagesSkin/titleBG.jpg')">
@@ -293,7 +293,7 @@
                                                                                                         <asp:TemplateColumn>
                                                                                                             <ItemStyle Horizontalalign="left" Width="10%" CssClass="itemBorder" />
                                                                                                             <ItemTemplate>
-                                                                                                                <asp:Button ID="BT_ID" runat="server" CssClass="inpu" Text='<%# DataBinder.Eval(Container.DataItem,"ID") %>' />
+                                                                                                                <asp:Button ID="BT_ID" runat="server" CssClass="tt-sms-btn" Text='<%# DataBinder.Eval(Container.DataItem,"ID") %>' />
                                                                                                             </ItemTemplate>
                                                                                                         </asp:TemplateColumn>
                                                                                                         <asp:BoundColumn DataField="IsAllMember">

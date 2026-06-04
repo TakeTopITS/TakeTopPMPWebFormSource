@@ -28,7 +28,7 @@
                 <ContentTemplate>
                     <table style="width: 100%" cellpadding="0" cellspacing="0" class="ItemAlignLeft">
                         <tr>
-                            <td style="border-left: solid 1px #D8D8D8; border-right: solid 1px #D8D8D8;">
+                            <td style="border-left: solid 1px #d0d0d0; border-right: solid 1px #d0d0d0;">
                                 <table width="100%" cellspacing="0">
                                     <tr>
                                         <td style="text-align: left; vertical-align: top;">

@@ -313,7 +313,7 @@
                                                                                         <asp:TemplateColumn HeaderText="部门人员:">
                                                                                             <ItemTemplate>
                                                                                                 <asp:Button ID="BT_ID" runat="server" Text='<%# DataBinder.Eval(Container.DataItem,"ID") %>'
-                                                                                                    CssClass="inpu" /><asp:Button ID="BT_UserName" runat="server" Text='<%# DataBinder.Eval(Container.DataItem,"UserName") %>'
+                                                                                                    CssClass="tt-sms-btn" /><asp:Button ID="BT_UserName" runat="server" Text='<%# DataBinder.Eval(Container.DataItem,"UserName") %>'
                                                                                                         CssClass="inpu" />
                                                                                             </ItemTemplate>
                                                                                             <ItemStyle CssClass="itemBorder" Horizontalalign="left" />

@@ -386,7 +386,7 @@
                                     <ContentTemplate>
                                         <table style="width: 100%" cellpadding="0" cellspacing="0">
                                             <tr>
-                                                <td valign="top" style="padding: 5px 5px 5px 5px; border-right: solid 1px #D8D8D8;">
+                                                <td valign="top" style="padding: 5px 5px 5px 5px; border-right: solid 1px #d0d0d0;">
                                                     <table width="98%" cellpadding="0" cellspacing="0" class="ItemAlignLeft">
                                                         <tr>
                                                             <td>

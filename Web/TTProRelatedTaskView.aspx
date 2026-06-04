@@ -220,10 +220,10 @@
                                                         <ItemTemplate>
                                                             <div style="position: relative; height: 25px; width: 100px; overflow: hidden;">
                                                                 <!-- 黄色底层背景 -->
-                                                                <div style="position: absolute; top: 0; left: 0; width: 100px; height: 25px; background-color: yellow; z-index: 1;"></div>
+                                                                <div style="position: absolute; top: 0; left: 0; width: 100px; height: 25px; background-color: #eceff1; z-index: 1;"></div>
 
                                                                 <!-- 绿色进度条背景 - 新增控件 -->
-                                                                <div id="ProgressBar1" runat="server" style="position: absolute; top: 0; left: 0; height: 25px; background-color: yellowgreen; z-index: 2; max-width: 100px; overflow: hidden;"></div>
+                                                                <div id="ProgressBar1" runat="server" style="position: absolute; top: 0; left: 0; height: 25px; background-color: #78909c; z-index: 2; max-width: 100px; overflow: hidden;"></div>
 
                                                                 <!-- 绿色文字 - 显示百分比数据 -->
                                                                 <div style="position: absolute; top: 0; left: 5px; height: 25px; line-height: 25px; z-index: 3;">
