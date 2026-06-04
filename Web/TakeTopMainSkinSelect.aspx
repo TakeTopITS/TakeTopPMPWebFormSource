@@ -9,7 +9,7 @@
     <link href="css/liucheng.css" rel="stylesheet" type="text/css" />
     <style>
         :root {
-            --primary-color: #f5f5f5;
+            --primary-color: #3e526c;
             --secondary-color: #f5f7fa;
             --accent-color: #057BF9;
             --text-color: #333;
@@ -132,7 +132,7 @@
         }
 
         .theme-button.red {
-            background-color: #d44446;
+            background-color: #e53935;
         }
 
         .theme-button.gold {
@@ -148,6 +148,12 @@
             height: 1px;
             background-color: var(--border-color);
             margin: 30px 0;
+        }
+
+        .active-outline {
+            outline: 4px solid #fff;
+            outline-offset: -4px;
+            box-shadow: 0 0 0 4px #057BF9;
         }
 
         @media (max-width: 768px) {
