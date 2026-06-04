@@ -335,9 +335,7 @@
                         </td>
 
                         <td width="40px" align="center" style="padding-top: 7px; padding-bottom: 5px;">
-                            <asp:ImageButton ID="IM_ExitSystem" ImageUrl="ImagesSkin/ExitAPP.png" Width="25" Height="23"
-                                OnClientClick="javascript:return confirmExit(getExitMsgByLangCode(), this, event, 'Default.aspx');"
-                                runat="server" />
+                            <a href="#" onclick="return confirmExit(getExitMsgByLangCode(), this, event, 'Default.aspx');" class="tt-logout-btn" style="display:inline-flex;align-items:center;gap:4px;padding:4px 10px;font-size:12px;text-decoration:none;white-space:nowrap;">&#x23FB; <asp:Literal ID="LiteralExit" runat="server" Text="<%$ Resources:lang,Exit%>"></asp:Literal></a>
                         </td>
                     </tr>
                 </table>

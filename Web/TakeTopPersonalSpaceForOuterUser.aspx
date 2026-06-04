@@ -239,7 +239,7 @@
                 </asp:UpdatePanel>
                 <table border="0" align="right" cellpadding="0" cellspacing="0">
                     <tr>
-                        <td align="center" style="padding-top: 7px; padding-bottom: 0px;">
+                        <td align="center" style="padding-top: 0px; padding-bottom: 0px; vertical-align: middle;">
                             <a runat="server" class="titleSpan" href="javascript:top.frames[0].frames[2].parent.frames['rightTabFrame'].popShowByURL('TTUpdateUserInfor.aspx', 'UserInformation', 800, 600, window.location);">
                                 <div class="container">
                                     <div id="div_username"><asp:Label ID="LB_UserName" runat="server"></asp:Label></div>
@@ -247,22 +247,20 @@
                                 </div>
                             </a>
                         </td>
-                        <td width="40px" align="center" style="padding-top: 7px; padding-bottom: 5px;">
+                        <td width="40px" align="center" style="padding: 0; vertical-align: middle;">
                             <a runat="server" class="titleSpan tt-topbar-icon-link" href="javascript:top.frames[0].frames[2].parent.frames['rightTabFrame'].popShowByURL('TTSystemAnalystChartRelatedUserSet.aspx?FormType=PersonalSpacePage', 'AnalysisChartSelect', 800, 600, window.location);">
                                 <img src="ImagesSkin/AnalystChart.png" width="22" height="22"></a>
                         </td>
-                        <td width="40px" align="center" style="padding-top: 7px; padding-bottom: 5px;">
+                        <td width="40px" align="center" style="padding: 0; vertical-align: middle;">
                             <a runat="server" class="titleSpan tt-topbar-icon-link" href="javascript:top.frames[0].frames[2].parent.frames['rightTabFrame'].popShowByURL('TTPersonalSpaceModuleSetForUser.aspx', 'ModuleSelect', 800, 600, window.location);">
                                 <img src="ImagesSkin/ModuleSelect.png" width="22" height="22"></a>
                         </td>
-                        <td width="40px" align="center" style="padding-top: 7px; padding-bottom: 5px;">
+                        <td width="40px" align="center" style="padding: 0; vertical-align: middle;">
                             <a runat="server" class="titleSpan tt-topbar-icon-link" href="javascript:top.frames[0].frames[2].parent.frames['rightTabFrame'].popShowByURL('TTAPPQRCodeForLocalSAAS.aspx', '', 800, 600,window.location);">
                                 <img src="ImagesSkin/App.png" width="22" height="22"></a>
                         </td>
-                        <td width="40px" align="center" style="padding-top: 7px; padding-bottom: 5px;">
-                            <asp:ImageButton ID="IM_ExitSystem" ImageUrl="ImagesSkin/ExitAPP.png" Width="25" Height="23"
-                                OnClientClick="javascript:return confirmExit(getExitMsgByLangCode(), this, event, 'Default.aspx');"
-                                runat="server" />
+                        <td width="40px" align="center" style="padding: 0; vertical-align: middle;">
+                            <a href="#" onclick="return confirmExit(getExitMsgByLangCode(), this, event, 'Default.aspx');" class="tt-logout-btn" style="display:inline-flex;align-items:center;gap:4px;padding:4px 10px;font-size:12px;text-decoration:none;white-space:nowrap;">&#x23FB; <asp:Literal ID="LiteralExit" runat="server" Text="<%$ Resources:lang,Exit%>"></asp:Literal></a>
                         </td>
                     </tr>
                 </table>

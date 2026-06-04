@@ -250,8 +250,8 @@
                                                 <td align="right">
                                                     <table>
                                                         <tr>
-                                                            <td width="20px" align="center" style="padding-top: 4px; padding-right: 10px; display: none;"></td>
-                                                            <td align="center" style="padding-top: 0px; padding-bottom: 0px; display: none;">
+                                                            <td width="20px" align="center" style="vertical-align: middle; padding-right: 10px; display: none;"></td>
+                                                            <td align="center" style="vertical-align: middle; padding: 0; display: none;">
                                                                 <a runat="server" class="titleSpan" href="javascript:top.frames[0].frames[2].parent.frames['rightTabFrame'].popShowByURL('TTUpdateUserInfor.aspx', 'UserInformation', 800, 600, window.location);">
                                                                     <div class="container">
                                                                         <div id="div_username">
@@ -263,12 +263,12 @@
                                                                     </div>
                                                                 </a>
                                                             </td>
-                                                            <td width="40px" align="center">
+                                                            <td width="40px" align="center" style="vertical-align: middle;">
                                                                 <a runat="server" class="titleSpan" href="javascript:top.frames[0].frames[2].parent.frames['rightTabFrame'].popShowByURL('TTAPPQRCodeForLocalSAAS.aspx', '', 800, 600,window.location);">
                                                                     <img src="ImagesSkin/App.png" width="22" height="22" alt=""></a>
                                                             </td>
-                                                            <td width="40px" align="center" style="padding-top: 0px; padding-bottom: 5px;">
-                                                                <asp:ImageButton ID="IM_ExitSystem" ImageUrl="ImagesSkin/ExitAPP.png" Width="25" Height="23" OnClientClick="javascript:return confirmExit(getExitMsgByLangCode(), this, event, 'Default.aspx');" runat="server" />
+                                                            <td width="40px" align="center" style="vertical-align: middle; padding: 0;">
+                                                                <a href="#" onclick="return confirmExit(getExitMsgByLangCode(), this, event, 'Default.aspx');" class="tt-logout-btn" style="display:inline-flex;align-items:center;gap:4px;padding:4px 10px;font-size:12px;text-decoration:none;white-space:nowrap;">&#x23FB; <asp:Literal ID="LiteralExit" runat="server" Text="<%$ Resources:lang,Exit%>"></asp:Literal></a>
                                                             </td>
                                                         </tr>
                                                     </table>
