@@ -34,22 +34,22 @@
             }
 
                 #navlist li a:hover {
-                    color: red;
+                    color: #d44446;
                 }
 
             #navlist a:link, #navlist a:visited {
                 display: block;
-                color: #ffffff;
+                color: #333;
                 font-style: normal;
                 font-variant: normal;
                 font-weight: normal;
                 font-size: 14px;
                 line-height: 33px;
-                font-family: Helvetica, Tahoma;
+                font-family: &#930;, Helvetica, Tahoma;
             }
 
             #navlist a.current:link, #nav a.current:visited {
-                color: red;
+                color: #fff;
                 background: #d44446;
                 padding: 3px;
             }
@@ -66,21 +66,29 @@
             align-items: center;
         }
 
-        #nav2, #nav3 {
+        #nav2 {
             width: 98%;
             text-align: center;
+            margin: -5px 0 0 0;
             border: none;
             display: block;
             justify-content: space-around;
             align-items: center;
         }
 
-        #nav2 { margin: -5px 0 0 0; }
-        #nav3 { margin: -22px 0 0 0; }
+        #nav3 {
+            width: 98%;
+            text-align: center;
+            margin: -22px 0 0 0;
+            border: none;
+            display: block;
+            justify-content: space-around;
+            align-items: center;
+        }
 
-        /* --- 核心修改部分 --- */
+        /* 鍏抽敭淇敼锛氫负li娣诲姞鐩稿瀹氫綅 */
         #navlist2 li, #navlist3 li {
-            position: relative; /* 必须：使内部绝对定位的loading参考此容器 */
+            position: relative; 
             flex: 0 0 100%;
             margin: 0;
             list-style: none;
@@ -88,32 +96,12 @@
             border-radius: 8px;
             box-shadow: 0px 0px 15px rgb(0 0 0 / 15%);
             margin-bottom: 10px;
-            overflow: hidden;
+            overflow: hidden; /* 闃叉loading鍦嗚婧㈠嚭 */
         }
 
         #navlist3 li {
             flex: 0 0 49.5%;
         }
-
-        .loading {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 100;
-            background-color: rgba(255, 255, 255, 0.8); /* 半透明背景 */
-            display: flex;          /* 使用Flexbox轻松居中 */
-            align-items: center;    /* 垂直居中 */
-            justify-content: center;/* 水平居中 */
-        }
-
-        .loading img {
-            width: 32px; /* 根据gif实际大小调整 */
-            height: 32px;
-            margin: 0 !important;
-        }
-        /* ------------------ */
 
         ul#navlist2, ul#navlist3 {
             display: flex;
@@ -121,6 +109,11 @@
             align-items: center;
             flex-wrap: wrap;
             padding: 0;
+        }
+
+        .SpaceLine {
+            height: 20px;
+            background-color: #EFF2F7;
         }
 
         .NflexBox {
@@ -132,21 +125,51 @@
             align-content: flex-start;
         }
 
+        #UpdatePanel1 td {
+            border: 0px !important;
+        }
+
         .container {
-            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 4px;
         }
 
         #div_username {
+            display: flex;
             align-items: center;
-            color: white;
+            color: #333;
             font-size: 12px;
+            white-space: nowrap;
+            min-width: 80px;
         }
 
-        #div_updatepersoninfor img {
+        #div_updatepersoninfor { display: none; }
+
+        .TextColor {
+            color: #fff;
+            background: #d44446;
+            padding: 3px;
+        }
+
+        /* 鍏抽敭淇敼锛歀oading鏍峰紡 */
+        .loading {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 100;
+            background-color: rgba(255, 255, 255, 0.8); /* 鍗婇�忔槑鑳屾櫙 */
+            display: flex;
+            align-items: center;    /* 鍨傜洿灞呬腑 */
+            justify-content: center; /* 姘村钩灞呬腑 */
+        }
+
+        .loading img {
+            display: block;
+            width: 32px; /* 鏍规嵁瀹為檯鍥炬爣澶у皬璋冩暣 */
+            height: 32px;
         }
     </style>
     <script type="text/javascript" src="css/tab.js"></script>

@@ -14,7 +14,7 @@
             overflow-y: auto;
         }
 
-        /*--------------------------------¼´Ê±Í¨Ìá---------------------------*/
+        /*--------------------------------ï¿½ï¿½Ê±Í¨ï¿½ï¿½---------------------------*/
         .inpuIMOpen {
             background: url("ImagesSkin/TakeTopIMRunning.gif");
             margin: 0px;
@@ -67,12 +67,12 @@
 
             #navlist a:link, #navlist a:visited {
                 display: block;
-                font: 14px/33px "Î¢ÈíÑÅºÚ", "ºÚÌå";
+                font: 14px/33px "Î¢ï¿½ï¿½ï¿½Åºï¿½", "ï¿½ï¿½ï¿½ï¿½";
                 color: #333;
             }
 
             #navlist a.current:link, #nav a.current:visited {
-                color: #d44446;
+                color: #fff;
                 background: #d44446;
                 padding: 3px;
             }
@@ -83,7 +83,7 @@
 
         #div_username {
             /*  display: flex;*/
-            align-items: center; /* ´¹Ö±¾ÓÖÐ */
+            align-items: center; /* ï¿½ï¿½Ö±ï¿½ï¿½ï¿½ï¿½ */
             color: #333;
             font-size: 12px;
         }
@@ -92,7 +92,7 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%); /* ÈÃÍ¼±êÏà¶ÔÓÚÆä×ÔÉíÖÐÐÄµã¶¨Î» */
+            transform: translate(-50%, -50%); /* ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Äµã¶¨Î» */
         }
     </style>
 
