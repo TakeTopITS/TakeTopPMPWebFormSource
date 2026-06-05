@@ -15,7 +15,7 @@
         $(function () { initSwipeBack(); });
     </script>
     <title>
-        <asp:Literal ID="LiteralTitle" runat="server" Text="<%$ Resources:lang,DSeekIntelligentDataAnalysisTitle%>"></asp:Literal>
+     <%--   <asp:Literal ID="LiteralTitle" runat="server" Text="<%$ Resources:lang,DSeekIntelligentDataAnalysisTitle%>"></asp:Literal>--%>
     </title>
     <style>
         * {
@@ -27,6 +27,12 @@
             font-family: 'Segoe UI',Arial,sans-serif;
             font-size: 13px;
             background: #f5f7fa;
+            -webkit-user-select: text;
+            user-select: text;
+        }
+        body * {
+            -webkit-user-select: text;
+            user-select: text;
         }
 
         .aiw-wrap {
@@ -76,11 +82,16 @@
             border-radius: 6px;
             font-size: 12px;
         }
+        #divResult, #divResult * {
+            -webkit-user-select: text !important;
+            user-select: text !important;
+            -webkit-touch-callout: default !important;
+        }
     </style>
 </head>
-<body>
+<body data-disable-pullrefresh="true">
     <div id="swipeFeedback" class="swipe-feedback">
-        <asp:Label ID="LabelSwipe" runat="server" Text="<%$ Resources:lang,XYHDKHHSYYXXHDKSXBYM%>" />
+        <asp:Label ID="LabelSwipe" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" />
     </div>
     <form id="form1" runat="server">
         <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">
@@ -92,7 +103,7 @@
 
         <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
             <ContentTemplate>
-                <div id="DivID" style="width: 100%; overflow: auto;">
+                <div id="DivID" style="width:100%;height:100vh;overflow-y:auto;overscroll-behavior:contain;">
 
                     <table cellpadding="0" cellspacing="0" width="100%" class="bian">
                         <tr>
@@ -132,13 +143,17 @@
                                                 <div style="display: flex; flex-direction: column; align-items: center; gap: 4px;">
                                                     <asp:ImageButton ID="btnGenerateText" ImageUrl="ImagesSkin/AIGenerate.png"
                                                         runat="server" OnClick="btnGenerateText_Click"
-                                                        OnClientClick="this.src='Images/Processing.gif';" />
-                                                    <asp:ImageButton ID="btnStopSeek" ImageUrl="ImagesSkin/AIStop.png"
-                                                        runat="server" OnClick="btnStopAI_Click" />
+                                                        OnClientClick="showGenerating();" />
+                                                    <img id="imgStop" src="ImagesSkin/AIStop.png" width="36" height="36" style="cursor:pointer;"
+                                                        onclick="stopAI();" />
                                                 </div>
                                             </div>
 
-                                            <CKEditor:CKEditorControl ID="lblGeneratedText" runat="server" Height="100%" Width="100%" Toolbar="" />
+                                            <div id="divResult" style="padding:0 8px 48px 8px;line-height:1.6;word-break:break-word;">
+                                                <asp:Literal ID="lblGeneratedText" runat="server"></asp:Literal>
+                                            </div>
+
+                                            <asp:Button ID="btnStopSeek" runat="server" OnClick="btnStopAI_Click" style="display:none;" />
 
                                         </td>
                                     </tr>
@@ -150,5 +165,15 @@
             </ContentTemplate>
         </asp:UpdatePanel>
     </form>
+
+    <script>
+    function showGenerating() {
+        document.getElementById('<%=btnGenerateText.ClientID%>').src = 'Images/Processing.gif';
+    }
+    function stopAI() {
+        document.getElementById('<%=btnGenerateText.ClientID%>').src = 'ImagesSkin/AIGenerate.png';
+        __doPostBack('<%=btnStopSeek.UniqueID%>', '');
+    }
+    </script>
 </body>
 </html>

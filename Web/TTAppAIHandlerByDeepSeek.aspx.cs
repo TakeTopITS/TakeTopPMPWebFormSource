@@ -14,16 +14,10 @@ public partial class TTAppAIHandlerByDeepSeek : System.Web.UI.Page
 {
     private bool _aiServerAvailable = false;
     string strUserCode;
+    private static System.Threading.CancellationTokenSource _cts;
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        // CKEditor init
-        CKFinder.FileBrowser _FileBrowser = new CKFinder.FileBrowser();
-        _FileBrowser.BasePath = "ckfinder/";
-        Session["PageName"] = "CommonPage";
-        _FileBrowser.SetupCKEditor(lblGeneratedText);
-        lblGeneratedText.Language = Session["LangCode"].ToString();
-
         strUserCode = Session["UserCode"].ToString();
 
         if (!IsPostBack)
@@ -95,6 +89,9 @@ public partial class TTAppAIHandlerByDeepSeek : System.Web.UI.Page
             return;
         }
 
+        // 创建新的取消令牌
+        _cts = new System.Threading.CancellationTokenSource();
+
         try
         {
             strHQL = "Select AIType, URL, AIKey, Model From T_AIInterface Where InUse = 'YES' ";
@@ -124,6 +121,10 @@ public partial class TTAppAIHandlerByDeepSeek : System.Web.UI.Page
         catch (Exception ex)
         {
             lblGeneratedText.Text = ex.Message;
+        }
+        finally
+        {
+            _cts = null;
         }
     }
 
@@ -159,7 +160,8 @@ public partial class TTAppAIHandlerByDeepSeek : System.Web.UI.Page
                     string jsonContent = JsonConvert.SerializeObject(requestBody);
                     HttpContent httpContent = new StringContent(jsonContent, Encoding.UTF8, "application/json");
 
-                    HttpResponseMessage response = client.PostAsync(apiUrl, httpContent).Result;
+                    var cts = _cts ?? new System.Threading.CancellationTokenSource();
+                    HttpResponseMessage response = client.PostAsync(apiUrl, httpContent, cts.Token).Result;
 
                     return ProcessAIResponse(response, "Ollama");
                 }
@@ -210,7 +212,8 @@ public partial class TTAppAIHandlerByDeepSeek : System.Web.UI.Page
                     string jsonContent = JsonConvert.SerializeObject(requestBody);
                     HttpContent httpContent = new StringContent(jsonContent, Encoding.UTF8, "application/json");
 
-                    HttpResponseMessage response = client.PostAsync(apiUrl, httpContent).Result;
+                    var cts = _cts ?? new System.Threading.CancellationTokenSource();
+                    HttpResponseMessage response = client.PostAsync(apiUrl, httpContent, cts.Token).Result;
 
                     return ProcessAIResponse(response, "External");
                 }
@@ -299,5 +302,10 @@ public partial class TTAppAIHandlerByDeepSeek : System.Web.UI.Page
 
     protected void btnStopAI_Click(object sender, EventArgs e)
     {
+        if (_cts != null)
+        {
+            _cts.Cancel();
+            lblGeneratedText.Text = "[Stopped]";
+        }
     }
 }
