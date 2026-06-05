@@ -22,11 +22,11 @@ using ProjectMgt.BLL;
 public partial class TTAssetShipmentReport : System.Web.UI.Page
 {
     string strRelatedType, strRelatedID, strUserCode;
+    private int _totalCount;
 
     protected void Page_Load(object sender, EventArgs e)
     {
         string strHQL;
-        IList lst;
 
         string strDepartString;
 
@@ -50,8 +50,7 @@ public partial class TTAssetShipmentReport : System.Web.UI.Page
 
     protected void BT_Find_Click(object sender, EventArgs e)
     {
-        string strHQL;
-        IList lst;
+        string strSQL;
 
         string strStartTime, strEndTime;
         string strApplicant;
@@ -64,7 +63,6 @@ public partial class TTAssetShipmentReport : System.Web.UI.Page
         string strModelNumber = TB_ModelNumber.Text.Trim();
         string strSpec = TB_Spec.Text.Trim();
 
-
         strStartTime = DateTime.Parse(DLC_StartTime.Text).ToString("yyyyMMdd");
         strEndTime = DateTime.Parse(DLC_EndTime.Text).ToString("yyyyMMdd");
 
@@ -76,73 +74,68 @@ public partial class TTAssetShipmentReport : System.Web.UI.Page
         strModelNumber = "%" + strModelNumber + "%";
         strSpec = "%" + strSpec + "%";
 
-
         if (strRelatedType == "Other")
         {
-            strHQL = "from AssetShipmentReport as assetShipmentReport where ";
-            strHQL += " assetShipmentReport.OperatorName like " + "'" + strApplicant + "'";
-            strHQL += " and assetShipmentReport.AssetCode Like " + "'" + strAssetCode + "'";
-            strHQL += " and assetShipmentReport.AssetName like " + "'" + strAssetName + "'";
-            strHQL += " and assetShipmentReport.ModelNumber Like " + "'" + strModelNumber + "'";
-            strHQL += " and assetShipmentReport.Spec Like " + "'" + strSpec + "'";
-            strHQL += " and to_char(assetShipmentReport.ShipTime,'yyyymmdd')  >= " + "'" + strStartTime + "'" + "  and to_char(assetShipmentReport.ShipTime,'yyyymmdd') <= " + "'" + strEndTime + "'";
-            strHQL += " and assetShipmentReport.OperatorCode in (Select projectMember.UserCode From ProjectMember as projectMember Where projectMember.DepartCode in " + strDepartString + ")";
-            strHQL += " Order by assetShipmentReport.ID DESC";
+            strSQL = "Select * From T_AssetShipmentReport where ";
+            strSQL += " OperatorName like '" + strApplicant + "'";
+            strSQL += " and AssetCode Like '" + strAssetCode + "'";
+            strSQL += " and AssetName like '" + strAssetName + "'";
+            strSQL += " and ModelNumber Like '" + strModelNumber + "'";
+            strSQL += " and Spec Like '" + strSpec + "'";
+            strSQL += " and to_char(ShipTime,'yyyymmdd') >= '" + strStartTime + "' and to_char(ShipTime,'yyyymmdd') <= '" + strEndTime + "'";
+            strSQL += " and OperatorCode in (Select UserCode From T_ProjectMember Where DepartCode in " + strDepartString + ")";
+            strSQL += " Order by ID DESC";
         }
         else
         {
-
-            strHQL = "from AssetShipmentReport as assetShipmentReport where ";
-            strHQL += " assetShipmentReport.OperatorName like " + "'" + strApplicant + "'";
-            strHQL += " and assetShipmentReport.AssetCode Like " + "'" + strAssetCode + "'";
-            strHQL += " and assetShipmentReport.AssetName like " + "'" + strAssetName + "'";
-            strHQL += " and assetShipmentReport.ModelNumber Like " + "'" + strModelNumber + "'";
-            strHQL += " and assetShipmentReport.Spec Like " + "'" + strSpec + "'";
-            strHQL += " and to_char(assetShipmentReport.ShipTime,'yyyymmdd')  >= " + "'" + strStartTime + "'" + "  and to_char(assetShipmentReport.ShipTime,'yyyymmdd') <= " + "'" + strEndTime + "'" + " and assetShipmentReport.RelatedType = " + "'" + strRelatedType + "'" + " and assetShipmentReport.RelatedID = " + strRelatedID;
-            strHQL += " and assetShipmentReport.OperatorCode in (Select projectMember.UserCode From ProjectMember as projectMember Where projectMember.DepartCode in " + strDepartString + ")";
-            strHQL += " Order by assetShipmentReport.ID DESC";
+            strSQL = "Select * From T_AssetShipmentReport where ";
+            strSQL += " OperatorName like '" + strApplicant + "'";
+            strSQL += " and AssetCode Like '" + strAssetCode + "'";
+            strSQL += " and AssetName like '" + strAssetName + "'";
+            strSQL += " and ModelNumber Like '" + strModelNumber + "'";
+            strSQL += " and Spec Like '" + strSpec + "'";
+            strSQL += " and to_char(ShipTime,'yyyymmdd') >= '" + strStartTime + "' and to_char(ShipTime,'yyyymmdd') <= '" + strEndTime + "' and RelatedType = '" + strRelatedType + "' and RelatedID = " + strRelatedID;
+            strSQL += " and OperatorCode in (Select UserCode From T_ProjectMember Where DepartCode in " + strDepartString + ")";
+            strSQL += " Order by ID DESC";
         }
-        AssetShipmentReportBLL assetShipmentReportBLL = new AssetShipmentReportBLL();
-        lst = assetShipmentReportBLL.GetAllAssetShipmentReports(strHQL);
 
-        DataGrid1.DataSource = lst;
+        // SQL分页：仅查询当前页数据，不再加载全部行
+        DataGrid1.CurrentPageIndex = 0;
+        DataSet ds = ShareClass.GetPagedDataSet(strSQL, "T_AssetShipmentReport", 1, DataGrid1.PageSize, out _totalCount);
+        DataGrid1.DataSource = ds;
         DataGrid1.DataBind();
 
-        LB_Sql.Text = strHQL;
+        LB_Sql.Text = strSQL;
     }
 
 
     protected void BT_FindShipmentNO_Click(object sender, EventArgs e)
     {
-        string strHQL, strShipmentNO = "0";
-        IList lst;
+        string strSQL, strShipmentNO = "0";
 
         string strDepartString;
         strDepartString = TakeTopCore.CoreShareClass.InitialDepartmentStringByAuthorityAsset(strUserCode);
 
-        //strShipmentNO = NB_ShipmentNO.Amount.ToString();
+        strSQL = "Select * From T_AssetShipmentReport where ShipmentNO = " + strShipmentNO;
+        strSQL += " and OperatorCode in (Select UserCode From T_ProjectMember Where DepartCode in " + strDepartString + ")";
+        strSQL += " Order by ID DESC";
 
-        strHQL = "from  AssetShipmentReport as assetShipmentReport where assetShipmentReport.ShipmentNO = " + strShipmentNO;
-        strHQL += " and assetShipmentReport.OperatorCode in (Select projectMember.UserCode From ProjectMember as projectMember Where projectMember.DepartCode in " + strDepartString + ")";
-        strHQL += " Order by assetShipmentReport.ID DESC";
-        AssetShipmentReportBLL assetShipmentReportBLL = new AssetShipmentReportBLL();
-        lst = assetShipmentReportBLL.GetAllAssetShipmentReports(strHQL);
-
-        DataGrid1.DataSource = lst;
+        DataSet ds = ShareClass.GetPagedDataSet(strSQL, "T_AssetShipmentReport", 1, DataGrid1.PageSize, out _totalCount);
+        DataGrid1.DataSource = ds;
         DataGrid1.DataBind();
 
-        LB_Sql.Text = strHQL;
+        LB_Sql.Text = strSQL;
     }
+
 
     protected void DataGrid1_PageIndexChanged(object sender, DataGridPageChangedEventArgs e)
     {
         DataGrid1.CurrentPageIndex = e.NewPageIndex;
-        string strHQL = LB_Sql.Text;
+        string strSQL = LB_Sql.Text;
 
-        AssetShipmentReportBLL assetShipmentReportBLL = new AssetShipmentReportBLL();
-        IList lst = assetShipmentReportBLL.GetAllAssetShipmentReports(strHQL);
-
-        DataGrid1.DataSource = lst;
+        // SQL分页：翻页时仅查当前页，不再全量查询
+        DataSet ds = ShareClass.GetPagedDataSet(strSQL, "T_AssetShipmentReport", e.NewPageIndex + 1, DataGrid1.PageSize, out _totalCount);
+        DataGrid1.DataSource = ds;
         DataGrid1.DataBind();
 
         LB_PageIndex.Text = (e.NewPageIndex + 1).ToString();

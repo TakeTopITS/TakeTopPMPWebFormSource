@@ -16064,4 +16064,18 @@ CREATE OR REPLACE VIEW public.v_projectplanlist
 ALTER TABLE public.v_projectplanlist
     OWNER TO postgres;</SQLText>
   </DataBaseUpgradeFile>
+
+
+	<DataBaseUpgradeFile>
+		<ID>3934</ID>
+		<SQLText>
+			Update T_ProjectMember Set CssDirectory = 'CssRed'
+		</SQLText>
+	</DataBaseUpgradeFile>
+	<DataBaseUpgradeFile>
+		<ID>3935</ID>
+		<SQLText>
+			Update T_ProModuleLevel Set IsDeleted = 'YES' Where ModuleName = 'ApplicationInitiation';
+		</SQLText>
+	</DataBaseUpgradeFile>
 </DataBaseUpgradeFiles>

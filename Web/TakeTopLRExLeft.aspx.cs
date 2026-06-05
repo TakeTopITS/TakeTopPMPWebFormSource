@@ -157,10 +157,10 @@ public partial class TakeTopLRExLeft : System.Web.UI.Page
         strUserType = Session["UserType"].ToString();
 
         strHQL = string.Format(@"Select Distinct B.ID,A.ModuleName,A.HomeModuleName,A.ParentModule,A.PageName,A.ModuleType,
-                A.UserType,A.IconURL,A.SortNumber,B.DIYFlow From T_ProModuleLevel A, T_ProModule B Where rtrim(A.ModuleName)
-                ||rtrim(A.ModuleType)||rtrim(A.UserType) = rtrim(B.ModuleName) ||rtrim(B.ModuleType) 
-                ||rtrim(B.UserType)  and A.Visible = 'YES' and A.IsDeleted = 'NO' 
-                and A.ModuleType Not In ('APP','DIYAPP','SITE') and A.UserType = 'INNER' and B.UserType = 'INNER' 
+                A.UserType,A.IconURL,A.SortNumber,B.DIYFlow From T_ProModuleLevel A, T_ProModule B Where rtrim(A.ModuleName) = rtrim(B.ModuleName)
+                and rtrim(A.ModuleType) = rtrim(B.ModuleType) and rtrim(A.UserType) = rtrim(B.UserType)
+                and A.Visible = 'YES' and A.IsDeleted = 'NO'
+                and A.ModuleType Not In ('APP','DIYAPP','SITE') and A.UserType = 'INNER' and B.UserType = 'INNER'
                 and B.UserCode = '{0}' and B.Visible = 'YES' and B.ModuleType Not In ('APP','DIYAPP','SITE') and position(rtrim(A.ModuleName)||',' in '{1}') = 0
                 and A.LangCode = '{2}' Order By A.SortNumber ASC", strUserCode, strForbitModule, strLangCode);
         DataTable dtModule = ShareClass.GetDataSetFromSql(strHQL, "Module").Tables[0];

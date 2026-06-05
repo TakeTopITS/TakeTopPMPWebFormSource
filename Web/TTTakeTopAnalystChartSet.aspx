@@ -86,7 +86,21 @@
         // 全局变量
         var _loadTimeoutId = null;
         var _isDataLoaded = false;
-        var _timeoutMs = 30000; // 30秒超时
+        var _timeoutMs = 30000; // 30秒超时（兜底保护），页面秒出骨架，AJAX异步加载数据
+        var _refreshTimerId = null;
+        var _cacheKey = '';
+
+        // ===== localStorage 缓存 =====
+        function getCacheKey(ct, cn) {
+            var ft = GetQueryValue("FormType") || '';
+            return 'ChartData_' + ft + '_' + ct + '_' + cn;
+        }
+        function getCachedData(key) {
+            try { var r = localStorage.getItem(key); if (!r) return null; var i = JSON.parse(r); if (Date.now() - i.time > 30 * 60 * 1000) { localStorage.removeItem(key); return null; } return i.data; } catch (e) { return null; }
+        }
+        function setCachedData(key, data) {
+            try { localStorage.setItem(key, JSON.stringify({ time: Date.now(), data: data })); } catch (e) { }
+        }
     </script>
 </head>
 
@@ -128,31 +142,60 @@
             var formType = GetQueryValue("FormType");
             var chartType = GetQueryValue("ChartType");
             var chartName = GetQueryValue("ChartName");
+            _cacheKey = getCacheKey(chartType, chartName);
 
             // 卡片类型图表：先显示骨架，再异步加载数据
             if (chartType == 'HRuningProjectStatus' || chartType == 'HDelayProjectStatus' ||
                 chartType == 'HAnnualPaymentStatus' || chartType == 'HAnnualWorkHourStatus' ||
                 chartType == 'HRuningTaskStatus') {
-                // 先显示卡片骨架（带占位符），会自动替换 initialLoading
+
+                // 1. 先显示骨架（带占位符 --）
                 showCardSkeleton(chartType);
-                // 异步加载数据
-                loadCardDataAsync(chartType, chartName);
+
+                // 2. 检查 localStorage 缓存
+                var cached = getCachedData(_cacheKey);
+                if (cached) {
+                    // 有缓存：立即渲染缓存数据
+                    updateCardNumbers(cached);
+                    // 5秒后再异步刷新
+                    _refreshTimerId = setTimeout(function() {
+                        loadCardDataAsync(chartType, chartName);
+                    }, 5000);
+                } else {
+                    // 无缓存：异步加载（数据回来后自动缓存）
+                    loadCardDataAsync(chartType, chartName);
+                }
             } else {
-                // 其他图表类型：显示 loading 后加载
-                $('#m2').html('<div style="text-align:center; padding:50px;"><img src="Images/Processing.gif" alt="Loading..." /></div>');
-                loadChartAsync();
+                // 其他图表类型（ECharts）
+                var cached2 = getCachedData(_cacheKey);
+                if (cached2) {
+                    // 有缓存：立即用缓存数据渲染图表
+                    $('#m2').html('');
+                    var myChart = echarts.init(document.getElementById('m2'));
+                    myChart.showLoading({ text: '刷新中...', effect: 'bubble' });
+                    updateEChart(myChart, chartType, formType, chartName, cached2);
+                    myChart.hideLoading();
+                    // 5秒后异步刷新
+                    _refreshTimerId = setTimeout(function() {
+                        loadChartAsync();
+                    }, 5000);
+                } else {
+                    // 无缓存：显示 loading 后异步加载
+                    $('#m2').html('<div style="text-align:center; padding:50px;"><img src="Images/Processing.gif" alt="Loading..." /></div>');
+                    loadChartAsync();
+                }
             }
         });
 
         // 小加载图标 HTML - 纯白色CSS动画转圈，尺寸8px
         var _cardLoadingIconHtml = "<span class='tt-loading-spinner' style='display:inline-block;width:8px;height:8px;border:2px solid rgba(255,255,255,0.3);border-top-color:#ffffff;border-radius:50%;animation:tt-spin 0.8s linear infinite;vertical-align:middle;margin-left:4px;'></span>";
 
-        // 超时时显示占位符 --
+        // 超时时显示占位符 0
         function showTimeoutPlaceholder() {
             var xEl = document.getElementById("spanXNumber");
             var yEl = document.getElementById("spanYNumber");
             var zEl = document.getElementById("spanZNumber");
-            var placeholder = "--";
+            var placeholder = "0";
             if (xEl) xEl.innerHTML = placeholder;
             if (yEl) yEl.innerHTML = placeholder;
             if (zEl) zEl.innerHTML = placeholder;
@@ -210,9 +253,9 @@
                 "<img src='ImagesSkin/" + config.icon + "' alt='Icon'/>" +
                 "</td>" +
                 "<td align='left'>" +
-                config.title + ": <span id='spanXNumber'>" + _cardLoadingIconHtml + "</span>" +
-                "<p>" + config.sub1 + ": <span id='spanYNumber'>" + _cardLoadingIconHtml + "</span></p>" +
-                "<p>" + config.sub2 + ": <span id='spanZNumber'>" + _cardLoadingIconHtml + "</span></p>" +
+                config.title + ": <span id='spanXNumber'>0" + _cardLoadingIconHtml + "</span>" +
+                "<p>" + config.sub1 + ": <span id='spanYNumber'>0" + _cardLoadingIconHtml + "</span></p>" +
+                "<p>" + config.sub2 + ": <span id='spanZNumber'>0" + _cardLoadingIconHtml + "</span></p>" +
                 "</td>" +
                 "</tr>" +
                 "</table>" +
@@ -235,17 +278,12 @@
                 _loadTimeoutId = null;
             }
 
-            // 启动30秒超时计时器
+            // 启动30秒兜底计时器：超时时显示 0，但不阻止后续数据渲染
             _loadTimeoutId = setTimeout(function() {
                 if (!_isDataLoaded) {
-                    console.log("Card data load timeout:", chartType);
-                    // 超时：显示 -- 而不是错误
+                    console.log("Card data load slow, showing 0 placeholder:", chartType);
                     showTimeoutPlaceholder();
-                    _isDataLoaded = true;
-                    // 通知父页面加载完成（超时也算完成）
-                    if (parent && parent.window && parent.window.chartLoaded) {
-                        parent.window.chartLoaded();
-                    }
+                    // 不设 _isDataLoaded=true，数据返回后仍可正常渲染
                 }
             }, _timeoutMs);
 
@@ -283,6 +321,8 @@
                             }
                             console.log("Parsed data:", transresult);
                             updateCardNumbers(transresult);
+                            // 缓存到 localStorage（30分钟有效）
+                            setCachedData(_cacheKey, transresult);
                         } catch (e) {
                             console.error("Data parsing error:", e, "result:", result);
                             showTimeoutPlaceholder();
@@ -377,6 +417,8 @@
                                 // ECharts类型 - 直接使用原始代码的方式更新
                                 updateEChart(myChart1, chartType, formType, chartName, transresult);
                             }
+                            // 缓存到 localStorage（30分钟有效）
+                            setCachedData(_cacheKey, transresult);
                         } catch (e) {
                             console.error("Data parsing error:", e);
                             showNoData(myChart1, chartType, chartName);

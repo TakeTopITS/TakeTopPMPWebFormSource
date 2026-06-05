@@ -450,6 +450,18 @@ public partial class TakeTopMainTop : System.Web.UI.Page
         string strSuperDepartString;
         strSuperDepartString = LB_SuperDepartString.Text.Trim();
 
+        // 缓存检查：避免每次页面加载都串行执行 N 条自定义 SQL
+        string cacheKey = "FunCount_" + strUserCode + "_" + strLangCode + "_" + strSuperDepartString.GetHashCode();
+        object cached = HttpRuntime.Cache.Get(cacheKey);
+        if (cached != null)
+        {
+            _cachedFunCounts = cached.ToString();
+            lbl_FunInfoDialBoxNum.Text = _cachedFunCounts;
+            string[] tempCached = _cachedFunCounts.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+            int n; foreach (string s in tempCached) { if (int.TryParse(s, out n)) i += n; }
+            return i;
+        }
+
         StringBuilder OldNumList = new StringBuilder();
         FunInforDialBoxBLL funInforDialBoxBLL = new FunInforDialBoxBLL();
         string strHQL_Fun = "From FunInforDialBox as funInforDialBoxBySystem Where funInforDialBoxBySystem.Status = 'Enabled'";
@@ -486,6 +498,10 @@ public partial class TakeTopMainTop : System.Web.UI.Page
             {
                 _cachedFunCounts = OldNumList.ToString().Substring(0, OldNumList.ToString().Length - 1);
                 lbl_FunInfoDialBoxNum.Text = _cachedFunCounts;
+
+                // 写入缓存（2分钟滑动过期，减少数据库压力）
+                HttpRuntime.Cache.Insert(cacheKey, _cachedFunCounts, null,
+                    System.Web.Caching.Cache.NoAbsoluteExpiration, TimeSpan.FromMinutes(2));
 
                 string[] tempOldNumList = _cachedFunCounts.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
 
@@ -746,9 +762,9 @@ public partial class TakeTopMainTop : System.Web.UI.Page
     protected int GetLogonNumber()
     {
         string strHQL;
-        strHQL = "Select * From T_LogonLog";
+        strHQL = "Select COUNT(*) From T_LogonLog";
         DataSet ds = ShareClass.GetDataSetFromSql(strHQL, "T_LogonLog");
-        return ds.Tables[0].Rows.Count;
+        return Convert.ToInt32(ds.Tables[0].Rows[0][0]);
     }
 
     protected int GetActiveUserNumber(int intIntervalTime)
@@ -762,10 +778,10 @@ public partial class TakeTopMainTop : System.Web.UI.Page
         strUserCode = Session["UserCode"].ToString();
 
 
-        strHQL = "Select distinct UserCode,UserName from T_LogonLog  where  LastestTime+" + intIntervalTime.ToString() + "*'1 ms'::interval >= now() ";
+        strHQL = "Select COUNT(DISTINCT UserCode) as Cnt from T_LogonLog where LastestTime+" + intIntervalTime.ToString() + "*'1 ms'::interval >= now() ";
         DataSet ds = ShareClass.GetDataSetFromSqlNOOperateLog(strHQL, "T_LogonLog");
 
-        intActiveUserCount = ds.Tables[0].Rows.Count;
+        intActiveUserCount = Convert.ToInt32(ds.Tables[0].Rows[0]["Cnt"]);
 
         return intActiveUserCount;
     }

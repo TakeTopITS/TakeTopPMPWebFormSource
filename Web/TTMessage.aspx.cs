@@ -36,50 +36,76 @@ public partial class TTMessage : System.Web.UI.Page
 
     protected void GetUNHandledWorkCount(string strUserCode)
     {
+        // 缓存检查：避免每次加载 8 条全表查询（仅需计数无需全量数据）
+        string cacheKey = "TTMsg_Counts_" + strUserCode;
+        object cached = HttpRuntime.Cache.Get(cacheKey);
+        if (cached != null)
+        {
+            string[] counts = ((string)cached).Split('|');
+            if (counts.Length >= 6)
+            {
+                HL_Collaboration.Text = counts[0] + LanguageHandle.GetWord("Tiao");
+                HL_Collaboration.NavigateUrl = "TTCollaborationManage.aspx";
+                HL_HeadLine.Text = counts[1] + LanguageHandle.GetWord("Tiao");
+                HL_HeadLine.NavigateUrl = "TTHeadLine.aspx";
+                HL_UnCheckWL.Text = counts[2] + LanguageHandle.GetWord("Tiao");
+                HL_UnCheckWL.NavigateUrl = "TTWLManage.aspx";
+                HL_UNReadEMail.Text = counts[3] + LanguageHandle.GetWord("Tiao");
+                HL_UNReadEMail.NavigateUrl = "TTMailIndex.aspx";
+                HL_UNAttendMeeting.Text = counts[4] + LanguageHandle.GetWord("Tiao");
+                HL_UNHandledRisk.Text = counts[5] + LanguageHandle.GetWord("Tiao");
+                return;
+            }
+        }
+
         string strHQL;
         IList lst;
         int i = 0;
+        string[] cachedCounts = new string[6];
 
-        strHQL = "from Collaboration as collaboration where ltrim(rtrim(collaboration.Status)) <> 'Closed' and  collaboration.CoID in  ";
-        strHQL += "( select collaborationLog.CoID from CollaborationLog as collaborationLog,CollaborationMember as collaborationMember where collaborationLog.CoID = collaborationMember.CoID ";
-        strHQL += " and collaborationLog.CreateTime > collaborationMember.LastLoginTime and rtrim(ltrim(collaborationLog.UserCode)) <> " + "'" + strUserCode + "'" + " and rtrim(ltrim(collaborationMember.UserCode))= " + "'" + strUserCode + "'" + ")";
-        strHQL += " Order by collaboration.CoID DESC";
-        CollaborationBLL collaborationBLL = new CollaborationBLL();
-        lst = collaborationBLL.GetAllCollaborations(strHQL);
-        HL_Collaboration.Text = lst.Count.ToString() + LanguageHandle.GetWord("Tiao");
+        // 改用 COUNT 查询替代加载全部实体
+        DataSet dsCount;
+        strHQL = "Select COUNT(*) From T_Collaboration where ltrim(rtrim(Status)) <> 'Closed' and CoID in ";
+        strHQL += "( select collaborationLog.CoID from T_CollaborationLog collaborationLog,T_CollaborationMember collaborationMember where collaborationLog.CoID = collaborationMember.CoID ";
+        strHQL += " and collaborationLog.CreateTime > collaborationMember.LastLoginTime and rtrim(ltrim(collaborationLog.UserCode)) <> '" + strUserCode + "' and rtrim(ltrim(collaborationMember.UserCode))= '" + strUserCode + "')";
+        dsCount = ShareClass.GetDataSetFromSql(strHQL, "Count");
+        cachedCounts[0] = dsCount.Tables[0].Rows[0][0].ToString();
+        HL_Collaboration.Text = cachedCounts[0] + LanguageHandle.GetWord("Tiao");
         HL_Collaboration.NavigateUrl = "TTCollaborationManage.aspx";
 
-        strHQL = "from HeadLine as headLine";
-        HeadLineBLL headLineBLL = new HeadLineBLL();
-        lst = headLineBLL.GetAllHeadLines(strHQL);
-        HL_HeadLine.Text = lst.Count.ToString() + LanguageHandle.GetWord("Tiao");
+        strHQL = "Select COUNT(*) From T_HeadLine";
+        dsCount = ShareClass.GetDataSetFromSql(strHQL, "Count");
+        cachedCounts[1] = dsCount.Tables[0].Rows[0][0].ToString();
+        HL_HeadLine.Text = cachedCounts[1] + LanguageHandle.GetWord("Tiao");
         HL_HeadLine.NavigateUrl = "TTHeadLine.aspx";
 
-        strHQL = "from WorkFlowStepDetail as workFlowStepDetail where workFlowStepDetail.Status in ('InProgress','Reviewing','Signing','ReReview') ";
-        strHQL += " and workFlowStepDetail.OperatorCode = " + "'" + strUserCode + "'";
-        strHQL += " and workFlowStepDetail.WLID in (Select workFlow.WLID from WorkFlow as workFlow where workFlow.Status not in ('Updating','Closed','CaseClosed'))";
-        strHQL += " Order by workFlowStepDetail.StepID DESC";
-        WorkFlowStepDetailBLL workFlowStepDetailBLL = new WorkFlowStepDetailBLL();
-        lst = workFlowStepDetailBLL.GetAllWorkFlowStepDetails(strHQL);
-        HL_UnCheckWL.Text = lst.Count.ToString() + LanguageHandle.GetWord("Tiao");
+        strHQL = "Select COUNT(*) From T_WorkFlowStepDetail where Status in ('InProgress','Reviewing','Signing','ReReview') ";
+        strHQL += " and OperatorCode = '" + strUserCode + "'";
+        strHQL += " and WLID in (Select WLID from T_WorkFlow where Status not in ('Updating','Closed','CaseClosed'))";
+        dsCount = ShareClass.GetDataSetFromSql(strHQL, "Count");
+        cachedCounts[2] = dsCount.Tables[0].Rows[0][0].ToString();
+        HL_UnCheckWL.Text = cachedCounts[2] + LanguageHandle.GetWord("Tiao");
         HL_UnCheckWL.NavigateUrl = "TTWLManage.aspx";
 
-
-        strHQL = "FROM Mails as mails where mails.ReaderFlag = 0 and mails.UserCode = " + "'" + strUserCode + "'";
-        MailsBLL mailsBLL = new MailsBLL();
-        lst = mailsBLL.GetAllMailss(strHQL);
-        HL_UNReadEMail.Text = lst.Count.ToString() + LanguageHandle.GetWord("Tiao");
+        strHQL = "Select COUNT(*) From T_Mails where ReaderFlag = 0 and UserCode = '" + strUserCode + "'";
+        dsCount = ShareClass.GetDataSetFromSql(strHQL, "Count");
+        cachedCounts[3] = dsCount.Tables[0].Rows[0][0].ToString();
+        HL_UNReadEMail.Text = cachedCounts[3] + LanguageHandle.GetWord("Tiao");
         HL_UNReadEMail.NavigateUrl = "TTMailIndex.aspx";
 
-        strHQL = "from Meeting as meeting where meeting.ID in ( select meetingAttendant.MeetingID from MeetingAttendant as meetingAttendant where meetingAttendant.UserCode = " + "'" + strUserCode + "'" + ") and meeting.EndTime > now() order by meeting.ID DESC ";
-        MeetingBLL meetingBLL = new MeetingBLL();
-        lst = meetingBLL.GetAllMeetings(strHQL);
-        HL_UNAttendMeeting.Text = lst.Count.ToString() + LanguageHandle.GetWord("Tiao");
+        strHQL = "Select COUNT(*) From T_Meeting where ID in ( select MeetingID from T_MeetingAttendant where UserCode = '" + strUserCode + "') and EndTime > now()";
+        dsCount = ShareClass.GetDataSetFromSql(strHQL, "Count");
+        cachedCounts[4] = dsCount.Tables[0].Rows[0][0].ToString();
+        HL_UNAttendMeeting.Text = cachedCounts[4] + LanguageHandle.GetWord("Tiao");
 
-        strHQL = "from ProjectRisk as projectRisk where projectRisk.Status not in ('Resolved','Occurred') and projectRisk.ProjectID in (select project.ProjectID from Project as project where PMCode = " + "'" + strUserCode + "'" + ")";
-        ProjectRiskBLL projectRiskBLL = new ProjectRiskBLL();
-        lst = projectRiskBLL.GetAllProjectRisks(strHQL);
-        HL_UNHandledRisk.Text = lst.Count.ToString() + LanguageHandle.GetWord("Tiao");
+        strHQL = "Select COUNT(*) From T_ProjectRisk where Status not in ('Resolved','Occurred') and ProjectID in (select ProjectID from T_Project where PMCode = '" + strUserCode + "')";
+        dsCount = ShareClass.GetDataSetFromSql(strHQL, "Count");
+        cachedCounts[5] = dsCount.Tables[0].Rows[0][0].ToString();
+        HL_UNHandledRisk.Text = cachedCounts[5] + LanguageHandle.GetWord("Tiao");
+
+        // 写入缓存（3分钟滑动过期）
+        HttpRuntime.Cache.Insert(cacheKey, string.Join("|", cachedCounts), null,
+            System.Web.Caching.Cache.NoAbsoluteExpiration, TimeSpan.FromMinutes(3));
 
         if (lst.Count > 0)
             i = 1;

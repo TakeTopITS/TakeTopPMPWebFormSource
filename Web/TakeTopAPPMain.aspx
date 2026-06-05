@@ -16,7 +16,10 @@
         /* ����չ��Ч�� */
         html, body {
             margin: 0;
+            padding: 0;
             background-color: #EFF2F7;
+            height: 100%;
+            overflow: hidden;
         }
 
         a {
@@ -249,14 +252,13 @@
 
         /*����*/
         #nav1 {
-            /* position: absolute;*/
-            margin-bottom: 20px;
+            margin-bottom: 0;
         }
 
 
         .Marauto {
             width: 92%;
-            margin: 20px auto;
+            margin: 0 auto;
         }
 
         .boxline {
@@ -308,8 +310,12 @@
             margin-top: 5px;
         }
             #AboveDiv {
+            height: 100vh;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
             padding-top: 60px;
-            padding-bottom: 45px;
+            padding-bottom: 60px;
+            box-sizing: border-box;
         }
 </style>
 
@@ -345,18 +351,18 @@
                         </center>
                     </div>
 
-                    <div id="Div3" style="width: 100%; height: 50px; overflow: auto;">
+                    <div id="Div3" style="width: 100%; height: 0px; overflow: auto;">
                     </div>
                     <div id="Div4" style="width: 100%; height: 0px; overflow: auto;">
                     </div>
                     <div class="Marauto">
                         <div id="nav1" runat="server">
                             <!-- <div class="cline"></div> -->
-                            <iframe id="IF_ChartList" name="IF_NewsList" src='TTAPPPersonalSpaceAnalysisChart.aspx?Flag=<%=Session["SkinFlag"].ToString()%>' style="width: 100%; height: 170px; text-align: center;" frameborder="no" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+                            <iframe id="IF_ChartList" name="IF_NewsList" src='TTAPPPersonalSpaceAnalysisChart.aspx?Flag=<%=Session["SkinFlag"].ToString()%>' style="width: 100%; height: 170px; text-align: center; display: block;" frameborder="no" marginwidth="0" marginheight="0" scrolling="no"></iframe>
                         </div>
 
 
-                        <div id="Div1" style="width: 100%; height: 800px; overflow: auto;">
+                        <div id="Div1" style="width: 100%; min-height: 300px; overflow: visible;">
 
                             <!-- ����չ��Ч��start -->
                             <asp:Literal ID="LT_Result" runat="server"></asp:Literal>
@@ -374,13 +380,14 @@
 
                                     <table width="100%" border="0" cellspacing="0" cellpadding="0" align="right">
                                         <tr>
-                                            <td align="center" width="50%">
-                                                <a class="titleSpan" href="TTAPPUpdateUserInfor.aspx">
-                                                    <img id="IMG_UpdateUserInfor" src="ImagesSkin/PersonalInfor.png" width="20" height="20" />
+                                            <td align="center" width="34%">
+                                                <a class="titleSpan" href="TTAppAIHandlerByDeepSeek.aspx">
+                                                   <img id="IMG_AIChat" src="ImagesSkin/AIAPP.png" width="20" height="20" />
                                                 </a>
                                             </td>
 
-                                            <td align="center" width="50%">
+
+                                            <td align="center" width="33%">
                                                 <a href="#" class="titleSpan" onclick="javascript:return confirmExit(getExitMsgByLangCode(), this, event, 'DefaultAPP.html');">
                                                     <img id="IMG_ExitSystem" src="ImagesSkin/ExitAPP.png" width="20" height="20" />
                                                 </a>

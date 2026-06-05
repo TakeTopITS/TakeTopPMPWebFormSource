@@ -33,6 +33,8 @@ using TakeTopSecurity;
 /// </summary>
 public static class DatabaseUpdateHandle
 {
+    private static readonly object _upgradeLock = new object();
+
     //判断是否存在需要升级的记录
     // 判断是否存在需要升级的记录
     public static bool CheckIsExistedUpgratedRecordUpgradeXMLFile()
@@ -162,13 +164,12 @@ public static class DatabaseUpdateHandle
             {
                 strHQL = "Select * From T_ProjectMember Where UserCode = 'SAMPLE' or UserCode = 'ADMIN'";
                 DataSet ds = CoreShareClass.GetDataSetFromSql(strHQL, "T_ProjectMember");
-                if (ds.Tables[0].Rows.Count == 0)
-                {
-                    return false;
-                }
+                // 新数据库没有用户时不能跳过升级，因为建表/初始数据正是升级脚本要做的
+                // 仅在表存在且确实没有SAMPLE/ADMIN时跳过（非新安装场景）
             }
             catch
             {
+                // 表不存在 = 新安装，继续执行升级（建表等）
             }
 
             //如果是基础版，那么执行升级到企业版的补丁代码
@@ -422,6 +423,20 @@ public static class DatabaseUpdateHandle
 
         if (intUpdateColumnRunMarkInDB < intUpdateColumnRunMark)
         {
+            // 轻量锁：只保护"谁来执行"的决定，不阻塞实际升级
+            bool iAmTheOne = false;
+            lock (_upgradeLock)
+            {
+                if (DatabaseUpdateHandle.GetUpdateColumnValueCodeRunmark() < intUpdateColumnRunMark)
+                {
+                    iAmTheOne = true;
+                }
+            }
+
+            if (!iAmTheOne) return; // 其他用户正在执行或已执行完毕
+
+            bool upgradeSuccess = false;
+
             try
             {
                 //补齐系统启动所需要的数据表缺的字段
@@ -437,15 +452,21 @@ public static class DatabaseUpdateHandle
                 //LogClass.WriteLogFile(err.Message.ToString());
             }
 
-
             try
             {
                 //如果存在升级语句，那么升级数据库
-                UpgradeDataBase();
+                upgradeSuccess = UpgradeDataBase();
             }
             catch (Exception err)
             {
                 LogClass.WriteLogFile("Error page: " + err.Message.ToString() + "\n" + err.StackTrace);
+            }
+
+            // 只有 UpgradeDataBase 成功才继续后续步骤并设标记
+            if (!upgradeSuccess)
+            {
+                LogClass.WriteLogFile("UpgradeDataBase failed or returned false, skipping mark set. Will retry on next login.");
+                return;
             }
 
             try
@@ -461,9 +482,6 @@ public static class DatabaseUpdateHandle
 
                 //更新带有Authority字段Table的Authority的值到英文核心
                 DatabaseUpdateHandle.UpdateTableAuthority();
-
-                ////执行模组流程定义英文化的语句
-                //UpdateModulesDefinition();
 
                 //语句执行完毕，设置标记
                 DatabaseUpdateHandle.SetUpdateColumnValueCodeRunmark(intUpdateColumnRunMark);
@@ -485,9 +503,23 @@ public static class DatabaseUpdateHandle
 
         if (intUpdateModuleRunMarkInDB < intUpdateModuleRunMark)
         {
-            //如果存在升级语句，那么升级数据库
-            if (UpgradeDataBase() == false)
+            // 轻量锁：只保护"谁来执行"的决定
+            bool iAmTheOne = false;
+            lock (_upgradeLock)
             {
+                if (DatabaseUpdateHandle.GetUpdateModuleNameCodeRunMark() < intUpdateModuleRunMark)
+                {
+                    iAmTheOne = true;
+                }
+            }
+
+            if (!iAmTheOne) return;
+
+            //如果存在升级语句，那么升级数据库
+            if (!UpgradeDataBase())
+            {
+                LogClass.WriteLogFile("UpgradeDataBase (module name phase) failed, skipping mark set. Will retry on next login.");
+                return;
             }
 
             try
@@ -503,7 +535,6 @@ public static class DatabaseUpdateHandle
                 LogClass.WriteLogFile("Error page: " + err.Message.ToString() + "\n" + err.StackTrace);
 
             }
-
         }
     }
 

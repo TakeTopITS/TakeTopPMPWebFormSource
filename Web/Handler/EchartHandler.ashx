@@ -156,7 +156,9 @@ public class EchartHandler : IHttpHandler, IRequiresSessionState
             }
             else
             {
-                strHQL = "Select A.ChartName,(Select SqlCode From T_SystemAnalystChartManagement Where ChartName = A.ChartName ) as SqlCode,(Select ChartType From T_SystemAnalystChartManagement Where ChartName = A.ChartName ) as ChartType  From T_SystemAnalystChartRelatedUser A ";
+                // 用 INNER JOIN 替代关联子查询，避免 N+1 子查询
+                strHQL = "Select A.ChartName, C.SqlCode, C.ChartType From T_SystemAnalystChartRelatedUser A";
+                strHQL += " INNER JOIN T_SystemAnalystChartManagement C ON C.ChartName = A.ChartName";
                 strHQL += " Where A.UserCode = '" + strUserCode + "' and A.FormType = '" + strFormType + "' and A.ChartName = '" + strChartName + "'";
                 strHQL += " Order By A.SortNumber ASC";
             }

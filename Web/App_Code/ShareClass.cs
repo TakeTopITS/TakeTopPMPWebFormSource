@@ -68,7 +68,7 @@ public static class ShareClass
         //
     }
 
-    public static string SystemVersionID = "V2026.5.16";
+    public static string SystemVersionID = "V2026.6.5";
 
     public static string SystemLatestLoginUser = "";
     public static string SystemDBer = "";
@@ -225,10 +225,9 @@ public static class ShareClass
                         A.SortNumber,
                         A.DIYFlow
                     FROM T_ProModuleLevel A
-                    INNER JOIN T_ProModule B ON 
-                        RTRIM(A.ModuleName) || RTRIM(A.ModuleType) || RTRIM(A.UserType) = 
-                        RTRIM(B.ModuleName) || RTRIM(B.ModuleType) || RTRIM(B.UserType)
-                    WHERE (LENGTH(B.ModuleDefinition) > 0 OR LENGTH(A.ModuleDefinition) > 0) 
+                    INNER JOIN T_ProModule B ON
+                        RTRIM(A.ModuleName) = RTRIM(B.ModuleName) AND RTRIM(A.ModuleType) = RTRIM(B.ModuleType) AND RTRIM(A.UserType) = RTRIM(B.UserType)
+                    WHERE (LENGTH(B.ModuleDefinition) > 0 OR LENGTH(A.ModuleDefinition) > 0)
                         AND B.ID = {0}", strModuleFlowID, HttpContext.Current.Session["LangCode"].ToString());
                     //LogClass.WriteLogFile(strHQL);
 
@@ -332,10 +331,9 @@ public static class ShareClass
                         A.SortNumber,
                         A.DIYFlow
                     FROM T_ProModuleLevel A
-                    INNER JOIN T_ProModule B ON 
-                        RTRIM(A.ModuleName) || RTRIM(A.ModuleType) || RTRIM(A.UserType) = 
-                        RTRIM(B.ModuleName) || RTRIM(B.ModuleType) || RTRIM(B.UserType)
-                    WHERE (LENGTH(B.ModuleDefinition) > 0 OR LENGTH(A.ModuleDefinition) > 0) 
+                    INNER JOIN T_ProModule B ON
+                        RTRIM(A.ModuleName) = RTRIM(B.ModuleName) AND RTRIM(A.ModuleType) = RTRIM(B.ModuleType) AND RTRIM(A.UserType) = RTRIM(B.UserType)
+                    WHERE (LENGTH(B.ModuleDefinition) > 0 OR LENGTH(A.ModuleDefinition) > 0)
                         AND B.ID = {0}", strModuleFlowID, HttpContext.Current.Session["LangCode"].ToString());
 
                 DataSet ds = ShareClass.GetDataSetFromSql(strHQL, "T_ProModuleLevel");
@@ -17961,6 +17959,52 @@ public static class ShareClass
     public static DataSet GetDataSetFromSqlNOOperateLog(string strHQL, string strTableName)
     {
         return GetDataSetInternal(strHQL, strTableName, false);
+    }
+
+    /// <summary>
+    /// SQL分页查询：自动包装 LIMIT/OFFSET，返回当前页数据 + 总行数
+    /// </summary>
+    /// <param name="sql">原始SQL（SELECT ... FROM ... WHERE ... ORDER BY ...）</param>
+    /// <param name="tableName">表名</param>
+    /// <param name="pageIndex">页码（1-based）</param>
+    /// <param name="pageSize">每页行数</param>
+    /// <param name="totalCount">输出：总行数</param>
+    /// <returns>当前页的DataSet</returns>
+    public static DataSet GetPagedDataSet(string sql, string tableName, int pageIndex, int pageSize, out int totalCount)
+    {
+        totalCount = 0;
+
+        // 1. 获取总行数
+        string countSql = "SELECT COUNT(*) FROM (" + sql + ") AS _paged_count";
+        DataSet dsCount = GetDataSetFromSql(countSql, "_Count");
+        totalCount = Convert.ToInt32(dsCount.Tables[0].Rows[0][0]);
+
+        if (totalCount == 0)
+            return new DataSet();
+
+        // 2. 获取当前页数据
+        int offset = (pageIndex - 1) * pageSize;
+        string pagedSql = sql + " LIMIT " + pageSize + " OFFSET " + offset;
+        return GetDataSetFromSql(pagedSql, tableName);
+    }
+
+    /// <summary>
+    /// SQL分页查询（不记录操作日志版本）
+    /// </summary>
+    public static DataSet GetPagedDataSetNOOperateLog(string sql, string tableName, int pageIndex, int pageSize, out int totalCount)
+    {
+        totalCount = 0;
+
+        string countSql = "SELECT COUNT(*) FROM (" + sql + ") AS _paged_count";
+        DataSet dsCount = GetDataSetFromSqlNOOperateLog(countSql, "_Count");
+        totalCount = Convert.ToInt32(dsCount.Tables[0].Rows[0][0]);
+
+        if (totalCount == 0)
+            return new DataSet();
+
+        int offset = (pageIndex - 1) * pageSize;
+        string pagedSql = sql + " LIMIT " + pageSize + " OFFSET " + offset;
+        return GetDataSetFromSqlNOOperateLog(pagedSql, tableName);
     }
 
     // 运行SQL语句

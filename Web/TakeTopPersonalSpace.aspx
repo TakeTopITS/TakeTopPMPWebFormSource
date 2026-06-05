@@ -267,7 +267,7 @@
                             <a runat="server" class="titleSpan" href="javascript:top.frames[0].frames[2].parent.frames['rightTabFrame'].popShowByURL('TTUpdateUserInfor.aspx', 'UserInformation', 800, 600, window.location);">
                                 <div class="container">
                                     <div id="div_username">
-                                        <asp:Label ID="LB_UserName" runat="server"></asp:Label>
+                                        <img src="ImagesSkin/UserAvatar.png" width="18" height="18" style="vertical-align:middle;margin-right:4px;border-radius:50%;"><asp:Label ID="LB_UserName" runat="server"></asp:Label>
                                     </div>
                                     <div id="div_updatepersoninfor">
                                         <img src="ImagesSkin/UpdatePersonInfor.png" width="22" height="22">
@@ -283,7 +283,7 @@
                             <a runat="server" class="titleSpan tt-topbar-icon-link" href="javascript:top.frames[0].frames[2].parent.frames['rightTabFrame'].popShowByURL('TTPersonalSpaceModuleSetForUser.aspx', 'ModuleSelect', 800, 600, window.location);">
                                 <img src="ImagesSkin/ModuleSelect.png" width="25" height="25"></a>
                         </td>
-                        <td id="tdAI" runat="server" width="40px" align="center" style="padding-top: 7px; padding-bottom: 5px;">
+                        <td width="40px" align="center" style="vertical-align:middle;">
                             <a id="a_AIURL" runat="server" class="titleSpan tt-topbar-icon-link" href="javascript:top.frames[0].frames[2].parent.frames['rightTabFrame'].openRightLayer('TTAIHandlerByDeepSeek.aspx','TakeTopAI');" >
                                 <img src="ImagesSkin/AI.png" width="22" height="22" alt="">
                             </a>

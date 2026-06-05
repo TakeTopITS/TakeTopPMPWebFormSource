@@ -369,7 +369,7 @@
             margin: 10px auto;
             width: 100%;
         }
-        
+
         /* AI服务器状态样式 */
         .ai-server-status {
             margin: 10px 0;
@@ -391,7 +391,7 @@
                 border: 1px solid #f5c6cb;
                 color: #721c24;
             }
-            
+
         /* 配置按钮区域样式 */
         .config-button-area {
             margin-top: 20px;
@@ -399,7 +399,7 @@
             border-top: 1px solid #e0e0e0;
             text-align: center;
         }
-        
+
         .config-link {
             color: #4F46E5;
             text-decoration: none;
@@ -414,13 +414,12 @@
             background: #eef2ff;
             transition: all 0.3s;
         }
-        
-        .config-link:hover {
-            background: #4F46E5;
-            color: white;
-            text-decoration: none;
-        }
 
+            .config-link:hover {
+                background: #4F46E5;
+                color: white;
+                text-decoration: none;
+            }
     </style>
 
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
@@ -602,7 +601,7 @@
     <form id="form1" runat="server">
         <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">
         </asp:ScriptManager>
-        
+
         <!-- AI服务器状态显示 -->
         <div id="aiServerStatusContainer" runat="server" visible="false" class="ai-server-status">
             <asp:Label ID="lblAIServerStatus" runat="server"></asp:Label>
@@ -619,7 +618,7 @@
                 </p>
             </div>
 
-        
+
             <!-- 模式切换器 -->
             <div id="divModeSwitcher" runat="server" class="mode-switcher">
                 <asp:Button ID="BT_Simple" runat="server" CssClass="mode-button active" OnClick="BT_Simple_Click" Text="<%$ Resources:lang,DSeekSmartChat%>" />
@@ -662,10 +661,13 @@
 
                     <!-- 数据分析模式 -->
                     <div id="divDataAnalysisMode" class="content-area" runat="server" visible="false">
-                        <asp:TextBox ID="txtTableNames" runat="server" Style="display:none;"></asp:TextBox>
-                        <asp:Button ID="btnSaveTables" runat="server" Style="display:none;" OnClick="btnSaveTables_Click" />
-                        <asp:Button ID="btnLoadTables" runat="server" Style="display:none;" OnClick="btnLoadTables_Click" />
-                        <div style="display:none;"><asp:Panel ID="pnlTableList" runat="server" Visible="false"><asp:CheckBoxList ID="cblTables" runat="server"></asp:CheckBoxList></asp:Panel></div>
+                        <asp:TextBox ID="txtTableNames" runat="server" Style="display: none;"></asp:TextBox>
+                        <asp:Button ID="btnSaveTables" runat="server" Style="display: none;" OnClick="btnSaveTables_Click" />
+                        <asp:Button ID="btnLoadTables" runat="server" Style="display: none;" OnClick="btnLoadTables_Click" />
+                        <div style="display: none;">
+                            <asp:Panel ID="pnlTableList" runat="server" Visible="false">
+                                <asp:CheckBoxList ID="cblTables" runat="server"></asp:CheckBoxList></asp:Panel>
+                        </div>
 
                         <!-- 分析需求区域 -->
                         <div class="config-section">
@@ -674,7 +676,7 @@
                                 <asp:Literal ID="LiteralAnalysisRequirementDescription" runat="server" Text="<%$ Resources:lang,DSeekAnalysisRequirementDescription%>"></asp:Literal>
                             </div>
 
-                            <div class="analysis-tips" style="display:none;">
+                            <div class="analysis-tips" style="display: none;">
                                 <strong>
                                     <asp:Literal ID="LiteralAnalysisRequirementExamples" runat="server" Text="<%$ Resources:lang,DSeekAnalysisRequirementExamples%>"></asp:Literal></strong>
                                 <ul>
@@ -689,9 +691,7 @@
                                 <asp:TextBox ID="txtAnalysisRequirement" runat="server"
                                     CssClass="config-textarea"
                                     placeholder="<%$ Resources:lang,ShuRuNiDeFenXiXuQiu%>"></asp:TextBox>
-                                <div class="hint-text">
-                                    <asp:Literal ID="LiteralAnalysisCustomizedReports" runat="server" Text="<%$ Resources:lang,DSeekAnalysisCustomizedReports%>"></asp:Literal>
-                                </div>
+
                             </div>
 
                             <div class="action-buttons">
@@ -754,8 +754,10 @@
                             <div id="recommendationsContent" class="result-content">
                                 <asp:Literal ID="litRecommendations" runat="server"></asp:Literal>
                             </div>
-
-                            <div style="text-align: right; margin-top: 20px;">
+                            <div class="hint-text" style="display:none;">
+                                <asp:Literal ID="LiteralAnalysisCustomizedReports" runat="server" Text="<%$ Resources:lang,DSeekAnalysisCustomizedReports%>"></asp:Literal>
+                            </div>
+                            <div style="text-align: right; margin-top: 20px;display:none;">
                                 <button type="button" class="btn btn-primary" onclick="exportAnalysis()">
                                     📄
                                     <asp:Literal ID="LiteralExportReport" runat="server" Text="<%$ Resources:lang,DSeekExportReport%>"></asp:Literal></button>
@@ -799,9 +801,9 @@
                 </div>
             </div>
         </div>
-        
-    
-</form>
+
+
+    </form>
     <script type="text/javascript" language="javascript">var cssDirectory = '<%=Session["CssDirectory"] %>'; var oLink = document.getElementById('mainCss'); oLink.href = 'css/' + cssDirectory + '/' + 'bluelightmain.css';</script>
 </body>
 </html>

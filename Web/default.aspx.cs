@@ -413,7 +413,9 @@ public partial class _default : System.Web.UI.Page
                 //运行一些特殊的代码
                 ShareClass.RunSpecificalCodeForLogin();
 
-                // 异步预计算个人空间分析图数据（不阻塞登录流程）
+                // 异步预计算个人空间分析图数据 — 已禁用：图表改为按需懒加载，EchartHandler 自带缓存
+                // 原后台线程预计算占用大量DB连接且Session不可靠，改为首次请求时按需取数+缓存
+                /*
                 try
                 {
                     System.Threading.ThreadPool.QueueUserWorkItem(state =>
@@ -426,6 +428,7 @@ public partial class _default : System.Web.UI.Page
                     });
                 }
                 catch { }
+                */
 
                 if (strUserType != "OUTER")
                 {
