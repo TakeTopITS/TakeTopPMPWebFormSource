@@ -59,8 +59,6 @@ public partial class TTMessage : System.Web.UI.Page
         }
 
         string strHQL;
-        IList lst;
-        int i = 0;
         string[] cachedCounts = new string[6];
 
         // 改用 COUNT 查询替代加载全部实体
@@ -106,34 +104,5 @@ public partial class TTMessage : System.Web.UI.Page
         // 写入缓存（3分钟滑动过期）
         HttpRuntime.Cache.Insert(cacheKey, string.Join("|", cachedCounts), null,
             System.Web.Caching.Cache.NoAbsoluteExpiration, TimeSpan.FromMinutes(3));
-
-    
-        strHQL = "from TaskAssignRecord as taskAssignRecord where taskAssignRecord.OperatorCode = " + "'" + strUserCode + "'";
-        strHQL += " and taskAssignRecord.Status in ('Plan','Accepted','InProgress') and taskAssignRecord.ID not in (select taskAssignRecord.PriorID from TaskAssignRecord as taskAssignRecord) ";
-        strHQL += " and taskAssignRecord.TaskID in (select projectTask.TaskID from ProjectTask as projectTask where projectTask.Status <> 'Closed')";
-        strHQL += " and taskAssignRecord.TaskID in (select projectTask.TaskID from ProjectTask as projectTask where projectTask.ProjectID in (select project.ProjectID from Project as project where project.Status not in ('New','Hided','Deleted','Archived')))";
-        strHQL += " Order by taskAssignRecord.ID DESC";
-        TaskAssignRecordBLL taskAssignRecordBLL = new TaskAssignRecordBLL();
-        lst = taskAssignRecordBLL.GetAllTaskAssignRecords(strHQL);
-        HL_UNHnadledTask.Text = lst.Count.ToString() + LanguageHandle.GetWord("Tiao");
-
-    
-
-        strHQL = "from ReqAssignRecord as reqAssignRecord where reqAssignRecord.OperatorCode = " + "'" + strUserCode + "'";
-        strHQL += " and reqAssignRecord.Status in ('Plan','Accepted','InProgress') and reqAssignRecord.ID not in (select reqAssignRecord.PriorID from ReqAssignRecord as reqAssignRecord) ";
-        strHQL += " and reqAssignRecord.ReqID in (select requirement.ReqID from Requirement as requirement where requirement.Status not in ('Closed','Hided','Deleted','Archived'))";
-        strHQL += " Order by reqAssignRecord.ID DESC";
-        ReqAssignRecordBLL reqAssignRecordBLL = new ReqAssignRecordBLL();
-        lst = reqAssignRecordBLL.GetAllReqAssignRecords(strHQL);
-        HL_UNHandledReq.Text = lst.Count.ToString() + LanguageHandle.GetWord("Tiao");
-
-     
-
-        strHQL = " from Project as project where project.Status = 'Plan' and project.PMCode = " + "'" + strUserCode + "'" + " Order by project.ProjectID DESC";
-        ProjectBLL projectBLL = new ProjectBLL();
-        lst = projectBLL.GetAllProjects(strHQL);
-        HL_UNHandledPro.Text = lst.Count.ToString() + LanguageHandle.GetWord("Tiao");
-
-      
     }
 }

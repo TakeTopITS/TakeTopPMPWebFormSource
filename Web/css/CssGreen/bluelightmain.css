@@ -45,13 +45,13 @@ a:hover {
 .page_topbj {
     background-color: #77b584;
     cursor: move;
-    color: black;
+    color: white;
     border-radius: 12px 0px 0px 0px;
     margin: 1px 1px 1px 1px;
 }
 
     .page_topbj a {
-        color: black;
+        color: white;
         text-decoration: none;
         cursor: pointer;
         font-size: 14px;
@@ -62,10 +62,7 @@ a:hover {
             text-decoration: underline;
         }
 
-.main_topbj {
-    background-color: #0e553b; /*Æ¤·ô*/
-    color: white;
-}
+
 
 .page_topbj a {
     color: white;
@@ -1853,3 +1850,28 @@ select {
     width: 100%;
     border-radius: 8px 8px 0px 0px;
 }
+
+
+
+
+.tt-topbar-icon-link{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:4px;background:transparent;transition:background 0.2s;}
+.tt-topbar-icon-link{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:4px;background:transparent;transition:background 0.2s;}
+.tt-topbar-icon-link:hover{background:rgba(96,125,139,0.08);}
+.tt-topbar-icon-link img{width:20px;height:20px;vertical-align:middle;opacity:0.65;transition:opacity 0.2s;}
+.tt-logout-btn{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:4px;background:rgba(255,255,255,0.15);color:white;font-size:12px;text-decoration:none;transition:all 0.2s;white-space:nowrap;}
+.tt-logout-btn:hover{background:#607d8b;color:#fff;text-decoration:none;}
+.tt-pager{margin-top:8px;display:flex;align-items:center;gap:4px;flex-wrap:wrap;}
+.tt-pager-btn{min-width:30px;height:28px;border:1px solid #d0d0d0;background:#fff;color:#333;cursor:pointer;font-size:12px;border-radius:3px;text-align:center;}
+.tt-pager-btn:hover{background:#f0f0f0;border-color:#d44446;color:#d44446;}
+.tt-pager-btn.active{background:#d44446;color:#fff;border-color:#d44446;}
+.tt-pager-btn:disabled{opacity:0.4;cursor:default;}
+#navlist a{color:white !important;text-decoration:none;}
+#navlist a:hover{color:#fff !important;text-decoration:underline;}
+#divGuide a{color:white !important;}
+#divGuide span{color:white !important;}
+
+.titleSpan{color:white !important;}
+
+#divBody{background-color:white;}
+
+.main_topbj{background-color:#0e553b !important;color:white !important;}

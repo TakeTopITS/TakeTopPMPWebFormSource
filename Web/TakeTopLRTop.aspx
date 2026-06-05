@@ -97,7 +97,7 @@
                 <div style="z-index: -2;width:100%;" onclick="avascript:ChangeMenu(1);">
                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
                             <tr>
-                                <td id="topTD" style="display: block; background-color: #f5f5f5;" height="45" valign="bottom">
+                                <td id="topTD" class="main_topbj" height="45" valign="bottom" style="<%=GetTopBgColor()%>">
                                     <table width="100%" border="0" class="ItemAlignLeft" cellpadding="0" cellspacing="0">
                                         <tr>
                                             <td height="45" valign="top" style="text-align: center;">
@@ -128,7 +128,7 @@
 <script type="text/javascript" language="javascript">
     var cssDirectory = '<%=Session["CssDirectory"] %>';
     var oLink = document.getElementById('topCss');
-    oLink.href = 'css/' + cssDirectory + '/' + 'bluelighttop.CSS';
+    oLink.href = 'css/' + cssDirectory + '/' + 'bluelighttop.CSS?v=20260605';
 </script>
 <script type="text/javascript" language="javascript">var cssDirectory = '<%=Session["CssDirectory"] %>'; var oLink = document.getElementById('mainCss'); oLink.href = 'css/' + cssDirectory + '/' + 'bluelightmain.css';</script>
 </html>

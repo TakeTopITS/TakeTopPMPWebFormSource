@@ -2990,8 +2990,16 @@ public static class ShareClass
         node1.Expanded = true;
         TreeView.Nodes.Add(node1);
 
-        strHQL = "from WareHouse as wareHouse where wareHouse.BelongDepartCode in " + strDepartString;
-        strHQL += " and wareHouse.ParentWH  = '1' Or COALESCE(wareHouse.ParentWH,'') = ''";
+        // 部门过滤：strDepartString 为空时显示所有仓库
+        if (!string.IsNullOrEmpty(strDepartString) && strDepartString != "()" && strDepartString != "('')")
+        {
+            strHQL = "from WareHouse as wareHouse where wareHouse.BelongDepartCode in " + strDepartString;
+        }
+        else
+        {
+            strHQL = "from WareHouse as wareHouse where 1=1";
+        }
+        strHQL += " and (wareHouse.ParentWH = '1' Or COALESCE(wareHouse.ParentWH,'') = '')";
         strHQL += " order by wareHouse.SortNumber ASC";
         WareHouseBLL WareHouseBLL = new WareHouseBLL();
         WareHouse WareHouse = new WareHouse();
