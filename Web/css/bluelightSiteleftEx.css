@@ -136,4 +136,5 @@ a {
 }
 /*--------------------------------20131127---------------------------*/
 
-div.leftSet{background: url(ImagesSkin/leftSetbg.gif) no-repeat; height:40px; line-height:40px;}
+div.leftSet{position:fixed;top:0;z-index:100;background: url(ImagesSkin/leftSetbg.gif) no-repeat; height:40px; line-height:40px;}
+#divBody{padding-top:46px; padding-bottom:18px;}

@@ -115,6 +115,8 @@ ul li {
 }
 
 #divBody {
+    padding-top: 76px;
+    padding-bottom: 18px;
     z-index: 3;
     overflow: visible;
 }
@@ -323,6 +325,9 @@ a {
 /*--------------------------------20131127---------------------------*/
 
 div.leftSet {
+    position: fixed;
+    top: 0;
+    z-index: 100;
     background: url(ImagesSkin/leftSetbg.gif) 0 0 no-repeat;
     height: 72px;
     line-height: 72px;

@@ -107,9 +107,7 @@ public partial class TTMessage : System.Web.UI.Page
         HttpRuntime.Cache.Insert(cacheKey, string.Join("|", cachedCounts), null,
             System.Web.Caching.Cache.NoAbsoluteExpiration, TimeSpan.FromMinutes(3));
 
-        if (lst.Count > 0)
-            i = 1;
-
+    
         strHQL = "from TaskAssignRecord as taskAssignRecord where taskAssignRecord.OperatorCode = " + "'" + strUserCode + "'";
         strHQL += " and taskAssignRecord.Status in ('Plan','Accepted','InProgress') and taskAssignRecord.ID not in (select taskAssignRecord.PriorID from TaskAssignRecord as taskAssignRecord) ";
         strHQL += " and taskAssignRecord.TaskID in (select projectTask.TaskID from ProjectTask as projectTask where projectTask.Status <> 'Closed')";
@@ -119,8 +117,7 @@ public partial class TTMessage : System.Web.UI.Page
         lst = taskAssignRecordBLL.GetAllTaskAssignRecords(strHQL);
         HL_UNHnadledTask.Text = lst.Count.ToString() + LanguageHandle.GetWord("Tiao");
 
-        if (lst.Count > 0)
-            i = 1;
+    
 
         strHQL = "from ReqAssignRecord as reqAssignRecord where reqAssignRecord.OperatorCode = " + "'" + strUserCode + "'";
         strHQL += " and reqAssignRecord.Status in ('Plan','Accepted','InProgress') and reqAssignRecord.ID not in (select reqAssignRecord.PriorID from ReqAssignRecord as reqAssignRecord) ";
@@ -130,15 +127,13 @@ public partial class TTMessage : System.Web.UI.Page
         lst = reqAssignRecordBLL.GetAllReqAssignRecords(strHQL);
         HL_UNHandledReq.Text = lst.Count.ToString() + LanguageHandle.GetWord("Tiao");
 
-        if (lst.Count > 0)
-            i = 1;
+     
 
         strHQL = " from Project as project where project.Status = 'Plan' and project.PMCode = " + "'" + strUserCode + "'" + " Order by project.ProjectID DESC";
         ProjectBLL projectBLL = new ProjectBLL();
         lst = projectBLL.GetAllProjects(strHQL);
         HL_UNHandledPro.Text = lst.Count.ToString() + LanguageHandle.GetWord("Tiao");
 
-        if (lst.Count > 0)
-            i = 1;
+      
     }
 }
