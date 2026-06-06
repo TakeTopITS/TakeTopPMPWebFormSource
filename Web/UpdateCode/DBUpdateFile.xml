@@ -16064,18 +16064,66 @@ CREATE OR REPLACE VIEW public.v_projectplanlist
 ALTER TABLE public.v_projectplanlist
     OWNER TO postgres;</SQLText>
   </DataBaseUpgradeFile>
-
-
-	<DataBaseUpgradeFile>
-		<ID>3934</ID>
-		<SQLText>
+  <DataBaseUpgradeFile>
+    <ID>3934</ID>
+    <SQLText>
 			Update T_ProjectMember Set CssDirectory = 'CssRed'
 		</SQLText>
-	</DataBaseUpgradeFile>
-	<DataBaseUpgradeFile>
-		<ID>3935</ID>
-		<SQLText>
+  </DataBaseUpgradeFile>
+  <DataBaseUpgradeFile>
+    <ID>3935</ID>
+    <SQLText>
 			Update T_ProModuleLevel Set IsDeleted = 'YES' Where ModuleName = 'ApplicationInitiation';
 		</SQLText>
-	</DataBaseUpgradeFile>
+  </DataBaseUpgradeFile>
+  <DataBaseUpgradeFile>
+    <ID>3936</ID>
+    <SQLText>DO $$
+  DECLARE
+      r record;
+  BEGIN
+      FOR r IN (
+          SELECT c.table_name, c.column_name
+          FROM information_schema.columns c
+          JOIN information_schema.tables t ON c.table_schema = t.table_schema AND c.table_name = t.table_name
+          WHERE c.column_name ILIKE '%status%'
+            AND c.table_schema = 'public'
+            AND t.table_type = 'BASE TABLE'
+            AND c.table_name NOT IN ('pbcatvld','pbcatedt','t_memberlevel','t_triggertabletofrom','t_sendtask','t_sentrecord')
+            AND c.column_name NOT ILIKE '%id%'
+      ) LOOP
+          EXECUTE format('
+              UPDATE %I SET %I = CASE
+                  WHEN %I = ''新建'' THEN ''New''
+                  WHEN %I = ''评审'' THEN ''Review''
+                  WHEN %I = ''批准'' THEN ''Approved''
+                  WHEN %I = ''受理'' THEN ''Accepted''
+                  WHEN %I = ''拒绝'' THEN ''Rejected''
+                  WHEN %I = ''处理中'' THEN ''InProgress''
+                  WHEN %I = ''进行中'' THEN ''InProgress''
+                  WHEN %I = ''测试'' THEN ''Testing''
+                  WHEN %I = ''完成'' THEN ''Completed''
+                  WHEN %I = ''转项'' THEN ''ToProject''
+                  WHEN %I = ''通过'' THEN ''Passed''
+                  WHEN %I = ''转任'' THEN ''ToTask''
+                  WHEN %I = ''审核中'' THEN ''Reviewing''
+                  WHEN %I = ''评审中'' THEN ''Reviewing''
+                  WHEN %I = ''验收'' THEN ''Acceptance''
+                  WHEN %I = ''会签中'' THEN ''Signing''
+                  WHEN %I = ''更改中'' THEN ''Updating''
+                  WHEN %I = ''延期'' THEN ''Postponed''
+                  WHEN %I = ''拖期'' THEN ''Delayed''
+                  WHEN %I = ''复核中'' THEN ''ReReview''
+                  WHEN %I = ''挂起'' THEN ''Suspended''
+                  WHEN %I = ''关闭'' THEN ''Closed''
+                  ELSE %I END',
+              r.table_name, r.column_name,
+              r.column_name, r.column_name, r.column_name, r.column_name, r.column_name,
+              r.column_name, r.column_name, r.column_name, r.column_name, r.column_name,
+              r.column_name, r.column_name, r.column_name, r.column_name, r.column_name,
+              r.column_name, r.column_name, r.column_name, r.column_name, r.column_name,
+              r.column_name, r.column_name, r.column_name, r.column_name);
+      END LOOP;
+  END $$;</SQLText>
+  </DataBaseUpgradeFile>
 </DataBaseUpgradeFiles>
