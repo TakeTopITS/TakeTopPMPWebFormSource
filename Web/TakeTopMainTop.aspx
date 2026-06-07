@@ -92,7 +92,7 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%); /* ��ͼ����������������ĵ㶨λ */
+            transform: translate(-50%, -50%); /* ��ͼ����������������ĵ㶨�?*/
         }
     </style>
 
@@ -178,7 +178,7 @@
 
         }
 
-        //���������Ԫ�ص�ֵ
+        //���������Ԫ�ص��?
         function setExtendValue(isFalse) {
 
             top.frames[0].frames[2].parent.frames["leftMiddleFrame"].setExtendValue(isFalse);

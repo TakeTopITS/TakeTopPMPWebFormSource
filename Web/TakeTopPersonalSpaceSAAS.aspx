@@ -45,7 +45,8 @@
                 font-weight: normal;
                 font-size: 14px;
                 line-height: 33px;
-                font-family: &#930;, Helvetica, Tahoma;
+                font-family: &#930;
+                , Helvetica, Tahoma;
             }
 
             #navlist a.current:link, #nav a.current:visited {
@@ -88,7 +89,7 @@
 
         /* 关键修改：为li添加相对定位 */
         #navlist2 li, #navlist3 li {
-            position: relative; 
+            position: relative;
             flex: 0 0 100%;
             margin: 0;
             list-style: none;
@@ -144,7 +145,9 @@
             min-width: 80px;
         }
 
-        #div_updatepersoninfor { display: none; }
+        #div_updatepersoninfor {
+            display: none;
+        }
 
         .TextColor {
             color: #fff;
@@ -162,15 +165,15 @@
             z-index: 100;
             background-color: rgba(255, 255, 255, 0.8); /* 半透明背景 */
             display: flex;
-            align-items: center;    /* 垂直居中 */
+            align-items: center; /* 垂直居中 */
             justify-content: center; /* 水平居中 */
         }
 
-        .loading img {
-            display: block;
-            width: 32px; /* 根据实际图标大小调整 */
-            height: 32px;
-        }
+            .loading img {
+                display: block;
+                width: 32px; /* 根据实际图标大小调整 */
+                height: 32px;
+            }
     </style>
     <script type="text/javascript" src="css/tab.js"></script>
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
@@ -301,11 +304,11 @@
                 </asp:UpdatePanel>
                 <table border="0" align="right" cellpadding="0" cellspacing="0">
                     <tr>
-                        <td align="center" style="padding-top: 7px; padding-bottom: 0px;">
+                        <td align="center" style="padding-top: 0px; padding-bottom: 0px; padding-right: 12px; vertical-align: middle;">
                             <a runat="server" class="titleSpan" href="javascript:top.frames[0].frames[2].parent.frames['rightTabFrame'].popShowByURL('TTUpdateUserInfor.aspx', 'UserInformation', 800, 600, window.location);">
                                 <div class="container">
                                     <div id="div_username">
-                                        <asp:Label ID="LB_UserName" runat="server"></asp:Label>
+                                        <img src="ImagesSkin/UserAvatar.png" width="18" height="18" style="vertical-align: middle; margin-right: 4px; border-radius: 50%;"><asp:Label ID="LB_UserName" runat="server"></asp:Label>
                                     </div>
                                     <div id="div_updatepersoninfor">
                                         <img src="ImagesSkin/UpdatePersonInfor.png" width="22" height="22">
@@ -335,7 +338,8 @@
                         </td>
 
                         <td width="40px" align="center" style="padding-top: 7px; padding-bottom: 5px;">
-                            <a href="#" onclick="return confirmExit(getExitMsgByLangCode(), this, event, 'Default.aspx');" class="tt-logout-btn" style="display:inline-flex;align-items:center;gap:4px;padding:4px 10px;font-size:12px;text-decoration:none;white-space:nowrap;">&#x23FB; <asp:Literal ID="LiteralExit" runat="server" Text="<%$ Resources:lang,Exit%>"></asp:Literal></a>
+                            <a href="#" onclick="return confirmExit(getExitMsgByLangCode(), this, event, 'Default.aspx');" class="tt-logout-btn" style="display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; font-size: 12px; text-decoration: none; white-space: nowrap;">&#x23FB;
+                                <asp:Literal ID="LiteralExit" runat="server" Text="<%$ Resources:lang,Exit%>"></asp:Literal></a>
                         </td>
                     </tr>
                 </table>
@@ -355,7 +359,7 @@
                                         <img src="Images/Processing.gif" alt="Loading,please wait..." />
                                     </div>
                                     <div class="personal-space-cline"></div>
-                                    <iframe id="IF_Module" name="IF_Module" 
+                                    <iframe id="IF_Module" name="IF_Module"
                                         onload="hideModuleLoading(this);"
                                         src='<%# DataBinder.Eval(Container.DataItem, "ModulePage") + "&Flag=" + Session["SkinFlag"].ToString()  %>'
                                         style="width: 100%; height: 320px;" frameborder="no" marginwidth="0" marginheight="0"
@@ -374,7 +378,7 @@
                                         <img src="Images/Processing.gif" alt="Loading,please wait..." />
                                     </div>
                                     <div class="personal-space-cline"></div>
-                                    <iframe id="IF_Module" name="IF_Module" 
+                                    <iframe id="IF_Module" name="IF_Module"
                                         onload="hideModuleLoading(this);"
                                         src='<%# DataBinder.Eval(Container.DataItem, "ModulePage") + "&Flag=" + Session["SkinFlag"].ToString()  %>'
                                         style="width: 100%; height: 350px;" frameborder="no" marginwidth="0" marginheight="0"

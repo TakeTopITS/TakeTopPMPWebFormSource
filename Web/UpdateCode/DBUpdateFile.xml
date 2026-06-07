@@ -16126,4 +16126,50 @@ ALTER TABLE public.v_projectplanlist
       END LOOP;
   END $$;</SQLText>
   </DataBaseUpgradeFile>
+  <DataBaseUpgradeFile>
+    <ID>3937</ID>
+    <SQLText>DO $$
+  DECLARE
+      r record;
+  BEGIN
+      FOR r IN (
+          SELECT c.table_name, c.column_name
+          FROM information_schema.columns c
+          JOIN information_schema.tables t ON c.table_schema = t.table_schema AND c.table_name = t.table_name
+          WHERE c.column_name ILIKE '%status%'
+            AND c.table_schema = 'public'
+            AND t.table_type = 'BASE TABLE'
+            AND c.data_type IN ('character varying','character','text','varchar','char')
+            AND c.table_name NOT IN ('pbcatvld','pbcatedt','t_memberlevel','t_triggertabletofrom','t_sendtask','t_sentrecord')
+            AND c.column_name NOT ILIKE '%id%'
+      ) LOOP
+          EXECUTE format('
+              UPDATE %I SET %I = CASE
+                  WHEN %2$I = ''新建'' THEN ''New''
+                  WHEN %2$I = ''评审'' THEN ''Review''
+                  WHEN %2$I = ''批准'' THEN ''Approved''
+                  WHEN %2$I = ''受理'' THEN ''Accepted''
+                  WHEN %2$I = ''拒绝'' THEN ''Rejected''
+                  WHEN %2$I = ''处理中'' THEN ''InProgress''
+                  WHEN %2$I = ''进行中'' THEN ''InProgress''
+                  WHEN %2$I = ''测试'' THEN ''Testing''
+                  WHEN %2$I = ''完成'' THEN ''Completed''
+                  WHEN %2$I = ''转项'' THEN ''ToProject''
+                  WHEN %2$I = ''通过'' THEN ''Passed''
+                  WHEN %2$I = ''转任'' THEN ''ToTask''
+                  WHEN %2$I = ''审核中'' THEN ''Reviewing''
+                  WHEN %2$I = ''评审中'' THEN ''Reviewing''
+                  WHEN %2$I = ''验收'' THEN ''Acceptance''
+                  WHEN %2$I = ''会签中'' THEN ''Signing''
+                  WHEN %2$I = ''更改中'' THEN ''Updating''
+                  WHEN %2$I = ''延期'' THEN ''Postponed''
+                  WHEN %2$I = ''拖期'' THEN ''Delayed''
+                  WHEN %2$I = ''复核中'' THEN ''ReReview''
+                  WHEN %2$I = ''挂起'' THEN ''Suspended''
+                  WHEN %2$I = ''关闭'' THEN ''Closed''
+                  ELSE %2$I END',
+              r.table_name, r.column_name);
+      END LOOP;
+  END $$;</SQLText>
+  </DataBaseUpgradeFile>
 </DataBaseUpgradeFiles>

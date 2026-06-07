@@ -92,7 +92,7 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%); /* ��ͼ����������������ĵ㶨λ */
+            transform: translate(-50%, -50%); /* ��ͼ����������������ĵ㶨�?*/
         }
     </style>
 
@@ -251,10 +251,11 @@
                                                     <table>
                                                         <tr>
                                                             <td width="20px" align="center" style="vertical-align: middle; padding-right: 10px; display: none;"></td>
-                                                            <td align="center" style="vertical-align: middle; padding: 0; display: none;">
+                                                            <td width="40px" align="center" style="padding-top: 0px; padding-bottom: 0px; display: none;">
                                                                 <a runat="server" class="titleSpan" href="javascript:top.frames[0].frames[2].parent.frames['rightTabFrame'].popShowByURL('TTUpdateUserInfor.aspx', 'UserInformation', 800, 600, window.location);">
                                                                     <div class="container">
                                                                         <div id="div_username">
+                                                                            <span style="font-size: 14px;">&#x1F464;</span>
                                                                             <asp:Label ID="LB_UserName" runat="server"></asp:Label>
                                                                         </div>
                                                                         <div id="div_updatepersoninfor">
@@ -268,7 +269,8 @@
                                                                     <img src="ImagesSkin/App.png" width="22" height="22" alt=""></a>
                                                             </td>
                                                             <td width="40px" align="center" style="vertical-align: middle; padding: 0;">
-                                                                <a href="#" onclick="return confirmExit(getExitMsgByLangCode(), this, event, 'Default.aspx');" class="tt-logout-btn" style="display:inline-flex;align-items:center;gap:4px;padding:4px 10px;font-size:12px;text-decoration:none;white-space:nowrap;">&#x23FB; <asp:Literal ID="LiteralExit" runat="server" Text="<%$ Resources:lang,Exit%>"></asp:Literal></a>
+                                                                <a href="#" onclick="return confirmExit(getExitMsgByLangCode(), this, event, 'Default.aspx');" class="tt-logout-btn" style="display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; font-size: 12px; text-decoration: none; white-space: nowrap;">&#x23FB;
+                                                                    <asp:Literal ID="LiteralExit" runat="server" Text="<%$ Resources:lang,Exit%>"></asp:Literal></a>
                                                             </td>
                                                         </tr>
                                                     </table>

@@ -92,7 +92,7 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%); /* ��ͼ����������������ĵ㶨λ */
+            transform: translate(-50%, -50%); /* ��ͼ����������������ĵ㶨�?*/
         }
     </style>
 
@@ -279,13 +279,14 @@
                                                                 </a>
                                                             </td>
                                                             <td id="tdAI" runat="server" width="40px" align="center">
-                                                             
-                                                                <a id="a_AIURL" runat="server" class="titleSpan" href="javascript:top.frames[0].frames[2].parent.frames['rightTabFrame'].openRightLayer('TTAIHandlerByDeepSeek.aspx','TakeTopAI');">
+
+                                                                <a id="a_AIURL" runat="server" class="titleSpan tt-topbar-icon-link" href="javascript:top.frames[0].frames[2].parent.frames['rightTabFrame'].openRightLayer('TTAIHandlerByDeepSeek.aspx','TakeTopAI');">
                                                                     <img src="ImagesSkin/AI.png" width="22" height="22" alt="">
                                                                 </a>
                                                             </td>
                                                             <td width="40px" align="center" style="vertical-align: middle; padding: 0;">
-                                                                <a href="#" onclick="return confirmExit(getExitMsgByLangCode(), this, event, 'Default.aspx');" class="tt-logout-btn" style="display:inline-flex;align-items:center;gap:4px;padding:4px 10px;font-size:12px;text-decoration:none;white-space:nowrap;">&#x23FB; <asp:Literal ID="LiteralExit" runat="server" Text="<%$ Resources:lang,Exit%>"></asp:Literal></a>
+                                                                <a href="#" onclick="return confirmExit(getExitMsgByLangCode(), this, event, 'Default.aspx');" class="tt-logout-btn" style="display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; font-size: 12px; text-decoration: none; white-space: nowrap;">&#x23FB;
+                                                                    <asp:Literal ID="LiteralExit" runat="server" Text="<%$ Resources:lang,Exit%>"></asp:Literal></a>
                                                             </td>
                                                         </tr>
                                                     </table>
@@ -345,7 +346,7 @@
                                     </td>
                                     <td style="width: 50px; height: 18px; text-align: left">
                                         <asp:Label ID="LB_SuperDepartString" runat="server"></asp:Label>
-                                          <asp:Label ID="LB_ModuleFlowChartString" runat="server"></asp:Label>
+                                        <asp:Label ID="LB_ModuleFlowChartString" runat="server"></asp:Label>
                                     </td>
                                 </tr>
 
