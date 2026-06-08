@@ -1,0 +1,1 @@
+Please use PostgreSQL 15 or a newer version of the database software to restore the database.
