@@ -18,7 +18,10 @@
 2. **Government Sector**:
    - Government project management, such as investment attraction, poverty alleviation, environmental protection, urban renewal, and major construction projects. Using the **TakeTop Project Management Platform**, leaders can easily monitor the status of various projects on a large screen. They can also provide feedback to relevant personnel via WeChat or computers, reminding them to expedite their work. Additionally, various early warning mechanisms can be set up on the platform, with the system automatically triggering and sending notifications to the responsible parties to prompt them to take action.
 
-**TakeTop Project Management Platform** is fully open-source. Users can visit the TakeTopITS Group website ([https://www.taketopits.com](https://www.taketopits.com)) to try it online and experience its features.
+**TakeTop Project Management Platform** is Fully open source. Users can download the installation package from Baidu Netdisk: TakeTopPMPENINDP.zip
+Link: https://pan.baidu.com/s/1ouzxQV3imyEOezz2qkITSA
+Extraction code: zly8
+Unzip and check the installation instructions. It can be installed and run directly. The source code is in the package within the installation directory!
 
 To promote the development of project management software in the industry and enhance corporate project management capabilities, TaiDingTuo Ding Group has adopted an open strategy. It offers its own intellectual property rights, a comprehensive and mature **TakeTop Project Management Platform** with full source code download, including test data. The source code should be compiled using Visual Studio 2022. Note that this open-source release is based on the AGPL-3.0 license agreement and is intended for learning and research purposes only. Commercial use requires an application.
 
@@ -41,7 +44,9 @@ IT项目管理（软件实施项目管理，系统集成项目管理，企业管
 电脑发出意见给相关责任人，提醒督促相关人抓紧工作，同时可以在平台上设置各种预警命令机制，系统会自动触发并
 把相应的信息发送给相关负责人，提醒他们进行处理！
 
-【泰顶项目管理平台】完全开源，用户可以登录泰顶拓鼎网站（ https://www.taketopits.com ）在线试用体验！   
+【泰顶项目管理平台】完全开源，用户可以在百度网盘文件下载安装包：：TakeTopPMPENINDP.zip
+链接: https://pan.baidu.com/s/1ouzxQV3imyEOezz2qkITSA 
+提取码: zly8  ，解压看安装说明，可以直接安装运行，源码在安装目录的包里！   
 
 为促进业界项目管理软件的发展和提升企业项目管理水平，泰顶拓鼎集团推行开放战略，提供自有知识产权，上千用户，
 功能俱全，成熟可靠的泰顶项目管理软件全套源码下载，含测试数据，源码请用visual studio 2026编译，
