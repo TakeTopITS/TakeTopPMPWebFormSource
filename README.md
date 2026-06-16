@@ -53,3 +53,24 @@ IT项目管理（软件实施项目管理，系统集成项目管理，企业管
 注意此开源基于AGPL-3.0 license协议发布，仅供学习研究，如要商用需申请！
 
 有问题请联系泰顶客服，电话：（086）021-51085119，EMail: 623077337@qq.com
+
+适用中小团队和小微企业的产品下载（一键安装，看视频十分钟学会，可无缝升级到企业版集团版）：
+
+泰顶项目宝(MiniPMP)中文 版
+百度网盘分享的文件：TakeTopXMBCNSetup.zip
+链接: https://pan.baidu.com/s/1K747GO7MTlBHHUGCeMztGA?pwd=zly8 提取码: zly8
+
+泰顶项目宝(MiniPMP)英文 版
+百度网盘分享的文件：TakeTopXMBENSetup.zip
+链接: https://pan.baidu.com/s/15C4Nwf5kMaNDrS_kLTfFmw?pwd=zly8 提取码: zly8
+
+泰顶项目宝(MiniPMP)中文高级版
+百度网盘分享的文件：TakeTopXMBADCNSetup.zip
+链接: https://pan.baidu.com/s/1t5hMIJJHM9oxzNIy5zWl_g?pwd=zly8 提取码: zly8
+
+泰顶项目宝(MiniPMP)英文文高级版
+百度网盘分享的文件：TakeTopXMBADENSetup.zip
+链接: https://pan.baidu.com/s/1No91ncK-NZUwLGmZ4EFI0A?pwd=zly8 提取码: zly8
+
+
+
