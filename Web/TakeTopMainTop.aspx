@@ -283,7 +283,7 @@
                                                                 </a>
                                                             </td>
                                                             <td width="40px" align="center" style="padding-top: 0px; padding-bottom: 5px;">
-                                                                <a href="#" onclick="return confirmExit(getExitMsgByLangCode(), this, event, 'Default.aspx');" class="tt-logout-btn" style="display:inline-flex;align-items:center;gap:4px;padding:4px 10px;font-size:12px;text-decoration:none;white-space:nowrap;">&#x23FB; ÍË³ö</a>
+                                                                <a href="#" onclick="return confirmExit(getExitMsgByLangCode(), this, event, 'Default.aspx');" class="tt-logout-btn" style="display:inline-flex;align-items:center;gap:4px;padding:4px 10px;font-size:12px;text-decoration:none;">&#x23FB; <asp:Literal ID="LiteralExit" runat="server" Text="<%$ Resources:lang,Exit%>"></asp:Literal></a>
                                                             </td>
                                                         </tr>
                                                     </table>
