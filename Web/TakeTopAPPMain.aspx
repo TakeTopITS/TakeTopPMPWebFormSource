@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TakeTopAPPMain.aspx.cs" Inherits="TakeTopAPPMain" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TakeTopAPPMain.aspx.cs" Inherits="TakeTopAPPMain" %>
 <%@ Import Namespace="System.Globalization" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -187,7 +187,7 @@
             height: auto;
         }
 
-        .boxes img {
+        .boxes .boxs img {
             display: none;
         }
 
@@ -197,7 +197,7 @@
             border-bottom: 1px solid #e7e7e7;
         }
 
-        .boxes span.minusSpan {
+        .boxes .boxs span.minusSpan {
             display: none !important;
         }
 
@@ -234,11 +234,16 @@
             margin: 0;
             display: flex;
             flex-wrap: wrap;
-            align-content: flex-start;
+            align-items: center;
+            min-height: 85px;
         }
 
             .content span {
                 padding-left: 8px;
+            }
+
+            .content li .minusSpan {
+                padding-left: 0;
             }
 
         ul li {
@@ -249,6 +254,15 @@
             padding-bottom: 10px;
             box-sizing: border-box;
 }
+
+        ul li a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 85px;
+            text-decoration: none;
+        }
 
         /*����*/
         #nav1 {

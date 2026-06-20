@@ -20,7 +20,7 @@ public partial class TTAPPQRCodeForLocalSAAS : System.Web.UI.Page
     {
         string strAPPURL;
 
-        strAPPURL = ShareClass.GetCurrentSiteRootPath() + "DefaultAPP.html".Replace(":443", "").Replace(":80", "");
+        strAPPURL = ShareClass.GetCurrentSiteRootPath() + "DefaultAPP.html";
 
         string strImageURL = ShareClass.GetQRCodeURLByZXingNet(strAPPURL, 300, 300);
 

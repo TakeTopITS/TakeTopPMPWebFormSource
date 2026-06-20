@@ -68,7 +68,7 @@ public static class ShareClass
         //
     }
 
-    public static string SystemVersionID = "V2026.6.7";
+    public static string SystemVersionID = "V2026.6.20";
 
     public static string SystemLatestLoginUser = "";
     public static string SystemDBer = "";
@@ -19338,16 +19338,42 @@ public static class ShareClass
 
         if (context != null)
         {
-            // 有HTTP上下文的情况
             var request = context.Request;
-            string url = request.Url.GetLeftPart(UriPartial.Authority) + request.ApplicationPath;
+            var uri = request.Url;
+
+            string scheme = request.Headers["X-Forwarded-Proto"] ?? uri.Scheme;
+            string host = request.Headers["X-Forwarded-Host"] ?? uri.Host;
+
+            int port = 0;
+            int fp;
+
+            var forwardedPort = request.Headers["X-Forwarded-Port"];
+            if (!string.IsNullOrEmpty(forwardedPort) && int.TryParse(forwardedPort, out fp))
+            {
+                port = fp;
+            }
+            else
+            {
+                var hostHeader = request.Headers["Host"];
+                if (!string.IsNullOrEmpty(hostHeader))
+                {
+                    int colonIdx = hostHeader.LastIndexOf(':');
+                    if (colonIdx > 0 && int.TryParse(hostHeader.Substring(colonIdx + 1), out fp))
+                        port = fp;
+                }
+            }
+
+            if (port == 0)
+                port = uri.Port;
+
+            string url = $"{scheme}://{host}:{port}{request.ApplicationPath}";
+
             if (!url.EndsWith("/"))
                 url += "/";
             return url;
         }
         else
         {
-            // 定时器线程的情况
             return GetSiteUrlForTimerSimple();
         }
     }

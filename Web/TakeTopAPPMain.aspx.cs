@@ -28,8 +28,8 @@ public partial class TakeTopAPPMain : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        //ÖÓÀñÔÂ×÷Æ·£¨jack.erp@gmail.com)
-        //Ì©¶¥ÍØ¶¦£¨2006£­2026£©
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ·ï¿½ï¿½jack.erp@gmail.com)
+        //Ì©ï¿½ï¿½ï¿½Ø¶ï¿½ï¿½ï¿½2006ï¿½ï¿½2026ï¿½ï¿½
 
         string strUserCode;
         string strLangCode;
@@ -162,9 +162,9 @@ public partial class TakeTopAPPMain : System.Web.UI.Page
                 strHtml += "<div class=\"SpaceLine\"></div>";
                 strHtml += "<div class=\"cline\"></div>";
 
-                //ÐèÒª¸ø¸¸½Úµã¼ÓÒ»¸öÀà
+                //ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½
                 classTemp = "box boxes";
-                strHtml += "<a href=" + strPageName + "><span name=\"parent1\" class=\"boxs\" onmouseover=\"OnMouseOverEvent(this)\" onmouseout=\"OnMouseOutEvent(this)\"><span onclick=\"OnPlusEvent(this)\" class=\"plusSpan\"> </span><span onclick=\"OnMinusEvent(this)\" class=\"minusSpan\"><img src=\'" + strIconURL + "' /></span><span class=\"titleSpan\" onclick=\"javascript:showWaiting();location.href='" + strPageName + "'\" ondblclick=\"javascript:showWaiting();OnDoubleClickModule(this)\"><img src=\'" + strIconURL + "' />" + strHomeModuleName + "</span></span><a>";
+                strHtml += "<br /><a href=" + strPageName + "><span name=\"parent1\" class=\"boxs\" onmouseover=\"OnMouseOverEvent(this)\" onmouseout=\"OnMouseOutEvent(this)\"><span onclick=\"OnPlusEvent(this)\" class=\"plusSpan\"> </span><span onclick=\"OnMinusEvent(this)\" class=\"minusSpan\"><img src=\'" + strIconURL + "' /></span><span class=\"titleSpan\" onclick=\"javascript:showWaiting();location.href='" + strPageName + "'\" ondblclick=\"javascript:showWaiting();OnDoubleClickModule(this)\"><img src=\'" + strIconURL + "' />" + strHomeModuleName + "</span></span></a>";
 
                 strHtml += "<div class=\"text\"> ";
                 strHtml += "<ul class=\"content\">";
@@ -221,7 +221,7 @@ public partial class TakeTopAPPMain : System.Web.UI.Page
     }
 
 
-    //ÉèÖÃ·ÖÎöÍ¼Ä£¿éÊÇ·ñ¿ÉÊÓ
+    //ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½Í¼Ä£ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½
     protected void SetAnalystModuleVisible(string strUserCode, string strModuleName, string strLangCode, string strUserType)
     {
         string strHQL;
@@ -270,7 +270,7 @@ public partial class TakeTopAPPMain : System.Web.UI.Page
 
     protected int GetUNHandledWorkCount(string strUserCode, string strLangCode)
     {
-        #region ×·¼ÓÐÅÏ¢ÌáÊ¾¿òÐÅÏ¢  By LiuJianping 2014-02-12
+        #region ×·ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½Ï¢  By LiuJianping 2014-02-12
 
 
         int i = 0;
