@@ -16172,4 +16172,45 @@ ALTER TABLE public.v_projectplanlist
       END LOOP;
   END $$;</SQLText>
   </DataBaseUpgradeFile>
+  <DataBaseUpgradeFile>
+    <ID>3938</ID>
+    <SQLText>
+      -- Rename MyTasks module from "我的任务" to "任务管理" across all languages
+      UPDATE t_promodulelevel SET homemodulename = '任务管理' WHERE TRIM(modulename) = 'MyTasks' AND TRIM(langcode) = 'zh-CN';
+      UPDATE t_promodulelevel SET homemodulename = 'Task Management' WHERE TRIM(modulename) = 'MyTasks' AND TRIM(langcode) = 'en';
+      UPDATE t_promodulelevel SET homemodulename = '任務管理' WHERE TRIM(modulename) = 'MyTasks' AND TRIM(langcode) = 'zh-tw';
+      UPDATE t_promodulelevel SET homemodulename = 'タスク管理' WHERE TRIM(modulename) = 'MyTasks' AND TRIM(langcode) = 'ja';
+      UPDATE t_promodulelevel SET homemodulename = '작업 관리' WHERE TRIM(modulename) = 'MyTasks' AND TRIM(langcode) = 'ko';
+      UPDATE t_promodulelevel SET homemodulename = 'การจัดการงาน' WHERE TRIM(modulename) = 'MyTasks' AND TRIM(langcode) = 'th';
+      UPDATE t_promodulelevel SET homemodulename = 'Управление задачами' WHERE TRIM(modulename) = 'MyTasks' AND TRIM(langcode) = 'ru';
+      UPDATE t_promodulelevel SET homemodulename = 'Aufgabenverwaltung' WHERE TRIM(modulename) = 'MyTasks' AND TRIM(langcode) = 'de';
+      UPDATE t_promodulelevel SET homemodulename = 'Gestion des tâches' WHERE TRIM(modulename) = 'MyTasks' AND TRIM(langcode) = 'fr';
+      UPDATE t_promodulelevel SET homemodulename = 'Gestión de tareas' WHERE TRIM(modulename) = 'MyTasks' AND TRIM(langcode) = 'es';
+      UPDATE t_promodulelevel SET homemodulename = 'Gestione attività' WHERE TRIM(modulename) = 'MyTasks' AND TRIM(langcode) = 'it';
+      UPDATE t_promodulelevel SET homemodulename = 'Gerenciamento de tarefas' WHERE TRIM(modulename) = 'MyTasks' AND TRIM(langcode) = 'pt';
+      UPDATE t_promodulelevel SET homemodulename = 'Pengelolaan Tugas' WHERE TRIM(modulename) = 'MyTasks' AND TRIM(langcode) = 'id';
+      INSERT INTO t_promodulelevel (modulename, parentmodule, sortnumber, pagename, moduletype, usertype, visible, langcode, isdeleted, iconurl, moduledefinition, homemodulename, diyflow, updatemark)
+      SELECT 'MyTasks', 'PersonalSpace', 6, 'TTTaskHandlePage', 'SYSTEM', 'INNER', 'YES', 'th', 'NO', 'ImagesSkin/woderenwu.png', '', 'การจัดการงาน', 'NO', 0
+      WHERE NOT EXISTS (SELECT 1 FROM t_promodulelevel WHERE TRIM(modulename) = 'MyTasks' AND TRIM(langcode) = 'th');
+      -- Also update t_promodulelevelforpage
+      UPDATE t_promodulelevelforpage SET homemodulename = '任务管理' WHERE TRIM(modulename) = 'MyTasks' AND TRIM(homemodulename) = '我的任务';
+      UPDATE t_promodulelevelforpage SET homemodulename = 'Task Management' WHERE TRIM(modulename) = 'MyTasks' AND TRIM(homemodulename) = 'MyTasks' AND TRIM(langcode) = 'en';
+      UPDATE t_promodulelevelforpage SET homemodulename = '任務管理' WHERE TRIM(modulename) = 'MyTasks' AND TRIM(homemodulename) = '我的任務';
+      UPDATE t_promodulelevelforpage SET homemodulename = 'タスク管理' WHERE TRIM(modulename) = 'MyTasks' AND TRIM(homemodulename) = '私の仕事';
+      UPDATE t_promodulelevelforpage SET homemodulename = 'Gestion des tâches' WHERE TRIM(modulename) = 'MyTasks' AND TRIM(homemodulename) = 'ma tâche';
+      UPDATE t_promodulelevelforpage SET homemodulename = 'Gestión de tareas' WHERE TRIM(modulename) = 'MyTasks' AND TRIM(homemodulename) = 'mi tarea';
+      UPDATE t_promodulelevelforpage SET homemodulename = 'Aufgabenverwaltung' WHERE TRIM(modulename) = 'MyTasks' AND TRIM(homemodulename) = 'Meine Aufgabe';
+      UPDATE t_promodulelevelforpage SET homemodulename = 'Gerenciamento de tarefas' WHERE TRIM(modulename) = 'MyTasks' AND TRIM(homemodulename) = 'minha tarefa';
+      UPDATE t_promodulelevelforpage SET homemodulename = 'Gestione attività' WHERE TRIM(modulename) = 'MyTasks' AND TRIM(homemodulename) = 'il mio compito';
+      UPDATE t_promodulelevelforpage SET homemodulename = 'Управление задачами' WHERE TRIM(modulename) = 'MyTasks' AND TRIM(homemodulename) = 'мое задание';
+      UPDATE t_promodulelevelforpage SET homemodulename = '작업 관리' WHERE TRIM(modulename) = 'MyTasks' AND TRIM(homemodulename) = '내 임무';
+      UPDATE t_promodulelevelforpage SET homemodulename = 'Pengelolaan Tugas' WHERE TRIM(modulename) = 'MyTasks' AND TRIM(homemodulename) = 'Tugas Saya';
+      UPDATE t_promodulelevelforpage SET homemodulename = 'การจัดการงาน' WHERE TRIM(modulename) = 'MyTasks' AND TRIM(homemodulename) = 'MyTasks' AND TRIM(langcode) = 'th';
+      -- Rename modulename from MyTasks to TaskManagement
+      UPDATE t_promodule SET modulename = 'TaskManagement' WHERE TRIM(modulename) = 'MyTasks';
+      UPDATE t_promodulelevel SET modulename = 'TaskManagement' WHERE TRIM(modulename) = 'MyTasks';
+      UPDATE t_promodulelevelforpage SET modulename = 'TaskManagement' WHERE TRIM(modulename) = 'MyTasks';
+      UPDATE t_promodulelevelforpageuser SET modulename = 'TaskManagement' WHERE TRIM(modulename) = 'MyTasks';
+    </SQLText>
+  </DataBaseUpgradeFile>
 </DataBaseUpgradeFiles>

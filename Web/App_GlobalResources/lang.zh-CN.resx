@@ -8851,8 +8851,8 @@
   <data name="MyQueryScope" xml:space="preserve">
     <value>我的查询范围是</value>
   </data>
-  <data name="MyTask" xml:space="preserve">
-    <value>我的任务</value>
+  <data name="MyTask" xml:space="preserve">?
+    <value>任务管理</value>
   </data>
   <data name="MyUnderTakeProject" xml:space="preserve">
     <value>主导的项目</value>
@@ -13871,8 +13871,8 @@
   <data name="WoDePingHeYiJian" xml:space="preserve">
     <value>我的评核意见</value>
   </data>
-  <data name="WoDeRenWu" xml:space="preserve">
-    <value>我的任务</value>
+  <data name="WoDeRenWu" xml:space="preserve">?
+    <value>任务管理</value>
   </data>
   <data name="WoDeRiChengAnPai" xml:space="preserve">
     <value>我的日程安排</value>

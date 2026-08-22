@@ -8850,8 +8850,8 @@
   <data name="MyQueryScope" xml:space="preserve">
     <value>내 질의 범위는</value>
   </data>
-  <data name="MyTask" xml:space="preserve">
-    <value>내 작업</value>
+  <data name="MyTask" xml:space="preserve">?
+    <value>작업 관리</value>
   </data>
   <data name="MyUnderTakeProject" xml:space="preserve">
     <value>나는 프로젝트를 주도</value>
@@ -13869,8 +13869,8 @@
   <data name="WoDePingHeYiJian" xml:space="preserve">
     <value>내 평가 조언</value>
   </data>
-  <data name="WoDeRenWu" xml:space="preserve">
-    <value>내 작업</value>
+  <data name="WoDeRenWu" xml:space="preserve">?
+    <value>작업 관리</value>
   </data>
   <data name="WoDeRiChengAnPai" xml:space="preserve">
     <value>내 일정</value>

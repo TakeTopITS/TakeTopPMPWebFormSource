@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+﻿<?xml version='1.0' encoding='utf-8'?>
 <root xmlns:ns1="urn:schemas-microsoft-com:xml-msdata" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   
   <xs:schema id="root">
@@ -8792,8 +8792,8 @@
   <data name="MyQueryScope" xml:space="preserve">
     <value>私のクエリの範囲があります</value>
   </data>
-  <data name="MyTask" xml:space="preserve">
-    <value>マイタスク</value>
+  <data name="MyTask" xml:space="preserve">?
+    <value>タスク管理</value>
   </data>
   <data name="MyUnderTakeProject" xml:space="preserve">
     <value>私はこのプロジェクトを主導</value>
@@ -13811,8 +13811,8 @@
   <data name="WoDePingHeYiJian" xml:space="preserve">
     <value>私の評価アドバイス</value>
   </data>
-  <data name="WoDeRenWu" xml:space="preserve">
-    <value>マイタスク</value>
+  <data name="WoDeRenWu" xml:space="preserve">?
+    <value>タスク管理</value>
   </data>
   <data name="WoDeRiChengAnPai" xml:space="preserve">
     <value>私のスケジュール</value>

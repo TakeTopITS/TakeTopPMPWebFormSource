@@ -8850,8 +8850,8 @@
   <data name="MyQueryScope" xml:space="preserve">
     <value>Ma gamme de requête est</value>
   </data>
-  <data name="MyTask" xml:space="preserve">
-    <value>Ma tâche</value>
+  <data name="MyTask" xml:space="preserve">?
+    <value>Gestion des tâches</value>
   </data>
   <data name="MyUnderTakeProject" xml:space="preserve">
     <value>Je menais projet</value>
@@ -13869,8 +13869,8 @@
   <data name="WoDePingHeYiJian" xml:space="preserve">
     <value>Mon conseil d'évaluation</value>
   </data>
-  <data name="WoDeRenWu" xml:space="preserve">
-    <value>Ma tâche</value>
+  <data name="WoDeRenWu" xml:space="preserve">?
+    <value>Gestion des tâches</value>
   </data>
   <data name="WoDeRiChengAnPai" xml:space="preserve">
     <value>Mon horaire</value>

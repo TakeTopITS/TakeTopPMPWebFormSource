@@ -8850,8 +8850,8 @@
   <data name="MyQueryScope" xml:space="preserve">
     <value>ขอบเขตการค้นหาของฉันคือ</value>
   </data>
-  <data name="MyTask" xml:space="preserve">
-    <value>งานของฉัน</value>
+  <data name="MyTask" xml:space="preserve">?
+    <value>การจัดการงาน</value>
   </data>
   <data name="MyUnderTakeProject" xml:space="preserve">
     <value>โครงการที่ฉันเป็นผู้นำ</value>
@@ -13869,8 +13869,8 @@
   <data name="WoDePingHeYiJian" xml:space="preserve">
     <value>ความคิดเห็นการประเมินของฉัน</value>
   </data>
-  <data name="WoDeRenWu" xml:space="preserve">
-    <value>งานของฉัน</value>
+  <data name="WoDeRenWu" xml:space="preserve">?
+    <value>การจัดการงาน</value>
   </data>
   <data name="WoDeRiChengAnPai" xml:space="preserve">
     <value>การจัดกำหนดการของฉัน</value>

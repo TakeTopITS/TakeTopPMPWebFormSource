@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+﻿<?xml version='1.0' encoding='utf-8'?>
 <root xmlns:ns1="urn:schemas-microsoft-com:xml-msdata" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   
   <xs:schema id="root">
@@ -8792,8 +8792,8 @@
   <data name="MyQueryScope" xml:space="preserve">
     <value>My query range</value>
   </data>
-  <data name="MyTask" xml:space="preserve">
-    <value>My task</value>
+  <data name="MyTask" xml:space="preserve">?
+    <value>Task Management</value>
   </data>
   <data name="MyUnderTakeProject" xml:space="preserve">
     <value>My Projects</value>
@@ -13811,8 +13811,8 @@
   <data name="WoDePingHeYiJian" xml:space="preserve">
     <value>My assessment advice</value>
   </data>
-  <data name="WoDeRenWu" xml:space="preserve">
-    <value>My task</value>
+  <data name="WoDeRenWu" xml:space="preserve">?
+    <value>Task Management</value>
   </data>
   <data name="WoDeRiChengAnPai" xml:space="preserve">
     <value>My schedule</value>
@@ -32615,10 +32615,6 @@ The progress of the task affects the schedule to be confirmed</value>
   <data name="DSeekGenerate" xml:space="preserve">
     <value>Generate</value>
     <comment>Generate</comment>
-  </data>
-  <data name="DSeekQueryInProgress" xml:space="preserve">
-    <value>Querying...</value>
-    <comment>Querying...</comment>
   </data>
   <data name="DSeekStop" xml:space="preserve">
     <value>Stop</value>

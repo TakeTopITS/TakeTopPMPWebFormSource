@@ -8850,8 +8850,8 @@
   <data name="MyQueryScope" xml:space="preserve">
     <value>La mia domanda è gamma</value>
   </data>
-  <data name="MyTask" xml:space="preserve">
-    <value>Il mio compito</value>
+  <data name="MyTask" xml:space="preserve">?
+    <value>Gestione attività</value>
   </data>
   <data name="MyUnderTakeProject" xml:space="preserve">
     <value>Ho guidato progetto</value>
@@ -13869,8 +13869,8 @@
   <data name="WoDePingHeYiJian" xml:space="preserve">
     <value>Consulenza La mia valutazione</value>
   </data>
-  <data name="WoDeRenWu" xml:space="preserve">
-    <value>Il mio compito</value>
+  <data name="WoDeRenWu" xml:space="preserve">?
+    <value>Gestione attività</value>
   </data>
   <data name="WoDeRiChengAnPai" xml:space="preserve">
     <value>Il mio programma</value>

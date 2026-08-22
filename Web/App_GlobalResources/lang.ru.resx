@@ -8850,8 +8850,8 @@
   <data name="MyQueryScope" xml:space="preserve">
     <value>Мой диапазон запросов</value>
   </data>
-  <data name="MyTask" xml:space="preserve">
-    <value>Моя задача</value>
+  <data name="MyTask" xml:space="preserve">?
+    <value>Управление задачами</value>
   </data>
   <data name="MyUnderTakeProject" xml:space="preserve">
     <value>Я привел проект</value>
@@ -13869,8 +13869,8 @@
   <data name="WoDePingHeYiJian" xml:space="preserve">
     <value>Мой совет оценка</value>
   </data>
-  <data name="WoDeRenWu" xml:space="preserve">
-    <value>Моя задача</value>
+  <data name="WoDeRenWu" xml:space="preserve">?
+    <value>Управление задачами</value>
   </data>
   <data name="WoDeRiChengAnPai" xml:space="preserve">
     <value>Мой график</value>

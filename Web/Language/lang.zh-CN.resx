@@ -8851,8 +8851,8 @@
   <data name="MyQueryScope" xml:space="preserve">
     <value>我的查询范围是</value>
   </data>
-  <data name="MyTask" xml:space="preserve">
-    <value>我的任务</value>
+  <data name="MyTask" xml:space="preserve">?
+    <value>任务管理</value>
   </data>
   <data name="MyUnderTakeProject" xml:space="preserve">
     <value>主导的项目</value>
@@ -13871,8 +13871,8 @@
   <data name="WoDePingHeYiJian" xml:space="preserve">
     <value>我的评核意见</value>
   </data>
-  <data name="WoDeRenWu" xml:space="preserve">
-    <value>我的任务</value>
+  <data name="WoDeRenWu" xml:space="preserve">?
+    <value>任务管理</value>
   </data>
   <data name="WoDeRiChengAnPai" xml:space="preserve">
     <value>我的日程安排</value>
@@ -32783,7 +32783,7 @@
   </data>
   <data name="XYHDKHHSYY" xml:space="preserve">
     <value>向右滑动返回上一页</value>
-    <comment>向右滑动返回上一页，向下滑动刷新本页面</comment>
+    <comment>向右滑动返回上一页</comment>
   </data>
   <data name="ZZSJSJKSHSFZQXH" xml:space="preserve">
     <value>正在升级数据库，大概需要15秒钟，请稍候...</value>
@@ -32824,10 +32824,6 @@
   <data name="DSeekGenerate" xml:space="preserve">
     <value>生成</value>
     <comment>生成</comment>
-  </data>
-  <data name="DSeekQueryInProgress" xml:space="preserve">
-    <value>查询中...</value>
-    <comment>查询中...</comment>
   </data>
   <data name="DSeekStop" xml:space="preserve">
     <value>停止</value>
@@ -33527,14 +33523,18 @@
   </data>
   <data name="ShuRuNiDeFenXiXuQiu" xml:space="preserve">
     <value>输入你的分析需求...</value>
+    <comment>输入你的分析需求...</comment>
   </data>
   <data name="ShuRuShuJiBiaoMingChengCTaoHaoFengKai" xml:space="preserve">
     <value>输入数据表名称，以逗号分隔...</value>
+    <comment>输入数据表名称，以逗号分隔...</comment>
   </data>
   <data name="XYHDKHHSYYXXHDKSXBYM" xml:space="preserve">
     <value>向右滑动返回上一页，向下滑动刷新本页面</value>
+    <comment>向右滑动返回上一页，向下滑动刷新本页面</comment>
   </data>
   <data name="KaiPiaoZhuTi" xml:space="preserve">
     <value>开票主体</value>
+    <comment>开票主体</comment>
   </data>
 </root>
