@@ -415,7 +415,7 @@
         }
         function aiCloseDialog() { document.getElementById('aiDialogMask').className = 'ai-mask'; }
 
-        // 点击图表类型标签：追加"用X图展示"到 AI 输入框（替换已有的图表描述）
+        // 点击图表类型标签：替换输入框中已有的图表类型（如"饼图"），无则追加"用X图展示"
         function aiAppendChartType(typeId) {
             var map = {
                 pie: '饼图', bar: '柱状图', line: '折线图', ring: '环形图',
@@ -427,9 +427,21 @@
             var inp = document.getElementById('<%= txtAiInput.ClientID %>');
             if (!inp) return;
             var cur = inp.value || '';
-            // 移除已存在的图表类型描述（如"用饼图展示"），避免叠加
-            cur = cur.replace(/[，,]\s*(?:用|以)?[^\s，,]+?图展示/g, '').replace(/\s*$/, '');
-            inp.value = cur ? cur + '，用' + kw + '展示' : '用' + kw + '展示';
+            var allTypes = ['饼图', '柱状图', '折线图', '环形图', '散点图', '雷达图', '仪表盘', '漏斗图', '热力图', '树形图'];
+            var replaced = false;
+            for (var i = 0; i < allTypes.length; i++) {
+                if (cur.indexOf(allTypes[i]) >= 0) {
+                    cur = cur.split(allTypes[i]).join(kw);
+                    replaced = true;
+                    break;
+                }
+            }
+            if (!replaced) {
+                cur = cur.replace(/\s+$/, '');
+                inp.value = cur ? cur + '，用' + kw + '展示' : '用' + kw + '展示';
+            } else {
+                inp.value = cur;
+            }
             inp.focus();
         }
 
