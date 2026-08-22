@@ -1,4 +1,4 @@
-<%@ WebHandler Language="C#" Class="AIHandlerForQuery" %>
+﻿<%@ WebHandler Language="C#" Class="AIHandlerForQuery" %>
 
 using System;
 using System.Text;

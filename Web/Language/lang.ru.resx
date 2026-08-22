@@ -32672,6 +32672,162 @@
   <data name="DSeekEnterYourQuestion" xml:space="preserve">
     <value>Пожалуйста, введите ваш вопрос...</value>
   </data>
+  <data name="Biao" xml:space="preserve">
+    <value>表</value>
+  </data>
+  <data name="MeiYouBiaoHuoShiTu" xml:space="preserve">
+    <value>没有表或视图</value>
+  </data>
+  <data name="QingShuRuBaoBiao" xml:space="preserve">
+    <value>请输入报表代码</value>
+  </data>
+  <data name="BaoBiaoYuLan" xml:space="preserve">
+    <value>报表预览</value>
+  </data>
+  <data name="SQLZhiXingShiBai" xml:space="preserve">
+    <value>SQL执行失败</value>
+  </data>
+  <data name="ChaXunJieGuo" xml:space="preserve">
+    <value>查询结果</value>
+  </data>
+  <data name="AiPlaceholder" xml:space="preserve">
+    <value>请输入自然语言需求或SQL，如：按项目类型统计项目金额（饼图）</value>
+  </data>
+  <data name="ShuJuKuLiuLanQi" xml:space="preserve">
+    <value>数据库浏览器</value>
+  </data>
+  <data name="QingShuRuSQL" xml:space="preserve">
+    <value>请输入SQL</value>
+  </data>
+  <data name="ZhengZhiXingChaXun" xml:space="preserve">
+    <value>正在执行查询...</value>
+  </data>
+  <data name="ShengChengSQL" xml:space="preserve">
+    <value>生成SQL</value>
+  </data>
+  <data name="DianJiJiaZaiShuJuKuJieGou" xml:space="preserve">
+    <value>点击加载数据库结构</value>
+  </data>
+  <data name="SQLYiShengCheng" xml:space="preserve">
+    <value>SQL已生成</value>
+  </data>
+  <data name="ShengChengBaoBiao" xml:space="preserve">
+    <value>生成报表</value>
+  </data>
+  <data name="SQLBianJiQi" xml:space="preserve">
+    <value>SQL编辑器</value>
+  </data>
+  <data name="DaiMaYiFuZhi" xml:space="preserve">
+    <value>代码已复制</value>
+  </data>
+  <data name="SQLHeBaoBiaoYiShengCheng" xml:space="preserve">
+    <value>SQL和报表已生成</value>
+  </data>
+  <data name="CaoZuoZhiNan" xml:space="preserve">
+    <value>操作指南</value>
+  </data>
+  <data name="SouSuoBiaoShiTu" xml:space="preserve">
+    <value>搜索表/视图</value>
+  </data>
+  <data name="DSeekNeedClarification" xml:space="preserve">
+    <value>需要澄清</value>
+  </data>
+  <data name="DSeekGenerationResult" xml:space="preserve">
+    <value>生成结果</value>
+  </data>
+  <data name="YiFuZhi" xml:space="preserve">
+    <value>已复制</value>
+  </data>
+  <data name="SqlEditorPlaceholder" xml:space="preserve">
+    <value>在此编写SQL查询语句，或点击AI按钮用自然语言描述需求</value>
+  </data>
+  <data name="PreviewHint" xml:space="preserve">
+    <value>点击「预览」按钮查看报表效果</value>
+  </data>
+  <data name="ReportEditorPlaceholder" xml:space="preserve">
+    <value>在此编写报表HTML代码，支持ECharts图表</value>
+  </data>
+  <data name="AiAssistantDialog" xml:space="preserve">
+    <value>AI智能助手</value>
+  </data>
+  <data name="QuXiao_2" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="ZhiXing_2" xml:space="preserve">
+    <value>执行</value>
+  </data>
+  <data name="ShiTu" xml:space="preserve">
+    <value>视图</value>
+  </data>
+  <data name="FuZhiShiBai" xml:space="preserve">
+    <value>复制失败</value>
+  </data>
+  <data name="QingShuRuSQLHuoXuQiu" xml:space="preserve">
+    <value>请输入SQL或需求描述</value>
+  </data>
+  <data name="SQLYiFuZhi" xml:space="preserve">
+    <value>SQL已复制</value>
+  </data>
+  <data name="ChaXunJieGuoWeiKong" xml:space="preserve">
+    <value>查询结果为空</value>
+  </data>
+  <data name="YuLanShiBai" xml:space="preserve">
+    <value>预览失败</value>
+  </data>
+  <data name="ShanBai" xml:space="preserve">
+    <value>渲染失败</value>
+  </data>
+  <data name="TuXingLeiXingZhuShi" xml:space="preserve">
+    <value>提示：描述中可指定图表类型（饼图/柱状图/折线图/环形图等）</value>
+  </data>
+  <data name="AIDefaultQuestion" xml:space="preserve">
+    <value>按项目类型统计各项目的预算金额，用柱状图展示，下面再加上一个统计表格</value>
+  </data>
+  <data name="ShuJuHuiZong" xml:space="preserve">
+    <value>数据汇总</value>
+  </data>
+  <data name="ZuiDaZhi" xml:space="preserve">
+    <value>最大值</value>
+  </data>
+  <data name="ShuJuTiaoShu" xml:space="preserve">
+    <value>数据条数</value>
+  </data>
+  <data name="ZhanBi" xml:space="preserve">
+    <value>占比</value>
+  </data>
+  <data name="TuXingLeiXing" xml:space="preserve">
+    <value>图表类型：</value>
+  </data>
+  <data name="SanDianTu" xml:space="preserve">
+    <value>散点图</value>
+  </data>
+  <data name="ZheXianTu" xml:space="preserve">
+    <value>折线图</value>
+  </data>
+  <data name="LeiDaTu" xml:space="preserve">
+    <value>雷达图</value>
+  </data>
+  <data name="ShuXingTu" xml:space="preserve">
+    <value>树形图</value>
+  </data>
+  <data name="ReLiTu" xml:space="preserve">
+    <value>热力图</value>
+  </data>
+  <data name="HuanXingTu" xml:space="preserve">
+    <value>环形图</value>
+  </data>
+  <data name="ZongJi" xml:space="preserve">
+    <value>总计</value>
+  </data>
+  <data name="ShuJuFenXi" xml:space="preserve">
+    <value>数据分析</value>
+  </data>
+  <data name="BaoBiaoDaiMa" xml:space="preserve">
+    <value>报表代码</value>
+  </data>
+  <data name="YuLan" xml:space="preserve">
+    <value>预览</value>
+  </data>
   <data name="DSeekAnalysisCustomizedReports" xml:space="preserve">
     <value>AI создаст индивидуальный аналитический отчет в соответствии с вашими требованиями</value>
   </data>

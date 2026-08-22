@@ -10722,7 +10722,7 @@
     <value>Setting the third member</value>
   </data>
   <data name="SetUpProject" xml:space="preserve">
-    <value>New Project</value>
+    <value>New</value>
   </data>
   <data name="SeviceRequirement" xml:space="preserve">
     <value>Buyers</value>
@@ -32655,6 +32655,162 @@ The progress of the task affects the schedule to be confirmed</value>
   <data name="DSeekSmartChatDataAnalysisDualMode" xml:space="preserve">
     <value>Smart Chat + Data Analysis Dual Mode</value>
     <comment>Smart Chat + Data Analysis Dual Mode</comment>
+  </data>
+  <data name="Biao" xml:space="preserve">
+    <value>Tables</value>
+  </data>
+  <data name="MeiYouBiaoHuoShiTu" xml:space="preserve">
+    <value>No tables or views</value>
+  </data>
+  <data name="QingShuRuBaoBiao" xml:space="preserve">
+    <value>Please enter report code</value>
+  </data>
+  <data name="BaoBiaoYuLan" xml:space="preserve">
+    <value>Report Preview</value>
+  </data>
+  <data name="SQLZhiXingShiBai" xml:space="preserve">
+    <value>SQL execution failed</value>
+  </data>
+  <data name="ChaXunJieGuo" xml:space="preserve">
+    <value>Query Result</value>
+  </data>
+  <data name="AiPlaceholder" xml:space="preserve">
+    <value>Enter natural language requirement or SQL, e.g. Count project amount by project type (pie)</value>
+  </data>
+  <data name="ShuJuKuLiuLanQi" xml:space="preserve">
+    <value>Database Browser</value>
+  </data>
+  <data name="QingShuRuSQL" xml:space="preserve">
+    <value>Please enter SQL</value>
+  </data>
+  <data name="ZhengZhiXingChaXun" xml:space="preserve">
+    <value>Executing query...</value>
+  </data>
+  <data name="ShengChengSQL" xml:space="preserve">
+    <value>Generate SQL</value>
+  </data>
+  <data name="DianJiJiaZaiShuJuKuJieGou" xml:space="preserve">
+    <value>Click to load database structure</value>
+  </data>
+  <data name="SQLYiShengCheng" xml:space="preserve">
+    <value>SQL generated</value>
+  </data>
+  <data name="ShengChengBaoBiao" xml:space="preserve">
+    <value>Generate Report</value>
+  </data>
+  <data name="SQLBianJiQi" xml:space="preserve">
+    <value>SQL Editor</value>
+  </data>
+  <data name="DaiMaYiFuZhi" xml:space="preserve">
+    <value>Code copied</value>
+  </data>
+  <data name="SQLHeBaoBiaoYiShengCheng" xml:space="preserve">
+    <value>SQL and report generated</value>
+  </data>
+  <data name="CaoZuoZhiNan" xml:space="preserve">
+    <value>User Guide</value>
+  </data>
+  <data name="SouSuoBiaoShiTu" xml:space="preserve">
+    <value>Search tables/views</value>
+  </data>
+  <data name="DSeekNeedClarification" xml:space="preserve">
+    <value>Clarification Needed</value>
+  </data>
+  <data name="DSeekGenerationResult" xml:space="preserve">
+    <value>Generation Result</value>
+  </data>
+  <data name="YiFuZhi" xml:space="preserve">
+    <value>Copied</value>
+  </data>
+  <data name="SqlEditorPlaceholder" xml:space="preserve">
+    <value>Write SQL here, or click the AI button to describe requirements in natural language</value>
+  </data>
+  <data name="PreviewHint" xml:space="preserve">
+    <value>Click the Preview button to see the report</value>
+  </data>
+  <data name="ReportEditorPlaceholder" xml:space="preserve">
+    <value>Write report HTML here, supports ECharts charts</value>
+  </data>
+  <data name="AiAssistantDialog" xml:space="preserve">
+    <value>AI Assistant</value>
+  </data>
+  <data name="QuXiao_2" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="ZhiXing_2" xml:space="preserve">
+    <value>Execute</value>
+  </data>
+  <data name="ShiTu" xml:space="preserve">
+    <value>Views</value>
+  </data>
+  <data name="FuZhiShiBai" xml:space="preserve">
+    <value>Copy failed</value>
+  </data>
+  <data name="QingShuRuSQLHuoXuQiu" xml:space="preserve">
+    <value>Enter SQL or requirement description</value>
+  </data>
+  <data name="SQLYiFuZhi" xml:space="preserve">
+    <value>SQL copied</value>
+  </data>
+  <data name="ChaXunJieGuoWeiKong" xml:space="preserve">
+    <value>Query result is empty</value>
+  </data>
+  <data name="YuLanShiBai" xml:space="preserve">
+    <value>Preview failed</value>
+  </data>
+  <data name="ShanBai" xml:space="preserve">
+    <value>Render failed</value>
+  </data>
+  <data name="TuXingLeiXingZhuShi" xml:space="preserve">
+    <value>Hint: specify chart type in description (pie/bar/line/ring)</value>
+  </data>
+  <data name="AIDefaultQuestion" xml:space="preserve">
+    <value>Count project budget by project type with bar chart, and add a statistics table below</value>
+  </data>
+  <data name="ShuJuHuiZong" xml:space="preserve">
+    <value>Data Summary</value>
+  </data>
+  <data name="ZuiDaZhi" xml:space="preserve">
+    <value>Max Value</value>
+  </data>
+  <data name="ShuJuTiaoShu" xml:space="preserve">
+    <value>Row Count</value>
+  </data>
+  <data name="ZhanBi" xml:space="preserve">
+    <value>Proportion</value>
+  </data>
+  <data name="TuXingLeiXing" xml:space="preserve">
+    <value>Chart Type:</value>
+  </data>
+  <data name="SanDianTu" xml:space="preserve">
+    <value>Scatter</value>
+  </data>
+  <data name="ZheXianTu" xml:space="preserve">
+    <value>Line</value>
+  </data>
+  <data name="LeiDaTu" xml:space="preserve">
+    <value>Radar</value>
+  </data>
+  <data name="ShuXingTu" xml:space="preserve">
+    <value>Treemap</value>
+  </data>
+  <data name="ReLiTu" xml:space="preserve">
+    <value>Heatmap</value>
+  </data>
+  <data name="HuanXingTu" xml:space="preserve">
+    <value>Ring</value>
+  </data>
+  <data name="ZongJi" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="ShuJuFenXi" xml:space="preserve">
+    <value>Data Analysis</value>
+  </data>
+  <data name="BaoBiaoDaiMa" xml:space="preserve">
+    <value>Report Code</value>
+  </data>
+  <data name="YuLan" xml:space="preserve">
+    <value>Preview</value>
   </data>
   <data name="DSeekEnterYourQuestion" xml:space="preserve">
     <value>Please enter your question...</value>

@@ -549,6 +549,18 @@ function openRightLayer(pageName, titleName) {
         resize: false,
         move: false,
         success: function (layero, index) {
+            // layer.js 在 iframe 每次加载（含回发）时都会重新触发 success 回调，
+            // 这里必须防止重复初始化，否则会重置 maximize 状态导致层缩小
+            if (layero.data('aiInit')) {
+                var st = window.layerStates[index];
+                if (st && st.currentState === 'maximized') {
+                    executeStateChange(layero, index, 'maximized');
+                    updateButtonDisplay(layero, 'maximized');
+                }
+                return;
+            }
+            layero.data('aiInit', true);
+
             // 手动设置更高 z-index
             layero.css('z-index', layer.zIndex + 100);
 
@@ -802,6 +814,39 @@ function updateButtonDisplay($layero, state) {
             minBtn.show();
             maxBtn.removeClass('layui-layer-maxmin').addClass('layui-layer-max');
             break;
+    }
+}
+
+// 最大化包含指定 iframe 的层（供 iframe 内页面调用，如 AI 数据分析按钮）
+function maximizeLayerByFrame(frameEl) {
+    if (!frameEl) return;
+    var $layero = $(frameEl).closest('.layui-layer');
+    if (!$layero.length) return;
+
+    var index = $layero.data('layer-index');
+    var state = window.layerStates[index];
+    if (!state || state.currentState === 'maximized') return;
+
+    state.currentState = 'maximized';
+    state.minimizedFrom = null;
+    executeStateChange($layero, index, 'maximized');
+    updateButtonDisplay($layero, 'maximized');
+}
+
+// 确保包含指定 iframe 的层保持最大化（供 iframe 内页面每次加载/回发后调用，防止点击按钮后缩小）
+function ensureLayerMaximized(frameEl) {
+    if (!frameEl) return;
+    var $layero = $(frameEl).closest('.layui-layer');
+    if (!$layero.length) return;
+
+    var index = $layero.data('layer-index');
+    var state = window.layerStates[index];
+    if (!state) return;
+
+    if (state.currentState === 'maximized') {
+        // 重新应用最大化尺寸与按钮显示
+        executeStateChange($layero, index, 'maximized');
+        updateButtonDisplay($layero, 'maximized');
     }
 }
 
