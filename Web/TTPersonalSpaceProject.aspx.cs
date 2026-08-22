@@ -6,6 +6,7 @@ using System.Configuration;
 using System.Collections;
 using System.Collections.Generic;
 using System.Web;
+using System.Web.Caching;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -32,7 +33,7 @@ public partial class TTPersonalSpaceProject : System.Web.UI.Page
         ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "clickParentA", "aHandlerForSpecialPopWindow();", true);
         if (Page.IsPostBack == false)
         {
-            //Çå¿ÕÒ³Ãæ»º´æ£¬ÓÃÓÚ¸Ä±äÆ¤·ô
+            //ï¿½ï¿½ï¿½Ò³ï¿½æ»ºï¿½æ£¬ï¿½ï¿½ï¿½Ú¸Ä±ï¿½Æ¤ï¿½ï¿½
             SetPageNoCache();
 
             intRunNumber = 0;
@@ -41,12 +42,12 @@ public partial class TTPersonalSpaceProject : System.Web.UI.Page
         }
     }
 
-    //Çå¿ÕÒ³Ãæ»º´æ£¬ÓÃÓÚ¸Ä±äÆ¤·ô
+    //ï¿½ï¿½ï¿½Ò³ï¿½æ»ºï¿½æ£¬ï¿½ï¿½ï¿½Ú¸Ä±ï¿½Æ¤ï¿½ï¿½
     public void SetPageNoCache()
     {
         if (Session["CssDirectoryChangeNumber"].ToString() == "1")
         {
-            //Çå³ýÈ«²¿»º´æ
+            //ï¿½ï¿½ï¿½È«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             IDictionaryEnumerator allCaches = Page.Cache.GetEnumerator();
             while (allCaches.MoveNext())
             {
@@ -105,8 +106,22 @@ public partial class TTPersonalSpaceProject : System.Web.UI.Page
     {
         string strHQL;
 
+        string strCacheKey = "PS_Pro_My_" + strUserCode;
+        DataSet dsCached = HttpRuntime.Cache[strCacheKey] as DataSet;
+        if (dsCached != null)
+        {
+            DataGrid2.DataSource = dsCached;
+            DataGrid2.DataBind();
+            return;
+        }
+
         strHQL = "Select * from T_Project as project where project.PMCode = " + "'" + strUserCode + "'" + " and project.Status not in ('New',  'Hided','Deleted','Archived')  Order by project.ProjectID DESC";
         DataSet ds = ShareClass.GetDataSetFromSql(strHQL, "T_Project");
+
+        HttpRuntime.Cache.Insert(strCacheKey, ds, null,
+            System.Web.Caching.Cache.NoAbsoluteExpiration,
+            TimeSpan.FromMinutes(3));
+
         DataGrid2.DataSource = ds;
         DataGrid2.DataBind();
     }
@@ -116,9 +131,22 @@ public partial class TTPersonalSpaceProject : System.Web.UI.Page
         string strHQL;
         IList lst;
 
+        string strCacheKey = "PS_Pro_Involved_" + strUserCode;
+        IList lstCached = HttpRuntime.Cache[strCacheKey] as IList;
+        if (lstCached != null)
+        {
+            DataGrid4.DataSource = lstCached;
+            DataGrid4.DataBind();
+            return;
+        }
+
         strHQL = "from ProRelatedUser as proRelatedUser where proRelatedUser.UserCode = " + "'" + strUserCode + "'" + " and proRelatedUser.PMCode <> " + "'" + strUserCode + "'" + "  and proRelatedUser.ProStatus not in ('New','Review','Hided','Deleted','Archived','Pause','Stop') Order by proRelatedUser.ProjectID DESC";
         ProRelatedUserBLL proRelatedUserBLL = new ProRelatedUserBLL();
         lst = proRelatedUserBLL.GetAllProRelatedUsers(strHQL);
+
+        HttpRuntime.Cache.Insert(strCacheKey, lst, null,
+            System.Web.Caching.Cache.NoAbsoluteExpiration,
+            TimeSpan.FromMinutes(3));
 
         DataGrid4.DataSource = lst;
         DataGrid4.DataBind();
@@ -128,12 +156,26 @@ public partial class TTPersonalSpaceProject : System.Web.UI.Page
     {
         string strHQL;
 
+        string strCacheKey = "PS_Pro_Create_" + strUserCode;
+        DataSet dsCached = HttpRuntime.Cache[strCacheKey] as DataSet;
+        if (dsCached != null)
+        {
+            DataGrid8.DataSource = dsCached;
+            DataGrid8.DataBind();
+            return;
+        }
+
         strHQL = "select C.*,COALESCE(D.TotalBL,0) PercentRea from T_Project C left join (select A.ProjectID,COALESCE(B.TotalRea,0)/CASE WHEN A.Total = 0 Then 1 END as TotalBL from (select " +
                 "ProjectID,SUM(Total) Total from T_ProjectCostManage Where Type='Base' group by ProjectID) A left join (select ProjectID,SUM(Total) TotalRea from " +
                 "T_ProjectCostManage where Type='Operation' group by ProjectID) B on A.ProjectID=B.ProjectID) D on C.ProjectID=D.ProjectID where C.UserCode='" + strUserCode + "' and " +
                 "C.Status not in ('New','Hided','Deleted','Archived') Order by C.ProjectID DESC";
 
         DataSet ds = ShareClass.GetDataSetFromSql(strHQL, "T_ProjectCost");
+
+        HttpRuntime.Cache.Insert(strCacheKey, ds, null,
+            System.Web.Caching.Cache.NoAbsoluteExpiration,
+            TimeSpan.FromMinutes(3));
+
         DataGrid8.DataSource = ds;
         DataGrid8.DataBind();
     }

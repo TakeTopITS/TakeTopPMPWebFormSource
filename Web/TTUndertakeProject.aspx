@@ -64,7 +64,7 @@
 
 
 
-    <title>ÎÒµÄÏîÄ¿¹ÜÀí</title>
+    <title>ï¿½Òµï¿½ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½</title>
 
 
 
@@ -125,6 +125,9 @@
 
 
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+
+    <script type="text/javascript" src="js/layer/layer/layer.js"></script>
+    <script type="text/javascript" src="js/popwindow.js"></script>
 
 
 
@@ -340,19 +343,49 @@
 
 
 
-                                                                        <asp:Label ID="LB_Operator" runat="server" Text="<%$ Resources:lang,Operator%>" />:<asp:Label
+                                                                        <asp:Label ID="LB_Operator" runat="server" Text="<%$ Resources:lang,Operator%>" style="display:none;" />:<asp:Label
 
 
 
 
 
-                                                                            ID="LB_UserCode" runat="server"></asp:Label>
+                                                                            ID="LB_UserCode" runat="server" style="display:none;"></asp:Label>
 
 
 
 
 
-                                                                        <asp:Label ID="LB_UserName" runat="server"></asp:Label>
+                                                                        <asp:Label ID="LB_UserName" runat="server" style="display:none;"></asp:Label>
+
+                                                                        <span id="spMakeProjectTitle" style="display:none;"><%=LanguageHandle.GetWord("SetUpProject") %></span>
+
+                                                                        <input type="button" value="<%=LanguageHandle.GetWord("SetUpProject") %>" style="cursor:pointer;background-color:#4a6cf7;color:#fff;border:1px solid #3a5cd7;padding:2px 12px;border-radius:3px;" onclick="openMakeProjectLayer();" />
+
+                                                                        <script type="text/javascript">
+                                                                            function openMakeProjectLayer() {
+                                                                                var titleSpan = document.getElementById("spMakeProjectTitle");
+                                                                                var title = titleSpan ? (titleSpan.textContent || titleSpan.innerText || "") : "";
+                                                                                layer.open({
+                                                                                    type: 2,
+                                                                                    title: title,
+                                                                                    anim: 0,
+                                                                                    fixed: true,
+                                                                                    resize: true,
+                                                                                    scrollbar: true,
+                                                                                    moveOut: true,
+                                                                                    shade: false,
+                                                                                    shadeClose: false,
+                                                                                    maxmin: true,
+                                                                                    content: ["TTMakeProject.aspx", "auto"],
+                                                                                    area: ["90%", "90%"],
+                                                                                    offset: 't',
+                                                                                    zIndex: layer.zIndex,
+                                                                                    success: function (layero) {
+                                                                                        layer.setTop(layero);
+                                                                                    }
+                                                                                });
+                                                                            }
+                                                                        </script>
 
 
 
@@ -607,7 +640,7 @@
 
 
 
-                                                                                    <!-- ±³¾°ÑÕÉ«²ã -->
+                                                                                    <!-- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½ -->
 
 
 
@@ -631,7 +664,7 @@
 
 
 
-                                                                                    <!-- ÂÌÉ«ÎÄ×Ö - ¾ø¶Ô¶¨Î»×ó¶ÔÆë -->
+                                                                                    <!-- ï¿½ï¿½É«ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½Ô¶ï¿½Î»ï¿½ï¿½ï¿½ï¿½ï¿½ -->
 
 
 
@@ -673,7 +706,7 @@
 
 
 
-                                                                                    <!-- »ÆÉ«ÎÄ×Ö - ¾ø¶Ô¶¨Î»ÓÒ¶ÔÆë -->
+                                                                                    <!-- ï¿½ï¿½É«ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½Ô¶ï¿½Î»ï¿½Ò¶ï¿½ï¿½ï¿½ -->
 
 
 
@@ -763,7 +796,7 @@
 
 
 
-                                                                                    <!-- »ÆÉ«µ×²ã±³¾° -->
+                                                                                    <!-- ï¿½ï¿½É«ï¿½×²ã±³ï¿½ï¿½ -->
 
 
 
@@ -781,7 +814,7 @@
 
 
 
-                                                                                    <!-- ÂÌÉ«½ø¶ÈÌõ±³¾° - ÐÂÔöµÄ½ø¶È¿Ø¼þ -->
+                                                                                    <!-- ï¿½ï¿½É«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½Ä½ï¿½ï¿½È¿Ø¼ï¿½ -->
 
 
 
@@ -799,7 +832,7 @@
 
 
 
-                                                                                    <!-- Ô­ÓÐµÄÂÌÉ«Label -->
+                                                                                    <!-- Ô­ï¿½Ðµï¿½ï¿½ï¿½É«Label -->
 
 
 
@@ -835,7 +868,7 @@
 
 
 
-                                                                                    <!-- Ô­ÓÐµÄ»ÆÉ«Label -->
+                                                                                    <!-- Ô­ï¿½ÐµÄ»ï¿½É«Label -->
 
 
 
@@ -1183,7 +1216,7 @@
 
 
 
-                                                                    <asp:BoundColumn DataField="Priority" HeaderText="ÓÅÏÈ¼¶" Visible="false">
+                                                                    <asp:BoundColumn DataField="Priority" HeaderText="ï¿½ï¿½ï¿½È¼ï¿½" Visible="false">
 
 
 
@@ -1411,7 +1444,7 @@
 
 
 
-                                                                <cc2:TabPanel ID="TabPanel3" runat="server" HeaderText="ÏîÄ¿×´Ì¬">
+                                                                <cc2:TabPanel ID="TabPanel3" runat="server" HeaderText="ï¿½ï¿½Ä¿×´Ì¬">
 
 
 
@@ -1609,7 +1642,7 @@
 
 
 
-                                                                <cc2:TabPanel ID="TabPanel2" runat="server" HeaderText="ÏîÄ¿·ÑÓÃ" Visible="false">
+                                                                <cc2:TabPanel ID="TabPanel2" runat="server" HeaderText="ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½" Visible="false">
 
 
 
@@ -3001,7 +3034,7 @@
 
 
 
-                                                                <cc2:TabPanel ID="TabPanel4" runat="server" HeaderText="×ÛºÏ²éÑ¯">
+                                                                <cc2:TabPanel ID="TabPanel4" runat="server" HeaderText="ï¿½ÛºÏ²ï¿½Ñ¯">
 
 
 
@@ -3715,7 +3748,7 @@
 
 
 
-                                                                    <asp:TemplateColumn HeaderText="°´ÏîÄ¿×´Ì¬·ÖÀà:">
+                                                                    <asp:TemplateColumn HeaderText="ï¿½ï¿½ï¿½ï¿½Ä¿×´Ì¬ï¿½ï¿½ï¿½ï¿½:">
 
 
 

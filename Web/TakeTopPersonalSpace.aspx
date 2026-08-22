@@ -187,18 +187,22 @@
             loadIframesImmediate();
         });
 
-        // 立即加载所有 iframe（预计算数据已在 Session 中）
+        // 逐个加载模块 iframe（错开加载时间，避免同时冲击服务器，加快首屏速度）
         function loadIframesImmediate() {
             var iframes = $('iframe[data-src]');
             if (iframes.length === 0) return;
-            
-            // 一次性设置所有 iframe 的 src
-            iframes.each(function() {
-                var $iframe = $(this);
+
+            var index = 0;
+            function loadNext() {
+                if (index >= iframes.length) return;
+                var $iframe = $(iframes[index]);
+                index++;
                 if (!$iframe.attr('src')) {
                     $iframe.attr('src', $iframe.data('src'));
                 }
-            });
+                window.setTimeout(loadNext, 200);
+            }
+            loadNext();
         }
 
         // 隐藏Loading
@@ -316,7 +320,7 @@
                                     <div class="personal-space-cline"></div>
                                     <iframe id="IF_Module" name="IF_Module" 
                                         onload="hideLoading(this);"
-                                        src='<%# DataBinder.Eval(Container.DataItem, "ModulePage") + "&Flag=" + Session["SkinFlag"].ToString()  %>'
+                                        data-src='<%# DataBinder.Eval(Container.DataItem, "ModulePage") + "&Flag=" + Session["SkinFlag"].ToString()  %>'
                                         style="width: 100%; height: 320px;" frameborder="no" marginwidth="0" marginheight="0"
                                         scrolling="auto"></iframe>
                                 </li>
@@ -335,7 +339,7 @@
                                     <div class="personal-space-cline"></div>
                                     <iframe id="IF_Module" name="IF_Module" 
                                         onload="hideLoading(this);"
-                                        src='<%# DataBinder.Eval(Container.DataItem, "ModulePage") + "&Flag=" + Session["SkinFlag"].ToString()  %>'
+                                        data-src='<%# DataBinder.Eval(Container.DataItem, "ModulePage") + "&Flag=" + Session["SkinFlag"].ToString()  %>'
                                         style="width: 100%; height: 350px;" frameborder="no" marginwidth="0" marginheight="0"
                                         scrolling="auto"></iframe>
                                 </li>

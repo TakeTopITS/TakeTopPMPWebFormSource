@@ -8,6 +8,7 @@ using System.IO;
 using System.Resources;
 using System.ServiceModel.Security;
 using System.Web;
+using System.Web.Caching;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
@@ -25,7 +26,7 @@ public partial class TTPersonalSpaceToDoList : System.Web.UI.Page
         {
             //LB_SuperDepartString.Text = TakeTopCore.CoreShareClass.InitialDepartmentStringByAuthoritySuperUser(Session["UserCode"].ToString());
 
-            //Çå¿ÕÒ³Ãæ»º´æ£¬ÓÃÓÚ¸Ä±äÆ¤·ô
+            //ï¿½ï¿½ï¿½Ò³ï¿½æ»ºï¿½æ£¬ï¿½ï¿½ï¿½Ú¸Ä±ï¿½Æ¤ï¿½ï¿½
             SetPageNoCache();
 
             intRunNumber = 0;
@@ -34,12 +35,12 @@ public partial class TTPersonalSpaceToDoList : System.Web.UI.Page
         }
     }
 
-    //Çå¿ÕÒ³Ãæ»º´æ£¬ÓÃÓÚ¸Ä±äÆ¤·ô
+    //ï¿½ï¿½ï¿½Ò³ï¿½æ»ºï¿½æ£¬ï¿½ï¿½ï¿½Ú¸Ä±ï¿½Æ¤ï¿½ï¿½
     public void SetPageNoCache()
     {
         if (Session["CssDirectoryChangeNumber"].ToString() == "1")
         {
-            //Çå³ıÈ«²¿»º´æ
+            //ï¿½ï¿½ï¿½È«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             IDictionaryEnumerator allCaches = Page.Cache.GetEnumerator();
             while (allCaches.MoveNext())
             {
@@ -155,7 +156,7 @@ public partial class TTPersonalSpaceToDoList : System.Web.UI.Page
         }
         catch (Exception ex)
         {
-            // ¼ÇÂ¼ÈÕÖ¾
+            // ï¿½ï¿½Â¼ï¿½ï¿½Ö¾
             LogClass.WriteLogFile($"LoadFunInforDialBoxList Error: {ex.Message}");
             RP_ToDoList.DataSource = null;
             RP_ToDoList.DataBind();
@@ -171,6 +172,14 @@ public partial class TTPersonalSpaceToDoList : System.Web.UI.Page
 
         strSuperDepartString = LB_SuperDepartString.Text.Trim();
 
+        // ç¼“å­˜è®¡æ•°ç»“æœï¼Œé¿å…æ¯æ¬¡åŠ è½½é€é¡¹æŸ¥è¯¢æ•°æ®åº“ï¼ˆN+1 é—®é¢˜ï¼‰
+        string strCacheKey = "PS_ToDoCount_" + strUserCode + "_" + strSQLCode.GetHashCode();
+        string strCached = HttpRuntime.Cache[strCacheKey] as string;
+        if (!string.IsNullOrEmpty(strCached))
+        {
+            return strCached;
+        }
+
         try
         {
             strHQL = strSQLCode.Trim().Replace("[TAKETOPUSERCODE]", strUserCode);
@@ -178,7 +187,13 @@ public partial class TTPersonalSpaceToDoList : System.Web.UI.Page
 
             DataSet ds = ShareClass.GetDataSetFromSqlNOOperateLog(strHQL, "FunInforDialBoxList");
 
-            return ds.Tables[0].Rows.Count.ToString();
+            string strResult = ds.Tables[0].Rows.Count.ToString();
+
+            HttpRuntime.Cache.Insert(strCacheKey, strResult, null,
+                System.Web.Caching.Cache.NoAbsoluteExpiration,
+                TimeSpan.FromMinutes(3));
+
+            return strResult;
         }
         catch
         {

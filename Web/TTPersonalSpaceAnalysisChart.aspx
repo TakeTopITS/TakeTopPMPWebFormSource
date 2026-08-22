@@ -83,10 +83,7 @@
     <script type="text/javascript" language="javascript">
         var chartLoadCount = 0;
         var totalCharts = 0;
-        var reloadTimer = null;
-        var initialCheckTimer = null;
-        var hasReloaded = false; // 标记是否已经刷新过，防止重复刷新
-        var allChartsLoaded = false; // 标记所有图表是否已加载完成
+        var allChartsLoaded = false;
 
         $(function () {
             if (top.location != self.location) { } else { CloseWebPage(); }
@@ -97,38 +94,17 @@
                 totalCharts += 1;
             }
 
-            // 如果总图表数为0，隐藏loading，10秒后刷新一次
+            // 如果总图表数为0，直接隐藏loading
             if (totalCharts === 0) {
                 document.getElementById("loading").style.display = "none";
                 allChartsLoaded = true;
-                startReloadAfterLoaded();
-            } else {
-                // 启动初始检查定时器：5秒后检查是否所有图表都加载完成
-                initialCheckTimer = setTimeout(function() {
-                    checkAllChartsLoaded();
-                }, 5000);
-                
-                // 启动强制检测：8秒后无论如何都执行一次数据检测
-                forceCheckAfterDelay();
             }
         });
 
-        // 图表加载完成后10秒刷新一次
-        function startReloadAfterLoaded() {
-            if (hasReloaded) return;
-            console.log("图表加载完成，10秒后自动刷新...");
-            setTimeout(function() {
-                if (!hasReloaded) {
-                    hasReloaded = true;
-                    reloadCharts();
-                }
-            }, 10000);
-        }
-
+        // 图表加载完成回调
         function chartLoaded(iframe, loadingId) {
             chartLoadCount++;
-            console.log("图表加载完成: " + chartLoadCount + "/" + totalCharts);
-            
+
             // 隐藏对应图表的 loading 覆盖层
             if (loadingId) {
                 var loadingEl = document.getElementById(loadingId);
@@ -136,96 +112,11 @@
                     loadingEl.style.display = "none";
                 }
             }
-            
+
             if (chartLoadCount >= totalCharts) {
                 document.getElementById("loading").style.display = "none";
                 allChartsLoaded = true;
-                // 所有图表加载完成后10秒刷新一次
-                startReloadAfterLoaded();
             }
-        }
-
-        // 检查所有图表是否已加载（防止 onload 事件未触发）
-        function checkAllChartsLoaded() {
-            if (chartLoadCount < totalCharts) {
-                console.log("图表加载不完整，强制检查...");
-                // 强制完成加载计数
-                chartLoadCount = totalCharts;
-                document.getElementById("loading").style.display = "none";
-                allChartsLoaded = true;
-                // 强制加载完成后10秒刷新一次
-                startReloadAfterLoaded();
-            }
-        }
-
-        // 检查图表是否有数据
-        function checkChartData() {
-            var hasEmptyData = false;
-            
-            // 方法1：检查当前页面内容是否包含 "--"
-            var pageContent = document.body.innerHTML;
-            if (pageContent.indexOf('--') !== -1) {
-                hasEmptyData = true;
-                console.log("检测到页面内容包含 '--'");
-            }
-            
-            // 方法2：检查所有 iframe 的内容
-            var iframes = document.querySelectorAll('iframe');
-            for (var i = 0; i < iframes.length; i++) {
-                try {
-                    var iframeDoc = iframes[i].contentDocument || iframes[i].contentWindow.document;
-                    if (iframeDoc && iframeDoc.body) {
-                        var iframeContent = iframeDoc.body.innerHTML;
-                        if (iframeContent.indexOf('--') !== -1) {
-                            hasEmptyData = true;
-                            console.log("检测到 iframe[" + i + "] 包含 '--'");
-                        }
-                    }
-                } catch (e) {
-                    // 跨域或无法访问时忽略
-                }
-            }
-            
-            if (hasEmptyData && !hasReloaded) {
-                console.log("检测到数据不完整（包含 '--'），10秒后自动重载...");
-                hasReloaded = true;
-                startReloadTimer();
-            } else if (!hasReloaded && allChartsLoaded) {
-                // 数据完整且图表已加载完成，10秒后刷新一次
-                console.log("图表数据完整，10秒后自动刷新...");
-                hasReloaded = true;
-                startReloadTimer();
-            } else {
-                console.log("所有图表数据完整，无需刷新");
-            }
-        }
-
-        // 启动重载定时器
-        function startReloadTimer() {
-            if (reloadTimer || hasReloaded) {
-                return; // 已经刷新过就不再启动定时器
-            }
-            reloadTimer = setTimeout(function() {
-                if (!hasReloaded) {
-                    hasReloaded = true;
-                    reloadCharts();
-                }
-            }, 10000); // 10秒后重载
-        }
-
-        // 强制检测（用于页面加载后延迟检测）
-        function forceCheckAfterDelay() {
-            setTimeout(function() {
-                console.log("执行强制检测...");
-                checkChartData();
-            }, 8000); // 页面加载8秒后强制检测
-        }
-
-        // 重新加载图表（清除缓存后重新查询）
-        function reloadCharts() {
-            console.log("检测到数据为空，清除缓存并重新加载...");
-            // 添加 clearCache=1 参数，让后端清除缓存并重新执行查询
-            window.location.href = window.location.pathname + '?clearCache=1&reload=' + new Date().getTime();
         }
 
         function displayScroll() {

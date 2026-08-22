@@ -6,6 +6,7 @@ using System.Configuration;
 using System.Collections;
 using System.Collections.Generic;
 using System.Web;
+using System.Web.Caching;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -42,7 +43,16 @@ public partial class TTPersonalSpaceWorkflow : System.Web.UI.Page
         {
             try
             {
-                LB_DepartString.Text = TakeTopCore.CoreShareClass.InitialDepartmentStringByAuthority(strUserCode);
+                // 部门字符串缓存到 Session，避免每次加载重复递归计算
+                if (Session["PS_WorkflowDepartString"] != null)
+                {
+                    LB_DepartString.Text = Session["PS_WorkflowDepartString"].ToString();
+                }
+                else
+                {
+                    LB_DepartString.Text = TakeTopCore.CoreShareClass.InitialDepartmentStringByAuthority(strUserCode);
+                    Session["PS_WorkflowDepartString"] = LB_DepartString.Text;
+                }
             }
             catch (Exception ex)
             {
@@ -129,6 +139,15 @@ public partial class TTPersonalSpaceWorkflow : System.Web.UI.Page
         string strUserCode, strDepartCode;
         strUserCode = Session["UserCode"].ToString();
 
+        string strCacheKey = "PS_WF_Regular_" + strUserCode;
+        DataSet dsCached = HttpRuntime.Cache[strCacheKey] as DataSet;
+        if (dsCached != null)
+        {
+            RP_RegularWF.DataSource = dsCached;
+            RP_RegularWF.DataBind();
+            return;
+        }
+
         strDepartCode = ShareClass.GetDepartCodeFromUserCode(strUserCode);
 
         strHQL = "select * from T_WorkFlowTemplate as workFlowTemplate Where workFlowTemplate.PageFile <> ''";
@@ -136,6 +155,10 @@ public partial class TTPersonalSpaceWorkflow : System.Web.UI.Page
         strHQL += " Or TemName in (Select TemName From T_WorkFlowTemplateBusinessMember Where UserCode = '" + strUserCode + "'))";
         strHQL += " Order by workFlowTemplate.SortNumber ASC";
         DataSet ds = ShareClass.GetDataSetFromSql(strHQL, "T_WorkFlowTemplate");
+
+        HttpRuntime.Cache.Insert(strCacheKey, ds, null,
+            System.Web.Caching.Cache.NoAbsoluteExpiration,
+            TimeSpan.FromMinutes(3));
 
         RP_RegularWF.DataSource = ds;
         RP_RegularWF.DataBind();
@@ -151,6 +174,15 @@ public partial class TTPersonalSpaceWorkflow : System.Web.UI.Page
         string strUserCode, strDepartCode;
         strUserCode = Session["UserCode"].ToString();
 
+        string strCacheKey = "PS_WF_DIY_" + strUserCode + "_" + strLangCode;
+        DataSet dsCached = HttpRuntime.Cache[strCacheKey] as DataSet;
+        if (dsCached != null)
+        {
+            RP_DIYWF.DataSource = dsCached;
+            RP_DIYWF.DataBind();
+            return;
+        }
+
         strDepartCode = ShareClass.GetDepartCodeFromUserCode(strUserCode);
 
         strHQL = "Select HomeName,ID From T_WLType Where  LangCode = " + "'" + strLangCode + "'";
@@ -158,6 +190,10 @@ public partial class TTPersonalSpaceWorkflow : System.Web.UI.Page
         strHQL += " and (BelongDepartCode in " + strDepartString;
         strHQL += " Or TemName in (Select TemName From T_WorkFlowTemplateBusinessMember Where UserCode = '" + strUserCode + "')))";
         DataSet ds = ShareClass.GetDataSetFromSql(strHQL, "T_WorkFlowTemplate");
+
+        HttpRuntime.Cache.Insert(strCacheKey, ds, null,
+            System.Web.Caching.Cache.NoAbsoluteExpiration,
+            TimeSpan.FromMinutes(3));
 
         RP_DIYWF.DataSource = ds;
         RP_DIYWF.DataBind();
@@ -167,12 +203,26 @@ public partial class TTPersonalSpaceWorkflow : System.Web.UI.Page
     {
         string strHQL;
 
+        string strCacheKey = "PS_WF_My_" + strUserCode;
+        DataSet dsCached = HttpRuntime.Cache[strCacheKey] as DataSet;
+        if (dsCached != null)
+        {
+            DataGrid3.DataSource = dsCached;
+            DataGrid3.DataBind();
+            return;
+        }
+
         strHQL = "Select WLID,WLName,Status From T_WorkFlow Where CreatorCode = " + "'" + strUserCode + "'";
         strHQL += " and Status <> 'CaseClosed'";
         strHQL += " Order By WLID DESC";
         DataSet ds = new DataSet();
 
         ds = ShareClass.GetDataSetFromSql(strHQL, "T_WorkFlow");
+
+        HttpRuntime.Cache.Insert(strCacheKey, ds, null,
+            System.Web.Caching.Cache.NoAbsoluteExpiration,
+            TimeSpan.FromMinutes(3));
+
         DataGrid3.DataSource = ds;
         DataGrid3.DataBind();
 
@@ -182,12 +232,25 @@ public partial class TTPersonalSpaceWorkflow : System.Web.UI.Page
     {
         string strHQL;
 
+        string strCacheKey = "PS_WF_Pending_" + strUserCode;
+        DataSet dsCached = HttpRuntime.Cache[strCacheKey] as DataSet;
+        if (dsCached != null)
+        {
+            DataGrid6.DataSource = dsCached;
+            DataGrid6.DataBind();
+            return;
+        }
+
         strHQL = string.Format(@"Select * From (Select A.ID,A.StepID,A.WorkDetail,B.CreatorCode,B.CreatorName,A.Requisite,A.Operation,A.CheckingTime,A.WLID,Rtrim(cast(A.WLID as char(20))) || '. ' || B.WLName as WLName,B.Status From T_WorkFlowStepDetail A,T_WorkFlow B 
                  Where A.WLID = B.WLID And A.Status In ('InProgress','Reviewing','Signing','ReReview') 
                  And B.Status Not In ('Updating','Closed','Passed','CaseClosed') And (trim(A.OperatorCode) = '{0}' Or A.OperatorCode in ( Select UserCode From T_MemberLevel Where UnderCode <> UserCode and UnderCode = '{0}' and AgencyStatus = 1))
-																 And A.IsOperator = 'YES' ) C Order By C.StepID DESC", strUserCode);
+															 And A.IsOperator = 'YES' ) C Order By C.StepID DESC", strUserCode);
         DataSet ds = new DataSet();
         ds = ShareClass.GetDataSetFromSql(strHQL, "T_WorkFlowDetail");
+
+        HttpRuntime.Cache.Insert(strCacheKey, ds, null,
+            System.Web.Caching.Cache.NoAbsoluteExpiration,
+            TimeSpan.FromMinutes(3));
 
         DataGrid6.DataSource = ds;
         DataGrid6.DataBind();
