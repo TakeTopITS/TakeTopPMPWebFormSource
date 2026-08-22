@@ -641,7 +641,21 @@
                                 <asp:TextBox ID="txtSchemaFilter" runat="server" placeholder="<%$ Resources:lang,SouSuoBiaoShiTu%>" AutoPostBack="false"></asp:TextBox>
                             </div>
                             <div class="rptd-sidebar-body">
-                                <asp:Literal ID="litSchemaTree" runat="server"></asp:Literal>
+                                <asp:UpdatePanel ID="upSchemaTree" runat="server" UpdateMode="Conditional">
+                                    <ContentTemplate>
+                                        <asp:UpdateProgress ID="upSchemaProgress" runat="server" AssociatedUpdatePanelID="upSchemaTree" DisplayAfter="0">
+                                            <ProgressTemplate>
+                                                <div class="rptd-sidebar-msg">
+                                                    <img src="Images/Processing.gif" style="width:24px;" />
+                                                </div>
+                                            </ProgressTemplate>
+                                        </asp:UpdateProgress>
+                                        <asp:Literal ID="litSchemaTree" runat="server"></asp:Literal>
+                                    </ContentTemplate>
+                                    <Triggers>
+                                        <asp:AsyncPostBackTrigger ControlID="btnLoadSchema" EventName="Click" />
+                                    </Triggers>
+                                </asp:UpdatePanel>
                             </div>
                         </div>
 
@@ -774,7 +788,11 @@
                     <button type="button" class="rptd-btn-sm" onclick="aiClosePreview()">✕</button>
                 </div>
                 <div style="padding:10px 16px;overflow:auto;max-height:60vh;font-size:12px;">
-                    <asp:Literal ID="litPreviewContent" runat="server"></asp:Literal>
+                    <asp:UpdatePanel ID="upPreview" runat="server" UpdateMode="Always">
+                        <ContentTemplate>
+                            <asp:Literal ID="litPreviewContent" runat="server"></asp:Literal>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
                 </div>
             </div>
         </div>

@@ -71,6 +71,8 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
                 BT_DataAnalysis.Visible = false;
             }
             AutoLoadAllTablesAndSelect();
+            // 初始不自动加载 schema 树，显示"点击加载数据库结构"占位（参照新版，避免首屏慢）
+            litSchemaTree.Text = "<div class='rptd-sidebar-msg'><a href='javascript:void(0)' onclick=\"__doPostBack('" + btnLoadSchema.ClientID + "','')\" style='color:#1a5cb0;text-decoration:none;'>" + W("DianJiJiaZaiShuJuKuJieGou") + "</a></div>";
             txtPrompt.Focus();
         }
         else
