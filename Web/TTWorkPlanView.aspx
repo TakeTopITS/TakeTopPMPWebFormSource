@@ -5,12 +5,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
-    <title>ÏîÄ¿¹¤×÷¼Æ»®</title>
+    <title>ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½ï¿½Æ»ï¿½</title>
     <link id="mainCss" href="css/bluelightmain.css" rel="stylesheet" type="text/css" />
     <style type="text/css">
         #AboveDiv {
+            width: 950px;
             min-width: 950px;
-            width: expression (document.body.clientWidth <= 950? "950px" : "auto" ));
         }
 
         .auto-style1 {
@@ -128,8 +128,8 @@
 
 
 
-        function autoheight() {?//º¯Êý:»ñÈ¡³ß´ç
-            //»ñÈ¡ä¯ÀÀÆ÷´°¿Ú¸ß¶È
+        function autoheight() {?//ï¿½ï¿½ï¿½ï¿½:ï¿½ï¿½È¡ï¿½ß´ï¿½
+            //ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¸ß¶ï¿½
             var winHeight = 0;
             if (window.innerHeight)
                 winHeight = window.innerHeight;
@@ -142,13 +142,13 @@
             document.getElementById("PlanTreeDivID").style.height = (winHeight - 80) + "px";
         }
 
-        window.onresize = autoheight;?//ä¯ÀÀÆ÷´°¿Ú·¢Éú±ä»¯Ê±Í¬Ê±±ä»¯DIV¸ß¶È
+        window.onresize = autoheight;?//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú·ï¿½ï¿½ï¿½ï¿½ä»¯Ê±Í¬Ê±ï¿½ä»¯DIVï¿½ß¶ï¿½
 
     </script>
 
 
 </head>
-<body>
+<body style="overflow: hidden;">
     <form id="form1" runat="server">
         <%--  <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">--%>
         <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">
@@ -166,7 +166,7 @@
                                                 <tr>
                                                     <td width="30px;" style="padding-left: 5px; padding-top: 5px;">
                                                         <a href="javascript:ChangeMenu(0)">
-                                                            <img src="Images/LeftRightArrow.png" width="18" height="24" border="0" alt="Òþ²ØÓÒ±ßÀ¸">
+                                                            <img src="Images/LeftRightArrow.png" width="18" height="24" border="0" alt="ï¿½ï¿½ï¿½ï¿½ï¿½Ò±ï¿½ï¿½ï¿½">
                                                         </a>
                                                     </td>
                                                     <td background="ImagesSkin/main_top_bj.jpg" class="titlezi">
@@ -201,7 +201,7 @@
                                         <td rowspan="4" width="300px" style="padding: 5px 5px 0px 5px; text-align: left; border-right: solid 1px #d0d0d0">
                                             <div id="PlanTreeDivID" style="width: 300px; overflow: auto;">
                                                 <asp:TreeView ID="TreeView1" runat="server" NodeWrap="True" OnSelectedNodeChanged="TreeView1_SelectedNodeChanged"
-                                                    ShowLines="True" Font-Bold="False" Font-Names="??¨¬?" Style="width: 300px; height: 100%;">
+                                                    ShowLines="True" Font-Bold="False" Font-Names="??ï¿½ï¿½?" Style="width: 300px; height: 100%;">
                                                     <RootNodeStyle CssClass="rootNode" />
                                                     <NodeStyle CssClass="treeNode" />
                                                     <LeafNodeStyle CssClass="leafNode" />
@@ -431,13 +431,13 @@
                                                                                 <asp:BoundColumn DataField="UserName" HeaderText="Name">
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="15%" />
                                                                                 </asp:BoundColumn>
-                                                                                <asp:BoundColumn DataField="MainWork" HeaderText="Ö÷Òª¹¤×÷">
+                                                                                <asp:BoundColumn DataField="MainWork" HeaderText="ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½">
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" Width="35%" />
                                                                                 </asp:BoundColumn>
-                                                                                <asp:BoundColumn DataField="StartWorkDate" DataFormatString="{0:yyyy/MM/dd}" HeaderText="¿ªÊ¼¹¤×÷Ê±¼ä">
+                                                                                <asp:BoundColumn DataField="StartWorkDate" DataFormatString="{0:yyyy/MM/dd}" HeaderText="ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½">
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="15%" />
                                                                                 </asp:BoundColumn>
-                                                                                <asp:BoundColumn DataField="EndWorkDate" DataFormatString="{0:yyyy/MM/dd}" HeaderText="½áÊø¹¤×÷Ê±¼ä">
+                                                                                <asp:BoundColumn DataField="EndWorkDate" DataFormatString="{0:yyyy/MM/dd}" HeaderText="ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½">
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="15%" />
                                                                                 </asp:BoundColumn>
                                                                                 <asp:BoundColumn DataField="Budget" HeaderText="Budget">

@@ -1,0 +1,31 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <T_GoodsPurchaseOrder>
+    <detailpoid>61</detailpoid>
+    <poid>61</poid>
+    <gponame>PO202608061</gponame>
+    <purmancode>C7094               </purmancode>
+    <purmanname>员工C7094             </purmanname>
+    <purtime>2026-08-03T00:00:00+08:00</purtime>
+    <arrivaltime>2026-08-03T00:00:00+08:00</arrivaltime>
+    <amount>10000.000</amount>
+    <comment />
+    <status>InProgress</status>
+    <operatorcode>C7094               </operatorcode>
+    <operatorname>员工C7094</operatorname>
+    <relatedtype>Project             </relatedtype>
+    <relatedid>506</relatedid>
+    <currencytype>人民币</currencytype>
+    <supplier>杭州西湖材料制造有限公司</supplier>
+    <supplierphone>111111111      </supplierphone>
+    <supplierfax>020-38678076   </supplierfax>
+    <suppliercontacts>小龙</suppliercontacts>
+    <clearingform />
+    <soid>0</soid>
+    <packwarehouse />
+    <carcode />
+    <driver />
+    <businesstype>Plan                </businesstype>
+    <businesscode>3572                </businesscode>
+  </T_GoodsPurchaseOrder>
+</NewDataSet>

@@ -40,8 +40,8 @@
 
     <style type="text/css">
         #AboveDiv {
+            width: 950px;
             min-width: 950px;
-            width: expression (document.body.clientWidth <= 950? "950px" : "auto" ));
         }
     </style>
 
@@ -107,12 +107,6 @@
 
                 window.parent.document.getElementById("bodyFrame").cols = j.toString() + ",*";
 
-                if (j == 950) {
-
-                    var varProjectID = getUrlParam("ProjectID");
-                    window.document.location = "TTWorkPlan.aspx?ProjectID=" + varProjectID;
-
-                }
             }
 
         }
@@ -160,7 +154,7 @@
 
     </script>
 </head>
-<body>
+<body style="overflow: hidden;">
     <form id="form1" runat="server">
         <%--  <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">--%>
         <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">
