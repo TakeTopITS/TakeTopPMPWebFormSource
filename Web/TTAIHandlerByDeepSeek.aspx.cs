@@ -521,7 +521,10 @@ public partial class TTAIHandlerByDeepSeek : System.Web.UI.Page
             // 简单模式图表（未使用，保留）
         }
 
-        ScriptManager.RegisterStartupScript(this, GetType(), "closeAiDlg", "aiCloseDialog();aiHideLoading();", true);
+        string closeScript = action == "aiReport"
+            ? "aiCloseDialog();aiHideLoading();aiRenderPreview();"
+            : "aiCloseDialog();aiHideLoading();";
+        ScriptManager.RegisterStartupScript(this, GetType(), "closeAiDlg", closeScript, true);
     }
 
     // AI 生成 SQL（分析模式对话框）
