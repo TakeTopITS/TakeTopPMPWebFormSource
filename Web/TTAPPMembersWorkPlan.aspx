@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAPPMembersWorkPlan.aspx.cs" Inherits="TTAPPMembersWorkPlan" %>
+Ôªø<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAPPMembersWorkPlan.aspx.cs" Inherits="TTAPPMembersWorkPlan" %>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
 
@@ -17,7 +17,7 @@
     <script type="text/javascript" src="js/allAHandler.js"></script>
     <script type="text/javascript" language="javascript">
         $(function () {
-            initSwipeBack();// ≥ı ºªØª¨∂Ø∑µªÿπ¶ƒ‹ 
+            initSwipeBack();// ÂàùÂßãÂåñÊªëÂä®ËøîÂõûÂäüËÉΩ 
 
             //
 
@@ -28,7 +28,7 @@
     <div id="swipeFeedback" class="swipe-feedback">
         <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYYXXHDKSXBYM%>" />
     </div>
-    <!-- ª¨∂Ø∑¥¿°≤„ -->
+    <!-- ÊªëÂä®ÂèçÈ¶àÂ±Ç -->
 
     <form id="form1" runat="server">
         <%--  <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">--%>
@@ -36,6 +36,7 @@
         </asp:ScriptManager>
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
+            <div id="appScroll" class="app-scroll">
 
                 <table cellpadding="0" cellspacing="0" width="100%" class="bian">
                     <tr>
@@ -55,7 +56,7 @@
                                                         <%-- <img src="ImagesSkin/main_top_r.jpg" width="5" height="31" />--%></td>
                                                 </tr>
                                             </table>
-                                            <img id="IMG_Waiting" src="Images/Processing.gif" alt="«Î…‘∫Ú£¨¥¶¿Ì÷–..." style="display: none;" />
+                                            <img id="IMG_Waiting" src="Images/Processing.gif" alt="ËØ∑Á®çÂÄôÔºåÂ§ÑÁêÜ‰∏≠..." style="display: none;" />
                                         </a>
                                     </td>
                                 </tr>
@@ -185,7 +186,7 @@
                                 <tr>
                                     <td valign="top">
                                         <cc2:TabContainer CssClass="ajax_tab_menu" ID="TabContainer1" runat="server" ActiveTabIndex="0" Width="100%">
-                                            <cc2:TabPanel ID="TabPanel1" runat="server" HeaderText="÷¥––»’÷æ" TabIndex="0">
+                                            <cc2:TabPanel ID="TabPanel1" runat="server" HeaderText="ÊâßË°åÊó•Âøó" TabIndex="0">
                                                 <HeaderTemplate>
                                                     <asp:Label ID="Label14" runat="server" Text="<%$ Resources:lang,ZhiXingRiZhi%>"></asp:Label>
                                                 </HeaderTemplate>
@@ -246,7 +247,7 @@
                                                     </asp:DataList>
                                                 </ContentTemplate>
                                             </cc2:TabPanel>
-                                            <cc2:TabPanel ID="TabPanel2" runat="server" HeaderText="πÿº¸ƒø±Í" TabIndex="1">
+                                            <cc2:TabPanel ID="TabPanel2" runat="server" HeaderText="ÂÖ≥ÈîÆÁõÆÊ†á" TabIndex="1">
                                                 <HeaderTemplate>
                                                     <asp:Label ID="Label19" runat="server" Text="<%$ Resources:lang,GuanJianMuBiao%>"></asp:Label>
                                                 </HeaderTemplate>
@@ -281,7 +282,7 @@
                                                                         <%--    <asp:BoundColumn DataField="ID" HeaderText="Number">
                                                                                 <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="10%" />
                                                                             </asp:BoundColumn>--%>
-                                                                        <asp:BoundColumn DataField="Target" HeaderText="ƒø±Í">
+                                                                        <asp:BoundColumn DataField="Target" HeaderText="ÁõÆÊ†á">
                                                                             <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" Width="70%" />
                                                                         </asp:BoundColumn>
                                                                         <asp:TemplateColumn HeaderText="Progress">
@@ -302,7 +303,7 @@
                                                     </table>
                                                 </ContentTemplate>
                                             </cc2:TabPanel>
-                                            <cc2:TabPanel ID="TabPanel3" runat="server" HeaderText="¡Ïµº∆¿∫À" TabIndex="2">
+                                            <cc2:TabPanel ID="TabPanel3" runat="server" HeaderText="È¢ÜÂØºËØÑÊ†∏" TabIndex="2">
                                                 <HeaderTemplate>
                                                     <asp:Label ID="Label23" runat="server" Text="<%$ Resources:lang,LingDaoPingHe%>"></asp:Label>
                                                 </HeaderTemplate>
@@ -378,7 +379,7 @@
                                                     </table>
                                                 </ContentTemplate>
                                             </cc2:TabPanel>
-                                            <cc2:TabPanel ID="TabPanel4" runat="server" HeaderText="∆¿¬€º«¬º" TabIndex="0">
+                                            <cc2:TabPanel ID="TabPanel4" runat="server" HeaderText="ËØÑËÆ∫ËÆ∞ÂΩï" TabIndex="0">
                                                 <HeaderTemplate>
                                                     <asp:Label ID="Label29" runat="server" Text="<%$ Resources:lang,WoDeYiJian%>"></asp:Label>
                                                 </HeaderTemplate>
@@ -523,7 +524,7 @@
                                                             </asp:ChartArea>
                                                         </ChartAreas>
                                                         <Titles>
-                                                            <asp:Title Name="±ÍÃ‚" Alignment="TopCenter" IsDockedInsideChartArea="false" DockedToChartArea="ChartArea1">
+                                                            <asp:Title Name="Ê†áÈ¢ò" Alignment="TopCenter" IsDockedInsideChartArea="false" DockedToChartArea="ChartArea1">
                                                             </asp:Title>
                                                         </Titles>
                                                     </asp:Chart>--%>
@@ -555,6 +556,7 @@
 
             </ContentTemplate>
         </asp:UpdatePanel>
+        </div>
         <div style="position: fixed; display: none; z-index: 9999;" id="progressContainer">
             <asp:UpdateProgress ID="TakeTopUp" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
                 <ProgressTemplate>

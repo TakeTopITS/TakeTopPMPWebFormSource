@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAPPTaskAssignRecordForAfterService.aspx.cs" Inherits="TTAPPTaskAssignRecordForAfterService" %>
+ï»¿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAPPTaskAssignRecordForAfterService.aspx.cs" Inherits="TTAPPTaskAssignRecordForAfterService" %>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
 
@@ -12,7 +12,7 @@
     <link id="flxappCss" href="css/APPFlx.css" rel="stylesheet" type="text/css" />
 
     <style>
-        /* ĞŞ¸´±í¸ñ¶ÔÆëÎÊÌâ */
+        /* ä¿®å¤è¡¨æ ¼å¯¹é½é—®é¢˜ */
         .form-aligned-table {
             width: 100%;
             border-collapse: collapse;
@@ -24,7 +24,7 @@
                 line-height: 1 !important;
             }
 
-            /* È·±£ËùÓĞÔªËØ»ùÏß¶ÔÆë */
+            /* ç¡®ä¿æ‰€æœ‰å…ƒç´ åŸºçº¿å¯¹é½ */
             .form-aligned-table .formItemBgStyleForAlignLeft {
                 display: table-cell;
                 vertical-align: middle !important;
@@ -32,7 +32,7 @@
                 line-height: 50px !important;
             }
 
-        /* Í³Ò»ÊäÈë¿ò¸ß¶È */
+        /* ç»Ÿä¸€è¾“å…¥æ¡†é«˜åº¦ */
         .form-input-text {
             height: 35px !important;
             line-height: 35px !important;
@@ -43,14 +43,14 @@
             border-radius: 4px !important;
         }
 
-        /* Í³Ò»°´Å¥¸ß¶È */
+        /* ç»Ÿä¸€æŒ‰é’®é«˜åº¦ */
         .aligned-btn {
             vertical-align: middle !important;
             display: inline-block !important;
             margin: 0 !important;
         }
 
-        /* ÌØ¶¨°´Å¥ÑùÊ½ */
+        /* ç‰¹å®šæŒ‰é’®æ ·å¼ */
         .inpuQuery.aligned-btn {
             width: 35px !important;
             height: 35px !important;
@@ -76,7 +76,7 @@
             background-color: #f8f9fa !important;
         }
 
-        /* ¶şÎ¬ÂëÈİÆ÷ */
+        /* äºŒç»´ç å®¹å™¨ */
         .qrcode-container {
             display: inline-flex;
             align-items: center;
@@ -95,7 +95,7 @@
 
     <script type="text/javascript" language="javascript">
         $(function () {
-            initSwipeBack();// ³õÊ¼»¯»¬¶¯·µ»Ø¹¦ÄÜ 
+            initSwipeBack();// åˆå§‹åŒ–æ»‘åŠ¨è¿”å›åŠŸèƒ½ 
             /*  if (top.location != self.location) { } else { CloseWebPage(); }*/
         });
 
@@ -110,7 +110,7 @@
                 var click = $(this).attr("onclick");
 
 
-                //ÅĞ¶ÏÊÇ·ñÊÇtree£¬»òÕß·ÖÒ³
+                //åˆ¤æ–­æ˜¯å¦æ˜¯treeï¼Œæˆ–è€…åˆ†é¡µ
                 if (click != "" && click != null && click != undefined) {
                     if (click.toLowerCase().indexOf("treeview") == -1 && url.toLowerCase().indexOf("lbt_delete") == -1) {
                         $(this).click(function () {
@@ -165,17 +165,17 @@
 <body>
     <div id="swipeFeedback" class="swipe-feedback">
         <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYYXXHDKSXBYM%>" /></div>
-    <!-- »¬¶¯·´À¡²ã -->
+    <!-- æ»‘åŠ¨åé¦ˆå±‚ -->
     <script type="text/javascript" language="javascript">
 
         var txtQrCode = '#<%=TB_QrCode.ClientID%>';
         var btnFind = '#<%=BT_Find.ClientID%>';
 
 
-        var loadingIndex; //ÌáÊ¾²ãindex
-        var isWxConfigReady = false; //configÊÇ·ñÑéÖ¤Í¨¹ı
+        var loadingIndex; //æç¤ºå±‚index
+        var isWxConfigReady = false; //configæ˜¯å¦éªŒè¯é€šè¿‡
         $(function () {
-            initSwipeBack();// ³õÊ¼»¯»¬¶¯·µ»Ø¹¦ÄÜ 
+            initSwipeBack();// åˆå§‹åŒ–æ»‘åŠ¨è¿”å›åŠŸèƒ½ 
             try {
 
                 if ('<%=signModel.appId %>' == '') {
@@ -191,7 +191,7 @@
                 });
                 wxApi();
 
-                //É¾³ıÒâÍâµ¯³ö²ã
+                //åˆ é™¤æ„å¤–å¼¹å‡ºå±‚
                 if (isWxConfigReady == false) {
                     var m = document.getElementById("layui-layer1");
                     m.parentNode.removeChild(m);
@@ -213,11 +213,11 @@
                 // , content: 'ImagesSkin/Processing.gif'
             });
             wx.config({
-                debug: false, // ¿ªÆôµ÷ÊÔÄ£Ê½,µ÷ÓÃµÄËùÓĞapiµÄ·µ»ØÖµ»áÔÚ¿Í»§¶Ëalert³öÀ´£¬ÈôÒª²é¿´´«ÈëµÄ²ÎÊı£¬¿ÉÒÔÔÚpc¶Ë´ò¿ª£¬²ÎÊıĞÅÏ¢»áÍ¨¹ılog´ò³ö£¬½öÔÚpc¶ËÊ±²Å»á´òÓ¡¡£
-                appId: '<%=signModel.appId %>', // ±ØÌî£¬¹«ÖÚºÅµÄÎ¨Ò»±êÊ¶
-                timestamp: '<%=signModel.time %>', // ±ØÌî£¬Éú³ÉÇ©ÃûµÄÊ±¼ä´Á(Ëæ±ãÌîĞ´)
-                nonceStr: '<%=signModel.randstr %>', // ±ØÌî£¬Éú³ÉÇ©ÃûµÄËæ»ú´®(Ëæ±ãÌîĞ´)
-                signature: '<%=signModel.signstr %>', // ±ØÌî£¬Ç©Ãû£¬¼û¸½Â¼1
+                debug: false, // å¼€å¯è°ƒè¯•æ¨¡å¼,è°ƒç”¨çš„æ‰€æœ‰apiçš„è¿”å›å€¼ä¼šåœ¨å®¢æˆ·ç«¯alertå‡ºæ¥ï¼Œè‹¥è¦æŸ¥çœ‹ä¼ å…¥çš„å‚æ•°ï¼Œå¯ä»¥åœ¨pcç«¯æ‰“å¼€ï¼Œå‚æ•°ä¿¡æ¯ä¼šé€šè¿‡logæ‰“å‡ºï¼Œä»…åœ¨pcç«¯æ—¶æ‰ä¼šæ‰“å°ã€‚
+                appId: '<%=signModel.appId %>', // å¿…å¡«ï¼Œå…¬ä¼—å·çš„å”¯ä¸€æ ‡è¯†
+                timestamp: '<%=signModel.time %>', // å¿…å¡«ï¼Œç”Ÿæˆç­¾åçš„æ—¶é—´æˆ³(éšä¾¿å¡«å†™)
+                nonceStr: '<%=signModel.randstr %>', // å¿…å¡«ï¼Œç”Ÿæˆç­¾åçš„éšæœºä¸²(éšä¾¿å¡«å†™)
+                signature: '<%=signModel.signstr %>', // å¿…å¡«ï¼Œç­¾åï¼Œè§é™„å½•1
 
                 jsApiList: [
                     'checkJsApi',
@@ -265,35 +265,35 @@
                     //'translateVoice',
 
 
-                ] // ±ØÌî£¬ĞèÒªÊ¹ÓÃµÄJS½Ó¿ÚÁĞ±í£¬ËùÓĞJS½Ó¿ÚÁĞ±í¼û¸½Â¼2
+                ] // å¿…å¡«ï¼Œéœ€è¦ä½¿ç”¨çš„JSæ¥å£åˆ—è¡¨ï¼Œæ‰€æœ‰JSæ¥å£åˆ—è¡¨è§é™„å½•2
             });
 
 
             wx.ready(function () {
                 layer.close(loadingIndex);
-                // configĞÅÏ¢ÑéÖ¤ºó»áÖ´ĞĞready·½·¨£¬ËùÓĞ½Ó¿Úµ÷ÓÃ¶¼±ØĞëÔÚconfig½Ó¿Ú»ñµÃ½á¹ûÖ®ºó£¬configÊÇÒ»¸ö¿Í»§¶ËµÄÒì²½²Ù×÷£¬ËùÒÔÈç¹ûĞèÒªÔÚÒ³Ãæ¼ÓÔØÊ±¾Íµ÷ÓÃÏà¹Ø½Ó¿Ú£¬ÔòĞë°ÑÏà¹Ø½Ó¿Ú·ÅÔÚreadyº¯ÊıÖĞµ÷ÓÃÀ´È·±£ÕıÈ·Ö´ĞĞ¡£¶ÔÓÚÓÃ»§´¥·¢Ê±²Åµ÷ÓÃµÄ½Ó¿Ú£¬Ôò¿ÉÒÔÖ±½Óµ÷ÓÃ£¬²»ĞèÒª·ÅÔÚreadyº¯ÊıÖĞ¡£
+                // configä¿¡æ¯éªŒè¯åä¼šæ‰§è¡Œreadyæ–¹æ³•ï¼Œæ‰€æœ‰æ¥å£è°ƒç”¨éƒ½å¿…é¡»åœ¨configæ¥å£è·å¾—ç»“æœä¹‹åï¼Œconfigæ˜¯ä¸€ä¸ªå®¢æˆ·ç«¯çš„å¼‚æ­¥æ“ä½œï¼Œæ‰€ä»¥å¦‚æœéœ€è¦åœ¨é¡µé¢åŠ è½½æ—¶å°±è°ƒç”¨ç›¸å…³æ¥å£ï¼Œåˆ™é¡»æŠŠç›¸å…³æ¥å£æ”¾åœ¨readyå‡½æ•°ä¸­è°ƒç”¨æ¥ç¡®ä¿æ­£ç¡®æ‰§è¡Œã€‚å¯¹äºç”¨æˆ·è§¦å‘æ—¶æ‰è°ƒç”¨çš„æ¥å£ï¼Œåˆ™å¯ä»¥ç›´æ¥è°ƒç”¨ï¼Œä¸éœ€è¦æ”¾åœ¨readyå‡½æ•°ä¸­ã€‚
                 isWxConfigReady = true;
             });
             wx.error(function (res) {
                 layer.close(loadingIndex);
                 alert(JSON.stringify(res));
-                // configĞÅÏ¢ÑéÖ¤Ê§°Ü»áÖ´ĞĞerrorº¯Êı£¬ÈçÇ©Ãû¹ıÆÚµ¼ÖÂÑéÖ¤Ê§°Ü£¬¾ßÌå´íÎóĞÅÏ¢¿ÉÒÔ´ò¿ªconfigµÄdebugÄ£Ê½²é¿´£¬Ò²¿ÉÒÔÔÚ·µ»ØµÄres²ÎÊıÖĞ²é¿´£¬¶ÔÓÚSPA¿ÉÒÔÔÚÕâÀï¸üĞÂÇ©Ãû¡£
+                // configä¿¡æ¯éªŒè¯å¤±è´¥ä¼šæ‰§è¡Œerrorå‡½æ•°ï¼Œå¦‚ç­¾åè¿‡æœŸå¯¼è‡´éªŒè¯å¤±è´¥ï¼Œå…·ä½“é”™è¯¯ä¿¡æ¯å¯ä»¥æ‰“å¼€configçš„debugæ¨¡å¼æŸ¥çœ‹ï¼Œä¹Ÿå¯ä»¥åœ¨è¿”å›çš„reså‚æ•°ä¸­æŸ¥çœ‹ï¼Œå¯¹äºSPAå¯ä»¥åœ¨è¿™é‡Œæ›´æ–°ç­¾åã€‚
             });
         }
 
         function qrcode() {
             wx.scanQRCode({
-                needResult: 1, // Ä¬ÈÏÎª0£¬É¨Ãè½á¹ûÓÉÎ¢ĞÅ´¦Àí£¬1ÔòÖ±½Ó·µ»ØÉ¨Ãè½á¹û£¬
-                scanType: ["qrCode", "barCode"], // ¿ÉÒÔÖ¸¶¨É¨¶şÎ¬Âë»¹ÊÇÒ»Î¬Âë£¬Ä¬ÈÏ¶şÕß¶¼ÓĞ
+                needResult: 1, // é»˜è®¤ä¸º0ï¼Œæ‰«æç»“æœç”±å¾®ä¿¡å¤„ç†ï¼Œ1åˆ™ç›´æ¥è¿”å›æ‰«æç»“æœï¼Œ
+                scanType: ["qrCode", "barCode"], // å¯ä»¥æŒ‡å®šæ‰«äºŒç»´ç è¿˜æ˜¯ä¸€ç»´ç ï¼Œé»˜è®¤äºŒè€…éƒ½æœ‰
                 success: function (res) {
-                    var result = res.resultStr; // µ±needResult Îª 1 Ê±£¬É¨Âë·µ»ØµÄ½á¹û
+                    var result = res.resultStr; // å½“needResult ä¸º 1 æ—¶ï¼Œæ‰«ç è¿”å›çš„ç»“æœ
                     if (typeof (result) != "undefined") {
 
                         result = result.substring(result.indexOf(',') + 1, result.length);
 
-                        //ÎÄ±¾¿ò¸³Öµ	
+                        //æ–‡æœ¬æ¡†èµ‹å€¼	
                         $(txtQrCode).val(result);
-                        //µã»÷²éÑ¯°´Å¥
+                        //ç‚¹å‡»æŸ¥è¯¢æŒ‰é’®
                         $(btnFind).click();
                     }
                 }
@@ -309,6 +309,7 @@
         </asp:ScriptManager>
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
+            <div id="appScroll" class="app-scroll">
                 <table cellpadding="0" cellspacing="0" width="100%" class="bian">
                     <tr>
                         <td height="31" class="page_topbj">
@@ -329,7 +330,7 @@
                                                     </td>
                                                 </tr>
                                             </table>
-                                            <img id="IMG_Waiting" src="Images/Processing.gif" alt="ÇëÉÔºò£¬´¦ÀíÖĞ..." style="display: none;" />
+                                            <img id="IMG_Waiting" src="Images/Processing.gif" alt="è¯·ç¨å€™ï¼Œå¤„ç†ä¸­..." style="display: none;" />
                                         </a>
                                     </td>
 
@@ -516,6 +517,7 @@
                 </table>
             </ContentTemplate>
         </asp:UpdatePanel>
+        </div>
         <div style="position: fixed; display: none; z-index: 9999;" id="progressContainer">
             <asp:UpdateProgress ID="TakeTopUp" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
                 <ProgressTemplate>

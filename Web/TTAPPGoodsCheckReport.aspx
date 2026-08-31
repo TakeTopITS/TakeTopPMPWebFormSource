@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAPPGoodsCheckReport.aspx.cs" Inherits="TTAPPGoodsCheckReport" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAPPGoodsCheckReport.aspx.cs" Inherits="TTAPPGoodsCheckReport" %>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
 
@@ -38,15 +38,15 @@
     <script type="text/javascript" language="javascript">
         var txtGoodsSN = '#<%=TB_GoodsSN.ClientID%>';
         var btnFind = '#<%=BT_Find.ClientID%>';
-        $(function () { initSwipeBack();// ��ʼ���������ع��� 
+        $(function () { initSwipeBack();// 初始化滑动返回功能 
 
 
 
         });
 
-        var loadingIndex; //��ʾ��index
-        var isWxConfigReady = false; //config�Ƿ���֤ͨ��
-        $(function () { initSwipeBack();// ��ʼ���������ع��� 
+        var loadingIndex; //提示层index
+        var isWxConfigReady = false; //config是否验证通过
+        $(function () { initSwipeBack();// 初始化滑动返回功能 
 
             try {
                 if ('<%=signModel.appId %>' == '') {
@@ -74,11 +74,11 @@
                 , content: 'ImagesSkin/Processing.gif'
             });
             wx.config({
-                debug: false, // ��������ģʽ,���õ�����api�ķ���ֵ���ڿͻ���alert��������Ҫ�鿴����Ĳ�����������pc�˴򿪣�������Ϣ��ͨ��log���������pc��ʱ�Ż��ӡ��
-                appId: '<%=signModel.appId %>', // ������ںŵ�Ψһ��ʶ
-                timestamp: '<%=signModel.time %>', // �������ǩ����ʱ���(�����д)
-                nonceStr: '<%=signModel.randstr %>', // �������ǩ���������(�����д)
-                signature: '<%=signModel.signstr %>', // ���ǩ��������¼1
+                debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+                appId: '<%=signModel.appId %>', // 必填，公众号的唯一标识
+                timestamp: '<%=signModel.time %>', // 必填，生成签名的时间戳(随便填写)
+                nonceStr: '<%=signModel.randstr %>', // 必填，生成签名的随机串(随便填写)
+                signature: '<%=signModel.signstr %>', // 必填，签名，见附录1
 
                 jsApiList: [
                     'checkJsApi',
@@ -126,35 +126,35 @@
                     //'translateVoice',
 
 
-                ] // �����Ҫʹ�õ�JS�ӿ��б�������JS�ӿ��б�����¼2
+                ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
             });
 
 
             wx.ready(function () {
                 layer.close(loadingIndex);
-                // config��Ϣ��֤���ִ��ready���������нӿڵ��ö�������config�ӿڻ�ý��֮��config��һ���ͻ��˵��첽���������������Ҫ��ҳ�����ʱ�͵�����ؽӿڣ��������ؽӿڷ���ready�����е�����ȷ����ȷִ�С������û�����ʱ�ŵ��õĽӿڣ������ֱ�ӵ��ã�����Ҫ����ready�����С�
+                // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
                 isWxConfigReady = true;
             });
             wx.error(function (res) {
                 layer.close(loadingIndex);
                 alert(JSON.stringify(res));
-                // config��Ϣ��֤ʧ�ܻ�ִ��error��������ǩ�����ڵ�����֤ʧ�ܣ����������Ϣ���Դ�config��debugģʽ�鿴��Ҳ�����ڷ��ص�res�����в鿴������SPA�������������ǩ����
+                // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
             });
         }
 
         function qrcode() {
             wx.scanQRCode({
-                needResult: 1, // Ĭ��Ϊ0��ɨ������΢�Ŵ�����1��ֱ�ӷ���ɨ������
-                scanType: ["qrCode", "barCode"], // ����ָ��ɨ��ά�뻹��һά�룬Ĭ�϶��߶���
+                needResult: 1, // 默认为0，扫描结果由微信处理，1则直接返回扫描结果，
+                scanType: ["qrCode", "barCode"], // 可以指定扫二维码还是一维码，默认二者都有
                 success: function (res) {
-                    var result = res.resultStr; // ��needResult Ϊ 1 ʱ��ɨ�뷵�صĽ��
+                    var result = res.resultStr; // 当needResult 为 1 时，扫码返回的结果
                     if (typeof (result) != "undefined") {
 
                         result = result.substring(result.indexOf(',') + 1, result.length);
 
-                        //�ı���ֵ	
+                        //文本框赋值	
                         $(txtGoodsSN).val(result);
-                        //�����ѯ��ť
+                        //点击查询按钮
                         $(btnFind).click();
                     }
                 }
@@ -165,14 +165,14 @@
     </script>
 
     <script type="text/javascript" language="javascript">
-        $(function () { initSwipeBack();// ��ʼ���������ع��� 
+        $(function () { initSwipeBack();// 初始化滑动返回功能 
 
             //
 
             SetDataGridTrClickLink();
         });
 
-        //���DATAGRID�����κ�һ�㣬���ܴ������ڵ�����
+        //点击DATAGRID行内任何一点，都能触发行内的链接
         function SetDataGridTrClickLink() {
 
 
@@ -185,7 +185,7 @@
 
 
 </head>
-<body><div id="swipeFeedback" class="swipe-feedback"><asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYYXXHDKSXBYM%>" /></div> <!-- ���������� -->
+<body><div id="swipeFeedback" class="swipe-feedback"><asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYYXXHDKSXBYM%>" /></div> <!-- 滑动反馈层 -->
     <center>
         <form id="form1" runat="server">
             <%--  <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">--%>
@@ -193,6 +193,7 @@
             </asp:ScriptManager>
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>
+                <div id="appScroll" class="app-scroll">
 
                     <table cellpadding="0" cellspacing="0" width="100%" class="bian">
                         <tr>
@@ -213,7 +214,7 @@
                                                             <%-- <img src="ImagesSkin/main_top_r.jpg" width="5" height="31" />--%></td>
                                                     </tr>
                                                 </table>
-                                                <img id="IMG_Waiting" src="Images/Processing.gif" alt="���Ժ򣬴�����..." style="display: none;" />
+                                                <img id="IMG_Waiting" src="Images/Processing.gif" alt="请稍候，处理中..." style="display: none;" />
                                             </a>
                                         </td>
                                     </tr>
@@ -400,7 +401,7 @@
                             </tr>
                             <tr>
                                 <td style="text-align: right;"><a href="javascript:window.print()">
-                                    <img src="ImagesSkin/print.gif" alt="��ӡ" border="0" />
+                                    <img src="ImagesSkin/print.gif" alt="打印" border="0" />
                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 </a></td>
                                 <td colspan="2">
@@ -424,6 +425,7 @@
 
                 </ContentTemplate>
             </asp:UpdatePanel>
+            </div>
             <div style="position: fixed; display: none; z-index: 9999;" id="progressContainer">
                 <asp:UpdateProgress ID="TakeTopUp" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
                     <ProgressTemplate>

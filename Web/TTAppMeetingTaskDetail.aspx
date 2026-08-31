@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppMeetingTaskDetail.aspx.cs" Inherits="TTAppMeetingTaskDetail" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppMeetingTaskDetail.aspx.cs" Inherits="TTAppMeetingTaskDetail" %>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
 
@@ -27,22 +27,22 @@
     <script src="js/exif.js" type="text/javascript"></script>
     <script type="text/javascript" language="javascript">
         $(function () {
-            initSwipeBack();// 初始化滑动返回功能
+            initSwipeBack();// 鍒濆鍖栨粦鍔ㄨ繑鍥炲姛鑳?
 
-            //选择图片后压缩图片
+            //閫夋嫨鍥剧墖鍚庡帇缂╁浘鐗?
             $("#AttachFile").change(function () {
                 var _ua = window.navigator.userAgent;
                 var _simpleFile = this.files[0];
-                //判断是否为图片
+                //鍒ゆ柇鏄惁涓哄浘鐗?
                 if (!/\/(?:jpeg|png|gif|png|bmp)/i.test(_simpleFile.type)) return;
 
-                //插件exif.js获取ios图片的方向信息
+                //鎻掍欢exif.js鑾峰彇ios鍥剧墖鐨勬柟鍚戜俊鎭?
                 var _orientation;
                 EXIF.getData(_simpleFile, function () {
                     _orientation = EXIF.getTag(this, 'Orientation');
                 });
 
-                //1.读取文件，通过FileReader，将图片文件转化为DataURL，即data:img/png;base64，开头的url，可以直接放在image.src中;
+                //1.璇诲彇鏂囦欢锛岄€氳繃FileReader锛屽皢鍥剧墖鏂囦欢杞寲涓篋ataURL锛屽嵆data:img/png;base64锛屽紑澶寸殑url锛屽彲浠ョ洿鎺ユ斁鍦╥mage.src涓?
                 var _reader = new FileReader(),
                     _img = new Image(),
                     _url;
@@ -69,7 +69,7 @@
                 var url = $(this).attr("href");
                 var click = $(this).attr("onclick");
 
-                //判断是否是tree，或者分页
+                //鍒ゆ柇鏄惁鏄痶ree锛屾垨鑰呭垎椤?
                 if (click != "" && click != null && click != undefined) {
                     if (click.toLowerCase().indexOf("treeview") == -1 && url.toLowerCase().indexOf("lbt_delete") == -1) {
                         $(this).click(function () {
@@ -101,24 +101,24 @@
         }
 
         /**
-         * 计算图片的尺寸，根据尺寸压缩
-         * 1. iphone手机html5上传图片方向问题，借助exif.js
-         * 2. 安卓UC浏览器不支持 new Blob()，使用BlobBuilder
-         * @param {Object} _img     图片
-         * @param {Number} _orientation 照片信息
-         * @return {String}       压缩后base64格式的图片
+         * 璁＄畻鍥剧墖鐨勫昂瀵革紝鏍规嵁灏哄鍘嬬缉
+         * 1. iphone鎵嬫満html5涓婁紶鍥剧墖鏂瑰悜闂锛屽€熷姪exif.js
+         * 2. 瀹夊崜UC娴忚鍣ㄤ笉鏀寔 new Blob()锛屼娇鐢˙lobBuilder
+         * @param {Object} _img     鍥剧墖
+         * @param {Number} _orientation 鐓х墖淇℃伅
+         * @return {String}       鍘嬬缉鍚巄ase64鏍煎紡鐨勫浘鐗?
          */
         function compress(_img, _orientation) {
-            //2.计算符合目标尺寸宽高值，若上传图片的宽高都大于目标图，对目标图等比压缩；如果有一边小于，对上传图片等比放大。
-            var _goalWidth = 640,         //目标宽度
-                _goalHeight = 480,         //目标高度
-                _imgWidth = _img.naturalWidth,   //图片宽度
-                _imgHeight = _img.naturalHeight,  //图片高度
-                _tempWidth = _imgWidth,      //放大或缩小后的临时宽度
-                _tempHeight = _imgHeight,     //放大或缩小后的临时宽度
-                _r = 0;              //压缩比
+            //2.璁＄畻绗﹀悎鐩爣灏哄瀹介珮鍊硷紝鑻ヤ笂浼犲浘鐗囩殑瀹介珮閮藉ぇ浜庣洰鏍囧浘锛屽鐩爣鍥剧瓑姣斿帇缂╋紱濡傛灉鏈変竴杈瑰皬浜庯紝瀵逛笂浼犲浘鐗囩瓑姣旀斁澶с€?
+            var _goalWidth = 640,         //鐩爣瀹藉害
+                _goalHeight = 480,         //鐩爣楂樺害
+                _imgWidth = _img.naturalWidth,   //鍥剧墖瀹藉害
+                _imgHeight = _img.naturalHeight,  //鍥剧墖楂樺害
+                _tempWidth = _imgWidth,      //鏀惧ぇ鎴栫缉灏忓悗鐨勪复鏃跺搴?
+                _tempHeight = _imgHeight,     //鏀惧ぇ鎴栫缉灏忓悗鐨勪复鏃跺搴?
+                _r = 0;              //鍘嬬缉姣?
 
-            if (_imgWidth > _goalWidth || _imgHeight > _goalHeight) {//宽或高大于目标图，需等比压缩
+            if (_imgWidth > _goalWidth || _imgHeight > _goalHeight) {//瀹芥垨楂樺ぇ浜庣洰鏍囧浘锛岄渶绛夋瘮鍘嬬缉
                 _r = _imgWidth / _goalWidth;
                 if (_imgHeight / _goalHeight < _r) {
                     _r = _imgHeight / _goalHeight;
@@ -127,7 +127,7 @@
                 _tempHeight = Math.ceil(_imgHeight / _r);
             }
 
-            //3.利用canvas对图片进行裁剪，等比放大或缩小后进行居中裁剪
+            //3.鍒╃敤canvas瀵瑰浘鐗囪繘琛岃鍓紝绛夋瘮鏀惧ぇ鎴栫缉灏忓悗杩涜灞呬腑瑁佸壀
             var _canvas = $("#myCanvas")[0];
 
             var _context = _canvas.getContext('2d');
@@ -135,15 +135,15 @@
             _canvas.height = _tempHeight;
             var _degree;
 
-            //ios bug，iphone手机上可能会遇到图片方向错误问题
+            //ios bug锛宨phone鎵嬫満涓婂彲鑳戒細閬囧埌鍥剧墖鏂瑰悜閿欒闂
             switch (_orientation) {
-                //iphone横屏拍摄，此时home键在左侧
+                //iphone妯睆鎷嶆憚锛屾鏃秇ome閿湪宸︿晶
                 case 3:
                     _degree = 180;
                     _tempWidth = -_imgWidth;
                     _tempHeight = -_imgHeight;
                     break;
-                //iphone竖屏拍摄，此时home键在下方(正常拿手机的方向)
+                //iphone绔栧睆鎷嶆憚锛屾鏃秇ome閿湪涓嬫柟(姝ｅ父鎷挎墜鏈虹殑鏂瑰悜)
                 case 6:
                     _canvas.width = _imgHeight;
                     _canvas.height = _imgWidth;
@@ -151,7 +151,7 @@
                     _tempWidth = _imgWidth;
                     _tempHeight = -_imgHeight;
                     break;
-                //iphone竖屏拍摄，此时home键在上方
+                //iphone绔栧睆鎷嶆憚锛屾鏃秇ome閿湪涓婃柟
                 case 8:
                     _canvas.width = _imgHeight;
                     _canvas.height = _imgWidth;
@@ -166,28 +166,28 @@
             } else {
                 _context.drawImage(_img, 0, 0, _tempWidth, _tempHeight);
             }
-            //toDataURL方法，可以获取格式为"data:image/png;base64,***"的base64图片信息；
+            //toDataURL鏂规硶锛屽彲浠ヨ幏鍙栨牸寮忎负"data:image/png;base64,***"鐨刡ase64鍥剧墖淇℃伅锛?
             var _data = _canvas.toDataURL('image/jpeg');
             return _data;
         }
 
         function upload() {
             $.ajax({
-                //提交数据的类型 POST GET
+                //鎻愪氦鏁版嵁鐨勭被鍨?POST GET
                 type: "POST",
-                //提交的网址
+                //鎻愪氦鐨勭綉鍧€
                 url: "Handler/UploadPhotoToServerSite.ashx",
-                //提交的数据
+                //鎻愪氦鐨勬暟鎹?
                 data: { FileData: $("#imgData").val(), FileName: $("#AttachFile").val() },
-                //返回数据的格式
-                //在请求之前调用的函数
+                //杩斿洖鏁版嵁鐨勬牸寮?
+                //鍦ㄨ姹備箣鍓嶈皟鐢ㄧ殑鍑芥暟
                 beforeSend: function () {
                     $("#IMG_Waiting").show();
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                     console.log(XMLHttpRequest);
                 },
-                //成功返回之后调用的函数
+                //鎴愬姛杩斿洖涔嬪悗璋冪敤鐨勫嚱鏁?
                 success: function (data) {
                     if (data.indexOf("img") > 0) {
 
@@ -197,7 +197,7 @@
                         alert(data);
                     }
                 },
-                //调用执行后调用的函数
+                //璋冪敤鎵ц鍚庤皟鐢ㄧ殑鍑芥暟
                 complete: function (XMLHttpRequest, textStatus) {
                     $("#IMG_Waiting").hide();
                 }
@@ -205,22 +205,22 @@
         }
     </script>
 </head>
-<!-- 修改点1：为body标签添加class="napbac" -->
+<!-- 淇敼鐐?锛氫负body鏍囩娣诲姞class="napbac" -->
 <body class="napbac" data-disable-pullrefresh="true">
     <div id="swipeFeedback" class="swipe-feedback">
         <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" />
     </div>
-    <!-- 滑动反馈层 -->
+    <!-- 婊戝姩鍙嶉灞?-->
 
     <script type="text/javascript" language="javascript">
 
         var txtQrCode = '#<%=TB_QrCode.ClientID%>';
         var btnSaveQrCode = '#<%=BT_SaveQrCode.ClientID%>';
 
-        var loadingIndex; //提示层index
-        var isWxConfigReady = false; //config是否验证通过
+        var loadingIndex; //鎻愮ず灞俰ndex
+        var isWxConfigReady = false; //config鏄惁楠岃瘉閫氳繃
         $(function () {
-            initSwipeBack();// 初始化滑动返回功能  initSwipeBack();// 初始化滑动返回功能
+            initSwipeBack();// 鍒濆鍖栨粦鍔ㄨ繑鍥炲姛鑳? initSwipeBack();// 鍒濆鍖栨粦鍔ㄨ繑鍥炲姛鑳?
 
             try {
                 if ('<%=signModel.appId %>' == '') {
@@ -236,7 +236,7 @@
                 });
                 wxApi();
 
-                //删除意外弹出层
+                //鍒犻櫎鎰忓寮瑰嚭灞?
                 if (isWxConfigReady == false) {
                     var m = document.getElementById("layui-layer1");
                     m.parentNode.removeChild(m);
@@ -256,11 +256,11 @@
                 // , content: 'ImagesSkin/Processing.gif'
             });
             wx.config({
-                debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
-                appId: '<%=signModel.appId %>', // 必填，公众号的唯一标识
-                timestamp: '<%=signModel.time %>', // 必填，生成签名的时间戳(随便填写)
-                nonceStr: '<%=signModel.randstr %>', // 必填，生成签名的随机串(随便填写)
-                signature: '<%=signModel.signstr %>', // 必填，签名，见附录1
+                debug: false, // 寮€鍚皟璇曟ā寮?璋冪敤鐨勬墍鏈塧pi鐨勮繑鍥炲€间細鍦ㄥ鎴风alert鍑烘潵锛岃嫢瑕佹煡鐪嬩紶鍏ョ殑鍙傛暟锛屽彲浠ュ湪pc绔墦寮€锛屽弬鏁颁俊鎭細閫氳繃log鎵撳嚭锛屼粎鍦╬c绔椂鎵嶄細鎵撳嵃銆?
+                appId: '<%=signModel.appId %>', // 蹇呭～锛屽叕浼楀彿鐨勫敮涓€鏍囪瘑
+                timestamp: '<%=signModel.time %>', // 蹇呭～锛岀敓鎴愮鍚嶇殑鏃堕棿鎴?闅忎究濉啓)
+                nonceStr: '<%=signModel.randstr %>', // 蹇呭～锛岀敓鎴愮鍚嶇殑闅忔満涓?闅忎究濉啓)
+                signature: '<%=signModel.signstr %>', // 蹇呭～锛岀鍚嶏紝瑙侀檮褰?
 
                 jsApiList: [
                     'checkJsApi',
@@ -306,34 +306,34 @@
                     //'onVoicePlayEnd',
                     //'translateVoice',
 
-                ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+                ] // 蹇呭～锛岄渶瑕佷娇鐢ㄧ殑JS鎺ュ彛鍒楄〃锛屾墍鏈塉S鎺ュ彛鍒楄〃瑙侀檮褰?
             });
 
             wx.ready(function () {
                 layer.close(loadingIndex);
-                // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
+                // config淇℃伅楠岃瘉鍚庝細鎵цready鏂规硶锛屾墍鏈夋帴鍙ｈ皟鐢ㄩ兘蹇呴』鍦╟onfig鎺ュ彛鑾峰緱缁撴灉涔嬪悗锛宑onfig鏄竴涓鎴风鐨勫紓姝ユ搷浣滐紝鎵€浠ュ鏋滈渶瑕佸湪椤甸潰鍔犺浇鏃跺氨璋冪敤鐩稿叧鎺ュ彛锛屽垯椤绘妸鐩稿叧鎺ュ彛鏀惧湪ready鍑芥暟涓皟鐢ㄦ潵纭繚姝ｇ‘鎵ц銆傚浜庣敤鎴疯Е鍙戞椂鎵嶈皟鐢ㄧ殑鎺ュ彛锛屽垯鍙互鐩存帴璋冪敤锛屼笉闇€瑕佹斁鍦╮eady鍑芥暟涓€?
                 isWxConfigReady = true;
             });
             wx.error(function (res) {
                 layer.close(loadingIndex);
                 alert(JSON.stringify(res));
-                // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+                // config淇℃伅楠岃瘉澶辫触浼氭墽琛宔rror鍑芥暟锛屽绛惧悕杩囨湡瀵艰嚧楠岃瘉澶辫触锛屽叿浣撻敊璇俊鎭彲浠ユ墦寮€config鐨刣ebug妯″紡鏌ョ湅锛屼篃鍙互鍦ㄨ繑鍥炵殑res鍙傛暟涓煡鐪嬶紝瀵逛簬SPA鍙互鍦ㄨ繖閲屾洿鏂扮鍚嶃€?
             });
         }
 
         function qrcode() {
             wx.scanQRCode({
-                needResult: 1, // 默认为0，扫描结果由微信处理，1则直接返回扫描结果，
-                scanType: ["qrCode", "barCode"], // 可以指定扫二维码还是一维码，默认二者都有
+                needResult: 1, // 榛樿涓?锛屾壂鎻忕粨鏋滅敱寰俊澶勭悊锛?鍒欑洿鎺ヨ繑鍥炴壂鎻忕粨鏋滐紝
+                scanType: ["qrCode", "barCode"], // 鍙互鎸囧畾鎵簩缁寸爜杩樻槸涓€缁寸爜锛岄粯璁や簩鑰呴兘鏈?
                 success: function (res) {
-                    var result = res.resultStr; // 当needResult 为 1 时，扫码返回的结果
+                    var result = res.resultStr; // 褰搉eedResult 涓?1 鏃讹紝鎵爜杩斿洖鐨勭粨鏋?
                     if (typeof (result) != "undefined") {
 
                         result = result.substring(result.indexOf(',') + 1, result.length);
 
-                        //文本框赋值
+                        //鏂囨湰妗嗚祴鍊?
                         $(txtQrCode).val(result);
-                        //点击查询按钮
+                        //鐐瑰嚮鏌ヨ鎸夐挳
                         $(btnSaveQrCode).click();
                     }
                 }
@@ -348,6 +348,7 @@
             </asp:ScriptManager>
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>
+                <div id="appScroll" class="app-scroll">
 
                     <table cellpadding="0" cellspacing="0" width="100%" class="bian">
                         <tr>
@@ -369,7 +370,7 @@
                                                         </td>
                                                     </tr>
                                                 </table>
-                                                <img id="IMG_Waiting" src="Images/Processing.gif" alt="请稍候，处理中..." style="display: none;" />
+                                                <img id="IMG_Waiting" src="Images/Processing.gif" alt="璇风◢鍊欙紝澶勭悊涓?.." style="display: none;" />
                                             </a>
                                         </td>
                                     </tr>
@@ -469,7 +470,7 @@
                                                                                                         <input type="hidden" val="" id="imgData" runat="server" /></td>
                                                                                                     <td>
                                                                                                         <input type="button" id="BtnUP" onclick="upload()" value="Upload" />
-                                                                                                        <img id="IMG_Uploading" src="Images/Processing.gif" alt="请稍候，处理中..." style="display: none;" />
+                                                                                                        <img id="IMG_Uploading" src="Images/Processing.gif" alt="璇风◢鍊欙紝澶勭悊涓?.." style="display: none;" />
                                                                                                     </td>
                                                                                                 </tr>
                                                                                             </table>
@@ -489,7 +490,7 @@
                                                                                     <asp:Label ID="LB_RouteNumber" runat="server" Visible="False"></asp:Label>
                                                                                 </div>
 
-                                                                                <!-- 注意：这个页面的按钮容器已经是 equal-buttons，不需要修改 -->
+                                                                                <!-- 娉ㄦ剰锛氳繖涓〉闈㈢殑鎸夐挳瀹瑰櫒宸茬粡鏄?equal-buttons锛屼笉闇€瑕佷慨鏀?-->
                                                                                 <div class="equal-buttons">
                                                                                     <asp:Button ID="BT_Activity" runat="server" CssClass="inpu" OnClick="BT_Activity_Click" Text="<%$ Resources:lang,BaoCun %>" />
                                                                                     <asp:Button ID="BT_Finish" runat="server" CssClass="inpu" Font-Bold="True" OnClick="BT_Finish_Click" Text="<%$ Resources:lang,WanChengTiJiao %>" />
@@ -736,7 +737,7 @@
                                             </tr>
                                             <tr>
                                                 <td style="text-align: right">
-                                                    <asp:Label ID="Label36" runat="server" Text="<%$ Resources:lang,WoDeFanKui%>"></asp:Label>、:
+                                                    <asp:Label ID="Label36" runat="server" Text="<%$ Resources:lang,WoDeFanKui%>"></asp:Label>銆?
                                                 </td>
                                                 <td colspan="3" style="text-align: left">
                                                     <%# DataBinder.Eval(Container.DataItem,"OperatorContent") %>
@@ -798,6 +799,7 @@
                     </table>
                 </ContentTemplate>
             </asp:UpdatePanel>
+            </div>
             <div style="position: fixed; display: none; z-index: 9999;" id="progressContainer">
                 <asp:UpdateProgress ID="TakeTopUp" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
                     <ProgressTemplate>

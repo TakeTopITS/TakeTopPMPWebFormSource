@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAPPGetUserPositionForIOSAndroid.aspx.cs" Inherits="TTAPPGetUserPositionForIOSAndroid" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAPPGetUserPositionForIOSAndroid.aspx.cs" Inherits="TTAPPGetUserPositionForIOSAndroid" %>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
 
@@ -35,7 +35,7 @@
     <script src="js/jweixin-1.0.0.js"></script>
     <script type="text/javascript" language="javascript">
         $(function () {
-            initSwipeBack();// 初始化滑动返回功能 
+            initSwipeBack();// 鍒濆鍖栨粦鍔ㄨ繑鍥炲姛鑳?
 
 
 
@@ -48,8 +48,9 @@
     <div id="swipeFeedback" class="swipe-feedback">
         <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYYXXHDKSXBYM%>" />
     </div>
-    <!-- 滑动反馈层 -->
+    <!-- 婊戝姩鍙嶉灞?-->
     <form id="form1" runat="server">
+        <div id="appScroll" class="app-scroll">
 
         <table id="AboveTable" cellpadding="0" width="100%" cellspacing="0" class="bian">
             <tr>
@@ -68,7 +69,7 @@
                                             </td>
                                         </tr>
                                     </table>
-                                    <img id="IMG_Waiting" src="Images/Processing.gif" alt="请稍候，处理中..." style="display: none;" />
+                                    <img id="IMG_Waiting" src="Images/Processing.gif" alt="璇风◢鍊欙紝澶勭悊涓?.." style="display: none;" />
                                 </a>
                             </td>
                             <td style="vertical-align: middle; text-align: center;" class="round">
@@ -136,6 +137,7 @@
                 </ProgressTemplate>
             </asp:UpdateProgress>
         </div>--%>
+    </div>
     </form>
 </body>
 <%--<script type="text/javascript" language="javascript">var cssDirectory = '<%=Session["CssDirectory"] %>'; var oLink = document.getElementById('mainCss'); oLink.href = 'css/' + cssDirectory + '/' + 'bluelightmain.css';</script>--%>
@@ -144,7 +146,7 @@
 
 <script type="text/javascript">
 
-    var isWxConfigReady = false; //config是否验证通过
+    var isWxConfigReady = false; //config鏄惁楠岃瘉閫氳繃
     var loadingIndex;
     var mk, map;
     function wxApi() {
@@ -155,32 +157,32 @@
             , content: 'ImagesSkin/Processing.gif'
         });
         wx.config({
-            debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
-            appId: '<%=signModel.appId %>', // 必填，公众号的唯一标识
-            timestamp: '<%=signModel.time %>', // 必填，生成签名的时间戳(随便填写)
-            nonceStr: '<%=signModel.randstr %>', // 必填，生成签名的随机串(随便填写)
-            signature: '<%=signModel.signstr %>', // 必填，签名，见附录1
+            debug: false, // 寮€鍚皟璇曟ā寮?璋冪敤鐨勬墍鏈塧pi鐨勮繑鍥炲€间細鍦ㄥ鎴风alert鍑烘潵锛岃嫢瑕佹煡鐪嬩紶鍏ョ殑鍙傛暟锛屽彲浠ュ湪pc绔墦寮€锛屽弬鏁颁俊鎭細閫氳繃log鎵撳嚭锛屼粎鍦╬c绔椂鎵嶄細鎵撳嵃銆?
+            appId: '<%=signModel.appId %>', // 蹇呭～锛屽叕浼楀彿鐨勫敮涓€鏍囪瘑
+            timestamp: '<%=signModel.time %>', // 蹇呭～锛岀敓鎴愮鍚嶇殑鏃堕棿鎴?闅忎究濉啓)
+            nonceStr: '<%=signModel.randstr %>', // 蹇呭～锛岀敓鎴愮鍚嶇殑闅忔満涓?闅忎究濉啓)
+            signature: '<%=signModel.signstr %>', // 蹇呭～锛岀鍚嶏紝瑙侀檮褰?
 
             jsApiList: [
                 'getLocation',
                 'openLocation'
-            ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+            ] // 蹇呭～锛岄渶瑕佷娇鐢ㄧ殑JS鎺ュ彛鍒楄〃锛屾墍鏈塉S鎺ュ彛鍒楄〃瑙侀檮褰?
         });
 
 
         wx.ready(function () {
             layer.close(loadingIndex);
-            // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
+            // config淇℃伅楠岃瘉鍚庝細鎵цready鏂规硶锛屾墍鏈夋帴鍙ｈ皟鐢ㄩ兘蹇呴』鍦╟onfig鎺ュ彛鑾峰緱缁撴灉涔嬪悗锛宑onfig鏄竴涓鎴风鐨勫紓姝ユ搷浣滐紝鎵€浠ュ鏋滈渶瑕佸湪椤甸潰鍔犺浇鏃跺氨璋冪敤鐩稿叧鎺ュ彛锛屽垯椤绘妸鐩稿叧鎺ュ彛鏀惧湪ready鍑芥暟涓皟鐢ㄦ潵纭繚姝ｇ‘鎵ц銆傚浜庣敤鎴疯Е鍙戞椂鎵嶈皟鐢ㄧ殑鎺ュ彛锛屽垯鍙互鐩存帴璋冪敤锛屼笉闇€瑕佹斁鍦╮eady鍑芥暟涓€?
             isWxConfigReady = true;
 
             wx.getLocation({
-                type: 'wgs84', // 默认为wgs84的gps坐标，如果要返回直接给openLocation用的火星坐标，可传入'gcj02'
+                type: 'wgs84', // 榛樿涓簑gs84鐨刧ps鍧愭爣锛屽鏋滆杩斿洖鐩存帴缁檕penLocation鐢ㄧ殑鐏槦鍧愭爣锛屽彲浼犲叆'gcj02'
                 success: function (res) {
-                    var latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
-                    var longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
+                    var latitude = res.latitude; // 绾害锛屾诞鐐规暟锛岃寖鍥翠负90 ~ -90
+                    var longitude = res.longitude; // 缁忓害锛屾诞鐐规暟锛岃寖鍥翠负180 ~ -180銆?
 
-                    var lng = '';	//百度经度
-                    var lat = '';	//百度纬度
+                    var lng = '';	//鐧惧害缁忓害
+                    var lat = '';	//鐧惧害绾害
                     var convertor = new BMap.Convertor();
                     var ggPoint = new BMap.Point(longitude, latitude);
                     var pointArr = [];
@@ -201,7 +203,7 @@
 
                         }
                         else {
-                            showAlertAtMouse('坐标转换失败');
+                            showAlertAtMouse('鍧愭爣杞崲澶辫触');
                         }
                     });
 
@@ -209,12 +211,12 @@
 
 
                     //wx.openLocation({
-                    //latitude: latitude, // 纬度，浮点数，范围为90 ~ -90
-                    //longitude: longitude, // 经度，浮点数，范围为180 ~ -180。
-                    //name: '我的位置', // 位置名
-                    //address: '', // 地址详情说明
-                    //scale: 10, // 地图缩放级别,整形值,范围从1~28。默认为最大
-                    //infoUrl: '' // 在查看位置界面底部显示的超链接,可点击跳转
+                    //latitude: latitude, // 绾害锛屾诞鐐规暟锛岃寖鍥翠负90 ~ -90
+                    //longitude: longitude, // 缁忓害锛屾诞鐐规暟锛岃寖鍥翠负180 ~ -180銆?
+                    //name: '鎴戠殑浣嶇疆', // 浣嶇疆鍚?
+                    //address: '', // 鍦板潃璇︽儏璇存槑
+                    //scale: 10, // 鍦板浘缂╂斁绾у埆,鏁村舰鍊?鑼冨洿浠?~28銆傞粯璁や负鏈€澶?
+                    //infoUrl: '' // 鍦ㄦ煡鐪嬩綅缃晫闈㈠簳閮ㄦ樉绀虹殑瓒呴摼鎺?鍙偣鍑昏烦杞?
                     //});
                 }
             });
@@ -222,7 +224,7 @@
         wx.error(function (res) {
             layer.close(loadingIndex);
             showAlertAtMouse('failed' + JSON.stringify(res));
-            // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+            // config淇℃伅楠岃瘉澶辫触浼氭墽琛宔rror鍑芥暟锛屽绛惧悕杩囨湡瀵艰嚧楠岃瘉澶辫触锛屽叿浣撻敊璇俊鎭彲浠ユ墦寮€config鐨刣ebug妯″紡鏌ョ湅锛屼篃鍙互鍦ㄨ繑鍥炵殑res鍙傛暟涓煡鐪嬶紝瀵逛簬SPA鍙互鍦ㄨ繖閲屾洿鏂扮鍚嶃€?
         });
     }
 

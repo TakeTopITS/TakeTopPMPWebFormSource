@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAPPPersonalSpaceAnalysisChart.aspx.cs" Inherits="TTAPPPersonalSpaceAnalysisChart" %>
+ï»¿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAPPPersonalSpaceAnalysisChart.aspx.cs" Inherits="TTAPPPersonalSpaceAnalysisChart" %>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
 <%--<%@ OutputCache Duration="2678400" VaryByParam="*" %>--%>
@@ -19,7 +19,7 @@
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="js/allAHandler.js"></script>
     <script type="text/javascript" language="javascript">
-        $(function () { initSwipeBack();// ³õÊ¼»¯»¬¶¯·µ»Ø¹¦ÄÜ  initSwipeBack();// ³õÊ¼»¯»¬¶¯·µ»Ø¹¦ÄÜ
+        $(function () { initSwipeBack();// åˆå§‹åŒ–æ»‘åŠ¨è¿”å›åŠŸèƒ½  initSwipeBack();// åˆå§‹åŒ–æ»‘åŠ¨è¿”å›åŠŸèƒ½
 
             /*  if (top.location != self.location) { } else { CloseWebPage(); }*/
 
@@ -49,6 +49,7 @@
                     <asp:AsyncPostBackTrigger ControlID="Timer1" />
                 </Triggers>--%>
                 <ContentTemplate>
+                <div id="appScroll" class="app-scroll">
                     <table width="100%" cellpadding="0" cellspacing="0">
                         <tr>
                             <td valign="top" align="center" style="padding: 5px 1px 1px 1px;" onmouseenter="javascript:displayScroll();" onmousemove="javascript:displayScroll();" onmouseover="javascript:displayScroll();" onmouseout="javascript:hideScroll();">
@@ -68,6 +69,7 @@
                     </table>
                 </ContentTemplate>
             </asp:UpdatePanel>
+            </div>
             <div style="position: fixed; display: none; z-index: 9999;" id="progressContainer">
                 <asp:UpdateProgress ID="TakeTopUp" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
                     <ProgressTemplate>

@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppCollaborationDetailList.aspx.cs" Inherits="TTAppCollaborationDetailList" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppCollaborationDetailList.aspx.cs" Inherits="TTAppCollaborationDetailList" %>
 
 <%@ Register Assembly="Brettle.Web.NeatUpload" Namespace="Brettle.Web.NeatUpload"
     TagPrefix="Upload" %>
@@ -13,7 +13,7 @@
     <script type="text/javascript" src="js/allAHandler.js"></script>
     <script type="text/javascript" language="javascript">
         $(function () {
-            initSwipeBack();// ��ʼ���������ع���  initSwipeBack();// ��ʼ���������ع���
+            initSwipeBack();// 锟斤拷始锟斤拷锟斤拷锟斤拷锟斤拷锟截癸拷锟斤拷  initSwipeBack();// 锟斤拷始锟斤拷锟斤拷锟斤拷锟斤拷锟截癸拷锟斤拷
         });
 
     </script>
@@ -23,13 +23,14 @@
     <div id="swipeFeedback" class="swipe-feedback">
         <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" />
     </div>
-    <!-- ���������� -->
+    <!-- 锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷 -->
         <form id="form1" runat="server" class="napf">
             <%--  <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">--%>
             <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">
             </asp:ScriptManager>
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>
+                <div id="appScroll" class="app-scroll">
                     <table style="width: 100%" cellpadding="0" cellspacing="0" class="ItemAlignLeft">
                         <tr>
                             <td height="31" class="page_topbj">
@@ -60,7 +61,7 @@
                                     <tr>
                                         <td style="width: 100%; padding-top: 5px; text-align: left; vertical-align: top;">
                                             <cc2:TabContainer CssClass="ajax_tab_menu" ID="TabContainer1" runat="server" ActiveTabIndex="0" Width="100%">
-                                                <cc2:TabPanel ID="TabPanel1" runat="server" HeaderText="�Ự��¼" TabIndex="0" BorderWidth="0">
+                                                <cc2:TabPanel ID="TabPanel1" runat="server" HeaderText="锟结话锟斤拷录" TabIndex="0" BorderWidth="0">
                                                     <HeaderTemplate>
                                                         <asp:Label ID="Label2" runat="server" Text="<%$ Resources:lang,HuiHuaJiLu%>"></asp:Label>
                                                     </HeaderTemplate>
@@ -94,7 +95,7 @@
                                                         </asp:Timer>
                                                     </ContentTemplate>
                                                 </cc2:TabPanel>
-                                                <cc2:TabPanel ID="TabPanel2" runat="server" HeaderText="����ļ�" TabIndex="1" BorderWidth="0">
+                                                <cc2:TabPanel ID="TabPanel2" runat="server" HeaderText="锟斤拷锟斤拷募锟? TabIndex="1" BorderWidth="0">
                                                     <HeaderTemplate>
                                                         <asp:Label ID="Label4" runat="server" Text="<%$ Resources:lang,WenJian%>"></asp:Label>
                                                     </HeaderTemplate>
@@ -126,7 +127,7 @@
                                                             <Columns>
 
                                                                 <asp:HyperLinkColumn DataNavigateUrlField="Address" DataNavigateUrlFormatString="{0}"
-                                                                    DataTextField="DocName" HeaderText="�ļ���">
+                                                                    DataTextField="DocName" HeaderText="锟侥硷拷锟斤拷">
                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" />
                                                                 </asp:HyperLinkColumn>
                                                             </Columns>
@@ -164,6 +165,7 @@
                     </table>
                 </ContentTemplate>
             </asp:UpdatePanel>
+            </div>
             <div style="position: fixed; display: none; z-index: 9999;" id="progressContainer">
                 <asp:UpdateProgress ID="TakeTopUp" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
                     <ProgressTemplate>

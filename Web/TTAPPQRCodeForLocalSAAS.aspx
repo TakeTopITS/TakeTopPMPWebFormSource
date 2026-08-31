@@ -9,6 +9,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <div id="appScroll" class="app-scroll">
         <div>
             <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
@@ -72,6 +73,7 @@
                 </tr>
             </table>
         </div>
+    </div>
     </form>
 </body>
 </html>

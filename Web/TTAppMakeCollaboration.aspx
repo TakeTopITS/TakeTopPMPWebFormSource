@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppMakeCollaboration.aspx.cs" Inherits="TTAppMakeCollaboration" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppMakeCollaboration.aspx.cs" Inherits="TTAppMakeCollaboration" %>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
 
@@ -17,9 +17,9 @@
 
 
 </head>
-<body><div id="swipeFeedback" class="swipe-feedback"><asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYYXXHDKSXBYM%>" /></div> <!-- ���������� -->
+<body><div id="swipeFeedback" class="swipe-feedback"><asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYYXXHDKSXBYM%>" /></div> <!-- 锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷 -->
     <script type="text/javascript" language="javascript">
-        $(function () { initSwipeBack();// ��ʼ���������ع���  initSwipeBack();// ��ʼ���������ع���
+        $(function () { initSwipeBack();// 锟斤拷始锟斤拷锟斤拷锟斤拷锟斤拷锟截癸拷锟斤拷  initSwipeBack();// 锟斤拷始锟斤拷锟斤拷锟斤拷锟斤拷锟截癸拷锟斤拷
 
 
             var MustInFrame = '<%=Session["MustInFrame"].ToString() %>'.trim();
@@ -38,6 +38,7 @@
             </asp:ScriptManager>
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>
+                <div id="appScroll" class="app-scroll">
                     <table id="AboveTable" cellpadding="0" width="100%" cellspacing="0" class="bian">
                         <tr>
                             <td height="31" class="page_topbj">
@@ -59,7 +60,7 @@
                                                         </td>
                                                     </tr>
                                                 </table>
-                                                <img id="IMG_Waiting" src="Images/Processing.gif" alt="���Ժ򣬴�����..." style="display: none;" />
+                                                <img id="IMG_Waiting" src="Images/Processing.gif" alt="锟斤拷锟皆候，达拷锟斤拷锟斤拷..." style="display: none;" />
                                             </a>
                                         </td>
                                     </tr>
@@ -144,7 +145,7 @@
                                                         <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" Width="30%" />
                                                     </asp:HyperLinkColumn>
                                                     <%-- <asp:HyperLinkColumn DataNavigateUrlField="CreatorCode" DataNavigateUrlFormatString="TTUserInforSimple.aspx?UserCode={0}"
-                                                        DataTextField="CreatorName" HeaderText="������" Target="_blank">
+                                                        DataTextField="CreatorName" HeaderText="锟斤拷锟斤拷锟斤拷" Target="_blank">
                                                         <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="15%" />
                                                     </asp:HyperLinkColumn>
                                                     <asp:BoundColumn DataField="CreateTime" HeaderText="CreationTime">
@@ -340,6 +341,7 @@
 
                 </ContentTemplate>
             </asp:UpdatePanel>
+            </div>
             <div style="position: fixed; display: none; z-index: 9999;" id="progressContainer">
                 <asp:UpdateProgress ID="TakeTopUp" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
                     <ProgressTemplate>

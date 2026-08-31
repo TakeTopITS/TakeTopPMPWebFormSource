@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAPPMyMemProjectsRunStatus.aspx.cs" Inherits="TTAPPMyMemProjectsRunStatus" %>
+ï»¿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAPPMyMemProjectsRunStatus.aspx.cs" Inherits="TTAPPMyMemProjectsRunStatus" %>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
 
@@ -21,7 +21,7 @@
             width: expression (document.body.clientWidth <= 1700? "1700px" : "auto" ));
         }
         
-        /* È«ÆÁµ¯´°ÑùÊ½ */
+        /* å…¨å±å¼¹çª—æ ·å¼ */
         .fullscreen-popup {
             position: fixed !important;
             top: 0 !important;
@@ -75,7 +75,7 @@
             z-index: 9999 !important;
         }
         
-        /* ×Ô¶¨ÒåÈ«ÆÁµ¯´°ÑùÊ½ */
+        /* è‡ªå®šä¹‰å…¨å±å¼¹çª—æ ·å¼ */
         .custom-fullscreen-popup {
             position: fixed;
             top: 0;
@@ -143,7 +143,7 @@
     <script type="text/javascript" src="js/allAHandler.js"></script>
     <script type="text/javascript" language="javascript">
         $(function () {
-            initSwipeBack();// ³õÊ¼»¯»¬¶¯·µ»Ø¹¦ÄÜ 
+            initSwipeBack();// åˆå§‹åŒ–æ»‘åŠ¨è¿”å›åŠŸèƒ½ 
 
             /*  if (top.location != self.location) { } else { CloseWebPage(); }*/
         });
@@ -170,7 +170,7 @@
             location.reload();
         }
 
-        //´«ÈëURL×÷Îª²ÎÊı
+        //ä¼ å…¥URLä½œä¸ºå‚æ•°
         function popShowByURL(url, title, width, height, parentWindow) {
             var w = 'auto', h = 'auto', t = url.replace('.aspx', '').replace("TT", '');
 
@@ -178,7 +178,7 @@
                 t = title;
             }
 
-            // Ê¹ÓÃÈ«ÆÁµ¯´°£¬¶¥²¿ºÍµ×²¿¶¼¶ÔÆë
+            // ä½¿ç”¨å…¨å±å¼¹çª—ï¼Œé¡¶éƒ¨å’Œåº•éƒ¨éƒ½å¯¹é½
             layer.open({
                 type: 2,
                 title: t,
@@ -192,13 +192,13 @@
                 maxmin: false,
                 content: url,
                 area: ["100%", "100%"],
-                offset: ['0px', '0px'], // ´Ó¶¥²¿ºÍ×ó²à¶¼Îª0
+                offset: ['0px', '0px'], // ä»é¡¶éƒ¨å’Œå·¦ä¾§éƒ½ä¸º0
                 zIndex: 10000,
                 success: function (layero, index) {
-                    // Ìí¼ÓÈ«ÆÁÑùÊ½Àà
+                    // æ·»åŠ å…¨å±æ ·å¼ç±»
                     layero.addClass('fullscreen-popup');
 
-                    // ÉèÖÃµ¯´°Î»ÖÃºÍ´óĞ¡
+                    // è®¾ç½®å¼¹çª—ä½ç½®å’Œå¤§å°
                     layero.css({
                         'position': 'fixed',
                         'top': '0',
@@ -210,7 +210,7 @@
                         'border-radius': '0'
                     });
 
-                    // ÉèÖÃ±êÌâÀ¸
+                    // è®¾ç½®æ ‡é¢˜æ 
                     var titleBar = layero.find('.layui-layer-title');
                     titleBar.css({
                         'height': '45px',
@@ -224,7 +224,7 @@
                         'box-sizing': 'border-box'
                     });
 
-                    // ÉèÖÃÄÚÈİÇøÓò - Õ¼¾İÊ£ÓàÈ«²¿¿Õ¼ä
+                    // è®¾ç½®å†…å®¹åŒºåŸŸ - å æ®å‰©ä½™å…¨éƒ¨ç©ºé—´
                     var content = layero.find('.layui-layer-content');
                     content.css({
                         'position': 'absolute',
@@ -240,7 +240,7 @@
                         'box-sizing': 'border-box'
                     });
 
-                    // ÉèÖÃiframe
+                    // è®¾ç½®iframe
                     var iframe = layero.find('iframe');
                     iframe.css({
                         'width': '100%',
@@ -249,14 +249,14 @@
                         'display': 'block'
                     });
 
-                    // ÉèÖÃ¹Ø±Õ°´Å¥Î»ÖÃ
+                    // è®¾ç½®å…³é—­æŒ‰é’®ä½ç½®
                     var closeBtn = layero.find('.layui-layer-setwin');
                     closeBtn.css({
                         'top': '8px',
                         'right': '10px'
                     });
 
-                    // Ç¿ÖÆË¢ĞÂ²¼¾Ö
+                    // å¼ºåˆ¶åˆ·æ–°å¸ƒå±€
                     setTimeout(function () {
                         content[0].style.height = (window.innerHeight - 45) + 'px';
                         if (iframe[0]) {
@@ -264,7 +264,7 @@
                         }
                     }, 100);
 
-                    // ¼àÌı´°¿Ú´óĞ¡±ä»¯
+                    // ç›‘å¬çª—å£å¤§å°å˜åŒ–
                     $(window).on('resize.fullscreenpopup', function () {
                         content.css('height', (window.innerHeight - 45) + 'px');
                         if (iframe.length) {
@@ -273,33 +273,33 @@
                     });
                 },
                 cancel: function (index, layero) {
-                    // ÒÆ³ı´°¿Ú´óĞ¡±ä»¯¼àÌı
+                    // ç§»é™¤çª—å£å¤§å°å˜åŒ–ç›‘å¬
                     $(window).off('resize.fullscreenpopup');
                     return true;
                 },
                 end: function () {
-                    // ÒÆ³ı´°¿Ú´óĞ¡±ä»¯¼àÌı
+                    // ç§»é™¤çª—å£å¤§å°å˜åŒ–ç›‘å¬
                     $(window).off('resize.fullscreenpopup');
                     parentUrl = parentWindow.href;
                 }
             });
         }
 
-        // ×Ô¶¨ÒåÈ«ÆÁµ¯´°º¯Êı
+        // è‡ªå®šä¹‰å…¨å±å¼¹çª—å‡½æ•°
         function showFullScreenPopup(url, title) {
-            // ´´½¨ÕÚÕÖ²ã
+            // åˆ›å»ºé®ç½©å±‚
             var overlay = document.createElement('div');
             overlay.className = 'fullscreen-overlay';
             overlay.onclick = function () {
                 closeFullScreenPopup();
             };
 
-            // ´´½¨µ¯´°ÈİÆ÷
+            // åˆ›å»ºå¼¹çª—å®¹å™¨
             var popup = document.createElement('div');
             popup.className = 'custom-fullscreen-popup';
             popup.id = 'fullscreen-popup-' + Date.now();
 
-            // ´´½¨±êÌâÀ¸
+            // åˆ›å»ºæ ‡é¢˜æ 
             var header = document.createElement('div');
             header.className = 'custom-popup-header';
 
@@ -318,7 +318,7 @@
             header.appendChild(titleSpan);
             header.appendChild(closeBtn);
 
-            // ´´½¨ÄÚÈİÇøÓò
+            // åˆ›å»ºå†…å®¹åŒºåŸŸ
             var content = document.createElement('div');
             content.className = 'custom-popup-content';
 
@@ -332,30 +332,30 @@
             popup.appendChild(header);
             popup.appendChild(content);
 
-            // Ìí¼Óµ½Ò³Ãæ
+            // æ·»åŠ åˆ°é¡µé¢
             document.body.appendChild(overlay);
             document.body.appendChild(popup);
 
-            // ÏÔÊ¾µ¯´°
+            // æ˜¾ç¤ºå¼¹çª—
             setTimeout(function () {
                 popup.style.display = 'block';
 
-                // ÉèÖÃiframe¸ß¶È
+                // è®¾ç½®iframeé«˜åº¦
                 setTimeout(function () {
                     iframe.style.height = (window.innerHeight - 45) + 'px';
                 }, 50);
             }, 10);
 
-            // ½ûÖ¹body¹ö¶¯
+            // ç¦æ­¢bodyæ»šåŠ¨
             document.body.style.overflow = 'hidden';
 
-            // ¼àÌı´°¿Ú´óĞ¡±ä»¯
+            // ç›‘å¬çª—å£å¤§å°å˜åŒ–
             var resizeHandler = function () {
                 iframe.style.height = (window.innerHeight - 45) + 'px';
             };
             window.addEventListener('resize', resizeHandler);
 
-            // ±£´æÒıÓÃÒÔ±ãÇåÀí
+            // ä¿å­˜å¼•ç”¨ä»¥ä¾¿æ¸…ç†
             popup._resizeHandler = resizeHandler;
             popup._overlay = overlay;
 
@@ -367,12 +367,12 @@
             var overlay = document.querySelector('.fullscreen-overlay');
 
             if (popup) {
-                // ÒÆ³ıÊÂ¼ş¼àÌı
+                // ç§»é™¤äº‹ä»¶ç›‘å¬
                 if (popup._resizeHandler) {
                     window.removeEventListener('resize', popup._resizeHandler);
                 }
 
-                // ÒÆ³ıÔªËØ
+                // ç§»é™¤å…ƒç´ 
                 popup.parentNode.removeChild(popup);
             }
 
@@ -380,16 +380,16 @@
                 overlay.parentNode.removeChild(overlay);
             }
 
-            // »Ö¸´body¹ö¶¯
+            // æ¢å¤bodyæ»šåŠ¨
             document.body.style.overflow = '';
         }
 
-        // ÔöÇ¿µÄµ¯´°º¯Êı - Ö÷ÒªÊ¹ÓÃ×Ô¶¨ÒåÈ«ÆÁµ¯´°
+        // å¢å¼ºçš„å¼¹çª—å‡½æ•° - ä¸»è¦ä½¿ç”¨è‡ªå®šä¹‰å…¨å±å¼¹çª—
         function showGanttPopup(projectId, projectName) {
             var url = 'TTWorkPlanGanttForProjectStandardActivityCompareMain.aspx?ProjectID=' + projectId;
             var title = 'Project Plan Gantt - ' + (projectName || '');
 
-            // ÓÅÏÈÊ¹ÓÃ×Ô¶¨ÒåÈ«ÆÁµ¯´°
+            // ä¼˜å…ˆä½¿ç”¨è‡ªå®šä¹‰å…¨å±å¼¹çª—
             return showFullScreenPopup(url, title);
         }
 
@@ -398,7 +398,7 @@
 <body>
     <div id="swipeFeedback" class="swipe-feedback">
         <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYYXXHDKSXBYM%>" /></div>
-    <!-- »¬¶¯·´À¡²ã -->
+    <!-- æ»‘åŠ¨åé¦ˆå±‚ -->
     <center>
         <form id="form1" runat="server">
             <%--  <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">--%>
@@ -406,6 +406,7 @@
             </asp:ScriptManager>
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>
+                <div id="appScroll" class="app-scroll">
                     <div>
                         <table cellpadding="0" cellspacing="0" width="100%" class="bian">
                             <tr>
@@ -425,7 +426,7 @@
                                                                 <%-- <img src="ImagesSkin/main_top_r.jpg" width="5" height="31" />--%></td>
                                                         </tr>
                                                     </table>
-                                                    <img id="IMG_Waiting" src="Images/Processing.gif" alt="ÇëÉÔºò£¬´¦ÀíÖĞ..." style="display: none;" />
+                                                    <img id="IMG_Waiting" src="Images/Processing.gif" alt="è¯·ç¨å€™ï¼Œå¤„ç†ä¸­..." style="display: none;" />
                                                 </a>
                                             </td>
                                         </tr>
@@ -453,7 +454,7 @@
                                                                     ShowHeader="false" AllowPaging="True" OnPageIndexChanged="DataGrid3_PageIndexChanged"
                                                                     CellPadding="4" ForeColor="#333333" GridLines="None">
                                                                     <Columns>
-                                                                        <asp:BoundColumn DataField="ProjectID" HeaderText="ÏîÄ¿ID" Visible="false">
+                                                                        <asp:BoundColumn DataField="ProjectID" HeaderText="é¡¹ç›®ID" Visible="false">
                                                                             <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="5%" />
                                                                         </asp:BoundColumn>
 
@@ -467,7 +468,7 @@
                                                                                     </div>
                                                                                     <div class="nprig">
                                                                                         <h4>
-                                                                                            <!-- Ê¹ÓÃ×Ô¶¨ÒåÈ«ÆÁµ¯´° -->
+                                                                                            <!-- ä½¿ç”¨è‡ªå®šä¹‰å…¨å±å¼¹çª— -->
                                                                                             <a onclick="javascript:showGanttPopup('<%#DataBinder .Eval (Container .DataItem ,"ProjectID") %>', '<%# Server.HtmlEncode(Eval("ProjectName").ToString()) %>');return false;" style="cursor:pointer;color:#1976D2;text-decoration:none;">
                                                                                                 <%# Eval("ProjectName") %>
                                                                                             </a>
@@ -523,7 +524,7 @@
                                                     <tr>
                                                         <td style="width: 100%; height: 12px; text-align: left;" valign="top">
                                                             <cc2:TabContainer CssClass="ajax_tab_menu" ID="TabContainer1" Width="100%" runat="server" ActiveTabIndex="0">
-                                                                <cc2:TabPanel ID="TabPanel3" runat="server" HeaderText="ÏîÄ¿×´Ì¬">
+                                                                <cc2:TabPanel ID="TabPanel3" runat="server" HeaderText="é¡¹ç›®çŠ¶æ€">
                                                                     <HeaderTemplate>
                                                                         <asp:Label ID="LB_ProjectStatusChart" runat="server" Text="<%$ Resources:lang,ProjectStatusChart%>"></asp:Label>
                                                                     </HeaderTemplate>
@@ -554,7 +555,7 @@
                                                                         </table>
                                                                     </ContentTemplate>
                                                                 </cc2:TabPanel>
-                                                                <cc2:TabPanel ID="TabPanel4" runat="server" HeaderText="×ÛºÏ²éÑ¯">
+                                                                <cc2:TabPanel ID="TabPanel4" runat="server" HeaderText="ç»¼åˆæŸ¥è¯¢">
                                                                     <HeaderTemplate>
                                                                         <asp:Label ID="LB_IntegratedQuery" runat="server" Text="<%$ Resources:lang,IntegratedQuery%>"></asp:Label>
                                                                     </HeaderTemplate>
@@ -606,7 +607,7 @@
                                                                                                                             CellPadding="4" ForeColor="#333333" GridLines="None" OnItemCommand="DataGrid1_ItemCommand"
                                                                                                                             ShowHeader="false" Width="100%">
                                                                                                                             <Columns>
-                                                                                                                                <asp:TemplateColumn HeaderText="Ö±½Ó³ÉÔ±:">
+                                                                                                                                <asp:TemplateColumn HeaderText="ç›´æ¥æˆå‘˜:">
                                                                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" />
                                                                                                                                     <ItemTemplate>
                                                                                                                                         <asp:Button ID="BT_UnderlingCode" runat="server" CssClass="inpu"
@@ -658,7 +659,7 @@
                                                                                                                             ForeColor="#333333" GridLines="None" OnItemCommand="DataGrid2_ItemCommand" ShowHeader="false"
                                                                                                                             Visible="False" Width="100%">
                                                                                                                             <Columns>
-                                                                                                                                <asp:TemplateColumn HeaderText="ÏîÄ¿×´Ì¬:">
+                                                                                                                                <asp:TemplateColumn HeaderText="é¡¹ç›®çŠ¶æ€:">
                                                                                                                                     <ItemTemplate>
                                                                                                                                         <asp:Button ID="BT_Status" runat="server" Text='<%# DataBinder.Eval(Container.DataItem,"Status") %>'
                                                                                                                                             CssClass="tt-sms-btn" Visible="false" />
@@ -785,6 +786,7 @@
                     </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
+            </div>
             <div style="position: fixed; display: none; z-index: 9999;" id="progressContainer">
                 <asp:UpdateProgress ID="TakeTopUp" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
                     <ProgressTemplate>

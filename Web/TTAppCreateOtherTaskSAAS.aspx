@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppCreateOtherTaskSAAS.aspx.cs" Inherits="TTAppCreateOtherTaskSAAS" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppCreateOtherTaskSAAS.aspx.cs" Inherits="TTAppCreateOtherTaskSAAS" %>
 
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
@@ -19,19 +19,20 @@
     <script type="text/javascript" src="js/layer/layer/layer.js"></script>
     <script type="text/javascript" src="js/popwindow.js"></script>
     <script type="text/javascript" language="javascript">
-        $(function () { initSwipeBack();// ��ʼ���������ع���  initSwipeBack();// ��ʼ���������ع���
+        $(function () { initSwipeBack();// 锟斤拷始锟斤拷锟斤拷锟斤拷锟斤拷锟截癸拷锟斤拷  initSwipeBack();// 锟斤拷始锟斤拷锟斤拷锟斤拷锟斤拷锟截癸拷锟斤拷
              /*  if (top.location != self.location) { } else { CloseWebPage(); }*/
 
         });
     </script>
 </head>
-<body><div id="swipeFeedback" class="swipe-feedback"><asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYYXXHDKSXBYM%>" /></div> <!-- ���������� -->
+<body><div id="swipeFeedback" class="swipe-feedback"><asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYYXXHDKSXBYM%>" /></div> <!-- 锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷 -->
         <form id="form1" runat="server" class="napf">
             <%--  <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">--%>
             <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">
             </asp:ScriptManager>
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>
+                <div id="appScroll" class="app-scroll">
 
                     <table id="AboveTable" cellpadding="0" width="100%" cellspacing="0" class="bian">
                         <tr>
@@ -57,7 +58,7 @@
                                                                     </td>
                                                                 </tr>
                                                             </table>
-                                                            <img id="IMG_Waiting" src="Images/Processing.gif" alt="���Ժ򣬴�����..." style="display: none;" />
+                                                            <img id="IMG_Waiting" src="Images/Processing.gif" alt="锟斤拷锟皆候，达拷锟斤拷锟斤拷..." style="display: none;" />
                                                         </a>
                                                     </td>
                                                 </tr>
@@ -168,7 +169,7 @@
                                                                 <asp:BoundColumn DataField="Task" HeaderText="Task">
                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" Width="15%" />
                                                                 </asp:BoundColumn>
-                                                                <%--  <asp:BoundColumn DataField="Priority" HeaderText="���ȼ�">
+                                                                <%--  <asp:BoundColumn DataField="Priority" HeaderText="锟斤拷锟饺硷拷">
                                                                         <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="8%" />
                                                                     </asp:BoundColumn>
 
@@ -181,7 +182,7 @@
                                                                     <asp:BoundColumn DataField="Budget" HeaderText="Budget">
                                                                         <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="5%" />
                                                                     </asp:BoundColumn>
-                                                                    <asp:BoundColumn DataField="FinishPercent" HeaderText="��ɳ̶�">
+                                                                    <asp:BoundColumn DataField="FinishPercent" HeaderText="锟斤拷沙潭锟?>
                                                                         <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="7%" />
                                                                     </asp:BoundColumn>
                                                                     <asp:BoundColumn DataField="Expense" HeaderText="Expense">
@@ -634,10 +635,10 @@
                                                     <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="9%" />
                                                 </asp:TemplateColumn>
 
-                                                <asp:BoundColumn DataField="OperatorName" HeaderText="������">
+                                                <asp:BoundColumn DataField="OperatorName" HeaderText="锟斤拷锟斤拷锟斤拷">
                                                     <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="20%" />
                                                 </asp:BoundColumn>
-                                                <asp:BoundColumn DataField="Operation" HeaderText="�����˵Ĺ���">
+                                                <asp:BoundColumn DataField="Operation" HeaderText="锟斤拷锟斤拷锟剿的癸拷锟斤拷">
                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" />
                                                 </asp:BoundColumn>
                                             </Columns>
@@ -663,6 +664,7 @@
                     <div class="layui-layer-shade" id="popwindow_shade" style="z-index: 9998; background-color: #000; opacity: 0.3; filter: alpha(opacity=30); display: none;"></div>
                 </ContentTemplate>
             </asp:UpdatePanel>
+            </div>
             <div style="position: fixed; display: none; z-index: 9999;" id="progressContainer">
                 <asp:UpdateProgress ID="TakeTopUp" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
                     <ProgressTemplate>

@@ -326,6 +326,8 @@
 
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
+
+            <div id="appScroll" class="app-scroll">
                 <div class="mobile-view">
                     <!-- 移动端头部 -->
                     <table cellpadding="0" cellspacing="0" width="100%" class="bian">
@@ -1230,6 +1232,8 @@
                 </div>
             </ContentTemplate>
         </asp:UpdatePanel>
+
+        </div>
 
         <div style="position: fixed; display: none; z-index: 9999;" id="progressContainer">
             <asp:UpdateProgress ID="TakeTopUp" runat="server" AssociatedUpdatePanelID="UpdatePanel1">

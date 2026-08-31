@@ -1,11 +1,11 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAPPDIYWorkFlowForm.aspx.cs" Inherits="TTAPPDIYWorkFlowForm" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAPPDIYWorkFlowForm.aspx.cs" Inherits="TTAPPDIYWorkFlowForm" %>
 
 
 <%@ Register Assembly="TakeTopForm.JS" Namespace="TakeTopInfoPathSoft.JS" TagPrefix="cc1" %>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>自定义表单工作流</title>
+    <title>鑷畾涔夎〃鍗曞伐浣滄祦</title>
     <link id="mainCss" href="css/APP.css" rel="stylesheet" type="text/css" />
      <link id="flxappCss" href="css/APPFlx.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="js/calendar.js"></script>
@@ -41,7 +41,7 @@
         }
 
 
-        /*-----------------------------短按钮----------------------------*/
+        /*-----------------------------鐭寜閽?---------------------------*/
         .inpu {
             border-style: none;
             background-image: url('ImagesSkin/butbj.jpg');
@@ -54,7 +54,7 @@
             height: 25px;
             border-radius: 2px;
             color: #ffffff;
-            background: #3b82f6; /*皮肤*/
+            background: #3b82f6; /*鐨偆*/
         }
 
             .inpu:disabled {
@@ -168,10 +168,10 @@
             }
         };
 
-        //拖放程序
+        //鎷栨斁绋嬪簭
         var SimpleDrag = Class.create();
         SimpleDrag.prototype = {
-            //拖放对象,触发对象
+            //鎷栨斁瀵硅薄,瑙﹀彂瀵硅薄
             initialize: function (drag) {
                 this.Drag = $(drag);
                 this._x = this._y = 0;
@@ -180,19 +180,19 @@
                 this.Drag.style.position = "absolute";
                 addEventHandler(this.Drag, "mousedown", BindAsEventListener(this, this.Start));
             },
-            //准备拖动
+            //鍑嗗鎷栧姩
             Start: function (oEvent) {
                 this._x = oEvent.clientX - this.Drag.offsetLeft;
                 this._y = oEvent.clientY - this.Drag.offsetTop;
                 addEventHandler(document, "mousemove", this._fM);
                 addEventHandler(document, "mouseup", this._fS);
             },
-            //拖动
+            //鎷栧姩
             Move: function (oEvent) {
                 this.Drag.style.left = oEvent.clientX - this._x + "px";
                 this.Drag.style.top = oEvent.clientY - this._y + "px";
             },
-            //停止拖动
+            //鍋滄鎷栧姩
             Stop: function () {
                 removeEventHandler(document, "mousemove", this._fM);
                 removeEventHandler(document, "mouseup", this._fS);
@@ -229,15 +229,15 @@
                                 jQuery("#tbName tr:gt(1):even").attr("class", "treven");
                             } else {
                                 jQuery("#idDrag").hide();
-                                alert("暂没有未处理的记录！");
+                                alert("鏆傛病鏈夋湭澶勭悊鐨勮褰曪紒");
                             }
                         },
                         error: function () {
-                            alert("加载失败");
+                            alert("鍔犺浇澶辫触");
                         }
                     });
                 } else {
-                    alert("请先选择工作流模板！");
+                    alert("璇峰厛閫夋嫨宸ヤ綔娴佹ā鏉匡紒");
                 }
             });
         });
@@ -246,13 +246,13 @@
             jQuery("#idDrag").hide();
         }
 
-        //产生XML，附加到表单
+        //浜х敓XML锛岄檮鍔犲埌琛ㄥ崟
         function ClickCreateXMLToForm(objID) {
             document.getElementById("HF_TriggerID").value = objID;
             document.getElementById("BT_AppendXML").click();
         }
 
-        //设置日期选择框的宽度，使之不折叠
+        //璁剧疆鏃ユ湡閫夋嫨妗嗙殑瀹藉害锛屼娇涔嬩笉鎶樺彔
         function changeDateBoxWidth() {
             var cNodes = document.getElementsByClassName("xdDTText xdBehavior_FormattingNoBUI");
 
@@ -262,13 +262,13 @@
             }
         }
 
-        //逐步放大元素大小
+        //閫愭鏀惧ぇ鍏冪礌澶у皬
         function toIncreaseSize(objID, largestSize) {
 
             document.getElementById(objID).style.width = largestSize + "px";
         }
 
-        //一步还原元素大小
+        //涓€姝ヨ繕鍘熷厓绱犲ぇ灏?
         function toRestoreOriginalSize(objID, oldSize) {
 
             document.getElementById(objID).style.width = oldSize + "px";
@@ -282,13 +282,13 @@
     <script type="text/javascript" src="js/allAHandler.js"></script>
     <script type="text/javascript" language="javascript">
         $(function () {
-            initSwipeBack();// 初始化滑动返回功能
+            initSwipeBack();// 鍒濆鍖栨粦鍔ㄨ繑鍥炲姛鑳?
 
       
 
         });
 
-        //隐藏或显示工作流标题栏
+        //闅愯棌鎴栨樉绀哄伐浣滄祦鏍囬鏍?
         function hideOrDisplayWFMain() {
 
             if (document.getElementById('td_WFMain').style.display.toLowerCase() == 'none') {
@@ -301,7 +301,7 @@
 
 
 
-        //隐藏工作流标题栏
+        //闅愯棌宸ヤ綔娴佹爣棰樻爮
         function hideWFMain() {
 
             /*  document.getElementById('td_WFMain').style.display = 'none';*/
@@ -355,6 +355,7 @@
             codebase="smsx.cab#Version=6,3,434,26">
         </object>
         <form id="form1" runat="server">
+            <div id="appScroll" class="app-scroll">
             <div style="z-index: -2;">
                 <cc1:JSInfoPathRefer ID="JSInfoPathRefer1" runat="server" />
 
@@ -558,7 +559,7 @@
                                         <tr style="display: none;">
                                             <td colspan="3" class="tdRight" style="text-align: center; padding: 2px 0px 2px 5px; border-bottom: solid 1px  #d0d0d0; width: 370px;">
                                                 <asp:HyperLink ID="HL_WFXSNFile" runat="server"
-                                                    Target="_blank" Font-Names="宋体" Font-Size="10pt">
+                                                    Target="_blank" Font-Names="瀹嬩綋" Font-Size="10pt">
                                                     <asp:Label ID="Label9" runat="server" Text="<%$ Resources:lang,XGGZLBGMBXZ%>"></asp:Label>
                                                 </asp:HyperLink>
                                                 &nbsp;<input id="btPrintPreview" type="button" class="inpuPrint" name="print" onclick="preview()" />
@@ -566,9 +567,9 @@
                                                     Style="display: none;" />
 
                                                 <asp:HyperLink ID="HL_OldWFXMLFile" runat="server"
-                                                    Target="_blank" Font-Names="宋体" Font-Size="10pt" Text="<%$ Resources:lang,ShuJuWenJian%>"></asp:HyperLink>
+                                                    Target="_blank" Font-Names="瀹嬩綋" Font-Size="10pt" Text="<%$ Resources:lang,ShuJuWenJian%>"></asp:HyperLink>
                                                 <asp:HyperLink ID="HL_WLTem" runat="server" NavigateUrl="~/TTWorkFlowTemplate.aspx"
-                                                    Target="_blank" Font-Names="宋体" Font-Size="10pt">
+                                                    Target="_blank" Font-Names="瀹嬩綋" Font-Size="10pt">
                                                     <asp:Label ID="Label4" runat="server" Text="<%$ Resources:lang,MuBanWeiHu%>"></asp:Label>
                                                 </asp:HyperLink>
                                                 <asp:HyperLink ID="HL_RedirectToMyWFDetail" runat="server" Target="_blank" Text="<%$ Resources:lang,ZhiXingJinDu%>" Visible="false"></asp:HyperLink>
@@ -600,6 +601,7 @@
                 </tr>
             </table>
 
+        </div>
         </form>
     </center>
 </body>

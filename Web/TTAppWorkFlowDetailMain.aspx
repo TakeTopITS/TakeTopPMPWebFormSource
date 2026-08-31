@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppWorkFlowDetailMain.aspx.cs" Inherits="TTAppWorkFlowDetailMain" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppWorkFlowDetailMain.aspx.cs" Inherits="TTAppWorkFlowDetailMain" %>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
 
@@ -10,8 +10,9 @@
 
   
 </head>
-<body><div id="swipeFeedback" class="swipe-feedback"><asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYYXXHDKSXBYM%>" /></div> <!-- ���������� -->
+<body><div id="swipeFeedback" class="swipe-feedback"><asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYYXXHDKSXBYM%>" /></div> <!-- 锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷 -->
     <form id="form1" runat="server" class="napf">
+        <div id="appScroll" class="app-scroll">
         <table cellpadding="0" cellspacing="0" width="100%" class="bian">
             <tr>
                 <td style ="text-align :center ;vertical-align :middle ; color :lightgrey  ; height :500px;">
@@ -19,6 +20,7 @@
                 </td>
             </tr>
         </table>
+    </div>
     </form>
 </body>
 <%--<script type="text/javascript" language="javascript">var cssDirectory = '<%=Session["CssDirectory"] %>'; var oLink = document.getElementById('mainCss'); oLink.href = 'css/' + cssDirectory + '/' + 'bluelightmain.css';</script>--%>

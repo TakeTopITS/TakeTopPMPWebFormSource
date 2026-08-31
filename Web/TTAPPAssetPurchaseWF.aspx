@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAPPAssetPurchaseWF.aspx.cs" Inherits="TTAPPAssetPurchaseWF" %>
+Ôªø<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAPPAssetPurchaseWF.aspx.cs" Inherits="TTAPPAssetPurchaseWF" %>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
 
@@ -17,14 +17,14 @@
     <script type="text/javascript" src="js/layer/layer/layer.js"></script>
     <script type="text/javascript" src="js/popwindow.js"></script>
     <script type="text/javascript" language="javascript">
-        $(function () { initSwipeBack();// ≥ı ºªØª¨∂Ø∑µªÿπ¶ƒ‹  initSwipeBack();// ≥ı ºªØª¨∂Ø∑µªÿπ¶ƒ‹
+        $(function () { initSwipeBack();// ÂàùÂßãÂåñÊªëÂä®ËøîÂõûÂäüËÉΩ  initSwipeBack();// ÂàùÂßãÂåñÊªëÂä®ËøîÂõûÂäüËÉΩ
              /*  if (top.location != self.location) { } else { CloseWebPage(); }*/
 
         });
     </script>
 
 </head>
-<body><div id="swipeFeedback" class="swipe-feedback"><asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYYXXHDKSXBYM%>" /></div> <!-- ª¨∂Ø∑¥¿°≤„ -->
+<body><div id="swipeFeedback" class="swipe-feedback"><asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYYXXHDKSXBYM%>" /></div> <!-- ÊªëÂä®ÂèçÈ¶àÂ±Ç -->
     <center>
         <form id="form1" runat="server">
             <%--  <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">--%>
@@ -32,6 +32,7 @@
             </asp:ScriptManager>
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>
+                <div id="appScroll" class="app-scroll">
                     <table id="AboveTable" cellpadding="0" cellspacing="0" width="100%" class="bian">
                         <tr>
                             <td height="31" class="page_topbj">
@@ -51,7 +52,7 @@
                                                             <%-- <img src="ImagesSkin/main_top_r.jpg" width="5" height="31" />--%></td>
                                                     </tr>
                                                 </table>
-                                                <img id="IMG_Waiting" src="Images/Processing.gif" alt="«Î…‘∫Ú£¨¥¶¿Ì÷–..." style="display: none;" />
+                                                <img id="IMG_Waiting" src="Images/Processing.gif" alt="ËØ∑Á®çÂÄôÔºåÂ§ÑÁêÜ‰∏≠..." style="display: none;" />
                                             </a>
                                         </td>
                                     </tr>
@@ -287,7 +288,7 @@
                                 <tr>
                                     <td class="formItemBgStyleForAlignLeft">
                                         <cc1:TabContainer CssClass="ajax_tab_menu" ID="TabContainer1" runat="server" ActiveTabIndex="0" Width="100%">
-                                            <cc1:TabPanel ID="TabPanel1" runat="server" HeaderText="≤…π∫µ•√˜œ∏">
+                                            <cc1:TabPanel ID="TabPanel1" runat="server" HeaderText="ÈááË¥≠ÂçïÊòéÁªÜ">
 
                                                 <HeaderTemplate>
 
@@ -458,7 +459,7 @@
                                                 </ContentTemplate>
                                             </cc1:TabPanel>
 
-                                            <cc1:TabPanel ID="TabPanel3" runat="server" HeaderText="πÿ¡™∫œÕ¨">
+                                            <cc1:TabPanel ID="TabPanel3" runat="server" HeaderText="ÂÖ≥ËÅîÂêàÂêå">
 
                                                 <HeaderTemplate>
 
@@ -606,7 +607,7 @@
                                                                             <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" Width="10%" />
                                                                         </asp:BoundColumn>
 
-                                                                        <asp:BoundColumn DataField="PartB" HeaderText="““∑Ωµ•Œª">
+                                                                        <asp:BoundColumn DataField="PartB" HeaderText="‰πôÊñπÂçï‰Ωç">
 
                                                                             <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" Width="10%" />
                                                                         </asp:BoundColumn>
@@ -839,7 +840,7 @@
                                     <td>
                                         <cc1:TabContainer CssClass="ajax_tab_menu" ID="TabContainer2" runat="server" ActiveTabIndex="0" Width="100%">
 
-                                            <cc1:TabPanel ID="TabPanel6" runat="server" HeaderText="◊ ≤˙≤È—Ø¡–±Ì">
+                                            <cc1:TabPanel ID="TabPanel6" runat="server" HeaderText="ËµÑ‰∫ßÊü•ËØ¢ÂàóË°®">
 
                                                 <HeaderTemplate>
                                                     <asp:Label ID="Label513" runat="server" Text="<%$ Resources:lang,ZCCXLB%>"></asp:Label>
@@ -937,7 +938,7 @@
                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" Width="35%" />
                                                                 </asp:BoundColumn>
 
-                                                                <asp:BoundColumn DataField="PurchasePrice" HeaderText="≤…π∫µ•º€">
+                                                                <asp:BoundColumn DataField="PurchasePrice" HeaderText="ÈááË¥≠Âçï‰ª∑">
 
                                                                     <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="20%" />
                                                                 </asp:BoundColumn>
@@ -999,7 +1000,7 @@
                                             <asp:ListItem Value="AssetProcurement" Text="<%$ Resources:lang,ZiChanCaiGou%>" />
                                         </asp:DropDownList>
 
-                                        <asp:TextBox ID="TB_WLType" runat="server" Enabled="False" Width="59px">◊ ≤˙≤…π∫</asp:TextBox>
+                                        <asp:TextBox ID="TB_WLType" runat="server" Enabled="False" Width="59px">ËµÑ‰∫ßÈááË¥≠</asp:TextBox>
 
                                         <asp:Label ID="Label75" runat="server" Text="<%$ Resources:lang,GongZuoLiuMuBan%>"></asp:Label>:<asp:DropDownList ID="DL_TemName" runat="server" DataTextField="TemName" DataValueField="TemName"
                                             Width="144px">
@@ -1154,7 +1155,7 @@
                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" Width="55%" />
                                                 </asp:HyperLinkColumn>
 
-                                                <asp:BoundColumn DataField="CreateTime" HeaderText="…Í«Î ±º‰">
+                                                <asp:BoundColumn DataField="CreateTime" HeaderText="Áî≥ËØ∑Êó∂Èó¥">
 
                                                     <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="15%" />
                                                 </asp:BoundColumn>
@@ -1239,7 +1240,7 @@
 
                                             <ItemStyle CssClass="itemStyle" />
                                             <Columns>
-                                                <asp:TemplateColumn HeaderText="≤ø√≈»À‘±:">
+                                                <asp:TemplateColumn HeaderText="ÈÉ®Èó®‰∫∫Âëò:">
                                                     <ItemTemplate>
                                                         <asp:Button ID="BT_UserCode" runat="server" CssClass="inpu" Text='<%# DataBinder.Eval(Container.DataItem,"UserCode") %>' /><asp:Button ID="BT_UserName" runat="server" CssClass="inpu" Text='<%# DataBinder.Eval(Container.DataItem,"UserName") %>' />
                                                     </ItemTemplate>
@@ -1305,6 +1306,7 @@
                     <asp:Label ID="LB_DepartString" runat="server" Visible="False"></asp:Label>
                 </ContentTemplate>
             </asp:UpdatePanel>
+            </div>
             <div style="position: fixed; display: none; z-index: 9999;" id="progressContainer">
                 <asp:UpdateProgress ID="TakeTopUp" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
                     <ProgressTemplate>

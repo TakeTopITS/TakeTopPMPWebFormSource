@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppOtherTaskDetail.aspx.cs" Inherits="TTAppOtherTaskDetail" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppOtherTaskDetail.aspx.cs" Inherits="TTAppOtherTaskDetail" %>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
 
@@ -29,22 +29,22 @@
     <script src="js/exif.js" type="text/javascript"></script>
     <script type="text/javascript" language="javascript">
         $(function () {
-            initSwipeBack();// ��ʼ���������ع���
+            initSwipeBack();// 锟斤拷始锟斤拷锟斤拷锟斤拷锟斤拷锟截癸拷锟斤拷
 
-            //ѡ��ͼƬ��ѹ��ͼƬ
+            //选锟斤拷图片锟斤拷压锟斤拷图片
             $("#AttachFile").change(function () {
                 var _ua = window.navigator.userAgent;
                 var _simpleFile = this.files[0];
-                //�ж��Ƿ�ΪͼƬ
+                //锟叫讹拷锟角凤拷为图片
                 if (!/\/(?:jpeg|png|gif|png|bmp)/i.test(_simpleFile.type)) return;
 
-                //���exif.js��ȡiosͼƬ�ķ�����Ϣ
+                //锟斤拷锟絜xif.js锟斤拷取ios图片锟侥凤拷锟斤拷锟斤拷息
                 var _orientation;
                 EXIF.getData(_simpleFile, function () {
                     _orientation = EXIF.getTag(this, 'Orientation');
                 });
 
-                //1.��ȡ�ļ���ͨ��FileReader����ͼƬ�ļ�ת��ΪDataURL����data:img/png;base64����ͷ��url������ֱ�ӷ���image.src��;
+                //1.锟斤拷取锟侥硷拷锟斤拷通锟斤拷FileReader锟斤拷锟斤拷图片锟侥硷拷转锟斤拷为DataURL锟斤拷锟斤拷data:img/png;base64锟斤拷锟斤拷头锟斤拷url锟斤拷锟斤拷锟斤拷直锟接凤拷锟斤拷image.src锟斤拷;
                 var _reader = new FileReader(),
                     _img = new Image(),
                     _url;
@@ -71,7 +71,7 @@
                 var url = $(this).attr("href");
                 var click = $(this).attr("onclick");
 
-                //�ж��Ƿ���tree�����߷�ҳ
+                //锟叫讹拷锟角凤拷锟斤拷tree锟斤拷锟斤拷锟竭凤拷页
                 if (click != "" && click != null && click != undefined) {
                     if (click.toLowerCase().indexOf("treeview") == -1 && url.toLowerCase().indexOf("lbt_delete") == -1) {
                         $(this).click(function () {
@@ -100,24 +100,24 @@
         }
 
         /**
-         * ����ͼƬ�ĳߴ磬���ݳߴ�ѹ��
-         * 1. iphone�ֻ�html5�ϴ�ͼƬ�������⣬����exif.js
-         * 2. ��׿UC�������֧�� new Blob()��ʹ��BlobBuilder
-         * @param {Object} _img     ͼƬ
-         * @param {Number} _orientation ��Ƭ��Ϣ
-         * @return {String}       ѹ����base64��ʽ��ͼƬ
+         * 锟斤拷锟斤拷图片锟侥尺寸，锟斤拷锟捷尺达拷压锟斤拷
+         * 1. iphone锟街伙拷html5锟较达拷图片锟斤拷锟斤拷锟斤拷锟解，锟斤拷锟斤拷exif.js
+         * 2. 锟斤拷卓UC锟斤拷锟斤拷锟斤拷锟街э拷锟?new Blob()锟斤拷使锟斤拷BlobBuilder
+         * @param {Object} _img     图片
+         * @param {Number} _orientation 锟斤拷片锟斤拷息
+         * @return {String}       压锟斤拷锟斤拷base64锟斤拷式锟斤拷图片
          */
         function compress(_img, _orientation) {
-            //2.�������Ŀ��ߴ����ֵ�����ϴ�ͼƬ�Ŀ��߶�����Ŀ��ͼ����Ŀ��ͼ�ȱ�ѹ���������һ��С�ڣ����ϴ�ͼƬ�ȱȷŴ�
-            var _goalWidth = 640,         //Ŀ�����
-                _goalHeight = 480,         //Ŀ��߶�
-                _imgWidth = _img.naturalWidth,   //ͼƬ����
-                _imgHeight = _img.naturalHeight,  //ͼƬ�߶�
-                _tempWidth = _imgWidth,      //�Ŵ����С�����ʱ����
-                _tempHeight = _imgHeight,     //�Ŵ����С�����ʱ����
-                _r = 0;              //ѹ����
+            //2.锟斤拷锟斤拷锟斤拷锟侥匡拷锟竭达拷锟斤拷锟街碉拷锟斤拷锟斤拷洗锟酵计拷目锟斤拷叨锟斤拷锟斤拷锟侥匡拷锟酵硷拷锟斤拷锟侥匡拷锟酵硷拷缺锟窖癸拷锟斤拷锟斤拷锟斤拷锟斤拷一锟斤拷小锟节ｏ拷锟斤拷锟较达拷图片锟饺比放达拷
+            var _goalWidth = 640,         //目锟斤拷锟斤拷锟?
+                _goalHeight = 480,         //目锟斤拷叨锟?
+                _imgWidth = _img.naturalWidth,   //图片锟斤拷锟斤拷
+                _imgHeight = _img.naturalHeight,  //图片锟竭讹拷
+                _tempWidth = _imgWidth,      //锟脚达拷锟斤拷锟叫★拷锟斤拷锟斤拷时锟斤拷锟斤拷
+                _tempHeight = _imgHeight,     //锟脚达拷锟斤拷锟叫★拷锟斤拷锟斤拷时锟斤拷锟斤拷
+                _r = 0;              //压锟斤拷锟斤拷
 
-            if (_imgWidth > _goalWidth || _imgHeight > _goalHeight) {//����ߴ���Ŀ��ͼ����ȱ�ѹ��
+            if (_imgWidth > _goalWidth || _imgHeight > _goalHeight) {//锟斤拷锟斤拷叽锟斤拷锟侥匡拷锟酵硷拷锟斤拷锟饺憋拷压锟斤拷
                 _r = _imgWidth / _goalWidth;
                 if (_imgHeight / _goalHeight < _r) {
                     _r = _imgHeight / _goalHeight;
@@ -126,7 +126,7 @@
                 _tempHeight = Math.ceil(_imgHeight / _r);
             }
 
-            //3.����canvas��ͼƬ���вü����ȱȷŴ����С����о��вü�
+            //3.锟斤拷锟斤拷canvas锟斤拷图片锟斤拷锟叫裁硷拷锟斤拷锟饺比放达拷锟斤拷锟叫★拷锟斤拷锟叫撅拷锟叫裁硷拷
             var _canvas = $("#myCanvas")[0];
 
             var _context = _canvas.getContext('2d');
@@ -134,15 +134,15 @@
             _canvas.height = _tempHeight;
             var _degree;
 
-            //ios bug��iphone�ֻ��Ͽ��ܻ�����ͼƬ�����������
+            //ios bug锟斤拷iphone锟街伙拷锟较匡拷锟杰伙拷锟斤拷锟斤拷图片锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟?
             switch (_orientation) {
-                //iphone�������㣬��ʱhome�������
+                //iphone锟斤拷锟斤拷锟斤拷锟姐，锟斤拷时home锟斤拷锟斤拷锟斤拷锟?
                 case 3:
                     _degree = 180;
                     _tempWidth = -_imgWidth;
                     _tempHeight = -_imgHeight;
                     break;
-                //iphone�������㣬��ʱhome�����·�(�������ֻ��ķ���)
+                //iphone锟斤拷锟斤拷锟斤拷锟姐，锟斤拷时home锟斤拷锟斤拷锟铰凤拷(锟斤拷锟斤拷锟斤拷锟街伙拷锟侥凤拷锟斤拷)
                 case 6:
                     _canvas.width = _imgHeight;
                     _canvas.height = _imgWidth;
@@ -150,7 +150,7 @@
                     _tempWidth = _imgWidth;
                     _tempHeight = -_imgHeight;
                     break;
-                //iphone�������㣬��ʱhome�����Ϸ�
+                //iphone锟斤拷锟斤拷锟斤拷锟姐，锟斤拷时home锟斤拷锟斤拷锟较凤拷
                 case 8:
                     _canvas.width = _imgHeight;
                     _canvas.height = _imgWidth;
@@ -165,28 +165,28 @@
             } else {
                 _context.drawImage(_img, 0, 0, _tempWidth, _tempHeight);
             }
-            //toDataURL���������Ի�ȡ��ʽΪ"data:image/png;base64,***"��base64ͼƬ��Ϣ��
+            //toDataURL锟斤拷锟斤拷锟斤拷锟斤拷锟皆伙拷取锟斤拷式为"data:image/png;base64,***"锟斤拷base64图片锟斤拷息锟斤拷
             var _data = _canvas.toDataURL('image/jpeg');
             return _data;
         }
 
         function upload() {
             $.ajax({
-                //�ύ���ݵ����� POST GET
+                //锟结交锟斤拷锟捷碉拷锟斤拷锟斤拷 POST GET
                 type: "POST",
-                //�ύ����ַ
+                //锟结交锟斤拷锟斤拷址
                 url: "Handler/UploadPhotoToServerSite.ashx",
-                //�ύ������
+                //锟结交锟斤拷锟斤拷锟斤拷
                 data: { FileData: $("#imgData").val(), FileName: $("#AttachFile").val() },
-                //�������ݵĸ�ʽ
-                //������֮ǰ���õĺ���
+                //锟斤拷锟斤拷锟斤拷锟捷的革拷式
+                //锟斤拷锟斤拷锟斤拷之前锟斤拷锟矫的猴拷锟斤拷
                 beforeSend: function () {
                     $("#IMG_Waiting").show();
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                     console.log(XMLHttpRequest);
                 },
-                //�ɹ�����֮����õĺ���
+                //锟缴癸拷锟斤拷锟斤拷之锟斤拷锟斤拷玫暮锟斤拷锟?
                 success: function (data) {
                     if (data.indexOf("img") > 0) {
                         $(document.getElementsByTagName("iframe")[0]).contents().find("body").append(data);
@@ -195,7 +195,7 @@
                         alert(data);
                     }
                 },
-                //����ִ�к���õĺ���
+                //锟斤拷锟斤拷执锟叫猴拷锟斤拷玫暮锟斤拷锟?
                 complete: function (XMLHttpRequest, textStatus) {
                     $("#IMG_Waiting").hide();
                 }
@@ -207,16 +207,16 @@
     <div id="swipeFeedback" class="swipe-feedback">
         <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" />
     </div>
-    <!-- ���������� -->
+    <!-- 锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷 -->
 
     <script type="text/javascript" language="javascript">
         var txtQrCode = '#<%=TB_QrCode.ClientID%>';
         var btnSaveQrCode = '#<%=BT_SaveQrCode.ClientID%>';
 
-        var loadingIndex; //��ʾ��index
-        var isWxConfigReady = false; //config�Ƿ���֤ͨ��
+        var loadingIndex; //锟斤拷示锟斤拷index
+        var isWxConfigReady = false; //config锟角凤拷锟斤拷证通锟斤拷
         $(function () {
-            initSwipeBack();// ��ʼ���������ع���  initSwipeBack();// ��ʼ���������ع���
+            initSwipeBack();// 锟斤拷始锟斤拷锟斤拷锟斤拷锟斤拷锟截癸拷锟斤拷  initSwipeBack();// 锟斤拷始锟斤拷锟斤拷锟斤拷锟斤拷锟截癸拷锟斤拷
 
             try {
                 if ('<%=signModel.appId %>' == '') {
@@ -232,7 +232,7 @@
                 });
                 wxApi();
 
-                //ɾ�����ⵯ����
+                //删锟斤拷锟斤拷锟解弹锟斤拷锟斤拷
                 if (isWxConfigReady == false) {
                     var m = document.getElementById("layui-layer1");
                     m.parentNode.removeChild(m);
@@ -253,11 +253,11 @@
                 // , content: 'ImagesSkin/Processing.gif'
             });
             wx.config({
-                debug: false, // ��������ģʽ,���õ�����api�ķ���ֵ���ڿͻ���alert��������Ҫ�鿴����Ĳ�����������pc�˴򿪣�������Ϣ��ͨ��log���������pc��ʱ�Ż��ӡ��
-                appId: '<%=signModel.appId %>', // ������ںŵ�Ψһ��ʶ
-                timestamp: '<%=signModel.time %>', // �������ǩ����ʱ���(�����д)
-                nonceStr: '<%=signModel.randstr %>', // �������ǩ���������(�����д)
-                signature: '<%=signModel.signstr %>', // ���ǩ��������¼1
+                debug: false, // 锟斤拷锟斤拷锟斤拷锟斤拷模式,锟斤拷锟矫碉拷锟斤拷锟斤拷api锟侥凤拷锟斤拷值锟斤拷锟节客伙拷锟斤拷alert锟斤拷锟斤拷锟斤拷锟斤拷要锟介看锟斤拷锟斤拷牟锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟絧c锟剿打开ｏ拷锟斤拷锟斤拷锟斤拷息锟斤拷通锟斤拷log锟斤拷锟斤拷锟斤拷锟斤拷锟絧c锟斤拷时锟脚伙拷锟接★拷锟?
+                appId: '<%=signModel.appId %>', // 锟斤拷锟筋，锟斤拷锟节号碉拷唯一锟斤拷识
+                timestamp: '<%=signModel.time %>', // 锟斤拷锟筋，锟斤拷锟斤拷签锟斤拷锟斤拷时锟斤拷锟?锟斤拷锟斤拷锟叫?
+                nonceStr: '<%=signModel.randstr %>', // 锟斤拷锟筋，锟斤拷锟斤拷签锟斤拷锟斤拷锟斤拷锟斤拷锟?锟斤拷锟斤拷锟叫?
+                signature: '<%=signModel.signstr %>', // 锟斤拷锟筋，签锟斤拷锟斤拷锟斤拷锟斤拷录1
 
                 jsApiList: [
                     'checkJsApi',
@@ -294,32 +294,32 @@
                     'addCard',
                     'chooseCard',
                     'openCard'
-                ] // �����Ҫʹ�õ�JS�ӿ��б�������JS�ӿ��б�����¼2
+                ] // 锟斤拷锟筋，锟斤拷要使锟矫碉拷JS锟接匡拷锟叫憋拷锟斤拷锟斤拷锟斤拷JS锟接匡拷锟叫憋拷锟斤拷锟斤拷录2
             });
 
             wx.ready(function () {
                 layer.close(loadingIndex);
-                // config��Ϣ��֤���ִ��ready���������нӿڵ��ö�������config�ӿڻ�ý��֮��config��һ���ͻ��˵��첽���������������Ҫ��ҳ�����ʱ�͵�����ؽӿڣ��������ؽӿڷ���ready�����е�����ȷ����ȷִ�С������û�����ʱ�ŵ��õĽӿڣ������ֱ�ӵ��ã�����Ҫ����ready�����С�
+                // config锟斤拷息锟斤拷证锟斤拷锟街达拷锟絩eady锟斤拷锟斤拷锟斤拷锟斤拷锟叫接口碉拷锟矫讹拷锟斤拷锟斤拷锟斤拷config锟接口伙拷媒锟斤拷之锟斤拷config锟斤拷一锟斤拷锟酵伙拷锟剿碉拷锟届步锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟揭拷锟揭筹拷锟斤拷锟斤拷时锟酵碉拷锟斤拷锟斤拷亟涌冢锟斤拷锟斤拷锟斤拷锟斤拷亟涌诜锟斤拷锟絩eady锟斤拷锟斤拷锟叫碉拷锟斤拷锟斤拷确锟斤拷锟斤拷确执锟叫★拷锟斤拷锟斤拷锟矫伙拷锟斤拷锟斤拷时锟脚碉拷锟矫的接口ｏ拷锟斤拷锟斤拷锟街憋拷拥锟斤拷茫锟斤拷锟斤拷锟揭拷锟斤拷锟絩eady锟斤拷锟斤拷锟叫★拷
                 isWxConfigReady = true;
             });
             wx.error(function (res) {
                 layer.close(loadingIndex);
                 alert(JSON.stringify(res));
-                // config��Ϣ��֤ʧ�ܻ�ִ��error��������ǩ�����ڵ�����֤ʧ�ܣ����������Ϣ���Դ�config��debugģʽ�鿴��Ҳ�����ڷ��ص�res�����в鿴������SPA�������������ǩ����
+                // config锟斤拷息锟斤拷证失锟杰伙拷执锟斤拷error锟斤拷锟斤拷锟斤拷锟斤拷签锟斤拷锟斤拷锟节碉拷锟斤拷锟斤拷证失锟杰ｏ拷锟斤拷锟斤拷锟斤拷锟斤拷锟较拷锟斤拷源锟絚onfig锟斤拷debug模式锟介看锟斤拷也锟斤拷锟斤拷锟节凤拷锟截碉拷res锟斤拷锟斤拷锟叫查看锟斤拷锟斤拷锟斤拷SPA锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟角╋拷锟斤拷锟?
             });
         }
 
         function qrcode() {
             wx.scanQRCode({
-                needResult: 1, // Ĭ��Ϊ0��ɨ������΢�Ŵ�����1��ֱ�ӷ���ɨ������
-                scanType: ["qrCode", "barCode"], // ����ָ��ɨ��ά�뻹��һά�룬Ĭ�϶��߶���
+                needResult: 1, // 默锟斤拷为0锟斤拷扫锟斤拷锟斤拷锟斤拷微锟脚达拷锟斤拷锟斤拷1锟斤拷直锟接凤拷锟斤拷扫锟斤拷锟斤拷锟斤拷
+                scanType: ["qrCode", "barCode"], // 锟斤拷锟斤拷指锟斤拷扫锟斤拷维锟诫还锟斤拷一维锟诫，默锟较讹拷锟竭讹拷锟斤拷
                 success: function (res) {
-                    var result = res.resultStr; // ��needResult Ϊ 1 ʱ��ɨ�뷵�صĽ��
+                    var result = res.resultStr; // 锟斤拷needResult 为 1 时锟斤拷扫锟诫返锟截的斤拷锟?
                     if (typeof (result) != "undefined") {
                         result = result.substring(result.indexOf(',') + 1, result.length);
-                        //�ı���ֵ
+                        //锟侥憋拷锟斤拷值
                         $(txtQrCode).val(result);
-                        //�����ѯ��ť
+                        //锟斤拷锟斤拷锟窖拷锟脚?
                         $(btnSaveQrCode).click();
                     }
                 }
@@ -332,6 +332,7 @@
             </asp:ScriptManager>
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>
+                <div id="appScroll" class="app-scroll">
 
                     <table cellpadding="0" cellspacing="0" width="100%" class="bian">
                         <tr>
@@ -353,7 +354,7 @@
                                                         </td>
                                                     </tr>
                                                 </table>
-                                                <img id="IMG_Waiting" src="Images/Processing.gif" alt="���Ժ򣬴�����..." style="display: none;" />
+                                                <img id="IMG_Waiting" src="Images/Processing.gif" alt="锟斤拷锟皆候，达拷锟斤拷锟斤拷..." style="display: none;" />
                                             </a>
                                         </td>
                                     </tr>
@@ -435,7 +436,7 @@
                                                                                             <input type="hidden" val="" id="imgData" runat="server" /></td>
                                                                                         <td>
                                                                                             <input type="button" id="BtnUP" onclick="upload()" value="Upload" />
-                                                                                            <img id="IMG_Uploading" src="Images/Processing.gif" alt="���Ժ򣬴�����..." style="display: none;" />
+                                                                                            <img id="IMG_Uploading" src="Images/Processing.gif" alt="锟斤拷锟皆候，达拷锟斤拷锟斤拷..." style="display: none;" />
                                                                                         </td>
                                                                                     </tr>
                                                                                 </table>
@@ -453,13 +454,13 @@
                                                                         <asp:Button ID="BT_Send" runat="server" OnClick="BT_Send_Click" Text="<%$ Resources:lang,FaSong %>" CssClass="inpu" />
                                                                     </div>
 
-                                                                    <!-- �޸ĵ�1���� npbtn npbtn-inline ��Ϊ equal-buttons -->
+                                                                    <!-- 锟睫改碉拷1锟斤拷锟斤拷 npbtn npbtn-inline 锟斤拷为 equal-buttons -->
                                                                     <div class="equal-buttons">
                                                                         <asp:Button ID="BT_Activity" runat="server" CssClass="inpu" OnClick="BT_Activity_Click" Text="<%$ Resources:lang,BaoCun %>" />
                                                                         <asp:Button ID="BT_Finish" runat="server" CssClass="inpu" Font-Bold="True" OnClick="BT_Finish_Click" Text="<%$ Resources:lang,WanChengTiJiao %>" />
                                                                     </div>
 
-                                                                    <!-- �޸ĵ�2���� npbtn npbtn-inline ��Ϊ equal-buttons -->
+                                                                    <!-- 锟睫改碉拷2锟斤拷锟斤拷 npbtn npbtn-inline 锟斤拷为 equal-buttons -->
                                                                     <div class="equal-buttons" style="margin-top: 10px;">
                                                                         <asp:Button ID="BT_TBD" runat="server" CssClass="inpu" Visible="False" OnClick="BT_TBD_Click" Text="<%$ Resources:lang,GuaQi %>" />
                                                                         <asp:Button ID="BT_CloseTask" runat="server" CssClass="inpu" Visible="False" Enabled="False" OnClick="BT_CloseTask_Click" Text="<%$ Resources:lang,GuanBiCiRenWu %>" />
@@ -543,7 +544,7 @@
                                                                             Text="<%$ Resources:lang,FaSong %>" />
                                                                     </div>
 
-                                                                    <!-- �޸ĵ�3���� npbtn npbtn-inline ��Ϊ equal-buttons -->
+                                                                    <!-- 锟睫改碉拷3锟斤拷锟斤拷 npbtn npbtn-inline 锟斤拷为 equal-buttons -->
                                                                     <div class="equal-buttons">
                                                                         <asp:Button ID="BT_Assign" runat="server" CssClass="inpu" OnClick="BT_Assign_Click" Text="<%$ Resources:lang,FenPai %>" />
                                                                         <asp:Button ID="BT_UpdateAssign" runat="server" CssClass="inpu" Enabled="False" OnClick="BT_UpdateAssign_Click" Text="<%$ Resources:lang,BaoCun %>" />
@@ -762,6 +763,7 @@
                     </table>
                 </ContentTemplate>
             </asp:UpdatePanel>
+            </div>
             <div style="position: fixed; display: none; z-index: 9999;" id="progressContainer">
                 <asp:UpdateProgress ID="TakeTopUp" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
                     <ProgressTemplate>

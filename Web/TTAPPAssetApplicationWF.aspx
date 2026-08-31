@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAPPAssetApplicationWF.aspx.cs" Inherits="TTAPPAssetApplicationWF" %>
+Ôªø<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAPPAssetApplicationWF.aspx.cs" Inherits="TTAPPAssetApplicationWF" %>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
 
@@ -34,7 +34,7 @@
     <script type="text/javascript" src="js/layer/layer/layer.js"></script>
     <script type="text/javascript" src="js/popwindow.js"></script>
     <script type="text/javascript" language="javascript">
-        $(function () { initSwipeBack();// ≥ı ºªØª¨∂Ø∑µªÿπ¶ƒ‹  initSwipeBack();// ≥ı ºªØª¨∂Ø∑µªÿπ¶ƒ‹
+        $(function () { initSwipeBack();// ÂàùÂßãÂåñÊªëÂä®ËøîÂõûÂäüËÉΩ  initSwipeBack();// ÂàùÂßãÂåñÊªëÂä®ËøîÂõûÂäüËÉΩ
             /*  if (top.location != self.location) { } else { CloseWebPage(); }*/
 
 
@@ -44,7 +44,7 @@
 
 
 </head>
-<body><div id="swipeFeedback" class="swipe-feedback"><asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYYXXHDKSXBYM%>" /></div> <!-- ª¨∂Ø∑¥¿°≤„ -->
+<body><div id="swipeFeedback" class="swipe-feedback"><asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYYXXHDKSXBYM%>" /></div> <!-- ÊªëÂä®ÂèçÈ¶àÂ±Ç -->
     <center>
         <form id="form1" runat="server">
             <%--  <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">--%>
@@ -52,6 +52,7 @@
             </asp:ScriptManager>
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>
+                <div id="appScroll" class="app-scroll">
 
                     <table id="AboveTable" cellpadding="0" cellspacing="0" width="100%" class="bian">
                         <tr>
@@ -72,7 +73,7 @@
                                                             <%-- <img src="ImagesSkin/main_top_r.jpg" width="5" height="31" />--%></td>
                                                     </tr>
                                                 </table>
-                                                <img id="IMG_Waiting" src="Images/Processing.gif" alt="«Î…‘∫Ú£¨¥¶¿Ì÷–..." style="display: none;" />
+                                                <img id="IMG_Waiting" src="Images/Processing.gif" alt="ËØ∑Á®çÂÄôÔºåÂ§ÑÁêÜ‰∏≠..." style="display: none;" />
                                             </a>
                                         </td>
                                     </tr>
@@ -148,7 +149,7 @@
                                         <asp:BoundColumn DataField="AAID" HeaderText="AAID">
                                             <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="15%" />
                                         </asp:BoundColumn>
-                                        <asp:BoundColumn DataField="AAName" HeaderText="…Í«Î√˚≥∆">
+                                        <asp:BoundColumn DataField="AAName" HeaderText="Áî≥ËØ∑ÂêçÁß∞">
                                             <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" Width="40%" />
                                         </asp:BoundColumn>
                                         <asp:TemplateColumn HeaderText="Status">
@@ -343,13 +344,13 @@
                                                                         <asp:BoundColumn DataField="ID" HeaderText="ID">
                                                                             <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="5%" />
                                                                         </asp:BoundColumn>
-                                                                        <asp:BoundColumn DataField="AssetCode" HeaderText="◊ ≤˙¥˙¬Î">
+                                                                        <asp:BoundColumn DataField="AssetCode" HeaderText="ËµÑ‰∫ß‰ª£Á†Å">
                                                                             <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="10%" />
                                                                         </asp:BoundColumn>
-                                                                        <asp:BoundColumn DataField="AssetName" HeaderText="◊ ≤˙√˚">
+                                                                        <asp:BoundColumn DataField="AssetName" HeaderText="ËµÑ‰∫ßÂêç">
                                                                             <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="15%" />
                                                                         </asp:BoundColumn>
-                                                                        <asp:BoundColumn DataField="ModelNumber" HeaderText="◊ ≤˙√˚">
+                                                                        <asp:BoundColumn DataField="ModelNumber" HeaderText="ËµÑ‰∫ßÂêç">
                                                                             <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="15%" />
                                                                         </asp:BoundColumn>
                                                                         <asp:BoundColumn DataField="Spec" HeaderText="Specification">
@@ -482,7 +483,7 @@
                                         <asp:Label ID="Label37" runat="server" Text="<%$ Resources:lang,QingXuanZeYaoLingYongDeShangPin %>"></asp:Label>:<asp:Label ID="Label1" runat="server" Visible="False"></asp:Label>
                                         <cc1:TabContainer CssClass="ajax_tab_menu" ID="TabContainer2" runat="server" ActiveTabIndex="0"
                                             Width="100%" Height="16px">
-                                            <cc1:TabPanel ID="TabPanel5" runat="server" HeaderText="◊ ≤˙ø‚¥Ê¡–±Ì">
+                                            <cc1:TabPanel ID="TabPanel5" runat="server" HeaderText="ËµÑ‰∫ßÂ∫ìÂ≠òÂàóË°®">
                                                 <HeaderTemplate>
                                                     <asp:Label ID="Label38" runat="server" Text="<%$ Resources:lang,ZiChanKuCunLieBiao%>"></asp:Label>
                                                 </HeaderTemplate>
@@ -576,13 +577,13 @@
                                                                 <asp:BoundColumn DataField="Price" HeaderText="UnitPrice">
                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="6%" />
                                                                 </asp:BoundColumn>
-                                                                <asp:BoundColumn DataField="BuyTime" DataFormatString="{0:yyyy/MM/dd}" HeaderText="»Îø‚ ±º‰">
+                                                                <asp:BoundColumn DataField="BuyTime" DataFormatString="{0:yyyy/MM/dd}" HeaderText="ÂÖ•Â∫ìÊó∂Èó¥">
                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="10%" />
                                                                 </asp:BoundColumn>
-                                                                <asp:BoundColumn DataField="Manufacturer" HeaderText="≥ßº“">
+                                                                <asp:BoundColumn DataField="Manufacturer" HeaderText="ÂéÇÂÆ∂">
                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="10%" />
                                                                 </asp:BoundColumn>
-                                                                <asp:BoundColumn DataField="Position" HeaderText="µÿ÷∑">
+                                                                <asp:BoundColumn DataField="Position" HeaderText="Âú∞ÂùÄ">
                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" Width="10%" />
                                                                 </asp:BoundColumn>
                                                             </Columns>
@@ -596,7 +597,7 @@
                                                     </div>
                                                 </ContentTemplate>
                                             </cc1:TabPanel>
-                                            <cc1:TabPanel ID="TabPanel6" runat="server" HeaderText="◊ ≤˙≤È—Ø¡–±Ì">
+                                            <cc1:TabPanel ID="TabPanel6" runat="server" HeaderText="ËµÑ‰∫ßÊü•ËØ¢ÂàóË°®">
                                                 <HeaderTemplate>
                                                     <asp:Label ID="Label513" runat="server" Text="<%$ Resources:lang,ZCCXLB%>"></asp:Label>
                                                 </HeaderTemplate>
@@ -660,7 +661,7 @@
                                                             <asp:BoundColumn DataField="Specification" HeaderText="Specification">
                                                                 <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" Width="35%" />
                                                             </asp:BoundColumn>
-                                                            <asp:BoundColumn DataField="PurchasePrice" HeaderText="≤…π∫µ•º€">
+                                                            <asp:BoundColumn DataField="PurchasePrice" HeaderText="ÈááË¥≠Âçï‰ª∑">
                                                                 <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="20%" />
                                                             </asp:BoundColumn>
                                                         </Columns>
@@ -794,7 +795,7 @@
                                                                 DataTextField="WLName" HeaderText="Workflow" Target="_blank">
                                                                 <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" Width="50%" />
                                                             </asp:HyperLinkColumn>
-                                                            <asp:BoundColumn DataField="CreateTime" HeaderText="…Í«Î ±º‰">
+                                                            <asp:BoundColumn DataField="CreateTime" HeaderText="Áî≥ËØ∑Êó∂Èó¥">
                                                                 <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="20%" />
                                                             </asp:BoundColumn>
                                                             <asp:TemplateColumn HeaderText="Status">
@@ -855,6 +856,7 @@
                     <asp:Label ID="LB_DepartString" runat="server" Visible="False"></asp:Label>
                 </ContentTemplate>
             </asp:UpdatePanel>
+            </div>
             <div style="position: fixed; display: none; z-index: 9999;" id="progressContainer">
                 <asp:UpdateProgress ID="TakeTopUp" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
                     <ProgressTemplate>

@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppTask.aspx.cs" Inherits="TTAppTask" %>
+Ôªø<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppTask.aspx.cs" Inherits="TTAppTask" %>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
@@ -16,7 +16,7 @@
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="js/allAHandler.js"></script>
     <script type="text/javascript" language="javascript">
-        $(function () { initSwipeBack();// ≥ı ºªØª¨∂Ø∑µªÿπ¶ƒ‹ 
+        $(function () { initSwipeBack();// ÂàùÂßãÂåñÊªëÂä®ËøîÂõûÂäüËÉΩ 
 
             //
 
@@ -24,7 +24,7 @@
 
         });
 
-        //µ„ª˜DATAGRID––ƒ⁄»Œ∫Œ“ªµ„£¨∂ºƒ‹¥•∑¢––ƒ⁄µƒ¡¥Ω”
+        //ÁÇπÂáªDATAGRIDË°åÂÜÖ‰ªª‰Ωï‰∏ÄÁÇπÔºåÈÉΩËÉΩËß¶ÂèëË°åÂÜÖÁöÑÈìæÊé•
         function SetDataGridTrClickLink() {
 
             setTrClickLink("TabContainer1_TabPanel1_DataGrid1");
@@ -36,7 +36,7 @@
         }
     </script>
 </head>
-<body><div id="swipeFeedback" class="swipe-feedback"><asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYYXXHDKSXBYM%>" /></div> <!-- ª¨∂Ø∑¥¿°≤„ -->
+<body><div id="swipeFeedback" class="swipe-feedback"><asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYYXXHDKSXBYM%>" /></div> <!-- ÊªëÂä®ÂèçÈ¶àÂ±Ç -->
 
     <form id="form1" class="napf" runat="server">
         <%--  <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">--%>
@@ -45,6 +45,8 @@
 
         <asp:UpdatePanel ID="UpdatePanel1" class="napbac" runat="server">
             <ContentTemplate>
+
+            <div id="appScroll" class="app-scroll">
 
                 <table id="AboveTable" cellpadding="0" width="100%" cellspacing="0" class="bian">
                     <tr>
@@ -66,7 +68,7 @@
                                                     </td>
                                                 </tr>
                                             </table>
-                                            <img id="IMG_Waiting" src="Images/Processing.gif" alt="«Î…‘∫Ú£¨¥¶¿Ì÷–..." style="display: none;" />
+                                            <img id="IMG_Waiting" src="Images/Processing.gif" alt="ËØ∑Á®çÂÄôÔºåÂ§ÑÁêÜ‰∏≠..." style="display: none;" />
                                         </a>
                                     </td>
                                     <td align="right" style="padding-top: 5px; padding-right: 8px;">
@@ -79,7 +81,7 @@
                     <tr>
                         <td class="ItemAlignLeft">
                             <cc2:TabContainer CssClass="ajax_tab_menu" ID="TabContainer1" runat="server" ActiveTabIndex="0" Width="99%">
-                                <cc2:TabPanel ID="TabPanel1" runat="server" HeaderText="Œ““™¥¶¿Ìµƒ»ŒŒÒ:">
+                                <cc2:TabPanel ID="TabPanel1" runat="server" HeaderText="ÊàëË¶ÅÂ§ÑÁêÜÁöÑ‰ªªÂä°:">
                                     <HeaderTemplate>
                                         <asp:Label ID="Label5" runat="server" Text="<%$ Resources:lang,WoYaoChuLiDeRenWu%>" ToolTip="<%$ Resources:lang,WoYaoChuLiDeRenWu%>"></asp:Label>
                                     </HeaderTemplate>
@@ -152,7 +154,7 @@
                                         </table>
                                     </ContentTemplate>
                                 </cc2:TabPanel>
-                                <cc2:TabPanel ID="TabPanel2" runat="server" HeaderText="∑÷≈‰µƒ»ŒŒÒ">
+                                <cc2:TabPanel ID="TabPanel2" runat="server" HeaderText="ÂàÜÈÖçÁöÑ‰ªªÂä°">
                                     <HeaderTemplate>
                                         <asp:Label ID="Label68" runat="server" Text="<%$ Resources:lang,YCLDMFPDRW%>" ToolTip="<%$ Resources:lang,YCLDMFPDRW%>"></asp:Label>
                                     </HeaderTemplate>
@@ -177,7 +179,7 @@
                                                             <Columns>
 
                                                                 <%--  <asp:HyperLinkColumn DataNavigateUrlField="ID" DataNavigateUrlFormatString="TTAppTaskDetail.aspx?ID={0}"
-                                                            DataTextField="Operation" HeaderText=" ‹¿Ì»Àµƒπ§◊˜">
+                                                            DataTextField="Operation" HeaderText="ÂèóÁêÜ‰∫∫ÁöÑÂ∑•‰Ωú">
                                                             <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" Width="28%" />
                                                         </asp:HyperLinkColumn>--%>
 
@@ -246,7 +248,7 @@
 
                                                 <Columns>
                                                     <%--<asp:HyperLinkColumn DataNavigateUrlField="ID" DataNavigateUrlFormatString="TTAppTaskDetail.aspx?ID={0}"
-                                                DataTextField="Operation" HeaderText=" ‹¿Ì»Àµƒπ§◊˜">
+                                                DataTextField="Operation" HeaderText="ÂèóÁêÜ‰∫∫ÁöÑÂ∑•‰Ωú">
                                                 <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" Width="28%" />
                                             </asp:HyperLinkColumn>--%>
 
@@ -304,7 +306,7 @@
 
                                                 <Columns>
                                                     <%--<asp:HyperLinkColumn DataNavigateUrlField="ID" DataNavigateUrlFormatString="TTAppTaskDetail.aspx?ID={0}"
-                                                DataTextField="Operation" HeaderText="Œ“µƒπ§◊˜">
+                                                DataTextField="Operation" HeaderText="ÊàëÁöÑÂ∑•‰Ωú">
                                                 <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" Width="28%" />
                                             </asp:HyperLinkColumn>--%>
 
@@ -364,7 +366,7 @@
 
                                                 <Columns>
                                                     <%--<asp:HyperLinkColumn DataNavigateUrlField="TaskID" DataNavigateUrlFormatString="TTAppCreateProjectTaskDetail.aspx?TaskID={0}"
-                                                    DataTextField="Task" HeaderText="»ŒŒÒƒ⁄»›">
+                                                    DataTextField="Task" HeaderText="‰ªªÂä°ÂÜÖÂÆπ">
                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" Width="18%" />
                                                 </asp:HyperLinkColumn>--%>
 
@@ -414,6 +416,8 @@
 
             </ContentTemplate>
         </asp:UpdatePanel>
+
+        </div>
         <div style="position: fixed; display: none; z-index: 9999;" id="progressContainer">
             <asp:UpdateProgress ID="TakeTopUp" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
                 <ProgressTemplate>

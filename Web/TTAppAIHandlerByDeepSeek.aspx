@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" Async="true" CodeFile="TTAppAIHandlerByDeepSeek.aspx.cs" Inherits="TTAppAIHandlerByDeepSeek" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" Async="true" CodeFile="TTAppAIHandlerByDeepSeek.aspx.cs" Inherits="TTAppAIHandlerByDeepSeek" %>
 
 <%@ Import Namespace="System.Globalization" %>
 
@@ -103,6 +103,8 @@
 
         <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
             <ContentTemplate>
+
+            <div id="appScroll" class="app-scroll">
                 <div id="DivID" style="width:100%;height:100vh;overflow-y:auto;overscroll-behavior:contain;">
 
                     <table cellpadding="0" cellspacing="0" width="100%" class="bian">
@@ -121,7 +123,7 @@
                                                             <asp:Label ID="Label8" runat="server" Text="<%$ Resources:lang,Back%>" />
                                                         </td>
                                                         <td width="5">
-                                                            <img id="IMG_Waiting" src="Images/Processing.gif" alt="请稍候，处理中..." style="display: none;" />
+                                                            <img id="IMG_Waiting" src="Images/Processing.gif" alt="璇风◢鍊欙紝澶勭悊涓?.." style="display: none;" />
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -164,6 +166,8 @@
                 </div>
             </ContentTemplate>
         </asp:UpdatePanel>
+
+        </div>
     </form>
 
     <script>

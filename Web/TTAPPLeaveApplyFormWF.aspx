@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAPPLeaveApplyFormWF.aspx.cs" Inherits="TTAPPLeaveApplyFormWF" %>
+Ôªø<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAPPLeaveApplyFormWF.aspx.cs" Inherits="TTAPPLeaveApplyFormWF" %>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
 
@@ -8,7 +8,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
-    <title>«ÎºŸ…Í«Î</title>
+    <title>ËØ∑ÂÅáÁî≥ËØ∑</title>
     <link id="mainCss" href="css/APP.css" rel="stylesheet" type="text/css" />
       <link id="flxappCss" href="css/APPFlx.css" rel="stylesheet" type="text/css" />
    
@@ -18,7 +18,7 @@
     <script type="text/javascript" src="js/layer/layer/layer.js"></script>
     <script type="text/javascript" src="js/popwindow.js"></script>
     <script type="text/javascript" language="javascript">
-        $(function () { initSwipeBack();// ≥ı ºªØª¨∂Ø∑µªÿπ¶ƒ‹  initSwipeBack();// ≥ı ºªØª¨∂Ø∑µªÿπ¶ƒ‹
+        $(function () { initSwipeBack();// ÂàùÂßãÂåñÊªëÂä®ËøîÂõûÂäüËÉΩ  initSwipeBack();// ÂàùÂßãÂåñÊªëÂä®ËøîÂõûÂäüËÉΩ
              /*  if (top.location != self.location) { } else { CloseWebPage(); }*/
 
 
@@ -34,6 +34,7 @@
             </asp:ScriptManager>
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>
+                <div id="appScroll" class="app-scroll">
 
                     <table id="AboveTable" cellpadding="0" cellspacing="0" width="130%" class="bian">
                         <tr>
@@ -54,7 +55,7 @@
                                                             <%-- <img src="ImagesSkin/main_top_r.jpg" width="5" height="31" />--%></td>
                                                     </tr>
                                                 </table>
-                                                <img id="IMG_Waiting" src="Images/Processing.gif" alt="«Î…‘∫Ú£¨¥¶¿Ì÷–..." style="display: none;" />
+                                                <img id="IMG_Waiting" src="Images/Processing.gif" alt="ËØ∑Á®çÂÄôÔºåÂ§ÑÁêÜ‰∏≠..." style="display: none;" />
                                             </a>
                                         </td>
                                     </tr>
@@ -228,13 +229,13 @@
                                                     <asp:DropDownList ID="DL_StartTimeHour" runat="server" CssClass="shuru">
                                                     </asp:DropDownList>
                                                 </td>
-                                                <td> ±
+                                                <td>Êó∂
                                                 </td>
                                                 <td>
                                                     <asp:DropDownList ID="DL_StartTimeMinute" runat="server" CssClass="shuru">
                                                     </asp:DropDownList>
                                                 </td>
-                                                <td>∑÷
+                                                <td>ÂàÜ
                                                 </td>
                                             </tr>
                                         </table>
@@ -255,13 +256,13 @@
                                                     <asp:DropDownList ID="DL_EndTimeHour" runat="server" CssClass="shuru">
                                                     </asp:DropDownList>
                                                 </td>
-                                                <td> ±
+                                                <td>Êó∂
                                                 </td>
                                                 <td>
                                                     <asp:DropDownList ID="DL_EndTimeMinute" runat="server" CssClass="shuru">
                                                     </asp:DropDownList>
                                                 </td>
-                                                <td>∑÷
+                                                <td>ÂàÜ
                                                 </td>
                                             </tr>
                                         </table>
@@ -394,7 +395,7 @@
                                                     DataTextField="WLName" HeaderText="Workflow" Target="_blank">
                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" Width="50%" />
                                                 </asp:HyperLinkColumn>
-                                                <asp:BoundColumn DataField="CreateTime" HeaderText="…Í«Î ±º‰">
+                                                <asp:BoundColumn DataField="CreateTime" HeaderText="Áî≥ËØ∑Êó∂Èó¥">
                                                     <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="20%" />
                                                 </asp:BoundColumn>
                                                 <asp:TemplateColumn HeaderText="Status">
@@ -468,6 +469,7 @@
                     <asp:Label ID="LB_Sql" runat="server" Visible="false"></asp:Label>
                 </ContentTemplate>
             </asp:UpdatePanel>
+            </div>
             <div style="position: fixed; display: none; z-index: 9999;" id="progressContainer">
                 <asp:UpdateProgress ID="TakeTopUp" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
                     <ProgressTemplate>

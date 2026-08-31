@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppMyWorkflowDetail.aspx.cs" Inherits="TTAppMyWorkflowDetail" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppMyWorkflowDetail.aspx.cs" Inherits="TTAppMyWorkflowDetail" %>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
 
@@ -15,7 +15,7 @@
     <link id="flxappCss" href="css/APPFlx.css" rel="stylesheet" type="text/css" />
     <script src="js/jquery-1.7.2.min.js"></script>
     <style type="text/css">
-        /*  --------------------------------����Ӧ����---------------------------*/
+        /*  --------------------------------锟斤拷锟斤拷应锟斤拷锟斤拷---------------------------*/
         #AboveDiv {
             min-width: 1160px;
             width: expression (document.body.clientWidth <= 1160? "1160px": "auto"));
@@ -61,7 +61,7 @@
     <script type="text/javascript" src="js/allAHandler.js"></script>
     <script type="text/javascript" language="javascript">
         $(function () {
-               initSwipeBack();// ��ʼ���������ع���  initSwipeBack();// ��ʼ���������ع���
+               initSwipeBack();// 锟斤拷始锟斤拷锟斤拷锟斤拷锟斤拷锟截癸拷锟斤拷  initSwipeBack();// 锟斤拷始锟斤拷锟斤拷锟斤拷锟斤拷锟截癸拷锟斤拷
 
         });
     </script>
@@ -70,7 +70,7 @@
  <%--   <div id="swipeFeedback" class="swipe-feedback">
         <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" />
     </div>--%>
-    <!-- ���������� -->
+    <!-- 锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷 -->
 
     <form id="form1" runat="server" class="napf">
         <asp:Literal ID="LIT_AttachUserJSCode" runat="server"></asp:Literal>
@@ -79,6 +79,7 @@
         </asp:ScriptManager>
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
+            <div id="appScroll" class="app-scroll">
                 <table cellpadding="0" cellspacing="0" width="100%" class="bian">
                     <tr>
                         <td colspan="2" height="31" class="page_topbj">
@@ -96,20 +97,20 @@
                                                         <asp:Label ID="Label13" runat="server" Text="<%$ Resources:lang,Back%>" />
                                                     </td>
                                                     <td width="5">
-                                                        <img id="IMG_Waiting" src="Images/Processing.gif" alt="���Ժ򣬴�����..." style="display: none;" />
+                                                        <img id="IMG_Waiting" src="Images/Processing.gif" alt="锟斤拷锟皆候，达拷锟斤拷锟斤拷..." style="display: none;" />
                                                     </td>
                                                 </tr>
                                             </table>
                                         </a>
                                     </td>
                                     <td style="width: 150px; text-align: right;">
-                                        <asp:HyperLink ID="HL_WLRelatedDoc" runat="server" Target="_blank" ToolTip="�ĵ��ϴ�">
+                                        <asp:HyperLink ID="HL_WLRelatedDoc" runat="server" Target="_blank" ToolTip="锟侥碉拷锟较达拷">
                                         <img src="ImagesSkin/UploadDoc.png" width= "24" height ="24" class="noBorder" />
                                         </asp:HyperLink>
                                     </td>
                                     <td align="right" onclick="javascript:ChangeMenu(0)" style="width: 50px; padding-right: 5px;">
 
-                                        <asp:Image ID="Image1" ImageUrl="~/Images/UpDnArrow.png" Width="18" Height="24" border="0" alt="�����ϱ���" runat="server" />
+                                        <asp:Image ID="Image1" ImageUrl="~/Images/UpDnArrow.png" Width="18" Height="24" border="0" alt="锟斤拷锟斤拷锟较憋拷锟斤拷" runat="server" />
 
                                     </td>
 
@@ -210,7 +211,7 @@
                                         <td style="height: 1px">
                                             <cc2:TabContainer CssClass="ajax_tab_menu" ID="TabContainer1" runat="server" ActiveTabIndex="0"
                                                 Width="100%">
-                                                <cc2:TabPanel ID="TabPanel1" runat="server" HeaderText="�����б�" TabIndex="0">
+                                                <cc2:TabPanel ID="TabPanel1" runat="server" HeaderText="锟斤拷锟斤拷锟叫憋拷" TabIndex="0">
                                                     <HeaderTemplate>
                                                         <asp:Label ID="Label8" runat="server" Text="<%$ Resources:lang,BuZhouLieBiao%>"></asp:Label>
                                                     </HeaderTemplate>
@@ -332,15 +333,15 @@
                                                                                 </ItemTemplate>
                                                                                 <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="10%" />
                                                                             </asp:TemplateColumn>
-                                                                            <asp:BoundColumn DataField="SortNumber" HeaderText="����">
+                                                                            <asp:BoundColumn DataField="SortNumber" HeaderText="锟斤拷锟斤拷">
                                                                                 <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="6%" />
                                                                             </asp:BoundColumn>
 
-                                                                            <asp:BoundColumn DataField="StepName" HeaderText="��������">
+                                                                            <asp:BoundColumn DataField="StepName" HeaderText="锟斤拷锟斤拷锟斤拷锟斤拷">
                                                                                 <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" Width="30%" />
                                                                             </asp:BoundColumn>
 
-                                                                            <asp:BoundColumn DataField="LimitedOperator" HeaderText="�ر�����">
+                                                                            <asp:BoundColumn DataField="LimitedOperator" HeaderText="锟截憋拷锟斤拷锟斤拷">
                                                                                 <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="10%" />
                                                                             </asp:BoundColumn>
 
@@ -403,17 +404,17 @@
                                                                                 <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="10%" />
                                                                             </asp:TemplateColumn>
 
-                                                                            <asp:BoundColumn DataField="OperatorName" HeaderText="������">
+                                                                            <asp:BoundColumn DataField="OperatorName" HeaderText="锟斤拷锟斤拷锟斤拷">
                                                                                 <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="10%" />
                                                                             </asp:BoundColumn>
-                                                                            <asp:BoundColumn DataField="WorkDetail" HeaderText="Ҫ��˵Ĺ���">
+                                                                            <asp:BoundColumn DataField="WorkDetail" HeaderText="要锟斤拷说墓锟斤拷锟?>
                                                                                 <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" Width="20%" />
                                                                             </asp:BoundColumn>
 
-                                                                            <asp:BoundColumn DataField="Requisite" HeaderText="����">
+                                                                            <asp:BoundColumn DataField="Requisite" HeaderText="锟斤拷锟斤拷">
                                                                                 <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="6%" />
                                                                             </asp:BoundColumn>
-                                                                            <asp:BoundColumn DataField="Operation" HeaderText="����">
+                                                                            <asp:BoundColumn DataField="Operation" HeaderText="锟斤拷锟斤拷">
                                                                                 <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="6%" />
                                                                             </asp:BoundColumn>
 
@@ -500,7 +501,7 @@
                                                         </table>
                                                     </ContentTemplate>
                                                 </cc2:TabPanel>
-                                                <cc2:TabPanel ID="TabPanel2" runat="server" HeaderText=" ������Ŀ" TabIndex="0">
+                                                <cc2:TabPanel ID="TabPanel2" runat="server" HeaderText=" 锟斤拷锟斤拷锟斤拷目" TabIndex="0">
                                                     <HeaderTemplate>
                                                         <asp:Label ID="Label46" runat="server" Text="<%$ Resources:lang,GuanLianXiangMu%>"></asp:Label>
                                                     </HeaderTemplate>
@@ -556,16 +557,16 @@
                                                                             <asp:BoundColumn DataField="ProjectID" HeaderText="Number">
                                                                                 <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="5%" />
                                                                             </asp:BoundColumn>
-                                                                            <asp:BoundColumn DataField="ProjectName" HeaderText="��Ŀ����">
+                                                                            <asp:BoundColumn DataField="ProjectName" HeaderText="锟斤拷目锟斤拷锟斤拷">
                                                                                 <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" Width="25%" />
                                                                             </asp:BoundColumn>
-                                                                            <asp:BoundColumn DataField="BeginDate" DataFormatString="{0:yyyy/MM/dd}" HeaderText="��ʼ����">
+                                                                            <asp:BoundColumn DataField="BeginDate" DataFormatString="{0:yyyy/MM/dd}" HeaderText="锟斤拷始锟斤拷锟斤拷">
                                                                                 <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="10%" />
                                                                             </asp:BoundColumn>
-                                                                            <asp:BoundColumn DataField="EndDate" DataFormatString="{0:yyyy/MM/dd}" HeaderText="��������">
+                                                                            <asp:BoundColumn DataField="EndDate" DataFormatString="{0:yyyy/MM/dd}" HeaderText="锟斤拷锟斤拷锟斤拷锟斤拷">
                                                                                 <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="10%" />
                                                                             </asp:BoundColumn>
-                                                                            <asp:BoundColumn DataField="MakeDate" DataFormatString="{0:yyyy/MM/dd}" HeaderText="��������">
+                                                                            <asp:BoundColumn DataField="MakeDate" DataFormatString="{0:yyyy/MM/dd}" HeaderText="锟斤拷锟斤拷锟斤拷锟斤拷">
                                                                                 <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="10%" />
                                                                             </asp:BoundColumn>
                                                                             <asp:TemplateColumn HeaderText="Status">
@@ -573,7 +574,7 @@
                                                                                 </ItemTemplate>
                                                                                 <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" Width="10%" />
                                                                             </asp:TemplateColumn>
-                                                                            <asp:TemplateColumn HeaderText="��ɳ̶�">
+                                                                            <asp:TemplateColumn HeaderText="锟斤拷沙潭锟?>
                                                                                 <ItemTemplate>
                                                                                     <asp:Label ID="LB_FinishPercent" runat="server" Text='<%# DataBinder.Eval(Container.DataItem,"FinishPercent")%> '></asp:Label>%
                                                                                
@@ -627,6 +628,7 @@
                 </div>
             </ContentTemplate>
         </asp:UpdatePanel>
+        </div>
         <div style="position: fixed; display: none; z-index: 9999;" id="progressContainer">
             <asp:UpdateProgress ID="TakeTopUp" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
                 <ProgressTemplate>

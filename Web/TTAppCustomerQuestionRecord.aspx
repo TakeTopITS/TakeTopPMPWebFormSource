@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppCustomerQuestionRecord.aspx.cs" Inherits="TTAppCustomerQuestionRecord" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppCustomerQuestionRecord.aspx.cs" Inherits="TTAppCustomerQuestionRecord" %>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
 
@@ -16,7 +16,7 @@
     <link id="flxappCss" href="css/APPFlx.css" rel="stylesheet" type="text/css" />
 
     <style type="text/css">
-        /* APP风格DataGrid样式 */
+        /* APP椋庢牸DataGrid鏍峰紡 */
         .mobile-datagrid {
             background: #fff;
             border-radius: 12px;
@@ -165,7 +165,7 @@
                 height: 18px;
             }
 
-        /* 分页样式 */
+        /* 鍒嗛〉鏍峰紡 */
         .mobile-pagination {
             display: flex;
             justify-content: center;
@@ -212,7 +212,7 @@
                 font-weight: 500;
             }
 
-        /* 空状态 */
+        /* 绌虹姸鎬?*/
         .mobile-datagrid-empty {
             padding: 48px 16px;
             text-align: center;
@@ -228,7 +228,7 @@
             opacity: 0.5;
         }
 
-        /* 弹出层优化样式 */
+        /* 寮瑰嚭灞備紭鍖栨牱寮?*/
         .layui-layer-iframe {
             max-height: 80vh !important;
             top: 20px !important;
@@ -240,7 +240,7 @@
             overflow-y: auto !important;
         }
 
-        /* 响应式调整 */
+        /* 鍝嶅簲寮忚皟鏁?*/
         @media (max-width: 480px) {
             .mobile-datagrid-item {
                 padding: 12px;
@@ -285,7 +285,7 @@
             }
         }
 
-        /* 加载状态 */
+        /* 鍔犺浇鐘舵€?*/
         .datagrid-loading {
             padding: 32px;
             text-align: center;
@@ -310,7 +310,7 @@
             }
         }
         
-        /* 表单样式 */
+        /* 琛ㄥ崟鏍峰紡 */
         .form-row {
             margin-bottom: 15px;
             display: flex;
@@ -350,14 +350,14 @@
         $(function () {
             initSwipeBack();
 
-            // 移动端触摸优化
+            // 绉诲姩绔Е鎽镐紭鍖?
             $('.mobile-datagrid-item').on('touchstart', function () {
                 $(this).addClass('touch-active');
             }).on('touchend touchcancel', function () {
                 $(this).removeClass('touch-active');
             });
 
-            // 防止双击放大
+            // 闃叉鍙屽嚮鏀惧ぇ
             var lastTouchEnd = 0;
             document.addEventListener('touchend', function (event) {
                 var now = (new Date()).getTime();
@@ -367,29 +367,29 @@
                 lastTouchEnd = now;
             }, false);
 
-            // 返回按钮点击
+            // 杩斿洖鎸夐挳鐐瑰嚮
             $('.header-back').on('click', function () {
                 window.history.back();
             });
 
-            // 弹窗适配移动端
+            // 寮圭獥閫傞厤绉诲姩绔?
             adaptPopupForMobile();
 
-            // 优化日期选择器在移动端的显示
+            // 浼樺寲鏃ユ湡閫夋嫨鍣ㄥ湪绉诲姩绔殑鏄剧ず
             enhanceDatePickers();
 
-            // 修复新建按钮点击事件
+            // 淇鏂板缓鎸夐挳鐐瑰嚮浜嬩欢
             fixCreateButton();
 
-            // DataGrid初始化
+            // DataGrid鍒濆鍖?
             initMobileDataGrid();
 
-            // 优化弹出层显示位置
+            // 浼樺寲寮瑰嚭灞傛樉绀轰綅缃?
             optimizePopupPosition();
         });
 
         function optimizePopupPosition() {
-            // 监听窗口大小变化，重新调整弹出层位置
+            // 鐩戝惉绐楀彛澶у皬鍙樺寲锛岄噸鏂拌皟鏁村脊鍑哄眰浣嶇疆
             $(window).on('resize', function () {
                 adjustPopupPosition();
             });
@@ -412,7 +412,7 @@
                     'position': 'fixed'
                 });
 
-                // 确保内容可滚动
+                // 纭繚鍐呭鍙粴鍔?
                 var contentHeight = popupHeight - 120;
                 $popup.find('.layui-layer-content').css({
                     'max-height': contentHeight + 'px',
@@ -439,12 +439,12 @@
         }
 
         function initMobileDataGrid() {
-            // 处理分页按钮样式
+            // 澶勭悊鍒嗛〉鎸夐挳鏍峰紡
             $('.pagination a').each(function () {
                 var $this = $(this);
                 if ($this.attr('href')) {
                     $this.addClass('mobile-page-btn');
-                    // 移除原有的数字样式
+                    // 绉婚櫎鍘熸湁鐨勬暟瀛楁牱寮?
                     $this.css({
                         'text-decoration': 'none',
                         'display': 'inline-flex',
@@ -464,7 +464,7 @@
                 }
             });
 
-            // 当前页样式
+            // 褰撳墠椤垫牱寮?
             $('.pagination span').each(function () {
                 var $this = $(this);
                 if ($this.text().match(/^\d+$/)) {
@@ -495,7 +495,7 @@
         }
 
         function adaptPopupForMobile() {
-            // 弹窗显示时调整位置和大小
+            // 寮圭獥鏄剧ず鏃惰皟鏁翠綅缃拰澶у皬
             $(document).on('click', '[data-popup]', function () {
                 setTimeout(function () {
                     var $popup = $('.layui-layer-iframe:visible');
@@ -514,7 +514,7 @@
                             'position': 'fixed'
                         });
 
-                        // 确保内容可滚动
+                        // 纭繚鍐呭鍙粴鍔?
                         var contentHeight = popupHeight - 120;
                         $popup.find('.layui-layer-content').css({
                             'max-height': contentHeight + 'px',
@@ -526,23 +526,23 @@
         }
 
         function enhanceDatePickers() {
-            // 为日期输入框添加移动端优化
+            // 涓烘棩鏈熻緭鍏ユ娣诲姞绉诲姩绔紭鍖?
             $('input[type="text"][id*="DLC_"]').each(function () {
                 var $input = $(this);
                 $input.addClass('date-input');
 
-                // 设置输入模式为日期
+                // 璁剧疆杈撳叆妯″紡涓烘棩鏈?
                 $input.attr('inputmode', 'numeric');
                 $input.attr('pattern', '[0-9]*');
 
-                // 添加日期图标提示
+                // 娣诲姞鏃ユ湡鍥炬爣鎻愮ず
                 if (!$input.parent().find('.date-icon').length) {
-                    $input.parent().append('<span class="date-icon" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); color: #999; pointer-events: none;">📅</span>');
+                    $input.parent().append('<span class="date-icon" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); color: #999; pointer-events: none;">馃搮</span>');
                     $input.css('padding-right', '40px');
                 }
             });
 
-            // 修复AjaxControlToolkit日历控件在移动端的显示
+            // 淇AjaxControlToolkit鏃ュ巻鎺т欢鍦ㄧЩ鍔ㄧ鐨勬樉绀?
             if (typeof (Sys) !== 'undefined' && typeof (Sys.Extended) !== 'undefined' && typeof (Sys.Extended.UI.CalendarBehavior) !== 'undefined') {
                 Sys.Extended.UI.CalendarBehavior.prototype._onShown = function () {
                     var $calendar = $('.ajax__calendar');
@@ -561,22 +561,22 @@
         }
 
         function fixCreateButton() {
-            // 确保新建按钮能正常触发弹窗
+            // 纭繚鏂板缓鎸夐挳鑳芥甯歌Е鍙戝脊绐?
             $('#BT_Create').on('click', function (e) {
                 e.preventDefault();
                 e.stopPropagation();
 
-                // 显示弹窗
+                // 鏄剧ず寮圭獥
                 var $popup = $('#popwindow');
                 if ($popup.length) {
-                    // 重置表单
+                    // 閲嶇疆琛ㄥ崟
                     $popup.find('input[type="text"], select, textarea').val('');
 
-                    // 显示弹窗和遮罩
+                    // 鏄剧ず寮圭獥鍜岄伄缃?
                     $('#popwindow_shade').show();
                     $popup.show();
 
-                    // 调整弹窗位置和大小
+                    // 璋冩暣寮圭獥浣嶇疆鍜屽ぇ灏?
                     var windowHeight = $(window).height();
                     var popupHeight = Math.min(windowHeight - 40, 600);
 
@@ -591,17 +591,17 @@
                         'position': 'fixed'
                     });
 
-                    // 确保内容可滚动
+                    // 纭繚鍐呭鍙粴鍔?
                     var contentHeight = popupHeight - 120;
                     $popup.find('.layui-layer-content').css({
                         'max-height': contentHeight + 'px',
                         'overflow-y': 'auto'
                     });
 
-                    // 滚动到顶部
+                    // 婊氬姩鍒伴《閮?
                     $popup.find('.layui-layer-content').scrollTop(0);
 
-                    // 添加关闭按钮事件
+                    // 娣诲姞鍏抽棴鎸夐挳浜嬩欢
                     $popup.find('.layui-layer-close').off('click').on('click', function () {
                         $('#popwindow_shade').hide();
                         $popup.hide();
@@ -611,14 +611,14 @@
                 return false;
             });
 
-            // 修复弹窗内的保存按钮
+            // 淇寮圭獥鍐呯殑淇濆瓨鎸夐挳
             $('#LinkButton1').on('click', function (e) {
-                // 确保表单能正常提交
+                // 纭繚琛ㄥ崟鑳芥甯告彁浜?
                 return true;
             });
         }
 
-        // 确保popClose函数存在
+        // 纭繚popClose鍑芥暟瀛樺湪
         if (typeof popClose !== 'function') {
             function popClose() {
                 $('.layui-layer-iframe:visible').hide();
@@ -632,7 +632,7 @@
     <div id="swipeFeedback" class="swipe-feedback">
         <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" />
     </div>
-    <!-- 移动端头部 -->
+    <!-- 绉诲姩绔ご閮?-->
     <table cellpadding="0" cellspacing="0" width="100%" class="bian">
         <tr>
             <td colspan="2" height="31" class="page_topbj">
@@ -651,7 +651,7 @@
                                         <td width="5"></td>
                                     </tr>
                                 </table>
-                                <img id="IMG_Waiting" src="Images/Processing.gif" alt="请稍候，处理中..." style="display: none;" />
+                                <img id="IMG_Waiting" src="Images/Processing.gif" alt="璇风◢鍊欙紝澶勭悊涓?.." style="display: none;" />
                             </a>
                         </td>
                     </tr>
@@ -660,7 +660,7 @@
         </tr>
     </table>
 
-    <!-- 主要内容区域 -->
+    <!-- 涓昏鍐呭鍖哄煙 -->
     <div class="content-wrapper">
         <form id="form1" runat="server" class="napf">
             <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">
@@ -668,13 +668,15 @@
 
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>
-                    <!-- 新建按钮 -->
+
+                <div id="appScroll" class="app-scroll">
+                    <!-- 鏂板缓鎸夐挳 -->
                     <div style="margin-bottom: 15px;">
                         <asp:Button ID="BT_Create" runat="server" Text="<%$ Resources:lang,New%>"
                             CssClass="mobile-button yellow" OnClick="BT_Create_Click" />
                     </div>
 
-                    <!-- APP风格的问题记录列表 -->
+                    <!-- APP椋庢牸鐨勯棶棰樿褰曞垪琛?-->
                     <div class="mobile-datagrid">
                         <asp:DataGrid ID="DataGrid4" runat="server" AutoGenerateColumns="False" GridLines="None"
                             OnItemCommand="DataGrid4_ItemCommand" OnPageIndexChanged="DataGrid4_PageIndexChanged"
@@ -687,10 +689,10 @@
                                 <asp:TemplateColumn>
                                     <ItemTemplate>
                                         <div class="mobile-datagrid-item">
-                                            <!-- 操作按钮区域 -->
-                                            <!-- 内容区域 -->
+                                            <!-- 鎿嶄綔鎸夐挳鍖哄煙 -->
+                                            <!-- 鍐呭鍖哄煙 -->
                                             <div class="mobile-datagrid-content">
-                                                <!-- 编辑按钮 -->
+                                                <!-- 缂栬緫鎸夐挳 -->
                                                 <asp:LinkButton ID="LB_Update" runat="server" CommandName="Update" CssClass="mobile-button blue" Text='<%# DataBinder.Eval(Container.DataItem, "ID") %>' />
 
 
@@ -701,9 +703,9 @@
                                                     <asp:Label ID="LB_ID" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "ID") %>'></asp:Label>
                                                 </div>
 
-                                                <!-- 问题描述和删除按钮容器 -->
+                                                <!-- 闂鎻忚堪鍜屽垹闄ゆ寜閽鍣?-->
                                                 <div class="mobile-datagrid-question-container">
-                                                    <!-- 问题描述 -->
+                                                    <!-- 闂鎻忚堪 -->
                                                     <div class="mobile-datagrid-question">
                                                         <asp:HyperLink ID="HL_Question" runat="server"
                                                             NavigateUrl='<%# "TTAPPCustomerQuestionHandleDetailForCreate.aspx?ID=" + DataBinder.Eval(Container.DataItem, "ID") %>'
@@ -712,7 +714,7 @@
                                                         </asp:HyperLink>
                                                     </div>
 
-                                                    <!-- 删除按钮（放在问题描述的右侧） -->
+                                                    <!-- 鍒犻櫎鎸夐挳锛堟斁鍦ㄩ棶棰樻弿杩扮殑鍙充晶锛?-->
                                                     <div class="delete-icon-wrapper">
                                                         <div onclick="return showSimpleDeleteModal(this, event);" class="custom-delete-icon" title="Delete">
                                                             <img src="ImagesSkin/Delete.png" border="0" alt='Delete' />
@@ -728,16 +730,16 @@
                             <PagerStyle HorizontalAlign="center" Mode="NumericPages" NextPageText="" PrevPageText="" />
                         </asp:DataGrid>
 
-                        <!-- 空状态显示 -->
+                        <!-- 绌虹姸鎬佹樉绀?-->
                         <asp:Label ID="LB_EmptyMessage" runat="server" Visible="false">
                             <div class="mobile-datagrid-empty">
-                                <div class="mobile-datagrid-empty-icon">📄</div>
-                                <div>暂无数据</div>
+                                <div class="mobile-datagrid-empty-icon">馃搫</div>
+                                <div>鏆傛棤鏁版嵁</div>
                             </div>
                         </asp:Label>
                     </div>
 
-                    <!-- 统计图表 -->
+                    <!-- 缁熻鍥捐〃 -->
                     <asp:Repeater ID="RP_ChartList" runat="server">
                         <ItemTemplate>
                             <div class="mobile-card">
@@ -757,14 +759,14 @@
                         </ItemTemplate>
                     </asp:Repeater>
 
-                    <!-- 图表设置链接 -->
+                    <!-- 鍥捐〃璁剧疆閾炬帴 -->
                     <div style="text-align: center; margin: 20px 0; display: none;">
                         <asp:HyperLink ID="HL_SystemAnalystChartRelatedUserSet" runat="server"
                             Text="<%$ Resources:lang,FenXiTuSheZhi%>"
                             Style="color: #1976D2; text-decoration: none; font-weight: 500;"></asp:HyperLink>
                     </div>
 
-                    <!-- 弹窗区域 (优化高度和按钮显示) -->
+                    <!-- 寮圭獥鍖哄煙 (浼樺寲楂樺害鍜屾寜閽樉绀? -->
                     <div class="layui-layer layui-layer-iframe" id="popwindow" name="fixedDiv"
                         style="z-index: 9999; width: 98%; height: auto; position: fixed; overflow: hidden; display: none; border-radius: 10px; max-height: 600px; top: 20px; left: 50%; transform: translateX(-50%);">
                         <div class="layui-layer-title" style="background: #e7e7e8;" id="popwindow_title">
@@ -772,7 +774,7 @@
                         </div>
                         <div id="popwindow_content" class="layui-layer-content" style="overflow: auto; text-align: left; padding: 15px; max-height: 450px;">
                             <div style="width: 100%;">
-                                <!-- 使用div布局替代表格布局 -->
+                                <!-- 浣跨敤div甯冨眬鏇夸唬琛ㄦ牸甯冨眬 -->
                                 <div class="form-row">
                                     <div class="form-label">
                                         <asp:Label ID="Label4" runat="server" Text="<%$ Resources:lang,XuQiuLeiBie%>"></asp:Label>
@@ -931,7 +933,7 @@
                                     <asp:TextBox ID="TB_BusinessSource" runat="server" CssClass="mobile-input"></asp:TextBox>
                                 </div>
 
-                                <!-- 隐藏字段 -->
+                                <!-- 闅愯棌瀛楁 -->
                                 <div style="display: none;">
                                     <asp:TextBox ID="TB_BusinessName" runat="server"></asp:TextBox>
                                     <asp:TextBox ID="TB_CustomerName" runat="server" />
@@ -1093,7 +1095,7 @@
 
                     <div class="layui-layer-shade" id="popwindow_shade" style="z-index: 9998; background-color: #000; opacity: 0.3; filter: alpha(opacity=30); display: none;"></div>
 
-                    <!-- 隐藏的树形视图 -->
+                    <!-- 闅愯棌鐨勬爲褰㈣鍥?-->
                     <asp:TreeView ID="TreeView1" runat="server" NodeWrap="True" Visible="false" OnSelectedNodeChanged="TreeView1_SelectedNodeChanged"
                         ShowLines="True" Width="220px">
                         <RootNodeStyle CssClass="rootNode" />
@@ -1105,7 +1107,9 @@
                 </ContentTemplate>
             </asp:UpdatePanel>
 
-            <!-- 加载指示器 -->
+            </div>
+
+            <!-- 鍔犺浇鎸囩ず鍣?-->
             <div style="position: fixed; display: none; z-index: 9999;" id="progressContainer">
                 <asp:UpdateProgress ID="TakeTopUp" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
                     <ProgressTemplate>
@@ -1118,7 +1122,7 @@
         </form>
     </div>
 
-    <!-- 等待图标 -->
-    <img id="IMG_Waiting" src="Images/Processing.gif" alt="请稍候，处理中..." style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 9999;" />
+    <!-- 绛夊緟鍥炬爣 -->
+    <img id="IMG_Waiting" src="Images/Processing.gif" alt="璇风◢鍊欙紝澶勭悊涓?.." style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 9999;" />
 </body>
 </html>

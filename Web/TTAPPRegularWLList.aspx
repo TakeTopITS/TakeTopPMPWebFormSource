@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAPPRegularWLList.aspx.cs" Inherits="TTAPPRegularWLList" %>
+ï»¿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAPPRegularWLList.aspx.cs" Inherits="TTAPPRegularWLList" %>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
 
@@ -30,7 +30,7 @@
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="js/allAHandler.js"></script>
     <script type="text/javascript" language="javascript">
-        $(function () { initSwipeBack();// ³õÊ¼»¯»¬¶¯·µ»Ø¹¦ÄÜ 
+        $(function () { initSwipeBack();// åˆå§‹åŒ–æ»‘åŠ¨è¿”å›åŠŸèƒ½ 
 
              /*  if (top.location != self.location) { } else { CloseWebPage(); }*/
 
@@ -39,14 +39,14 @@
 
         });
 
-        //µã»÷DATAGRIDĞĞÄÚÈÎºÎÒ»µã£¬¶¼ÄÜ´¥·¢ĞĞÄÚµÄÁ´½Ó
+        //ç‚¹å‡»DATAGRIDè¡Œå†…ä»»ä½•ä¸€ç‚¹ï¼Œéƒ½èƒ½è§¦å‘è¡Œå†…çš„é“¾æ¥
         function setTrClickLink(gridId) {
-            //×èÖ¹ÊÂ¼şÃ°Åİ
+            //é˜»æ­¢äº‹ä»¶å†’æ³¡
             jQuery("#" + gridId).find("tr:not(.notTab)").find("a").click(function () {
                 event.stopPropagation();
             });
 
-            //trµã»÷Ìø×ª
+            //trç‚¹å‡»è·³è½¬
             jQuery("#" + gridId).find("tr:not(.notTab)").find("a").closest("tr").click(function () {
                 ChangeMenu(0);
                 $("#Right", parent.document).attr("src", $(this).find("a").attr("href"));
@@ -67,8 +67,9 @@
     </script>
 
 </head>
-<body><div id="swipeFeedback" class="swipe-feedback"><asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYYXXHDKSXBYM%>" /></div> <!-- »¬¶¯·´À¡²ã -->
+<body><div id="swipeFeedback" class="swipe-feedback"><asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYYXXHDKSXBYM%>" /></div> <!-- æ»‘åŠ¨åé¦ˆå±‚ -->
     <form id="form1" runat="server">
+        <div id="appScroll" class="app-scroll">
         <div id="divToolBar" name="divTooBar" class="ToolBar" style="width: 100%;">
             <table style="width: 100%;">
                 <tr>
@@ -86,7 +87,7 @@
                                                     <asp:Label ID="Label8" runat="server" Text="<%$ Resources:lang,Back%>" />
                                                 </td>
                                                 <td width="5">
-                                                    <img id="IMG_Waiting" src="Images/Processing.gif" alt="ÇëÉÔºò£¬´¦ÀíÖĞ..." style="display: none;" />
+                                                    <img id="IMG_Waiting" src="Images/Processing.gif" alt="è¯·ç¨å€™ï¼Œå¤„ç†ä¸­..." style="display: none;" />
                                                 </td>
                                             </tr>
                                         </table>
@@ -99,7 +100,7 @@
                                 </td>
 
                                 <td style="width: 30%; text-align: left; padding-top: 5px;" onclick="javascript:ChangeMenu(0);">
-                                    <asp:Image ID="IMG_LRArrow" ImageUrl="Images/UpDnArrow.png" Width="18px" Height="24px" border="0" alt="Òş²ØÓÒ±ßÀ¸" runat="server" /></td>
+                                    <asp:Image ID="IMG_LRArrow" ImageUrl="Images/UpDnArrow.png" Width="18px" Height="24px" border="0" alt="éšè—å³è¾¹æ " runat="server" /></td>
                             </tr>
                         </table>
                     </td>
@@ -252,5 +253,6 @@
 
         <%--        <div id="DivID" style="width: 100%; overflow: auto; padding-top: 27px;">
         </div>--%>
+    </div>
     </form>
 </body>

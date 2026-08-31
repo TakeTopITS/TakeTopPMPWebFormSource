@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppApproveRecord.aspx.cs" Inherits="TTAppApproveRecord" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppApproveRecord.aspx.cs" Inherits="TTAppApproveRecord" %>
 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -11,6 +11,7 @@
 </head>
 <body>
         <form id="form1" runat="server" class="napf">
+            <div id="appScroll" class="app-scroll">
 
             <table cellpadding="0" cellspacing="0" width="100%" class="bian">
                 <tr>
@@ -99,6 +100,7 @@
                     </td>
                 </tr>
             </table>
+        </div>
         </form>
 </body>
 <script type="text/javascript" language="javascript">var cssDirectory = '<%=Session["CssDirectory"] %>'; var oLink = document.getElementById('mainCss'); oLink.href = 'css/' + cssDirectory + '/' + 'bluelightmain.css';</script></html>

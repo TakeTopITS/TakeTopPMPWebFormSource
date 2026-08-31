@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAPPDailyWorkReportForCreator.aspx.cs" Inherits="TTAPPDailyWorkReportForCreator" %>
+ï»¿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAPPDailyWorkReportForCreator.aspx.cs" Inherits="TTAPPDailyWorkReportForCreator" %>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
 
@@ -35,7 +35,7 @@
     <script type="text/javascript" src="js/allAHandler.js"></script>
     <script type="text/javascript" language="javascript">
         $(function () {
-            initSwipeBack();// ³õÊ¼»¯»¬¶¯·µ»Ø¹¦ÄÜ  initSwipeBack();// ³õÊ¼»¯»¬¶¯·µ»Ø¹¦ÄÜ
+            initSwipeBack();// åˆå§‹åŒ–æ»‘åŠ¨è¿”å›žåŠŸèƒ½  initSwipeBack();// åˆå§‹åŒ–æ»‘åŠ¨è¿”å›žåŠŸèƒ½
 
 
 
@@ -48,13 +48,14 @@
     <div id="swipeFeedback" class="swipe-feedback">
         <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYYXXHDKSXBYM%>" />
     </div>
-    <!-- »¬¶¯·´À¡²ã -->
+    <!-- æ»‘åŠ¨åé¦ˆå±‚ -->
     <center>
         <form id="form1" runat="server">
             <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">
             </asp:ScriptManager>
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>
+                <div id="appScroll" class="app-scroll">
 
 
                     <table cellpadding="0" cellspacing="0" width="100%" class="bian">
@@ -76,7 +77,7 @@
 
                                                     </tr>
                                                 </table>
-                                                <img id="IMG_Waiting" src="Images/Processing.gif" alt="ÇëÉÔºò£¬´¦ÀíÖÐ..." style="display: none;" />
+                                                <img id="IMG_Waiting" src="Images/Processing.gif" alt="è¯·ç¨å€™ï¼Œå¤„ç†ä¸­..." style="display: none;" />
                                             </a>
                                         </td>
                                         <td align="center" style="padding-top: 6px;">
@@ -174,6 +175,7 @@
 
                 </ContentTemplate>
             </asp:UpdatePanel>
+            </div>
             <div style="position: fixed; display: none; z-index: 9999;" id="progressContainer">
                 <asp:UpdateProgress ID="TakeTopUp" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
                     <ProgressTemplate>

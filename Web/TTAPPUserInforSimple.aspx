@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAPPUserInforSimple.aspx.cs" Inherits="TTAPPUserInforSimple" %>
+ï»¿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAPPUserInforSimple.aspx.cs" Inherits="TTAPPUserInforSimple" %>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
 
@@ -27,14 +27,15 @@
     <script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
     <script src="js/allAHandler.js" type="text/javascript"></script>
     <script language="javascript" type="text/javascript">
-        $(function () { initSwipeBack();// ³õÊ¼»¯»¬¶¯·µ»Ø¹¦ÄÜ 
+        $(function () { initSwipeBack();// åˆå§‹åŒ–æ»‘åŠ¨è¿”å›åŠŸèƒ½ 
 
         });
     </script>
 </head>
-<body><div id="swipeFeedback" class="swipe-feedback"><asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYYXXHDKSXBYM%>" /></div> <!-- »¬¶¯·´À¡²ã -->
+<body><div id="swipeFeedback" class="swipe-feedback"><asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYYXXHDKSXBYM%>" /></div> <!-- æ»‘åŠ¨åé¦ˆå±‚ -->
     <center>
         <form id="form1" runat="server">
+            <div id="appScroll" class="app-scroll">
 
             <table cellpadding="0" cellspacing="0" width="100%" class="bian">
                 <tr>
@@ -256,6 +257,7 @@
                     </td>
                 </tr>
             </table>
+        </div>
         </form>
     </center>
 </body>

@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppCustomerQuestionHandleDetailForMembers.aspx.cs" Inherits="TTAppCustomerQuestionHandleDetailForMembers" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppCustomerQuestionHandleDetailForMembers.aspx.cs" Inherits="TTAppCustomerQuestionHandleDetailForMembers" %>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
 
@@ -20,7 +20,7 @@
     <script type="text/javascript" src="js/allAHandler.js"></script>
     <script type="text/javascript" language="javascript">
         $(function () {
-            initSwipeBack();// ��ʼ���������ع���
+            initSwipeBack();// 锟斤拷始锟斤拷锟斤拷锟斤拷锟斤拷锟截癸拷锟斤拷
         });
     </script>
 </head>
@@ -36,7 +36,9 @@
 
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>
-                    <!-- ͷ�� -->
+
+                <div id="appScroll" class="app-scroll">
+                    <!-- 头锟斤拷 -->
                     <table cellpadding="0" cellspacing="0" width="100%" class="bian">
                         <tr>
                             <td colspan="2" height="31" class="page_topbj">
@@ -57,7 +59,7 @@
                                                         </td>
                                                     </tr>
                                                 </table>
-                                                <img id="IMG_Waiting" src="Images/Processing.gif" alt="���Ժ򣬴�����..." style="display: none;" />
+                                                <img id="IMG_Waiting" src="Images/Processing.gif" alt="锟斤拷锟皆候，达拷锟斤拷锟斤拷..." style="display: none;" />
                                             </a>
                                         </td>
                                     </tr>
@@ -67,7 +69,7 @@
                     </table>
 
                     <div class="mobile-content">
-                        <!-- ���������Ϣ -->
+                        <!-- 锟斤拷锟斤拷锟斤拷锟斤拷锟较?-->
                         <div class="mobile-section">
                             <div class="data-row">
                                 <div class="data-label">
@@ -104,7 +106,7 @@
                             </div>
                         </div>
 
-                        <!-- ������ť -->
+                        <!-- 锟斤拷锟斤拷锟斤拷钮 -->
                         <div class="mobile-section">
                               <div class="equal-buttons">
                                 <asp:Button ID="BT_Accept" runat="server" CssClass="inpu" OnClick="BT_Accept_Click" Text="<%$ Resources:lang,ShouLi%>" />
@@ -121,7 +123,7 @@
                             </div>
                         </div>
 
-                        <!-- ֱ�ӳ�Ա��ָ�������� -->
+                        <!-- 直锟接筹拷员锟斤拷指锟斤拷锟斤拷锟斤拷锟斤拷 -->
                         <div class="mobile-section">
                             <div class="mobile-form-group">
                                 <div class="mobile-label">
@@ -135,7 +137,7 @@
                             </div>
                         </div>
 
-                        <!-- �ͷ���¼ -->
+                        <!-- 锟酵凤拷锟斤拷录 -->
                         <div class="mobile-section">
                             <div class="mobile-label">
                                 <asp:Label ID="Label16" runat="server" Text="<%$ Resources:lang,KeFuJiLu%>"></asp:Label>:</div>
@@ -198,7 +200,7 @@
                             </asp:DataList>
                         </div>
 
-                        <!-- ���ز��� -->
+                        <!-- 锟斤拷锟截诧拷锟斤拷 -->
                         <div style="display: none;">
                             <asp:DataList ID="DataList2" runat="server" CellPadding="0" ForeColor="#333333" Height="1px" Width="100%" Style="display: none;">
                             </asp:DataList>
@@ -223,7 +225,7 @@
                         </div>
                     </div>
 
-                    <!-- ģ̬�� -->
+                    <!-- 模态锟斤拷 -->
                     <div class="layui-layer layui-layer-iframe" id="popDetailWindow" name="fixedDiv"
                         style="z-index: 9999; width: 98%; height: 500px; position: absolute; overflow: hidden; display: none; border-radius: 10px;">
                         <div class="layui-layer-title" style="background: #e7e7e8;" id="popwindow_title">
@@ -329,7 +331,7 @@
                                                 <div>
                                                     <Upload:InputFile ID="AttachFile" runat="server" Width="180px" />
                                                     &nbsp;<asp:Button ID="BtnUP" runat="server" OnClick="BtnUP_Click" OnClientClick="javascript:document.getElementById('IMG_Uploading').style.display = 'block';" Text="<%$ Resources:lang,ShiYong%>" />
-                                                    <img id="IMG_Uploading" src="Images/Processing.gif" alt="���Ժ򣬴�����..." style="display: none;" />
+                                                    <img id="IMG_Uploading" src="Images/Processing.gif" alt="锟斤拷锟皆候，达拷锟斤拷锟斤拷..." style="display: none;" />
                                                 </div>
                                             </ContentTemplate>
                                             <Triggers>
@@ -387,6 +389,8 @@
                     <div class="layui-layer-shade" id="popwindow_shade" style="z-index: 9998; background-color: #000; opacity: 0.3; filter: alpha(opacity=30); display: none;"></div>
                 </ContentTemplate>
             </asp:UpdatePanel>
+
+            </div>
 
             <div style="position: fixed; display: none; z-index: 9999;" id="progressContainer">
                 <asp:UpdateProgress ID="TakeTopUp" runat="server" AssociatedUpdatePanelID="UpdatePanel1">

@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAPPKPIManagement.aspx.cs" Inherits="TTAPPKPIManagement" %>
+Ôªø<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAPPKPIManagement.aspx.cs" Inherits="TTAPPKPIManagement" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc2" %>
 
@@ -16,7 +16,7 @@
     <script type="text/javascript" src="js/allAHandler.js"></script>
     <script type="text/javascript" language="javascript">
         $(function () {
-            initSwipeBack();// ≥ı ºªØª¨∂Ø∑µªÿπ¶ƒ‹ 
+            initSwipeBack();// ÂàùÂßãÂåñÊªëÂä®ËøîÂõûÂäüËÉΩ 
 
             /*  if (top.location != self.location) { } else { CloseWebPage(); }*/
 
@@ -25,7 +25,7 @@
 
         });
 
-        //µ„ª˜DATAGRID––ƒ⁄»Œ∫Œ“ªµ„£¨∂ºƒ‹¥•∑¢––ƒ⁄µƒ¡¥Ω”
+        //ÁÇπÂáªDATAGRIDË°åÂÜÖ‰ªª‰Ωï‰∏ÄÁÇπÔºåÈÉΩËÉΩËß¶ÂèëË°åÂÜÖÁöÑÈìæÊé•
         function SetDataGridTrClickLink() {
 
             setTrClickLink("DataGrid3");
@@ -37,7 +37,7 @@
     <div id="swipeFeedback" class="swipe-feedback">
         <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYYXXHDKSXBYM%>" />
     </div>
-    <!-- ª¨∂Ø∑¥¿°≤„ -->
+    <!-- ÊªëÂä®ÂèçÈ¶àÂ±Ç -->
     <center>
         <form id="form1" runat="server">
             <%--  <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">--%>
@@ -45,6 +45,7 @@
             </asp:ScriptManager>
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>
+                <div id="appScroll" class="app-scroll">
                     <table cellpadding="0" cellspacing="0" width="100%" class="bian">
                         <tr>
                             <td colspan="2" height="31" class="page_topbj">
@@ -65,7 +66,7 @@
                                                         </td>
                                                     </tr>
                                                 </table>
-                                                <img id="IMG_Waiting" src="Images/Processing.gif" alt="«Î…‘∫Ú£¨¥¶¿Ì÷–..." style="display: none;" />
+                                                <img id="IMG_Waiting" src="Images/Processing.gif" alt="ËØ∑Á®çÂÄôÔºåÂ§ÑÁêÜ‰∏≠..." style="display: none;" />
                                             </a>
                                         </td>
                                     </tr>
@@ -169,7 +170,7 @@
                                                                                 <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" Width="25%" />
                                                                             </asp:HyperLinkColumn>
                                                                             <asp:HyperLinkColumn DataNavigateUrlField="UserCode" DataNavigateUrlFormatString="TTUserInforSimple.aspx?UserCode={0}"
-                                                                                DataTextField="UserName" HeaderText=" ‹øº»À" Target="_blank">
+                                                                                DataTextField="UserName" HeaderText="ÂèóËÄÉ‰∫∫" Target="_blank">
                                                                                 <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="9%" />
                                                                             </asp:HyperLinkColumn>
                                                                             <asp:BoundColumn DataField="StartTime" DataFormatString="{0:yyyy/MM/dd}" HeaderText="StartTime">
@@ -181,13 +182,13 @@
                                                                             <asp:BoundColumn DataField="TotalSelfPoint" HeaderText="SelfAssessmentScore">
                                                                                 <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="8%" />
                                                                             </asp:BoundColumn>
-                                                                            <asp:BoundColumn DataField="TotalLeaderPoint" HeaderText="…œº∂∆¿∑÷">
+                                                                            <asp:BoundColumn DataField="TotalLeaderPoint" HeaderText="‰∏äÁ∫ßËØÑÂàÜ">
                                                                                 <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="8%" />
                                                                             </asp:BoundColumn>
                                                                             <asp:BoundColumn DataField="TotalThirdPartPoint" HeaderText="ThirdPartyAssessmentScore">
                                                                                 <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="8%" />
                                                                             </asp:BoundColumn>
-                                                                            <asp:BoundColumn DataField="TotalPoint" HeaderText="◊‹∆¿∑÷">
+                                                                            <asp:BoundColumn DataField="TotalPoint" HeaderText="ÊÄªËØÑÂàÜ">
                                                                                 <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="8%" />
                                                                             </asp:BoundColumn>
                                                                             <asp:TemplateColumn HeaderText="Status">
@@ -282,7 +283,7 @@
                                                                                 <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" Width="25%" />
                                                                             </asp:HyperLinkColumn>
                                                                             <asp:HyperLinkColumn DataNavigateUrlField="UserCode" DataNavigateUrlFormatString="TTUserInforSimple.aspx?UserCode={0}"
-                                                                                DataTextField="UserName" HeaderText=" ‹øº»À" Target="_blank">
+                                                                                DataTextField="UserName" HeaderText="ÂèóËÄÉ‰∫∫" Target="_blank">
                                                                                 <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="9%" />
                                                                             </asp:HyperLinkColumn>
                                                                             <asp:BoundColumn DataField="StartTime" DataFormatString="{0:yyyy/MM/dd}" HeaderText="StartTime">
@@ -294,13 +295,13 @@
                                                                             <asp:BoundColumn DataField="TotalSelfPoint" HeaderText="SelfAssessmentScore">
                                                                                 <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="8%" />
                                                                             </asp:BoundColumn>
-                                                                            <asp:BoundColumn DataField="TotalLeaderPoint" HeaderText="…œº∂∆¿∑÷">
+                                                                            <asp:BoundColumn DataField="TotalLeaderPoint" HeaderText="‰∏äÁ∫ßËØÑÂàÜ">
                                                                                 <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="8%" />
                                                                             </asp:BoundColumn>
                                                                             <asp:BoundColumn DataField="TotalThirdPartPoint" HeaderText="ThirdPartyAssessmentScore">
                                                                                 <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="8%" />
                                                                             </asp:BoundColumn>
-                                                                            <asp:BoundColumn DataField="TotalPoint" HeaderText="◊‹∆¿∑÷">
+                                                                            <asp:BoundColumn DataField="TotalPoint" HeaderText="ÊÄªËØÑÂàÜ">
                                                                                 <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="8%" />
                                                                             </asp:BoundColumn>
                                                                             <asp:TemplateColumn HeaderText="Status">
@@ -405,7 +406,7 @@
                                                                                 <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" Width="25%" />
                                                                             </asp:HyperLinkColumn>
                                                                             <asp:HyperLinkColumn DataNavigateUrlField="UserCode" DataNavigateUrlFormatString="TTUserInforSimple.aspx?UserCode={0}"
-                                                                                DataTextField="UserName" HeaderText=" ‹øº»À" Target="_blank">
+                                                                                DataTextField="UserName" HeaderText="ÂèóËÄÉ‰∫∫" Target="_blank">
                                                                                 <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="9%" />
                                                                             </asp:HyperLinkColumn>
                                                                             <asp:BoundColumn DataField="StartTime" DataFormatString="{0:yyyy/MM/dd}" HeaderText="StartTime">
@@ -417,13 +418,13 @@
                                                                             <asp:BoundColumn DataField="TotalSelfPoint" HeaderText="SelfAssessmentScore">
                                                                                 <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="8%" />
                                                                             </asp:BoundColumn>
-                                                                            <asp:BoundColumn DataField="TotalLeaderPoint" HeaderText="…œº∂∆¿∑÷">
+                                                                            <asp:BoundColumn DataField="TotalLeaderPoint" HeaderText="‰∏äÁ∫ßËØÑÂàÜ">
                                                                                 <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="8%" />
                                                                             </asp:BoundColumn>
                                                                             <asp:BoundColumn DataField="TotalThirdPartPoint" HeaderText="ThirdPartyAssessmentScore">
                                                                                 <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="8%" />
                                                                             </asp:BoundColumn>
-                                                                            <asp:BoundColumn DataField="TotalPoint" HeaderText="◊‹∆¿∑÷">
+                                                                            <asp:BoundColumn DataField="TotalPoint" HeaderText="ÊÄªËØÑÂàÜ">
                                                                                 <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="8%" />
                                                                             </asp:BoundColumn>
                                                                             <asp:TemplateColumn HeaderText="Status">
@@ -518,7 +519,7 @@
                                                                                 <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" Width="25%" />
                                                                             </asp:HyperLinkColumn>
                                                                             <asp:HyperLinkColumn DataNavigateUrlField="UserCode" DataNavigateUrlFormatString="TTUserInforSimple.aspx?UserCode={0}"
-                                                                                DataTextField="UserName" HeaderText=" ‹øº»À" Target="_blank">
+                                                                                DataTextField="UserName" HeaderText="ÂèóËÄÉ‰∫∫" Target="_blank">
                                                                                 <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="9%" />
                                                                             </asp:HyperLinkColumn>
                                                                             <asp:BoundColumn DataField="StartTime" DataFormatString="{0:yyyy/MM/dd}" HeaderText="StartTime">
@@ -530,13 +531,13 @@
                                                                             <asp:BoundColumn DataField="TotalSelfPoint" HeaderText="SelfAssessmentScore">
                                                                                 <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="8%" />
                                                                             </asp:BoundColumn>
-                                                                            <asp:BoundColumn DataField="TotalLeaderPoint" HeaderText="…œº∂∆¿∑÷">
+                                                                            <asp:BoundColumn DataField="TotalLeaderPoint" HeaderText="‰∏äÁ∫ßËØÑÂàÜ">
                                                                                 <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="8%" />
                                                                             </asp:BoundColumn>
                                                                             <asp:BoundColumn DataField="TotalThirdPartPoint" HeaderText="ThirdPartyAssessmentScore">
                                                                                 <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="8%" />
                                                                             </asp:BoundColumn>
-                                                                            <asp:BoundColumn DataField="TotalPoint" HeaderText="◊‹∆¿∑÷">
+                                                                            <asp:BoundColumn DataField="TotalPoint" HeaderText="ÊÄªËØÑÂàÜ">
                                                                                 <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="8%" />
                                                                             </asp:BoundColumn>
                                                                             <asp:TemplateColumn HeaderText="Status">
@@ -662,6 +663,7 @@
                     </table>
                 </ContentTemplate>
             </asp:UpdatePanel>
+            </div>
             <div style="position: fixed; display: none; z-index: 9999;" id="progressContainer">
                 <asp:UpdateProgress ID="TakeTopUp" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
                     <ProgressTemplate>

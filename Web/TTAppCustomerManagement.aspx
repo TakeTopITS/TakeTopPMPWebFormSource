@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppCustomerManagement.aspx.cs" Inherits="TTAppCustomerManagement" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppCustomerManagement.aspx.cs" Inherits="TTAppCustomerManagement" %>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
@@ -18,7 +18,7 @@
     <script type="text/javascript" src="js/allAHandler.js"></script>
     <script type="text/javascript" language="javascript">
         $(function () {
-            initSwipeBack();// ��ʼ���������ع��� 
+            initSwipeBack();// 锟斤拷始锟斤拷锟斤拷锟斤拷锟斤拷锟截癸拷锟斤拷 
 
             // SetDataGridTrClickLink();
 
@@ -26,7 +26,7 @@
 
         });
 
-        //���DATAGRID�����κ�һ�㣬���ܴ������ڵ�����
+        //锟斤拷锟紻ATAGRID锟斤拷锟斤拷锟轿猴拷一锟姐，锟斤拷锟杰达拷锟斤拷锟斤拷锟节碉拷锟斤拷锟斤拷
         function SetDataGridTrClickLink() {
 
             setTrClickLink("TabContainer1_TabPanel1_DataGrid1");
@@ -66,13 +66,14 @@
     <div id="swipeFeedback" class="swipe-feedback">
         <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYYXXHDKSXBYM%>" />
     </div>
-    <!-- ���������� -->
+    <!-- 锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷 -->
         <form id="form1" runat="server" class="napf">
             <%--  <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">--%>
             <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">
             </asp:ScriptManager>
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>
+                <div id="appScroll" class="app-scroll">
 
                     <table cellpadding="0" cellspacing="0" width="100%" class="bian">
                         <tr>
@@ -94,7 +95,7 @@
                                                         </td>
                                                     </tr>
                                                 </table>
-                                                <img id="IMG_Waiting" src="Images/Processing.gif" alt="���Ժ򣬴�����..." style="display: none;" />
+                                                <img id="IMG_Waiting" src="Images/Processing.gif" alt="锟斤拷锟皆候，达拷锟斤拷锟斤拷..." style="display: none;" />
                                             </a>
                                         </td>
                                         <td align="right" style="padding-top: 5px; padding-right: 8px;">
@@ -270,6 +271,7 @@
 
                 </ContentTemplate>
             </asp:UpdatePanel>
+            </div>
             <div style="position: fixed; display: none; z-index: 9999;" id="progressContainer">
                 <asp:UpdateProgress ID="TakeTopUp" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
                     <ProgressTemplate>

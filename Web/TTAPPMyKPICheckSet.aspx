@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAPPMyKPICheckSet.aspx.cs" Inherits="TTAPPMyKPICheckSet" %>
+ï»¿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAPPMyKPICheckSet.aspx.cs" Inherits="TTAPPMyKPICheckSet" %>
 
 <%@ Register Assembly="NickLee.Web.UI" Namespace="NickLee.Web.UI" TagPrefix="NickLee" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
@@ -13,7 +13,7 @@
     <link id="mainCss" href="css/APP.css" rel="stylesheet" type="text/css" />
     <link id="flxappCss" href="css/APPFlx.css" rel="stylesheet" type="text/css" />
     <style type="text/css">
-        /* ÒÆ¶¯¶ËÓÅ»¯ÑùÊ½ */
+        /* ç§»åŠ¨ç«¯ä¼˜åŒ–æ ·å¼ */
         body {
             margin: 0;
             padding: 0;
@@ -182,7 +182,7 @@
             -webkit-appearance: none;
         }
 
-        /* DataGridÒÆ¶¯¶ËÑùÊ½ */
+        /* DataGridç§»åŠ¨ç«¯æ ·å¼ */
         .datagrid-container {
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
@@ -215,7 +215,7 @@
             border-top: 1px solid #eee;
         }
 
-        /* KPIÆÀ·ÖÏîÑùÊ½ */
+        /* KPIè¯„åˆ†é¡¹æ ·å¼ */
         .kpi-summary {
             display: flex;
             flex-wrap: wrap;
@@ -258,7 +258,7 @@
             color: #388E3C;
         }
 
-        /* µ¯´°Ïà¹ØÑùÊ½ */
+        /* å¼¹çª—ç›¸å…³æ ·å¼ */
         .popup-content {
             padding: 15px;
         }
@@ -300,7 +300,7 @@
             line-height: 1.5;
         }
 
-        /* µ¯´°µ×²¿°´Å¥ÇøÓò */
+        /* å¼¹çª—åº•éƒ¨æŒ‰é’®åŒºåŸŸ */
         .layui-layer-btn {
             padding: 15px;
             text-align: center;
@@ -333,7 +333,7 @@
             border: 1px solid #ddd;
         }
 
-        /* ´¥Ãş·´À¡ */
+        /* è§¦æ‘¸åé¦ˆ */
         .touch-feedback {
             position: relative;
             overflow: hidden;
@@ -381,7 +381,7 @@
 
 
 
-        /* ¸üĞÂ°´Å¥ÑùÊ½ */
+        /* æ›´æ–°æŒ‰é’®æ ·å¼ */
         .action-cell {
             padding: 12px 8px !important;
             text-align: center;
@@ -445,7 +445,7 @@
                 transform: scale(0.95);
             }
 
-        /* ´¥ÃşÉè±¸ÓÅ»¯ */
+        /* è§¦æ‘¸è®¾å¤‡ä¼˜åŒ– */
         @media (hover: none) {
             .update-btn:hover {
                 transform: none;
@@ -459,7 +459,7 @@
             }
         }
 
-        /* °´Å¥µã»÷Á°äôĞ§¹û */
+        /* æŒ‰é’®ç‚¹å‡»æ¶Ÿæ¼ªæ•ˆæœ */
         .update-btn:after {
             content: '';
             position: absolute;
@@ -482,7 +482,7 @@
             transition: 0s;
         }
         
-        /* µ¯³ö²ãÓÅ»¯ÑùÊ½ */
+        /* å¼¹å‡ºå±‚ä¼˜åŒ–æ ·å¼ */
         .layui-layer-iframe {
             max-height: 80vh !important;
             top: 20px !important;
@@ -495,7 +495,7 @@
             -webkit-overflow-scrolling: touch;
         }
 
-        /* ÏìÓ¦Ê½µ÷Õû */
+        /* å“åº”å¼è°ƒæ•´ */
         @media (max-width: 480px) {
             .layui-layer-iframe {
                 width: 95% !important;
@@ -519,10 +519,10 @@
     <script type="text/javascript" src="js/allAHandler.js"></script>
 
     <script type="text/javascript" language="javascript">
-        // Ê¹ÓÃÓëµÚ¶ş¸öÒ³ÃæÏàÍ¬µÄ¼ÓÔØ·½Ê½
+        // ä½¿ç”¨ä¸ç¬¬äºŒä¸ªé¡µé¢ç›¸åŒçš„åŠ è½½æ–¹å¼
         var $load = function (loadFunc) {
             $(function () {
-                initSwipeBack(); // ³õÊ¼»¯»¬¶¯·µ»Ø¹¦ÄÜ
+                initSwipeBack(); // åˆå§‹åŒ–æ»‘åŠ¨è¿”å›åŠŸèƒ½
                 if (typeof (Sys) != 'undefined') {
                     Sys.WebForms.PageRequestManager.getInstance().add_pageLoaded(loadFunc);
                 }
@@ -533,7 +533,7 @@
         };
 
         $load(function () {
-            // ·ÀÖ¹Ë«»÷·Å´ó
+            // é˜²æ­¢åŒå‡»æ”¾å¤§
             var lastTouchEnd = 0;
             document.addEventListener('touchend', function (event) {
                 var now = (new Date()).getTime();
@@ -543,17 +543,17 @@
                 lastTouchEnd = now;
             }, false);
 
-            // ÏÔÊ¾¼ÓÔØ×´Ì¬
+            // æ˜¾ç¤ºåŠ è½½çŠ¶æ€
             $('form').on('submit', function () {
                 showLoading();
             });
 
-            // ·µ»Ø°´Å¥µã»÷
+            // è¿”å›æŒ‰é’®ç‚¹å‡»
             $('.header-back').on('click', function () {
                 window.history.back();
             });
 
-            // Îª¸üĞÂ°´Å¥Ìí¼Óµã»÷ÊÂ¼ş£¬ÏÔÊ¾µ¯´°
+            // ä¸ºæ›´æ–°æŒ‰é’®æ·»åŠ ç‚¹å‡»äº‹ä»¶ï¼Œæ˜¾ç¤ºå¼¹çª—
             $('[id*="DataGrid2"] [commandname="Update"]').on('click', function (e) {
                 e.preventDefault();
                 e.stopPropagation();
@@ -561,12 +561,12 @@
                 return false;
             });
 
-            // °ó¶¨ÕÚÕÖ²ãµã»÷¹Ø±ÕÊÂ¼ş
+            // ç»‘å®šé®ç½©å±‚ç‚¹å‡»å…³é—­äº‹ä»¶
             $('#popwindow_shade').on('click', function () {
                 popClose();
             });
 
-            // ³õÊ¼»¯µ¯³ö²ãÎ»ÖÃµ÷Õû
+            // åˆå§‹åŒ–å¼¹å‡ºå±‚ä½ç½®è°ƒæ•´
             optimizePopupPosition();
         });
 
@@ -582,17 +582,17 @@
             var windowHeight = $(window).height();
             var windowWidth = $(window).width();
 
-            // ÉèÖÃµ¯´°Ê¼ÖÕ¿¿½ü¶¥²¿
-            var topPosition = 20; // Ê¼ÖÕ¾àÀë¶¥²¿20px
+            // è®¾ç½®å¼¹çª—å§‹ç»ˆé è¿‘é¡¶éƒ¨
+            var topPosition = 20; // å§‹ç»ˆè·ç¦»é¡¶éƒ¨20px
 
-            // ¼ÆËãµ¯´°¸ß¶È£¨²»³¬¹ı´°¿Ú¸ß¶ÈµÄ85%£©
-            var maxPopupHeight = windowHeight - topPosition - 20; // ¼õÈ¥¶¥²¿ºÍµ×²¿¼ä¾à
+            // è®¡ç®—å¼¹çª—é«˜åº¦ï¼ˆä¸è¶…è¿‡çª—å£é«˜åº¦çš„85%ï¼‰
+            var maxPopupHeight = windowHeight - topPosition - 20; // å‡å»é¡¶éƒ¨å’Œåº•éƒ¨é—´è·
             var popupHeight = Math.min(maxPopupHeight, 600);
 
-            // ¼ÆËãµ¯´°¿í¶È£¨²»³¬¹ı´°¿Ú¿í¶ÈµÄ95%£©
+            // è®¡ç®—å¼¹çª—å®½åº¦ï¼ˆä¸è¶…è¿‡çª—å£å®½åº¦çš„95%ï¼‰
             var popupWidth = Math.min(windowWidth * 0.95, 500);
 
-            // ÉèÖÃµ¯´°ÑùÊ½ - Ê¹ÓÃfixed¶¨Î»È·±£Ê¼ÖÕ¿É¼û
+            // è®¾ç½®å¼¹çª—æ ·å¼ - ä½¿ç”¨fixedå®šä½ç¡®ä¿å§‹ç»ˆå¯è§
             $popup.css({
                 'position': 'fixed',
                 'top': topPosition + 'px',
@@ -606,7 +606,7 @@
                 'z-index': '9999'
             });
 
-            // ÏÔÊ¾ÕÚÕÖ²ã
+            // æ˜¾ç¤ºé®ç½©å±‚
             $('#popwindow_shade').css({
                 'display': 'block',
                 'position': 'fixed',
@@ -617,22 +617,22 @@
                 'z-index': '9998'
             });
 
-            // ¼ÆËãÄÚÈİÇøÓò¿ÉÓÃ¸ß¶È
+            // è®¡ç®—å†…å®¹åŒºåŸŸå¯ç”¨é«˜åº¦
             var titleHeight = $popup.find('.layui-layer-title').outerHeight() || 50;
             var footerHeight = $popup.find('#popwindow_footer').outerHeight() || 70;
             var contentHeight = popupHeight - titleHeight - footerHeight;
 
-            // ÉèÖÃÄÚÈİÇøÓò¸ß¶È
+            // è®¾ç½®å†…å®¹åŒºåŸŸé«˜åº¦
             $popup.find('.layui-layer-content').css({
                 'height': contentHeight + 'px',
                 'max-height': contentHeight + 'px',
                 'overflow-y': 'auto'
             });
 
-            // ¹ö¶¯µ½¶¥²¿
+            // æ»šåŠ¨åˆ°é¡¶éƒ¨
             $popup.find('.layui-layer-content').scrollTop(0);
 
-            // Ç¿ÖÆË¢ĞÂ²¼¾Ö
+            // å¼ºåˆ¶åˆ·æ–°å¸ƒå±€
             $popup[0].offsetHeight;
         }
 
@@ -644,7 +644,7 @@
         }
 
         function optimizePopupPosition() {
-            // ¼àÌı´°¿Ú´óĞ¡±ä»¯£¬ÖØĞÂµ÷Õûµ¯³ö²ãÎ»ÖÃ
+            // ç›‘å¬çª—å£å¤§å°å˜åŒ–ï¼Œé‡æ–°è°ƒæ•´å¼¹å‡ºå±‚ä½ç½®
             $(window).on('resize', function () {
                 var $popup = $('#popwindow');
                 if ($popup.is(':visible')) {
@@ -652,20 +652,20 @@
                 }
             });
 
-            // ¼àÌı´¥ÃşÊÂ¼ş£¬·ÀÖ¹µ¯´°ÄÚ¹ö¶¯´«²¥µ½body
+            // ç›‘å¬è§¦æ‘¸äº‹ä»¶ï¼Œé˜²æ­¢å¼¹çª—å†…æ»šåŠ¨ä¼ æ’­åˆ°body
             $('#popwindow').on('touchmove', function (e) {
                 e.stopPropagation();
             });
         }
 
-        // µ¯´°¹Ø±Õº¯Êı
+        // å¼¹çª—å…³é—­å‡½æ•°
         function popClose() {
             $('#popwindow').hide();
             $('#popwindow_shade').hide();
             return false;
         }
 
-        // Ìí¼Ó´°¿Ú´óĞ¡±ä»¯Ê±µÄµ÷Õû
+        // æ·»åŠ çª—å£å¤§å°å˜åŒ–æ—¶çš„è°ƒæ•´
         $(window).on('resize', function () {
             var $popup = $('#popwindow');
             if ($popup.is(':visible')) {
@@ -673,9 +673,9 @@
             }
         });
 
-        // Ìí¼Ó¼üÅÌESC¹Ø±Õµ¯´°
+        // æ·»åŠ é”®ç›˜ESCå…³é—­å¼¹çª—
         $(document).on('keydown', function (e) {
-            if (e.keyCode === 27) { // ESC¼ü
+            if (e.keyCode === 27) { // ESCé”®
                 if ($('#popwindow').is(':visible')) {
                     popClose();
                 }
@@ -687,9 +687,9 @@
     <div id="swipeFeedback" class="swipe-feedback">
        <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" />
     </div>
-    <!-- »¬¶¯·´À¡²ã -->
+    <!-- æ»‘åŠ¨åé¦ˆå±‚ -->
     <canvas id="myCanvas" style="display: none;"></canvas>
-    <!-- ÒÆ¶¯¶ËÍ·²¿ -->
+    <!-- ç§»åŠ¨ç«¯å¤´éƒ¨ -->
     <table cellpadding="0" cellspacing="0" width="100%">
         <tr>
             <td height="31" class="page_topbj">
@@ -711,7 +711,7 @@
                                         </td>
                                     </tr>
                                 </table>
-                                <img id="IMG_Waiting" src="Images/Processing.gif" alt="ÇëÉÔºò£¬´¦ÀíÖĞ..." style="display: none;" />
+                                <img id="IMG_Waiting" src="Images/Processing.gif" alt="è¯·ç¨å€™ï¼Œå¤„ç†ä¸­..." style="display: none;" />
                             </a>
                         </td>
                     </tr>
@@ -720,7 +720,7 @@
         </tr>
     </table>
 
-    <!-- Ö÷ÒªÄÚÈİÇøÓò -->
+    <!-- ä¸»è¦å†…å®¹åŒºåŸŸ -->
     <div class="content-wrapper">
         <form id="form1" runat="server">
             <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">
@@ -729,8 +729,10 @@
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>
 
+                <div id="appScroll" class="app-scroll">
 
-                    <!-- KPIÁĞ±í -->
+
+                    <!-- KPIåˆ—è¡¨ -->
                     <div class="mobile-card" style="text-align: center;">
                         <div class="card-header">
                             KPI List
@@ -748,7 +750,7 @@
                                 <ItemStyle CssClass="itemStyle" />
                                 <Columns>
                                     <asp:ButtonColumn ButtonType="LinkButton" CommandName="Update"
-                                        Text="&lt;div class='update-btn'&gt;&lt;img src='ImagesSkin/Update.png' alt='ĞŞ¸Ä' /&gt;&lt;/div&gt;">
+                                        Text="&lt;div class='update-btn'&gt;&lt;img src='ImagesSkin/Update.png' alt='ä¿®æ”¹' /&gt;&lt;/div&gt;">
                                         <ItemStyle CssClass="action-cell" Width="70px" />
                                     </asp:ButtonColumn>
                                     <asp:BoundColumn DataField="ID" HeaderText="ID">
@@ -762,7 +764,7 @@
                         </div>
                     </div>
 
-                    <!-- KPIĞÅÏ¢ÕªÒª -->
+                    <!-- KPIä¿¡æ¯æ‘˜è¦ -->
                     <div class="mobile-card">
                         <div class="card-header">
                             <asp:Label ID="Label2" runat="server" Text="<%$ Resources:lang,BianHao%>"></asp:Label>:
@@ -771,7 +773,7 @@
                             &nbsp;KPI
                         </div>
                         <div class="card-body">
-                            <!-- KPIÆÀ·ÖÕªÒª -->
+                            <!-- KPIè¯„åˆ†æ‘˜è¦ -->
                             <div class="kpi-summary">
                                 <div class="kpi-item">
                                     <div class="kpi-label">
@@ -836,15 +838,15 @@
 
 
 
-                    <!-- ĞŞ¸ÄºóµÄµ¯´°ÇøÓò - ĞŞ¸´²¼¾ÖÎÊÌâ -->
+                    <!-- ä¿®æ”¹åçš„å¼¹çª—åŒºåŸŸ - ä¿®å¤å¸ƒå±€é—®é¢˜ -->
                     <div class="layui-layer layui-layer-iframe" id="popwindow" name="fixedDiv"
                         style="z-index: 9999; display: none; border-radius: 10px; background: white; box-shadow: 0 4px 20px rgba(0,0,0,0.15); position: fixed; left: 0; top: 0; margin: 0;">
                         <div class="layui-layer-title" style="background: #e7e7e8; padding: 12px 15px; font-weight: 500; border-radius: 10px 10px 0 0;" id="popwindow_title">
-                            <asp:Label ID="Label172" runat="server" Text="KPIÆÀ·Ö"></asp:Label>
+                            <asp:Label ID="Label172" runat="server" Text="KPIè¯„åˆ†"></asp:Label>
                         </div>
                         <div id="popwindow_content" class="layui-layer-content" style="overflow-y: auto; -webkit-overflow-scrolling: touch; max-height: calc(100% - 130px);">
                             <div class="popup-content">
-                                <!-- ÆÀ·ÖÊäÈëÇø -->
+                                <!-- è¯„åˆ†è¾“å…¥åŒº -->
                                 <div class="score-section">
                                     <asp:Label ID="LB_KPIID" runat="server" Visible="false"></asp:Label>
                                     <div style="margin-bottom: 15px;">
@@ -858,11 +860,11 @@
                                     </div>
                                 </div>
 
-                                <!-- ÆÀÂÛÏÔÊ¾Çø -->
+                                <!-- è¯„è®ºæ˜¾ç¤ºåŒº -->
                                 <div class="comment-section">
                                     <asp:Label ID="Label15" runat="server" Text="<%$ Resources:lang,PingHeYiJian%>" Style="display: block; margin-bottom: 15px; font-weight: 500; color: #1976D2; font-size: 16px;"></asp:Label>
 
-                                    <!-- ×ÔÆÀÆÀÂÛ -->
+                                    <!-- è‡ªè¯„è¯„è®º -->
                                     <asp:DataList ID="DataList1" runat="server" CellPadding="0" ForeColor="#333333" Height="16px" Width="100%">
                                         <SelectedItemStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
                                         <HeaderTemplate></HeaderTemplate>
@@ -880,7 +882,7 @@
                                         <ItemStyle CssClass="itemStyle" />
                                     </asp:DataList>
 
-                                    <!-- µÚÈı·½ÆÀÂÛ -->
+                                    <!-- ç¬¬ä¸‰æ–¹è¯„è®º -->
                                     <asp:DataList ID="DataList3" runat="server" CellPadding="0" ForeColor="#333333" Height="16px" Width="100%">
                                         <SelectedItemStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
                                         <HeaderTemplate></HeaderTemplate>
@@ -901,7 +903,7 @@
                                         <ItemStyle CssClass="itemStyle" />
                                     </asp:DataList>
 
-                                    <!-- Áìµ¼ÆÀÂÛ -->
+                                    <!-- é¢†å¯¼è¯„è®º -->
                                     <asp:DataList ID="DataList2" runat="server" CellPadding="0" ForeColor="#333333" Height="16px" Width="100%">
                                         <SelectedItemStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
                                         <HeaderTemplate></HeaderTemplate>
@@ -922,7 +924,7 @@
                                         <ItemStyle CssClass="itemStyle" />
                                     </asp:DataList>
 
-                                    <!-- ÈËÊÂÆÀÂÛ -->
+                                    <!-- äººäº‹è¯„è®º -->
                                     <asp:DataList ID="DataList4" runat="server" CellPadding="0" ForeColor="#333333" Height="16px" Width="100%">
                                         <SelectedItemStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
                                         <HeaderTemplate></HeaderTemplate>
@@ -946,7 +948,7 @@
                             </div>
                         </div>
 
-                        <!-- µ×²¿°´Å¥ÇøÓò - ĞŞ¸´²¼¾Ö -->
+                        <!-- åº•éƒ¨æŒ‰é’®åŒºåŸŸ - ä¿®å¤å¸ƒå±€ -->
                         <div id="popwindow_footer" class="layui-layer-btn" style="border-top: 1px solid #eee; position: absolute; bottom: 0; left: 0; right: 0; padding: 15px; background: white; border-radius: 0 0 10px 10px;">
                             <asp:LinkButton ID="BT_NewMain" runat="server"
                                 OnClick="BT_NewMain_Click"
@@ -967,10 +969,10 @@
 
                     <div class="layui-layer-shade" id="popwindow_shade" style="z-index: 9998; background-color: #000; opacity: 0.3; filter: alpha(opacity=30); display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;"></div>
 
-                    <!-- Í¼±í -->
+                    <!-- å›¾è¡¨ -->
                     <div class="mobile-card" style="display: none;">
                         <div class="card-header">
-                            KPIÍ¼±í
+                            KPIå›¾è¡¨
                         </div>
                         <div class="card-body">
                             <iframe runat="server" id="IFrame_Chart1" src="TTTakeTopAnalystChartSet.aspx" style="width: 100%; height: 250px; border: none;"></iframe>
@@ -979,7 +981,9 @@
                 </ContentTemplate>
             </asp:UpdatePanel>
 
-            <!-- ¼ÓÔØÖ¸Ê¾Æ÷ -->
+            </div>
+
+            <!-- åŠ è½½æŒ‡ç¤ºå™¨ -->
             <div style="position: fixed; display: none; z-index: 9999;" id="progressContainer">
                 <asp:UpdateProgress ID="TakeTopUp" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
                     <ProgressTemplate>
@@ -992,7 +996,7 @@
         </form>
     </div>
 
-    <!-- µÈ´ıÍ¼±ê -->
-    <img id="IMG_Waiting" src="Images/Processing.gif" alt="ÇëÉÔºò£¬´¦ÀíÖĞ..." style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 9999;" />
+    <!-- ç­‰å¾…å›¾æ ‡ -->
+    <img id="IMG_Waiting" src="Images/Processing.gif" alt="è¯·ç¨å€™ï¼Œå¤„ç†ä¸­..." style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 9999;" />
 </body>
 </html>

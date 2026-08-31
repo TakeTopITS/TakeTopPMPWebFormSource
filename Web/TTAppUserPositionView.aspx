@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppUserPositionView.aspx.cs" Inherits="TTAppUserPositionView" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppUserPositionView.aspx.cs" Inherits="TTAppUserPositionView" %>
 
 <%--<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />--%>
 <meta http-equiv="Content-Type" content="textml; charset=UTF-8" />
@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html>
 <head id="Head1" runat="server">
-    <title>调用百度地图API地理定位</title>
+    <title>璋冪敤鐧惧害鍦板浘API鍦扮悊瀹氫綅</title>
 
     <link id="mainCss" href="css/APP.css" rel="stylesheet" type="text/css" />
       <link id="flxappCss" href="css/APPFlx.css" rel="stylesheet" type="text/css" />
@@ -30,7 +30,7 @@
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="js/allAHandler.js"></script>
     <script type="text/javascript" language="javascript">
-        $(function () { initSwipeBack();// 初始化滑动返回功能  initSwipeBack();// 初始化滑动返回功能
+        $(function () { initSwipeBack();// 鍒濆鍖栨粦鍔ㄨ繑鍥炲姛鑳? initSwipeBack();// 鍒濆鍖栨粦鍔ㄨ繑鍥炲姛鑳?
 
             
 
@@ -45,6 +45,7 @@
         </asp:ScriptManager>
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
+            <div id="appScroll" class="app-scroll">
               
                     <table id="AboveTable" cellpadding="0" width="100%" cellspacing="0" class="bian">
                         <tr>
@@ -74,6 +75,7 @@
             
             </ContentTemplate>
         </asp:UpdatePanel>
+        </div>
         <div style="position: fixed; display: none; z-index: 9999;" id="progressContainer">
             <asp:UpdateProgress ID="TakeTopUp" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
                 <ProgressTemplate>
@@ -94,7 +96,7 @@
     window.onload = function () {
         if (navigator.geolocation) {
             //document.getElementById("status").innerHTML = "HTML5 Geolocation is supported in your browser.";
-            // 百度地图API功能
+            // 鐧惧害鍦板浘API鍔熻兘
             //var map = new BMap.Map("container");
             //var point = new BMap.Point(113.373456, 23.14153);
             //map.centerAndZoom(point, 12);

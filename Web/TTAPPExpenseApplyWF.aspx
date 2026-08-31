@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAPPExpenseApplyWF.aspx.cs" Inherits="TTAPPExpenseApplyWF" %>
+Ôªø<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAPPExpenseApplyWF.aspx.cs" Inherits="TTAPPExpenseApplyWF" %>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
 
@@ -18,7 +18,7 @@
 
     <script type="text/javascript" language="javascript">
         $(function () {
-            initSwipeBack();// ≥ı ºªØª¨∂Ø∑µªÿπ¶ƒ‹  initSwipeBack();// ≥ı ºªØª¨∂Ø∑µªÿπ¶ƒ‹
+            initSwipeBack();// ÂàùÂßãÂåñÊªëÂä®ËøîÂõûÂäüËÉΩ  initSwipeBack();// ÂàùÂßãÂåñÊªëÂä®ËøîÂõûÂäüËÉΩ
 
 
 
@@ -29,7 +29,7 @@
 <body>
     <div id="swipeFeedback" class="swipe-feedback">
         <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYYXXHDKSXBYM%>" /></div>
-    <!-- ª¨∂Ø∑¥¿°≤„ -->
+    <!-- ÊªëÂä®ÂèçÈ¶àÂ±Ç -->
     <center>
         <form id="form1" runat="server">
             <%--  <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">--%>
@@ -37,6 +37,7 @@
             </asp:ScriptManager>
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>
+                <div id="appScroll" class="app-scroll">
 
                     <table id="AboveTable" cellpadding="0" cellspacing="0" width="100%" class="bian">
                         <tr>
@@ -57,7 +58,7 @@
                                                             <%-- <img src="ImagesSkin/main_top_r.jpg" width="5" height="31" />--%></td>
                                                     </tr>
                                                 </table>
-                                                <img id="IMG_Waiting" src="Images/Processing.gif" alt="«Î…‘∫Ú£¨¥¶¿Ì÷–..." style="display: none;" />
+                                                <img id="IMG_Waiting" src="Images/Processing.gif" alt="ËØ∑Á®çÂÄôÔºåÂ§ÑÁêÜ‰∏≠..." style="display: none;" />
                                             </a>
                                         </td>
                                     </tr>
@@ -271,7 +272,7 @@
                                             Width="228px">
                                         </asp:DropDownList>
                                         &nbsp; &nbsp;
-                                                                    <asp:Label ID="Label12" runat="server" Text="<%$ Resources:lang,LeiXing%>"></asp:Label>:<asp:TextBox ID="TB_WLType" runat="server" Enabled="False" Width="59px">∑—”√…Í«Î</asp:TextBox>
+                                                                    <asp:Label ID="Label12" runat="server" Text="<%$ Resources:lang,LeiXing%>"></asp:Label>:<asp:TextBox ID="TB_WLType" runat="server" Enabled="False" Width="59px">Ë¥πÁî®Áî≥ËØ∑</asp:TextBox>
                                         &nbsp;&nbsp;<asp:HyperLink ID="HL_WLTem" runat="server" NavigateUrl="~/TTWorkFlowTemplate.aspx"
                                             Target="_blank">
                                             <asp:Label ID="Label13" runat="server" Text="<%$ Resources:lang,MuBanWuiHu%>"></asp:Label>
@@ -361,7 +362,7 @@
                                                     DataTextField="WLName" HeaderText="Workflow" Target="_blank">
                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" Width="50%" />
                                                 </asp:HyperLinkColumn>
-                                                <asp:BoundColumn DataField="CreateTime" HeaderText="…Í«Î ±º‰">
+                                                <asp:BoundColumn DataField="CreateTime" HeaderText="Áî≥ËØ∑Êó∂Èó¥">
                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="20%" />
                                                 </asp:BoundColumn>
                                                 <asp:TemplateColumn HeaderText="Status">
@@ -416,6 +417,7 @@
                     </asp:Panel>
                 </ContentTemplate>
             </asp:UpdatePanel>
+            </div>
             <div style="position: fixed; display: none; z-index: 9999;" id="progressContainer">
                 <asp:UpdateProgress ID="TakeTopUp" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
                     <ProgressTemplate>

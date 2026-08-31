@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAPPNewsView.aspx.cs" Inherits="TTAPPNewsView" %>
+ï»¿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAPPNewsView.aspx.cs" Inherits="TTAPPNewsView" %>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
 
@@ -15,7 +15,7 @@
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="js/allAHandler.js"></script>
     <script type="text/javascript" language="javascript">
-        $(function () { initSwipeBack();// ³õÊ¼»¯»¬¶¯·µ»Ø¹¦ÄÜ  initSwipeBack();// ³õÊ¼»¯»¬¶¯·µ»Ø¹¦ÄÜ
+        $(function () { initSwipeBack();// åˆå§‹åŒ–æ»‘åŠ¨è¿”å›åŠŸèƒ½  initSwipeBack();// åˆå§‹åŒ–æ»‘åŠ¨è¿”å›åŠŸèƒ½
 
             
 
@@ -24,8 +24,9 @@
     </script>
 
 </head>
-<body><div id="swipeFeedback" class="swipe-feedback"><asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYYXXHDKSXBYM%>" /></div> <!-- »¬¶¯·´À¡²ã -->
+<body><div id="swipeFeedback" class="swipe-feedback"><asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYYXXHDKSXBYM%>" /></div> <!-- æ»‘åŠ¨åé¦ˆå±‚ -->
     <form id="form1" runat="server">
+        <div id="appScroll" class="app-scroll">
       
             <table cellpadding="0" cellspacing="0" width="100%" class="bian">
                 <tr>
@@ -48,7 +49,7 @@
                                             </td>
                                         </tr>
                                     </table>
-                                             <img id="IMG_Waiting" src="Images/Processing.gif" alt="ÇëÉÔºò£¬´¦ÀíÖĞ..." style ="display :none;" />
+                                             <img id="IMG_Waiting" src="Images/Processing.gif" alt="è¯·ç¨å€™ï¼Œå¤„ç†ä¸­..." style ="display :none;" />
                                 </a>
                                 </td>
                             </tr>
@@ -86,6 +87,7 @@
                 </tr>
             </table>
      
+    </div>
     </form>
 
 </body>

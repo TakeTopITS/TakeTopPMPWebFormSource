@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAPPUserAttendanceLeaderSetSAAS.aspx.cs" Inherits="TTAPPUserAttendanceLeaderSetSAAS" %>
+Ôªø<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAPPUserAttendanceLeaderSetSAAS.aspx.cs" Inherits="TTAPPUserAttendanceLeaderSetSAAS" %>
 
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
@@ -19,7 +19,7 @@
     <script type="text/javascript" src="js/allAHandler.js"></script>
     <script type="text/javascript" language="javascript">
         $(function () {
-            initSwipeBack();// ≥ı ºªØª¨∂Ø∑µªÿπ¶ƒ‹ 
+            initSwipeBack();// ÂàùÂßãÂåñÊªëÂä®ËøîÂõûÂäüËÉΩ 
 
             //
 
@@ -31,7 +31,7 @@
     <div id="swipeFeedback" class="swipe-feedback">
         <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYYXXHDKSXBYM%>" />
     </div>
-    <!-- ª¨∂Ø∑¥¿°≤„ -->
+    <!-- ÊªëÂä®ÂèçÈ¶àÂ±Ç -->
     <center>
         <form id="form1" runat="server">
             <%--  <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">--%>
@@ -39,6 +39,7 @@
             </asp:ScriptManager>
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>
+                <div id="appScroll" class="app-scroll">
                     <table id="AboveTable" cellpadding="0" width="100%" cellspacing="0" class="bian">
 
                         <tr>
@@ -58,7 +59,7 @@
                                                             <%-- <img src="ImagesSkin/main_top_r.jpg" width="5" height="31" />--%></td>
                                                     </tr>
                                                 </table>
-                                                <img id="IMG_Waiting" src="Images/Processing.gif" alt="«Î…‘∫Ú£¨¥¶¿Ì÷–..." style="display: none;" />
+                                                <img id="IMG_Waiting" src="Images/Processing.gif" alt="ËØ∑Á®çÂÄôÔºåÂ§ÑÁêÜ‰∏≠..." style="display: none;" />
                                             </a>
                                         </td>
 
@@ -122,7 +123,7 @@
                                                             <%# DataBinder.Eval(Container.DataItem,"LeaderCode") %>
                                                         </ItemTemplate>
                                                     </asp:TemplateColumn>
-                                                    <%--<asp:BoundColumn DataField="LeaderName" HeaderText="÷˜π‹">
+                                                    <%--<asp:BoundColumn DataField="LeaderName" HeaderText="‰∏ªÁÆ°">
                                                         <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="4%" />
                                                     </asp:BoundColumn>--%>
                                                     <asp:TemplateColumn HeaderText="ID">
@@ -143,6 +144,7 @@
 
                 </ContentTemplate>
             </asp:UpdatePanel>
+            </div>
             <div style="position: fixed; display: none; z-index: 9999;" id="progressContainer">
                 <asp:UpdateProgress ID="TakeTopUp" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
                     <ProgressTemplate>

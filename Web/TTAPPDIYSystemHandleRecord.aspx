@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAPPDIYSystemHandleRecord.aspx.cs" Inherits="TTAPPDIYSystemHandleRecord" %>
+Ôªø<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAPPDIYSystemHandleRecord.aspx.cs" Inherits="TTAPPDIYSystemHandleRecord" %>
 
 <!DOCTYPE html>
 
@@ -146,7 +146,7 @@
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="js/allAHandler.js"></script>
     <script type="text/javascript" language="javascript">
-        $(function () { initSwipeBack();// ≥ı ºªØª¨∂Ø∑µªÿπ¶ƒ‹ 
+        $(function () { initSwipeBack();// ÂàùÂßãÂåñÊªëÂä®ËøîÂõûÂäüËÉΩ 
 
             SetDataGridTrClickLink();
 
@@ -154,7 +154,7 @@
 
         });
 
-        //µ„ª˜DATAGRID––ƒ⁄»Œ∫Œ“ªµ„£¨∂ºƒ‹¥•∑¢––ƒ⁄µƒ¡¥Ω”
+        //ÁÇπÂáªDATAGRIDË°åÂÜÖ‰ªª‰Ωï‰∏ÄÁÇπÔºåÈÉΩËÉΩËß¶ÂèëË°åÂÜÖÁöÑÈìæÊé•
         function SetDataGridTrClickLink() {
 
             setTrClickLinkSpec("TabContainer2_TabPanel3_DataGrid1");
@@ -167,13 +167,14 @@
     </script>
 
 </head>
-<body><div id="swipeFeedback" class="swipe-feedback"><asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYYXXHDKSXBYM%>" /></div> <!-- ª¨∂Ø∑¥¿°≤„ -->
+<body><div id="swipeFeedback" class="swipe-feedback"><asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYYXXHDKSXBYM%>" /></div> <!-- ÊªëÂä®ÂèçÈ¶àÂ±Ç -->
     <form id="form1" runat="server">
         <%--  <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">--%>
         <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">
         </asp:ScriptManager>
         <asp:UpdatePanel ID="UpdatePanel1" class="napbac" runat="server">
             <ContentTemplate>
+            <div id="appScroll" class="app-scroll">
 
 
                 <div id="DivID" style="width: 100%; overflow: auto;">
@@ -194,7 +195,7 @@
                                                             <asp:Label ID="Label8" runat="server" Text="<%$ Resources:lang,Back%>" />
                                                         </td>
                                                         <td width="5">
-                                                            <img id="IMG_Waiting" src="Images/Processing.gif" alt="«Î…‘∫Ú£¨¥¶¿Ì÷–..." style="display: none;" />
+                                                            <img id="IMG_Waiting" src="Images/Processing.gif" alt="ËØ∑Á®çÂÄôÔºåÂ§ÑÁêÜ‰∏≠..." style="display: none;" />
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -246,7 +247,7 @@
                                                                                 <asp:BoundColumn DataField="ID" HeaderText="Number" Visible="False">
                                                                                     <ItemStyle CssClass="" Horizontalalign="left" Width="5%" />
                                                                                 </asp:BoundColumn>
-                                                                                <asp:TemplateColumn HeaderText="“™…Û∫Àµƒπ§◊˜">
+                                                                                <asp:TemplateColumn HeaderText="Ë¶ÅÂÆ°Ê†∏ÁöÑÂ∑•‰Ωú">
                                                                                     <ItemTemplate>
 
                                                                                         <div class="npb">
@@ -258,7 +259,7 @@
                                                                                                     <h4><%# DataBinder.Eval(Container.DataItem,"WorkDetail") %></h4>
                                                                                                     <h5><%# DataBinder.Eval(Container.DataItem,"WLName") %></h5>
                                                                                                     <h6><%# DataBinder.Eval(Container.DataItem,"CreatorName") %></h6>
-                                                                                                    <sub class="yesno">±ÿ–Ë:<%# DataBinder.Eval(Container.DataItem,"Requisite") %></sub><label><%# ShareClass.GetStatusHomeNameByWorkflowStatus(Eval("Status").ToString()) %></label></a></div>
+                                                                                                    <sub class="yesno">ÂøÖÈúÄ:<%# DataBinder.Eval(Container.DataItem,"Requisite") %></sub><label><%# ShareClass.GetStatusHomeNameByWorkflowStatus(Eval("Status").ToString()) %></label></a></div>
                                                                                         </div>
 
 
@@ -300,7 +301,7 @@
                                                                                 <asp:BoundColumn DataField="ID" HeaderText="Number" Visible="False">
                                                                                     <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="5%" />
                                                                                 </asp:BoundColumn>
-                                                                                <asp:TemplateColumn HeaderText="“™…Û∫Àµƒπ§◊˜">
+                                                                                <asp:TemplateColumn HeaderText="Ë¶ÅÂÆ°Ê†∏ÁöÑÂ∑•‰Ωú">
                                                                                     <ItemTemplate>
 
 
@@ -314,7 +315,7 @@
                                                                                                     <h4><%# DataBinder.Eval(Container.DataItem,"WorkDetail") %></h4>
                                                                                                     <h5><%# DataBinder.Eval(Container.DataItem,"WLName") %></h5>
                                                                                                     <h6><%# DataBinder.Eval(Container.DataItem,"CreatorName") %></h6>
-                                                                                                    <sub class="yesno">±ÿ–Ë:<%# DataBinder.Eval(Container.DataItem,"Requisite") %></sub><label><%# ShareClass.GetStatusHomeNameByWorkflowStatus(Eval("Status").ToString()) %></label></a></div>
+                                                                                                    <sub class="yesno">ÂøÖÈúÄ:<%# DataBinder.Eval(Container.DataItem,"Requisite") %></sub><label><%# ShareClass.GetStatusHomeNameByWorkflowStatus(Eval("Status").ToString()) %></label></a></div>
                                                                                         </div>
 
 
@@ -342,7 +343,7 @@
                                                                                 <asp:TemplateColumn></asp:TemplateColumn>
                                                                                 <asp:BoundColumn DataField="WLID" HeaderText="Number" Visible="false"></asp:BoundColumn>
 
-                                                                                <asp:TemplateColumn HeaderText="“™…Û∫Àµƒπ§◊˜">
+                                                                                <asp:TemplateColumn HeaderText="Ë¶ÅÂÆ°Ê†∏ÁöÑÂ∑•‰Ωú">
                                                                                     <ItemTemplate>
 
                                                                                         <div class="npb">
@@ -401,6 +402,7 @@
 
             </ContentTemplate>
         </asp:UpdatePanel>
+        </div>
         <div style="position: fixed; display: none; z-index: 9999;" id="progressContainer">
             <asp:UpdateProgress ID="TakeTopUp" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
                 <ProgressTemplate>

@@ -1701,3 +1701,12 @@ textarea::placeholder {
     text-size-adjust: 100% !important;
     line-height: 1.5 !important;
 }
+
+/* 移动端整页滚动修复：用显式滚动容器作为触摸滚动目标，代替文档根元素滚动（触摸滚动不生效） */
+.app-scroll {
+    height: 100vh !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+    box-sizing: border-box !important;
+}

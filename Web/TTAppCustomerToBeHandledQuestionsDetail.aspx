@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppCustomerToBeHandledQuestionsDetail.aspx.cs" Inherits="TTAppCustomerToBeHandledQuestionsDetail_aspx" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppCustomerToBeHandledQuestionsDetail.aspx.cs" Inherits="TTAppCustomerToBeHandledQuestionsDetail_aspx" %>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
 <meta name="format-detection" content="telephone=yes">
@@ -21,18 +21,18 @@
 
     <script src="js/exif.js" type="text/javascript"></script>
     <style type="text/css">
-        /* �޸�����ѡ������ʽ */
+        /* 锟睫革拷锟斤拷锟斤拷选锟斤拷锟斤拷锟斤拷式 */
         .ajax__calendar_container {
             z-index: 10000 !important;
             position: fixed !important;
         }
 
-        /* ȷ�������ڵ�������ȷ��ʾ */
+        /* 确锟斤拷锟斤拷锟斤拷锟节碉拷锟斤拷锟斤拷锟斤拷确锟斤拷示 */
         #popDetailWindow .ajax__calendar_container {
             position: absolute !important;
         }
 
-        /* ���������ڵ�����򲼾� */
+        /* 锟斤拷锟斤拷锟斤拷锟斤拷锟节碉拷锟斤拷锟斤拷虿季锟?*/
         .popup-input-group {
             position: relative;
             width: 100%;
@@ -43,7 +43,7 @@
                 box-sizing: border-box;
             }
 
-        /* ������ť��ʽ */
+        /* 锟斤拷锟斤拷锟斤拷钮锟斤拷式 */
         .calendar-button {
             position: absolute;
             right: 5px;
@@ -60,14 +60,14 @@
     </style>
     <script type="text/javascript" language="javascript">
 
-        //ҳ��������,ajax�ط�������ɺ�ִ�еĲ���������һ��funtion
-        //$load����ʾ��
+        //页锟斤拷锟斤拷锟斤拷锟斤拷,ajax锟截凤拷锟斤拷锟斤拷锟斤拷珊锟街达拷械牟锟斤拷锟斤拷锟斤拷锟斤拷锟揭伙拷锟絝untion
+        //$load锟斤拷锟斤拷示锟斤拷
         //$load(function () {
-        //    //��Ҫҳ��������ִ�еĴ���
+        //    //锟斤拷要页锟斤拷锟斤拷锟斤拷锟斤拷执锟叫的达拷锟斤拷
         //});
         var $load = function (loadFunc) {
             $(function () {
-                initSwipeBack();// ��ʼ���������ع���
+                initSwipeBack();// 锟斤拷始锟斤拷锟斤拷锟斤拷锟斤拷锟截癸拷锟斤拷
                 if (typeof (Sys) != 'undefined') {
                     Sys.WebForms.PageRequestManager.getInstance().add_pageLoaded(loadFunc);
                 }
@@ -80,16 +80,16 @@
         $load(function () {
             /*  if (top.location != self.location) { } else { CloseWebPage(); }*/
 
-            //ѡ��ͼƬ��ѹ��ͼƬ
+            //选锟斤拷图片锟斤拷压锟斤拷图片
             $("#AttachFile").change(function () {
 
                 //console.log(this.files[0]);
                 var _ua = window.navigator.userAgent;
                 var _simpleFile = this.files[0];
-                //�ж��Ƿ�ΪͼƬ
+                //锟叫讹拷锟角凤拷为图片
                 if (!/\/(?:jpeg|png|gif|png|bmp)/i.test(_simpleFile.type)) return;
 
-                //���exif.js��ȡiosͼƬ�ķ�����Ϣ
+                //锟斤拷锟絜xif.js锟斤拷取ios图片锟侥凤拷锟斤拷锟斤拷息
                 var _orientation;
                 //if (_ua.indexOf('iphone') > 0) {
                 EXIF.getData(_simpleFile, function () {
@@ -99,7 +99,7 @@
 
 
 
-                //1.��ȡ�ļ���ͨ��FileReader����ͼƬ�ļ�ת��ΪDataURL����data:img/png;base64����ͷ��url������ֱ�ӷ���image.src��;
+                //1.锟斤拷取锟侥硷拷锟斤拷通锟斤拷FileReader锟斤拷锟斤拷图片锟侥硷拷转锟斤拷为DataURL锟斤拷锟斤拷data:img/png;base64锟斤拷锟斤拷头锟斤拷url锟斤拷锟斤拷锟斤拷直锟接凤拷锟斤拷image.src锟斤拷;
                 var _reader = new FileReader(),
                     _img = new Image(),
                     _url;
@@ -115,31 +115,31 @@
                 _reader.readAsDataURL(_simpleFile);
             });
 
-            // �޸������ؼ�����ʾ
+            // 锟睫革拷锟斤拷锟斤拷锟截硷拷锟斤拷锟斤拷示
             fixCalendarPosition();
 
-            // ����������ʾ�¼�
+            // 锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷示锟铰硷拷
             $(document).on('click', '[onclientclick*="popShow"]', function () {
                 setTimeout(fixCalendarPosition, 100);
             });
 
         });
 
-        // �޸������ؼ�λ��
+        // 锟睫革拷锟斤拷锟斤拷锟截硷拷位锟斤拷
         function fixCalendarPosition() {
-            // �ҵ������е����������
+            // 锟揭碉拷锟斤拷锟斤拷锟叫碉拷锟斤拷锟斤拷锟斤拷锟斤拷锟?
             var dateInput = $('#popDetailWindow').find('input[id*="DLC_NextServiceTime"]');
             if (dateInput.length > 0) {
-                // �ҵ���������
+                // 锟揭碉拷锟斤拷锟斤拷锟斤拷锟斤拷
                 var calendarContainer = $('.ajax__calendar_container');
                 if (calendarContainer.length > 0) {
-                    // ȷ��������������ڵ�����λ
+                    // 确锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷诘锟斤拷锟斤拷锟轿?
                     calendarContainer.css({
                         'position': 'absolute',
                         'z-index': '10001'
                     });
 
-                    // ���¶�λ����������򸽽�
+                    // 锟斤拷锟铰讹拷位锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷蚋浇锟?
                     var inputOffset = dateInput.offset();
                     var inputWidth = dateInput.outerWidth();
 
@@ -154,24 +154,24 @@
 
 
         /**
-         * ����ͼƬ�ĳߴ磬���ݳߴ�ѹ��
-         * 1. iphone�ֻ�html5�ϴ�ͼƬ�������⣬����exif.js
-         * 2. ��׿UC�������֧�� new Blob()��ʹ��BlobBuilder
-         * @param {Object} _img     ͼƬ
-         * @param {Number} _orientation ��Ƭ��Ϣ
-         * @return {String}       ѹ����base64��ʽ��ͼƬ
+         * 锟斤拷锟斤拷图片锟侥尺寸，锟斤拷锟捷尺达拷压锟斤拷
+         * 1. iphone锟街伙拷html5锟较达拷图片锟斤拷锟斤拷锟斤拷锟解，锟斤拷锟斤拷exif.js
+         * 2. 锟斤拷卓UC锟斤拷锟斤拷锟斤拷锟街э拷锟?new Blob()锟斤拷使锟斤拷BlobBuilder
+         * @param {Object} _img     图片
+         * @param {Number} _orientation 锟斤拷片锟斤拷息
+         * @return {String}       压锟斤拷锟斤拷base64锟斤拷式锟斤拷图片
          */
         function compress(_img, _orientation) {
-            //2.�������Ŀ��ߴ����ֵ�����ϴ�ͼƬ�Ŀ��߶�����Ŀ��ͼ����Ŀ��ͼ�ȱ�ѹ���������һ��С�ڣ����ϴ�ͼƬ�ȱȷŴ�
-            var _goalWidth = 640,         //Ŀ�����
-                _goalHeight = 480,         //Ŀ��߶�
-                _imgWidth = _img.naturalWidth,   //ͼƬ����
-                _imgHeight = _img.naturalHeight,  //ͼƬ�߶�
-                _tempWidth = _imgWidth,      //�Ŵ����С�����ʱ����
-                _tempHeight = _imgHeight,     //�Ŵ����С�����ʱ����
-                _r = 0;              //ѹ����
+            //2.锟斤拷锟斤拷锟斤拷锟侥匡拷锟竭达拷锟斤拷锟街碉拷锟斤拷锟斤拷洗锟酵计拷目锟斤拷叨锟斤拷锟斤拷锟侥匡拷锟酵硷拷锟斤拷锟侥匡拷锟酵硷拷缺锟窖癸拷锟斤拷锟斤拷锟斤拷锟斤拷一锟斤拷小锟节ｏ拷锟斤拷锟较达拷图片锟饺比放达拷
+            var _goalWidth = 640,         //目锟斤拷锟斤拷锟?
+                _goalHeight = 480,         //目锟斤拷叨锟?
+                _imgWidth = _img.naturalWidth,   //图片锟斤拷锟斤拷
+                _imgHeight = _img.naturalHeight,  //图片锟竭讹拷
+                _tempWidth = _imgWidth,      //锟脚达拷锟斤拷锟叫★拷锟斤拷锟斤拷时锟斤拷锟斤拷
+                _tempHeight = _imgHeight,     //锟脚达拷锟斤拷锟叫★拷锟斤拷锟斤拷时锟斤拷锟斤拷
+                _r = 0;              //压锟斤拷锟斤拷
 
-            if (_imgWidth > _goalWidth || _imgHeight > _goalHeight) {//����ߴ���Ŀ��ͼ����ȱ�ѹ��
+            if (_imgWidth > _goalWidth || _imgHeight > _goalHeight) {//锟斤拷锟斤拷叽锟斤拷锟侥匡拷锟酵硷拷锟斤拷锟饺憋拷压锟斤拷
                 _r = _imgWidth / _goalWidth;
                 if (_imgHeight / _goalHeight < _r) {
                     _r = _imgHeight / _goalHeight;
@@ -180,7 +180,7 @@
                 _tempHeight = Math.ceil(_imgHeight / _r);
             }
 
-            //3.����canvas��ͼƬ���вü����ȱȷŴ����С����о��вü�
+            //3.锟斤拷锟斤拷canvas锟斤拷图片锟斤拷锟叫裁硷拷锟斤拷锟饺比放达拷锟斤拷锟叫★拷锟斤拷锟叫撅拷锟叫裁硷拷
             var _canvas = $("#myCanvas")[0];
 
             var _context = _canvas.getContext('2d');
@@ -188,15 +188,15 @@
             _canvas.height = _tempHeight;
             var _degree;
 
-            //ios bug��iphone�ֻ��Ͽ��ܻ�����ͼƬ�����������
+            //ios bug锟斤拷iphone锟街伙拷锟较匡拷锟杰伙拷锟斤拷锟斤拷图片锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟?
             switch (_orientation) {
-                //iphone�������㣬��ʱhome�������
+                //iphone锟斤拷锟斤拷锟斤拷锟姐，锟斤拷时home锟斤拷锟斤拷锟斤拷锟?
                 case 3:
                     _degree = 180;
                     _tempWidth = -_imgWidth;
                     _tempHeight = -_imgHeight;
                     break;
-                //iphone�������㣬��ʱhome�����·�(�������ֻ��ķ���)
+                //iphone锟斤拷锟斤拷锟斤拷锟姐，锟斤拷时home锟斤拷锟斤拷锟铰凤拷(锟斤拷锟斤拷锟斤拷锟街伙拷锟侥凤拷锟斤拷)
                 case 6:
                     _canvas.width = _imgHeight;
                     _canvas.height = _imgWidth;
@@ -204,7 +204,7 @@
                     _tempWidth = _imgWidth;
                     _tempHeight = -_imgHeight;
                     break;
-                //iphone�������㣬��ʱhome�����Ϸ�
+                //iphone锟斤拷锟斤拷锟斤拷锟姐，锟斤拷时home锟斤拷锟斤拷锟较凤拷
                 case 8:
                     _canvas.width = _imgHeight;
                     _canvas.height = _imgWidth;
@@ -220,7 +220,7 @@
             } else {
                 _context.drawImage(_img, 0, 0, _tempWidth, _tempHeight);
             }
-            //toDataURL���������Ի�ȡ��ʽΪ"data:image/png;base64,***"��base64ͼƬ��Ϣ��
+            //toDataURL锟斤拷锟斤拷锟斤拷锟斤拷锟皆伙拷取锟斤拷式为"data:image/png;base64,***"锟斤拷base64图片锟斤拷息锟斤拷
             var _data = _canvas.toDataURL('image/jpeg');
             return _data;
         }
@@ -228,21 +228,21 @@
         function upload() {
 
             $.ajax({
-                //�ύ���ݵ����� POST GET
+                //锟结交锟斤拷锟捷碉拷锟斤拷锟斤拷 POST GET
                 type: "POST",
-                //�ύ����ַ
+                //锟结交锟斤拷锟斤拷址
                 url: "Handler/UploadPhotoToServerSite.ashx",
-                //�ύ������
+                //锟结交锟斤拷锟斤拷锟斤拷
                 data: { FileData: $("#imgData").val(), FileName: $("#AttachFile").val() },
-                //�������ݵĸ�ʽ
-                //������֮ǰ���õĺ���
+                //锟斤拷锟斤拷锟斤拷锟捷的革拷式
+                //锟斤拷锟斤拷锟斤拷之前锟斤拷锟矫的猴拷锟斤拷
                 beforeSend: function () {
                     $("#IMG_Waiting").show();
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                     console.log(XMLHttpRequest);
                 },
-                //�ɹ�����֮����õĺ���             
+                //锟缴癸拷锟斤拷锟斤拷之锟斤拷锟斤拷玫暮锟斤拷锟?            
                 success: function (data) {
 
                     if (data.indexOf("img") > 0) {
@@ -253,28 +253,28 @@
                         alert(data);
                     }
                 },
-                //����ִ�к���õĺ���
+                //锟斤拷锟斤拷执锟叫猴拷锟斤拷玫暮锟斤拷锟?
                 complete: function (XMLHttpRequest, textStatus) {
                     $("#IMG_Waiting").hide();
                 }
             });
         }
 
-        // �������ƺ���
+        // 锟斤拷锟斤拷锟斤拷锟狡猴拷锟斤拷
         function popShow() {
             var popWindow = document.getElementById('popDetailWindow');
             var popShade = document.getElementById('popwindow_shade');
             if (popWindow && popShade) {
                 popWindow.style.display = 'block';
                 popShade.style.display = 'block';
-                // ������ʾ
+                // 锟斤拷锟斤拷锟斤拷示
                 var windowHeight = window.innerHeight || document.documentElement.clientHeight;
                 var popHeight = popWindow.offsetHeight;
                 var top = (windowHeight - popHeight) / 2;
                 if (top < 0) top = 0;
                 popWindow.style.top = top + 'px';
 
-                // ���ý��㵽��һ�������
+                // 锟斤拷锟矫斤拷锟姐到锟斤拷一锟斤拷锟斤拷锟斤拷锟?
                 setTimeout(function () {
                     var firstInput = popWindow.querySelector('input, select, textarea');
                     if (firstInput) {
@@ -294,7 +294,7 @@
             return false;
         }
 
-        // ����ҳ�����¼�����������ⲿ�ر�
+        // 锟斤拷锟斤拷页锟斤拷锟斤拷锟铰硷拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷獠匡拷乇锟?
         document.addEventListener('click', function (e) {
             var popWindow = document.getElementById('popDetailWindow');
             var popShade = document.getElementById('popwindow_shade');
@@ -305,9 +305,9 @@
             }
         });
 
-        // ���Ӽ����¼�����ESC���رյ���
+        // 锟斤拷锟接硷拷锟斤拷锟铰硷拷锟斤拷锟斤拷ESC锟斤拷锟截闭碉拷锟斤拷
         document.addEventListener('keydown', function (e) {
-            if (e.keyCode === 27) { // ESC��
+            if (e.keyCode === 27) { // ESC锟斤拷
                 popClose();
             }
         });
@@ -317,7 +317,7 @@
     <div id="swipeFeedback" class="swipe-feedback">
         <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" />
     </div>
-    <!-- ���������� -->
+    <!-- 锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷 -->
     <canvas id="myCanvas" style="display: none;"></canvas>
 
     <div class="mobile-container">
@@ -327,6 +327,8 @@
 
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>
+
+                <div id="appScroll" class="app-scroll">
 
                     <table cellpadding="0" cellspacing="0" width="100%" class="bian">
                         <tr>
@@ -346,7 +348,7 @@
                                                         <td width="5"></td>
                                                     </tr>
                                                 </table>
-                                                <img id="IMG_Waiting" src="Images/Processing.gif" alt="���Ժ򣬴�����..." style="display: none;" />
+                                                <img id="IMG_Waiting" src="Images/Processing.gif" alt="锟斤拷锟皆候，达拷锟斤拷锟斤拷..." style="display: none;" />
                                             </a>
                                         </td>
                                     </tr>
@@ -356,7 +358,7 @@
                     </table>
 
                     <div class="napbac">
-                        <!-- ���������Ϣ -->
+                        <!-- 锟斤拷锟斤拷锟斤拷锟斤拷锟较?-->
                         <div class="napbox">
 
                             <div class="npbxs">
@@ -409,7 +411,7 @@
                                 </div>
                             </div>
 
-                            <!-- ������ť -->
+                            <!-- 锟斤拷锟斤拷锟斤拷钮 -->
                             <div class="npbxs">
                                 <div class="equal-buttons">
                                     <asp:Button ID="BT_Accept" runat="server" CssClass="inpu" OnClick="BT_Accept_Click"
@@ -431,7 +433,7 @@
                                 </div>
                             </div>
 
-                            <!-- ֱ�ӳ�Ա��ָ�������� -->
+                            <!-- 直锟接筹拷员锟斤拷指锟斤拷锟斤拷锟斤拷锟斤拷 -->
                             <div class="npbxs">
                                 <div class="mline">
                                     <div style="display: flex; margin-bottom: 5px;">
@@ -456,14 +458,14 @@
                                 </div>
                             </div>
 
-                            <!-- �½���ť -->
+                            <!-- 锟铰斤拷锟斤拷钮 -->
                             <div class="npbxs">
                                 <div class="equal-buttons">
                                     <asp:Button ID="BT_Create" runat="server" Text="<%$ Resources:lang,New%>" CssClass="inpu" OnClick="BT_Create_Click" OnClientClick="popShow(); return false;" />
                                 </div>
                             </div>
 
-                            <!-- �ͷ���¼ -->
+                            <!-- 锟酵凤拷锟斤拷录 -->
                             <div class="napbox">
                                 <div class="npbx">
                                     <div class="npb">
@@ -476,14 +478,14 @@
                                             Height="1px" Width="100%">
                                             <ItemTemplate>
                                                 <div style="margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 10px;">
-                                                    <!-- ��һ�У�ID��ť -->
+                                                    <!-- 锟斤拷一锟叫ｏ拷ID锟斤拷钮 -->
                                                     <div style="margin-bottom: 8px;">
                                                         <asp:Button ID="BT_ID" runat="server" Text=' <%#DataBinder .Eval (Container .DataItem ,"ID") %> ' CssClass="inpu" CommandName="Update" OnClientClick="popShow(); return false;" />
                                                     </div>
 
-                                                    <!-- �ڶ��п�ʼ����ϸ��Ϣ -->
+                                                    <!-- 锟节讹拷锟叫匡拷始锟斤拷锟斤拷细锟斤拷息 -->
                                                     <div style="display: flex; flex-wrap: wrap; gap: 5px 0;">
-                                                        <!-- ��ϵ�� -->
+                                                        <!-- 锟斤拷系锟斤拷 -->
                                                         <div style="flex: 0 0 100%; display: flex; margin-bottom: 5px;">
                                                             <div style="width: 100px; flex-shrink: 0; font-weight: bold;">
                                                                 <asp:Label ID="Label18" runat="server" Text="<%$ Resources:lang,LianXiRen%>"></asp:Label>:
@@ -493,7 +495,7 @@
                                                             </div>
                                                         </div>
 
-                                                        <!-- ������ -->
+                                                        <!-- 锟斤拷锟斤拷锟斤拷 -->
                                                         <div style="flex: 0 0 100%; display: flex; margin-bottom: 5px;">
                                                             <div style="width: 100px; flex-shrink: 0; font-weight: bold;">
                                                                 <asp:Label ID="Label19" runat="server" Text="<%$ Resources:lang,ShouLiRen%>"></asp:Label>:
@@ -503,7 +505,7 @@
                                                             </div>
                                                         </div>
 
-                                                        <!-- �ͷ���� -->
+                                                        <!-- 锟酵凤拷锟斤拷锟?-->
                                                         <div style="flex: 0 0 100%; display: flex; margin-bottom: 5px;">
                                                             <div style="width: 100px; flex-shrink: 0; font-weight: bold;">
                                                                 <asp:Label ID="Label20" runat="server" Text="<%$ Resources:lang,KeFangYiJian%>"></asp:Label>:
@@ -513,7 +515,7 @@
                                                             </div>
                                                         </div>
 
-                                                        <!-- ��ϵ��ʽ -->
+                                                        <!-- 锟斤拷系锟斤拷式 -->
                                                         <div style="flex: 0 0 100%; display: flex; margin-bottom: 5px;">
                                                             <div style="width: 100px; flex-shrink: 0; font-weight: bold;">
                                                                 <asp:Label ID="Label43" runat="server" Text="<%$ Resources:lang,LianXiRen%>"></asp:Label>:
@@ -524,7 +526,7 @@
                                                             </div>
                                                         </div>
 
-                                                        <!-- �������� -->
+                                                        <!-- 锟斤拷锟斤拷锟斤拷锟斤拷 -->
                                                         <div style="flex: 0 0 100%; display: flex; margin-bottom: 5px;">
                                                             <div style="width: 100px; flex-shrink: 0; font-weight: bold;">
                                                                 <asp:Label ID="Label21" runat="server" Text="<%$ Resources:lang,ChuLiNeiRong%>"></asp:Label>:
@@ -534,7 +536,7 @@
                                                             </div>
                                                         </div>
 
-                                                        <!-- �´η���ʱ�� -->
+                                                        <!-- 锟铰次凤拷锟斤拷时锟斤拷 -->
                                                         <div style="flex: 0 0 100%; display: flex; margin-bottom: 5px;">
                                                             <div style="width: 100px; flex-shrink: 0; font-weight: bold;">
                                                                 <asp:Label ID="Label22" runat="server" Text="<%$ Resources:lang,XiaCiFuWuShiJian%>"></asp:Label>:
@@ -544,7 +546,7 @@
                                                             </div>
                                                         </div>
 
-                                                        <!-- ��ǰ֪ͨ���� -->
+                                                        <!-- 锟斤拷前通知锟斤拷锟斤拷 -->
                                                         <div style="flex: 0 0 100%; display: flex; margin-bottom: 5px;">
                                                             <div style="width: 100px; flex-shrink: 0; font-weight: bold;">
                                                                 <asp:Label ID="Label23" runat="server" Text="<%$ Resources:lang,TiQianTongZhiTianShu%>"></asp:Label>:
@@ -561,7 +563,7 @@
                                 </div>
                             </div>
 
-                            <!-- ���ز��� -->
+                            <!-- 锟斤拷锟截诧拷锟斤拷 -->
                             <div style="display: none;">
                                 <asp:DataList ID="DataList2" runat="server" CellPadding="0" ForeColor="#333333" Height="1px"
                                     Width="100%" Style="display: none;">
@@ -593,7 +595,7 @@
                             </div>
                         </div>
 
-                        <!-- �������� - ������form�ڵ����������� -->
+                        <!-- 锟斤拷锟斤拷锟斤拷锟斤拷 - 锟斤拷锟斤拷锟斤拷form锟节碉拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷 -->
                         <div class="layui-layer-shade" id="popwindow_shade" style="z-index: 9998; background-color: #000; opacity: 0.3; filter: alpha(opacity=30); display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;"></div>
 
                         <div class="layui-layer layui-layer-iframe" id="popDetailWindow" name="fixedDiv"
@@ -601,7 +603,7 @@
                             <div class="layui-layer-title" style="background: #e7e7e8; padding: 10px 15px; border-bottom: 1px solid #ddd;" id="popwindow_title">
                                 <asp:Label ID="Label5" runat="server" Text="&lt;div&gt;&lt;img src=ImagesSkin/Update.png border=0 width=30px height=30px alt='BusinessForm' /&gt;&lt;/div&gt;"></asp:Label>
                                 <span class="layui-layer-setwin" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%);">
-                                    <a onclick="return popClose();" class="layui-layer-ico layui-layer-close layui-layer-close1 notTab" href="javascript:;" style="display: block; width: 30px; height: 30px; line-height: 30px; text-align: center;">��</a>
+                                    <a onclick="return popClose();" class="layui-layer-ico layui-layer-close layui-layer-close1 notTab" href="javascript:;" style="display: block; width: 30px; height: 30px; line-height: 30px; text-align: center;">锟斤拷</a>
                                 </span>
                             </div>
                             <div id="popwindow_content" class="layui-layer-content" style="overflow: auto; padding: 15px; max-height: calc(80vh - 100px);">
@@ -703,7 +705,7 @@
                                                         </div>
                                                         <div class="upload-button">
                                                             <asp:Button ID="BtnUP" runat="server" OnClick="BtnUP_Click" OnClientClick="javascript:document.getElementById('IMG_Uploading').style.display = 'block';" Text="<%$ Resources:lang,ShiYong%>" CssClass="mobile-button" />
-                                                            <img id="IMG_Uploading" src="Images/Processing.gif" alt="���Ժ򣬴�����..." style="display: none;" />
+                                                            <img id="IMG_Uploading" src="Images/Processing.gif" alt="锟斤拷锟皆候，达拷锟斤拷锟斤拷..." style="display: none;" />
                                                         </div>
                                                     </div>
                                                 </ContentTemplate>
@@ -717,7 +719,7 @@
                                             <div style="font-weight: bold; margin-bottom: 5px;">
                                                 <asp:Label ID="Label13" runat="server" Text="<%$ Resources:lang,XiaCi%>"></asp:Label>
                                             </div>
-                                            <!-- �޸�����ѡ����λ�� -->
+                                            <!-- 锟睫革拷锟斤拷锟斤拷选锟斤拷锟斤拷位锟斤拷 -->
                                             <div class="popup-input-group">
                                                 <asp:TextBox ID="DLC_NextServiceTime" ReadOnly="false" runat="server" Width="100%" Style="padding-right: 30px;"></asp:TextBox>
                                                 <ajaxToolkit:CalendarExtender Format="yyyy-MM-dd" ID="CalendarExtender1" runat="server" TargetControlID="DLC_NextServiceTime"
@@ -748,7 +750,7 @@
                                 </div>
                             </div>
 
-                            <!-- �޸ĺ�ĵ����ײ���ť -->
+                            <!-- 锟睫改猴拷牡锟斤拷锟斤拷撞锟斤拷锟脚?-->
                             <div id="popwindow_footer" class="layui-layer-btn" style="border-top: 1px solid #ccc; padding: 15px; text-align: center; background: white; position: sticky; bottom: 0;">
                                 <asp:LinkButton ID="BT_New" runat="server"
                                     OnClick="BT_New_Click"
@@ -762,6 +764,8 @@
                         </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
+
+            </div>
             <div style="position: fixed; display: none; z-index: 9999;" id="progressContainer">
                 <asp:UpdateProgress ID="TakeTopUp" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
                     <ProgressTemplate>

@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAPPUNSubmitPlanReviewedByMe.aspx.cs" Inherits="TTAPPUNSubmitPlanReviewedByMe" %>
+Ôªø<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAPPUNSubmitPlanReviewedByMe.aspx.cs" Inherits="TTAPPUNSubmitPlanReviewedByMe" %>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
 
@@ -13,7 +13,7 @@
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="js/allAHandler.js"></script>
     <script type="text/javascript" language="javascript">
-        $(function () { initSwipeBack();// ≥ı ºªØª¨∂Ø∑µªÿπ¶ƒ‹  initSwipeBack();// ≥ı ºªØª¨∂Ø∑µªÿπ¶ƒ‹
+        $(function () { initSwipeBack();// ÂàùÂßãÂåñÊªëÂä®ËøîÂõûÂäüËÉΩ  initSwipeBack();// ÂàùÂßãÂåñÊªëÂä®ËøîÂõûÂäüËÉΩ
 
             
 
@@ -23,7 +23,7 @@
 
 
 </head>
-<body><div id="swipeFeedback" class="swipe-feedback"><asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYYXXHDKSXBYM%>" /></div> <!-- ª¨∂Ø∑¥¿°≤„ -->
+<body><div id="swipeFeedback" class="swipe-feedback"><asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYYXXHDKSXBYM%>" /></div> <!-- ÊªëÂä®ÂèçÈ¶àÂ±Ç -->
     <center>
         <form id="form1" runat="server">
             <%--  <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">--%>
@@ -31,6 +31,7 @@
             </asp:ScriptManager>
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>
+                <div id="appScroll" class="app-scroll">
                 
                         <table cellpadding="0" width="100%" cellspacing="0" class="bian">
                            <tr>
@@ -50,7 +51,7 @@
                                                                 <%-- <img src="ImagesSkin/main_top_r.jpg" width="5" height="31" />--%></td>
                                                         </tr>
                                                     </table>
-                                                     <img id="IMG_Waiting" src="Images/Processing.gif" alt="«Î…‘∫Ú£¨¥¶¿Ì÷–..." style="display: none;" />
+                                                     <img id="IMG_Waiting" src="Images/Processing.gif" alt="ËØ∑Á®çÂÄôÔºåÂ§ÑÁêÜ‰∏≠..." style="display: none;" />
                                                 </a>
                                             </td>
                                         </tr>
@@ -126,7 +127,7 @@
                                                                     </asp:BoundColumn>
                                                                 
                                                                      <asp:HyperLinkColumn DataNavigateUrlField="CreatorCode" DataNavigateUrlFormatString="TTAPPUserInforSimple.aspx?UserCode={0}"
-                                                                        DataTextField="CreatorName" HeaderText="÷∆∂®’ﬂ" >
+                                                                        DataTextField="CreatorName" HeaderText="Âà∂ÂÆöËÄÖ" >
                                                                         <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="9%" />
                                                                     </asp:HyperLinkColumn>
                                                                        <asp:BoundColumn DataField="PlanType" HeaderText="Type">
@@ -165,6 +166,7 @@
                   
                 </ContentTemplate>
             </asp:UpdatePanel>
+            </div>
             <div style="position: fixed; display: none; z-index: 9999;" id="progressContainer">
                 <asp:UpdateProgress ID="TakeTopUp" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
                     <ProgressTemplate>
