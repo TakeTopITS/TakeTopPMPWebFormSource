@@ -18,15 +18,14 @@
     <script type="text/javascript" src="js/layer/layer/layer.js"></script>
     <script type="text/javascript" src="js/popwindow.js"></script>
     <script type="text/javascript" language="javascript">
-        $(function () { initSwipeBack();// ³õÊ¼»¯»¬¶¯·µ»Ø¹¦ÄÜ  initSwipeBack();// ³õÊ¼»¯»¬¶¯·µ»Ø¹¦ÄÜ
+        $(function () { initSwipeBack();// ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø¹ï¿½ï¿½ï¿½  initSwipeBack();// ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø¹ï¿½ï¿½ï¿½
              /*  if (top.location != self.location) { } else { CloseWebPage(); }*/
 
         });
     </script>
 </head>
-<body><div id="swipeFeedback" class="swipe-feedback"><asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYYXXHDKSXBYM%>" /></div> <!-- »¬¶¯·´À¡²ã -->
-    <center>
-        <form id="form1" runat="server">
+<body><div id="swipeFeedback" class="swipe-feedback"><asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYYXXHDKSXBYM%>" /></div> <!-- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -->
+        <form id="form1" runat="server" class="napf">
             <%--  <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">--%>
             <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">
             </asp:ScriptManager>
@@ -57,7 +56,7 @@
                                                                     </td>
                                                                 </tr>
                                                             </table>
-                                                            <img id="IMG_Waiting" src="Images/Processing.gif" alt="ÇëÉÔºò£¬´¦ÀíÖÐ..." style="display: none;" />
+                                                            <img id="IMG_Waiting" src="Images/Processing.gif" alt="ï¿½ï¿½ï¿½Ôºò£¬´ï¿½ï¿½ï¿½ï¿½ï¿½..." style="display: none;" />
                                                         </a>
                                                     </td>
                                                 </tr>
@@ -168,7 +167,7 @@
                                                                 <asp:BoundColumn DataField="Task" HeaderText="Task">
                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" Width="15%" />
                                                                 </asp:BoundColumn>
-                                                                <%--  <asp:BoundColumn DataField="Priority" HeaderText="ÓÅÏÈ¼¶">
+                                                                <%--  <asp:BoundColumn DataField="Priority" HeaderText="ï¿½ï¿½ï¿½È¼ï¿½">
                                                                         <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="8%" />
                                                                     </asp:BoundColumn>
 
@@ -181,7 +180,7 @@
                                                                     <asp:BoundColumn DataField="Budget" HeaderText="Budget">
                                                                         <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="5%" />
                                                                     </asp:BoundColumn>
-                                                                    <asp:BoundColumn DataField="FinishPercent" HeaderText="Íê³É³Ì¶È">
+                                                                    <asp:BoundColumn DataField="FinishPercent" HeaderText="ï¿½ï¿½É³Ì¶ï¿½">
                                                                         <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="7%" />
                                                                     </asp:BoundColumn>
                                                                     <asp:BoundColumn DataField="Expense" HeaderText="Expense">
@@ -637,10 +636,10 @@
                                                     <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="9%" />
                                                 </asp:TemplateColumn>
 
-                                                <asp:BoundColumn DataField="OperatorName" HeaderText="ÊÜÀíÈË">
+                                                <asp:BoundColumn DataField="OperatorName" HeaderText="ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½">
                                                     <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="20%" />
                                                 </asp:BoundColumn>
-                                                <asp:BoundColumn DataField="Operation" HeaderText="ÊÜÀíÈËµÄ¹¤×÷">
+                                                <asp:BoundColumn DataField="Operation" HeaderText="ï¿½ï¿½ï¿½ï¿½ï¿½ËµÄ¹ï¿½ï¿½ï¿½">
                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" />
                                                 </asp:BoundColumn>
                                             </Columns>
@@ -674,7 +673,6 @@
                 </asp:UpdateProgress>
             </div>
         </form>
-    </center>
 </body>
 <%--<script type="text/javascript" language="javascript">var cssDirectory = '<%=Session["CssDirectory"] %>'; var oLink = document.getElementById('mainCss'); oLink.href = 'css/' + cssDirectory + '/' + 'bluelightmain.css';</script>--%>
 </html>

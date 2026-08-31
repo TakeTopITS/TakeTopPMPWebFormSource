@@ -15,7 +15,7 @@
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="js/allAHandler.js"></script>
     <script type="text/javascript" language="javascript">
-        $(function () { initSwipeBack();// ³õÊ¼»¯»¬¶¯·µ»Ø¹¦ÄÜ 
+        $(function () { initSwipeBack();// ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø¹ï¿½ï¿½ï¿½ 
 
             //
 
@@ -23,7 +23,7 @@
 
         });
 
-        //µã»÷DATAGRIDÐÐÄÚÈÎºÎÒ»µã£¬¶¼ÄÜ´¥·¢ÐÐÄÚµÄÁ´½Ó
+        //ï¿½ï¿½ï¿½DATAGRIDï¿½ï¿½ï¿½ï¿½ï¿½Îºï¿½Ò»ï¿½ã£¬ï¿½ï¿½ï¿½Ü´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½
         function SetDataGridTrClickLink() {
 
             setTrClickLink("DataGrid2");
@@ -35,9 +35,8 @@
 
 </head>
 <body>
-    <div id="swipeFeedback" class="swipe-feedback"><asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYYXXHDKSXBYM%>" /></div> <!-- »¬¶¯·´À¡²ã -->
-    <center>
-        <form id="form1" runat="server">
+    <div id="swipeFeedback" class="swipe-feedback"><asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYYXXHDKSXBYM%>" /></div> <!-- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -->
+        <form id="form1" runat="server" class="napf">
             <%--  <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">--%>
             <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">
             </asp:ScriptManager>
@@ -63,7 +62,7 @@
                                                         </td>
                                                     </tr>
                                                 </table>
-                                                <img id="IMG_Waiting" src="Images/Processing.gif" alt="ÇëÉÔºò£¬´¦ÀíÖÐ..." style="display: none;" />
+                                                <img id="IMG_Waiting" src="Images/Processing.gif" alt="ï¿½ï¿½ï¿½Ôºò£¬´ï¿½ï¿½ï¿½ï¿½ï¿½..." style="display: none;" />
                                             </a>
                                         </td>
                                         <td align="center" style="padding-top: 5px;">
@@ -251,7 +250,6 @@
                 </asp:UpdateProgress>
             </div>
         </form>
-    </center>
 </body>
 <%--<script type="text/javascript" language="javascript">var cssDirectory = '<%=Session["CssDirectory"] %>'; var oLink = document.getElementById('mainCss'); oLink.href = 'css/' + cssDirectory + '/' + 'bluelightmain.css';</script>--%>
 </html>

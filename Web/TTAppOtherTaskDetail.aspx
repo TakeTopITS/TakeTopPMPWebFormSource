@@ -29,22 +29,22 @@
     <script src="js/exif.js" type="text/javascript"></script>
     <script type="text/javascript" language="javascript">
         $(function () {
-            initSwipeBack();// ³õÊ¼»¯»¬¶¯·µ»Ø¹¦ÄÜ
+            initSwipeBack();// ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø¹ï¿½ï¿½ï¿½
 
-            //Ñ¡ÔñÍ¼Æ¬ºóÑ¹ËõÍ¼Æ¬
+            //Ñ¡ï¿½ï¿½Í¼Æ¬ï¿½ï¿½Ñ¹ï¿½ï¿½Í¼Æ¬
             $("#AttachFile").change(function () {
                 var _ua = window.navigator.userAgent;
                 var _simpleFile = this.files[0];
-                //ÅÐ¶ÏÊÇ·ñÎªÍ¼Æ¬
+                //ï¿½Ð¶ï¿½ï¿½Ç·ï¿½ÎªÍ¼Æ¬
                 if (!/\/(?:jpeg|png|gif|png|bmp)/i.test(_simpleFile.type)) return;
 
-                //²å¼þexif.js»ñÈ¡iosÍ¼Æ¬µÄ·½ÏòÐÅÏ¢
+                //ï¿½ï¿½ï¿½exif.jsï¿½ï¿½È¡iosÍ¼Æ¬ï¿½Ä·ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
                 var _orientation;
                 EXIF.getData(_simpleFile, function () {
                     _orientation = EXIF.getTag(this, 'Orientation');
                 });
 
-                //1.¶ÁÈ¡ÎÄ¼þ£¬Í¨¹ýFileReader£¬½«Í¼Æ¬ÎÄ¼þ×ª»¯ÎªDataURL£¬¼´data:img/png;base64£¬¿ªÍ·µÄurl£¬¿ÉÒÔÖ±½Ó·ÅÔÚimage.srcÖÐ;
+                //1.ï¿½ï¿½È¡ï¿½Ä¼ï¿½ï¿½ï¿½Í¨ï¿½ï¿½FileReaderï¿½ï¿½ï¿½ï¿½Í¼Æ¬ï¿½Ä¼ï¿½×ªï¿½ï¿½ÎªDataURLï¿½ï¿½ï¿½ï¿½data:img/png;base64ï¿½ï¿½ï¿½ï¿½Í·ï¿½ï¿½urlï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½Ó·ï¿½ï¿½ï¿½image.srcï¿½ï¿½;
                 var _reader = new FileReader(),
                     _img = new Image(),
                     _url;
@@ -71,7 +71,7 @@
                 var url = $(this).attr("href");
                 var click = $(this).attr("onclick");
 
-                //ÅÐ¶ÏÊÇ·ñÊÇtree£¬»òÕß·ÖÒ³
+                //ï¿½Ð¶ï¿½ï¿½Ç·ï¿½ï¿½ï¿½treeï¿½ï¿½ï¿½ï¿½ï¿½ß·ï¿½Ò³
                 if (click != "" && click != null && click != undefined) {
                     if (click.toLowerCase().indexOf("treeview") == -1 && url.toLowerCase().indexOf("lbt_delete") == -1) {
                         $(this).click(function () {
@@ -100,24 +100,24 @@
         }
 
         /**
-         * ¼ÆËãÍ¼Æ¬µÄ³ß´ç£¬¸ù¾Ý³ß´çÑ¹Ëõ
-         * 1. iphoneÊÖ»úhtml5ÉÏ´«Í¼Æ¬·½ÏòÎÊÌâ£¬½èÖúexif.js
-         * 2. °²×¿UCä¯ÀÀÆ÷²»Ö§³Ö new Blob()£¬Ê¹ÓÃBlobBuilder
+         * ï¿½ï¿½ï¿½ï¿½Í¼Æ¬ï¿½Ä³ß´ç£¬ï¿½ï¿½ï¿½Ý³ß´ï¿½Ñ¹ï¿½ï¿½
+         * 1. iphoneï¿½Ö»ï¿½html5ï¿½Ï´ï¿½Í¼Æ¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½â£¬ï¿½ï¿½ï¿½ï¿½exif.js
+         * 2. ï¿½ï¿½×¿UCï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ new Blob()ï¿½ï¿½Ê¹ï¿½ï¿½BlobBuilder
          * @param {Object} _img     Í¼Æ¬
-         * @param {Number} _orientation ÕÕÆ¬ÐÅÏ¢
-         * @return {String}       Ñ¹Ëõºóbase64¸ñÊ½µÄÍ¼Æ¬
+         * @param {Number} _orientation ï¿½ï¿½Æ¬ï¿½ï¿½Ï¢
+         * @return {String}       Ñ¹ï¿½ï¿½ï¿½ï¿½base64ï¿½ï¿½Ê½ï¿½ï¿½Í¼Æ¬
          */
         function compress(_img, _orientation) {
-            //2.¼ÆËã·ûºÏÄ¿±ê³ß´ç¿í¸ßÖµ£¬ÈôÉÏ´«Í¼Æ¬µÄ¿í¸ß¶¼´óÓÚÄ¿±êÍ¼£¬¶ÔÄ¿±êÍ¼µÈ±ÈÑ¹Ëõ£»Èç¹ûÓÐÒ»±ßÐ¡ÓÚ£¬¶ÔÉÏ´«Í¼Æ¬µÈ±È·Å´ó¡£
-            var _goalWidth = 640,         //Ä¿±ê¿í¶È
-                _goalHeight = 480,         //Ä¿±ê¸ß¶È
-                _imgWidth = _img.naturalWidth,   //Í¼Æ¬¿í¶È
-                _imgHeight = _img.naturalHeight,  //Í¼Æ¬¸ß¶È
-                _tempWidth = _imgWidth,      //·Å´ó»òËõÐ¡ºóµÄÁÙÊ±¿í¶È
-                _tempHeight = _imgHeight,     //·Å´ó»òËõÐ¡ºóµÄÁÙÊ±¿í¶È
-                _r = 0;              //Ñ¹Ëõ±È
+            //2.ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½ß´ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½Í¼Æ¬ï¿½Ä¿ï¿½ï¿½ß¶ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½Í¼ï¿½È±ï¿½Ñ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ð¡ï¿½Ú£ï¿½ï¿½ï¿½ï¿½Ï´ï¿½Í¼Æ¬ï¿½È±È·Å´ï¿½
+            var _goalWidth = 640,         //Ä¿ï¿½ï¿½ï¿½ï¿½ï¿½
+                _goalHeight = 480,         //Ä¿ï¿½ï¿½ß¶ï¿½
+                _imgWidth = _img.naturalWidth,   //Í¼Æ¬ï¿½ï¿½ï¿½ï¿½
+                _imgHeight = _img.naturalHeight,  //Í¼Æ¬ï¿½ß¶ï¿½
+                _tempWidth = _imgWidth,      //ï¿½Å´ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½
+                _tempHeight = _imgHeight,     //ï¿½Å´ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½
+                _r = 0;              //Ñ¹ï¿½ï¿½ï¿½ï¿½
 
-            if (_imgWidth > _goalWidth || _imgHeight > _goalHeight) {//¿í»ò¸ß´óÓÚÄ¿±êÍ¼£¬ÐèµÈ±ÈÑ¹Ëõ
+            if (_imgWidth > _goalWidth || _imgHeight > _goalHeight) {//ï¿½ï¿½ï¿½ï¿½ß´ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½È±ï¿½Ñ¹ï¿½ï¿½
                 _r = _imgWidth / _goalWidth;
                 if (_imgHeight / _goalHeight < _r) {
                     _r = _imgHeight / _goalHeight;
@@ -126,7 +126,7 @@
                 _tempHeight = Math.ceil(_imgHeight / _r);
             }
 
-            //3.ÀûÓÃcanvas¶ÔÍ¼Æ¬½øÐÐ²Ã¼ô£¬µÈ±È·Å´ó»òËõÐ¡ºó½øÐÐ¾ÓÖÐ²Ã¼ô
+            //3.ï¿½ï¿½ï¿½ï¿½canvasï¿½ï¿½Í¼Æ¬ï¿½ï¿½ï¿½Ð²Ã¼ï¿½ï¿½ï¿½ï¿½È±È·Å´ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½ï¿½Ð¾ï¿½ï¿½Ð²Ã¼ï¿½
             var _canvas = $("#myCanvas")[0];
 
             var _context = _canvas.getContext('2d');
@@ -134,15 +134,15 @@
             _canvas.height = _tempHeight;
             var _degree;
 
-            //ios bug£¬iphoneÊÖ»úÉÏ¿ÉÄÜ»áÓöµ½Í¼Æ¬·½Ïò´íÎóÎÊÌâ
+            //ios bugï¿½ï¿½iphoneï¿½Ö»ï¿½ï¿½Ï¿ï¿½ï¿½Ü»ï¿½ï¿½ï¿½ï¿½ï¿½Í¼Æ¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             switch (_orientation) {
-                //iphoneºáÆÁÅÄÉã£¬´ËÊ±home¼üÔÚ×ó²à
+                //iphoneï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ã£¬ï¿½ï¿½Ê±homeï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 case 3:
                     _degree = 180;
                     _tempWidth = -_imgWidth;
                     _tempHeight = -_imgHeight;
                     break;
-                //iphoneÊúÆÁÅÄÉã£¬´ËÊ±home¼üÔÚÏÂ·½(Õý³£ÄÃÊÖ»úµÄ·½Ïò)
+                //iphoneï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ã£¬ï¿½ï¿½Ê±homeï¿½ï¿½ï¿½ï¿½ï¿½Â·ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö»ï¿½ï¿½Ä·ï¿½ï¿½ï¿½)
                 case 6:
                     _canvas.width = _imgHeight;
                     _canvas.height = _imgWidth;
@@ -150,7 +150,7 @@
                     _tempWidth = _imgWidth;
                     _tempHeight = -_imgHeight;
                     break;
-                //iphoneÊúÆÁÅÄÉã£¬´ËÊ±home¼üÔÚÉÏ·½
+                //iphoneï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ã£¬ï¿½ï¿½Ê±homeï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½
                 case 8:
                     _canvas.width = _imgHeight;
                     _canvas.height = _imgWidth;
@@ -165,28 +165,28 @@
             } else {
                 _context.drawImage(_img, 0, 0, _tempWidth, _tempHeight);
             }
-            //toDataURL·½·¨£¬¿ÉÒÔ»ñÈ¡¸ñÊ½Îª"data:image/png;base64,***"µÄbase64Í¼Æ¬ÐÅÏ¢£»
+            //toDataURLï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô»ï¿½È¡ï¿½ï¿½Ê½Îª"data:image/png;base64,***"ï¿½ï¿½base64Í¼Æ¬ï¿½ï¿½Ï¢ï¿½ï¿½
             var _data = _canvas.toDataURL('image/jpeg');
             return _data;
         }
 
         function upload() {
             $.ajax({
-                //Ìá½»Êý¾ÝµÄÀàÐÍ POST GET
+                //ï¿½á½»ï¿½ï¿½ï¿½Ýµï¿½ï¿½ï¿½ï¿½ï¿½ POST GET
                 type: "POST",
-                //Ìá½»µÄÍøÖ·
+                //ï¿½á½»ï¿½ï¿½ï¿½ï¿½Ö·
                 url: "Handler/UploadPhotoToServerSite.ashx",
-                //Ìá½»µÄÊý¾Ý
+                //ï¿½á½»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 data: { FileData: $("#imgData").val(), FileName: $("#AttachFile").val() },
-                //·µ»ØÊý¾ÝµÄ¸ñÊ½
-                //ÔÚÇëÇóÖ®Ç°µ÷ÓÃµÄº¯Êý
+                //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÝµÄ¸ï¿½Ê½
+                //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö®Ç°ï¿½ï¿½ï¿½ÃµÄºï¿½ï¿½ï¿½
                 beforeSend: function () {
                     $("#IMG_Waiting").show();
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                     console.log(XMLHttpRequest);
                 },
-                //³É¹¦·µ»ØÖ®ºóµ÷ÓÃµÄº¯Êý
+                //ï¿½É¹ï¿½ï¿½ï¿½ï¿½ï¿½Ö®ï¿½ï¿½ï¿½ï¿½ÃµÄºï¿½ï¿½ï¿½
                 success: function (data) {
                     if (data.indexOf("img") > 0) {
                         $(document.getElementsByTagName("iframe")[0]).contents().find("body").append(data);
@@ -195,7 +195,7 @@
                         alert(data);
                     }
                 },
-                //µ÷ÓÃÖ´ÐÐºóµ÷ÓÃµÄº¯Êý
+                //ï¿½ï¿½ï¿½ï¿½Ö´ï¿½Ðºï¿½ï¿½ï¿½ÃµÄºï¿½ï¿½ï¿½
                 complete: function (XMLHttpRequest, textStatus) {
                     $("#IMG_Waiting").hide();
                 }
@@ -207,16 +207,16 @@
     <div id="swipeFeedback" class="swipe-feedback">
         <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" />
     </div>
-    <!-- »¬¶¯·´À¡²ã -->
+    <!-- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -->
 
     <script type="text/javascript" language="javascript">
         var txtQrCode = '#<%=TB_QrCode.ClientID%>';
         var btnSaveQrCode = '#<%=BT_SaveQrCode.ClientID%>';
 
-        var loadingIndex; //ÌáÊ¾²ãindex
-        var isWxConfigReady = false; //configÊÇ·ñÑéÖ¤Í¨¹ý
+        var loadingIndex; //ï¿½ï¿½Ê¾ï¿½ï¿½index
+        var isWxConfigReady = false; //configï¿½Ç·ï¿½ï¿½ï¿½Ö¤Í¨ï¿½ï¿½
         $(function () {
-            initSwipeBack();// ³õÊ¼»¯»¬¶¯·µ»Ø¹¦ÄÜ  initSwipeBack();// ³õÊ¼»¯»¬¶¯·µ»Ø¹¦ÄÜ
+            initSwipeBack();// ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø¹ï¿½ï¿½ï¿½  initSwipeBack();// ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø¹ï¿½ï¿½ï¿½
 
             try {
                 if ('<%=signModel.appId %>' == '') {
@@ -232,7 +232,7 @@
                 });
                 wxApi();
 
-                //É¾³ýÒâÍâµ¯³ö²ã
+                //É¾ï¿½ï¿½ï¿½ï¿½ï¿½âµ¯ï¿½ï¿½ï¿½ï¿½
                 if (isWxConfigReady == false) {
                     var m = document.getElementById("layui-layer1");
                     m.parentNode.removeChild(m);
@@ -253,11 +253,11 @@
                 // , content: 'ImagesSkin/Processing.gif'
             });
             wx.config({
-                debug: false, // ¿ªÆôµ÷ÊÔÄ£Ê½,µ÷ÓÃµÄËùÓÐapiµÄ·µ»ØÖµ»áÔÚ¿Í»§¶Ëalert³öÀ´£¬ÈôÒª²é¿´´«ÈëµÄ²ÎÊý£¬¿ÉÒÔÔÚpc¶Ë´ò¿ª£¬²ÎÊýÐÅÏ¢»áÍ¨¹ýlog´ò³ö£¬½öÔÚpc¶ËÊ±²Å»á´òÓ¡¡£
-                appId: '<%=signModel.appId %>', // ±ØÌî£¬¹«ÖÚºÅµÄÎ¨Ò»±êÊ¶
-                timestamp: '<%=signModel.time %>', // ±ØÌî£¬Éú³ÉÇ©ÃûµÄÊ±¼ä´Á(Ëæ±ãÌîÐ´)
-                nonceStr: '<%=signModel.randstr %>', // ±ØÌî£¬Éú³ÉÇ©ÃûµÄËæ»ú´®(Ëæ±ãÌîÐ´)
-                signature: '<%=signModel.signstr %>', // ±ØÌî£¬Ç©Ãû£¬¼û¸½Â¼1
+                debug: false, // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½,ï¿½ï¿½ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½apiï¿½Ä·ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½Ú¿Í»ï¿½ï¿½ï¿½alertï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½é¿´ï¿½ï¿½ï¿½ï¿½Ä²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½pcï¿½Ë´ò¿ª£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½Í¨ï¿½ï¿½logï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½pcï¿½ï¿½Ê±ï¿½Å»ï¿½ï¿½Ó¡ï¿½ï¿½
+                appId: '<%=signModel.appId %>', // ï¿½ï¿½ï¿½î£¬ï¿½ï¿½ï¿½ÚºÅµï¿½Î¨Ò»ï¿½ï¿½Ê¶
+                timestamp: '<%=signModel.time %>', // ï¿½ï¿½ï¿½î£¬ï¿½ï¿½ï¿½ï¿½Ç©ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½Ð´)
+                nonceStr: '<%=signModel.randstr %>', // ï¿½ï¿½ï¿½î£¬ï¿½ï¿½ï¿½ï¿½Ç©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½Ð´)
+                signature: '<%=signModel.signstr %>', // ï¿½ï¿½ï¿½î£¬Ç©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼1
 
                 jsApiList: [
                     'checkJsApi',
@@ -294,32 +294,32 @@
                     'addCard',
                     'chooseCard',
                     'openCard'
-                ] // ±ØÌî£¬ÐèÒªÊ¹ÓÃµÄJS½Ó¿ÚÁÐ±í£¬ËùÓÐJS½Ó¿ÚÁÐ±í¼û¸½Â¼2
+                ] // ï¿½ï¿½ï¿½î£¬ï¿½ï¿½ÒªÊ¹ï¿½Ãµï¿½JSï¿½Ó¿ï¿½ï¿½Ð±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½JSï¿½Ó¿ï¿½ï¿½Ð±ï¿½ï¿½ï¿½ï¿½ï¿½Â¼2
             });
 
             wx.ready(function () {
                 layer.close(loadingIndex);
-                // configÐÅÏ¢ÑéÖ¤ºó»áÖ´ÐÐready·½·¨£¬ËùÓÐ½Ó¿Úµ÷ÓÃ¶¼±ØÐëÔÚconfig½Ó¿Ú»ñµÃ½á¹ûÖ®ºó£¬configÊÇÒ»¸ö¿Í»§¶ËµÄÒì²½²Ù×÷£¬ËùÒÔÈç¹ûÐèÒªÔÚÒ³Ãæ¼ÓÔØÊ±¾Íµ÷ÓÃÏà¹Ø½Ó¿Ú£¬ÔòÐë°ÑÏà¹Ø½Ó¿Ú·ÅÔÚreadyº¯ÊýÖÐµ÷ÓÃÀ´È·±£ÕýÈ·Ö´ÐÐ¡£¶ÔÓÚÓÃ»§´¥·¢Ê±²Åµ÷ÓÃµÄ½Ó¿Ú£¬Ôò¿ÉÒÔÖ±½Óµ÷ÓÃ£¬²»ÐèÒª·ÅÔÚreadyº¯ÊýÖÐ¡£
+                // configï¿½ï¿½Ï¢ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½Ö´ï¿½ï¿½readyï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð½Ó¿Úµï¿½ï¿½Ã¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½configï¿½Ó¿Ú»ï¿½Ã½ï¿½ï¿½Ö®ï¿½ï¿½configï¿½ï¿½Ò»ï¿½ï¿½ï¿½Í»ï¿½ï¿½Ëµï¿½ï¿½ì²½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½Íµï¿½ï¿½ï¿½ï¿½ï¿½Ø½Ó¿Ú£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø½Ó¿Ú·ï¿½ï¿½ï¿½readyï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½ï¿½ï¿½ï¿½ï¿½È·ï¿½ï¿½ï¿½ï¿½È·Ö´ï¿½Ð¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½Åµï¿½ï¿½ÃµÄ½Ó¿Ú£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½Óµï¿½ï¿½Ã£ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½readyï¿½ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½
                 isWxConfigReady = true;
             });
             wx.error(function (res) {
                 layer.close(loadingIndex);
                 alert(JSON.stringify(res));
-                // configÐÅÏ¢ÑéÖ¤Ê§°Ü»áÖ´ÐÐerrorº¯Êý£¬ÈçÇ©Ãû¹ýÆÚµ¼ÖÂÑéÖ¤Ê§°Ü£¬¾ßÌå´íÎóÐÅÏ¢¿ÉÒÔ´ò¿ªconfigµÄdebugÄ£Ê½²é¿´£¬Ò²¿ÉÒÔÔÚ·µ»ØµÄres²ÎÊýÖÐ²é¿´£¬¶ÔÓÚSPA¿ÉÒÔÔÚÕâÀï¸üÐÂÇ©Ãû¡£
+                // configï¿½ï¿½Ï¢ï¿½ï¿½Ö¤Ê§ï¿½Ü»ï¿½Ö´ï¿½ï¿½errorï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç©ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½Ö¤Ê§ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½Ô´ï¿½configï¿½ï¿½debugÄ£Ê½ï¿½é¿´ï¿½ï¿½Ò²ï¿½ï¿½ï¿½ï¿½ï¿½Ú·ï¿½ï¿½Øµï¿½resï¿½ï¿½ï¿½ï¿½ï¿½Ð²é¿´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½SPAï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç©ï¿½ï¿½ï¿½ï¿½
             });
         }
 
         function qrcode() {
             wx.scanQRCode({
-                needResult: 1, // Ä¬ÈÏÎª0£¬É¨Ãè½á¹ûÓÉÎ¢ÐÅ´¦Àí£¬1ÔòÖ±½Ó·µ»ØÉ¨Ãè½á¹û£¬
-                scanType: ["qrCode", "barCode"], // ¿ÉÒÔÖ¸¶¨É¨¶þÎ¬Âë»¹ÊÇÒ»Î¬Âë£¬Ä¬ÈÏ¶þÕß¶¼ÓÐ
+                needResult: 1, // Ä¬ï¿½ï¿½Îª0ï¿½ï¿½É¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î¢ï¿½Å´ï¿½ï¿½ï¿½ï¿½ï¿½1ï¿½ï¿½Ö±ï¿½Ó·ï¿½ï¿½ï¿½É¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+                scanType: ["qrCode", "barCode"], // ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½É¨ï¿½ï¿½Î¬ï¿½ë»¹ï¿½ï¿½Ò»Î¬ï¿½ë£¬Ä¬ï¿½Ï¶ï¿½ï¿½ß¶ï¿½ï¿½ï¿½
                 success: function (res) {
-                    var result = res.resultStr; // µ±needResult Îª 1 Ê±£¬É¨Âë·µ»ØµÄ½á¹û
+                    var result = res.resultStr; // ï¿½ï¿½needResult Îª 1 Ê±ï¿½ï¿½É¨ï¿½ë·µï¿½ØµÄ½ï¿½ï¿½
                     if (typeof (result) != "undefined") {
                         result = result.substring(result.indexOf(',') + 1, result.length);
-                        //ÎÄ±¾¿ò¸³Öµ
+                        //ï¿½Ä±ï¿½ï¿½ï¿½Öµ
                         $(txtQrCode).val(result);
-                        //µã»÷²éÑ¯°´Å¥
+                        //ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯ï¿½ï¿½Å¥
                         $(btnSaveQrCode).click();
                     }
                 }
@@ -327,8 +327,7 @@
         }
     </script>
     <canvas id="myCanvas" style="display: none;"></canvas>
-    <center>
-        <form id="form1" runat="server" method="post" enctype="multipart/form-data">
+        <form id="form1" runat="server" method="post" enctype="multipart/form-data" class="napf">
             <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">
             </asp:ScriptManager>
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
@@ -354,7 +353,7 @@
                                                         </td>
                                                     </tr>
                                                 </table>
-                                                <img id="IMG_Waiting" src="Images/Processing.gif" alt="ÇëÉÔºò£¬´¦ÀíÖÐ..." style="display: none;" />
+                                                <img id="IMG_Waiting" src="Images/Processing.gif" alt="ï¿½ï¿½ï¿½Ôºò£¬´ï¿½ï¿½ï¿½ï¿½ï¿½..." style="display: none;" />
                                             </a>
                                         </td>
                                     </tr>
@@ -436,7 +435,7 @@
                                                                                             <input type="hidden" val="" id="imgData" runat="server" /></td>
                                                                                         <td>
                                                                                             <input type="button" id="BtnUP" onclick="upload()" value="Upload" />
-                                                                                            <img id="IMG_Uploading" src="Images/Processing.gif" alt="ÇëÉÔºò£¬´¦ÀíÖÐ..." style="display: none;" />
+                                                                                            <img id="IMG_Uploading" src="Images/Processing.gif" alt="ï¿½ï¿½ï¿½Ôºò£¬´ï¿½ï¿½ï¿½ï¿½ï¿½..." style="display: none;" />
                                                                                         </td>
                                                                                     </tr>
                                                                                 </table>
@@ -454,13 +453,13 @@
                                                                         <asp:Button ID="BT_Send" runat="server" OnClick="BT_Send_Click" Text="<%$ Resources:lang,FaSong %>" CssClass="inpu" />
                                                                     </div>
 
-                                                                    <!-- ÐÞ¸Äµã1£º½« npbtn npbtn-inline ¸ÄÎª equal-buttons -->
+                                                                    <!-- ï¿½Þ¸Äµï¿½1ï¿½ï¿½ï¿½ï¿½ npbtn npbtn-inline ï¿½ï¿½Îª equal-buttons -->
                                                                     <div class="equal-buttons">
                                                                         <asp:Button ID="BT_Activity" runat="server" CssClass="inpu" OnClick="BT_Activity_Click" Text="<%$ Resources:lang,BaoCun %>" />
                                                                         <asp:Button ID="BT_Finish" runat="server" CssClass="inpu" Font-Bold="True" OnClick="BT_Finish_Click" Text="<%$ Resources:lang,WanChengTiJiao %>" />
                                                                     </div>
 
-                                                                    <!-- ÐÞ¸Äµã2£º½« npbtn npbtn-inline ¸ÄÎª equal-buttons -->
+                                                                    <!-- ï¿½Þ¸Äµï¿½2ï¿½ï¿½ï¿½ï¿½ npbtn npbtn-inline ï¿½ï¿½Îª equal-buttons -->
                                                                     <div class="equal-buttons" style="margin-top: 10px;">
                                                                         <asp:Button ID="BT_TBD" runat="server" CssClass="inpu" Visible="False" OnClick="BT_TBD_Click" Text="<%$ Resources:lang,GuaQi %>" />
                                                                         <asp:Button ID="BT_CloseTask" runat="server" CssClass="inpu" Visible="False" Enabled="False" OnClick="BT_CloseTask_Click" Text="<%$ Resources:lang,GuanBiCiRenWu %>" />
@@ -544,7 +543,7 @@
                                                                             Text="<%$ Resources:lang,FaSong %>" />
                                                                     </div>
 
-                                                                    <!-- ÐÞ¸Äµã3£º½« npbtn npbtn-inline ¸ÄÎª equal-buttons -->
+                                                                    <!-- ï¿½Þ¸Äµï¿½3ï¿½ï¿½ï¿½ï¿½ npbtn npbtn-inline ï¿½ï¿½Îª equal-buttons -->
                                                                     <div class="equal-buttons">
                                                                         <asp:Button ID="BT_Assign" runat="server" CssClass="inpu" OnClick="BT_Assign_Click" Text="<%$ Resources:lang,FenPai %>" />
                                                                         <asp:Button ID="BT_UpdateAssign" runat="server" CssClass="inpu" Enabled="False" OnClick="BT_UpdateAssign_Click" Text="<%$ Resources:lang,BaoCun %>" />
@@ -771,6 +770,5 @@
                 </asp:UpdateProgress>
             </div>
         </form>
-    </center>
 </body>
 </html>

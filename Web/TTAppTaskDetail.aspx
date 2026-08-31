@@ -13,7 +13,7 @@
     <script type="text/javascript" src="js/allAHandler.js"></script>
 
     <script type="text/javascript" language="javascript">
-        $(function () { initSwipeBack();// ³õÊ¼»¯»¬¶¯·µ»Ø¹¦ÄÜ  initSwipeBack();// ³õÊ¼»¯»¬¶¯·µ»Ø¹¦ÄÜ
+        $(function () { initSwipeBack();// ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø¹ï¿½ï¿½ï¿½  initSwipeBack();// ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø¹ï¿½ï¿½ï¿½
 
            <%-- var MustInFrame = '<%=Session["MustInFrame"].ToString() %>'.trim();
             if (MustInFrame == 'YES') {
@@ -23,8 +23,8 @@
         });
     </script>
 </head>
-<body><div id="swipeFeedback" class="swipe-feedback"><asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYYXXHDKSXBYM%>" /></div> <!-- »¬¶¯·´À¡²ã -->
-    <form id="form1" runat="server" >
+<body><div id="swipeFeedback" class="swipe-feedback"><asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYYXXHDKSXBYM%>" /></div> <!-- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -->
+    <form id="form1" runat="server"  class="napf">
     <div>
     
     </div>

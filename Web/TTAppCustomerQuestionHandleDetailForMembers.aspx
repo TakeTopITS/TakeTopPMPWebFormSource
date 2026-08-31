@@ -20,7 +20,7 @@
     <script type="text/javascript" src="js/allAHandler.js"></script>
     <script type="text/javascript" language="javascript">
         $(function () {
-            initSwipeBack();// ³õÊ¼»¯»¬¶¯·µ»Ø¹¦ÄÜ
+            initSwipeBack();// ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø¹ï¿½ï¿½ï¿½
         });
     </script>
 </head>
@@ -30,13 +30,13 @@
     </div>
 
     <div class="mobile-container">
-        <form id="form1" runat="server">
+        <form id="form1" runat="server" class="napf">
             <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">
             </asp:ScriptManager>
 
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>
-                    <!-- Í·²¿ -->
+                    <!-- Í·ï¿½ï¿½ -->
                     <table cellpadding="0" cellspacing="0" width="100%" class="bian">
                         <tr>
                             <td colspan="2" height="31" class="page_topbj">
@@ -57,7 +57,7 @@
                                                         </td>
                                                     </tr>
                                                 </table>
-                                                <img id="IMG_Waiting" src="Images/Processing.gif" alt="ÇëÉÔºò£¬´¦ÀíÖÐ..." style="display: none;" />
+                                                <img id="IMG_Waiting" src="Images/Processing.gif" alt="ï¿½ï¿½ï¿½Ôºò£¬´ï¿½ï¿½ï¿½ï¿½ï¿½..." style="display: none;" />
                                             </a>
                                         </td>
                                     </tr>
@@ -67,7 +67,7 @@
                     </table>
 
                     <div class="mobile-content">
-                        <!-- ÐèÇó»ù±¾ÐÅÏ¢ -->
+                        <!-- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ -->
                         <div class="mobile-section">
                             <div class="data-row">
                                 <div class="data-label">
@@ -104,7 +104,7 @@
                             </div>
                         </div>
 
-                        <!-- ²Ù×÷°´Å¥ -->
+                        <!-- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å¥ -->
                         <div class="mobile-section">
                               <div class="equal-buttons">
                                 <asp:Button ID="BT_Accept" runat="server" CssClass="inpu" OnClick="BT_Accept_Click" Text="<%$ Resources:lang,ShouLi%>" />
@@ -121,7 +121,7 @@
                             </div>
                         </div>
 
-                        <!-- Ö±½Ó³ÉÔ±ºÍÖ¸¶¨ÊÜÀíÈË -->
+                        <!-- Ö±ï¿½Ó³ï¿½Ô±ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -->
                         <div class="mobile-section">
                             <div class="mobile-form-group">
                                 <div class="mobile-label">
@@ -135,7 +135,7 @@
                             </div>
                         </div>
 
-                        <!-- ¿Í·þ¼ÇÂ¼ -->
+                        <!-- ï¿½Í·ï¿½ï¿½ï¿½Â¼ -->
                         <div class="mobile-section">
                             <div class="mobile-label">
                                 <asp:Label ID="Label16" runat="server" Text="<%$ Resources:lang,KeFuJiLu%>"></asp:Label>:</div>
@@ -198,7 +198,7 @@
                             </asp:DataList>
                         </div>
 
-                        <!-- Òþ²Ø²¿·Ö -->
+                        <!-- ï¿½ï¿½ï¿½Ø²ï¿½ï¿½ï¿½ -->
                         <div style="display: none;">
                             <asp:DataList ID="DataList2" runat="server" CellPadding="0" ForeColor="#333333" Height="1px" Width="100%" Style="display: none;">
                             </asp:DataList>
@@ -223,7 +223,7 @@
                         </div>
                     </div>
 
-                    <!-- Ä£Ì¬¿ò -->
+                    <!-- Ä£Ì¬ï¿½ï¿½ -->
                     <div class="layui-layer layui-layer-iframe" id="popDetailWindow" name="fixedDiv"
                         style="z-index: 9999; width: 98%; height: 500px; position: absolute; overflow: hidden; display: none; border-radius: 10px;">
                         <div class="layui-layer-title" style="background: #e7e7e8;" id="popwindow_title">
@@ -329,7 +329,7 @@
                                                 <div>
                                                     <Upload:InputFile ID="AttachFile" runat="server" Width="180px" />
                                                     &nbsp;<asp:Button ID="BtnUP" runat="server" OnClick="BtnUP_Click" OnClientClick="javascript:document.getElementById('IMG_Uploading').style.display = 'block';" Text="<%$ Resources:lang,ShiYong%>" />
-                                                    <img id="IMG_Uploading" src="Images/Processing.gif" alt="ÇëÉÔºò£¬´¦ÀíÖÐ..." style="display: none;" />
+                                                    <img id="IMG_Uploading" src="Images/Processing.gif" alt="ï¿½ï¿½ï¿½Ôºò£¬´ï¿½ï¿½ï¿½ï¿½ï¿½..." style="display: none;" />
                                                 </div>
                                             </ContentTemplate>
                                             <Triggers>

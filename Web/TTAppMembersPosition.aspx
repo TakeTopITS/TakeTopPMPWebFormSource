@@ -19,7 +19,7 @@
     <script type="text/javascript" src="js/allAHandler.js"></script>
     <script type="text/javascript" language="javascript">
         $(function () {
-            initSwipeBack();// ³õÊ¼»¯»¬¶¯·µ»Ø¹¦ÄÜ 
+            initSwipeBack();// ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø¹ï¿½ï¿½ï¿½ 
 
 
 
@@ -28,12 +28,12 @@
         });
 
         function setMapTrClickLink(gridId) {
-            //×èÖ¹ÊÂ¼þÃ°ÅÝ
+            //ï¿½ï¿½Ö¹ï¿½Â¼ï¿½Ã°ï¿½ï¿½
             jQuery("#" + gridId).find("tr:not(.notTab)").find("a").click(function () {
                 event.stopPropagation();
             });
 
-            //trµã»÷Ìø×ª
+            //trï¿½ï¿½ï¿½ï¿½ï¿½×ª
             jQuery("#" + gridId).find("tr:not(.notTab)").find("a").closest("table").closest("tr").click(function () {
                 $("#IFR_UserPositionMap").attr("src", $(this).find("a").attr("href"));
             });
@@ -43,9 +43,9 @@
 <body>
     <div id="swipeFeedback" class="swipe-feedback">
         <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYYXXHDKSXBYM%>" /></div>
-    <!-- »¬¶¯·´À¡²ã -->
+    <!-- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -->
 
-    <form id="form1" runat="server">
+    <form id="form1" runat="server" class="napf">
         <%--  <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">--%>
         <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">
         </asp:ScriptManager>
@@ -70,7 +70,7 @@
                                                         <%-- <img src="ImagesSkin/main_top_r.jpg" width="5" height="31" />--%></td>
                                                 </tr>
                                             </table>
-                                            <img id="IMG_Waiting" src="Images/Processing.gif" alt="ÇëÉÔºò£¬´¦ÀíÖÐ..." style="display: none;" />
+                                            <img id="IMG_Waiting" src="Images/Processing.gif" alt="ï¿½ï¿½ï¿½Ôºò£¬´ï¿½ï¿½ï¿½ï¿½ï¿½..." style="display: none;" />
                                         </a>
                                     </td>
                                 </tr>
@@ -151,7 +151,7 @@
                                         <%--                                            <asp:BoundColumn DataField="UserName" HeaderText="Name">
                                                 <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="15%" />
                                             </asp:BoundColumn>
-                                            <asp:TemplateColumn HeaderText="Î»ÖÃ:">
+                                            <asp:TemplateColumn HeaderText="Î»ï¿½ï¿½:">
                                                 <ItemTemplate>
                                                     <table width="100%">
                                                         <tr>

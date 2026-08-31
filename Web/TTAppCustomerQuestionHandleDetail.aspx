@@ -21,18 +21,18 @@
 
     <script src="js/exif.js" type="text/javascript"></script>
     <style type="text/css">
-        /* ÐÞ¸´ÈÕÆÚÑ¡ÔñÆ÷ÑùÊ½ */
+        /* ï¿½Þ¸ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ */
         .ajax__calendar_container {
             z-index: 10000 !important;
             position: fixed !important;
         }
 
-        /* È·±£µ¯´°ÄÚµÄÈÕÀúÕýÈ·ÏÔÊ¾ */
+        /* È·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È·ï¿½ï¿½Ê¾ */
         #popDetailWindow .ajax__calendar_container {
             position: absolute !important;
         }
 
-        /* µ÷Õûµ¯´°ÄÚµÄÊäÈë¿ò²¼¾Ö */
+        /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½ò²¼¾ï¿½ */
         .popup-input-group {
             position: relative;
             width: 100%;
@@ -43,7 +43,7 @@
                 box-sizing: border-box;
             }
 
-        /* ÈÕÀú°´Å¥ÑùÊ½ */
+        /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å¥ï¿½ï¿½Ê½ */
         .calendar-button {
             position: absolute;
             right: 5px;
@@ -60,14 +60,14 @@
     </style>
     <script type="text/javascript" language="javascript">
 
-        //Ò³Ãæ¼ÓÔØÍê³É,ajax»Ø·¢¼ÓÔØÍê³ÉºóÖ´ÐÐµÄ²Ù×÷£¬´«ÈëÒ»¸öfuntion
-        //$loadµ÷ÓÃÊ¾Àý
+        //Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ajaxï¿½Ø·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Éºï¿½Ö´ï¿½ÐµÄ²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½funtion
+        //$loadï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½
         //$load(function () {
-        //    //ÐèÒªÒ³Ãæ¼ÓÔØÍê³ÉÖ´ÐÐµÄ´úÂë
+        //    //ï¿½ï¿½ÒªÒ³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ÐµÄ´ï¿½ï¿½ï¿½
         //});
         var $load = function (loadFunc) {
             $(function () {
-                initSwipeBack();// ³õÊ¼»¯»¬¶¯·µ»Ø¹¦ÄÜ  initSwipeBack();// ³õÊ¼»¯»¬¶¯·µ»Ø¹¦ÄÜ
+                initSwipeBack();// ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø¹ï¿½ï¿½ï¿½  initSwipeBack();// ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø¹ï¿½ï¿½ï¿½
                 if (typeof (Sys) != 'undefined') {
                     Sys.WebForms.PageRequestManager.getInstance().add_pageLoaded(loadFunc);
                 }
@@ -80,7 +80,7 @@
         $load(function () {
             /*  if (top.location != self.location) { } else { CloseWebPage(); }*/
 
-            //Ñ¡ÔñÍ¼Æ¬ºóÑ¹ËõÍ¼Æ¬
+            //Ñ¡ï¿½ï¿½Í¼Æ¬ï¿½ï¿½Ñ¹ï¿½ï¿½Í¼Æ¬
             $("#AttachFile").change(function () {
 
                 //alert("KKK");
@@ -88,10 +88,10 @@
                 //console.log(this.files[0]);
                 var _ua = window.navigator.userAgent;
                 var _simpleFile = this.files[0];
-                //ÅÐ¶ÏÊÇ·ñÎªÍ¼Æ¬
+                //ï¿½Ð¶ï¿½ï¿½Ç·ï¿½ÎªÍ¼Æ¬
                 if (!/\/(?:jpeg|png|gif|png|bmp)/i.test(_simpleFile.type)) return;
 
-                //²å¼þexif.js»ñÈ¡iosÍ¼Æ¬µÄ·½ÏòÐÅÏ¢
+                //ï¿½ï¿½ï¿½exif.jsï¿½ï¿½È¡iosÍ¼Æ¬ï¿½Ä·ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
                 var _orientation;
                 //if (_ua.indexOf('iphone') > 0) {
                 EXIF.getData(_simpleFile, function () {
@@ -101,7 +101,7 @@
 
 
 
-                //1.¶ÁÈ¡ÎÄ¼þ£¬Í¨¹ýFileReader£¬½«Í¼Æ¬ÎÄ¼þ×ª»¯ÎªDataURL£¬¼´data:img/png;base64£¬¿ªÍ·µÄurl£¬¿ÉÒÔÖ±½Ó·ÅÔÚimage.srcÖÐ;
+                //1.ï¿½ï¿½È¡ï¿½Ä¼ï¿½ï¿½ï¿½Í¨ï¿½ï¿½FileReaderï¿½ï¿½ï¿½ï¿½Í¼Æ¬ï¿½Ä¼ï¿½×ªï¿½ï¿½ÎªDataURLï¿½ï¿½ï¿½ï¿½data:img/png;base64ï¿½ï¿½ï¿½ï¿½Í·ï¿½ï¿½urlï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½Ó·ï¿½ï¿½ï¿½image.srcï¿½ï¿½;
                 var _reader = new FileReader(),
                     _img = new Image(),
                     _url;
@@ -117,31 +117,31 @@
                 _reader.readAsDataURL(_simpleFile);
             });
 
-            // ÐÞ¸´ÈÕÀú¿Ø¼þµÄÏÔÊ¾
+            // ï¿½Þ¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾
             fixCalendarPosition();
 
-            // ¼àÌýµ¯´°ÏÔÊ¾ÊÂ¼þ
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½Â¼ï¿½
             $(document).on('click', '[onclientclick*="popShow"]', function () {
                 setTimeout(fixCalendarPosition, 100);
             });
 
         });
 
-        // ÐÞ¸´ÈÕÀú¿Ø¼þÎ»ÖÃ
+        // ï¿½Þ¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½Î»ï¿½ï¿½
         function fixCalendarPosition() {
-            // ÕÒµ½µ¯´°ÖÐµÄÈÕÆÚÊäÈë¿ò
+            // ï¿½Òµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             var dateInput = $('#popDetailWindow').find('input[id*="DLC_NextServiceTime"]');
             if (dateInput.length > 0) {
-                // ÕÒµ½ÈÕÀúÈÝÆ÷
+                // ï¿½Òµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 var calendarContainer = $('.ajax__calendar_container');
                 if (calendarContainer.length > 0) {
-                    // È·±£ÈÕÀúÈÝÆ÷Ïà¶ÔÓÚµ¯´°¶¨Î»
+                    // È·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½Î»
                     calendarContainer.css({
                         'position': 'absolute',
                         'z-index': '10001'
                     });
 
-                    // ÖØÐÂ¶¨Î»ÈÕÀúµ½ÊäÈë¿ò¸½½ü
+                    // ï¿½ï¿½ï¿½Â¶ï¿½Î»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ò¸½½ï¿½
                     var inputOffset = dateInput.offset();
                     var inputWidth = dateInput.outerWidth();
 
@@ -156,24 +156,24 @@
 
 
         /**
-         * ¼ÆËãÍ¼Æ¬µÄ³ß´ç£¬¸ù¾Ý³ß´çÑ¹Ëõ
-         * 1. iphoneÊÖ»úhtml5ÉÏ´«Í¼Æ¬·½ÏòÎÊÌâ£¬½èÖúexif.js
-         * 2. °²×¿UCä¯ÀÀÆ÷²»Ö§³Ö new Blob()£¬Ê¹ÓÃBlobBuilder
+         * ï¿½ï¿½ï¿½ï¿½Í¼Æ¬ï¿½Ä³ß´ç£¬ï¿½ï¿½ï¿½Ý³ß´ï¿½Ñ¹ï¿½ï¿½
+         * 1. iphoneï¿½Ö»ï¿½html5ï¿½Ï´ï¿½Í¼Æ¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½â£¬ï¿½ï¿½ï¿½ï¿½exif.js
+         * 2. ï¿½ï¿½×¿UCï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ new Blob()ï¿½ï¿½Ê¹ï¿½ï¿½BlobBuilder
          * @param {Object} _img     Í¼Æ¬
-         * @param {Number} _orientation ÕÕÆ¬ÐÅÏ¢
-         * @return {String}       Ñ¹Ëõºóbase64¸ñÊ½µÄÍ¼Æ¬
+         * @param {Number} _orientation ï¿½ï¿½Æ¬ï¿½ï¿½Ï¢
+         * @return {String}       Ñ¹ï¿½ï¿½ï¿½ï¿½base64ï¿½ï¿½Ê½ï¿½ï¿½Í¼Æ¬
          */
         function compress(_img, _orientation) {
-            //2.¼ÆËã·ûºÏÄ¿±ê³ß´ç¿í¸ßÖµ£¬ÈôÉÏ´«Í¼Æ¬µÄ¿í¸ß¶¼´óÓÚÄ¿±êÍ¼£¬¶ÔÄ¿±êÍ¼µÈ±ÈÑ¹Ëõ£»Èç¹ûÓÐÒ»±ßÐ¡ÓÚ£¬¶ÔÉÏ´«Í¼Æ¬µÈ±È·Å´ó¡£
-            var _goalWidth = 640,         //Ä¿±ê¿í¶È
-                _goalHeight = 480,         //Ä¿±ê¸ß¶È
-                _imgWidth = _img.naturalWidth,   //Í¼Æ¬¿í¶È
-                _imgHeight = _img.naturalHeight,  //Í¼Æ¬¸ß¶È
-                _tempWidth = _imgWidth,      //·Å´ó»òËõÐ¡ºóµÄÁÙÊ±¿í¶È
-                _tempHeight = _imgHeight,     //·Å´ó»òËõÐ¡ºóµÄÁÙÊ±¿í¶È
-                _r = 0;              //Ñ¹Ëõ±È
+            //2.ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½ß´ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½Í¼Æ¬ï¿½Ä¿ï¿½ï¿½ß¶ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½Í¼ï¿½È±ï¿½Ñ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ð¡ï¿½Ú£ï¿½ï¿½ï¿½ï¿½Ï´ï¿½Í¼Æ¬ï¿½È±È·Å´ï¿½
+            var _goalWidth = 640,         //Ä¿ï¿½ï¿½ï¿½ï¿½ï¿½
+                _goalHeight = 480,         //Ä¿ï¿½ï¿½ß¶ï¿½
+                _imgWidth = _img.naturalWidth,   //Í¼Æ¬ï¿½ï¿½ï¿½ï¿½
+                _imgHeight = _img.naturalHeight,  //Í¼Æ¬ï¿½ß¶ï¿½
+                _tempWidth = _imgWidth,      //ï¿½Å´ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½
+                _tempHeight = _imgHeight,     //ï¿½Å´ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½
+                _r = 0;              //Ñ¹ï¿½ï¿½ï¿½ï¿½
 
-            if (_imgWidth > _goalWidth || _imgHeight > _goalHeight) {//¿í»ò¸ß´óÓÚÄ¿±êÍ¼£¬ÐèµÈ±ÈÑ¹Ëõ
+            if (_imgWidth > _goalWidth || _imgHeight > _goalHeight) {//ï¿½ï¿½ï¿½ï¿½ß´ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½È±ï¿½Ñ¹ï¿½ï¿½
                 _r = _imgWidth / _goalWidth;
                 if (_imgHeight / _goalHeight < _r) {
                     _r = _imgHeight / _goalHeight;
@@ -182,7 +182,7 @@
                 _tempHeight = Math.ceil(_imgHeight / _r);
             }
 
-            //3.ÀûÓÃcanvas¶ÔÍ¼Æ¬½øÐÐ²Ã¼ô£¬µÈ±È·Å´ó»òËõÐ¡ºó½øÐÐ¾ÓÖÐ²Ã¼ô
+            //3.ï¿½ï¿½ï¿½ï¿½canvasï¿½ï¿½Í¼Æ¬ï¿½ï¿½ï¿½Ð²Ã¼ï¿½ï¿½ï¿½ï¿½È±È·Å´ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½ï¿½Ð¾ï¿½ï¿½Ð²Ã¼ï¿½
             var _canvas = $("#myCanvas")[0];
 
             var _context = _canvas.getContext('2d');
@@ -190,15 +190,15 @@
             _canvas.height = _tempHeight;
             var _degree;
 
-            //ios bug£¬iphoneÊÖ»úÉÏ¿ÉÄÜ»áÓöµ½Í¼Æ¬·½Ïò´íÎóÎÊÌâ
+            //ios bugï¿½ï¿½iphoneï¿½Ö»ï¿½ï¿½Ï¿ï¿½ï¿½Ü»ï¿½ï¿½ï¿½ï¿½ï¿½Í¼Æ¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             switch (_orientation) {
-                //iphoneºáÆÁÅÄÉã£¬´ËÊ±home¼üÔÚ×ó²à
+                //iphoneï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ã£¬ï¿½ï¿½Ê±homeï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 case 3:
                     _degree = 180;
                     _tempWidth = -_imgWidth;
                     _tempHeight = -_imgHeight;
                     break;
-                //iphoneÊúÆÁÅÄÉã£¬´ËÊ±home¼üÔÚÏÂ·½(Õý³£ÄÃÊÖ»úµÄ·½Ïò)
+                //iphoneï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ã£¬ï¿½ï¿½Ê±homeï¿½ï¿½ï¿½ï¿½ï¿½Â·ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö»ï¿½ï¿½Ä·ï¿½ï¿½ï¿½)
                 case 6:
                     _canvas.width = _imgHeight;
                     _canvas.height = _imgWidth;
@@ -206,7 +206,7 @@
                     _tempWidth = _imgWidth;
                     _tempHeight = -_imgHeight;
                     break;
-                //iphoneÊúÆÁÅÄÉã£¬´ËÊ±home¼üÔÚÉÏ·½
+                //iphoneï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ã£¬ï¿½ï¿½Ê±homeï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½
                 case 8:
                     _canvas.width = _imgHeight;
                     _canvas.height = _imgWidth;
@@ -222,7 +222,7 @@
             } else {
                 _context.drawImage(_img, 0, 0, _tempWidth, _tempHeight);
             }
-            //toDataURL·½·¨£¬¿ÉÒÔ»ñÈ¡¸ñÊ½Îª"data:image/png;base64,***"µÄbase64Í¼Æ¬ÐÅÏ¢£»
+            //toDataURLï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô»ï¿½È¡ï¿½ï¿½Ê½Îª"data:image/png;base64,***"ï¿½ï¿½base64Í¼Æ¬ï¿½ï¿½Ï¢ï¿½ï¿½
             var _data = _canvas.toDataURL('image/jpeg');
             return _data;
         }
@@ -230,21 +230,21 @@
         function upload() {
 
             $.ajax({
-                //Ìá½»Êý¾ÝµÄÀàÐÍ POST GET
+                //ï¿½á½»ï¿½ï¿½ï¿½Ýµï¿½ï¿½ï¿½ï¿½ï¿½ POST GET
                 type: "POST",
-                //Ìá½»µÄÍøÖ·
+                //ï¿½á½»ï¿½ï¿½ï¿½ï¿½Ö·
                 url: "Handler/UploadPhotoToServerSite.ashx",
-                //Ìá½»µÄÊý¾Ý
+                //ï¿½á½»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 data: { FileData: $("#imgData").val(), FileName: $("#AttachFile").val() },
-                //·µ»ØÊý¾ÝµÄ¸ñÊ½
-                //ÔÚÇëÇóÖ®Ç°µ÷ÓÃµÄº¯Êý
+                //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÝµÄ¸ï¿½Ê½
+                //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö®Ç°ï¿½ï¿½ï¿½ÃµÄºï¿½ï¿½ï¿½
                 beforeSend: function () {
                     $("#IMG_Waiting").show();
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                     console.log(XMLHttpRequest);
                 },
-                //³É¹¦·µ»ØÖ®ºóµ÷ÓÃµÄº¯Êý             
+                //ï¿½É¹ï¿½ï¿½ï¿½ï¿½ï¿½Ö®ï¿½ï¿½ï¿½ï¿½ÃµÄºï¿½ï¿½ï¿½             
                 success: function (data) {
 
                     if (data.indexOf("img") > 0) {
@@ -255,28 +255,28 @@
                         alert(data);
                     }
                 },
-                //µ÷ÓÃÖ´ÐÐºóµ÷ÓÃµÄº¯Êý
+                //ï¿½ï¿½ï¿½ï¿½Ö´ï¿½Ðºï¿½ï¿½ï¿½ÃµÄºï¿½ï¿½ï¿½
                 complete: function (XMLHttpRequest, textStatus) {
                     $("#IMG_Waiting").hide();
                 }
             });
         }
 
-        // µ¯´°¿ØÖÆº¯Êý
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æºï¿½ï¿½ï¿½
         function popShow() {
             var popWindow = document.getElementById('popDetailWindow');
             var popShade = document.getElementById('popwindow_shade');
             if (popWindow && popShade) {
                 popWindow.style.display = 'block';
                 popShade.style.display = 'block';
-                // ¾ÓÖÐÏÔÊ¾
+                // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾
                 var windowHeight = window.innerHeight || document.documentElement.clientHeight;
                 var popHeight = popWindow.offsetHeight;
                 var top = (windowHeight - popHeight) / 2;
                 if (top < 0) top = 0;
                 popWindow.style.top = top + 'px';
 
-                // ÉèÖÃ½¹µãµ½µÚÒ»¸öÊäÈë¿ò
+                // ï¿½ï¿½ï¿½Ã½ï¿½ï¿½ãµ½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 setTimeout(function () {
                     var firstInput = popWindow.querySelector('input, select, textarea');
                     if (firstInput) {
@@ -296,7 +296,7 @@
             return false;
         }
 
-        // Ìí¼ÓÒ³Ãæµã»÷ÊÂ¼þ£¬µã»÷µ¯´°Íâ²¿¹Ø±Õ
+        // ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½â²¿ï¿½Ø±ï¿½
         document.addEventListener('click', function (e) {
             var popWindow = document.getElementById('popDetailWindow');
             var popShade = document.getElementById('popwindow_shade');
@@ -307,9 +307,9 @@
             }
         });
 
-        // Ìí¼Ó¼üÅÌÊÂ¼þ£¬°´ESC¼ü¹Ø±Õµ¯´°
+        // ï¿½ï¿½ï¿½Ó¼ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ESCï¿½ï¿½ï¿½Ø±Õµï¿½ï¿½ï¿½
         document.addEventListener('keydown', function (e) {
-            if (e.keyCode === 27) { // ESC¼ü
+            if (e.keyCode === 27) { // ESCï¿½ï¿½
                 popClose();
             }
         });
@@ -319,11 +319,11 @@
     <div id="swipeFeedback" class="swipe-feedback">
         <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" />
     </div>
-    <!-- »¬¶¯·´À¡²ã -->
+    <!-- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -->
     <canvas id="myCanvas" style="display: none;"></canvas>
 
     <div class="mobile-container">
-        <form id="form1" runat="server">
+        <form id="form1" runat="server" class="napf">
             <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">
             </asp:ScriptManager>
 
@@ -348,7 +348,7 @@
                                                         <td width="5"></td>
                                                     </tr>
                                                 </table>
-                                                <img id="IMG_Waiting" src="Images/Processing.gif" alt="ÇëÉÔºò£¬´¦ÀíÖÐ..." style="display: none;" />
+                                                <img id="IMG_Waiting" src="Images/Processing.gif" alt="ï¿½ï¿½ï¿½Ôºò£¬´ï¿½ï¿½ï¿½ï¿½ï¿½..." style="display: none;" />
                                             </a>
                                         </td>
                                     </tr>
@@ -358,7 +358,7 @@
                     </table>
 
                     <div class="napbac">
-                        <!-- ÐèÇó»ù±¾ÐÅÏ¢ -->
+                        <!-- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ -->
                         <div class="napbox">
 
                             <div class="npbxs">
@@ -412,7 +412,7 @@
                             </div>
 
 
-                            <!-- ²Ù×÷°´Å¥ -->
+                            <!-- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å¥ -->
 
                             <div class="npbxs">
                                 <div class="equal-buttons">
@@ -436,7 +436,7 @@
                             </div>
 
 
-                            <!-- Ö±½Ó³ÉÔ±ºÍÖ¸¶¨ÊÜÀíÈË -->
+                            <!-- Ö±ï¿½Ó³ï¿½Ô±ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -->
 
                             <div class="npbxs">
                                 <div class="mline">
@@ -466,7 +466,7 @@
                             </div>
 
 
-                            <!-- ÐÂ½¨°´Å¥ -->
+                            <!-- ï¿½Â½ï¿½ï¿½ï¿½Å¥ -->
                             <div class="npbxs">
                                 <div class="equal-buttons">
                                     <asp:Button ID="BT_Create" runat="server" Text="<%$ Resources:lang,New%>" CssClass="inpu" OnClick="BT_Create_Click" OnClientClick="popShow(); return false;" />
@@ -474,7 +474,7 @@
                             </div>
 
 
-                            <!-- ¿Í·þ¼ÇÂ¼ -->
+                            <!-- ï¿½Í·ï¿½ï¿½ï¿½Â¼ -->
                             <div class="napbox">
                                 <div class="npbx">
                                     <div class="npb">
@@ -487,14 +487,14 @@
                                             Height="1px" Width="100%">
                                             <ItemTemplate>
                                                 <div style="margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 10px;">
-                                                    <!-- µÚÒ»ÐÐ£ºID°´Å¥ -->
+                                                    <!-- ï¿½ï¿½Ò»ï¿½Ð£ï¿½IDï¿½ï¿½Å¥ -->
                                                     <div style="margin-bottom: 8px;">
                                                         <asp:Button ID="BT_ID" runat="server" Text=' <%#DataBinder .Eval (Container .DataItem ,"ID") %> ' CssClass="inpu" CommandName="Update" OnClientClick="popShow(); return false;" />
                                                     </div>
 
-                                                    <!-- µÚ¶þÐÐ¿ªÊ¼£ºÏêÏ¸ÐÅÏ¢ -->
+                                                    <!-- ï¿½Ú¶ï¿½ï¿½Ð¿ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½Ï¢ -->
                                                     <div style="display: flex; flex-wrap: wrap; gap: 5px 0;">
-                                                        <!-- ÁªÏµÈË -->
+                                                        <!-- ï¿½ï¿½Ïµï¿½ï¿½ -->
                                                         <div style="flex: 0 0 100%; display: flex; margin-bottom: 5px;">
                                                             <div style="width: 100px; flex-shrink: 0; font-weight: bold;">
                                                                 <asp:Label ID="Label18" runat="server" Text="<%$ Resources:lang,LianXiRen%>"></asp:Label>:
@@ -504,7 +504,7 @@
                                                             </div>
                                                         </div>
 
-                                                        <!-- ÊÜÀíÈË -->
+                                                        <!-- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -->
                                                         <div style="flex: 0 0 100%; display: flex; margin-bottom: 5px;">
                                                             <div style="width: 100px; flex-shrink: 0; font-weight: bold;">
                                                                 <asp:Label ID="Label19" runat="server" Text="<%$ Resources:lang,ShouLiRen%>"></asp:Label>:
@@ -514,7 +514,7 @@
                                                             </div>
                                                         </div>
 
-                                                        <!-- ¿Í·¿Òâ¼û -->
+                                                        <!-- ï¿½Í·ï¿½ï¿½ï¿½ï¿½ -->
                                                         <div style="flex: 0 0 100%; display: flex; margin-bottom: 5px;">
                                                             <div style="width: 100px; flex-shrink: 0; font-weight: bold;">
                                                                 <asp:Label ID="Label20" runat="server" Text="<%$ Resources:lang,KeFangYiJian%>"></asp:Label>:
@@ -524,7 +524,7 @@
                                                             </div>
                                                         </div>
 
-                                                        <!-- ÁªÏµ·½Ê½ -->
+                                                        <!-- ï¿½ï¿½Ïµï¿½ï¿½Ê½ -->
                                                         <div style="flex: 0 0 100%; display: flex; margin-bottom: 5px;">
                                                             <div style="width: 100px; flex-shrink: 0; font-weight: bold;">
                                                                 <asp:Label ID="Label43" runat="server" Text="<%$ Resources:lang,LianXiRen%>"></asp:Label>:
@@ -535,7 +535,7 @@
                                                             </div>
                                                         </div>
 
-                                                        <!-- ´¦ÀíÄÚÈÝ -->
+                                                        <!-- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -->
                                                         <div style="flex: 0 0 100%; display: flex; margin-bottom: 5px;">
                                                             <div style="width: 100px; flex-shrink: 0; font-weight: bold;">
                                                                 <asp:Label ID="Label21" runat="server" Text="<%$ Resources:lang,ChuLiNeiRong%>"></asp:Label>:
@@ -545,7 +545,7 @@
                                                             </div>
                                                         </div>
 
-                                                        <!-- ÏÂ´Î·þÎñÊ±¼ä -->
+                                                        <!-- ï¿½Â´Î·ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ -->
                                                         <div style="flex: 0 0 100%; display: flex; margin-bottom: 5px;">
                                                             <div style="width: 100px; flex-shrink: 0; font-weight: bold;">
                                                                 <asp:Label ID="Label22" runat="server" Text="<%$ Resources:lang,XiaCiFuWuShiJian%>"></asp:Label>:
@@ -555,7 +555,7 @@
                                                             </div>
                                                         </div>
 
-                                                        <!-- ÌáÇ°Í¨ÖªÌìÊý -->
+                                                        <!-- ï¿½ï¿½Ç°Í¨Öªï¿½ï¿½ï¿½ï¿½ -->
                                                         <div style="flex: 0 0 100%; display: flex; margin-bottom: 5px;">
                                                             <div style="width: 100px; flex-shrink: 0; font-weight: bold;">
                                                                 <asp:Label ID="Label23" runat="server" Text="<%$ Resources:lang,TiQianTongZhiTianShu%>"></asp:Label>:
@@ -572,7 +572,7 @@
                                 </div>
                             </div>
 
-                            <!-- Òþ²Ø²¿·Ö -->
+                            <!-- ï¿½ï¿½ï¿½Ø²ï¿½ï¿½ï¿½ -->
                             <div style="display: none;">
                                 <asp:DataList ID="DataList2" runat="server" CellPadding="0" ForeColor="#333333" Height="1px"
                                     Width="100%" Style="display: none;">
@@ -604,7 +604,7 @@
                             </div>
                         </div>
 
-                        <!-- µ¯´°²¿·Ö - ±£³ÖÔÚformÄÚµ«ÔÚÖ÷ÄÚÈÝÍâ -->
+                        <!-- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½formï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -->
                         <div class="layui-layer-shade" id="popwindow_shade" style="z-index: 9998; background-color: #000; opacity: 0.3; filter: alpha(opacity=30); display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;"></div>
 
                         <div class="layui-layer layui-layer-iframe" id="popDetailWindow" name="fixedDiv"
@@ -612,7 +612,7 @@
                             <div class="layui-layer-title" style="background: #e7e7e8; padding: 10px 15px; border-bottom: 1px solid #ddd;" id="popwindow_title">
                                 <asp:Label ID="Label41" runat="server" Text="&lt;div&gt;&lt;img src=ImagesSkin/Update.png border=0 width=30px height=30px alt='BusinessForm' /&gt;&lt;/div&gt;"></asp:Label>
                                 <span class="layui-layer-setwin" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%);">
-                                    <a onclick="return popClose();" class="layui-layer-ico layui-layer-close layui-layer-close1 notTab" href="javascript:;" style="display: block; width: 30px; height: 30px; line-height: 30px; text-align: center;">¡Á</a>
+                                    <a onclick="return popClose();" class="layui-layer-ico layui-layer-close layui-layer-close1 notTab" href="javascript:;" style="display: block; width: 30px; height: 30px; line-height: 30px; text-align: center;">ï¿½ï¿½</a>
                                 </span>
                             </div>
                             <div id="popwindow_content" class="layui-layer-content" style="overflow: auto; padding: 15px; max-height: calc(80vh - 100px);">
@@ -715,7 +715,7 @@
                                                         </div>
                                                         <div class="upload-button">
                                                             <asp:Button ID="BtnUP" runat="server" OnClick="BtnUP_Click" OnClientClick="javascript:document.getElementById('IMG_Uploading').style.display = 'block';" Text="<%$ Resources:lang,ShiYong%>" CssClass="mobile-button" />
-                                                            <img id="IMG_Uploading" src="Images/Processing.gif" alt="ÇëÉÔºò£¬´¦ÀíÖÐ..." style="display: none;" />
+                                                            <img id="IMG_Uploading" src="Images/Processing.gif" alt="ï¿½ï¿½ï¿½Ôºò£¬´ï¿½ï¿½ï¿½ï¿½ï¿½..." style="display: none;" />
                                                         </div>
                                                     </div>
                                                 </ContentTemplate>
@@ -729,7 +729,7 @@
                                             <div style="font-weight: bold; margin-bottom: 5px;">
                                                 <asp:Label ID="Label44" runat="server" Text="<%$ Resources:lang,XiaCi%>"></asp:Label>
                                             </div>
-                                            <!-- ÐÞ¸´ÈÕÆÚÑ¡ÔñÆ÷Î»ÖÃ -->
+                                            <!-- ï¿½Þ¸ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½ -->
                                             <div class="popup-input-group">
                                                 <asp:TextBox ID="DLC_NextServiceTime" ReadOnly="false" runat="server" Width="100%" Style="padding-right: 30px;"></asp:TextBox>
                                                 <ajaxToolkit:CalendarExtender Format="yyyy-MM-dd" ID="CalendarExtender1" runat="server" TargetControlID="DLC_NextServiceTime"
@@ -760,7 +760,7 @@
                                 </div>
                             </div>
 
-                            <!-- ÐÞ¸ÄºóµÄµ¯´°µ×²¿°´Å¥ -->
+                            <!-- ï¿½Þ¸Äºï¿½Äµï¿½ï¿½ï¿½ï¿½×²ï¿½ï¿½ï¿½Å¥ -->
                             <div id="popwindow_footer" class="layui-layer-btn" style="border-top: 1px solid #ccc; padding: 15px; text-align: center; background: white; position: sticky; bottom: 0;">
                                 <asp:LinkButton ID="BT_New" runat="server"
                                     OnClick="BT_New_Click"

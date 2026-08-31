@@ -40,7 +40,7 @@
 
 </head>
 <body style="margin: 5px 10px;">
-    <form id="form1" runat="server">
+    <form id="form1" runat="server" class="napf">
         <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">
         </asp:ScriptManager>
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">

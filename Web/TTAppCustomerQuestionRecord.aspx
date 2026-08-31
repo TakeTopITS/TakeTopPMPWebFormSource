@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppCustomerQuestionRecord.aspx.cs" Inherits="TTAppCustomerQuestionRecord" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppCustomerQuestionRecord.aspx.cs" Inherits="TTAppCustomerQuestionRecord" %>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
 
@@ -662,7 +662,7 @@
 
     <!-- 主要内容区域 -->
     <div class="content-wrapper">
-        <form id="form1" runat="server">
+        <form id="form1" runat="server" class="napf">
             <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">
             </asp:ScriptManager>
 

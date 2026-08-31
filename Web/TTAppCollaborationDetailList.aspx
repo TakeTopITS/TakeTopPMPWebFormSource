@@ -13,7 +13,7 @@
     <script type="text/javascript" src="js/allAHandler.js"></script>
     <script type="text/javascript" language="javascript">
         $(function () {
-            initSwipeBack();// ³õÊ¼»¯»¬¶¯·µ»Ø¹¦ÄÜ  initSwipeBack();// ³õÊ¼»¯»¬¶¯·µ»Ø¹¦ÄÜ
+            initSwipeBack();// ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø¹ï¿½ï¿½ï¿½  initSwipeBack();// ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø¹ï¿½ï¿½ï¿½
         });
 
     </script>
@@ -23,9 +23,8 @@
     <div id="swipeFeedback" class="swipe-feedback">
         <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" />
     </div>
-    <!-- »¬¶¯·´À¡²ã -->
-    <center>
-        <form id="form1" runat="server">
+    <!-- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -->
+        <form id="form1" runat="server" class="napf">
             <%--  <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">--%>
             <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">
             </asp:ScriptManager>
@@ -61,7 +60,7 @@
                                     <tr>
                                         <td style="width: 100%; padding-top: 5px; text-align: left; vertical-align: top;">
                                             <cc2:TabContainer CssClass="ajax_tab_menu" ID="TabContainer1" runat="server" ActiveTabIndex="0" Width="100%">
-                                                <cc2:TabPanel ID="TabPanel1" runat="server" HeaderText="»á»°¼ÇÂ¼" TabIndex="0" BorderWidth="0">
+                                                <cc2:TabPanel ID="TabPanel1" runat="server" HeaderText="ï¿½á»°ï¿½ï¿½Â¼" TabIndex="0" BorderWidth="0">
                                                     <HeaderTemplate>
                                                         <asp:Label ID="Label2" runat="server" Text="<%$ Resources:lang,HuiHuaJiLu%>"></asp:Label>
                                                     </HeaderTemplate>
@@ -95,7 +94,7 @@
                                                         </asp:Timer>
                                                     </ContentTemplate>
                                                 </cc2:TabPanel>
-                                                <cc2:TabPanel ID="TabPanel2" runat="server" HeaderText="Ïà¹ØÎÄ¼þ" TabIndex="1" BorderWidth="0">
+                                                <cc2:TabPanel ID="TabPanel2" runat="server" HeaderText="ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½" TabIndex="1" BorderWidth="0">
                                                     <HeaderTemplate>
                                                         <asp:Label ID="Label4" runat="server" Text="<%$ Resources:lang,WenJian%>"></asp:Label>
                                                     </HeaderTemplate>
@@ -127,7 +126,7 @@
                                                             <Columns>
 
                                                                 <asp:HyperLinkColumn DataNavigateUrlField="Address" DataNavigateUrlFormatString="{0}"
-                                                                    DataTextField="DocName" HeaderText="ÎÄ¼þÃû">
+                                                                    DataTextField="DocName" HeaderText="ï¿½Ä¼ï¿½ï¿½ï¿½">
                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" />
                                                                 </asp:HyperLinkColumn>
                                                             </Columns>
@@ -172,7 +171,6 @@
                 </asp:UpdateProgress>
             </div>
         </form>
-    </center>
 </body>
 <%--<script type="text/javascript" language="javascript">var cssDirectory = '<%=Session["CssDirectory"] %>'; var oLink = document.getElementById('mainCss'); oLink.href = 'css/' + cssDirectory + '/' + 'bluelightmain.css';</script>--%>
 </html>

@@ -93,7 +93,7 @@
     <div id="swipeFeedback" class="swipe-feedback">
         <asp:Label ID="LabelSwipe" runat="server" Text="<%$ Resources:lang,XYHDKHHSYY%>" />
     </div>
-    <form id="form1" runat="server">
+    <form id="form1" runat="server" class="napf">
         <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">
         </asp:ScriptManager>
 

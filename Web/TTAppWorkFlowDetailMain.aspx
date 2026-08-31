@@ -10,8 +10,8 @@
 
   
 </head>
-<body><div id="swipeFeedback" class="swipe-feedback"><asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYYXXHDKSXBYM%>" /></div> <!-- »¬¶¯·´À¡²ã -->
-    <form id="form1" runat="server">
+<body><div id="swipeFeedback" class="swipe-feedback"><asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYYXXHDKSXBYM%>" /></div> <!-- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -->
+    <form id="form1" runat="server" class="napf">
         <table cellpadding="0" cellspacing="0" width="100%" class="bian">
             <tr>
                 <td style ="text-align :center ;vertical-align :middle ; color :lightgrey  ; height :500px;">

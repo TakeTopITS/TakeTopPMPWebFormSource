@@ -10,8 +10,7 @@
 
 </head>
 <body>
-    <center>
-        <form id="form1" runat="server">
+        <form id="form1" runat="server" class="napf">
 
             <table cellpadding="0" cellspacing="0" width="100%" class="bian">
                 <tr>
@@ -101,6 +100,5 @@
                 </tr>
             </table>
         </form>
-    </center>
 </body>
 <script type="text/javascript" language="javascript">var cssDirectory = '<%=Session["CssDirectory"] %>'; var oLink = document.getElementById('mainCss'); oLink.href = 'css/' + cssDirectory + '/' + 'bluelightmain.css';</script></html>

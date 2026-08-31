@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppCollaborationTaskDetail.aspx.cs" Inherits="TTAppCollaborationTaskDetail" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppCollaborationTaskDetail.aspx.cs" Inherits="TTAppCollaborationTaskDetail" %>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
 
@@ -322,8 +322,7 @@
         }
     </script>
     <canvas id="myCanvas" style="display: none;"></canvas>
-    <center>
-        <form id="form1" runat="server" method="post" enctype="multipart/form-data">
+        <form id="form1" runat="server" method="post" enctype="multipart/form-data" class="napf">
             <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">
             </asp:ScriptManager>
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
@@ -750,6 +749,5 @@
                 </asp:UpdateProgress>
             </div>
         </form>
-    </center>
 </body>
 </html>

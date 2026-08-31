@@ -8,8 +8,8 @@
      <link id="mainCss" href="css/APP.css" rel="stylesheet" type="text/css" />
       <link id="flxappCss" href="css/APPFlx.css" rel="stylesheet" type="text/css" />
 </head>
-<body><div id="swipeFeedback" class="swipe-feedback"><asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYYXXHDKSXBYM%>" /></div> <!-- »¬¶¯·´À¡²ã -->
-    <form id="form1" runat="server">
+<body><div id="swipeFeedback" class="swipe-feedback"><asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYYXXHDKSXBYM%>" /></div> <!-- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -->
+    <form id="form1" runat="server" class="napf">
       
             <table cellpadding="0" cellspacing="0" width="100%" class="bian">
                 <tr>
@@ -32,7 +32,7 @@
                                                 </td>
                                             </tr>
                                         </table>
-                                          <img id="IMG_Waiting" src="Images/Processing.gif" alt="ÇëÉÔºò£¬´¦ÀíÖÐ..." style="display: none;" />
+                                          <img id="IMG_Waiting" src="Images/Processing.gif" alt="ï¿½ï¿½ï¿½Ôºò£¬´ï¿½ï¿½ï¿½ï¿½ï¿½..." style="display: none;" />
                                     </a>
                                 </td>
                             </tr>

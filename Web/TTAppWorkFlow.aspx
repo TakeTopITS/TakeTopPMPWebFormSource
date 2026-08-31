@@ -145,7 +145,7 @@
     <script type="text/javascript" src="js/allAHandler.js"></script>
     <script type="text/javascript" language="javascript">
         $(function () {
-            initSwipeBack();// ³õÊ¼»¯»¬¶¯·µ»Ø¹¦ÄÜ 
+            initSwipeBack();// ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø¹ï¿½ï¿½ï¿½ 
 
 
 
@@ -153,7 +153,7 @@
 
         });
 
-        //µã»÷DATAGRIDÐÐÄÚÈÎºÎÒ»µã£¬¶¼ÄÜ´¥·¢ÐÐÄÚµÄÁ´½Ó
+        //ï¿½ï¿½ï¿½DATAGRIDï¿½ï¿½ï¿½ï¿½ï¿½Îºï¿½Ò»ï¿½ã£¬ï¿½ï¿½ï¿½Ü´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½
         function SetDataGridTrClickLink() {
 
             setTrClickLinkSpec("TabContainer2_TabPanel3_DataGrid1");
@@ -170,8 +170,8 @@
     <div id="swipeFeedback" class="swipe-feedback">
         <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYYXXHDKSXBYM%>" />
     </div>
-    <!-- »¬¶¯·´À¡²ã -->
-    <form id="form1" runat="server">
+    <!-- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -->
+    <form id="form1" runat="server" class="napf">
         <%--  <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">--%>
         <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">
         </asp:ScriptManager>
@@ -197,7 +197,7 @@
                                                             <asp:Label ID="Label8" runat="server" Text="<%$ Resources:lang,Back%>" />
                                                         </td>
                                                         <td width="5">
-                                                            <img id="IMG_Waiting" src="Images/Processing.gif" alt="ÇëÉÔºò£¬´¦ÀíÖÐ..." style="display: none;" />
+                                                            <img id="IMG_Waiting" src="Images/Processing.gif" alt="ï¿½ï¿½ï¿½Ôºò£¬´ï¿½ï¿½ï¿½ï¿½ï¿½..." style="display: none;" />
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -238,7 +238,7 @@
                                                                                 <asp:BoundColumn DataField="ID" HeaderText="Number" Visible="False">
                                                                                     <ItemStyle CssClass="" HorizontalAlign="left" Width="5%" />
                                                                                 </asp:BoundColumn>
-                                                                                <asp:TemplateColumn HeaderText="ÒªÉóºËµÄ¹¤×÷">
+                                                                                <asp:TemplateColumn HeaderText="Òªï¿½ï¿½ËµÄ¹ï¿½ï¿½ï¿½">
                                                                                     <ItemTemplate>
 
                                                                                         <div class="npb">
@@ -250,7 +250,7 @@
                                                                                                     <h4><%# DataBinder.Eval(Container.DataItem,"WorkDetail") %></h4>
                                                                                                     <h5><%# DataBinder.Eval(Container.DataItem,"WLName") %></h5>
                                                                                                     <h6><%# DataBinder.Eval(Container.DataItem,"CreatorName") %></h6>
-                                                                                                    <sub class="yesno">±ØÐè:<%# DataBinder.Eval(Container.DataItem,"Requisite") %></sub><label><%# ShareClass.GetStatusHomeNameByWorkflowStatus(Eval("Status").ToString()) %></label></a>
+                                                                                                    <sub class="yesno">ï¿½ï¿½ï¿½ï¿½:<%# DataBinder.Eval(Container.DataItem,"Requisite") %></sub><label><%# ShareClass.GetStatusHomeNameByWorkflowStatus(Eval("Status").ToString()) %></label></a>
                                                                                             </div>
                                                                                         </div>
 
@@ -298,7 +298,7 @@
                                                                                 <asp:BoundColumn DataField="ID" HeaderText="Number" Visible="False">
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="5%" />
                                                                                 </asp:BoundColumn>
-                                                                                <asp:TemplateColumn HeaderText="ÒªÉóºËµÄ¹¤×÷">
+                                                                                <asp:TemplateColumn HeaderText="Òªï¿½ï¿½ËµÄ¹ï¿½ï¿½ï¿½">
                                                                                     <ItemTemplate>
 
 
@@ -312,7 +312,7 @@
                                                                                                     <h4><%# DataBinder.Eval(Container.DataItem,"WorkDetail") %></h4>
                                                                                                     <h5><%# DataBinder.Eval(Container.DataItem,"WLName") %></h5>
                                                                                                     <h6><%# DataBinder.Eval(Container.DataItem,"CreatorName") %></h6>
-                                                                                                    <sub class="yesno">±ØÐè:<%# DataBinder.Eval(Container.DataItem,"Requisite") %></sub><label><%# ShareClass.GetStatusHomeNameByWorkflowStatus(Eval("Status").ToString()) %></label></a>
+                                                                                                    <sub class="yesno">ï¿½ï¿½ï¿½ï¿½:<%# DataBinder.Eval(Container.DataItem,"Requisite") %></sub><label><%# ShareClass.GetStatusHomeNameByWorkflowStatus(Eval("Status").ToString()) %></label></a>
                                                                                             </div>
                                                                                         </div>
 
@@ -347,7 +347,7 @@
                                                                              
                                                                                 <asp:BoundColumn DataField="WLID" HeaderText="Number" Visible="false"></asp:BoundColumn>
 
-                                                                                <asp:TemplateColumn HeaderText="ÒªÉóºËµÄ¹¤×÷">
+                                                                                <asp:TemplateColumn HeaderText="Òªï¿½ï¿½ËµÄ¹ï¿½ï¿½ï¿½">
                                                                                     <ItemTemplate>
 
                                                                                         <div class="npb">
