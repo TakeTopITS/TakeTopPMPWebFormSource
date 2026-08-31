@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppCollaborationDetailList.aspx.cs" Inherits="TTAppCollaborationDetailList" %>
+﻿﻿﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppCollaborationDetailList.aspx.cs" Inherits="TTAppCollaborationDetailList" %>
 
 <%@ Register Assembly="Brettle.Web.NeatUpload" Namespace="Brettle.Web.NeatUpload"
     TagPrefix="Upload" %>
@@ -61,7 +61,7 @@
                                     <tr>
                                         <td style="width: 100%; padding-top: 5px; text-align: left; vertical-align: top;">
                                             <cc2:TabContainer CssClass="ajax_tab_menu" ID="TabContainer1" runat="server" ActiveTabIndex="0" Width="100%">
-                                                <cc2:TabPanel ID="TabPanel1" runat="server" HeaderText="锟结话锟斤拷录" TabIndex="0" BorderWidth="0">
+                                                <cc2:TabPanel ID="TabPanel1" runat="server" HeaderText="联系人列表" TabIndex="0" BorderWidth="0">
                                                     <HeaderTemplate>
                                                         <asp:Label ID="Label2" runat="server" Text="<%$ Resources:lang,HuiHuaJiLu%>"></asp:Label>
                                                     </HeaderTemplate>
@@ -95,7 +95,7 @@
                                                         </asp:Timer>
                                                     </ContentTemplate>
                                                 </cc2:TabPanel>
-                                                <cc2:TabPanel ID="TabPanel2" runat="server" HeaderText="锟斤拷锟斤拷募锟? TabIndex="1" BorderWidth="0">
+                                                <cc2:TabPanel ID="TabPanel2" runat="server" HeaderText="附件" TabIndex="1" BorderWidth="0">
                                                     <HeaderTemplate>
                                                         <asp:Label ID="Label4" runat="server" Text="<%$ Resources:lang,WenJian%>"></asp:Label>
                                                     </HeaderTemplate>
@@ -127,7 +127,7 @@
                                                             <Columns>
 
                                                                 <asp:HyperLinkColumn DataNavigateUrlField="Address" DataNavigateUrlFormatString="{0}"
-                                                                    DataTextField="DocName" HeaderText="锟侥硷拷锟斤拷">
+                                                                    DataTextField="DocName" HeaderText="文件名称">
                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" />
                                                                 </asp:HyperLinkColumn>
                                                             </Columns>

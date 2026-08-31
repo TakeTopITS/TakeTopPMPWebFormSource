@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppCreateOtherTaskSAAS.aspx.cs" Inherits="TTAppCreateOtherTaskSAAS" %>
+﻿﻿﻿﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppCreateOtherTaskSAAS.aspx.cs" Inherits="TTAppCreateOtherTaskSAAS" %>
 
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
@@ -169,7 +169,7 @@
                                                                 <asp:BoundColumn DataField="Task" HeaderText="Task">
                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" Width="15%" />
                                                                 </asp:BoundColumn>
-                                                                <%--  <asp:BoundColumn DataField="Priority" HeaderText="锟斤拷锟饺硷拷">
+                                                                <%--  <asp:BoundColumn DataField="Priority" HeaderText="优先级">
                                                                         <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="8%" />
                                                                     </asp:BoundColumn>
 
@@ -182,7 +182,7 @@
                                                                     <asp:BoundColumn DataField="Budget" HeaderText="Budget">
                                                                         <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="5%" />
                                                                     </asp:BoundColumn>
-                                                                    <asp:BoundColumn DataField="FinishPercent" HeaderText="锟斤拷沙潭锟?>
+                                                                    <asp:BoundColumn DataField="FinishPercent" HeaderText="完成进度">
                                                                         <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="7%" />
                                                                     </asp:BoundColumn>
                                                                     <asp:BoundColumn DataField="Expense" HeaderText="Expense">
@@ -635,10 +635,10 @@
                                                     <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="9%" />
                                                 </asp:TemplateColumn>
 
-                                                <asp:BoundColumn DataField="OperatorName" HeaderText="锟斤拷锟斤拷锟斤拷">
+                                                <asp:BoundColumn DataField="OperatorName" HeaderText="操作人">
                                                     <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="20%" />
                                                 </asp:BoundColumn>
-                                                <asp:BoundColumn DataField="Operation" HeaderText="锟斤拷锟斤拷锟剿的癸拷锟斤拷">
+                                                <asp:BoundColumn DataField="Operation" HeaderText="操作说明">
                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" />
                                                 </asp:BoundColumn>
                                             </Columns>

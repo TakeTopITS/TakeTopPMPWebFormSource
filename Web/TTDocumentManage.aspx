@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTDocumentManage.aspx.cs" Inherits="TTDocumentManage" %>
+ï»¿ï»¿ï»¿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTDocumentManage.aspx.cs" Inherits="TTDocumentManage" %>
 
 
 <%@ Register Assembly="NickLee.Web.UI" Namespace="NickLee.Web.UI" TagPrefix="NickLee" %>
@@ -73,7 +73,7 @@
                                                     <tr>
                                                         <td style="width: 220px; text-align: left;">
                                                             <asp:TreeView ID="TreeView1" runat="server" NodeWrap="True" OnSelectedNodeChanged="TreeView1_SelectedNodeChanged"
-                                                                Width="220px" ShowLines="True" Font-Size="10pt" Font-Bold="False" Font-Names="ËÎÌå">
+                                                                Width="220px" ShowLines="True" Font-Size="10pt" Font-Bold="False" Font-Names="å®‹ä½“">
                                                                 <RootNodeStyle CssClass="rootNode" />
                                                                 <NodeStyle CssClass="treeNode" />
                                                                 <LeafNodeStyle CssClass="leafNode" />
@@ -260,7 +260,7 @@
                                                                     <asp:BoundColumn DataField="RelatedType" HeaderText="MajorCategory">
                                                                         <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="10%" />
                                                                     </asp:BoundColumn>
-                                                                    <asp:TemplateColumn HeaderText="¸¸Àà">
+                                                                    <asp:TemplateColumn HeaderText="çˆ¶ç±»">
                                                                         <ItemTemplate>
                                                                             <%# ShareClass . getDocParentTypeByID(Eval("DocTypeID").ToString()) %>
                                                                         </ItemTemplate>
@@ -270,21 +270,21 @@
                                                                         <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="10%" />
                                                                     </asp:BoundColumn>
                                                                     <asp:HyperLinkColumn DataNavigateUrlField="Address" DataNavigateUrlFormatString="{0}"
-                                                                        DataTextField="DocName" HeaderText="ÎÄ¼þÃû" Target="_blank">
+                                                                        DataTextField="DocName" HeaderText="æ–‡ä»¶å" Target="_blank">
                                                                         <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" Width="21%" />
                                                                     </asp:HyperLinkColumn>
                                                                     <asp:BoundColumn DataField="DepartName" HeaderText="Department">
                                                                         <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="10%" />
                                                                     </asp:BoundColumn>
                                                                     <asp:HyperLinkColumn DataNavigateUrlField="UploadManCode" DataNavigateUrlFormatString="TTUserInforSimple.aspx?UserCode={0}"
-                                                                        DataTextField="UploadManName" HeaderText="ÉÏ´«Õß" Target="_blank">
+                                                                        DataTextField="UploadManName" HeaderText="ä¸Šä¼ è€…" Target="_blank">
                                                                         <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="10%" />
                                                                     </asp:HyperLinkColumn>
-                                                                    <asp:BoundColumn DataField="UploadTime" HeaderText="ÉÏ´«Ê±¼ä">
+                                                                    <asp:BoundColumn DataField="UploadTime" HeaderText="ä¸Šä¼ æ—¶é—´">
                                                                         <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="15%" />
                                                                     </asp:BoundColumn>
                                                                     <asp:BoundColumn DataField="Address" Visible="False"></asp:BoundColumn>
-                                                                    <asp:HyperLinkColumn DataNavigateUrlField="DocID" DataTextField="RelatedID" HeaderText="Ïà¹Ø"
+                                                                    <asp:HyperLinkColumn DataNavigateUrlField="DocID" DataTextField="RelatedID" HeaderText="ç›¸å…³"
                                                                         Target="_blank" DataNavigateUrlFormatString="TTRelatedFormView.aspx?Type=Doc&ID={0}">
                                                                         <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="10%" />
                                                                     </asp:HyperLinkColumn>

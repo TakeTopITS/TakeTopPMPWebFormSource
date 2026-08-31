@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppMakeCollaboration.aspx.cs" Inherits="TTAppMakeCollaboration" %>
+﻿﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppMakeCollaboration.aspx.cs" Inherits="TTAppMakeCollaboration" %>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
 
@@ -145,7 +145,7 @@
                                                         <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" Width="30%" />
                                                     </asp:HyperLinkColumn>
                                                     <%-- <asp:HyperLinkColumn DataNavigateUrlField="CreatorCode" DataNavigateUrlFormatString="TTUserInforSimple.aspx?UserCode={0}"
-                                                        DataTextField="CreatorName" HeaderText="锟斤拷锟斤拷锟斤拷" Target="_blank">
+                                                        DataTextField="CreatorName" HeaderText="创建人" Target="_blank">
                                                         <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="15%" />
                                                     </asp:HyperLinkColumn>
                                                     <asp:BoundColumn DataField="CreateTime" HeaderText="CreationTime">

@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTHeadLineEdit.aspx.cs" Inherits="TTHeadLineEdit" %>
+ï»¿ï»¿ï»¿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTHeadLineEdit.aspx.cs" Inherits="TTHeadLineEdit" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
@@ -142,36 +142,36 @@
                                                         </asp:ButtonColumn>
                                                         <asp:TemplateColumn HeaderText="Delete">
                                                             <ItemTemplate>
-                                                                <asp:LinkButton ID="LBT_Delete" CommandName="Delete" runat="server" OnClientClick="return confirm('?¨²¨¨¡¤?¡§¨°a¨¦?3y?e(Are you sure you want to delete it)¡ê?')" Text="&lt;div&gt;&lt;img src=ImagesSkin/Delete.png border=0 alt='¨¦?3y' /&gt;&lt;/div&gt;"></asp:LinkButton>
+                                                                <asp:LinkButton ID="LBT_Delete" CommandName="Delete" runat="server" OnClientClick="return confirm('?ÃºÃ¨Â·?Â¨Ã²aÃ©?3y?e(Are you sure you want to delete it)ï¿¡?')" Text="&lt;div&gt;&lt;img src=ImagesSkin/Delete.png border=0 alt='Ã©?3y' /&gt;&lt;/div&gt;"></asp:LinkButton>
                                                             </ItemTemplate>
                                                             <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="5%" />
                                                         </asp:TemplateColumn>
                                                         <asp:BoundColumn DataField="ID" HeaderText="ID">
                                                             <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="5%" />
                                                         </asp:BoundColumn>
-                                                        <asp:BoundColumn DataField="Title" HeaderText="?¡Â¨¬a">
+                                                        <asp:BoundColumn DataField="Title" HeaderText="?Ã·Ã¬a">
                                                             <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" Width="37%" />
                                                         </asp:BoundColumn>
-                                                        <asp:BoundColumn DataField="NewsType" HeaderText="¡¤??¡ì">
+                                                        <asp:BoundColumn DataField="NewsType" HeaderText="Â·??Â§">
                                                             <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="7%" />
                                                         </asp:BoundColumn>
-                                                        <asp:BoundColumn DataField="Type" HeaderText="¨¤¨¤D¨ª">
-                                                            <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="7%" />
-                                                        </asp:BoundColumn>
-
-                                                        <asp:BoundColumn DataField="IsHead" HeaderText="¨ª¡¤¨¬?">
+                                                        <asp:BoundColumn DataField="Type" HeaderText="Ã Ã DÃ­">
                                                             <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="7%" />
                                                         </asp:BoundColumn>
 
-                                                        <asp:BoundColumn DataField="RelatedDepartName" HeaderText="1¨¦¨º?2???">
+                                                        <asp:BoundColumn DataField="IsHead" HeaderText="æ˜¯å¦é‡ç‚¹">
+                                                            <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="7%" />
+                                                        </asp:BoundColumn>
+
+                                                        <asp:BoundColumn DataField="RelatedDepartName" HeaderText="ç›¸å…³éƒ¨é—¨åç§°">
                                                             <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="10%" />
                                                         </asp:BoundColumn>
 
-                                                        <asp:BoundColumn DataField="PublishTime" DataFormatString="{0:yyyy/MM/dd}" HeaderText="¡¤¡é2?¨º¡À??">
+                                                        <asp:BoundColumn DataField="PublishTime" DataFormatString="{0:yyyy/MM/dd}" HeaderText="å‘å¸ƒæ—¶é—´">
                                                             <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="10%" />
                                                         </asp:BoundColumn>
 
-                                                        <asp:TemplateColumn HeaderText="¡Á¡ä¨¬?">
+                                                        <asp:TemplateColumn HeaderText="æ‰€å±žæ­¥éª¤">
                                                             <ItemTemplate>
                                                                 <%# ShareClass. GetStatusHomeNameByProjectStatus(Eval("Status").ToString(),Eval("Status").ToString()) %>
                                                             </ItemTemplate>
@@ -288,7 +288,7 @@
                                                             </td>
                                                             <td style="text-align: center;">
                                                                 <asp:Button ID="BT_Import" Text="<%$ Resources:lang,DaoRu %>" CssClass="inpu" runat="server" OnClick="BT_Import_Click"
-                                                                    OnClientClick="return confirm('ÌáÊ¾£¬µ¼ÈëÖ®ºó»á¸²¸ÇÔ­ÏÈµÄÄÚÈÝ£¬È·¶¨Òªµ¼ÈëÂð(Warning, importing will overwrite the original content. Are you sure you want to import)£¿')" />
+                                                                    OnClientClick="return confirm('æç¤ºï¼Œå¯¼å…¥ä¹‹åŽä¼šè¦†ç›–åŽŸå…ˆçš„å†…å®¹ï¼Œç¡®å®šè¦å¯¼å…¥å—(Warning, importing will overwrite the original content. Are you sure you want to import)ï¼Ÿ')" />
                                                             </td>
 
                                                             <td style="padding-left: 10px;">

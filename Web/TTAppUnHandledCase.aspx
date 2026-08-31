@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppUnHandledCase.aspx.cs" Inherits="TTAppUnHandledCase" %>
+﻿﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppUnHandledCase.aspx.cs" Inherits="TTAppUnHandledCase" %>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
 
@@ -97,7 +97,7 @@
                                             <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="1%" />
                                         </asp:BoundColumn>
                                         <asp:HyperLinkColumn DataNavigateUrlField="MobileLinkAddress"
-                                            DataTextField="InforName" HeaderText="锟斤拷锟斤拷">
+                                            DataTextField="InforName" HeaderText="信息名称">
                                             <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="79%" />
                                         </asp:HyperLinkColumn>
                                         <asp:TemplateColumn>

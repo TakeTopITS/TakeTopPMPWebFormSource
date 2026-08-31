@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppUserLogonLog.aspx.cs" Inherits="TTAppUserLogonLog" %>
+﻿﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppUserLogonLog.aspx.cs" Inherits="TTAppUserLogonLog" %>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
 
@@ -133,7 +133,7 @@
                                         <%--                                        <asp:BoundColumn DataField="ID" HeaderText="Number">
                                             <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="20%" />
                                         </asp:BoundColumn>
-                                        <asp:BoundColumn DataField="UserName" HeaderText="锟矫伙拷">
+                                        <asp:BoundColumn DataField="UserName" HeaderText="用户名">
                                             <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="25%" />
                                         </asp:BoundColumn>
                                         <asp:BoundColumn DataField="Position" HeaderText="Location">

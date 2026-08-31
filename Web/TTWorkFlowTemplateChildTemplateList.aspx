@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTWorkFlowTemplateChildTemplateList.aspx.cs" Inherits="TTWorkFlowTemplateChildTemplateList" %>
+﻿﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTWorkFlowTemplateChildTemplateList.aspx.cs" Inherits="TTWorkFlowTemplateChildTemplateList" %>
 
 <!DOCTYPE html>
 
@@ -65,13 +65,13 @@
                                 DataTextField="RelatedWFTemName" HeaderText="???????" Target="_blank">
                                 <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="30%" />
                             </asp:HyperLinkColumn>
-                            <asp:BoundColumn DataField="Requisite" HeaderText="??????">
+                            <asp:BoundColumn DataField="Requisite" HeaderText="是否必需">
                                 <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="15%" />
                             </asp:BoundColumn>
-                            <asp:BoundColumn DataField="BelongStepSortNumber" HeaderText="???????????">
+                            <asp:BoundColumn DataField="BelongStepSortNumber" HeaderText="所属步骤">
                                 <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="15%" />
                             </asp:BoundColumn>
-                            <asp:BoundColumn DataField="BelongIsMustPassed" HeaderText="??????????">
+                            <asp:BoundColumn DataField="BelongIsMustPassed" HeaderText="步骤">
                                 <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="15%" />
                             </asp:BoundColumn>
                         </Columns>

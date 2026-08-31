@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppSMSSendDIY.aspx.cs" Inherits="TTAppSMSSendDIY" %>
+﻿﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppSMSSendDIY.aspx.cs" Inherits="TTAppSMSSendDIY" %>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
 
@@ -139,7 +139,7 @@
                                                                             <asp:Button ID="BT_ID" runat="server" CssClass="inpu" Text='<%# DataBinder.Eval(Container.DataItem,"ID") %>' />
                                                                         </ItemTemplate>
                                                                     </asp:TemplateColumn>
-                                                                    <asp:BoundColumn DataField="Message" HeaderText="锟斤拷息锟斤拷锟斤拷">
+                                                                    <asp:BoundColumn DataField="Message" HeaderText="消息内容">
                                                                         <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" Width="55%" />
                                                                     </asp:BoundColumn>
                                                                 

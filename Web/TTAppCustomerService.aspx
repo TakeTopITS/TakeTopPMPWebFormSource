@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppCustomerService.aspx.cs" Inherits="TTAppCustomerService" %>
+﻿﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppCustomerService.aspx.cs" Inherits="TTAppCustomerService" %>
 
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
@@ -165,7 +165,7 @@
                                                 </asp:BoundColumn>
 
                                                 <asp:HyperLinkColumn DataNavigateUrlField="ID" DataNavigateUrlFormatString="TTAppCustomerQuestionHandleDetail.aspx?ID={0}"
-                                                    DataTextField="Question" HeaderText="锟斤拷锟斤拷锟斤拷锟斤拷">
+                                                    DataTextField="Question" HeaderText="问题内容">
                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" />
                                                 </asp:HyperLinkColumn>
 
@@ -261,7 +261,7 @@
                                                 </asp:BoundColumn>
 
                                                 <asp:HyperLinkColumn DataNavigateUrlField="ID" DataNavigateUrlFormatString="TTAppCustomerQuestionHandleDetail.aspx?ID={0}"
-                                                    DataTextField="Question" HeaderText="锟斤拷锟斤拷锟斤拷锟斤拷">
+                                                    DataTextField="Question" HeaderText="问题内容">
                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" />
                                                 </asp:HyperLinkColumn>
 
@@ -355,7 +355,7 @@
                                                 </asp:BoundColumn>
 
                                                 <asp:HyperLinkColumn DataNavigateUrlField="ID" DataNavigateUrlFormatString="TTAppCustomerQuestionHandleDetail.aspx?ID={0}"
-                                                    DataTextField="Question" HeaderText="锟斤拷锟斤拷锟斤拷锟斤拷">
+                                                    DataTextField="Question" HeaderText="问题内容">
                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" />
                                                 </asp:HyperLinkColumn>
 
@@ -451,7 +451,7 @@
                                                 </asp:BoundColumn>
 
                                                 <asp:HyperLinkColumn DataNavigateUrlField="ID" DataNavigateUrlFormatString="TTAppCustomerQuestionHandleDetail.aspx?ID={0}"
-                                                    DataTextField="Question" HeaderText="锟斤拷锟斤拷锟斤拷锟斤拷">
+                                                    DataTextField="Question" HeaderText="问题内容">
                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" />
                                                 </asp:HyperLinkColumn>
 
@@ -547,7 +547,7 @@
                                                 </asp:BoundColumn>
 
                                                 <asp:HyperLinkColumn DataNavigateUrlField="ID" DataNavigateUrlFormatString="TTAppCustomerQuestionHandleDetail.aspx?ID={0}"
-                                                    DataTextField="Question" HeaderText="锟斤拷锟斤拷锟斤拷锟斤拷">
+                                                    DataTextField="Question" HeaderText="问题内容">
                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" />
                                                 </asp:HyperLinkColumn>
 

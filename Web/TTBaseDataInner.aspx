@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTBaseDataInner.aspx.cs" Inherits="TTBaseDataInner" %>
+﻿﻿﻿锘?%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTBaseDataInner.aspx.cs" Inherits="TTBaseDataInner" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -17,7 +17,7 @@
             height: 30px;
         }
 
-        /* 模态框样式 */
+        /* 妯℃€佹鏍峰紡 */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -136,45 +136,43 @@
             var modal = $('#' + modalId);
             modal.show();
 
-            // 获取按钮在视口中的位置
-            var buttonRect = buttonElement.getBoundingClientRect();
+            // 鑾峰彇鎸夐挳鍦ㄨ鍙ｄ腑鐨勪綅缃?            var buttonRect = buttonElement.getBoundingClientRect();
 
-            // 获取模态框元素
+            // 鑾峰彇妯℃€佹鍏冪礌
             var modalElement = modal.find('.modal-content')[0];
             var modalWidth = modalElement.offsetWidth;
             var modalHeight = modalElement.offsetHeight;
 
-            // 计算在按钮上方的位置(视口相对位置)
-            var topPosition = buttonRect.top - modalHeight - 10; // 按钮上方10px
+            // 璁＄畻鍦ㄦ寜閽笂鏂圭殑浣嶇疆(瑙嗗彛鐩稿浣嶇疆)
+            var topPosition = buttonRect.top - modalHeight - 10; // 鎸夐挳涓婃柟10px
             var leftPosition = buttonRect.left;
 
-            // 确保模态框不会超出视口
+            // 纭繚妯℃€佹涓嶄細瓒呭嚭瑙嗗彛
             var viewportWidth = window.innerWidth;
             var viewportHeight = window.innerHeight;
 
-            // 水平方向调整
+            // 姘村钩鏂瑰悜璋冩暣
             if (leftPosition + modalWidth > viewportWidth) {
                 leftPosition = Math.max(10, viewportWidth - modalWidth - 10);
             } else if (leftPosition < 0) {
                 leftPosition = 10;
             }
 
-            // 如果上方空间不够，调整到按钮下方
+            // 濡傛灉涓婃柟绌洪棿涓嶅锛岃皟鏁村埌鎸夐挳涓嬫柟
             if (topPosition < 0) {
                 topPosition = buttonRect.bottom + 10;
 
-                // 如果下方空间也不够，调整到视口中间
-                if (topPosition + modalHeight > viewportHeight) {
+                // 濡傛灉涓嬫柟绌洪棿涔熶笉澶燂紝璋冩暣鍒拌鍙ｄ腑闂?                if (topPosition + modalHeight > viewportHeight) {
                     topPosition = Math.max(10, (viewportHeight - modalHeight) / 2);
                 }
             }
 
-            // 确保不会超出底部边界
+            // 纭繚涓嶄細瓒呭嚭搴曢儴杈圭晫
             if (topPosition + modalHeight > viewportHeight) {
                 topPosition = Math.max(10, viewportHeight - modalHeight - 10);
             }
 
-            // 设置模态框位置(相对于视口)
+            // 璁剧疆妯℃€佹浣嶇疆(鐩稿浜庤鍙?
             $(modalElement).css({
                 'top': topPosition + 'px',
                 'left': leftPosition + 'px'
@@ -185,7 +183,7 @@
             $('#' + modalId).hide();
         }
 
-        // 为所有模态框添加点击外部关闭功能
+        // 涓烘墍鏈夋ā鎬佹娣诲姞鐐瑰嚮澶栭儴鍏抽棴鍔熻兘
         $(document).on('click', function (e) {
             $('.modal-overlay').each(function () {
                 if ($(this).is(':visible') && !$(e.target).closest('.modal-content').length) {
@@ -194,32 +192,32 @@
             });
         });
 
-        // 阻止模态框内容点击事件冒泡
+        // 闃绘妯℃€佹鍐呭鐐瑰嚮浜嬩欢鍐掓场
         $(document).on('click', '.modal-content', function (e) {
             e.stopPropagation();
         });
 
-        // 处理新增按钮点击
+        // 澶勭悊鏂板鎸夐挳鐐瑰嚮
         function handleAddClick(modalId, event) {
             if (event) {
                 event.stopPropagation();
                 event.preventDefault();
             }
             showModal(modalId, event.target);
-            return false; // 阻止默认行为
+            return false; // 闃绘榛樿琛屼负
         }
 
-        // 全局函数，供后端调用
+        // 鍏ㄥ眬鍑芥暟锛屼緵鍚庣璋冪敤
         function openModal(modalId) {
             var modal = $('#' + modalId);
             modal.show();
 
-            // 居中显示模态框
+            // 灞呬腑鏄剧ず妯℃€佹
             var modalElement = modal.find('.modal-content')[0];
             var topPosition = (window.innerHeight - modalElement.offsetHeight) / 2;
             var leftPosition = (window.innerWidth - modalElement.offsetWidth) / 2;
 
-            // 设置模态框位置
+            // 璁剧疆妯℃€佹浣嶇疆
             $(modalElement).css({
                 'top': Math.max(topPosition, 20) + 'px',
                 'left': Math.max(leftPosition, 20) + 'px'
@@ -274,10 +272,10 @@
                                                         </td>
                                                         <td width="60px;"></td>
                                                         <td width="800px">
-                                                            <!-- 在页头或适当位置添加 -->
+                                                            <!-- 鍦ㄩ〉澶存垨閫傚綋浣嶇疆娣诲姞 -->
                                                             <div style="text-align: left; margin-bottom: 10px;">
                                                                 <a href="TTAIServerConfiguration.aspx" style="color: #4F46E5; text-decoration: none; font-weight: 600;">
-                                                                    ⚙️ <asp:Label ID="LB_ServerConfigtion" runat ="server" Text="<%$ Resources:lang,AIServerConfigurationTitle%>"></asp:Label>
+                                                                    鈿欙笍 <asp:Label ID="LB_ServerConfigtion" runat ="server" Text="<%$ Resources:lang,AIServerConfigurationTitle%>"></asp:Label>
                                                                 </a>
                                                             </div>
                                                         </td>
@@ -332,10 +330,10 @@
                                                                             </ItemTemplate>
                                                                             <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="30%" />
                                                                         </asp:TemplateColumn>
-                                                                        <asp:BoundColumn DataField="KeyWord" HeaderText="关键词">
+                                                                        <asp:BoundColumn DataField="KeyWord" HeaderText="关键字">
                                                                             <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="15%" />
                                                                         </asp:BoundColumn>
-                                                                        <asp:BoundColumn DataField="SortNumber" HeaderText="顺序">
+                                                                        <asp:BoundColumn DataField="SortNumber" HeaderText="椤哄簭">
                                                                             <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="10%" />
                                                                         </asp:BoundColumn>
                                                                         <asp:TemplateColumn>
@@ -420,17 +418,17 @@
                                                                     <asp:BoundColumn DataField="Status" HeaderText="Status">
                                                                         <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="15%" />
                                                                     </asp:BoundColumn>
-                                                                    <asp:TemplateColumn HeaderText="模块名称(本语)">
+                                                                    <asp:TemplateColumn HeaderText="妯″潡鍚嶇О(鏈)">
                                                                         <ItemTemplate>
                                                                             <asp:TextBox ID="TB_HomeName" runat="server" Width="100px" Text='<%# DataBinder.Eval(Container.DataItem,"HomeName") %>'></asp:TextBox>
                                                                         </ItemTemplate>
                                                                         <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="18%" />
                                                                     </asp:TemplateColumn>
-                                                                    <asp:BoundColumn DataField="LangCode" HeaderText="语言">
+                                                                    <asp:BoundColumn DataField="LangCode" HeaderText="璇█">
                                                                         <ItemStyle CssClass="itemBorder" HorizontalAlign="left" />
                                                                         <HeaderStyle Font-Bold="True" Width="15%" />
                                                                     </asp:BoundColumn>
-                                                                    <asp:TemplateColumn HeaderText="顺序">
+                                                                    <asp:TemplateColumn HeaderText="椤哄簭">
                                                                         <ItemTemplate>
                                                                             <asp:TextBox ID="TB_SortNumber" runat="server" Width="50px" Text='<%# DataBinder.Eval(Container.DataItem,"SortNumber") %>'></asp:TextBox>
                                                                         </ItemTemplate>
@@ -452,7 +450,7 @@
                                                             <table style="width: 100%;" cellpadding="3" cellspacing="0" class="formBgStyle">
                                                                 <tr>
                                                                     <td class="formItemBgStyleForAlignLeft" rowspan="2">
-                                                                        <!-- 项目类型表单控件已移到模态窗口 -->
+                                                                        <!-- 椤圭洰绫诲瀷琛ㄥ崟鎺т欢宸茬Щ鍒版ā鎬佺獥鍙?-->
                                                                         <table style="width: 100%;" cellpadding="3" cellspacing="0" class="formBgStyle">
                                                                             <tr>
                                                                                 <td colspan="8" class="formItemBgStyleForAlignLeft"></td>
@@ -466,7 +464,7 @@
                                                             <table cellpadding="3" cellspacing="0" class="formBgStyle">
                                                                 <tr>
                                                                     <td class="formItemBgStyleForAlignLeft">
-                                                                        <!-- 项目状态表单控件已移到模态窗口 -->
+                                                                        <!-- 椤圭洰鐘舵€佽〃鍗曟帶浠跺凡绉诲埌妯℃€佺獥鍙?-->
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
@@ -702,18 +700,18 @@
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="30%" />
                                                                                 </asp:TemplateColumn>
 
-                                                                                <asp:TemplateColumn HeaderText="模块名称(本语)">
+                                                                                <asp:TemplateColumn HeaderText="妯″潡鍚嶇О(鏈)">
                                                                                     <ItemTemplate>
                                                                                         <asp:TextBox ID="TB_HomeName" runat="server" Width="100px" Text='<%# DataBinder.Eval(Container.DataItem,"HomeName") %>'></asp:TextBox>
                                                                                     </ItemTemplate>
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="30%" />
                                                                                 </asp:TemplateColumn>
-                                                                                <asp:BoundColumn DataField="LangCode" HeaderText="语言">
+                                                                                <asp:BoundColumn DataField="LangCode" HeaderText="璇█">
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" />
                                                                                     <HeaderStyle Font-Bold="True" Width="25%" />
                                                                                 </asp:BoundColumn>
 
-                                                                                <asp:BoundColumn DataField="SortNumber" HeaderText="顺序">
+                                                                                <asp:BoundColumn DataField="SortNumber" HeaderText="椤哄簭">
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="10%" />
                                                                                 </asp:BoundColumn>
                                                                                 <asp:BoundColumn DataField="MakeType" HeaderText="Type">
@@ -725,7 +723,7 @@
                                                                             </Columns>
                                                                             <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                                                                         </asp:DataGrid>
-                                                                        <!-- 需求状态表单控件已移到模态窗口 -->
+                                                                        <!-- 闇€姹傜姸鎬佽〃鍗曟帶浠跺凡绉诲埌妯℃€佺獥鍙?-->
                                                                         <br />
                                                                         <asp:Button ID="BT_ReqStatusSave" runat="server" CssClass="inpu" OnClick="BT_ReqStatusSave_Click" Text="<%$ Resources:lang,BaoCun%>" />
                                                                     </td>
@@ -745,17 +743,17 @@
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="30%" />
                                                                                 </asp:TemplateColumn>
 
-                                                                                <asp:TemplateColumn HeaderText="模块名称(本语)">
+                                                                                <asp:TemplateColumn HeaderText="妯″潡鍚嶇О(鏈)">
                                                                                     <ItemTemplate>
                                                                                         <asp:TextBox ID="TB_HomeName" runat="server" Width="100px" Text='<%# DataBinder.Eval(Container.DataItem,"HomeName") %>'></asp:TextBox>
                                                                                     </ItemTemplate>
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="30%" />
                                                                                 </asp:TemplateColumn>
-                                                                                <asp:BoundColumn DataField="LangCode" HeaderText="语言">
+                                                                                <asp:BoundColumn DataField="LangCode" HeaderText="璇█">
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" />
                                                                                     <HeaderStyle Font-Bold="True" Width="25%" />
                                                                                 </asp:BoundColumn>
-                                                                                <asp:BoundColumn DataField="SortNumber" HeaderText="顺序">
+                                                                                <asp:BoundColumn DataField="SortNumber" HeaderText="椤哄簭">
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="10%" />
                                                                                 </asp:BoundColumn>
                                                                                 <asp:BoundColumn DataField="MakeType" HeaderText="Type">
@@ -767,7 +765,7 @@
                                                                             </Columns>
                                                                             <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                                                                         </asp:DataGrid>
-                                                                        <!-- 任务状态表单控件已移到模态窗口 -->
+                                                                        <!-- 浠诲姟鐘舵€佽〃鍗曟帶浠跺凡绉诲埌妯℃€佺獥鍙?-->
                                                                         <br />
                                                                         <asp:Button ID="BT_TaskStatusSave" runat="server" CssClass="inpu" OnClick="BT_TaskStatusSave_Click" Text="<%$ Resources:lang,BaoCun%>" />
                                                                     </td>
@@ -787,17 +785,17 @@
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="30%" />
                                                                                 </asp:TemplateColumn>
 
-                                                                                <asp:TemplateColumn HeaderText="模块名称(本语)">
+                                                                                <asp:TemplateColumn HeaderText="妯″潡鍚嶇О(鏈)">
                                                                                     <ItemTemplate>
                                                                                         <asp:TextBox ID="TB_HomeName" runat="server" Width="100px" Text='<%# DataBinder.Eval(Container.DataItem,"HomeName") %>'></asp:TextBox>
                                                                                     </ItemTemplate>
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="30%" />
                                                                                 </asp:TemplateColumn>
-                                                                                <asp:BoundColumn DataField="LangCode" HeaderText="语言">
+                                                                                <asp:BoundColumn DataField="LangCode" HeaderText="璇█">
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" />
                                                                                     <HeaderStyle Font-Bold="True" Width="25%" />
                                                                                 </asp:BoundColumn>
-                                                                                <asp:BoundColumn DataField="SortNumber" HeaderText="顺序">
+                                                                                <asp:BoundColumn DataField="SortNumber" HeaderText="椤哄簭">
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="10%" />
                                                                                 </asp:BoundColumn>
                                                                                 <asp:BoundColumn DataField="MakeType" HeaderText="Type">
@@ -809,7 +807,7 @@
                                                                             </Columns>
                                                                             <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                                                                         </asp:DataGrid>
-                                                                        <!-- 计划状态表单控件已移到模态窗口 -->
+                                                                        <!-- 璁″垝鐘舵€佽〃鍗曟帶浠跺凡绉诲埌妯℃€佺獥鍙?-->
                                                                         <br />
                                                                         <asp:Button ID="BT_PlanStatusSave" runat="server" CssClass="inpu" OnClick="BT_PlanStatusSave_Click" Text="<%$ Resources:lang,BaoCun%>" />
                                                                     </td>
@@ -829,17 +827,17 @@
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="30%" />
                                                                                 </asp:TemplateColumn>
 
-                                                                                <asp:TemplateColumn HeaderText="模块名称(本语)">
+                                                                                <asp:TemplateColumn HeaderText="妯″潡鍚嶇О(鏈)">
                                                                                     <ItemTemplate>
                                                                                         <asp:TextBox ID="TB_HomeName" runat="server" Width="100px" Text='<%# DataBinder.Eval(Container.DataItem,"HomeName") %>'></asp:TextBox>
                                                                                     </ItemTemplate>
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="30%" />
                                                                                 </asp:TemplateColumn>
-                                                                                <asp:BoundColumn DataField="LangCode" HeaderText="语言">
+                                                                                <asp:BoundColumn DataField="LangCode" HeaderText="璇█">
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" />
                                                                                     <HeaderStyle Font-Bold="True" Width="25%" />
                                                                                 </asp:BoundColumn>
-                                                                                <asp:BoundColumn DataField="SortNumber" HeaderText="顺序">
+                                                                                <asp:BoundColumn DataField="SortNumber" HeaderText="椤哄簭">
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="10%" />
                                                                                 </asp:BoundColumn>
                                                                                 <asp:BoundColumn DataField="MakeType" HeaderText="Type">
@@ -851,7 +849,7 @@
                                                                             </Columns>
                                                                             <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                                                                         </asp:DataGrid>
-                                                                        <!-- 工作流状态表单控件已移到模态窗口 -->
+                                                                        <!-- 宸ヤ綔娴佺姸鎬佽〃鍗曟帶浠跺凡绉诲埌妯℃€佺獥鍙?-->
                                                                         <br />
                                                                         <asp:Button ID="BT_WorkflowStatusSave" runat="server" CssClass="inpu" OnClick="BT_WorkflowStatusSave_Click" Text="<%$ Resources:lang,BaoCun%>" />
                                                                     </td>
@@ -870,17 +868,17 @@
                                                                                     </ItemTemplate>
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="30%" />
                                                                                 </asp:TemplateColumn>
-                                                                                <asp:TemplateColumn HeaderText="模块名称(本语)">
+                                                                                <asp:TemplateColumn HeaderText="妯″潡鍚嶇О(鏈)">
                                                                                     <ItemTemplate>
                                                                                         <asp:TextBox ID="TB_HomeName" runat="server" Text='<%# DataBinder.Eval(Container.DataItem,"HomeName") %>' Width="100px"></asp:TextBox>
                                                                                     </ItemTemplate>
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="30%" />
                                                                                 </asp:TemplateColumn>
-                                                                                <asp:BoundColumn DataField="LangCode" HeaderText="语言">
+                                                                                <asp:BoundColumn DataField="LangCode" HeaderText="璇█">
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" />
                                                                                     <HeaderStyle Font-Bold="True" Width="25%" />
                                                                                 </asp:BoundColumn>
-                                                                                <asp:BoundColumn DataField="SortNumber" HeaderText="顺序">
+                                                                                <asp:BoundColumn DataField="SortNumber" HeaderText="椤哄簭">
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="15%" />
                                                                                 </asp:BoundColumn>
                                                                                 <asp:BoundColumn DataField="MakeType" HeaderText="Type">
@@ -892,7 +890,7 @@
                                                                             </Columns>
                                                                             <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                                                                         </asp:DataGrid>
-                                                                        <!-- 测试状态表单控件已移到模态窗口 -->
+                                                                        <!-- 娴嬭瘯鐘舵€佽〃鍗曟帶浠跺凡绉诲埌妯℃€佺獥鍙?-->
                                                                         <br />
                                                                         <asp:Button ID="BT_TestStatusSave" runat="server" CssClass="inpu" OnClick="BT_TestStatusSave_Click" Text="<%$ Resources:lang,BaoCun%>" />
                                                                     </td>
@@ -983,17 +981,17 @@
                                                                                     </ItemTemplate>
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="30%" />
                                                                                 </asp:TemplateColumn>
-                                                                                <asp:TemplateColumn HeaderText="模块名称(本语)">
+                                                                                <asp:TemplateColumn HeaderText="妯″潡鍚嶇О(鏈)">
                                                                                     <ItemTemplate>
                                                                                         <asp:TextBox ID="TB_HomeName" runat="server" Text='<%# DataBinder.Eval(Container.DataItem,"HomeName") %>' Width="100px"></asp:TextBox>
                                                                                     </ItemTemplate>
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="30%" />
                                                                                 </asp:TemplateColumn>
-                                                                                <asp:BoundColumn DataField="LangCode" HeaderText="语言">
+                                                                                <asp:BoundColumn DataField="LangCode" HeaderText="璇█">
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" />
                                                                                     <HeaderStyle Font-Bold="True" Width="25%" />
                                                                                 </asp:BoundColumn>
-                                                                                <asp:BoundColumn DataField="SortNumber" HeaderText="顺序">
+                                                                                <asp:BoundColumn DataField="SortNumber" HeaderText="椤哄簭">
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="15%" />
                                                                                 </asp:BoundColumn>
                                                                                 <asp:BoundColumn DataField="MakeType" HeaderText="Type">
@@ -1053,17 +1051,17 @@
                                                                                     </ItemTemplate>
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="30%" />
                                                                                 </asp:TemplateColumn>
-                                                                                <asp:TemplateColumn HeaderText="模块名称(本语)">
+                                                                                <asp:TemplateColumn HeaderText="妯″潡鍚嶇О(鏈)">
                                                                                     <ItemTemplate>
                                                                                         <asp:TextBox ID="TB_HomeName" runat="server" Text='<%# DataBinder.Eval(Container.DataItem,"HomeName") %>' Width="100px"></asp:TextBox>
                                                                                     </ItemTemplate>
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="30%" />
                                                                                 </asp:TemplateColumn>
-                                                                                <asp:BoundColumn DataField="LangCode" HeaderText="语言">
+                                                                                <asp:BoundColumn DataField="LangCode" HeaderText="璇█">
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" />
                                                                                     <HeaderStyle Font-Bold="True" Width="25%" />
                                                                                 </asp:BoundColumn>
-                                                                                <asp:BoundColumn DataField="SortNumber" HeaderText="顺序">
+                                                                                <asp:BoundColumn DataField="SortNumber" HeaderText="椤哄簭">
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="15%" />
                                                                                 </asp:BoundColumn>
                                                                                 <asp:BoundColumn DataField="MakeType" HeaderText="Type">
@@ -1075,7 +1073,7 @@
                                                                             </Columns>
                                                                             <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                                                                         </asp:DataGrid>
-                                                                        <!-- 工作流类型表单控件已移到模态窗口 -->
+                                                                        <!-- 宸ヤ綔娴佺被鍨嬭〃鍗曟帶浠跺凡绉诲埌妯℃€佺獥鍙?-->
                                                                         <br />
                                                                         <asp:Button ID="BT_WFTypeSave" runat="server" CssClass="inpu" OnClick="BT_WFTypeSave_Click" Text="<%$ Resources:lang,BaoCun%>" />
                                                                     </td>
@@ -1123,17 +1121,17 @@
                                                                                     </ItemTemplate>
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="30%" />
                                                                                 </asp:TemplateColumn>
-                                                                                <asp:TemplateColumn HeaderText="模块名称(本语)">
+                                                                                <asp:TemplateColumn HeaderText="妯″潡鍚嶇О(鏈)">
                                                                                     <ItemTemplate>
                                                                                         <asp:TextBox ID="TB_HomeName" runat="server" Text='<%# DataBinder.Eval(Container.DataItem,"HomeName") %>' Width="100px"></asp:TextBox>
                                                                                     </ItemTemplate>
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="30%" />
                                                                                 </asp:TemplateColumn>
-                                                                                <asp:BoundColumn DataField="LangCode" HeaderText="语言">
+                                                                                <asp:BoundColumn DataField="LangCode" HeaderText="璇█">
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" />
                                                                                     <HeaderStyle Font-Bold="True" Width="25%" />
                                                                                 </asp:BoundColumn>
-                                                                                <asp:BoundColumn DataField="SortNumber" HeaderText="顺序">
+                                                                                <asp:BoundColumn DataField="SortNumber" HeaderText="椤哄簭">
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="15%" />
                                                                                 </asp:BoundColumn>
                                                                                 <asp:BoundColumn DataField="MakeType" HeaderText="Type">
@@ -1145,7 +1143,7 @@
                                                                             </Columns>
                                                                             <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                                                                         </asp:DataGrid>
-                                                                        <!-- 其他状态表单控件已移到模态窗口 -->
+                                                                        <!-- 鍏朵粬鐘舵€佽〃鍗曟帶浠跺凡绉诲埌妯℃€佺獥鍙?-->
                                                                         <br />
                                                                         <asp:Button ID="BT_OtherStatusSave" runat="server" CssClass="inpu" OnClick="BT_OtherStatusSave_Click" Text="<%$ Resources:lang,BaoCun%>" />
                                                                     </td>
@@ -1188,23 +1186,23 @@
 
                                                                             <ItemStyle CssClass="itemStyle" />
                                                                             <Columns>
-                                                                                <asp:TemplateColumn HeaderText="命令">
+                                                                                <asp:TemplateColumn HeaderText="鍛戒护">
                                                                                     <ItemTemplate>
                                                                                         <asp:Button ID="BT_OrderName" runat="server" CssClass="inpuLong" Text='<%# DataBinder.Eval(Container.DataItem,"InforName") %>' CommandName="Edit" />
                                                                                     </ItemTemplate>
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="40%" />
                                                                                 </asp:TemplateColumn>
-                                                                                <asp:TemplateColumn HeaderText="模块名称(本语)">
+                                                                                <asp:TemplateColumn HeaderText="妯″潡鍚嶇О(鏈)">
                                                                                     <ItemTemplate>
                                                                                         <asp:TextBox ID="TB_HomeName" runat="server" Text='<%# DataBinder.Eval(Container.DataItem,"HomeName") %>' Width="99%"></asp:TextBox>
                                                                                     </ItemTemplate>
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="30%" />
                                                                                 </asp:TemplateColumn>
-                                                                                <asp:BoundColumn DataField="LangCode" HeaderText="语言">
+                                                                                <asp:BoundColumn DataField="LangCode" HeaderText="璇█">
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" />
                                                                                     <HeaderStyle Font-Bold="True" Width="20%" />
                                                                                 </asp:BoundColumn>
-                                                                                <asp:BoundColumn DataField="SortNumber" HeaderText="顺序">
+                                                                                <asp:BoundColumn DataField="SortNumber" HeaderText="椤哄簭">
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="10%" />
                                                                                 </asp:BoundColumn>
 
@@ -1258,7 +1256,7 @@
                                                                 <tr>
                                                                     <td colspan="2" valign="top" class="ItemAlignLeft">
 
-                                                                        <!-- 租用产品类型DataGrid -->
+                                                                        <!-- 绉熺敤浜у搧绫诲瀷DataGrid -->
                                                                         <table background="ImagesSkin/main_n_bj.jpg" border="0" cellpadding="0" cellspacing="0" width="98%">
                                                                             <tr>
                                                                                 <td>
@@ -1294,7 +1292,7 @@
                                                                             <PagerStyle CssClass="notTab" HorizontalAlign="Center" Mode="NumericPages" NextPageText="" PrevPageText="" />
                                                                             <ItemStyle CssClass="itemStyle" />
                                                                             <Columns>
-                                                                                <asp:TemplateColumn HeaderText="类型名称">
+                                                                                <asp:TemplateColumn HeaderText="绫诲瀷鍚嶇О">
                                                                                     <ItemTemplate>
                                                                                         <asp:Button ID="BT_ID" runat="server" CssClass="inpu" Text='<%# DataBinder.Eval(Container.DataItem,"ID") %>' CommandName="Edit" />
                                                                                     </ItemTemplate>
@@ -1312,19 +1310,19 @@
                                                                                 <asp:BoundColumn DataField="DemoURL" HeaderText="DemoURL">
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="Center" Width="35%" />
                                                                                 </asp:BoundColumn>
-                                                                                <asp:BoundColumn DataField="SortNumber" HeaderText="排序">
+                                                                                <asp:BoundColumn DataField="SortNumber" HeaderText="鎺掑簭">
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="Center" Width="5%" />
                                                                                 </asp:BoundColumn>
-                                                                                <asp:BoundColumn DataField="LangCode" HeaderText="语言">
+                                                                                <asp:BoundColumn DataField="LangCode" HeaderText="璇█">
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="Center" />
                                                                                 </asp:BoundColumn>
                                                                             </Columns>
                                                                         </asp:DataGrid>
-                                                                        <!-- 租用产品类型表单控件已移到模态窗口 -->
+                                                                        <!-- 绉熺敤浜у搧绫诲瀷琛ㄥ崟鎺т欢宸茬Щ鍒版ā鎬佺獥鍙?-->
 
                                                                     </td>
                                                                     <td colspan="2">
-                                                                        <!-- 租用产品版本类型DataGrid -->
+                                                                        <!-- 绉熺敤浜у搧鐗堟湰绫诲瀷DataGrid -->
                                                                         <table background="ImagesSkin/main_n_bj.jpg" border="0" cellpadding="0" cellspacing="0" width="98%">
                                                                             <tr>
                                                                                 <td>
@@ -1367,10 +1365,10 @@
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="Center" Width="30%" />
                                                                                 </asp:BoundColumn>
 
-                                                                                <asp:BoundColumn DataField="SortNumber" HeaderText="排序">
+                                                                                <asp:BoundColumn DataField="SortNumber" HeaderText="鎺掑簭">
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="Center" />
                                                                                 </asp:BoundColumn>
-                                                                                <asp:BoundColumn DataField="LangCode" HeaderText="语言">
+                                                                                <asp:BoundColumn DataField="LangCode" HeaderText="璇█">
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="Center" />
                                                                                 </asp:BoundColumn>
                                                                             </Columns>
@@ -1379,7 +1377,7 @@
 
                                                                     </td>
                                                                     <td colspan="2">
-                                                                        <!-- 试用产品原因类型DataGrid -->
+                                                                        <!-- 璇曠敤浜у搧鍘熷洜绫诲瀷DataGrid -->
                                                                         <table background="ImagesSkin/main_n_bj.jpg" border="0" cellpadding="0" cellspacing="0" width="98%">
                                                                             <tr>
                                                                                 <td>
@@ -1421,10 +1419,10 @@
                                                                                 <asp:BoundColumn DataField="HomeTypeName" HeaderText="Type">
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="Center" Width="30%" />
                                                                                 </asp:BoundColumn>
-                                                                                <asp:BoundColumn DataField="SortNumber" HeaderText="排序">
+                                                                                <asp:BoundColumn DataField="SortNumber" HeaderText="鎺掑簭">
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="Center" />
                                                                                 </asp:BoundColumn>
-                                                                                <asp:BoundColumn DataField="LangCode" HeaderText="语言">
+                                                                                <asp:BoundColumn DataField="LangCode" HeaderText="璇█">
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="Center" />
                                                                                 </asp:BoundColumn>
                                                                             </Columns>
@@ -1444,8 +1442,8 @@
                         </table>
                     </div>
 
-                    <!-- 模态框定义 -->
-                    <!-- 项目类型模态框 -->
+                    <!-- 妯℃€佹瀹氫箟 -->
+                    <!-- 椤圭洰绫诲瀷妯℃€佹 -->
                     <div id="modalProjectType" class="modal-overlay">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -1532,7 +1530,7 @@
                         </div>
                     </div>
 
-                    <!-- 项目状态模态框 -->
+                    <!-- 椤圭洰鐘舵€佹ā鎬佹 -->
                     <div id="modalProjectStatus" class="modal-overlay">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -1578,7 +1576,7 @@
                         </div>
                     </div>
 
-                    <!-- 需求状态模态框 -->
+                    <!-- 闇€姹傜姸鎬佹ā鎬佹 -->
                     <div id="modalReqStatus" class="modal-overlay">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -1604,7 +1602,7 @@
                         </div>
                     </div>
 
-                    <!-- 任务状态模态框 -->
+                    <!-- 浠诲姟鐘舵€佹ā鎬佹 -->
                     <div id="modalTaskStatus" class="modal-overlay">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -1630,7 +1628,7 @@
                         </div>
                     </div>
 
-                    <!-- 计划状态模态框 -->
+                    <!-- 璁″垝鐘舵€佹ā鎬佹 -->
                     <div id="modalPlanStatus" class="modal-overlay">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -1656,7 +1654,7 @@
                         </div>
                     </div>
 
-                    <!-- 工作流状态模态框 -->
+                    <!-- 宸ヤ綔娴佺姸鎬佹ā鎬佹 -->
                     <div id="modalWLStatus" class="modal-overlay">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -1682,7 +1680,7 @@
                         </div>
                     </div>
 
-                    <!-- 测试状态模态框 -->
+                    <!-- 娴嬭瘯鐘舵€佹ā鎬佹 -->
                     <div id="modalTestStatus" class="modal-overlay">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -1708,7 +1706,7 @@
                         </div>
                     </div>
 
-                    <!-- 角色组模态框 -->
+                    <!-- 瑙掕壊缁勬ā鎬佹 -->
                     <div id="modalActorGroup" class="modal-overlay">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -1731,7 +1729,7 @@
                         </div>
                     </div>
 
-                    <!-- 工作流类型模态框 -->
+                    <!-- 宸ヤ綔娴佺被鍨嬫ā鎬佹 -->
                     <div id="modalWLType" class="modal-overlay">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -1757,7 +1755,7 @@
                         </div>
                     </div>
 
-                    <!-- 其他状态模态框 -->
+                    <!-- 鍏朵粬鐘舵€佹ā鎬佹 -->
                     <div id="modalOtherStatus" class="modal-overlay">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -1783,7 +1781,7 @@
                         </div>
                     </div>
 
-                    <!-- 租用产品类型模态框 -->
+                    <!-- 绉熺敤浜у搧绫诲瀷妯℃€佹 -->
                     <div id="modalRentProductType" class="modal-overlay">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -1821,7 +1819,7 @@
                         </div>
                     </div>
 
-                    <!-- 租用产品版本类型模态框 -->
+                    <!-- 绉熺敤浜у搧鐗堟湰绫诲瀷妯℃€佹 -->
                     <div id="modalRentProductVersionType" class="modal-overlay">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -1852,7 +1850,7 @@
                         </div>
                     </div>
 
-                    <!-- 试用产品原因类型模态框 -->
+                    <!-- 璇曠敤浜у搧鍘熷洜绫诲瀷妯℃€佹 -->
                     <div id="modalTryProductResonType" class="modal-overlay">
                         <div class="modal-content">
                             <div class="modal-header">

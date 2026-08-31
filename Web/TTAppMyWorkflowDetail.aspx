@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppMyWorkflowDetail.aspx.cs" Inherits="TTAppMyWorkflowDetail" %>
+﻿﻿﻿﻿﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppMyWorkflowDetail.aspx.cs" Inherits="TTAppMyWorkflowDetail" %>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
 
@@ -211,7 +211,7 @@
                                         <td style="height: 1px">
                                             <cc2:TabContainer CssClass="ajax_tab_menu" ID="TabContainer1" runat="server" ActiveTabIndex="0"
                                                 Width="100%">
-                                                <cc2:TabPanel ID="TabPanel1" runat="server" HeaderText="锟斤拷锟斤拷锟叫憋拷" TabIndex="0">
+                                                <cc2:TabPanel ID="TabPanel1" runat="server" HeaderText="联系人列表" TabIndex="0">
                                                     <HeaderTemplate>
                                                         <asp:Label ID="Label8" runat="server" Text="<%$ Resources:lang,BuZhouLieBiao%>"></asp:Label>
                                                     </HeaderTemplate>
@@ -333,15 +333,15 @@
                                                                                 </ItemTemplate>
                                                                                 <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="10%" />
                                                                             </asp:TemplateColumn>
-                                                                            <asp:BoundColumn DataField="SortNumber" HeaderText="锟斤拷锟斤拷">
+                                                                            <asp:BoundColumn DataField="SortNumber" HeaderText="顺序">
                                                                                 <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="6%" />
                                                                             </asp:BoundColumn>
 
-                                                                            <asp:BoundColumn DataField="StepName" HeaderText="锟斤拷锟斤拷锟斤拷锟斤拷">
+                                                                            <asp:BoundColumn DataField="StepName" HeaderText="步骤名称">
                                                                                 <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" Width="30%" />
                                                                             </asp:BoundColumn>
 
-                                                                            <asp:BoundColumn DataField="LimitedOperator" HeaderText="锟截憋拷锟斤拷锟斤拷">
+                                                                            <asp:BoundColumn DataField="LimitedOperator" HeaderText="特定处理人">
                                                                                 <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="10%" />
                                                                             </asp:BoundColumn>
 
@@ -404,17 +404,17 @@
                                                                                 <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="10%" />
                                                                             </asp:TemplateColumn>
 
-                                                                            <asp:BoundColumn DataField="OperatorName" HeaderText="锟斤拷锟斤拷锟斤拷">
+                                                                            <asp:BoundColumn DataField="OperatorName" HeaderText="操作人">
                                                                                 <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="10%" />
                                                                             </asp:BoundColumn>
-                                                                            <asp:BoundColumn DataField="WorkDetail" HeaderText="要锟斤拷说墓锟斤拷锟?>
+                                                                            <asp:BoundColumn DataField="WorkDetail" HeaderText="要说明的工作量">
                                                                                 <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" Width="20%" />
                                                                             </asp:BoundColumn>
 
-                                                                            <asp:BoundColumn DataField="Requisite" HeaderText="锟斤拷锟斤拷">
+                                                                            <asp:BoundColumn DataField="Requisite" HeaderText="是否必需">
                                                                                 <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="6%" />
                                                                             </asp:BoundColumn>
-                                                                            <asp:BoundColumn DataField="Operation" HeaderText="锟斤拷锟斤拷">
+                                                                            <asp:BoundColumn DataField="Operation" HeaderText="操作说明">
                                                                                 <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="6%" />
                                                                             </asp:BoundColumn>
 
@@ -501,7 +501,7 @@
                                                         </table>
                                                     </ContentTemplate>
                                                 </cc2:TabPanel>
-                                                <cc2:TabPanel ID="TabPanel2" runat="server" HeaderText=" 锟斤拷锟斤拷锟斤拷目" TabIndex="0">
+                                                <cc2:TabPanel ID="TabPanel2" runat="server" HeaderText="联系人列表" TabIndex="0">
                                                     <HeaderTemplate>
                                                         <asp:Label ID="Label46" runat="server" Text="<%$ Resources:lang,GuanLianXiangMu%>"></asp:Label>
                                                     </HeaderTemplate>
@@ -557,16 +557,16 @@
                                                                             <asp:BoundColumn DataField="ProjectID" HeaderText="Number">
                                                                                 <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="5%" />
                                                                             </asp:BoundColumn>
-                                                                            <asp:BoundColumn DataField="ProjectName" HeaderText="锟斤拷目锟斤拷锟斤拷">
+                                                                            <asp:BoundColumn DataField="ProjectName" HeaderText="项目名称">
                                                                                 <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" Width="25%" />
                                                                             </asp:BoundColumn>
-                                                                            <asp:BoundColumn DataField="BeginDate" DataFormatString="{0:yyyy/MM/dd}" HeaderText="锟斤拷始锟斤拷锟斤拷">
+                                                                            <asp:BoundColumn DataField="BeginDate" DataFormatString="{0:yyyy/MM/dd}" HeaderText="开始日期">
                                                                                 <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="10%" />
                                                                             </asp:BoundColumn>
-                                                                            <asp:BoundColumn DataField="EndDate" DataFormatString="{0:yyyy/MM/dd}" HeaderText="锟斤拷锟斤拷锟斤拷锟斤拷">
+                                                                            <asp:BoundColumn DataField="EndDate" DataFormatString="{0:yyyy/MM/dd}" HeaderText="结束日期">
                                                                                 <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="10%" />
                                                                             </asp:BoundColumn>
-                                                                            <asp:BoundColumn DataField="MakeDate" DataFormatString="{0:yyyy/MM/dd}" HeaderText="锟斤拷锟斤拷锟斤拷锟斤拷">
+                                                                            <asp:BoundColumn DataField="MakeDate" DataFormatString="{0:yyyy/MM/dd}" HeaderText="制作日期">
                                                                                 <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="10%" />
                                                                             </asp:BoundColumn>
                                                                             <asp:TemplateColumn HeaderText="Status">
@@ -574,7 +574,7 @@
                                                                                 </ItemTemplate>
                                                                                 <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" Width="10%" />
                                                                             </asp:TemplateColumn>
-                                                                            <asp:TemplateColumn HeaderText="锟斤拷沙潭锟?>
+                                                                            <asp:TemplateColumn HeaderText="所属步骤">
                                                                                 <ItemTemplate>
                                                                                     <asp:Label ID="LB_FinishPercent" runat="server" Text='<%# DataBinder.Eval(Container.DataItem,"FinishPercent")%> '></asp:Label>%
                                                                                

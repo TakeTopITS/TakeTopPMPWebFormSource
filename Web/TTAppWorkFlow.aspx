@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppWorkFlow.aspx.cs" Inherits="TTAppWorkFlow" %>
+﻿﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppWorkFlow.aspx.cs" Inherits="TTAppWorkFlow" %>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc2" %>
@@ -239,7 +239,7 @@
                                                                                 <asp:BoundColumn DataField="ID" HeaderText="Number" Visible="False">
                                                                                     <ItemStyle CssClass="" HorizontalAlign="left" Width="5%" />
                                                                                 </asp:BoundColumn>
-                                                                                <asp:TemplateColumn HeaderText="要锟斤拷说墓锟斤拷锟?>
+                                                                                <asp:TemplateColumn HeaderText="要说明的工作量">
                                                                                     <ItemTemplate>
 
                                                                                         <div class="npb">
@@ -299,7 +299,7 @@
                                                                                 <asp:BoundColumn DataField="ID" HeaderText="Number" Visible="False">
                                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="left" Width="5%" />
                                                                                 </asp:BoundColumn>
-                                                                                <asp:TemplateColumn HeaderText="要锟斤拷说墓锟斤拷锟?>
+                                                                                <asp:TemplateColumn HeaderText="要说明的工作量">
                                                                                     <ItemTemplate>
 
 
@@ -348,7 +348,7 @@
                                                                              
                                                                                 <asp:BoundColumn DataField="WLID" HeaderText="Number" Visible="false"></asp:BoundColumn>
 
-                                                                                <asp:TemplateColumn HeaderText="要锟斤拷说墓锟斤拷锟?>
+                                                                                <asp:TemplateColumn HeaderText="要说明的工作量">
                                                                                     <ItemTemplate>
 
                                                                                         <div class="npb">

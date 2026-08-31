@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppMembersPosition.aspx.cs" Inherits="TTAppMembersPosition" %>
+﻿﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppMembersPosition.aspx.cs" Inherits="TTAppMembersPosition" %>
 
 <!DOCTYPE html>
 
@@ -152,7 +152,7 @@
                                         <%--                                            <asp:BoundColumn DataField="UserName" HeaderText="Name">
                                                 <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="15%" />
                                             </asp:BoundColumn>
-                                            <asp:TemplateColumn HeaderText="位锟斤拷:">
+                                            <asp:TemplateColumn HeaderText="联系人列表">
                                                 <ItemTemplate>
                                                     <table width="100%">
                                                         <tr>

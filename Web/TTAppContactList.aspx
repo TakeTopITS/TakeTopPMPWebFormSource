@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppContactList.aspx.cs" Inherits="TTAppContactList" %>
+﻿﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppContactList.aspx.cs" Inherits="TTAppContactList" %>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
 
@@ -66,7 +66,7 @@
                                         <tr>
                                             <td width="100%" class="ItemAlignLeft">
                                                 <cc1:TabContainer CssClass="ajax_tab_menu" ID="TabContainer1" runat="server" ActiveTabIndex="0" Width="98%">
-                                                    <cc1:TabPanel ID="TabPanel1" runat="server" HeaderText="锟斤拷系锟斤拷锟叫憋拷">
+                                                    <cc1:TabPanel ID="TabPanel1" runat="server" HeaderText="联系人列表">
                                                         <ContentTemplate>
                                                               <table width="99%" border="0" cellpadding="0" cellspacing="0" background="ImagesSkin/main_n_bj.jpg">
                                                                 <tr>
@@ -114,7 +114,7 @@
                                                             <br />
                                                         </ContentTemplate>
                                                     </cc1:TabPanel>
-                                                    <cc1:TabPanel ID="TabPanel2" runat="server" HeaderText="锟斤拷系锟斤拷锟斤拷锟斤拷">
+                                                    <cc1:TabPanel ID="TabPanel2" runat="server" HeaderText="联系人列表">
                                                         <ContentTemplate>
                                                             <table style="width: 99%" cellpadding="2" cellspacing="0" class="formBgStyle">
                                                                 <tr>

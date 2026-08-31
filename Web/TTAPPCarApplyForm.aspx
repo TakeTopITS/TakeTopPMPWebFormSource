@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAPPCarApplyForm.aspx.cs" Inherits="TTAPPCarApplyForm" %>
+﻿﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAPPCarApplyForm.aspx.cs" Inherits="TTAPPCarApplyForm" %>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
 
@@ -133,7 +133,7 @@
                                                         <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="10%" />
                                                     </asp:BoundColumn>
 
-                                                    <asp:BoundColumn DataField="ApplyReason" HeaderText="锟斤拷锟斤拷原锟斤拷">
+                                                    <asp:BoundColumn DataField="ApplyReason" HeaderText="申请原因">
                                                         <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" Width="40%" />
                                                     </asp:BoundColumn>
                                                     <asp:TemplateColumn HeaderText="Status">
@@ -436,7 +436,7 @@
                                                     DataTextField="WLName" HeaderText="Workflow" Target="_blank">
                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" Width="50%" />
                                                 </asp:HyperLinkColumn>
-                                                <asp:BoundColumn DataField="CreateTime" HeaderText="锟斤拷锟斤拷时锟斤拷">
+                                                <asp:BoundColumn DataField="CreateTime" HeaderText="创建时间">
                                                     <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="20%" />
                                                 </asp:BoundColumn>
                                                 <asp:TemplateColumn HeaderText="Status">

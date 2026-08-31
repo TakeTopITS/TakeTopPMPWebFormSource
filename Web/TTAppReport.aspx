@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppReport.aspx.cs" Inherits="TTAppReport" %>
+﻿﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTAppReport.aspx.cs" Inherits="TTAppReport" %>
 
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
@@ -76,7 +76,7 @@
                                                 <asp:BoundColumn DataField="ID" HeaderText="SerialNumber" Visible="false">
                                                     <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="7%" />
                                                 </asp:BoundColumn>
-                                                <asp:TemplateColumn HeaderText="锟斤拷锟斤拷锟侥硷拷">
+                                                <asp:TemplateColumn HeaderText="联系人列表">
                                                     <ItemTemplate>
                                                         <asp:Button ID="BT_ReportName" CommandName="Open" runat="server" Text='<%# DataBinder.Eval(Container.DataItem,"ReportName") %>'
                                                             CssClass="inpuLongest" Width="99%" />
@@ -84,14 +84,14 @@
                                                     <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="35%" />
                                                 </asp:TemplateColumn>
                                                 <%--<asp:HyperLinkColumn DataNavigateUrlField="ReportURL" DataNavigateUrlFormatString="{0}"
-                                                     DataTextField="ReportName" HeaderText="锟斤拷锟斤拷锟侥硷拷" Target="_blank">
+                                                     DataTextField="ReportName" HeaderText="报告文件" Target="_blank">
                                                      <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" Width="35%" />
                                                  </asp:HyperLinkColumn>--%>
-                                                <%--<asp:BoundColumn DataField="TemName" HeaderText="模锟斤拷">
+                                                <%--<asp:BoundColumn DataField="TemName" HeaderText="模板">
                                                     <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="20%" />
                                                 </asp:BoundColumn>
                                                 <asp:HyperLinkColumn DataNavigateUrlField="CreatorCode" DataNavigateUrlFormatString="TTUserInforSimple.aspx?UserCode={0}"
-                                                    DataTextField="CreatorName" HeaderText="锟较达拷锟斤拷" Target="_blank">
+                                                    DataTextField="CreatorName" HeaderText="创建人" Target="_blank">
                                                     <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="10%" />
                                                 </asp:HyperLinkColumn>
                                                 <asp:BoundColumn DataField="CreateTime" HeaderText="CreationTime">
@@ -125,7 +125,7 @@
                                                 <asp:BoundColumn DataField="ID" HeaderText="SerialNumber" Visible="false">
                                                     <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="7%" />
                                                 </asp:BoundColumn>
-                                                <asp:TemplateColumn HeaderText="锟斤拷锟斤拷锟侥硷拷">
+                                                <asp:TemplateColumn HeaderText="联系人列表">
                                                     <ItemTemplate>
                                                         <asp:Button ID="BT_ReportName" CommandName="Open" runat="server" Text='<%# DataBinder.Eval(Container.DataItem,"ReportName") %>'
                                                             CssClass="inpuLongest" Width="99%" />
@@ -133,14 +133,14 @@
                                                     <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="35%" />
                                                 </asp:TemplateColumn>
                                                 <%--<asp:HyperLinkColumn DataNavigateUrlField="ReportURL" DataNavigateUrlFormatString="{0}"
-                               DataTextField="ReportName" HeaderText="锟斤拷锟斤拷锟侥硷拷" Target="_blank">
+                               DataTextField="ReportName" HeaderText="报告文件" Target="_blank">
                                <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" Width="35%" />
                            </asp:HyperLinkColumn>--%>
-                                                <%--<asp:BoundColumn DataField="TemName" HeaderText="模锟斤拷">
+                                                <%--<asp:BoundColumn DataField="TemName" HeaderText="模板">
                               <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="20%" />
                           </asp:BoundColumn>
                           <asp:HyperLinkColumn DataNavigateUrlField="CreatorCode" DataNavigateUrlFormatString="TTUserInforSimple.aspx?UserCode={0}"
-                              DataTextField="CreatorName" HeaderText="锟较达拷锟斤拷" Target="_blank">
+                              DataTextField="CreatorName" HeaderText="创建人" Target="_blank">
                               <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="10%" />
                           </asp:HyperLinkColumn>
                           <asp:BoundColumn DataField="CreateTime" HeaderText="CreationTime">

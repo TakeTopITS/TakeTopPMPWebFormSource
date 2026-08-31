@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTPersonalSpaceWorkflow.aspx.cs" Inherits="TTPersonalSpaceWorkflow" %>
+ï»¿ï»¿ï»¿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TTPersonalSpaceWorkflow.aspx.cs" Inherits="TTPersonalSpaceWorkflow" %>
 
 <%@ OutputCache Duration="2678400" VaryByParam="*" %>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
@@ -59,7 +59,7 @@
                         <tr>
                             <td valign="top" style="padding: 1px 1px 1px 10px;">
                                 <div class="nTabr">
-                                    <!-- ¡À¨º¨¬a?a¨º? -->
+                                    <!-- Â±ÃªÃ¬a?aÃª? -->
                                     <div class="TabTitle">
                                         <ul id="myTab3r">
 
@@ -75,7 +75,7 @@
                                             </li>
                                         </ul>
                                     </div>
-                                    <!-- ?¨²¨¨Y?a¨º? -->
+                                    <!-- ?ÃºÃ¨Y?aÃª? -->
                                     <div class="TabContent">
 
                                         <div id="myTab3r_Content0">
@@ -87,11 +87,11 @@
                                                             OnPageIndexChanged="DataGrid6_PageIndexChanged" PageSize="8" Width="100%">
 
                                                             <Columns>
-                                                                <asp:BoundColumn DataField="ID" HeaderText="¡À¨¤o?" Visible="false">
+                                                                <asp:BoundColumn DataField="ID" HeaderText="ç¼–å·" Visible="false">
                                                                     <ItemStyle CssClass="dibian" Horizontalalign="left" Width="10%" />
                                                                 </asp:BoundColumn>
 
-                                                                <asp:TemplateColumn HeaderText="1¡è¡Á¡Â¨¢¡Â">
+                                                                <asp:TemplateColumn HeaderText="1Â¤Ã—Ã·Ã¡Ã·">
                                                                     <ItemTemplate>
                                                                         <a href="TTWorkFlowDetailMain.aspx?ID=<%#DataBinder .Eval (Container .DataItem ,"ID") %>">
                                                                             <table style="width: 100%;">
@@ -113,10 +113,10 @@
                                                                 </asp:TemplateColumn>
 
                                                                 <asp:HyperLinkColumn DataNavigateUrlField="CreatorCode" DataNavigateUrlFormatString="TTUserInforSimple.aspx?UserCode={0}"
-                                                                    DataTextField="CreatorName" HeaderText="¨¦¨º??¨¨?" Target="_blank">
+                                                                    DataTextField="CreatorName" HeaderText="Ã©Ãª??Ã¨?" Target="_blank">
                                                                     <ItemStyle CssClass="dibian" Horizontalalign="left" Width="20%" />
                                                                 </asp:HyperLinkColumn>
-                                                                <asp:TemplateColumn HeaderText="¡Á¡ä¨¬?">
+                                                                <asp:TemplateColumn HeaderText="æ‰€å±žæ­¥éª¤">
                                                                     <ItemTemplate>
                                                                         <%# ShareClass.GetStatusHomeNameByWorkflowStatus(Eval("Status").ToString()) %>
                                                                     </ItemTemplate>
@@ -142,20 +142,20 @@
                                                             PageSize="8" Width="100%" CellPadding="4" ForeColor="#333333" GridLines="None">
                                                             <HeaderStyle Horizontalalign="left" BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                                                             <Columns>
-                                                                <asp:BoundColumn DataField="WLID" HeaderText="¡À¨¤o?" Visible="false">
+                                                                <asp:BoundColumn DataField="WLID" HeaderText="Â±Ã o?" Visible="false">
                                                                     <ItemStyle CssClass="dibian" Horizontalalign="left" />
                                                                 </asp:BoundColumn>
                                                                 <asp:HyperLinkColumn DataNavigateUrlField="WLID" DataNavigateUrlFormatString="TTMyWorkDetailMain.aspx?WLID={0}&RelatedType=Null"
                                                                     DataTextField="WLName" HeaderText="Workflow" Target="_blank">
                                                                     <ItemStyle CssClass="didibian" HorizontalAlign="Left" Width="55%" />
                                                                 </asp:HyperLinkColumn>
-                                                                <asp:TemplateColumn HeaderText="¡Á¡ä¨¬?">
+                                                                <asp:TemplateColumn HeaderText="æ‰€å±žæ­¥éª¤">
                                                                     <ItemTemplate>
                                                                         <%# ShareClass.GetLastestStepLastestOperator(Eval("WLID").ToString()) %>
                                                                     </ItemTemplate>
                                                                     <ItemStyle CssClass="dibian" HorizontalAlign="Left" Width="30%" />
                                                                 </asp:TemplateColumn>
-                                                                <asp:TemplateColumn HeaderText="¡Á¡ä¨¬?">
+                                                                <asp:TemplateColumn HeaderText="æ‰€å±žæ­¥éª¤">
                                                                     <ItemTemplate>
                                                                         <%# ShareClass. GetWorkflowStatusByAuto(Eval("WLID").ToString()) %><%# ShareClass.GetStatusHomeNameByWorkflowStatus(Eval("Status").ToString()) %>
                                                                     </ItemTemplate>
