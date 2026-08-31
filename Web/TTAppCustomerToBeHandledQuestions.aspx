@@ -15,14 +15,14 @@
     <script type="text/javascript" src="js/allAHandler.js"></script>
     <script type="text/javascript" language="javascript">
         $(function () {
-            initSwipeBack();// ³õÊ¼»¯»¬¶¯·µ»Ø¹¦ÄÜ 
+            initSwipeBack();// ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø¹ï¿½ï¿½ï¿½ 
 
             //
 
             SetDataGridTrClickLink();
         });
 
-        //µã»÷DATAGRIDÐÐÄÚÈÎºÎÒ»µã£¬¶¼ÄÜ´¥·¢ÐÐÄÚµÄÁ´½Ó
+        //ï¿½ï¿½ï¿½DATAGRIDï¿½ï¿½ï¿½ï¿½ï¿½Îºï¿½Ò»ï¿½ã£¬ï¿½ï¿½ï¿½Ü´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½
         function SetDataGridTrClickLink() {
 
 
@@ -37,13 +37,12 @@
     <div id="swipeFeedback" class="swipe-feedback">
         <asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYYXXHDKSXBYM%>" />
     </div>
-    <!-- »¬¶¯·´À¡²ã -->
-    <center>
-        <form id="form1" runat="server">
-            <%--  <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">--%>
-            <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">
-            </asp:ScriptManager>
-            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+    <!-- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -->
+    <form id="form1" class="napf" runat="server">
+        <%--  <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">--%>
+        <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">
+        </asp:ScriptManager>
+        <asp:UpdatePanel ID="UpdatePanel1" class="napbac" runat="server">
                 <ContentTemplate>
 
                     <table id="AboveTable" cellpadding="0" width="100%" cellspacing="0" class="bian">
@@ -66,7 +65,7 @@
                                                         </td>
                                                     </tr>
                                                 </table>
-                                                <img id="IMG_Waiting" src="Images/Processing.gif" alt="ÇëÉÔºò£¬´¦ÀíÖÐ..." style="display: none;" />
+                                                <img id="IMG_Waiting" src="Images/Processing.gif" alt="ï¿½ï¿½ï¿½Ôºò£¬´ï¿½ï¿½ï¿½ï¿½ï¿½..." style="display: none;" />
                                             </a>
                                         </td>
                                         <td></td>
@@ -167,11 +166,11 @@
                                                                 </asp:BoundColumn>
 
                                                                 <asp:HyperLinkColumn DataNavigateUrlField="ID" DataNavigateUrlFormatString="TTAppCustomerToBeHandledQuestionsDetail.aspx?ID={0}"
-                                                                    DataTextField="Question" HeaderText="ÎÊÌâ">
+                                                                    DataTextField="Question" HeaderText="ï¿½ï¿½ï¿½ï¿½">
                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" />
                                                                 </asp:HyperLinkColumn>
 
-                                                                <asp:BoundColumn DataField="UserPosition" HeaderText="ÇøÓò">
+                                                                <asp:BoundColumn DataField="UserPosition" HeaderText="ï¿½ï¿½ï¿½ï¿½">
                                                                     <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="25%" />
                                                                 </asp:BoundColumn>--%>
                                                             </Columns>
@@ -264,12 +263,12 @@
 
 
                                                                 <asp:HyperLinkColumn DataNavigateUrlField="ID" DataNavigateUrlFormatString="TTAppCustomerQuestionHandleDetailForMembers.aspx?ID={0}"
-                                                                    DataTextField="Question" HeaderText="ÎÊÌâ" Target="_blank">
+                                                                    DataTextField="Question" HeaderText="ï¿½ï¿½ï¿½ï¿½" Target="_blank">
                                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" />
                                                                 </asp:HyperLinkColumn>
 
 
-                                                                <asp:BoundColumn DataField="OperatorName" HeaderText="ÊÜÀíÈË">
+                                                                <asp:BoundColumn DataField="OperatorName" HeaderText="ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½">
                                                                     <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="25%" />
                                                                 </asp:BoundColumn>--%>
                                                             </Columns>
@@ -301,7 +300,6 @@
                 </asp:UpdateProgress>
             </div>
         </form>
-    </center>
 </body>
 <%--<script type="text/javascript" language="javascript">var cssDirectory = '<%=Session["CssDirectory"] %>'; var oLink = document.getElementById('mainCss'); oLink.href = 'css/' + cssDirectory + '/' + 'bluelightmain.css';</script>--%>
 </html>
