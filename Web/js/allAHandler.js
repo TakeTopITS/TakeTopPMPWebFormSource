@@ -2052,3 +2052,42 @@ function manualRefresh() {
 })();
 
 //------------------在鼠标位置加载等待图标处理结束--------------------------
+//====================================================================
+// 移动端整页滚动兜底修复（微信/WKWebView）
+// 解决 html/body 滚动容器冲突导致"整页无法向上滑动"的问题
+//====================================================================
+(function () {
+    function fixPageScroll() {
+        try {
+            if (typeof document === 'undefined') return;
+            var docEl = document.documentElement;
+            var body = document.body;
+            if (docEl) {
+                // html 承担整页纵向滚动（微信 WKWebView 最稳定）
+                // 注意：overflow-x 不能设为 hidden，否则 iOS/WKWebView 会锁死整页滚动
+                docEl.style.height = '100%';
+                docEl.style.overflowX = 'auto';
+                docEl.style.overflowY = 'auto';
+                docEl.style.position = 'relative';
+            }
+            if (body) {
+                // body 保持自然内容高度，不设内部滚动，交给 html 滚动
+                body.style.height = 'auto';
+                body.style.minHeight = '100%';
+                body.style.overflow = 'visible';
+                body.style.overflowY = 'visible';
+                body.style.position = 'relative';
+            }
+        } catch (e) {
+            // 忽略异常，不影响页面其他功能
+        }
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function () {
+            setTimeout(fixPageScroll, 50);
+        });
+    } else {
+        setTimeout(fixPageScroll, 100);
+    }
+})();

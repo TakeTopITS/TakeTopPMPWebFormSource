@@ -9,8 +9,7 @@
         html, body {
             height: 100%;
             margin: 0;
-            /*  overflow-x: auto;
-            overflow-y: hidden;*/
+            overflow: hidden;
         }
     </style>
 
@@ -27,15 +26,46 @@
     </script>
 
 </head>
-<body scroll="no">
+<body>
 
-    <iframe id="topFrame" name="topFrame" src='TakeTopAPPMain.aspx' style="height: 100%; width: 100%; border-width: 0px;"></iframe>
+    <iframe id="topFrame" name="topFrame" src='TakeTopAPPMain.aspx' style="height: 100%; width: 100%; border-width: 0px;" scrolling="yes" marginwidth="0" marginheight="0"></iframe>
 
 
 </body>
 <script type="text/javascript" language="javascript">
     var cssDirectory = '<%=Session["CssDirectory"] %>';
     var oLink = document.getElementById('mainCss');
-    oLink.href = 'css/' + cssDirectory + '/' + 'bluelightmain.css';
+    if (oLink) { oLink.href = 'css/' + cssDirectory + '/' + 'bluelightmain.css'; }
+
+    // ── 移动端 iframe 内整页滚动兜底（微信/WKWebView）──
+    // 每次顶层 iframe 加载（含内部跳转到功能页）时，强制其内部文档 html/body 允许滚动
+    function fixFrameScroll() {
+        try {
+            var f = document.getElementById('topFrame');
+            if (!f || !f.contentDocument) return;
+            var doc = f.contentDocument;
+            var html = doc.documentElement;
+            var body = doc.body;
+            if (html) {
+                html.style.height = '100%';
+                html.style.overflow = 'auto';
+                html.style.overflowX = 'auto';
+                html.style.overflowY = 'auto';
+                html.style.position = 'relative';
+            }
+            if (body) {
+                body.style.height = 'auto';
+                body.style.minHeight = '100%';
+                body.style.overflow = 'visible';
+                body.style.overflowY = 'visible';
+                body.style.position = 'relative';
+            }
+        } catch (e) { /* 忽略，不影响功能 */ }
+    }
+    var frameEl = document.getElementById('topFrame');
+    if (frameEl) {
+        frameEl.addEventListener('load', function () { setTimeout(fixFrameScroll, 120); });
+    }
+    window.addEventListener('load', function () { setTimeout(fixFrameScroll, 120); });
 </script>
 </html>
