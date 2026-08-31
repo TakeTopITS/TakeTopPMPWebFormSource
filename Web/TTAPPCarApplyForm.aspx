@@ -17,7 +17,7 @@
     <script type="text/javascript" src="js/layer/layer/layer.js"></script>
     <script type="text/javascript" src="js/popwindow.js"></script>
     <script type="text/javascript" language="javascript">
-        $(function () { initSwipeBack();// ³õÊ¼»¯»¬¶¯·µ»Ø¹¦ÄÜ  initSwipeBack();// ³õÊ¼»¯»¬¶¯·µ»Ø¹¦ÄÜ
+        $(function () { initSwipeBack();// ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø¹ï¿½ï¿½ï¿½  initSwipeBack();// ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø¹ï¿½ï¿½ï¿½
              /*  if (top.location != self.location) { } else { CloseWebPage(); }*/
 
 
@@ -26,9 +26,8 @@
     </script>
 
 </head>
-<body><div id="swipeFeedback" class="swipe-feedback"><asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYYXXHDKSXBYM%>" /></div> <!-- »¬¶¯·´À¡²ã -->
-    <center>
-        <form id="form1" runat="server">
+<body><div id="swipeFeedback" class="swipe-feedback"><asp:Label ID="Label634424" runat="server" Text="<%$ Resources:lang,XYHDKHHSYYXXHDKSXBYM%>" /></div> <!-- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -->
+        <form id="form1" runat="server" class="napf">
             <%--  <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">--%>
             <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">
             </asp:ScriptManager>
@@ -53,7 +52,7 @@
                                                             <%-- <img src="ImagesSkin/main_top_r.jpg" width="5" height="31" />--%></td>
                                                     </tr>
                                                 </table>
-                                                <img id="IMG_Waiting" src="Images/Processing.gif" alt="ÇëÉÔºò£¬´¦ÀíÖÐ..." style="display: none;" />
+                                                <img id="IMG_Waiting" src="Images/Processing.gif" alt="ï¿½ï¿½ï¿½Ôºò£¬´ï¿½ï¿½ï¿½ï¿½ï¿½..." style="display: none;" />
                                             </a>
                                         </td>
                                     </tr>
@@ -133,7 +132,7 @@
                                                         <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="10%" />
                                                     </asp:BoundColumn>
 
-                                                    <asp:BoundColumn DataField="ApplyReason" HeaderText="ÉêÇëÔ­Òò">
+                                                    <asp:BoundColumn DataField="ApplyReason" HeaderText="ï¿½ï¿½ï¿½ï¿½Ô­ï¿½ï¿½">
                                                         <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" Width="40%" />
                                                     </asp:BoundColumn>
                                                     <asp:TemplateColumn HeaderText="Status">
@@ -436,7 +435,7 @@
                                                     DataTextField="WLName" HeaderText="Workflow" Target="_blank">
                                                     <ItemStyle CssClass="itemBorder" HorizontalAlign="Left" Width="50%" />
                                                 </asp:HyperLinkColumn>
-                                                <asp:BoundColumn DataField="CreateTime" HeaderText="ÉêÇëÊ±¼ä">
+                                                <asp:BoundColumn DataField="CreateTime" HeaderText="ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½">
                                                     <ItemStyle CssClass="itemBorder" Horizontalalign="left" Width="20%" />
                                                 </asp:BoundColumn>
                                                 <asp:TemplateColumn HeaderText="Status">
@@ -522,7 +521,6 @@
                 </asp:UpdateProgress>
             </div>
         </form>
-    </center>
 </body>
 <%--<script type="text/javascript" language="javascript">var cssDirectory = '<%=Session["CssDirectory"] %>'; var oLink = document.getElementById('mainCss'); oLink.href = 'css/' + cssDirectory + '/' + 'bluelightmain.css';</script>--%>
 </html>
