@@ -16,8 +16,8 @@ public partial class DefaultSAAS : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        //ÖÓÀñÔÂ×÷Æ·(jack.erp@gmail.com)
-        //Ì©¶¥ÍØ¶¦¼¯ÍÅ£¨TakeTop Software£©2006£­2026\
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ·(jack.erp@gmail.com)
+        //Ì©ï¿½ï¿½ï¿½Ø¶ï¿½ï¿½ï¿½ï¿½Å£ï¿½TakeTop Softwareï¿½ï¿½2006ï¿½ï¿½2026\
 
         string strVerificationCode, strSMSVerification, strIsOEMVersion;
 
@@ -40,6 +40,17 @@ public partial class DefaultSAAS : System.Web.UI.Page
 
         if (Page.IsPostBack != true)
         {
+            // æ•°æ®åº“å‡çº§ï¼šé¡µé¢åŠ è½½æ—¶æ‰§è¡Œï¼Œä¸å…¶ä»–ç™»å½•é¡µé¢ä¿æŒä¸€è‡´ï¼Œç¡®ä¿ç”¨å“ªä¸ªé¡µé¢ç™»å½•éƒ½ä¼šå‡çº§
+            try
+            {
+                DatabaseUpdateHandle.RunUpdateColumnValueCode();
+                DatabaseUpdateHandle.RunUpdateModuleNameCode();
+            }
+            catch (Exception ex)
+            {
+                LogClass.WriteLogFile("DefaultSAAS upgrade error: " + ex.Message + "\n" + ex.StackTrace);
+            }
+
             strVerificationCode = System.Configuration.ConfigurationManager.AppSettings["VerificationCode"].Trim().ToUpper();
             if (strVerificationCode == "NO")
             {
@@ -56,7 +67,7 @@ public partial class DefaultSAAS : System.Web.UI.Page
                     IB_GetSMS.Visible = true;
                 }
 
-                // ¶¯Ì¬ÉèÖÃÑéÖ¤ÂëÍ¼Æ¬URL£¬È·±£Ã¿´Î¶¼ÊÇĞÂÇëÇó
+                // ï¿½ï¿½Ì¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤ï¿½ï¿½Í¼Æ¬URLï¿½ï¿½È·ï¿½ï¿½Ã¿ï¿½Î¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 IM_CheckCode.ImageUrl = "TTCheckCode.aspx?t=" + DateTime.Now.Ticks;
             }
 
@@ -138,10 +149,10 @@ public partial class DefaultSAAS : System.Web.UI.Page
                 {
                     ClientScript.RegisterStartupScript(this.GetType(), "", "<script>showAlertAtMouse('" + LanguageHandle.GetWord("ZZYZMCWSRZDYZM").ToString().Trim() + "');</script>");
                     TB_CheckCode.Text = "";
-                    Session["CheckCode"] = null; // Ğ£ÑéºóÁ¢¼´Ê§Ğ§
+                    Session["CheckCode"] = null; // Ğ£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê§Ğ§
                     return;
                 }
-                Session["CheckCode"] = null; // Ğ£ÑéºóÁ¢¼´Ê§Ğ§
+                Session["CheckCode"] = null; // Ğ£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê§Ğ§
             }
 
             //if (strSMSVerification == "YES")
@@ -213,7 +224,7 @@ public partial class DefaultSAAS : System.Web.UI.Page
                 //        string strHQL1 = "Update T_ProjectMember Set CssDirectory = 'CssGreen' where UserCode = " + "'" + strUserCode + "'";
                 //        ShareClass.RunSqlCommand(strHQL1);
 
-                //        //¸øÏà¹ØÒ³ÃæÎÄ¼şÌí¼Ó¿ÕĞĞÒÔË¢ĞÂÒ³Ãæ»º´æ
+                //        //ï¿½ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½Ó¿ï¿½ï¿½ï¿½ï¿½ï¿½Ë¢ï¿½ï¿½Ò³ï¿½æ»ºï¿½ï¿½
                 //        ShareClass.AddSpaceLineToFileForRefreshCache();
                 //    }
                 //}
@@ -223,7 +234,7 @@ public partial class DefaultSAAS : System.Web.UI.Page
                 try
                 {
 
-                    //³õÊ¼»¯½çÃæÓïÑÔ
+                    //ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                     try
                     {
                         Session["LangCode"] = ds.Tables[0].Rows[0]["LangCode"].ToString().Trim();
@@ -252,7 +263,7 @@ public partial class DefaultSAAS : System.Web.UI.Page
                 {
                 }
 
-                //YESÊ±Ò³Ãæ±ØĞëÔÚ¿ò¼ÜÄÚ´ò¿ª£¬·ñÔò¹Ø±Õ
+                //YESÊ±Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¿ï¿½ï¿½ï¿½Ú´ò¿ª£ï¿½ï¿½ï¿½ï¿½ï¿½Ø±ï¿½
                 try
                 {
                     Session["MustInFrame"] = System.Configuration.ConfigurationManager.AppSettings["MustInFrame"];
@@ -265,7 +276,7 @@ public partial class DefaultSAAS : System.Web.UI.Page
                     Session["MustInFrame"] = "YES";
                 }
 
-                //ÊÇ·ñ×Ô¶¯¹¤×÷Á÷ÉêÇëÕß×ÔÑ¡»òÉÏÒ»²½ÉóÅúÕß×ÔÑ¡ÈËÔ±
+                //ï¿½Ç·ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½Ô±
                 try
                 {
                     Session["AutoSaveWFOperator"] = System.Configuration.ConfigurationManager.AppSettings["AutoSaveWFOperator"];
@@ -278,7 +289,7 @@ public partial class DefaultSAAS : System.Web.UI.Page
                     Session["AutoSaveWFOperator"] = "YES";
                 }
 
-                //---ÅĞ¶ÏÓÃ»§ÄÜÓÃÀ´µÇÂ¼µÄÉè±¸ÀàĞÍ----------------------
+                //---ï¿½Ğ¶ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½è±¸ï¿½ï¿½ï¿½ï¿½----------------------
                 if (strAllowDevice != "ALL")
                 {
                     if (ShareClass.IsMobileDeviceCheckAgent())
@@ -299,7 +310,7 @@ public partial class DefaultSAAS : System.Web.UI.Page
                     }
                 }
 
-                //¼ì²é×¢²áÂëÊÇ·ñºÏ·¨
+                //ï¿½ï¿½ï¿½×¢ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½Ï·ï¿½
                 string strServerName = System.Configuration.ConfigurationManager.AppSettings["ServerName"];
                 try
                 {
@@ -323,11 +334,11 @@ public partial class DefaultSAAS : System.Web.UI.Page
                 {
                     if (Session["CssDirectoryChangeNumber"].ToString() != "2" & Session["CssDirectoryChangeNumber"].ToString() != "0")
                     {
-                        //ÉèÖÃ»º´æ¸ü¸Ä±êÖ¾
+                        //ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½Ö¾
                         ShareClass.SetPageCacheMark("2");
                     }
 
-                    //²åÈëµÇÂ¼ÈÕÖ¾
+                    //ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½Ö¾
                     ShareClass.InsertUserLogonLog(strUserCode, strUserName, "WEB");
                 }
                 catch
@@ -336,7 +347,7 @@ public partial class DefaultSAAS : System.Web.UI.Page
 
                 Session["IsMobileDevice"] = "NO";
 
-                //ÔËĞĞÒ»Ğ©ÌØÊâµÄ´úÂë
+                //ï¿½ï¿½ï¿½ï¿½Ò»Ğ©ï¿½ï¿½ï¿½ï¿½Ä´ï¿½ï¿½ï¿½
                 ShareClass.RunSpecificalCodeForLogin();
 
                 string strScript = "<script>openMDIFrom('" + strMDIPageName + "');</script>";
@@ -413,11 +424,11 @@ public partial class DefaultSAAS : System.Web.UI.Page
 
         if (!string.IsNullOrEmpty(selectedValue))
         {
-            // Ö»ÔÚ Session ÖĞÉèÖÃ£¬²»ÔÚÕâÀïµ÷ÓÃ InitializeCulture()
+            // Ö»ï¿½ï¿½ Session ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ InitializeCulture()
             Session["LangCode"] = selectedValue;
 
-            // ÖØ¶¨Ïòµ½´ø²ÎÊıµÄÒ³Ãæ
-            // ĞÂÒ³Ãæ¼ÓÔØÊ±»á´¦Àí URL ²ÎÊı²¢µ÷ÓÃ×Ô¼ºµÄ InitializeCulture()
+            // ï¿½Ø¶ï¿½ï¿½òµ½´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½
+            // ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½á´¦ï¿½ï¿½ URL ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ InitializeCulture()
             Response.Redirect("DefaultSAAS.aspx?TargetLangCode=" + selectedValue, false);
         }
     }
@@ -428,7 +439,7 @@ public partial class DefaultSAAS : System.Web.UI.Page
 
         string strLangCode;
 
-        // ÓÅÏÈÊ¹ÓÃ URL ²ÎÊı
+        // ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½ URL ï¿½ï¿½ï¿½ï¿½
         string targetLang = Request.QueryString["TargetLangCode"];
         if (!string.IsNullOrEmpty(targetLang))
         {
@@ -445,7 +456,7 @@ public partial class DefaultSAAS : System.Web.UI.Page
             Session["LangCode"] = strLangCode;
         }
 
-        // ÉèÖÃ Cookie
+        // ï¿½ï¿½ï¿½ï¿½ Cookie
         if (Response.Cookies["LangCode"] == null)
         {
             Response.Cookies.Add(new HttpCookie("LangCode", strLangCode));
@@ -455,7 +466,7 @@ public partial class DefaultSAAS : System.Web.UI.Page
             Response.Cookies["LangCode"].Value = strLangCode;
         }
 
-        // Ó¦ÓÃÎÄ»¯ÉèÖÃ
+        // Ó¦ï¿½ï¿½ï¿½Ä»ï¿½ï¿½ï¿½ï¿½ï¿½
         System.Threading.Thread.CurrentThread.CurrentCulture =
             System.Globalization.CultureInfo.CreateSpecificCulture(strLangCode);
         System.Threading.Thread.CurrentThread.CurrentUICulture =

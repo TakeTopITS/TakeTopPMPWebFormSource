@@ -30,9 +30,14 @@ public partial class TakeTopDBUpgrade : System.Web.UI.Page
                     Response.Redirect("Outer/TakeTopSystemOtherCodeRunPage.aspx");
                 }
             }
+            catch (ThreadAbortException)
+            {
+                // Response.Redirect 会抛出 ThreadAbortException，这是 ASP.NET 的正常重定向机制，
+                // 绝不能在这里 RegisterStartupScript/reload，否则会陷入无限 reload 循环导致页面永远转圈。
+            }
             catch (Exception err)
             {
-                LogClass.WriteLogFile("Database upgrade ThreadAbortException:  " + err.Message.ToString());
+                LogClass.WriteLogFile("Database upgrade error:  " + err.Message.ToString());
                 ClientScript.RegisterStartupScript(this.GetType(), "3", "<script>location.reload();</script>");
             }
         }

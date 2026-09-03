@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Data;
 using System.Drawing;
@@ -15,8 +15,8 @@ public partial class TTBaseDataInner : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        //��������Ʒ��jack.erp@gmail.com)
-        //̩������2006��2012
+        //钟礼月作品（jack.erp@gmail.com)
+        //泰顶软件2006－2012
 
         string strUserCode = Session["UserCode"].ToString();
         LB_UserCode.Text = strUserCode;
@@ -210,7 +210,7 @@ public partial class TTBaseDataInner : System.Web.UI.Page
                 BT_ProjectStatusDelete.Enabled = true;
             }
 
-            // �򿪱༭ģ̬��
+            // 打开编辑模态框
             ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "openModal", "showModal('modalProjectStatus', document.getElementById('" + ((Button)e.Item.FindControl("BT_StatusID")).ClientID + "'));", true);
         }
     }
@@ -260,7 +260,7 @@ public partial class TTBaseDataInner : System.Web.UI.Page
                 BT_ProjectTypeDelete.Enabled = false;
             }
 
-            // �򿪱༭ģ̬��
+            // 打开编辑模态框
             ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "openModal", "showModal('modalProjectType', document.getElementById('" + ((Button)e.Item.FindControl("BT_ProjectType")).ClientID + "'));", true);
         }
     }
@@ -285,7 +285,7 @@ public partial class TTBaseDataInner : System.Web.UI.Page
                 BT_ReqStatusDelete.Enabled = true;
             }
 
-            // �򿪱༭ģ̬��
+            // 打开编辑模态框
             ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "openModal", "showModal('modalReqStatus', document.getElementById('" + ((Button)e.Item.FindControl("BT_Status")).ClientID + "'));", true);
         }
     }
@@ -310,7 +310,7 @@ public partial class TTBaseDataInner : System.Web.UI.Page
                 BT_TaskStatusDelete.Enabled = true;
             }
 
-            // �򿪱༭ģ̬��
+            // 打开编辑模态框
             ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "openModal", "showModal('modalTaskStatus', document.getElementById('" + ((Button)e.Item.FindControl("BT_Status")).ClientID + "'));", true);
         }
     }
@@ -335,7 +335,7 @@ public partial class TTBaseDataInner : System.Web.UI.Page
                 BT_PlanStatusDelete.Enabled = true;
             }
 
-            // �򿪱༭ģ̬��
+            // 打开编辑模态框
             ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "openModal", "showModal('modalPlanStatus', document.getElementById('" + ((Button)e.Item.FindControl("BT_Status")).ClientID + "'));", true);
         }
     }
@@ -360,7 +360,7 @@ public partial class TTBaseDataInner : System.Web.UI.Page
                 BT_WorkflowStatusDelete.Enabled = true;
             }
 
-            // �򿪱༭ģ̬��
+            // 打开编辑模态框
             ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "openModal", "showModal('modalWLStatus', document.getElementById('" + ((Button)e.Item.FindControl("BT_Status")).ClientID + "'));", true);
         }
     }
@@ -376,7 +376,7 @@ public partial class TTBaseDataInner : System.Web.UI.Page
             TB_WLType.Text = strWLType;
             TB_WLTypeSort.Text = strSortNumber;
 
-            // �򿪱༭ģ̬��
+            // 打开编辑模态框
             ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "openModal", "showModal('modalWLType', document.getElementById('" + ((Button)e.Item.FindControl("BT_Type")).ClientID + "'));", true);
         }
     }
@@ -401,7 +401,7 @@ public partial class TTBaseDataInner : System.Web.UI.Page
                 BT_TestStatusDelete.Enabled = true;
             }
 
-            // �򿪱༭ģ̬��
+            // 打开编辑模态框
             ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "openModal", "showModal('modalTestStatus', document.getElementById('" + ((Button)e.Item.FindControl("BT_Status")).ClientID + "'));", true);
         }
     }
@@ -426,7 +426,7 @@ public partial class TTBaseDataInner : System.Web.UI.Page
                 BT_OtherStatusDelete.Enabled = true;
             }
 
-            // �򿪱༭ģ̬��
+            // 打开编辑模态框
             ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "openModal", "showModal('modalOtherStatus', document.getElementById('" + ((Button)e.Item.FindControl("BT_Status")).ClientID + "'));", true);
         }
     }
@@ -439,7 +439,7 @@ public partial class TTBaseDataInner : System.Web.UI.Page
             string strHomeName = ((TextBox)(e.Item.FindControl("TB_HomeName"))).Text.Trim();
             string strID = e.Item.Cells[5].Text.Trim();
 
-            // �򿪱༭ģ̬��
+            // 打开编辑模态框
             ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "openModal", "showModal('modalActorGroup', document.getElementById('" + ((Button)e.Item.FindControl("BT_GroupName")).ClientID + "'));", true);
         }
     }
@@ -452,7 +452,7 @@ public partial class TTBaseDataInner : System.Web.UI.Page
             string strHomeName = ((TextBox)(e.Item.FindControl("TB_HomeName"))).Text.Trim();
             string strID = e.Item.Cells[4].Text.Trim();
 
-            // Ԥ������༭�߼�
+            // 预警命令编辑逻辑
         }
     }
 
@@ -474,7 +474,7 @@ public partial class TTBaseDataInner : System.Web.UI.Page
             TB_RentProductDemoURL.Text = strDemoURL;
             TB_RentProductTypeSort.Text = strSortNumber;
 
-            // �򿪱༭ģ̬��
+            // 打开编辑模态框
             ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "openModal", "showModal('modalRentProductType', document.getElementById('" + ((Button)e.Item.FindControl("BT_ID")).ClientID + "'));", true);
         }
     }
@@ -493,7 +493,7 @@ public partial class TTBaseDataInner : System.Web.UI.Page
             TB_HomeRentProductVersionType.Text = strHomeType;
             TB_RentProductVersionSort.Text = strSortNumber;
 
-            // �򿪱༭ģ̬��
+            // 打开编辑模态框
             ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "openModal", "showModal('modalRentProductVersionType', document.getElementById('" + ((Button)e.Item.FindControl("BT_ID")).ClientID + "'));", true);
         }
     }
@@ -512,7 +512,7 @@ public partial class TTBaseDataInner : System.Web.UI.Page
             TB_HomeTryProductResonType.Text = strHomeType;
             TB_TryProductResonSort.Text = strSortNumber;
 
-            // �򿪱༭ģ̬��
+            // 打开编辑模态框
             ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "openModal", "showModal('modalTryProductResonType', document.getElementById('" + ((Button)e.Item.FindControl("BT_ID")).ClientID + "'));", true);
         }
     }
@@ -1671,7 +1671,7 @@ public partial class TTBaseDataInner : System.Web.UI.Page
 
     protected void BT_RentProductTypeSave_Click(object sender, EventArgs e)
     {
-        // ���ò�Ʒ���͵ı����߼�
+        // 租用产品类型的保存逻辑
         ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZBCCG") + "')", true);
         ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "closeModal", "hideModal('modalRentProductType');", true);
     }
@@ -1739,7 +1739,7 @@ public partial class TTBaseDataInner : System.Web.UI.Page
 
     protected void BT_RentProductVersionTypeSave_Click(object sender, EventArgs e)
     {
-        // ���ò�Ʒ�汾���͵ı����߼�
+        // 租用产品版本类型的保存逻辑
         ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZBCCG") + "')", true);
         ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "closeModal", "hideModal('modalRentProductVersionType');", true);
     }
@@ -1806,12 +1806,12 @@ public partial class TTBaseDataInner : System.Web.UI.Page
 
     protected void BT_TryProductResonTypeSave_Click(object sender, EventArgs e)
     {
-        // ���ò�Ʒԭ�����͵ı����߼�
+        // 试用产品原因类型的保存逻辑
         ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "click", "showAlertAtMouse('" + LanguageHandle.GetWord("ZZBCCG") + "')", true);
         ScriptManager.RegisterStartupScript(this.UpdatePanel1, this.GetType(), "closeModal", "hideModal('modalTryProductResonType');", true);
     }
 
-    // ���ݼ��ط���
+    // 数据加载方法
     protected void LoadReqStatus(string strLangCode)
     {
         string strHQL = "from ReqStatus as reqStatus ";

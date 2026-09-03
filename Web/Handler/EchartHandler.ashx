@@ -226,19 +226,37 @@ public class EchartHandler : IHttpHandler, IRequiresSessionState
     private DataSet GetDataSetFast(string sql, string tableName, int timeoutSeconds)
     {
         DataSet dataSet = new DataSet();
+        DateTime start = DateTime.Now;
         
-        using (var connection = new Npgsql.NpgsqlConnection(
-            System.Configuration.ConfigurationManager.ConnectionStrings["SQLCONNECTIONSTRING"].ConnectionString))
+        try
         {
-            connection.Open();
-            using (var command = new Npgsql.NpgsqlCommand(sql, connection))
+            using (var connection = new Npgsql.NpgsqlConnection(
+                System.Configuration.ConfigurationManager.ConnectionStrings["SQLCONNECTIONSTRING"].ConnectionString))
             {
-                command.CommandTimeout = timeoutSeconds;
-                using (var adapter = new Npgsql.NpgsqlDataAdapter(command))
+                connection.Open();
+                using (var command = new Npgsql.NpgsqlCommand(sql, connection))
                 {
-                    adapter.Fill(dataSet, tableName);
+                    command.CommandTimeout = timeoutSeconds;
+                    using (var adapter = new Npgsql.NpgsqlDataAdapter(command))
+                    {
+                        adapter.Fill(dataSet, tableName);
+                    }
                 }
             }
+        }
+        catch (Exception ex)
+        {
+            double elapsed = DateTime.Now.Subtract(start).TotalSeconds;
+            LogClass.WriteLogFile("EchartHandler.GetDataSetFast ERROR, table=" + tableName
+                + ", elapsed=" + elapsed.ToString("F2") + "s, err=" + ex.Message + "\nSQL: " + sql);
+            throw;
+        }
+
+        double totalSec = DateTime.Now.Subtract(start).TotalSeconds;
+        if (totalSec > 3)
+        {
+            LogClass.WriteLogFile("EchartHandler.GetDataSetFast SLOW, table=" + tableName
+                + ", elapsed=" + totalSec.ToString("F2") + "s\nSQL: " + sql);
         }
         
         return dataSet;

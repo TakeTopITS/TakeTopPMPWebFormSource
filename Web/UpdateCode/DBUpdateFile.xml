@@ -16213,4 +16213,79 @@ ALTER TABLE public.v_projectplanlist
       UPDATE t_promodulelevelforpageuser SET modulename = 'TaskManagement' WHERE TRIM(modulename) = 'MyTasks';
     </SQLText>
   </DataBaseUpgradeFile>
+  <DataBaseUpgradeFile>
+    <ID>3939</ID>
+    <SQLText>
+      -- 数据规范化：清理核心5张表列的首尾空格（配合去掉应用层 RTRIM/TRIM，避免等值匹配漏查）
+      -- 先预览再执行：查询各表有多少行会因 TRIM 而改变
+      SELECT 'T_ProModule' AS tbl, COUNT(*) FROM T_ProModule WHERE ModuleName &lt;&gt; TRIM(ModuleName) OR ModuleType &lt;&gt; TRIM(ModuleType) OR UserType &lt;&gt; TRIM(UserType) OR UserCode &lt;&gt; TRIM(UserCode)
+      UNION ALL
+      SELECT 'T_ProModuleLevel', COUNT(*) FROM T_ProModuleLevel WHERE ModuleName &lt;&gt; TRIM(ModuleName) OR ModuleType &lt;&gt; TRIM(ModuleType) OR UserType &lt;&gt; TRIM(UserType)
+      UNION ALL
+      SELECT 't_MemberChartStringForMainPage', COUNT(*) FROM t_MemberChartStringForMainPage WHERE usercode &lt;&gt; TRIM(usercode)
+      UNION ALL
+      SELECT 'T_SystemAnalystChartRelatedUser', COUNT(*) FROM T_SystemAnalystChartRelatedUser WHERE UserCode &lt;&gt; TRIM(UserCode) OR ChartName &lt;&gt; TRIM(ChartName) OR FormType &lt;&gt; TRIM(FormType)
+      UNION ALL
+      SELECT 'T_SystemAnalystChartManagement', COUNT(*) FROM T_SystemAnalystChartManagement WHERE ChartName &lt;&gt; TRIM(ChartName) OR Status &lt;&gt; TRIM(Status);
+
+      -- 执行规范化（确认预览行数可接受后再执行；只有真正含首尾空格的行会被更新）
+      UPDATE T_ProModule
+         SET ModuleName = TRIM(ModuleName),
+             ModuleType = TRIM(ModuleType),
+             UserType   = TRIM(UserType),
+             UserCode   = TRIM(UserCode)
+       WHERE ModuleName &lt;&gt; TRIM(ModuleName) OR ModuleType &lt;&gt; TRIM(ModuleType) OR UserType &lt;&gt; TRIM(UserType) OR UserCode &lt;&gt; TRIM(UserCode);
+
+      UPDATE T_ProModuleLevel
+         SET ModuleName = TRIM(ModuleName),
+             ModuleType = TRIM(ModuleType),
+             UserType   = TRIM(UserType)
+       WHERE ModuleName &lt;&gt; TRIM(ModuleName) OR ModuleType &lt;&gt; TRIM(ModuleType) OR UserType &lt;&gt; TRIM(UserType);
+
+      UPDATE t_MemberChartStringForMainPage
+         SET usercode = TRIM(usercode)
+       WHERE usercode &lt;&gt; TRIM(usercode);
+
+      UPDATE T_SystemAnalystChartRelatedUser
+         SET UserCode = TRIM(UserCode),
+             ChartName = TRIM(ChartName),
+             FormType  = TRIM(FormType)
+       WHERE UserCode &lt;&gt; TRIM(UserCode) OR ChartName &lt;&gt; TRIM(ChartName) OR FormType &lt;&gt; TRIM(FormType);
+
+      UPDATE T_SystemAnalystChartManagement
+         SET ChartName = TRIM(ChartName),
+             Status    = TRIM(Status)
+       WHERE ChartName &lt;&gt; TRIM(ChartName) OR Status &lt;&gt; TRIM(Status);
+
+      -- 注意：t_MemberChartStringForMainPage 主键为 usercode，若原数据含空格，TRIM 后可能主键冲突，需先人工核对。
+    </SQLText>
+  </DataBaseUpgradeFile>
+  <DataBaseUpgradeFile>
+    <ID>3940</ID>
+    <SQLText>
+      -- 索引优化建议：驾驶舱系统分析图 + 个人空间模块流程图
+      -- 请先跑 EXPLAIN ANALYZE 验证确实提速后再保留；加索引有空间/写入成本。
+
+      -- 1) 分析图：T_SystemAnalystChartRelatedUser
+      --    过滤 UserCode+FormType、排序 SortNumber、JOIN ChartName
+      CREATE INDEX IF NOT EXISTS IX_chartreluser_user_form_sort
+          ON T_SystemAnalystChartRelatedUser (UserCode, FormType, SortNumber);
+
+      -- 2) 分析图：T_SystemAnalystChartManagement
+      --    JOIN ChartName + 过滤 Status
+      CREATE INDEX IF NOT EXISTS IX_chartmgr_chartname_status
+          ON T_SystemAnalystChartManagement (ChartName, Status);
+
+      -- 3) 流程图：T_ProModule（用户模块记录），RTRIM 表达式索引
+      CREATE INDEX IF NOT EXISTS IX_promodule_rtrim_name_code_type
+          ON T_ProModule (RTRIM(ModuleName), RTRIM(UserCode), RTRIM(UserType));
+
+      -- 4) 流程图：T_ProModuleLevel（模块层级定义），RTRIM 表达式索引
+      CREATE INDEX IF NOT EXISTS IX_promodulelevel_rtrim_module_usertype
+          ON T_ProModuleLevel (RTRIM(ModuleName), RTRIM(UserType));
+
+      -- 提示：数据规范化(见上一条目) + 应用层去掉 RTRIM/TRIM 后，可用普通 B-Tree 索引，
+      --       比 RTRIM 表达式索引更高效。若已去掉 RTRIM，普通等值索引即可。
+    </SQLText>
+  </DataBaseUpgradeFile>
 </DataBaseUpgradeFiles>

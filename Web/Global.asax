@@ -9,6 +9,7 @@
 <script RunAt="server">
 
     public System.Threading.Thread schedulerThread = null;
+    private Scheduler scheduler = null;
 
     void Application_Start(object sender, EventArgs e)
     {
@@ -17,14 +18,15 @@
 
         SchedulerConfiguration config = new SchedulerConfiguration(1000 * 480);
         config.Jobs.Add(new SampleJob());
-        Scheduler scheduler = new Scheduler(config);
-        System.Threading.ThreadStart myThreadStart = new System.Threading.ThreadStart(scheduler.Start);
-        System.Threading.Thread schedulerThread = new System.Threading.Thread(myThreadStart);
-        schedulerThread.Start();
+        this.scheduler = new Scheduler(config);
+        System.Threading.ThreadStart myThreadStart = new System.Threading.ThreadStart(this.scheduler.Start);
+        this.schedulerThread = new System.Threading.Thread(myThreadStart);
+        this.schedulerThread.IsBackground = true;
+        this.schedulerThread.Start();
 
         try
         {
-            //³õÊ¼»¯ÊµÌåÀà£¬ÒÔ¼Ó¿ìºóĞøµÄ²Ù×÷ËÙ¶È
+            //ï¿½ï¿½Ê¼ï¿½ï¿½Êµï¿½ï¿½ï¿½à£¬ï¿½Ô¼Ó¿ï¿½ï¿½ï¿½ï¿½ï¿½Ä²ï¿½ï¿½ï¿½ï¿½Ù¶ï¿½
             ShareClass.InitialNhibernateEntryClass();
         }
         catch (Exception err)
@@ -35,6 +37,19 @@
 
     void Application_End(object sender, EventArgs e)
     {
+        try
+        {
+            // åœæ­¢åå°è°ƒåº¦å™¨çº¿ç¨‹ï¼ˆå…ˆç½®åœæ­¢æ ‡å¿—ï¼Œé¿å…ä¸­æ–­æ—¶è®¿é—®å·²å¸è½½çš„ AppDomainï¼‰
+            if (null != this.scheduler)
+            {
+                this.scheduler.Stop();
+            }
+        }
+        catch (Exception err)
+        {
+            //LogClass.WriteLogFile(err.Message.ToString());
+        }
+
         if (null != schedulerThread)
         {
             schedulerThread.Abort();
@@ -42,7 +57,7 @@
 
         try
         {
-            //³õÊ¼»¯ÊµÌåÀà£¬ÒÔ¼Ó¿ìºóĞøµÄ²Ù×÷ËÙ¶È
+            //ï¿½ï¿½Ê¼ï¿½ï¿½Êµï¿½ï¿½ï¿½à£¬ï¿½Ô¼Ó¿ï¿½ï¿½ï¿½ï¿½ï¿½Ä²ï¿½ï¿½ï¿½ï¿½Ù¶ï¿½
             ShareClass.InitialNhibernateEntryClass();
         }
         catch (Exception err)
@@ -102,55 +117,55 @@
             {
                 string cultureCode = Request.Cookies["LangCode"].Value.ToString();
 
-                // Ö»ÉèÖÃ½çÃæÎÄ»¯ÎªÓÃ»§Ñ¡ÔñµÄÎÄ»¯
+                // Ö»ï¿½ï¿½ï¿½Ã½ï¿½ï¿½ï¿½ï¿½Ä»ï¿½Îªï¿½Ã»ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½Ä»ï¿½
                 System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(cultureCode);
 
-                //// ¹Ø¼üĞŞ¸Ä£ºÊı¾İ´¦ÀíÊ¹ÓÃ¹Ì¶¨ÎÄ»¯£¨±ÜÃâ·ğ½ÌÀúµÈÎÊÌâ£©
-                //// Ê¹ÓÃÓ¢ÎÄ£¨ÃÀ¹ú£©ÎÄ»¯£¬È·±£¹«ÀúºÍ±ê×¼Ê±¼ä¸ñÊ½
+                //// ï¿½Ø¼ï¿½ï¿½Ş¸Ä£ï¿½ï¿½ï¿½ï¿½İ´ï¿½ï¿½ï¿½Ê¹ï¿½Ã¹Ì¶ï¿½ï¿½Ä»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½â£©
+                //// Ê¹ï¿½ï¿½Ó¢ï¿½Ä£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä»ï¿½ï¿½ï¿½È·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í±ï¿½×¼Ê±ï¿½ï¿½ï¿½Ê½
                 //System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.CreateSpecificCulture("en");
 
-                // »òÕßÊ¹ÓÃ²»±äÎÄ»¯£¨¸üÍÆ¼ö£¬ÍêÈ«²»ÊÜÇøÓòÉèÖÃÓ°Ïì£©
+                // ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½Ã²ï¿½ï¿½ï¿½ï¿½Ä»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¼ï¿½ï¿½ï¿½ï¿½ï¿½È«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó°ï¿½ì£©
                 // System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
 
                 if ("th,km,lo,my".IndexOf(cultureCode) == -1)
                 {
-                    //Èç¹ûĞèÒªÖ§³Ö¶àÖÖ¹«ÀúÎÄ»¯£¬¿ÉÒÔ¸ù¾İÓïÑÔ´úÂëÓ³Éä
+                    //ï¿½ï¿½ï¿½ï¿½ï¿½ÒªÖ§ï¿½Ö¶ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½Ä»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´ï¿½ï¿½ï¿½Ó³ï¿½ï¿½
                     System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.CreateSpecificCulture(cultureCode);
                 }
                 else
                 {
-                    //Èç¹ûĞèÒªÖ§³Ö¶àÖÖ¹«ÀúÎÄ»¯£¬¿ÉÒÔ¸ù¾İÓïÑÔ´úÂëÓ³Éä
+                    //ï¿½ï¿½ï¿½ï¿½ï¿½ÒªÖ§ï¿½Ö¶ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½Ä»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´ï¿½ï¿½ï¿½Ó³ï¿½ï¿½
                     System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.CreateSpecificCulture("en");
                 }
             }
             else
             {
-                // Ö»ÉèÖÃ½çÃæÎÄ»¯ÎªÓÃ»§Ñ¡ÔñµÄÎÄ»¯
+                // Ö»ï¿½ï¿½ï¿½Ã½ï¿½ï¿½ï¿½ï¿½Ä»ï¿½Îªï¿½Ã»ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½Ä»ï¿½
                 System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(strLangCode);
                 if ("th,km,lo,my".IndexOf(strLangCode) == -1)
                 {
-                    //Èç¹ûĞèÒªÖ§³Ö¶àÖÖ¹«ÀúÎÄ»¯£¬¿ÉÒÔ¸ù¾İÓïÑÔ´úÂëÓ³Éä
+                    //ï¿½ï¿½ï¿½ï¿½ï¿½ÒªÖ§ï¿½Ö¶ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½Ä»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´ï¿½ï¿½ï¿½Ó³ï¿½ï¿½
                     System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.CreateSpecificCulture(strLangCode);
                 }
                 else
                 {
-                    //Èç¹ûĞèÒªÖ§³Ö¶àÖÖ¹«ÀúÎÄ»¯£¬¿ÉÒÔ¸ù¾İÓïÑÔ´úÂëÓ³Éä
+                    //ï¿½ï¿½ï¿½ï¿½ï¿½ÒªÖ§ï¿½Ö¶ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½Ä»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´ï¿½ï¿½ï¿½Ó³ï¿½ï¿½
                     System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.CreateSpecificCulture("en");
                 }
             }
         }
         catch (Exception err)
         {
-            // ³ö´íÊ±Ò²È·±£Ê¹ÓÃ°²È«µÄÎÄ»¯ÉèÖÃ
+            // ï¿½ï¿½ï¿½ï¿½Ê±Ò²È·ï¿½ï¿½Ê¹ï¿½Ã°ï¿½È«ï¿½ï¿½ï¿½Ä»ï¿½ï¿½ï¿½ï¿½ï¿½
             System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(strLangCode);
             if ("th,km,lo,my".IndexOf(strLangCode) == -1)
             {
-                //Èç¹ûĞèÒªÖ§³Ö¶àÖÖ¹«ÀúÎÄ»¯£¬¿ÉÒÔ¸ù¾İÓïÑÔ´úÂëÓ³Éä
+                //ï¿½ï¿½ï¿½ï¿½ï¿½ÒªÖ§ï¿½Ö¶ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½Ä»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´ï¿½ï¿½ï¿½Ó³ï¿½ï¿½
                 System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.CreateSpecificCulture(strLangCode);
             }
             else
             {
-                //Èç¹ûĞèÒªÖ§³Ö¶àÖÖ¹«ÀúÎÄ»¯£¬¿ÉÒÔ¸ù¾İÓïÑÔ´úÂëÓ³Éä
+                //ï¿½ï¿½ï¿½ï¿½ï¿½ÒªÖ§ï¿½Ö¶ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½Ä»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´ï¿½ï¿½ï¿½Ó³ï¿½ï¿½
                 System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.CreateSpecificCulture("en");
             }
         }
@@ -159,15 +174,15 @@
 
     public class SchedulerConfiguration
     {
-        //Ê±¼ä¼ä¸ô
+        //Ê±ï¿½ï¿½ï¿½ï¿½
         private int sleepInterval;
-        //ÈÎÎñÁĞ±í
+        //ï¿½ï¿½ï¿½ï¿½ï¿½Ğ±ï¿½
         private ArrayList jobs = new ArrayList();
 
         public int SleepInterval { get { return sleepInterval; } }
         public ArrayList Jobs { get { return jobs; } }
 
-        //µ÷¶ÈÅäÖÃÀàµÄ¹¹Ôìº¯Êı
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¹ï¿½ï¿½ìº¯ï¿½ï¿½
         public SchedulerConfiguration(int newSleepInterval)
         {
             sleepInterval = newSleepInterval;
@@ -183,7 +198,7 @@
     {
         public void Execute()
         {
-            //Ö´ĞĞ¶¨Ê±Æ÷Ò³
+            //Ö´ï¿½Ğ¶ï¿½Ê±ï¿½ï¿½Ò³
             ShareClass.ExecuteTakeTopTimer();
         }
     }
@@ -191,6 +206,7 @@
     public class Scheduler
     {
         private SchedulerConfiguration configuration = null;
+        private volatile bool isRunning = false;
 
         public Scheduler(SchedulerConfiguration config)
         {
@@ -199,17 +215,25 @@
 
         public void Start()
         {
-            while (true)
+            isRunning = true;
+            while (isRunning)
             {
-                //Ö´ĞĞÃ¿Ò»¸öÈÎÎñ
+                //Ö´ï¿½ï¿½Ã¿Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 foreach (ISchedulerJob job in configuration.Jobs)
                 {
+                    if (!isRunning) break;
                     ThreadStart myThreadDelegate = new ThreadStart(job.Execute);
                     Thread myThread = new Thread(myThreadDelegate);
+                    myThread.IsBackground = true;
                     myThread.Start();
                     Thread.Sleep(configuration.SleepInterval);
                 }
             }
+        }
+
+        public void Stop()
+        {
+            isRunning = false;
         }
     }
 

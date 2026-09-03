@@ -417,6 +417,22 @@ public static class DatabaseUpdateHandle
     //运行更新字段值代码
     public static void RunUpdateColumnValueCode()
     {
+        bool upgradeSuccess = false;
+
+        // 1. 每次登录都执行 XML 升级。
+        //    UpgradeDataBase() 内部通过 Max(T_DataBaseUpgrate.ID) 与 XML 中的 ID 比较，
+        //    只执行"数据库里尚未执行"（ID > 最大记录ID）的升级语句，
+        //    因此不受 UpdateColumnValueCodeRunmark 限制；该标记仅控制下方第2步的补充逻辑。
+        try
+        {
+            upgradeSuccess = UpgradeDataBase();
+        }
+        catch (Exception err)
+        {
+            LogClass.WriteLogFile("Error page: " + err.Message.ToString() + "\n" + err.StackTrace);
+        }
+
+        // 2. 标记仅控制"补齐系统启动所需字段 + Status/Type/Group/Gender/Authority 英文化"这部分的执行开关。
         int intUpdateColumnRunMarkInDB = DatabaseUpdateHandle.GetUpdateColumnValueCodeRunmark();
         //设置这个值，可以决定是否执行下面的代码
         int intUpdateColumnRunMark = 1;
@@ -435,8 +451,6 @@ public static class DatabaseUpdateHandle
 
             if (!iAmTheOne) return; // 其他用户正在执行或已执行完毕
 
-            bool upgradeSuccess = false;
-
             try
             {
                 //补齐系统启动所需要的数据表缺的字段
@@ -452,17 +466,7 @@ public static class DatabaseUpdateHandle
                 //LogClass.WriteLogFile(err.Message.ToString());
             }
 
-            try
-            {
-                //如果存在升级语句，那么升级数据库
-                upgradeSuccess = UpgradeDataBase();
-            }
-            catch (Exception err)
-            {
-                LogClass.WriteLogFile("Error page: " + err.Message.ToString() + "\n" + err.StackTrace);
-            }
-
-            // 只有 UpgradeDataBase 成功才继续后续步骤并设标记
+            // 只有 XML 升级成功才继续后续英文化步骤并设标记；失败则保留标记，下次登录重试
             if (!upgradeSuccess)
             {
                 LogClass.WriteLogFile("UpgradeDataBase failed or returned false, skipping mark set. Will retry on next login.");
@@ -496,6 +500,19 @@ public static class DatabaseUpdateHandle
     //运行模组名称英文化代码
     public static void RunUpdateModuleNameCode()
     {
+        bool upgradeSuccess = false;
+
+        // 1. 每次登录都执行 XML 升级（内部由 Max(DataBaseUpgrate.ID) 决定只跑新语句，不受此标记限制）
+        try
+        {
+            upgradeSuccess = UpgradeDataBase();
+        }
+        catch (Exception err)
+        {
+            LogClass.WriteLogFile("Error page: " + err.Message.ToString() + "\n" + err.StackTrace);
+        }
+
+        // 2. 标记仅控制"模组栏英文化"这部分的执行开关
         int intUpdateModuleRunMarkInDB = DatabaseUpdateHandle.GetUpdateModuleNameCodeRunMark();
 
         //设置这个值，可以决定是否执行下面的代码
@@ -515,8 +532,8 @@ public static class DatabaseUpdateHandle
 
             if (!iAmTheOne) return;
 
-            //如果存在升级语句，那么升级数据库
-            if (!UpgradeDataBase())
+            // 只有 XML 升级成功才继续英文化步骤并设标记
+            if (!upgradeSuccess)
             {
                 LogClass.WriteLogFile("UpgradeDataBase (module name phase) failed, skipping mark set. Will retry on next login.");
                 return;
@@ -555,7 +572,9 @@ public static class DatabaseUpdateHandle
             ";
             ShareClass.RunSqlCommand(strHQL);
 
-            strHQL = @"Insert Into t_OtherCodeRunMark(normalcoderunmark,updatecolumnvaluecoderunmark,updatemodulenamecoderunmark) values(0,0,0);";
+            // 仅在表为空时初始化一行，避免每次登录都插入重复的 (0,0,0)
+            strHQL = @"Insert Into t_OtherCodeRunMark(normalcoderunmark,updatecolumnvaluecoderunmark,updatemodulenamecoderunmark)
+                       Select 0,0,0 Where Not Exists (Select 1 From t_OtherCodeRunMark);";
             ShareClass.RunSqlCommand(strHQL);
         }
         catch (Exception err)
